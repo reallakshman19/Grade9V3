@@ -48,25 +48,24 @@ owner_execution_exception:
 progress:
   overall_percent: 0
   phase_percent: 0
-  ep_percent: 0
+  ep_percent: 100
   basis_revision: PB-0001
 status_planes:
   execution:
     state: READY
     can_continue: true
     material_authority: WRITE
-    next_action: Execute EP-0162-CORRESPONDENCE-PROOF while keeping the prior browser-proof AC-05 and merge/base reconciliation pending.
+    next_action: Preserve the completed correspondence contract and select the next bounded Core-owned #162 falsifier; prior browser-proof AC-05 and merge/base reconciliation remain pending.
   quality:
     state: NEEDS_ATTENTION
     findings:
-    - Browser falsification exposed and repaired focus-rerender and touch-gesture lifecycle defects; guardrails run 3252 is green on the current coding head.
+    - Browser falsification exposed and repaired focus-rerender and touch-gesture lifecycle defects; correspondence proof then made projection-origin/linked state explicit and guardrails run 3268 is green on the current coding head.
     - Main carries RM-0008 / EP-TA-008 while this branch carries the #162 RM-0002 execution package; normal drift/write validation remains unmet under the explicit Owner continuation exception.
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
   evidence:
     state: PARTIAL
-    summary: Browser-proof slice is green on head 8c8c9793280eee315498d016a73adf3a3734b9a5. Correspondence successor evidence is not yet executed; prior post-rebase AC-05 remains pending.
+    summary: Correspondence proof is green on coding head 4f0b31faeb903611887bab351deb3e868c44422c with explicit projection-origin events, cross-grid linked states, and 934 repository tests. Prior post-rebase browser-proof AC-05 remains pending.
     not_run:
-    - EP-0162-CORRESPONDENCE-PROOF unit/browser/guardrail evidence
     - final post-rebase browser rerun on the eventual merge candidate
     - final post-rebase full guardrails on the eventual merge candidate
   stop:
