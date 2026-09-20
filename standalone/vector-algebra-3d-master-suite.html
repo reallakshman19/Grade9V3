@@ -1989,26 +1989,26 @@ window.JEE_QUESTIONS_DATA = [
       ctx.fillStyle = '#050811';
       ctx.fillRect(0, 0, w, h);
 
-      const cx = w * 0.5;
-      const cy = h * 0.55;
-      const scale = 22;
-
-      // Draw Grid / Coordinate Axes
-      const o = project3D(0, 0, 0, cx, cy, scale);
-      const axX = project3D(8, 0, 0, cx, cy, scale);
-      const axY = project3D(0, 8, 0, cx, cy, scale);
-      const axZ = project3D(0, 0, 8, cx, cy, scale);
+      const points = [
+        [0,0,0], [8,0,0], [0,8,0], [0,0,8],
+        [basisVector.x, basisVector.y, basisVector.z],
+        [basisVector.x, basisVector.y, 0]
+      ];
+      const fit = makeFittedProjector(points, w, h, 0.5, 0.55, 58, 24);
+      const p = fit.project;
+      const o = p([0,0,0]);
+      const axX = p([8,0,0]);
+      const axY = p([0,8,0]);
+      const axZ = p([0,0,8]);
 
       draw3DVector(ctx, o, axX, '#ef4444', '+X (i)', 1.5);
       draw3DVector(ctx, o, axY, '#10b981', '+Y (j)', 1.5);
       draw3DVector(ctx, o, axZ, '#38bdf8', '+Z (k)', 1.5);
 
-      // Draw Vector v
-      const vEnd = project3D(basisVector.x, basisVector.y, basisVector.z, cx, cy, scale);
+      const vEnd = p([basisVector.x, basisVector.y, basisVector.z]);
       draw3DVector(ctx, o, vEnd, '#f59e0b', 'v', 3.5);
 
-      // Projections (Shadows on XY, YZ, ZX planes)
-      const shadowXY = project3D(basisVector.x, basisVector.y, 0, cx, cy, scale);
+      const shadowXY = p([basisVector.x, basisVector.y, 0]);
       ctx.strokeStyle = '#475569';
       ctx.setLineDash([3, 3]);
       ctx.beginPath();
@@ -2018,7 +2018,6 @@ window.JEE_QUESTIONS_DATA = [
       ctx.stroke();
       ctx.setLineDash([]);
 
-      // Telemetry
       const mag = Math.sqrt(basisVector.x ** 2 + basisVector.y ** 2 + basisVector.z ** 2);
       const l = mag > 0 ? (basisVector.x / mag) : 0;
       const m = mag > 0 ? (basisVector.y / mag) : 0;
@@ -2061,34 +2060,26 @@ window.JEE_QUESTIONS_DATA = [
       ctx.fillStyle = '#050811';
       ctx.fillRect(0, 0, w, h);
 
-      const cx = w * 0.45;
-      const cy = h * 0.6;
-      const scale = 22;
-
       const rad = dotRig.theta * Math.PI / 180;
       const ax = dotRig.magA * Math.cos(rad);
       const ay = dotRig.magA * Math.sin(rad);
       const bx = dotRig.magB;
-      const by = 0;
 
-      // Project onto b (along x-axis)
       const projX = ax;
-      const perpY = ay;
+      const fit = makeFitted2DProjector(
+        [[0,0],[bx,0],[ax,ay],[projX,0]],
+        w, h, 0.47, 0.62, 62, 28
+      );
+      const p = fit.project;
+      const o = p([0,0]);
+      const ptB = p([bx,0]);
+      const ptA = p([ax,ay]);
+      const ptProj = p([projX,0]);
 
-      const o = { px: cx, py: cy };
-      const ptB = { px: cx + bx * scale, py: cy };
-      const ptA = { px: cx + ax * scale, py: cy - ay * scale };
-      const ptProj = { px: cx + projX * scale, py: cy };
-
-      // Reference Vector b (Amber)
       draw3DVector(ctx, o, ptB, '#f59e0b', 'b', 3);
-      // Vector a (Cyan)
       draw3DVector(ctx, o, ptA, '#38bdf8', 'a', 3);
-
-      // Parallel component a_parallel (Green)
       draw3DVector(ctx, o, ptProj, '#10b981', 'a_parallel', 3.5);
 
-      // Orthogonal Rejection a_perp (Red dashed drop)
       ctx.strokeStyle = '#ef4444';
       ctx.setLineDash([4, 4]);
       ctx.lineWidth = 2;
@@ -2099,16 +2090,20 @@ window.JEE_QUESTIONS_DATA = [
       ctx.setLineDash([]);
       ctx.fillStyle = '#ef4444';
       ctx.font = 'bold 10px monospace';
-      ctx.fillText('a_perp', ptProj.px + 4, (ptA.py + ptProj.py) * 0.5);
+      ctx.textAlign = 'left';
+      const perpLabel = 'a_perp';
+      const labelWidth = ctx.measureText(perpLabel).width;
+      const lx = clampNumber(ptProj.px + 4, 4, Math.max(4, w - labelWidth - 4));
+      const ly = clampNumber((ptA.py + ptProj.py) * 0.5, 12, h - 4);
+      ctx.fillText(perpLabel, lx, ly);
 
-      // Angle arc
+      const arcRadius = Math.min(30, Math.max(16, fit.scale * Math.min(dotRig.magA, dotRig.magB) * 0.28));
       ctx.strokeStyle = '#f59e0b';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
-      ctx.arc(cx, cy, 30, -rad, 0);
+      ctx.arc(o.px, o.py, arcRadius, -rad, 0);
       ctx.stroke();
 
-      // Telemetry
       const dotProduct = dotRig.magA * dotRig.magB * Math.cos(rad);
       const scalarProj = dotRig.magA * Math.cos(rad);
       const perpNorm = dotRig.magA * Math.sin(rad);
@@ -2150,18 +2145,26 @@ window.JEE_QUESTIONS_DATA = [
       ctx.fillStyle = '#050811';
       ctx.fillRect(0, 0, w, h);
 
-      const cx = w * 0.45;
-      const cy = h * 0.6;
-      const scale = 20;
       const rad = crossRig.theta * Math.PI / 180;
       const magB = 6;
       const a = [crossRig.magA * Math.cos(rad), crossRig.magA * Math.sin(rad), 0];
       const b = [magB, 0, 0];
+      const corner = [a[0] + b[0], a[1] + b[1], 0];
 
-      const o = project3D(0, 0, 0, cx, cy, scale);
-      const ptA = project3D(a[0], a[1], 0, cx, cy, scale);
-      const ptB = project3D(b[0], b[1], 0, cx, cy, scale);
-      const ptCorner = project3D(a[0] + b[0], a[1] + b[1], 0, cx, cy, scale);
+      const sideCrossMag = Math.abs(a[0] * b[1] - a[1] * b[0]);
+      const diagCrossMag = 2 * sideCrossMag;
+      const normalLength = Math.min(7, Math.max(1.5, sideCrossMag * 0.18));
+      const normal = [0,0,normalLength];
+
+      const fit = makeFittedProjector(
+        [[0,0,0], a, b, corner, normal],
+        w, h, 0.47, 0.6, 58, 24
+      );
+      const p = fit.project;
+      const o = p([0,0,0]);
+      const ptA = p(a);
+      const ptB = p(b);
+      const ptCorner = p(corner);
 
       ctx.fillStyle = 'rgba(56, 189, 248, 0.15)';
       ctx.beginPath();
@@ -2175,22 +2178,15 @@ window.JEE_QUESTIONS_DATA = [
       ctx.lineWidth = 1;
       ctx.stroke();
 
-      const sideCrossMag = Math.abs(a[0] * b[1] - a[1] * b[0]);
-      const diagCrossMag = 2 * sideCrossMag;
-
       if (crossRig.mode === 'sides') {
         draw3DVector(ctx, o, ptB, '#f59e0b', 'b', 2.5);
         draw3DVector(ctx, o, ptA, '#38bdf8', 'a', 2.5);
       } else {
-        // d1 = a+b goes from one vertex to its opposite; d2 = a-b is the
-        // other diagonal vector and may be drawn from endpoint b to endpoint a.
         draw3DVector(ctx, o, ptCorner, '#f59e0b', 'd₁ = a+b', 2.5);
         draw3DVector(ctx, ptB, ptA, '#38bdf8', 'd₂ = a-b', 2.5);
       }
 
-      const normalLength = Math.min(7, Math.max(1.5, sideCrossMag * 0.18));
-      const ptNormal = project3D(0, 0, normalLength, cx, cy, scale);
-      draw3DVector(ctx, o, ptNormal, '#fbbf24', 'normal', 3.5);
+      draw3DVector(ctx, o, p(normal), '#fbbf24', 'normal', 3.5);
 
       const area = sideCrossMag;
       document.getElementById('crossLiveArea').textContent = crossRig.mode === 'sides'
@@ -2235,27 +2231,23 @@ window.JEE_QUESTIONS_DATA = [
       ctx.fillStyle = '#050811';
       ctx.fillRect(0, 0, w, h);
 
-      const cx = w * 0.45;
-      const cy = h * 0.65;
-      const scale = 20;
+      const a = [5,0,0];
+      const b = [2,4,0];
+      const c = [1,1,tripleRig.zc];
+      const add = (...vs) => [
+        vs.reduce((s,v)=>s+v[0],0),
+        vs.reduce((s,v)=>s+v[1],0),
+        vs.reduce((s,v)=>s+v[2],0)
+      ];
+      const verts3 = [
+        [0,0,0], a, b, add(a,b),
+        c, add(a,c), add(b,c), add(a,b,c)
+      ];
 
-      // Box edge vectors: a=[5, 0, 0], b=[2, 4, 0], c=[1, 1, tripleRig.zc]
-      const ax = 5, ay = 0, az = 0;
-      const bx = 2, by = 4, bz = 0;
-      const cx_vec = 1, cy_vec = 1, cz_vec = tripleRig.zc;
+      const fit = makeFittedProjector(verts3, w, h, 0.47, 0.62, 58, 24);
+      const p = fit.project;
+      const [v000,v100,v010,v110,v001,v101,v011,v111] = verts3.map(p);
 
-      // 8 Vertices of Parallelepiped
-      const v000 = project3D(0, 0, 0, cx, cy, scale);
-      const v100 = project3D(ax, ay, az, cx, cy, scale);
-      const v010 = project3D(bx, by, bz, cx, cy, scale);
-      const v110 = project3D(ax + bx, ay + by, az + bz, cx, cy, scale);
-
-      const v001 = project3D(cx_vec, cy_vec, cz_vec, cx, cy, scale);
-      const v101 = project3D(ax + cx_vec, ay + cy_vec, az + cz_vec, cx, cy, scale);
-      const v011 = project3D(bx + cx_vec, by + cy_vec, bz + cz_vec, cx, cy, scale);
-      const v111 = project3D(ax + bx + cx_vec, ay + by + cy_vec, az + bz + cz_vec, cx, cy, scale);
-
-      // Shaded faces
       ctx.fillStyle = (Math.abs(tripleRig.zc) < 0.1) ? 'rgba(239, 68, 68, 0.3)' : 'rgba(168, 85, 247, 0.15)';
       ctx.beginPath();
       ctx.moveTo(v000.px, v000.py);
@@ -2265,7 +2257,6 @@ window.JEE_QUESTIONS_DATA = [
       ctx.closePath();
       ctx.fill();
 
-      // Top face
       ctx.beginPath();
       ctx.moveTo(v001.px, v001.py);
       ctx.lineTo(v101.px, v101.py);
@@ -2274,7 +2265,6 @@ window.JEE_QUESTIONS_DATA = [
       ctx.closePath();
       ctx.fill();
 
-      // Connecting edges
       ctx.strokeStyle = (Math.abs(tripleRig.zc) < 0.1) ? '#ef4444' : '#a855f7';
       ctx.lineWidth = 1.5;
       const edges = [
@@ -2282,20 +2272,18 @@ window.JEE_QUESTIONS_DATA = [
         [v001, v101], [v101, v111], [v111, v011], [v011, v001],
         [v000, v001], [v100, v101], [v110, v111], [v010, v011]
       ];
-      edges.forEach(([p1, p2]) => {
+      edges.forEach(([p1,p2]) => {
         ctx.beginPath();
-        ctx.moveTo(p1.px, p1.py);
-        ctx.lineTo(p2.px, p2.py);
+        ctx.moveTo(p1.px,p1.py);
+        ctx.lineTo(p2.px,p2.py);
         ctx.stroke();
       });
 
-      // Vectors a, b, c
       draw3DVector(ctx, v000, v100, '#38bdf8', 'a', 2.5);
       draw3DVector(ctx, v000, v010, '#f59e0b', 'b', 2.5);
       draw3DVector(ctx, v000, v001, '#c084fc', 'c', 3);
 
-      // Telemetry
-      const baseArea = 5 * 4; // 20
+      const baseArea = 20;
       const vol = Math.abs(baseArea * tripleRig.zc);
       document.getElementById('telTripleBaseArea').textContent = `${baseArea.toFixed(1)} sq units`;
       document.getElementById('telTripleHeight').textContent = `${Math.abs(tripleRig.zc).toFixed(1)} units`;
@@ -2325,11 +2313,7 @@ window.JEE_QUESTIONS_DATA = [
       ctx.fillStyle = '#050811';
       ctx.fillRect(0, 0, w, h);
 
-      const cx = w * 0.45;
-      const cy = h * 0.6;
-      const scale = 20;
       const rad = baccabRig.angle * Math.PI / 180;
-
       const a = [5 * Math.cos(rad), 0, 5 * Math.sin(rad)];
       const b = [6, 0, 0];
       const cVec = [0, 5, 2];
@@ -2348,35 +2332,45 @@ window.JEE_QUESTIONS_DATA = [
         const k = Math.min(6, 0.18*n) / n;
         return [v[0]*k, v[1]*k, v[2]*k];
       };
-      const point = v => project3D(v[0],v[1],v[2],cx,cy,scale);
-      const o = point([0,0,0]);
-
-      // Plane span(b,c)
-      const bcCorner = point(add(b,cVec));
-      ctx.fillStyle = 'rgba(59, 130, 246, 0.13)';
-      ctx.beginPath();
-      ctx.moveTo(o.px,o.py);
-      const pb=point(b), pc=point(cVec);
-      ctx.lineTo(pb.px,pb.py); ctx.lineTo(bcCorner.px,bcCorner.py); ctx.lineTo(pc.px,pc.py);
-      ctx.closePath(); ctx.fill();
-
-      // Plane span(a,b)
-      const abCorner = point(add(a,b));
-      ctx.fillStyle = 'rgba(245, 158, 11, 0.10)';
-      const pa=point(a);
-      ctx.beginPath();
-      ctx.moveTo(o.px,o.py);
-      ctx.lineTo(pb.px,pb.py); ctx.lineTo(abCorner.px,abCorner.py); ctx.lineTo(pa.px,pa.py);
-      ctx.closePath(); ctx.fill();
-
-      draw3DVector(ctx, o, pa, '#f59e0b', 'a', 2.5);
-      draw3DVector(ctx, o, pb, '#38bdf8', 'b', 2.5);
-      draw3DVector(ctx, o, pc, '#10b981', 'c', 2.5);
 
       const vtp1 = cross(a, cross(b, cVec));
       const vtp2 = cross(cross(a, b), cVec);
       const d1 = displayVector(vtp1);
       const d2 = displayVector(vtp2);
+      const bcCornerV = add(b,cVec);
+      const abCornerV = add(a,b);
+
+      const fit = makeFittedProjector(
+        [[0,0,0],a,b,cVec,bcCornerV,abCornerV,d1,d2],
+        w, h, 0.47, 0.6, 62, 24
+      );
+      const point = fit.project;
+      const o = point([0,0,0]);
+      const pb = point(b), pc = point(cVec), pa = point(a);
+
+      ctx.fillStyle = 'rgba(59, 130, 246, 0.13)';
+      ctx.beginPath();
+      ctx.moveTo(o.px,o.py);
+      const bcCorner = point(bcCornerV);
+      ctx.lineTo(pb.px,pb.py);
+      ctx.lineTo(bcCorner.px,bcCorner.py);
+      ctx.lineTo(pc.px,pc.py);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.fillStyle = 'rgba(245, 158, 11, 0.10)';
+      const abCorner = point(abCornerV);
+      ctx.beginPath();
+      ctx.moveTo(o.px,o.py);
+      ctx.lineTo(pb.px,pb.py);
+      ctx.lineTo(abCorner.px,abCorner.py);
+      ctx.lineTo(pa.px,pa.py);
+      ctx.closePath();
+      ctx.fill();
+
+      draw3DVector(ctx, o, pa, '#f59e0b', 'a', 2.5);
+      draw3DVector(ctx, o, pb, '#38bdf8', 'b', 2.5);
+      draw3DVector(ctx, o, pc, '#10b981', 'c', 2.5);
       draw3DVector(ctx, o, point(d1), '#ec4899', 'a×(b×c)', 3.5);
       draw3DVector(ctx, o, point(d2), '#f97316', '(a×b)×c', 3.5);
 
@@ -2408,44 +2402,45 @@ window.JEE_QUESTIONS_DATA = [
       ctx.fillStyle = '#050811';
       ctx.fillRect(0, 0, w, h);
 
-      const cx = w * 0.45;
-      const cy = h * 0.6;
-      const scale = 22;
-      const project = v => project3D(v[0],v[1],v[2],cx,cy,scale);
-      const o = project([0,0,0]);
-
-      // Governed illustrative equation:
-      // a=[2,1,1], b=[2,-2,-2], r×a=b.
-      // r_p=(a×b)/|a|²=[0,1,-1], so r=r_p+λa.
-      // Auxiliary plane: c=[1,1,0], d=4, which fixes λ=1.
       const a = [2,1,1];
       const b = [2,-2,-2];
       const rp = [0,1,-1];
       const cVec = [1,1,0];
       const d = 4;
-
-      const rpP = project(rp);
-      draw3DVector(ctx, o, rpP, '#38bdf8', 'r_p = (a×b)/|a|²', 2.5);
-
       const at = lam => [rp[0]+lam*a[0], rp[1]+lam*a[1], rp[2]+lam*a[2]];
+      const plane3 = [[4,0,-4],[0,4,-4],[0,4,4],[4,0,4]];
+      const r = at(eqRig.lambda);
+
+      const fit = makeFittedProjector(
+        [[0,0,0],rp,at(-3),at(3),r,...plane3],
+        w, h, 0.47, 0.6, 70, 24
+      );
+      const project = fit.project;
+      const o = project([0,0,0]);
+
+      draw3DVector(ctx, o, project(rp), '#38bdf8', 'r_p = (a×b)/|a|²', 2.5);
+
       const lineStart = project(at(-3));
       const lineEnd = project(at(3));
       ctx.strokeStyle = '#10b981';
       ctx.setLineDash([4,4]);
       ctx.lineWidth = 2;
-      ctx.beginPath(); ctx.moveTo(lineStart.px,lineStart.py); ctx.lineTo(lineEnd.px,lineEnd.py); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(lineStart.px,lineStart.py);
+      ctx.lineTo(lineEnd.px,lineEnd.py);
+      ctx.stroke();
       ctx.setLineDash([]);
 
-      // Plane x+y=4 (r·c=d).
-      const planePts = [[4,0,-4],[0,4,-4],[0,4,4],[4,0,4]].map(project);
+      const planePts = plane3.map(project);
       ctx.fillStyle = 'rgba(168,85,247,0.12)';
       ctx.strokeStyle = '#a855f7';
       ctx.beginPath();
       ctx.moveTo(planePts[0].px,planePts[0].py);
-      planePts.slice(1).forEach(p=>ctx.lineTo(p.px,p.py));
-      ctx.closePath(); ctx.fill(); ctx.stroke();
+      planePts.slice(1).forEach(pt=>ctx.lineTo(pt.px,pt.py));
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
 
-      const r = at(eqRig.lambda);
       draw3DVector(ctx, o, project(r), '#f59e0b', 'r(λ)', 3.5);
 
       const crossRA = [
@@ -2483,18 +2478,14 @@ window.JEE_QUESTIONS_DATA = [
       ctx.fillStyle = '#050811';
       ctx.fillRect(0, 0, w, h);
 
-      const cx = w * 0.5;
-      const cy = h * 0.55;
-      const scale = 20;
+      const vectors = [[5,2,3],[-2,4,1],[1,-3,4]];
+      const fit = makeFittedProjector([[0,0,0],...vectors], w, h, 0.5, 0.55, 60, 24);
+      const p = fit.project;
+      const o = p([0,0,0]);
 
-      const o = project3D(0, 0, 0, cx, cy, scale);
-      const v1 = project3D(5, 2, 3, cx, cy, scale);
-      const v2 = project3D(-2, 4, 1, cx, cy, scale);
-      const v3 = project3D(1, -3, 4, cx, cy, scale);
-
-      draw3DVector(ctx, o, v1, '#38bdf8', 'v₁', 2.5);
-      draw3DVector(ctx, o, v2, '#10b981', 'v₂', 2.5);
-      draw3DVector(ctx, o, v3, '#f59e0b', 'v₃', 2.5);
+      draw3DVector(ctx, o, p(vectors[0]), '#38bdf8', 'v₁', 2.5);
+      draw3DVector(ctx, o, p(vectors[1]), '#10b981', 'v₂', 2.5);
+      draw3DVector(ctx, o, p(vectors[2]), '#f59e0b', 'v₃', 2.5);
     }
 
     // =========================================================================
