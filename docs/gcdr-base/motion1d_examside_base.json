@@ -1,0 +1,1193 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_id": "GCDR-BASE-EXAMSIDE-JEE-MAIN-MOTION-1D-2026-09-20",
+  "domain": "Motion in One Dimension",
+  "subject": "Physics",
+  "purpose": "External demand inventory and GCDR design base. Not curriculum authority and not a reproduction of the external question bank.",
+  "provenance": {
+    "fetched_at": "2026-09-20",
+    "source_name": "ExamSIDE",
+    "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+    "live_title": "Motion in a Straight Line · Physics · JEE Main",
+    "live_year_range": "2002-2026",
+    "live_question_count": 123,
+    "live_paper_count": 107,
+    "live_type_counts": {
+      "MCQ_SINGLE_CORRECT": 98,
+      "NUMERICAL": 25
+    },
+    "live_2026_weightage_percent": 1.68,
+    "blueprint_declared_count": 124,
+    "count_reconciliation": "LIVE_SOURCE_DIFFERS_BY_MINUS_1_FROM_BLUEPRINT",
+    "rights_note": "Question text, options, figures and solutions are not mirrored. Store source locators and concise demand summaries only."
+  },
+  "year_counts": {
+    "2002": 2,
+    "2003": 2,
+    "2004": 2,
+    "2005": 3,
+    "2006": 1,
+    "2007": 1,
+    "2008": 1,
+    "2009": 1,
+    "2010": 0,
+    "2011": 1,
+    "2012": 0,
+    "2013": 0,
+    "2014": 1,
+    "2015": 1,
+    "2016": 0,
+    "2017": 3,
+    "2018": 3,
+    "2019": 8,
+    "2020": 6,
+    "2021": 20,
+    "2022": 17,
+    "2023": 19,
+    "2024": 16,
+    "2025": 7,
+    "2026": 8
+  },
+  "canonical_state_model": {
+    "state_paths": [
+      "clock.t",
+      "particle.x",
+      "particle.v",
+      "particle.a",
+      "path.distance",
+      "frame.origin",
+      "frame.positive_direction",
+      "phase.active",
+      "model.active",
+      "events"
+    ],
+    "single_source_of_truth": "All track, graph, phase-space, odometer, event and derived readouts must derive from one state."
+  },
+  "fallacy_rigs": [
+    {
+      "fallacy_id": "FALLACY-1D-01",
+      "name": "Displacement vs distance traversal",
+      "wrong_model": "distance = abs(net_displacement)",
+      "correct_model": "displacement = integral(v dt); distance = integral(abs(v) dt)",
+      "required_helpers": [
+        "PREDICTION_GATE",
+        "DUAL_ODOMETER",
+        "TURNING_POINT_MARKER",
+        "WRONG_MODEL_COMPARATOR",
+        "INDEPENDENT_CHECK",
+        "TRANSFER_TAKEAWAY"
+      ],
+      "verified_source_exemplar": {
+        "exam": "JEE Main 2026",
+        "date_shift": "5 April Evening",
+        "demand_summary": "Interpret a velocity-time graph with direction reversal; distinguish total distance from average velocity.",
+        "source_url": "https://questions.examside.com/past-years/jee/question/pthe-velocity-v-versus-time-t-plot-of-a-particle-i-jee-main-physics-units-and-measurements-ggzfgvsdfpmhrmpn"
+      }
+    },
+    {
+      "fallacy_id": "FALLACY-1D-02",
+      "name": "Moving-platform release inheritance",
+      "wrong_model": "released object starts with zero ground-frame velocity",
+      "correct_model": "released object inherits the platform's instantaneous ground-frame velocity",
+      "required_helpers": [
+        "ASSUMPTION_BANNER",
+        "EVENT_MARKER",
+        "WRONG_MODEL_COMPARATOR",
+        "STATE_INSPECTOR",
+        "TEACHERS_CHALKBOARD",
+        "TRAP_ALERT",
+        "TRANSFER_TAKEAWAY"
+      ],
+      "verified_source_exemplar": {
+        "exam": "JEE Main 2026",
+        "date_shift": "8 April Evening",
+        "demand_summary": "A stone released from an upward-moving balloon inherits the balloon velocity at detachment.",
+        "source_url": "https://questions.examside.com/past-years/jee/question/pa-gas-balloon-is-going-up-with-a-constant-velocity-of-10-jee-main-physics-units-and-measurements-sayhty0k9nxglt9n"
+      }
+    },
+    {
+      "fallacy_id": "FALLACY-1D-03",
+      "name": "v-x to a-x transformation",
+      "wrong_model": "apply constant-acceleration SUVAT directly to a non-constant v(x) graph",
+      "correct_model": "a(x) = v(x) * dv/dx",
+      "required_helpers": [
+        "GRAPH_CALCULUS_HELPER",
+        "TANGENT_HELPER",
+        "FORMULA_ELIGIBILITY_GATE",
+        "REPRESENTATION_LINKER",
+        "INVARIANT_MONITOR",
+        "BOUNDARY_ALERT"
+      ],
+      "verified_source_exemplar": {
+        "exam": "JEE Main 2026",
+        "date_shift": "24 January Evening",
+        "demand_summary": "Transform a velocity-versus-distance relation into the corresponding acceleration-versus-distance behavior.",
+        "source_url": "https://questions.examside.com/past-years/jee/question/pthe-velocity-v-distance-x-graph-is-shown-in-fig-jee-main-physics-units-and-measurements-ctymirxcff9fzilo"
+      }
+    },
+    {
+      "fallacy_id": "FALLACY-1D-04",
+      "name": "Galileo equal-interval miscount",
+      "wrong_model": "successive equal-time displacements grow as 1:2:3:4",
+      "correct_model": "cumulative distance from rest scales as n^2; successive interval distances scale as 1:3:5:...",
+      "required_helpers": [
+        "EVENT_CLOCK",
+        "STROBOSCOPE",
+        "INVARIANT_MONITOR",
+        "REPRESENTATION_LINKER",
+        "TRAP_ALERT",
+        "TRANSFER_TAKEAWAY"
+      ],
+      "verified_source_exemplar": {
+        "exam": "JEE Main 2026",
+        "date_shift": "28 January Morning",
+        "demand_summary": "Regularly emitted water drops require correct release-clock indexing and quadratic fall distances.",
+        "source_url": "https://questions.examside.com/past-years/jee/question/pwater-drops-fall-from-a-tap-on-the-floor-5-m-below-at-r-jee-main-physics-units-and-measurements-qpjadbcedgrug31u"
+      }
+    },
+    {
+      "fallacy_id": "FALLACY-1D-05",
+      "name": "Turning point: zero velocity does not imply zero acceleration",
+      "wrong_model": "v=0 implies a=0 or no reversal",
+      "correct_model": "turning points are determined by v=0; acceleration may remain nonzero",
+      "required_helpers": [
+        "TURNING_POINT_MARKER",
+        "PHASE_SPACE_HELPER",
+        "TEACHERS_CHALKBOARD",
+        "TRAP_ALERT",
+        "INDEPENDENT_CHECK",
+        "BOUNDARY_ALERT"
+      ],
+      "verified_source_exemplar": {
+        "exam": "JEE Main 2026",
+        "date_shift": "28 January Evening",
+        "demand_summary": "Analyze a polynomial x(t), its turning point and acceleration behavior.",
+        "source_url": "https://questions.examside.com/past-years/jee/question/pa-particle-starts-moving-from-time-t0-and-its-coordina-jee-main-physics-svmggd9ut707abr7"
+      }
+    },
+    {
+      "fallacy_id": "FALLACY-1D-06",
+      "name": "Signed one-dimensional relative velocity",
+      "wrong_model": "combine speeds without a declared frame/direction convention",
+      "correct_model": "v_B/A = v_B - v_A on one declared signed axis",
+      "required_helpers": [
+        "FRAME_BADGE",
+        "ASSUMPTION_BANNER",
+        "REPRESENTATION_LINKER",
+        "INDEPENDENT_CHECK",
+        "TRANSFER_TAKEAWAY"
+      ],
+      "verified_source_exemplar": {
+        "exam": "JEE Main 2026",
+        "date_shift": "4 April Evening",
+        "demand_summary": "Same-direction cars and a thrown stone require signed relative velocity.",
+        "source_url": "https://questions.examside.com/past-years/jee/question/ptwo-cars-a-and-b-are-moving-in-the-same-direction-alo-jee-main-physics-units-and-measurements-nlrfzdcllgui58yt"
+      }
+    },
+    {
+      "fallacy_id": "FALLACY-1D-07",
+      "name": "Piecewise phase continuity",
+      "wrong_model": "restart each phase from rest or lose the previous terminal state",
+      "correct_model": "terminal x,v of phase n become initial x,v of phase n+1",
+      "required_helpers": [
+        "PHASE_TIMELINE",
+        "EVENT_MARKER",
+        "STATE_INSPECTOR",
+        "RESET",
+        "INDEPENDENT_CHECK"
+      ],
+      "verified_source_exemplar": {
+        "exam": "JEE Main 2026",
+        "date_shift": "23 January Evening",
+        "demand_summary": "Free-fall followed by parachute deceleration requires state continuity across the phase boundary.",
+        "source_url": "https://questions.examside.com/past-years/jee/question/pa-paratrooper-jumps-from-an-aeroplane-and-opens-a-parachu-jee-main-physics-units-and-measurements-mj3utvbd9iahk8py"
+      }
+    }
+  ],
+  "question_inventory": [
+    {
+      "source_key": "MCQ-001",
+      "source_question_number": 1,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-002",
+      "source_question_number": 2,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-003",
+      "source_question_number": 3,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-004",
+      "source_question_number": 4,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-005",
+      "source_question_number": 5,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-006",
+      "source_question_number": 6,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-007",
+      "source_question_number": 7,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-008",
+      "source_question_number": 8,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-009",
+      "source_question_number": 9,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-010",
+      "source_question_number": 10,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-011",
+      "source_question_number": 11,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-012",
+      "source_question_number": 12,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-013",
+      "source_question_number": 13,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-014",
+      "source_question_number": 14,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-015",
+      "source_question_number": 15,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-016",
+      "source_question_number": 16,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-017",
+      "source_question_number": 17,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-018",
+      "source_question_number": 18,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-019",
+      "source_question_number": 19,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-020",
+      "source_question_number": 20,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-021",
+      "source_question_number": 21,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-022",
+      "source_question_number": 22,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-023",
+      "source_question_number": 23,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-024",
+      "source_question_number": 24,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-025",
+      "source_question_number": 25,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-026",
+      "source_question_number": 26,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-027",
+      "source_question_number": 27,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-028",
+      "source_question_number": 28,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-029",
+      "source_question_number": 29,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-030",
+      "source_question_number": 30,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-031",
+      "source_question_number": 31,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-032",
+      "source_question_number": 32,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-033",
+      "source_question_number": 33,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-034",
+      "source_question_number": 34,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-035",
+      "source_question_number": 35,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-036",
+      "source_question_number": 36,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-037",
+      "source_question_number": 37,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-038",
+      "source_question_number": 38,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-039",
+      "source_question_number": 39,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-040",
+      "source_question_number": 40,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-041",
+      "source_question_number": 41,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-042",
+      "source_question_number": 42,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-043",
+      "source_question_number": 43,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-044",
+      "source_question_number": 44,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-045",
+      "source_question_number": 45,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-046",
+      "source_question_number": 46,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-047",
+      "source_question_number": 47,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-048",
+      "source_question_number": 48,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-049",
+      "source_question_number": 49,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-050",
+      "source_question_number": 50,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-051",
+      "source_question_number": 51,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-052",
+      "source_question_number": 52,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-053",
+      "source_question_number": 53,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-054",
+      "source_question_number": 54,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-055",
+      "source_question_number": 55,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-056",
+      "source_question_number": 56,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-057",
+      "source_question_number": 57,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-058",
+      "source_question_number": 58,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-059",
+      "source_question_number": 59,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-060",
+      "source_question_number": 60,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-061",
+      "source_question_number": 61,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-062",
+      "source_question_number": 62,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-063",
+      "source_question_number": 63,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-064",
+      "source_question_number": 64,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-065",
+      "source_question_number": 65,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-066",
+      "source_question_number": 66,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-067",
+      "source_question_number": 67,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-068",
+      "source_question_number": 68,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-069",
+      "source_question_number": 69,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-070",
+      "source_question_number": 70,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-071",
+      "source_question_number": 71,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-072",
+      "source_question_number": 72,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-073",
+      "source_question_number": 73,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-074",
+      "source_question_number": 74,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-075",
+      "source_question_number": 75,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-076",
+      "source_question_number": 76,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-077",
+      "source_question_number": 77,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-078",
+      "source_question_number": 78,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-079",
+      "source_question_number": 79,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-080",
+      "source_question_number": 80,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-081",
+      "source_question_number": 81,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-082",
+      "source_question_number": 82,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-083",
+      "source_question_number": 83,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-084",
+      "source_question_number": 84,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-085",
+      "source_question_number": 85,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-086",
+      "source_question_number": 86,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-087",
+      "source_question_number": 87,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-088",
+      "source_question_number": 88,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-089",
+      "source_question_number": 89,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-090",
+      "source_question_number": 90,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-091",
+      "source_question_number": 91,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-092",
+      "source_question_number": 92,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-093",
+      "source_question_number": 93,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-094",
+      "source_question_number": 94,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-095",
+      "source_question_number": 95,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-096",
+      "source_question_number": 96,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-097",
+      "source_question_number": 97,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-098",
+      "source_question_number": 98,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-001",
+      "source_question_number": 1,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-002",
+      "source_question_number": 2,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-003",
+      "source_question_number": 3,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-004",
+      "source_question_number": 4,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-005",
+      "source_question_number": 5,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-006",
+      "source_question_number": 6,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-007",
+      "source_question_number": 7,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-008",
+      "source_question_number": 8,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-009",
+      "source_question_number": 9,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-010",
+      "source_question_number": 10,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-011",
+      "source_question_number": 11,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-012",
+      "source_question_number": 12,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-013",
+      "source_question_number": 13,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-014",
+      "source_question_number": 14,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-015",
+      "source_question_number": 15,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-016",
+      "source_question_number": 16,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-017",
+      "source_question_number": 17,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-018",
+      "source_question_number": 18,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-019",
+      "source_question_number": 19,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-020",
+      "source_question_number": 20,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-021",
+      "source_question_number": 21,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-022",
+      "source_question_number": 22,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-023",
+      "source_question_number": 23,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-024",
+      "source_question_number": 24,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-025",
+      "source_question_number": 25,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/physics/motion-in-a-straight-line",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    }
+  ]
+}
