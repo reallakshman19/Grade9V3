@@ -1,0 +1,45 @@
+schema_version: relay-v2.5
+id: ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT
+decision:
+  authority: OWNER
+  kind: AUTHORIZATION
+  statement: >-
+    Continue the bounded Issue #162 Core/browser-proof coding on PR #165 despite
+    the known main/base merge conflict. Defer merge/rebase/control-plane
+    reconciliation until before merge. Do not claim the normal drift/write gate
+    passed and do not merge while the conflict remains.
+  source: >-
+    Owner instruction in the active Grade9V3 engineering session on 2026-09-20:
+    "Continue for now, merge issues can be solved later. We have core coding to be
+    done. Mark this as pending or known issue in your GitHub issue"
+effects:
+  requirement_disposition: NOT_APPLICABLE
+  grants_material_write_authority: true
+  pending_items:
+  - Resolve PR #165 merge/base conflict against current main before merge.
+  - Reconcile branch relay custody with the then-current authoritative relay before final checkpoint/merge.
+delivery_authorization: null
+impact:
+  class:
+  - LOCAL
+  - EXECUTION_GOVERNANCE
+  - PROTOCOL_EXCEPTION
+affected:
+  objectives:
+  - OBJ-TOPIC-ATLAS-COMPLETE
+  phases:
+  - PHASE-TAKEOVER-RECONCILIATION
+  work_packages:
+  - WP-162-BROWSER-RUNTIME-PROOF
+  execution_packages:
+  - EP-0162-BROWSER-RUNTIME-PROOF
+  issues:
+  - ISSUE-162
+required_reconciliation:
+- Continue only the Issue #162 generic Core/browser-proof slice on PR #165.
+- Preserve DRIFT-0162-RM0008 as an unresolved known issue; do not relabel it DISJOINT.
+- Do not claim normal V2.5 drift/write validation passed while the overlapping drift remains.
+- Do not merge PR #165 until current-main conflict/rebase and relay reconciliation are completed.
+- Keep Issue #159 learner routing, Issue #160 NLM/Atlas authoring, and Issue #163 portability/integration outside this coding slice.
+- Run browser and repository tests on each material candidate and record exact failures rather than broadening scope.
+status: APPLIED
