@@ -71,7 +71,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +6 (Option A).",
+    "takeaway": "Transfer rule: start from CrO₅ has a butterfly structure: one oxo oxygen (=O, O; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q02",
@@ -133,7 +142,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 5, 3, 1 (Option A).",
+    "takeaway": "Transfer rule: start from n-factor = |Δ(Oxidation State)|; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q03",
@@ -194,7 +212,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select M / 3 (Option A).",
+    "takeaway": "Transfer rule: start from In disproportionation: 1/n_net = 1/n_ox + 1/n_red, or n = Total electrons transferred per mole of reactant; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q04",
@@ -257,7 +284,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +5, 0, 0, +5 (Option A).",
+    "takeaway": "Transfer rule: start from S₄O₆²⁻ structure: [O₃S - S - S - SO₃]²⁻; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q05",
@@ -318,7 +354,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 0.50 mol (Option A).",
+    "takeaway": "Transfer rule: start from Equivalents of K₂Cr₂O₇ = Equivalents of FeC₂O₄; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q06",
@@ -380,7 +425,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select A mixture of Fe(II) and Fe(III) in 1 : 2 ratio (Option A).",
+    "takeaway": "Transfer rule: start from Fe₃O₄ is a stoichiometric mixed oxide: FeO · Fe₂O₃; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q07",
@@ -442,7 +496,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select M / 3 (Option A).",
+    "takeaway": "Transfer rule: start from Equivalent Mass = Molar Mass / n-factor; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q08",
@@ -500,7 +563,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select -212.3 kJ/mol (Option A).",
+    "takeaway": "Transfer rule: start from E°_cell = E°_cathode - E°_anode = 0; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q09",
@@ -557,7 +629,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +6 and +6 (Option A).",
+    "takeaway": "Transfer rule: start from H₂SO₅ has 1 peroxo linkage (-O-O-, O; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q10",
@@ -614,7 +695,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +1 and 3.87 BM (3 unpaired electrons) (Option A).",
+    "takeaway": "Transfer rule: start from NO acts as nitrosonium cation (NO⁺); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q11",
@@ -675,7 +765,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 3 (Option A).",
+    "takeaway": "Transfer rule: start from n-factor = ∑ (Moles of e⁻ lost by each oxidized atom per mole of salt) = n(Fe²⁺ → Fe³⁺) + n(C₂O₄²⁻ → 2 CO₂); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q12",
@@ -732,7 +831,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select -1 and +1 (Option A).",
+    "takeaway": "Transfer rule: start from CaOCl₂ exists as a mixed salt Ca²⁺ (Cl⁻) (OCl⁻); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q13",
@@ -792,7 +900,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select M/5,  M/3,  M/1 (Option A).",
+    "takeaway": "Transfer rule: start from Equivalent Weight = M / (n-factor); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q14",
@@ -856,7 +973,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 3 (Option A).",
+    "takeaway": "Transfer rule: start from For disproportionation: n-factor = Total moles of electrons transferred per mole of substance; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q15",
@@ -914,7 +1040,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 2 : 1 (Option A).",
+    "takeaway": "Transfer rule: start from 2 MnO₄⁻ + I⁻ + H₂O → 2 MnO₂ + IO₃⁻ + 2 OH⁻; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q16",
@@ -972,7 +1107,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +0.32 V and Spontaneous (Option A).",
+    "takeaway": "Transfer rule: start from E°_cell = E°_cathode - E°_anode; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q17",
@@ -1030,7 +1174,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select -3 and +5 (Option A).",
+    "takeaway": "Transfer rule: start from NH₄NO₃ ionizes into NH₄⁺ and NO₃⁻; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q18",
@@ -1089,7 +1242,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 30.0 mL (Option A).",
+    "takeaway": "Transfer rule: start from Equivalents of K₂Cr₂O₇ = Equivalents of I₂ liberated = Equivalents of Na₂S₂O₃; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q19",
@@ -1146,7 +1308,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Decrease by 0.0295 V (Option A).",
+    "takeaway": "Transfer rule: start from E_cell = E° - (0; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "REDOX-Q20",
@@ -1204,6 +1375,15 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Two Pb in +2 and one Pb in +4 (Ratio 2:1) (Option A).",
+    "takeaway": "Transfer rule: start from Pb₃O₄ = 2 PbO · PbO₂; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   }
 ];
