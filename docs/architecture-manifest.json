@@ -17,7 +17,7 @@
     "WEB": 6,
     "WEB_RUNTIME": 3
   },
-  "digest": "sha256:d126ccd9e78e4ef93e10d8fccef552de0cd26ac402b8abfabc20d11038ea2a19",
+  "digest": "sha256:6182490798eda572095e33695b8cbac987f02f837b77d6ee9e01b47746d09148",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -814,15 +814,15 @@
       "path": "tests/fixtures/workbench/arithmetic-division.json",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 2389,
-      "sha256": "71ae4b34a09b8cb4e93098fe630f0191d590ef946f72ee373b90b342ca95c75b"
+      "bytes": 2379,
+      "sha256": "43a3ab56dd6027c1af4f75cad730cf0e605c542b0bc8ab72c720554e6ab13b5a"
     },
     {
-      "bytes": 4517,
       "path": "tests/fixtures/workbench/browser-host.html",
       "role": "TEST",
       "role_description": "Executable checks",
-      "sha256": "28d23aa8442784b84f727772c00aef46ce136afecaf4cfc4978ba27b14e3f93c"
+      "bytes": 4523,
+      "sha256": "3d4dd6c163842bc4cc64f0965a690bc9409cc31e0c81c020ad525b7a25db9b78"
     },
     {
       "path": "tests/fixtures/workbench/browser-semantic-identity-host.html",
@@ -1332,8 +1332,8 @@
       "path": "tests/workbench_browser.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 26763,
-      "sha256": "72e4f5ea433950f25170b3041605c4033c35cab7939b67cb2b49d95f7cb02cd6"
+      "bytes": 26753,
+      "sha256": "44ee3a4c1c2a53771eec7582ca19d1d253212438217037f6a07faafbdc1d9b8c"
     },
     {
       "path": "tests/workbench_runtime.test.mjs",
