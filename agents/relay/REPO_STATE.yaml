@@ -20,7 +20,7 @@ execution_policy:
 active_ep:
   id: EP-0162-SEMANTIC-IDENTITY-PROOF
   path: agents/relay/execution-packages/EP-0162-SEMANTIC-IDENTITY-PROOF.yaml
-  state: EXECUTABLE
+  state: ACTIVE
   continuity_receipt: agents/relay/drift/DRIFT-0162-RM0008.yaml
 last_checkpoint:
   id: NONE
@@ -52,29 +52,39 @@ progress:
   basis_revision: PB-0002
 status_planes:
   execution:
-    state: READY
-    can_continue: true
-    material_authority: WRITE
-    next_action: Execute STEP-I01 first by strengthening the 156 ÷ 12 semantic identity witness; do not change Core runtime unless the stronger generic falsifier cannot be represented.
+    state: WAITING
+    can_continue: false
+    material_authority: READ_ONLY
+    next_action: Obtain exact-head TEST-I01, real-Chrome TEST-I02, and full guardrails TEST-I03 on material head 726bb16085dd5f59f392a2fcc1805f3639c7e1ad before any further material Core write.
   quality:
     state: NEEDS_ATTENTION
     findings:
-    - The current long-division witness treats the leading 15 as text on a projection of dividend-156, so it does not yet prove the intermediate semantic identity boundary.
+    - The stronger witness now models partial-dividend-15 as a distinct entity and the focused lifecycle reproduction passes without a Shared/workbench product-code change; formal exact-head repository/browser evidence is still pending.
     - Main carries RM-0008 / EP-TA-008 while this branch carries the #162 RM-0002 execution package; normal drift/write validation remains unmet under the explicit Owner continuation exception.
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
   evidence:
     state: PARTIAL
-    summary: Prior browser/correspondence/text-summary/redo Core evidence remains green; the newly admitted 156 -> partial-dividend-15 -> quotient-digit-1 falsifier has not yet run.
+    summary: The stronger 156 -> partial-dividend-15 -> quotient-digit-1 witness is authored and a focused runtime lifecycle reproduction passes with revision 6 and exactly two adapter calls; exact branch Node suite, real-Chrome repository proof, and full exact-head guardrails remain unverified here.
     not_run:
-    - TEST-I01 stronger semantic-identity unit falsifier
-    - TEST-I02 stronger real-browser semantic-identity lifecycle
-    - TEST-I03 exact-head full guardrails for the new slice
-    - final post-rebase browser rerun on the eventual merge candidate
-    - final post-rebase full guardrails on the eventual merge candidate
+    - id: TEST-I01
+      reason: The exact repository Node suite has not been executed from a checkout of material head 726bb16085dd5f59f392a2fcc1805f3639c7e1ad; the focused lifecycle reproduction does not substitute for the declared test command.
+      cause: UNAVAILABLE_TOOL
+    - id: TEST-I02
+      reason: The repository real-Chrome WebDriver harness is unavailable in the current execution environment, and the available GitHub Actions reader returns no runs even for previously known-green heads.
+      cause: INFRASTRUCTURE
+    - id: TEST-I03
+      reason: Full Grade9V3 guardrails on the exact material head are not observable through the current Actions reader and cannot be reproduced without a repository checkout.
+      cause: INFRASTRUCTURE
+    - id: AC-05-POST-REBASE-BROWSER
+      reason: Final post-rebase browser rerun is not scheduled until PR #165 is reconciled with then-current main.
+      cause: NOT_SCHEDULED
+    - id: AC-05-POST-REBASE-GUARDRAILS
+      reason: Final post-rebase full guardrails are not scheduled until PR #165 is reconciled with then-current main.
+      cause: NOT_SCHEDULED
   stop:
     active: false
     category: NONE
-    reason: Owner explicitly authorized the bounded semantic-identity #162 slice while the known merge/base conflict remains deferred; the normal drift gate is not claimed as passed.
+    reason: No protocol hard stop is active; material execution is voluntarily read-only while required external evidence is unavailable, and merge/base reconciliation remains separately deferred by Owner direction.
     basis:
     - agents/relay/roadmap/owner-decisions/ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT.yaml
     - agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-SEMANTIC-IDENTITY.yaml
