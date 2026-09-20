@@ -18,8 +18,8 @@ current_position:
 execution_policy:
   mode: SERIAL
 active_ep:
-  id: EP-0162-STATE-SUMMARY-PROOF
-  path: agents/relay/execution-packages/EP-0162-STATE-SUMMARY-PROOF.yaml
+  id: EP-0162-REDO-PROOF
+  path: agents/relay/execution-packages/EP-0162-REDO-PROOF.yaml
   state: EXECUTABLE
   continuity_receipt: agents/relay/drift/DRIFT-0162-RM0008.yaml
 last_checkpoint:
@@ -42,20 +42,20 @@ takeover_admissions:
     id: TC-0162-BROWSER-RUNTIME-PROOF
     path: agents/relay/certifications/takeover/TC-0162-BROWSER-RUNTIME-PROOF.yaml
 owner_execution_exception:
-  id: ODR-0162-ADVANCE-TEXT-SUMMARY
-  path: agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-TEXT-SUMMARY.yaml
+  id: ODR-0162-ADVANCE-REDO
+  path: agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-REDO.yaml
   normal_drift_write_gate_passed: false
 progress:
   overall_percent: 0
   phase_percent: 0
-  ep_percent: 100
+  ep_percent: 0
   basis_revision: PB-0001
 status_planes:
   execution:
     state: READY
     can_continue: true
     material_authority: WRITE
-    next_action: Preserve the completed text-summary contract and select the next bounded Core-owned #162 falsifier; prior browser-proof AC-05 and merge/base reconciliation remain pending.
+    next_action: Execute EP-0162-REDO-PROOF while merge/base reconciliation remains deferred.
   quality:
     state: NEEDS_ATTENTION
     findings:
@@ -64,7 +64,7 @@ status_planes:
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
   evidence:
     state: PARTIAL
-    summary: Text-summary proof is green on coding head cab014ff1c8a41be9d94152e89ab0aefd2de9d3f with real Chrome and 934 repository tests. Prior post-rebase browser-proof AC-05 remains pending.
+    summary: Text-summary proof is green; redo/reversible-history evidence is not yet executed. Prior post-rebase merge-candidate validation remains pending.
     not_run:
     - final post-rebase browser rerun on the eventual merge candidate
     - final post-rebase full guardrails on the eventual merge candidate
@@ -81,7 +81,7 @@ projection:
   operation_id: null
   target: null
   roadmap_revision: RM-0002
-  execution_ref: EP-0162-STATE-SUMMARY-PROOF
+  execution_ref: EP-0162-REDO-PROOF
   receipt: null
   basis:
   - Issue #162 and PR #165 carry current browser-proof evidence, but merge/rebase reconciliation is deliberately deferred.
