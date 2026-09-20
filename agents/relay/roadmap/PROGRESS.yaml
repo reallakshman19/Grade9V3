@@ -22,9 +22,9 @@ work_packages:
   total_weight: 0
   percent: 0
 - id: WP-162-BROWSER-RUNTIME-PROOF
-  earned_weight: 290
-  total_weight: 300
-  percent: 96.666667
+  earned_weight: 390
+  total_weight: 400
+  percent: 97.5
 execution_packages:
 - id: EP-0162-BROWSER-RUNTIME-PROOF
   earned_weight: 90
@@ -35,6 +35,10 @@ execution_packages:
   total_weight: 100
   percent: 100
 - id: EP-0162-STATE-SUMMARY-PROOF
+  earned_weight: 100
+  total_weight: 100
+  percent: 100
+- id: EP-0162-REDO-PROOF
   earned_weight: 100
   total_weight: 100
   percent: 100
@@ -66,6 +70,16 @@ implementation_steps:
   percent: 100
 - id: STEP-S02
   ep_id: EP-0162-STATE-SUMMARY-PROOF
+  earned_weight: 50
+  total_weight: 50
+  percent: 100
+- id: STEP-R01
+  ep_id: EP-0162-REDO-PROOF
+  earned_weight: 50
+  total_weight: 50
+  percent: 100
+- id: STEP-R02
+  ep_id: EP-0162-REDO-PROOF
   earned_weight: 50
   total_weight: 50
   percent: 100
@@ -181,3 +195,32 @@ acceptance_criteria:
   - guardrails run 3280 topic-independence 0 violations across 77 files
   - architecture manifest fresh at 193 components / 235 relations
   - 934 repository tests PASS and all JSON parses
+
+- id: AC-R01
+  ep_id: EP-0162-REDO-PROOF
+  earned_weight: 45
+  total_weight: 45
+  percent: 100
+  status: COMPLETE
+  basis:
+  - guardrails run 3300 focused Node contract proves redo restores semantic entities/projections with monotonic revision and no adapter replay
+  - guardrails run 3300 real Chrome undo→redo restores the derived quotient projection and text summary
+- id: AC-R02
+  ep_id: EP-0162-REDO-PROOF
+  earned_weight: 35
+  total_weight: 35
+  percent: 100
+  status: COMPLETE
+  basis:
+  - focused runtime test proves transient pick/cancel preserves redo availability
+  - focused runtime and Chrome tests prove a new accepted commit after undo invalidates the redo branch
+- id: AC-R03
+  ep_id: EP-0162-REDO-PROOF
+  earned_weight: 20
+  total_weight: 20
+  percent: 100
+  status: COMPLETE
+  basis:
+  - guardrails run 3300 topic-independence 0 violations across 77 files
+  - architecture manifest fresh at 193 components / 235 relations
+  - real Chrome workbench contract PASS, 934 repository tests PASS, all JSON parses
