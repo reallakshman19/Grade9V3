@@ -5,7 +5,7 @@ repository:
   remote: reallaksh19/Grade9V3
 relay_protocol:
   version: '2.5'
-  basis_ref: reallaksh19/Common@d9b84069683977b5c370f536f1c50095de926338:skills/engineering-pr-delivery-v2.5
+  basis_ref: reallaksh19/Common@65518fd5340599b2a0fb88db5041f6c96389ccb8:skills/engineering-pr-delivery-v2.5
 roadmap:
   id: RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER
   revision: RM-0002
@@ -76,20 +76,26 @@ status_planes:
     - agents/relay/roadmap/owner-decisions/ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT.yaml
     - agents/relay/drift/DRIFT-0162-RM0008.yaml
 projection:
-  required: false
-  state: STALE
-  operation_id: null
-  target: null
+  required: true
+  state: IN_SYNC
+  operation_id: GHGEN-HO-D5BAC91CB19C
+  target: github:reallaksh19/Grade9V3:issues/167
+  adapter: GITHUB_ISSUES
+  plan: agents/relay/projection/generations/GHGEN-HO-D5BAC91CB19C.yaml
   roadmap_revision: RM-0002
   execution_ref: EP-0162-REDO-PROOF
-  receipt: null
+  receipt: github-issue-create:https://github.com/reallaksh19/Grade9V3/issues/167
   basis:
-  - Issue #162 and PR #165 carry current browser-proof evidence, but merge/rebase reconciliation is deliberately deferred.
+  - agents/relay/roadmap/ISSUE_GRAPH.yaml@IG-0003
+  - agents/relay/projection/generations/GHGEN-HO-D5BAC91CB19C.yaml
+  - Issue #167 provider readback
+  - Issue #162 reciprocal comment 5752504081
 relay_readiness:
   baton_ready: false
-  projection_ready: false
+  projection_ready: true
   handover_ready: false
   reasons:
-  - AC-05 requires a fresh exact-head browser/full guardrail rerun after merge/base reconciliation.
+  - Handover Issue #167 is provider-verified and reciprocally referenced from Issue #162.
+  - BATON_READY remains false because the completed redo EP has not been checkpointed into a successor executable frontier and AC-05 remains pending.
   - Mainline relay custody and PR #165 merge conflict remain unresolved by Owner direction.
 chat_context_required: false
