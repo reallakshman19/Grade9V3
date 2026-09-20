@@ -1,0 +1,222 @@
+schema_version: relay-v2.5
+identity:
+  ep_id: EP-0162-STATE-SUMMARY-PROOF
+  branch: feat/issue-162-semantic-workbench-core
+  base_ref: 4f0b31faeb903611887bab351deb3e868c44422c
+  execution_state: EXECUTABLE
+  previous_checkpoint: NONE
+  previous_join: null
+  previous_replan: null
+replan_inheritance: null
+git_basis:
+  expected_branch: feat/issue-162-semantic-workbench-core
+  material_ref: 4f0b31faeb903611887bab351deb3e868c44422c
+  base_branch: main
+  base_observed_ref: 843ec2d8d6faa2b8de15795ed1535905e4efc8a8
+  drift_policy: OWNER_EXCEPTION
+  drift_receipt: agents/relay/drift/DRIFT-0162-RM0008.yaml
+roadmap_source:
+  roadmap_id: RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER
+  roadmap_revision: RM-0002
+  objective: OBJ-TOPIC-ATLAS-COMPLETE
+  phase: PHASE-TAKEOVER-RECONCILIATION
+  work_package: WP-162-BROWSER-RUNTIME-PROOF
+  generated_from_frontier: false
+outcome:
+  user_visible:
+  - The workbench exposes a readable text state that remains useful when visual correspondence or movement is unavailable.
+  engineering:
+  - The summary is a generic projection of existing runtime labels/state, not an academic explanation or learner-evidence model.
+context_capsule:
+  product_goal: Add a text fallback/state summary to the generic workbench without broadening subject authority.
+  roadmap_position: Third bounded #162 Core slice; correspondence is green and merge reconciliation remains deferred.
+  why_this_work_exists: Issue #162 requires a text fallback/state summary; current status announcements describe the last interaction but do not provide a durable text representation of the scene and current semantic state.
+  current_architecture: SemanticWorkbench already renders semantic projections, linked states, target preview labels, and an aria-live status region inside Shadow DOM.
+  prior_owner_decisions:
+  - ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT
+  - ODR-0162-DEFER-MERGE-ADVANCE-CORRESPONDENCE
+  - ODR-0162-ADVANCE-TEXT-SUMMARY
+  current_implementation_state: Correspondence coding head 4f0b31faeb903611887bab351deb3e868c44422c passed guardrails run 3268 with real Chrome and 934 repository tests.
+  known_problems:
+  - There is no durable text summary of the current semantic scene/state.
+  deliberate_non_goals:
+  - No generated academic reasoning.
+  - No mastery/evidence interpretation.
+  - No full accessibility audit/certification.
+  - No external-host or second-domain proof.
+  terminology:
+    Text state: Generic text synthesized only from authored labels and runtime interaction state.
+repository_discovery:
+- id: DSTEP-S01
+  action: INSPECT
+  targets: [Shared/workbench/semantic-workbench.mjs, Shared/workbench/runtime.mjs]
+  question: Which already-validated labels and state can form a generic text summary without creating new academic authority?
+  expected_outputs: [projection labels, entity labels, selected/inspected/preview state]
+  receipt_required: false
+  on_failure: Stop if summary text would require subject inference.
+inputs:
+- id: INPUT-S01
+  name: Green correspondence material basis
+  description: Current generic Core and browser evidence before adding the text summary.
+  authority: PR #165 guardrails run 3268
+  source: 4f0b31faeb903611887bab351deb3e868c44422c
+  value: 4f0b31faeb903611887bab351deb3e868c44422c
+  type: git material ref
+  units: NA
+  editable: true
+  applicability: CURRENT_EP_REQUIRED
+  resolution: READY
+  consumers: [STEP-S01, STEP-S02]
+  validation:
+  - Real-browser correspondence and full repository guardrails pass.
+  stale_if:
+  - Workbench semantic state or label model changes outside this EP.
+benchmarks: []
+scope:
+  allowed:
+  - path: Shared/workbench/semantic-workbench.mjs
+    reason: Add generic text summary rendering/public getter.
+  - path: tests/workbench_browser.test.mjs
+    reason: Prove the summary in real Chrome through state changes.
+  - path: tests/workbench_runtime.test.mjs
+    reason: Preserve public boundary/subject neutrality invariants if needed.
+  - path: docs/architecture-manifest.json
+    reason: Refresh generated architecture evidence.
+  - path: agents/relay/**
+    reason: Record evidence.
+  allowed_reads:
+  - path: Shared/workbench/runtime.mjs
+    reason: Consume existing semantic state only.
+  protected:
+  - invariant: Summary text is derived only from existing labels/IDs and interaction state.
+    reason: Core must not author academic explanation.
+  - invariant: Summary contains no mastery/evidence conclusion.
+    reason: Issue #159 owns evidence interpretation.
+  prohibited:
+  - domain: canonical academic content changes
+    reason: Not required for generic summary.
+  - domain: accessibility certification claim
+    reason: This EP proves only the text-summary primitive.
+  owner_reserved:
+  - decision: Merge PR #165
+    reason: Deferred.
+anti_drift:
+  do_not:
+  - id: ADR-S01
+    restriction: Do not add subject-specific summary templates.
+    reason: Preserve Core neutrality.
+  stale_if:
+  - id: STALE-S01
+    condition: Owner changes #162 ownership or revokes continuation.
+    effect: STOP
+    rationale: Scope authority would change.
+implementation_plan:
+- id: STEP-S01
+  objective: Add a visible generic text-state region and a public textSummary getter that update from existing runtime state.
+  targets: [Shared/workbench/semantic-workbench.mjs]
+  inputs: [INPUT-S01]
+  acceptance: [AC-S01, AC-S02]
+  tests: [TEST-S01]
+  expected_state: Summary includes scene representations plus inspected/selected/preview state without domain inference.
+  stop_conditions:
+  - Stop if implementation needs subject-specific wording.
+- id: STEP-S02
+  objective: Prove summary updates in real Chrome and preserve all existing workbench behavior.
+  targets: [tests/workbench_browser.test.mjs, docs/architecture-manifest.json]
+  inputs: [INPUT-S01]
+  acceptance: [AC-S01, AC-S02, AC-S03]
+  tests: [TEST-S01, TEST-S02]
+  expected_state: Summary remains readable and synchronized through inspect, pick, preview, commit and undo.
+  stop_conditions:
+  - Stop if the summary creates a competing academic model.
+next_work:
+  phase_transition: false
+  steps:
+  - order: 1
+    action: Execute STEP-S01 and STEP-S02 on PR #165.
+    targets: [Shared/workbench/semantic-workbench.mjs, tests/workbench_browser.test.mjs]
+    inputs: [INPUT-S01]
+    tests: [TEST-S01, TEST-S02]
+    benchmarks: []
+    acceptance: [AC-S01, AC-S02, AC-S03]
+    expected_result: Generic text fallback/state summary is browser-proven without subject logic.
+    stop_if:
+    - Subject-specific wording or learner-evidence interpretation is required.
+qualification_boundary:
+  required: false
+  trigger: null
+  from_phase: null
+  to_phase: null
+  changed_dimensions: []
+  basis:
+  - Same #162 generic Core boundary.
+  question_set: null
+quality:
+  applicable:
+  - blueprint: coding
+    reason: Web Component public getter/rendering changes.
+    review_focus: [state synchronization, no subject leakage]
+  - blueprint: ui-ux
+    reason: Adds a visible text fallback.
+    review_focus: [readability, non-visual utility]
+  - blueprint: testing
+    reason: Requires browser synchronization falsifiers.
+    review_focus: [inspect/pick/preview/commit/undo updates]
+  - blueprint: accessibility
+    reason: Text fallback is an accessibility primitive.
+    review_focus: [plain-text availability, no duplicate live-announcement noise]
+  - blueprint: software-design
+    reason: Must remain a projection of semantic state rather than new authority.
+    review_focus: [authority separation]
+  - blueprint: github-delivery
+    reason: Continues on draft PR #165 under Owner exception.
+    review_focus: [exact-head evidence, pending merge conflict]
+  not_applicable:
+  - blueprint: engineering-numerics
+    reason: No numerical authority changes.
+  - blueprint: code-review
+    reason: No separate independent review acceptance in this slice.
+  - blueprint: performance
+    reason: No performance target changes.
+  - blueprint: migration
+    reason: No persisted data or production migration.
+  review_contract:
+    required: true
+    required_before_checkpoint: true
+    receipt_namespace: QRV-
+    required_outputs: [procedure_results, findings, owner_report, successor_handover]
+  findings_policy: Quality findings remain quality state unless hard-stop mapped.
+  ordinary_findings_are_hard_stops: false
+acceptance:
+- id: AC-S01
+  description: Component exposes a plain-text summary derived only from scene labels and runtime state.
+  weight: 40
+  verification: [TEST-S01, TEST-S02]
+- id: AC-S02
+  description: Summary updates for inspect, source selection, target preview, committed transformation and undo without changing semantic state.
+  weight: 40
+  verification: [TEST-S02]
+- id: AC-S03
+  description: Existing workbench/browser/repository guardrails remain green with no subject-specific Core branch.
+  weight: 20
+  verification: [TEST-S01, TEST-S02]
+validation:
+- id: TEST-S01
+  class: MUST_PASS
+  method: node --test tests/workbench_runtime.test.mjs
+  proves: [AC-S01, AC-S03]
+- id: TEST-S02
+  class: MUST_PASS
+  method: Grade9V3 guardrails including real Chrome workbench test on exact coding head
+  proves: [AC-S01, AC-S02, AC-S03]
+failure_and_stop_conditions:
+  hard_stop_categories: [OWNER_DECISION_REQUIRED, AUTHORITY_VIOLATION, PROTECTED_INVARIANT_FAILURE, UNSAFE_ENGINEERING_RESULT]
+report_contract:
+  sections: [Executive state, Progress, Work completed, Acceptance matrix, Tests and evidence, Known limitations, Exact next actions]
+  payloads: []
+checkpoint_contract:
+  required: true
+successor_relay:
+  required: true
+  duties: [reconcile current roadmap node, create checkpoint, update progress, compute next executable frontier]
+  required_outputs: [checkpoint, progress_reconciliation, next_frontier]
