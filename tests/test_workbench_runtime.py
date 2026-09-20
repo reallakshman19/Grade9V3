@@ -3,6 +3,8 @@ import subprocess
 import unittest
 from pathlib import Path
 
+from Shared.tools import build_manifest
+
 REPO = Path(__file__).resolve().parents[1]
 
 
@@ -19,6 +21,13 @@ class WorkbenchRuntimeNodeTests(unittest.TestCase):
             check=False,
         )
         self.assertEqual(result.returncode, 0, result.stdout)
+
+    def test_manifest_classifies_workbench_es_modules(self):
+        runtime = REPO / "Shared/workbench/runtime.mjs"
+        role = build_manifest.classify(runtime)
+        self.assertIsNotNone(role)
+        self.assertEqual(role[0], "WEB_RUNTIME")
+        self.assertIn("Shared/workbench/runtime.mjs", {row["path"] for row in build_manifest.collect()["components"]})
 
 
 if __name__ == "__main__":
