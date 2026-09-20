@@ -237,6 +237,14 @@ export class WorkbenchRuntime {
     return clone(this._state.canonicalTransformations);
   }
 
+  get canUndo() {
+    return this._history.length > 0;
+  }
+
+  get canRedo() {
+    return this._future.length > 0;
+  }
+
   _emit(type, detail = {}) {
     const event = clone({
       type,
