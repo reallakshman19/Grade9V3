@@ -31,6 +31,16 @@ execution_packages:
   total_weight: 100
   percent: 90
 implementation_steps:
+- id: STEP-C01
+  ep_id: EP-0162-CORRESPONDENCE-PROOF
+  earned_weight: 0
+  total_weight: 50
+  percent: 0
+- id: STEP-C02
+  ep_id: EP-0162-CORRESPONDENCE-PROOF
+  earned_weight: 0
+  total_weight: 50
+  percent: 0
 - id: STEP-01
   ep_id: EP-0162-BROWSER-RUNTIME-PROOF
   earned_weight: 60
@@ -89,3 +99,37 @@ acceptance_criteria:
   basis:
   - current coding head 5cf9a54fb0413c2b47f789b615127858332e7f0f passed guardrails run 3252 with 934 tests and fresh generated artifacts
   - final post-rebase merge candidate remains pending and must rerun the same exact-head checks
+
+- id: EP-0162-CORRESPONDENCE-PROOF
+  earned_weight: 0
+  total_weight: 100
+  percent: 0
+
+- id: AC-C01
+  ep_id: EP-0162-CORRESPONDENCE-PROOF
+  earned_weight: 0
+  total_weight: 30
+  percent: 0
+  status: NOT_STARTED
+  basis: []
+- id: AC-C02
+  ep_id: EP-0162-CORRESPONDENCE-PROOF
+  earned_weight: 0
+  total_weight: 30
+  percent: 0
+  status: NOT_STARTED
+  basis: []
+- id: AC-C03
+  ep_id: EP-0162-CORRESPONDENCE-PROOF
+  earned_weight: 0
+  total_weight: 20
+  percent: 0
+  status: NOT_STARTED
+  basis: []
+- id: AC-C04
+  ep_id: EP-0162-CORRESPONDENCE-PROOF
+  earned_weight: 0
+  total_weight: 20
+  percent: 0
+  status: NOT_STARTED
+  basis: []
