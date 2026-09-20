@@ -298,5 +298,4 @@ The master page now contains a first-class ExamSIDE content map rather than only
 - The page opens on the ExamSIDE Content Map, from which the learner can open the mapped visual or jump to any local audited item.
 - Regression tests require exactly 74 unique corpus refs, the 29/45 type split, complete 20-item local mapping, expected track counts, and standalone/public map parity.
 
-The new map data lives at:
-`public/chemistry/redox/explorers/redox_reactions/examside_corpus_map.js`.
+The subject-specific map data is embedded in the Redox page (and standalone copy) rather than placed in a public `.js` engine file; this preserves the repository topic-independence guard.

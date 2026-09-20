@@ -12,7 +12,6 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
-REDOX_CORPUS_MAP = REPO / "public/chemistry/redox/explorers/redox_reactions/examside_corpus_map.js"
 
 SUITES = {
     "bonding": (
@@ -264,11 +263,11 @@ class ChemistryMasterSuitesAuditTest(unittest.TestCase):
                 self.assertTrue(obj["representation_invariants"])
 
     def test_redox_examside_content_map_is_complete(self):
-        text = REDOX_CORPUS_MAP.read_text(encoding="utf-8")
-        tracks = load_window_payload(text, "REDOX_CONTENT_TRACKS")
-        meta = load_window_payload(text, "EXAMSIDE_REDOX_CORPUS_META")
-        corpus = load_window_payload(text, "EXAMSIDE_REDOX_CORPUS_MAP")
-        local = load_window_payload(text, "REDOX_LOCAL_ITEM_TRACKS")
+        html = SUITES["redox"][0].read_text(encoding="utf-8")
+        tracks = load_window_payload(html, "REDOX_CONTENT_TRACKS")
+        meta = load_window_payload(html, "EXAMSIDE_REDOX_CORPUS_META")
+        corpus = load_window_payload(html, "EXAMSIDE_REDOX_CORPUS_MAP")
+        local = load_window_payload(html, "REDOX_LOCAL_ITEM_TRACKS")
 
         self.assertEqual(meta["liveCount"], 74)
         self.assertEqual(meta["numericalCount"], 29)
@@ -306,11 +305,10 @@ class ChemistryMasterSuitesAuditTest(unittest.TestCase):
             },
         )
 
-        html = SUITES["redox"][0].read_text(encoding="utf-8")
         standalone = SUITES["redox"][2].read_text(encoding="utf-8")
         self.assertIn('id="tab-examside-map"', html)
         self.assertIn("renderExamSideMap", html)
-        self.assertIn('src="examside_corpus_map.js"', html)
+        self.assertIn("window.EXAMSIDE_REDOX_CORPUS_MAP", html)
         self.assertEqual(
             load_window_payload(standalone, "EXAMSIDE_REDOX_CORPUS_MAP"),
             corpus,
