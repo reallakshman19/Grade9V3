@@ -17,7 +17,7 @@
     "WEB": 6,
     "WEB_RUNTIME": 3
   },
-  "digest": "sha256:000510a782b7b957c59272e2e637c2e3362746ba9d812b38c73723ea90b1e71f",
+  "digest": "sha256:2b285acaa23e88b07f5c9e8d071377a914e4f6f5b958056713b7bccdfdf5432e",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -702,8 +702,8 @@
       "path": "Shared/workbench/semantic-workbench.mjs",
       "role": "WEB_RUNTIME",
       "role_description": "Subject-neutral semantic interaction and Web Component runtime",
-      "bytes": 13943,
-      "sha256": "17aedd0880079780d08cb12ce996826f8beacc917a0e840e11397da9f44b90ec"
+      "bytes": 14161,
+      "sha256": "3f17a6c18ed592ccc2dc0798b4c1e9b379d5c99dc6976006c57db87b500e2e97"
     },
     {
       "path": "tests/fixtures/agent_path_stress/cases.json",
