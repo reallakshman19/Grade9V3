@@ -62,7 +62,7 @@
           "design_issue_ref": "https://github.com/reallaksh19/Grade9V3/issues/128",
           "delivery_mode": "HEAVY_GRAPHICAL",
           "gcdr_contract": {
-            "schema_version": "1.2.0",
+            "schema_version": "1.3.0",
             "conformance_status": "IMPLEMENTATION_PARTIAL",
             "cognitive_target": {
               "target_failure": "The learner treats independent x- and y-component equations as if they may use unrelated clocks and still form one physical state.",
@@ -168,7 +168,7 @@
               "exactness_rule": "ALL_REQUIRED_BINDINGS_PRESENT"
             },
             "quality_audit": {
-              "checklist_version": "1.1.0",
+              "checklist_version": "1.2.0",
               "audit_status": "PARTIAL",
               "last_audited": "2026-09-19",
               "audit_1_canonical_truth_scope": {
@@ -187,7 +187,9 @@
                 "progressive_disclosure": "PENDING",
                 "control_state_mapping": "PENDING",
                 "no_invented_exact_parameters": "PENDING",
-                "interaction_fidelity_disclosed": "PENDING"
+                "interaction_fidelity_disclosed": "PENDING",
+                "rendered_geometry_truth": "PENDING",
+                "representation_invariants_hold": "PENDING"
               },
               "audit_3_reconstruction_teaching_transfer": {
                 "answer_or_disposition_specific": "PENDING",
@@ -197,7 +199,8 @@
                 "transfer_takeaway_specific": "PENDING",
                 "boundary_recognition": "PENDING",
                 "scaffold_fade": "PENDING",
-                "fresh_transfer": "PENDING"
+                "fresh_transfer": "PENDING",
+                "helper_activation": "PENDING"
               },
               "audit_4_runtime_release_integrity": {
                 "implementation_locator": "PASS",
@@ -207,7 +210,8 @@
                 "no_placeholder_or_undefined_output": "PASS",
                 "deterministic_reset": "PASS",
                 "runtime_smoke": "PASS",
-                "accessibility_baseline": "PASS"
+                "accessibility_baseline": "PASS",
+                "delivery_profile_integrity": "PENDING"
               },
               "unresolved_findings": [],
               "waivers": {},
@@ -298,6 +302,38 @@
                   "note": "Measured PASS against the digest-bound explorer artifact in the DOM-lite runtime/static integrity audit."
                 }
               ]
+            },
+            "scope_contract": {
+              "canonical_binding_status": "BOUND",
+              "canonical_capability_refs": [
+                "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+              ],
+              "instructional_depth": [
+                "FOUNDATION",
+                "ADVANCED"
+              ],
+              "certification_scope": "Certification, if later earned, is limited to the declared canonical capabilities and semantic teaching-step bindings for this explorer.",
+              "extension_reason": null
+            },
+            "representation_invariants": [
+              {
+                "id": "INV-K2D-SHARED-EVENT-TIME",
+                "views": [
+                  "x-component history",
+                  "y-component history",
+                  "reconstructed particle state"
+                ],
+                "relation": "Every coordinate in one reconstructed particle state must be evaluated at the same physical event time.",
+                "audit_method": "PROPERTY_TEST"
+              }
+            ],
+            "helper_contract_refs": [],
+            "delivery_contract": {
+              "profile": "REPO_BUNDLE",
+              "entrypoint_locator": "public/physics/motion-2d/explorers/shared-clock/index.html",
+              "external_dependencies": [],
+              "local_dependency_policy": "REPOSITORY_RELATIVE_ALLOWED",
+              "offline_claim": false
             }
           }
         }
@@ -343,7 +379,7 @@
           "design_issue_ref": "https://github.com/reallaksh19/Grade9V3/issues/129",
           "delivery_mode": "HEAVY_GRAPHICAL",
           "gcdr_contract": {
-            "schema_version": "1.2.0",
+            "schema_version": "1.3.0",
             "conformance_status": "IMPLEMENTATION_PARTIAL",
             "cognitive_target": {
               "target_failure": "The learner solves separate x- and y-times for what is actually one physical event such as impact, apex, or crossing a wall.",
@@ -449,7 +485,7 @@
               "exactness_rule": "ALL_REQUIRED_BINDINGS_PRESENT"
             },
             "quality_audit": {
-              "checklist_version": "1.1.0",
+              "checklist_version": "1.2.0",
               "audit_status": "PARTIAL",
               "last_audited": "2026-09-19",
               "audit_1_canonical_truth_scope": {
@@ -468,7 +504,9 @@
                 "progressive_disclosure": "PENDING",
                 "control_state_mapping": "PENDING",
                 "no_invented_exact_parameters": "PENDING",
-                "interaction_fidelity_disclosed": "PENDING"
+                "interaction_fidelity_disclosed": "PENDING",
+                "rendered_geometry_truth": "PENDING",
+                "representation_invariants_hold": "PENDING"
               },
               "audit_3_reconstruction_teaching_transfer": {
                 "answer_or_disposition_specific": "PENDING",
@@ -478,7 +516,8 @@
                 "transfer_takeaway_specific": "PENDING",
                 "boundary_recognition": "PENDING",
                 "scaffold_fade": "PENDING",
-                "fresh_transfer": "PENDING"
+                "fresh_transfer": "PENDING",
+                "helper_activation": "PENDING"
               },
               "audit_4_runtime_release_integrity": {
                 "implementation_locator": "PASS",
@@ -488,7 +527,8 @@
                 "no_placeholder_or_undefined_output": "PASS",
                 "deterministic_reset": "PASS",
                 "runtime_smoke": "PASS",
-                "accessibility_baseline": "PASS"
+                "accessibility_baseline": "PASS",
+                "delivery_profile_integrity": "PENDING"
               },
               "unresolved_findings": [],
               "waivers": {},
@@ -579,6 +619,38 @@
                   "note": "Measured PASS against the digest-bound explorer artifact in the DOM-lite runtime/static integrity audit."
                 }
               ]
+            },
+            "scope_contract": {
+              "canonical_binding_status": "BOUND",
+              "canonical_capability_refs": [
+                "CAP-KIN-2D-CONSTANT-ACCELERATION"
+              ],
+              "instructional_depth": [
+                "FOUNDATION",
+                "ADVANCED"
+              ],
+              "certification_scope": "Certification, if later earned, is limited to the declared canonical capabilities and semantic teaching-step bindings for this explorer.",
+              "extension_reason": null
+            },
+            "representation_invariants": [
+              {
+                "id": "INV-K2D-EVENT-SAMPLE-TIME",
+                "views": [
+                  "named trajectory event",
+                  "x-component evaluation",
+                  "y-component evaluation"
+                ],
+                "relation": "Once t_event is solved from the event condition, every component representing that event must be sampled at exactly t_event.",
+                "audit_method": "PROPERTY_TEST"
+              }
+            ],
+            "helper_contract_refs": [],
+            "delivery_contract": {
+              "profile": "REPO_BUNDLE",
+              "entrypoint_locator": "public/physics/motion-2d/explorers/event-clock/index.html",
+              "external_dependencies": [],
+              "local_dependency_policy": "REPOSITORY_RELATIVE_ALLOWED",
+              "offline_claim": false
             }
           }
         }
@@ -624,7 +696,7 @@
           "design_issue_ref": "https://github.com/reallaksh19/Grade9V3/issues/130",
           "delivery_mode": "HEAVY_GRAPHICAL",
           "gcdr_contract": {
-            "schema_version": "1.2.0",
+            "schema_version": "1.3.0",
             "conformance_status": "IMPLEMENTATION_PARTIAL",
             "cognitive_target": {
               "target_failure": "The learner classifies an object as an ideal projectile because it was launched or follows a curved path, without checking post-release interactions.",
@@ -730,7 +802,7 @@
               "exactness_rule": "ALL_REQUIRED_BINDINGS_PRESENT"
             },
             "quality_audit": {
-              "checklist_version": "1.1.0",
+              "checklist_version": "1.2.0",
               "audit_status": "PARTIAL",
               "last_audited": "2026-09-19",
               "audit_1_canonical_truth_scope": {
@@ -749,7 +821,9 @@
                 "progressive_disclosure": "PENDING",
                 "control_state_mapping": "PENDING",
                 "no_invented_exact_parameters": "PENDING",
-                "interaction_fidelity_disclosed": "PENDING"
+                "interaction_fidelity_disclosed": "PENDING",
+                "rendered_geometry_truth": "PENDING",
+                "representation_invariants_hold": "PENDING"
               },
               "audit_3_reconstruction_teaching_transfer": {
                 "answer_or_disposition_specific": "PENDING",
@@ -759,7 +833,8 @@
                 "transfer_takeaway_specific": "PENDING",
                 "boundary_recognition": "PENDING",
                 "scaffold_fade": "PENDING",
-                "fresh_transfer": "PENDING"
+                "fresh_transfer": "PENDING",
+                "helper_activation": "PENDING"
               },
               "audit_4_runtime_release_integrity": {
                 "implementation_locator": "PASS",
@@ -769,7 +844,8 @@
                 "no_placeholder_or_undefined_output": "PASS",
                 "deterministic_reset": "PASS",
                 "runtime_smoke": "PASS",
-                "accessibility_baseline": "PASS"
+                "accessibility_baseline": "PASS",
+                "delivery_profile_integrity": "PENDING"
               },
               "unresolved_findings": [],
               "waivers": {},
@@ -860,6 +936,38 @@
                   "note": "Measured PASS against the digest-bound explorer artifact in the DOM-lite runtime/static integrity audit."
                 }
               ]
+            },
+            "scope_contract": {
+              "canonical_binding_status": "BOUND",
+              "canonical_capability_refs": [
+                "CAP-KIN-PROJECTILE-MODEL"
+              ],
+              "instructional_depth": [
+                "FOUNDATION",
+                "ADVANCED"
+              ],
+              "certification_scope": "Certification, if later earned, is limited to the declared canonical capabilities and semantic teaching-step bindings for this explorer.",
+              "extension_reason": null
+            },
+            "representation_invariants": [
+              {
+                "id": "INV-K2D-MODEL-INTERACTION-CONSISTENCY",
+                "views": [
+                  "interaction inventory",
+                  "model-status gate",
+                  "acceleration readout"
+                ],
+                "relation": "The projectile-model status and displayed acceleration must be derived from the same retained interaction set.",
+                "audit_method": "PROPERTY_TEST"
+              }
+            ],
+            "helper_contract_refs": [],
+            "delivery_contract": {
+              "profile": "REPO_BUNDLE",
+              "entrypoint_locator": "public/physics/motion-2d/explorers/projectile-model/index.html",
+              "external_dependencies": [],
+              "local_dependency_policy": "REPOSITORY_RELATIVE_ALLOWED",
+              "offline_claim": false
             }
           }
         }
@@ -905,7 +1013,7 @@
           "design_issue_ref": "https://github.com/reallaksh19/Grade9V3/issues/131",
           "delivery_mode": "HEAVY_GRAPHICAL",
           "gcdr_contract": {
-            "schema_version": "1.2.0",
+            "schema_version": "1.3.0",
             "conformance_status": "IMPLEMENTATION_PARTIAL",
             "cognitive_target": {
               "target_failure": "The learner interprets the highest point as a place where the projectile stops and gravity or acceleration becomes zero.",
@@ -1012,7 +1120,7 @@
               "exactness_rule": "ALL_REQUIRED_BINDINGS_PRESENT"
             },
             "quality_audit": {
-              "checklist_version": "1.1.0",
+              "checklist_version": "1.2.0",
               "audit_status": "PARTIAL",
               "last_audited": "2026-09-19",
               "audit_1_canonical_truth_scope": {
@@ -1031,7 +1139,9 @@
                 "progressive_disclosure": "PENDING",
                 "control_state_mapping": "PENDING",
                 "no_invented_exact_parameters": "PENDING",
-                "interaction_fidelity_disclosed": "PENDING"
+                "interaction_fidelity_disclosed": "PENDING",
+                "rendered_geometry_truth": "PENDING",
+                "representation_invariants_hold": "PENDING"
               },
               "audit_3_reconstruction_teaching_transfer": {
                 "answer_or_disposition_specific": "PENDING",
@@ -1041,7 +1151,8 @@
                 "transfer_takeaway_specific": "PENDING",
                 "boundary_recognition": "PENDING",
                 "scaffold_fade": "PENDING",
-                "fresh_transfer": "PENDING"
+                "fresh_transfer": "PENDING",
+                "helper_activation": "PENDING"
               },
               "audit_4_runtime_release_integrity": {
                 "implementation_locator": "PASS",
@@ -1051,7 +1162,8 @@
                 "no_placeholder_or_undefined_output": "PASS",
                 "deterministic_reset": "PASS",
                 "runtime_smoke": "PASS",
-                "accessibility_baseline": "PASS"
+                "accessibility_baseline": "PASS",
+                "delivery_profile_integrity": "PENDING"
               },
               "unresolved_findings": [],
               "waivers": {},
@@ -1142,6 +1254,39 @@
                   "note": "Measured PASS against the digest-bound explorer artifact in the DOM-lite runtime/static integrity audit."
                 }
               ]
+            },
+            "scope_contract": {
+              "canonical_binding_status": "BOUND",
+              "canonical_capability_refs": [
+                "CAP-KIN-PROJECTILE-MODEL"
+              ],
+              "instructional_depth": [
+                "FOUNDATION",
+                "ADVANCED"
+              ],
+              "certification_scope": "Certification, if later earned, is limited to the declared canonical capabilities and semantic teaching-step bindings for this explorer.",
+              "extension_reason": null
+            },
+            "representation_invariants": [
+              {
+                "id": "INV-K2D-APEX-STATE",
+                "views": [
+                  "trajectory point",
+                  "velocity vector",
+                  "acceleration vector",
+                  "component readouts"
+                ],
+                "relation": "At the apex event v_y is zero while v_x and downward acceleration remain governed by the same scrubbed physical state.",
+                "audit_method": "PROPERTY_TEST"
+              }
+            ],
+            "helper_contract_refs": [],
+            "delivery_contract": {
+              "profile": "REPO_BUNDLE",
+              "entrypoint_locator": "public/physics/motion-2d/explorers/apex-fallacy/index.html",
+              "external_dependencies": [],
+              "local_dependency_policy": "REPOSITORY_RELATIVE_ALLOWED",
+              "offline_claim": false
             }
           }
         }
@@ -1187,7 +1332,7 @@
           "design_issue_ref": "https://github.com/reallaksh19/Grade9V3/issues/132",
           "delivery_mode": "HEAVY_GRAPHICAL",
           "gcdr_contract": {
-            "schema_version": "1.2.0",
+            "schema_version": "1.3.0",
             "conformance_status": "IMPLEMENTATION_PARTIAL",
             "cognitive_target": {
               "target_failure": "The learner concludes that returning to the same height means returning to the same velocity or complete motion state.",
@@ -1293,7 +1438,7 @@
               "exactness_rule": "ALL_REQUIRED_BINDINGS_PRESENT"
             },
             "quality_audit": {
-              "checklist_version": "1.1.0",
+              "checklist_version": "1.2.0",
               "audit_status": "PARTIAL",
               "last_audited": "2026-09-19",
               "audit_1_canonical_truth_scope": {
@@ -1312,7 +1457,9 @@
                 "progressive_disclosure": "PENDING",
                 "control_state_mapping": "PENDING",
                 "no_invented_exact_parameters": "PENDING",
-                "interaction_fidelity_disclosed": "PENDING"
+                "interaction_fidelity_disclosed": "PENDING",
+                "rendered_geometry_truth": "PENDING",
+                "representation_invariants_hold": "PENDING"
               },
               "audit_3_reconstruction_teaching_transfer": {
                 "answer_or_disposition_specific": "PENDING",
@@ -1322,7 +1469,8 @@
                 "transfer_takeaway_specific": "PENDING",
                 "boundary_recognition": "PENDING",
                 "scaffold_fade": "PENDING",
-                "fresh_transfer": "PENDING"
+                "fresh_transfer": "PENDING",
+                "helper_activation": "PENDING"
               },
               "audit_4_runtime_release_integrity": {
                 "implementation_locator": "PASS",
@@ -1332,7 +1480,8 @@
                 "no_placeholder_or_undefined_output": "PASS",
                 "deterministic_reset": "PASS",
                 "runtime_smoke": "PASS",
-                "accessibility_baseline": "PASS"
+                "accessibility_baseline": "PASS",
+                "delivery_profile_integrity": "PENDING"
               },
               "unresolved_findings": [],
               "waivers": {},
@@ -1423,6 +1572,39 @@
                   "note": "Measured PASS against the digest-bound explorer artifact in the DOM-lite runtime/static integrity audit."
                 }
               ]
+            },
+            "scope_contract": {
+              "canonical_binding_status": "BOUND",
+              "canonical_capability_refs": [
+                "CAP-KIN-PROJECTILE-MODEL"
+              ],
+              "instructional_depth": [
+                "FOUNDATION",
+                "ADVANCED"
+              ],
+              "certification_scope": "Certification, if later earned, is limited to the declared canonical capabilities and semantic teaching-step bindings for this explorer.",
+              "extension_reason": null
+            },
+            "representation_invariants": [
+              {
+                "id": "INV-K2D-EQUAL-HEIGHT-PAIR",
+                "views": [
+                  "ascent state",
+                  "descent state",
+                  "component vectors",
+                  "speed comparison"
+                ],
+                "relation": "For the paired equal-height states of one ideal trajectory, v_x is equal, v_y reverses sign, and speed magnitudes are equal.",
+                "audit_method": "PROPERTY_TEST"
+              }
+            ],
+            "helper_contract_refs": [],
+            "delivery_contract": {
+              "profile": "REPO_BUNDLE",
+              "entrypoint_locator": "public/physics/motion-2d/explorers/equal-height-state/index.html",
+              "external_dependencies": [],
+              "local_dependency_policy": "REPOSITORY_RELATIVE_ALLOWED",
+              "offline_claim": false
             }
           }
         }
@@ -1470,7 +1652,7 @@
           "design_issue_ref": "https://github.com/reallaksh19/Grade9V3/issues/133",
           "delivery_mode": "HEAVY_GRAPHICAL",
           "gcdr_contract": {
-            "schema_version": "1.2.0",
+            "schema_version": "1.3.0",
             "conformance_status": "IMPLEMENTATION_PARTIAL",
             "cognitive_target": {
               "target_failure": "The learner applies same-height projectile shortcuts or sets u_y=0 merely because the landing height differs from the launch height.",
@@ -1577,7 +1759,7 @@
               "exactness_rule": "ALL_REQUIRED_BINDINGS_PRESENT"
             },
             "quality_audit": {
-              "checklist_version": "1.1.0",
+              "checklist_version": "1.2.0",
               "audit_status": "PARTIAL",
               "last_audited": "2026-09-19",
               "audit_1_canonical_truth_scope": {
@@ -1596,7 +1778,9 @@
                 "progressive_disclosure": "PENDING",
                 "control_state_mapping": "PENDING",
                 "no_invented_exact_parameters": "PENDING",
-                "interaction_fidelity_disclosed": "PENDING"
+                "interaction_fidelity_disclosed": "PENDING",
+                "rendered_geometry_truth": "PENDING",
+                "representation_invariants_hold": "PENDING"
               },
               "audit_3_reconstruction_teaching_transfer": {
                 "answer_or_disposition_specific": "PENDING",
@@ -1606,7 +1790,8 @@
                 "transfer_takeaway_specific": "PENDING",
                 "boundary_recognition": "PENDING",
                 "scaffold_fade": "PENDING",
-                "fresh_transfer": "PENDING"
+                "fresh_transfer": "PENDING",
+                "helper_activation": "PENDING"
               },
               "audit_4_runtime_release_integrity": {
                 "implementation_locator": "PASS",
@@ -1616,7 +1801,8 @@
                 "no_placeholder_or_undefined_output": "PASS",
                 "deterministic_reset": "PASS",
                 "runtime_smoke": "PASS",
-                "accessibility_baseline": "PASS"
+                "accessibility_baseline": "PASS",
+                "delivery_profile_integrity": "PENDING"
               },
               "unresolved_findings": [],
               "waivers": {},
@@ -1707,6 +1893,39 @@
                   "note": "Measured PASS against the digest-bound explorer artifact in the DOM-lite runtime/static integrity audit."
                 }
               ]
+            },
+            "scope_contract": {
+              "canonical_binding_status": "BOUND",
+              "canonical_capability_refs": [
+                "CAP-KIN-PROJECTILE-MODEL"
+              ],
+              "instructional_depth": [
+                "FOUNDATION",
+                "ADVANCED"
+              ],
+              "certification_scope": "Certification, if later earned, is limited to the declared canonical capabilities and semantic teaching-step bindings for this explorer.",
+              "extension_reason": null
+            },
+            "representation_invariants": [
+              {
+                "id": "INV-K2D-LANDING-EVENT",
+                "views": [
+                  "landing surface",
+                  "vertical event equation",
+                  "impact marker",
+                  "horizontal range"
+                ],
+                "relation": "The solved impact time must satisfy the vertical landing condition and the same time must generate the displayed horizontal range.",
+                "audit_method": "PROPERTY_TEST"
+              }
+            ],
+            "helper_contract_refs": [],
+            "delivery_contract": {
+              "profile": "REPO_BUNDLE",
+              "entrypoint_locator": "public/physics/motion-2d/explorers/landing-geometry/index.html",
+              "external_dependencies": [],
+              "local_dependency_policy": "REPOSITORY_RELATIVE_ALLOWED",
+              "offline_claim": false
             }
           }
         }
