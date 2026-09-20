@@ -390,7 +390,7 @@ export class SemanticWorkbench extends HTMLElement {
         @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
       </style>
       <section class="frame" aria-label="Semantic transformation workbench">
-        <div class="toolbar"><button data-action="undo">Undo</button><button data-action="redo">Redo</button><button data-action="cancel">Cancel</button></div>
+        <div class="toolbar"><button data-action="undo"${this._runtime.canUndo ? "" : " disabled"}>Undo</button><button data-action="redo"${this._runtime.canRedo ? "" : " disabled"}>Redo</button><button data-action="cancel">Cancel</button></div>
         ${checkpoints}
         ${grids}
         <section class="text-summary" aria-label="Workbench text state"><h3>Text state</h3><p>${escapeHtml(textSummary)}</p></section>
