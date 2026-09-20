@@ -1,4 +1,4 @@
-# Graphical Cognitive Deconstruction Route (GCDR) — Blueprint v1.2
+# Graphical Cognitive Deconstruction Route (GCDR) — Blueprint v1.3
 
 ## Status
 
@@ -14,6 +14,36 @@ capability → matrix rung → microtopic → teaching_path semantic leaf
 ```
 
 A GCDR activity must return evidence to the same semantic leaf/capability it supports.
+
+GCDR v1.3 separates four governance surfaces so a large master suite does not overload one explorer contract:
+
+```text
+canonical scope
+    ↓
+suite / external corpus
+    ↓
+diagnostic item
+    ↓
+source→state binding
+    ↓
+GCDR mechanism
+    ↓
+representation invariants
+    ↓
+state-driven helpers
+    ↓
+fresh transfer
+    ↓
+audit evidence
+```
+
+Companion schemas are authoritative for their own layer:
+
+- `Shared/library/gcdr_suite_contract.schema.json` — corpus snapshot, suite scope, activity/diagnostic inventory and delivery profiles;
+- `Shared/library/gcdr_diagnostic_item.schema.json` — per-question source, answer, teaching-helper and simulator-fidelity claims;
+- `Shared/library/gcdr_helper_contract.schema.json` — helper lifecycle and proof that a helper consumes governed state.
+
+The explorer contract remains the mechanism-level contract. It now carries only hooks needed to connect those layers: canonical scope, representation invariants, helper-contract references, and delivery profile.
 
 ## When to recommend the route
 
@@ -134,20 +164,34 @@ The authoritative checklist is
 [`docs/GCDR-QUALITY-AUDIT-CHECKLIST.md`](GCDR-QUALITY-AUDIT-CHECKLIST.md), and every
 `gcdr_contract` carries its current status under `quality_audit`.
 
-### Audit 1 — Canonical Truth & Scope
+### Audit 1 — Canonical Truth, Source & Scope
 
 Verify the semantic/capability binding, assumptions and conventions, equations/model claims,
-units/constants/parameters, boundary cases, and source-claim fidelity.
+units/constants/parameters, boundary cases, source-claim fidelity, instructional depth, and any
+external-corpus snapshot claim.
 
-No visual may be more authoritative than the canonical academic records.
+A correct advanced extension may be retained without pretending it belongs to the current
+canonical spine. `scope_contract.canonical_binding_status` distinguishes `BOUND`, `PARTIAL`,
+and `UNBOUND_EXTENSION`; certification is limited to `BOUND` scope.
 
-### Audit 2 — Graphical Deconstruction & State Fidelity
+No visual, source count, or suite-level marketing claim may be more authoritative than the
+canonical academic records and recorded source snapshot.
+
+### Audit 2 — Graphical Deconstruction, State & Geometry Fidelity
 
 Verify that one authoritative state drives every view; all representations stay synchronized;
 manipulation changes real state rather than cosmetic labels; counterfactuals compute/render the
 wrong model honestly; progressive disclosure is preserved; externally loaded controls map to
 the variables that actually govern the model; and missing parameters are never invented and
 presented as an exact task load.
+
+Every explorer also declares at least one `representation_invariant`: a relation that must
+remain true across coordinated views. Examples include side-area = diagonal-area, projection +
+rejection = original vector, physical trajectory point = graph state at the same event time, or
+distance odometer = integral of |v|dt.
+
+Canvas/SVG output must be checked against the governed mathematical state. A passing handler
+smoke test is not evidence that rendered geometry is true.
 
 External task mappings use only these learner-visible fidelity classes:
 
@@ -162,22 +206,31 @@ The mandatory policy is `NEVER_INVENT_AS_EXACT`. Any activity that accepts an ex
 the same learning experience, or if the activity can claim a successful load without proving
 that the governing state changed.
 
-### Audit 3 — Reconstruction, Teaching Support & Transfer
+### Audit 3 — Reconstruction, Helpers & Transfer
 
 The implementation must provide a learner-facing or teacher/debug explanation layer that can
 show the governing model, task-specific derivation, final result/disposition, an independent
 check, the concrete misconception trap, the transferable takeaway, the boundary, and the
 interaction-fidelity disclosure.
 
+A helper label is not implementation. Helper lifecycle is `DECLARED → IMPLEMENTED → AUDITED`.
+Only an `AUDITED` helper, with governed state paths and evidence, counts toward certification.
+
 The learner must still demonstrate canonical reconstruction, representation transfer, boundary
 recognition, scaffold fade, and fresh transfer without the explorer. A multiple-choice score
 alone is insufficient exit evidence.
 
-### Audit 4 — Runtime & Release Integrity
+### Audit 4 — Runtime, Packaging & Release Integrity
 
 Before release, verify the implementation locator, executable/data syntax, handler/control
 wiring, identifier integrity, absence of placeholder/`undefined` output, deterministic reset,
-a supported-runtime smoke test, and an accessibility baseline.
+a supported-runtime smoke test, accessibility baseline, and the declared delivery profile.
+
+Delivery profiles are:
+
+- `REPO_BUNDLE` — repository-relative assets are allowed;
+- `SINGLE_FILE_ONLINE` — one local HTML file, but declared external/CDN dependencies may remain;
+- `SINGLE_FILE_OFFLINE` — one file with no local or external runtime dependency.
 
 A blocked runtime smoke test must remain visible as a limitation; static checks may not be
 silently promoted to runtime proof. The shared DOM-lite runtime auditor may establish executable
@@ -188,13 +241,13 @@ proof. Subject-owned numerical/property sweeps remain separate from the generic 
 
 Every GCDR activity is machine-bound through `resource.extensions.topic_atlas.gcdr_contract`.
 
-The contract declares route triggers, cognitive target, interaction sequence, graphical mechanism, parameter-level state-fidelity bindings, boundary stress, exit evidence, implementation evidence, per-check audit receipts/provenance, and the quality-audit record.
+The explorer contract declares canonical scope, route triggers, cognitive target, interaction sequence, graphical mechanism, representation invariants, parameter-level state-fidelity bindings, helper-contract references, delivery profile, boundary stress, exit evidence, implementation evidence, per-check audit receipts/provenance, and the quality-audit record.
 
 Conformance states:
 
 - `DESIGN_BOUND` — blueprint metadata exists;
 - `IMPLEMENTATION_PARTIAL` — some required interaction behaviours exist, but not all;
-- `CERTIFIED` — every implementation-evidence flag is true, the quality audit is `PASS`, no unresolved audit findings remain, and CI validates structural/referential integrity.
+- `CERTIFIED` — canonical scope is `BOUND`, at least one helper contract is referenced, every implementation-evidence flag is true, the quality audit is `PASS`, representation/delivery checks pass, no unresolved audit findings remain, and CI validates structural/referential integrity.
 
 `CERTIFIED` does **not** imply human scientific or pedagogical approval; those remain separate review authorities.
 
@@ -212,7 +265,9 @@ Conformance states:
 - fresh transfer succeeds without the explorer;
 - every quality-audit check is `PASS` or explicitly waived as `NOT_APPLICABLE` with rationale;
 - every asserted audit result has digest-bound per-check receipt evidence, audit provenance is recorded, and no unresolved audit finding remains;
-- runtime smoke and accessibility-baseline checks are recorded rather than assumed;
+- representation invariants and rendered geometry are checked against the governed state;
+- helper activation is evidenced rather than inferred from labels;
+- runtime smoke, accessibility baseline, and delivery-profile integrity are recorded rather than assumed;
 - the exit rejoins the same semantic leaf.
 
 ## Reference implementation lessons
