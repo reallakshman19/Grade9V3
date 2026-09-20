@@ -1,6 +1,6 @@
 schema_version: relay-v2.5
 progress_basis:
-  id: PB-0001
+  id: PB-0002
   roadmap_revision: RM-0002
 overall:
   earned_weight: 0
@@ -23,8 +23,8 @@ work_packages:
   percent: 0
 - id: WP-162-BROWSER-RUNTIME-PROOF
   earned_weight: 390
-  total_weight: 400
-  percent: 97.5
+  total_weight: 500
+  percent: 78
 execution_packages:
 - id: EP-0162-BROWSER-RUNTIME-PROOF
   earned_weight: 90
@@ -42,6 +42,10 @@ execution_packages:
   earned_weight: 100
   total_weight: 100
   percent: 100
+- id: EP-0162-SEMANTIC-IDENTITY-PROOF
+  earned_weight: 0
+  total_weight: 100
+  percent: 0
 implementation_steps:
 - id: STEP-01
   ep_id: EP-0162-BROWSER-RUNTIME-PROOF
@@ -83,6 +87,16 @@ implementation_steps:
   earned_weight: 50
   total_weight: 50
   percent: 100
+- id: STEP-I01
+  ep_id: EP-0162-SEMANTIC-IDENTITY-PROOF
+  earned_weight: 0
+  total_weight: 60
+  percent: 0
+- id: STEP-I02
+  ep_id: EP-0162-SEMANTIC-IDENTITY-PROOF
+  earned_weight: 0
+  total_weight: 40
+  percent: 0
 acceptance_criteria:
 - id: AC-01
   ep_id: EP-0162-BROWSER-RUNTIME-PROOF
@@ -167,7 +181,6 @@ acceptance_criteria:
   - guardrails run 3268 topic-independence 0 violations across 77 files
   - architecture manifest fresh at 193 components and 235 relations
   - 934 repository tests PASS and all JSON parses
-
 - id: AC-S01
   ep_id: EP-0162-STATE-SUMMARY-PROOF
   earned_weight: 40
@@ -195,7 +208,6 @@ acceptance_criteria:
   - guardrails run 3280 topic-independence 0 violations across 77 files
   - architecture manifest fresh at 193 components / 235 relations
   - 934 repository tests PASS and all JSON parses
-
 - id: AC-R01
   ep_id: EP-0162-REDO-PROOF
   earned_weight: 45
@@ -224,3 +236,24 @@ acceptance_criteria:
   - guardrails run 3300 topic-independence 0 violations across 77 files
   - architecture manifest fresh at 193 components / 235 relations
   - real Chrome workbench contract PASS, 934 repository tests PASS, all JSON parses
+- id: AC-I01
+  ep_id: EP-0162-SEMANTIC-IDENTITY-PROOF
+  earned_weight: 0
+  total_weight: 40
+  percent: 0
+  status: NOT_STARTED
+  basis: []
+- id: AC-I02
+  ep_id: EP-0162-SEMANTIC-IDENTITY-PROOF
+  earned_weight: 0
+  total_weight: 40
+  percent: 0
+  status: NOT_STARTED
+  basis: []
+- id: AC-I03
+  ep_id: EP-0162-SEMANTIC-IDENTITY-PROOF
+  earned_weight: 0
+  total_weight: 20
+  percent: 0
+  status: NOT_STARTED
+  basis: []
