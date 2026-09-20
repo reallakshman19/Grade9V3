@@ -148,8 +148,6 @@ def matrix_summary(subject: str, records: dict) -> list[dict]:
                                     policy = gcdr.get("route_policy", {})
                                     quality = gcdr.get("quality_audit", {})
                                     fidelity = gcdr.get("state_fidelity_contract", {})
-                                    scope = gcdr.get("scope_contract", {})
-                                    delivery = gcdr.get("delivery_contract", {})
                                     audit_groups = [
                                         quality.get("audit_1_canonical_truth_scope", {}),
                                         quality.get("audit_2_graphical_state_fidelity", {}),
@@ -176,11 +174,6 @@ def matrix_summary(subject: str, records: dict) -> list[dict]:
                                         "external_state_mapping": fidelity.get("external_state_mapping"),
                                         "external_state_binding_count": len(fidelity.get("external_state_bindings", [])),
                                         "missing_parameter_policy": fidelity.get("missing_parameter_policy"),
-                                        "canonical_binding_status": scope.get("canonical_binding_status"),
-                                        "instructional_depth": scope.get("instructional_depth", []),
-                                        "representation_invariant_count": len(gcdr.get("representation_invariants", [])),
-                                        "helper_contract_ref_count": len(gcdr.get("helper_contract_refs", [])),
-                                        "delivery_profile": delivery.get("profile"),
                                         "recommended_when": policy.get("recommended_when", []),
                                         "learner_evidence_triggers": policy.get("learner_evidence_triggers", []),
                                         "auto_route_policy": policy.get("auto_route_policy"),
