@@ -70,7 +70,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.compound"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q02",
@@ -131,7 +132,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.medium"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q03",
@@ -191,7 +193,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q04",
@@ -253,7 +256,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.compound"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q05",
@@ -313,7 +317,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q06",
@@ -374,7 +379,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.compound"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q07",
@@ -435,7 +441,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.medium"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q08",
@@ -492,7 +499,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q09",
@@ -548,7 +556,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q10",
@@ -604,7 +613,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q11",
@@ -664,7 +674,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.medium"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q12",
@@ -720,7 +731,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q13",
@@ -779,7 +791,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.medium"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q14",
@@ -842,7 +855,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.medium"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q15",
@@ -899,7 +913,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q16",
@@ -956,7 +971,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q17",
@@ -1013,7 +1029,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q18",
@@ -1071,7 +1088,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q19",
@@ -1127,7 +1145,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "REDOX-Q20",
@@ -1184,6 +1203,7 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   }
 ];
