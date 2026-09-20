@@ -1,0 +1,2425 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_id": "GCDR-BASE-EXAMSIDE-JEE-MAIN-MATH-VECTOR-ALGEBRA-2026-09-20",
+  "domain": "Vector Algebra",
+  "subject": "Mathematics",
+  "purpose": "External demand inventory and GCDR design base. Kept separate from the existing Physics Vector Algebra preparation slice.",
+  "provenance": {
+    "fetched_at": "2026-09-20",
+    "source_name": "ExamSIDE",
+    "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+    "live_title": "Vector Algebra · Mathematics · JEE Main",
+    "live_year_range": "2002-2026",
+    "live_question_count": 282,
+    "live_paper_count": 181,
+    "live_type_counts": {
+      "MCQ_SINGLE_CORRECT": 226,
+      "NUMERICAL": 56
+    },
+    "live_2026_weightage_percent": 5.68,
+    "blueprint_declared_count": 283,
+    "count_reconciliation": "LIVE_SOURCE_DIFFERS_BY_MINUS_1_FROM_BLUEPRINT",
+    "rights_note": "Question text, options, figures and solutions are not mirrored. Store source locators and concise demand summaries only."
+  },
+  "year_counts": {
+    "2002": 6,
+    "2003": 8,
+    "2004": 5,
+    "2005": 5,
+    "2006": 2,
+    "2007": 2,
+    "2008": 2,
+    "2009": 1,
+    "2010": 2,
+    "2011": 3,
+    "2012": 2,
+    "2013": 1,
+    "2014": 1,
+    "2015": 1,
+    "2016": 3,
+    "2017": 3,
+    "2018": 4,
+    "2019": 16,
+    "2020": 16,
+    "2021": 38,
+    "2022": 28,
+    "2023": 48,
+    "2024": 35,
+    "2025": 23,
+    "2026": 27
+  },
+  "canonical_state_model": {
+    "state_paths": [
+      "vectors.a",
+      "vectors.b",
+      "vectors.c",
+      "vectors.r",
+      "basis",
+      "operation.active",
+      "planes.active",
+      "projection.active",
+      "solution.parameters",
+      "geometry"
+    ],
+    "single_source_of_truth": "All arrows, planes, determinants, projections, normals, areas and algebraic readouts must derive from the same vector arrays."
+  },
+  "fallacy_rigs": [
+    {
+      "fallacy_id": "FALLACY-VEC-01",
+      "name": "Vector-equation inversion / no vector division",
+      "wrong_model": "divide by a vector to isolate r",
+      "correct_model": "use cross/dot identities and expose the free component parallel to the reference vector before auxiliary constraints",
+      "required_helpers": [
+        "SOLUTION_LOCUS_HELPER",
+        "BAC_CAB_HELPER",
+        "TEACHERS_CHALKBOARD",
+        "TRAP_ALERT",
+        "INDEPENDENT_CHECK",
+        "RESIDUAL_CHECK"
+      ],
+      "verified_source_exemplar": {
+        "exam": "JEE Main 2026",
+        "date_shift": "5 April Morning",
+        "demand_summary": "Solve a vector constrained by a cross-product equation and an auxiliary dot-product condition.",
+        "source_url": "https://questions.examside.com/past-years/jee/question/plet-vecasqrt7-hatihatj-hatk-and-vec-jee-main-mathematics-trigonometric-functions-and-equations-gnrfw7zzxvametew"
+      }
+    },
+    {
+      "fallacy_id": "FALLACY-VEC-02",
+      "name": "Vector triple product non-associativity",
+      "wrong_model": "a×(b×c) = (a×b)×c",
+      "correct_model": "evaluate each parenthesization independently; use BAC-CAB and geometric containing-plane checks",
+      "required_helpers": [
+        "DUAL_PLANE_3D",
+        "BAC_CAB_HELPER",
+        "WRONG_MODEL_COMPARATOR",
+        "REPRESENTATION_LINKER",
+        "INVARIANT_MONITOR",
+        "TRAP_ALERT"
+      ],
+      "verified_source_exemplar": {
+        "exam": "JEE Main corpus",
+        "date_shift": "multiple years",
+        "demand_summary": "The live page contains nested cross-product/vector-triple-product demand; exact exemplar will be pinned during the next source-index enrichment pass.",
+        "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra"
+      }
+    },
+    {
+      "fallacy_id": "FALLACY-VEC-03",
+      "name": "Parallelogram diagonal area factor",
+      "wrong_model": "area = |d1×d2| when d1,d2 are diagonals",
+      "correct_model": "area = 1/2 |d1×d2| for parallelogram diagonals",
+      "required_helpers": [
+        "DIAGONAL_SIDE_TOGGLE",
+        "AREA_DECOMPOSITION_HELPER",
+        "WRONG_MODEL_COMPARATOR",
+        "INDEPENDENT_CHECK",
+        "TRANSFER_TAKEAWAY"
+      ],
+      "verified_source_exemplar": {
+        "exam": "JEE Main 2024",
+        "date_shift": "9 April Evening",
+        "demand_summary": "A parallelogram-area problem is expressed using diagonal vectors, exposing the factor-of-one-half distinction.",
+        "source_url": "https://questions.examside.com/past-years/jee/question/plet-veca2-hatialpha-hatjhatk-vecb-jee-main-mathematics-trigonometric-functions-and-equations-3rwrfjcryi7luh4v"
+      }
+    },
+    {
+      "fallacy_id": "FALLACY-VEC-04",
+      "name": "Projection versus rejection",
+      "wrong_model": "confuse scalar projection, vector projection and perpendicular component",
+      "correct_model": "separate signed scalar projection, vector projection on b, and rejection a - proj_b(a)",
+      "required_helpers": [
+        "ORTHOGONAL_DROP_HELPER",
+        "PROJECTION_REJECTION_RIG",
+        "RIGHT_ANGLE_MARKER",
+        "INDEPENDENT_CHECK",
+        "PYTHAGOREAN_MONITOR",
+        "TRANSFER_TAKEAWAY"
+      ],
+      "verified_source_exemplar": {
+        "exam": "JEE Main 2026",
+        "date_shift": "24 January Evening",
+        "demand_summary": "Projection constraints on vectors require separating magnitude-only projection from the directed projected vector.",
+        "source_url": "https://questions.examside.com/past-years/jee/question/plet-veca2-hatmathrmi-hatmathrmj-hatma-jee-main-mathematics-trigonometric-functions-and-equations-r5hw7htr6bbtfd4l"
+      }
+    },
+    {
+      "fallacy_id": "FALLACY-VEC-05",
+      "name": "Coplanarity versus collinearity",
+      "wrong_model": "zero scalar triple product means all vectors are parallel",
+      "correct_model": "zero scalar triple product means the spanned volume is zero; vectors are linearly dependent/coplanar",
+      "required_helpers": [
+        "PARALLELEPIPED_COLLAPSE",
+        "DETERMINANT_HELPER",
+        "VOLUME_MONITOR",
+        "TRAP_ALERT",
+        "BOUNDARY_ALERT",
+        "TRANSFER_TAKEAWAY"
+      ],
+      "verified_source_exemplar": {
+        "exam": "JEE Main corpus",
+        "date_shift": "multiple years",
+        "demand_summary": "The live corpus repeatedly uses coplanarity/determinant conditions.",
+        "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra"
+      }
+    }
+  ],
+  "question_inventory": [
+    {
+      "source_key": "MCQ-001",
+      "source_question_number": 1,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-002",
+      "source_question_number": 2,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-003",
+      "source_question_number": 3,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-004",
+      "source_question_number": 4,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-005",
+      "source_question_number": 5,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-006",
+      "source_question_number": 6,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-007",
+      "source_question_number": 7,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-008",
+      "source_question_number": 8,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-009",
+      "source_question_number": 9,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-010",
+      "source_question_number": 10,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-011",
+      "source_question_number": 11,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-012",
+      "source_question_number": 12,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-013",
+      "source_question_number": 13,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-014",
+      "source_question_number": 14,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-015",
+      "source_question_number": 15,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-016",
+      "source_question_number": 16,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-017",
+      "source_question_number": 17,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-018",
+      "source_question_number": 18,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-019",
+      "source_question_number": 19,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-020",
+      "source_question_number": 20,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-021",
+      "source_question_number": 21,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-022",
+      "source_question_number": 22,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-023",
+      "source_question_number": 23,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-024",
+      "source_question_number": 24,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-025",
+      "source_question_number": 25,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-026",
+      "source_question_number": 26,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-027",
+      "source_question_number": 27,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-028",
+      "source_question_number": 28,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-029",
+      "source_question_number": 29,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-030",
+      "source_question_number": 30,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-031",
+      "source_question_number": 31,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-032",
+      "source_question_number": 32,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-033",
+      "source_question_number": 33,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-034",
+      "source_question_number": 34,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-035",
+      "source_question_number": 35,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-036",
+      "source_question_number": 36,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-037",
+      "source_question_number": 37,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-038",
+      "source_question_number": 38,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-039",
+      "source_question_number": 39,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-040",
+      "source_question_number": 40,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-041",
+      "source_question_number": 41,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-042",
+      "source_question_number": 42,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-043",
+      "source_question_number": 43,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-044",
+      "source_question_number": 44,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-045",
+      "source_question_number": 45,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-046",
+      "source_question_number": 46,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-047",
+      "source_question_number": 47,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-048",
+      "source_question_number": 48,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-049",
+      "source_question_number": 49,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-050",
+      "source_question_number": 50,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-051",
+      "source_question_number": 51,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-052",
+      "source_question_number": 52,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-053",
+      "source_question_number": 53,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-054",
+      "source_question_number": 54,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-055",
+      "source_question_number": 55,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-056",
+      "source_question_number": 56,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-057",
+      "source_question_number": 57,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-058",
+      "source_question_number": 58,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-059",
+      "source_question_number": 59,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-060",
+      "source_question_number": 60,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-061",
+      "source_question_number": 61,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-062",
+      "source_question_number": 62,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-063",
+      "source_question_number": 63,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-064",
+      "source_question_number": 64,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-065",
+      "source_question_number": 65,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-066",
+      "source_question_number": 66,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-067",
+      "source_question_number": 67,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-068",
+      "source_question_number": 68,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-069",
+      "source_question_number": 69,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-070",
+      "source_question_number": 70,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-071",
+      "source_question_number": 71,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-072",
+      "source_question_number": 72,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-073",
+      "source_question_number": 73,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-074",
+      "source_question_number": 74,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-075",
+      "source_question_number": 75,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-076",
+      "source_question_number": 76,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-077",
+      "source_question_number": 77,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-078",
+      "source_question_number": 78,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-079",
+      "source_question_number": 79,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-080",
+      "source_question_number": 80,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-081",
+      "source_question_number": 81,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-082",
+      "source_question_number": 82,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-083",
+      "source_question_number": 83,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-084",
+      "source_question_number": 84,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-085",
+      "source_question_number": 85,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-086",
+      "source_question_number": 86,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-087",
+      "source_question_number": 87,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-088",
+      "source_question_number": 88,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-089",
+      "source_question_number": 89,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-090",
+      "source_question_number": 90,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-091",
+      "source_question_number": 91,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-092",
+      "source_question_number": 92,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-093",
+      "source_question_number": 93,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-094",
+      "source_question_number": 94,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-095",
+      "source_question_number": 95,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-096",
+      "source_question_number": 96,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-097",
+      "source_question_number": 97,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-098",
+      "source_question_number": 98,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-099",
+      "source_question_number": 99,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-100",
+      "source_question_number": 100,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-101",
+      "source_question_number": 101,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-102",
+      "source_question_number": 102,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-103",
+      "source_question_number": 103,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-104",
+      "source_question_number": 104,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-105",
+      "source_question_number": 105,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-106",
+      "source_question_number": 106,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-107",
+      "source_question_number": 107,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-108",
+      "source_question_number": 108,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-109",
+      "source_question_number": 109,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-110",
+      "source_question_number": 110,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-111",
+      "source_question_number": 111,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-112",
+      "source_question_number": 112,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-113",
+      "source_question_number": 113,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-114",
+      "source_question_number": 114,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-115",
+      "source_question_number": 115,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-116",
+      "source_question_number": 116,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-117",
+      "source_question_number": 117,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-118",
+      "source_question_number": 118,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-119",
+      "source_question_number": 119,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-120",
+      "source_question_number": 120,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-121",
+      "source_question_number": 121,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-122",
+      "source_question_number": 122,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-123",
+      "source_question_number": 123,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-124",
+      "source_question_number": 124,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-125",
+      "source_question_number": 125,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-126",
+      "source_question_number": 126,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-127",
+      "source_question_number": 127,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-128",
+      "source_question_number": 128,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-129",
+      "source_question_number": 129,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-130",
+      "source_question_number": 130,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-131",
+      "source_question_number": 131,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-132",
+      "source_question_number": 132,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-133",
+      "source_question_number": 133,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-134",
+      "source_question_number": 134,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-135",
+      "source_question_number": 135,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-136",
+      "source_question_number": 136,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-137",
+      "source_question_number": 137,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-138",
+      "source_question_number": 138,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-139",
+      "source_question_number": 139,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-140",
+      "source_question_number": 140,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-141",
+      "source_question_number": 141,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-142",
+      "source_question_number": 142,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-143",
+      "source_question_number": 143,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-144",
+      "source_question_number": 144,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-145",
+      "source_question_number": 145,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-146",
+      "source_question_number": 146,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-147",
+      "source_question_number": 147,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-148",
+      "source_question_number": 148,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-149",
+      "source_question_number": 149,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-150",
+      "source_question_number": 150,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-151",
+      "source_question_number": 151,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-152",
+      "source_question_number": 152,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-153",
+      "source_question_number": 153,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-154",
+      "source_question_number": 154,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-155",
+      "source_question_number": 155,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-156",
+      "source_question_number": 156,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-157",
+      "source_question_number": 157,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-158",
+      "source_question_number": 158,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-159",
+      "source_question_number": 159,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-160",
+      "source_question_number": 160,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-161",
+      "source_question_number": 161,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-162",
+      "source_question_number": 162,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-163",
+      "source_question_number": 163,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-164",
+      "source_question_number": 164,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-165",
+      "source_question_number": 165,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-166",
+      "source_question_number": 166,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-167",
+      "source_question_number": 167,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-168",
+      "source_question_number": 168,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-169",
+      "source_question_number": 169,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-170",
+      "source_question_number": 170,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-171",
+      "source_question_number": 171,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-172",
+      "source_question_number": 172,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-173",
+      "source_question_number": 173,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-174",
+      "source_question_number": 174,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-175",
+      "source_question_number": 175,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-176",
+      "source_question_number": 176,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-177",
+      "source_question_number": 177,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-178",
+      "source_question_number": 178,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-179",
+      "source_question_number": 179,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-180",
+      "source_question_number": 180,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-181",
+      "source_question_number": 181,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-182",
+      "source_question_number": 182,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-183",
+      "source_question_number": 183,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-184",
+      "source_question_number": 184,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-185",
+      "source_question_number": 185,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-186",
+      "source_question_number": 186,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-187",
+      "source_question_number": 187,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-188",
+      "source_question_number": 188,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-189",
+      "source_question_number": 189,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-190",
+      "source_question_number": 190,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-191",
+      "source_question_number": 191,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-192",
+      "source_question_number": 192,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-193",
+      "source_question_number": 193,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-194",
+      "source_question_number": 194,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-195",
+      "source_question_number": 195,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-196",
+      "source_question_number": 196,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-197",
+      "source_question_number": 197,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-198",
+      "source_question_number": 198,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-199",
+      "source_question_number": 199,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-200",
+      "source_question_number": 200,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-201",
+      "source_question_number": 201,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-202",
+      "source_question_number": 202,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-203",
+      "source_question_number": 203,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-204",
+      "source_question_number": 204,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-205",
+      "source_question_number": 205,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-206",
+      "source_question_number": 206,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-207",
+      "source_question_number": 207,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-208",
+      "source_question_number": 208,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-209",
+      "source_question_number": 209,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-210",
+      "source_question_number": 210,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-211",
+      "source_question_number": 211,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-212",
+      "source_question_number": 212,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-213",
+      "source_question_number": 213,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-214",
+      "source_question_number": 214,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-215",
+      "source_question_number": 215,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-216",
+      "source_question_number": 216,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-217",
+      "source_question_number": 217,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-218",
+      "source_question_number": 218,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-219",
+      "source_question_number": 219,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-220",
+      "source_question_number": 220,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-221",
+      "source_question_number": 221,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-222",
+      "source_question_number": 222,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-223",
+      "source_question_number": 223,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-224",
+      "source_question_number": 224,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-225",
+      "source_question_number": 225,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "MCQ-226",
+      "source_question_number": 226,
+      "question_type": "MCQ_SINGLE_CORRECT",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-001",
+      "source_question_number": 1,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-002",
+      "source_question_number": 2,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-003",
+      "source_question_number": 3,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-004",
+      "source_question_number": 4,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-005",
+      "source_question_number": 5,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-006",
+      "source_question_number": 6,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-007",
+      "source_question_number": 7,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-008",
+      "source_question_number": 8,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-009",
+      "source_question_number": 9,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-010",
+      "source_question_number": 10,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-011",
+      "source_question_number": 11,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-012",
+      "source_question_number": 12,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-013",
+      "source_question_number": 13,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-014",
+      "source_question_number": 14,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-015",
+      "source_question_number": 15,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-016",
+      "source_question_number": 16,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-017",
+      "source_question_number": 17,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-018",
+      "source_question_number": 18,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-019",
+      "source_question_number": 19,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-020",
+      "source_question_number": 20,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-021",
+      "source_question_number": 21,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-022",
+      "source_question_number": 22,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-023",
+      "source_question_number": 23,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-024",
+      "source_question_number": 24,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-025",
+      "source_question_number": 25,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-026",
+      "source_question_number": 26,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-027",
+      "source_question_number": 27,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-028",
+      "source_question_number": 28,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-029",
+      "source_question_number": 29,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-030",
+      "source_question_number": 30,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-031",
+      "source_question_number": 31,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-032",
+      "source_question_number": 32,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-033",
+      "source_question_number": 33,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-034",
+      "source_question_number": 34,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-035",
+      "source_question_number": 35,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-036",
+      "source_question_number": 36,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-037",
+      "source_question_number": 37,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-038",
+      "source_question_number": 38,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-039",
+      "source_question_number": 39,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-040",
+      "source_question_number": 40,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-041",
+      "source_question_number": 41,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-042",
+      "source_question_number": 42,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-043",
+      "source_question_number": 43,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-044",
+      "source_question_number": 44,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-045",
+      "source_question_number": 45,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-046",
+      "source_question_number": 46,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-047",
+      "source_question_number": 47,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-048",
+      "source_question_number": 48,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-049",
+      "source_question_number": 49,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-050",
+      "source_question_number": 50,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-051",
+      "source_question_number": 51,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-052",
+      "source_question_number": 52,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-053",
+      "source_question_number": 53,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-054",
+      "source_question_number": 54,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-055",
+      "source_question_number": 55,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    },
+    {
+      "source_key": "NUM-056",
+      "source_question_number": 56,
+      "question_type": "NUMERICAL",
+      "source_url": "https://questions.examside.com/past-years/jee/jee-main/mathematics/vector-algebra",
+      "question_text_copied": false,
+      "annotation_status": "UNMAPPED"
+    }
+  ]
+}
