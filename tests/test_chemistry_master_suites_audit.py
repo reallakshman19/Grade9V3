@@ -339,6 +339,34 @@ class ChemistryMasterSuitesAuditTest(unittest.TestCase):
             load_window_payload(standalone, "REDOX_OS_QUESTION_HELPERS"),
             helpers,
         )
+        self.assertEqual(
+            load_window_payload(standalone, "REDOX_TRACK_QUESTION_HELPERS"),
+            track_helpers,
+        )
+        self.assertIn("teachingQuestionCard", html)
+        self.assertIn("localTeachingQuestionCard", html)
+        self.assertIn("DERIVED RESULT", html)
+
+        track_helpers = load_window_payload(html, "REDOX_TRACK_QUESTION_HELPERS")
+        core_tracks = {"ROLE", "BAL", "NFACTOR", "DISP", "EQUIV", "TITR"}
+        core_refs = {row["ref"] for row in corpus if row["track"] in core_tracks}
+        self.assertEqual(len(core_refs), 48)
+        self.assertEqual(len(track_helpers), 48)
+        self.assertEqual({row["ref"] for row in track_helpers}, core_refs)
+        for row in track_helpers:
+            self.assertIn(row["track"], core_tracks)
+            self.assertTrue(row["bridge"])
+            self.assertGreaterEqual(len(row["derivation"]), 2)
+            self.assertTrue(row["answer"])
+            self.assertTrue(row["answerStatus"])
+
+        n13 = next(row for row in corpus if row["ref"] == "N13")
+        n15 = next(row for row in corpus if row["ref"] == "N15")
+        self.assertEqual(n13["track"], "BAL")
+        self.assertIn("Cr₂O₇", n13["preview"])
+        self.assertNotIn("Fe(CO)", n13["preview"])
+        self.assertEqual(n15["track"], "OS")
+        self.assertIn("Fe(CO)", n15["preview"])
 
         self.assertTrue(all(row.get("equationStages") for row in helpers))
         self.assertIn('id="canvasOxEquationWorkbench"', html)

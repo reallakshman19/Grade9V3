@@ -326,3 +326,44 @@ Three learner-facing issues from screenshot review were corrected:
 1. **Question-preview overlay:** the tooltip is now fully opaque, narrower, uses a high top-layer z-index, and prefers placement to the right or left of the hovered/touched reference before falling back above/below. This prevents the translucent text collision visible in the prior implementation. Hover, focus, touch pinning, outside-click close and Escape remain supported.
 2. **Dedicated equation representation:** the oxidation-bookkeeping page now has a reusable interactive Equation Workbench. Any of the 14 mapped oxidation-state PYQs can load its own staged ledger into one canvas; Prev/Next/Reset reveal the derivation incrementally rather than duplicating fourteen static diagrams.
 3. **Question banks inside learning tabs:** Electron Conveyor, Ion-Electron Balance, n-factor/disproportionation, Titration/equivalence and Electrochemistry Extension now surface their mapped question banks directly in the respective page. The first four use live ExamSIDE corpus mappings; Electrochemistry shows the three local off-corpus extension items.
+
+
+## Redox in-tab question completion + corpus correction (2026-09-20)
+
+Screenshot review showed that the learner-facing non-oxidation tabs were still only mapped-question indexes. They now use a common teaching-card contract:
+
+```
+question
+  -> visual/method bridge
+  -> reviewed derivation
+  -> derived result
+```
+
+Coverage added for every live ExamSIDE position assigned to the visible core learning tabs:
+- ROLE: 16
+- BAL: 4
+- NFACTOR: 5
+- DISP: 9
+- EQUIV: 6
+- TITR: 8
+
+Total new in-tab helpers: **48**.
+
+Together with the existing 14 oxidation-state helpers, all **62 live Redox-corpus questions assigned to core learner tabs** now have a rich helper surface. The remaining 12 `RELATED` positions remain explicitly adjacent equivalent/acid-base material visible in the corpus map rather than being silently presented as core Redox teaching content.
+
+The three local Electrochemistry extension questions now also render their existing local `steps[]` and `ans` inside the Electrochemistry tab. Their source provenance remains `SOURCE_PROVENANCE_PENDING`; local answer audit must not be misrepresented as exact ExamSIDE provenance.
+
+### Corrected mapping defect
+
+`N13 · 2023` had accidentally inherited the `N15` Fe(CO)₅ / VO²⁺ / WO₃ oxidation-state preview. Live ExamSIDE identifies N13 as the dichromate/Fe²⁺ balancing numerical. The corpus preview is corrected to:
+
+`Cr₂O₇²⁻ + XH⁺ + 6Fe²⁺ → YCr³⁺ + 6Fe³⁺ + ZH₂O`
+
+with the reviewed derivation `X=14, Y=2, Z=7`, hence `X+Y+Z=23`.
+
+Regression tests now require:
+- exactly 48 non-OS core helper refs matching the corpus mapping;
+- non-empty bridge, derivation and answer for every helper;
+- N13 remains BAL and cannot contain the N15 Fe(CO) preview;
+- N15 remains OS;
+- public/standalone helper parity.
