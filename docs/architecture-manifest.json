@@ -5,19 +5,19 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 191,
+  "component_count": 193,
   "relation_count": 235,
   "components_by_role": {
     "CONTRACT": 7,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 32,
-    "TEST": 87,
+    "TEST": 89,
     "TOOLING": 44,
     "WEB": 6,
     "WEB_RUNTIME": 3
   },
-  "digest": "sha256:ddb08588a76814189c15b585f35e2989828073fbd4d87024e2fc995e6c9a3a5a",
+  "digest": "sha256:b43beb05acc5c6a2cff9bf2229f13acfddda6611f0b6978391c90aa63afa88ae",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -811,6 +811,13 @@
       "sha256": "ecaf41504e453814db555d63db6054f9522f173ec01c0cc2ed3cf460a433d9ad"
     },
     {
+      "bytes": 4212,
+      "path": "tests/fixtures/workbench/browser-host.html",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "sha256": "5b3c38763bb05fb6a93dba36673f5d0b2c7e12429f48639bce3c788aab590918"
+    },
+    {
       "path": "tests/test_agent_path_stress_prompts.py",
       "role": "TEST",
       "role_description": "Executable checks",
@@ -1294,11 +1301,11 @@
       "sha256": "4578635bbe72da972cd8ca52d0f25b3a1bf3cf3d80a7e9f585ec1361209a5b16"
     },
     {
+      "bytes": 2391,
       "path": "tests/test_workbench_runtime.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 1154,
-      "sha256": "5ee6c1c6b641085044d1f48eb1b2a9c07a439093db648f79e46f7eae9b91a64d"
+      "sha256": "56361a1f42ed0333421a5c3e2302c4a4b12b329322e5764089ff1711076b65eb"
     },
     {
       "path": "tests/test_worksheet_study_plan.py",
@@ -1306,6 +1313,13 @@
       "role_description": "Executable checks",
       "bytes": 13213,
       "sha256": "3d0563b1e08a91fb25deaa42497d1df9ca81ebbb6d83ac0b70a249a2eac4303f"
+    },
+    {
+      "bytes": 16412,
+      "path": "tests/workbench_browser.test.mjs",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "sha256": "6deb9d1e2ad10dd6ef1615ec6af3a90041f5171c6a38368bb0b6418eb89a80bc"
     },
     {
       "path": "tests/workbench_runtime.test.mjs",
