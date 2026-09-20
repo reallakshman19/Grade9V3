@@ -118,6 +118,9 @@ export class SemanticWorkbench extends HTMLElement {
     if (event.type === "TRANSFER_REJECTED") this._lastStatus = `Rejected: ${event.reason}`;
     else if (event.type === "TRANSFER_ACCEPTED") this._lastStatus = event.summary || "Transfer accepted.";
     else if (event.type === "TRANSFER_PREVIEW") this._lastStatus = event.accepted ? "Target available." : `Target unavailable: ${event.reason}`;
+    else if (event.type === "ENTITY_INSPECTED") this._lastStatus = event.linkedProjectionRefs?.length > 1
+      ? `Inspecting ${event.linkedProjectionRefs.length} linked representations.`
+      : "Inspecting representation.";
     else if (event.type === "ENTITY_PICKED") this._lastStatus = "Source selected. Choose a target.";
     else if (event.type === "INTERACTION_CANCELLED") this._lastStatus = "Selection cancelled.";
     else if (event.type === "UNDO_APPLIED") this._lastStatus = "Previous transformation restored.";
@@ -136,7 +139,12 @@ export class SemanticWorkbench extends HTMLElement {
 
   _onPointerOver(event) {
     const entity = this._closestRole(event, "entity");
-    if (entity) this._dispatchWithoutRebuild({ type: "INSPECT", entityRef: entity.dataset.entityRef, channel: "pointer" });
+    if (entity) this._dispatchWithoutRebuild({
+      type: "INSPECT",
+      entityRef: entity.dataset.entityRef,
+      projectionRef: entity.dataset.projectionRef,
+      channel: "pointer",
+    });
     const target = this._closestRole(event, "target");
     if (target && this._runtime?.snapshot.interaction.pickedEntityRef) {
       this._dispatchWithoutRebuild({ type: "PREVIEW_TARGET", targetRef: target.dataset.targetRef, channel: "pointer" });
@@ -159,7 +167,12 @@ export class SemanticWorkbench extends HTMLElement {
 
   _onFocusIn(event) {
     const entity = this._closestRole(event, "entity");
-    if (entity) this._dispatchWithoutRebuild({ type: "INSPECT", entityRef: entity.dataset.entityRef, channel: "keyboard" });
+    if (entity) this._dispatchWithoutRebuild({
+      type: "INSPECT",
+      entityRef: entity.dataset.entityRef,
+      projectionRef: entity.dataset.projectionRef,
+      channel: "keyboard",
+    });
   }
 
   _onClick(event) {
@@ -212,7 +225,7 @@ export class SemanticWorkbench extends HTMLElement {
   _focusToken() {
     const active = this.shadowRoot?.activeElement;
     if (!active) return null;
-    if (active.dataset.role === "entity") return { kind: "entity", ref: active.dataset.entityRef };
+    if (active.dataset.role === "entity") return { kind: "entity", ref: active.dataset.projectionRef };
     if (active.dataset.role === "target") return { kind: "target", ref: active.dataset.targetRef };
     if (active.dataset.action) return { kind: "action", ref: active.dataset.action };
     return null;
@@ -222,7 +235,7 @@ export class SemanticWorkbench extends HTMLElement {
     if (!token || !this.shadowRoot) return;
     const candidates = [...this.shadowRoot.querySelectorAll("button")];
     const next = candidates.find((button) => {
-      if (token.kind === "entity") return button.dataset.role === "entity" && button.dataset.entityRef === token.ref;
+      if (token.kind === "entity") return button.dataset.role === "entity" && button.dataset.projectionRef === token.ref;
       if (token.kind === "target") return button.dataset.role === "target" && button.dataset.targetRef === token.ref;
       return token.kind === "action" && button.dataset.action === token.ref;
     });
@@ -234,10 +247,18 @@ export class SemanticWorkbench extends HTMLElement {
     const state = this._runtime.snapshot;
     const picked = state.interaction.pickedEntityRef;
     const inspected = state.interaction.inspectedEntityRef;
+    const inspectedProjection = state.interaction.inspectedProjectionRef;
     for (const button of this.shadowRoot.querySelectorAll('[data-role="entity"]')) {
-      const active = button.dataset.entityRef === picked || button.dataset.entityRef === inspected;
+      const selected = button.dataset.entityRef === picked;
+      const origin = Boolean(inspectedProjection) && button.dataset.projectionRef === inspectedProjection;
+      const linked = button.dataset.entityRef === inspected && !origin;
+      const active = selected || origin || linked;
+      const correspondenceState = origin ? "origin" : (linked ? "linked" : (selected ? "selected" : "none"));
       button.classList.toggle("active", active);
-      button.setAttribute("aria-pressed", button.dataset.entityRef === picked ? "true" : "false");
+      button.dataset.correspondenceState = correspondenceState;
+      button.setAttribute("aria-pressed", selected ? "true" : "false");
+      const label = button.querySelector(".entity-state");
+      if (label) label.textContent = origin ? "Inspected representation" : (linked ? "Linked representation" : (selected ? "Selected representation" : "Representation"));
     }
     for (const button of this.shadowRoot.querySelectorAll('[data-role="target"]')) {
       const isPreview = state.interaction.preview?.targetRef === button.dataset.targetRef;
@@ -266,12 +287,18 @@ export class SemanticWorkbench extends HTMLElement {
 
     const picked = state.interaction.pickedEntityRef;
     const inspected = state.interaction.inspectedEntityRef;
+    const inspectedProjection = state.interaction.inspectedProjectionRef;
     const preview = state.interaction.preview;
     const content = rows.map((row) => {
       const style = placementStyle(this._scene, row.placement);
       if (row.role === "entity") {
-        const active = row.entityRef === picked || row.entityRef === inspected;
-        return `<button class="slot entity${active ? " active" : ""}" style="${style}" data-role="entity" data-entity-ref="${escapeHtml(row.entityRef)}" aria-pressed="${row.entityRef === picked ? "true" : "false"}">${escapeHtml(row.label)}</button>`;
+        const selected = row.entityRef === picked;
+        const origin = Boolean(inspectedProjection) && row.id === inspectedProjection;
+        const linked = row.entityRef === inspected && !origin;
+        const active = selected || origin || linked;
+        const correspondenceState = origin ? "origin" : (linked ? "linked" : (selected ? "selected" : "none"));
+        const stateLabel = origin ? "Inspected representation" : (linked ? "Linked representation" : (selected ? "Selected representation" : "Representation"));
+        return `<button class="slot entity${active ? " active" : ""}" style="${style}" data-role="entity" data-entity-ref="${escapeHtml(row.entityRef)}" data-projection-ref="${escapeHtml(row.id)}" data-correspondence-state="${correspondenceState}" aria-pressed="${selected ? "true" : "false"}"><span>${escapeHtml(row.label)}</span><small class="entity-state">${stateLabel}</small></button>`;
       }
       const isPreview = preview?.targetRef === row.id;
       const stateLabel = isPreview ? (preview.accepted ? "Available" : "Unavailable") : "Target";
@@ -302,6 +329,7 @@ export class SemanticWorkbench extends HTMLElement {
         button{font:inherit}
         .logical-grid{display:grid;grid-template-columns:repeat(var(--column-count),minmax(0,1fr));gap:.6rem;align-items:stretch}
         .slot{min-width:0;min-height:2.75rem;border:1px solid var(--workbench-border,#94a3b8);border-radius:.5rem;padding:.65rem;background:var(--workbench-surface,#f8fafc);color:inherit;text-align:left;touch-action:manipulation}
+        .entity{display:flex;flex-direction:column;gap:.15rem}.entity small{font-size:.75em}
         .entity.active{outline:3px solid var(--workbench-focus,#2563eb);outline-offset:2px}
         .target{display:flex;flex-direction:column;gap:.15rem}.target small{font-size:.75em}.target.valid{border-style:double}.target.invalid{border-style:dashed}
         .checkpoint{display:flex;gap:.5rem;align-items:flex-start;margin:.75rem 0;padding:.65rem;border-left:4px solid var(--workbench-checkpoint,#64748b);background:var(--workbench-surface,#f8fafc)}
