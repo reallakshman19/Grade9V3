@@ -53,17 +53,22 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-mot",
     "simParams": {
-      "species": "O2_2plus",
-      "electrons": 14,
-      "bo": 3.0,
-      "magnetic": "Diamagnetic"
+      "electrons": 14
     },
     "simSummary": [
       "O₂²⁺ (14 electrons)",
       "Bond Order = 3.0 (Triple Bond)",
       "Shortest Bond Length",
       "Diamagnetic (0 Unpaired)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.electrons"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q02",
@@ -111,14 +116,20 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-vsepr",
     "simParams": {
-      "molecule": "XeF4",
-      "shape": "Square Planar",
-      "dipole": 0
+      "molecule": "XeF4"
     },
     "simSummary": [
       "XeF₄: Steric 6 (sp³d²), 2 Axial Lone Pairs, Square Planar, μ = 0",
       "SF₄: Steric 5 (sp³d), 1 Equatorial Lone Pair, See-saw, μ ≠ 0"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.molecule"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q03",
@@ -163,16 +174,17 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Atomic number does not determine dipole moment."
     },
     "targetTab": "tab-dipole",
-    "simParams": {
-      "molA": "NH3",
-      "muA": 1.47,
-      "molB": "NF3",
-      "muB": 0.24
-    },
+    "simParams": {},
     "simSummary": [
       "NH₃: 3 N-H (↑) + Lone Pair (↑) = Reinforcing (μ = 1.47 D)",
       "NF₃: 3 N-F (↓) + Lone Pair (↑) = Opposing (μ = 0.24 D)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "BOND-Q04",
@@ -217,18 +229,19 @@ window.JEE_QUESTIONS_DATA = [
       "D": "PCl₅ exists stably in the gas phase at moderate temperatures."
     },
     "targetTab": "tab-hybridization",
-    "simParams": {
-      "axialLength": 240,
-      "equatorialLength": 202,
-      "repulsionAxial": 3,
-      "repulsionEquat": 2
-    },
+    "simParams": {},
     "simSummary": [
       "PCl₅ (sp³d Trigonal Bipyramidal)",
       "3 Equatorial P-Cl: 202 pm (Shorter, Stronger)",
       "2 Axial P-Cl: 240 pm (Longer, Weaker)",
       "Dissociation: PCl₅ → PCl₃ + Cl₂"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "BOND-Q05",
@@ -273,15 +286,17 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Both isomers have polar bonds."
     },
     "targetTab": "tab-hbonding",
-    "simParams": {
-      "isomer": "ortho",
-      "hBondType": "Intramolecular",
-      "bp": "Lower (Volatile)"
-    },
+    "simParams": {},
     "simSummary": [
       "o-Nitrophenol: Intramolecular H-Bond (Cheled 6-Ring) → Steam Volatile",
       "p-Nitrophenol: Intermolecular H-Bond (Linear Chains) → High BP"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "BOND-Q06",
@@ -326,13 +341,20 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-mot",
     "simParams": {
-      "electrons": 16,
-      "species": "O2"
+      "electrons": 16
     },
     "simSummary": [
       "B₂ (10 e⁻): π_2p_x¹ = π_2p_y¹ (2 unpaired e⁻, Paramagnetic)",
       "O₂ (16 e⁻): π*_2p_x¹ = π*_2p_y¹ (2 unpaired e⁻, Paramagnetic)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.electrons"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q07",
@@ -377,14 +399,20 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-dipole",
     "simParams": {
-      "molecule": "NH3_vs_NF3",
-      "mu_NH3": 1.47,
-      "mu_NF3": 0.24
+      "molecule": "NH3_vs_NF3"
     },
     "simSummary": [
       "NH₃: N-H dipoles add to lone pair vector (μ = 1.47 D)",
       "NF₃: N-F dipoles oppose lone pair vector (μ = 0.24 D)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.molecule"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q08",
@@ -430,17 +458,22 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-lewis",
     "simParams": {
-      "molecule": "O3",
-      "fc_central": 1,
-      "fc_single": -1,
-      "fc_double": 0
+      "molecule": "O3"
     },
     "simSummary": [
       "O₃ Lewis Structure",
       "Central O: FC = 6 - 2 - 3 = +1",
       "Single-bonded O: FC = 6 - 6 - 1 = -1",
       "Double-bonded O: FC = 6 - 4 - 2 = 0"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.molecule"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q09",
@@ -491,7 +524,15 @@ window.JEE_QUESTIONS_DATA = [
       "XeF₄: 2 LP (Square Planar)",
       "SF₄: 1 LP (See-saw)",
       "ClF₃: 2 LP (T-shaped)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.molecule"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q10",
@@ -543,7 +584,15 @@ window.JEE_QUESTIONS_DATA = [
       "CO₃²⁻ Hybrid: 3 equivalent O atoms",
       "Average FC = -2/3",
       "Bond Order = 4/3 = 1.33"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.molecule"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q11",
@@ -596,7 +645,15 @@ window.JEE_QUESTIONS_DATA = [
       "BO = 2.0 (Double π bond)",
       "Zero σ bonds",
       "Diamagnetic"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.electrons"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q12",
@@ -648,7 +705,15 @@ window.JEE_QUESTIONS_DATA = [
       "Axial: 240 pm (Three 90° repulsions)",
       "Equatorial: 202 pm (Two 90° repulsions)",
       "Cleavage: PCl₅ → PCl₃ + Cl₂"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.mode"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds mode only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q13",
@@ -699,7 +764,15 @@ window.JEE_QUESTIONS_DATA = [
       "NF₃: Pyramidal, μ = 0.24 D (≠ 0)",
       "BF₃: Planar, μ = 0",
       "CO₂, BeF₂: Linear, μ = 0"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.dipolePair"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds dipolePair only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q14",
@@ -751,7 +824,15 @@ window.JEE_QUESTIONS_DATA = [
       "BrF₅: 5 BP + 1 LP = 6 domains",
       "Hybridization = sp³d²",
       "Shape = Square Pyramidal"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.molecule"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q15",
@@ -802,7 +883,15 @@ window.JEE_QUESTIONS_DATA = [
     "simSummary": [
       "Cl₂ (242.6 kJ/mol) > Br₂ (192.8) > F₂ (158.8) > I₂ (151.1)",
       "F₂ weakened by 2p lone-pair repulsions"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.pair"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds pair only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q16",
@@ -855,7 +944,15 @@ window.JEE_QUESTIONS_DATA = [
       "I₃⁻: 2 BP + 3 LP = 5 (sp³d)",
       "3 LP equatorial at 120°",
       "Linear shape, 180° angle"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.molecule"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q17",
@@ -907,7 +1004,15 @@ window.JEE_QUESTIONS_DATA = [
       "H₂O: 373 K (Strong H-bonds)",
       "H₂Te: 269 K, H₂Se: 232 K, H₂S: 213 K",
       "H₂S has the lowest boiling point"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.pair"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds pair only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q18",
@@ -960,7 +1065,15 @@ window.JEE_QUESTIONS_DATA = [
       "Solid PCl₅: [PCl₄]⁺ [PCl₆]⁻",
       "[PCl₄]⁺: sp³ Tetrahedral",
       "[PCl₆]⁻: sp³d² Octahedral"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.mode"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds mode only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q19",
@@ -1012,7 +1125,15 @@ window.JEE_QUESTIONS_DATA = [
       "CO⁺ (13 e⁻): HOMO is weakly antibonding",
       "BO = 3.5 (Bond strengthens upon ionization!)",
       "Paramagnetic (1 unpaired e⁻)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PENDING",
+    "answerAuditNote": "CO⁺ bond-order treatment is model/convention-sensitive across teaching sources; retain the supplied option only as pending until the cited source item/key is independently verified.",
+    "simBindingRefs": [
+      "simParams.electrons"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "BOND-Q20",
@@ -1063,6 +1184,14 @@ window.JEE_QUESTIONS_DATA = [
     "simSummary": [
       "o-nitrophenol: Intramolecular chelation (BP 216°C, Steam volatile)",
       "p-nitrophenol: Intermolecular association (BP 279°C)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.pair"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds pair only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   }
 ];
