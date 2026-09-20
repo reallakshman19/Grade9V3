@@ -18,8 +18,8 @@ current_position:
 execution_policy:
   mode: SERIAL
 active_ep:
-  id: EP-0162-BROWSER-RUNTIME-PROOF
-  path: agents/relay/execution-packages/EP-0162-BROWSER-RUNTIME-PROOF.yaml
+  id: EP-0162-CORRESPONDENCE-PROOF
+  path: agents/relay/execution-packages/EP-0162-CORRESPONDENCE-PROOF.yaml
   state: EXECUTABLE
   continuity_receipt: agents/relay/drift/DRIFT-0162-RM0008.yaml
 last_checkpoint:
@@ -42,20 +42,20 @@ takeover_admissions:
     id: TC-0162-BROWSER-RUNTIME-PROOF
     path: agents/relay/certifications/takeover/TC-0162-BROWSER-RUNTIME-PROOF.yaml
 owner_execution_exception:
-  id: ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT
-  path: agents/relay/roadmap/owner-decisions/ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT.yaml
+  id: ODR-0162-DEFER-MERGE-ADVANCE-CORRESPONDENCE
+  path: agents/relay/roadmap/owner-decisions/ODR-0162-DEFER-MERGE-ADVANCE-CORRESPONDENCE.yaml
   normal_drift_write_gate_passed: false
 progress:
   overall_percent: 0
   phase_percent: 0
-  ep_percent: 90
+  ep_percent: 0
   basis_revision: PB-0001
 status_planes:
   execution:
     state: READY
     can_continue: true
     material_authority: WRITE
-    next_action: Preserve the green browser-proof Core boundary; defer merge/base reconciliation until before merge, then rebase/reconcile and rerun exact-head browser/full guardrails for AC-05.
+    next_action: Execute EP-0162-CORRESPONDENCE-PROOF while keeping the prior browser-proof AC-05 and merge/base reconciliation pending.
   quality:
     state: NEEDS_ATTENTION
     findings:
@@ -64,10 +64,11 @@ status_planes:
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
   evidence:
     state: PARTIAL
-    summary: Real Chrome 152 browser proof and full repository guardrails pass on coding head 5cf9a54fb0413c2b47f789b615127858332e7f0f. Final post-rebase exact-head evidence remains pending.
+    summary: Browser-proof slice is green on head 8c8c9793280eee315498d016a73adf3a3734b9a5. Correspondence successor evidence is not yet executed; prior post-rebase AC-05 remains pending.
     not_run:
-    - final post-rebase TEST-02 browser rerun on the merge candidate
-    - final post-rebase TEST-03 full guardrails on the merge candidate
+    - EP-0162-CORRESPONDENCE-PROOF unit/browser/guardrail evidence
+    - final post-rebase browser rerun on the eventual merge candidate
+    - final post-rebase full guardrails on the eventual merge candidate
   stop:
     active: false
     category: NONE
@@ -81,7 +82,7 @@ projection:
   operation_id: null
   target: null
   roadmap_revision: RM-0002
-  execution_ref: EP-0162-BROWSER-RUNTIME-PROOF
+  execution_ref: EP-0162-CORRESPONDENCE-PROOF
   receipt: null
   basis:
   - Issue #162 and PR #165 carry current browser-proof evidence, but merge/rebase reconciliation is deliberately deferred.
