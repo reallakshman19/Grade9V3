@@ -49,9 +49,6 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-compressibility",
     "simParams": {
-      "pressMode": "low",
-      "constA": 4.17,
-      "constB": 0.037,
       "tempK": 300
     },
     "simSummary": [
@@ -59,7 +56,15 @@ window.JEE_QUESTIONS_DATA = [
       "V_m >> b ⇒ (V_m - b) ≈ V_m",
       "Z = 1 - a/(RTV_m) < 1",
       "Attractive Forces Dominant"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.tempK"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds tempK only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "GAS-Q02",
@@ -104,16 +109,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Gas Z has second highest 'a', but W is significantly higher."
     },
     "targetTab": "tab-isotherms",
-    "simParams": {
-      "constA": 4.17,
-      "constB": 0.037,
-      "gasName": "Gas W (NH3)"
-    },
+    "simParams": {},
     "simSummary": [
       "Gas W: a = 4.17 atm L²/mol²",
       "Maximum Critical Temperature T_c",
       "Most easily liquefied"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q03",
@@ -159,15 +166,22 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-maxwell",
     "simParams": {
-      "tempK": 300,
-      "molarMass": 28
+      "tempK": 300
     },
     "simSummary": [
       "v_mp = √(2RT/M)",
       "v_avg = √(8RT/πM)",
       "v_rms = √(3RT/M)",
       "Ratio: 1 : 1.128 : 1.224"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.tempK"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds tempK only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "GAS-Q04",
@@ -212,16 +226,19 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Arbitrary factor of 2."
     },
     "targetTab": "tab-real-particle",
-    "simParams": {
-      "radius": 1.5,
-      "factor": 4
-    },
+    "simParams": {},
     "simSummary": [
       "Collision Diameter = 2r",
       "Pair Exclusion Volume = 8 × V_m",
       "Excluded Volume per Molecule = 4 × V_m",
       "b = 4 × N_A × V_m"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q05",
@@ -266,19 +283,19 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Assumed Gas A was methane (16 g/mol)."
     },
     "targetTab": "tab-effusion",
-    "simParams": {
-      "volA": 50,
-      "timeA": 20,
-      "volB": 40,
-      "timeB": 40,
-      "molarMassB": 32
-    },
+    "simParams": {},
     "simSummary": [
       "Rate A = 2.50 mL/s",
       "Rate O₂ = 1.00 mL/s",
       "Ratio = 2.50",
       "M_A = 32 / (2.5)² = 5.12 g/mol"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q06",
@@ -322,16 +339,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Confused with Critical pressure P_c = a/(27b²)."
     },
     "targetTab": "tab-compressibility",
-    "simParams": {
-      "tempRatio": 1.0,
-      "constA": 4.17,
-      "constB": 0.037
-    },
+    "simParams": {},
     "simSummary": [
       "Boyle Temperature T_B = a / (Rb)",
       "Second Virial Coefficient B₂ = b - a/(RT) = 0",
       "(∂Z/∂P)_{P→0} = 0"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q07",
@@ -374,18 +393,20 @@ window.JEE_QUESTIONS_DATA = [
       "C": "Assumed ideal gas equation applies at the critical point.",
       "D": "Inverted the numerator factor 3/8 into 6/8 = 0.75."
     },
-    "targetTab": "tab-andrews",
-    "simParams": {
-      "Tc": 304.1,
-      "Pc": 73.8,
-      "Vc": 0.095
-    },
+    "targetTab": "tab-isotherms",
+    "simParams": {},
     "simSummary": [
       "P_c = a/(27b²)",
       "V_c = 3b",
       "T_c = 8a/(27Rb)",
       "Critical Invariant Z_c = 3/8 = 0.375"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q08",
@@ -430,17 +451,19 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Inverted algebraic sign on attractive correction."
     },
     "targetTab": "tab-compressibility",
-    "simParams": {
-      "tempRatio": 1.5,
-      "constA": 0.0,
-      "constB": 0.04
-    },
+    "simParams": {},
     "simSummary": [
       "High Pressure Regime: P >> a/V²",
       "P(V - b) = RT",
       "Repulsive Excluded Volume Dominates",
       "Z = 1 + Pb/(RT) > 1"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q09",
@@ -489,16 +512,19 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Swapped v_avg and v_rms."
     },
     "targetTab": "tab-maxwell",
-    "simParams": {
-      "temp": 300,
-      "gas": "N2"
-    },
+    "simParams": {},
     "simSummary": [
       "v_mp = √(2RT/M) [Peak]",
       "v_avg = √(8RT/πM)",
       "v_rms = √(3RT/M) [Highest]",
       "Ratio = 1 : 1.128 : 1.224"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q10",
@@ -544,16 +570,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Negative sign on the high-pressure repulsive co-volume term."
     },
     "targetTab": "tab-compressibility",
-    "simParams": {
-      "gas": "CH4",
-      "temp": 300,
-      "term": "b_only"
-    },
+    "simParams": {},
     "simSummary": [
       "High pressure: P >> a/V²",
       "P(V - b) = RT ⇒ PV = RT + Pb",
       "Z = 1 + Pb/RT (Linear slope b/RT)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q11",
@@ -599,15 +627,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Divided total pressure by 2."
     },
     "targetTab": "tab-ideal",
-    "simParams": {
-      "pistonV": 30,
-      "temp": 300
-    },
+    "simParams": {},
     "simSummary": [
       "P_total = 750 mm Hg",
       "P_aqueous = 24 mm Hg",
       "P_dry = 750 - 24 = 726 mm Hg"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q12",
@@ -654,15 +685,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Ignored volume difference and used only times (t_X / t_O2 = 2 ⇒ M = 32 × 4 = 128 or 64)."
     },
     "targetTab": "tab-effusion",
-    "simParams": {
-      "gasA": "O2",
-      "gasB": "H2"
-    },
+    "simParams": {},
     "simSummary": [
       "r_X = 50/20 = 2.5 mL/min",
       "r_O2 = 40/10 = 4.0 mL/min",
       "M_X = 32 × (4/2.5)² = 81.92 g/mol"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q13",
@@ -707,16 +741,19 @@ window.JEE_QUESTIONS_DATA = [
       "C": "Divided by 4 instead of 2.",
       "D": "Forgot to divide the 8 V_m pair exclusion sphere by 2."
     },
-    "targetTab": "tab-halos",
-    "simParams": {
-      "radius": 4,
-      "showHalos": true
-    },
+    "targetTab": "tab-real-particle",
+    "simParams": {},
     "simSummary": [
       "Exclusion sphere radius = 2r",
       "Exclusion volume per pair = 8 V_m",
       "b = 4 N_A V_m (4× actual volume)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q14",
@@ -761,16 +798,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "N₂ and O₂ exhibit pronounced dips below Z = 1 at moderate pressures."
     },
     "targetTab": "tab-compressibility",
-    "simParams": {
-      "gas": "He",
-      "temp": 300,
-      "term": "all"
-    },
+    "simParams": {},
     "simSummary": [
       "H₂ & He: a ≈ 0 at 298 K",
       "Z = 1 + Pb/RT > 1 at all pressures",
       "Room temp >> Boyle temp"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q15",
@@ -816,16 +855,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Half of Boyle temperature."
     },
     "targetTab": "tab-compressibility",
-    "simParams": {
-      "gas": "CH4",
-      "temp": 500,
-      "term": "all"
-    },
+    "simParams": {},
     "simSummary": [
       "Boyle Temp: T_B = a / (Rb)",
       "Critical Temp: T_c = 8a / (27Rb)",
       "Inversion Temp: T_i = 2 T_B = 2a / (Rb)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q16",
@@ -873,15 +914,19 @@ window.JEE_QUESTIONS_DATA = [
       "C": "Assumed ideal gas behavior Z = 1 at the critical point.",
       "D": "Confused with 2/3."
     },
-    "targetTab": "tab-andrews",
-    "simParams": {
-      "tempIso": 304
-    },
+    "targetTab": "tab-isotherms",
+    "simParams": {},
     "simSummary": [
       "P_c = a/27b², V_c = 3b, T_c = 8a/27Rb",
       "Z_c = (P_c V_c)/(R T_c) = 3/8 = 0.375",
       "Universal invariant"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q17",
@@ -927,15 +972,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Took square root of molar mass ratio (√16 = 4), which applies to rms speed, not kinetic energy!"
     },
     "targetTab": "tab-ideal",
-    "simParams": {
-      "pistonV": 25,
-      "temp": 300
-    },
+    "simParams": {},
     "simSummary": [
       "Per molecule KE = (3/2)k_B T (same for both)",
       "Total KE = (3/2) n R T ∝ moles",
       "E(H₂) = 16 × E(O₂)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q18",
@@ -978,15 +1026,19 @@ window.JEE_QUESTIONS_DATA = [
       "C": "Boyle temperature relates to ideal gas behavior, not liquefaction.",
       "D": "To liquefy, pressure must be AT LEAST equal to vapor pressure at that temperature."
     },
-    "targetTab": "tab-andrews",
-    "simParams": {
-      "tempIso": 304
-    },
+    "targetTab": "tab-isotherms",
+    "simParams": {},
     "simSummary": [
       "T_c is the upper ceiling for liquefaction",
       "Above T_c: Supercritical fluid (no liquefaction)",
       "Liquefaction possible only when T ≤ T_c"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q19",
@@ -1032,16 +1084,19 @@ window.JEE_QUESTIONS_DATA = [
       "C": "Omitted square on moles in a (mol⁻¹ instead of mol⁻²).",
       "D": "Gave practical/atmospheric units instead of strict SI units."
     },
-    "targetTab": "tab-halos",
-    "simParams": {
-      "radius": 5,
-      "showHalos": true
-    },
+    "targetTab": "tab-real-particle",
+    "simParams": {},
     "simSummary": [
       "[a] = [P][V²]/[n²] = N m⁴ mol⁻²",
       "[b] = [V]/[n] = m³ mol⁻¹",
       "Practical: atm L² mol⁻² & L mol⁻¹"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "GAS-Q20",
@@ -1088,14 +1143,17 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Squared the molar mass ratio (300 × 4 = 1200 K)."
     },
     "targetTab": "tab-maxwell",
-    "simParams": {
-      "temp": 600,
-      "gas": "CO2"
-    },
+    "simParams": {},
     "simSummary": [
       "T_SO2 / 64 = 300 / 32",
       "T_SO2 = 300 × 2 = 600 K",
       "v_rms(SO₂ at 600 K) = v_rms(O₂ at 300 K)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   }
 ];
