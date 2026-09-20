@@ -184,6 +184,7 @@ jobs:
           path: |
             /tmp/architecture-manifest.json
             /tmp/data.js
+            review/motion-in-1d-master-suite-standalone.html
 
       # --check compares the generated data file and the manifest without writing
       # either, so it covers both artifacts and leaves the checkout untouched.
