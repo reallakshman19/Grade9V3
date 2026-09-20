@@ -1,0 +1,81 @@
+schema_version: relay-v2.5-discovery
+id: DISC-0162-BROWSER-RUNTIME-PROOF
+candidate:
+  agent_instance_id: agent-gpt56sol-20260920T164842Z
+route:
+  route_key: SERIAL:EP-0162-BROWSER-RUNTIME-PROOF
+  mode: SERIAL
+  execution_ref: EP-0162-BROWSER-RUNTIME-PROOF
+  ep_id: EP-0162-BROWSER-RUNTIME-PROOF
+  ep_path: agents/relay/execution-packages/EP-0162-BROWSER-RUNTIME-PROOF.yaml
+  plan_id: null
+  plan_path: null
+  lane_id: null
+basis:
+  roadmap_id: RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER
+  roadmap_revision: RM-0002
+  relay_protocol_basis_ref: reallaksh19/Common@d9b84069683977b5c370f536f1c50095de926338:skills/engineering-pr-delivery-v2.5
+  material_ref: 5757dcefbe8af3031c2001f2a2f05259855c73aa
+  ep_contract_digest: sha256:b8396728ddb69ab5c1d4b30a4743c5ee2f8cfec5d0cf1d3cbf4da281860fc28b
+  repo_profile_digest: sha256:af982a7ee9938541f8bb21f276acc8e3dbebb92396fc38733379e8277aee6919
+  predecessor_baton:
+    type: NONE
+    id: NONE
+    path: null
+    digest: null
+steps:
+- id: DSTEP-01
+  status: PASS
+  outputs:
+  - name: active route
+    value: SERIAL:EP-0162-BROWSER-RUNTIME-PROOF on RM-0002 / WP-162-BROWSER-RUNTIME-PROOF
+    basis:
+    - agents/relay/roadmap/OVERALL_ROADMAP.yaml@RM-0002
+    - agents/relay/execution-packages/EP-0162-BROWSER-RUNTIME-PROOF.yaml
+  basis:
+  - agents/relay/roadmap/OVERALL_ROADMAP.yaml
+  - agents/relay/roadmap/revisions/RM-0002.yaml
+- id: DSTEP-02
+  status: PASS
+  outputs:
+  - name: semantic runtime contract
+    value: WorkbenchRuntime owns INSPECT, PICK, PREVIEW_TARGET, DROP, CANCEL and UNDO mechanics; adapter.evaluateTransfer owns validity; SemanticWorkbench maps pointer, click and keyboard paths to the runtime.
+    basis:
+    - Shared/workbench/runtime.mjs
+    - Shared/workbench/semantic-workbench.mjs
+  - name: current witness/evidence limit
+    value: tests/workbench_runtime.test.mjs uses the 156 divided by 12 first-quotient-digit fixture and proves DOM-lite semantic invariants, not real-browser gesture/layout/media behavior.
+    basis:
+    - tests/workbench_runtime.test.mjs
+    - tests/fixtures/workbench/arithmetic-division.json
+  basis:
+  - Shared/workbench/runtime.mjs
+  - Shared/workbench/semantic-workbench.mjs
+  - tests/workbench_runtime.test.mjs
+- id: DSTEP-03
+  status: PASS
+  outputs:
+  - name: branch and material ancestry
+    value: PR #165 head dd8dbf4860ef3463ba9db41792d04f941fedf7f3 is six commits ahead of material ref 5757dcefbe8af3031c2001f2a2f05259855c73aa with zero commits behind.
+    basis:
+    - https://github.com/reallaksh19/Grade9V3/pull/165
+    - GitHub compare 5757dcefbe8af3031c2001f2a2f05259855c73aa...feat/issue-162-semantic-workbench-core
+  - name: base drift
+    value: main remains 5037c193c8db017eb2cde383b913fd408e48fc6b, equal to git_basis.base_observed_ref; base drift is UNCHANGED.
+    basis:
+    - https://github.com/reallaksh19/Grade9V3/commit/5037c193c8db017eb2cde383b913fd408e48fc6b
+  basis:
+  - https://github.com/reallaksh19/Grade9V3/pull/165
+  - agents/relay/execution-packages/EP-0162-BROWSER-RUNTIME-PROOF.yaml
+- id: DSTEP-04
+  status: PASS
+  outputs:
+  - name: browser runner capability
+    value: GitHub Actions ubuntu-24.04 runner image 20260907.300 documents Google Chrome 152.0.7977.82 and ChromeDriver 152.0.7977.82; CHROMEWEBDRIVER resolves to /usr/local/share/chromedriver-linux64.
+    basis:
+    - https://github.com/actions/runner-images/blob/ubuntu24/20260907.300/images/ubuntu/Ubuntu2404-Readme.md
+    - PR #165 guardrails runner reported image ubuntu-24.04 version 20260907.300
+  basis:
+  - https://github.com/actions/runner-images/blob/ubuntu24/20260907.300/images/ubuntu/Ubuntu2404-Readme.md
+result: PASS
+conversation_context_used: false
