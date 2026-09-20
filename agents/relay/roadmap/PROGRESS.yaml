@@ -1,7 +1,7 @@
 schema_version: relay-v2.5
 progress_basis:
   id: PB-0001
-  roadmap_revision: RM-0001
+  roadmap_revision: RM-0002
 overall:
   earned_weight: 0
   total_weight: 0
@@ -21,6 +21,59 @@ work_packages:
   earned_weight: 0
   total_weight: 0
   percent: 0
-execution_packages: []
-implementation_steps: []
-acceptance_criteria: []
+- id: WP-162-BROWSER-RUNTIME-PROOF
+  earned_weight: 0
+  total_weight: 100
+  percent: 0
+execution_packages:
+- id: EP-0162-BROWSER-RUNTIME-PROOF
+  earned_weight: 0
+  total_weight: 100
+  percent: 0
+implementation_steps:
+- id: STEP-01
+  ep_id: EP-0162-BROWSER-RUNTIME-PROOF
+  earned_weight: 0
+  total_weight: 60
+  percent: 0
+- id: STEP-02
+  ep_id: EP-0162-BROWSER-RUNTIME-PROOF
+  earned_weight: 0
+  total_weight: 40
+  percent: 0
+acceptance_criteria:
+- id: AC-01
+  ep_id: EP-0162-BROWSER-RUNTIME-PROOF
+  earned_weight: 0
+  total_weight: 30
+  percent: 0
+  status: NOT_STARTED
+  basis: []
+- id: AC-02
+  ep_id: EP-0162-BROWSER-RUNTIME-PROOF
+  earned_weight: 0
+  total_weight: 20
+  percent: 0
+  status: NOT_STARTED
+  basis: []
+- id: AC-03
+  ep_id: EP-0162-BROWSER-RUNTIME-PROOF
+  earned_weight: 0
+  total_weight: 20
+  percent: 0
+  status: NOT_STARTED
+  basis: []
+- id: AC-04
+  ep_id: EP-0162-BROWSER-RUNTIME-PROOF
+  earned_weight: 0
+  total_weight: 10
+  percent: 0
+  status: NOT_STARTED
+  basis: []
+- id: AC-05
+  ep_id: EP-0162-BROWSER-RUNTIME-PROOF
+  earned_weight: 0
+  total_weight: 20
+  percent: 0
+  status: NOT_STARTED
+  basis: []
