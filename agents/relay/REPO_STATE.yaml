@@ -20,8 +20,8 @@ execution_policy:
 active_ep:
   id: EP-0162-BROWSER-RUNTIME-PROOF
   path: agents/relay/execution-packages/EP-0162-BROWSER-RUNTIME-PROOF.yaml
-  state: EXECUTABLE
-  continuity_receipt: null
+  state: RECONCILING
+  continuity_receipt: agents/relay/drift/DRIFT-0162-RM0008.yaml
 last_checkpoint:
   id: NONE
   path: null
@@ -48,37 +48,46 @@ progress:
   basis_revision: PB-0001
 status_planes:
   execution:
-    state: READY
-    can_continue: true
-    material_authority: WRITE
-    next_action: Execute the dependency-free real-Chrome browser proof for EP-0162-BROWSER-RUNTIME-PROOF after live candidate and Git-basis checks pass.
+    state: WAITING
+    can_continue: false
+    material_authority: READ_ONLY
+    next_action: Reconcile PR #165 against main RM-0008 / EP-TA-008 custody before any further workbench, test, generated-manifest, or merge write.
   quality:
-    state: CLEAR
-    findings: []
+    state: NEEDS_ATTENTION
+    findings:
+    - Real-browser CI exposed and the branch fixed a generic focus-rerender defect, but the fix has not yet reached an exact-head browser PASS because main drift arrived before the next generated-manifest refresh.
+    - Main now carries RM-0008 / EP-TA-008 as the authoritative serial relay route; this branch still carries RM-0002 / EP-0162-BROWSER-RUNTIME-PROOF.
   evidence:
     state: PARTIAL
-    summary: PR #165 has passing DOM-lite semantic runtime evidence and full pre-browser Grade9V3 guardrails; real-browser interaction evidence for this EP is not yet executed.
+    summary: The dependency-free browser test reached Chrome 152 and falsified a focus lifecycle defect. A generic fix is committed, but exact-head browser/full guardrail evidence is blocked by overlapping mainline relay/generated-manifest drift.
     not_run:
-    - TEST-02 real Chrome/ChromeDriver browser contract
-    - TEST-03 exact-final-head guardrails after browser-proof changes
+    - TEST-02 exact-head rerun after the focus fix
+    - TEST-03 exact-final-head guardrails after drift reconciliation
   stop:
-    active: false
-    category: NONE
-    reason: ''
-    basis: []
+    active: true
+    category: REPOSITORY_STATE_CONFLICT
+    reason: main advanced from 5037c193c8db017eb2cde383b913fd408e48fc6b to 843ec2d8d6faa2b8de15795ed1535905e4efc8a8 and now owns the serial relay through RM-0008 / EP-TA-008; PR #165 is merge-conflicted and its RM-0002 control plane cannot be treated as current authority.
+    basis:
+    - main@843ec2d8d6faa2b8de15795ed1535905e4efc8a8
+    - main:agents/relay/REPO_STATE.yaml RM-0008 / EP-TA-008
+    - PR #165 mergeable_state dirty
+    - agents/relay/drift/DRIFT-0162-RM0008.yaml
 projection:
   required: false
-  state: NOT_REQUIRED
+  state: STALE
   operation_id: null
   target: null
   roadmap_revision: RM-0002
   execution_ref: EP-0162-BROWSER-RUNTIME-PROOF
   receipt: null
   basis:
-  - GitHub issue #162 is already verified open and recorded in ISSUE_GRAPH; no new issue publication is required for route activation.
+  - Issue #162 correlation on PR #165 was valid before main advanced to RM-0008; current repository custody must be reconciled before publication changes.
 relay_readiness:
-  baton_ready: true
-  projection_ready: true
-  handover_ready: true
-  reasons: []
+  baton_ready: false
+  projection_ready: false
+  handover_ready: false
+  reasons:
+  - Base drift is OVERLAPPING at relay/generated-manifest scope.
+  - Main currently has a different active serial EP (EP-TA-008).
+  - PR #165 is merge-conflicted with main.
 chat_context_required: false
