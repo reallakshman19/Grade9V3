@@ -1,9 +1,9 @@
 name: motion2d-standalone-review-artifact
 
 on:
-  push:
+  pull_request:
     branches:
-      - review/motion2d-standalone-2026-09-20
+      - main
     paths:
       - review/motion2d-standalone-review-2026-09-20.html
       - .github/workflows/motion2d-standalone-review-artifact.yml
