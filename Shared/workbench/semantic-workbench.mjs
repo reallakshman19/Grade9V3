@@ -153,8 +153,15 @@ export class SemanticWorkbench extends HTMLElement {
     this.dispatchIntent({ type: "PICK", entityRef: entity.dataset.entityRef, channel: "pointer" });
   }
 
+  _targetFromPointerEvent(event) {
+    const direct = this._closestRole(event, "target");
+    if (direct) return direct;
+    const hit = this.shadowRoot?.elementFromPoint?.(event.clientX, event.clientY);
+    return hit?.closest?.('[data-role="target"]') || null;
+  }
+
   _onPointerUp(event) {
-    const target = this._closestRole(event, "target");
+    const target = this._targetFromPointerEvent(event);
     if (!target || !this._runtime?.snapshot.interaction.pickedEntityRef) return;
     this._suppressNextClick = true;
     this.dispatchIntent({ type: "DROP", targetRef: target.dataset.targetRef, channel: "pointer" });
