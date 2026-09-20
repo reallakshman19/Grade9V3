@@ -27,7 +27,7 @@
         if (request.sourceEntityRef !== "dividend-156" || request.targetRef !== "quotient-first-digit") {
           return {
             accepted: false,
-            reason: "Choose the partial dividend before deriving this result.",
+            reason: "Choose the dividend source before deriving this direct result.",
             allowedTargets: ["quotient-first-digit"],
           };
         }
