@@ -23,8 +23,8 @@ work_packages:
   percent: 0
 - id: WP-162-BROWSER-RUNTIME-PROOF
   earned_weight: 190
-  total_weight: 200
-  percent: 95
+  total_weight: 300
+  percent: 63.333333
 execution_packages:
 - id: EP-0162-BROWSER-RUNTIME-PROOF
   earned_weight: 90
@@ -34,6 +34,10 @@ execution_packages:
   earned_weight: 100
   total_weight: 100
   percent: 100
+- id: EP-0162-STATE-SUMMARY-PROOF
+  earned_weight: 0
+  total_weight: 100
+  percent: 0
 implementation_steps:
 - id: STEP-01
   ep_id: EP-0162-BROWSER-RUNTIME-PROOF
@@ -55,6 +59,16 @@ implementation_steps:
   earned_weight: 50
   total_weight: 50
   percent: 100
+- id: STEP-S01
+  ep_id: EP-0162-STATE-SUMMARY-PROOF
+  earned_weight: 0
+  total_weight: 50
+  percent: 0
+- id: STEP-S02
+  ep_id: EP-0162-STATE-SUMMARY-PROOF
+  earned_weight: 0
+  total_weight: 50
+  percent: 0
 acceptance_criteria:
 - id: AC-01
   ep_id: EP-0162-BROWSER-RUNTIME-PROOF
@@ -139,3 +153,25 @@ acceptance_criteria:
   - guardrails run 3268 topic-independence 0 violations across 77 files
   - architecture manifest fresh at 193 components and 235 relations
   - 934 repository tests PASS and all JSON parses
+
+- id: AC-S01
+  ep_id: EP-0162-STATE-SUMMARY-PROOF
+  earned_weight: 0
+  total_weight: 40
+  percent: 0
+  status: NOT_STARTED
+  basis: []
+- id: AC-S02
+  ep_id: EP-0162-STATE-SUMMARY-PROOF
+  earned_weight: 0
+  total_weight: 40
+  percent: 0
+  status: NOT_STARTED
+  basis: []
+- id: AC-S03
+  ep_id: EP-0162-STATE-SUMMARY-PROOF
+  earned_weight: 0
+  total_weight: 20
+  percent: 0
+  status: NOT_STARTED
+  basis: []
