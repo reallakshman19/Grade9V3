@@ -65,7 +65,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds tempK only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "ExamSIDE currently reports zero JEE Main Gaseous State questions in 2026 and labels the chapter out of syllabus; this 2026 attribution is therefore inconsistent with the live corpus snapshot."
+    "sourceAuditNote": "ExamSIDE currently reports zero JEE Main Gaseous State questions in 2026 and labels the chapter out of syllabus; this 2026 attribution is therefore inconsistent with the live corpus snapshot.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Z = 1 - a / (R T V_m) (Option A).",
+    "takeaway": "Transfer rule: start from (P + a/V_m²)(V_m - b) = R T; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q02",
@@ -122,7 +131,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Gas W (Option A).",
+    "takeaway": "Transfer rule: start from Critical Temperature T_c = 8a / (27 R b); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q03",
@@ -184,7 +202,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds tempK only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 1 : 1.128 : 1.224 (Option A).",
+    "takeaway": "Transfer rule: start from v_mp = √(2RT/M),  v_avg = √(8RT/πM),  v_rms = √(3RT/M); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q04",
@@ -242,7 +269,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 4 × N_A × (4/3 π r³) (Option A).",
+    "takeaway": "Transfer rule: start from b = 4 × N_A × V_molecule; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q05",
@@ -300,7 +336,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 5.12 g/mol (Option A).",
+    "takeaway": "Transfer rule: start from Rate of effusion r = V / t; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q06",
@@ -356,7 +401,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "ExamSIDE currently reports zero JEE Main Gaseous State questions in 2026 and labels the chapter out of syllabus; this 2026 attribution is therefore inconsistent with the live corpus snapshot."
+    "sourceAuditNote": "ExamSIDE currently reports zero JEE Main Gaseous State questions in 2026 and labels the chapter out of syllabus; this 2026 attribution is therefore inconsistent with the live corpus snapshot.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select T_B = a / (R b) (Option A).",
+    "takeaway": "Transfer rule: start from At T_B, initial slope (∂Z/∂P)_{P→0} = 0 ⇒ b - a/(RT) = 0 ⇒ T_B = a / (Rb); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q07",
@@ -413,7 +467,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 0.375 (or 3/8) (Option A).",
+    "takeaway": "Transfer rule: start from Z_c = (P_c V_c) / (R T_c) = [ (a / 27b²) · (3b) ] / [ R · (8a / 27Rb) ] = 3/8 = 0; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q08",
@@ -471,7 +534,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Z = 1 + (P b) / (R T) (Option A).",
+    "takeaway": "Transfer rule: start from P >> a/V² ⇒ P(V_m - b) = RT ⇒ PV_m - Pb = RT ⇒ Z = PV_m / RT = 1 + Pb / (RT); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q09",
@@ -533,7 +605,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 1 : 1.128 : 1.224  (√2 : √(8/π) : √3) (Option A).",
+    "takeaway": "Transfer rule: start from v_mp = √(2RT/M),  v_avg = √(8RT/πM),  v_rms = √(3RT/M); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q10",
@@ -591,7 +672,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Z = 1 + (Pb / RT) (Option A).",
+    "takeaway": "Transfer rule: start from At high pressure, P >> a/V² ⇒ (P + a/V²)(V - b) = RT becomes P(V - b) = RT ⇒ PV = RT + Pb ⇒ Z = 1 + Pb/RT; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q11",
@@ -649,7 +739,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 726 mm Hg (Option A).",
+    "takeaway": "Transfer rule: start from P_dry gas = P_total - P_aqueous tension  (Dalton's Law of Partial Pressures); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q12",
@@ -708,7 +807,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 81.9 g/mol (≈ 82 g/mol) (Option A).",
+    "takeaway": "Transfer rule: start from Rate r = V / t; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q13",
@@ -766,7 +874,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select b = 4 N_A V_m  (4 times the actual molecular volume) (Option A).",
+    "takeaway": "Transfer rule: start from Excluded volume per pair = (4/3) π (2r)³ = 8 V_m; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q14",
@@ -823,7 +940,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select H₂ and He (Option A).",
+    "takeaway": "Transfer rule: start from For H₂ and He, intermolecular attractive forces are negligible (a ≈ 0) due to very small size and low polarizability ⇒ Z = 1 + Pb/RT > 1; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q15",
@@ -881,7 +1007,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select T_B = a / (R b) (Option A).",
+    "takeaway": "Transfer rule: start from Z = 1 + (b - a/RT)(P/RT); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q16",
@@ -942,7 +1077,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 3 / 8  (= 0.375) (Option A).",
+    "takeaway": "Transfer rule: start from P_c = a / (27 b²),  V_c = 3 b,  T_c = 8 a / (27 R b) ⇒ Z_c = (P_c V_c) / (R T_c) = 3/8 = 0; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q17",
@@ -1000,7 +1144,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select E_trans(H₂) is 16 times E_trans(O₂) (Option A).",
+    "takeaway": "Transfer rule: start from Total translational KE = (3/2) n R T = (3/2) (m / M) R T ∝ 1 / M for equal mass; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q18",
@@ -1056,7 +1209,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Only when temperature T is at or below its critical temperature (T ≤ T_c) (Option A).",
+    "takeaway": "Transfer rule: start from Critical temperature T_c is the maximum temperature above which a gas CANNOT be liquefied, no matter how much pressure is applied; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q19",
@@ -1115,7 +1277,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select N m⁴ mol⁻²  and  m³ mol⁻¹ (Option A).",
+    "takeaway": "Transfer rule: start from Pressure correction: [a n² / V²] = [P] ⇒ [a] = [P] [V²] / [n²]; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "GAS-Q20",
@@ -1174,6 +1345,15 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 600 K (Option A).",
+    "takeaway": "Transfer rule: start from v_rms = √(3RT/M) ⇒ T / M = constant for equal v_rms; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   }
 ];
