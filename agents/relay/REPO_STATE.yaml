@@ -53,7 +53,7 @@
       "state": "READY",
       "can_continue": true,
       "material_authority": "WRITE",
-      "next_action": "Implement the renderer-independent presentation slice: keep visual representation/scene, reasoning checkpoint and pedagogy injection references separate while preserving existing feedback and review ownership."
+      "next_action": "Validate the renderer-independent presentation slice on the current PR head; preserve visual, checkpoint and pedagogy references as separate session-only outputs and continue to final NLM witnesses only after the presentation falsifiers pass."
     },
     "quality": {
       "state": "NEEDS_ATTENTION",
@@ -146,13 +146,17 @@
     "required": true,
     "provider": "GITHUB",
     "observation": {
-      "id": "DOBS-PR148-RM0008",
-      "path": "agents/relay/delivery/DOBS-PR148-RM0008.yaml"
+      "id": "DOBS-PR166-RM0008",
+      "path": "agents/relay/delivery/DOBS-PR166-RM0008.yaml"
     },
     "observations": [
       {
         "id": "DOBS-PR148-RM0008",
         "path": "agents/relay/delivery/DOBS-PR148-RM0008.yaml"
+      },
+      {
+        "id": "DOBS-PR166-RM0008",
+        "path": "agents/relay/delivery/DOBS-PR166-RM0008.yaml"
       }
     ]
   },
