@@ -33,21 +33,14 @@ window.JEE_QUESTIONS_DATA = [
     "correct": "A",
     "formula": "CrO₅ has a butterfly structure: one oxo oxygen (=O, O.S. = -2) and two peroxo bridges (-O-O-, four oxygens each with O.S. = -1)",
     "steps": [
-      "Step 1: Cr belongs to Group 6 (valence electronic configuration 3d⁵ 4s¹), so its maximum possible oxidation state is +6. Any state above +6 is physically impossible!",
-      "Step 2: If we naively apply standard algebraic formula: x + 5(-2) = 0 ⇒ x = +10. This is the classic algebraic trap.",
-      "Step 3: Draw the physical molecular structure of CrO₅ (butterfly structure):",
-      "        O",
-      "       //",
-      "      Cr",
-      "     /  \\",
-      "  O-O    O-O",
-      "Step 4: Count oxidation contributions by heterolytic cleavage:",
-      "        One double-bonded oxo oxygen (=O) contributes -2.",
-      "        Four peroxo oxygens (-O-O-) each contribute -1: 4 × (-1) = -4.",
-      "Step 5: Charge balance on neutral CrO₅: x + (-2) + 4(-1) = 0 ⇒ x - 6 = 0 ⇒ x = +6."
+      "Step 1: Inspect the structure before using the usual oxygen rule. CrO₅ contains one oxo oxygen and two O–O peroxo groups; oxygen in a peroxide unit is assigned oxidation state -1.",
+      "Step 2: Let the chromium oxidation state be x. The oxo oxygen contributes -2 and the four peroxo oxygens contribute 4 × (-1).",
+      "Step 3: Charge balance for neutral CrO₅: x + (-2) + 4(-1) = 0, so x = +6.",
+      "Step 4: The tempting x + 5(-2) = 0 calculation fails because it assumes every oxygen is ordinary oxide oxygen and ignores the O–O peroxide bonds.",
+      "Step 5: Oxidation state is a formal electron-bookkeeping assignment, not a measured charge sitting on the chromium atom."
     ],
     "ans": "+6 (Option A)",
-    "trap": "The #1 trap in inorganic chemistry: blindly solving x + 5(-2) = 0 to get +10! Chromium cannot lose 10 electrons because it only has 6 valence electrons.",
+    "trap": "Do not apply O = -2 blindly. First scan the structure for O–O peroxide or superoxide units; the structural exception changes the bookkeeping.",
     "distractorTraps": {
       "B": "Fell into the algebraic trap assuming all five oxygens are oxide ions (O²⁻).",
       "C": "Confused with valence d-electron count.",
@@ -72,8 +65,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +6 (Option A).",
-    "takeaway": "Transfer rule: start from CrO₅ has a butterfly structure: one oxo oxygen (=O, O; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: +6 + (-2) + 4(-1) = 0, so the assigned oxidation states reproduce the neutral formula exactly.",
+    "takeaway": "Transfer rule: before oxidation-number algebra, scan for structural exceptions such as O–O peroxide bonds, superoxides, hydrides and elemental bonds.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -143,8 +136,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 5, 3, 1 (Option A).",
-    "takeaway": "Transfer rule: start from n-factor = |Δ(Oxidation State)|; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: the three reduction half-reactions consume 5 e⁻, 3 e⁻ and 1 e⁻ per MnO₄⁻ in acidic, neutral/weakly alkaline and strongly basic conditions respectively.",
+    "takeaway": "Transfer rule: n-factor comes from the actual redox product. Identify the medium and product first, then count the oxidation-state change.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -180,19 +173,16 @@ window.JEE_QUESTIONS_DATA = [
       }
     ],
     "correct": "A",
-    "formula": "In disproportionation: 1/n_net = 1/n_ox + 1/n_red, or n = Total electrons transferred per mole of reactant",
+    "formula": "For this balanced disproportionation, n-factor(P₄) = electrons transferred per mole of P₄ = 3.",
     "steps": [
-      "Step 1: Oxidation states: P in P₄ is 0. In PH₃: x + 3(+1) = 0 ⇒ x = -3 (Reduction). In H₂PO₂⁻: 2(+1) + x + 2(-2) = -1 ⇒ x = +1 (Oxidation).",
-      "Step 2: Balance half-reactions per mole of P₄:",
-      "        Reduction: P₄ + 12e⁻ → 4 PH₃  (Change = 12 electrons)",
-      "        Oxidation: P₄ → 4 H₂PO₂⁻ + 4e⁻ (Change = 4 electrons)",
-      "Step 3: But look at the stoichiometry of the combined equation: 1 mole of P₄ produces 1 mole of PH₃ and 3 moles of H₂PO₂⁻.",
-      "Step 4: Number of P atoms reduced = 1 atom (from 0 to -3 ⇒ 3 electrons gained). Number of P atoms oxidized = 3 atoms (from 0 to +1 ⇒ 3 electrons lost).",
-      "Step 5: Total electrons transferred PER MOLE of P₄ = 3. Therefore, n-factor of P₄ = 3.",
-      "Step 6: Equivalent weight E = M / n = M / 3."
+      "Step 1: In P₄, phosphorus is 0. In PH₃ it is -3, while in H₂PO₂⁻ it is +1.",
+      "Step 2: The balanced reaction sends one of the four P atoms to -3 and the other three P atoms to +1.",
+      "Step 3: The reduced P atom gains 3 e⁻. The three oxidized P atoms each lose 1 e⁻, for 3 e⁻ lost in total.",
+      "Step 4: Electron loss and gain therefore match at 3 e⁻ per mole of P₄.",
+      "Step 5: n-factor(P₄) = 3, so equivalent weight = M/3."
     ],
     "ans": "M / 3 (Option A)",
-    "trap": "Students often calculate 12 electrons transferred for 4 moles of P, forgetting that 1 mole of P₄ only transfers 3 electrons!",
+    "trap": "Do not count a hypothetical change for all four P atoms in the same direction. Disproportionation splits identical starting atoms between oxidation and reduction products.",
     "distractorTraps": {
       "B": "Divided by 4 (number of atoms in P₄).",
       "C": "Used total electrons (12) without dividing by stoichiometric moles.",
@@ -213,8 +203,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select M / 3 (Option A).",
-    "takeaway": "Transfer rule: start from In disproportionation: 1/n_net = 1/n_ox + 1/n_red, or n = Total electrons transferred per mole of reactant; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: electrons lost = 3 × 1 = 3 and electrons gained = 1 × 3 = 3; the electron ledger closes.",
+    "takeaway": "Transfer rule: for disproportionation, use the balanced product split and count the matched electron transfer per mole of the reacting substance.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -252,15 +242,15 @@ window.JEE_QUESTIONS_DATA = [
     "correct": "A",
     "formula": "S₄O₆²⁻ structure: [O₃S - S - S - SO₃]²⁻. Homonuclear S-S bonds have Δ(O.S.) = 0",
     "steps": [
-      "Step 1: The average oxidation state of sulfur from algebraic formula: 4x + 6(-2) = -2 ⇒ 4x = 10 ⇒ x = +2.5.",
-      "Step 2: But fractional oxidation states are physically impossible for individual atoms! They are merely statistical averages.",
-      "Step 3: Draw the structural formula of tetrathionate: ⁻O₃S - S - S - SO₃⁻.",
-      "Step 4: The two central sulfur atoms are bonded only to each other and adjacent sulfurs (S - S). Because both atoms have identical electronegativity, the homonuclear S-S covalent bonds contribute 0 to the oxidation state: central sulfurs = 0.",
-      "Step 5: Each of the two terminal sulfur atoms is bonded to three oxygen atoms (one -O⁻ and two =O) and one sulfur: x + 3(-2) + 1 = -1 ⇒ x = +5.",
-      "Step 6: Therefore, the individual oxidation states are +5, 0, 0, +5."
+      "Step 1: Formula algebra gives an average sulfur oxidation number of +2.5 because 4x + 6(-2) = -2.",
+      "Step 2: That +2.5 is a formula-average description; the structure lets us make atom-by-atom formal assignments.",
+      "Step 3: In the S–S–S–S skeleton, homonuclear S–S bonds contribute zero to oxidation-state assignment, so the two central sulfur atoms are assigned 0.",
+      "Step 4: Let each equivalent terminal sulfur be x. Using the whole ion: 2x + 0 + 0 + 6(-2) = -2, giving x = +5.",
+      "Step 5: The atom-by-atom formal assignments are therefore +5, 0, 0, +5.",
+      "Step 6: Check: (+5) + 0 + 0 + (+5) + 6(-2) = -2, matching the ion charge."
     ],
     "ans": "+5, 0, 0, +5 (Option A)",
-    "trap": "Do not pick the fractional algebraic average (+2.5); individual atoms have discrete integer oxidation states: +5, 0, 0, +5!",
+    "trap": "Do not confuse the formula-average value (+2.5) with the atom-by-atom structural assignment requested in the question.",
     "distractorTraps": {
       "B": "Picked the algebraic average (+2.5) instead of structural localized states.",
       "C": "Assumed terminal sulfur was +6 like in sulfate.",
@@ -285,8 +275,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +5, 0, 0, +5 (Option A).",
-    "takeaway": "Transfer rule: start from S₄O₆²⁻ structure: [O₃S - S - S - SO₃]²⁻; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: +5 + 0 + 0 + +5 - 12 = -2, exactly reproducing the tetrathionate charge.",
+    "takeaway": "Transfer rule: when equivalent-looking algebra gives an average value, inspect connectivity; homonuclear bonds contribute zero and can reveal distinct formal oxidation states.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -355,8 +345,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 0.50 mol (Option A).",
-    "takeaway": "Transfer rule: start from Equivalents of K₂Cr₂O₇ = Equivalents of FeC₂O₄; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: one dichromate accepts 6 e⁻, while one FeC₂O₄ loses 3 e⁻; therefore 0.5 mol dichromate accepts the electrons from 1 mol FeC₂O₄.",
+    "takeaway": "Transfer rule: when several parts of one formula unit are oxidized, add all electron losses before matching them to the oxidant.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -394,14 +384,14 @@ window.JEE_QUESTIONS_DATA = [
     "correct": "A",
     "formula": "Fe₃O₄ is a stoichiometric mixed oxide: FeO · Fe₂O₃",
     "steps": [
-      "Step 1: In Fe₃O₄, algebraic formula gives 3x + 4(-2) = 0 ⇒ x = +8/3.",
-      "Step 2: A fractional oxidation state indicates a mixed-valence compound containing iron in different discrete integer oxidation states.",
-      "Step 3: Fe₃O₄ crystallizes in an inverse spinel lattice where: one Fe atom is divalent (Fe²⁺ in FeO, O.S. = +2), and two Fe atoms are trivalent (Fe³⁺ in Fe₂O₃, O.S. = +3).",
-      "Step 4: Ratio of Fe²⁺ : Fe³⁺ = 1 : 2. Average = (2 + 2 × 3) / 3 = 8/3.",
-      "Step 5: Therefore, Fe₃O₄ is a mixture of Fe(II) and Fe(III) in 1:2 ratio."
+      "Step 1: Formula algebra gives the average value 3x + 4(-2) = 0, so x = +8/3.",
+      "Step 2: Magnetite is conventionally described as a mixed-valence oxide containing Fe(II) and Fe(III) in a 1:2 stoichiometric ratio.",
+      "Step 3: A useful formal decomposition is FeO·Fe₂O₃, corresponding to one Fe(II) and two Fe(III) per Fe₃O₄ formula unit.",
+      "Step 4: Average check: [2 + 3 + 3]/3 = 8/3.",
+      "Step 5: These oxidation states are formal bookkeeping labels; they should not be described as literal localized atomic charges."
     ],
     "ans": "A mixture of Fe(II) and Fe(III) in 1 : 2 ratio (Option A)",
-    "trap": "Do not select +8/3 as an actual physical state; oxidation states represent real localized charges in crystal lattices!",
+    "trap": "The question asks for the mixed-valence description, not merely the formula-average +8/3. Do not equate either oxidation-state notation with measured atomic charge.",
     "distractorTraps": {
       "B": "Picked the statistical average without recognizing mixed oxide reality.",
       "C": "Assumed all divalent.",
@@ -426,8 +416,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select A mixture of Fe(II) and Fe(III) in 1 : 2 ratio (Option A).",
-    "takeaway": "Transfer rule: start from Fe₃O₄ is a stoichiometric mixed oxide: FeO · Fe₂O₃; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: one +2 and two +3 assignments sum to +8, exactly balancing four O at -2.",
+    "takeaway": "Transfer rule: distinguish a formula-average oxidation number from a structure-supported mixed-valence formal assignment.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -497,8 +487,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select M / 3 (Option A).",
-    "takeaway": "Transfer rule: start from Equivalent Mass = Molar Mass / n-factor; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: MnO₄⁻ + 2H₂O + 3e⁻ → MnO₂ + 4OH⁻ balances atoms and charge, confirming n = 3.",
+    "takeaway": "Transfer rule: equivalent mass depends on the reaction product; write or identify the relevant half-reaction before using M/n.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -564,8 +554,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select -212.3 kJ/mol (Option A).",
-    "takeaway": "Transfer rule: start from E°_cell = E°_cathode - E°_anode = 0; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: 2 × 96500 × 1.10 = 212300 J mol⁻¹, and E°cell > 0 requires ΔG° < 0 through ΔG° = -nFE°.",
+    "takeaway": "Transfer rule: calculate E°cell from reduction potentials, determine the electron count n from the balanced cell reaction, then use ΔG° = -nFE° with units.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -603,14 +593,14 @@ window.JEE_QUESTIONS_DATA = [
     "correct": "A",
     "formula": "H₂SO₅ has 1 peroxo linkage (-O-O-, O.S. = -1 each); H₂S₂O₈ has 1 peroxo bridge linking two -SO₃H groups.",
     "steps": [
-      "Step 1: Algebraic trap in H₂SO₅: 2(+1) + x + 5(-2) = 0 ⇒ x = +8. But sulfur has only 6 valence electrons, so its maximum possible oxidation state is +6!",
-      "Step 2: Structural cleavage of H₂SO₅: Structure is H-O-SO₂-O-O-H. It contains three oxide oxygens (-2 each), one peroxo group (-1 each), and two hydrogens (+1 each).",
-      "Step 3: Correct equation: 2(+1) + x + 3(-2) + 2(-1) = 0 ⇒ x - 6 = 0 ⇒ x = +6.",
-      "Step 4: Algebraic trap in H₂S₂O₈: 2(+1) + 2x + 8(-2) = 0 ⇒ 2x = 14 ⇒ x = +7 (violates octet ceiling +6).",
-      "Step 5: Structural cleavage of H₂S₂O₈: Structure is HO₃S-O-O-SO₃H. Two peroxo oxygens (-1 each) and six oxide oxygens (-2 each): 2(+1) + 2x + 6(-2) + 2(-1) = 0 ⇒ 2x = 12 ⇒ x = +6 on each sulfur atom."
+      "Step 1: Inspect each acid for an O–O peroxide linkage before assigning every oxygen as -2.",
+      "Step 2: In H₂SO₅, three oxygens are assigned -2 and the two peroxide oxygens are -1: 2(+1) + x + 3(-2) + 2(-1) = 0, so S = +6.",
+      "Step 3: In H₂S₂O₈, six oxygens are assigned -2 and the two peroxide oxygens are -1: 2(+1) + 2x + 6(-2) + 2(-1) = 0.",
+      "Step 4: Solving gives 2x = 12, so each sulfur is +6.",
+      "Step 5: The wrong +8 or +7 results come from applying O = -2 to the peroxide oxygens."
     ],
     "ans": "+6 and +6 (Option A)",
-    "trap": "Never allow sulfur's oxidation state to exceed its group valence (+6)! Whenever algebra yields +8 or +7, suspect peroxo linkages (-O-O-).",
+    "trap": "When an oxoacid contains an O–O peroxide bond, the two peroxide oxygens are assigned -1. The structural exception—not a valence-electron 'ceiling'—is what fixes the calculation.",
     "distractorTraps": {
       "B": "BLIND ALGEBRA TRAP: Calculated +8 for H₂SO₅ and +7 for H₂S₂O₈ assuming all oxygens are -2 oxide.",
       "C": "Calculated Caro's acid correctly (+6) but fell into algebraic trap for Marshall's acid (+7).",
@@ -630,8 +620,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +6 and +6 (Option A).",
-    "takeaway": "Transfer rule: start from H₂SO₅ has 1 peroxo linkage (-O-O-, O; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: H₂SO₅ gives +2 +6 -6 -2 = 0; H₂S₂O₈ gives +2 +12 -12 -2 = 0.",
+    "takeaway": "Transfer rule: recognize peroxide connectivity first; only then apply the oxidation-number sum rule.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -667,16 +657,16 @@ window.JEE_QUESTIONS_DATA = [
       }
     ],
     "correct": "A",
-    "formula": "NO acts as nitrosonium cation (NO⁺). Fe has O.S. = +1 (d⁷ high spin, 3 unpaired e⁻ ⇒ μ = √[3(5)] = √15 ≈ 3.87 BM).",
+    "formula": "JEE/formal model: treating coordinated NO as NO⁺ gives Fe(I); the {FeNO}⁷ unit has quartet spin S = 3/2, giving μspin-only = √15 ≈ 3.87 BM.",
     "steps": [
-      "Step 1: In the brown ring complex, nitric oxide transfers an electron to Fe²⁺, converting into the nitrosonium cation (NO⁺).",
-      "Step 2: Iron is reduced from Fe²⁺ to Fe⁺: [Fe⁺ (H₂O)₅ (NO⁺)]²⁺ SO₄²⁻.",
-      "Step 3: Charge balance on complex cation: x + 5(0) + (+1) = +2 ⇒ x = +1.",
-      "Step 4: Electronic configuration of Fe⁺ (Z = 26): [Ar] 3d⁷ 4s⁰. High spin configuration: t_2g⁵ e_g².",
-      "Step 5: Number of unpaired electrons n = 3. Spin-only magnetic moment: μ = √[n(n+2)] = √[3 × 5] = √15 ≈ 3.87 BM."
+      "Step 1: The complex cation [Fe(H₂O)₅(NO)]²⁺ has overall charge +2; water is neutral.",
+      "Step 2: In the conventional exam bookkeeping model, coordinated NO is treated as NO⁺. Charge balance then gives x + (+1) = +2, so Fe is assigned +1.",
+      "Step 3: The observed/formal {FeNO}⁷ unit is a quartet (S = 3/2), corresponding to three unpaired electrons in the simple spin-only count.",
+      "Step 4: μ = √[n(n+2)] = √[3×5] = √15 ≈ 3.87 BM.",
+      "Step 5: Advanced caveat: metal nitrosyls are non-innocent. Modern bonding descriptions often use Enemark–Feltham {FeNO}⁷ notation rather than claiming a unique localized Fe(I)/NO⁺ electron distribution."
     ],
     "ans": "+1 and 3.87 BM (3 unpaired electrons) (Option A)",
-    "trap": "Do not treat NO as neutral! Here NO is NO⁺ (nitrosonium), making Fe = +1, which is proved by magnetic moment 3.87 BM (3 unpaired e⁻).",
+    "trap": "Do not claim that the magnetic moment uniquely proves a literal Fe(I)–NO⁺ charge distribution. The +1 answer is the conventional exam formalism; the Fe–NO unit is electronically non-innocent.",
     "distractorTraps": {
       "B": "Treated NO as neutral ligand, concluding Fe = +2 with 4 unpaired electrons (μ = 4.90 BM).",
       "C": "Assumed Fe³⁺ high-spin state with 5 unpaired electrons.",
@@ -691,13 +681,13 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "sourceAudit": "SOURCE_PROVENANCE_PENDING",
     "answerAudit": "PASS",
-    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "answerAuditNote": "Locally reviewed on 2026-09-20 under the conventional JEE Fe(I)/NO⁺ formalism; modern Fe–NO bonding is non-innocent, so the local oxidation-state description is model-dependent. Source-item provenance/key remains unverified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +1 and 3.87 BM (3 unpaired electrons) (Option A).",
-    "takeaway": "Transfer rule: start from NO acts as nitrosonium cation (NO⁺); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check under the stated JEE convention: Fe(+1) + NO(+1) gives the +2 complex charge, while n = 3 unpaired electrons gives √15 ≈ 3.87 BM.",
+    "takeaway": "Transfer rule: with redox-active or non-innocent ligands, state the formal electron-counting convention explicitly and separate it from a literal charge picture.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -766,8 +756,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 3 (Option A).",
-    "takeaway": "Transfer rule: start from n-factor = ∑ (Moles of e⁻ lost by each oxidized atom per mole of salt) = n(Fe²⁺ → Fe³⁺) + n(C₂O₄²⁻ → 2 CO₂); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: Fe²⁺ loses 1 e⁻ and C₂O₄²⁻ loses 2 e⁻, so the formula unit loses 3 e⁻ in total.",
+    "takeaway": "Transfer rule: compute n-factor from the complete reaction of the whole formula unit; add electron changes from every redox-active component.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -803,16 +793,16 @@ window.JEE_QUESTIONS_DATA = [
       }
     ],
     "correct": "A",
-    "formula": "CaOCl₂ exists as a mixed salt Ca²⁺ (Cl⁻) (OCl⁻). Average O.S. is 0, but individual O.S. are -1 and +1.",
+    "formula": "Textbook/JEE idealization: bleaching powder is represented as Ca(OCl)Cl, containing Cl⁻ and OCl⁻; the two chlorine oxidation states are -1 and +1.",
     "steps": [
-      "Step 1: Bleaching powder is chemically calcium hypochlorite-chloride: Ca(OCl)Cl.",
-      "Step 2: It ionizes into Ca²⁺, chloride ion (Cl⁻), and hypochlorite ion (OCl⁻).",
-      "Step 3: In the chloride ion (Cl⁻), the oxidation state of chlorine is -1.",
-      "Step 4: In the hypochlorite ion (OCl⁻): O is -2, net charge is -1 ⇒ x + (-2) = -1 ⇒ x = +1.",
-      "Step 5: Average oxidation state is (-1 + 1)/2 = 0, but the two chlorines are chemically and structurally distinct with oxidation states -1 and +1."
+      "Step 1: Use the textbook/JEE representation Ca(OCl)Cl for bleaching powder; real commercial bleaching powder can have more complex composition.",
+      "Step 2: The chloride component is Cl⁻, so that chlorine is -1.",
+      "Step 3: In hypochlorite OCl⁻, oxygen is -2 and x + (-2) = -1, giving chlorine +1.",
+      "Step 4: Therefore the two formal chlorine oxidation states in the model are -1 and +1.",
+      "Step 5: Their arithmetic average is 0, but the question asks for the distinct species represented in the structural model."
     ],
     "ans": "-1 and +1 (Option A)",
-    "trap": "AVERAGE VS REAL O.S. TRAP: Algebra gives 2 + (-2) + 2x = 0 ⇒ x = 0. Reporting zero ignores the two completely different chemical species (Cl⁻ and OCl⁻)!",
+    "trap": "Do not report only the average value 0 when the textbook model explicitly contains chloride and hypochlorite chlorine in different environments.",
     "distractorTraps": {
       "B": "Reported average oxidation state (0) for both atoms.",
       "C": "Assumed both chlorines are simple chloride ions (-1).",
@@ -832,8 +822,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select -1 and +1 (Option A).",
-    "takeaway": "Transfer rule: start from CaOCl₂ exists as a mixed salt Ca²⁺ (Cl⁻) (OCl⁻); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: Ca²⁺ + Cl⁻ + OCl⁻ is charge-neutral, and the OCl⁻ assignment (+1) + (-2) = -1.",
+    "takeaway": "Transfer rule: for mixed salts, split the formula into its constituent ions before assigning oxidation states.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -901,8 +891,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select M/5,  M/3,  M/1 (Option A).",
-    "takeaway": "Transfer rule: start from Equivalent Weight = M / (n-factor); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: M/5, M/3 and M/1 follow directly from 5, 3 and 1 electrons accepted per permanganate in the three stated media.",
+    "takeaway": "Transfer rule: equivalent weight is reaction-dependent; determine the reduction product and n-factor before using M/n.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -974,8 +964,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 3 (Option A).",
-    "takeaway": "Transfer rule: start from For disproportionation: n-factor = Total moles of electrons transferred per mole of substance; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: 3 e⁻ are lost by three P atoms and 3 e⁻ are gained by the one reduced P atom, so n(P₄) = 3.",
+    "takeaway": "Transfer rule: in disproportionation, count the matched electron transfer from the balanced split of atoms between the two products.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -1041,8 +1031,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 2 : 1 (Option A).",
-    "takeaway": "Transfer rule: start from 2 MnO₄⁻ + I⁻ + H₂O → 2 MnO₂ + IO₃⁻ + 2 OH⁻; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: 2MnO₄⁻ + I⁻ + H₂O → 2MnO₂ + IO₃⁻ + 2OH⁻ has equal atoms and net charge -3 on both sides.",
+    "takeaway": "Transfer rule: the reaction medium can change the oxidation product; balance the actual half-reactions before reading the stoichiometric ratio.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -1108,8 +1098,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +0.32 V and Spontaneous (Option A).",
-    "takeaway": "Transfer rule: start from E°_cell = E°_cathode - E°_anode; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: (-0.44) - (-0.76) = +0.32 V; a positive standard cell potential gives negative ΔG° for the written forward reaction.",
+    "takeaway": "Transfer rule: with tabulated reduction potentials, identify cathode and anode first, then use E°cell = E°cathode - E°anode.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -1147,15 +1137,14 @@ window.JEE_QUESTIONS_DATA = [
     "correct": "A",
     "formula": "NH₄NO₃ ionizes into NH₄⁺ and NO₃⁻. In NH₄⁺: x + 4(+1) = +1 ⇒ x = -3. In NO₃⁻: y + 3(-2) = -1 ⇒ y = +5.",
     "steps": [
-      "Step 1: NH₄NO₃ is an ionic compound composed of the polyatomic cation NH₄⁺ and the polyatomic anion NO₃⁻.",
-      "Step 2: Calculate oxidation state of N in ammonium ion (NH₄⁺):",
-      "        x + 4(+1) = +1 ⇒ x + 4 = 1 ⇒ x = -3.",
-      "Step 3: Calculate oxidation state of N in nitrate ion (NO₃⁻):",
-      "        y + 3(-2) = -1 ⇒ y - 6 = -1 ⇒ y = +5.",
-      "Step 4: Average oxidation state from blind molecular formula N₂H₄O₃ is: 2N + 4 - 6 = 0 ⇒ 2N = +2 ⇒ N = +1. But the two nitrogen atoms have real oxidation states of -3 and +5!"
+      "Step 1: Treat NH₄NO₃ as the ionic compound NH₄⁺ + NO₃⁻.",
+      "Step 2: In NH₄⁺: x + 4(+1) = +1, so N = -3.",
+      "Step 3: In NO₃⁻: y + 3(-2) = -1, so N = +5.",
+      "Step 4: Applying one average value to the empirical formula would give +1, but that average hides the two chemically distinct nitrogen environments.",
+      "Step 5: Oxidation states are formal bookkeeping assignments, not literal measured charges on the nitrogen atoms."
     ],
     "ans": "-3 and +5 (Option A)",
-    "trap": "Reporting +1 is the classic average oxidation state trap! The nitrogen in ammonium is in its lowest oxidation state (-3) while in nitrate it is in its highest (+5).",
+    "trap": "Do not average across chemically distinct polyatomic ions when the question asks for the individual formal oxidation states.",
     "distractorTraps": {
       "B": "Reported the blind algebraic average (+1) for both nitrogen atoms.",
       "C": "Confused nitrate NO₃⁻ with nitrite NO₂⁻ (+3).",
@@ -1175,8 +1164,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select -3 and +5 (Option A).",
-    "takeaway": "Transfer rule: start from NH₄NO₃ ionizes into NH₄⁺ and NO₃⁻; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: (-3) + 4(+1) = +1 for NH₄⁺ and (+5) + 3(-2) = -1 for NO₃⁻.",
+    "takeaway": "Transfer rule: split ionic compounds into their actual ions before doing oxidation-state arithmetic.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -1212,18 +1201,16 @@ window.JEE_QUESTIONS_DATA = [
       }
     ],
     "correct": "A",
-    "formula": "Equivalents of K₂Cr₂O₇ = Equivalents of I₂ liberated = Equivalents of Na₂S₂O₃. N₁ V₁ = N₂ V₂.",
+    "formula": "Cr₂O₇²⁻ accepts 6 e⁻ in acid; 2S₂O₃²⁻ → S₄O₆²⁻ + 2e⁻, so each thiosulfate transfers 1 e⁻.",
     "steps": [
-      "Step 1: In acidic medium, K₂Cr₂O₇ has n-factor = 6 (Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O).",
-      "        Normality of K₂Cr₂O₇ = Molarity × n = 0.02 M × 6 = 0.12 N.",
-      "Step 2: Number of milliequivalents of K₂Cr₂O₇ = N × V = 0.12 N × 25.0 mL = 3.0 meq.",
-      "Step 3: In iodometric titration with hypo: 2 S₂O₃²⁻ + I₂ → S₄O₆²⁻ + 2 I⁻.",
-      "        Here S₂O₃²⁻ has n-factor = 1 (2S(+2) → 2S(+2.5) + 1e⁻).",
-      "        Normality of Na₂S₂O₃ = 0.1 M × 1 = 0.1 N.",
-      "Step 4: Law of Equivalence: meq of hypo = meq of K₂Cr₂O₇ ⇒ 0.1 N × V = 3.0 ⇒ V = 30.0 mL."
+      "Step 1: In acid, one dichromate ion accepts 6 e⁻, so 0.02 M K₂Cr₂O₇ corresponds to 0.12 equivalents per litre.",
+      "Step 2: 25.0 mL contains 0.12 × 25.0 = 3.0 milliequivalents of oxidizing capacity.",
+      "Step 3: Iodine carries the same electron-equivalent amount into the thiosulfate titration.",
+      "Step 4: The titration half-reaction is 2S₂O₃²⁻ → S₄O₆²⁻ + 2e⁻, so thiosulfate has n-factor 1 in this reaction and 0.1 M = 0.1 N.",
+      "Step 5: 0.1 N × V = 3.0 meq, so V = 30.0 mL."
     ],
     "ans": "30.0 mL (Option A)",
-    "trap": "Do not forget that K₂Cr₂O₇ has n-factor = 6 in acid! Using n=1 or n=3 leads to 5 mL or 15 mL traps.",
+    "trap": "Track electron equivalents through both redox stages. Do not infer the thiosulfate n-factor from a misleading average sulfur oxidation number.",
     "distractorTraps": {
       "B": "Used n-factor = 3 for dichromate (15.0 mL).",
       "C": "Equated molarities directly without n-factor (0.02 × 25 / 0.1 = 5 mL) or calculated 10 mL.",
@@ -1243,8 +1230,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 30.0 mL (Option A).",
-    "takeaway": "Transfer rule: start from Equivalents of K₂Cr₂O₇ = Equivalents of I₂ liberated = Equivalents of Na₂S₂O₃; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check by moles: 0.0005 mol dichromate accepts 0.003 mol e⁻; 0.030 L × 0.1 mol/L = 0.003 mol thiosulfate transfers the same electron amount.",
+    "takeaway": "Transfer rule: in linked iodometric titrations, carry electron equivalents through each reaction rather than memorizing disconnected volume formulas.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -1309,8 +1296,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Decrease by 0.0295 V (Option A).",
-    "takeaway": "Transfer rule: start from E_cell = E° - (0; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: multiplying [Zn²⁺] by 10 increases log Q by 1, so ΔE = -(0.0591/2) = -0.02955 V.",
+    "takeaway": "Transfer rule: write the reaction quotient from the balanced cell reaction, then use its direction of change to predict the sign before calculating the Nernst shift.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -1348,15 +1335,14 @@ window.JEE_QUESTIONS_DATA = [
     "correct": "A",
     "formula": "Pb₃O₄ = 2 PbO · PbO₂. Reaction with HNO₃ yields 2 Pb(NO₃)₂ + PbO₂ + 2 H₂O.",
     "steps": [
-      "Step 1: Red lead has formula Pb₃O₄. Blind algebra gives 3x - 8 = 0 ⇒ x = +8/3 (fractional average).",
-      "Step 2: In reality, Pb₃O₄ is a stoichiometric mixed crystal oxide: 2 PbO · PbO₂ (dilead(II) lead(IV) oxide).",
-      "Step 3: Two lead atoms are in +2 oxidation state (basic PbO component).",
-      "Step 4: One lead atom is in +4 oxidation state (acidic/amphoteric PbO₂ component).",
-      "Step 5: Chemical proof: When treated with dilute HNO₃, only the basic PbO dissolves to form Pb(NO₃)₂, leaving insoluble brown PbO₂ precipitate:",
-      "        Pb₃O₄ + 4 HNO₃ → 2 Pb(NO₃)₂ [Pb²⁺] + PbO₂↓ [Pb⁴⁺] + 2 H₂O."
+      "Step 1: Formula algebra gives the average lead oxidation number +8/3 because 3x + 4(-2) = 0.",
+      "Step 2: Red lead is conventionally represented as the mixed-valence oxide 2PbO·PbO₂.",
+      "Step 3: That formal description contains two Pb(II) and one Pb(IV) per Pb₃O₄ formula unit.",
+      "Step 4: Average check: [2 + 2 + 4]/3 = 8/3.",
+      "Step 5: Dilute nitric acid dissolves the PbO component while PbO₂ remains, supporting the mixed-oxide chemical description."
     ],
     "ans": "Two Pb in +2 and one Pb in +4 (Ratio 2:1) (Option A)",
-    "trap": "FRACTIONAL OXIDATION STATE TRAP: Fractional oxidation states like +8/3 are merely mathematical averages; individual atoms always carry integer oxidation states!",
+    "trap": "The +8/3 value is the formula-average oxidation number. For this mixed oxide, the requested formal description is two Pb(II) and one Pb(IV); do not describe oxidation state as literal atomic charge.",
     "distractorTraps": {
       "B": "Reported fractional mathematical average +8/3.",
       "C": "Pb does not exhibit stable +3 oxidation state due to inert pair effect.",
@@ -1376,8 +1362,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Two Pb in +2 and one Pb in +4 (Ratio 2:1) (Option A).",
-    "takeaway": "Transfer rule: start from Pb₃O₄ = 2 PbO · PbO₂; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: 2(+2) + (+4) + 4(-2) = 0, so the mixed-valence assignment exactly balances Pb₃O₄.",
+    "takeaway": "Transfer rule: for known mixed-valence oxides, distinguish the formula-average value from the chemically useful integer formal assignments.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",

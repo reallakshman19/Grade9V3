@@ -2,8 +2,8 @@
 <html lang="en" class="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>IIT-JEE Chemistry · Redox Reactions &amp; Oxidation States Master Suite · Standalone</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 9 Bridge → JEE Chemistry · Redox Reactions Master Suite · Standalone</title>
   
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -50,21 +50,14 @@ window.JEE_QUESTIONS_DATA = [
     "correct": "A",
     "formula": "CrO₅ has a butterfly structure: one oxo oxygen (=O, O.S. = -2) and two peroxo bridges (-O-O-, four oxygens each with O.S. = -1)",
     "steps": [
-      "Step 1: Cr belongs to Group 6 (valence electronic configuration 3d⁵ 4s¹), so its maximum possible oxidation state is +6. Any state above +6 is physically impossible!",
-      "Step 2: If we naively apply standard algebraic formula: x + 5(-2) = 0 ⇒ x = +10. This is the classic algebraic trap.",
-      "Step 3: Draw the physical molecular structure of CrO₅ (butterfly structure):",
-      "        O",
-      "       //",
-      "      Cr",
-      "     /  \\",
-      "  O-O    O-O",
-      "Step 4: Count oxidation contributions by heterolytic cleavage:",
-      "        One double-bonded oxo oxygen (=O) contributes -2.",
-      "        Four peroxo oxygens (-O-O-) each contribute -1: 4 × (-1) = -4.",
-      "Step 5: Charge balance on neutral CrO₅: x + (-2) + 4(-1) = 0 ⇒ x - 6 = 0 ⇒ x = +6."
+      "Step 1: Inspect the structure before using the usual oxygen rule. CrO₅ contains one oxo oxygen and two O–O peroxo groups; oxygen in a peroxide unit is assigned oxidation state -1.",
+      "Step 2: Let the chromium oxidation state be x. The oxo oxygen contributes -2 and the four peroxo oxygens contribute 4 × (-1).",
+      "Step 3: Charge balance for neutral CrO₅: x + (-2) + 4(-1) = 0, so x = +6.",
+      "Step 4: The tempting x + 5(-2) = 0 calculation fails because it assumes every oxygen is ordinary oxide oxygen and ignores the O–O peroxide bonds.",
+      "Step 5: Oxidation state is a formal electron-bookkeeping assignment, not a measured charge sitting on the chromium atom."
     ],
     "ans": "+6 (Option A)",
-    "trap": "The #1 trap in inorganic chemistry: blindly solving x + 5(-2) = 0 to get +10! Chromium cannot lose 10 electrons because it only has 6 valence electrons.",
+    "trap": "Do not apply O = -2 blindly. First scan the structure for O–O peroxide or superoxide units; the structural exception changes the bookkeeping.",
     "distractorTraps": {
       "B": "Fell into the algebraic trap assuming all five oxygens are oxide ions (O²⁻).",
       "C": "Confused with valence d-electron count.",
@@ -89,8 +82,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +6 (Option A).",
-    "takeaway": "Transfer rule: start from CrO₅ has a butterfly structure: one oxo oxygen (=O, O; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: +6 + (-2) + 4(-1) = 0, so the assigned oxidation states reproduce the neutral formula exactly.",
+    "takeaway": "Transfer rule: before oxidation-number algebra, scan for structural exceptions such as O–O peroxide bonds, superoxides, hydrides and elemental bonds.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -160,8 +153,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 5, 3, 1 (Option A).",
-    "takeaway": "Transfer rule: start from n-factor = |Δ(Oxidation State)|; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: the three reduction half-reactions consume 5 e⁻, 3 e⁻ and 1 e⁻ per MnO₄⁻ in acidic, neutral/weakly alkaline and strongly basic conditions respectively.",
+    "takeaway": "Transfer rule: n-factor comes from the actual redox product. Identify the medium and product first, then count the oxidation-state change.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -197,19 +190,16 @@ window.JEE_QUESTIONS_DATA = [
       }
     ],
     "correct": "A",
-    "formula": "In disproportionation: 1/n_net = 1/n_ox + 1/n_red, or n = Total electrons transferred per mole of reactant",
+    "formula": "For this balanced disproportionation, n-factor(P₄) = electrons transferred per mole of P₄ = 3.",
     "steps": [
-      "Step 1: Oxidation states: P in P₄ is 0. In PH₃: x + 3(+1) = 0 ⇒ x = -3 (Reduction). In H₂PO₂⁻: 2(+1) + x + 2(-2) = -1 ⇒ x = +1 (Oxidation).",
-      "Step 2: Balance half-reactions per mole of P₄:",
-      "        Reduction: P₄ + 12e⁻ → 4 PH₃  (Change = 12 electrons)",
-      "        Oxidation: P₄ → 4 H₂PO₂⁻ + 4e⁻ (Change = 4 electrons)",
-      "Step 3: But look at the stoichiometry of the combined equation: 1 mole of P₄ produces 1 mole of PH₃ and 3 moles of H₂PO₂⁻.",
-      "Step 4: Number of P atoms reduced = 1 atom (from 0 to -3 ⇒ 3 electrons gained). Number of P atoms oxidized = 3 atoms (from 0 to +1 ⇒ 3 electrons lost).",
-      "Step 5: Total electrons transferred PER MOLE of P₄ = 3. Therefore, n-factor of P₄ = 3.",
-      "Step 6: Equivalent weight E = M / n = M / 3."
+      "Step 1: In P₄, phosphorus is 0. In PH₃ it is -3, while in H₂PO₂⁻ it is +1.",
+      "Step 2: The balanced reaction sends one of the four P atoms to -3 and the other three P atoms to +1.",
+      "Step 3: The reduced P atom gains 3 e⁻. The three oxidized P atoms each lose 1 e⁻, for 3 e⁻ lost in total.",
+      "Step 4: Electron loss and gain therefore match at 3 e⁻ per mole of P₄.",
+      "Step 5: n-factor(P₄) = 3, so equivalent weight = M/3."
     ],
     "ans": "M / 3 (Option A)",
-    "trap": "Students often calculate 12 electrons transferred for 4 moles of P, forgetting that 1 mole of P₄ only transfers 3 electrons!",
+    "trap": "Do not count a hypothetical change for all four P atoms in the same direction. Disproportionation splits identical starting atoms between oxidation and reduction products.",
     "distractorTraps": {
       "B": "Divided by 4 (number of atoms in P₄).",
       "C": "Used total electrons (12) without dividing by stoichiometric moles.",
@@ -230,8 +220,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select M / 3 (Option A).",
-    "takeaway": "Transfer rule: start from In disproportionation: 1/n_net = 1/n_ox + 1/n_red, or n = Total electrons transferred per mole of reactant; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: electrons lost = 3 × 1 = 3 and electrons gained = 1 × 3 = 3; the electron ledger closes.",
+    "takeaway": "Transfer rule: for disproportionation, use the balanced product split and count the matched electron transfer per mole of the reacting substance.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -269,15 +259,15 @@ window.JEE_QUESTIONS_DATA = [
     "correct": "A",
     "formula": "S₄O₆²⁻ structure: [O₃S - S - S - SO₃]²⁻. Homonuclear S-S bonds have Δ(O.S.) = 0",
     "steps": [
-      "Step 1: The average oxidation state of sulfur from algebraic formula: 4x + 6(-2) = -2 ⇒ 4x = 10 ⇒ x = +2.5.",
-      "Step 2: But fractional oxidation states are physically impossible for individual atoms! They are merely statistical averages.",
-      "Step 3: Draw the structural formula of tetrathionate: ⁻O₃S - S - S - SO₃⁻.",
-      "Step 4: The two central sulfur atoms are bonded only to each other and adjacent sulfurs (S - S). Because both atoms have identical electronegativity, the homonuclear S-S covalent bonds contribute 0 to the oxidation state: central sulfurs = 0.",
-      "Step 5: Each of the two terminal sulfur atoms is bonded to three oxygen atoms (one -O⁻ and two =O) and one sulfur: x + 3(-2) + 1 = -1 ⇒ x = +5.",
-      "Step 6: Therefore, the individual oxidation states are +5, 0, 0, +5."
+      "Step 1: Formula algebra gives an average sulfur oxidation number of +2.5 because 4x + 6(-2) = -2.",
+      "Step 2: That +2.5 is a formula-average description; the structure lets us make atom-by-atom formal assignments.",
+      "Step 3: In the S–S–S–S skeleton, homonuclear S–S bonds contribute zero to oxidation-state assignment, so the two central sulfur atoms are assigned 0.",
+      "Step 4: Let each equivalent terminal sulfur be x. Using the whole ion: 2x + 0 + 0 + 6(-2) = -2, giving x = +5.",
+      "Step 5: The atom-by-atom formal assignments are therefore +5, 0, 0, +5.",
+      "Step 6: Check: (+5) + 0 + 0 + (+5) + 6(-2) = -2, matching the ion charge."
     ],
     "ans": "+5, 0, 0, +5 (Option A)",
-    "trap": "Do not pick the fractional algebraic average (+2.5); individual atoms have discrete integer oxidation states: +5, 0, 0, +5!",
+    "trap": "Do not confuse the formula-average value (+2.5) with the atom-by-atom structural assignment requested in the question.",
     "distractorTraps": {
       "B": "Picked the algebraic average (+2.5) instead of structural localized states.",
       "C": "Assumed terminal sulfur was +6 like in sulfate.",
@@ -302,8 +292,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +5, 0, 0, +5 (Option A).",
-    "takeaway": "Transfer rule: start from S₄O₆²⁻ structure: [O₃S - S - S - SO₃]²⁻; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: +5 + 0 + 0 + +5 - 12 = -2, exactly reproducing the tetrathionate charge.",
+    "takeaway": "Transfer rule: when equivalent-looking algebra gives an average value, inspect connectivity; homonuclear bonds contribute zero and can reveal distinct formal oxidation states.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -372,8 +362,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 0.50 mol (Option A).",
-    "takeaway": "Transfer rule: start from Equivalents of K₂Cr₂O₇ = Equivalents of FeC₂O₄; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: one dichromate accepts 6 e⁻, while one FeC₂O₄ loses 3 e⁻; therefore 0.5 mol dichromate accepts the electrons from 1 mol FeC₂O₄.",
+    "takeaway": "Transfer rule: when several parts of one formula unit are oxidized, add all electron losses before matching them to the oxidant.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -411,14 +401,14 @@ window.JEE_QUESTIONS_DATA = [
     "correct": "A",
     "formula": "Fe₃O₄ is a stoichiometric mixed oxide: FeO · Fe₂O₃",
     "steps": [
-      "Step 1: In Fe₃O₄, algebraic formula gives 3x + 4(-2) = 0 ⇒ x = +8/3.",
-      "Step 2: A fractional oxidation state indicates a mixed-valence compound containing iron in different discrete integer oxidation states.",
-      "Step 3: Fe₃O₄ crystallizes in an inverse spinel lattice where: one Fe atom is divalent (Fe²⁺ in FeO, O.S. = +2), and two Fe atoms are trivalent (Fe³⁺ in Fe₂O₃, O.S. = +3).",
-      "Step 4: Ratio of Fe²⁺ : Fe³⁺ = 1 : 2. Average = (2 + 2 × 3) / 3 = 8/3.",
-      "Step 5: Therefore, Fe₃O₄ is a mixture of Fe(II) and Fe(III) in 1:2 ratio."
+      "Step 1: Formula algebra gives the average value 3x + 4(-2) = 0, so x = +8/3.",
+      "Step 2: Magnetite is conventionally described as a mixed-valence oxide containing Fe(II) and Fe(III) in a 1:2 stoichiometric ratio.",
+      "Step 3: A useful formal decomposition is FeO·Fe₂O₃, corresponding to one Fe(II) and two Fe(III) per Fe₃O₄ formula unit.",
+      "Step 4: Average check: [2 + 3 + 3]/3 = 8/3.",
+      "Step 5: These oxidation states are formal bookkeeping labels; they should not be described as literal localized atomic charges."
     ],
     "ans": "A mixture of Fe(II) and Fe(III) in 1 : 2 ratio (Option A)",
-    "trap": "Do not select +8/3 as an actual physical state; oxidation states represent real localized charges in crystal lattices!",
+    "trap": "The question asks for the mixed-valence description, not merely the formula-average +8/3. Do not equate either oxidation-state notation with measured atomic charge.",
     "distractorTraps": {
       "B": "Picked the statistical average without recognizing mixed oxide reality.",
       "C": "Assumed all divalent.",
@@ -443,8 +433,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select A mixture of Fe(II) and Fe(III) in 1 : 2 ratio (Option A).",
-    "takeaway": "Transfer rule: start from Fe₃O₄ is a stoichiometric mixed oxide: FeO · Fe₂O₃; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: one +2 and two +3 assignments sum to +8, exactly balancing four O at -2.",
+    "takeaway": "Transfer rule: distinguish a formula-average oxidation number from a structure-supported mixed-valence formal assignment.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -514,8 +504,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select M / 3 (Option A).",
-    "takeaway": "Transfer rule: start from Equivalent Mass = Molar Mass / n-factor; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: MnO₄⁻ + 2H₂O + 3e⁻ → MnO₂ + 4OH⁻ balances atoms and charge, confirming n = 3.",
+    "takeaway": "Transfer rule: equivalent mass depends on the reaction product; write or identify the relevant half-reaction before using M/n.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -581,8 +571,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select -212.3 kJ/mol (Option A).",
-    "takeaway": "Transfer rule: start from E°_cell = E°_cathode - E°_anode = 0; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: 2 × 96500 × 1.10 = 212300 J mol⁻¹, and E°cell > 0 requires ΔG° < 0 through ΔG° = -nFE°.",
+    "takeaway": "Transfer rule: calculate E°cell from reduction potentials, determine the electron count n from the balanced cell reaction, then use ΔG° = -nFE° with units.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -620,14 +610,14 @@ window.JEE_QUESTIONS_DATA = [
     "correct": "A",
     "formula": "H₂SO₅ has 1 peroxo linkage (-O-O-, O.S. = -1 each); H₂S₂O₈ has 1 peroxo bridge linking two -SO₃H groups.",
     "steps": [
-      "Step 1: Algebraic trap in H₂SO₅: 2(+1) + x + 5(-2) = 0 ⇒ x = +8. But sulfur has only 6 valence electrons, so its maximum possible oxidation state is +6!",
-      "Step 2: Structural cleavage of H₂SO₅: Structure is H-O-SO₂-O-O-H. It contains three oxide oxygens (-2 each), one peroxo group (-1 each), and two hydrogens (+1 each).",
-      "Step 3: Correct equation: 2(+1) + x + 3(-2) + 2(-1) = 0 ⇒ x - 6 = 0 ⇒ x = +6.",
-      "Step 4: Algebraic trap in H₂S₂O₈: 2(+1) + 2x + 8(-2) = 0 ⇒ 2x = 14 ⇒ x = +7 (violates octet ceiling +6).",
-      "Step 5: Structural cleavage of H₂S₂O₈: Structure is HO₃S-O-O-SO₃H. Two peroxo oxygens (-1 each) and six oxide oxygens (-2 each): 2(+1) + 2x + 6(-2) + 2(-1) = 0 ⇒ 2x = 12 ⇒ x = +6 on each sulfur atom."
+      "Step 1: Inspect each acid for an O–O peroxide linkage before assigning every oxygen as -2.",
+      "Step 2: In H₂SO₅, three oxygens are assigned -2 and the two peroxide oxygens are -1: 2(+1) + x + 3(-2) + 2(-1) = 0, so S = +6.",
+      "Step 3: In H₂S₂O₈, six oxygens are assigned -2 and the two peroxide oxygens are -1: 2(+1) + 2x + 6(-2) + 2(-1) = 0.",
+      "Step 4: Solving gives 2x = 12, so each sulfur is +6.",
+      "Step 5: The wrong +8 or +7 results come from applying O = -2 to the peroxide oxygens."
     ],
     "ans": "+6 and +6 (Option A)",
-    "trap": "Never allow sulfur's oxidation state to exceed its group valence (+6)! Whenever algebra yields +8 or +7, suspect peroxo linkages (-O-O-).",
+    "trap": "When an oxoacid contains an O–O peroxide bond, the two peroxide oxygens are assigned -1. The structural exception—not a valence-electron 'ceiling'—is what fixes the calculation.",
     "distractorTraps": {
       "B": "BLIND ALGEBRA TRAP: Calculated +8 for H₂SO₅ and +7 for H₂S₂O₈ assuming all oxygens are -2 oxide.",
       "C": "Calculated Caro's acid correctly (+6) but fell into algebraic trap for Marshall's acid (+7).",
@@ -647,8 +637,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +6 and +6 (Option A).",
-    "takeaway": "Transfer rule: start from H₂SO₅ has 1 peroxo linkage (-O-O-, O; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: H₂SO₅ gives +2 +6 -6 -2 = 0; H₂S₂O₈ gives +2 +12 -12 -2 = 0.",
+    "takeaway": "Transfer rule: recognize peroxide connectivity first; only then apply the oxidation-number sum rule.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -684,16 +674,16 @@ window.JEE_QUESTIONS_DATA = [
       }
     ],
     "correct": "A",
-    "formula": "NO acts as nitrosonium cation (NO⁺). Fe has O.S. = +1 (d⁷ high spin, 3 unpaired e⁻ ⇒ μ = √[3(5)] = √15 ≈ 3.87 BM).",
+    "formula": "JEE/formal model: treating coordinated NO as NO⁺ gives Fe(I); the {FeNO}⁷ unit has quartet spin S = 3/2, giving μspin-only = √15 ≈ 3.87 BM.",
     "steps": [
-      "Step 1: In the brown ring complex, nitric oxide transfers an electron to Fe²⁺, converting into the nitrosonium cation (NO⁺).",
-      "Step 2: Iron is reduced from Fe²⁺ to Fe⁺: [Fe⁺ (H₂O)₅ (NO⁺)]²⁺ SO₄²⁻.",
-      "Step 3: Charge balance on complex cation: x + 5(0) + (+1) = +2 ⇒ x = +1.",
-      "Step 4: Electronic configuration of Fe⁺ (Z = 26): [Ar] 3d⁷ 4s⁰. High spin configuration: t_2g⁵ e_g².",
-      "Step 5: Number of unpaired electrons n = 3. Spin-only magnetic moment: μ = √[n(n+2)] = √[3 × 5] = √15 ≈ 3.87 BM."
+      "Step 1: The complex cation [Fe(H₂O)₅(NO)]²⁺ has overall charge +2; water is neutral.",
+      "Step 2: In the conventional exam bookkeeping model, coordinated NO is treated as NO⁺. Charge balance then gives x + (+1) = +2, so Fe is assigned +1.",
+      "Step 3: The observed/formal {FeNO}⁷ unit is a quartet (S = 3/2), corresponding to three unpaired electrons in the simple spin-only count.",
+      "Step 4: μ = √[n(n+2)] = √[3×5] = √15 ≈ 3.87 BM.",
+      "Step 5: Advanced caveat: metal nitrosyls are non-innocent. Modern bonding descriptions often use Enemark–Feltham {FeNO}⁷ notation rather than claiming a unique localized Fe(I)/NO⁺ electron distribution."
     ],
     "ans": "+1 and 3.87 BM (3 unpaired electrons) (Option A)",
-    "trap": "Do not treat NO as neutral! Here NO is NO⁺ (nitrosonium), making Fe = +1, which is proved by magnetic moment 3.87 BM (3 unpaired e⁻).",
+    "trap": "Do not claim that the magnetic moment uniquely proves a literal Fe(I)–NO⁺ charge distribution. The +1 answer is the conventional exam formalism; the Fe–NO unit is electronically non-innocent.",
     "distractorTraps": {
       "B": "Treated NO as neutral ligand, concluding Fe = +2 with 4 unpaired electrons (μ = 4.90 BM).",
       "C": "Assumed Fe³⁺ high-spin state with 5 unpaired electrons.",
@@ -708,13 +698,13 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "sourceAudit": "SOURCE_PROVENANCE_PENDING",
     "answerAudit": "PASS",
-    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "answerAuditNote": "Locally reviewed on 2026-09-20 under the conventional JEE Fe(I)/NO⁺ formalism; modern Fe–NO bonding is non-innocent, so the local oxidation-state description is model-dependent. Source-item provenance/key remains unverified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +1 and 3.87 BM (3 unpaired electrons) (Option A).",
-    "takeaway": "Transfer rule: start from NO acts as nitrosonium cation (NO⁺); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check under the stated JEE convention: Fe(+1) + NO(+1) gives the +2 complex charge, while n = 3 unpaired electrons gives √15 ≈ 3.87 BM.",
+    "takeaway": "Transfer rule: with redox-active or non-innocent ligands, state the formal electron-counting convention explicitly and separate it from a literal charge picture.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -783,8 +773,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 3 (Option A).",
-    "takeaway": "Transfer rule: start from n-factor = ∑ (Moles of e⁻ lost by each oxidized atom per mole of salt) = n(Fe²⁺ → Fe³⁺) + n(C₂O₄²⁻ → 2 CO₂); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: Fe²⁺ loses 1 e⁻ and C₂O₄²⁻ loses 2 e⁻, so the formula unit loses 3 e⁻ in total.",
+    "takeaway": "Transfer rule: compute n-factor from the complete reaction of the whole formula unit; add electron changes from every redox-active component.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -820,16 +810,16 @@ window.JEE_QUESTIONS_DATA = [
       }
     ],
     "correct": "A",
-    "formula": "CaOCl₂ exists as a mixed salt Ca²⁺ (Cl⁻) (OCl⁻). Average O.S. is 0, but individual O.S. are -1 and +1.",
+    "formula": "Textbook/JEE idealization: bleaching powder is represented as Ca(OCl)Cl, containing Cl⁻ and OCl⁻; the two chlorine oxidation states are -1 and +1.",
     "steps": [
-      "Step 1: Bleaching powder is chemically calcium hypochlorite-chloride: Ca(OCl)Cl.",
-      "Step 2: It ionizes into Ca²⁺, chloride ion (Cl⁻), and hypochlorite ion (OCl⁻).",
-      "Step 3: In the chloride ion (Cl⁻), the oxidation state of chlorine is -1.",
-      "Step 4: In the hypochlorite ion (OCl⁻): O is -2, net charge is -1 ⇒ x + (-2) = -1 ⇒ x = +1.",
-      "Step 5: Average oxidation state is (-1 + 1)/2 = 0, but the two chlorines are chemically and structurally distinct with oxidation states -1 and +1."
+      "Step 1: Use the textbook/JEE representation Ca(OCl)Cl for bleaching powder; real commercial bleaching powder can have more complex composition.",
+      "Step 2: The chloride component is Cl⁻, so that chlorine is -1.",
+      "Step 3: In hypochlorite OCl⁻, oxygen is -2 and x + (-2) = -1, giving chlorine +1.",
+      "Step 4: Therefore the two formal chlorine oxidation states in the model are -1 and +1.",
+      "Step 5: Their arithmetic average is 0, but the question asks for the distinct species represented in the structural model."
     ],
     "ans": "-1 and +1 (Option A)",
-    "trap": "AVERAGE VS REAL O.S. TRAP: Algebra gives 2 + (-2) + 2x = 0 ⇒ x = 0. Reporting zero ignores the two completely different chemical species (Cl⁻ and OCl⁻)!",
+    "trap": "Do not report only the average value 0 when the textbook model explicitly contains chloride and hypochlorite chlorine in different environments.",
     "distractorTraps": {
       "B": "Reported average oxidation state (0) for both atoms.",
       "C": "Assumed both chlorines are simple chloride ions (-1).",
@@ -849,8 +839,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select -1 and +1 (Option A).",
-    "takeaway": "Transfer rule: start from CaOCl₂ exists as a mixed salt Ca²⁺ (Cl⁻) (OCl⁻); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: Ca²⁺ + Cl⁻ + OCl⁻ is charge-neutral, and the OCl⁻ assignment (+1) + (-2) = -1.",
+    "takeaway": "Transfer rule: for mixed salts, split the formula into its constituent ions before assigning oxidation states.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -918,8 +908,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select M/5,  M/3,  M/1 (Option A).",
-    "takeaway": "Transfer rule: start from Equivalent Weight = M / (n-factor); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: M/5, M/3 and M/1 follow directly from 5, 3 and 1 electrons accepted per permanganate in the three stated media.",
+    "takeaway": "Transfer rule: equivalent weight is reaction-dependent; determine the reduction product and n-factor before using M/n.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -991,8 +981,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 3 (Option A).",
-    "takeaway": "Transfer rule: start from For disproportionation: n-factor = Total moles of electrons transferred per mole of substance; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: 3 e⁻ are lost by three P atoms and 3 e⁻ are gained by the one reduced P atom, so n(P₄) = 3.",
+    "takeaway": "Transfer rule: in disproportionation, count the matched electron transfer from the balanced split of atoms between the two products.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -1058,8 +1048,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 2 : 1 (Option A).",
-    "takeaway": "Transfer rule: start from 2 MnO₄⁻ + I⁻ + H₂O → 2 MnO₂ + IO₃⁻ + 2 OH⁻; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: 2MnO₄⁻ + I⁻ + H₂O → 2MnO₂ + IO₃⁻ + 2OH⁻ has equal atoms and net charge -3 on both sides.",
+    "takeaway": "Transfer rule: the reaction medium can change the oxidation product; balance the actual half-reactions before reading the stoichiometric ratio.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -1125,8 +1115,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select +0.32 V and Spontaneous (Option A).",
-    "takeaway": "Transfer rule: start from E°_cell = E°_cathode - E°_anode; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: (-0.44) - (-0.76) = +0.32 V; a positive standard cell potential gives negative ΔG° for the written forward reaction.",
+    "takeaway": "Transfer rule: with tabulated reduction potentials, identify cathode and anode first, then use E°cell = E°cathode - E°anode.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -1164,15 +1154,14 @@ window.JEE_QUESTIONS_DATA = [
     "correct": "A",
     "formula": "NH₄NO₃ ionizes into NH₄⁺ and NO₃⁻. In NH₄⁺: x + 4(+1) = +1 ⇒ x = -3. In NO₃⁻: y + 3(-2) = -1 ⇒ y = +5.",
     "steps": [
-      "Step 1: NH₄NO₃ is an ionic compound composed of the polyatomic cation NH₄⁺ and the polyatomic anion NO₃⁻.",
-      "Step 2: Calculate oxidation state of N in ammonium ion (NH₄⁺):",
-      "        x + 4(+1) = +1 ⇒ x + 4 = 1 ⇒ x = -3.",
-      "Step 3: Calculate oxidation state of N in nitrate ion (NO₃⁻):",
-      "        y + 3(-2) = -1 ⇒ y - 6 = -1 ⇒ y = +5.",
-      "Step 4: Average oxidation state from blind molecular formula N₂H₄O₃ is: 2N + 4 - 6 = 0 ⇒ 2N = +2 ⇒ N = +1. But the two nitrogen atoms have real oxidation states of -3 and +5!"
+      "Step 1: Treat NH₄NO₃ as the ionic compound NH₄⁺ + NO₃⁻.",
+      "Step 2: In NH₄⁺: x + 4(+1) = +1, so N = -3.",
+      "Step 3: In NO₃⁻: y + 3(-2) = -1, so N = +5.",
+      "Step 4: Applying one average value to the empirical formula would give +1, but that average hides the two chemically distinct nitrogen environments.",
+      "Step 5: Oxidation states are formal bookkeeping assignments, not literal measured charges on the nitrogen atoms."
     ],
     "ans": "-3 and +5 (Option A)",
-    "trap": "Reporting +1 is the classic average oxidation state trap! The nitrogen in ammonium is in its lowest oxidation state (-3) while in nitrate it is in its highest (+5).",
+    "trap": "Do not average across chemically distinct polyatomic ions when the question asks for the individual formal oxidation states.",
     "distractorTraps": {
       "B": "Reported the blind algebraic average (+1) for both nitrogen atoms.",
       "C": "Confused nitrate NO₃⁻ with nitrite NO₂⁻ (+3).",
@@ -1192,8 +1181,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select -3 and +5 (Option A).",
-    "takeaway": "Transfer rule: start from NH₄NO₃ ionizes into NH₄⁺ and NO₃⁻; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: (-3) + 4(+1) = +1 for NH₄⁺ and (+5) + 3(-2) = -1 for NO₃⁻.",
+    "takeaway": "Transfer rule: split ionic compounds into their actual ions before doing oxidation-state arithmetic.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -1229,18 +1218,16 @@ window.JEE_QUESTIONS_DATA = [
       }
     ],
     "correct": "A",
-    "formula": "Equivalents of K₂Cr₂O₇ = Equivalents of I₂ liberated = Equivalents of Na₂S₂O₃. N₁ V₁ = N₂ V₂.",
+    "formula": "Cr₂O₇²⁻ accepts 6 e⁻ in acid; 2S₂O₃²⁻ → S₄O₆²⁻ + 2e⁻, so each thiosulfate transfers 1 e⁻.",
     "steps": [
-      "Step 1: In acidic medium, K₂Cr₂O₇ has n-factor = 6 (Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O).",
-      "        Normality of K₂Cr₂O₇ = Molarity × n = 0.02 M × 6 = 0.12 N.",
-      "Step 2: Number of milliequivalents of K₂Cr₂O₇ = N × V = 0.12 N × 25.0 mL = 3.0 meq.",
-      "Step 3: In iodometric titration with hypo: 2 S₂O₃²⁻ + I₂ → S₄O₆²⁻ + 2 I⁻.",
-      "        Here S₂O₃²⁻ has n-factor = 1 (2S(+2) → 2S(+2.5) + 1e⁻).",
-      "        Normality of Na₂S₂O₃ = 0.1 M × 1 = 0.1 N.",
-      "Step 4: Law of Equivalence: meq of hypo = meq of K₂Cr₂O₇ ⇒ 0.1 N × V = 3.0 ⇒ V = 30.0 mL."
+      "Step 1: In acid, one dichromate ion accepts 6 e⁻, so 0.02 M K₂Cr₂O₇ corresponds to 0.12 equivalents per litre.",
+      "Step 2: 25.0 mL contains 0.12 × 25.0 = 3.0 milliequivalents of oxidizing capacity.",
+      "Step 3: Iodine carries the same electron-equivalent amount into the thiosulfate titration.",
+      "Step 4: The titration half-reaction is 2S₂O₃²⁻ → S₄O₆²⁻ + 2e⁻, so thiosulfate has n-factor 1 in this reaction and 0.1 M = 0.1 N.",
+      "Step 5: 0.1 N × V = 3.0 meq, so V = 30.0 mL."
     ],
     "ans": "30.0 mL (Option A)",
-    "trap": "Do not forget that K₂Cr₂O₇ has n-factor = 6 in acid! Using n=1 or n=3 leads to 5 mL or 15 mL traps.",
+    "trap": "Track electron equivalents through both redox stages. Do not infer the thiosulfate n-factor from a misleading average sulfur oxidation number.",
     "distractorTraps": {
       "B": "Used n-factor = 3 for dichromate (15.0 mL).",
       "C": "Equated molarities directly without n-factor (0.02 × 25 / 0.1 = 5 mL) or calculated 10 mL.",
@@ -1260,8 +1247,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 30.0 mL (Option A).",
-    "takeaway": "Transfer rule: start from Equivalents of K₂Cr₂O₇ = Equivalents of I₂ liberated = Equivalents of Na₂S₂O₃; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check by moles: 0.0005 mol dichromate accepts 0.003 mol e⁻; 0.030 L × 0.1 mol/L = 0.003 mol thiosulfate transfers the same electron amount.",
+    "takeaway": "Transfer rule: in linked iodometric titrations, carry electron equivalents through each reaction rather than memorizing disconnected volume formulas.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -1326,8 +1313,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Decrease by 0.0295 V (Option A).",
-    "takeaway": "Transfer rule: start from E_cell = E° - (0; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: multiplying [Zn²⁺] by 10 increases log Q by 1, so ΔE = -(0.0591/2) = -0.02955 V.",
+    "takeaway": "Transfer rule: write the reaction quotient from the balanced cell reaction, then use its direction of change to predict the sign before calculating the Nernst shift.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -1365,15 +1352,14 @@ window.JEE_QUESTIONS_DATA = [
     "correct": "A",
     "formula": "Pb₃O₄ = 2 PbO · PbO₂. Reaction with HNO₃ yields 2 Pb(NO₃)₂ + PbO₂ + 2 H₂O.",
     "steps": [
-      "Step 1: Red lead has formula Pb₃O₄. Blind algebra gives 3x - 8 = 0 ⇒ x = +8/3 (fractional average).",
-      "Step 2: In reality, Pb₃O₄ is a stoichiometric mixed crystal oxide: 2 PbO · PbO₂ (dilead(II) lead(IV) oxide).",
-      "Step 3: Two lead atoms are in +2 oxidation state (basic PbO component).",
-      "Step 4: One lead atom is in +4 oxidation state (acidic/amphoteric PbO₂ component).",
-      "Step 5: Chemical proof: When treated with dilute HNO₃, only the basic PbO dissolves to form Pb(NO₃)₂, leaving insoluble brown PbO₂ precipitate:",
-      "        Pb₃O₄ + 4 HNO₃ → 2 Pb(NO₃)₂ [Pb²⁺] + PbO₂↓ [Pb⁴⁺] + 2 H₂O."
+      "Step 1: Formula algebra gives the average lead oxidation number +8/3 because 3x + 4(-2) = 0.",
+      "Step 2: Red lead is conventionally represented as the mixed-valence oxide 2PbO·PbO₂.",
+      "Step 3: That formal description contains two Pb(II) and one Pb(IV) per Pb₃O₄ formula unit.",
+      "Step 4: Average check: [2 + 2 + 4]/3 = 8/3.",
+      "Step 5: Dilute nitric acid dissolves the PbO component while PbO₂ remains, supporting the mixed-oxide chemical description."
     ],
     "ans": "Two Pb in +2 and one Pb in +4 (Ratio 2:1) (Option A)",
-    "trap": "FRACTIONAL OXIDATION STATE TRAP: Fractional oxidation states like +8/3 are merely mathematical averages; individual atoms always carry integer oxidation states!",
+    "trap": "The +8/3 value is the formula-average oxidation number. For this mixed oxide, the requested formal description is two Pb(II) and one Pb(IV); do not describe oxidation state as literal atomic charge.",
     "distractorTraps": {
       "B": "Reported fractional mathematical average +8/3.",
       "C": "Pb does not exhibit stable +3 oxidation state due to inert pair effect.",
@@ -1393,8 +1379,8 @@ window.JEE_QUESTIONS_DATA = [
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
     "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
-    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Two Pb in +2 and one Pb in +4 (Ratio 2:1) (Option A).",
-    "takeaway": "Transfer rule: start from Pb₃O₄ = 2 PbO · PbO₂; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "teacherCheck": "Independent check: 2(+2) + (+4) + 4(-2) = 0, so the mixed-valence assignment exactly balances Pb₃O₄.",
+    "takeaway": "Transfer rule: for known mixed-valence oxides, distinguish the formula-average value from the chemically useful integer formal assignments.",
     "helperTags": [
       "TEACHERS_CHALKBOARD",
       "TRAP_ALERT",
@@ -1497,10 +1483,10 @@ window.JEE_QUESTIONS_DATA = [
           <span class="text-xl">⚡</span>
           <div>
             <h1 class="text-sm md:text-base font-extrabold text-white tracking-tight flex items-center gap-2">
-              <span>Redox Reactions &amp; Electrochemistry</span>
+              <span>Redox Reactions · Grade 9 Bridge → JEE Extension</span>
               <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono font-bold border border-amber-500/30">JEE MASTER SUITE</span>
             </h1>
-            <p class="text-[11px] text-slate-400">Structural Oxidation States &middot; Valency n-factor &middot; Chemical Equivalence</p>
+            <p class="text-[11px] text-slate-400">Electron transfer first · oxidation-state bookkeeping second · advanced JEE applications after the foundations</p>
           </div>
         </div>
       </div>
@@ -1513,30 +1499,33 @@ window.JEE_QUESTIONS_DATA = [
     </div>
 
     <!-- 8 MASTER TABS -->
-    <div class="max-w-7xl mx-auto px-4 flex items-center gap-1 overflow-x-auto text-xs font-medium border-t border-slate-900/60 pt-1 no-scrollbar">
-      <button onclick="switchTab('tab-structural-ox')" id="btn-tab-structural-ox" class="tab-btn-active px-3 py-2 rounded-t-lg transition whitespace-nowrap">
-        1. Structural Oxidation
+    <div role="tablist" aria-label="Redox learning sequence" class="max-w-7xl mx-auto px-4 flex items-center gap-1 overflow-x-auto text-xs font-medium border-t border-slate-900/60 pt-1 no-scrollbar">
+      <button role="tab" aria-selected="true" aria-controls="tab-foundations" onclick="switchTab('tab-foundations')" id="btn-tab-foundations" class="tab-btn-active px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+        0. Foundations
       </button>
-      <button onclick="switchTab('tab-electron-flow')" id="btn-tab-electron-flow" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+      <button role="tab" aria-selected="false" aria-controls="tab-structural-ox" onclick="switchTab('tab-structural-ox')" id="btn-tab-structural-ox" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+        1. Oxidation Bookkeeping
+      </button>
+      <button role="tab" aria-selected="false" aria-controls="tab-electron-flow" onclick="switchTab('tab-electron-flow')" id="btn-tab-electron-flow" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
         2. Electron Conveyor
       </button>
-      <button onclick="switchTab('tab-ion-electron')" id="btn-tab-ion-electron" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+      <button role="tab" aria-selected="false" aria-controls="tab-ion-electron" onclick="switchTab('tab-ion-electron')" id="btn-tab-ion-electron" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
         3. Ion-Electron Balance
       </button>
-      <button onclick="switchTab('tab-nfactor')" id="btn-tab-nfactor" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+      <button role="tab" aria-selected="false" aria-controls="tab-nfactor" onclick="switchTab('tab-nfactor')" id="btn-tab-nfactor" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
         4. The n-Factor Matrix
       </button>
-      <button onclick="switchTab('tab-titration')" id="btn-tab-titration" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+      <button role="tab" aria-selected="false" aria-controls="tab-titration" onclick="switchTab('tab-titration')" id="btn-tab-titration" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
         5. Redox Titration
       </button>
-      <button onclick="switchTab('tab-galvanic')" id="btn-tab-galvanic" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+      <button role="tab" aria-selected="false" aria-controls="tab-galvanic" onclick="switchTab('tab-galvanic')" id="btn-tab-galvanic" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
         6. Galvanic Cell E&deg;
       </button>
-      <button onclick="switchTab('tab-sandbox')" id="btn-tab-sandbox" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap flex items-center gap-1.5 text-amber-300/80">
+      <button role="tab" aria-selected="false" aria-controls="tab-sandbox" onclick="switchTab('tab-sandbox')" id="btn-tab-sandbox" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap flex items-center gap-1.5 text-amber-300/80">
         <span class="px-1 py-0.2 rounded bg-amber-500/20 text-[9px] font-bold text-amber-400">Draft</span>
         <span>7. Master Sandbox</span>
       </button>
-      <button onclick="switchTab('tab-quiz')" id="btn-tab-quiz" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap flex items-center gap-1.5 text-purple-300">
+      <button role="tab" aria-selected="false" aria-controls="tab-quiz" onclick="switchTab('tab-quiz')" id="btn-tab-quiz" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap flex items-center gap-1.5 text-purple-300">
         <span>⭐ 8. IIT-JEE Question Hub</span>
       </button>
     </div>
@@ -1558,19 +1547,75 @@ window.JEE_QUESTIONS_DATA = [
       </div>
     </div>
 
+
+    <!-- ================================================================= -->
+    <!-- TAB 0: GRADE-9 FOUNDATION BRIDGE                                  -->
+    <!-- ================================================================= -->
+    <section id="tab-foundations" class="space-y-6">
+      <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
+        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 border-b border-border pb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-emerald-400"></span>
+              <h2 class="font-bold text-base text-white">Redox Foundations · See the electrons before using the rules</h2>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-emerald-500/15 border border-emerald-500/30 text-emerald-300 font-mono">GRADE 9 BRIDGE</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-2 leading-relaxed max-w-3xl">
+              Start with one causal idea: <strong>electrons move from a donor to an acceptor</strong>. Oxidation means electron loss; reduction means electron gain.
+              Oxidation numbers are then introduced as a formal bookkeeping system for tracking that change—not as literal atomic charges.
+            </p>
+          </div>
+          <div class="text-[11px] text-amber-200 bg-amber-500/10 border border-amber-500/30 rounded-xl p-3 max-w-sm">
+            This bridge is learner support only. The overall suite and its 20-question bank remain an <strong>unbound JEE extension</strong>, not a Grade-9 certification claim.
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-5">
+          <div class="lg:col-span-8">
+            <div class="canvas-container bg-slate-950 border border-border p-2">
+              <canvas id="canvasFoundation" height="320" role="img" aria-label="Zinc transfers two electrons to copper two-plus; zinc is oxidized and copper is reduced."></canvas>
+            </div>
+            <p class="mt-2 text-[11px] text-slate-400">Text invariant: Zn loses 2e⁻ → Zn²⁺; Cu²⁺ gains 2e⁻ → Cu. Electron loss and gain must match.</p>
+          </div>
+          <div class="lg:col-span-4 space-y-3">
+            <div class="bg-slate-900/80 border border-border rounded-xl p-4">
+              <div class="text-[11px] font-bold text-emerald-300 font-mono uppercase">Predict before reveal</div>
+              <p class="text-xs text-slate-300 mt-2">Which starting particle loses electrons?</p>
+              <div class="grid grid-cols-2 gap-2 mt-3">
+                <button onclick="foundationPredict('zinc')" class="touch-target rounded-lg border border-slate-600 bg-slate-800 hover:bg-slate-700 text-xs font-bold">Zn</button>
+                <button onclick="foundationPredict('copper')" class="touch-target rounded-lg border border-slate-600 bg-slate-800 hover:bg-slate-700 text-xs font-bold">Cu²⁺</button>
+              </div>
+              <div id="foundationFeedback" aria-live="polite" class="mt-3 min-h-[52px] text-xs text-slate-300 bg-black/30 rounded-lg p-2.5">Make a prediction. The electron arrow stays hidden until you commit.</div>
+              <button onclick="resetFoundation()" class="mt-3 text-[11px] text-slate-300 underline hover:text-white">Reset prediction</button>
+            </div>
+            <div class="grid grid-cols-1 gap-2 text-xs">
+              <div class="p-3 rounded-xl bg-sky-500/10 border border-sky-500/25"><strong class="text-sky-300">1 · Mechanism:</strong> electrons move.</div>
+              <div class="p-3 rounded-xl bg-violet-500/10 border border-violet-500/25"><strong class="text-violet-300">2 · Bookkeeping:</strong> oxidation number rises on oxidation and falls on reduction.</div>
+              <div class="p-3 rounded-xl bg-amber-500/10 border border-amber-500/25"><strong class="text-amber-300">3 · Agent language:</strong> electron donor = reducing agent; electron acceptor = oxidizing agent.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-5 p-3 rounded-xl border border-slate-700 bg-slate-950/50 text-[11px] text-slate-300 leading-relaxed">
+          <strong class="text-white">Scientific model note:</strong> IUPAC defines oxidation state through an ionic approximation of bonds. It is a formal electron-counting construct and is not, by itself, a direct measurement of electron density or atomic charge.
+          <a class="text-sky-300 underline ml-1" target="_blank" rel="noopener noreferrer" href="https://goldbook.iupac.org/terms/view/O04365">IUPAC Gold Book</a>
+        </div>
+      </div>
+    </section>
+
     <!-- ================================================================= -->
     <!-- TAB 1: STRUCTURAL OXIDATION ENGINE                                -->
     <!-- ================================================================= -->
-    <section id="tab-structural-ox" class="space-y-6">
+    <section id="tab-structural-ox" class="space-y-6 hidden">
       <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border pb-4">
           <div>
             <div class="flex items-center gap-2">
               <span class="w-3 h-3 rounded-full bg-amber-400"></span>
-              <h2 class="font-bold text-base text-white">Structural Oxidation Engine &middot; Heterolytic Bond Cleavage</h2>
+              <h2 class="font-bold text-base text-white">Oxidation-State Bookkeeping &middot; Structure-Aware Exceptions</h2>
             </div>
             <p class="text-xs text-slate-400 mt-1">
-              Exposes the algebraic illusion: See why <span class="text-amber-300 font-mono font-bold">CrO₅ is +6 (not +10)</span>, <span class="text-sky-300 font-mono font-bold">H₂S₂O₈ is +6 (not +7)</span>, and <span class="text-emerald-300 font-mono font-bold">S₄O₆²⁻ has individual states +5, 0, 0, +5</span>.
+              Use the ordinary rules first, then stress their boundaries. Peroxides require O = -1, while mixed-valence and multi-centre structures can make a formula-average oxidation number different from the atom-by-atom formal assignment.
             </p>
           </div>
 
@@ -1589,14 +1634,14 @@ window.JEE_QUESTIONS_DATA = [
                 <span>MOLECULAR TOPOLOGY &middot; HETEROLYTIC BOND CLEAVAGE</span>
                 <span id="structLiveO.S." class="text-amber-400 font-bold">Chromium O.S. = +6</span>
               </div>
-              <canvas id="canvasStructuralOx" height="280"></canvas>
+              <canvas id="canvasStructuralOx" height="280" role="img" aria-label="Structure-aware oxidation-state diagram."></canvas>\n              <p class="mt-2 text-[11px] text-slate-400">Text invariant: oxidation-state assignments must reproduce the total charge and respect structural exceptions.</p>
             </div>
 
             <!-- Dual-Reality Toggle -->
             <div class="flex items-center gap-3 bg-slate-900/60 p-3 rounded-xl border border-border text-xs">
               <span class="text-slate-400 font-semibold">Display Mode:</span>
-              <button onclick="setStructuralMode('reality')" id="btnStructReality" class="px-3 py-1.5 rounded-lg bg-emerald-600/30 border border-emerald-500/50 text-emerald-300 font-bold">&check; Physical Reality (Structural)</button>
-              <button onclick="setStructuralMode('trap')" id="btnStructTrap" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white">&Delta; Exam Trap (Algebraic Average)</button>
+              <button onclick="setStructuralMode('reality')" id="btnStructReality" class="px-3 py-1.5 rounded-lg bg-emerald-600/30 border border-emerald-500/50 text-emerald-300 font-bold">&check; Structure-aware bookkeeping</button>
+              <button onclick="setStructuralMode('trap')" id="btnStructTrap" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white">&Delta; Tempting blanket-rule model</button>
             </div>
           </div>
 
@@ -1609,7 +1654,7 @@ window.JEE_QUESTIONS_DATA = [
             <div class="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs space-y-1.5">
               <span class="text-amber-400 font-bold font-mono">⚠️ THE PEROXIDE PRINCIPLE:</span>
               <p class="text-slate-300 leading-relaxed text-[11px]">
-                In any peroxide bond (<strong>-O-O-</strong>), the two oxygens share electrons equally (&Delta; = 0). Therefore, each oxygen has an oxidation number of <strong>-1</strong>, not -2!
+                In a peroxide unit (<strong>-O-O-</strong>), the O-O bond contributes zero because it is homonuclear; the remaining bonding/charge ledger gives each peroxide oxygen an oxidation state of <strong>-1</strong> in the usual peroxide examples.
               </p>
             </div>
           </div>
@@ -1624,10 +1669,10 @@ window.JEE_QUESTIONS_DATA = [
       <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
         <div class="border-b border-border pb-4">
           <h2 class="font-bold text-base text-white">Electron Exchange Conveyor &middot; Coupled Oxidation-Reduction Halves</h2>
-          <p class="text-xs text-slate-400 mt-1">Visualizes electrons lost in oxidation (OIL) transferred to the reduction half (RIG).</p>
+          <p class="text-xs text-slate-400 mt-1">Begin with the causal picture: the reducing agent donates electrons and is oxidized; the oxidizing agent accepts those same electrons and is reduced. Mnemonics come after the mechanism.</p>
         </div>
         <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
-          <canvas id="canvasElectronFlow" height="280"></canvas>
+          <canvas id="canvasElectronFlow" height="280" role="img" aria-label="Electron transfer from reductant to oxidant."></canvas>\n              <p class="mt-2 text-[11px] text-slate-400">Text invariant: electrons lost by the reducing agent equal electrons gained by the oxidizing agent.</p>
         </div>
       </div>
     </section>
@@ -1639,10 +1684,10 @@ window.JEE_QUESTIONS_DATA = [
       <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
         <div class="border-b border-border pb-4">
           <h2 class="font-bold text-base text-white">Ion-Electron Balancing Rig &middot; Medium Dependent Charge Ledger</h2>
-          <p class="text-xs text-slate-400 mt-1">Step-by-step balancing in Acidic (H⁺, H₂O) and Basic (OH⁻, H₂O) environments.</p>
+          <p class="text-xs text-slate-400 mt-1">Advanced bridge: balance atoms first, then charge with electrons. The visual ledger makes conservation of atoms and charge explicit before presenting the final half-reaction.</p>
         </div>
         <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
-          <canvas id="canvasIonElectron" height="280"></canvas>
+          <canvas id="canvasIonElectron" height="280" role="img" aria-label="Half-reaction balancing ledger."></canvas>\n              <p class="mt-2 text-[11px] text-slate-400">Text invariant: a balanced half-reaction conserves every element and total charge.</p>
         </div>
       </div>
     </section>
@@ -1659,7 +1704,7 @@ window.JEE_QUESTIONS_DATA = [
               <h2 class="font-bold text-base text-white">The n-Factor Matrix &middot; pH Dependence &amp; Disproportionation</h2>
             </div>
             <p class="text-xs text-slate-400 mt-1">
-              Grounded on <span class="text-purple-300 font-semibold">JEE Main 2025</span>: KMnO₄ valency factor flipping <span class="font-mono text-purple-300 font-bold">5 &rarr; 3 &rarr; 1</span> across pH!
+              Advanced bridge: the n-factor is not an intrinsic label on KMnO₄. It depends on the actual reduction product: <span class="font-mono text-purple-300 font-bold">5 &rarr; 3 &rarr; 1</span> for the three reaction conditions shown.
             </p>
           </div>
         </div>
@@ -1671,7 +1716,7 @@ window.JEE_QUESTIONS_DATA = [
                 <span>KMnO₄ ELECTRON LADDER &middot; Mn⁷⁺ REDUCTION STATES</span>
                 <span id="nfactorLiveBadge" class="text-purple-400 font-bold">Acidic: n = 5 (Mn²⁺)</span>
               </div>
-              <canvas id="canvasNfactor" height="280"></canvas>
+              <canvas id="canvasNfactor" height="280" role="img" aria-label="Permanganate oxidation-state ladder."></canvas>\n              <p class="mt-2 text-[11px] text-slate-400">Text invariant: n-factor equals the reaction-specific electron change per formula unit.</p>
             </div>
           </div>
 
@@ -1680,7 +1725,7 @@ window.JEE_QUESTIONS_DATA = [
               <h3 class="text-xs font-bold tracking-wider uppercase text-slate-400">Medium Selector</h3>
               <div class="space-y-2">
                 <button onclick="setNfactorMedium('acidic')" id="btnMedAcidic" class="w-full text-left p-2.5 rounded-lg bg-purple-600/30 border border-purple-500/50 text-xs text-purple-200 font-mono font-bold">
-                  1. Acidic (pH &lt; 7) &rarr; Mn²⁺ (n = 5)
+                  1. Acidic medium &rarr; Mn²⁺ (n = 5)
                 </button>
                 <button onclick="setNfactorMedium('neutral')" id="btnMedNeutral" class="w-full text-left p-2.5 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono hover:border-slate-600 border border-border">
                   2. Neutral / Weak Base &rarr; MnO₂ (n = 3)
@@ -1701,13 +1746,13 @@ window.JEE_QUESTIONS_DATA = [
     <section id="tab-titration" class="space-y-6 hidden">
       <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
         <div class="border-b border-border pb-4">
-          <h2 class="font-bold text-base text-white">Redox Titration Bench &middot; Self-Indicator Color Persistence</h2>
+          <h2 class="font-bold text-base text-white">Redox Titration Bench &middot; Electron Equivalence</h2>
           <p class="text-xs text-slate-400 mt-1">
-            Grounded on <span class="text-amber-300 font-semibold">JEE Main 2026</span>: FeC₂O₄ with K₂Cr₂O₇ where both cation and anion oxidize ($n = 3$).
+            Visualize equivalence as an electron ledger: one dichromate accepts 6 e⁻, while one FeC₂O₄ formula unit loses 3 e⁻ because both Fe²⁺ and oxalate are oxidized.
           </p>
         </div>
         <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
-          <canvas id="canvasTitration" height="280"></canvas>
+          <canvas id="canvasTitration" height="280" role="img" aria-label="Redox titration electron-equivalence diagram."></canvas>\n              <p class="mt-2 text-[11px] text-slate-400">Text invariant: at equivalence, electron equivalents donated and accepted are equal.</p>
         </div>
       </div>
     </section>
@@ -1719,10 +1764,10 @@ window.JEE_QUESTIONS_DATA = [
       <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
         <div class="border-b border-border pb-4">
           <h2 class="font-bold text-base text-white">Galvanic Cell &middot; Standard Reduction Potentials E&deg;</h2>
-          <p class="text-xs text-slate-400 mt-1">Zn-Cu Daniell Cell with salt bridge and live cell potential $E_{\text{cell}} = E^\circ_{\text{red}} - E^\circ_{\text{ox}}$.</p>
+          <p class="text-xs text-slate-400 mt-1">Advanced extension: Zn is the anode (electron source), Cu²⁺/Cu is the cathode (electron sink), and E°cell = E°cathode − E°anode when both tabulated values are reduction potentials.</p>
         </div>
         <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
-          <canvas id="canvasGalvanic" height="280"></canvas>
+          <canvas id="canvasGalvanic" height="280" role="img" aria-label="Daniell galvanic cell diagram."></canvas>\n              <p class="mt-2 text-[11px] text-slate-400">Text invariant: electrons travel through the external wire from Zn anode to Cu cathode.</p>
         </div>
       </div>
     </section>
@@ -1738,11 +1783,11 @@ window.JEE_QUESTIONS_DATA = [
               <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-xs font-bold border border-amber-500/30">DRAFT SANDBOX</span>
               <h2 class="font-bold text-base text-white">Redox Couple Simulator</h2>
             </div>
-            <p class="text-xs text-slate-400 mt-1">Synthesize arbitrary oxidant-reductant pairs.</p>
+            <p class="text-xs text-slate-400 mt-1">Practice the oxidation-number ladder: moving upward means oxidation/electron loss; moving downward means reduction/electron gain. This remains a draft practice surface, not an exact reaction simulator.</p>
           </div>
         </div>
         <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
-          <canvas id="canvasSandbox" height="300"></canvas>
+          <canvas id="canvasSandbox" height="300" role="img" aria-label="Oxidation-number ladder practice."></canvas>\n              <p class="mt-2 text-[11px] text-slate-400">Text invariant: oxidation number rises with oxidation and falls with reduction.</p>
         </div>
       </div>
     </section>
@@ -1756,15 +1801,15 @@ window.JEE_QUESTIONS_DATA = [
           <div>
             <div class="flex items-center gap-2">
               <span class="text-lg">⭐</span>
-              <h2 class="font-bold text-base text-white">IIT-JEE Diagnostic Question Hub &middot; Locally Audited Diagnostic Slice</h2>
+              <h2 class="font-bold text-base text-white">JEE Extension Question Hub &middot; Locally Audited 20-item Slice</h2>
             </div>
             <p class="text-xs text-slate-400 mt-1">
-              Source labels are attributed to <a href="https://questions.examside.com/past-years/jee/jee-main/chemistry/redox-reactions" target="_blank" class="text-amber-400 underline hover:text-amber-300">ExamSIDE Redox Reactions</a>.
+              Source labels are attributed to <a href="https://questions.examside.com/past-years/jee/jee-main/chemistry/redox-reactions" target="_blank" rel="noopener noreferrer" class="text-amber-400 underline hover:text-amber-300">ExamSIDE Redox Reactions</a>; the repository still marks individual source provenance as pending. Attempt independently before opening the Chalkboard.
             </p>
           </div>
 
           <div class="w-full md:w-72">
-            <input type="text" id="qSearchInput" oninput="filterQuestions()" placeholder="Search by topic, formula, year..." class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-border text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500">
+            <input type="text" id="qSearchInput" oninput="filterQuestions()" aria-label="Search redox questions" placeholder="Search by topic, formula, year..." class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-border text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500">
           </div>
         </div>
 
@@ -1785,15 +1830,21 @@ window.JEE_QUESTIONS_DATA = [
     // =========================================================================
     // LIFECYCLE & CANVAS CONTROLLER
     // =========================================================================
-    let currentTab = 'tab-structural-ox';
+    let currentTab = 'tab-foundations';
     let currentSubTabFilter = 'all';
+    let currentCompound = 'CrO5';
+    let currentStructMode = 'reality';
+    let currentNfactorMed = 'acidic';
+    let foundationPrediction = null;
+    let foundationRevealed = false;
+    const questionAttempts = Object.create(null);
 
     function stopAllSimulations() {}
 
     function switchTab(tabId) {
       stopAllSimulations();
       currentTab = tabId;
-      const tabs = ['tab-structural-ox', 'tab-electron-flow', 'tab-ion-electron', 'tab-nfactor', 'tab-titration', 'tab-galvanic', 'tab-sandbox', 'tab-quiz'];
+      const tabs = ['tab-foundations', 'tab-structural-ox', 'tab-electron-flow', 'tab-ion-electron', 'tab-nfactor', 'tab-titration', 'tab-galvanic', 'tab-sandbox', 'tab-quiz'];
       
       tabs.forEach(t => {
         const el = document.getElementById(t);
@@ -1801,12 +1852,14 @@ window.JEE_QUESTIONS_DATA = [
         if (el) el.classList.toggle('hidden', t !== tabId);
         if (btn) {
           btn.className = (t === tabId) ? 'tab-btn-active px-3 py-2 rounded-t-lg transition whitespace-nowrap' : 'tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap';
+          btn.setAttribute('aria-selected', t === tabId ? 'true' : 'false');
         }
       });
 
       requestAnimationFrame(() => {
         setTimeout(() => {
-          if (tabId === 'tab-structural-ox') drawStructuralOx();
+          if (tabId === 'tab-foundations') drawFoundation();
+          else if (tabId === 'tab-structural-ox') drawStructuralOx();
           else if (tabId === 'tab-electron-flow') drawElectronFlow();
           else if (tabId === 'tab-ion-electron') drawIonElectron();
           else if (tabId === 'tab-nfactor') drawNfactor();
@@ -1850,6 +1903,85 @@ window.JEE_QUESTIONS_DATA = [
       if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       return { ctx, width, height: logicalHeight };
     }
+
+    function foundationPredict(choice) {
+      foundationPrediction = choice;
+      foundationRevealed = true;
+      const fb = document.getElementById('foundationFeedback');
+      if (fb) {
+        if (choice === 'zinc') {
+          fb.className = 'mt-3 min-h-[52px] text-xs text-emerald-200 bg-emerald-950/50 border border-emerald-500/40 rounded-lg p-2.5';
+          fb.innerHTML = '<strong>Correct prediction.</strong> Zn loses 2e⁻, so Zn is oxidized. Cu²⁺ gains those 2e⁻, so Cu²⁺ is reduced.';
+        } else {
+          fb.className = 'mt-3 min-h-[52px] text-xs text-amber-100 bg-amber-950/50 border border-amber-500/40 rounded-lg p-2.5';
+          fb.innerHTML = '<strong>Test the charge change.</strong> Cu²⁺ must gain electrons to become neutral Cu. Which particle can supply them?';
+        }
+      }
+      drawFoundation();
+    }
+
+    function resetFoundation() {
+      foundationPrediction = null;
+      foundationRevealed = false;
+      const fb = document.getElementById('foundationFeedback');
+      if (fb) {
+        fb.className = 'mt-3 min-h-[52px] text-xs text-slate-300 bg-black/30 rounded-lg p-2.5';
+        fb.textContent = 'Make a prediction. The electron arrow stays hidden until you commit.';
+      }
+      drawFoundation();
+    }
+
+    function drawFoundation() {
+      const canvas = document.getElementById('canvasFoundation');
+      if (!canvas) return;
+      const setup = setupCanvas(canvas);
+      const ctx = setup.ctx, w = setup.width, h = setup.height;
+      if (!ctx || w < 50) return;
+      ctx.fillStyle = '#050811';
+      ctx.fillRect(0, 0, w, h);
+
+      const leftX = Math.max(90, w * 0.24);
+      const rightX = Math.min(w - 90, w * 0.76);
+      const cy = h * 0.46;
+
+      drawNode(ctx, leftX, cy, 34, '#0ea5e9', 'Zn', '0');
+      drawNode(ctx, rightX, cy, 34, '#f59e0b', 'Cu', '2+');
+
+      ctx.fillStyle = '#cbd5e1';
+      ctx.font = 'bold 12px sans-serif';
+      ctx.fillText('electron donor', leftX - 43, cy + 62);
+      ctx.fillText('electron acceptor', rightX - 52, cy + 62);
+
+      if (!foundationRevealed) {
+        ctx.strokeStyle = '#475569';
+        ctx.setLineDash([6, 6]);
+        ctx.beginPath();
+        ctx.moveTo(leftX + 55, cy);
+        ctx.lineTo(rightX - 55, cy);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillStyle = '#94a3b8';
+        ctx.font = 'bold 14px monospace';
+        ctx.fillText('Predict the direction of electron flow', Math.max(24, w * 0.5 - 145), cy - 45);
+      } else {
+        drawArrow(ctx, leftX + 48, cy, rightX - 48, cy, '#a78bfa');
+        const mid = (leftX + rightX) / 2;
+        ctx.fillStyle = '#a78bfa';
+        ctx.beginPath(); ctx.arc(mid - 13, cy - 9, 7, 0, Math.PI * 2); ctx.fill();
+        ctx.beginPath(); ctx.arc(mid + 13, cy + 9, 7, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#f8fafc';
+        ctx.font = 'bold 10px monospace';
+        ctx.fillText('e⁻', mid - 20, cy - 19);
+        ctx.fillText('e⁻', mid + 5, cy + 27);
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.font = 'bold 12px monospace';
+        ctx.fillText('Zn → Zn²⁺ + 2e⁻  ·  OXIDATION', 24, h - 58);
+        ctx.fillStyle = '#fbbf24';
+        ctx.fillText('Cu²⁺ + 2e⁻ → Cu  ·  REDUCTION', 24, h - 34);
+      }
+    }
+
     function setSliderWithEvent(id, val) {
       const el = document.getElementById(id);
       if (el && val !== undefined) {
@@ -1861,7 +1993,7 @@ window.JEE_QUESTIONS_DATA = [
     function showToast(q) {
       const toast = document.getElementById('simToast');
       document.getElementById('simToastTitle').textContent = `Loaded ${q.id} (${q.year})`;
-      document.getElementById('simToastDesc').textContent = q.q.slice(0, 100) + '...';
+      document.getElementById('simToastDesc').textContent = 'Related visual opened. Use the fidelity badge to see whether question constraints are actually bound.';
       document.getElementById('simToastParams').textContent = `${q.simFidelity}: ${q.simFidelityNote} | ${(q.simSummary || []).join(' | ')}`;
       toast.classList.remove('hidden');
       toast.classList.remove('translate-y-4');
@@ -1936,134 +2068,122 @@ window.JEE_QUESTIONS_DATA = [
     function updateStructuralLedger() {
       const ledger = document.getElementById('structLedger');
       const badge = document.getElementById('structLiveO.S.');
-      if (!ledger) return;
+      if (!ledger || !badge) return;
 
       if (currentCompound === 'CrO5') {
         if (currentStructMode === 'reality') {
-          badge.textContent = 'Chromium O.S. = +6 (Physical Reality)';
+          badge.textContent = 'Cr formal O.S. = +6';
           badge.className = 'text-emerald-400 font-bold';
-          ledger.innerHTML = `
-            <div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>1 &times; Oxo Oxygen (=O):</span><span class="text-sky-400 font-bold">-2</span></div>
-            <div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>4 &times; Peroxo Oxygens (-O-O-):</span><span class="text-amber-400 font-bold">4 &times; (-1) = -4</span></div>
-            <div class="flex justify-between bg-emerald-500/10 p-2.5 rounded border border-emerald-500/30 font-bold"><span class="text-emerald-300">Central Cr Atom:</span><span class="text-emerald-400">+6</span></div>
-          `;
+          ledger.innerHTML =
+            '<div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>1 × oxo O:</span><span class="text-sky-400 font-bold">-2</span></div>' +
+            '<div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>4 × peroxide O:</span><span class="text-amber-400 font-bold">4 × (-1) = -4</span></div>' +
+            '<div class="flex justify-between bg-emerald-500/10 p-2.5 rounded border border-emerald-500/30 font-bold"><span class="text-emerald-300">Cr bookkeeping value:</span><span class="text-emerald-400">+6</span></div>';
         } else {
-          badge.textContent = 'Chromium O.S. = +10 (EXAM TRAP!)';
+          badge.textContent = 'Blanket O=-2 assumption → +10 (wrong model)';
           badge.className = 'text-red-400 font-bold';
-          ledger.innerHTML = `
-            <div class="p-2.5 bg-red-500/10 rounded border border-red-500/30 space-y-1">
-              <span class="text-red-300 font-bold">Algebraic Trap Formula:</span>
-              <div class="text-slate-300">x + 5(-2) = 0 &rArr; x = +10</div>
-              <div class="text-red-400 text-[11px] font-bold">PHYSICALLY IMPOSSIBLE! Cr only has 6 valence electrons (3d⁵ 4s¹).</div>
-            </div>
-          `;
+          ledger.innerHTML =
+            '<div class="p-2.5 bg-red-500/10 rounded border border-red-500/30 space-y-1">' +
+            '<span class="text-red-300 font-bold">Tempting shortcut:</span>' +
+            '<div class="text-slate-300">x + 5(-2) = 0 ⇒ x = +10</div>' +
+            '<div class="text-red-300 text-[11px]">Contradiction: the shortcut ignored the two O–O peroxide bonds. Fix the oxygen assignments, not the algebra.</div></div>';
         }
       } else if (currentCompound === 'S4O6') {
-        badge.textContent = 'S Atoms: +5, 0, 0, +5 (Reality)';
-        ledger.innerHTML = `
-          <div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>Terminal S (Left):</span><span class="text-emerald-400 font-bold">+5</span></div>
-          <div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>Central S-S bridge:</span><span class="text-slate-400 font-bold">0, 0 (Homonuclear)</span></div>
-          <div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>Terminal S (Right):</span><span class="text-emerald-400 font-bold">+5</span></div>
-          <div class="flex justify-between bg-purple-500/10 p-2.5 rounded border border-purple-500/30"><span class="text-purple-300">Statistical Average:</span><span class="text-purple-400">+2.5</span></div>
-        `;
+        badge.textContent = currentStructMode === 'reality' ? 'S formal assignments: +5, 0, 0, +5' : 'Formula average: +2.5 per S';
+        ledger.innerHTML =
+          '<div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>Terminal S atoms:</span><span class="text-emerald-400 font-bold">+5, +5</span></div>' +
+          '<div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>Central S atoms:</span><span class="text-slate-300 font-bold">0, 0</span></div>' +
+          '<div class="flex justify-between bg-purple-500/10 p-2.5 rounded border border-purple-500/30"><span class="text-purple-300">Formula average:</span><span class="text-purple-400">+2.5</span></div>';
       } else if (currentCompound === 'Fe3O4') {
-        badge.textContent = 'Fe: Fe(II) + 2 Fe(III)';
-        ledger.innerHTML = `
-          <div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>1 &times; FeO (Ferrous):</span><span class="text-sky-400 font-bold">Fe²⁺ (+2)</span></div>
-          <div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>1 &times; Fe₂O₃ (Ferric):</span><span class="text-amber-400 font-bold">2 &times; Fe³⁺ (+3)</span></div>
-          <div class="flex justify-between bg-purple-500/10 p-2.5 rounded border border-purple-500/30"><span class="text-purple-300">Average:</span><span class="text-purple-400">+8/3</span></div>
-        `;
+        badge.textContent = currentStructMode === 'reality' ? 'Formal mix: Fe(II) + 2Fe(III)' : 'Formula average: Fe = +8/3';
+        ledger.innerHTML =
+          '<div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>1 × Fe(II):</span><span class="text-sky-400 font-bold">+2</span></div>' +
+          '<div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>2 × Fe(III):</span><span class="text-amber-400 font-bold">+3, +3</span></div>' +
+          '<div class="flex justify-between bg-purple-500/10 p-2.5 rounded border border-purple-500/30"><span class="text-purple-300">Formula average:</span><span class="text-purple-400">+8/3</span></div>' +
+          '<div class="text-[10px] text-slate-400">Oxidation state is formal bookkeeping, not literal atomic charge.</div>';
       }
+    }
+
+    function drawNode(ctx, x, y, r, color, main, sub) {
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(x, y, r, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#ffffff';
+      ctx.textAlign = 'center';
+      ctx.font = 'bold 13px monospace';
+      ctx.fillText(main, x, y + 2);
+      if (sub) {
+        ctx.font = 'bold 10px monospace';
+        ctx.fillText(sub, x, y + 16);
+      }
+      ctx.textAlign = 'start';
+    }
+
+    function drawArrow(ctx, x1, y1, x2, y2, color) {
+      const angle = Math.atan2(y2 - y1, x2 - x1);
+      ctx.strokeStyle = color;
+      ctx.fillStyle = color;
+      ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(x1, y1); ctx.lineTo(x2, y2); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x2, y2);
+      ctx.lineTo(x2 - 10 * Math.cos(angle - Math.PI / 6), y2 - 10 * Math.sin(angle - Math.PI / 6));
+      ctx.lineTo(x2 - 10 * Math.cos(angle + Math.PI / 6), y2 - 10 * Math.sin(angle + Math.PI / 6));
+      ctx.closePath(); ctx.fill();
     }
 
     function drawStructuralOx() {
       const canvas = document.getElementById('canvasStructuralOx');
       if (!canvas) return;
-      const { ctx, width: w, height: h } = setupCanvas(canvas);
+      const setup = setupCanvas(canvas);
+      const ctx = setup.ctx, w = setup.width, h = setup.height;
       if (!ctx || w < 50) return;
-
       ctx.fillStyle = '#050811';
       ctx.fillRect(0, 0, w, h);
-
-      const cx = w * 0.5;
-      const cy = h * 0.5;
+      const cx = w * 0.5, cy = h * 0.5;
 
       if (currentCompound === 'CrO5') {
-        // Cr atom in center
-        ctx.fillStyle = (currentStructMode === 'reality') ? '#10b981' : '#ef4444';
-        ctx.beginPath();
-        ctx.arc(cx, cy, 22, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold 12px monospace';
-        ctx.fillText(currentStructMode === 'reality' ? 'Cr⁺⁶' : 'Cr⁺¹⁰', cx - 16, cy + 4);
-
-        // Double bond to top oxo O
-        ctx.strokeStyle = '#38bdf8';
-        ctx.lineWidth = 3;
-        ctx.beginPath();
-        ctx.moveTo(cx - 3, cy - 22); ctx.lineTo(cx - 3, cy - 70);
-        ctx.moveTo(cx + 3, cy - 22); ctx.lineTo(cx + 3, cy - 70);
-        ctx.stroke();
-
-        ctx.fillStyle = '#38bdf8';
-        ctx.beginPath();
-        ctx.arc(cx, cy - 70, 16, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.fillStyle = '#ffffff';
-        ctx.font = '10px monospace';
-        ctx.fillText('O⁻²', cx - 10, cy - 66);
-
-        // Butterfly wings (peroxo loops)
-        // Left peroxo loop
-        drawPeroxoWing(ctx, cx, cy, -1);
-        // Right peroxo loop
-        drawPeroxoWing(ctx, cx, cy, 1);
-      } else {
-        ctx.fillStyle = '#f59e0b';
-        ctx.font = '12px monospace';
-        ctx.fillText(`Structural Diagram: ${currentCompound}`, cx - 80, cy);
+        const modelOk = currentStructMode === 'reality';
+        drawNode(ctx, cx, cy, 24, modelOk ? '#10b981' : '#ef4444', 'Cr', modelOk ? '+6' : '+10?');
+        ctx.strokeStyle = '#38bdf8'; ctx.lineWidth = 3;
+        ctx.beginPath(); ctx.moveTo(cx - 3, cy - 25); ctx.lineTo(cx - 3, cy - 78); ctx.moveTo(cx + 3, cy - 25); ctx.lineTo(cx + 3, cy - 78); ctx.stroke();
+        drawNode(ctx, cx, cy - 82, 17, '#38bdf8', 'O', '-2');
+        drawPeroxoWing(ctx, cx, cy, -1, modelOk);
+        drawPeroxoWing(ctx, cx, cy, 1, modelOk);
+        ctx.fillStyle = modelOk ? '#86efac' : '#fca5a5';
+        ctx.font = 'bold 11px sans-serif';
+        ctx.fillText(modelOk ? 'O–O bonds trigger the peroxide exception.' : 'Wrong model: all five O were forced to -2.', 24, h - 24);
+      } else if (currentCompound === 'S4O6') {
+        const xs = [w*0.2, w*0.4, w*0.6, w*0.8];
+        const vals = currentStructMode === 'reality' ? ['+5','0','0','+5'] : ['avg +2.5','avg +2.5','avg +2.5','avg +2.5'];
+        ctx.strokeStyle = '#64748b'; ctx.lineWidth = 4;
+        ctx.beginPath(); ctx.moveTo(xs[0], cy); ctx.lineTo(xs[3], cy); ctx.stroke();
+        xs.forEach((x, i) => drawNode(ctx, x, cy, 24, (i===0||i===3)?'#10b981':'#64748b', 'S', vals[i]));
+        ctx.fillStyle = '#cbd5e1'; ctx.font = '11px sans-serif';
+        ctx.fillText(currentStructMode === 'reality' ? 'Homonuclear S–S bonds contribute 0; terminal S values close the -2 charge ledger.' : 'The +2.5 value is a formula average, not the requested atom-by-atom structural assignment.', 24, h - 24);
+      } else if (currentCompound === 'Fe3O4') {
+        const vals = currentStructMode === 'reality' ? ['+2','+3','+3'] : ['avg +8/3','avg +8/3','avg +8/3'];
+        const xs = [w*0.3, w*0.5, w*0.7];
+        xs.forEach((x,i)=>drawNode(ctx,x,cy,28,i===0?'#0ea5e9':'#f59e0b','Fe',vals[i]));
+        ctx.fillStyle = '#cbd5e1'; ctx.font = '11px sans-serif';
+        ctx.fillText(currentStructMode === 'reality' ? 'Formal mixed-valence description: one Fe(II) and two Fe(III).' : 'Formula algebra reports the average +8/3.', 24, h - 24);
       }
     }
 
-    function drawPeroxoWing(ctx, cx, cy, dir) {
-      const ox1 = cx + dir * 60;
-      const oy1 = cy - 25;
-      const ox2 = cx + dir * 60;
-      const oy2 = cy + 25;
-
-      ctx.strokeStyle = '#f59e0b';
-      ctx.lineWidth = 2.5;
-      ctx.beginPath();
-      ctx.moveTo(cx, cy);
-      ctx.lineTo(ox1, oy1);
-      ctx.lineTo(ox2, oy2);
-      ctx.lineTo(cx, cy);
-      ctx.stroke();
-
-      // Peroxide O-O bond highlight
-      ctx.strokeStyle = '#ef4444';
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.moveTo(ox1, oy1);
-      ctx.lineTo(ox2, oy2);
-      ctx.stroke();
-
-      // Two oxygen circles
-      ctx.fillStyle = '#f59e0b';
-      ctx.beginPath(); ctx.arc(ox1, oy1, 14, 0, Math.PI * 2); ctx.fill();
-      ctx.beginPath(); ctx.arc(ox2, oy2, 14, 0, Math.PI * 2); ctx.fill();
-
-      ctx.fillStyle = '#ffffff';
-      ctx.font = '9px monospace';
-      ctx.fillText('O⁻¹', ox1 - 8, oy1 + 3);
-      ctx.fillText('O⁻¹', ox2 - 8, oy2 + 3);
+    function drawPeroxoWing(ctx, cx, cy, dir, modelOk) {
+      const ox1 = cx + dir * 70, oy1 = cy - 28;
+      const ox2 = cx + dir * 70, oy2 = cy + 28;
+      ctx.strokeStyle = '#f59e0b'; ctx.lineWidth = 2.5;
+      ctx.beginPath(); ctx.moveTo(cx, cy); ctx.lineTo(ox1, oy1); ctx.lineTo(ox2, oy2); ctx.lineTo(cx, cy); ctx.stroke();
+      ctx.strokeStyle = '#ef4444'; ctx.lineWidth = 4;
+      ctx.beginPath(); ctx.moveTo(ox1, oy1); ctx.lineTo(ox2, oy2); ctx.stroke();
+      drawNode(ctx, ox1, oy1, 15, '#f59e0b', 'O', modelOk ? '-1' : '-2?');
+      drawNode(ctx, ox2, oy2, 15, '#f59e0b', 'O', modelOk ? '-1' : '-2?');
     }
 
     // =========================================================================
     // TAB 4: n-FACTOR MATRIX
     // =========================================================================
-    let currentNfactorMed = 'acidic';
 
     function setNfactorMedium(med) {
       currentNfactorMed = med;
@@ -2132,67 +2252,119 @@ window.JEE_QUESTIONS_DATA = [
 
       ctx.fillStyle = '#f59e0b';
       ctx.font = 'bold 12px monospace';
-      ctx.fillText(`+${eCount} e⁻ (n = ${eCount})`, ox - 140, (50 + targetY) * 0.5);
+      ctx.fillText('gains ' + eCount + ' e⁻  (n = ' + eCount + ')', ox - 155, (50 + targetY) * 0.5);
     }
 
     function drawElectronFlow() {
       const canvas = document.getElementById('canvasElectronFlow');
       if (!canvas) return;
-      const { ctx, width: w, height: h } = setupCanvas(canvas);
+      const setup = setupCanvas(canvas), ctx = setup.ctx, w = setup.width, h = setup.height;
       if (!ctx || w < 50) return;
-      ctx.fillStyle = '#050811';
-      ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#f59e0b';
-      ctx.font = '12px monospace';
-      ctx.fillText('Electron Transfer Conveyor: Reductant (Loss e⁻) → Oxidant (Gain e⁻)', 30, 40);
+      ctx.fillStyle = '#050811'; ctx.fillRect(0,0,w,h);
+      const lx=w*0.24, rx=w*0.76, cy=h*0.42;
+      drawNode(ctx,lx,cy,30,'#0ea5e9','Zn','0');
+      drawNode(ctx,rx,cy,30,'#f59e0b','Cu','2+');
+      drawArrow(ctx,lx+45,cy,rx-45,cy,'#a78bfa');
+      const mid=(lx+rx)/2;
+      ctx.fillStyle='#a78bfa'; ctx.beginPath(); ctx.arc(mid-12,cy-8,6,0,Math.PI*2); ctx.fill(); ctx.beginPath(); ctx.arc(mid+12,cy+8,6,0,Math.PI*2); ctx.fill();
+      ctx.fillStyle='#e2e8f0'; ctx.font='bold 11px monospace';
+      ctx.fillText('2e⁻ move',mid-32,cy-30);
+      ctx.fillStyle='#38bdf8'; ctx.fillText('Zn → Zn²⁺ + 2e⁻',24,h-76);
+      ctx.fillText('oxidized · reducing agent (donor)',24,h-54);
+      ctx.fillStyle='#fbbf24'; ctx.fillText('Cu²⁺ + 2e⁻ → Cu',Math.max(24,w*0.52),h-76);
+      ctx.fillText('reduced · oxidizing agent (acceptor)',Math.max(24,w*0.52),h-54);
+      ctx.fillStyle='#94a3b8'; ctx.font='10px sans-serif'; ctx.fillText('Conservation invariant: electrons lost = electrons gained.',24,h-24);
     }
 
     function drawIonElectron() {
       const canvas = document.getElementById('canvasIonElectron');
       if (!canvas) return;
-      const { ctx, width: w, height: h } = setupCanvas(canvas);
+      const setup = setupCanvas(canvas), ctx = setup.ctx, w = setup.width, h = setup.height;
       if (!ctx || w < 50) return;
-      ctx.fillStyle = '#050811';
-      ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#38bdf8';
-      ctx.font = '12px monospace';
-      ctx.fillText('Ion-Electron Half-Reaction Balance Ledger', 30, 40);
+      ctx.fillStyle='#050811'; ctx.fillRect(0,0,w,h);
+      const rows=[
+        ['1 · Skeleton','MnO₄⁻  →  Mn²⁺'],
+        ['2 · Balance O','MnO₄⁻  →  Mn²⁺ + 4H₂O'],
+        ['3 · Balance H','8H⁺ + MnO₄⁻  →  Mn²⁺ + 4H₂O'],
+        ['4 · Balance charge','5e⁻ + 8H⁺ + MnO₄⁻  →  Mn²⁺ + 4H₂O']
+      ];
+      ctx.font='bold 11px monospace';
+      rows.forEach((r,i)=>{
+        const y=48+i*52;
+        ctx.fillStyle=i===3?'#10b981':'#38bdf8'; ctx.fillText(r[0],24,y);
+        ctx.fillStyle='#e2e8f0'; ctx.fillText(r[1],Math.min(155,w*0.34),y);
+        ctx.strokeStyle='#1e293b'; ctx.beginPath(); ctx.moveTo(20,y+18); ctx.lineTo(w-20,y+18); ctx.stroke();
+      });
+      ctx.fillStyle='#94a3b8'; ctx.font='10px sans-serif'; ctx.fillText('Final check: Mn, O, H and total charge are identical on both sides.',24,h-18);
     }
 
     function drawTitration() {
       const canvas = document.getElementById('canvasTitration');
       if (!canvas) return;
-      const { ctx, width: w, height: h } = setupCanvas(canvas);
-      if (!ctx || w < 50) return;
-      ctx.fillStyle = '#050811';
-      ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#ec4899';
-      ctx.font = '12px monospace';
-      ctx.fillText('Redox Titration: Burette KMnO₄ into Conical Flask', 30, 40);
+      const setup=setupCanvas(canvas), ctx=setup.ctx, w=setup.width, h=setup.height;
+      if(!ctx||w<50)return;
+      ctx.fillStyle='#050811'; ctx.fillRect(0,0,w,h);
+
+      const bx=w*0.25;
+      ctx.strokeStyle='#cbd5e1'; ctx.lineWidth=3; ctx.strokeRect(bx-18,36,36,118);
+      ctx.fillStyle='#f97316'; ctx.fillRect(bx-14,70,28,80);
+      ctx.strokeStyle='#cbd5e1'; ctx.beginPath(); ctx.moveTo(bx,154); ctx.lineTo(bx,190); ctx.stroke();
+      ctx.fillStyle='#f97316'; ctx.beginPath(); ctx.arc(bx,202,5,0,Math.PI*2); ctx.fill();
+
+      ctx.strokeStyle='#cbd5e1'; ctx.lineWidth=3;
+      ctx.beginPath(); ctx.moveTo(bx-55,245); ctx.lineTo(bx-34,195); ctx.lineTo(bx+34,195); ctx.lineTo(bx+55,245); ctx.closePath(); ctx.stroke();
+      ctx.fillStyle='#7c3aed55'; ctx.beginPath(); ctx.moveTo(bx-45,238); ctx.lineTo(bx-30,210); ctx.lineTo(bx+30,210); ctx.lineTo(bx+45,238); ctx.closePath(); ctx.fill();
+
+      const x=Math.max(w*0.5,340);
+      ctx.fillStyle='#f8fafc'; ctx.font='bold 12px monospace'; ctx.fillText('Electron equivalence',x,54);
+      ctx.fillStyle='#f97316'; ctx.fillText('1 Cr₂O₇²⁻ accepts 6e⁻',x,92);
+      ctx.fillStyle='#a78bfa'; ctx.fillText('1 FeC₂O₄ gives 3e⁻',x,126);
+      ctx.fillStyle='#10b981'; ctx.font='bold 14px monospace'; ctx.fillText('1 : 2  gives  6e⁻ : 6e⁻',x,172);
+      ctx.fillStyle='#94a3b8'; ctx.font='10px sans-serif'; ctx.fillText('At equivalence: total electron equivalents accepted = donated.',x,210);
     }
 
     function drawGalvanic() {
-      const canvas = document.getElementById('canvasGalvanic');
-      if (!canvas) return;
-      const { ctx, width: w, height: h } = setupCanvas(canvas);
-      if (!ctx || w < 50) return;
-      ctx.fillStyle = '#050811';
-      ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#10b981';
-      ctx.font = '12px monospace';
-      ctx.fillText('Daniell Cell: Zn(s) | Zn²⁺(1M) || Cu²⁺(1M) | Cu(s)  E° = 1.10 V', 30, 40);
+      const canvas=document.getElementById('canvasGalvanic');
+      if(!canvas)return;
+      const setup=setupCanvas(canvas),ctx=setup.ctx,w=setup.width,h=setup.height;
+      if(!ctx||w<50)return;
+      ctx.fillStyle='#050811';ctx.fillRect(0,0,w,h);
+      const lx=w*0.25,rx=w*0.75,top=58;
+      ctx.strokeStyle='#64748b';ctx.lineWidth=3;
+      ctx.strokeRect(lx-70,130,140,90);ctx.strokeRect(rx-70,130,140,90);
+      ctx.fillStyle='#0ea5e933';ctx.fillRect(lx-66,160,132,56);
+      ctx.fillStyle='#f59e0b33';ctx.fillRect(rx-66,160,132,56);
+      ctx.strokeStyle='#cbd5e1';ctx.lineWidth=8;ctx.beginPath();ctx.moveTo(lx,95);ctx.lineTo(lx,205);ctx.moveTo(rx,95);ctx.lineTo(rx,205);ctx.stroke();
+      ctx.strokeStyle='#a78bfa';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(lx,95);ctx.lineTo(lx,top);ctx.lineTo(rx,top);ctx.lineTo(rx,95);ctx.stroke();
+      drawArrow(ctx,lx+40,top,rx-40,top,'#a78bfa');
+      ctx.fillStyle='#a78bfa';ctx.font='bold 11px monospace';ctx.fillText('2e⁻',w*0.5-12,top-12);
+      ctx.strokeStyle='#10b981';ctx.lineWidth=5;ctx.beginPath();ctx.arc(w*0.5,144,58,Math.PI,0);ctx.stroke();
+      ctx.fillStyle='#e2e8f0';ctx.font='bold 11px monospace';
+      ctx.fillText('Zn anode',lx-32,244);ctx.fillText('Cu cathode',rx-38,244);
+      ctx.fillStyle='#38bdf8';ctx.fillText('Zn → Zn²⁺ + 2e⁻',lx-70,268);
+      ctx.fillStyle='#fbbf24';ctx.fillText('Cu²⁺ + 2e⁻ → Cu',rx-76,268);
+      ctx.fillStyle='#10b981';ctx.fillText('salt bridge',w*0.5-33,132);
+      ctx.fillStyle='#94a3b8';ctx.font='10px sans-serif';ctx.fillText('External electrons flow anode → cathode; salt bridge carries ions, not electrons.',24,h-16);
     }
 
     function drawSandbox() {
-      const canvas = document.getElementById('canvasSandbox');
-      if (!canvas) return;
-      const { ctx, width: w, height: h } = setupCanvas(canvas);
-      if (!ctx || w < 50) return;
-      ctx.fillStyle = '#050811';
-      ctx.fillRect(0, 0, w, h);
-      ctx.fillStyle = '#f59e0b';
-      ctx.font = '12px monospace';
-      ctx.fillText('⚡ Redox Couple Sandbox [Draft Mode Active]', 30, 40);
+      const canvas=document.getElementById('canvasSandbox');
+      if(!canvas)return;
+      const setup=setupCanvas(canvas),ctx=setup.ctx,w=setup.width,h=setup.height;
+      if(!ctx||w<50)return;
+      ctx.fillStyle='#050811';ctx.fillRect(0,0,w,h);
+      const x=w*0.42,top=42,bottom=h-44;
+      ctx.strokeStyle='#64748b';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(x,top);ctx.lineTo(x,bottom);ctx.stroke();
+      for(let os=-3;os<=7;os+=1){
+        const y=bottom-(os+3)*(bottom-top)/10;
+        ctx.strokeStyle='#334155';ctx.beginPath();ctx.moveTo(x-10,y);ctx.lineTo(x+10,y);ctx.stroke();
+        ctx.fillStyle='#cbd5e1';ctx.font='10px monospace';ctx.fillText((os>=0?'+':'')+os,x-36,y+4);
+      }
+      drawArrow(ctx,x+62,bottom-25,x+62,top+25,'#f59e0b');
+      drawArrow(ctx,x+128,top+25,x+128,bottom-25,'#38bdf8');
+      ctx.fillStyle='#f59e0b';ctx.font='bold 11px monospace';ctx.fillText('OXIDATION',x+48,top+8);ctx.fillText('loss e⁻',x+48,top+24);
+      ctx.fillStyle='#38bdf8';ctx.fillText('REDUCTION',x+112,bottom-4);ctx.fillText('gain e⁻',x+112,bottom+12);
+      ctx.fillStyle='#e2e8f0';ctx.font='bold 12px sans-serif';ctx.fillText('Paper practice: choose a before/after oxidation number, then predict direction before calculating electron count.',24,28);
     }
 
     // =========================================================================
@@ -2333,14 +2505,14 @@ window.JEE_QUESTIONS_DATA = [
                 </div>
 
                 <div class="space-y-1">
-                  <div class="text-[11px] font-bold text-amber-300 font-mono uppercase tracking-wider">Step 1 &middot; Structural Architecture &amp; Cleavage Model</div>
+                  <div class="text-[11px] font-bold text-amber-300 font-mono uppercase tracking-wider">Step 1 &middot; Start from the governing model</div>
                   <div class="text-xs text-slate-200 bg-black/40 p-2.5 rounded-lg border border-emerald-500/20 font-mono">
                     ${q.steps && q.steps[0] ? q.steps[0] : 'Identify molecular structure and apply heterolytic cleavage rules.'}
                   </div>
                 </div>
 
                 <div class="space-y-1">
-                  <div class="text-[11px] font-bold text-sky-300 font-mono uppercase tracking-wider">Step 2 &middot; Electron Accounting &amp; Equivalents</div>
+                  <div class="text-[11px] font-bold text-sky-300 font-mono uppercase tracking-wider">Step 2 &middot; Complete the reasoning chain</div>
                   <div class="text-xs text-slate-200 bg-black/40 p-2.5 rounded-lg border border-emerald-500/20 space-y-1.5 font-mono">
                     ${(q.steps || []).slice(1).map((st, i) => `<div class="flex items-start gap-2"><span class="text-sky-400 text-[10px]">${i + 2}.</span><span>${st}</span></div>`).join('')}
                   </div>
@@ -2388,39 +2560,43 @@ window.JEE_QUESTIONS_DATA = [
     function checkQuestionOption(qId, selectedKey) {
       const q = (window.JEE_QUESTIONS_DATA || []).find(item => item.id === qId);
       if (!q) return;
+      const fb = document.getElementById('feedback-' + qId);
 
-      const fb = document.getElementById(`feedback-${qId}`);
       if (q.answerAudit !== 'PASS' || !q.correct) {
         if (fb) {
           fb.classList.remove('hidden');
           fb.className = 'p-3.5 rounded-xl text-xs bg-amber-950/60 border border-amber-500/60 text-amber-100 space-y-1.5';
-          fb.innerHTML = `<div><strong>⚠️ Withheld from scoring · Answer audit ${q.answerAudit || 'PENDING'}.</strong></div><div>${q.answerAuditNote || 'This item requires review.'}</div><div class="font-mono text-amber-300">${q.ans || ''}</div>`;
+          fb.innerHTML = '<div><strong>⚠️ Withheld from scoring · Answer audit ' + (q.answerAudit || 'PENDING') + '.</strong></div><div>' + (q.answerAuditNote || 'This item requires review.') + '</div>';
         }
         return;
       }
 
-      const isCorrect = (selectedKey === q.correct);
+      questionAttempts[qId] = (questionAttempts[qId] || 0) + 1;
+      const isCorrect = selectedKey === q.correct;
+
       (q.options || []).forEach(opt => {
-        const btn = document.getElementById(`btnOpt-${qId}-${opt.key}`);
+        const btn = document.getElementById('btnOpt-' + qId + '-' + opt.key);
         if (!btn) return;
-        if (opt.key === q.correct) {
+        if (isCorrect && opt.key === q.correct) {
           btn.className = 'text-left p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/90 text-xs text-emerald-200 transition flex items-start gap-2.5 shadow-md shadow-emerald-950/50';
-        } else if (opt.key === selectedKey && !isCorrect) {
-          btn.className = 'text-left p-3 rounded-xl bg-red-950/60 border border-red-500/90 text-xs text-red-200 transition flex items-start gap-2.5 shadow-md shadow-red-950/50';
+        } else if (!isCorrect && opt.key === selectedKey) {
+          btn.className = 'text-left p-3 rounded-xl bg-red-950/60 border border-red-500/90 text-xs text-red-200 transition flex items-start gap-2.5';
         } else {
-          btn.className = 'text-left p-3 rounded-xl bg-slate-950/40 border border-border/40 text-xs text-slate-500 transition flex items-start gap-2.5';
+          btn.className = 'text-left p-3 rounded-xl bg-slate-950/60 border border-border text-xs text-slate-300 transition flex items-start gap-2.5';
         }
       });
 
-      if (fb) {
-        fb.classList.remove('hidden');
-        if (isCorrect) {
-          fb.className = 'p-3.5 rounded-xl text-xs bg-emerald-950/60 border border-emerald-500/60 text-emerald-200 space-y-1';
-          fb.innerHTML = `<div><strong>✅ Correct Option (${q.correct}).</strong></div><div class="text-[11px] text-emerald-300 font-mono">${q.ans}</div>`;
-        } else {
-          fb.className = 'p-3.5 rounded-xl text-xs bg-red-950/60 border border-red-500/60 text-red-200 space-y-1.5';
-          fb.innerHTML = `<div><strong>❌ Option (${selectedKey}) is incorrect.</strong> The locally audited answer is <strong>Option (${q.correct})</strong>.</div><div class="text-amber-300 font-semibold">⚠️ Trap Insight: ${q.trap}</div>`;
-        }
+      if (!fb) return;
+      fb.classList.remove('hidden');
+      if (isCorrect) {
+        fb.className = 'p-3.5 rounded-xl text-xs bg-emerald-950/60 border border-emerald-500/60 text-emerald-200 space-y-1';
+        fb.innerHTML = '<div><strong>✅ Correct.</strong> Now explain the electron/charge reason before opening the Chalkboard.</div><div class="text-[11px] text-emerald-300 font-mono">' + q.ans + '</div>';
+      } else {
+        const specific = q.distractorTraps && q.distractorTraps[selectedKey]
+          ? q.distractorTraps[selectedKey]
+          : 'Re-check the first structural, charge or electron-count assumption that led to this option.';
+        fb.className = 'p-3.5 rounded-xl text-xs bg-red-950/60 border border-red-500/60 text-red-100 space-y-1.5';
+        fb.innerHTML = '<div><strong>Not yet.</strong> The correct option is intentionally still hidden.</div><div class="text-amber-200"><strong>Diagnostic cue:</strong> ' + specific + '</div><div class="text-slate-300">Try again, or open the Teacher Chalkboard if you need a full repair.</div>';
       }
     }
     function toggleSolution(qId) {
@@ -2437,6 +2613,7 @@ window.JEE_QUESTIONS_DATA = [
       validateQuestionBank();
       renderQuestions();
       updateStructuralLedger();
+      drawFoundation();
       drawStructuralOx();
       drawElectronFlow();
       drawIonElectron();
@@ -2444,11 +2621,12 @@ window.JEE_QUESTIONS_DATA = [
       drawTitration();
       drawGalvanic();
       drawSandbox();
-      switchTab('tab-structural-ox');
+      switchTab('tab-foundations');
     });
 
     window.addEventListener('resize', () => {
-      if (currentTab === 'tab-structural-ox') drawStructuralOx();
+      if (currentTab === 'tab-foundations') drawFoundation();
+      else if (currentTab === 'tab-structural-ox') drawStructuralOx();
       else if (currentTab === 'tab-electron-flow') drawElectronFlow();
       else if (currentTab === 'tab-ion-electron') drawIonElectron();
       else if (currentTab === 'tab-nfactor') drawNfactor();

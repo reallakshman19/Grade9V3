@@ -187,3 +187,80 @@ This audit provides static/data/math review and CI falsifiers. It does not claim
 - full external-corpus coverage;
 - offline delivery;
 - browser visual proof until a real browser smoke test is completed.
+
+## Redox follow-up: scientific-content + Grade-9 pedagogy audit (2026-09-20)
+
+A second, content-first audit was performed after the initial packaging audit. This review used
+GCDR v1.3's mandatory sequence (predict → manipulate/observe → reconstruct → transfer) and checked
+the redox explanations against the formal oxidation-state model rather than treating the task as
+a canvas-only repair.
+
+### Root runtime defect
+
+The Redox page read `currentCompound` and `currentStructMode` during the load sequence but never
+initialized either variable. The first `updateStructuralLedger()` call could therefore throw a
+`ReferenceError`, aborting subsequent canvas initialization. Both variables are now explicitly
+initialized, and the first learner route is the new Foundations tab.
+
+### Canvas-content defect
+
+Five canvas tabs were syntactically valid but only painted a single line of text. They were
+placeholders, not graphical cognitive deconstructions. The follow-up replaces them with:
+
+- a prediction-first Zn/Cu electron-transfer scene;
+- a donor/acceptor electron-flow diagram;
+- a four-stage ion-electron balancing ledger;
+- a redox-titration electron-equivalence diagram;
+- a Daniell-cell electron/salt-bridge diagram;
+- an oxidation-number ladder practice view.
+
+Every canvas also has an accessible label and a visible text invariant, so the concept does not
+depend solely on pixel rendering.
+
+### Scientific-model corrections
+
+The previous copy repeatedly described oxidation states as "physical reality", "real localized
+charges", or asserted that fractional oxidation states are physically impossible. Those claims
+were removed. The suite now treats oxidation state as formal electron bookkeeping based on an
+ionic approximation of bonds. Mixed-valence examples distinguish a formula-average value from a
+structure-supported formal assignment without equating either with measured atomic charge.
+
+Specific repairs include:
+
+- CrO5 / peroxo acids: the error is now identified as ignoring O-O peroxide connectivity, not as
+  violating a simplistic valence-electron ceiling.
+- S4O6(2-): +2.5 is presented as the formula average; +5,0,0,+5 is the requested structural formal
+  assignment, with a whole-ion charge check.
+- Fe3O4 and Pb3O4: mixed-valence formal descriptions are separated from literal charge language.
+- Brown-ring complex: the JEE Fe(I)/NO+ convention is retained for the attributed item, but the
+  Chalkboard now discloses nitrosyl non-innocence and the more robust {FeNO}7 description.
+- Na2S2O3 titration: electron transfer is checked from the balanced thiosulfate/tetrathionate
+  half-reaction instead of a misleading average-sulfur shortcut.
+- Bleaching powder: the Ca(OCl)Cl representation is explicitly identified as the textbook/JEE
+  idealization.
+
+### Pedagogy/order corrections
+
+The page previously opened on structural exceptions (CrO5, tetrathionate, magnetite) before a
+young learner had a causal model of redox. A new **Grade 9 Bridge** now precedes the JEE material:
+
+1. predict the electron donor;
+2. reveal Zn → Cu2+ electron transfer;
+3. label oxidation/reduction from electron loss/gain;
+4. connect donor/acceptor to reducing/oxidizing agent;
+5. only then introduce oxidation-number bookkeeping.
+
+The overall suite contract remains `UNBOUND_EXTENSION / JEE_EXTENSION`; the foundation tab is a
+bridge, not a new Grade-9 certification claim.
+
+### Feedback and disclosure corrections
+
+A wrong MCQ click previously highlighted the correct option immediately, collapsing diagnosis,
+hinting and repair into one reveal. Wrong attempts now keep the answer hidden, give
+distractor-specific process feedback when available, and leave the Teacher Chalkboard as an
+explicit repair action. Generic independent-check and transfer boilerplate was replaced across all
+20 redox records with task-specific checks and reusable decision rules.
+
+Source provenance status is unchanged: local answer/content review does not convert the attributed
+ExamSIDE labels into verified source records.
+
