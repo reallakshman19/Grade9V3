@@ -66,6 +66,33 @@ test("one semantic entity may have multiple projections and derivation preserves
   assert.notEqual(derived.id, "dividend-156");
 });
 
+test("inspection exposes projection origin and linked representations", () => {
+  const runtime = new WorkbenchRuntime(fixture, divisionAdapter());
+  const event = runtime.dispatch({
+    type: "INSPECT",
+    entityRef: "dividend-156",
+    projectionRef: "dividend-expression",
+    channel: "keyboard",
+  });
+
+  assert.equal(event.type, "ENTITY_INSPECTED");
+  assert.equal(event.entityRef, "dividend-156");
+  assert.equal(event.projectionRef, "dividend-expression");
+  assert.deepEqual(event.linkedProjectionRefs, ["dividend-expression", "dividend-place-value"]);
+  assert.equal(runtime.snapshot.interaction.inspectedProjectionRef, "dividend-expression");
+  assert.doesNotThrow(() => JSON.stringify(event));
+
+  assert.throws(
+    () => runtime.dispatch({
+      type: "INSPECT",
+      entityRef: "dividend-156",
+      projectionRef: "divisor-expression",
+      channel: "keyboard",
+    }),
+    (error) => error instanceof WorkbenchError && error.code === "WORKBENCH_PROJECTION_ENTITY_MISMATCH"
+  );
+});
+
 test("pointer, click, and keyboard intents commit through the same semantic path", () => {
   const pointer = finalStateFor("pointer");
   const click = finalStateFor("click");
@@ -102,7 +129,7 @@ test("undo restores the exact prior semantic state", () => {
 
 test("named logical placement resolves without authored pixel coordinates", () => {
   const placement = fixture.projections[0].placement;
-  assert.deepEqual(resolvePlacement(fixture, placement), { grid: "division-work", row: 1, column: 2 });
+  assert.deepEqual(resolvePlacement(fixture, placement), { grid: "division-expression", row: 1, column: 1 });
   const bad = structuredClone(fixture);
   bad.projections[0].placement.x = 120;
   assert.throws(() => validateScene(bad), (error) => error instanceof WorkbenchError && error.code === "WORKBENCH_PIXEL_COORDINATE_FORBIDDEN");
