@@ -66,7 +66,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.massH2"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds massN2, massH2 only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds massN2, massH2 only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "CHEM02-Q02",
@@ -125,7 +126,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.tempC"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds tempC only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds tempC only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "CHEM02-Q03",
@@ -188,7 +190,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.yield2"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds yield1, yield2 only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds yield1, yield2 only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "CHEM02-Q04",
@@ -241,12 +244,13 @@ window.JEE_QUESTIONS_DATA = [
       "Residual/O₂ balance ⇒ y = 6",
       "Implied formula = C₄H₆ (not listed)"
     ],
-    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "sourceAudit": "SOURCE_UNVERIFIED",
     "answerAudit": "FAIL",
     "answerAuditNote": "Internal arithmetic contradiction: KOH contraction gives x=4; 65 mL residual leaves 25 mL O₂, so 55 mL O₂ was consumed and y=6. The data imply C₄H₆, which is not a listed option.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "The current ExamSIDE listing for JEE Main 2026 Online 8 April Evening does not contain this eudiometry item; the stated attribution is not accepted as verified."
   },
   {
     "id": "CHEM02-Q05",
@@ -303,7 +307,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "CHEM02-Q06",
@@ -357,7 +362,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "CHEM02-Q07",
@@ -417,7 +423,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.massG"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds massG only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds massG only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "CHEM02-Q08",
@@ -473,7 +480,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "MOLE-Q09",
@@ -529,7 +537,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "MOLE-Q10",
@@ -585,7 +594,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "MOLE-Q11",
@@ -641,7 +651,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "MOLE-Q12",
@@ -703,7 +714,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "MOLE-Q13",
@@ -759,7 +771,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "MOLE-Q14",
@@ -821,7 +834,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.yield2"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds yield1, yield2 only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds yield1, yield2 only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "MOLE-Q15",
@@ -882,7 +896,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "MOLE-Q16",
@@ -940,7 +955,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "MOLE-Q17",
@@ -998,7 +1014,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "MOLE-Q18",
@@ -1055,7 +1072,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "MOLE-Q19",
@@ -1115,7 +1133,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "MOLE-Q20",
@@ -1171,6 +1190,7 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   }
 ];
