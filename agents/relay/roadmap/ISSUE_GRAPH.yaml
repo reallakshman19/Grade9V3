@@ -1,5 +1,5 @@
 schema_version: relay-v2.5
-graph_revision: IG-0002
+graph_revision: IG-0003
 nodes:
 - id: ISSUE-162
   state: ACTIVE
@@ -10,4 +10,20 @@ nodes:
     issue_id: null
     url: https://github.com/reallaksh19/Grade9V3/issues/162
   roadmap_node: WP-162-BROWSER-RUNTIME-PROOF
-relationships: []
+- id: HANDOVER-ISS162-D5BAC91CB19C
+  role: HANDOVER
+  handover_key: sha256:d5bac91cb19ca150dff84d45326aaa5d4be479dc3b5ba9bf1aabcc4c2d64901c
+  state: ACTIVE
+  github_state: ABSENT
+  github:
+    issue_number: null
+    issue_id: null
+    url: null
+  source_contract:
+    kind: GITHUB_ISSUE
+    id: ISSUE-162
+    work_package: WP-162-BROWSER-RUNTIME-PROOF
+relationships:
+- from: HANDOVER-ISS162-D5BAC91CB19C
+  relation: RELATES_TO
+  to: ISSUE-162
