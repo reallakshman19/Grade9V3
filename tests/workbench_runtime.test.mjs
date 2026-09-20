@@ -15,6 +15,8 @@ import {
 const here = dirname(fileURLToPath(import.meta.url));
 const fixturePath = resolve(here, "fixtures/workbench/arithmetic-division.json");
 const fixture = JSON.parse(await readFile(fixturePath, "utf8"));
+const identityFixturePath = resolve(here, "fixtures/workbench/arithmetic-division-semantic-identity.json");
+const identityFixture = JSON.parse(await readFile(identityFixturePath, "utf8"));
 
 function divisionAdapter() {
   return {
@@ -45,6 +47,65 @@ function divisionAdapter() {
   };
 }
 
+function identityLifecycleAdapter(onCall = () => {}) {
+  return {
+    evaluateTransfer(request, snapshot) {
+      onCall(request, snapshot);
+      assert.equal(snapshot.sceneId, identityFixture.id);
+
+      if (request.sourceEntityRef === "dividend-156" && request.targetRef === "partial-dividend-first") {
+        return {
+          accepted: true,
+          summary: "The first partial dividend is 15.",
+          patch: {
+            addEntities: [{
+              id: "partial-dividend-15",
+              label: "15",
+              provenance: { kind: "DERIVED", sourceEntityRefs: ["dividend-156"] }
+            }],
+            addProjections: [{
+              id: "partial-dividend-working",
+              entityRef: "partial-dividend-15",
+              label: "15",
+              representation: "partial dividend",
+              placement: { grid: "division-work", row: "working", column: "right" }
+            }]
+          }
+        };
+      }
+
+      if (request.sourceEntityRef === "partial-dividend-15" && request.targetRef === "quotient-first-digit") {
+        return {
+          accepted: true,
+          summary: "The first quotient digit is 1 because 12 fits into 15 once.",
+          patch: {
+            addEntities: [{
+              id: "quotient-digit-1",
+              label: "1",
+              provenance: { kind: "DERIVED", sourceEntityRefs: ["partial-dividend-15", "divisor-12"] }
+            }],
+            addProjections: [{
+              id: "quotient-digit-1-result",
+              entityRef: "quotient-digit-1",
+              label: "1",
+              representation: "quotient digit",
+              placement: { grid: "division-work", row: "result", column: "main" }
+            }]
+          }
+        };
+      }
+
+      return {
+        accepted: false,
+        reason: "Use the current semantic intermediate for this target.",
+        allowedTargets: snapshot.entities.some((row) => row.id === "partial-dividend-15")
+          ? ["quotient-first-digit"]
+          : ["partial-dividend-first"]
+      };
+    }
+  };
+}
+
 function finalStateFor(channel) {
   const runtime = new WorkbenchRuntime(fixture, divisionAdapter());
   runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel });
@@ -64,6 +125,60 @@ test("one semantic entity may have multiple projections and derivation preserves
   const derived = runtime.snapshot.entities.find((row) => row.id === "quotient-digit-1");
   assert.deepEqual(derived.provenance.sourceEntityRefs, ["dividend-156", "divisor-12"]);
   assert.notEqual(derived.id, "dividend-156");
+});
+
+test("partial dividend is a distinct semantic entity with reversible provenance lifecycle", () => {
+  let adapterCalls = 0;
+  const runtime = new WorkbenchRuntime(identityFixture, identityLifecycleAdapter(() => { adapterCalls += 1; }));
+
+  const originalDividend = runtime.snapshot.entities.find((row) => row.id === "dividend-156");
+  assert.ok(originalDividend);
+  assert.equal(runtime.snapshot.entities.some((row) => row.id === "partial-dividend-15"), false);
+  assert.equal(runtime.snapshot.projections.filter((row) => row.entityRef === "dividend-156").length, 2);
+  assert.equal(runtime.snapshot.projections.some((row) => row.entityRef === "dividend-156" && row.label === "15"), false);
+
+  runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "click" });
+  const partialEvent = runtime.dispatch({ type: "DROP", targetRef: "partial-dividend-first", channel: "click" });
+  assert.equal(partialEvent.type, "TRANSFER_ACCEPTED");
+
+  const partial = runtime.snapshot.entities.find((row) => row.id === "partial-dividend-15");
+  assert.ok(partial);
+  assert.notEqual(partial.id, originalDividend.id);
+  assert.deepEqual(partial.provenance.sourceEntityRefs, ["dividend-156"]);
+  const partialProjection = runtime.snapshot.projections.find((row) => row.id === "partial-dividend-working");
+  assert.equal(partialProjection.entityRef, "partial-dividend-15");
+
+  const inspection = runtime.dispatch({
+    type: "INSPECT",
+    entityRef: "partial-dividend-15",
+    projectionRef: "partial-dividend-working",
+    channel: "keyboard",
+  });
+  assert.deepEqual(inspection.linkedProjectionRefs, ["partial-dividend-working"]);
+
+  runtime.dispatch({ type: "PICK", entityRef: "partial-dividend-15", channel: "keyboard" });
+  const quotientEvent = runtime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "keyboard" });
+  assert.equal(quotientEvent.type, "TRANSFER_ACCEPTED");
+  const quotient = runtime.snapshot.entities.find((row) => row.id === "quotient-digit-1");
+  assert.deepEqual(quotient.provenance.sourceEntityRefs, ["partial-dividend-15", "divisor-12"]);
+  assert.equal(adapterCalls, 2);
+
+  runtime.dispatch({ type: "UNDO", channel: "keyboard" });
+  assert.equal(runtime.snapshot.entities.some((row) => row.id === "quotient-digit-1"), false);
+  assert.equal(runtime.snapshot.entities.some((row) => row.id === "partial-dividend-15"), true);
+
+  runtime.dispatch({ type: "UNDO", channel: "keyboard" });
+  assert.equal(runtime.snapshot.entities.some((row) => row.id === "partial-dividend-15"), false);
+  assert.equal(runtime.snapshot.projections.some((row) => row.id === "partial-dividend-working"), false);
+
+  runtime.dispatch({ type: "REDO", channel: "keyboard" });
+  assert.equal(runtime.snapshot.entities.some((row) => row.id === "partial-dividend-15"), true);
+  assert.equal(runtime.snapshot.entities.some((row) => row.id === "quotient-digit-1"), false);
+
+  runtime.dispatch({ type: "REDO", channel: "keyboard" });
+  assert.equal(runtime.snapshot.entities.some((row) => row.id === "quotient-digit-1"), true);
+  assert.equal(adapterCalls, 2);
+  assert.equal(runtime.snapshot.revision, 6);
 });
 
 test("inspection exposes projection origin and linked representations", () => {
