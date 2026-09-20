@@ -216,6 +216,7 @@ export class WorkbenchRuntime {
       canonicalTransformations: clone(scene.canonicalTransformations),
       interaction: {
         inspectedEntityRef: null,
+        inspectedProjectionRef: null,
         pickedEntityRef: null,
         preview: null,
       },
@@ -248,6 +249,16 @@ export class WorkbenchRuntime {
 
   _entity(entityRef) {
     return this._state.entities.find((row) => row.id === entityRef) || null;
+  }
+
+  _projection(projectionRef) {
+    return this._state.projections.find((row) => row.id === projectionRef) || null;
+  }
+
+  _linkedProjectionRefs(entityRef) {
+    return this._state.projections
+      .filter((row) => row.entityRef === entityRef)
+      .map((row) => row.id);
   }
 
   _target(targetRef) {
@@ -316,8 +327,24 @@ export class WorkbenchRuntime {
 
     if (type === "INSPECT") {
       requireCondition(this._entity(intent.entityRef), "WORKBENCH_ENTITY_UNKNOWN", String(intent.entityRef));
+      let projectionRef = null;
+      if (intent.projectionRef != null) {
+        const projection = this._projection(intent.projectionRef);
+        requireCondition(projection, "WORKBENCH_PROJECTION_UNKNOWN", String(intent.projectionRef));
+        requireCondition(projection.entityRef === intent.entityRef,
+          "WORKBENCH_PROJECTION_ENTITY_MISMATCH",
+          `${intent.projectionRef} -> ${intent.entityRef}`);
+        projectionRef = projection.id;
+      }
+      const linkedProjectionRefs = this._linkedProjectionRefs(intent.entityRef);
       this._state.interaction.inspectedEntityRef = intent.entityRef;
-      return this._emit("ENTITY_INSPECTED", { entityRef: intent.entityRef, channel });
+      this._state.interaction.inspectedProjectionRef = projectionRef;
+      return this._emit("ENTITY_INSPECTED", {
+        entityRef: intent.entityRef,
+        projectionRef,
+        linkedProjectionRefs,
+        channel,
+      });
     }
 
     if (type === "PICK") {
