@@ -1,0 +1,160 @@
+schema_version: relay-v2.5-github-projection
+generation:
+  id: GHGEN-HO-D5BAC91CB19C-R2
+  repository: reallaksh19/Grade9V3
+  roadmap_revision: RM-0002
+  issue_graph_revision: IG-0003
+  execution_ref: EP-0162-REDO-PROOF
+  state: ACTIVE
+  supersedes_generation: GHGEN-HO-D5BAC91CB19C
+  basis:
+  - agents/relay/REPO_STATE.yaml
+  - agents/relay/roadmap/ISSUE_GRAPH.yaml
+  - agents/relay/roadmap/PROGRESS.yaml
+  - agents/relay/execution-packages/EP-0162-REDO-PROOF.yaml
+  - handover-key:sha256:d5bac91cb19ca150dff84d45326aaa5d4be479dc3b5ba9bf1aabcc4c2d64901c
+  - provider-readback:https://github.com/reallaksh19/Grade9V3/issues/167
+operations:
+- id: GHOP-HO-D5BAC91CB19C-R2
+  kind: UPDATE
+  state: VERIFIED
+  idempotency_key: relay:GHGEN-HO-D5BAC91CB19C-R2:GHOP-HO-D5BAC91CB19C-R2
+  depends_on: []
+  subject:
+    issue_node: HANDOVER-ISS162-D5BAC91CB19C
+    related_nodes: [ISSUE-162]
+  preconditions:
+    repository_issue_state: OPEN
+    work_state: ACTIVE
+    handover_key: sha256:d5bac91cb19ca150dff84d45326aaa5d4be479dc3b5ba9bf1aabcc4c2d64901c
+  desired:
+    body_marker: "<!-- relay-operation:GHOP-HO-D5BAC91CB19C -->"
+    github_state: OPEN
+    issue_number: 167
+    title: "Engineering handover — Issue #162 / Semantic Workbench Core"
+    source_issue_number: 162
+    body_projection: |
+      <!-- relay-operation:GHOP-HO-D5BAC91CB19C -->
+      <!-- relay-handover-key:sha256:d5bac91cb19ca150dff84d45326aaa5d4be479dc3b5ba9bf1aabcc4c2d64901c -->
+      # Engineering handover intent
+      
+      ## Source work
+      - Selection: **GITHUB_ISSUE**
+      - Source identity: **ISSUE-162**
+      - Work package: **WP-162-BROWSER-RUNTIME-PROOF**
+      - Source GitHub issue: #162
+      - Source URL: https://github.com/reallaksh19/Grade9V3/issues/162
+      - Active delivery PR: #165
+      - Last green Core material head: `048fad16634bdadc0d0adf21230b8047eed59b78`
+      - Current handover/control-plane branch head: `a15ebba34247c1e0abf26340e6ac81d94f623106`
+      - Handover protocol basis: `reallaksh19/Common@65518fd5340599b2a0fb88db5041f6c96389ccb8:skills/engineering-pr-delivery-v2.5`
+      
+      ## Current accepted state
+      - Admitted #162 Core proof package progress: **390/400 = 97.5%**.
+      - EP-0162-CORRESPONDENCE-PROOF: **100%**.
+      - EP-0162-STATE-SUMMARY-PROOF: **100%**.
+      - EP-0162-REDO-PROOF: **100%**.
+      - EP-0162-BROWSER-RUNTIME-PROOF: **90%**; only final post-rebase merge-candidate validation remains.
+      - Core material guardrails run #3303: **PASS**.
+      - Current handover/control-plane head guardrails run #3318: **PASS**.
+      - Real Chrome workbench contract: **PASS**.
+      - Full repository suite: **934 tests PASS**.
+      - Topic independence: **0 violations across 77 files**.
+      - Architecture manifest: **193 components / 235 relations, fresh**.
+      
+      ## INTENT — still pending
+      - **AC:AC-05 / ACCEPTANCE** — Reconcile PR #165 against then-current `main`, reconcile relay custody, regenerate artifacts from the combined tree, and rerun the real-browser plus full exact-head guardrails.
+        - Why pending: AC-05 is recorded at 50%; the current branch is draft and merge-conflicted with current main.
+        - Done when: the post-rebase merge candidate has fresh exact-head browser/full guardrail evidence and AC-05 is COMPLETE.
+      - **CONTROL:MERGE-BASE-RECONCILIATION / DELIVERY** — Resolve the known PR #165 merge/base and RM-0008 relay-control overlap before any merge claim.
+        - Why pending: Owner explicitly deferred merge issues while Core coding continued; the normal drift/write gate was not claimed as passed.
+        - Done when: current-main conflicts and relay authority are reconciled and provider readback no longer reports the PR as conflicted.
+      - **NEXT-CANDIDATE:PEDAGOGY-INJECTION / ROADMAP_ADMISSION** — Evaluate and, if still justified, admit the smallest generic progressive pedagogy-injection execution slice.
+        - Why pending: #162 requires progressive step injection without rewriting canonical truth; current Core only validates/renders injection records and does not yet execute a generic progression state machine.
+        - Done when: successor performs V2.5 task→roadmap admission and a bounded EP proves supplied injections can advance without Core selecting learner support or mutating canonical transformations.
+      - **NEXT-CANDIDATE:INTERACTION-POLICY / ROADMAP_ADMISSION** — Evaluate a small public read-only / interaction-policy contract.
+        - Why pending: #162's public boundary anticipates read-only/interaction policy, but no bounded proof has been admitted.
+        - Done when: a concrete falsifier justifies and proves the minimal policy surface without learner-state coupling.
+      - **NEXT-CANDIDATE:RENDERER-SEAM / ROADMAP_ADMISSION** — Evaluate the generic SVG/MathML renderer-extension boundary.
+        - Why pending: current generic surface is structured HTML/text; richer semantic geometry/math rendering remains deferred until a concrete fixture requires it.
+        - Done when: a minimal extension seam is justified and proven without subject-specific Core branches.
+      - **NEXT-CANDIDATE:A11Y-HARDENING / ROADMAP_ADMISSION** — Evaluate host zoom and broader accessibility hardening gaps.
+        - Why pending: keyboard/touch, non-color state, reduced motion, text fallback and real-browser focus are proven, but full accessibility/zoom certification is not.
+        - Done when: concrete browser/a11y falsifiers are addressed without overclaiming full certification.
+      
+      ## Changes since prior handover
+      - Initial handover publication for the Issue #162 ownership boundary.
+      - Completed work must not be re-opened merely because the original issue still lists older deferred hypotheses such as redo; redo is now browser-proven and complete.
+      - Future Core candidates above are **not yet in the progress denominator** and are not executable until admitted under the current V2.5 roadmap/task gate.
+      
+      ## Inputs
+      - **SOURCE-ISSUE-162** — https://github.com/reallaksh19/Grade9V3/issues/162
+      - **PR-165** — https://github.com/reallaksh19/Grade9V3/pull/165
+      - **REPO-STATE** — `agents/relay/REPO_STATE.yaml`
+      - **PROGRESS** — `agents/relay/roadmap/PROGRESS.yaml`
+      - **ACTIVE-EP** — `agents/relay/execution-packages/EP-0162-REDO-PROOF.yaml`
+      - **DRIFT** — `agents/relay/drift/DRIFT-0162-RM0008.yaml`
+      - **OWNER-CONTINUATION** — `agents/relay/roadmap/owner-decisions/ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT.yaml`
+      - **REDO-BASIS INPUT-R01** — definition in `agents/relay/execution-packages/EP-0162-REDO-PROOF.yaml#inputs/INPUT-R01`; source material ref `965d0b1d02e4de989f88b4c612875ec52597599e`.
+      
+      ## Benchmarks
+      - No benchmark objects are recorded in the active redo EP. Do not invent a benchmark; use the existing exact browser/runtime tests and repository guardrails as evidence contracts.
+      
+      ## Expected outcomes
+      - Preserve the proven subject-neutral semantic runtime: stable entity/projection identity, adapter-owned validity, logical placement, input-neutral interaction, correspondence, text state, undo/redo and instance isolation.
+      - Finish delivery truthfully by reconciling the branch before merge and rerunning exact-head evidence.
+      - Admit additional Core capability only when a concrete #162 falsifier justifies it; do not inflate the denominator with speculative features.
+      
+      ## Textual requirements and boundaries
+      - Protected: domain/subject validity remains adapter-owned.
+      - Protected: canonical academic truth remains outside the workbench runtime.
+      - Protected: learner evidence/support selection remains #159-owned; Core may execute supplied presentation instructions but must not decide learner routing.
+      - Protected: history remains instance-local; redo restores validated semantic snapshots without adapter replay.
+      - Prohibited: #160 NLM/Atlas canonical authoring.
+      - Prohibited: #163 canonical→portable compilation, external-host/offline/single-file certification, production Redox migration and the full three-domain portability proof.
+      - Prohibited: subject-specific branches in Shared/workbench.
+      - Non-goal: Lit/TypeScript/Vite/npm migration unless a later falsifier independently justifies it.
+      - Non-goal: full AUTO/REGION/RELATIVE layout grammar or MOVE/COPY/DERIVE/REFERENCE taxonomy merely because the historical issue proposed them.
+      - Known problem: PR #165 is draft/conflicted with current main and relay custody diverged after RM-0008 landed.
+      - Known limitation: current real-browser proof uses the long-division witness; it is not cross-domain or full accessibility certification.
+      
+      ## Owner core requirements from this session
+      - Continue Core coding while merge issues are treated as a known pending issue; do not pretend they are resolved.
+      - Follow engineering-pr-delivery-v2.5 from Common commit `65518fd5340599b2a0fb88db5041f6c96389ccb8`.
+      - Plan for handover from repository truth, preserving completed evidence and pending work without chat dependency.
+      
+      ## Completion test
+      - Every pending INTENT item is either completed on governing evidence, admitted into an explicit successor work contract, or explicitly dispositioned by current Owner/roadmap authority.
+      - PR #165 is not merge-ready until conflict/relay reconciliation and fresh post-rebase exact-head browser/full guardrails pass.
+      
+      ## Linkage rule
+      - Preferred: native sub-issue if supported and verified.
+      - Fallback used here: verified reciprocal reference between this handover issue and Issue #162.
+      
+  publication:
+    attempt_count: 1
+    receipt: github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/167
+    last_error: null
+    last_attempt_basis:
+    - provider update/readback for Issue #167
+    - current-handover-head:a15ebba34247c1e0abf26340e6ac81d94f623106
+    - source-issue-comment:5752504081
+  verification:
+    status: PASS
+    observed_issue_number: 167
+    observed_issue_id: null
+    observed_github_state: OPEN
+    observed_relationships:
+    - verified reciprocal reference from Issue #162 comment 5752504081
+    basis:
+    - GitHub provider readback https://github.com/reallaksh19/Grade9V3/issues/167
+    - Verified relay-operation marker GHOP-HO-D5BAC91CB19C
+    - Verified relay-handover-key marker sha256:d5bac91cb19ca150dff84d45326aaa5d4be479dc3b5ba9bf1aabcc4c2d64901c
+    - Verified reciprocal reference from Issue #162 comment 5752504081
+    recovered_without_connector_receipt: false
+  reconciliation:
+    issue_graph_effects: []
+    complete_when:
+    - issue identity verified
+    - current body projection verified
+    - reciprocal source reference verified
