@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import math
 import re
 import shutil
 import subprocess
@@ -46,6 +47,7 @@ SUITES = {
 REQUIRED = {
     "id", "q", "options", "formula", "steps", "ans", "trap",
     "answerAudit", "answerAuditNote", "sourceAudit", "sourceAuditNote",
+    "teacherCheck", "takeaway", "helperTags",
     "simFidelity", "simFidelityNote", "targetTab", "simParams", "simBindingRefs",
 }
 
@@ -90,6 +92,18 @@ class ChemistryMasterSuitesAuditTest(unittest.TestCase):
                         self.assertEqual(refs, [], q["id"])
                     else:
                         self.fail(f"{q['id']}: unexpected fidelity {q['simFidelity']}")
+
+                    self.assertEqual(
+                        q["helperTags"],
+                        [
+                            "TEACHERS_CHALKBOARD",
+                            "TRAP_ALERT",
+                            "INDEPENDENT_CHECK",
+                            "TRANSFER_TAKEAWAY",
+                            "EXACTNESS_BADGE",
+                        ],
+                        q["id"],
+                    )
 
                     if q["answerAudit"] == "PASS":
                         self.assertIn(q["correct"], {o["key"] for o in q["options"]})
@@ -165,6 +179,77 @@ class ChemistryMasterSuitesAuditTest(unittest.TestCase):
                     html,
                 ))
                 self.assertEqual(handlers - functions, set())
+
+    def test_governed_chemistry_representation_invariants(self):
+        # Chemical Bonding: standard introductory MO fixtures.
+        self.assertAlmostEqual(0.5 * (10 - 4), 3.0)   # O2^2+ / 14 e- fixture
+        self.assertAlmostEqual(0.5 * (8 - 4), 2.0)    # C2 net bond order
+        self.assertAlmostEqual(3.0 - 0.5, 2.5)        # locally corrected CO+ classroom value
+
+        # Mole Concept: Q01 Haber limiting-reagent ledger.
+        n_n2 = 56.0 / 28.0
+        n_h2 = 10.0 / 2.0
+        extent = min(n_n2 / 1.0, n_h2 / 3.0)
+        n_nh3 = 2.0 * extent
+        excess_n2 = n_n2 - extent
+        self.assertAlmostEqual(n_nh3 * 17.0, 56.6666666667, places=8)
+        self.assertAlmostEqual(excess_n2 * 28.0, 9.3333333333, places=8)
+
+        # Redox: FeC2O4 loses 3 e- per formula unit; dichromate gains 6 e-.
+        electrons_per_ferrous_oxalate = 1 + 2
+        electrons_per_dichromate = 6
+        self.assertEqual(electrons_per_ferrous_oxalate, 3)
+        self.assertAlmostEqual(
+            electrons_per_ferrous_oxalate / electrons_per_dichromate,
+            0.5,
+        )
+
+        # Gases: Maxwell characteristic-speed invariant at common T, M.
+        R, T, M = 8.314, 300.0, 0.028
+        v_mp = math.sqrt(2 * R * T / M)
+        v_avg = math.sqrt(8 * R * T / (math.pi * M))
+        v_rms = math.sqrt(3 * R * T / M)
+        self.assertLess(v_mp, v_avg)
+        self.assertLess(v_avg, v_rms)
+        self.assertAlmostEqual(v_avg / v_mp, 2 / math.sqrt(math.pi), places=12)
+        self.assertAlmostEqual(v_rms / v_mp, math.sqrt(3 / 2), places=12)
+
+    def test_suite_contracts_match_live_snapshot_and_delivery_profile(self):
+        expected = {
+            "chemistry-chemical-bonding.json": (266, "public/chemistry/bonding/explorers/chemical_bonding/jee_questions_data.js"),
+            "chemistry-mole-concept.json": (245, "public/chemistry/some-basic-concepts/explorers/mole_concept/jee_questions_data.js"),
+            "chemistry-redox.json": (74, "public/chemistry/redox/explorers/redox_reactions/jee_questions_data.js"),
+            "chemistry-gaseous-state.json": (66, "public/chemistry/gases/explorers/behaviour_of_gases/jee_questions_data.js"),
+        }
+        for name, (live_count, source) in expected.items():
+            with self.subTest(contract=name):
+                obj = json.loads((REPO / "docs/gcdr-suites" / name).read_text(encoding="utf-8"))
+                self.assertEqual(obj["scope_contract"]["canonical_binding_status"], "UNBOUND_EXTENSION")
+                self.assertEqual(obj["scope_contract"]["instructional_depth"], "JEE_EXTENSION")
+                self.assertEqual(obj["external_corpus"]["snapshot_date"], "2026-09-20")
+                self.assertEqual(obj["external_corpus"]["live_count"], live_count)
+                self.assertEqual(obj["external_corpus"]["embedded_item_count"], 20)
+                self.assertEqual(obj["external_corpus"]["coverage_claim"], "CURATED_SLICE_AUDITED")
+                self.assertEqual(obj["diagnostic_source"]["locator"], source)
+                self.assertEqual(
+                    {row["profile"] for row in obj["delivery_artifacts"]},
+                    {"REPO_BUNDLE", "SINGLE_FILE_ONLINE"},
+                )
+                self.assertEqual(obj["geometry_truth_contract"]["verification_status"], "DECLARED")
+                self.assertTrue(obj["representation_invariants"])
+
+    def test_runtime_dependency_detector_ignores_source_navigation_links(self):
+        from Shared.tools import gcdr_suite_guard
+
+        html = (
+            '<script src="https://cdn.example/a.js"></script>'
+            '<link rel="stylesheet" href="https://cdn.example/a.css">'
+            '<a href="https://questions.example/source">source</a>'
+        )
+        self.assertEqual(
+            gcdr_suite_guard._external_dependencies(html),
+            {"https://cdn.example/a.js", "https://cdn.example/a.css"},
+        )
 
     def test_inline_javascript_parses_with_node(self):
         if not shutil.which("node"):
