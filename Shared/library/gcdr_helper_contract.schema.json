@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:grade9v3:gcdr-helper-contract:1.0.0",
+  "title": "GCDR Helper Contract",
+  "description": "State-driven helper contract. A label or static text block does not count as an implemented helper.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "helper_id",
+    "lifecycle_status",
+    "job",
+    "state_paths",
+    "required_outputs",
+    "evidence_refs"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "helper_id": {
+      "type": "string",
+      "pattern": "^[A-Z0-9][A-Z0-9._-]{2,127}$"
+    },
+    "lifecycle_status": {
+      "enum": [
+        "DECLARED",
+        "IMPLEMENTED",
+        "AUDITED"
+      ]
+    },
+    "job": {
+      "type": "string",
+      "minLength": 10
+    },
+    "state_paths": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required_outputs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "lifecycle_status": {
+            "const": "AUDITED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "state_paths": {
+            "minItems": 1
+          },
+          "evidence_refs": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}
