@@ -468,3 +468,84 @@ test("real browser semantic interaction contract", { skip: !driverPath, timeout:
     await new Promise((resolveClose) => staticServer.server.close(resolveClose));
   }
 });
+
+
+test("real browser preserves distinct intermediate semantic identity through undo and redo", { skip: !driverPath, timeout: 30000 }, async () => {
+  const staticServer = await openStaticServer();
+  const driverProcess = await startDriver(driverPath);
+  const driver = new WebDriver(driverProcess.base);
+  try {
+    await driver.open();
+    await driver.navigate(`${staticServer.origin}/tests/fixtures/workbench/browser-semantic-identity-host.html`);
+    await driver.waitFor("return window.__identityReady === true;");
+
+    const initial = await driver.execute("return window.identityHarness.snapshot();");
+    assert.equal(initial.entities.some((row) => row.id === "partial-dividend-15"), false);
+    assert.equal(initial.projections.some((row) => row.entityRef === "dividend-156" && row.label === "15"), false);
+
+    const dividend = await driver.shadowElement("#identity", '[data-role="entity"][data-projection-ref="dividend-expression"]');
+    await driver.browserClick(dividend);
+    const partialTarget = await driver.shadowElement("#identity", '[data-role="target"][data-target-ref="partial-dividend-first"]');
+    await driver.browserClick(partialTarget);
+    await driver.waitFor("return window.identityHarness.snapshot().revision === 1;");
+
+    const afterPartial = await driver.execute("return window.identityHarness.snapshot();");
+    const partial = afterPartial.entities.find((row) => row.id === "partial-dividend-15");
+    assert.ok(partial);
+    assert.deepEqual(partial.provenance.sourceEntityRefs, ["dividend-156"]);
+    assert.notEqual(partial.id, "dividend-156");
+    assert.equal(afterPartial.projections.find((row) => row.id === "partial-dividend-working").entityRef, "partial-dividend-15");
+
+    const partialProjection = await driver.shadowElement("#identity", '[data-role="entity"][data-projection-ref="partial-dividend-working"]');
+    await driver.execute("arguments[0].focus();", [driver.ref(partialProjection)]);
+    const inspected = await driver.execute(`
+      const events = window.identityHarness.events();
+      return [...events].reverse().find((event) => event.type === "ENTITY_INSPECTED");
+    `);
+    assert.equal(inspected.entityRef, "partial-dividend-15");
+    assert.equal(inspected.projectionRef, "partial-dividend-working");
+    assert.deepEqual(inspected.linkedProjectionRefs, ["partial-dividend-working"]);
+
+    await driver.browserClick(partialProjection);
+    const quotientTarget = await driver.shadowElement("#identity", '[data-role="target"][data-target-ref="quotient-first-digit"]');
+    await driver.browserClick(quotientTarget);
+    await driver.waitFor("return window.identityHarness.snapshot().revision === 2;");
+
+    const afterQuotient = await driver.execute("return window.identityHarness.snapshot();");
+    const quotient = afterQuotient.entities.find((row) => row.id === "quotient-digit-1");
+    assert.deepEqual(quotient.provenance.sourceEntityRefs, ["partial-dividend-15", "divisor-12"]);
+    assert.equal(await driver.execute("return window.identityHarness.adapterCalls();"), 2);
+
+    let undo = await driver.shadowElement("#identity", '[data-action="undo"]');
+    await driver.browserClick(undo);
+    let state = await driver.execute("return window.identityHarness.snapshot();");
+    assert.equal(state.entities.some((row) => row.id === "quotient-digit-1"), false);
+    assert.equal(state.entities.some((row) => row.id === "partial-dividend-15"), true);
+
+    undo = await driver.shadowElement("#identity", '[data-action="undo"]');
+    await driver.browserClick(undo);
+    state = await driver.execute("return window.identityHarness.snapshot();");
+    assert.equal(state.entities.some((row) => row.id === "partial-dividend-15"), false);
+
+    let redo = await driver.shadowElement("#identity", '[data-action="redo"]');
+    await driver.browserClick(redo);
+    state = await driver.execute("return window.identityHarness.snapshot();");
+    assert.equal(state.entities.some((row) => row.id === "partial-dividend-15"), true);
+    assert.equal(state.entities.some((row) => row.id === "quotient-digit-1"), false);
+
+    redo = await driver.shadowElement("#identity", '[data-action="redo"]');
+    await driver.browserClick(redo);
+    state = await driver.execute("return window.identityHarness.snapshot();");
+    assert.equal(state.entities.some((row) => row.id === "quotient-digit-1"), true);
+    assert.equal(state.revision, 6);
+    assert.equal(await driver.execute("return window.identityHarness.adapterCalls();"), 2);
+
+    const summary = await driver.execute("return window.identityHarness.textSummary();");
+    assert.match(summary, /15 \[partial dividend\]/);
+    assert.match(summary, /1 \[quotient digit\]/);
+  } finally {
+    await driver.close();
+    driverProcess.child.kill("SIGTERM");
+    await new Promise((resolveClose) => staticServer.server.close(resolveClose));
+  }
+});
