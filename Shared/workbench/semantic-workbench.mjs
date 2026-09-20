@@ -70,6 +70,10 @@ export class SemanticWorkbench extends HTMLElement {
     return this._runtime ? this._runtime.snapshot : null;
   }
 
+  get textSummary() {
+    return this._runtime ? this._summaryText(this._runtime.snapshot) : this._lastStatus;
+  }
+
   connectedCallback() {
     this._render();
   }
@@ -242,6 +246,42 @@ export class SemanticWorkbench extends HTMLElement {
     next?.focus({ preventScroll: true });
   }
 
+  _summaryText(state) {
+    const entity = (ref) => state.entities.find((row) => row.id === ref);
+    const projection = (ref) => state.projections.find((row) => row.id === ref);
+    const target = (ref) => state.targets.find((row) => row.id === ref);
+    const label = (row, fallback) => row?.label || fallback;
+
+    let inspectedText = "Nothing inspected.";
+    if (state.interaction.inspectedProjectionRef) {
+      inspectedText = `Inspecting ${label(projection(state.interaction.inspectedProjectionRef), state.interaction.inspectedProjectionRef)}.`;
+    } else if (state.interaction.inspectedEntityRef) {
+      inspectedText = `Inspecting ${label(entity(state.interaction.inspectedEntityRef), state.interaction.inspectedEntityRef)}.`;
+    }
+
+    const selectedText = state.interaction.pickedEntityRef
+      ? `Selected source ${label(entity(state.interaction.pickedEntityRef), state.interaction.pickedEntityRef)}.`
+      : "No source selected.";
+
+    let previewText = "No target preview.";
+    if (state.interaction.preview) {
+      const preview = state.interaction.preview;
+      const targetLabel = label(target(preview.targetRef), preview.targetRef);
+      const availability = preview.accepted ? "available" : "unavailable";
+      const reason = preview.reason ? ` Reason: ${preview.reason}.` : "";
+      previewText = `Target ${targetLabel}: ${availability}.${reason}`;
+    }
+
+    const representations = state.projections.length
+      ? state.projections.map((row) => {
+          const kind = row.representation ? ` [${row.representation}]` : "";
+          return `${label(row, row.id)}${kind}`;
+        }).join("; ")
+      : "none";
+
+    return `Scene ${state.sceneId}. Revision ${state.revision}. ${inspectedText} ${selectedText} ${previewText} Representations: ${representations}.`;
+  }
+
   _syncInteractionVisuals() {
     if (!this._runtime || !this.shadowRoot) return;
     const state = this._runtime.snapshot;
@@ -270,6 +310,8 @@ export class SemanticWorkbench extends HTMLElement {
     }
     const status = this.shadowRoot.querySelector(".status");
     if (status) status.textContent = this._lastStatus;
+    const summary = this.shadowRoot.querySelector(".text-summary p");
+    if (summary) summary.textContent = this._summaryText(state);
   }
 
   _renderGrid(grid, state) {
@@ -320,6 +362,7 @@ export class SemanticWorkbench extends HTMLElement {
     const state = this._runtime.snapshot;
     const checkpoints = this._runtime.injections.map((row) => `<aside class="checkpoint"><strong>${escapeHtml(row.kind)}</strong><span>${escapeHtml(row.prompt)}</span></aside>`).join("");
     const grids = state.grids.map((grid) => this._renderGrid(grid, state)).join("");
+    const textSummary = this._summaryText(state);
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -333,6 +376,8 @@ export class SemanticWorkbench extends HTMLElement {
         .entity.active{outline:3px solid var(--workbench-focus,#2563eb);outline-offset:2px}
         .target{display:flex;flex-direction:column;gap:.15rem}.target small{font-size:.75em}.target.valid{border-style:double}.target.invalid{border-style:dashed}
         .checkpoint{display:flex;gap:.5rem;align-items:flex-start;margin:.75rem 0;padding:.65rem;border-left:4px solid var(--workbench-checkpoint,#64748b);background:var(--workbench-surface,#f8fafc)}
+        .text-summary{margin-top:1rem;padding-top:.75rem;border-top:1px solid var(--workbench-border,#94a3b8)}
+        .text-summary h3{margin:.1rem 0 .35rem;font-size:1em}.text-summary p{margin:0}
         .status{margin-top:.75rem;min-height:1.5em}
         @container (max-width:34rem){.logical-grid{grid-template-columns:1fr}.slot{grid-column:1!important;grid-row:auto!important}}
         @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
@@ -341,6 +386,7 @@ export class SemanticWorkbench extends HTMLElement {
         <div class="toolbar"><button data-action="undo">Undo</button><button data-action="cancel">Cancel</button></div>
         ${checkpoints}
         ${grids}
+        <section class="text-summary" aria-label="Workbench text state"><h3>Text state</h3><p>${escapeHtml(textSummary)}</p></section>
         <div class="status" role="status" aria-live="polite">${escapeHtml(this._lastStatus)}</div>
       </section>`;
     this._restoreFocus(focusToken);
