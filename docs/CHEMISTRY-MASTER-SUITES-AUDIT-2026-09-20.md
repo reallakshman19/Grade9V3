@@ -299,3 +299,21 @@ The master page now contains a first-class ExamSIDE content map rather than only
 - Regression tests require exactly 74 unique corpus refs, the 29/45 type split, complete 20-item local mapping, expected track counts, and standalone/public map parity.
 
 The subject-specific map data is embedded in the Redox page (and standalone copy) rather than placed in a public `.js` engine file; this preserves the repository topic-independence guard.
+
+
+## Redox hover previews + 14-question oxidation bookkeeping lab (2026-09-20)
+
+The ExamSIDE map now supports pointer hover, keyboard focus and touch/click previews for every one of the 74 corpus references. Every corpus row has a non-empty paraphrased question preview; touch pins the tooltip and outside click/Escape closes it.
+
+The Oxidation-State / Structural Exceptions page now contains all 14 live corpus positions mapped to that track:
+`N08, N12, N15, N16, N17, N18, N25, N29, M04, M26, M28, M29, M33, M35`.
+
+Each item has:
+- a concise source-derived question prompt;
+- an explicit visual-flow bridge identifying the representation that matters;
+- a written explanation of why that visual applies;
+- a multi-step derivation;
+- a derived result shown only after the reasoning section;
+- a caveat where the formal model needs qualification (for example the brown-ring nitrosyl formalism).
+
+The 74 tooltip previews are paraphrases of the live ExamSIDE index snapshot rather than verbatim corpus reproduction. Some non-OS source prompts contain rendered chemical notation not recoverable as machine text from the index; those previews describe the task without inventing missing notation.

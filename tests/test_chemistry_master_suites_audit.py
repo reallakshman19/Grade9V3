@@ -318,6 +318,28 @@ class ChemistryMasterSuitesAuditTest(unittest.TestCase):
             local,
         )
 
+        helpers = load_window_payload(html, "REDOX_OS_QUESTION_HELPERS")
+        self.assertTrue(all(row.get("preview") for row in corpus))
+        self.assertTrue(all(row.get("previewStatus") == "PARAPHRASED_FROM_LIVE_EXAMSIDE_INDEX" for row in corpus))
+        os_refs = {row["ref"] for row in corpus if row["track"] == "OS"}
+        self.assertEqual(len(helpers), 14)
+        self.assertEqual({row["ref"] for row in helpers}, os_refs)
+        for row in helpers:
+            self.assertTrue(row["question"])
+            self.assertTrue(row["visualFlow"])
+            self.assertTrue(row["visualConnect"])
+            self.assertGreaterEqual(len(row["derivation"]), 2)
+            self.assertTrue(row["answer"])
+
+        self.assertIn('id="examSideQuestionTooltip"', html)
+        self.assertIn("examSideQuestionChip", html)
+        self.assertIn('id="osExamSideQuestionLab"', html)
+        self.assertIn("renderOSQuestionLab", html)
+        self.assertEqual(
+            load_window_payload(standalone, "REDOX_OS_QUESTION_HELPERS"),
+            helpers,
+        )
+
     def test_js_bank_parser_handles_semicolon_bracket_inside_strings(self):
         from Shared.tools import gcdr_suite_guard
 
