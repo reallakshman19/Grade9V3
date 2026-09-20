@@ -14,7 +14,7 @@ git_basis:
   base_branch: main
   base_observed_ref: 5037c193c8db017eb2cde383b913fd408e48fc6b
   drift_policy: RECHECK_BEFORE_WRITE
-  drift_receipt: null
+  drift_receipt: agents/relay/drift/DRIFT-0162-RM0008.yaml
 roadmap_source:
   roadmap_id: RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER
   roadmap_revision: RM-0002
