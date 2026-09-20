@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>IIT-JEE Chemistry · Redox Reactions &amp; Oxidation States Master Suite</title>
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- KaTeX -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+
+  <!-- Question Bank -->
+  <script src="jee_questions_data.js"></script>
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            background: '#070b14',
+            card: '#0f172a',
+            border: '#1e293b',
+            primary: '#f59e0b',
+            redox: '#8b5cf6'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Strict Canvas Immunitization & Layout Stability */
+    html, body {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+    canvas {
+      contain: paint;
+      width: 100% !important;
+      max-width: 100% !important;
+      display: block;
+      box-sizing: border-box;
+    }
+    .canvas-container {
+      position: relative;
+      min-width: 0 !important;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+      border-radius: 0.75rem;
+      box-sizing: border-box;
+    }
+    /* Scrollbar Concealment for Navigation Tabs */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none !important;
+      width: 0 !important;
+      height: 0 !important;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none !important;
+      scrollbar-width: none !important;
+    }
+    .touch-target {
+      min-height: 44px;
+      min-width: 44px;
+    }
+    .slider-highlight {
+      animation: pulse-border 1.5s ease-in-out infinite;
+    }
+    @keyframes pulse-border {
+      0%, 100% { outline: 2px solid rgba(245, 158, 11, 0.2); }
+      50% { outline: 2px solid rgba(245, 158, 11, 0.9); }
+    }
+    .tab-btn-active {
+      background: rgba(245, 158, 11, 0.15);
+      color: #fbbf24;
+      border-bottom: 2px solid #f59e0b;
+      font-weight: 700;
+    }
+    .tab-btn-inactive {
+      color: #94a3b8;
+      border-bottom: 2px solid transparent;
+    }
+    .tab-btn-inactive:hover {
+      color: #f1f5f9;
+      background: rgba(255, 255, 255, 0.03);
+    }
+  </style>
+</head>
+<body class="bg-background text-slate-100 min-h-screen flex flex-col font-sans selection:bg-amber-500/30 selection:text-amber-200">
+
+  <!-- HEADER -->
+  <header class="border-b border-border bg-slate-950/80 backdrop-blur-md sticky top-0 z-40">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="flex items-center gap-3">
+        <a href="../../../index.html" class="text-xs px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 transition flex items-center gap-1">
+          <span>&larr;</span> <span>Chemistry Hub</span>
+        </a>
+        <span class="text-slate-600">|</span>
+        <div class="flex items-center gap-2">
+          <span class="text-xl">⚡</span>
+          <div>
+            <h1 class="text-sm md:text-base font-extrabold text-white tracking-tight flex items-center gap-2">
+              <span>Redox Reactions &amp; Electrochemistry</span>
+              <span class="text-[10px] px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono font-bold border border-amber-500/30">JEE MASTER SUITE</span>
+            </h1>
+            <p class="text-[11px] text-slate-400">Structural Oxidation States &middot; Valency n-factor &middot; Chemical Equivalence</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Telemetry Badges -->
+      <div class="flex items-center gap-2 text-xs font-mono">
+        <span class="px-2.5 py-1 rounded bg-slate-900 border border-border text-amber-400 font-bold">N₁V₁ = N₂V₂</span>
+        <span class="px-2.5 py-1 rounded bg-slate-900 border border-border text-purple-400 font-bold">Equivalents = M &times; n &times; V</span>
+      </div>
+    </div>
+
+    <!-- 8 MASTER TABS -->
+    <div class="max-w-7xl mx-auto px-4 flex items-center gap-1 overflow-x-auto text-xs font-medium border-t border-slate-900/60 pt-1 no-scrollbar">
+      <button onclick="switchTab('tab-structural-ox')" id="btn-tab-structural-ox" class="tab-btn-active px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+        1. Structural Oxidation
+      </button>
+      <button onclick="switchTab('tab-electron-flow')" id="btn-tab-electron-flow" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+        2. Electron Conveyor
+      </button>
+      <button onclick="switchTab('tab-ion-electron')" id="btn-tab-ion-electron" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+        3. Ion-Electron Balance
+      </button>
+      <button onclick="switchTab('tab-nfactor')" id="btn-tab-nfactor" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+        4. The n-Factor Matrix
+      </button>
+      <button onclick="switchTab('tab-titration')" id="btn-tab-titration" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+        5. Redox Titration
+      </button>
+      <button onclick="switchTab('tab-galvanic')" id="btn-tab-galvanic" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+        6. Galvanic Cell E&deg;
+      </button>
+      <button onclick="switchTab('tab-sandbox')" id="btn-tab-sandbox" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap flex items-center gap-1.5 text-amber-300/80">
+        <span class="px-1 py-0.2 rounded bg-amber-500/20 text-[9px] font-bold text-amber-400">Draft</span>
+        <span>7. Master Sandbox</span>
+      </button>
+      <button onclick="switchTab('tab-quiz')" id="btn-tab-quiz" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap flex items-center gap-1.5 text-purple-300">
+        <span>⭐ 8. IIT-JEE Question Hub</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN VIEWPORT -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 space-y-6">
+
+    <!-- FLOATING TOAST -->
+    <div id="simToast" class="hidden fixed bottom-6 right-6 z-50 max-w-md bg-slate-900/95 border border-amber-500/60 rounded-xl p-4 shadow-2xl backdrop-blur-md flex items-start gap-3 transition-all duration-300 transform translate-y-4">
+      <div class="text-2xl">🚀</div>
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center justify-between gap-2">
+          <span class="text-xs font-bold uppercase text-amber-400 font-mono" id="simToastTitle">Active Problem Loaded</span>
+          <button onclick="closeSimToast()" class="text-slate-400 hover:text-white text-xs">&times;</button>
+        </div>
+        <p class="text-xs text-slate-300 mt-1" id="simToastDesc">Parameters injected from ExamSIDE question.</p>
+        <div class="mt-2 text-[11px] font-mono text-amber-300 bg-black/40 px-2 py-1 rounded" id="simToastParams"></div>
+      </div>
+    </div>
+
+    <!-- ================================================================= -->
+    <!-- TAB 1: STRUCTURAL OXIDATION ENGINE                                -->
+    <!-- ================================================================= -->
+    <section id="tab-structural-ox" class="space-y-6">
+      <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border pb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-amber-400"></span>
+              <h2 class="font-bold text-base text-white">Structural Oxidation Engine &middot; Heterolytic Bond Cleavage</h2>
+            </div>
+            <p class="text-xs text-slate-400 mt-1">
+              Exposes the algebraic illusion: See why <span class="text-amber-300 font-mono font-bold">CrO₅ is +6 (not +10)</span>, <span class="text-sky-300 font-mono font-bold">H₂S₂O₈ is +6 (not +7)</span>, and <span class="text-emerald-300 font-mono font-bold">S₄O₆²⁻ has individual states +5, 0, 0, +5</span>.
+            </p>
+          </div>
+
+          <!-- Compound Selector Buttons -->
+          <div class="flex items-center gap-2 text-xs">
+            <button onclick="setStructuralCompound('CrO5')" id="btnCompCrO5" class="px-2.5 py-1 rounded bg-amber-600/30 border border-amber-500/50 text-amber-300 font-mono font-semibold">CrO₅ (Butterfly)</button>
+            <button onclick="setStructuralCompound('S4O6')" id="btnCompS4O6" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 font-mono font-semibold">S₄O₆²⁻ (Tetrathionate)</button>
+            <button onclick="setStructuralCompound('Fe3O4')" id="btnCompFe3O4" class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 font-mono font-semibold">Fe₃O₄ (Magnetite)</button>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-4">
+          <div class="lg:col-span-8 space-y-4">
+            <div class="canvas-container bg-slate-950 border border-border p-2">
+              <div class="flex items-center justify-between px-3 py-1.5 border-b border-border/50 text-[11px] font-mono text-slate-400">
+                <span>MOLECULAR TOPOLOGY &middot; HETEROLYTIC BOND CLEAVAGE</span>
+                <span id="structLiveO.S." class="text-amber-400 font-bold">Chromium O.S. = +6</span>
+              </div>
+              <canvas id="canvasStructuralOx" height="280"></canvas>
+            </div>
+
+            <!-- Dual-Reality Toggle -->
+            <div class="flex items-center gap-3 bg-slate-900/60 p-3 rounded-xl border border-border text-xs">
+              <span class="text-slate-400 font-semibold">Display Mode:</span>
+              <button onclick="setStructuralMode('reality')" id="btnStructReality" class="px-3 py-1.5 rounded-lg bg-emerald-600/30 border border-emerald-500/50 text-emerald-300 font-bold">&check; Physical Reality (Structural)</button>
+              <button onclick="setStructuralMode('trap')" id="btnStructTrap" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white">&Delta; Exam Trap (Algebraic Average)</button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 space-y-4">
+            <div class="bg-slate-900/80 border border-border rounded-xl p-4 space-y-3">
+              <h3 class="text-xs font-bold tracking-wider uppercase text-slate-400">Atom-by-Atom Ledger</h3>
+              <div class="space-y-2 text-xs font-mono" id="structLedger"></div>
+            </div>
+
+            <div class="p-3 bg-amber-500/10 border border-amber-500/30 rounded-xl text-xs space-y-1.5">
+              <span class="text-amber-400 font-bold font-mono">⚠️ THE PEROXIDE PRINCIPLE:</span>
+              <p class="text-slate-300 leading-relaxed text-[11px]">
+                In any peroxide bond (<strong>-O-O-</strong>), the two oxygens share electrons equally (&Delta; = 0). Therefore, each oxygen has an oxidation number of <strong>-1</strong>, not -2!
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 2: ELECTRON EXCHANGE CONVEYOR                                 -->
+    <!-- ================================================================= -->
+    <section id="tab-electron-flow" class="space-y-6 hidden">
+      <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
+        <div class="border-b border-border pb-4">
+          <h2 class="font-bold text-base text-white">Electron Exchange Conveyor &middot; Coupled Oxidation-Reduction Halves</h2>
+          <p class="text-xs text-slate-400 mt-1">Visualizes electrons lost in oxidation (OIL) transferred to the reduction half (RIG).</p>
+        </div>
+        <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
+          <canvas id="canvasElectronFlow" height="280"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 3: ION-ELECTRON BALANCING RIG                                 -->
+    <!-- ================================================================= -->
+    <section id="tab-ion-electron" class="space-y-6 hidden">
+      <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
+        <div class="border-b border-border pb-4">
+          <h2 class="font-bold text-base text-white">Ion-Electron Balancing Rig &middot; Medium Dependent Charge Ledger</h2>
+          <p class="text-xs text-slate-400 mt-1">Step-by-step balancing in Acidic (H⁺, H₂O) and Basic (OH⁻, H₂O) environments.</p>
+        </div>
+        <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
+          <canvas id="canvasIonElectron" height="280"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 4: THE n-FACTOR MATRIX                                        -->
+    <!-- ================================================================= -->
+    <section id="tab-nfactor" class="space-y-6 hidden">
+      <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
+        <div class="flex items-center justify-between border-b border-border pb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-purple-400"></span>
+              <h2 class="font-bold text-base text-white">The n-Factor Matrix &middot; pH Dependence &amp; Disproportionation</h2>
+            </div>
+            <p class="text-xs text-slate-400 mt-1">
+              Grounded on <span class="text-purple-300 font-semibold">JEE Main 2025</span>: KMnO₄ valency factor flipping <span class="font-mono text-purple-300 font-bold">5 &rarr; 3 &rarr; 1</span> across pH!
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 mt-4">
+          <div class="lg:col-span-8 space-y-4">
+            <div class="canvas-container bg-slate-950 border border-border p-2">
+              <div class="flex items-center justify-between px-3 py-1.5 border-b border-border/50 text-[11px] font-mono text-slate-400">
+                <span>KMnO₄ ELECTRON LADDER &middot; Mn⁷⁺ REDUCTION STATES</span>
+                <span id="nfactorLiveBadge" class="text-purple-400 font-bold">Acidic: n = 5 (Mn²⁺)</span>
+              </div>
+              <canvas id="canvasNfactor" height="280"></canvas>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 space-y-4">
+            <div class="bg-slate-900/80 border border-border rounded-xl p-4 space-y-3">
+              <h3 class="text-xs font-bold tracking-wider uppercase text-slate-400">Medium Selector</h3>
+              <div class="space-y-2">
+                <button onclick="setNfactorMedium('acidic')" id="btnMedAcidic" class="w-full text-left p-2.5 rounded-lg bg-purple-600/30 border border-purple-500/50 text-xs text-purple-200 font-mono font-bold">
+                  1. Acidic (pH &lt; 7) &rarr; Mn²⁺ (n = 5)
+                </button>
+                <button onclick="setNfactorMedium('neutral')" id="btnMedNeutral" class="w-full text-left p-2.5 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono hover:border-slate-600 border border-border">
+                  2. Neutral / Weak Base &rarr; MnO₂ (n = 3)
+                </button>
+                <button onclick="setNfactorMedium('basic')" id="btnMedBasic" class="w-full text-left p-2.5 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono hover:border-slate-600 border border-border">
+                  3. Strongly Basic &rarr; MnO₄²⁻ (n = 1)
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 5: REDOX TITRATION BENCH                                      -->
+    <!-- ================================================================= -->
+    <section id="tab-titration" class="space-y-6 hidden">
+      <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
+        <div class="border-b border-border pb-4">
+          <h2 class="font-bold text-base text-white">Redox Titration Bench &middot; Self-Indicator Color Persistence</h2>
+          <p class="text-xs text-slate-400 mt-1">
+            Grounded on <span class="text-amber-300 font-semibold">JEE Main 2026</span>: FeC₂O₄ with K₂Cr₂O₇ where both cation and anion oxidize ($n = 3$).
+          </p>
+        </div>
+        <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
+          <canvas id="canvasTitration" height="280"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 6: GALVANIC CELL                                              -->
+    <!-- ================================================================= -->
+    <section id="tab-galvanic" class="space-y-6 hidden">
+      <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
+        <div class="border-b border-border pb-4">
+          <h2 class="font-bold text-base text-white">Galvanic Cell &middot; Standard Reduction Potentials E&deg;</h2>
+          <p class="text-xs text-slate-400 mt-1">Zn-Cu Daniell Cell with salt bridge and live cell potential $E_{\text{cell}} = E^\circ_{\text{red}} - E^\circ_{\text{ox}}$.</p>
+        </div>
+        <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
+          <canvas id="canvasGalvanic" height="280"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 7: MASTER SANDBOX [DRAFT]                                     -->
+    <!-- ================================================================= -->
+    <section id="tab-sandbox" class="space-y-6 hidden">
+      <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
+        <div class="flex items-center justify-between border-b border-border pb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono text-xs font-bold border border-amber-500/30">DRAFT SANDBOX</span>
+              <h2 class="font-bold text-base text-white">Redox Couple Simulator</h2>
+            </div>
+            <p class="text-xs text-slate-400 mt-1">Synthesize arbitrary oxidant-reductant pairs.</p>
+          </div>
+        </div>
+        <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
+          <canvas id="canvasSandbox" height="300"></canvas>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================= -->
+    <!-- TAB 8: IIT-JEE DIAGNOSTIC HUB                                     -->
+    <!-- ================================================================= -->
+    <section id="tab-quiz" class="space-y-6 hidden">
+      <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-border pb-4">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="text-lg">⭐</span>
+              <h2 class="font-bold text-base text-white">IIT-JEE Diagnostic Question Hub &middot; ExamSIDE Verified Bank</h2>
+            </div>
+            <p class="text-xs text-slate-400 mt-1">
+              Grounded on past-year questions from <a href="https://questions.examside.com/past-years/jee/jee-main/chemistry/redox-reactions" target="_blank" class="text-amber-400 underline hover:text-amber-300">ExamSIDE Redox Reactions</a>.
+            </p>
+          </div>
+
+          <div class="w-full md:w-72">
+            <input type="text" id="qSearchInput" oninput="filterQuestions()" placeholder="Search by topic, formula, year..." class="w-full px-3 py-2 rounded-xl bg-slate-900 border border-border text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-amber-500">
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-1.5 text-xs">
+          <button onclick="filterSubTab('all')" id="btnQFilterAll" class="px-3 py-1.5 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold">All Questions</button>
+          <button onclick="filterSubTab(1)" id="btnQFilter1" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 border border-border hover:border-slate-600 font-semibold">1. Structural O.S.</button>
+          <button onclick="filterSubTab(4)" id="btnQFilter4" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 border border-border hover:border-slate-600 font-semibold">4. Valency n-Factor</button>
+          <button onclick="filterSubTab(5)" id="btnQFilter5" class="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 border border-border hover:border-slate-600 font-semibold">5. Titrations</button>
+        </div>
+
+        <div id="questionsContainer" class="space-y-4 pt-2"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // =========================================================================
+    // LIFECYCLE & CANVAS CONTROLLER
+    // =========================================================================
+    let currentTab = 'tab-structural-ox';
+    let currentSubTabFilter = 'all';
+
+    function stopAllSimulations() {}
+
+    function switchTab(tabId) {
+      stopAllSimulations();
+      currentTab = tabId;
+      const tabs = ['tab-structural-ox', 'tab-electron-flow', 'tab-ion-electron', 'tab-nfactor', 'tab-titration', 'tab-galvanic', 'tab-sandbox', 'tab-quiz'];
+      
+      tabs.forEach(t => {
+        const el = document.getElementById(t);
+        const btn = document.getElementById(`btn-${t}`);
+        if (el) el.classList.toggle('hidden', t !== tabId);
+        if (btn) {
+          btn.className = (t === tabId) ? 'tab-btn-active px-3 py-2 rounded-t-lg transition whitespace-nowrap' : 'tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap';
+        }
+      });
+
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          if (tabId === 'tab-structural-ox') drawStructuralOx();
+          else if (tabId === 'tab-electron-flow') drawElectronFlow();
+          else if (tabId === 'tab-ion-electron') drawIonElectron();
+          else if (tabId === 'tab-nfactor') drawNfactor();
+          else if (tabId === 'tab-titration') drawTitration();
+          else if (tabId === 'tab-galvanic') drawGalvanic();
+          else if (tabId === 'tab-sandbox') drawSandbox();
+        }, 50);
+      });
+    }
+
+    function setupCanvas(canvas) {
+      if (!canvas) return { ctx: null, width: 0, height: 0 };
+      const parent = canvas.parentElement;
+      if (!parent) return { ctx: null, width: 0, height: 0 };
+
+      const cssW = canvas.clientWidth > 50 ? Math.floor(canvas.clientWidth) : (parent.clientWidth > 50 ? Math.floor(parent.clientWidth) : 600);
+      const height = canvas.getAttribute('height') ? parseInt(canvas.getAttribute('height')) : 280;
+
+      if (cssW < 50) return { ctx: null, width: 0, height: 0 };
+
+      const dpr = window.devicePixelRatio || 1;
+      const targetW = Math.round(cssW * dpr);
+      const targetH = Math.round(height * dpr);
+
+      if (canvas.width !== targetW || canvas.height !== targetH) {
+        canvas.width = targetW;
+        canvas.height = targetH;
+      }
+      canvas.style.height = height + 'px';
+
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.resetTransform();
+        ctx.scale(dpr, dpr);
+      }
+      return { ctx, width: cssW, height };
+    }
+
+    function setSliderWithEvent(id, val) {
+      const el = document.getElementById(id);
+      if (el && val !== undefined) {
+        el.value = val;
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    }
+
+    function showToast(q) {
+      const toast = document.getElementById('simToast');
+      document.getElementById('simToastTitle').textContent = `Loaded ${q.id} (${q.year})`;
+      document.getElementById('simToastDesc').textContent = q.q.slice(0, 100) + '...';
+      document.getElementById('simToastParams').textContent = (q.simSummary || []).join(' | ');
+      toast.classList.remove('hidden');
+      toast.classList.remove('translate-y-4');
+      setTimeout(() => closeSimToast(), 6000);
+    }
+
+    function closeSimToast() {
+      const toast = document.getElementById('simToast');
+      toast.classList.add('translate-y-4');
+      setTimeout(() => toast.classList.add('hidden'), 300);
+    }
+
+    function loadQuestionIntoSimulator(qId) {
+      const questions = window.JEE_QUESTIONS_DATA || [];
+      const q = questions.find(item => item.id === qId);
+      if (!q) return;
+
+      const targetTab = q.targetTab || 'tab-structural-ox';
+      switchTab(targetTab);
+
+      const p = q.simParams || {};
+      setTimeout(() => {
+        if (targetTab === 'tab-structural-ox') {
+          if (p.compound) setStructuralCompound(p.compound);
+        } else if (targetTab === 'tab-nfactor') {
+          if (p.medium) setNfactorMedium(p.medium);
+        }
+        showToast(q);
+      }, 70);
+
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+
+    // =========================================================================
+    // TAB 1: STRUCTURAL OXIDATION RIG
+    // =========================================================================
+    let currentCompound = 'CrO5';
+    let currentStructMode = 'reality';
+
+    function setStructuralCompound(cmp) {
+      currentCompound = cmp;
+      ['CrO5', 'S4O6', 'Fe3O4'].forEach(c => {
+        const btn = document.getElementById(`btnComp${c}`);
+        if (btn) {
+          btn.className = (c === cmp) ? 'px-2.5 py-1 rounded bg-amber-600/30 border border-amber-500/50 text-amber-300 font-mono font-semibold' : 'px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 font-mono font-semibold';
+        }
+      });
+      updateStructuralLedger();
+      drawStructuralOx();
+    }
+
+    function setStructuralMode(mode) {
+      currentStructMode = mode;
+      const bR = document.getElementById('btnStructReality');
+      const bT = document.getElementById('btnStructTrap');
+      if (mode === 'reality') {
+        bR.className = 'px-3 py-1.5 rounded-lg bg-emerald-600/30 border border-emerald-500/50 text-emerald-300 font-bold';
+        bT.className = 'px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white';
+      } else {
+        bT.className = 'px-3 py-1.5 rounded-lg bg-red-600/30 border border-red-500/50 text-red-300 font-bold';
+        bR.className = 'px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white';
+      }
+      updateStructuralLedger();
+      drawStructuralOx();
+    }
+
+    function updateStructuralLedger() {
+      const ledger = document.getElementById('structLedger');
+      const badge = document.getElementById('structLiveO.S.');
+      if (!ledger) return;
+
+      if (currentCompound === 'CrO5') {
+        if (currentStructMode === 'reality') {
+          badge.textContent = 'Chromium O.S. = +6 (Physical Reality)';
+          badge.className = 'text-emerald-400 font-bold';
+          ledger.innerHTML = `
+            <div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>1 &times; Oxo Oxygen (=O):</span><span class="text-sky-400 font-bold">-2</span></div>
+            <div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>4 &times; Peroxo Oxygens (-O-O-):</span><span class="text-amber-400 font-bold">4 &times; (-1) = -4</span></div>
+            <div class="flex justify-between bg-emerald-500/10 p-2.5 rounded border border-emerald-500/30 font-bold"><span class="text-emerald-300">Central Cr Atom:</span><span class="text-emerald-400">+6</span></div>
+          `;
+        } else {
+          badge.textContent = 'Chromium O.S. = +10 (EXAM TRAP!)';
+          badge.className = 'text-red-400 font-bold';
+          ledger.innerHTML = `
+            <div class="p-2.5 bg-red-500/10 rounded border border-red-500/30 space-y-1">
+              <span class="text-red-300 font-bold">Algebraic Trap Formula:</span>
+              <div class="text-slate-300">x + 5(-2) = 0 &rArr; x = +10</div>
+              <div class="text-red-400 text-[11px] font-bold">PHYSICALLY IMPOSSIBLE! Cr only has 6 valence electrons (3d⁵ 4s¹).</div>
+            </div>
+          `;
+        }
+      } else if (currentCompound === 'S4O6') {
+        badge.textContent = 'S Atoms: +5, 0, 0, +5 (Reality)';
+        ledger.innerHTML = `
+          <div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>Terminal S (Left):</span><span class="text-emerald-400 font-bold">+5</span></div>
+          <div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>Central S-S bridge:</span><span class="text-slate-400 font-bold">0, 0 (Homonuclear)</span></div>
+          <div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>Terminal S (Right):</span><span class="text-emerald-400 font-bold">+5</span></div>
+          <div class="flex justify-between bg-purple-500/10 p-2.5 rounded border border-purple-500/30"><span class="text-purple-300">Statistical Average:</span><span class="text-purple-400">+2.5</span></div>
+        `;
+      } else if (currentCompound === 'Fe3O4') {
+        badge.textContent = 'Fe: Fe(II) + 2 Fe(III)';
+        ledger.innerHTML = `
+          <div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>1 &times; FeO (Ferrous):</span><span class="text-sky-400 font-bold">Fe²⁺ (+2)</span></div>
+          <div class="flex justify-between bg-black/30 p-2 rounded border border-border"><span>1 &times; Fe₂O₃ (Ferric):</span><span class="text-amber-400 font-bold">2 &times; Fe³⁺ (+3)</span></div>
+          <div class="flex justify-between bg-purple-500/10 p-2.5 rounded border border-purple-500/30"><span class="text-purple-300">Average:</span><span class="text-purple-400">+8/3</span></div>
+        `;
+      }
+    }
+
+    function drawStructuralOx() {
+      const canvas = document.getElementById('canvasStructuralOx');
+      if (!canvas) return;
+      const { ctx, width: w, height: h } = setupCanvas(canvas);
+      if (!ctx || w < 50) return;
+
+      ctx.fillStyle = '#050811';
+      ctx.fillRect(0, 0, w, h);
+
+      const cx = w * 0.5;
+      const cy = h * 0.5;
+
+      if (currentCompound === 'CrO5') {
+        // Cr atom in center
+        ctx.fillStyle = (currentStructMode === 'reality') ? '#10b981' : '#ef4444';
+        ctx.beginPath();
+        ctx.arc(cx, cy, 22, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold 12px monospace';
+        ctx.fillText(currentStructMode === 'reality' ? 'Cr⁺⁶' : 'Cr⁺¹⁰', cx - 16, cy + 4);
+
+        // Double bond to top oxo O
+        ctx.strokeStyle = '#38bdf8';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(cx - 3, cy - 22); ctx.lineTo(cx - 3, cy - 70);
+        ctx.moveTo(cx + 3, cy - 22); ctx.lineTo(cx + 3, cy - 70);
+        ctx.stroke();
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.beginPath();
+        ctx.arc(cx, cy - 70, 16, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '10px monospace';
+        ctx.fillText('O⁻²', cx - 10, cy - 66);
+
+        // Butterfly wings (peroxo loops)
+        // Left peroxo loop
+        drawPeroxoWing(ctx, cx, cy, -1);
+        // Right peroxo loop
+        drawPeroxoWing(ctx, cx, cy, 1);
+      } else {
+        ctx.fillStyle = '#f59e0b';
+        ctx.font = '12px monospace';
+        ctx.fillText(`Structural Diagram: ${currentCompound}`, cx - 80, cy);
+      }
+    }
+
+    function drawPeroxoWing(ctx, cx, cy, dir) {
+      const ox1 = cx + dir * 60;
+      const oy1 = cy - 25;
+      const ox2 = cx + dir * 60;
+      const oy2 = cy + 25;
+
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(cx, cy);
+      ctx.lineTo(ox1, oy1);
+      ctx.lineTo(ox2, oy2);
+      ctx.lineTo(cx, cy);
+      ctx.stroke();
+
+      // Peroxide O-O bond highlight
+      ctx.strokeStyle = '#ef4444';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(ox1, oy1);
+      ctx.lineTo(ox2, oy2);
+      ctx.stroke();
+
+      // Two oxygen circles
+      ctx.fillStyle = '#f59e0b';
+      ctx.beginPath(); ctx.arc(ox1, oy1, 14, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(ox2, oy2, 14, 0, Math.PI * 2); ctx.fill();
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '9px monospace';
+      ctx.fillText('O⁻¹', ox1 - 8, oy1 + 3);
+      ctx.fillText('O⁻¹', ox2 - 8, oy2 + 3);
+    }
+
+    // =========================================================================
+    // TAB 4: n-FACTOR MATRIX
+    // =========================================================================
+    let currentNfactorMed = 'acidic';
+
+    function setNfactorMedium(med) {
+      currentNfactorMed = med;
+      ['Acidic', 'Neutral', 'Basic'].forEach(m => {
+        const btn = document.getElementById(`btnMed${m}`);
+        if (btn) {
+          const match = m.toLowerCase() === med;
+          btn.className = match ? 'w-full text-left p-2.5 rounded-lg bg-purple-600/30 border border-purple-500/50 text-xs text-purple-200 font-mono font-bold' : 'w-full text-left p-2.5 rounded-lg bg-slate-800 text-xs text-slate-300 font-mono hover:border-slate-600 border border-border';
+        }
+      });
+
+      const badge = document.getElementById('nfactorLiveBadge');
+      if (med === 'acidic') badge.textContent = 'Acidic: n = 5 (Mn⁷⁺ → Mn²⁺)';
+      else if (med === 'neutral') badge.textContent = 'Neutral/Weak Base: n = 3 (Mn⁷⁺ → MnO₂)';
+      else if (med === 'basic') badge.textContent = 'Strongly Basic: n = 1 (Mn⁷⁺ → MnO₄²⁻)';
+
+      drawNfactor();
+    }
+
+    function drawNfactor() {
+      const canvas = document.getElementById('canvasNfactor');
+      if (!canvas) return;
+      const { ctx, width: w, height: h } = setupCanvas(canvas);
+      if (!ctx || w < 50) return;
+
+      ctx.fillStyle = '#050811';
+      ctx.fillRect(0, 0, w, h);
+
+      // Energy / Oxidation ladder
+      const ox = w * 0.3;
+      const states = [
+        { label: 'Mn⁷⁺ (KMnO₄)', os: 7, y: 50, col: '#a855f7' },
+        { label: 'Mn⁶⁺ (MnO₄²⁻)', os: 6, y: 90, col: '#10b981' },
+        { label: 'Mn⁴⁺ (MnO₂)', os: 4, y: 150, col: '#78350f' },
+        { label: 'Mn²⁺ (Pink/Clear)', os: 2, y: 220, col: '#f472b6' }
+      ];
+
+      states.forEach(st => {
+        ctx.strokeStyle = '#334155';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(ox - 30, st.y);
+        ctx.lineTo(w - 60, st.y);
+        ctx.stroke();
+
+        ctx.fillStyle = st.col;
+        ctx.beginPath(); ctx.arc(ox, st.y, 8, 0, Math.PI * 2); ctx.fill();
+
+        ctx.fillStyle = '#ffffff';
+        ctx.font = '11px monospace';
+        ctx.fillText(st.label, ox + 20, st.y + 4);
+      });
+
+      // Arrow for active jump
+      let targetY = 220;
+      let eCount = 5;
+      if (currentNfactorMed === 'neutral') { targetY = 150; eCount = 3; }
+      else if (currentNfactorMed === 'basic') { targetY = 90; eCount = 1; }
+
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = 4;
+      ctx.beginPath();
+      ctx.moveTo(ox - 50, 50);
+      ctx.lineTo(ox - 50, targetY);
+      ctx.stroke();
+
+      ctx.fillStyle = '#f59e0b';
+      ctx.font = 'bold 12px monospace';
+      ctx.fillText(`+${eCount} e⁻ (n = ${eCount})`, ox - 140, (50 + targetY) * 0.5);
+    }
+
+    function drawElectronFlow() {
+      const canvas = document.getElementById('canvasElectronFlow');
+      if (!canvas) return;
+      const { ctx, width: w, height: h } = setupCanvas(canvas);
+      if (!ctx || w < 50) return;
+      ctx.fillStyle = '#050811';
+      ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#f59e0b';
+      ctx.font = '12px monospace';
+      ctx.fillText('Electron Transfer Conveyor: Reductant (Loss e⁻) → Oxidant (Gain e⁻)', 30, 40);
+    }
+
+    function drawIonElectron() {
+      const canvas = document.getElementById('canvasIonElectron');
+      if (!canvas) return;
+      const { ctx, width: w, height: h } = setupCanvas(canvas);
+      if (!ctx || w < 50) return;
+      ctx.fillStyle = '#050811';
+      ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#38bdf8';
+      ctx.font = '12px monospace';
+      ctx.fillText('Ion-Electron Half-Reaction Balance Ledger', 30, 40);
+    }
+
+    function drawTitration() {
+      const canvas = document.getElementById('canvasTitration');
+      if (!canvas) return;
+      const { ctx, width: w, height: h } = setupCanvas(canvas);
+      if (!ctx || w < 50) return;
+      ctx.fillStyle = '#050811';
+      ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#ec4899';
+      ctx.font = '12px monospace';
+      ctx.fillText('Redox Titration: Burette KMnO₄ into Conical Flask', 30, 40);
+    }
+
+    function drawGalvanic() {
+      const canvas = document.getElementById('canvasGalvanic');
+      if (!canvas) return;
+      const { ctx, width: w, height: h } = setupCanvas(canvas);
+      if (!ctx || w < 50) return;
+      ctx.fillStyle = '#050811';
+      ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#10b981';
+      ctx.font = '12px monospace';
+      ctx.fillText('Daniell Cell: Zn(s) | Zn²⁺(1M) || Cu²⁺(1M) | Cu(s)  E° = 1.10 V', 30, 40);
+    }
+
+    function drawSandbox() {
+      const canvas = document.getElementById('canvasSandbox');
+      if (!canvas) return;
+      const { ctx, width: w, height: h } = setupCanvas(canvas);
+      if (!ctx || w < 50) return;
+      ctx.fillStyle = '#050811';
+      ctx.fillRect(0, 0, w, h);
+      ctx.fillStyle = '#f59e0b';
+      ctx.font = '12px monospace';
+      ctx.fillText('⚡ Redox Couple Sandbox [Draft Mode Active]', 30, 40);
+    }
+
+    // =========================================================================
+    // TAB 8: IIT-JEE QUESTION HUB
+    // =========================================================================
+    function filterSubTab(st) {
+      currentSubTabFilter = st;
+      const filters = ['all', 1, 4, 5];
+      filters.forEach(f => {
+        const btn = document.getElementById(f === 'all' ? 'btnQFilterAll' : `btnQFilter${f}`);
+        if (btn) {
+          btn.className = (f === st) ? 'px-3 py-1.5 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/40 font-semibold' : 'px-3 py-1.5 rounded-lg bg-slate-800 text-slate-300 border border-border hover:border-slate-600 font-semibold';
+        }
+      });
+      renderQuestions();
+    }
+
+    function filterQuestions() {
+      renderQuestions();
+    }
+
+    function renderQuestions() {
+      const container = document.getElementById('questionsContainer');
+      if (!container || !window.JEE_QUESTIONS_DATA) return;
+
+      const query = (document.getElementById('qSearchInput').value || '').toLowerCase();
+      let list = window.JEE_QUESTIONS_DATA;
+
+      if (currentSubTabFilter !== 'all') {
+        list = list.filter(q => q.subtab === currentSubTabFilter);
+      }
+
+      if (query.trim()) {
+        list = list.filter(q => 
+          q.q.toLowerCase().includes(query) || 
+          q.source.toLowerCase().includes(query) || 
+          q.subtabName.toLowerCase().includes(query) ||
+          q.formula.toLowerCase().includes(query)
+        );
+      }
+
+      if (list.length === 0) {
+        container.innerHTML = `<div class="p-8 text-center text-slate-400">No questions found matching the filter.</div>`;
+        return;
+      }
+
+      container.innerHTML = list.map(q => {
+        return `
+          <div class="bg-slate-900/90 border border-border rounded-xl p-5 space-y-4 hover:border-slate-700 transition" id="qcard-${q.id}">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-border/50 pb-3">
+              <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-mono font-bold text-xs border border-amber-500/30">
+                  ${q.id}
+                </span>
+                <span class="text-xs font-semibold text-slate-300">${q.source}</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">
+                  ${q.subtabName}
+                </span>
+                <button onclick="loadQuestionIntoSimulator('${q.id}')" class="touch-target px-3 py-1 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                  <span>🚀</span>
+                  <span>Load in Simulator</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="text-sm text-slate-200 leading-relaxed font-sans">
+              ${q.q}
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+              ${(q.options || []).map(opt => `
+                <button onclick="checkQuestionOption('${q.id}', '${opt.key}')" id="btnOpt-${q.id}-${opt.key}" class="text-left p-3 rounded-xl bg-slate-950/60 border border-border hover:border-slate-600 text-xs text-slate-300 transition flex items-start gap-2.5">
+                  <span class="w-5 h-5 rounded-full bg-slate-800 border border-border flex items-center justify-center font-bold text-[10px] flex-shrink-0">
+                    ${opt.key}
+                  </span>
+                  <span>${opt.text}</span>
+                </button>
+              `).join('')}
+            </div>
+
+            <div id="feedback-${q.id}" class="hidden p-3 rounded-xl text-xs"></div>
+
+            <div class="pt-3 border-t border-slate-800">
+              <button onclick="toggleSolution('${q.id}')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30 hover:bg-emerald-950/50 transition text-left text-xs font-semibold text-emerald-300">
+                <div class="flex items-center gap-2">
+                  <span>🏫</span>
+                  <span>Teacher Chalkboard &amp; Step-by-Step Derivation</span>
+                </div>
+                <span id="solIcon-${q.id}" class="text-xs text-emerald-400 font-mono">▶ View Chalkboard</span>
+              </button>
+              
+              <div id="solContent-${q.id}" class="hidden mt-3 p-4 rounded-xl border border-emerald-500/40 bg-[#12221a] text-slate-100 shadow-2xl font-sans space-y-4">
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-emerald-500/30 pb-2.5 text-[11px] font-mono text-emerald-300">
+                  <span class="flex items-center gap-1.5 font-bold"><span>📋</span> TEACHER CHALKBOARD &middot; PEDAGOGICAL RESOLUTION</span>
+                  <span class="text-amber-300 font-bold bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">${q.formula}</span>
+                </div>
+
+                <div class="space-y-1">
+                  <div class="text-[11px] font-bold text-amber-300 font-mono uppercase tracking-wider">Step 1 &middot; Structural Architecture &amp; Cleavage Model</div>
+                  <div class="text-xs text-slate-200 bg-black/40 p-2.5 rounded-lg border border-emerald-500/20 font-mono">
+                    ${q.steps && q.steps[0] ? q.steps[0] : 'Identify molecular structure and apply heterolytic cleavage rules.'}
+                  </div>
+                </div>
+
+                <div class="space-y-1">
+                  <div class="text-[11px] font-bold text-sky-300 font-mono uppercase tracking-wider">Step 2 &middot; Electron Accounting &amp; Equivalents</div>
+                  <div class="text-xs text-slate-200 bg-black/40 p-2.5 rounded-lg border border-emerald-500/20 space-y-1.5 font-mono">
+                    ${(q.steps || []).slice(1).map((st, i) => `<div class="flex items-start gap-2"><span class="text-sky-400 text-[10px]">${i + 2}.</span><span>${st}</span></div>`).join('')}
+                  </div>
+                </div>
+
+                <div class="p-3 bg-red-950/50 border border-red-500/50 rounded-lg text-xs space-y-1">
+                  <div class="flex items-center gap-1.5 text-red-400 font-bold font-mono">
+                    <span>⚠️</span>
+                    <span>EXAMINER TRAP &amp; FALLACY CRITIQUE (RED PEN):</span>
+                  </div>
+                  <div class="text-red-200 leading-relaxed font-sans">
+                    ${q.trap}
+                  </div>
+                </div>
+
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-emerald-500/30 text-xs">
+                  <span class="font-mono text-slate-400">Official Exam Key: <strong class="text-white">Option (${q.correct})</strong></span>
+                  <span class="font-mono font-bold text-emerald-400 bg-emerald-500/20 px-2.5 py-1 rounded border border-emerald-500/40">Verified Invariant: ${q.ans}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function checkQuestionOption(qId, selectedKey) {
+      const q = (window.JEE_QUESTIONS_DATA || []).find(item => item.id === qId);
+      if (!q) return;
+
+      const fb = document.getElementById(`feedback-${qId}`);
+      const isCorrect = (selectedKey === q.correct);
+
+      (q.options || []).forEach(opt => {
+        const btn = document.getElementById(`btnOpt-${qId}-${opt.key}`);
+        if (btn) {
+          if (opt.key === q.correct) {
+            btn.className = 'text-left p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/90 text-xs text-emerald-200 transition flex items-start gap-2.5 shadow-md shadow-emerald-950/50';
+          } else if (opt.key === selectedKey && !isCorrect) {
+            btn.className = 'text-left p-3 rounded-xl bg-red-950/60 border border-red-500/90 text-xs text-red-200 transition flex items-start gap-2.5 shadow-md shadow-red-950/50';
+          } else {
+            btn.className = 'text-left p-3 rounded-xl bg-slate-950/40 border border-border/40 text-xs text-slate-500 transition flex items-start gap-2.5';
+          }
+        }
+      });
+
+      if (fb) {
+        fb.classList.remove('hidden');
+        if (isCorrect) {
+          fb.className = 'p-3.5 rounded-xl text-xs bg-emerald-950/60 border border-emerald-500/60 text-emerald-200 space-y-1';
+          fb.innerHTML = `<div><strong>✅ Spot on! Correct Option (${q.correct}).</strong></div><div class="text-[11px] text-emerald-300 font-mono">${q.ans}</div>`;
+        } else {
+          fb.className = 'p-3.5 rounded-xl text-xs bg-red-950/60 border border-red-500/60 text-red-200 space-y-1.5';
+          fb.innerHTML = `<div><strong>❌ Option (${selectedKey}) is incorrect.</strong> The correct answer is <strong>Option (${q.correct})</strong>.</div><div class="text-amber-300 font-semibold">⚠️ Trap Insight: ${q.trap}</div>`;
+        }
+      }
+    }
+
+    function toggleSolution(qId) {
+      const el = document.getElementById(`solContent-${qId}`);
+      const icon = document.getElementById(`solIcon-${qId}`);
+      if (el) {
+        const isHidden = el.classList.contains('hidden');
+        el.classList.toggle('hidden', !isHidden);
+        if (icon) icon.textContent = isHidden ? '▼ Close Chalkboard' : '▶ View Chalkboard';
+      }
+    }
+
+    window.addEventListener('load', () => {
+      renderQuestions();
+      updateStructuralLedger();
+      drawStructuralOx();
+      drawElectronFlow();
+      drawIonElectron();
+      drawNfactor();
+      drawTitration();
+      drawGalvanic();
+      drawSandbox();
+      switchTab('tab-structural-ox');
+    });
+
+    window.addEventListener('resize', () => {
+      if (currentTab === 'tab-structural-ox') drawStructuralOx();
+      else if (currentTab === 'tab-electron-flow') drawElectronFlow();
+      else if (currentTab === 'tab-ion-electron') drawIonElectron();
+      else if (currentTab === 'tab-nfactor') drawNfactor();
+      else if (currentTab === 'tab-titration') drawTitration();
+      else if (currentTab === 'tab-galvanic') drawGalvanic();
+      else if (currentTab === 'tab-sandbox') drawSandbox();
+    });
+  </script>
+</body>
+</html>
