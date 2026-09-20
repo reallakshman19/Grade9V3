@@ -69,7 +69,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select O₂²⁺ (Option A).",
+    "takeaway": "Transfer rule: start from Bond Order BO = ½ (N_b - N_a); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q02",
@@ -131,7 +140,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select XeF₄: Square planar, μ = 0; SF₄: See-saw, μ ≠ 0 (Option A).",
+    "takeaway": "Transfer rule: start from Steric Number = Bond Pairs + Lone Pairs; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q03",
@@ -187,7 +205,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select In NH₃, lone pair reinforces N-H bonds; in NF₃, lone pair opposes N-F bonds (Option A).",
+    "takeaway": "Transfer rule: start from μ_net = Σ μ_bond + μ_lonepair (Vector sum in 3D); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q04",
@@ -245,7 +272,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Axial bond pairs suffer three 90° repulsions vs two for equatorial pairs (Option A).",
+    "takeaway": "Transfer rule: start from In sp³d trigonal bipyramidal: Axial pairs suffer 3 × 90° bp-bp repulsions; Equatorial pairs suffer 2 × 90° bp-bp repulsions; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q05",
@@ -301,7 +337,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select o-Nitrophenol exhibits intramolecular H-bonding; p-nitrophenol exhibits intermolecular H-bonding (Option A).",
+    "takeaway": "Transfer rule: start from Intramolecular H-bonding prevents association with neighboring molecules; Intermolecular H-bonding causes molecular association; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q06",
@@ -360,7 +405,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select B₂ and O₂ (Option A).",
+    "takeaway": "Transfer rule: start from B₂ (10e⁻): π_2p_x¹ = π_2p_y¹ (2 unpaired e⁻); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q07",
@@ -419,7 +473,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select In NH₃, lone pair and bond dipoles reinforce; in NF₃, they oppose (Option A).",
+    "takeaway": "Transfer rule: start from μ_net = μ_lone-pair + ∑ μ_bond (Vector addition); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q08",
@@ -481,7 +544,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select -1, +1, 0 (Option A).",
+    "takeaway": "Transfer rule: start from Formal Charge = Valence e⁻ - Non-bonding e⁻ - ½(Bonding e⁻); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q09",
@@ -541,7 +613,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 2, 1, 2 (Option A).",
+    "takeaway": "Transfer rule: start from Lone pairs LP = ½ [V - B], where V = valence e⁻ of central atom, B = bonded monovalent atoms; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q10",
@@ -602,7 +683,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select -2 / 3 (Option A).",
+    "takeaway": "Transfer rule: start from Average Formal Charge = (Total ionic charge) / (Number of equivalent resonating oxygen atoms); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q11",
@@ -664,7 +754,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select C₂ (Option A).",
+    "takeaway": "Transfer rule: start from Electronic configuration of C₂ (12 e⁻): σ₁ₛ² σ*₁ₛ² σ₂ₛ² σ*₂ₛ² (π₂ₚ_x² = π₂ₚ_y²); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q12",
@@ -725,7 +824,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds mode only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Axial bond pairs experience three 90° repulsions, whereas equatorial pairs experience only two 90° repulsions (Option A).",
+    "takeaway": "Transfer rule: start from sp³d = sp² (equatorial, 120°) + pd (axial, 180°); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q13",
@@ -785,7 +893,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds dipolePair only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select NF₃ (Option A).",
+    "takeaway": "Transfer rule: start from μ_net = ∑ μ_bond + μ_lp ≠ 0 for pyramidal geometry; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q14",
@@ -846,7 +963,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select sp³d² and Square Pyramidal (Option A).",
+    "takeaway": "Transfer rule: start from Steric Number = Bond Pairs + Lone Pairs = 5 + 1 = 6 (sp³d²); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q15",
@@ -906,7 +1032,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds pair only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Cl₂ > Br₂ > F₂ > I₂ (Option A).",
+    "takeaway": "Transfer rule: start from Bond Dissociation Enthalpies: Cl₂ (242; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q16",
@@ -968,7 +1103,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select sp³d and Linear (Option A).",
+    "takeaway": "Transfer rule: start from Steric Number = 2 σ-bonds + 3 lone pairs = 5 (sp³d); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q17",
@@ -1029,7 +1173,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds pair only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select H₂O > H₂Te > H₂Se > H₂S (Option A).",
+    "takeaway": "Transfer rule: start from H₂O (373 K) >> H₂Te (269 K) > H₂Se (232 K) > H₂S (213 K); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q18",
@@ -1091,7 +1244,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds mode only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select [PCl₄]⁺ (tetrahedral) and [PCl₆]⁻ (octahedral) (Option A).",
+    "takeaway": "Transfer rule: start from 2 PCl₅(s) → [PCl₄]⁺ [PCl₆]⁻; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q19",
@@ -1152,7 +1314,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "The current ExamSIDE listing for JEE Main 2019 Online 10 April Morning does not contain this CO+ bond-order question; the attribution is therefore not accepted as verified."
+    "sourceAuditNote": "The current ExamSIDE listing for JEE Main 2019 Online 10 April Morning does not contain this CO+ bond-order question; the attribution is therefore not accepted as verified.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Bond Order = 2.5 and Paramagnetic (Option B).",
+    "takeaway": "Transfer rule: start from Standard classroom MO count for CO gives BO = 3; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "BOND-Q20",
@@ -1212,6 +1383,15 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds pair only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Ortho-nitrophenol exhibits intramolecular hydrogen bonding (chelation), whereas para-nitrophenol forms intermolecular hydrogen bonds (Option A).",
+    "takeaway": "Transfer rule: start from Intramolecular H-bonding ⇒ Chelate ring ⇒ Discrete molecules ⇒ Lower BP, Steam Volatile; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   }
 ];
