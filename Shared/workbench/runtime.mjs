@@ -222,6 +222,7 @@ export class WorkbenchRuntime {
       },
     };
     this._history = [];
+    this._future = [];
   }
 
   get snapshot() {
@@ -311,6 +312,7 @@ export class WorkbenchRuntime {
     next.interaction.pickedEntityRef = null;
     next.interaction.preview = null;
     this._history.push(before);
+    this._future = [];
     this._state = next;
     return this._emit("TRANSFER_ACCEPTED", {
       request,
@@ -398,12 +400,27 @@ export class WorkbenchRuntime {
     if (type === "UNDO") {
       requireCondition(this._history.length > 0, "WORKBENCH_NOTHING_TO_UNDO");
       const previous = this._history.pop();
+      const current = clone(this._state);
       const nextRevision = this._state.revision + 1;
+      this._future.push(current);
       this._state = previous;
       this._state.revision = nextRevision;
       this._state.interaction.pickedEntityRef = null;
       this._state.interaction.preview = null;
       return this._emit("UNDO_APPLIED", { channel });
+    }
+
+    if (type === "REDO") {
+      requireCondition(this._future.length > 0, "WORKBENCH_NOTHING_TO_REDO");
+      const next = this._future.pop();
+      const current = clone(this._state);
+      const nextRevision = this._state.revision + 1;
+      this._history.push(current);
+      this._state = next;
+      this._state.revision = nextRevision;
+      this._state.interaction.pickedEntityRef = null;
+      this._state.interaction.preview = null;
+      return this._emit("REDO_APPLIED", { channel });
     }
 
     throw new WorkbenchError("WORKBENCH_INTENT_UNSUPPORTED", type);
