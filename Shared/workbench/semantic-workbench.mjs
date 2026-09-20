@@ -146,6 +146,9 @@ export class SemanticWorkbench extends HTMLElement {
   _onPointerDown(event) {
     const entity = this._closestRole(event, "entity");
     if (!entity) return;
+    if (event.pointerType !== "mouse" && entity.hasPointerCapture?.(event.pointerId)) {
+      try { entity.releasePointerCapture(event.pointerId); } catch (_) { /* pointer already released */ }
+    }
     this._suppressNextClick = true;
     this.dispatchIntent({ type: "PICK", entityRef: entity.dataset.entityRef, channel: "pointer" });
   }
@@ -301,7 +304,7 @@ export class SemanticWorkbench extends HTMLElement {
         .toolbar{display:flex;gap:.5rem;justify-content:flex-end;margin-bottom:.75rem}
         button{font:inherit}
         .logical-grid{display:grid;grid-template-columns:repeat(var(--column-count),minmax(0,1fr));gap:.6rem;align-items:stretch}
-        .slot{min-width:0;min-height:2.75rem;border:1px solid var(--workbench-border,#94a3b8);border-radius:.5rem;padding:.65rem;background:var(--workbench-surface,#f8fafc);color:inherit;text-align:left}
+        .slot{min-width:0;min-height:2.75rem;border:1px solid var(--workbench-border,#94a3b8);border-radius:.5rem;padding:.65rem;background:var(--workbench-surface,#f8fafc);color:inherit;text-align:left;touch-action:none}
         .entity.active{outline:3px solid var(--workbench-focus,#2563eb);outline-offset:2px}
         .target{display:flex;flex-direction:column;gap:.15rem}.target small{font-size:.75em}.target.valid{border-style:double}.target.invalid{border-style:dashed}
         .checkpoint{display:flex;gap:.5rem;align-items:flex-start;margin:.75rem 0;padding:.65rem;border-left:4px solid var(--workbench-checkpoint,#64748b);background:var(--workbench-surface,#f8fafc)}
