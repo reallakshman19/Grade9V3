@@ -68,7 +68,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.electrons"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q02",
@@ -129,7 +130,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.molecule"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q03",
@@ -184,7 +186,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q04",
@@ -241,7 +244,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q05",
@@ -296,7 +300,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q06",
@@ -354,7 +359,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.electrons"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q07",
@@ -412,7 +418,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.molecule"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q08",
@@ -473,7 +480,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.molecule"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q09",
@@ -532,7 +540,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.molecule"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q10",
@@ -592,7 +601,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.molecule"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q11",
@@ -653,7 +663,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.electrons"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q12",
@@ -713,7 +724,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.mode"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds mode only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds mode only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q13",
@@ -772,7 +784,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.dipolePair"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds dipolePair only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds dipolePair only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q14",
@@ -832,7 +845,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.molecule"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q15",
@@ -891,7 +905,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.pair"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds pair only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds pair only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q16",
@@ -952,7 +967,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.molecule"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds molecule only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q17",
@@ -1012,7 +1028,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.pair"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds pair only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds pair only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q18",
@@ -1073,7 +1090,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.mode"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds mode only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds mode only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "BOND-Q19",
@@ -1101,39 +1119,40 @@ window.JEE_QUESTIONS_DATA = [
         "text": "Bond Order = 2.5 and Diamagnetic"
       }
     ],
-    "correct": "A",
-    "formula": "CO (14 e⁻, BO = 3.0). For CO⁺ (13 e⁻), electron is removed from antibonding σ* orbital ⇒ BO = 3.5.",
+    "correct": "B",
+    "formula": "Standard classroom MO count for CO gives BO = 3. Ionization to CO⁺ removes one electron from the highest occupied valence MO; in the usual bond-order counting used for JEE-level MO diagrams, BO decreases by ½ to 2.5. An odd electron remains, so CO⁺ is paramagnetic.",
     "steps": [
-      "Step 1: Neutral CO has 14 electrons (isoelectronic with N₂, BO = 3.0, diamagnetic).",
-      "Step 2: In heteronuclear CO, due to significant electronegativity difference between C and O, sp hybridization mixes orbitals such that the highest occupied molecular orbital (HOMO) is weakly antibonding σ* orbital (mostly C 2s character).",
-      "Step 3: Ionizing CO to CO⁺ removes an electron from this antibonding orbital!",
-      "Step 4: Removing an antibonding electron INCREASES the bond order: BO = 3.0 + 0.5 = 3.5.",
-      "Step 5: Since CO⁺ has 13 electrons (odd number), it has 1 unpaired electron ⇒ Paramagnetic!"
+      "Step 1: Neutral CO has 14 electrons and is treated as isoelectronic with N₂ in the standard introductory MO scheme, with bond order 3.",
+      "Step 2: Forming CO⁺ removes one electron from the highest occupied valence molecular orbital.",
+      "Step 3: In the standard JEE-level bond-order count, removal of one bonding electron decreases bond order by 0.5: BO = 3.0 - 0.5 = 2.5.",
+      "Step 4: CO⁺ has an odd total electron count, so one electron is unpaired and the species is paramagnetic.",
+      "Step 5: Therefore the locally audited answer is Bond Order = 2.5 and Paramagnetic."
     ],
-    "ans": "Bond Order = 3.5 and Paramagnetic (Option A)",
-    "trap": "THE CO⁺ ANOMALY: For N₂ → N₂⁺, removing an electron drops BO from 3.0 to 2.5. But for CO → CO⁺, removing an electron RAISES BO from 3.0 to 3.5 because HOMO is antibonding!",
+    "ans": "Bond Order = 2.5 and Paramagnetic (Option B)",
+    "trap": "Do not use the obsolete shortcut that labels the CO HOMO as simply antibonding and raises the bond order to 3.5 on ionization. For the standard classroom MO answer used here, CO⁺ is assigned bond order 2.5 and is paramagnetic.",
     "distractorTraps": {
-      "B": "Standard N₂ trap (assuming removing an electron always drops BO from 3.0 to 2.5).",
-      "C": "Assumed bond order remains 3.0.",
-      "D": "Assumed diamagnetic despite having 13 (odd) electrons."
+      "A": "Uses the obsolete 3.5 shortcut by treating ionization as removal of a purely antibonding electron.",
+      "C": "Keeps the neutral-CO bond order and also misses the odd-electron paramagnetism.",
+      "D": "Gets the 2.5 bond order but incorrectly calls the odd-electron cation diamagnetic."
     },
     "targetTab": "tab-mot",
     "simParams": {
       "electrons": 13
     },
     "simSummary": [
-      "CO⁺ (13 e⁻): HOMO is weakly antibonding",
-      "BO = 3.5 (Bond strengthens upon ionization!)",
-      "Paramagnetic (1 unpaired e⁻)"
+      "CO⁺ · 13 electrons",
+      "Locally audited BO = 2.5",
+      "Paramagnetic · one unpaired electron"
     ],
-    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
-    "answerAudit": "PENDING",
-    "answerAuditNote": "CO⁺ bond-order treatment is model/convention-sensitive across teaching sources; retain the supplied option only as pending until the cited source item/key is independently verified.",
+    "sourceAudit": "SOURCE_UNVERIFIED",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally corrected under the standard classroom MO treatment: removing one electron from the highest occupied CO valence MO gives the commonly used bond-order result 2.5; the odd-electron cation is paramagnetic.",
     "simBindingRefs": [
       "simParams.electrons"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds electrons only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "The current ExamSIDE listing for JEE Main 2019 Online 10 April Morning does not contain this CO+ bond-order question; the attribution is therefore not accepted as verified."
   },
   {
     "id": "BOND-Q20",
@@ -1192,6 +1211,7 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.pair"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds pair only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds pair only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   }
 ];
