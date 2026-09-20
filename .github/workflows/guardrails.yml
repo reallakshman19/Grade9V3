@@ -25,7 +25,7 @@ jobs:
 
       # TEMP Chemistry branch bootstrap; the generated commit message prevents a push loop.
       - name: Refresh Chemistry generated artifacts
-        if: github.event_name == 'push' && github.ref == 'refs/heads/audit/chemistry-master-suites-standalone' && !contains(github.event.head_commit.message, 'chore(chemistry): refresh generated artifacts')
+        if: github.event_name == 'push' && github.ref == 'refs/heads/audit/chemistry-master-suites-standalone'
         run: |
           python3 Shared/tools/build_manifest.py
           git config user.name "github-actions[bot]"
