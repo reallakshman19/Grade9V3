@@ -60,8 +60,8 @@
     {
       "id": "dividend-place-value",
       "entityRef": "dividend-156",
-      "label": "Use the leading 15 as the first partial dividend",
-      "representation": "place value",
+      "label": "156 in long-division working form",
+      "representation": "working dividend",
       "placement": {
         "grid": "division-work",
         "row": "working",
