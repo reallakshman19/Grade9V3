@@ -12,6 +12,736 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
 
+  <!-- ExamSIDE Redox Content Map -->
+  <script>
+/* Redox content map against the live ExamSIDE JEE Main topic index (snapshot 2026-09-20). */
+window.REDOX_CONTENT_TRACKS = [
+  {
+    "id": "OS",
+    "order": 1,
+    "title": "Oxidation-state model & structural exceptions",
+    "mode": "HARD CONCEPT",
+    "pivot": "Default oxidation-state rules are conditional; structure or ion identity can change the valid assignment.",
+    "visual": "formula → ion/structure → atom-specific charge ledger",
+    "implementation": "Assign formal oxidation states, distinguish averages from mixed values, and close the total charge.",
+    "targetTab": "tab-structural-ox",
+    "priority50": true,
+    "core": true
+  },
+  {
+    "id": "ROLE",
+    "order": 2,
+    "title": "Oxidising/reducing roles & redox classification",
+    "mode": "HARD CONCEPT",
+    "pivot": "Roles come from electron transfer, not from a memorised reagent label.",
+    "visual": "donor ↔ electrons ↔ acceptor; classify the same reaction by electron flow and reaction type",
+    "implementation": "Identify oxidant/reductant and distinguish redox, displacement, combination and decomposition.",
+    "targetTab": "tab-electron-flow",
+    "priority50": false,
+    "core": true
+  },
+  {
+    "id": "DISP",
+    "order": 3,
+    "title": "Disproportionation",
+    "mode": "HARD CONCEPT",
+    "pivot": "One starting oxidation state can split into simultaneous oxidation and reduction products.",
+    "visual": "one oxidation-state node → upward branch + downward branch → matched electron ledger",
+    "implementation": "Recognise disproportionation and determine product ratios / n-factor from matched electron transfer.",
+    "targetTab": "tab-nfactor",
+    "priority50": true,
+    "core": true
+  },
+  {
+    "id": "BAL",
+    "order": 4,
+    "title": "Half-reaction balancing & reaction medium",
+    "mode": "IMPLEMENTATION",
+    "pivot": "Redox equations are atom conservation plus charge conservation; electrons are the balancing currency.",
+    "visual": "atom ledger → H/O balance → charge ledger → electrons → acidic/basic conversion",
+    "implementation": "Balance half-reactions and read stoichiometric coefficients in the stated medium.",
+    "targetTab": "tab-ion-electron",
+    "priority50": false,
+    "core": true
+  },
+  {
+    "id": "NFACTOR",
+    "order": 5,
+    "title": "Reaction-dependent n-factor",
+    "mode": "HARD CONCEPT + IMPLEMENTATION",
+    "pivot": "n-factor belongs to the actual reaction pathway; the product fixes the oxidation-state change.",
+    "visual": "medium / product → final oxidation state → ΔO.S. → electron count → n",
+    "implementation": "Compute n-factor and equivalent mass only after identifying the actual product.",
+    "targetTab": "tab-nfactor",
+    "priority50": true,
+    "core": true
+  },
+  {
+    "id": "EQUIV",
+    "order": 6,
+    "title": "Electron-equivalence stoichiometry",
+    "mode": "IMPLEMENTATION",
+    "pivot": "Stoichiometric ratios come from matching total electrons lost and gained.",
+    "visual": "donor electron inventory ↔ acceptor electron capacity",
+    "implementation": "Count every redox-active part of a formula unit and convert electron balance into mole/volume ratios.",
+    "targetTab": "tab-titration",
+    "priority50": true,
+    "core": true
+  },
+  {
+    "id": "TITR",
+    "order": 7,
+    "title": "Redox titration & practical chemistry",
+    "mode": "IMPLEMENTATION",
+    "pivot": "Titration is electron-equivalence applied to measured quantities, with reaction-specific practical constraints.",
+    "visual": "burette/flask quantities → equivalents → endpoint / iodometric chain",
+    "implementation": "Solve KMnO₄, dichromate, thiosulfate and practical redox-titration questions.",
+    "targetTab": "tab-titration",
+    "priority50": false,
+    "core": true
+  },
+  {
+    "id": "RELATED",
+    "order": 8,
+    "title": "Adjacent equivalents / acid-base items on the ExamSIDE page",
+    "mode": "ADJACENT IMPLEMENTATION",
+    "pivot": "These use equivalent/normality arithmetic but do not exercise the central redox mechanism.",
+    "visual": "equivalent-count bookkeeping only",
+    "implementation": "Handle normality, neutralisation and related equivalent-weight calculations without mislabelling them as redox conceptual evidence.",
+    "targetTab": "tab-titration",
+    "priority50": false,
+    "core": false
+  },
+  {
+    "id": "OFFCORP",
+    "order": 9,
+    "title": "Electrochemistry extension in the local suite",
+    "mode": "OFF-CORPUS EXTENSION",
+    "pivot": "Galvanic-cell and Nernst reasoning is useful extension material, but ExamSIDE lists Electrochemistry as a separate topic from Redox.",
+    "visual": "anode/cathode → electron flow → E° / Nernst",
+    "implementation": "Use reduction potentials and reaction quotient only as a separate extension.",
+    "targetTab": "tab-galvanic",
+    "priority50": false,
+    "core": false
+  }
+];
+window.EXAMSIDE_REDOX_CORPUS_META = {
+  "provider": "ExamSIDE",
+  "topic": "JEE Main Chemistry · Redox Reactions",
+  "topicUrl": "https://questions.examside.com/past-years/jee/jee-main/chemistry/redox-reactions",
+  "snapshotDate": "2026-09-20",
+  "liveCount": 74,
+  "numericalCount": 29,
+  "mcqCount": 45,
+  "embeddedAuditedCount": 20,
+  "mappingStatus": "CORPUS_INDEX_MAPPED_LOCAL_SOURCES_PENDING",
+  "note": "All 74 live corpus positions are mapped to one primary learning track. The 20 local items are mapped pedagogically but their one-to-one ExamSIDE source provenance remains pending."
+};
+window.EXAMSIDE_REDOX_CORPUS_MAP = [
+  {
+    "ref": "N01",
+    "kind": "Numerical",
+    "ordinal": 1,
+    "year": 2026,
+    "track": "TITR"
+  },
+  {
+    "ref": "N02",
+    "kind": "Numerical",
+    "ordinal": 2,
+    "year": 2026,
+    "track": "TITR"
+  },
+  {
+    "ref": "N03",
+    "kind": "Numerical",
+    "ordinal": 3,
+    "year": 2026,
+    "track": "NFACTOR"
+  },
+  {
+    "ref": "N04",
+    "kind": "Numerical",
+    "ordinal": 4,
+    "year": 2026,
+    "track": "EQUIV"
+  },
+  {
+    "ref": "N05",
+    "kind": "Numerical",
+    "ordinal": 5,
+    "year": 2025,
+    "track": "NFACTOR"
+  },
+  {
+    "ref": "N06",
+    "kind": "Numerical",
+    "ordinal": 6,
+    "year": 2025,
+    "track": "RELATED"
+  },
+  {
+    "ref": "N07",
+    "kind": "Numerical",
+    "ordinal": 7,
+    "year": 2024,
+    "track": "TITR"
+  },
+  {
+    "ref": "N08",
+    "kind": "Numerical",
+    "ordinal": 8,
+    "year": 2024,
+    "track": "OS"
+  },
+  {
+    "ref": "N09",
+    "kind": "Numerical",
+    "ordinal": 9,
+    "year": 2024,
+    "track": "EQUIV"
+  },
+  {
+    "ref": "N10",
+    "kind": "Numerical",
+    "ordinal": 10,
+    "year": 2024,
+    "track": "DISP"
+  },
+  {
+    "ref": "N11",
+    "kind": "Numerical",
+    "ordinal": 11,
+    "year": 2024,
+    "track": "BAL"
+  },
+  {
+    "ref": "N12",
+    "kind": "Numerical",
+    "ordinal": 12,
+    "year": 2024,
+    "track": "OS"
+  },
+  {
+    "ref": "N13",
+    "kind": "Numerical",
+    "ordinal": 13,
+    "year": 2023,
+    "track": "BAL"
+  },
+  {
+    "ref": "N14",
+    "kind": "Numerical",
+    "ordinal": 14,
+    "year": 2023,
+    "track": "NFACTOR"
+  },
+  {
+    "ref": "N15",
+    "kind": "Numerical",
+    "ordinal": 15,
+    "year": 2023,
+    "track": "OS"
+  },
+  {
+    "ref": "N16",
+    "kind": "Numerical",
+    "ordinal": 16,
+    "year": 2023,
+    "track": "OS"
+  },
+  {
+    "ref": "N17",
+    "kind": "Numerical",
+    "ordinal": 17,
+    "year": 2023,
+    "track": "OS"
+  },
+  {
+    "ref": "N18",
+    "kind": "Numerical",
+    "ordinal": 18,
+    "year": 2023,
+    "track": "OS"
+  },
+  {
+    "ref": "N19",
+    "kind": "Numerical",
+    "ordinal": 19,
+    "year": 2023,
+    "track": "RELATED"
+  },
+  {
+    "ref": "N20",
+    "kind": "Numerical",
+    "ordinal": 20,
+    "year": 2022,
+    "track": "RELATED"
+  },
+  {
+    "ref": "N21",
+    "kind": "Numerical",
+    "ordinal": 21,
+    "year": 2022,
+    "track": "TITR"
+  },
+  {
+    "ref": "N22",
+    "kind": "Numerical",
+    "ordinal": 22,
+    "year": 2022,
+    "track": "TITR"
+  },
+  {
+    "ref": "N23",
+    "kind": "Numerical",
+    "ordinal": 23,
+    "year": 2022,
+    "track": "RELATED"
+  },
+  {
+    "ref": "N24",
+    "kind": "Numerical",
+    "ordinal": 24,
+    "year": 2021,
+    "track": "TITR"
+  },
+  {
+    "ref": "N25",
+    "kind": "Numerical",
+    "ordinal": 25,
+    "year": 2021,
+    "track": "OS"
+  },
+  {
+    "ref": "N26",
+    "kind": "Numerical",
+    "ordinal": 26,
+    "year": 2021,
+    "track": "RELATED"
+  },
+  {
+    "ref": "N27",
+    "kind": "Numerical",
+    "ordinal": 27,
+    "year": 2020,
+    "track": "EQUIV"
+  },
+  {
+    "ref": "N28",
+    "kind": "Numerical",
+    "ordinal": 28,
+    "year": 2020,
+    "track": "RELATED"
+  },
+  {
+    "ref": "N29",
+    "kind": "Numerical",
+    "ordinal": 29,
+    "year": 2020,
+    "track": "OS"
+  },
+  {
+    "ref": "M01",
+    "kind": "MCQ",
+    "ordinal": 1,
+    "year": 2026,
+    "track": "EQUIV"
+  },
+  {
+    "ref": "M02",
+    "kind": "MCQ",
+    "ordinal": 2,
+    "year": 2026,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M03",
+    "kind": "MCQ",
+    "ordinal": 3,
+    "year": 2026,
+    "track": "DISP"
+  },
+  {
+    "ref": "M04",
+    "kind": "MCQ",
+    "ordinal": 4,
+    "year": 2026,
+    "track": "OS"
+  },
+  {
+    "ref": "M05",
+    "kind": "MCQ",
+    "ordinal": 5,
+    "year": 2025,
+    "track": "EQUIV"
+  },
+  {
+    "ref": "M06",
+    "kind": "MCQ",
+    "ordinal": 6,
+    "year": 2025,
+    "track": "TITR"
+  },
+  {
+    "ref": "M07",
+    "kind": "MCQ",
+    "ordinal": 7,
+    "year": 2025,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M08",
+    "kind": "MCQ",
+    "ordinal": 8,
+    "year": 2025,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M09",
+    "kind": "MCQ",
+    "ordinal": 9,
+    "year": 2025,
+    "track": "DISP"
+  },
+  {
+    "ref": "M10",
+    "kind": "MCQ",
+    "ordinal": 10,
+    "year": 2024,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M11",
+    "kind": "MCQ",
+    "ordinal": 11,
+    "year": 2024,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M12",
+    "kind": "MCQ",
+    "ordinal": 12,
+    "year": 2024,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M13",
+    "kind": "MCQ",
+    "ordinal": 13,
+    "year": 2024,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M14",
+    "kind": "MCQ",
+    "ordinal": 14,
+    "year": 2024,
+    "track": "DISP"
+  },
+  {
+    "ref": "M15",
+    "kind": "MCQ",
+    "ordinal": 15,
+    "year": 2024,
+    "track": "BAL"
+  },
+  {
+    "ref": "M16",
+    "kind": "MCQ",
+    "ordinal": 16,
+    "year": 2024,
+    "track": "DISP"
+  },
+  {
+    "ref": "M17",
+    "kind": "MCQ",
+    "ordinal": 17,
+    "year": 2024,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M18",
+    "kind": "MCQ",
+    "ordinal": 18,
+    "year": 2024,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M19",
+    "kind": "MCQ",
+    "ordinal": 19,
+    "year": 2023,
+    "track": "TITR"
+  },
+  {
+    "ref": "M20",
+    "kind": "MCQ",
+    "ordinal": 20,
+    "year": 2023,
+    "track": "DISP"
+  },
+  {
+    "ref": "M21",
+    "kind": "MCQ",
+    "ordinal": 21,
+    "year": 2023,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M22",
+    "kind": "MCQ",
+    "ordinal": 22,
+    "year": 2022,
+    "track": "RELATED"
+  },
+  {
+    "ref": "M23",
+    "kind": "MCQ",
+    "ordinal": 23,
+    "year": 2022,
+    "track": "RELATED"
+  },
+  {
+    "ref": "M24",
+    "kind": "MCQ",
+    "ordinal": 24,
+    "year": 2022,
+    "track": "DISP"
+  },
+  {
+    "ref": "M25",
+    "kind": "MCQ",
+    "ordinal": 25,
+    "year": 2022,
+    "track": "DISP"
+  },
+  {
+    "ref": "M26",
+    "kind": "MCQ",
+    "ordinal": 26,
+    "year": 2021,
+    "track": "OS"
+  },
+  {
+    "ref": "M27",
+    "kind": "MCQ",
+    "ordinal": 27,
+    "year": 2021,
+    "track": "NFACTOR"
+  },
+  {
+    "ref": "M28",
+    "kind": "MCQ",
+    "ordinal": 28,
+    "year": 2021,
+    "track": "OS"
+  },
+  {
+    "ref": "M29",
+    "kind": "MCQ",
+    "ordinal": 29,
+    "year": 2021,
+    "track": "OS"
+  },
+  {
+    "ref": "M30",
+    "kind": "MCQ",
+    "ordinal": 30,
+    "year": 2020,
+    "track": "RELATED"
+  },
+  {
+    "ref": "M31",
+    "kind": "MCQ",
+    "ordinal": 31,
+    "year": 2020,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M32",
+    "kind": "MCQ",
+    "ordinal": 32,
+    "year": 2020,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M33",
+    "kind": "MCQ",
+    "ordinal": 33,
+    "year": 2020,
+    "track": "OS"
+  },
+  {
+    "ref": "M34",
+    "kind": "MCQ",
+    "ordinal": 34,
+    "year": 2019,
+    "track": "DISP"
+  },
+  {
+    "ref": "M35",
+    "kind": "MCQ",
+    "ordinal": 35,
+    "year": 2019,
+    "track": "OS"
+  },
+  {
+    "ref": "M36",
+    "kind": "MCQ",
+    "ordinal": 36,
+    "year": 2019,
+    "track": "EQUIV"
+  },
+  {
+    "ref": "M37",
+    "kind": "MCQ",
+    "ordinal": 37,
+    "year": 2019,
+    "track": "RELATED"
+  },
+  {
+    "ref": "M38",
+    "kind": "MCQ",
+    "ordinal": 38,
+    "year": 2019,
+    "track": "RELATED"
+  },
+  {
+    "ref": "M39",
+    "kind": "MCQ",
+    "ordinal": 39,
+    "year": 2019,
+    "track": "NFACTOR"
+  },
+  {
+    "ref": "M40",
+    "kind": "MCQ",
+    "ordinal": 40,
+    "year": 2017,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M41",
+    "kind": "MCQ",
+    "ordinal": 41,
+    "year": 2016,
+    "track": "RELATED"
+  },
+  {
+    "ref": "M42",
+    "kind": "MCQ",
+    "ordinal": 42,
+    "year": 2014,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M43",
+    "kind": "MCQ",
+    "ordinal": 43,
+    "year": 2013,
+    "track": "BAL"
+  },
+  {
+    "ref": "M44",
+    "kind": "MCQ",
+    "ordinal": 44,
+    "year": 2006,
+    "track": "ROLE"
+  },
+  {
+    "ref": "M45",
+    "kind": "MCQ",
+    "ordinal": 45,
+    "year": 2002,
+    "track": "ROLE"
+  }
+];
+window.REDOX_LOCAL_ITEM_TRACKS = [
+  {
+    "id": "REDOX-Q01",
+    "track": "OS"
+  },
+  {
+    "id": "REDOX-Q02",
+    "track": "NFACTOR"
+  },
+  {
+    "id": "REDOX-Q03",
+    "track": "DISP"
+  },
+  {
+    "id": "REDOX-Q04",
+    "track": "OS"
+  },
+  {
+    "id": "REDOX-Q05",
+    "track": "EQUIV"
+  },
+  {
+    "id": "REDOX-Q06",
+    "track": "OS"
+  },
+  {
+    "id": "REDOX-Q07",
+    "track": "NFACTOR"
+  },
+  {
+    "id": "REDOX-Q08",
+    "track": "OFFCORP"
+  },
+  {
+    "id": "REDOX-Q09",
+    "track": "OS"
+  },
+  {
+    "id": "REDOX-Q10",
+    "track": "OS"
+  },
+  {
+    "id": "REDOX-Q11",
+    "track": "EQUIV"
+  },
+  {
+    "id": "REDOX-Q12",
+    "track": "OS"
+  },
+  {
+    "id": "REDOX-Q13",
+    "track": "NFACTOR"
+  },
+  {
+    "id": "REDOX-Q14",
+    "track": "DISP"
+  },
+  {
+    "id": "REDOX-Q15",
+    "track": "BAL"
+  },
+  {
+    "id": "REDOX-Q16",
+    "track": "OFFCORP"
+  },
+  {
+    "id": "REDOX-Q17",
+    "track": "OS"
+  },
+  {
+    "id": "REDOX-Q18",
+    "track": "TITR"
+  },
+  {
+    "id": "REDOX-Q19",
+    "track": "OFFCORP"
+  },
+  {
+    "id": "REDOX-Q20",
+    "track": "OS"
+  }
+];
+
+  </script>
+
   <!-- Question Bank -->
   <script>
 /* Embedded diagnostic bank for SINGLE_FILE_ONLINE delivery. */
@@ -1500,7 +2230,10 @@ window.JEE_QUESTIONS_DATA = [
 
     <!-- 8 MASTER TABS -->
     <div role="tablist" aria-label="Redox learning sequence" class="max-w-7xl mx-auto px-4 flex items-center gap-1 overflow-x-auto text-xs font-medium border-t border-slate-900/60 pt-1 no-scrollbar">
-      <button role="tab" aria-selected="true" aria-controls="tab-foundations" onclick="switchTab('tab-foundations')" id="btn-tab-foundations" class="tab-btn-active px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+      <button role="tab" aria-selected="true" aria-controls="tab-examside-map" onclick="switchTab('tab-examside-map')" id="btn-tab-examside-map" class="tab-btn-active px-3 py-2 rounded-t-lg transition whitespace-nowrap text-amber-200">
+        ★ ExamSIDE Content Map
+      </button>
+      <button role="tab" aria-selected="false" aria-controls="tab-foundations" onclick="switchTab('tab-foundations')" id="btn-tab-foundations" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
         0. Foundations
       </button>
       <button role="tab" aria-selected="false" aria-controls="tab-structural-ox" onclick="switchTab('tab-structural-ox')" id="btn-tab-structural-ox" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
@@ -1519,14 +2252,14 @@ window.JEE_QUESTIONS_DATA = [
         5. Redox Titration
       </button>
       <button role="tab" aria-selected="false" aria-controls="tab-galvanic" onclick="switchTab('tab-galvanic')" id="btn-tab-galvanic" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
-        6. Galvanic Cell E&deg;
+        6. Electrochemistry Extension
       </button>
       <button role="tab" aria-selected="false" aria-controls="tab-sandbox" onclick="switchTab('tab-sandbox')" id="btn-tab-sandbox" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap flex items-center gap-1.5 text-amber-300/80">
         <span class="px-1 py-0.2 rounded bg-amber-500/20 text-[9px] font-bold text-amber-400">Draft</span>
         <span>7. Master Sandbox</span>
       </button>
       <button role="tab" aria-selected="false" aria-controls="tab-quiz" onclick="switchTab('tab-quiz')" id="btn-tab-quiz" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap flex items-center gap-1.5 text-purple-300">
-        <span>⭐ 8. IIT-JEE Question Hub</span>
+        <span>⭐ Local 20 Question Hub</span>
       </button>
     </div>
   </header>
@@ -1548,10 +2281,70 @@ window.JEE_QUESTIONS_DATA = [
     </div>
 
 
+
+    <!-- ================================================================= -->
+    <!-- EXAMSIDE CONTENT MAP: ALL 74 LIVE REDOX PYQ POSITIONS             -->
+    <!-- ================================================================= -->
+    <section id="tab-examside-map" class="space-y-6">
+      <div class="bg-card border border-amber-500/30 rounded-2xl p-5 shadow-xl">
+        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-lg">🧭</span>
+              <h2 class="font-bold text-base text-white">Redox Learning Map → ExamSIDE JEE Main PYQs</h2>
+              <span class="px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono text-[10px]">LIVE INDEX: 74</span>
+              <span class="px-2 py-0.5 rounded bg-sky-500/10 border border-sky-500/30 text-sky-300 font-mono text-[10px]">LOCAL AUDITED: 20</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-2 leading-relaxed max-w-4xl">
+              Every position in the live ExamSIDE Redox topic index is assigned to one primary learning track. The map separates hard conceptual pivots from implementation practice, and shows exactly which locally audited questions can currently be opened inside this suite.
+            </p>
+          </div>
+          <a href="https://questions.examside.com/past-years/jee/jee-main/chemistry/redox-reactions" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg bg-amber-500/15 border border-amber-500/40 text-amber-200 text-xs font-bold hover:bg-amber-500/25">Open live ExamSIDE Redox corpus ↗</a>
+        </div>
+        <div class="mt-4 p-3 rounded-xl border border-slate-700 bg-slate-950/60 text-[11px] text-slate-300 leading-relaxed">
+          <strong class="text-white">Source honesty:</strong> corpus positions (N01–N29, M01–M45) are mapped from the live ExamSIDE topic index. The repository's 20 local items remain <span class="text-amber-300 font-mono">SOURCE_PROVENANCE_PENDING</span>; their mapping below is pedagogical, not a claim that each local source label has been verified as the exact live ExamSIDE item.
+        </div>
+      </div>
+
+      <div id="examSideStats" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
+
+      <div>
+        <div class="flex items-end justify-between gap-3 mb-3">
+          <div>
+            <h3 class="font-bold text-white">Content tracks</h3>
+            <p class="text-xs text-slate-400">Concept → representation → implementation → mapped PYQs.</p>
+          </div>
+          <span class="text-[10px] text-slate-500 font-mono">★ = priority route for the 50% knowledge demo</span>
+        </div>
+        <div id="examSideTrackCards" class="grid grid-cols-1 xl:grid-cols-2 gap-4"></div>
+      </div>
+
+      <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-3 border-b border-border pb-4">
+          <div>
+            <h3 class="font-bold text-white">All 74 live ExamSIDE positions</h3>
+            <p class="text-xs text-slate-400 mt-1">N = Numerical, M = single-correct MCQ. Each reference is mapped once to its primary learning track.</p>
+          </div>
+          <select id="examSideTrackFilter" onchange="renderExamSideCorpus()" aria-label="Filter ExamSIDE questions by content track" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200">
+            <option value="all">All tracks</option>
+          </select>
+        </div>
+        <div id="examSideCorpusList" class="mt-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2"></div>
+      </div>
+
+      <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
+        <div class="border-b border-border pb-4">
+          <h3 class="font-bold text-white">Local audited 20-item slice → same learning tracks</h3>
+          <p class="text-xs text-slate-400 mt-1">These are the questions currently available for in-page attempts and visual loading. Three galvanic/Nernst items are explicitly marked as Electrochemistry extension, because that is a separate ExamSIDE topic.</p>
+        </div>
+        <div id="localTrackMap" class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-3"></div>
+      </div>
+    </section>
+
     <!-- ================================================================= -->
     <!-- TAB 0: GRADE-9 FOUNDATION BRIDGE                                  -->
     <!-- ================================================================= -->
-    <section id="tab-foundations" class="space-y-6">
+    <section id="tab-foundations" class="space-y-6 hidden">
       <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
         <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 border-b border-border pb-4">
           <div>
@@ -1768,7 +2561,7 @@ window.JEE_QUESTIONS_DATA = [
     <section id="tab-galvanic" class="space-y-6 hidden">
       <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
         <div class="border-b border-border pb-4">
-          <h2 class="font-bold text-base text-white">Galvanic Cell &middot; Standard Reduction Potentials E&deg;</h2>
+          <div class="flex flex-wrap items-center gap-2"><h2 class="font-bold text-base text-white">Galvanic Cell &middot; Standard Reduction Potentials E&deg;</h2><span class="px-2 py-0.5 rounded bg-violet-500/15 border border-violet-500/30 text-violet-300 text-[10px] font-mono">ELECTROCHEMISTRY EXTENSION · OFF REDOX CORPUS</span></div>
           <p class="text-xs text-slate-400 mt-1">Advanced extension: Zn is the anode (electron source), Cu²⁺/Cu is the cathode (electron sink), and E°cell = E°cathode − E°anode when both tabulated values are reduction potentials.</p>
         </div>
         <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
@@ -1837,7 +2630,7 @@ window.JEE_QUESTIONS_DATA = [
     // =========================================================================
     // LIFECYCLE & CANVAS CONTROLLER
     // =========================================================================
-    let currentTab = 'tab-foundations';
+    let currentTab = 'tab-examside-map';
     let currentSubTabFilter = 'all';
     let currentCompound = 'CrO5';
     let currentStructMode = 'reality';
@@ -1846,12 +2639,118 @@ window.JEE_QUESTIONS_DATA = [
     let foundationRevealed = false;
     const questionAttempts = Object.create(null);
 
+
+    function redoxTrack(trackId) {
+      return (window.REDOX_CONTENT_TRACKS || []).find(row => row.id === trackId) || null;
+    }
+
+    function localTrackId(questionId) {
+      const row = (window.REDOX_LOCAL_ITEM_TRACKS || []).find(item => item.id === questionId);
+      return row ? row.track : null;
+    }
+
+    function localTrackBadge(questionId) {
+      const track = redoxTrack(localTrackId(questionId));
+      if (!track) return '';
+      const tone = track.id === 'OFFCORP'
+        ? 'bg-violet-500/10 border-violet-500/30 text-violet-300'
+        : track.mode.includes('HARD') ? 'bg-amber-500/10 border-amber-500/30 text-amber-300'
+        : 'bg-sky-500/10 border-sky-500/30 text-sky-300';
+      return '<span class="px-2 py-0.5 rounded border text-[10px] font-mono ' + tone + '" title="' + track.title + '">' + track.id + ' · ' + track.mode + '</span>';
+    }
+
+    function openMappedTrack(trackId) {
+      const track = redoxTrack(trackId);
+      if (!track || !track.targetTab) return;
+      switchTab(track.targetTab);
+    }
+
+    function renderExamSideMap() {
+      const meta = window.EXAMSIDE_REDOX_CORPUS_META || {};
+      const tracks = window.REDOX_CONTENT_TRACKS || [];
+      const corpus = window.EXAMSIDE_REDOX_CORPUS_MAP || [];
+      const localRows = window.REDOX_LOCAL_ITEM_TRACKS || [];
+      const bank = window.JEE_QUESTIONS_DATA || [];
+
+      const stats = document.getElementById('examSideStats');
+      if (stats) {
+        const cells = [
+          ['LIVE CORPUS', meta.liveCount || corpus.length, 'ExamSIDE Redox'],
+          ['NUMERICAL', meta.numericalCount || 0, 'implementation-heavy'],
+          ['MCQ', meta.mcqCount || 0, 'concept + model choice'],
+          ['LOCAL AUDITED', meta.embeddedAuditedCount || bank.length, 'in-page attempts']
+        ];
+        stats.innerHTML = cells.map(row => '<div class="bg-card border border-border rounded-xl p-3"><div class="text-[10px] text-slate-500 font-mono">' + row[0] + '</div><div class="text-2xl font-black text-white mt-1">' + row[1] + '</div><div class="text-[10px] text-slate-400">' + row[2] + '</div></div>').join('');
+      }
+
+      const filter = document.getElementById('examSideTrackFilter');
+      if (filter && filter.options.length === 1) {
+        tracks.filter(t => t.id !== 'OFFCORP').forEach(track => {
+          const opt = document.createElement('option');
+          opt.value = track.id;
+          opt.textContent = track.id + ' · ' + track.title;
+          filter.appendChild(opt);
+        });
+      }
+
+      const cards = document.getElementById('examSideTrackCards');
+      if (cards) {
+        cards.innerHTML = tracks.map(track => {
+          const liveRows = corpus.filter(row => row.track === track.id);
+          const locals = localRows.filter(row => row.track === track.id).map(row => bank.find(q => q.id === row.id)).filter(Boolean);
+          const liveRefs = liveRows.map(row => '<span class="inline-flex px-2 py-1 rounded bg-slate-950 border border-slate-700 text-[10px] font-mono text-slate-300">' + row.ref + ' · ' + row.year + '</span>').join(' ');
+          const localRefs = locals.length
+            ? locals.map(q => '<button onclick="switchTab(\'tab-quiz\'); setTimeout(() => document.getElementById(\'qcard-' + q.id + '\')?.scrollIntoView({behavior:\'smooth\',block:\'start\'}),80)" class="px-2 py-1 rounded bg-emerald-950/40 border border-emerald-500/30 text-[10px] font-mono text-emerald-300 hover:bg-emerald-950/70">' + q.id + '</button>').join(' ')
+            : '<span class="text-[10px] text-slate-500">No local audited item in this track yet.</span>';
+          return '<article class="bg-card border ' + (track.priority50 ? 'border-amber-500/40' : 'border-border') + ' rounded-2xl p-4 shadow-lg">'
+            + '<div class="flex items-start justify-between gap-3"><div><div class="flex flex-wrap gap-2 items-center"><span class="text-[10px] font-mono text-slate-500">TRACK ' + track.order + ' · ' + track.id + '</span>'
+            + (track.priority50 ? '<span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono">★ 50% PRIORITY</span>' : '')
+            + (!track.core ? '<span class="text-[9px] px-1.5 py-0.5 rounded bg-violet-500/10 border border-violet-500/30 text-violet-300 font-mono">BOUNDARY</span>' : '')
+            + '</div><h4 class="font-bold text-white mt-1">' + track.title + '</h4></div><span class="px-2 py-1 rounded bg-slate-950 border border-slate-700 text-[10px] font-mono text-slate-300 whitespace-nowrap">' + liveRows.length + ' live PYQ' + (liveRows.length === 1 ? '' : 's') + '</span></div>'
+            + '<div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px]"><div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800"><div class="text-amber-300 font-mono font-bold">CONCEPT</div><div class="text-slate-300 mt-1">' + track.pivot + '</div></div>'
+            + '<div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800"><div class="text-purple-300 font-mono font-bold">VISUAL</div><div class="text-slate-300 mt-1">' + track.visual + '</div></div>'
+            + '<div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800"><div class="text-sky-300 font-mono font-bold">IMPLEMENT</div><div class="text-slate-300 mt-1">' + track.implementation + '</div></div></div>'
+            + '<div class="mt-3"><div class="text-[10px] font-mono text-slate-500 mb-1">LIVE EXAMSIDE POSITIONS</div><div class="flex flex-wrap gap-1.5">' + (liveRefs || '<span class="text-[10px] text-violet-300">0 — separate ExamSIDE topic</span>') + '</div></div>'
+            + '<div class="mt-3"><div class="text-[10px] font-mono text-slate-500 mb-1">LOCAL AUDITED ITEMS</div><div class="flex flex-wrap gap-1.5">' + localRefs + '</div></div>'
+            + '<button onclick="openMappedTrack(\'' + track.id + '\')" class="mt-3 px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-white">Open mapped visual →</button>'
+            + '</article>';
+        }).join('');
+      }
+
+      renderExamSideCorpus();
+
+      const local = document.getElementById('localTrackMap');
+      if (local) {
+        local.innerHTML = localRows.map(row => {
+          const q = bank.find(item => item.id === row.id);
+          const track = redoxTrack(row.track);
+          if (!q || !track) return '';
+          return '<div class="p-3 rounded-xl border border-slate-800 bg-slate-950/55"><div class="flex flex-wrap items-center gap-2"><span class="px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono text-[10px]">' + q.id + '</span>'
+            + localTrackBadge(q.id) + '<span class="text-[10px] text-slate-500">' + q.source + '</span></div><div class="text-xs text-slate-200 mt-2 leading-relaxed">' + q.q + '</div>'
+            + '<div class="mt-2 flex items-center justify-between gap-2"><span class="text-[10px] text-slate-500 font-mono">' + q.simFidelity + ' · source ' + q.sourceAudit + '</span><button onclick="switchTab(\'tab-quiz\'); setTimeout(() => document.getElementById(\'qcard-' + q.id + '\')?.scrollIntoView({behavior:\'smooth\',block:\'start\'}),80)" class="text-[10px] text-sky-300 underline">Open question</button></div></div>';
+        }).join('');
+      }
+    }
+
+    function renderExamSideCorpus() {
+      const container = document.getElementById('examSideCorpusList');
+      if (!container) return;
+      const filter = document.getElementById('examSideTrackFilter');
+      const wanted = filter ? filter.value : 'all';
+      const rows = (window.EXAMSIDE_REDOX_CORPUS_MAP || []).filter(row => wanted === 'all' || row.track === wanted);
+      container.innerHTML = rows.map(row => {
+        const track = redoxTrack(row.track);
+        const tone = track && track.mode.includes('HARD') ? 'text-amber-300 border-amber-500/25' : track && track.id === 'RELATED' ? 'text-violet-300 border-violet-500/25' : 'text-sky-300 border-sky-500/25';
+        return '<div class="flex items-center gap-2 p-2.5 rounded-lg border border-slate-800 bg-slate-950/50"><span class="w-12 text-center px-1.5 py-1 rounded border ' + tone + ' bg-black/30 font-mono text-[10px] font-bold">' + row.ref + '</span><div class="min-w-0 flex-1"><div class="text-xs text-slate-200">' + row.kind + ' #' + row.ordinal + ' · ' + row.year + '</div><div class="text-[10px] text-slate-500">' + (track ? track.id + ' · ' + track.title : row.track) + '</div></div></div>';
+      }).join('');
+    }
+
     function stopAllSimulations() {}
 
     function switchTab(tabId) {
       stopAllSimulations();
       currentTab = tabId;
-      const tabs = ['tab-foundations', 'tab-structural-ox', 'tab-electron-flow', 'tab-ion-electron', 'tab-nfactor', 'tab-titration', 'tab-galvanic', 'tab-sandbox', 'tab-quiz'];
+      const tabs = ['tab-examside-map', 'tab-foundations', 'tab-structural-ox', 'tab-electron-flow', 'tab-ion-electron', 'tab-nfactor', 'tab-titration', 'tab-galvanic', 'tab-sandbox', 'tab-quiz'];
       
       tabs.forEach(t => {
         const el = document.getElementById(t);
@@ -1865,7 +2764,8 @@ window.JEE_QUESTIONS_DATA = [
 
       requestAnimationFrame(() => {
         setTimeout(() => {
-          if (tabId === 'tab-foundations') drawFoundation();
+          if (tabId === 'tab-examside-map') renderExamSideMap();
+          else if (tabId === 'tab-foundations') drawFoundation();
           else if (tabId === 'tab-structural-ox') drawStructuralOx();
           else if (tabId === 'tab-electron-flow') drawElectronFlow();
           else if (tabId === 'tab-ion-electron') drawIonElectron();
@@ -2472,6 +3372,7 @@ window.JEE_QUESTIONS_DATA = [
                 <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">
                   ${q.subtabName}
                 </span>
+                ${localTrackBadge(q.id)}
                 <button onclick="loadQuestionIntoSimulator('${q.id}')" class="touch-target px-3 py-1 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
                   <span>🚀</span>
                   <span>${q.simFidelity === 'CONCEPT_ONLY' ? 'Open Concept Simulator' : 'Load Bound Constraints'}</span>
@@ -2619,6 +3520,7 @@ window.JEE_QUESTIONS_DATA = [
     window.addEventListener('load', () => {
       validateQuestionBank();
       renderQuestions();
+      renderExamSideMap();
       updateStructuralLedger();
       drawFoundation();
       drawStructuralOx();
@@ -2628,11 +3530,12 @@ window.JEE_QUESTIONS_DATA = [
       drawTitration();
       drawGalvanic();
       drawSandbox();
-      switchTab('tab-foundations');
+      switchTab('tab-examside-map');
     });
 
     window.addEventListener('resize', () => {
-      if (currentTab === 'tab-foundations') drawFoundation();
+      if (currentTab === 'tab-examside-map') renderExamSideMap();
+      else if (currentTab === 'tab-foundations') drawFoundation();
       else if (currentTab === 'tab-structural-ox') drawStructuralOx();
       else if (currentTab === 'tab-electron-flow') drawElectronFlow();
       else if (currentTab === 'tab-ion-electron') drawIonElectron();

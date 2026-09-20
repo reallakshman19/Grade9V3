@@ -12,6 +12,7 @@ import unittest
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
+REDOX_CORPUS_MAP = REPO / "public/chemistry/redox/explorers/redox_reactions/examside_corpus_map.js"
 
 SUITES = {
     "bonding": (
@@ -57,6 +58,14 @@ def load_bank(path: Path) -> list[dict]:
     start = text.index("[")
     end = text.rindex("]") + 1
     return json.loads(text[start:end])
+
+
+def load_window_payload(text: str, name: str):
+    marker = text.index(f"window.{name}")
+    assign = text.index("=", marker) + 1
+    payload = text[assign:].lstrip()
+    data, _ = json.JSONDecoder().raw_decode(payload)
+    return data
 
 
 def embedded_bank(html: str) -> list[dict]:
@@ -253,6 +262,63 @@ class ChemistryMasterSuitesAuditTest(unittest.TestCase):
                 )
                 self.assertEqual(obj["geometry_truth_contract"]["verification_status"], "DECLARED")
                 self.assertTrue(obj["representation_invariants"])
+
+    def test_redox_examside_content_map_is_complete(self):
+        text = REDOX_CORPUS_MAP.read_text(encoding="utf-8")
+        tracks = load_window_payload(text, "REDOX_CONTENT_TRACKS")
+        meta = load_window_payload(text, "EXAMSIDE_REDOX_CORPUS_META")
+        corpus = load_window_payload(text, "EXAMSIDE_REDOX_CORPUS_MAP")
+        local = load_window_payload(text, "REDOX_LOCAL_ITEM_TRACKS")
+
+        self.assertEqual(meta["liveCount"], 74)
+        self.assertEqual(meta["numericalCount"], 29)
+        self.assertEqual(meta["mcqCount"], 45)
+        self.assertEqual(len(corpus), 74)
+        self.assertEqual(len({row["ref"] for row in corpus}), 74)
+        self.assertEqual(sum(row["kind"] == "Numerical" for row in corpus), 29)
+        self.assertEqual(sum(row["kind"] == "MCQ" for row in corpus), 45)
+
+        track_ids = {row["id"] for row in tracks}
+        self.assertTrue({row["track"] for row in corpus}.issubset(track_ids))
+        self.assertEqual(
+            {row["id"] for row in load_bank(SUITES["redox"][1])},
+            {row["id"] for row in local},
+        )
+        self.assertEqual(
+            {row["id"] for row in local if row["track"] == "OFFCORP"},
+            {"REDOX-Q08", "REDOX-Q16", "REDOX-Q19"},
+        )
+
+        counts = {}
+        for row in corpus:
+            counts[row["track"]] = counts.get(row["track"], 0) + 1
+        self.assertEqual(
+            counts,
+            {
+                "OS": 14,
+                "ROLE": 16,
+                "DISP": 9,
+                "BAL": 4,
+                "NFACTOR": 5,
+                "EQUIV": 6,
+                "TITR": 8,
+                "RELATED": 12,
+            },
+        )
+
+        html = SUITES["redox"][0].read_text(encoding="utf-8")
+        standalone = SUITES["redox"][2].read_text(encoding="utf-8")
+        self.assertIn('id="tab-examside-map"', html)
+        self.assertIn("renderExamSideMap", html)
+        self.assertIn('src="examside_corpus_map.js"', html)
+        self.assertEqual(
+            load_window_payload(standalone, "EXAMSIDE_REDOX_CORPUS_MAP"),
+            corpus,
+        )
+        self.assertEqual(
+            load_window_payload(standalone, "REDOX_LOCAL_ITEM_TRACKS"),
+            local,
+        )
 
     def test_js_bank_parser_handles_semicolon_bracket_inside_strings(self):
         from Shared.tools import gcdr_suite_guard

@@ -285,3 +285,18 @@ Each block has two separate demands (concept model choice and implementation), u
 - both first attempts incorrect -> REBUILD.
 
 This is intentionally a falsifiable UI proof rather than a canonical router. It does not perform per-click misconception classification, does not persist READY/REINFORCE/REBUILD as learner evidence, and does not replace the generic Core/Atlas work tracked in issues #159 and #160.
+
+
+## Redox full ExamSIDE content map (2026-09-20)
+
+The master page now contains a first-class ExamSIDE content map rather than only the 50% adaptive proof.
+
+- Live corpus snapshot remains 74 JEE Main Redox positions: 29 Numerical and 45 single-correct MCQ.
+- All 74 positions are mapped once to a primary subtopic-local learning track: oxidation-state model, redox roles/classification, disproportionation, half-reaction balancing, reaction-dependent n-factor, electron equivalence, redox titration, or an explicitly adjacent equivalents/acid-base bucket.
+- The 20 locally audited questions are mapped to the same tracks and remain explicitly SOURCE_PROVENANCE_PENDING; pedagogical mapping is not represented as source verification.
+- REDOX-Q08, REDOX-Q16 and REDOX-Q19 are now visibly marked as Electrochemistry extension / off the live ExamSIDE Redox corpus because ExamSIDE maintains Electrochemistry as a separate topic.
+- The page opens on the ExamSIDE Content Map, from which the learner can open the mapped visual or jump to any local audited item.
+- Regression tests require exactly 74 unique corpus refs, the 29/45 type split, complete 20-item local mapping, expected track counts, and standalone/public map parity.
+
+The new map data lives at:
+`public/chemistry/redox/explorers/redox_reactions/examside_corpus_map.js`.

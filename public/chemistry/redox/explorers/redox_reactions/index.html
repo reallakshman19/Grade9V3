@@ -14,6 +14,7 @@
 
   <!-- Question Bank -->
   <script src="jee_questions_data.js"></script>
+  <script src="examside_corpus_map.js"></script>
 
   <script>
     tailwind.config = {
@@ -122,7 +123,10 @@
 
     <!-- 8 MASTER TABS -->
     <div role="tablist" aria-label="Redox learning sequence" class="max-w-7xl mx-auto px-4 flex items-center gap-1 overflow-x-auto text-xs font-medium border-t border-slate-900/60 pt-1 no-scrollbar">
-      <button role="tab" aria-selected="true" aria-controls="tab-foundations" onclick="switchTab('tab-foundations')" id="btn-tab-foundations" class="tab-btn-active px-3 py-2 rounded-t-lg transition whitespace-nowrap">
+      <button role="tab" aria-selected="true" aria-controls="tab-examside-map" onclick="switchTab('tab-examside-map')" id="btn-tab-examside-map" class="tab-btn-active px-3 py-2 rounded-t-lg transition whitespace-nowrap text-amber-200">
+        ★ ExamSIDE Content Map
+      </button>
+      <button role="tab" aria-selected="false" aria-controls="tab-foundations" onclick="switchTab('tab-foundations')" id="btn-tab-foundations" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
         0. Foundations
       </button>
       <button role="tab" aria-selected="false" aria-controls="tab-structural-ox" onclick="switchTab('tab-structural-ox')" id="btn-tab-structural-ox" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
@@ -141,14 +145,14 @@
         5. Redox Titration
       </button>
       <button role="tab" aria-selected="false" aria-controls="tab-galvanic" onclick="switchTab('tab-galvanic')" id="btn-tab-galvanic" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap">
-        6. Galvanic Cell E&deg;
+        6. Electrochemistry Extension
       </button>
       <button role="tab" aria-selected="false" aria-controls="tab-sandbox" onclick="switchTab('tab-sandbox')" id="btn-tab-sandbox" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap flex items-center gap-1.5 text-amber-300/80">
         <span class="px-1 py-0.2 rounded bg-amber-500/20 text-[9px] font-bold text-amber-400">Draft</span>
         <span>7. Master Sandbox</span>
       </button>
       <button role="tab" aria-selected="false" aria-controls="tab-quiz" onclick="switchTab('tab-quiz')" id="btn-tab-quiz" class="tab-btn-inactive px-3 py-2 rounded-t-lg transition whitespace-nowrap flex items-center gap-1.5 text-purple-300">
-        <span>⭐ 8. IIT-JEE Question Hub</span>
+        <span>⭐ Local 20 Question Hub</span>
       </button>
     </div>
   </header>
@@ -170,10 +174,70 @@
     </div>
 
 
+
+    <!-- ================================================================= -->
+    <!-- EXAMSIDE CONTENT MAP: ALL 74 LIVE REDOX PYQ POSITIONS             -->
+    <!-- ================================================================= -->
+    <section id="tab-examside-map" class="space-y-6">
+      <div class="bg-card border border-amber-500/30 rounded-2xl p-5 shadow-xl">
+        <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4">
+          <div>
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="text-lg">🧭</span>
+              <h2 class="font-bold text-base text-white">Redox Learning Map → ExamSIDE JEE Main PYQs</h2>
+              <span class="px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono text-[10px]">LIVE INDEX: 74</span>
+              <span class="px-2 py-0.5 rounded bg-sky-500/10 border border-sky-500/30 text-sky-300 font-mono text-[10px]">LOCAL AUDITED: 20</span>
+            </div>
+            <p class="text-xs text-slate-300 mt-2 leading-relaxed max-w-4xl">
+              Every position in the live ExamSIDE Redox topic index is assigned to one primary learning track. The map separates hard conceptual pivots from implementation practice, and shows exactly which locally audited questions can currently be opened inside this suite.
+            </p>
+          </div>
+          <a href="https://questions.examside.com/past-years/jee/jee-main/chemistry/redox-reactions" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-lg bg-amber-500/15 border border-amber-500/40 text-amber-200 text-xs font-bold hover:bg-amber-500/25">Open live ExamSIDE Redox corpus ↗</a>
+        </div>
+        <div class="mt-4 p-3 rounded-xl border border-slate-700 bg-slate-950/60 text-[11px] text-slate-300 leading-relaxed">
+          <strong class="text-white">Source honesty:</strong> corpus positions (N01–N29, M01–M45) are mapped from the live ExamSIDE topic index. The repository's 20 local items remain <span class="text-amber-300 font-mono">SOURCE_PROVENANCE_PENDING</span>; their mapping below is pedagogical, not a claim that each local source label has been verified as the exact live ExamSIDE item.
+        </div>
+      </div>
+
+      <div id="examSideStats" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
+
+      <div>
+        <div class="flex items-end justify-between gap-3 mb-3">
+          <div>
+            <h3 class="font-bold text-white">Content tracks</h3>
+            <p class="text-xs text-slate-400">Concept → representation → implementation → mapped PYQs.</p>
+          </div>
+          <span class="text-[10px] text-slate-500 font-mono">★ = priority route for the 50% knowledge demo</span>
+        </div>
+        <div id="examSideTrackCards" class="grid grid-cols-1 xl:grid-cols-2 gap-4"></div>
+      </div>
+
+      <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-3 border-b border-border pb-4">
+          <div>
+            <h3 class="font-bold text-white">All 74 live ExamSIDE positions</h3>
+            <p class="text-xs text-slate-400 mt-1">N = Numerical, M = single-correct MCQ. Each reference is mapped once to its primary learning track.</p>
+          </div>
+          <select id="examSideTrackFilter" onchange="renderExamSideCorpus()" aria-label="Filter ExamSIDE questions by content track" class="bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-xs text-slate-200">
+            <option value="all">All tracks</option>
+          </select>
+        </div>
+        <div id="examSideCorpusList" class="mt-4 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-2"></div>
+      </div>
+
+      <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
+        <div class="border-b border-border pb-4">
+          <h3 class="font-bold text-white">Local audited 20-item slice → same learning tracks</h3>
+          <p class="text-xs text-slate-400 mt-1">These are the questions currently available for in-page attempts and visual loading. Three galvanic/Nernst items are explicitly marked as Electrochemistry extension, because that is a separate ExamSIDE topic.</p>
+        </div>
+        <div id="localTrackMap" class="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-3"></div>
+      </div>
+    </section>
+
     <!-- ================================================================= -->
     <!-- TAB 0: GRADE-9 FOUNDATION BRIDGE                                  -->
     <!-- ================================================================= -->
-    <section id="tab-foundations" class="space-y-6">
+    <section id="tab-foundations" class="space-y-6 hidden">
       <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
         <div class="flex flex-col lg:flex-row lg:items-start justify-between gap-4 border-b border-border pb-4">
           <div>
@@ -390,7 +454,7 @@
     <section id="tab-galvanic" class="space-y-6 hidden">
       <div class="bg-card border border-border rounded-2xl p-5 shadow-xl">
         <div class="border-b border-border pb-4">
-          <h2 class="font-bold text-base text-white">Galvanic Cell &middot; Standard Reduction Potentials E&deg;</h2>
+          <div class="flex flex-wrap items-center gap-2"><h2 class="font-bold text-base text-white">Galvanic Cell &middot; Standard Reduction Potentials E&deg;</h2><span class="px-2 py-0.5 rounded bg-violet-500/15 border border-violet-500/30 text-violet-300 text-[10px] font-mono">ELECTROCHEMISTRY EXTENSION · OFF REDOX CORPUS</span></div>
           <p class="text-xs text-slate-400 mt-1">Advanced extension: Zn is the anode (electron source), Cu²⁺/Cu is the cathode (electron sink), and E°cell = E°cathode − E°anode when both tabulated values are reduction potentials.</p>
         </div>
         <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
@@ -459,7 +523,7 @@
     // =========================================================================
     // LIFECYCLE & CANVAS CONTROLLER
     // =========================================================================
-    let currentTab = 'tab-foundations';
+    let currentTab = 'tab-examside-map';
     let currentSubTabFilter = 'all';
     let currentCompound = 'CrO5';
     let currentStructMode = 'reality';
@@ -468,12 +532,118 @@
     let foundationRevealed = false;
     const questionAttempts = Object.create(null);
 
+
+    function redoxTrack(trackId) {
+      return (window.REDOX_CONTENT_TRACKS || []).find(row => row.id === trackId) || null;
+    }
+
+    function localTrackId(questionId) {
+      const row = (window.REDOX_LOCAL_ITEM_TRACKS || []).find(item => item.id === questionId);
+      return row ? row.track : null;
+    }
+
+    function localTrackBadge(questionId) {
+      const track = redoxTrack(localTrackId(questionId));
+      if (!track) return '';
+      const tone = track.id === 'OFFCORP'
+        ? 'bg-violet-500/10 border-violet-500/30 text-violet-300'
+        : track.mode.includes('HARD') ? 'bg-amber-500/10 border-amber-500/30 text-amber-300'
+        : 'bg-sky-500/10 border-sky-500/30 text-sky-300';
+      return '<span class="px-2 py-0.5 rounded border text-[10px] font-mono ' + tone + '" title="' + track.title + '">' + track.id + ' · ' + track.mode + '</span>';
+    }
+
+    function openMappedTrack(trackId) {
+      const track = redoxTrack(trackId);
+      if (!track || !track.targetTab) return;
+      switchTab(track.targetTab);
+    }
+
+    function renderExamSideMap() {
+      const meta = window.EXAMSIDE_REDOX_CORPUS_META || {};
+      const tracks = window.REDOX_CONTENT_TRACKS || [];
+      const corpus = window.EXAMSIDE_REDOX_CORPUS_MAP || [];
+      const localRows = window.REDOX_LOCAL_ITEM_TRACKS || [];
+      const bank = window.JEE_QUESTIONS_DATA || [];
+
+      const stats = document.getElementById('examSideStats');
+      if (stats) {
+        const cells = [
+          ['LIVE CORPUS', meta.liveCount || corpus.length, 'ExamSIDE Redox'],
+          ['NUMERICAL', meta.numericalCount || 0, 'implementation-heavy'],
+          ['MCQ', meta.mcqCount || 0, 'concept + model choice'],
+          ['LOCAL AUDITED', meta.embeddedAuditedCount || bank.length, 'in-page attempts']
+        ];
+        stats.innerHTML = cells.map(row => '<div class="bg-card border border-border rounded-xl p-3"><div class="text-[10px] text-slate-500 font-mono">' + row[0] + '</div><div class="text-2xl font-black text-white mt-1">' + row[1] + '</div><div class="text-[10px] text-slate-400">' + row[2] + '</div></div>').join('');
+      }
+
+      const filter = document.getElementById('examSideTrackFilter');
+      if (filter && filter.options.length === 1) {
+        tracks.filter(t => t.id !== 'OFFCORP').forEach(track => {
+          const opt = document.createElement('option');
+          opt.value = track.id;
+          opt.textContent = track.id + ' · ' + track.title;
+          filter.appendChild(opt);
+        });
+      }
+
+      const cards = document.getElementById('examSideTrackCards');
+      if (cards) {
+        cards.innerHTML = tracks.map(track => {
+          const liveRows = corpus.filter(row => row.track === track.id);
+          const locals = localRows.filter(row => row.track === track.id).map(row => bank.find(q => q.id === row.id)).filter(Boolean);
+          const liveRefs = liveRows.map(row => '<span class="inline-flex px-2 py-1 rounded bg-slate-950 border border-slate-700 text-[10px] font-mono text-slate-300">' + row.ref + ' · ' + row.year + '</span>').join(' ');
+          const localRefs = locals.length
+            ? locals.map(q => '<button onclick="switchTab(\'tab-quiz\'); setTimeout(() => document.getElementById(\'qcard-' + q.id + '\')?.scrollIntoView({behavior:\'smooth\',block:\'start\'}),80)" class="px-2 py-1 rounded bg-emerald-950/40 border border-emerald-500/30 text-[10px] font-mono text-emerald-300 hover:bg-emerald-950/70">' + q.id + '</button>').join(' ')
+            : '<span class="text-[10px] text-slate-500">No local audited item in this track yet.</span>';
+          return '<article class="bg-card border ' + (track.priority50 ? 'border-amber-500/40' : 'border-border') + ' rounded-2xl p-4 shadow-lg">'
+            + '<div class="flex items-start justify-between gap-3"><div><div class="flex flex-wrap gap-2 items-center"><span class="text-[10px] font-mono text-slate-500">TRACK ' + track.order + ' · ' + track.id + '</span>'
+            + (track.priority50 ? '<span class="text-[9px] px-1.5 py-0.5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono">★ 50% PRIORITY</span>' : '')
+            + (!track.core ? '<span class="text-[9px] px-1.5 py-0.5 rounded bg-violet-500/10 border border-violet-500/30 text-violet-300 font-mono">BOUNDARY</span>' : '')
+            + '</div><h4 class="font-bold text-white mt-1">' + track.title + '</h4></div><span class="px-2 py-1 rounded bg-slate-950 border border-slate-700 text-[10px] font-mono text-slate-300 whitespace-nowrap">' + liveRows.length + ' live PYQ' + (liveRows.length === 1 ? '' : 's') + '</span></div>'
+            + '<div class="mt-3 grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px]"><div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800"><div class="text-amber-300 font-mono font-bold">CONCEPT</div><div class="text-slate-300 mt-1">' + track.pivot + '</div></div>'
+            + '<div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800"><div class="text-purple-300 font-mono font-bold">VISUAL</div><div class="text-slate-300 mt-1">' + track.visual + '</div></div>'
+            + '<div class="p-2.5 rounded-lg bg-slate-950/70 border border-slate-800"><div class="text-sky-300 font-mono font-bold">IMPLEMENT</div><div class="text-slate-300 mt-1">' + track.implementation + '</div></div></div>'
+            + '<div class="mt-3"><div class="text-[10px] font-mono text-slate-500 mb-1">LIVE EXAMSIDE POSITIONS</div><div class="flex flex-wrap gap-1.5">' + (liveRefs || '<span class="text-[10px] text-violet-300">0 — separate ExamSIDE topic</span>') + '</div></div>'
+            + '<div class="mt-3"><div class="text-[10px] font-mono text-slate-500 mb-1">LOCAL AUDITED ITEMS</div><div class="flex flex-wrap gap-1.5">' + localRefs + '</div></div>'
+            + '<button onclick="openMappedTrack(\'' + track.id + '\')" class="mt-3 px-3 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-bold text-white">Open mapped visual →</button>'
+            + '</article>';
+        }).join('');
+      }
+
+      renderExamSideCorpus();
+
+      const local = document.getElementById('localTrackMap');
+      if (local) {
+        local.innerHTML = localRows.map(row => {
+          const q = bank.find(item => item.id === row.id);
+          const track = redoxTrack(row.track);
+          if (!q || !track) return '';
+          return '<div class="p-3 rounded-xl border border-slate-800 bg-slate-950/55"><div class="flex flex-wrap items-center gap-2"><span class="px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/30 text-amber-300 font-mono text-[10px]">' + q.id + '</span>'
+            + localTrackBadge(q.id) + '<span class="text-[10px] text-slate-500">' + q.source + '</span></div><div class="text-xs text-slate-200 mt-2 leading-relaxed">' + q.q + '</div>'
+            + '<div class="mt-2 flex items-center justify-between gap-2"><span class="text-[10px] text-slate-500 font-mono">' + q.simFidelity + ' · source ' + q.sourceAudit + '</span><button onclick="switchTab(\'tab-quiz\'); setTimeout(() => document.getElementById(\'qcard-' + q.id + '\')?.scrollIntoView({behavior:\'smooth\',block:\'start\'}),80)" class="text-[10px] text-sky-300 underline">Open question</button></div></div>';
+        }).join('');
+      }
+    }
+
+    function renderExamSideCorpus() {
+      const container = document.getElementById('examSideCorpusList');
+      if (!container) return;
+      const filter = document.getElementById('examSideTrackFilter');
+      const wanted = filter ? filter.value : 'all';
+      const rows = (window.EXAMSIDE_REDOX_CORPUS_MAP || []).filter(row => wanted === 'all' || row.track === wanted);
+      container.innerHTML = rows.map(row => {
+        const track = redoxTrack(row.track);
+        const tone = track && track.mode.includes('HARD') ? 'text-amber-300 border-amber-500/25' : track && track.id === 'RELATED' ? 'text-violet-300 border-violet-500/25' : 'text-sky-300 border-sky-500/25';
+        return '<div class="flex items-center gap-2 p-2.5 rounded-lg border border-slate-800 bg-slate-950/50"><span class="w-12 text-center px-1.5 py-1 rounded border ' + tone + ' bg-black/30 font-mono text-[10px] font-bold">' + row.ref + '</span><div class="min-w-0 flex-1"><div class="text-xs text-slate-200">' + row.kind + ' #' + row.ordinal + ' · ' + row.year + '</div><div class="text-[10px] text-slate-500">' + (track ? track.id + ' · ' + track.title : row.track) + '</div></div></div>';
+      }).join('');
+    }
+
     function stopAllSimulations() {}
 
     function switchTab(tabId) {
       stopAllSimulations();
       currentTab = tabId;
-      const tabs = ['tab-foundations', 'tab-structural-ox', 'tab-electron-flow', 'tab-ion-electron', 'tab-nfactor', 'tab-titration', 'tab-galvanic', 'tab-sandbox', 'tab-quiz'];
+      const tabs = ['tab-examside-map', 'tab-foundations', 'tab-structural-ox', 'tab-electron-flow', 'tab-ion-electron', 'tab-nfactor', 'tab-titration', 'tab-galvanic', 'tab-sandbox', 'tab-quiz'];
       
       tabs.forEach(t => {
         const el = document.getElementById(t);
@@ -487,7 +657,8 @@
 
       requestAnimationFrame(() => {
         setTimeout(() => {
-          if (tabId === 'tab-foundations') drawFoundation();
+          if (tabId === 'tab-examside-map') renderExamSideMap();
+          else if (tabId === 'tab-foundations') drawFoundation();
           else if (tabId === 'tab-structural-ox') drawStructuralOx();
           else if (tabId === 'tab-electron-flow') drawElectronFlow();
           else if (tabId === 'tab-ion-electron') drawIonElectron();
@@ -1094,6 +1265,7 @@
                 <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">
                   ${q.subtabName}
                 </span>
+                ${localTrackBadge(q.id)}
                 <button onclick="loadQuestionIntoSimulator('${q.id}')" class="touch-target px-3 py-1 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
                   <span>🚀</span>
                   <span>${q.simFidelity === 'CONCEPT_ONLY' ? 'Open Concept Simulator' : 'Load Bound Constraints'}</span>
@@ -1241,6 +1413,7 @@
     window.addEventListener('load', () => {
       validateQuestionBank();
       renderQuestions();
+      renderExamSideMap();
       updateStructuralLedger();
       drawFoundation();
       drawStructuralOx();
@@ -1250,11 +1423,12 @@
       drawTitration();
       drawGalvanic();
       drawSandbox();
-      switchTab('tab-foundations');
+      switchTab('tab-examside-map');
     });
 
     window.addEventListener('resize', () => {
-      if (currentTab === 'tab-foundations') drawFoundation();
+      if (currentTab === 'tab-examside-map') renderExamSideMap();
+      else if (currentTab === 'tab-foundations') drawFoundation();
       else if (currentTab === 'tab-structural-ox') drawStructuralOx();
       else if (currentTab === 'tab-electron-flow') drawElectronFlow();
       else if (currentTab === 'tab-ion-electron') drawIonElectron();
