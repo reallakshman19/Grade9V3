@@ -1,0 +1,34 @@
+schema_version: relay-v2.5
+id: ODR-0162-ADVANCE-REDO
+decision:
+  authority: OWNER
+  kind: AUTHORIZATION
+  statement: >-
+    Continue the next bounded Issue #162 Core slice after the green text-summary proof:
+    add and falsify generic redo/reversible-history semantics while merge/base reconciliation
+    remains deferred. Do not broaden this into persistence, timeline authoring, or #163 integration.
+  source: >-
+    Owner instruction in the active Grade9V3 engineering session on 2026-09-20:
+    "Proceed next", under the existing continuation direction that merge issues may be solved later.
+effects:
+  requirement_disposition: NOT_APPLICABLE
+  grants_material_write_authority: true
+  pending_items:
+  - Prior browser-proof final post-rebase exact-head acceptance remains pending.
+  - PR #165 merge/base and relay custody reconciliation remains required before merge.
+delivery_authorization: null
+impact:
+  class: [LOCAL, EXECUTION_GOVERNANCE, PROTOCOL_EXCEPTION]
+affected:
+  objectives: [OBJ-TOPIC-ATLAS-COMPLETE]
+  phases: [PHASE-TAKEOVER-RECONCILIATION]
+  work_packages: [WP-162-BROWSER-RUNTIME-PROOF]
+  execution_packages: [EP-0162-REDO-PROOF]
+  issues: [ISSUE-162]
+required_reconciliation:
+- Redo restores only prior semantic runtime state; it must not re-run adapter validity.
+- A new accepted semantic commit after undo invalidates the redo branch.
+- Transient inspect/pick/preview/cancel interactions do not by themselves invalidate redo.
+- Keep history instance-local and non-persistent.
+- Keep PR #165 draft until merge/base reconciliation is complete.
+status: APPLIED
