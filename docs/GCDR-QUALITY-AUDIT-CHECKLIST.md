@@ -1,4 +1,4 @@
-# GCDR Quality Audit Checklist v1.1
+# GCDR Quality Audit Checklist v1.2
 
 This checklist is the executable quality gate for the **Graphical Cognitive Deconstruction Route (GCDR)**.
 
@@ -22,7 +22,7 @@ Each check is one of:
 `audit_provenance` identifies how the audit was performed, `last_audited` is present, and
 `unresolved_findings` is empty.
 
-## Audit 1 — Canonical Truth & Scope
+## Audit 1 — Canonical Truth, Source & Scope
 
 | Check id | Requirement |
 |---|---|
@@ -31,9 +31,9 @@ Each check is one of:
 | `derivation_or_model_check` | Governing equations, derived relations, and model-selection claims have been independently checked rather than copied from implementation text. |
 | `units_constants_parameters` | Units, constants, initial conditions, and declared parameters are internally consistent and preserved across the implementation. |
 | `boundary_limit_cases` | Boundary, limiting, and exception cases have been tested so a conditional rule is not presented as universal. |
-| `source_claim_fidelity` | Source-derived facts and authored adaptations are distinguished; the activity does not silently strengthen source or curriculum authority. |
+| `source_claim_fidelity` | Source-derived facts and authored adaptations are distinguished; corpus counts are snapshot-dated and embedded diagnostic count is not confused with live-source count. |
 
-## Audit 2 — Graphical Deconstruction & State Fidelity
+## Audit 2 — Graphical Deconstruction, State & Geometry Fidelity
 
 | Check id | Requirement |
 |---|---|
@@ -45,8 +45,10 @@ Each check is one of:
 | `control_state_mapping` | Every externally loaded or preset parameter maps to the control/state variable that actually governs the simulation. |
 | `no_invented_exact_parameters` | Missing or symbolic parameters are never replaced by convenient defaults and then described as an exact load. |
 | `interaction_fidelity_disclosed` | The learner can tell whether an external task is represented as `EXACT`, `CONSTRAINT_FAITHFUL`, `CONCEPT_ONLY`, or `UNAVAILABLE`. |
+| `rendered_geometry_truth` | Canvas/SVG/graph geometry is independently checked against governed mathematical state; executable handlers alone are insufficient proof. |
+| `representation_invariants_hold` | Declared cross-view invariants remain true under controlled state variation. |
 
-## Audit 3 — Reconstruction, Teaching Support & Transfer
+## Audit 3 — Reconstruction, Helpers & Transfer
 
 Every GCDR implementation must provide a learner-facing or teacher/debug explanation layer.
 The UI label may vary; the required reasoning jobs do not.
@@ -61,8 +63,9 @@ The UI label may vary; the required reasoning jobs do not.
 | `boundary_recognition` | The learner must identify where the invariant/shortcut ceases to apply. |
 | `scaffold_fade` | Labels/hints/overlays are withdrawn so success is not dependent on the full explorer. |
 | `fresh_transfer` | Exit evidence includes a materially fresh task without the explorer. |
+| `helper_activation` | Declared helpers actually consume governed state/content and satisfy their helper contract; headings or static filler do not count. |
 
-## Audit 4 — Runtime & Release Integrity
+## Audit 4 — Runtime, Packaging & Release Integrity
 
 | Check id | Requirement |
 |---|---|
@@ -74,6 +77,7 @@ The UI label may vary; the required reasoning jobs do not.
 | `deterministic_reset` | Reset restores the documented initial state across all representations, not merely slider positions. |
 | `runtime_smoke` | The core predict → manipulate → observe → reconstruct path has been executed in a supported runtime, with limitations recorded if it cannot be run. |
 | `accessibility_baseline` | Essential controls have labels/focus behavior and the activity remains operable without relying solely on color, hover, or animation. |
+| `delivery_profile_integrity` | The built artifact matches its declared `REPO_BUNDLE`, `SINGLE_FILE_ONLINE`, or `SINGLE_FILE_OFFLINE` dependency contract. |
 
 ## Runtime-audit evidence
 
@@ -99,6 +103,22 @@ artifact SHA-256, timestamp, auditor, and a short note. `audit_provenance` summa
 overall activity audit was produced.
 
 A stale receipt whose outcome no longer matches the recorded check status fails the guard.
+
+## Companion contracts
+
+GCDR v1.3 keeps explorer mechanics separate from suite/question/helper governance.
+
+- `gcdr_diagnostic_item.schema.json` governs per-question source provenance, independently
+  audited answer/derivation, teaching helpers, and simulator fidelity. A `PASS` answer cannot be
+  a generic filler such as “evaluate” or “apply the formula”, and `EXACT` requires binding refs.
+- `gcdr_helper_contract.schema.json` governs helper lifecycle
+  `DECLARED → IMPLEMENTED → AUDITED`. An audited helper must name governed state paths and
+  evidence refs.
+- `gcdr_suite_contract.schema.json` governs canonical scope, dated external-corpus counts,
+  embedded diagnostic counts, coverage claim, activity inventory, and delivery profiles.
+
+The companion guard also rejects a `FULL_CORPUS_AUDITED` suite claim when the embedded item
+count does not equal the recorded live corpus count.
 
 ## State-fidelity contract
 
@@ -145,13 +165,15 @@ Only `control_state_mapping`, `no_invented_exact_parameters`, and `interaction_f
 
 A GCDR activity may claim `CERTIFIED` only when:
 
-1. every legacy `implementation_evidence` flag is true;
-2. `quality_audit.audit_status` is `PASS`;
-3. every quality check is `PASS` or justified `NOT_APPLICABLE`;
-4. every asserted PASS/FAIL has matching digest-bound audit receipt evidence;
-5. audit provenance and the audit date are recorded;
-6. there are no unresolved quality-audit findings; and
-7. the existing semantic-leaf, capability, sequence, runtime-honesty, and implementation-locator guards pass.
+1. `scope_contract.canonical_binding_status` is `BOUND` and at least one helper contract is referenced;
+2. every legacy `implementation_evidence` flag is true;
+3. `quality_audit.audit_status` is `PASS`;
+4. every quality check is `PASS` or justified `NOT_APPLICABLE`;
+5. every asserted PASS/FAIL has matching digest-bound audit receipt evidence;
+6. representation invariants, rendered geometry, helper activation, and delivery profile integrity are checked;
+7. audit provenance and the audit date are recorded;
+8. there are no unresolved quality-audit findings; and
+9. the existing semantic-leaf, capability, sequence, runtime-honesty, companion-contract, and implementation-locator guards pass.
 
 This certification is structural and implementation-audit conformance only. Human scientific
 review, pedagogical review, empirical learner evidence, and learner-release authority remain
