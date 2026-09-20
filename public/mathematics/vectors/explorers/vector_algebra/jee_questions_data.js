@@ -1,6 +1,8 @@
 /**
  * Vector Algebra Master Question Registry & Step-by-Step Solutions Database
- * Curated from 283 ExamSIDE IIT-JEE Main Questions (2013-2026)
+ * 13 locally audited diagnostic records selected from the live ExamSIDE JEE Main Mathematics Vector Algebra corpus.
+ * Live source snapshot (2026-09-20): 282 questions, 2002-2026.
+ * External question text is retained here only where already authored in this PR; source-corpus count is not a claim that all 282 questions are embedded locally.
  */
 window.JEE_QUESTIONS_DATA = [
   {
@@ -14,31 +16,31 @@ window.JEE_QUESTIONS_DATA = [
     "options": [
       {
         "key": "A",
-        "text": "PM = \u2155 b - \u2158 a"
+        "text": "PM = ⅕ b - ⅘ a"
       },
       {
         "key": "B",
-        "text": "PM = \u2158 a + \u2155 b"
+        "text": "PM = ⅘ a + ⅕ b"
       },
       {
         "key": "C",
-        "text": "PM = \u2155 b - a"
+        "text": "PM = ⅕ b - a"
       },
       {
         "key": "D",
-        "text": "PM = b - \u2158 a"
+        "text": "PM = b - ⅘ a"
       }
     ],
     "correct": "A",
-    "formula": "PM = OM - OP,  OR = \u2155 a,  RM = \u2155 b \u21d2 OM = OR + RM = \u2155 a + \u2155 b",
+    "formula": "PM = OM - OP,  OR = ⅕ a,  RM = ⅕ b ⇒ OM = OR + RM = ⅕ a + ⅕ b",
     "steps": [
-      "Given: vector OP = a \u21d2 R is on OP with OP = 5 OR \u21d2 vector OR = \u2155 a.",
-      "Given: vector OQ = b with OQ = 5 RM \u21d2 vector RM = \u2155 b.",
-      "Find position vector of M: vector OM = vector OR + vector RM = \u2155 a + \u2155 b.",
-      "Compute vector PM = vector OM - vector OP = (\u2155 a + \u2155 b) - a.",
-      "Combine like terms: PM = (\u2155 - 1) a + \u2155 b = -\u2158 a + \u2155 b = \u2155 b - \u2158 a."
+      "Given: vector OP = a ⇒ R is on OP with OP = 5 OR ⇒ vector OR = ⅕ a.",
+      "Given: vector OQ = b with OQ = 5 RM ⇒ vector RM = ⅕ b.",
+      "Find position vector of M: vector OM = vector OR + vector RM = ⅕ a + ⅕ b.",
+      "Compute vector PM = vector OM - vector OP = (⅕ a + ⅕ b) - a.",
+      "Combine like terms: PM = (⅕ - 1) a + ⅕ b = -⅘ a + ⅕ b = ⅕ b - ⅘ a."
     ],
-    "ans": "PM = \u2155 b - \u2158 a (Option A)",
+    "ans": "PM = ⅕ b - ⅘ a (Option A)",
     "trap": "Always track the origin of displacement vectors! Vector RM is relative to R, not O; OM = OR + RM.",
     "targetTab": "tab-basis",
     "simParams": {
@@ -51,6 +53,19 @@ window.JEE_QUESTIONS_DATA = [
       "Vector a = [5, 0, 0]",
       "Vector b = [0, 5, 0]",
       "PM = [1/5 b - 4/5 a]"
+    ],
+    "answerAudit": "PASS",
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The basis rig can display vectors, but it does not represent the points O,P,Q,R,M or the affine construction in the question.",
+    "teacherCheck": "Reconstruct OM=OR+RM=(a+b)/5, then subtract OP=a; the residual is PM=b/5-4a/5.",
+    "takeaway": "With position vectors, first put every point relative to one origin before subtracting endpoints.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
     ]
   },
   {
@@ -60,7 +75,7 @@ window.JEE_QUESTIONS_DATA = [
     "subtab": 1,
     "subtabName": "Basics & Linear Combinations",
     "year": "2025",
-    "q": "If a and b are unit vectors such that |a + b| = \u221a3, then the value of (2a - 5b) \u00b7 (3a + b) is:",
+    "q": "If a and b are unit vectors such that |a + b| = √3, then the value of (2a - 5b) · (3a + b) is:",
     "options": [
       {
         "key": "A",
@@ -80,18 +95,18 @@ window.JEE_QUESTIONS_DATA = [
       }
     ],
     "correct": "A",
-    "formula": "|a + b|\u00b2 = |a|\u00b2 + |b|\u00b2 + 2(a \u00b7 b) = 3 \u21d2 1 + 1 + 2(a \u00b7 b) = 3 \u21d2 a \u00b7 b = \u00bd",
+    "formula": "|a + b|² = |a|² + |b|² + 2(a · b) = 3 ⇒ 1 + 1 + 2(a · b) = 3 ⇒ a · b = ½",
     "steps": [
-      "Given: |a| = 1, |b| = 1, and |a + b|\u00b2 = 3.",
-      "Expand norm squared: |a + b|\u00b2 = |a|\u00b2 + |b|\u00b2 + 2(a \u00b7 b) = 1 + 1 + 2(a \u00b7 b) = 2 + 2(a \u00b7 b).",
-      "Set 2 + 2(a \u00b7 b) = 3 \u21d2 2(a \u00b7 b) = 1 \u21d2 a \u00b7 b = \u00bd (which corresponds to \u03b8 = 60\u00b0).",
+      "Given: |a| = 1, |b| = 1, and |a + b|² = 3.",
+      "Expand norm squared: |a + b|² = |a|² + |b|² + 2(a · b) = 1 + 1 + 2(a · b) = 2 + 2(a · b).",
+      "Set 2 + 2(a · b) = 3 ⇒ 2(a · b) = 1 ⇒ a · b = ½ (which corresponds to θ = 60°).",
       "Expand target dot product:",
-      "E = (2a - 5b) \u00b7 (3a + b) = 6|a|\u00b2 + 2(a \u00b7 b) - 15(a \u00b7 b) - 5|b|\u00b2.",
-      "E = 6(1) - 13(a \u00b7 b) - 5(1) = 1 - 13(a \u00b7 b).",
-      "Substitute a \u00b7 b = \u00bd: E = 1 - 13(\u00bd) = 1 - 6.5 = -5.5 = -11/2."
+      "E = (2a - 5b) · (3a + b) = 6|a|² + 2(a · b) - 15(a · b) - 5|b|².",
+      "E = 6(1) - 13(a · b) - 5(1) = 1 - 13(a · b).",
+      "Substitute a · b = ½: E = 1 - 13(½) = 1 - 6.5 = -5.5 = -11/2."
     ],
     "ans": "-11/2 (Option A)",
-    "trap": "Do not treat vectors as scalars! The cross terms 2(a\u00b7b) - 15(b\u00b7a) combine to -13(a\u00b7b).",
+    "trap": "Do not treat vectors as scalars! The cross terms 2(a·b) - 15(b·a) combine to -13(a·b).",
     "targetTab": "tab-dot",
     "simParams": {
       "theta_deg": 60,
@@ -100,8 +115,21 @@ window.JEE_QUESTIONS_DATA = [
     },
     "simSummary": [
       "Unit vectors: |a| = 1, |b| = 1",
-      "Angle \u03b8 = 60\u00b0 (a \u00b7 b = 0.5)",
+      "Angle θ = 60° (a · b = 0.5)",
       "Target dot product = -11/2 = -5.5"
+    ],
+    "answerAudit": "PASS",
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "simFidelity": "EXACT",
+    "simFidelityNote": "The dot-product rig exactly binds |a|=|b|=1 and θ=60°, which is the state implied by |a+b|=√3.",
+    "teacherCheck": "Check |a+b|²=2+2cos60°=3, then independently expand the target dot product to -11/2.",
+    "takeaway": "Convert norm information into a dot product before expanding linear combinations.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
     ]
   },
   {
@@ -111,37 +139,37 @@ window.JEE_QUESTIONS_DATA = [
     "subtab": 1,
     "subtabName": "Basics & Linear Combinations",
     "year": "2024",
-    "q": "If a unit vector u makes angles \u03c0/3 with i, \u03c0/4 with j, and an acute angle \u03b8 with k, then the value of \u03b8 is:",
+    "q": "If a unit vector u makes angles π/3 with i, π/4 with j, and an acute angle θ with k, then the value of θ is:",
     "options": [
       {
         "key": "A",
-        "text": "\u03c0/6"
+        "text": "π/6"
       },
       {
         "key": "B",
-        "text": "\u03c0/3"
+        "text": "π/3"
       },
       {
         "key": "C",
-        "text": "\u03c0/4"
+        "text": "π/4"
       },
       {
         "key": "D",
-        "text": "5\u03c0/12"
+        "text": "5π/12"
       }
     ],
     "correct": "B",
-    "formula": "cos\u00b2 \u03b1 + cos\u00b2 \u03b2 + cos\u00b2 \u03b3 = 1",
+    "formula": "cos² α + cos² β + cos² γ = 1",
     "steps": [
-      "Direction cosines of unit vector u are: l = cos(\u03c0/3), m = cos(\u03c0/4), n = cos \u03b8.",
-      "We have l = \u00bd, m = 1/\u221a2, n = cos \u03b8.",
-      "Apply fundamental identity: l\u00b2 + m\u00b2 + n\u00b2 = 1.",
-      "(\u00bd)\u00b2 + (1/\u221a2)\u00b2 + cos\u00b2 \u03b8 = 1 \u21d2 \u00bc + \u00bd + cos\u00b2 \u03b8 = 1.",
-      "\u00be + cos\u00b2 \u03b8 = 1 \u21d2 cos\u00b2 \u03b8 = \u00bc.",
-      "Since \u03b8 is an acute angle: cos \u03b8 = +\u00bd \u21d2 \u03b8 = \u03c0/3 (60\u00b0)."
+      "Direction cosines of unit vector u are: l = cos(π/3), m = cos(π/4), n = cos θ.",
+      "We have l = ½, m = 1/√2, n = cos θ.",
+      "Apply fundamental identity: l² + m² + n² = 1.",
+      "(½)² + (1/√2)² + cos² θ = 1 ⇒ ¼ + ½ + cos² θ = 1.",
+      "¾ + cos² θ = 1 ⇒ cos² θ = ¼.",
+      "Since θ is an acute angle: cos θ = +½ ⇒ θ = π/3 (60°)."
     ],
-    "ans": "\u03c0/3 (Option B)",
-    "trap": "Direction cosines satisfy cos\u00b2\u03b1 + cos\u00b2\u03b2 + cos\u00b2\u03b3 = 1 (sum of squares = 1, NOT sum of angles = 180\u00b0!).",
+    "ans": "π/3 (Option B)",
+    "trap": "Direction cosines satisfy cos²α + cos²β + cos²γ = 1 (sum of squares = 1, NOT sum of angles = 180°!).",
     "targetTab": "tab-basis",
     "simParams": {
       "alpha_deg": 60,
@@ -149,9 +177,22 @@ window.JEE_QUESTIONS_DATA = [
       "gamma_deg": 60
     },
     "simSummary": [
-      "Direction angles: \u03b1 = 60\u00b0, \u03b2 = 45\u00b0",
+      "Direction angles: α = 60°, β = 45°",
       "Sum of squared cosines: 0.25 + 0.5 + 0.25 = 1.0",
-      "\u03b3 = 60\u00b0"
+      "γ = 60°"
+    ],
+    "answerAudit": "PASS",
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The basis rig demonstrates direction cosines, but the loader does not bind all three direction-angle constraints as the question's exact state.",
+    "teacherCheck": "Verify cos²60°+cos²45°+cos²60°=1.",
+    "takeaway": "Direction cosines obey a sum-of-squares identity; direction angles do not generally sum to 180°.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
     ]
   },
   {
@@ -165,34 +206,34 @@ window.JEE_QUESTIONS_DATA = [
     "options": [
       {
         "key": "A",
-        "text": "\u2153 (8i + 5j + k)"
+        "text": "⅓ (8i + 5j + k)"
       },
       {
         "key": "B",
-        "text": "\u2151 (24i + 15j - 3k)"
+        "text": "⅑ (24i + 15j - 3k)"
       },
       {
         "key": "C",
-        "text": "\u2154 (2i + 3j - k)"
+        "text": "⅔ (2i + 3j - k)"
       },
       {
         "key": "D",
-        "text": "\u2153 (5i + 11j - 7k)"
+        "text": "⅓ (5i + 11j - 7k)"
       }
     ],
     "correct": "A",
-    "formula": "a_perp = a - a_parallel = a - [(a \u00b7 b) / |b|\u00b2] b",
+    "formula": "a_perp = a - a_parallel = a - [(a · b) / |b|²] b",
     "steps": [
-      "Compute dot product: a \u00b7 b = (2)(1) + (3)(-2) + (-1)(2) = 2 - 6 - 2 = -6.",
-      "Compute magnitude squared |b|\u00b2 = 1\u00b2 + (-2)\u00b2 + 2\u00b2 = 1 + 4 + 4 = 9.",
-      "Parallel projection along b: a_parallel = [(a \u00b7 b) / |b|\u00b2] b = (-6 / 9) b = -\u2154 (i - 2j + 2k).",
-      "Perpendicular rejection: a_perp = a - a_parallel = (2i + 3j - k) - (-\u2154 i + \u2074/\u2083 j - \u2074/\u2083 k).",
-      "x-component: 2 + \u2154 = \u2078/\u2083.",
-      "y-component: 3 - \u2074/\u2083 = \u2075/\u2083.",
-      "z-component: -1 + \u2074/\u2083 = +\u2153.",
-      "Combine: a_perp = \u2153 (8i + 5j + k)."
+      "Compute dot product: a · b = (2)(1) + (3)(-2) + (-1)(2) = 2 - 6 - 2 = -6.",
+      "Compute magnitude squared |b|² = 1² + (-2)² + 2² = 1 + 4 + 4 = 9.",
+      "Parallel projection along b: a_parallel = [(a · b) / |b|²] b = (-6 / 9) b = -⅔ (i - 2j + 2k).",
+      "Perpendicular rejection: a_perp = a - a_parallel = (2i + 3j - k) - (-⅔ i + ⁴/₃ j - ⁴/₃ k).",
+      "x-component: 2 + ⅔ = ⁸/₃.",
+      "y-component: 3 - ⁴/₃ = ⁵/₃.",
+      "z-component: -1 + ⁴/₃ = +⅓.",
+      "Combine: a_perp = ⅓ (8i + 5j + k)."
     ],
-    "ans": "\u2153 (8i + 5j + k) (Option A)",
+    "ans": "⅓ (8i + 5j + k) (Option A)",
     "trap": "Remember a_perp = a - a_parallel! Verify orthogonality: (8)(1) + (5)(-2) + (1)(2) = 8 - 10 + 2 = 0.",
     "targetTab": "tab-dot",
     "simParams": {
@@ -206,7 +247,20 @@ window.JEE_QUESTIONS_DATA = [
     "simSummary": [
       "Vector a = 2i + 3j - k",
       "Vector b = i - 2j + 2k",
-      "Orthogonal Rejection: a_perp \u00b7 b = 0"
+      "Orthogonal Rejection: a_perp · b = 0"
+    ],
+    "answerAudit": "PASS",
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The projection rig shows parallel/rejection geometry but does not load the question's component vectors a and b.",
+    "teacherCheck": "After computing a⊥=(8,5,1)/3, dot it with b=(1,-2,2): (8-10+2)/3=0.",
+    "takeaway": "A rejection vector should be checked by a zero dot product with the projection direction.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
     ]
   },
   {
@@ -220,31 +274,31 @@ window.JEE_QUESTIONS_DATA = [
     "options": [
       {
         "key": "A",
-        "text": "0\u00b0"
+        "text": "0°"
       },
       {
         "key": "B",
-        "text": "45\u00b0"
+        "text": "45°"
       },
       {
         "key": "C",
-        "text": "90\u00b0"
+        "text": "90°"
       },
       {
         "key": "D",
-        "text": "180\u00b0"
+        "text": "180°"
       }
     ],
     "correct": "C",
-    "formula": "|a + b|\u00b2 = |a - b|\u00b2 \u21d4 4(a \u00b7 b) = 0 \u21d4 a \u22a5 b",
+    "formula": "|a + b|² = |a - b|² ⇔ 4(a · b) = 0 ⇔ a ⊥ b",
     "steps": [
-      "Square both sides: |a + b|\u00b2 = |a - b|\u00b2.",
-      "Expand LHS: |a|\u00b2 + |b|\u00b2 + 2(a \u00b7 b).",
-      "Expand RHS: |a|\u00b2 + |b|\u00b2 - 2(a \u00b7 b).",
-      "Equate and cancel norms: 2(a \u00b7 b) = -2(a \u00b7 b) \u21d2 4(a \u00b7 b) = 0.",
-      "Since a and b are non-zero: a \u00b7 b = 0 \u21d2 cos \u03b8 = 0 \u21d2 \u03b8 = 90\u00b0 (\u03c0/2 radians)."
+      "Square both sides: |a + b|² = |a - b|².",
+      "Expand LHS: |a|² + |b|² + 2(a · b).",
+      "Expand RHS: |a|² + |b|² - 2(a · b).",
+      "Equate and cancel norms: 2(a · b) = -2(a · b) ⇒ 4(a · b) = 0.",
+      "Since a and b are non-zero: a · b = 0 ⇒ cos θ = 0 ⇒ θ = 90° (π/2 radians)."
     ],
-    "ans": "90\u00b0 (Option C)",
+    "ans": "90° (Option C)",
     "trap": "A parallelogram has equal diagonals if and only if it is a rectangle (vectors are orthogonal)!",
     "targetTab": "tab-dot",
     "simParams": {
@@ -254,8 +308,21 @@ window.JEE_QUESTIONS_DATA = [
     },
     "simSummary": [
       "|a + b| = |a - b|",
-      "Dot product a \u00b7 b = 0",
-      "Angle \u03b8 = 90\u00b0 (orthogonal)"
+      "Dot product a · b = 0",
+      "Angle θ = 90° (orthogonal)"
+    ],
+    "answerAudit": "PASS",
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "simFidelity": "EXACT",
+    "simFidelityNote": "The dot rig binds the implied orthogonal state θ=90°; the chosen nonzero magnitudes do not affect the conclusion.",
+    "teacherCheck": "Square both norms: equality cancels |a|² and |b|² and leaves 4a·b=0.",
+    "takeaway": "Equal |a+b| and |a-b| is an orthogonality test for nonzero vectors.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
     ]
   },
   {
@@ -285,17 +352,17 @@ window.JEE_QUESTIONS_DATA = [
       }
     ],
     "correct": "D",
-    "formula": "Area = \u00bd |(2a + 3b) \u00d7 (a - b)| = \u2075/\u2082 |a \u00d7 b|",
+    "formula": "Area = ½ |(2a + 3b) × (a - b)| = ⁵/₂ |a × b|",
     "steps": [
       "Let u = 2a + 3b and v = a - b.",
-      "Expand cross product: u \u00d7 v = -2(a \u00d7 b) + 3(b \u00d7 a) = -5(a \u00d7 b).",
-      "Area of triangle = \u00bd |u \u00d7 v| = \u2075/\u2082 |a \u00d7 b|.",
-      "Compute a \u00d7 b = 0i + 12j - 12k \u21d2 |a \u00d7 b| = \u221a(144 + 144) = 12\u221a2.",
-      "Area of triangle = \u2075/\u2082 (12\u221a2) = 30\u221a2.",
-      "Square of area = (30\u221a2)\u00b2 = 900 \u00d7 2 = 1800."
+      "Expand cross product: u × v = -2(a × b) + 3(b × a) = -5(a × b).",
+      "Area of triangle = ½ |u × v| = ⁵/₂ |a × b|.",
+      "Compute a × b = 0i + 12j - 12k ⇒ |a × b| = √(144 + 144) = 12√2.",
+      "Area of triangle = ⁵/₂ (12√2) = 30√2.",
+      "Square of area = (30√2)² = 900 × 2 = 1800."
     ],
     "ans": "1800 (Option D)",
-    "trap": "Cross product is anti-commutative: 3(b \u00d7 a) = -3(a \u00d7 b), so the coefficients add to -5, not +1!",
+    "trap": "Cross product is anti-commutative: 3(b × a) = -3(a × b), so the coefficients add to -5, not +1!",
     "targetTab": "tab-cross",
     "simParams": {
       "ax": 2,
@@ -308,8 +375,21 @@ window.JEE_QUESTIONS_DATA = [
     "simSummary": [
       "Vector a = 2i + 3j + 3k",
       "Vector b = 6i + 3j + 3k",
-      "Cross product |a \u00d7 b| = 12\u221a2",
-      "Area\u00b2 = 1800"
+      "Cross product |a × b| = 12√2",
+      "Area² = 1800"
+    ],
+    "answerAudit": "PASS",
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The cross-product rig demonstrates triangle area and anti-commutativity but cannot bind the supplied 3D component vectors.",
+    "teacherCheck": "Expand (2a+3b)×(a-b)=-5a×b and verify |a×b|=12√2; half its magnitude is 30√2.",
+    "takeaway": "Expand cross products bilinearly before computing components; b×a=-a×b.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
     ]
   },
   {
@@ -319,35 +399,35 @@ window.JEE_QUESTIONS_DATA = [
     "subtab": 3,
     "subtabName": "Cross Product & Areas",
     "year": "2026",
-    "q": "The diagonals of a parallelogram are given by vectors d\u2081 = 3i + j - 2k and d\u2082 = i - 3j + 4k. The area of the parallelogram is:",
+    "q": "The diagonals of a parallelogram are given by vectors d₁ = 3i + j - 2k and d₂ = i - 3j + 4k. The area of the parallelogram is:",
     "options": [
       {
         "key": "A",
-        "text": "5\u221a3"
+        "text": "5√3"
       },
       {
         "key": "B",
-        "text": "10\u221a3"
+        "text": "10√3"
       },
       {
         "key": "C",
-        "text": "5\u221a5"
+        "text": "5√5"
       },
       {
         "key": "D",
-        "text": "20\u221a3"
+        "text": "20√3"
       }
     ],
     "correct": "A",
-    "formula": "Area of Parallelogram with Diagonals = \u00bd |d\u2081 \u00d7 d\u2082|",
+    "formula": "Area of Parallelogram with Diagonals = ½ |d₁ × d₂|",
     "steps": [
-      "When diagonals are given, Area = \u00bd |d\u2081 \u00d7 d\u2082|.",
-      "Compute d\u2081 \u00d7 d\u2082 = -2i - 14j - 10k.",
-      "Magnitude: |d\u2081 \u00d7 d\u2082| = \u221a(4 + 196 + 100) = \u221a300 = 10\u221a3.",
-      "Area = \u00bd (10\u221a3) = 5\u221a3."
+      "When diagonals are given, Area = ½ |d₁ × d₂|.",
+      "Compute d₁ × d₂ = -2i - 14j - 10k.",
+      "Magnitude: |d₁ × d₂| = √(4 + 196 + 100) = √300 = 10√3.",
+      "Area = ½ (10√3) = 5√3."
     ],
-    "ans": "5\u221a3 (Option A)",
-    "trap": "When diagonals are given, always multiply by \u00bd! The formula Area = |a \u00d7 b| applies ONLY when a and b are adjacent sides.",
+    "ans": "5√3 (Option A)",
+    "trap": "When diagonals are given, always multiply by ½! The formula Area = |a × b| applies ONLY when a and b are adjacent sides.",
     "targetTab": "tab-cross",
     "simParams": {
       "d1x": 3,
@@ -358,9 +438,22 @@ window.JEE_QUESTIONS_DATA = [
       "d2z": 4
     },
     "simSummary": [
-      "Diagonal d\u2081 = 3i + j - 2k",
-      "Diagonal d\u2082 = i - 3j + 4k",
-      "|d\u2081 \u00d7 d\u2082| = 10\u221a3 \u21d2 Area = 5\u221a3"
+      "Diagonal d₁ = 3i + j - 2k",
+      "Diagonal d₂ = i - 3j + 4k",
+      "|d₁ × d₂| = 10√3 ⇒ Area = 5√3"
+    ],
+    "answerAudit": "PASS",
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The diagonal-area mode teaches the exact ½ factor, but the current rig cannot load d1 and d2 component vectors.",
+    "teacherCheck": "Compute d1×d2=(-2,-14,-10), whose magnitude is 10√3; halve it to obtain 5√3.",
+    "takeaway": "If the given vectors are diagonals rather than adjacent sides, parallelogram area is ½|d1×d2|.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
     ]
   },
   {
@@ -370,7 +463,7 @@ window.JEE_QUESTIONS_DATA = [
     "subtab": 3,
     "subtabName": "Cross Product & Areas",
     "year": "2024",
-    "q": "For any two vectors a and b, if |a| = 10, |b| = 2, and a \u00b7 b = 12, then the magnitude of the cross product |a \u00d7 b| is:",
+    "q": "For any two vectors a and b, if |a| = 10, |b| = 2, and a · b = 12, then the magnitude of the cross product |a × b| is:",
     "options": [
       {
         "key": "A",
@@ -390,17 +483,17 @@ window.JEE_QUESTIONS_DATA = [
       }
     ],
     "correct": "A",
-    "formula": "Lagrange's Identity: |a \u00d7 b|\u00b2 + (a \u00b7 b)\u00b2 = |a|\u00b2 |b|\u00b2",
+    "formula": "Lagrange's Identity: |a × b|² + (a · b)² = |a|² |b|²",
     "steps": [
-      "Apply Lagrange's Identity: |a \u00d7 b|\u00b2 = |a|\u00b2 |b|\u00b2 - (a \u00b7 b)\u00b2.",
-      "Substitute values: |a|\u00b2 = 10\u00b2 = 100, |b|\u00b2 = 2\u00b2 = 4.",
-      "Product of squared norms: |a|\u00b2 |b|\u00b2 = 100 \u00d7 4 = 400.",
-      "Squared dot product: (a \u00b7 b)\u00b2 = 12\u00b2 = 144.",
-      "|a \u00d7 b|\u00b2 = 400 - 144 = 256.",
-      "Take square root: |a \u00d7 b| = \u221a256 = 16."
+      "Apply Lagrange's Identity: |a × b|² = |a|² |b|² - (a · b)².",
+      "Substitute values: |a|² = 10² = 100, |b|² = 2² = 4.",
+      "Product of squared norms: |a|² |b|² = 100 × 4 = 400.",
+      "Squared dot product: (a · b)² = 12² = 144.",
+      "|a × b|² = 400 - 144 = 256.",
+      "Take square root: |a × b| = √256 = 16."
     ],
     "ans": "16 (Option A)",
-    "trap": "Lagrange's Identity is instantaneous and avoids converting back and forth through trigonometric angles: |a\u00d7b|\u00b2 + (a\u00b7b)\u00b2 \u2261 |a|\u00b2|b|\u00b2!",
+    "trap": "Lagrange's Identity is instantaneous and avoids converting back and forth through trigonometric angles: |a×b|² + (a·b)² ≡ |a|²|b|²!",
     "targetTab": "tab-cross",
     "simParams": {
       "magA": 10,
@@ -409,26 +502,39 @@ window.JEE_QUESTIONS_DATA = [
     },
     "simSummary": [
       "|a| = 10, |b| = 2",
-      "a \u00b7 b = 12",
-      "Lagrange Identity: |a \u00d7 b| = \u221a256 = 16"
+      "a · b = 12",
+      "Lagrange Identity: |a × b| = √256 = 16"
+    ],
+    "answerAudit": "PASS",
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The cross rig exposes Lagrange's identity but cannot independently bind |a|=10, |b|=2 and a·b=12.",
+    "teacherCheck": "Residual check: 16²+12²=256+144=400=(10²)(2²).",
+    "takeaway": "Lagrange's identity is often the shortest route when norms and a dot product are given.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
     ]
   },
   {
     "id": "VEC-Q09",
-    "num": "JEE Main 2025",
-    "source": "JEE Main 2025 (Online) 31st January Morning Shift",
+    "num": "JEE Main 2019",
+    "source": "JEE Main 2019 (Online) 12th January Morning Shift",
     "subtab": 4,
     "subtabName": "Triple Products & Volume",
-    "year": "2025",
-    "q": "If the vectors a = i + \u03bb j + k, b = j + \u03bb k, and c = \u03bb i + k are coplanar, then the sum of all possible real values of \u03bb is:",
+    "year": "2019",
+    "q": "If the vectors μi + j + k, i + μj + k and i + j + μk are coplanar, then the sum of the distinct real values of μ is:",
     "options": [
       {
         "key": "A",
-        "text": "0"
+        "text": "-1"
       },
       {
         "key": "B",
-        "text": "-1"
+        "text": "0"
       },
       {
         "key": "C",
@@ -436,28 +542,45 @@ window.JEE_QUESTIONS_DATA = [
       },
       {
         "key": "D",
-        "text": "2"
+        "text": "3"
       }
     ],
-    "correct": "B",
-    "formula": "[a b c] = 0 \u21d4 det([a; b; c]) = 0",
+    "correct": "A",
+    "formula": "Coplanarity ⇔ det([[μ,1,1],[1,μ,1],[1,1,μ]]) = 0 = (μ-1)²(μ+2)",
     "steps": [
-      "Three vectors are coplanar if and only if [a b c] = 0.",
-      "Row 1: [1, \u03bb, 1], Row 2: [0, 1, \u03bb], Row 3: [\u03bb, 0, 1].",
-      "Determinant = 1(1 - 0) - \u03bb(0 - \u03bb\u00b2) + 1(0 - \u03bb) = 1 + \u03bb\u00b3 - \u03bb = 0.",
-      "With canonical entries: \u03bb\u00b3 + 1 = (\u03bb + 1)(\u03bb\u00b2 - \u03bb + 1) = 0.",
-      "The only real root is \u03bb = -1."
+      "Three vectors are coplanar exactly when their scalar triple product is zero.",
+      "Form the determinant det([[μ,1,1],[1,μ,1],[1,1,μ]]).",
+      "Expanding gives μ³ - 3μ + 2 = 0.",
+      "Factor: μ³ - 3μ + 2 = (μ - 1)²(μ + 2).",
+      "The distinct real values are μ = 1 and μ = -2.",
+      "Their sum is 1 + (-2) = -1."
     ],
-    "ans": "-1 (Option B)",
-    "trap": "Coplanarity means the volume of the spanned parallelepiped collapses to ZERO. Check real roots carefully!",
+    "ans": "-1 (Option A)",
+    "trap": "Zero scalar triple product means zero spanned volume/coplanarity; repeated roots still count once when the question asks for distinct real values.",
     "targetTab": "tab-triple",
     "simParams": {
-      "lambda_val": -1
+      "mu_values": [
+        1,
+        -2
+      ]
     },
     "simSummary": [
-      "Coplanar condition: [a b c] = 0",
-      "Real root \u03bb = -1",
-      "Volume = 0 (Prism flattens to 2D)"
+      "Coplanarity condition: scalar triple product = 0",
+      "Distinct real roots: μ = 1 and μ = -2",
+      "Sum = -1"
+    ],
+    "answerAudit": "PASS",
+    "sourceAudit": "SOURCE_ITEM_VERIFIED",
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The triple-product rig visualizes coplanarity collapse, but it does not encode the symmetric μ-dependent vectors.",
+    "teacherCheck": "Substitute each root into (μ-1)²(μ+2): μ=1 and μ=-2 both give zero determinant.",
+    "takeaway": "Coplanarity is zero scalar triple product; distinguish distinct roots from algebraic multiplicity.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
     ]
   },
   {
@@ -510,6 +633,19 @@ window.JEE_QUESTIONS_DATA = [
       "Edges: a, b, c",
       "STP det = -7",
       "Volume = 7"
+    ],
+    "answerAudit": "PASS",
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The volume rig demonstrates scalar-triple-product volume but uses a fixed illustrative parallelepiped, not the question's component vectors.",
+    "teacherCheck": "Direct determinant check gives -7; geometric volume is its absolute value, 7.",
+    "takeaway": "Scalar triple product carries orientation; physical volume uses its absolute value.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
     ]
   },
   {
@@ -519,36 +655,37 @@ window.JEE_QUESTIONS_DATA = [
     "subtab": 5,
     "subtabName": "Vector Equations",
     "year": "2026",
-    "q": "Let a = \u221a7 i + j - k and b = j + 2k. If r is a vector such that r \u00d7 a + a \u00d7 b = 0 and r \u00b7 a = 0, then the value of |3r|\u00b2 is:",
+    "q": "Let a = √7 i + j - k and b = j + 2k. If r is a vector such that r × a + a × b = 0 and r · a = 0, then the value of |3r|² is:",
     "options": [
       {
         "key": "A",
-        "text": "45"
+        "text": "44"
       },
       {
         "key": "B",
-        "text": "90"
+        "text": "54"
       },
       {
         "key": "C",
-        "text": "135"
+        "text": "86"
       },
       {
         "key": "D",
-        "text": "180"
+        "text": "132"
       }
     ],
     "correct": "A",
-    "formula": "r \u00d7 a + a \u00d7 b = 0 \u21d4 (r - b) \u00d7 a = 0 \u21d4 r - b = \u03bb a \u21d4 r = b + \u03bb a",
+    "formula": "r × a + a × b = 0 ⇔ (r - b) × a = 0 ⇔ r - b = λ a ⇔ r = b + λ a",
     "steps": [
-      "Rewrite equation: (r - b) \u00d7 a = 0 \u21d2 r = b + \u03bb a.",
-      "Apply r \u00b7 a = 0 \u21d2 (b + \u03bb a) \u00b7 a = 0 \u21d2 \u03bb = -(a \u00b7 b) / |a|\u00b2.",
-      "Here |a|\u00b2 = 7 + 1 + 1 = 9, and a \u00b7 b = -1 \u21d2 \u03bb = 1/9.",
-      "By orthogonality: |b|\u00b2 = |r|\u00b2 + |\u03bb a|\u00b2 \u21d2 |r|\u00b2 = 5 - 1/9 = 44/9.",
-      "With standard integer rounding in key: |3r|\u00b2 = 9 |r|\u00b2 = 45."
+      "Rewrite r × a + a × b = 0 using a × b = -(b × a): (r - b) × a = 0.",
+      "Therefore r - b is parallel to a, so r = b + λa.",
+      "Use r · a = 0: (b + λa) · a = 0, hence λ = -(a · b)/|a|².",
+      "Here |a|² = 7 + 1 + 1 = 9 and a · b = (1)(1) + (-1)(2) = -1, so λ = 1/9.",
+      "Then |r|² = |b|² + 2λ(a · b) + λ²|a|² = 5 - 2/9 + 1/9 = 44/9.",
+      "Therefore |3r|² = 9|r|² = 44."
     ],
-    "ans": "45 (Option A)",
-    "trap": "Never attempt to 'divide' by vector a! Factor (r - b) \u00d7 a = 0 into collinear line r = b + \u03bb a.",
+    "ans": "44 (Option A)",
+    "trap": "Never attempt to 'divide' by vector a! Factor (r - b) × a = 0 into collinear line r = b + λ a.",
     "targetTab": "tab-equations",
     "simParams": {
       "ax": 2.645,
@@ -559,9 +696,22 @@ window.JEE_QUESTIONS_DATA = [
       "bz": 2
     },
     "simSummary": [
-      "r \u00d7 a + a \u00d7 b = 0",
-      "Collinear solution r = b + \u03bb a",
-      "Constraint r \u00b7 a = 0 yields unique r"
+      "Solution family before dot constraint: r = b + λa",
+      "Auxiliary condition gives λ = 1/9",
+      "|3r|² = 44"
+    ],
+    "answerAudit": "PASS",
+    "sourceAudit": "SOURCE_ITEM_VERIFIED",
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The equation-solver rig currently uses a fixed illustrative a and particular solution; it does not load this question's a,b pair.",
+    "teacherCheck": "Substitute λ=1/9 into r=b+λa and verify both residuals: (r-b)×a=0 and r·a=0; then |3r|²=44.",
+    "takeaway": "A vector cross equation usually leaves a free component parallel to the crossed vector; an auxiliary constraint fixes it.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
     ]
   },
   {
@@ -571,43 +721,56 @@ window.JEE_QUESTIONS_DATA = [
     "subtab": 5,
     "subtabName": "Vector Equations",
     "year": "2024",
-    "q": "For any three vectors a, b, c, the vector triple product a \u00d7 (b \u00d7 c) is equal to (a \u00b7 c) b - (a \u00b7 b) c. If a \u00d7 (b \u00d7 c) = \u00bd b, where a, b, c are non-coplanar unit vectors, the angle between a and c is:",
+    "q": "For any three vectors a, b, c, the vector triple product a × (b × c) is equal to (a · c) b - (a · b) c. If a × (b × c) = ½ b, where a, b, c are non-coplanar unit vectors, the angle between a and c is:",
     "options": [
       {
         "key": "A",
-        "text": "30\u00b0"
+        "text": "30°"
       },
       {
         "key": "B",
-        "text": "45\u00b0"
+        "text": "45°"
       },
       {
         "key": "C",
-        "text": "60\u00b0"
+        "text": "60°"
       },
       {
         "key": "D",
-        "text": "90\u00b0"
+        "text": "90°"
       }
     ],
     "correct": "C",
-    "formula": "a \u00d7 (b \u00d7 c) = (a \u00b7 c) b - (a \u00b7 b) c = \u00bd b + 0 c",
+    "formula": "a × (b × c) = (a · c) b - (a · b) c = ½ b + 0 c",
     "steps": [
-      "Apply BAC-CAB identity: a \u00d7 (b \u00d7 c) = (a \u00b7 c) b - (a \u00b7 b) c.",
-      "Equating components along non-coplanar vectors b and c gives a \u00b7 c = \u00bd.",
-      "Since a and c are unit vectors: cos \u03b8 = \u00bd \u21d2 \u03b8 = 60\u00b0."
+      "Apply BAC-CAB identity: a × (b × c) = (a · c) b - (a · b) c.",
+      "Equating components along non-coplanar vectors b and c gives a · c = ½.",
+      "Since a and c are unit vectors: cos θ = ½ ⇒ θ = 60°."
     ],
-    "ans": "60\u00b0 (Option C)",
-    "trap": "Cross product is NOT associative: a \u00d7 (b \u00d7 c) lies in the plane of b and c, while (a \u00d7 b) \u00d7 c lies in the plane of a and b!",
+    "ans": "60° (Option C)",
+    "trap": "Cross product is NOT associative: a × (b × c) lies in the plane of b and c, while (a × b) × c lies in the plane of a and b!",
     "targetTab": "tab-baccab",
     "simParams": {
       "theta_ac": 60,
       "theta_ab": 90
     },
     "simSummary": [
-      "BAC-CAB rule: a \u00d7 (b \u00d7 c) = (a\u00b7c)b - (a\u00b7b)c",
-      "a \u00b7 c = 1/2 \u21d2 \u03b8 = 60\u00b0",
-      "a \u00b7 b = 0 \u21d2 orthogonal"
+      "BAC-CAB rule: a × (b × c) = (a·c)b - (a·b)c",
+      "a · c = 1/2 ⇒ θ = 60°",
+      "a · b = 0 ⇒ orthogonal"
+    ],
+    "answerAudit": "PASS",
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The VTP rig represents the BAC-CAB plane relation and the required 60° a–c condition, but not a full arbitrary non-coplanar vector triple.",
+    "teacherCheck": "BAC-CAB gives coefficients along independent b and c: a·c=1/2 and a·b=0; unit vectors imply θac=60°.",
+    "takeaway": "Cross product is non-associative; preserve parentheses before applying BAC-CAB.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
     ]
   },
   {
@@ -617,19 +780,19 @@ window.JEE_QUESTIONS_DATA = [
     "subtab": 6,
     "subtabName": "3D Spatial Geometry",
     "year": "2025",
-    "q": "The shortest distance between the two skew lines r\u2081 = (i + 2j + 3k) + \u03bb (2i + 3j + 4k) and r\u2082 = (2i + 4j + 5k) + \u03bc (3i + 4j + 5k) is:",
+    "q": "The shortest distance between the two skew lines r₁ = (i + 2j + 3k) + λ (2i + 3j + 4k) and r₂ = (2i + 4j + 5k) + μ (3i + 4j + 5k) is:",
     "options": [
       {
         "key": "A",
-        "text": "1 / \u221a6"
+        "text": "1 / √6"
       },
       {
         "key": "B",
-        "text": "2 / \u221a6"
+        "text": "2 / √6"
       },
       {
         "key": "C",
-        "text": "1 / \u221a3"
+        "text": "1 / √3"
       },
       {
         "key": "D",
@@ -637,16 +800,16 @@ window.JEE_QUESTIONS_DATA = [
       }
     ],
     "correct": "A",
-    "formula": "d = | (a\u2082 - a\u2081) \u00b7 (b\u2081 \u00d7 b\u2082) | / | b\u2081 \u00d7 b\u2082 |",
+    "formula": "d = | (a₂ - a₁) · (b₁ × b₂) | / | b₁ × b₂ |",
     "steps": [
-      "a\u2082 - a\u2081 = i + 2j + 2k.",
-      "b\u2081 \u00d7 b\u2082 = -i + 2j - k \u21d2 |b\u2081 \u00d7 b\u2082| = \u221a6.",
-      "(a\u2082 - a\u2081) \u00b7 (b\u2081 \u00d7 b\u2082) = (1)(-1) + (2)(2) + (2)(-1) = 1.",
-      "Shortest distance d = 1 / \u221a6."
+      "a₂ - a₁ = i + 2j + 2k.",
+      "b₁ × b₂ = -i + 2j - k ⇒ |b₁ × b₂| = √6.",
+      "(a₂ - a₁) · (b₁ × b₂) = (1)(-1) + (2)(2) + (2)(-1) = 1.",
+      "Shortest distance d = 1 / √6."
     ],
-    "ans": "1 / \u221a6 (Option A)",
+    "ans": "1 / √6 (Option A)",
     "trap": "Shortest distance between skew lines is the projection of the connector vector onto the common normal unit vector!",
-    "targetTab": "tab-spatial",
+    "targetTab": "tab-quiz",
     "simParams": {
       "dist": 0.408,
       "normal_mag": 2.449
@@ -654,7 +817,20 @@ window.JEE_QUESTIONS_DATA = [
     "simSummary": [
       "Skew line 1: dir [2, 3, 4]",
       "Skew line 2: dir [3, 4, 5]",
-      "Shortest distance d = 1/\u221a6 \u2248 0.408"
+      "Shortest distance d = 1/√6 ≈ 0.408"
+    ],
+    "answerAudit": "PASS",
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "simFidelity": "UNAVAILABLE",
+    "simFidelityNote": "No current tab implements skew-line shortest distance; the stored target tab did not exist.",
+    "teacherCheck": "Use n=b1×b2=(-1,2,-1), then project a2-a1=(1,2,2) onto n: |1|/√6.",
+    "takeaway": "Shortest distance of skew lines is the connector's scalar projection on the common normal.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
     ]
   }
 ];
