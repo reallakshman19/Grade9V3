@@ -22,58 +22,70 @@ work_packages:
   total_weight: 0
   percent: 0
 - id: WP-162-BROWSER-RUNTIME-PROOF
-  earned_weight: 0
+  earned_weight: 90
   total_weight: 100
-  percent: 0
+  percent: 90
 execution_packages:
 - id: EP-0162-BROWSER-RUNTIME-PROOF
-  earned_weight: 0
+  earned_weight: 90
   total_weight: 100
-  percent: 0
+  percent: 90
 implementation_steps:
 - id: STEP-01
   ep_id: EP-0162-BROWSER-RUNTIME-PROOF
-  earned_weight: 0
+  earned_weight: 60
   total_weight: 60
-  percent: 0
+  percent: 100
 - id: STEP-02
   ep_id: EP-0162-BROWSER-RUNTIME-PROOF
-  earned_weight: 0
+  earned_weight: 30
   total_weight: 40
-  percent: 0
+  percent: 75
 acceptance_criteria:
 - id: AC-01
   ep_id: EP-0162-BROWSER-RUNTIME-PROOF
-  earned_weight: 0
+  earned_weight: 30
   total_weight: 30
-  percent: 0
-  status: NOT_STARTED
-  basis: []
+  percent: 100
+  status: COMPLETE
+  basis:
+  - guardrails run 3252 / tests/workbench_browser.test.mjs real Chrome 152 interaction equivalence
+  - click, keyboard, mouse-drag and touch source-tap/target-tap reached equivalent accepted semantic state
 - id: AC-02
   ep_id: EP-0162-BROWSER-RUNTIME-PROOF
-  earned_weight: 0
+  earned_weight: 20
   total_weight: 20
-  percent: 0
-  status: NOT_STARTED
-  basis: []
+  percent: 100
+  status: COMPLETE
+  basis:
+  - guardrails run 3252 real Chrome narrow-layout assertion
+  - guardrails run 3252 prefers-reduced-motion assertion with unchanged semantic state
 - id: AC-03
   ep_id: EP-0162-BROWSER-RUNTIME-PROOF
-  earned_weight: 0
+  earned_weight: 20
   total_weight: 20
-  percent: 0
-  status: NOT_STARTED
-  basis: []
+  percent: 100
+  status: COMPLETE
+  basis:
+  - guardrails run 3252 real Chrome cancel/Escape assertion
+  - guardrails run 3252 undo assertion
+  - guardrails run 3252 sibling-instance isolation assertion
 - id: AC-04
   ep_id: EP-0162-BROWSER-RUNTIME-PROOF
-  earned_weight: 0
+  earned_weight: 10
   total_weight: 10
-  percent: 0
-  status: NOT_STARTED
-  basis: []
+  percent: 100
+  status: COMPLETE
+  basis:
+  - guardrails run 3252 topic-independence scan 0 violations across 77 files
+  - no new frontend/package dependency introduced
+  - Issue #159/#160/#163 ownership boundaries remain outside Shared/workbench
 - id: AC-05
   ep_id: EP-0162-BROWSER-RUNTIME-PROOF
-  earned_weight: 0
+  earned_weight: 10
   total_weight: 20
-  percent: 0
-  status: NOT_STARTED
-  basis: []
+  percent: 50
+  status: IN_PROGRESS
+  basis:
+  - current coding head 5cf9a54fb0413c2b47f789b615127858332e7f0f passed guardrails run 3252 with 934 tests and fresh generated artifacts
+  - final post-rebase merge candidate remains pending and must rerun the same exact-head checks
