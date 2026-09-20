@@ -5,18 +5,18 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 184,
+  "component_count": 185,
   "relation_count": 232,
   "components_by_role": {
     "CONTRACT": 7,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 32,
-    "TEST": 83,
+    "TEST": 84,
     "TOOLING": 44,
     "WEB": 6
   },
-  "digest": "sha256:e5e721091efb74c6f109b4c9ef78861841f766bd06bf3a6e5d55631ce6fc1f9e",
+  "digest": "sha256:c9f0a0c327316a720a97d8203f131bbb09e3d406ed72ea4b9a4324bc3a79b506",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -836,6 +836,13 @@
       "role_description": "Executable checks",
       "bytes": 2529,
       "sha256": "ed11e2123aa54f0acc9bc0299249d5145c8514a769b442f161942ec6518a087d"
+    },
+    {
+      "path": "tests/test_chemistry_master_suites_audit.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 7421,
+      "sha256": "965cad039fe4e3ea738f1b6e55319e8f021fa703541d9ef4f40562c1e9876efe"
     },
     {
       "path": "tests/test_core_issue19_integration.py",
