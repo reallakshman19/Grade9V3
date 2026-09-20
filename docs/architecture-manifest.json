@@ -17,7 +17,7 @@
     "WEB": 6,
     "WEB_RUNTIME": 3
   },
-  "digest": "sha256:b871fe292ef69a5ac51bf11c258dfcb5addef57f9d1d8a13fd30e98925d546bb",
+  "digest": "sha256:1af62ea993a20bd40cd3c2e586581a978b93df93c9e816d00ad40e03ab3cc14d",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -811,11 +811,11 @@
       "sha256": "71ae4b34a09b8cb4e93098fe630f0191d590ef946f72ee373b90b342ca95c75b"
     },
     {
-      "bytes": 4223,
+      "bytes": 4428,
       "path": "tests/fixtures/workbench/browser-host.html",
       "role": "TEST",
       "role_description": "Executable checks",
-      "sha256": "bb0c4b06efd354ace8ab00790cb49eb5aa7a6a8359e058836c287f6f05c431f2"
+      "sha256": "5bdbdeba185ac2aea4f2a3718400d8d81f8e447c2dc566acbcb2a340d0fdb338"
     },
     {
       "path": "tests/test_agent_path_stress_prompts.py",
@@ -1315,11 +1315,11 @@
       "sha256": "3d0563b1e08a91fb25deaa42497d1df9ca81ebbb6d83ac0b70a249a2eac4303f"
     },
     {
-      "bytes": 18805,
+      "bytes": 18889,
       "path": "tests/workbench_browser.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "sha256": "63af296366e8b707549a5ce883cbf279b245189daeba27d8589c554f4d845439"
+      "sha256": "e004b7d4acdafb9aca02737c64549db08fbfc883d4b74ef3790c6d7313efdf9b"
     },
     {
       "path": "tests/workbench_runtime.test.mjs",
