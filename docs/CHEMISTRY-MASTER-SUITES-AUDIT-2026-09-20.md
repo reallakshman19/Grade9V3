@@ -26,23 +26,25 @@ Local mathematical/chemical review status after extraction:
 
 | Suite | PASS | PENDING | FAIL |
 | --- | ---: | ---: | ---: |
-| Chemical Bonding | 19 | 1 | 0 |
+| Chemical Bonding | 20 | 0 | 0 |
 | Mole Concept | 19 | 0 | 1 |
 | Redox | 20 | 0 | 0 |
 | Behaviour of Gases | 20 | 0 | 0 |
-| **Total** | **78** | **1** | **1** |
+| **Total** | **79** | **0** | **1** |
 
-All 80 records remain `SOURCE_PROVENANCE_PENDING`. A local answer audit is not source-item
-verification.
+A local answer audit is not source-item verification. After live-source checks, 76 records remain
+`SOURCE_PROVENANCE_PENDING` and 4 are explicitly `SOURCE_UNVERIFIED`: BOND-Q19,
+CHEM02-Q04, GAS-Q01 and GAS-Q06.
 
-### BOND-Q19 — pending
+### BOND-Q19 — local answer corrected; source attribution rejected
 
-The supplied record asserts CO⁺ has bond order 3.5 and is paramagnetic. Public teaching sources
-use conflicting simplified/heteronuclear MO conventions for this species, so this record is
-withheld from audited scoring until the cited source item and official key are independently
-verified. The supplied option is preserved but `answerAudit=PENDING`.
+The PR #144 record supplied “Bond Order = 3.5 and Paramagnetic”. The local audit corrected the
+standard classroom-MO answer to **Bond Order = 2.5 and Paramagnetic (Option B)**. The current
+ExamSIDE listing for the claimed JEE Main 2019 Online 10 April Morning paper does not contain
+this CO⁺ question, so `sourceAudit=SOURCE_UNVERIFIED` even though the local answer audit now
+passes.
 
-### CHEM02-Q04 — failed source/data consistency
+### CHEM02-Q04 — failed answer/data consistency and source mismatch
 
 The stated eudiometry data are internally inconsistent with every listed option:
 
@@ -53,6 +55,24 @@ The stated eudiometry data are internally inconsistent with every listed option:
 
 Therefore the stated data imply **C₄H₆**, not C₄H₁₀. The record now has `answerAudit=FAIL`,
 `correct=null`, and is withheld from scoring rather than silently selecting a wrong option.
+The current ExamSIDE listing for the claimed 2026 Online 8 April Evening paper does not contain
+this eudiometry item, so its source attribution is also `SOURCE_UNVERIFIED`.
+
+## External-corpus snapshot
+
+The live ExamSIDE topic pages were checked on 2026-09-20. They report:
+
+| Topic | Live corpus count | Embedded local diagnostics |
+| --- | ---: | ---: |
+| Chemical Bonding & Molecular Structure | 266 | 20 |
+| Some Basic Concepts of Chemistry | 245 | 20 |
+| Redox Reactions | 74 | 20 |
+| Gaseous State | 66 | 20 |
+
+These numbers are corpus snapshot metadata, not claims that the local 20-item slices cover or
+verify the full corpus. The Gaseous State page currently reports **0 questions in 2026** and marks
+the chapter out of syllabus; therefore the PR #144 attributions GAS-Q01 and GAS-Q06 to 2026 JEE
+Main papers are explicitly rejected as `SOURCE_UNVERIFIED`.
 
 ## Simulator-fidelity audit
 
