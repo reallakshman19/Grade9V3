@@ -339,6 +339,9 @@ class ChemistryMasterSuitesAuditTest(unittest.TestCase):
             load_window_payload(standalone, "REDOX_OS_QUESTION_HELPERS"),
             helpers,
         )
+
+        track_helpers = load_window_payload(html, "REDOX_TRACK_QUESTION_HELPERS")
+        core_tracks = {"ROLE", "BAL", "NFACTOR", "DISP", "EQUIV", "TITR"}
         self.assertEqual(
             load_window_payload(standalone, "REDOX_TRACK_QUESTION_HELPERS"),
             track_helpers,
@@ -346,19 +349,24 @@ class ChemistryMasterSuitesAuditTest(unittest.TestCase):
         self.assertIn("teachingQuestionCard", html)
         self.assertIn("localTeachingQuestionCard", html)
         self.assertIn("DERIVED RESULT", html)
+        self.assertIn("REASONING CHECKPOINT", html)
+        self.assertNotIn("VISUAL / METHOD BRIDGE", html)
 
-        track_helpers = load_window_payload(html, "REDOX_TRACK_QUESTION_HELPERS")
-        core_tracks = {"ROLE", "BAL", "NFACTOR", "DISP", "EQUIV", "TITR"}
         core_refs = {row["ref"] for row in corpus if row["track"] in core_tracks}
         self.assertEqual(len(core_refs), 48)
         self.assertEqual(len(track_helpers), 48)
         self.assertEqual({row["ref"] for row in track_helpers}, core_refs)
         for row in track_helpers:
             self.assertIn(row["track"], core_tracks)
-            self.assertTrue(row["bridge"])
+            self.assertTrue(row["checkpoint"])
             self.assertGreaterEqual(len(row["derivation"]), 2)
             self.assertTrue(row["answer"])
             self.assertTrue(row["answerStatus"])
+            self.assertNotIn("bridge", row)
+
+        nfactor_helpers = [row for row in track_helpers if row["track"] == "NFACTOR"]
+        self.assertEqual(len(nfactor_helpers), 5)
+        self.assertTrue(all("actual reduction/oxidation product" in row["checkpoint"] for row in nfactor_helpers))
 
         n13 = next(row for row in corpus if row["ref"] == "N13")
         n15 = next(row for row in corpus if row["ref"] == "N15")

@@ -334,7 +334,7 @@ Screenshot review showed that the learner-facing non-oxidation tabs were still o
 
 ```
 question
-  -> visual/method bridge
+  -> reasoning checkpoint
   -> reviewed derivation
   -> derived result
 ```
@@ -367,3 +367,38 @@ Regression tests now require:
 - N13 remains BAL and cannot contain the N15 Fe(CO) preview;
 - N15 remains OS;
 - public/standalone helper parity.
+
+
+## Redox checkpoint vs visual semantics correction (2026-09-20)
+
+A learner-facing wording audit found that the non-OS teaching cards labelled procedural reasoning as a `VISUAL / METHOD BRIDGE`. This was semantically wrong: instructions such as
+
+`identify product -> compute ΔO.S. -> convert to electrons -> read n-factor`
+
+are **reasoning checkpoints**, not drawable canvas states.
+
+The 48 non-OS helper records now use `checkpoint`, not `bridge`, and the learner UI labels the block **REASONING CHECKPOINT**.
+
+Separation:
+
+```
+VISUAL / SCENE
+  what can actually be shown or manipulated
+
+CHECKPOINT
+  what the learner must decide/verify before proceeding
+
+DERIVATION
+  the explicit scientific/mathematical reconstruction
+
+RESULT
+  the derived answer
+```
+
+For n-factor the checkpoint is now:
+
+`First identify the actual reduction/oxidation product in the stated medium. Compare the initial and final oxidation states, convert |ΔO.S.| into electron count, and only then determine n-factor or equivalent mass.`
+
+A checkpoint may reference or trigger a canonical visual, but it is not itself required to be visualizable.
+
+Regression coverage now rejects the obsolete `bridge` field in these helper records and rejects the `VISUAL / METHOD BRIDGE` learner label.
