@@ -107,7 +107,16 @@ def _evidence_ref_exists(repo: Path, ref: str | None) -> bool:
 
 
 def _external_dependencies(text: str) -> set[str]:
-    return set(re.findall(r'(?:src|href)="(https?://[^"]+)"', text))
+    """Return remote runtime dependencies, not ordinary navigation/source links."""
+    out: set[str] = set()
+    pattern = re.compile(
+        r'<script\b[^>]*\bsrc="(https?://[^"]+)"[^>]*>'
+        r'|<link\b[^>]*\bhref="(https?://[^"]+)"[^>]*>',
+        re.I,
+    )
+    for match in pattern.finditer(text):
+        out.add(match.group(1) or match.group(2))
+    return out
 
 
 def _local_resource_dependencies(text: str) -> list[str]:
