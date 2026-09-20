@@ -1198,7 +1198,7 @@
       const bank = window.JEE_QUESTIONS_DATA || [];
       const errors = [];
       const seen = new Set();
-      const required = ['id','q','options','formula','steps','ans','trap','answerAudit','sourceAudit','simFidelity','simFidelityNote','targetTab','simBindingRefs'];
+      const required = ['id','q','options','formula','steps','ans','trap','answerAudit','answerAuditNote','sourceAudit','sourceAuditNote','simFidelity','simFidelityNote','targetTab','simBindingRefs'];
       bank.forEach(q => {
         required.forEach(key => {
           if (q[key] === undefined || q[key] === null || q[key] === '') errors.push(`${q.id || '<missing>'}: missing ${key}`);
@@ -1224,7 +1224,11 @@
       const answer = q.answerAudit === 'PASS'
         ? '<span class="px-2 py-0.5 rounded bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-[10px] font-mono">ANSWER PASS</span>'
         : `<span class="px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/40 text-amber-300 text-[10px] font-mono">ANSWER ${q.answerAudit || 'PENDING'}</span>`;
-      const source = '<span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-600 text-slate-300 text-[10px] font-mono">SOURCE PENDING</span>';
+      const sourceState = q.sourceAudit === 'SOURCE_UNVERIFIED' ? 'SOURCE UNVERIFIED' : 'SOURCE PENDING';
+      const sourceClass = q.sourceAudit === 'SOURCE_UNVERIFIED'
+        ? 'bg-red-500/10 border-red-500/40 text-red-300'
+        : 'bg-slate-800 border-slate-600 text-slate-300';
+      const source = `<span class="px-2 py-0.5 rounded border text-[10px] font-mono ${sourceClass}" title="${q.sourceAuditNote || ''}">${sourceState}</span>`;
       const fidelity = `<span class="px-2 py-0.5 rounded bg-sky-500/10 border border-sky-500/30 text-sky-300 text-[10px] font-mono">${q.simFidelity}</span>`;
       return answer + source + fidelity;
     }
@@ -1343,8 +1347,8 @@
 
                 <!-- Step 4: Official Invariant -->
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-emerald-500/30 text-xs">
-                  <span class="font-mono text-slate-400">Official Exam Key: <strong class="text-white">Option (${q.correct})</strong></span>
-                  <span class="font-mono font-bold text-emerald-400 bg-emerald-500/20 px-2.5 py-1 rounded border border-emerald-500/40">Answer Audit ${q.answerAudit}: ${q.ans}</span>
+                  <span class="font-mono text-slate-400">${q.sourceAudit === 'SOURCE_UNVERIFIED' ? 'Local audited key' : 'Attributed exam key'}: <strong class="text-white">${q.correct ? `Option (${q.correct})` : 'WITHHELD'}</strong></span>
+                  <span class="font-mono font-bold ${q.answerAudit === 'PASS' ? 'text-emerald-400 bg-emerald-500/20 border-emerald-500/40' : 'text-amber-300 bg-amber-500/10 border-amber-500/40'} px-2.5 py-1 rounded border">Answer Audit ${q.answerAudit}: ${q.ans}</span>
                 </div>
               </div>
             </div>
