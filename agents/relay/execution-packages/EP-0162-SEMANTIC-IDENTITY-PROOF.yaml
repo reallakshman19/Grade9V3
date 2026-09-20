@@ -1,0 +1,302 @@
+schema_version: relay-v2.5
+identity:
+  ep_id: EP-0162-SEMANTIC-IDENTITY-PROOF
+  branch: feat/issue-162-semantic-workbench-core
+  base_ref: 143052823ba0cab69f9d5783010906bbae9b120a
+  execution_state: EXECUTABLE
+  previous_checkpoint: NONE
+  previous_join: null
+  previous_replan: null
+replan_inheritance: null
+git_basis:
+  expected_branch: feat/issue-162-semantic-workbench-core
+  material_ref: 143052823ba0cab69f9d5783010906bbae9b120a
+  base_branch: main
+  base_observed_ref: 843ec2d8d6faa2b8de15795ed1535905e4efc8a8
+  drift_policy: OWNER_EXCEPTION
+  drift_receipt: agents/relay/drift/DRIFT-0162-RM0008.yaml
+roadmap_source:
+  roadmap_id: RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER
+  roadmap_revision: RM-0002
+  objective: OBJ-TOPIC-ATLAS-COMPLETE
+  phase: PHASE-TAKEOVER-RECONCILIATION
+  work_package: WP-162-BROWSER-RUNTIME-PROOF
+  generated_from_frontier: false
+  task_admission:
+    disposition: MAPPED_EXISTING_WP
+    searched_paths:
+    - agents/relay/REPO_STATE.yaml
+    - agents/relay/roadmap/OVERALL_ROADMAP.yaml
+    - agents/relay/roadmap/PROGRESS.yaml
+    - agents/relay/roadmap/ISSUE_GRAPH.yaml
+    - agents/relay/roadmap/owner-decisions/
+    durable_basis:
+    - WP-162-BROWSER-RUNTIME-PROOF already owns falsifiable semantic workbench browser/runtime proof.
+    - ODR-0162-ADVANCE-SEMANTIC-IDENTITY records the Owner-authorized stronger 156 ÷ 12 identity falsifier.
+    - No new product concept or neighbouring issue ownership is introduced.
+outcome:
+  user_visible:
+  - The long-division witness distinguishes the original dividend 156 from the learner-established partial dividend 15, then derives quotient digit 1 from the correct semantic sources.
+  engineering:
+  - Prove whether the existing generic entity/projection/adapter-patch/history model already supports creation, correspondence, provenance, undo and redo for a newly established intermediate semantic entity.
+context_capsule:
+  product_goal: Strengthen the smallest semantic-identity falsifier before adding any new Core architecture.
+  roadmap_position: Fifth bounded #162 Core proof slice; prior browser, correspondence, text-summary and redo slices are green while merge reconciliation remains deferred.
+  why_this_work_exists: The current fixture labels a projection of dividend-156 as "Use the leading 15 as the first partial dividend", so it does not prove that the newly established partial dividend 15 can have its own semantic identity, provenance and reversible lifecycle.
+  current_architecture: WorkbenchRuntime can atomically add entities/projections supplied by an adapter, validate source provenance against existing entities, inspect linked projections by entity identity, and undo/redo validated snapshots without adapter replay.
+  prior_owner_decisions:
+  - ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT
+  - ODR-0162-ADVANCE-REDO
+  - ODR-0162-ADVANCE-SEMANTIC-IDENTITY
+  current_implementation_state: Material Core code is unchanged since the green redo proof; the live branch head contains only later relay/handover bookkeeping.
+  known_problems:
+  - The existing division witness conflates the textual idea "leading 15" with a projection of semantic entity dividend-156.
+  deliberate_non_goals:
+  - No arithmetic-specific Core API or entity type.
+  - No generic derivation taxonomy in Core.
+  - No pedagogy progression engine.
+  - No renderer plugin architecture.
+  - No second-domain or external-host proof.
+  - No merge/rebase reconciliation in this slice.
+repository_discovery:
+- id: DSTEP-I01
+  action: TRACE
+  targets:
+  - tests/fixtures/workbench/arithmetic-division.json
+  - tests/workbench_runtime.test.mjs
+  - tests/fixtures/workbench/browser-host.html
+  question: Where is the semantic identity of the leading 15 currently represented, and which later quotient provenance depends on that representation?
+  expected_outputs:
+  - current 156 projection identity
+  - current quotient source provenance
+  - exact place where 15 is only text
+  receipt_required: false
+  on_failure: Stop if the witness no longer has the reported conflation.
+- id: DSTEP-I02
+  action: VERIFY
+  targets:
+  - Shared/workbench/runtime.mjs
+  question: Can the existing addEntities/addProjections patch plus provenance and history model express 156 -> partial-dividend-15 -> quotient-digit-1 without a new runtime primitive?
+  expected_outputs:
+  - supported patch sequence
+  - provenance constraints
+  - undo/redo behavior
+  receipt_required: false
+  on_failure: Only then admit the smallest generic runtime change needed by the falsifier.
+inputs:
+- id: INPUT-I01
+  name: Green Core material basis
+  description: Existing generic Core after redo proof and before the stronger identity witness.
+  authority: PR #165 branch evidence
+  source: 048fad16634bdadc0d0adf21230b8047eed59b78
+  value: 048fad16634bdadc0d0adf21230b8047eed59b78
+  type: git material ref
+  units: NA
+  editable: true
+  applicability: CURRENT_EP_REQUIRED
+  resolution: READY
+  consumers: [STEP-I01, STEP-I02]
+  validation:
+  - Guardrails on the redo material head and later relay-only branch head are green.
+  stale_if:
+  - Shared/workbench runtime semantics change outside this EP.
+- id: INPUT-I02
+  name: Stronger 156 ÷ 12 falsifier
+  description: The learner establishes leading 15 as a semantic intermediate distinct from 156 before deriving the first quotient digit.
+  authority: OWNER_REQUIREMENT
+  source: ODR-0162-ADVANCE-SEMANTIC-IDENTITY
+  value: "156 -> partial-dividend-15 -> quotient-digit-1, with divisor-12 as the second quotient source"
+  type: semantic witness contract
+  units: semantic identities
+  editable: false
+  applicability: CURRENT_EP_REQUIRED
+  resolution: READY
+  consumers: [STEP-I01, STEP-I02]
+  validation:
+  - No arithmetic-specific runtime vocabulary is required merely to state the identity/provenance relation.
+  stale_if:
+  - Owner changes the #162 semantic-identity requirement.
+benchmarks: []
+scope:
+  allowed:
+  - path: tests/fixtures/workbench/**
+    reason: Strengthen the division witness without editing canonical curriculum content.
+  - path: tests/workbench_runtime.test.mjs
+    reason: Prove intermediate semantic identity, provenance and reversible lifecycle.
+  - path: tests/workbench_browser.test.mjs
+    reason: Prove the stronger lifecycle in real Chrome if the unit falsifier survives.
+  - path: Shared/workbench/runtime.mjs
+    reason: Change only if the stronger generic witness cannot be represented by the current entity/projection/patch model.
+  - path: Shared/workbench/semantic-workbench.mjs
+    reason: Change only if browser proof exposes a generic interaction defect.
+  - path: docs/architecture-manifest.json
+    reason: Refresh generated evidence if tracked source changes require it.
+  - path: agents/relay/**
+    reason: Record task admission, evidence and successor state.
+  allowed_reads:
+  - path: Shared/workbench/README.md
+    reason: Reconcile public Core claims with the strengthened witness.
+  protected:
+  - invariant: Semantic entity 156 remains distinct from semantic entity 15.
+    reason: A learner-established intermediate cannot be represented as merely a relabelled projection of the original quantity.
+  - invariant: Academic validity remains adapter-owned.
+    reason: Core must not calculate partial dividends or quotient digits.
+  - invariant: New Core machinery requires a failing generic falsifier.
+    reason: Improvement must remain minimal rather than architecture-driven.
+  - invariant: Undo/redo restore recorded semantic state without adapter replay.
+    reason: Preserve the green reversible-history contract.
+  prohibited:
+  - domain: learner evidence/support routing
+    reason: Owned by Issue #159.
+  - domain: canonical NLM/Atlas authoring
+    reason: Owned by Issue #160.
+  - domain: portability/compiler/offline/cross-domain integration
+    reason: Owned by Issue #163.
+  owner_reserved:
+  - decision: Merge PR #165
+    reason: Merge/base reconciliation remains explicitly deferred.
+anti_drift:
+  do_not:
+  - id: ADR-I01
+    restriction: Do not add partialDividend, quotientDigit, placeValue or other arithmetic-specific fields/types to Shared/workbench Core.
+    reason: Subject semantics belong to fixture/adapter data, not Core.
+  - id: ADR-I02
+    restriction: Do not introduce a new runtime operation if two existing adapter-approved add-entity transactions can express the witness truthfully.
+    reason: The falsifier must earn architecture.
+  stale_if:
+  - id: STALE-I01
+    condition: Owner revokes #162 continuation or changes ownership.
+    effect: STOP
+    rationale: Execution authority would change.
+implementation_plan:
+- id: STEP-I01
+  objective: Add a stronger division witness that creates partial-dividend-15 as a distinct entity and derives quotient-digit-1 from that intermediate plus divisor-12 using the existing runtime.
+  targets:
+  - tests/fixtures/workbench/
+  - tests/workbench_runtime.test.mjs
+  inputs: [INPUT-I01, INPUT-I02]
+  acceptance: [AC-I01, AC-I02]
+  tests: [TEST-I01]
+  expected_state: The stronger witness passes without a Shared/workbench runtime API change; if it fails structurally, the failure identifies the smallest missing generic primitive.
+  stop_conditions:
+  - Stop before changing Core if the failure is only fixture/adapter authoring.
+- id: STEP-I02
+  objective: Carry the stronger identity lifecycle through the browser witness and run exact-head guardrails without regressing prior interaction/focus/history contracts.
+  targets:
+  - tests/fixtures/workbench/browser-host.html
+  - tests/workbench_browser.test.mjs
+  - docs/architecture-manifest.json
+  inputs: [INPUT-I01, INPUT-I02]
+  acceptance: [AC-I02, AC-I03]
+  tests: [TEST-I02, TEST-I03]
+  expected_state: Real Chrome proves the intermediate identity can be created, inspected/selected, used for the quotient transaction, undone and redone with existing modality contracts intact.
+  stop_conditions:
+  - Stop if browser proof requires subject-specific component behavior.
+next_work:
+  phase_transition: false
+  steps:
+  - order: 1
+    action: Execute STEP-I01 first; do not edit runtime unless the stronger unit falsifier cannot be represented generically.
+    targets:
+    - tests/fixtures/workbench/
+    - tests/workbench_runtime.test.mjs
+    inputs: [INPUT-I01, INPUT-I02]
+    tests: [TEST-I01]
+    benchmarks: []
+    acceptance: [AC-I01, AC-I02]
+    expected_result: Existing Core either proves the truthful 156 -> 15 -> 1 lifecycle or produces a precise structural failure.
+    stop_if:
+    - The only failure is test-fixture authoring rather than Core expressiveness.
+  - order: 2
+    action: Extend the real-browser witness only after STEP-I01 resolves the Core-vs-proof question.
+    targets:
+    - tests/fixtures/workbench/browser-host.html
+    - tests/workbench_browser.test.mjs
+    inputs: [INPUT-I01, INPUT-I02]
+    tests: [TEST-I02, TEST-I03]
+    benchmarks: []
+    acceptance: [AC-I02, AC-I03]
+    expected_result: Browser behavior preserves prior contracts while exercising the new intermediate semantic identity.
+    stop_if:
+    - A subject-specific rendering or learner-routing feature would be required.
+qualification_boundary:
+  required: false
+  trigger: null
+  from_phase: null
+  to_phase: null
+  changed_dimensions: []
+  basis:
+  - Same Issue #162 work package, same generic Core authority boundary and same adapter-owned academic validity.
+  question_set: null
+quality:
+  applicable:
+  - blueprint: software-design
+    reason: The slice falsifies the boundary between semantic entity identity and representation identity.
+    review_focus: [identity ownership, provenance, minimality]
+  - blueprint: coding
+    reason: Test fixtures/adapters and possibly generic runtime code may change.
+    review_focus: [no subject vocabulary in Core, atomic patches]
+  - blueprint: testing
+    reason: The improvement is primarily a stronger executable falsifier.
+    review_focus: [156-vs-15 identity, provenance, undo/redo, browser regression]
+  - blueprint: code-review
+    reason: A misleading fixture can create false confidence in the generic identity model.
+    review_focus: [witness truthfulness, claimed-vs-enforced invariants]
+  - blueprint: github-delivery
+    reason: Continues on draft PR #165 under an explicit Owner drift exception.
+    review_focus: [exact-head evidence, stale merge conflict visibility, PR correlation]
+  not_applicable:
+  - blueprint: ui-ux
+    reason: No new interaction design is intended; the browser step reuses existing controls.
+  - blueprint: accessibility
+    reason: No new accessibility contract is intended; prior focus/text/non-colour behavior is regression-tested.
+  - blueprint: performance
+    reason: Small test/runtime state changes have no performance target.
+  - blueprint: migration
+    reason: No persisted production data or schema migration.
+  - blueprint: engineering-numerics
+    reason: Arithmetic truth remains fixture adapter data; Core performs no numerical method.
+  review_contract:
+    required: true
+    required_before_checkpoint: true
+    receipt_namespace: QRV-
+    required_outputs: [procedure_results, findings, owner_report, successor_handover]
+  findings_policy: Quality findings remain quality state unless they map to a hard-stop condition.
+  ordinary_findings_are_hard_stops: false
+acceptance:
+- id: AC-I01
+  description: The stronger witness represents partial-dividend-15 as a distinct semantic entity derived from dividend-156, never as a projection that shares dividend-156 identity.
+  weight: 40
+  verification: [TEST-I01, TEST-I02]
+- id: AC-I02
+  description: Quotient-digit-1 is derived from partial-dividend-15 plus divisor-12, and undo/redo remove/restore the intermediate/result identities without adapter replay or ID conflation.
+  weight: 40
+  verification: [TEST-I01, TEST-I02]
+- id: AC-I03
+  description: Existing browser modality, correspondence, text-summary, responsive, reduced-motion, isolation and repository guardrails remain green without subject-specific Core branching.
+  weight: 20
+  verification: [TEST-I02, TEST-I03]
+validation:
+- id: TEST-I01
+  class: MUST_PASS
+  method: node --test tests/workbench_runtime.test.mjs
+  proves: [AC-I01, AC-I02]
+- id: TEST-I02
+  class: MUST_PASS
+  method: node --test tests/workbench_browser.test.mjs in GitHub Actions Chrome
+  proves: [AC-I01, AC-I02, AC-I03]
+- id: TEST-I03
+  class: MUST_PASS
+  method: Grade9V3 guardrails on the exact coding head
+  proves: [AC-I03]
+failure_and_stop_conditions:
+  hard_stop_categories: [OWNER_DECISION_REQUIRED, AUTHORITY_VIOLATION, PROTECTED_INVARIANT_FAILURE, UNSAFE_ENGINEERING_RESULT]
+report_contract:
+  sections: [Executive state, Progress, Work completed, Acceptance matrix, Tests and evidence, Known limitations, Exact next actions]
+  payloads: []
+checkpoint_contract:
+  required: true
+successor_relay:
+  required: true
+  duties: [reconcile current roadmap node, create checkpoint, update progress, compute next executable frontier]
+  required_outputs: [checkpoint, progress_reconciliation, next_frontier, successor_ep_or_terminal_disposition]
