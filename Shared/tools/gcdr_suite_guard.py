@@ -41,10 +41,14 @@ def load_bank(path: Path, fmt: str) -> list[dict]:
     if fmt == "JSON":
         data = json.loads(text)
     elif fmt == "WINDOW_JEE_QUESTIONS_DATA_JS":
-        match = re.search(r"window\.JEE_QUESTIONS_DATA\s*=\s*(\[.*?\])\s*;", text, re.S)
+        match = re.search(r"window\.JEE_QUESTIONS_DATA\s*=\s*", text)
         if not match:
-            raise ValueError("cannot parse window.JEE_QUESTIONS_DATA")
-        data = json.loads(match.group(1))
+            raise ValueError("cannot locate window.JEE_QUESTIONS_DATA assignment")
+        payload = text[match.end():].lstrip()
+        try:
+            data, _ = json.JSONDecoder().raw_decode(payload)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"cannot parse window.JEE_QUESTIONS_DATA: {exc}") from exc
     else:
         raise ValueError(f"unsupported diagnostic source format {fmt!r}")
     if not isinstance(data, list):
