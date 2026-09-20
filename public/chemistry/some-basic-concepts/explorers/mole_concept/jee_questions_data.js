@@ -67,7 +67,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds massN2, massH2 only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 56.7 g NH₃, 9.3 g N₂ remaining (Option A).",
+    "takeaway": "Transfer rule: start from Moles n = mass / Molar mass; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "CHEM02-Q02",
@@ -127,7 +136,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds tempC only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Molality, Mole fraction, and Mass percentage (% w/w) (Option B).",
+    "takeaway": "Transfer rule: start from V = V(T) due to thermal expansion, while mass m is temperature-invariant; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "CHEM02-Q03",
@@ -191,7 +209,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds yield1, yield2 only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 3.00 mol (Option A).",
+    "takeaway": "Transfer rule: start from Overall Fractional Yield Y_overall = Y₁ × Y₂; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "CHEM02-Q04",
@@ -250,7 +277,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "The current ExamSIDE listing for JEE Main 2026 Online 8 April Evening does not contain this eudiometry item; the stated attribution is not accepted as verified."
+    "sourceAuditNote": "The current ExamSIDE listing for JEE Main 2026 Online 8 April Evening does not contain this eudiometry item; the stated attribution is not accepted as verified.",
+    "teacherCheck": "Independent check: recompute the stated quantities from the stem instead of forcing an option. The local audit result is No listed option — stated data imply C₄H₆.",
+    "takeaway": "Transfer rule: start from C_x H_y + (x + y/4) O₂ → x CO₂ + (y/2) H₂O(l); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "CHEM02-Q05",
@@ -308,7 +344,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select C₂H₄O₂ (Option B).",
+    "takeaway": "Transfer rule: start from Molecular Mass = 2 × Vapour Density; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "CHEM02-Q06",
@@ -363,7 +408,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 0.617 m (Option A).",
+    "takeaway": "Transfer rule: start from Molality m = (moles of solute) / (mass of solvent in kg); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "CHEM02-Q07",
@@ -424,7 +478,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds massG only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 1.807 × 10²³ atoms (Option A).",
+    "takeaway": "Transfer rule: start from Total Atoms = (mass / M) × N_A × (atomicity); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "CHEM02-Q08",
@@ -481,7 +544,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 2.33 g (Option A).",
+    "takeaway": "Transfer rule: start from BaCl₂ + Na₂SO₄ → BaSO₄(s)↓ + 2 NaCl; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "MOLE-Q09",
@@ -538,7 +610,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select Molarity (Option A).",
+    "takeaway": "Transfer rule: start from Molarity M = (Moles of solute) / (Volume of solution in L); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "MOLE-Q10",
@@ -595,7 +676,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select C₄H₁₀ (Option A).",
+    "takeaway": "Transfer rule: start from C_x H_y + (x + y/4) O₂ → x CO₂ + (y/2) H₂O; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "MOLE-Q11",
@@ -652,7 +742,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 1.82 × 10⁶ mol (Option A).",
+    "takeaway": "Transfer rule: start from Moles = (Total number of electrons) / N_A = M_total / (m_e × N_A); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "MOLE-Q12",
@@ -715,7 +814,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 56.7 g (Option A).",
+    "takeaway": "Transfer rule: start from N₂ + 3 H₂ → 2 NH₃; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "MOLE-Q13",
@@ -772,7 +880,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 2.92 m (Option A).",
+    "takeaway": "Transfer rule: start from Molality m = (X_solute × 1000) / ((1 - X_solute) × M_solvent); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "MOLE-Q14",
@@ -835,7 +952,16 @@ window.JEE_QUESTIONS_DATA = [
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
     "simFidelityNote": "The simulator binds yield1, yield2 only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 4.0 moles (Option A).",
+    "takeaway": "Transfer rule: start from Overall Yield η_net = η₁ × η₂; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "MOLE-Q15",
@@ -897,7 +1023,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select C₂H₄O₂ (Option A).",
+    "takeaway": "Transfer rule: start from Molar Mass = 2 × Vapor Density; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "MOLE-Q16",
@@ -956,7 +1091,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 0.20 M (Option A).",
+    "takeaway": "Transfer rule: start from [H⁺] = (Total millimoles of H⁺) / (Total volume in mL); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "MOLE-Q17",
@@ -1015,7 +1159,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 6.90 M (Option A).",
+    "takeaway": "Transfer rule: start from Molarity M = (10 × x × d) / M_solute,  where x = % by mass, d = density in g/mL; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "MOLE-Q18",
@@ -1073,7 +1226,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 50% (Option A).",
+    "takeaway": "Transfer rule: start from CaCO₃ → CaO + CO₂; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "MOLE-Q19",
@@ -1134,7 +1296,16 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 30 mL (Option A).",
+    "takeaway": "Transfer rule: start from 2 CO(g) + O₂(g) → 2 CO₂(g); enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   },
   {
     "id": "MOLE-Q20",
@@ -1191,6 +1362,15 @@ window.JEE_QUESTIONS_DATA = [
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
     "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
-    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record.",
+    "teacherCheck": "Independent check: recompute the governing relation and verify that the stem constraints select 1.0 g of H₂ (Option A).",
+    "takeaway": "Transfer rule: start from Number of molecules N = (Mass / Molar Mass) × N_A ∝ 1 / M_molar for equal mass; enforce every structural, stoichiometric, charge or state constraint before comparing answer choices.",
+    "helperTags": [
+      "TEACHERS_CHALKBOARD",
+      "TRAP_ALERT",
+      "INDEPENDENT_CHECK",
+      "TRANSFER_TAKEAWAY",
+      "EXACTNESS_BADGE"
+    ]
   }
 ];
