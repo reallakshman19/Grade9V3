@@ -1,0 +1,40 @@
+schema_version: relay-v2.5
+id: ODR-0162-ADVANCE-SEMANTIC-IDENTITY
+decision:
+  authority: OWNER
+  kind: AUTHORIZATION
+  statement: >-
+    Continue the next bounded Issue #162 Core slice by strengthening the 156 ÷ 12
+    falsifier so the leading 15 is represented as a distinct semantic entity with
+    provenance and reversible lifecycle. First attempt the stronger witness using
+    the existing Core model; change Core only if that witness exposes a structural
+    inability. Keep merge/base reconciliation deferred and do not broaden into
+    pedagogy routing, renderer architecture, packaging, or another subject.
+  source: >-
+    Owner instruction in the active Grade9V3 engineering session on 2026-09-20:
+    "Start fix", following the explicit requirement to find the smallest justified
+    Core improvement and to use 156 ÷ 12 as the semantic falsifier.
+effects:
+  requirement_disposition: NOT_APPLICABLE
+  grants_material_write_authority: true
+  pending_items:
+  - Prior browser-proof final post-rebase exact-head acceptance remains pending.
+  - PR #165 merge/base and relay custody reconciliation remains required before merge.
+delivery_authorization: null
+impact:
+  class: [LOCAL, EXECUTION_GOVERNANCE, PROTOCOL_EXCEPTION]
+affected:
+  objectives: [OBJ-TOPIC-ATLAS-COMPLETE]
+  phases: [PHASE-TAKEOVER-RECONCILIATION]
+  work_packages: [WP-162-BROWSER-RUNTIME-PROOF]
+  execution_packages: [EP-0162-SEMANTIC-IDENTITY-PROOF]
+  issues: [ISSUE-162]
+required_reconciliation:
+- Model partial-dividend 15 as a distinct entity if the existing generic entity/projection/patch model can express it.
+- Preserve dividend 156 identity; do not relabel a projection of 156 as though it were semantic entity 15.
+- Derive the quotient from the established partial-dividend entity plus divisor when the witness reaches that step.
+- Prove undo/redo preserve the created semantic identities without adapter replay.
+- Do not add arithmetic-specific runtime vocabulary or a new Core primitive unless the stronger witness fails without one.
+- Keep Issue #159 learner routing, Issue #160 NLM/Atlas authoring, and Issue #163 portability/integration outside this slice.
+- Keep PR #165 draft until merge/base reconciliation is complete.
+status: APPLIED
