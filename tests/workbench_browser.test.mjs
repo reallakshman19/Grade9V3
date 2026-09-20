@@ -396,9 +396,10 @@ test("real browser semantic interaction contract", { skip: !driverPath, timeout:
     await new Promise((resolveDelay) => setTimeout(resolveDelay, 100));
     const beforeResponsive = await driver.execute("return window.workbenchHarness.snapshot('primary');");
     const narrow = await driver.execute("return window.workbenchHarness.metrics('primary');");
-    assert.equal(narrow.columnCount, 1);
+    assert.deepEqual(narrow.columnCounts, [1, 1]);
     assert.ok(Math.abs(narrow.sourceLeft - narrow.targetLeft) < 2, JSON.stringify(narrow));
-    assert.ok(narrow.targetTop > narrow.sourceTop, JSON.stringify(narrow));
+    assert.ok(Math.abs(narrow.targetTop - narrow.sourceTop) > 40, JSON.stringify(narrow));
+    assert.notEqual(narrow.sourceGrid, narrow.targetGrid);
     const afterResponsive = await driver.execute("return window.workbenchHarness.snapshot('primary');");
     assert.deepEqual(afterResponsive, beforeResponsive);
 
