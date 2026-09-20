@@ -373,6 +373,16 @@
         "residual",
         "pass_fail"
       ]
+    },
+    {
+      "id": "TURNING_POINT_MARKER",
+      "role": "Velocity-reversal event cue",
+      "required_outputs": [
+        "event_condition_v_equals_zero",
+        "position_at_event",
+        "acceleration_at_event",
+        "before_after_velocity_sign"
+      ]
     }
   ]
 }
