@@ -1,0 +1,288 @@
+schema_version: relay-v2.5
+identity:
+  ep_id: EP-0162-CORRESPONDENCE-PROOF
+  branch: feat/issue-162-semantic-workbench-core
+  base_ref: 8c8c9793280eee315498d016a73adf3a3734b9a5
+  execution_state: EXECUTABLE
+  previous_checkpoint: NONE
+  previous_join: null
+  previous_replan: null
+replan_inheritance: null
+git_basis:
+  expected_branch: feat/issue-162-semantic-workbench-core
+  material_ref: 8c8c9793280eee315498d016a73adf3a3734b9a5
+  base_branch: main
+  base_observed_ref: 843ec2d8d6faa2b8de15795ed1535905e4efc8a8
+  drift_policy: OWNER_EXCEPTION
+  drift_receipt: agents/relay/drift/DRIFT-0162-RM0008.yaml
+roadmap_source:
+  roadmap_id: RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER
+  roadmap_revision: RM-0002
+  objective: OBJ-TOPIC-ATLAS-COMPLETE
+  phase: PHASE-TAKEOVER-RECONCILIATION
+  work_package: WP-162-BROWSER-RUNTIME-PROOF
+  generated_from_frontier: false
+outcome:
+  user_visible:
+  - Inspecting one representation exposes its linked representations of the same semantic entity across logical grids without relying on color alone.
+  engineering:
+  - Correspondence becomes an explicit runtime/event contract rather than an incidental CSS side effect.
+context_capsule:
+  product_goal: Make semantic identity observable across multiple representations while keeping rendering, domain validity, learner routing, and canonical authoring separate.
+  roadmap_position: Successor Core slice under Issue #162; prior browser-proof merge-head validation remains deferred by Owner direction.
+  why_this_work_exists: The current runtime can render multiple projections for one entity and visually activates them together, but INSPECT does not identify its projection of origin or explicitly enumerate linked projections for hosts/renderers.
+  current_architecture: WorkbenchRuntime stores entity/projection identity and SemanticWorkbench renders projections in one or more named logical grids using Shadow DOM.
+  prior_owner_decisions:
+  - ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT authorizes bounded Core coding despite deferred merge reconciliation.
+  - ODR-0162-DEFER-MERGE-ADVANCE-CORRESPONDENCE authorizes this successor while prior AC-05 remains pending.
+  current_implementation_state: Real Chrome and 934 repository tests pass on head 8c8c9793280eee315498d016a73adf3a3734b9a5; PR #165 remains draft/conflicted with current main.
+  known_problems:
+  - ENTITY_INSPECTED exposes entityRef but not projectionRef or linked projection refs.
+  - Correspondence visual state is not explicitly labelled for non-color interpretation.
+  - Multiple logical grids are supported by data structures but not explicitly falsified by the current fixture.
+  deliberate_non_goals:
+  - No new academic domain.
+  - No canonical package compiler or external host.
+  - No learner evidence/mastery semantics.
+  - No full accessibility certification.
+  terminology:
+    Projection: A rendered representation of one semantic entity.
+    Correspondence: The relation among projections sharing one semantic entity identity.
+repository_discovery:
+- id: DSTEP-C01
+  action: INSPECT
+  targets:
+  - Shared/workbench/runtime.mjs
+  - Shared/workbench/semantic-workbench.mjs
+  question: What inspection/correspondence behavior already exists and what is merely incidental?
+  expected_outputs:
+  - current INSPECT event/state shape
+  - projection rendering/state markers
+  receipt_required: false
+  on_failure: Stop correspondence work until the actual runtime boundary is understood.
+- id: DSTEP-C02
+  action: VERIFY
+  targets:
+  - tests/fixtures/workbench/arithmetic-division.json
+  - tests/workbench_runtime.test.mjs
+  - tests/workbench_browser.test.mjs
+  question: Can the existing long-division witness prove cross-grid correspondence without introducing another subject?
+  expected_outputs:
+  - one entity with at least two projections across distinct logical grids
+  - browser and unit falsifiers for linked projection state
+  receipt_required: false
+  on_failure: Do not add a second domain merely to satisfy this EP.
+inputs:
+- id: INPUT-C01
+  name: Green browser-proof material basis
+  description: Current Core/browser implementation before correspondence changes.
+  authority: PR #165 exact-head guardrails
+  source: 8c8c9793280eee315498d016a73adf3a3734b9a5
+  value: 8c8c9793280eee315498d016a73adf3a3734b9a5
+  type: git material ref
+  units: NA
+  editable: true
+  applicability: CURRENT_EP_REQUIRED
+  resolution: READY
+  consumers: [STEP-C01, STEP-C02]
+  validation:
+  - Guardrails run 3254 passed real-browser workbench tests, 934 repository tests, generated artifacts, topic-independence and JSON checks.
+  stale_if:
+  - The semantic inspection/projection API changes outside this EP.
+- id: INPUT-C02
+  name: Issue 162 correspondence boundary
+  description: Issue #162 requires hover/focus correspondence across representations and multiple grids while #163 owns cross-domain/external-host proof.
+  authority: Live Issue #162 revalidated ownership
+  source: https://github.com/reallaksh19/Grade9V3/issues/162
+  value: Core correspondence only; no second domain or portability claim.
+  type: scope authority
+  units: NA
+  editable: false
+  applicability: CURRENT_EP_REQUIRED
+  resolution: READY
+  consumers: [STEP-C01, STEP-C02]
+  validation:
+  - Current issue ownership comments remain unchanged.
+  stale_if:
+  - Owner changes Issue #162 ownership.
+benchmarks: []
+scope:
+  allowed:
+  - path: Shared/workbench/runtime.mjs
+    reason: Make semantic correspondence explicit in inspection state/events.
+  - path: Shared/workbench/semantic-workbench.mjs
+    reason: Render origin/linked projection states accessibly and send projection identity into INSPECT.
+  - path: tests/fixtures/workbench/arithmetic-division.json
+    reason: Reuse the same witness across two logical grids.
+  - path: tests/workbench_runtime.test.mjs
+    reason: Add deterministic correspondence/event falsifiers.
+  - path: tests/workbench_browser.test.mjs
+    reason: Prove linked projection state and cross-grid transfer in real Chrome.
+  - path: docs/architecture-manifest.json
+    reason: Refresh generated architecture evidence.
+  - path: agents/relay/**
+    reason: Record execution/evidence honestly.
+  allowed_reads:
+  - path: Shared/library/package.schema.json
+    reason: Ensure runtime correspondence does not replace canonical correspondence authoring.
+  protected:
+  - invariant: Runtime correspondence is derived only from stable entity/projection identity and does not invent academic relations.
+    reason: Canonical representation/correspondence authoring remains outside Core.
+  - invariant: Host-facing inspection events contain serializable semantic identifiers and no DOM nodes.
+    reason: Preserve the detachable public boundary.
+  prohibited:
+  - domain: second academic subject fixture
+    reason: Cross-subject proof belongs to #163.
+  - domain: learner evidence/mastery
+    reason: Owned by #159.
+  - domain: NLM authoring
+    reason: Owned by #160.
+  owner_reserved:
+  - decision: Merge PR #165
+    reason: Deferred merge/base reconciliation remains required.
+anti_drift:
+  do_not:
+  - id: ADR-C01
+    restriction: Do not create a second correspondence authoring graph in Core.
+    reason: Core may expose runtime identity links but canonical correspondence remains package authority.
+  - id: ADR-C02
+    restriction: Do not broaden the fixture to chemistry/calculus or an external host.
+    reason: Keep this as a Core falsifier rather than #163 integration work.
+  stale_if:
+  - id: STALE-C01
+    condition: Owner revokes the continuation exception or changes Issue #162 ownership.
+    effect: STOP
+    rationale: This successor depends on the explicit continuation authorization.
+implementation_plan:
+- id: STEP-C01
+  objective: Make inspection correspondence explicit in runtime state/events and renderer projection markers.
+  targets:
+  - Shared/workbench/runtime.mjs
+  - Shared/workbench/semantic-workbench.mjs
+  - tests/workbench_runtime.test.mjs
+  inputs: [INPUT-C01, INPUT-C02]
+  acceptance: [AC-C01, AC-C02, AC-C04]
+  tests: [TEST-C01]
+  expected_state: ENTITY_INSPECTED identifies the origin projection and linked projection refs; all linked projections expose non-color correspondence state.
+  stop_conditions:
+  - Stop if correspondence requires subject-specific relation semantics beyond shared entity identity.
+- id: STEP-C02
+  objective: Prove correspondence and cross-grid interaction in real Chrome using the existing long-division witness.
+  targets:
+  - tests/fixtures/workbench/arithmetic-division.json
+  - tests/workbench_browser.test.mjs
+  - docs/architecture-manifest.json
+  inputs: [INPUT-C01, INPUT-C02]
+  acceptance: [AC-C01, AC-C02, AC-C03, AC-C04]
+  tests: [TEST-C01, TEST-C02, TEST-C03]
+  expected_state: Focus/hover on one projection marks its linked projection in another grid; transfer still succeeds across grids and host events stay serializable.
+  stop_conditions:
+  - Stop if the proof requires another subject, external host, or canonical schema change.
+next_work:
+  phase_transition: false
+  steps:
+  - order: 1
+    action: Execute STEP-C01 then STEP-C02 on PR #165 under the Owner continuation exception.
+    targets:
+    - Shared/workbench/runtime.mjs
+    - Shared/workbench/semantic-workbench.mjs
+    - tests/fixtures/workbench/arithmetic-division.json
+    - tests/workbench_runtime.test.mjs
+    - tests/workbench_browser.test.mjs
+    inputs: [INPUT-C01, INPUT-C02]
+    tests: [TEST-C01, TEST-C02, TEST-C03]
+    benchmarks: []
+    acceptance: [AC-C01, AC-C02, AC-C03, AC-C04]
+    expected_result: Cross-projection correspondence is explicit, browser-proven, and remains subject-neutral.
+    stop_if:
+    - A new domain or canonical-authoring graph is required.
+qualification_boundary:
+  required: false
+  trigger: null
+  from_phase: null
+  to_phase: null
+  changed_dimensions: []
+  basis:
+  - Same Issue #162 work package and same generic Core boundary; no phase or authority-domain transition.
+  question_set: null
+quality:
+  applicable:
+  - blueprint: software-design
+    reason: Makes semantic correspondence an explicit Core contract.
+    review_focus: [identity ownership, canonical-authority separation]
+  - blueprint: coding
+    reason: Runtime and Web Component code changes.
+    review_focus: [state/event shape, no DOM leakage]
+  - blueprint: ui-ux
+    reason: Linked/origin representation state must be understandable without color alone.
+    review_focus: [correspondence discoverability, focus behavior]
+  - blueprint: testing
+    reason: Adds unit and real-browser falsifiers.
+    review_focus: [cross-grid linkage, event serialization, negative mismatched projection case]
+  - blueprint: accessibility
+    reason: Focus inspection and non-color correspondence labels are directly affected.
+    review_focus: [focus parity, textual state labels]
+  - blueprint: github-delivery
+    reason: Continues on PR #165 under a recorded Owner exception.
+    review_focus: [exact-head evidence, pending merge conflict remains visible]
+  not_applicable:
+  - blueprint: engineering-numerics
+    reason: No numerical authority changes.
+  - blueprint: code-review
+    reason: No separate independent code-review acceptance is introduced for this bounded slice.
+  - blueprint: performance
+    reason: No performance target changes.
+  - blueprint: migration
+    reason: No persisted/canonical/production migration.
+  review_contract:
+    required: true
+    required_before_checkpoint: true
+    receipt_namespace: QRV-
+    required_outputs: [procedure_results, findings, owner_report, successor_handover]
+  findings_policy: Quality findings remain quality state unless they map to a hard-stop condition.
+  ordinary_findings_are_hard_stops: false
+acceptance:
+- id: AC-C01
+  description: INSPECT validates projection origin identity and emits serializable entityRef, projectionRef and all linked projection refs for that semantic entity.
+  weight: 30
+  verification: [TEST-C01]
+- id: AC-C02
+  description: Focus/hover on one projection exposes explicit origin/linked states on every projection sharing the entity identity, including across separate logical grids and without color as the only cue.
+  weight: 30
+  verification: [TEST-C02]
+- id: AC-C03
+  description: The same long-division semantic transfer succeeds across two logical grids through the existing Core transaction path.
+  weight: 20
+  verification: [TEST-C02]
+- id: AC-C04
+  description: Topic-independence, existing runtime tests, generated artifacts and full repository guardrails remain green with no subject-specific Core branch or canonical schema change.
+  weight: 20
+  verification: [TEST-C01, TEST-C03]
+validation:
+- id: TEST-C01
+  class: MUST_PASS
+  method: node --test tests/workbench_runtime.test.mjs
+  proves: [AC-C01, AC-C04]
+- id: TEST-C02
+  class: MUST_PASS
+  method: node --test tests/workbench_browser.test.mjs in GitHub Actions Chrome 152
+  proves: [AC-C02, AC-C03]
+- id: TEST-C03
+  class: MUST_PASS
+  method: Grade9V3 guardrails on the exact coding head
+  proves: [AC-C04]
+failure_and_stop_conditions:
+  hard_stop_categories:
+  - OWNER_DECISION_REQUIRED
+  - AUTHORITY_VIOLATION
+  - PROTECTED_INVARIANT_FAILURE
+  - UNSAFE_ENGINEERING_RESULT
+report_contract:
+  sections: [Executive state, Progress, Work completed, Acceptance matrix, Tests and evidence, Known limitations, Exact next actions]
+  payloads: []
+checkpoint_contract:
+  required: true
+successor_relay:
+  required: true
+  duties: [reconcile current roadmap node, create checkpoint, update progress, compute next executable frontier]
+  required_outputs: [checkpoint, progress_reconciliation, next_frontier]
