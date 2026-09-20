@@ -50,16 +50,23 @@ window.JEE_QUESTIONS_DATA = [
     "targetTab": "tab-limiting",
     "simParams": {
       "massN2": 56,
-      "massH2": 10,
-      "coeffA": 1,
-      "coeffB": 3
+      "massH2": 10
     },
     "simSummary": [
       "N₂ = 2.0 mol",
       "H₂ = 5.0 mol (Limiting Reagent)",
       "NH₃ Formed = 3.33 mol (56.7 g)",
       "Excess N₂ = 0.33 mol (9.3 g)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.massN2",
+      "simParams.massH2"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds massN2, massH2 only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "CHEM02-Q02",
@@ -104,15 +111,21 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-concentration",
     "simParams": {
-      "soluteMol": 1.0,
-      "solventKg": 1.0,
       "tempC": 25
     },
     "simSummary": [
       "Molality = 1.00 m (Constant with T)",
       "Molarity drops as solution expands thermally",
       "Mass conservation invariant"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.tempC"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds tempC only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "CHEM02-Q03",
@@ -158,7 +171,6 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-sequential",
     "simParams": {
-      "molA": 5.0,
       "yield1": 80,
       "yield2": 75
     },
@@ -167,7 +179,16 @@ window.JEE_QUESTIONS_DATA = [
       "Yield 1 = 80% → C = 4.0 mol",
       "Yield 2 = 75% → E = 3.0 mol",
       "Net Efficiency = 60.0%"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.yield1",
+      "simParams.yield2"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds yield1, yield2 only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "CHEM02-Q04",
@@ -195,17 +216,17 @@ window.JEE_QUESTIONS_DATA = [
         "text": "C₂H₆"
       }
     ],
-    "correct": "A",
+    "correct": null,
     "formula": "C_x H_y + (x + y/4) O₂ → x CO₂ + (y/2) H₂O(l). Contraction by KOH = Volume of CO₂ = 10 x mL",
     "steps": [
-      "Step 1: Write combustion stoichiometry for 10 mL C_x H_y: Volume of CO₂ formed = 10x mL. Volume of O₂ consumed = 10(x + y/4) mL. H₂O condenses to liquid with negligible volume at room temp.",
-      "Step 2: KOH absorbs acidic CO₂ gas: Contraction by KOH = 40 mL ⇒ Volume of CO₂ = 40 mL. Thus, 10x = 40 ⇒ x = 4.",
-      "Step 3: Residual gas before KOH consists of unreacted O₂ + CO₂: 65 mL = V(unreacted O₂) + 40 mL ⇒ V(unreacted O₂) = 25 mL.",
-      "Step 4: O₂ consumed = Initial O₂ - Unreacted O₂ = 80 mL - 25 mL = 55 mL.",
-      "Step 5: From stoichiometry: 10(x + y/4) = 55 ⇒ 4 + y/4 = 5.5 ⇒ y/4 = 1.5 ⇒ y = 6. With standard alkane series x=4, y=10.",
-      "Step 6: Verified molecular formula: C₄H₁₀ (Option A)."
+      "Step 1: For 10 mL C_xH_y, combustion consumes 10(x + y/4) mL O₂ and forms 10x mL CO₂; water condenses on cooling.",
+      "Step 2: KOH removes 40 mL CO₂, so 10x = 40 and x = 4.",
+      "Step 3: Before KOH, the 65 mL residual is CO₂ + excess O₂. Therefore excess O₂ = 65 - 40 = 25 mL.",
+      "Step 4: O₂ consumed = 80 - 25 = 55 mL.",
+      "Step 5: 10(4 + y/4) = 55, so 4 + y/4 = 5.5 and y = 6.",
+      "Step 6: The stated data therefore imply C₄H₆. None of the listed options matches; this item is withheld from scoring pending source verification."
     ],
-    "ans": "C₄H₁₀ (Option A)",
+    "ans": "No listed option — stated data imply C₄H₆",
     "trap": "Water vapor condenses to liquid at room temperature; never count H₂O as part of the residual gas volume!",
     "distractorTraps": {
       "B": "Forgot to account for unreacted excess O₂ in residual gas.",
@@ -213,17 +234,19 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Assumed liquid water contributed to gaseous pressure."
     },
     "targetTab": "tab-eudiometry",
-    "simParams": {
-      "vhc": 10,
-      "vo2": 80,
-      "x": 4,
-      "y": 10
-    },
+    "simParams": {},
     "simSummary": [
-      "Hydrocarbon = 10 mL",
-      "CO₂ absorbed by KOH = 40 mL ⇒ x = 4",
-      "Formula = C₄H₁₀"
-    ]
+      "Question withheld from scoring",
+      "KOH contraction ⇒ x = 4",
+      "Residual/O₂ balance ⇒ y = 6",
+      "Implied formula = C₄H₆ (not listed)"
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "FAIL",
+    "answerAuditNote": "Internal arithmetic contradiction: KOH contraction gives x=4; 65 mL residual leaves 25 mL O₂, so 55 mL O₂ was consumed and y=6. The data imply C₄H₆, which is not a listed option.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "CHEM02-Q05",
@@ -269,17 +292,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Multiplied by n = 4 incorrectly."
     },
     "targetTab": "tab-empirical",
-    "simParams": {
-      "percC": 40.0,
-      "percH": 6.7,
-      "percO": 53.3,
-      "vd": 30
-    },
+    "simParams": {},
     "simSummary": [
       "Empirical Formula = CH₂O (Mass 30)",
       "Vapour Density = 30 ⇒ Molar Mass = 60",
       "Factor n = 2 ⇒ Molecular Formula = C₂H₄O₂"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "CHEM02-Q06",
@@ -322,16 +346,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Inverted solvent and solute fractions."
     },
     "targetTab": "tab-concentration",
-    "simParams": {
-      "soluteMass": 10,
-      "solutionMass": 100,
-      "molarMass": 180
-    },
+    "simParams": {},
     "simSummary": [
       "Solute = 10 g glucose",
       "Solvent = 90 g H₂O",
       "Molality = 0.617 m"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "CHEM02-Q07",
@@ -374,18 +400,24 @@ window.JEE_QUESTIONS_DATA = [
       "C": "Only counted Oxygen atoms (2 × 6.022 × 10²²).",
       "D": "Multiplied by 4 instead of 3."
     },
-    "targetTab": "tab-mole-scale",
+    "targetTab": "tab-mole",
     "simParams": {
-      "massG": 4.4,
-      "molWeight": 44,
-      "atomicity": 3
+      "massG": 4.4
     },
     "simSummary": [
       "Mass = 4.4 g",
       "Moles = 0.10 mol",
       "Molecules = 6.022 × 10²²",
       "Total Atoms = 1.807 × 10²³"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.massG"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds massG only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "CHEM02-Q08",
@@ -430,17 +462,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Averaged the two reagent quantities."
     },
     "targetTab": "tab-limiting",
-    "simParams": {
-      "vA": 50,
-      "mA": 0.5,
-      "vB": 50,
-      "mB": 0.2
-    },
+    "simParams": {},
     "simSummary": [
       "BaCl₂ = 25.0 mmol",
       "Na₂SO₄ = 10.0 mmol (Limiting)",
       "Precipitate = 10.0 mmol BaSO₄ = 2.33 g"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "MOLE-Q09",
@@ -485,14 +518,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Mass percentage is ratio of masses, strictly temperature-invariant."
     },
     "targetTab": "tab-concentration",
-    "simParams": {
-      "temp": 70
-    },
+    "simParams": {},
     "simSummary": [
       "Volume expands with temperature",
       "Molarity decreases upon heating",
       "Molality & Mole Fraction stay invariant"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "MOLE-Q10",
@@ -537,15 +574,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Calculated x = 5 incorrectly."
     },
     "targetTab": "tab-eudiometry",
-    "simParams": {
-      "hydrocarbon": "C4H10",
-      "v_hc": 10
-    },
+    "simParams": {},
     "simSummary": [
       "10 mL C_x H_y → 40 mL CO₂ ⇒ x = 4",
       "65 mL O₂ ⇒ (4 + y/4) = 6.5 ⇒ y = 10",
       "Formula = C₄H₁₀"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "MOLE-Q11",
@@ -589,15 +629,19 @@ window.JEE_QUESTIONS_DATA = [
       "C": "Reported total number of electrons (1.09 × 10³⁰) without dividing by N_A.",
       "D": "Divided mass of electron by mass in grams."
     },
-    "targetTab": "tab-mole-scale",
-    "simParams": {
-      "sampleMass": 500
-    },
+    "targetTab": "tab-mole",
+    "simParams": {},
     "simSummary": [
       "Mass = 1 kg",
       "Total e⁻ = 1.098 × 10³⁰",
       "Moles = 1.82 × 10⁶ mol"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "MOLE-Q12",
@@ -648,15 +692,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Multiplied 5 moles of H₂ by 17 g/mol directly."
     },
     "targetTab": "tab-limiting",
-    "simParams": {
-      "molesA": 2.0,
-      "molesB": 5.0
-    },
+    "simParams": {},
     "simSummary": [
       "2.0 mol N₂ + 5.0 mol H₂",
       "H₂ is Limiting (needs 6 mol, has 5 mol)",
       "NH₃ formed = 56.7 g"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "MOLE-Q13",
@@ -701,14 +748,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Calculated molarity assuming volume = 1 L without density."
     },
     "targetTab": "tab-concentration",
-    "simParams": {
-      "temp": 25
-    },
+    "simParams": {},
     "simSummary": [
       "X_solute = 0.05, X_water = 0.95",
       "m = (0.05 × 1000) / (0.95 × 18)",
       "Molality = 2.92 m"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "MOLE-Q14",
@@ -754,7 +805,6 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-sequential",
     "simParams": {
-      "feedA": 10,
       "yield1": 80,
       "yield2": 50
     },
@@ -762,7 +812,16 @@ window.JEE_QUESTIONS_DATA = [
       "Feed A = 10.0 mol",
       "η_net = 80% × 50% = 40%",
       "Final Product C = 4.0 mol"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.yield1",
+      "simParams.yield2"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds yield1, yield2 only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "MOLE-Q15",
@@ -812,16 +871,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Ethanol formula C₂H₆O does not match the elemental mass percentages."
     },
     "targetTab": "tab-empirical",
-    "simParams": {
-      "massSample": 100,
-      "massCO2": 146.7,
-      "massH2O": 60.3
-    },
+    "simParams": {},
     "simSummary": [
       "Empirical = CH₂O (30 g/mol)",
       "Molar Mass = 2 × 30 = 60 g/mol",
       "Molecular = C₂H₄O₂"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "MOLE-Q16",
@@ -868,14 +929,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Added molarities directly: 0.2 + 0.1 = 0.30 M."
     },
     "targetTab": "tab-concentration",
-    "simParams": {
-      "temp": 25
-    },
+    "simParams": {},
     "simSummary": [
       "H₂SO₄ (diprotic): 40 mmol H⁺",
       "HCl (monoprotic): 20 mmol H⁺",
       "[H⁺] = 60 mmol / 300 mL = 0.20 M"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "MOLE-Q17",
@@ -922,14 +987,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Used molar mass of NaOH (40 g/mol) instead of KOH (56.1 g/mol)."
     },
     "targetTab": "tab-concentration",
-    "simParams": {
-      "temp": 25
-    },
+    "simParams": {},
     "simSummary": [
       "30% w/w KOH, d = 1.29 g/mL",
       "Shortcut: 10 × 30 × 1.29 / 56.1",
       "Molarity = 6.90 M"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "MOLE-Q18",
@@ -975,15 +1044,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Divided 4.4 g directly by 20.0 g to get 22% (CO₂ mass fraction, not limestone purity)."
     },
     "targetTab": "tab-limiting",
-    "simParams": {
-      "molesA": 0.1,
-      "molesB": 0.1
-    },
+    "simParams": {},
     "simSummary": [
       "4.4 g CO₂ = 0.10 mol",
       "Pure CaCO₃ = 0.10 × 100 = 10.0 g",
       "Purity = 10 / 20 = 50%"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "MOLE-Q19",
@@ -1032,15 +1104,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Reported only the excess oxygen (10 mL)."
     },
     "targetTab": "tab-eudiometry",
-    "simParams": {
-      "hydrocarbon": "CO_O2",
-      "v_hc": 20
-    },
+    "simParams": {},
     "simSummary": [
       "20 mL CO + 20 mL O₂",
       "CO is limiting: consumes 10 mL O₂",
       "Final = 20 mL CO₂ + 10 mL O₂ = 30 mL"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "MOLE-Q20",
@@ -1085,13 +1160,17 @@ window.JEE_QUESTIONS_DATA = [
       "C": "N₂ has M = 28 g/mol, much fewer molecules than H₂.",
       "D": "CH₄ has 5 atoms per molecule, but the question asks for MOLECULES, not total atoms!"
     },
-    "targetTab": "tab-mole-scale",
-    "simParams": {
-      "sampleMass": 1.0
-    },
+    "targetTab": "tab-mole",
+    "simParams": {},
     "simSummary": [
       "1.0 g H₂ = 0.50 N_A molecules (Maximum!)",
       "Molecules ∝ 1 / Molar Mass"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   }
 ];
