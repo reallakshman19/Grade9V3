@@ -1,8 +1,53 @@
 schema_version: relay-v2.5
-repository_type: application
+repository_type: static educational web application with Python-authored canonical
+  data and plain browser JavaScript
 default_branch: main
-important_paths: {}
-commands: {}
-protected_domains: []
-generated_paths: []
-repository_rules: []
+important_paths:
+  relay:
+  - agents/relay
+  workbench:
+  - Shared/workbench
+  canonical_library:
+  - Shared/library
+  public_browser:
+  - public
+  - tools
+  tests:
+  - tests
+  architecture:
+  - docs/architecture-manifest.json
+  - Shared/tools/build_manifest.py
+commands:
+  guardrails: GitHub Actions workflow .github/workflows/guardrails.yml
+  focused_workbench: node --test tests/workbench_runtime.test.mjs
+  python_suite: python3 -m unittest discover -s tests -p 'test*.py' -v
+  manifest_check: python3 Shared/tools/build_manifest.py --check
+  topic_independence: python3 Shared/tools/topic_independence_guard.py
+protected_domains:
+- domain: canonical academic truth
+  paths:
+  - Shared/library
+  - Physics/library
+  - Mathematics/library
+  - Chemistry/library
+  rule: Workbench Core may consume projections but must not become a second academic
+    authority.
+- domain: learner routing/evidence
+  paths:
+  - public/js/topic-atlas.js
+  rule: 'Issue #159 owns learner evidence/support routing; workbench events must not
+    claim mastery.'
+generated_paths:
+- path: docs/architecture-manifest.json
+  generator: python3 Shared/tools/build_manifest.py
+- path: public/data/data.js
+  generator: python3 Shared/tools/build_manifest.py via Shared/tools/build_web_data.py
+- path: tools/data.js
+  generator: python3 Shared/tools/build_manifest.py via Shared/tools/build_web_data.py
+repository_rules:
+- Subject/topic variation belongs in governed data or subject adapters, not Shared
+  Core branches.
+- Generated architecture/browser-data artifacts must be refreshed when guardrails
+  require it.
+- Static multi-page/browser delivery remains supported; no SPA or mandatory backend
+  is assumed.
