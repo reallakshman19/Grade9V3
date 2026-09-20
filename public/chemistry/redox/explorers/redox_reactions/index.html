@@ -164,7 +164,7 @@
           <span class="text-xs font-bold uppercase text-amber-400 font-mono" id="simToastTitle">Active Problem Loaded</span>
           <button onclick="closeSimToast()" class="text-slate-400 hover:text-white text-xs">&times;</button>
         </div>
-        <p class="text-xs text-slate-300 mt-1" id="simToastDesc">Parameters injected from ExamSIDE question.</p>
+        <p class="text-xs text-slate-300 mt-1" id="simToastDesc">Related visual opened. Check the fidelity badge for bound constraints.</p>
         <div class="mt-2 text-[11px] font-mono text-amber-300 bg-black/40 px-2 py-1 rounded" id="simToastParams"></div>
       </div>
     </div>
@@ -256,7 +256,8 @@
                 <span>MOLECULAR TOPOLOGY &middot; HETEROLYTIC BOND CLEAVAGE</span>
                 <span id="structLiveO.S." class="text-amber-400 font-bold">Chromium O.S. = +6</span>
               </div>
-              <canvas id="canvasStructuralOx" height="280" role="img" aria-label="Structure-aware oxidation-state diagram."></canvas>\n              <p class="mt-2 text-[11px] text-slate-400">Text invariant: oxidation-state assignments must reproduce the total charge and respect structural exceptions.</p>
+              <canvas id="canvasStructuralOx" height="280" role="img" aria-label="Structure-aware oxidation-state diagram."></canvas>
+              <p class="mt-2 text-[11px] text-slate-400">Text invariant: oxidation-state assignments must reproduce the total charge and respect structural exceptions.</p>
             </div>
 
             <!-- Dual-Reality Toggle -->
@@ -294,7 +295,8 @@
           <p class="text-xs text-slate-400 mt-1">Begin with the causal picture: the reducing agent donates electrons and is oxidized; the oxidizing agent accepts those same electrons and is reduced. Mnemonics come after the mechanism.</p>
         </div>
         <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
-          <canvas id="canvasElectronFlow" height="280" role="img" aria-label="Electron transfer from reductant to oxidant."></canvas>\n              <p class="mt-2 text-[11px] text-slate-400">Text invariant: electrons lost by the reducing agent equal electrons gained by the oxidizing agent.</p>
+          <canvas id="canvasElectronFlow" height="280" role="img" aria-label="Electron transfer from reductant to oxidant."></canvas>
+              <p class="mt-2 text-[11px] text-slate-400">Text invariant: electrons lost by the reducing agent equal electrons gained by the oxidizing agent.</p>
         </div>
       </div>
     </section>
@@ -309,7 +311,8 @@
           <p class="text-xs text-slate-400 mt-1">Advanced bridge: balance atoms first, then charge with electrons. The visual ledger makes conservation of atoms and charge explicit before presenting the final half-reaction.</p>
         </div>
         <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
-          <canvas id="canvasIonElectron" height="280" role="img" aria-label="Half-reaction balancing ledger."></canvas>\n              <p class="mt-2 text-[11px] text-slate-400">Text invariant: a balanced half-reaction conserves every element and total charge.</p>
+          <canvas id="canvasIonElectron" height="280" role="img" aria-label="Half-reaction balancing ledger."></canvas>
+              <p class="mt-2 text-[11px] text-slate-400">Text invariant: a balanced half-reaction conserves every element and total charge.</p>
         </div>
       </div>
     </section>
@@ -338,7 +341,8 @@
                 <span>KMnO₄ ELECTRON LADDER &middot; Mn⁷⁺ REDUCTION STATES</span>
                 <span id="nfactorLiveBadge" class="text-purple-400 font-bold">Acidic: n = 5 (Mn²⁺)</span>
               </div>
-              <canvas id="canvasNfactor" height="280" role="img" aria-label="Permanganate oxidation-state ladder."></canvas>\n              <p class="mt-2 text-[11px] text-slate-400">Text invariant: n-factor equals the reaction-specific electron change per formula unit.</p>
+              <canvas id="canvasNfactor" height="280" role="img" aria-label="Permanganate oxidation-state ladder."></canvas>
+              <p class="mt-2 text-[11px] text-slate-400">Text invariant: n-factor equals the reaction-specific electron change per formula unit.</p>
             </div>
           </div>
 
@@ -374,7 +378,8 @@
           </p>
         </div>
         <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
-          <canvas id="canvasTitration" height="280" role="img" aria-label="Redox titration electron-equivalence diagram."></canvas>\n              <p class="mt-2 text-[11px] text-slate-400">Text invariant: at equivalence, electron equivalents donated and accepted are equal.</p>
+          <canvas id="canvasTitration" height="280" role="img" aria-label="Redox titration electron-equivalence diagram."></canvas>
+              <p class="mt-2 text-[11px] text-slate-400">Text invariant: at equivalence, electron equivalents donated and accepted are equal.</p>
         </div>
       </div>
     </section>
@@ -389,7 +394,8 @@
           <p class="text-xs text-slate-400 mt-1">Advanced extension: Zn is the anode (electron source), Cu²⁺/Cu is the cathode (electron sink), and E°cell = E°cathode − E°anode when both tabulated values are reduction potentials.</p>
         </div>
         <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
-          <canvas id="canvasGalvanic" height="280" role="img" aria-label="Daniell galvanic cell diagram."></canvas>\n              <p class="mt-2 text-[11px] text-slate-400">Text invariant: electrons travel through the external wire from Zn anode to Cu cathode.</p>
+          <canvas id="canvasGalvanic" height="280" role="img" aria-label="Daniell galvanic cell diagram."></canvas>
+              <p class="mt-2 text-[11px] text-slate-400">Text invariant: electrons travel through the external wire from Zn anode to Cu cathode.</p>
         </div>
       </div>
     </section>
@@ -409,7 +415,8 @@
           </div>
         </div>
         <div class="canvas-container bg-slate-950 border border-border p-2 mt-4">
-          <canvas id="canvasSandbox" height="300" role="img" aria-label="Oxidation-number ladder practice."></canvas>\n              <p class="mt-2 text-[11px] text-slate-400">Text invariant: oxidation number rises with oxidation and falls with reduction.</p>
+          <canvas id="canvasSandbox" height="300" role="img" aria-label="Oxidation-number ladder practice."></canvas>
+              <p class="mt-2 text-[11px] text-slate-400">Text invariant: oxidation number rises with oxidation and falls with reduction.</p>
         </div>
       </div>
     </section>
