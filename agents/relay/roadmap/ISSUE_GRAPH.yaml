@@ -14,15 +14,68 @@ nodes:
   role: HANDOVER
   handover_key: sha256:d5bac91cb19ca150dff84d45326aaa5d4be479dc3b5ba9bf1aabcc4c2d64901c
   state: ACTIVE
-  github_state: ABSENT
+  github_state: OPEN
   github:
-    issue_number: null
+    issue_number: 167
     issue_id: null
-    url: null
+    url: https://github.com/reallaksh19/Grade9V3/issues/167
   source_contract:
     kind: GITHUB_ISSUE
     id: ISSUE-162
     work_package: WP-162-BROWSER-RUNTIME-PROOF
+  published_handover_snapshot:
+    source_report_digest: null
+    intent:
+    - id: AC:AC-05
+      kind: ACCEPTANCE
+      source_id: AC-05
+      what_remains: Reconcile PR #165 against then-current main, reconcile relay custody, regenerate artifacts, and rerun real-browser plus full exact-head guardrails.
+      why_it_remains: AC-05 is IN_PROGRESS at 50 percent and PR #165 is draft/conflicted with current main.
+      basis:
+      - agents/relay/roadmap/PROGRESS.yaml
+      - PR #165 provider readback
+      done_when: AC-05 is COMPLETE on the post-rebase merge-candidate basis.
+    - id: CONTROL:MERGE-BASE-RECONCILIATION
+      kind: DELIVERY
+      source_id: PR-165
+      what_remains: Resolve the known PR #165 merge/base and relay-control overlap before any merge claim.
+      why_it_remains: Owner deferred merge reconciliation while Core coding continued.
+      basis:
+      - agents/relay/drift/DRIFT-0162-RM0008.yaml
+      - agents/relay/roadmap/owner-decisions/ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT.yaml
+      done_when: Current-main conflict and relay custody are reconciled and exact-head evidence reruns.
+    - id: NEXT-CANDIDATE:PEDAGOGY-INJECTION
+      kind: ROADMAP_ADMISSION
+      source_id: ISSUE-162
+      what_remains: Evaluate and, if justified, admit generic progressive pedagogy-injection execution.
+      why_it_remains: Issue #162 requires progressive injection, while current Core only validates/renders injection records.
+      basis:
+      - https://github.com/reallaksh19/Grade9V3/issues/162
+      done_when: A successor task is admitted under V2.5 or explicitly dispositioned.
+    - id: NEXT-CANDIDATE:INTERACTION-POLICY
+      kind: ROADMAP_ADMISSION
+      source_id: ISSUE-162
+      what_remains: Evaluate a small public read-only / interaction-policy contract.
+      why_it_remains: The public-boundary capability is not yet admitted or proven.
+      basis:
+      - https://github.com/reallaksh19/Grade9V3/issues/162
+      done_when: A concrete falsifier justifies/adopts the minimal policy surface or the candidate is deferred.
+    - id: NEXT-CANDIDATE:RENDERER-SEAM
+      kind: ROADMAP_ADMISSION
+      source_id: ISSUE-162
+      what_remains: Evaluate the generic SVG/MathML renderer-extension boundary.
+      why_it_remains: Rich geometry/math rendering remains deferred pending a concrete need.
+      basis:
+      - https://github.com/reallaksh19/Grade9V3/issues/162
+      done_when: A minimal seam is admitted/proven or explicitly deferred.
+    - id: NEXT-CANDIDATE:A11Y-HARDENING
+      kind: ROADMAP_ADMISSION
+      source_id: ISSUE-162
+      what_remains: Evaluate host zoom and broader accessibility hardening gaps.
+      why_it_remains: Existing accessibility primitives are proven, but full zoom/a11y certification is not.
+      basis:
+      - https://github.com/reallaksh19/Grade9V3/issues/162
+      done_when: Concrete browser/a11y falsifiers are addressed or explicitly deferred.
 relationships:
 - from: HANDOVER-ISS162-D5BAC91CB19C
   relation: RELATES_TO
