@@ -78,13 +78,13 @@ status_planes:
 projection:
   required: true
   state: IN_SYNC
-  operation_id: GHGEN-HO-D5BAC91CB19C
+  operation_id: GHGEN-HO-D5BAC91CB19C-R2
   target: github:reallaksh19/Grade9V3:issues/167
   adapter: GITHUB_ISSUES
-  plan: agents/relay/projection/generations/GHGEN-HO-D5BAC91CB19C.yaml
+  plan: agents/relay/projection/generations/GHGEN-HO-D5BAC91CB19C-R2.yaml
   roadmap_revision: RM-0002
   execution_ref: EP-0162-REDO-PROOF
-  receipt: github-issue-create:https://github.com/reallaksh19/Grade9V3/issues/167
+  receipt: github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/167
   basis:
   - agents/relay/roadmap/ISSUE_GRAPH.yaml@IG-0003
   - agents/relay/projection/generations/GHGEN-HO-D5BAC91CB19C.yaml
