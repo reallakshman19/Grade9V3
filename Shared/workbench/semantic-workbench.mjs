@@ -150,7 +150,7 @@ export class SemanticWorkbench extends HTMLElement {
       try { entity.releasePointerCapture(event.pointerId); } catch (_) { /* pointer already released */ }
     }
     this._suppressNextClick = true;
-    this.dispatchIntent({ type: "PICK", entityRef: entity.dataset.entityRef, channel: "pointer" });
+    this._dispatchWithoutRebuild({ type: "PICK", entityRef: entity.dataset.entityRef, channel: "pointer" });
   }
 
   _targetFromPointerEvent(event) {
@@ -185,7 +185,7 @@ export class SemanticWorkbench extends HTMLElement {
     }
     const entity = this._closestRole(event, "entity");
     if (entity) {
-      this.dispatchIntent({ type: "PICK", entityRef: entity.dataset.entityRef, channel: "click" });
+      this._dispatchWithoutRebuild({ type: "PICK", entityRef: entity.dataset.entityRef, channel: "click" });
       return;
     }
     const target = this._closestRole(event, "target");
@@ -209,7 +209,7 @@ export class SemanticWorkbench extends HTMLElement {
     const entity = this._closestRole(event, "entity");
     if (entity) {
       event.preventDefault();
-      this.dispatchIntent({ type: "PICK", entityRef: entity.dataset.entityRef, channel: "keyboard" });
+      this._dispatchWithoutRebuild({ type: "PICK", entityRef: entity.dataset.entityRef, channel: "keyboard" });
       return;
     }
     const target = this._closestRole(event, "target");
