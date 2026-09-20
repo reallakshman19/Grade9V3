@@ -55,16 +55,22 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-structural-ox",
     "simParams": {
-      "compound": "CrO5",
-      "oxState": 6,
-      "peroxoCount": 4
+      "compound": "CrO5"
     },
     "simSummary": [
       "CrO₅ Butterfly Structure",
       "1 Oxo Oxygen (=O) at -2",
       "4 Peroxo Oxygens (-O-O-) at -1",
       "Net Cr Oxidation State = +6"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.compound"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "REDOX-Q02",
@@ -110,16 +116,22 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-nfactor",
     "simParams": {
-      "agent": "KMnO4",
-      "medium": "acidic",
-      "nFactor": 5
+      "medium": "acidic"
     },
     "simSummary": [
       "KMnO₄: Mn⁷⁺ Initial",
       "Acidic: Mn²⁺ (n = 5)",
       "Neutral: MnO₂ (n = 3)",
       "Strongly Basic: MnO₄²⁻ (n = 1)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.medium"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "REDOX-Q03",
@@ -167,16 +179,19 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Inverted the n-factor."
     },
     "targetTab": "tab-nfactor",
-    "simParams": {
-      "reaction": "P4",
-      "nFactor": 3
-    },
+    "simParams": {},
     "simSummary": [
       "White Phosphorus Disproportionation",
       "1 atom P reduced (0 → -3, 3 e⁻)",
       "3 atoms P oxidized (0 → +1, 3 e⁻)",
       "n-factor = 3 ⇒ E = M/3"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "REDOX-Q04",
@@ -223,16 +238,22 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-structural-ox",
     "simParams": {
-      "compound": "S4O6",
-      "terminalO.S.": 5,
-      "centralO.S.": 0
+      "compound": "S4O6"
     },
     "simSummary": [
       "Tetrathionate S₄O₆²⁻",
       "Two Terminal S: +5 each",
       "Two Central S: 0 each",
       "Average = (5 + 0 + 0 + 5)/4 = +2.5"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.compound"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "REDOX-Q05",
@@ -281,17 +302,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Assumed 1:1 molar equivalence."
     },
     "targetTab": "tab-titration",
-    "simParams": {
-      "analyte": "FeC2O4",
-      "nFactorAnalyte": 3,
-      "titrant": "K2Cr2O7",
-      "nFactorTitrant": 6
-    },
+    "simParams": {},
     "simSummary": [
       "K₂Cr₂O₇ n-factor = 6",
       "FeC₂O₄ n-factor = 1 (Fe) + 2 (Oxalate) = 3",
       "Molar Ratio = 3/6 = 0.50 mol"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "REDOX-Q06",
@@ -337,16 +359,22 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-structural-ox",
     "simParams": {
-      "compound": "Fe3O4",
-      "fe2Count": 1,
-      "fe3Count": 2
+      "compound": "Fe3O4"
     },
     "simSummary": [
       "Magnetite Fe₃O₄ = FeO &middot; Fe₂O₃",
       "1 &times; Fe²⁺ (+2)",
       "2 &times; Fe³⁺ (+3)",
       "Ratio Fe(II) : Fe(III) = 1 : 2"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.compound"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds compound only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "REDOX-Q07",
@@ -399,7 +427,15 @@ window.JEE_QUESTIONS_DATA = [
       "MnO₄⁻ (+7) → MnO₂ (+4)",
       "n-factor = 3",
       "Equivalent Mass = M / 3"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.medium"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "REDOX-Q08",
@@ -444,16 +480,19 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Multiplied by 4 instead of 2."
     },
     "targetTab": "tab-galvanic",
-    "simParams": {
-      "E_cell": 1.1,
-      "n_electrons": 2
-    },
+    "simParams": {},
     "simSummary": [
       "E°_cell = 0.34 - (-0.76) = +1.10 V",
       "n = 2 moles electrons",
       "ΔG° = -2 × 96500 × 1.10 = -212.3 kJ/mol",
       "Spontaneous Cell"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "REDOX-Q09",
@@ -497,15 +536,19 @@ window.JEE_QUESTIONS_DATA = [
       "C": "Calculated Caro's acid correctly (+6) but fell into algebraic trap for Marshall's acid (+7).",
       "D": "Confused with sulfurous acid derivatives."
     },
-    "targetTab": "tab-structural",
-    "simParams": {
-      "molecule": "H2SO5"
-    },
+    "targetTab": "tab-structural-ox",
+    "simParams": {},
     "simSummary": [
       "H₂SO₅: S = +6 (1 peroxo -O-O-)",
       "H₂S₂O₈: S = +6 each (1 peroxo bridge)",
       "Octet ceiling = +6"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "REDOX-Q10",
@@ -549,15 +592,19 @@ window.JEE_QUESTIONS_DATA = [
       "C": "Assumed Fe³⁺ high-spin state with 5 unpaired electrons.",
       "D": "Assumed low-spin pairing leaving only 1 unpaired electron."
     },
-    "targetTab": "tab-structural",
-    "simParams": {
-      "molecule": "CrO5"
-    },
+    "targetTab": "tab-structural-ox",
+    "simParams": {},
     "simSummary": [
       "[Fe(H₂O)₅(NO⁺)]²⁺: Fe is +1",
       "3d⁷ high spin ⇒ n = 3 unpaired e⁻",
       "μ = √15 ≈ 3.87 BM"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "REDOX-Q11",
@@ -603,14 +650,21 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-nfactor",
     "simParams": {
-      "reagent": "FeC2O4",
       "medium": "acidic"
     },
     "simSummary": [
       "Fe²⁺ → Fe³⁺ (1 e⁻)",
       "C₂O₄²⁻ → 2 CO₂ (2 e⁻)",
       "Total n-factor = 1 + 2 = 3"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.medium"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "REDOX-Q12",
@@ -654,15 +708,19 @@ window.JEE_QUESTIONS_DATA = [
       "C": "Assumed both chlorines are simple chloride ions (-1).",
       "D": "Assumed both chlorines are hypochlorite (+1)."
     },
-    "targetTab": "tab-structural",
-    "simParams": {
-      "molecule": "CrO5"
-    },
+    "targetTab": "tab-structural-ox",
+    "simParams": {},
     "simSummary": [
       "Bleaching powder: Ca(OCl)Cl",
       "Chloride Cl⁻ ⇒ O.S. = -1",
       "Hypochlorite OCl⁻ ⇒ O.S. = +1"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "REDOX-Q13",
@@ -707,14 +765,21 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-nfactor",
     "simParams": {
-      "reagent": "KMnO4",
       "medium": "acidic"
     },
     "simSummary": [
       "Acidic: n = 5 ⇒ M/5",
       "Neutral: n = 3 ⇒ M/3",
       "Strongly Basic: n = 1 ⇒ M/1"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.medium"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "REDOX-Q14",
@@ -763,14 +828,21 @@ window.JEE_QUESTIONS_DATA = [
     },
     "targetTab": "tab-nfactor",
     "simParams": {
-      "reagent": "KMnO4",
       "medium": "neutral"
     },
     "simSummary": [
       "P₄ (0) → 1 PH₃ (-3) [gains 3 e⁻]",
       "P₄ (0) → 3 H₂PO₂⁻ (+1) [loses 3 e⁻]",
       "Net transfer = 3 e⁻ ⇒ n-factor = 3"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [
+      "simParams.medium"
+    ],
+    "simFidelity": "CONSTRAINT_FAITHFUL",
+    "simFidelityNote": "The simulator binds medium only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
   },
   {
     "id": "REDOX-Q15",
@@ -815,15 +887,19 @@ window.JEE_QUESTIONS_DATA = [
       "C": "Used acidic medium reduction of permanganate (n=5) without checking medium.",
       "D": "Acidic medium ratio for oxidation to I₂ (2 MnO₄⁻ : 10 I⁻)."
     },
-    "targetTab": "tab-balance",
-    "simParams": {
-      "reaction": "MnO4_I_basic"
-    },
+    "targetTab": "tab-ion-electron",
+    "simParams": {},
     "simSummary": [
       "Alkaline medium: I⁻ → IO₃⁻ (6 e⁻ lost)",
       "MnO₄⁻ → MnO₂ (3 e⁻ gained)",
       "Ratio = 2 MnO₄⁻ : 1 I⁻"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "REDOX-Q16",
@@ -869,15 +945,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Added negative potentials: -0.44 + (-0.76) = -1.20 V."
     },
     "targetTab": "tab-galvanic",
-    "simParams": {
-      "concAnode": 1.0,
-      "concCathode": 1.0
-    },
+    "simParams": {},
     "simSummary": [
       "Cathode: Fe²⁺ (-0.44 V)",
       "Anode: Zn (-0.76 V)",
       "E°_cell = +0.32 V (Spontaneous)"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "REDOX-Q17",
@@ -922,15 +1001,19 @@ window.JEE_QUESTIONS_DATA = [
       "C": "Confused nitrate NO₃⁻ with nitrite NO₂⁻ (+3).",
       "D": "Calculated oxidation states incorrectly."
     },
-    "targetTab": "tab-structural",
-    "simParams": {
-      "molecule": "CrO5"
-    },
+    "targetTab": "tab-structural-ox",
+    "simParams": {},
     "simSummary": [
       "NH₄⁺: N is -3 (sp³ tetrahedral)",
       "NO₃⁻: N is +5 (sp² planar)",
       "Average = +1, Real = -3 and +5"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "REDOX-Q18",
@@ -977,14 +1060,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Calculated 5.0 mL using n = 1 for both."
     },
     "targetTab": "tab-titration",
-    "simParams": {
-      "volume": 30
-    },
+    "simParams": {},
     "simSummary": [
       "K₂Cr₂O₇: n = 6 ⇒ 3.0 meq",
       "Hypo: n = 1 ⇒ N = 0.1 N",
       "V_hypo = 3.0 / 0.1 = 30.0 mL"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "REDOX-Q19",
@@ -1029,15 +1116,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Forgot n = 2 and inverted sign."
     },
     "targetTab": "tab-galvanic",
-    "simParams": {
-      "concAnode": 10.0,
-      "concCathode": 1.0
-    },
+    "simParams": {},
     "simSummary": [
       "n = 2 electrons",
       "log([Zn²⁺]/[Cu²⁺]) increases by 1",
       "ΔE = -(0.0591/2) × 1 = -0.0295 V"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   },
   {
     "id": "REDOX-Q20",
@@ -1082,14 +1172,18 @@ window.JEE_QUESTIONS_DATA = [
       "C": "Pb does not exhibit stable +3 oxidation state due to inert pair effect.",
       "D": "Incorrect stoichiometric ratio."
     },
-    "targetTab": "tab-structural",
-    "simParams": {
-      "molecule": "CrO5"
-    },
+    "targetTab": "tab-structural-ox",
+    "simParams": {},
     "simSummary": [
       "Pb₃O₄ = 2 PbO · PbO₂",
       "Two Pb(+2) : One Pb(+4)",
       "PbO dissolves in HNO₃, PbO₂ remains insoluble"
-    ]
+    ],
+    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "answerAudit": "PASS",
+    "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
+    "simBindingRefs": [],
+    "simFidelity": "CONCEPT_ONLY",
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
   }
 ];
