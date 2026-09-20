@@ -1,0 +1,601 @@
+schema_version: relay-v2.5
+identity:
+  ep_id: EP-0162-BROWSER-RUNTIME-PROOF
+  branch: feat/issue-162-semantic-workbench-core
+  base_ref: 5757dcefbe8af3031c2001f2a2f05259855c73aa
+  execution_state: EXECUTABLE
+  previous_checkpoint: NONE
+  previous_join: null
+  previous_replan: null
+replan_inheritance: null
+git_basis:
+  expected_branch: feat/issue-162-semantic-workbench-core
+  material_ref: 5757dcefbe8af3031c2001f2a2f05259855c73aa
+  base_branch: main
+  base_observed_ref: 5037c193c8db017eb2cde383b913fd408e48fc6b
+  drift_policy: RECHECK_BEFORE_WRITE
+  drift_receipt: null
+roadmap_source:
+  roadmap_id: RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER
+  roadmap_revision: RM-0002
+  objective: OBJ-TOPIC-ATLAS-COMPLETE
+  phase: PHASE-TAKEOVER-RECONCILIATION
+  work_package: WP-162-BROWSER-RUNTIME-PROOF
+  generated_from_frontier: true
+outcome:
+  user_visible:
+  - The existing semantic workbench interaction contract has real-browser evidence for equivalent source/target operation paths, responsive layout, reduced motion, cancellation, undo, and sibling isolation.
+  engineering:
+  - Browser evidence is produced without moving domain validity into Core and without adding a mandatory frontend package/runtime dependency.
+context_capsule:
+  product_goal: Provide a small subject-neutral browser runtime that can manipulate semantic teaching objects while canonical academic truth, learner routing, and external-host packaging remain independently owned.
+  roadmap_position: This EP executes WP-162-BROWSER-RUNTIME-PROOF under the existing Topic Atlas/Core completion objective and reconciliation phase.
+  why_this_work_exists: PR #165 proved the transaction boundary with Node DOM-lite tests, but issue #162 still lacks real-browser evidence for focus, pointer, touch, responsive layout, reduced motion, cancel, undo, and multi-instance behavior.
+  current_architecture: Shared/workbench contains a standards-only ES-module runtime and Shadow-DOM custom element. Domain decisions enter through an injected evaluateTransfer adapter; logical placement uses named rows and columns.
+  prior_owner_decisions:
+  - The Owner requested continued execution under engineering-pr-delivery-v2.5 at Common commit d9b84069683977b5c370f536f1c50095de926338.
+  - Issue #162 owns the generic browser runtime only; issue #159 owns learner routing, #160 owns NLM/Atlas authoring, and #163 owns canonical-to-portable compilation plus external-host/offline/cross-domain portability proof.
+  current_implementation_state: PR #165 is open and review-ready. Its pre-relay product head 5757dcefbe8af3031c2001f2a2f05259855c73aa passed the Grade9V3 guardrails with 933 repository tests, but the workbench interaction suite is not a real-browser certification.
+  known_problems:
+  - No repository browser automation harness currently exercises semantic-workbench in an actual browser.
+  - Existing unit evidence does not establish touch/pointer event behavior, responsive CSS resolution, or prefers-reduced-motion behavior in Chrome.
+  deliberate_non_goals:
+  - Do not add a second subject proof package.
+  - Do not perform production Redox migration.
+  - Do not prove external-host, offline, single-file, or canonical-package compilation behavior owned by #163.
+  - Do not introduce Lit, TypeScript, Vite, npm dependencies, or another frontend framework solely for this proof.
+  terminology:
+    Core: Subject-neutral semantic interaction/runtime mechanics.
+    Adapter: Injected authority that decides domain-specific transfer validity and returns accepted semantic patches or rejections.
+    Browser proof: Real Chrome/ChromeDriver execution of the existing one-domain test witness, not a portability or accessibility certification.
+repository_discovery:
+- id: DSTEP-01
+  action: VERIFY
+  target: agents/relay/REPO_STATE.yaml
+  question: Does repository state route to EP-0162-BROWSER-RUNTIME-PROOF on roadmap revision RM-0002 and the browser-proof work package?
+  expected_outputs:
+  - active EP id and path
+  - roadmap id and revision
+  - current work package
+  receipt_required: true
+  on_failure: Reconcile relay custody before product writes.
+- id: DSTEP-02
+  action: INSPECT
+  targets:
+  - Shared/workbench/runtime.mjs
+  - Shared/workbench/semantic-workbench.mjs
+  - tests/workbench_runtime.test.mjs
+  - tests/fixtures/workbench/arithmetic-division.json
+  question: What semantic state, event channels, placement rules, and existing unit falsifiers are implemented at the current material basis?
+  expected_outputs:
+  - runtime semantic intent vocabulary and transaction boundary
+  - custom-element input event bindings
+  - existing long-division witness and unit evidence limits
+  receipt_required: true
+  on_failure: Stop and reconcile the EP scope against the actual workbench implementation.
+- id: DSTEP-03
+  action: VERIFY_GIT
+  target: live checkout and GitHub branch state
+  question: Does the active branch still contain material ref 5757dcefbe8af3031c2001f2a2f05259855c73aa and does main still resolve to the observed base 5037c193c8db017eb2cde383b913fd408e48fc6b?
+  expected_outputs:
+  - active branch name
+  - current head SHA
+  - material-ref ancestry result
+  - current main SHA and drift classification
+  receipt_required: true
+  on_failure: Withhold product WRITE authority until Git drift is classified and reconciled.
+- id: DSTEP-04
+  action: VERIFY
+  target: GitHub Actions ubuntu-24.04 runner inventory used by the current guardrails workflow
+  question: Is a real Chrome plus matching ChromeDriver available without adding an npm or paid runtime dependency?
+  expected_outputs:
+  - runner image identity
+  - Chrome version
+  - ChromeDriver version and path
+  receipt_required: true
+  on_failure: Keep browser evidence NOT_RUN and reconcile a dependency-free execution route before changing product code.
+inputs:
+- id: INPUT-01
+  name: Current semantic workbench material slice
+  description: The product/runtime implementation that the browser proof must exercise without changing its authority boundary.
+  authority: PR #165 branch material and issue #162 revalidated boundary
+  source: Shared/workbench/runtime.mjs; Shared/workbench/semantic-workbench.mjs; tests/workbench_runtime.test.mjs
+  value: 5757dcefbe8af3031c2001f2a2f05259855c73aa
+  type: git material ref
+  units: NA
+  editable: true
+  applicability: CURRENT_EP_REQUIRED
+  resolution: READY
+  consumers:
+  - STEP-01
+  - STEP-02
+  validation:
+  - Material ref must be an ancestor of the live branch before product writes.
+  - Browser fixture must use the existing public component/runtime contract rather than a private test-only semantic path.
+  stale_if:
+  - The workbench public semantic contract changes before the browser proof is executed.
+  - The active branch no longer contains the declared material ref.
+- id: INPUT-02
+  name: Chrome and ChromeDriver runner capability
+  description: Dependency-free real-browser execution capability available on the GitHub Actions runner image used by Grade9V3.
+  authority: actions/runner-images ubuntu24 image documentation for version 20260907.300
+  source: https://github.com/actions/runner-images/blob/ubuntu24/20260907.300/images/ubuntu/Ubuntu2404-Readme.md
+  value:
+    chrome: 152.0.7977.82
+    chromedriver: 152.0.7977.82
+    chromedriver_environment: CHROMEWEBDRIVER
+    chromedriver_path: /usr/local/share/chromedriver-linux64
+  type: browser runner capability
+  units: NA
+  editable: false
+  applicability: CURRENT_EP_REQUIRED
+  resolution: READY
+  consumers:
+  - STEP-01
+  validation:
+  - Runner inventory lists Google Chrome and ChromeDriver at matching major/version 152.
+  - Browser test must not require a downloaded npm/browser package to use this capability.
+  stale_if:
+  - The Grade9V3 runner image changes to an image without a compatible Chrome/ChromeDriver pair.
+- id: INPUT-03
+  name: Issue 162 runtime ownership boundary
+  description: Current authoritative scope separating generic browser runtime work from routing, NLM authoring, and external-host portability proof.
+  authority: Live GitHub issue #162 plus verified neighbouring issue ownership
+  source: https://github.com/reallaksh19/Grade9V3/issues/162
+  value: Generic semantic browser runtime only; #159 learner routing, #160 NLM/Atlas authoring, #163 compilation/external-host/offline/cross-domain portability proof remain outside this EP.
+  type: scope authority
+  units: NA
+  editable: false
+  applicability: CURRENT_EP_REQUIRED
+  resolution: READY
+  consumers:
+  - STEP-01
+  - STEP-02
+  validation:
+  - Live issue #162 remains open and its revalidation section preserves this boundary.
+  stale_if:
+  - The Owner or an applied roadmap/issue revision materially changes issue ownership.
+- id: INPUT-04
+  name: Grade9V3 guardrail contract
+  description: Existing repository checks that the final exact PR head must satisfy after browser-proof changes.
+  authority: Grade9V3 repository CI
+  source: .github/workflows/guardrails.yml
+  value: Topic-independence scan, generated-artifact freshness, full unittest suite, JSON parse checks, and existing GCDR/architecture gates.
+  type: validation contract
+  units: NA
+  editable: false
+  applicability: CURRENT_EP_REQUIRED
+  resolution: READY
+  consumers:
+  - STEP-02
+  validation:
+  - Final exact PR head must report the guardrails workflow PASS.
+  stale_if:
+  - The guardrails workflow changes before checkpoint publication.
+benchmarks: []
+scope:
+  allowed:
+  - path: Shared/workbench/runtime.mjs
+    reason: A real-browser falsifier may expose a generic runtime defect that must be corrected inside the subject-neutral Core.
+  - path: Shared/workbench/semantic-workbench.mjs
+    reason: A real-browser falsifier may expose generic component/input/focus/layout behavior that must be corrected without subject branching.
+  - path: tests/workbench_browser.test.mjs
+    reason: This EP needs a dependency-free real-browser contract test.
+  - path: tests/fixtures/workbench/**
+    reason: The existing one-domain long-division witness may need a browser host fixture without becoming canonical curriculum content.
+  - path: tests/test_workbench_runtime.py
+    reason: The Python test wrapper may need to include the browser proof under the repository test entrypoint.
+  - path: docs/architecture-manifest.json
+    reason: This generated artifact must be refreshed if classified files change.
+  - path: agents/relay/**
+    reason: V2.5 execution, evidence, quality, checkpoint, delivery, and Owner-publication state must be reconciled as the work progresses.
+  allowed_reads:
+  - path: Shared/library/**
+    reason: Confirm that browser runtime work does not duplicate canonical representation/scene authority.
+  - path: public/chemistry/redox/**
+    reason: Read Redox only as the motivating interaction witness; production migration is prohibited in this EP.
+  - path: .github/workflows/guardrails.yml
+    reason: Bind final evidence to the repository validation path.
+  - domain: GitHub provider state for issues #159, #160, #162, #163 and PR #165
+    reason: Confirm ownership and exact delivery state without using conversation as custody.
+  protected:
+  - invariant: Subject/domain transfer validity remains adapter-owned; Shared workbench code contains no arithmetic, chemistry, calculus, Physics, Mathematics, or Chemistry decision branch.
+    reason: Core must not become a second academic authority.
+  - invariant: Workbench interaction events do not create learner mastery/evidence conclusions.
+    reason: Issue #159 owns learner evidence interpretation and routing.
+  - invariant: Existing canonical representation, scene-instance, datum and correspondence records remain academic source authority.
+    reason: A browser fixture must consume runtime data without creating a competing authoring database.
+  prohibited:
+  - domain: NLM canonical representation or Atlas production authoring
+    reason: This belongs to issue #160.
+  - domain: canonical-to-portable compilation, external-host/offline/single-file certification, and three-domain portability proof
+    reason: This belongs to issue #163.
+  - domain: production Redox workbench migration
+    reason: Migration is a later integration concern and would obscure the browser Core falsifier.
+  - domain: new frontend framework or package-manager runtime dependency
+    reason: This slice tests the browser semantic boundary using browser/runner capabilities already present.
+  owner_reserved:
+  - decision: Merge PR #165
+    reason: The engineering-delivery protocol requires explicit Owner merge authorization bound to the exact PR head.
+  - decision: Expand issue #162 into #159, #160, or #163 work or adopt Lit/TypeScript/Vite/npm as a mandatory implementation stack.
+    reason: These are scope/toolchain choices beyond the current bounded browser-proof EP.
+anti_drift:
+  do_not:
+  - id: ADR-01
+    restriction: Do not add a second academic domain fixture or claim cross-domain portability from the long-division browser witness.
+    reason: Cross-domain/external-host proof is explicitly owned by #163.
+  - id: ADR-02
+    restriction: Do not move domain-validity rules, learner evidence interpretation, or canonical academic truth into Shared/workbench.
+    reason: Preserve issue ownership and the Core/adapter separation established by #162.
+  - id: ADR-03
+    restriction: Do not add npm, Lit, TypeScript, Vite, Playwright, Selenium, Puppeteer, jsdom, or another package solely to obtain browser evidence.
+    reason: The current GitHub Actions runner already provides Chrome and ChromeDriver.
+  stale_if:
+  - id: STALE-01
+    condition: Roadmap revision changes WP-162-BROWSER-RUNTIME-PROOF scope, dependencies, acceptance, or protected invariants.
+    effect: STALE
+    rationale: The EP would no longer match its governing work package.
+  - id: STALE-02
+    condition: Main moves from 5037c193c8db017eb2cde383b913fd408e48fc6b before a product write and drift is not classified safe.
+    effect: RECONCILE
+    rationale: The qualified Git/base basis would have changed.
+  - id: STALE-03
+    condition: PR #165 is closed, superseded, or its branch no longer contains material ref 5757dcefbe8af3031c2001f2a2f05259855c73aa.
+    effect: STOP
+    rationale: The delivery route or material ancestry would no longer match this EP.
+implementation_plan:
+- id: STEP-01
+  objective: Add a dependency-free real-Chrome fixture that drives the existing semantic-workbench contract through actual browser input and CSS/media behavior.
+  targets:
+  - tests/workbench_browser.test.mjs
+  - tests/fixtures/workbench/browser-host.html
+  - tests/test_workbench_runtime.py
+  reads:
+  - Shared/workbench/runtime.mjs
+  - Shared/workbench/semantic-workbench.mjs
+  - tests/workbench_runtime.test.mjs
+  - tests/fixtures/workbench/arithmetic-division.json
+  writes:
+  - tests/workbench_browser.test.mjs
+  - tests/fixtures/workbench/browser-host.html
+  - tests/test_workbench_runtime.py
+  inputs:
+  - INPUT-01
+  - INPUT-02
+  - INPUT-03
+  acceptance:
+  - AC-01
+  - AC-02
+  - AC-03
+  - AC-04
+  tests:
+  - TEST-01
+  - TEST-02
+  expected_state: The long-division witness can be exercised in headless Chrome through real browser pointer/click/touch/keyboard behavior and inspected for responsive/reduced-motion semantics without a new package dependency.
+  stop_conditions:
+  - Stop product writes if material-write readiness fails for the current candidate or branch.
+  - Stop and reconcile scope if browser evidence requires subject-specific Core logic or #163 portability work.
+- id: STEP-02
+  objective: Remediate only generic browser defects exposed by STEP-01, refresh generated architecture state, and bind the exact final PR head to repository CI evidence.
+  targets:
+  - Shared/workbench/runtime.mjs
+  - Shared/workbench/semantic-workbench.mjs
+  - tests/workbench_browser.test.mjs
+  - tests/test_workbench_runtime.py
+  - docs/architecture-manifest.json
+  reads:
+  - STEP-01 browser evidence
+  - .github/workflows/guardrails.yml
+  writes:
+  - Shared/workbench/runtime.mjs
+  - Shared/workbench/semantic-workbench.mjs
+  - tests/workbench_browser.test.mjs
+  - tests/test_workbench_runtime.py
+  - docs/architecture-manifest.json
+  inputs:
+  - INPUT-01
+  - INPUT-03
+  - INPUT-04
+  acceptance:
+  - AC-01
+  - AC-02
+  - AC-03
+  - AC-04
+  - AC-05
+  tests:
+  - TEST-01
+  - TEST-02
+  - TEST-03
+  expected_state: The exact PR head has passing focused unit/browser evidence plus full Grade9V3 guardrails, with remaining limitations recorded instead of broadened claims.
+  stop_conditions:
+  - Stop if fixing a browser failure would require a prohibited domain or new framework/package dependency.
+  - Stop if final CI reveals a protected-invariant failure or unsafe semantic mutation.
+next_work:
+  phase_transition: false
+  steps:
+  - order: 1
+    action: Execute STEP-01 by adding the ChromeDriver browser fixture and real-browser semantic interaction tests on the authorized PR branch.
+    targets:
+    - tests/workbench_browser.test.mjs
+    - tests/fixtures/workbench/browser-host.html
+    - tests/test_workbench_runtime.py
+    inputs:
+    - INPUT-01
+    - INPUT-02
+    - INPUT-03
+    tests:
+    - TEST-01
+    - TEST-02
+    benchmarks: []
+    acceptance:
+    - AC-01
+    - AC-02
+    - AC-03
+    - AC-04
+    expected_result: Real Chrome produces directly inspectable evidence for equivalent semantic interaction paths, responsive placement, reduced motion, cancellation, undo, and sibling isolation using the existing test witness.
+    stop_if:
+    - MATERIAL_WRITE_READY is false for this candidate/route.
+    - The browser route requires subject-specific Core code, a new package dependency, or work owned by #163.
+    execution_requirement:
+      id: EXECREQ-01
+      type: EXTERNAL_ENVIRONMENT
+      actor: GitHub Actions guardrails runner
+      environment:
+        kind: ubuntu-24.04 GitHub-hosted runner
+        description: Runner image 20260907.300 with Chrome 152 and matching ChromeDriver.
+      command: node --test tests/workbench_browser.test.mjs
+      instruction: Execute the committed browser contract suite with CHROMEWEBDRIVER from the runner image.
+      working_directory: repository root
+      required_basis:
+      - PR #165 exact head containing the browser test
+      - INPUT-02 Chrome/ChromeDriver runner capability
+      unavailable_here_reason: The connected GitHub execution surface can inspect provider CI but does not expose an interactive local ChromeDriver process to this agent.
+      expected_evidence:
+      - TEST-02
+      blocks:
+      - AC-01
+      - AC-02
+      - AC-03
+      success_condition: The real-browser suite exits successfully on the exact PR head and its CI evidence is provider-readable.
+      clears:
+      - Real-browser interaction evidence gap for this slice.
+  - order: 2
+    action: Reconcile any generic browser defect, refresh generated architecture state, run exact-head guardrails, and publish QRV/checkpoint/delivery evidence.
+    targets:
+    - Shared/workbench/**
+    - tests/workbench_browser.test.mjs
+    - docs/architecture-manifest.json
+    - agents/relay/**
+    - PR #165
+    inputs:
+    - INPUT-01
+    - INPUT-03
+    - INPUT-04
+    tests:
+    - TEST-01
+    - TEST-02
+    - TEST-03
+    benchmarks: []
+    acceptance:
+    - AC-01
+    - AC-02
+    - AC-03
+    - AC-04
+    - AC-05
+    expected_result: The browser-proof work package has exact-head evidence and a durable checkpoint or a precise falsification/remaining-work record.
+    stop_if:
+    - A protected invariant fails.
+    - PR #165 delivery state or base drift invalidates the current route.
+qualification_boundary:
+  required: false
+  trigger: null
+  from_phase: null
+  to_phase: null
+  changed_dimensions: []
+  basis:
+  - This is the first executable EP created from the repository's INITIALIZING relay state; no prior executable route or material qualification contract is being crossed.
+  question_set: null
+quality:
+  applicable:
+  - blueprint: software-design
+    reason: The slice validates the browser component/runtime boundary and state ownership in a real rendering environment.
+    review_focus:
+    - semantic identity and transaction authority remain outside rendering details
+    - browser fixture does not create a second academic model
+  - blueprint: coding
+    reason: Production browser runtime/component code may change if a generic real-browser defect is exposed.
+    review_focus:
+    - event lifecycle and state ownership
+    - failure semantics and maintainability
+    - no global listener or subject leakage
+  - blueprint: ui-ux
+    reason: The proof exercises focus, source/target controls, responsive layout, status feedback, and cancellation in an actual browser.
+    review_focus:
+    - understandable selection/target states
+    - responsive interaction affordances
+    - no gesture-only operation requirement
+  - blueprint: testing
+    reason: The primary deliverable is executable browser evidence that complements existing DOM-lite tests.
+    review_focus:
+    - input-channel equivalence
+    - negative/failure paths
+    - exact-head CI binding
+  - blueprint: accessibility
+    reason: Focus/keyboard equivalence, touch alternative behavior, reduced motion, status announcements, and narrow layouts are directly affected by this slice.
+    review_focus:
+    - keyboard completion path
+    - focus/status semantics
+    - reduced-motion behavior
+    - no color-only validity state
+  - blueprint: github-delivery
+    reason: The active slice is delivered through PR #165 and must maintain exact Issue-to-EP correlation and exact-head CI evidence.
+    review_focus:
+    - provider readback and correlation
+    - exact-head checks
+    - no merge claim without Owner authorization
+  not_applicable:
+  - blueprint: engineering-numerics
+    reason: No numerical solver or engineering calculation authority changes.
+  - blueprint: code-review
+    reason: Independent human/agent code-review approval is not a separate acceptance requirement for this bounded evidence slice; GitHub review state is still recorded for delivery.
+  - blueprint: performance
+    reason: No performance target or optimization is introduced; only functional browser contract evidence is required.
+  - blueprint: migration
+    reason: This EP does not migrate persisted data, canonical schemas, Redox production pages, or external hosts.
+  review_contract:
+    required: true
+    required_before_checkpoint: true
+    receipt_namespace: QRV-
+    required_outputs:
+    - procedure_results
+    - findings
+    - owner_report
+    - successor_handover
+  findings_policy: Quality findings remain quality state unless they map to an existing acceptance, authority, protected-invariant, or safety hard-stop condition.
+  ordinary_findings_are_hard_stops: false
+acceptance:
+- id: AC-01
+  description: Real Chrome executes click-target, keyboard, mouse-pointer, and touch-pointer operation paths through the same semantic PICK/DROP runtime and reaches equivalent accepted semantic state for the long-division witness.
+  weight: 30
+  verification:
+  - TEST-02
+- id: AC-02
+  description: Real Chrome proves the same semantic scene resolves to a usable narrow layout without authored pixel coordinates and that prefers-reduced-motion disables workbench motion without changing semantic state.
+  weight: 20
+  verification:
+  - TEST-02
+- id: AC-03
+  description: Real Chrome proves Escape/cancel, undo, and two sibling workbench instances preserve deterministic state and instance isolation.
+  weight: 20
+  verification:
+  - TEST-02
+- id: AC-04
+  description: The completed diff adds no subject-specific decision branch, learner-evidence interpretation, #163 portability proof, or new mandatory frontend/package dependency.
+  weight: 10
+  verification:
+  - TEST-01
+  - TEST-03
+- id: AC-05
+  description: The exact final PR #165 head passes the repository guardrails with fresh generated artifacts and all existing tests.
+  weight: 20
+  verification:
+  - TEST-03
+validation:
+- id: TEST-01
+  class: MUST_PASS
+  method: node --test tests/workbench_runtime.test.mjs
+  proves:
+  - AC-04
+- id: TEST-02
+  class: MUST_PASS
+  method: node --test tests/workbench_browser.test.mjs on the GitHub Actions ubuntu-24.04 runner using its ChromeDriver
+  proves:
+  - AC-01
+  - AC-02
+  - AC-03
+- id: TEST-03
+  class: MUST_PASS
+  method: Grade9V3 .github/workflows/guardrails.yml on the exact PR #165 head
+  proves:
+  - AC-04
+  - AC-05
+failure_and_stop_conditions:
+  hard_stop_categories:
+  - OWNER_DECISION_REQUIRED
+  - ESSENTIAL_INPUT_MISSING
+  - AUTHORITY_VIOLATION
+  - PROTECTED_INVARIANT_FAILURE
+  - WRITE_COLLISION
+  - SUPERSEDED_EP
+  - ROADMAP_CONFLICT
+  - REPOSITORY_STATE_CONFLICT
+  - UNSAFE_ENGINEERING_RESULT
+report_contract:
+  sections:
+  - Executive state
+  - Overall / phase / EP progress
+  - Work completed
+  - Files changed
+  - Acceptance matrix
+  - Tests and evidence
+  - Quality findings
+  - Known limitations
+  - Owner decisions required
+  - GitHub issue changes
+  - Roadmap changes
+  - Exact next actions
+  - Successor EP
+  - Qualification Q1-Q5 when applicable
+  payloads:
+  - id: RPT-STATE
+    section: Executive state
+    sources: [REPO_STATE]
+    required_fields: [relay_state, current_position, execution_state, material_authority, stop]
+  - id: RPT-PROGRESS
+    section: Overall / phase / EP progress
+    sources: [PROGRESS, OVERALL_ROADMAP, EP]
+    required_fields: [progress_basis, overall, phase, work_package, step, acceptance]
+  - id: RPT-WORK
+    section: Work completed
+    sources: [EP, CP]
+    required_fields: [completed_steps, implementation_result]
+  - id: RPT-FILES
+    section: Files changed
+    sources: [CP]
+    required_fields: [files_changed]
+  - id: RPT-AC
+    section: Acceptance matrix
+    sources: [EP, PROGRESS, CP]
+    required_fields: [criterion, status, percent, basis]
+  - id: RPT-EVIDENCE
+    section: Tests and evidence
+    sources: [EP, CP, REPO_STATE]
+    required_fields: [validation_id, obligation_class, status, basis_ref, not_run_reason]
+  - id: RPT-QUALITY
+    section: Quality findings
+    sources: [EP, QRV, CP, REPO_STATE]
+    required_fields: [quality_review, procedures, findings, disposition, execution_effect]
+  - id: RPT-LIMITS
+    section: Known limitations
+    sources: [EP, CP, REPO_STATE]
+    required_fields: [limitations, evidence_gaps, deferred_items]
+  - id: RPT-OWNER
+    section: Owner decisions required
+    sources: [ODR, REPO_STATE]
+    required_fields: [decision_required, pending_items, authority_effect]
+  - id: RPT-ISSUES
+    section: GitHub issue changes
+    sources: [ISSUE_GRAPH, REPO_STATE]
+    required_fields: [operations, relationships, projection_state]
+  - id: RPT-ROADMAP
+    section: Roadmap changes
+    sources: [OVERALL_ROADMAP, ROADMAP_REVISION, PROGRESS]
+    required_fields: [revision, topology_or_status_change, frontier_after, progress_basis_effect]
+  - id: RPT-NEXT
+    section: Exact next actions
+    sources: [EP]
+    required_fields: [ordered_actions, targets, inputs, tests, benchmarks, acceptance, expected_result, stop_conditions]
+  - id: RPT-SUCCESSOR
+    section: Successor EP
+    sources: [CP, OVERALL_ROADMAP, REPO_STATE]
+    required_fields: [successor_mode, next_frontier, ep_or_terminal_disposition]
+checkpoint_contract:
+  required: true
+successor_relay:
+  required: true
+  duties:
+  - reconcile current roadmap node
+  - create checkpoint
+  - update progress
+  - update issue projection when applicable
+  - compute next executable frontier
+  - create successor EP when work continues
+  - validate successor EP
+  - run cold-start check
+  - update REPO_STATE
+  required_outputs:
+  - checkpoint
+  - progress_reconciliation
+  - issue_projection_disposition
+  - next_frontier
+  - successor_ep_or_terminal_disposition
