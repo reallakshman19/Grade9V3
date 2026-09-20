@@ -317,3 +317,12 @@ Each item has:
 - a caveat where the formal model needs qualification (for example the brown-ring nitrosyl formalism).
 
 The 74 tooltip previews are paraphrases of the live ExamSIDE index snapshot rather than verbatim corpus reproduction. Some non-OS source prompts contain rendered chemical notation not recoverable as machine text from the index; those previews describe the task without inventing missing notation.
+
+
+## Redox tooltip placement, equation workbench and in-tab banks (2026-09-20)
+
+Three learner-facing issues from screenshot review were corrected:
+
+1. **Question-preview overlay:** the tooltip is now fully opaque, narrower, uses a high top-layer z-index, and prefers placement to the right or left of the hovered/touched reference before falling back above/below. This prevents the translucent text collision visible in the prior implementation. Hover, focus, touch pinning, outside-click close and Escape remain supported.
+2. **Dedicated equation representation:** the oxidation-bookkeeping page now has a reusable interactive Equation Workbench. Any of the 14 mapped oxidation-state PYQs can load its own staged ledger into one canvas; Prev/Next/Reset reveal the derivation incrementally rather than duplicating fourteen static diagrams.
+3. **Question banks inside learning tabs:** Electron Conveyor, Ion-Electron Balance, n-factor/disproportionation, Titration/equivalence and Electrochemistry Extension now surface their mapped question banks directly in the respective page. The first four use live ExamSIDE corpus mappings; Electrochemistry shows the three local off-corpus extension items.

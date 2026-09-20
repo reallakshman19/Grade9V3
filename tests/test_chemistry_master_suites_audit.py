@@ -340,6 +340,21 @@ class ChemistryMasterSuitesAuditTest(unittest.TestCase):
             helpers,
         )
 
+        self.assertTrue(all(row.get("equationStages") for row in helpers))
+        self.assertIn('id="canvasOxEquationWorkbench"', html)
+        self.assertIn("loadOxEquationQuestion", html)
+        self.assertIn("renderMappedTrackQuestionBanks", html)
+        for container_id in (
+            "electronFlowQuestionBank",
+            "ionElectronQuestionBank",
+            "nfactorQuestionBank",
+            "titrationQuestionBank",
+            "electroQuestionBank",
+        ):
+            self.assertIn(f'id="{container_id}"', html)
+        self.assertIn("z-[9999]", html)
+        self.assertIn("bg-slate-950 p-3", html)
+
     def test_js_bank_parser_handles_semicolon_bracket_inside_strings(self):
         from Shared.tools import gcdr_suite_guard
 
