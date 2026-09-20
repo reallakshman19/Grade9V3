@@ -251,6 +251,11 @@ test("real browser semantic interaction contract", { skip: !driverPath, timeout:
     await driver.navigate(`${staticServer.origin}/tests/fixtures/workbench/browser-host.html`);
     await driver.waitFor("return window.__workbenchReady === true;");
 
+    const initialSummary = await driver.execute("return window.workbenchHarness.textSummary('primary');");
+    assert.match(initialSummary, /No source selected\./);
+    assert.match(initialSummary, /156 ÷ 12 \[division expression\]/);
+    assert.match(initialSummary, /Use the leading 15 as the first partial dividend \[place value\]/);
+
     const sourceSelector = '[data-role="entity"][data-projection-ref="dividend-expression"]';
     const linkedSelector = '[data-role="entity"][data-projection-ref="dividend-place-value"]';
     const targetSelector = '[data-role="target"][data-target-ref="quotient-first-digit"]';
@@ -287,6 +292,8 @@ test("real browser semantic interaction contract", { skip: !driverPath, timeout:
     assert.equal(focusCorrespondence.inspected.projectionRef, "dividend-expression");
     assert.deepEqual(focusCorrespondence.inspected.linkedProjectionRefs, ["dividend-expression", "dividend-place-value"]);
     assert.match(focusCorrespondence.serialized, /ENTITY_INSPECTED/);
+    const inspectedSummary = await driver.execute("return window.workbenchHarness.textSummary('primary');");
+    assert.match(inspectedSummary, /Inspecting 156 ÷ 12\./);
 
     await driver.execute(
       "arguments[0].dispatchEvent(new PointerEvent('pointerover', {bubbles:true, composed:true, pointerType:'mouse'}));",
@@ -365,6 +372,8 @@ test("real browser semantic interaction contract", { skip: !driverPath, timeout:
     await driver.sendKeys(sourceForCancel, SPACE);
     const picked = await driver.execute("return window.workbenchHarness.snapshot('primary').interaction.pickedEntityRef;");
     assert.equal(picked, "dividend-156");
+    const pickedSummary = await driver.execute("return window.workbenchHarness.textSummary('primary');");
+    assert.match(pickedSummary, /Selected source 156\./);
     const sourceForEscape = await driver.shadowElement("#primary", sourceSelector);
     await driver.sendKeys(sourceForEscape, ESCAPE);
     const cancelled = await driver.execute("return window.workbenchHarness.snapshot('primary');");
@@ -375,11 +384,17 @@ test("real browser semantic interaction contract", { skip: !driverPath, timeout:
     await driver.browserClick(sourceForUndo);
     const targetForUndo = await driver.shadowElement("#primary", targetSelector);
     await driver.browserClick(targetForUndo);
+    const committedSummary = await driver.execute("return window.workbenchHarness.textSummary('primary');");
+    assert.match(committedSummary, /Revision 1\./);
+    assert.match(committedSummary, /1 \[quotient digit\]/);
     const undoButton = await driver.shadowElement("#primary", '[data-action="undo"]');
     await driver.browserClick(undoButton);
     const undone = await driver.execute("return window.workbenchHarness.snapshot('primary');");
     assert.equal(undone.entities.some((row) => row.id === "quotient-digit-1"), false);
     assert.equal(undone.interaction.pickedEntityRef, null);
+    const undoneSummary = await driver.execute("return window.workbenchHarness.textSummary('primary');");
+    assert.match(undoneSummary, /Revision 2\./);
+    assert.doesNotMatch(undoneSummary, /\[quotient digit\]/);
 
     await driver.execute("window.workbenchHarness.reset('primary'); window.workbenchHarness.reset('secondary');");
     const isolationSource = await driver.shadowElement("#primary", sourceSelector);
@@ -419,6 +434,8 @@ test("real browser semantic interaction contract", { skip: !driverPath, timeout:
     await driver.execute("arguments[0].dispatchEvent(new PointerEvent('pointerover', {bubbles:true, composed:true, pointerType:'mouse'}));", [driver.ref(previewTarget)]);
     const previewText = await driver.execute("return arguments[0].querySelector('small')?.textContent;", [driver.ref(await driver.shadowElement("#primary", targetSelector))]);
     assert.equal(previewText, "Available");
+    const previewSummary = await driver.execute("return window.workbenchHarness.textSummary('primary');");
+    assert.match(previewSummary, /Target First quotient digit: available\./);
   } finally {
     await driver.close();
     driverProcess.child.kill("SIGTERM");
