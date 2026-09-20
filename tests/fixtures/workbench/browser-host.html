@@ -86,6 +86,9 @@
       snapshot(id) {
         return document.getElementById(id).snapshot;
       },
+      textSummary(id) {
+        return document.getElementById(id).textSummary;
+      },
       events(id) {
         return structuredClone(events.get(id) || []);
       },
