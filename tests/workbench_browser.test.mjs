@@ -254,7 +254,7 @@ test("real browser semantic interaction contract", { skip: !driverPath, timeout:
     const initialSummary = await driver.execute("return window.workbenchHarness.textSummary('primary');");
     assert.match(initialSummary, /No source selected\./);
     assert.match(initialSummary, /156 ÷ 12 \[division expression\]/);
-    assert.match(initialSummary, /Use the leading 15 as the first partial dividend \[place value\]/);
+    assert.match(initialSummary, /156 in long-division working form \[working dividend\]/);
 
     const sourceSelector = '[data-role="entity"][data-projection-ref="dividend-expression"]';
     const linkedSelector = '[data-role="entity"][data-projection-ref="dividend-place-value"]';
