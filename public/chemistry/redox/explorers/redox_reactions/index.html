@@ -364,10 +364,10 @@
           <div>
             <div class="flex items-center gap-2">
               <span class="text-lg">⭐</span>
-              <h2 class="font-bold text-base text-white">IIT-JEE Diagnostic Question Hub &middot; ExamSIDE Verified Bank</h2>
+              <h2 class="font-bold text-base text-white">IIT-JEE Diagnostic Question Hub &middot; Locally Audited Diagnostic Slice</h2>
             </div>
             <p class="text-xs text-slate-400 mt-1">
-              Grounded on past-year questions from <a href="https://questions.examside.com/past-years/jee/jee-main/chemistry/redox-reactions" target="_blank" class="text-amber-400 underline hover:text-amber-300">ExamSIDE Redox Reactions</a>.
+              Source labels are attributed to <a href="https://questions.examside.com/past-years/jee/jee-main/chemistry/redox-reactions" target="_blank" class="text-amber-400 underline hover:text-amber-300">ExamSIDE Redox Reactions</a>.
             </p>
           </div>
 
@@ -430,29 +430,34 @@
       const parent = canvas.parentElement;
       if (!parent) return { ctx: null, width: 0, height: 0 };
 
-      const cssW = canvas.clientWidth > 50 ? Math.floor(canvas.clientWidth) : (parent.clientWidth > 50 ? Math.floor(parent.clientWidth) : 600);
-      const height = canvas.getAttribute('height') ? parseInt(canvas.getAttribute('height')) : 280;
+      if (!canvas.dataset.logicalHeight) {
+        canvas.dataset.logicalHeight = canvas.getAttribute('height') || '280';
+      }
+      const logicalHeight = Math.max(120, parseInt(canvas.dataset.logicalHeight, 10) || 280);
 
-      if (cssW < 50) return { ctx: null, width: 0, height: 0 };
+      const style = window.getComputedStyle(parent);
+      const horizontalPadding = (parseFloat(style.paddingLeft) || 0) + (parseFloat(style.paddingRight) || 0);
+      const measured = Math.floor(parent.clientWidth - horizontalPadding);
+      const width = measured > 50 ? measured : (parseInt(canvas.dataset.logicalWidth || '0', 10) || 600);
+      if (width < 50) return { ctx: null, width: 0, height: 0 };
+      canvas.dataset.logicalWidth = String(width);
 
-      const dpr = window.devicePixelRatio || 1;
-      const targetW = Math.round(cssW * dpr);
-      const targetH = Math.round(height * dpr);
+      const dpr = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
+      canvas.style.width = '100%';
+      canvas.style.height = logicalHeight + 'px';
+      canvas.style.boxSizing = 'border-box';
 
+      const targetW = Math.round(width * dpr);
+      const targetH = Math.round(logicalHeight * dpr);
       if (canvas.width !== targetW || canvas.height !== targetH) {
         canvas.width = targetW;
         canvas.height = targetH;
       }
-      canvas.style.height = height + 'px';
 
       const ctx = canvas.getContext('2d');
-      if (ctx) {
-        ctx.resetTransform();
-        ctx.scale(dpr, dpr);
-      }
-      return { ctx, width: cssW, height };
+      if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      return { ctx, width, height: logicalHeight };
     }
-
     function setSliderWithEvent(id, val) {
       const el = document.getElementById(id);
       if (el && val !== undefined) {
@@ -465,7 +470,7 @@
       const toast = document.getElementById('simToast');
       document.getElementById('simToastTitle').textContent = `Loaded ${q.id} (${q.year})`;
       document.getElementById('simToastDesc').textContent = q.q.slice(0, 100) + '...';
-      document.getElementById('simToastParams').textContent = (q.simSummary || []).join(' | ');
+      document.getElementById('simToastParams').textContent = `${q.simFidelity}: ${q.simFidelityNote} | ${(q.simSummary || []).join(' | ')}`;
       toast.classList.remove('hidden');
       toast.classList.remove('translate-y-4');
       setTimeout(() => closeSimToast(), 6000);
@@ -482,28 +487,33 @@
       const q = questions.find(item => item.id === qId);
       if (!q) return;
 
+      const fidelity = q.simFidelity || 'CONCEPT_ONLY';
+      if (fidelity === 'UNAVAILABLE') {
+        showToast(q);
+        return;
+      }
+
       const targetTab = q.targetTab || 'tab-structural-ox';
       switchTab(targetTab);
+      if (fidelity === 'CONCEPT_ONLY') {
+        setTimeout(() => showToast(q), 70);
+        window.scrollTo({ top: 120, behavior: 'smooth' });
+        return;
+      }
 
       const p = q.simParams || {};
+      const bound = key => (q.simBindingRefs || []).includes(`simParams.${key}`);
       setTimeout(() => {
-        if (targetTab === 'tab-structural-ox') {
-          if (p.compound) setStructuralCompound(p.compound);
-        } else if (targetTab === 'tab-nfactor') {
-          if (p.medium) setNfactorMedium(p.medium);
+        if (targetTab === 'tab-structural-ox' && bound('compound') && p.compound) {
+          setStructuralCompound(p.compound);
+        } else if (targetTab === 'tab-nfactor' && bound('medium') && p.medium) {
+          setNfactorMedium(p.medium);
         }
         showToast(q);
       }, 70);
 
       window.scrollTo({ top: 120, behavior: 'smooth' });
     }
-
-    // =========================================================================
-    // TAB 1: STRUCTURAL OXIDATION RIG
-    // =========================================================================
-    let currentCompound = 'CrO5';
-    let currentStructMode = 'reality';
-
     function setStructuralCompound(cmp) {
       currentCompound = cmp;
       ['CrO5', 'S4O6', 'Fe3O4'].forEach(c => {
@@ -812,6 +822,41 @@
       renderQuestions();
     }
 
+    function validateQuestionBank() {
+      const bank = window.JEE_QUESTIONS_DATA || [];
+      const errors = [];
+      const seen = new Set();
+      const required = ['id','q','options','formula','steps','ans','trap','answerAudit','sourceAudit','simFidelity','simFidelityNote','targetTab','simBindingRefs'];
+      bank.forEach(q => {
+        required.forEach(key => {
+          if (q[key] === undefined || q[key] === null || q[key] === '') errors.push(`${q.id || '<missing>'}: missing ${key}`);
+        });
+        if (seen.has(q.id)) errors.push(`${q.id}: duplicate id`);
+        seen.add(q.id);
+        if (!document.getElementById(q.targetTab)) errors.push(`${q.id}: target tab ${q.targetTab} does not exist`);
+        if (q.answerAudit === 'PASS' && !(q.options || []).some(o => o.key === q.correct)) errors.push(`${q.id}: PASS answer key not present in options`);
+        if (['EXACT','CONSTRAINT_FAITHFUL'].includes(q.simFidelity) && !(q.simBindingRefs || []).length) errors.push(`${q.id}: mapped simulator state has no binding refs`);
+        if (['CONCEPT_ONLY','UNAVAILABLE'].includes(q.simFidelity) && (q.simBindingRefs || []).length) errors.push(`${q.id}: concept/unavailable mapping must not inject bindings`);
+      });
+      if (errors.length) {
+        const banner = document.createElement('div');
+        banner.id = 'questionBankIntegrityError';
+        banner.className = 'fixed left-3 right-3 bottom-3 z-[100] p-3 rounded-xl bg-red-950 border border-red-500 text-red-100 text-xs shadow-2xl';
+        banner.textContent = `Question-bank integrity failure (${errors.length}): ${errors.slice(0,4).join(' | ')}`;
+        document.body.appendChild(banner);
+      }
+      return errors;
+    }
+
+    function auditBadge(q) {
+      const answer = q.answerAudit === 'PASS'
+        ? '<span class="px-2 py-0.5 rounded bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 text-[10px] font-mono">ANSWER PASS</span>'
+        : `<span class="px-2 py-0.5 rounded bg-amber-500/15 border border-amber-500/40 text-amber-300 text-[10px] font-mono">ANSWER ${q.answerAudit || 'PENDING'}</span>`;
+      const source = '<span class="px-2 py-0.5 rounded bg-slate-800 border border-slate-600 text-slate-300 text-[10px] font-mono">SOURCE PENDING</span>';
+      const fidelity = `<span class="px-2 py-0.5 rounded bg-sky-500/10 border border-sky-500/30 text-sky-300 text-[10px] font-mono">${q.simFidelity}</span>`;
+      return answer + source + fidelity;
+    }
+
     function renderQuestions() {
       const container = document.getElementById('questionsContainer');
       if (!container || !window.JEE_QUESTIONS_DATA) return;
@@ -846,6 +891,7 @@
                   ${q.id}
                 </span>
                 <span class="text-xs font-semibold text-slate-300">${q.source}</span>
+                <span class="flex flex-wrap gap-1">${auditBadge(q)}</span>
               </div>
               <div class="flex items-center gap-2">
                 <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">
@@ -853,7 +899,7 @@
                 </span>
                 <button onclick="loadQuestionIntoSimulator('${q.id}')" class="touch-target px-3 py-1 bg-amber-500/20 hover:bg-amber-500/30 border border-amber-500/50 text-amber-300 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
                   <span>🚀</span>
-                  <span>Load in Simulator</span>
+                  <span>${q.simFidelity === 'CONCEPT_ONLY' ? 'Open Concept Simulator' : 'Load Bound Constraints'}</span>
                 </button>
               </div>
             </div>
@@ -916,7 +962,7 @@
 
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-emerald-500/30 text-xs">
                   <span class="font-mono text-slate-400">Official Exam Key: <strong class="text-white">Option (${q.correct})</strong></span>
-                  <span class="font-mono font-bold text-emerald-400 bg-emerald-500/20 px-2.5 py-1 rounded border border-emerald-500/40">Verified Invariant: ${q.ans}</span>
+                  <span class="font-mono font-bold text-emerald-400 bg-emerald-500/20 px-2.5 py-1 rounded border border-emerald-500/40">Answer Audit ${q.answerAudit}: ${q.ans}</span>
                 </div>
               </div>
             </div>
@@ -930,18 +976,25 @@
       if (!q) return;
 
       const fb = document.getElementById(`feedback-${qId}`);
-      const isCorrect = (selectedKey === q.correct);
+      if (q.answerAudit !== 'PASS' || !q.correct) {
+        if (fb) {
+          fb.classList.remove('hidden');
+          fb.className = 'p-3.5 rounded-xl text-xs bg-amber-950/60 border border-amber-500/60 text-amber-100 space-y-1.5';
+          fb.innerHTML = `<div><strong>⚠️ Withheld from scoring · Answer audit ${q.answerAudit || 'PENDING'}.</strong></div><div>${q.answerAuditNote || 'This item requires review.'}</div><div class="font-mono text-amber-300">${q.ans || ''}</div>`;
+        }
+        return;
+      }
 
+      const isCorrect = (selectedKey === q.correct);
       (q.options || []).forEach(opt => {
         const btn = document.getElementById(`btnOpt-${qId}-${opt.key}`);
-        if (btn) {
-          if (opt.key === q.correct) {
-            btn.className = 'text-left p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/90 text-xs text-emerald-200 transition flex items-start gap-2.5 shadow-md shadow-emerald-950/50';
-          } else if (opt.key === selectedKey && !isCorrect) {
-            btn.className = 'text-left p-3 rounded-xl bg-red-950/60 border border-red-500/90 text-xs text-red-200 transition flex items-start gap-2.5 shadow-md shadow-red-950/50';
-          } else {
-            btn.className = 'text-left p-3 rounded-xl bg-slate-950/40 border border-border/40 text-xs text-slate-500 transition flex items-start gap-2.5';
-          }
+        if (!btn) return;
+        if (opt.key === q.correct) {
+          btn.className = 'text-left p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/90 text-xs text-emerald-200 transition flex items-start gap-2.5 shadow-md shadow-emerald-950/50';
+        } else if (opt.key === selectedKey && !isCorrect) {
+          btn.className = 'text-left p-3 rounded-xl bg-red-950/60 border border-red-500/90 text-xs text-red-200 transition flex items-start gap-2.5 shadow-md shadow-red-950/50';
+        } else {
+          btn.className = 'text-left p-3 rounded-xl bg-slate-950/40 border border-border/40 text-xs text-slate-500 transition flex items-start gap-2.5';
         }
       });
 
@@ -949,14 +1002,13 @@
         fb.classList.remove('hidden');
         if (isCorrect) {
           fb.className = 'p-3.5 rounded-xl text-xs bg-emerald-950/60 border border-emerald-500/60 text-emerald-200 space-y-1';
-          fb.innerHTML = `<div><strong>✅ Spot on! Correct Option (${q.correct}).</strong></div><div class="text-[11px] text-emerald-300 font-mono">${q.ans}</div>`;
+          fb.innerHTML = `<div><strong>✅ Correct Option (${q.correct}).</strong></div><div class="text-[11px] text-emerald-300 font-mono">${q.ans}</div>`;
         } else {
           fb.className = 'p-3.5 rounded-xl text-xs bg-red-950/60 border border-red-500/60 text-red-200 space-y-1.5';
-          fb.innerHTML = `<div><strong>❌ Option (${selectedKey}) is incorrect.</strong> The correct answer is <strong>Option (${q.correct})</strong>.</div><div class="text-amber-300 font-semibold">⚠️ Trap Insight: ${q.trap}</div>`;
+          fb.innerHTML = `<div><strong>❌ Option (${selectedKey}) is incorrect.</strong> The locally audited answer is <strong>Option (${q.correct})</strong>.</div><div class="text-amber-300 font-semibold">⚠️ Trap Insight: ${q.trap}</div>`;
         }
       }
     }
-
     function toggleSolution(qId) {
       const el = document.getElementById(`solContent-${qId}`);
       const icon = document.getElementById(`solIcon-${qId}`);
@@ -968,6 +1020,7 @@
     }
 
     window.addEventListener('load', () => {
+      validateQuestionBank();
       renderQuestions();
       updateStructuralLedger();
       drawStructuralOx();
