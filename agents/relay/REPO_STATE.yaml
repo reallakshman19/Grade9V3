@@ -18,8 +18,8 @@ current_position:
 execution_policy:
   mode: SERIAL
 active_ep:
-  id: EP-0162-REDO-PROOF
-  path: agents/relay/execution-packages/EP-0162-REDO-PROOF.yaml
+  id: EP-0162-SEMANTIC-IDENTITY-PROOF
+  path: agents/relay/execution-packages/EP-0162-SEMANTIC-IDENTITY-PROOF.yaml
   state: EXECUTABLE
   continuity_receipt: agents/relay/drift/DRIFT-0162-RM0008.yaml
 last_checkpoint:
@@ -42,60 +42,63 @@ takeover_admissions:
     id: TC-0162-BROWSER-RUNTIME-PROOF
     path: agents/relay/certifications/takeover/TC-0162-BROWSER-RUNTIME-PROOF.yaml
 owner_execution_exception:
-  id: ODR-0162-ADVANCE-REDO
-  path: agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-REDO.yaml
+  id: ODR-0162-ADVANCE-SEMANTIC-IDENTITY
+  path: agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-SEMANTIC-IDENTITY.yaml
   normal_drift_write_gate_passed: false
 progress:
   overall_percent: 0
   phase_percent: 0
-  ep_percent: 100
-  basis_revision: PB-0001
+  ep_percent: 0
+  basis_revision: PB-0002
 status_planes:
   execution:
     state: READY
     can_continue: true
     material_authority: WRITE
-    next_action: Preserve the completed redo contract and select the next bounded Core-owned #162 falsifier; merge/base reconciliation remains deferred.
+    next_action: Execute STEP-I01 first by strengthening the 156 ÷ 12 semantic identity witness; do not change Core runtime unless the stronger generic falsifier cannot be represented.
   quality:
     state: NEEDS_ATTENTION
     findings:
-    - Browser falsification repaired focus/touch lifecycle defects; correspondence is explicit across grids; text-state fallback is now browser-proven from existing semantic labels/state without subject inference.
+    - The current long-division witness treats the leading 15 as text on a projection of dividend-156, so it does not yet prove the intermediate semantic identity boundary.
     - Main carries RM-0008 / EP-TA-008 while this branch carries the #162 RM-0002 execution package; normal drift/write validation remains unmet under the explicit Owner continuation exception.
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
   evidence:
     state: PARTIAL
-    summary: Redo/reversible-history proof is green on coding head 8b1f55fdb0117810599647aa08408a673e635c04 with real Chrome and 934 repository tests. Final post-rebase merge-candidate validation remains pending.
+    summary: Prior browser/correspondence/text-summary/redo Core evidence remains green; the newly admitted 156 -> partial-dividend-15 -> quotient-digit-1 falsifier has not yet run.
     not_run:
+    - TEST-I01 stronger semantic-identity unit falsifier
+    - TEST-I02 stronger real-browser semantic-identity lifecycle
+    - TEST-I03 exact-head full guardrails for the new slice
     - final post-rebase browser rerun on the eventual merge candidate
     - final post-rebase full guardrails on the eventual merge candidate
   stop:
     active: false
     category: NONE
-    reason: Owner explicitly authorized bounded #162 coding to continue despite the known merge/base conflict; the normal drift gate is not claimed as passed.
+    reason: Owner explicitly authorized the bounded semantic-identity #162 slice while the known merge/base conflict remains deferred; the normal drift gate is not claimed as passed.
     basis:
     - agents/relay/roadmap/owner-decisions/ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT.yaml
+    - agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-SEMANTIC-IDENTITY.yaml
     - agents/relay/drift/DRIFT-0162-RM0008.yaml
 projection:
   required: true
-  state: IN_SYNC
+  state: STALE
   operation_id: GHGEN-HO-D5BAC91CB19C-R2
   target: github:reallaksh19/Grade9V3:issues/167
   adapter: GITHUB_ISSUES
   plan: agents/relay/projection/generations/GHGEN-HO-D5BAC91CB19C-R2.yaml
   roadmap_revision: RM-0002
-  execution_ref: EP-0162-REDO-PROOF
+  execution_ref: EP-0162-SEMANTIC-IDENTITY-PROOF
   receipt: github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/167
   basis:
   - agents/relay/roadmap/ISSUE_GRAPH.yaml@IG-0003
-  - agents/relay/projection/generations/GHGEN-HO-D5BAC91CB19C.yaml
-  - Issue #167 provider readback
-  - Issue #162 reciprocal comment 5752504081
+  - Issue #167 predates ODR-0162-ADVANCE-SEMANTIC-IDENTITY and does not yet project the new active EP.
 relay_readiness:
   baton_ready: false
-  projection_ready: true
+  projection_ready: false
   handover_ready: false
   reasons:
-  - Handover Issue #167 is provider-verified and reciprocally referenced from Issue #162.
-  - BATON_READY remains false because the completed redo EP has not been checkpointed into a successor executable frontier and AC-05 remains pending.
+  - The semantic-identity successor EP is active but has not yet produced its evidence/checkpoint.
+  - Handover Issue #167 is stale relative to the newly admitted successor slice.
+  - AC-05 post-rebase delivery acceptance remains pending.
   - Mainline relay custody and PR #165 merge conflict remain unresolved by Owner direction.
 chat_context_required: false
