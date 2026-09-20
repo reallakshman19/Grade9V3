@@ -92,7 +92,10 @@
         },
         "final_answer": {
           "type": "string",
-          "minLength": 1
+          "minLength": 1,
+          "not": {
+            "pattern": "(?i)^\\s*(apply|evaluate|use\\s+the\\s+formula|computed\\s+from|symmetry\\s+verified|direct\\s+application)\\b"
+          }
         },
         "derivation_specific": {
           "type": "boolean"
@@ -187,5 +190,109 @@
         }
       }
     }
-  }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "answer_contract": {
+            "properties": {
+              "status": {
+                "const": "PASS"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "answer_contract": {
+            "properties": {
+              "derivation_specific": {
+                "const": true
+              },
+              "audit_evidence_refs": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "source_provenance": {
+            "properties": {
+              "source_item_verified": {
+                "const": true
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "source_provenance": {
+            "properties": {
+              "source_claim_status": {
+                "const": "VERIFIED"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "simulation_contract": {
+            "properties": {
+              "fidelity": {
+                "const": "EXACT"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "simulation_contract": {
+            "properties": {
+              "binding_refs": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "simulation_contract": {
+            "properties": {
+              "fidelity": {
+                "const": "UNAVAILABLE"
+              }
+            }
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "simulation_contract": {
+            "properties": {
+              "target_activity": {
+                "type": "null"
+              },
+              "binding_refs": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
 }
