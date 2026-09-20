@@ -1198,7 +1198,7 @@
       const bank = window.JEE_QUESTIONS_DATA || [];
       const errors = [];
       const seen = new Set();
-      const required = ['id','q','options','formula','steps','ans','trap','answerAudit','answerAuditNote','sourceAudit','sourceAuditNote','simFidelity','simFidelityNote','targetTab','simBindingRefs'];
+      const required = ['id','q','options','formula','steps','ans','trap','teacherCheck','takeaway','helperTags','answerAudit','answerAuditNote','sourceAudit','sourceAuditNote','simFidelity','simFidelityNote','targetTab','simBindingRefs'];
       bank.forEach(q => {
         required.forEach(key => {
           if (q[key] === undefined || q[key] === null || q[key] === '') errors.push(`${q.id || '<missing>'}: missing ${key}`);
@@ -1343,6 +1343,24 @@
                   <div class="text-red-200 leading-relaxed font-sans">
                     ${q.trap}
                   </div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-3">
+                  <div class="p-3 bg-sky-950/40 border border-sky-500/35 rounded-lg text-xs space-y-1">
+                    <div class="text-sky-300 font-bold font-mono">INDEPENDENT CHECK</div>
+                    <div class="text-slate-200 leading-relaxed">${q.teacherCheck}</div>
+                  </div>
+                  <div class="p-3 bg-violet-950/40 border border-violet-500/35 rounded-lg text-xs space-y-1">
+                    <div class="text-violet-300 font-bold font-mono">TRANSFER TAKEAWAY</div>
+                    <div class="text-slate-200 leading-relaxed">${q.takeaway}</div>
+                  </div>
+                </div>
+
+                <div class="p-3 bg-slate-950/50 border border-slate-700 rounded-lg text-[11px] space-y-1.5 font-mono">
+                  <div><span class="text-slate-400">SOURCE AUDIT:</span> <span class="${q.sourceAudit === 'SOURCE_UNVERIFIED' ? 'text-red-300' : 'text-slate-200'}">${q.sourceAudit}</span></div>
+                  <div class="text-slate-400">${q.sourceAuditNote}</div>
+                  <div><span class="text-slate-400">SIMULATOR FIDELITY:</span> <span class="text-sky-300">${q.simFidelity}</span></div>
+                  <div class="text-slate-400">${q.simFidelityNote}</div>
                 </div>
 
                 <!-- Step 4: Official Invariant -->
