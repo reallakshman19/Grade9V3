@@ -3,14 +3,14 @@ identity:
   ep_id: EP-0162-SEMANTIC-IDENTITY-PROOF
   branch: feat/issue-162-semantic-workbench-core
   base_ref: 143052823ba0cab69f9d5783010906bbae9b120a
-  execution_state: EXECUTABLE
+  execution_state: ACTIVE
   previous_checkpoint: NONE
   previous_join: null
   previous_replan: null
 replan_inheritance: null
 git_basis:
   expected_branch: feat/issue-162-semantic-workbench-core
-  material_ref: 143052823ba0cab69f9d5783010906bbae9b120a
+  material_ref: 726bb16085dd5f59f392a2fcc1805f3639c7e1ad
   base_branch: main
   base_observed_ref: 843ec2d8d6faa2b8de15795ed1535905e4efc8a8
   drift_policy: OWNER_EXCEPTION
