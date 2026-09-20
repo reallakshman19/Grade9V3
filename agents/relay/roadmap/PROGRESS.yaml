@@ -22,9 +22,9 @@ work_packages:
   total_weight: 0
   percent: 0
 - id: WP-162-BROWSER-RUNTIME-PROOF
-  earned_weight: 190
+  earned_weight: 290
   total_weight: 300
-  percent: 63.333333
+  percent: 96.666667
 execution_packages:
 - id: EP-0162-BROWSER-RUNTIME-PROOF
   earned_weight: 90
@@ -35,9 +35,9 @@ execution_packages:
   total_weight: 100
   percent: 100
 - id: EP-0162-STATE-SUMMARY-PROOF
-  earned_weight: 0
+  earned_weight: 100
   total_weight: 100
-  percent: 0
+  percent: 100
 implementation_steps:
 - id: STEP-01
   ep_id: EP-0162-BROWSER-RUNTIME-PROOF
@@ -61,14 +61,14 @@ implementation_steps:
   percent: 100
 - id: STEP-S01
   ep_id: EP-0162-STATE-SUMMARY-PROOF
-  earned_weight: 0
+  earned_weight: 50
   total_weight: 50
-  percent: 0
+  percent: 100
 - id: STEP-S02
   ep_id: EP-0162-STATE-SUMMARY-PROOF
-  earned_weight: 0
+  earned_weight: 50
   total_weight: 50
-  percent: 0
+  percent: 100
 acceptance_criteria:
 - id: AC-01
   ep_id: EP-0162-BROWSER-RUNTIME-PROOF
@@ -156,22 +156,28 @@ acceptance_criteria:
 
 - id: AC-S01
   ep_id: EP-0162-STATE-SUMMARY-PROOF
-  earned_weight: 0
+  earned_weight: 40
   total_weight: 40
-  percent: 0
-  status: NOT_STARTED
-  basis: []
+  percent: 100
+  status: COMPLETE
+  basis:
+  - guardrails run 3280 real Chrome exposes visible text state derived from authored labels and runtime state
+  - public textSummary getter returns the same generic semantic text
 - id: AC-S02
   ep_id: EP-0162-STATE-SUMMARY-PROOF
-  earned_weight: 0
+  earned_weight: 40
   total_weight: 40
-  percent: 0
-  status: NOT_STARTED
-  basis: []
+  percent: 100
+  status: COMPLETE
+  basis:
+  - guardrails run 3280 browser assertions cover inspect, selected source, target preview, commit revision/projection, and undo restoration
 - id: AC-S03
   ep_id: EP-0162-STATE-SUMMARY-PROOF
-  earned_weight: 0
+  earned_weight: 20
   total_weight: 20
-  percent: 0
-  status: NOT_STARTED
-  basis: []
+  percent: 100
+  status: COMPLETE
+  basis:
+  - guardrails run 3280 topic-independence 0 violations across 77 files
+  - architecture manifest fresh at 193 components / 235 relations
+  - 934 repository tests PASS and all JSON parses
