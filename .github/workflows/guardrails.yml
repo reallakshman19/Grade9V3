@@ -189,6 +189,10 @@ jobs:
           path: |
             /tmp/architecture-manifest.json
             /tmp/data.js
+            standalone/chemistry-chemical-bonding-master-suite.html
+            standalone/chemistry-mole-concept-master-suite.html
+            standalone/chemistry-redox-reactions-master-suite.html
+            standalone/chemistry-behaviour-of-gases-master-suite.html
 
       # --check compares the generated data file and the manifest without writing
       # either, so it covers both artifacts and leaves the checkout untouched.
