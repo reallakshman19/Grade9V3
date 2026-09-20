@@ -1,0 +1,68 @@
+{
+  "schema_version": "relay-v2.5-evidence-note",
+  "id": "EVIDENCE-TA8-002-STEP2",
+  "kind": "BOUNDED_ACCEPTANCE_EVIDENCE",
+  "repository": "reallaksh19/Grade9V3",
+  "roadmap_revision": "RM-0008",
+  "work_package": "WP-TA-107",
+  "execution_package": "EP-TA-008",
+  "implementation_step": "STEP-TA8-002",
+  "acceptance": [
+    "AC-TA8-002"
+  ],
+  "validation": [
+    "TEST-TA8-002"
+  ],
+  "material_basis": {
+    "implementation_commit": "582ceaaffb42197a602e6b84786c25594a3b7484",
+    "integration_fix_commit": "06d9c7f3f227f43f5ef66992df3e4fe6370e0a4d",
+    "merge_reconciliation_commit": "87cf372086470f20683bf47f761cbcc9c5884799",
+    "exact_validation_head": "1de9b1fbfcba2b0d1ccf0c71aae9d368b4ec5513",
+    "merged_main_commit": "843ec2d8d6faa2b8de15795ed1535905e4efc8a8"
+  },
+  "observed": {
+    "guardrails": {
+      "run_id": 35527339574,
+      "status": "PASS",
+      "basis_ref": "1de9b1fbfcba2b0d1ccf0c71aae9d368b4ec5513"
+    },
+    "v25": {
+      "run_id": 35527339619,
+      "status": "PARTIAL_BY_DESIGN",
+      "pass": [
+        "protocol unit suite",
+        "protocol stress suite",
+        "relay semantic conformance",
+        "cold-start reconstructability",
+        "baton readiness",
+        "discovery receipt validity",
+        "takeover certification validity",
+        "route resolution",
+        "live Git inspection"
+      ],
+      "fail": [
+        "normal candidate-specific material write gate under explicit Owner direct-execution exception"
+      ]
+    }
+  },
+  "falsifiers": [
+    "no owner estimate still yields a bounded local diagnostic gateway",
+    "gateway quick checks never create DEMONSTRATED or mastery state",
+    "one READY result does not unlock transfer",
+    "cross-family independent results do not combine to unlock transfer",
+    "transfer requires at least two distinct independent same-family canonical questions",
+    "transfer candidate stays in the active canonical question family",
+    "transfer candidate dimension must be authorized by the active matrix transfer contract",
+    "sparse or ambiguous candidate availability fails closed rather than synthesizing or alphabetically guessing across families"
+  ],
+  "disposition": {
+    "test_ta8_002": "PASS",
+    "ac_ta8_002": "COMPLETE",
+    "step_ta8_002": "COMPLETE",
+    "remaining_acceptance": [
+      "AC-TA8-003",
+      "AC-TA8-004"
+    ],
+    "programme_progress": "77.5/100"
+  }
+}

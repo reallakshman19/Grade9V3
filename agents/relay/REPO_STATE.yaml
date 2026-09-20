@@ -43,9 +43,9 @@
   },
   "takeover_admissions": [],
   "progress": {
-    "overall_percent": 73.75,
-    "phase_percent": 73.75,
-    "ep_percent": 25,
+    "overall_percent": 77.5,
+    "phase_percent": 77.5,
+    "ep_percent": 50,
     "basis_revision": "PB-0006"
   },
   "status_planes": {
@@ -53,19 +53,19 @@
       "state": "READY",
       "can_continue": true,
       "material_authority": "WRITE",
-      "next_action": "Validate the merged and regenerated router branch on its exact head, then merge PR #148 if GitHub reports it mergeable and required checks are clear; continue with the next bounded router slice afterward."
+      "next_action": "Implement the renderer-independent presentation slice: keep visual representation/scene, reasoning checkpoint and pedagogy injection references separate while preserving existing feedback and review ownership."
     },
     "quality": {
       "state": "NEEDS_ATTENTION",
       "findings": [
-        "AUDIT-TA-008-MOTHER-CONTRACT findings 003-007 remain open until later EP-TA-008 steps close them.",
-        "Audit findings 001/002 are technically remediated by STEP-TA8-001 evidence; final quality review has not yet been published.",
-        "The Owner authorized a one-slice execution exception; the normal independent replacement-agent write gate remains unmet and must not be reported as passed."
+        "The gateway, transfer-stability and family/demand-selection audit findings are technically remediated by the accepted second router slice.",
+        "The remaining mother-contract work is renderer-independent presentation/checkpoint separation plus separate R3/R8 proof and final quality/checkpoint reconciliation.",
+        "The normal independent replacement-agent gate remains unmet under the Owner's explicit direct-execution exception and must not be reported as passed."
       ]
     },
     "evidence": {
       "state": "PARTIAL",
-      "summary": "The first bounded evidence/support repair is proven on repository tests and the frozen evidence/support oracles. Later gateway/transfer/presentation/witness evidence remains open, and normal independent replacement-agent certification remains absent under the documented Owner execution exception.",
+      "summary": "Evidence/support routing and bounded gateway/stable same-family transfer are accepted. Renderer-independent presentation/checkpoint behavior, separate NLM witnesses and final quality/checkpoint evidence remain open.",
       "not_run": [
         {
           "id": "fresh independent replacement-agent qualification",
@@ -73,8 +73,8 @@
           "cause": "DEPENDENCY_WAIT"
         },
         {
-          "id": "TEST-TA8-002..004",
-          "reason": "Gateway/transfer, presentation/feedback, separate witness and final exact-head close evidence have not yet been executed.",
+          "id": "TEST-TA8-003..004",
+          "reason": "Presentation/feedback separation, separate R3/R8 witnesses and final exact-head close evidence have not yet been executed.",
           "cause": "NOT_SCHEDULED"
         }
       ]

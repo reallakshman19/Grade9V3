@@ -7,22 +7,22 @@
     "kind": "PULL_REQUEST",
     "number": 148,
     "url": "https://github.com/reallaksh19/Grade9V3/pull/148",
-    "lifecycle": "DRAFT",
+    "lifecycle": "MERGED",
     "head": {
       "ref": "takeover/topic-atlas-browser-correctness",
-      "sha": "3898aeedadf3130caf0878221061b7d950307e93"
+      "sha": "1de9b1fbfcba2b0d1ccf0c71aae9d368b4ec5513"
     },
     "base": {
       "ref": "main",
-      "sha": "d67a9ccb49c2cf7fbfd72d736dafe3b86f4c6f59"
+      "sha": "5037c193c8db017eb2cde383b913fd408e48fc6b"
     }
   },
   "mergeability": {
-    "state": "UNKNOWN"
+    "state": "MERGEABLE"
   },
   "checks": {
     "state": "FAIL",
-    "head_sha": "3898aeedadf3130caf0878221061b7d950307e93",
+    "head_sha": "1de9b1fbfcba2b0d1ccf0c71aae9d368b4ec5513",
     "required": [
       "guardrails",
       "v25-relay"
@@ -30,15 +30,15 @@
     "observations": [
       {
         "name": "guardrails",
-        "run_id": 35522174309,
+        "run_id": 35527339574,
         "status": "PASS",
-        "basis": "completed/success on observed PR head"
+        "basis": "full exact-head repository guardrails completed/success"
       },
       {
         "name": "v25-relay",
-        "run_id": 35522174342,
+        "run_id": 35527339619,
         "status": "FAIL",
-        "basis": "all semantic/cold-start/baton/route/Git steps passed; material_write_ready failed because no fresh candidate admission exists for EP-TA-008"
+        "basis": "semantic/cold-start/baton/route/Git checks passed; only normal candidate-specific write gate failed under the explicit Owner execution exception"
       }
     ]
   },
@@ -73,9 +73,9 @@
     ]
   },
   "readback_basis": [
-    "GitHub provider readback for PR #148 after description update at head 3898aeedadf3130caf0878221061b7d950307e93",
-    "GitHub Actions guardrails run 35522174309 completed/success",
-    "GitHub Actions v25-relay run 35522174342 completed/failure only at candidate-specific material write gate",
-    "GitHub provider review readback: zero reviews and zero unresolved review threads"
+    "GitHub provider readback: PR #148 merged at commit 843ec2d8d6faa2b8de15795ed1535905e4efc8a8",
+    "Exact-head guardrails run 35527339574 completed/success on 1de9b1fbfcba2b0d1ccf0c71aae9d368b4ec5513",
+    "Exact-head v25-relay run 35527339619 passed all steps except the normal candidate-specific material-write gate",
+    "Owner instruction in active session: merge if mergeable, proceed next"
   ]
 }
