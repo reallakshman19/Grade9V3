@@ -1,0 +1,378 @@
+{
+  "schema_version": "0.1.0",
+  "registry_id": "GCDR-HELPER-REGISTRY-BASE-2026-09-20",
+  "purpose": "Reusable helper contract for Motion-1D and Vector-Algebra GCDR artifacts.",
+  "helper_rules": [
+    "A helper must read the governed current state; static filler text is not sufficient.",
+    "Teacher's Chalkboard must be task/state specific and include governing model, derivation, result/disposition and at least one check where meaningful.",
+    "Trap Alert must name the concrete tempting wrong model and the observable contradiction.",
+    "Transfer Takeaway must be a reusable decision rule for a fresh problem, not a category slogan.",
+    "Wrong-model comparison must compute/render the wrong model honestly rather than display a scripted warning.",
+    "All externally loaded tasks must expose EXACT, CONSTRAINT_FAITHFUL, CONCEPT_ONLY or UNAVAILABLE fidelity."
+  ],
+  "helpers": [
+    {
+      "id": "TEACHERS_CHALKBOARD",
+      "role": "Worked reasoning",
+      "required_outputs": [
+        "governing_model",
+        "state_specific_derivation",
+        "result_or_disposition",
+        "independent_check",
+        "boundary_note"
+      ]
+    },
+    {
+      "id": "TRAP_ALERT",
+      "role": "Misconception diagnosis",
+      "required_outputs": [
+        "tempting_wrong_model",
+        "why_it_fails_here",
+        "observable_contradiction"
+      ]
+    },
+    {
+      "id": "TRANSFER_TAKEAWAY",
+      "role": "Far-transfer rule",
+      "required_outputs": [
+        "decision_rule",
+        "when_to_use",
+        "when_not_to_use"
+      ]
+    },
+    {
+      "id": "PREDICTION_GATE",
+      "role": "Prediction before reveal",
+      "required_outputs": [
+        "prediction_prompt",
+        "commit_state",
+        "reveal_after_commit"
+      ]
+    },
+    {
+      "id": "WRONG_MODEL_COMPARATOR",
+      "role": "Counterfactual engine",
+      "required_outputs": [
+        "wrong_model_state",
+        "correct_model_state",
+        "difference_signal"
+      ]
+    },
+    {
+      "id": "INDEPENDENT_CHECK",
+      "role": "Second-path verification",
+      "required_outputs": [
+        "check_method",
+        "residual_or_confirmation"
+      ]
+    },
+    {
+      "id": "BOUNDARY_ALERT",
+      "role": "Validity boundary",
+      "required_outputs": [
+        "valid_when",
+        "fails_when"
+      ]
+    },
+    {
+      "id": "INVARIANT_MONITOR",
+      "role": "Live invariant/residual",
+      "required_outputs": [
+        "quantity",
+        "expected_relation",
+        "live_residual"
+      ]
+    },
+    {
+      "id": "ASSUMPTION_BANNER",
+      "role": "Model assumptions",
+      "required_outputs": [
+        "frame",
+        "sign_or_basis_convention",
+        "constants",
+        "idealizations"
+      ]
+    },
+    {
+      "id": "EVENT_MARKER",
+      "role": "Physical event marker",
+      "required_outputs": [
+        "event_name",
+        "event_condition",
+        "event_state"
+      ]
+    },
+    {
+      "id": "STATE_INSPECTOR",
+      "role": "Canonical state visibility",
+      "required_outputs": [
+        "state_paths",
+        "current_values",
+        "provenance"
+      ]
+    },
+    {
+      "id": "REPRESENTATION_LINKER",
+      "role": "Cross-view synchronization",
+      "required_outputs": [
+        "source_representation",
+        "target_representation",
+        "shared_state_key"
+      ]
+    },
+    {
+      "id": "FORMULA_ELIGIBILITY_GATE",
+      "role": "Model/formula validity",
+      "required_outputs": [
+        "candidate_formula",
+        "required_assumptions",
+        "eligibility"
+      ]
+    },
+    {
+      "id": "EXACTNESS_BADGE",
+      "role": "External-task fidelity",
+      "required_outputs": [
+        "fidelity",
+        "binding_coverage",
+        "missing_bindings"
+      ]
+    },
+    {
+      "id": "QUESTION_LOADER",
+      "role": "Source-to-state loading",
+      "required_outputs": [
+        "bindings",
+        "loaded_state",
+        "fidelity",
+        "no_invented_defaults"
+      ]
+    },
+    {
+      "id": "RESET",
+      "role": "Deterministic reset",
+      "required_outputs": [
+        "documented_initial_state",
+        "all_views_restored"
+      ]
+    },
+    {
+      "id": "AUDIT_BADGE",
+      "role": "Quality status",
+      "required_outputs": [
+        "audit_status",
+        "pending_checks",
+        "failed_checks",
+        "open_findings"
+      ]
+    },
+    {
+      "id": "HINT_LADDER",
+      "role": "Progressive assistance",
+      "required_outputs": [
+        "concept_hint",
+        "representation_hint",
+        "equation_hint"
+      ]
+    },
+    {
+      "id": "ACCESSIBILITY_HELPER",
+      "role": "Nonvisual/keyboard equivalence",
+      "required_outputs": [
+        "accessible_names",
+        "keyboard_path",
+        "non_color_state_cues",
+        "reduced_motion_path"
+      ]
+    },
+    {
+      "id": "GRAPH_CALCULUS_HELPER",
+      "role": "Graph derivative/integral bridge",
+      "required_outputs": [
+        "local_value",
+        "slope_or_area",
+        "derived_quantity"
+      ]
+    },
+    {
+      "id": "PHASE_SPACE_HELPER",
+      "role": "x-v state view",
+      "required_outputs": [
+        "x",
+        "v",
+        "turning_point_or_flow"
+      ]
+    },
+    {
+      "id": "DUAL_ODOMETER",
+      "role": "Distance/displacement split",
+      "required_outputs": [
+        "signed_displacement",
+        "monotone_distance"
+      ]
+    },
+    {
+      "id": "EVENT_CLOCK",
+      "role": "Event-time indexing",
+      "required_outputs": [
+        "release_times",
+        "elapsed_times",
+        "event_alignment"
+      ]
+    },
+    {
+      "id": "STROBOSCOPE",
+      "role": "Equal-time snapshot",
+      "required_outputs": [
+        "snapshot_times",
+        "positions",
+        "interval_distances"
+      ]
+    },
+    {
+      "id": "FRAME_BADGE",
+      "role": "Reference-frame declaration",
+      "required_outputs": [
+        "observer",
+        "axis",
+        "relative_quantity"
+      ]
+    },
+    {
+      "id": "PHASE_TIMELINE",
+      "role": "Piecewise-state continuity",
+      "required_outputs": [
+        "phases",
+        "boundary_states",
+        "continuity_checks"
+      ]
+    },
+    {
+      "id": "TANGENT_HELPER",
+      "role": "Local derivative visual",
+      "required_outputs": [
+        "tangent_point",
+        "slope",
+        "derived_product"
+      ]
+    },
+    {
+      "id": "SOLUTION_LOCUS_HELPER",
+      "role": "Underdetermined vector solution family",
+      "required_outputs": [
+        "particular_solution",
+        "nullspace_direction",
+        "free_parameter"
+      ]
+    },
+    {
+      "id": "BAC_CAB_HELPER",
+      "role": "Vector triple product expansion",
+      "required_outputs": [
+        "parenthesization",
+        "expanded_form",
+        "plane_membership"
+      ]
+    },
+    {
+      "id": "DUAL_PLANE_3D",
+      "role": "VTP non-associativity visual",
+      "required_outputs": [
+        "left_plane",
+        "right_plane",
+        "left_result",
+        "right_result"
+      ]
+    },
+    {
+      "id": "DIAGONAL_SIDE_TOGGLE",
+      "role": "Parallelogram representation switch",
+      "required_outputs": [
+        "side_vectors",
+        "diagonal_vectors",
+        "area_identity"
+      ]
+    },
+    {
+      "id": "AREA_DECOMPOSITION_HELPER",
+      "role": "Area factor proof",
+      "required_outputs": [
+        "subareas",
+        "cross_product_area",
+        "factor"
+      ]
+    },
+    {
+      "id": "ORTHOGONAL_DROP_HELPER",
+      "role": "Projection geometry",
+      "required_outputs": [
+        "foot",
+        "parallel_component",
+        "perpendicular_component"
+      ]
+    },
+    {
+      "id": "PROJECTION_REJECTION_RIG",
+      "role": "Projection/rejection decomposition",
+      "required_outputs": [
+        "scalar_projection",
+        "vector_projection",
+        "rejection"
+      ]
+    },
+    {
+      "id": "RIGHT_ANGLE_MARKER",
+      "role": "Orthogonality cue",
+      "required_outputs": [
+        "dot_residual",
+        "angle_marker"
+      ]
+    },
+    {
+      "id": "PYTHAGOREAN_MONITOR",
+      "role": "Orthogonal norm invariant",
+      "required_outputs": [
+        "norm_total_sq",
+        "norm_parallel_sq",
+        "norm_perp_sq",
+        "residual"
+      ]
+    },
+    {
+      "id": "PARALLELEPIPED_COLLAPSE",
+      "role": "Coplanarity volume visual",
+      "required_outputs": [
+        "volume",
+        "height",
+        "coplanar_state"
+      ]
+    },
+    {
+      "id": "DETERMINANT_HELPER",
+      "role": "STP/determinant bridge",
+      "required_outputs": [
+        "matrix",
+        "determinant",
+        "geometric_meaning"
+      ]
+    },
+    {
+      "id": "VOLUME_MONITOR",
+      "role": "Scalar triple product residual",
+      "required_outputs": [
+        "stp",
+        "volume",
+        "coplanarity_residual"
+      ]
+    },
+    {
+      "id": "RESIDUAL_CHECK",
+      "role": "Equation residual validation",
+      "required_outputs": [
+        "equation",
+        "residual",
+        "pass_fail"
+      ]
+    }
+  ]
+}
