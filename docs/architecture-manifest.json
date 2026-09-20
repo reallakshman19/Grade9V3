@@ -17,7 +17,7 @@
     "WEB": 6,
     "WEB_RUNTIME": 3
   },
-  "digest": "sha256:5a47db36a4a9c09f838f903a456a5bec45dc990183d4bbd1412004af41bbf154",
+  "digest": "sha256:b871fe292ef69a5ac51bf11c258dfcb5addef57f9d1d8a13fd30e98925d546bb",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -695,15 +695,15 @@
       "path": "Shared/workbench/runtime.mjs",
       "role": "WEB_RUNTIME",
       "role_description": "Subject-neutral semantic interaction and Web Component runtime",
-      "bytes": 15291,
-      "sha256": "bc2e4b9c5b54ef685f584b98e9cd940ed92fb4c5ab2bf0f7622fd80dc643b982"
+      "bytes": 16301,
+      "sha256": "863a53d5960a5a731ac9c5206073dad694644ab47be113e006a041688ed30f91"
     },
     {
       "path": "Shared/workbench/semantic-workbench.mjs",
       "role": "WEB_RUNTIME",
       "role_description": "Subject-neutral semantic interaction and Web Component runtime",
-      "bytes": 13996,
-      "sha256": "99285f98beb670c3986643e99d2d8c79165e55f1f515536a827062343010b55c"
+      "bytes": 15774,
+      "sha256": "c35afd3c5b842a87ce3fee80417f0eebb4d2fc1777ba248c7424cce13dd7f1c8"
     },
     {
       "path": "tests/fixtures/agent_path_stress/cases.json",
@@ -807,15 +807,15 @@
       "path": "tests/fixtures/workbench/arithmetic-division.json",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 1930,
-      "sha256": "ecaf41504e453814db555d63db6054f9522f173ec01c0cc2ed3cf460a433d9ad"
+      "bytes": 2389,
+      "sha256": "71ae4b34a09b8cb4e93098fe630f0191d590ef946f72ee373b90b342ca95c75b"
     },
     {
-      "bytes": 4212,
+      "bytes": 4223,
       "path": "tests/fixtures/workbench/browser-host.html",
       "role": "TEST",
       "role_description": "Executable checks",
-      "sha256": "5b3c38763bb05fb6a93dba36673f5d0b2c7e12429f48639bce3c788aab590918"
+      "sha256": "bb0c4b06efd354ace8ab00790cb49eb5aa7a6a8359e058836c287f6f05c431f2"
     },
     {
       "path": "tests/test_agent_path_stress_prompts.py",
@@ -1315,18 +1315,18 @@
       "sha256": "3d0563b1e08a91fb25deaa42497d1df9ca81ebbb6d83ac0b70a249a2eac4303f"
     },
     {
-      "bytes": 16567,
+      "bytes": 18805,
       "path": "tests/workbench_browser.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "sha256": "b5fc549f8b99252d98f462cfeaad8da5c82707bbb877e4a91e50b327a954e13e"
+      "sha256": "63af296366e8b707549a5ce883cbf279b245189daeba27d8589c554f4d845439"
     },
     {
       "path": "tests/workbench_runtime.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 8222,
-      "sha256": "569a08043c19352fa0c74a7cfa00ffb9ef4d1d5793c76fcbfe71dbd604681c65"
+      "bytes": 9230,
+      "sha256": "c641390c708bfdb1e452db00050bbab7b731a2766b40efe5ece9205bf2d24a2a"
     },
     {
       "path": "tools/app.css",
