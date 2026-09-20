@@ -81,6 +81,13 @@ export class SemanticWorkbench extends HTMLElement {
     return event;
   }
 
+  _dispatchWithoutRebuild(intent) {
+    if (!this._runtime) throw new WorkbenchError("WORKBENCH_NOT_READY");
+    const event = this._runtime.dispatch(intent);
+    this._syncInteractionVisuals();
+    return event;
+  }
+
   _mountRuntime() {
     if (!this._scene || !this._adapter) {
       this._runtime = null;
@@ -129,10 +136,10 @@ export class SemanticWorkbench extends HTMLElement {
 
   _onPointerOver(event) {
     const entity = this._closestRole(event, "entity");
-    if (entity) this.dispatchIntent({ type: "INSPECT", entityRef: entity.dataset.entityRef, channel: "pointer" });
+    if (entity) this._dispatchWithoutRebuild({ type: "INSPECT", entityRef: entity.dataset.entityRef, channel: "pointer" });
     const target = this._closestRole(event, "target");
     if (target && this._runtime?.snapshot.interaction.pickedEntityRef) {
-      this.dispatchIntent({ type: "PREVIEW_TARGET", targetRef: target.dataset.targetRef, channel: "pointer" });
+      this._dispatchWithoutRebuild({ type: "PREVIEW_TARGET", targetRef: target.dataset.targetRef, channel: "pointer" });
     }
   }
 
@@ -152,7 +159,7 @@ export class SemanticWorkbench extends HTMLElement {
 
   _onFocusIn(event) {
     const entity = this._closestRole(event, "entity");
-    if (entity) this.dispatchIntent({ type: "INSPECT", entityRef: entity.dataset.entityRef, channel: "keyboard" });
+    if (entity) this._dispatchWithoutRebuild({ type: "INSPECT", entityRef: entity.dataset.entityRef, channel: "keyboard" });
   }
 
   _onClick(event) {
@@ -202,6 +209,48 @@ export class SemanticWorkbench extends HTMLElement {
     }
   }
 
+  _focusToken() {
+    const active = this.shadowRoot?.activeElement;
+    if (!active) return null;
+    if (active.dataset.role === "entity") return { kind: "entity", ref: active.dataset.entityRef };
+    if (active.dataset.role === "target") return { kind: "target", ref: active.dataset.targetRef };
+    if (active.dataset.action) return { kind: "action", ref: active.dataset.action };
+    return null;
+  }
+
+  _restoreFocus(token) {
+    if (!token || !this.shadowRoot) return;
+    const candidates = [...this.shadowRoot.querySelectorAll("button")];
+    const next = candidates.find((button) => {
+      if (token.kind === "entity") return button.dataset.role === "entity" && button.dataset.entityRef === token.ref;
+      if (token.kind === "target") return button.dataset.role === "target" && button.dataset.targetRef === token.ref;
+      return token.kind === "action" && button.dataset.action === token.ref;
+    });
+    next?.focus({ preventScroll: true });
+  }
+
+  _syncInteractionVisuals() {
+    if (!this._runtime || !this.shadowRoot) return;
+    const state = this._runtime.snapshot;
+    const picked = state.interaction.pickedEntityRef;
+    const inspected = state.interaction.inspectedEntityRef;
+    for (const button of this.shadowRoot.querySelectorAll('[data-role="entity"]')) {
+      const active = button.dataset.entityRef === picked || button.dataset.entityRef === inspected;
+      button.classList.toggle("active", active);
+      button.setAttribute("aria-pressed", button.dataset.entityRef === picked ? "true" : "false");
+    }
+    for (const button of this.shadowRoot.querySelectorAll('[data-role="target"]')) {
+      const isPreview = state.interaction.preview?.targetRef === button.dataset.targetRef;
+      const accepted = isPreview && state.interaction.preview?.accepted === true;
+      button.classList.toggle("valid", accepted);
+      button.classList.toggle("invalid", isPreview && !accepted);
+      const label = button.querySelector("small");
+      if (label) label.textContent = isPreview ? (accepted ? "Available" : "Unavailable") : "Target";
+    }
+    const status = this.shadowRoot.querySelector(".status");
+    if (status) status.textContent = this._lastStatus;
+  }
+
   _renderGrid(grid, state) {
     const projections = state.projections
       .filter((row) => row.placement.grid === grid.id)
@@ -234,8 +283,10 @@ export class SemanticWorkbench extends HTMLElement {
 
   _render() {
     if (!this.shadowRoot) return;
+    const focusToken = this._focusToken();
     if (!this._runtime) {
       this.shadowRoot.innerHTML = `<style>:host{display:block;font:inherit}.diagnostic{border:1px solid currentColor;padding:.75rem;border-radius:.5rem}</style><div class="diagnostic" role="status">${escapeHtml(this._lastStatus)}</div>`;
+      this._restoreFocus(focusToken);
       return;
     }
 
@@ -264,6 +315,7 @@ export class SemanticWorkbench extends HTMLElement {
         ${grids}
         <div class="status" role="status" aria-live="polite">${escapeHtml(this._lastStatus)}</div>
       </section>`;
+    this._restoreFocus(focusToken);
   }
 }
 
