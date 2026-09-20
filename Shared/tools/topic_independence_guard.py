@@ -52,8 +52,8 @@ PY_SUFFIXES = {".py"}
 JS_SUFFIXES = {".js", ".mjs", ".cjs"}
 QUESTION_DATA_NAME = "jee_questions_data.js"
 QUESTION_DATA_WRAPPER = re.compile(
-    r"^\\s*(?:/\\*[\\s\\S]*?\\*/\\s*)?"
-    r"window\\.JEE_QUESTIONS_DATA\\s*=\\s*(\\[[\\s\\S]*\\])\\s*;\\s*$"
+    r"^\s*(?:/\*[\s\S]*?\*/\s*)?"
+    r"window\.JEE_QUESTIONS_DATA\s*=\s*(\[[\s\S]*\])\s*;\s*$"
 )
 
 
