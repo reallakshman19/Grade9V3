@@ -5,18 +5,18 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 179,
+  "component_count": 186,
   "relation_count": 228,
   "components_by_role": {
     "CONTRACT": 7,
     "ENGINE": 10,
     "GATES": 2,
-    "LIBRARY": 29,
-    "TEST": 78,
-    "TOOLING": 41,
+    "LIBRARY": 33,
+    "TEST": 80,
+    "TOOLING": 42,
     "WEB": 6
   },
-  "digest": "sha256:880ba3c4a3daa887234afa8aebfb18ace4fbd10b3237c7125a0a33398e3139cf",
+  "digest": "sha256:a7e35f0e1767aad7f04505435e3adf7ecd1a61e30d2807203662e8831aa36c2d",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -94,6 +94,34 @@
       "role_description": "Topic library: intake, resolution, promotion, compilation",
       "bytes": 26433,
       "sha256": "e7d4e73e326ed86f7cc2abd676d11f04b192efd6c15d31da68fd2a390d10fb44"
+    },
+    {
+      "path": "Shared/library/explorer_design_contract.v1_3.schema.json",
+      "role": "LIBRARY",
+      "role_description": "Topic library: intake, resolution, promotion, compilation",
+      "bytes": 31101,
+      "sha256": "0bc04bdf8c0f531b8f6a3556cbd1e335092f866bf17861bf187cfbe8e83f1293"
+    },
+    {
+      "path": "Shared/library/gcdr_diagnostic_item.schema.json",
+      "role": "LIBRARY",
+      "role_description": "Topic library: intake, resolution, promotion, compilation",
+      "bytes": 6500,
+      "sha256": "42feb546654943cc3237185886dfad8efc51e6715d0a1610a5003f9df1e1ea0f"
+    },
+    {
+      "path": "Shared/library/gcdr_helper_contract.schema.json",
+      "role": "LIBRARY",
+      "role_description": "Topic library: intake, resolution, promotion, compilation",
+      "bytes": 1677,
+      "sha256": "342dd7e6d8973cd646477624168d4b447d07a03288e2463d5bf201e36f75b713"
+    },
+    {
+      "path": "Shared/library/gcdr_suite_contract.schema.json",
+      "role": "LIBRARY",
+      "role_description": "Topic library: intake, resolution, promotion, compilation",
+      "bytes": 3521,
+      "sha256": "7e03a0a69ee56d665430f015dafc5ebc25210721bac6edc9f88308a8e2aaa71d"
     },
     {
       "path": "Shared/library/import_sil.py",
@@ -463,8 +491,8 @@
       "path": "Shared/tools/explorer_design_guard.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 12759,
-      "sha256": "56b2596e1fb5f3420966cfbee39a46db242b934d40929bc7dce8407569b982e7"
+      "bytes": 16589,
+      "sha256": "d52d54675bffe0069562946a9f40521f6db8499458f56f021cd409ed0866bb57"
     },
     {
       "path": "Shared/tools/feedback.py",
@@ -472,6 +500,13 @@
       "role_description": "Guardrails and generators",
       "bytes": 19910,
       "sha256": "6db1e691cb6bf9c1a69488d54a54f02e88de1f4dcefcf802c278a429cc84133e"
+    },
+    {
+      "path": "Shared/tools/gcdr_companion_guard.py",
+      "role": "TOOLING",
+      "role_description": "Guardrails and generators",
+      "bytes": 2747,
+      "sha256": "d4369bd99f51752b1e318a90cf869b589d405968f81fe26db44665c9916838f1"
     },
     {
       "path": "Shared/tools/gcdr_runtime_audit.py",
@@ -894,6 +929,13 @@
       "sha256": "fa67f395dbb4531e688f562bf08defca247629d8fb83c22ad76bf1e5cd8256fe"
     },
     {
+      "path": "tests/test_gcdr_companion_contracts.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 6113,
+      "sha256": "b8248623d6ce0c718f46ddf279c9c1e64881ebd699399333fc79a23b2015508e"
+    },
+    {
       "path": "tests/test_gcdr_runtime_audit.py",
       "role": "TEST",
       "role_description": "Executable checks",
@@ -906,6 +948,13 @@
       "role_description": "Executable checks",
       "bytes": 3852,
       "sha256": "b13a0b251ffc71b31cadce4916807dcf948397f3fa56ce07698d0298a710ce42"
+    },
+    {
+      "path": "tests/test_gcdr_v13_explorer_contract.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 5433,
+      "sha256": "d04b55037c3cf59a416841f1e5af38e008de15ceb410eafa1a3d7f2347c0fe20"
     },
     {
       "path": "tests/test_grade10_optics_reflection_scope.py",
