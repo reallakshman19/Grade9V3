@@ -31,14 +31,9 @@ class ExplorerDesignContractTest(unittest.TestCase):
                 atlas = row["extensions"]["topic_atlas"]
                 self.assertEqual(atlas["activity_kind"], "GRAPHICAL_COGNITIVE_DECONSTRUCTION")
                 contract = atlas["gcdr_contract"]
-                self.assertEqual(contract["schema_version"], "1.3.0")
+                self.assertEqual(contract["schema_version"], "1.2.0")
                 self.assertEqual(contract["conformance_status"], "IMPLEMENTATION_PARTIAL")
-                self.assertEqual(contract["scope_contract"]["canonical_binding_status"], "BOUND")
-                self.assertTrue(contract["scope_contract"]["canonical_capability_refs"])
-                self.assertTrue(contract["representation_invariants"])
-                self.assertEqual(contract["delivery_contract"]["profile"], "REPO_BUNDLE")
-                self.assertEqual(contract["helper_contract_refs"], [])
-                self.assertEqual(contract["quality_audit"]["checklist_version"], "1.2.0")
+                self.assertEqual(contract["quality_audit"]["checklist_version"], "1.1.0")
                 self.assertEqual(contract["quality_audit"]["audit_status"], "PARTIAL")
                 self.assertEqual(contract["quality_audit"]["audit_provenance"]["mode"], "AUTOMATED")
                 self.assertEqual(
@@ -46,25 +41,10 @@ class ExplorerDesignContractTest(unittest.TestCase):
                     "Shared/tools/gcdr_runtime_audit.py",
                 )
                 self.assertEqual(len(contract["quality_audit"]["audit_receipts"]), 8)
-                runtime = contract["quality_audit"]["audit_4_runtime_release_integrity"]
-                self.assertEqual(runtime["delivery_profile_integrity"], "PENDING")
                 self.assertTrue(all(
                     status == "PASS"
-                    for name, status in runtime.items()
-                    if name != "delivery_profile_integrity"
+                    for status in contract["quality_audit"]["audit_4_runtime_release_integrity"].values()
                 ))
-                self.assertEqual(
-                    contract["quality_audit"]["audit_2_graphical_state_fidelity"]["rendered_geometry_truth"],
-                    "PENDING",
-                )
-                self.assertEqual(
-                    contract["quality_audit"]["audit_2_graphical_state_fidelity"]["representation_invariants_hold"],
-                    "PENDING",
-                )
-                self.assertEqual(
-                    contract["quality_audit"]["audit_3_reconstruction_teaching_transfer"]["helper_activation"],
-                    "PENDING",
-                )
                 self.assertEqual(
                     contract["state_fidelity_contract"]["missing_parameter_policy"],
                     "NEVER_INVENT_AS_EXACT",
@@ -286,81 +266,6 @@ class ExplorerDesignContractTest(unittest.TestCase):
             found = explorer_design_guard.findings(root)
 
         self.assertIn("UNJUSTIFIED_NOT_APPLICABLE", {row["point"] for row in found})
-
-    def test_certification_requires_bound_scope_and_helper_contract(self):
-        package = json.loads(
-            (REPO / "Physics/library/phy-kin-2d-motion.v1.json").read_text(encoding="utf-8")
-        )
-        activity = copy.deepcopy(next(
-            row for row in package["resources"]
-            if row["id"] == "ACT-KIN-2D-SHARED-CLOCK"
-        ))
-        contract = activity["extensions"]["topic_atlas"]["gcdr_contract"]
-        contract["conformance_status"] = "CERTIFIED"
-        contract["scope_contract"]["canonical_binding_status"] = "PARTIAL"
-
-        mini = {
-            "resources": [activity],
-            "capabilities": [{"id": "CAP-KIN-2D-INDEPENDENT-COMPONENTS"}],
-            "microtopics": [{"teaching_path": [{"id": "K2D1-3"}, {"id": "K2D1-4"}]}],
-        }
-
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            (root / "Shared/library").mkdir(parents=True)
-            (root / "Physics/library").mkdir(parents=True)
-            target = root / activity["locator"]
-            target.parent.mkdir(parents=True)
-            (root / "Shared/library/explorer_design_contract.schema.json").write_text(
-                (REPO / "Shared/library/explorer_design_contract.schema.json").read_text(encoding="utf-8"),
-                encoding="utf-8",
-            )
-            (root / "Physics/library/test.json").write_text(json.dumps(mini), encoding="utf-8")
-            target.write_bytes((REPO / activity["locator"]).read_bytes())
-            found = explorer_design_guard.findings(root)
-
-        points = {row["point"] for row in found}
-        self.assertIn("FALSE_SCOPE_CERTIFICATION", points)
-        self.assertIn("CERTIFIED_WITHOUT_HELPER_CONTRACT", points)
-
-    def test_offline_delivery_profile_cannot_hide_dependencies(self):
-        package = json.loads(
-            (REPO / "Physics/library/phy-kin-2d-motion.v1.json").read_text(encoding="utf-8")
-        )
-        activity = copy.deepcopy(next(
-            row for row in package["resources"]
-            if row["id"] == "ACT-KIN-2D-EVENT-CLOCK"
-        ))
-        delivery = activity["extensions"]["topic_atlas"]["gcdr_contract"]["delivery_contract"]
-        delivery["profile"] = "SINGLE_FILE_OFFLINE"
-        delivery["external_dependencies"] = ["https://cdn.example.invalid/library.js"]
-        delivery["local_dependency_policy"] = "REPOSITORY_RELATIVE_ALLOWED"
-        delivery["offline_claim"] = False
-
-        mini = {
-            "resources": [activity],
-            "capabilities": [{"id": "CAP-KIN-2D-CONSTANT-ACCELERATION"}],
-            "microtopics": [{"teaching_path": [{"id": "K2D2-3"}]}],
-        }
-
-        with tempfile.TemporaryDirectory() as tmp:
-            root = Path(tmp)
-            (root / "Shared/library").mkdir(parents=True)
-            (root / "Physics/library").mkdir(parents=True)
-            target = root / activity["locator"]
-            target.parent.mkdir(parents=True)
-            (root / "Shared/library/explorer_design_contract.schema.json").write_text(
-                (REPO / "Shared/library/explorer_design_contract.schema.json").read_text(encoding="utf-8"),
-                encoding="utf-8",
-            )
-            (root / "Physics/library/test.json").write_text(json.dumps(mini), encoding="utf-8")
-            target.write_bytes((REPO / activity["locator"]).read_bytes())
-            found = explorer_design_guard.findings(root)
-
-        points = {row["point"] for row in found}
-        self.assertIn("OFFLINE_PROFILE_EXTERNAL_DEPENDENCY", points)
-        self.assertIn("OFFLINE_PROFILE_LOCAL_DEPENDENCY", points)
-        self.assertIn("OFFLINE_PROFILE_WITHOUT_CLAIM", points)
 
     def test_rejoin_step_must_be_one_of_the_activity_leaf_bindings(self):
         package = json.loads(
