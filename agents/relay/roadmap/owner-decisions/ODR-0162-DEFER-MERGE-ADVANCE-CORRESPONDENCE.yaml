@@ -1,0 +1,44 @@
+schema_version: relay-v2.5
+id: ODR-0162-DEFER-MERGE-ADVANCE-CORRESPONDENCE
+decision:
+  authority: OWNER
+  kind: AUTHORIZATION
+  statement: >-
+    Keep EP-0162-BROWSER-RUNTIME-PROOF AC-05 pending until merge/base reconciliation,
+    and continue the next bounded Issue #162 Core slice now. The successor slice must
+    stay inside the generic workbench boundary and must not claim the deferred merge
+    validation has completed.
+  source: >-
+    Owner instructions in the active Grade9V3 engineering session on 2026-09-20:
+    "Continue for now, merge issues can be solved later" followed by "Proceed next".
+effects:
+  requirement_disposition: NOT_APPLICABLE
+  grants_material_write_authority: true
+  pending_items:
+  - EP-0162-BROWSER-RUNTIME-PROOF AC-05 remains pending until post-rebase exact-head validation.
+  - PR #165 merge/base and relay custody reconciliation remains required before merge.
+delivery_authorization: null
+impact:
+  class:
+  - LOCAL
+  - EXECUTION_GOVERNANCE
+  - PROTOCOL_EXCEPTION
+affected:
+  objectives:
+  - OBJ-TOPIC-ATLAS-COMPLETE
+  phases:
+  - PHASE-TAKEOVER-RECONCILIATION
+  work_packages:
+  - WP-162-BROWSER-RUNTIME-PROOF
+  execution_packages:
+  - EP-0162-BROWSER-RUNTIME-PROOF
+  - EP-0162-CORRESPONDENCE-PROOF
+  issues:
+  - ISSUE-162
+required_reconciliation:
+- Preserve EP-0162-BROWSER-RUNTIME-PROOF at 90 percent; do not credit AC-05 before a post-rebase exact-head rerun.
+- Activate only EP-0162-CORRESPONDENCE-PROOF for new Core coding.
+- Do not add another academic domain fixture or external-host proof.
+- Do not move learner evidence, routing, or academic validity into Core.
+- Keep PR #165 draft until merge/base reconciliation is complete.
+status: APPLIED
