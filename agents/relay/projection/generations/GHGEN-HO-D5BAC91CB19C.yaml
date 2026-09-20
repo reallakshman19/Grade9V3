@@ -5,7 +5,7 @@ generation:
   roadmap_revision: RM-0002
   issue_graph_revision: IG-0003
   execution_ref: EP-0162-REDO-PROOF
-  state: ACTIVE
+  state: SUPERSEDED
   supersedes_generation: null
   basis:
   - agents/relay/REPO_STATE.yaml
