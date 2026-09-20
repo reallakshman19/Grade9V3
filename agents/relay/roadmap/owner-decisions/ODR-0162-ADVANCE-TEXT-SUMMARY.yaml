@@ -1,0 +1,33 @@
+schema_version: relay-v2.5
+id: ODR-0162-ADVANCE-TEXT-SUMMARY
+decision:
+  authority: OWNER
+  kind: AUTHORIZATION
+  statement: >-
+    Continue the next bounded Issue #162 Core slice after the green correspondence proof:
+    add and falsify a generic text fallback/state summary while merge/base reconciliation
+    remains deferred. Do not treat this as full accessibility certification.
+  source: >-
+    Owner instruction in the active Grade9V3 engineering session on 2026-09-20:
+    "Proceed next", under the existing continuation direction that merge issues may be solved later.
+effects:
+  requirement_disposition: NOT_APPLICABLE
+  grants_material_write_authority: true
+  pending_items:
+  - Prior EP-0162-BROWSER-RUNTIME-PROOF AC-05 remains pending until post-rebase exact-head validation.
+  - PR #165 merge/base and relay custody reconciliation remains required before merge.
+delivery_authorization: null
+impact:
+  class: [LOCAL, EXECUTION_GOVERNANCE, PROTOCOL_EXCEPTION]
+affected:
+  objectives: [OBJ-TOPIC-ATLAS-COMPLETE]
+  phases: [PHASE-TAKEOVER-RECONCILIATION]
+  work_packages: [WP-162-BROWSER-RUNTIME-PROOF]
+  execution_packages: [EP-0162-STATE-SUMMARY-PROOF]
+  issues: [ISSUE-162]
+required_reconciliation:
+- Keep the summary generic and derived only from runtime labels/semantic state.
+- Do not generate academic explanation, mastery evidence, routing advice, or a second canonical model.
+- Do not claim WCAG/full accessibility certification from this slice.
+- Keep PR #165 draft until merge/base reconciliation is complete.
+status: APPLIED
