@@ -50,8 +50,10 @@ def packages(repo: Path = REPO):
 def findings(repo: Path = REPO) -> list[dict]:
     schemas = {
         "1.2.0": load(repo / "Shared" / "library" / "explorer_design_contract.schema.json"),
-        "1.3.0": load(repo / "Shared" / "library" / "explorer_design_contract.v1_3.schema.json"),
     }
+    v13_schema = repo / "Shared" / "library" / "explorer_design_contract.v1_3.schema.json"
+    if v13_schema.is_file():
+        schemas["1.3.0"] = load(v13_schema)
     loaded = list(packages(repo))
 
     capability_ids = {
