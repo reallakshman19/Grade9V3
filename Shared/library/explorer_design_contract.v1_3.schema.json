@@ -1,0 +1,1183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:grade9v3:graphical-cognitive-deconstruction:1.3.0",
+  "title": "Graphical Cognitive Deconstruction Route Contract",
+  "description": "Governed design, scope, state-binding, representation-invariant, delivery and quality-audit contract for heavy-graphical parallel support activities. It supplements, and never replaces, the canonical capability/rung/microtopic/teaching-step graph.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "conformance_status",
+    "scope_contract",
+    "cognitive_target",
+    "route_policy",
+    "interaction_sequence",
+    "graphical_contract",
+    "representation_invariants",
+    "state_fidelity_contract",
+    "helper_contract_refs",
+    "delivery_contract",
+    "boundary_contract",
+    "exit_evidence",
+    "implementation_evidence",
+    "quality_audit"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.3.0"
+    },
+    "conformance_status": {
+      "enum": [
+        "DESIGN_BOUND",
+        "IMPLEMENTATION_PARTIAL",
+        "CERTIFIED"
+      ],
+      "description": "CERTIFIED requires canonical scope BOUND, every implementation_evidence flag true, quality_audit.audit_status=PASS, evidence-backed quality checks, no unresolved findings, declared representation invariants, at least one helper contract reference, and a verified delivery profile. Human scientific/pedagogical approval remains separate."
+    },
+    "cognitive_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_failure",
+        "target_operation",
+        "core_invariant",
+        "boundary"
+      ],
+      "properties": {
+        "target_failure": {
+          "type": "string",
+          "minLength": 10
+        },
+        "target_operation": {
+          "type": "string",
+          "minLength": 10
+        },
+        "core_invariant": {
+          "type": "string",
+          "minLength": 5
+        },
+        "boundary": {
+          "type": "string",
+          "minLength": 10
+        }
+      }
+    },
+    "route_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommended_when",
+        "learner_evidence_triggers",
+        "prerequisite_policy",
+        "auto_route_policy"
+      ],
+      "properties": {
+        "recommended_when": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "INTRINSIC_HARD",
+              "COUNTERINTUITIVE",
+              "HIDDEN_MECHANISM",
+              "RELATIONAL",
+              "CONSTRAINT_BASED",
+              "MULTI_REPRESENTATION",
+              "BOUNDARY_SENSITIVE",
+              "REFERENCE_FRAME_SENSITIVE",
+              "SYSTEM_BOUNDARY_SENSITIVE"
+            ]
+          }
+        },
+        "learner_evidence_triggers": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "LOW_MASTERY_CONFIRMED",
+              "REPEATED_FAILURE",
+              "MISCONCEPTION_DETECTED",
+              "NORMAL_REPAIR_FAILED",
+              "RECONSTRUCTION_FAILED",
+              "PREREQUISITE_UNCERTAIN"
+            ]
+          }
+        },
+        "prerequisite_policy": {
+          "const": "DIVERT_IF_PREREQUISITE_MISSING"
+        },
+        "auto_route_policy": {
+          "enum": [
+            "RECOMMEND_ONLY",
+            "AUTO_AFTER_STRONG_EVIDENCE"
+          ],
+          "description": "Never auto-route from one wrong answer. AUTO_AFTER_STRONG_EVIDENCE requires the learner system to establish one of the declared evidence triggers."
+        }
+      }
+    },
+    "interaction_sequence": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "CONTEXT",
+          "PREDICT",
+          "MANIPULATE",
+          "OBSERVE",
+          "CONTRADICT",
+          "GRAPHICAL_DECONSTRUCTION",
+          "MATHEMATICAL_RECONSTRUCTION",
+          "INVARIANT_DISCOVERY",
+          "BOUNDARY_STRESS",
+          "SCAFFOLD_FADE",
+          "FRESH_TRANSFER"
+        ]
+      },
+      "allOf": [
+        {
+          "contains": {
+            "const": "PREDICT"
+          }
+        },
+        {
+          "contains": {
+            "const": "MANIPULATE"
+          }
+        },
+        {
+          "contains": {
+            "const": "GRAPHICAL_DECONSTRUCTION"
+          }
+        },
+        {
+          "contains": {
+            "const": "MATHEMATICAL_RECONSTRUCTION"
+          }
+        },
+        {
+          "contains": {
+            "const": "BOUNDARY_STRESS"
+          }
+        },
+        {
+          "contains": {
+            "const": "FRESH_TRANSFER"
+          }
+        }
+      ]
+    },
+    "graphical_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phenomenon_view",
+        "mechanism_view",
+        "mathematical_structure_view",
+        "direct_manipulation",
+        "synchronized_representations",
+        "causal_chain",
+        "progressive_disclosure",
+        "counterfactual_model"
+      ],
+      "properties": {
+        "phenomenon_view": {
+          "type": "string",
+          "minLength": 10
+        },
+        "mechanism_view": {
+          "type": "string",
+          "minLength": 10
+        },
+        "mathematical_structure_view": {
+          "type": "string",
+          "minLength": 10
+        },
+        "direct_manipulation": {
+          "type": "string",
+          "minLength": 5
+        },
+        "synchronized_representations": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 3
+          }
+        },
+        "causal_chain": {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "type": "string",
+            "minLength": 3
+          }
+        },
+        "progressive_disclosure": {
+          "type": "string",
+          "minLength": 10
+        },
+        "counterfactual_model": {
+          "type": "string",
+          "minLength": 10
+        }
+      }
+    },
+    "boundary_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "assumption_held",
+        "stress_action",
+        "expected_break",
+        "learner_must_identify"
+      ],
+      "properties": {
+        "assumption_held": {
+          "type": "string",
+          "minLength": 5
+        },
+        "stress_action": {
+          "type": "string",
+          "minLength": 5
+        },
+        "expected_break": {
+          "type": "string",
+          "minLength": 5
+        },
+        "learner_must_identify": {
+          "type": "string",
+          "minLength": 5
+        }
+      }
+    },
+    "exit_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reconstruction_required",
+        "boundary_test_required",
+        "fresh_transfer_required",
+        "rejoin_step_ref",
+        "evidence_events"
+      ],
+      "properties": {
+        "reconstruction_required": {
+          "const": true
+        },
+        "boundary_test_required": {
+          "const": true
+        },
+        "fresh_transfer_required": {
+          "const": true
+        },
+        "rejoin_step_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_events": {
+          "type": "array",
+          "minItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "INITIAL_PREDICTION",
+              "MISCONCEPTION_SIGNATURE",
+              "MANIPULATION_COMPLETED",
+              "CONTRADICTION_UNDERSTOOD",
+              "CAUSAL_CHAIN_RECONSTRUCTED",
+              "INVARIANT_RECONSTRUCTED",
+              "BOUNDARY_TEST_RESULT",
+              "FRESH_TRANSFER_RESULT"
+            ]
+          },
+          "allOf": [
+            {
+              "contains": {
+                "const": "INITIAL_PREDICTION"
+              }
+            },
+            {
+              "contains": {
+                "const": "CAUSAL_CHAIN_RECONSTRUCTED"
+              }
+            },
+            {
+              "contains": {
+                "const": "BOUNDARY_TEST_RESULT"
+              }
+            },
+            {
+              "contains": {
+                "const": "FRESH_TRANSFER_RESULT"
+              }
+            }
+          ]
+        }
+      }
+    },
+    "implementation_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prediction_before_reveal",
+        "meaningful_direct_manipulation",
+        "synchronized_representations",
+        "physical_contradiction",
+        "explicit_causal_chain",
+        "mathematics_from_visual_mechanism",
+        "invariant_discovery",
+        "boundary_stress",
+        "scaffold_fade",
+        "fresh_transfer_without_scaffold"
+      ],
+      "properties": {
+        "prediction_before_reveal": {
+          "type": "boolean"
+        },
+        "meaningful_direct_manipulation": {
+          "type": "boolean"
+        },
+        "synchronized_representations": {
+          "type": "boolean"
+        },
+        "physical_contradiction": {
+          "type": "boolean"
+        },
+        "explicit_causal_chain": {
+          "type": "boolean"
+        },
+        "mathematics_from_visual_mechanism": {
+          "type": "boolean"
+        },
+        "invariant_discovery": {
+          "type": "boolean"
+        },
+        "boundary_stress": {
+          "type": "boolean"
+        },
+        "scaffold_fade": {
+          "type": "boolean"
+        },
+        "fresh_transfer_without_scaffold": {
+          "type": "boolean"
+        }
+      }
+    },
+    "state_fidelity_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_of_truth",
+        "external_state_mapping",
+        "external_state_bindings",
+        "exactness_rule",
+        "missing_parameter_policy",
+        "fidelity_labels",
+        "unit_constant_policy",
+        "reset_policy"
+      ],
+      "properties": {
+        "source_of_truth": {
+          "type": "string",
+          "minLength": 10,
+          "description": "Authoritative activity state from which every visible representation and derived readout must be computed."
+        },
+        "external_state_mapping": {
+          "enum": [
+            "NOT_APPLICABLE",
+            "EXACT_REQUIRED",
+            "EXACT_OR_CONSTRAINT_FAITHFUL",
+            "CONCEPT_MAPPING_ALLOWED"
+          ],
+          "description": "Policy for loading an external question/task state into the activity."
+        },
+        "missing_parameter_policy": {
+          "const": "NEVER_INVENT_AS_EXACT"
+        },
+        "fidelity_labels": {
+          "const": [
+            "EXACT",
+            "CONSTRAINT_FAITHFUL",
+            "CONCEPT_ONLY",
+            "UNAVAILABLE"
+          ]
+        },
+        "unit_constant_policy": {
+          "type": "string",
+          "minLength": 10
+        },
+        "reset_policy": {
+          "type": "string",
+          "minLength": 10
+        },
+        "external_state_bindings": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "source_pointer",
+              "target_state_path",
+              "control_id",
+              "required_for_exact",
+              "source_unit",
+              "target_unit",
+              "transform",
+              "transform_note",
+              "missing_behavior"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Z0-9][A-Z0-9._-]{2,127}$"
+              },
+              "source_pointer": {
+                "type": "string",
+                "pattern": "^/.*",
+                "description": "RFC-6901-style pointer into the external task/question payload."
+              },
+              "target_state_path": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Canonical simulator/activity state path governed by this binding."
+              },
+              "control_id": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "required_for_exact": {
+                "type": "boolean"
+              },
+              "source_unit": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "target_unit": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "transform": {
+                "enum": [
+                  "IDENTITY",
+                  "DEGREES_TO_RADIANS",
+                  "RADIANS_TO_DEGREES",
+                  "CUSTOM_DECLARED"
+                ]
+              },
+              "transform_note": {
+                "anyOf": [
+                  {
+                    "type": "string",
+                    "minLength": 10
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "missing_behavior": {
+                "enum": [
+                  "LEAVE_UNSPECIFIED",
+                  "MARK_UNAVAILABLE"
+                ]
+              }
+            }
+          }
+        },
+        "exactness_rule": {
+          "const": "ALL_REQUIRED_BINDINGS_PRESENT"
+        }
+      }
+    },
+    "quality_audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "checklist_version",
+        "audit_status",
+        "last_audited",
+        "audit_provenance",
+        "audit_1_canonical_truth_scope",
+        "audit_2_graphical_state_fidelity",
+        "audit_3_reconstruction_teaching_transfer",
+        "audit_4_runtime_release_integrity",
+        "audit_receipts",
+        "unresolved_findings",
+        "waivers"
+      ],
+      "properties": {
+        "checklist_version": {
+          "const": "1.2.0"
+        },
+        "audit_status": {
+          "enum": [
+            "NOT_RUN",
+            "PARTIAL",
+            "PASS",
+            "BLOCKED"
+          ]
+        },
+        "last_audited": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "audit_1_canonical_truth_scope": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "canonical_binding",
+            "assumptions_and_conventions",
+            "derivation_or_model_check",
+            "units_constants_parameters",
+            "boundary_limit_cases",
+            "source_claim_fidelity"
+          ],
+          "properties": {
+            "canonical_binding": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "assumptions_and_conventions": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "derivation_or_model_check": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "units_constants_parameters": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "boundary_limit_cases": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "source_claim_fidelity": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            }
+          }
+        },
+        "audit_2_graphical_state_fidelity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "single_state_source",
+            "representation_synchronization",
+            "direct_manipulation_is_causal",
+            "counterfactual_is_honest",
+            "progressive_disclosure",
+            "control_state_mapping",
+            "no_invented_exact_parameters",
+            "interaction_fidelity_disclosed",
+            "rendered_geometry_truth",
+            "representation_invariants_hold"
+          ],
+          "properties": {
+            "single_state_source": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "representation_synchronization": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "direct_manipulation_is_causal": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "counterfactual_is_honest": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "progressive_disclosure": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "control_state_mapping": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "no_invented_exact_parameters": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "interaction_fidelity_disclosed": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "rendered_geometry_truth": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "representation_invariants_hold": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            }
+          }
+        },
+        "audit_3_reconstruction_teaching_transfer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "answer_or_disposition_specific",
+            "derivation_specific",
+            "independent_check",
+            "misconception_trap_specific",
+            "transfer_takeaway_specific",
+            "boundary_recognition",
+            "scaffold_fade",
+            "fresh_transfer",
+            "helper_activation"
+          ],
+          "properties": {
+            "answer_or_disposition_specific": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "derivation_specific": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "independent_check": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "misconception_trap_specific": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "transfer_takeaway_specific": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "boundary_recognition": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "scaffold_fade": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "fresh_transfer": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "helper_activation": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            }
+          }
+        },
+        "audit_4_runtime_release_integrity": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "implementation_locator",
+            "static_syntax",
+            "handler_and_control_integrity",
+            "identifier_integrity",
+            "no_placeholder_or_undefined_output",
+            "deterministic_reset",
+            "runtime_smoke",
+            "accessibility_baseline",
+            "delivery_profile_integrity"
+          ],
+          "properties": {
+            "implementation_locator": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "static_syntax": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "handler_and_control_integrity": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "identifier_integrity": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "no_placeholder_or_undefined_output": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "deterministic_reset": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "runtime_smoke": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "accessibility_baseline": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            },
+            "delivery_profile_integrity": {
+              "enum": [
+                "PASS",
+                "FAIL",
+                "PENDING",
+                "NOT_APPLICABLE"
+              ]
+            }
+          }
+        },
+        "unresolved_findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "severity",
+              "detail"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 3
+              },
+              "severity": {
+                "enum": [
+                  "CRITICAL",
+                  "HIGH",
+                  "MEDIUM",
+                  "LOW"
+                ]
+              },
+              "detail": {
+                "type": "string",
+                "minLength": 10
+              }
+            }
+          }
+        },
+        "waivers": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "minLength": 10
+          },
+          "description": "Map audit check id to a concrete rationale when that check is NOT_APPLICABLE."
+        },
+        "audit_provenance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "mode",
+            "auditor",
+            "version"
+          ],
+          "properties": {
+            "mode": {
+              "enum": [
+                "NOT_RUN",
+                "AUTOMATED",
+                "HUMAN",
+                "HYBRID"
+              ]
+            },
+            "auditor": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 2
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "version": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          }
+        },
+        "audit_receipts": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "check_id",
+              "outcome",
+              "method",
+              "evidence_ref",
+              "artifact_sha256",
+              "audited_at",
+              "auditor",
+              "note"
+            ],
+            "properties": {
+              "check_id": {
+                "type": "string",
+                "pattern": "^audit_[1-4]_[a-z0-9_]+\\.[a-z0-9_]+$"
+              },
+              "outcome": {
+                "enum": [
+                  "PASS",
+                  "FAIL",
+                  "NOT_APPLICABLE"
+                ]
+              },
+              "method": {
+                "enum": [
+                  "AUTOMATED",
+                  "HUMAN",
+                  "HYBRID"
+                ]
+              },
+              "evidence_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "artifact_sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "audited_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "auditor": {
+                "type": "string",
+                "minLength": 2
+              },
+              "note": {
+                "type": "string",
+                "minLength": 10
+              }
+            }
+          }
+        }
+      }
+    },
+    "scope_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_binding_status",
+        "canonical_capability_refs",
+        "instructional_depth",
+        "certification_scope",
+        "extension_reason"
+      ],
+      "properties": {
+        "canonical_binding_status": {
+          "enum": [
+            "BOUND",
+            "PARTIAL",
+            "UNBOUND_EXTENSION"
+          ]
+        },
+        "canonical_capability_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "instructional_depth": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "FOUNDATION",
+              "SCHOOL_CORE",
+              "ADVANCED",
+              "JEE_EXTENSION"
+            ]
+          }
+        },
+        "certification_scope": {
+          "type": "string",
+          "minLength": 10
+        },
+        "extension_reason": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 10
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "representation_invariants": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "views",
+          "relation",
+          "audit_method"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Z0-9][A-Z0-9._-]{2,127}$"
+          },
+          "views": {
+            "type": "array",
+            "minItems": 2,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 2
+            }
+          },
+          "relation": {
+            "type": "string",
+            "minLength": 10
+          },
+          "audit_method": {
+            "enum": [
+              "PROPERTY_TEST",
+              "HUMAN_REVIEW",
+              "HYBRID"
+            ]
+          }
+        }
+      }
+    },
+    "helper_contract_refs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "description": "References to companion GCDR helper contracts. Partial activities may be empty; CERTIFIED activities require at least one."
+    },
+    "delivery_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile",
+        "entrypoint_locator",
+        "external_dependencies",
+        "local_dependency_policy",
+        "offline_claim"
+      ],
+      "properties": {
+        "profile": {
+          "enum": [
+            "REPO_BUNDLE",
+            "SINGLE_FILE_ONLINE",
+            "SINGLE_FILE_OFFLINE"
+          ]
+        },
+        "entrypoint_locator": {
+          "type": "string",
+          "minLength": 1
+        },
+        "external_dependencies": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "local_dependency_policy": {
+          "enum": [
+            "REPOSITORY_RELATIVE_ALLOWED",
+            "NONE"
+          ]
+        },
+        "offline_claim": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}
