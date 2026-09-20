@@ -48,14 +48,14 @@ owner_execution_exception:
 progress:
   overall_percent: 0
   phase_percent: 0
-  ep_percent: 0
+  ep_percent: 100
   basis_revision: PB-0001
 status_planes:
   execution:
     state: READY
     can_continue: true
     material_authority: WRITE
-    next_action: Execute EP-0162-REDO-PROOF while merge/base reconciliation remains deferred.
+    next_action: Preserve the completed redo contract and select the next bounded Core-owned #162 falsifier; merge/base reconciliation remains deferred.
   quality:
     state: NEEDS_ATTENTION
     findings:
@@ -64,7 +64,7 @@ status_planes:
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
   evidence:
     state: PARTIAL
-    summary: Text-summary proof is green; redo/reversible-history evidence is not yet executed. Prior post-rebase merge-candidate validation remains pending.
+    summary: Redo/reversible-history proof is green on coding head 8b1f55fdb0117810599647aa08408a673e635c04 with real Chrome and 934 repository tests. Final post-rebase merge-candidate validation remains pending.
     not_run:
     - final post-rebase browser rerun on the eventual merge candidate
     - final post-rebase full guardrails on the eventual merge candidate
