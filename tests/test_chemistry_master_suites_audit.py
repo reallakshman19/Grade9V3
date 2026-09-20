@@ -238,6 +238,24 @@ class ChemistryMasterSuitesAuditTest(unittest.TestCase):
                 self.assertEqual(obj["geometry_truth_contract"]["verification_status"], "DECLARED")
                 self.assertTrue(obj["representation_invariants"])
 
+    def test_js_bank_parser_handles_semicolon_bracket_inside_strings(self):
+        from Shared.tools import gcdr_suite_guard
+
+        payload = (
+            'window.JEE_QUESTIONS_DATA = ['
+            '{"id":"X","q":"dimension [a] = [P][V^2]/[n^2]; enforce constraint"}'
+            '];\n'
+        )
+        with tempfile.NamedTemporaryFile("w", suffix=".js", encoding="utf-8", delete=False) as fh:
+            fh.write(payload)
+            temp = Path(fh.name)
+        try:
+            parsed = gcdr_suite_guard.load_bank(temp, "WINDOW_JEE_QUESTIONS_DATA_JS")
+            self.assertEqual(parsed[0]["id"], "X")
+            self.assertIn("]; enforce", parsed[0]["q"])
+        finally:
+            temp.unlink(missing_ok=True)
+
     def test_runtime_dependency_detector_ignores_source_navigation_links(self):
         from Shared.tools import gcdr_suite_guard
 
