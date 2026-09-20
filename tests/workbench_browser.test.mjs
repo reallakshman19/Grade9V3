@@ -251,7 +251,8 @@ test("real browser semantic interaction contract", { skip: !driverPath, timeout:
     await driver.navigate(`${staticServer.origin}/tests/fixtures/workbench/browser-host.html`);
     await driver.waitFor("return window.__workbenchReady === true;");
 
-    const sourceSelector = '[data-role="entity"][data-entity-ref="dividend-156"]';
+    const sourceSelector = '[data-role="entity"][data-projection-ref="dividend-expression"]';
+    const linkedSelector = '[data-role="entity"][data-projection-ref="dividend-place-value"]';
     const targetSelector = '[data-role="target"][data-target-ref="quotient-first-digit"]';
 
     const runFresh = async (id, interaction) => {
@@ -260,6 +261,45 @@ test("real browser semantic interaction contract", { skip: !driverPath, timeout:
       await interaction();
       return driver.execute("return window.workbenchHarness.snapshot(arguments[0]);", [id]);
     };
+
+    await driver.execute("window.workbenchHarness.reset('primary');");
+    const inspectOrigin = await driver.shadowElement("#primary", sourceSelector);
+    await driver.execute("arguments[0].focus();", [driver.ref(inspectOrigin)]);
+    const inspectLinked = await driver.shadowElement("#primary", linkedSelector);
+    const focusCorrespondence = await driver.execute(`
+      const origin = arguments[0];
+      const linked = arguments[1];
+      const events = window.workbenchHarness.events('primary');
+      const inspected = [...events].reverse().find((event) => event.type === 'ENTITY_INSPECTED');
+      return {
+        originState: origin.dataset.correspondenceState,
+        linkedState: linked.dataset.correspondenceState,
+        originLabel: origin.querySelector('.entity-state')?.textContent,
+        linkedLabel: linked.querySelector('.entity-state')?.textContent,
+        inspected,
+        serialized: JSON.stringify(inspected),
+      };
+    `, [driver.ref(inspectOrigin), driver.ref(inspectLinked)]);
+    assert.equal(focusCorrespondence.originState, "origin");
+    assert.equal(focusCorrespondence.linkedState, "linked");
+    assert.equal(focusCorrespondence.originLabel, "Inspected representation");
+    assert.equal(focusCorrespondence.linkedLabel, "Linked representation");
+    assert.equal(focusCorrespondence.inspected.projectionRef, "dividend-expression");
+    assert.deepEqual(focusCorrespondence.inspected.linkedProjectionRefs, ["dividend-expression", "dividend-place-value"]);
+    assert.match(focusCorrespondence.serialized, /ENTITY_INSPECTED/);
+
+    await driver.execute(
+      "arguments[0].dispatchEvent(new PointerEvent('pointerover', {bubbles:true, composed:true, pointerType:'mouse'}));",
+      [driver.ref(inspectLinked)]
+    );
+    const hoverCorrespondence = await driver.execute(`
+      return {
+        first: arguments[0].dataset.correspondenceState,
+        second: arguments[1].dataset.correspondenceState,
+      };
+    `, [driver.ref(inspectOrigin), driver.ref(inspectLinked)]);
+    assert.equal(hoverCorrespondence.first, "linked");
+    assert.equal(hoverCorrespondence.second, "origin");
 
     const clickState = await runFresh("primary", async () => {
       const source = await driver.shadowElement("#primary", sourceSelector);
