@@ -18,7 +18,7 @@ The four extracted suites are:
 - Redox Reactions
 - Behaviour of Gases
 
-Each suite retains 20 local diagnostic records, for 80 records total.
+Each suite retains 20 local diagnostic records, for 80 records total. Current local answer status is 79 PASS / 1 FAIL; source provenance remains a separate axis.
 
 ## Diagnostic answer audit
 
@@ -138,6 +138,34 @@ The current 20-item slices contain several near-duplicate diagnostic families. T
 runtime blocker, but future curation should prefer broader coverage before increasing counts.
 Examples include BOND-Q04/BOND-Q12, CHEM02-Q05/MOLE-Q15, GAS-Q03/GAS-Q09,
 GAS-Q07/GAS-Q16 and GAS-Q08/GAS-Q10.
+
+## GCDR v1.3 suite contracts
+
+The four Chemistry suites now participate in the companion-contract architecture introduced by
+GCDR v1.3:
+
+- `docs/gcdr-suites/chemistry-chemical-bonding.json`
+- `docs/gcdr-suites/chemistry-mole-concept.json`
+- `docs/gcdr-suites/chemistry-redox.json`
+- `docs/gcdr-suites/chemistry-gaseous-state.json`
+
+All four are explicitly `UNBOUND_EXTENSION` at `JEE_EXTENSION` depth; no Grade-9 canonical
+certification is claimed. The contracts govern the 20-item local slice, helper activation,
+representation invariants, geometry-truth declaration, and both repo/standalone delivery profiles.
+
+Question records now expose `teacherCheck`, `takeaway`, `helperTags`,
+`simBindingRefs`, answer audit, source audit and simulator fidelity. The five item-driven helpers
+used by these pages are governed as `AUDITED` against
+`tests/test_chemistry_master_suites_audit.py`.
+
+The suite-level invariants are:
+
+- Chemical Bonding — MO bond-order / magnetic-state consistency;
+- Mole Concept — stoichiometric extent and limiting-reagent conservation;
+- Redox — oxidation/reduction electron balance and n-factor consistency;
+- Gaseous State — Maxwell characteristic-speed ordering and analytic ratios.
+
+Rendered geometry remains `DECLARED`, not browser/visual certified.
 
 ## Standalone delivery
 
