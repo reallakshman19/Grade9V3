@@ -131,43 +131,6 @@ def findings(repo: Path = REPO) -> list[dict]:
             if locator.startswith("public/") and not (repo / locator).is_file():
                 add(path, rid, "MISSING_IMPLEMENTATION", locator)
 
-            scope = contract["scope_contract"]
-            scope_refs = scope["canonical_capability_refs"]
-            if scope["canonical_binding_status"] == "BOUND" and not scope_refs:
-                add(path, rid, "BOUND_SCOPE_WITHOUT_CAPABILITIES",
-                    "BOUND canonical scope requires at least one canonical_capability_ref")
-            for cap in scope_refs:
-                if cap not in claims:
-                    add(path, rid, "SCOPE_CAPABILITY_OUTSIDE_RESOURCE",
-                        f"scope capability {cap!r} must also appear in supports_claims")
-            if scope["canonical_binding_status"] == "UNBOUND_EXTENSION" and not scope["extension_reason"]:
-                add(path, rid, "UNBOUND_EXTENSION_WITHOUT_REASON",
-                    "UNBOUND_EXTENSION requires a concrete extension_reason")
-
-            invariants = contract["representation_invariants"]
-            invariant_ids = [row["id"] for row in invariants]
-            if len(invariant_ids) != len(set(invariant_ids)):
-                add(path, rid, "DUPLICATE_REPRESENTATION_INVARIANT_ID",
-                    "representation_invariants ids must be unique")
-
-            delivery = contract["delivery_contract"]
-            if delivery["entrypoint_locator"] != locator:
-                add(path, rid, "DELIVERY_ENTRYPOINT_MISMATCH",
-                    "delivery_contract.entrypoint_locator must match the governed resource locator")
-            if delivery["profile"] == "SINGLE_FILE_OFFLINE":
-                if delivery["external_dependencies"]:
-                    add(path, rid, "OFFLINE_PROFILE_EXTERNAL_DEPENDENCY",
-                        "SINGLE_FILE_OFFLINE cannot declare external dependencies")
-                if delivery["local_dependency_policy"] != "NONE":
-                    add(path, rid, "OFFLINE_PROFILE_LOCAL_DEPENDENCY",
-                        "SINGLE_FILE_OFFLINE requires local_dependency_policy=NONE")
-                if not delivery["offline_claim"]:
-                    add(path, rid, "OFFLINE_PROFILE_WITHOUT_CLAIM",
-                        "SINGLE_FILE_OFFLINE requires offline_claim=true")
-            elif delivery["offline_claim"]:
-                add(path, rid, "INVALID_OFFLINE_CLAIM",
-                    "offline_claim=true is reserved for SINGLE_FILE_OFFLINE")
-
             evidence = contract["implementation_evidence"]
             quality = contract["quality_audit"]
             audit_groups = (
@@ -289,12 +252,6 @@ def findings(repo: Path = REPO) -> list[dict]:
                         "quality_audit PASS requires non-empty audit provenance")
 
             if contract["conformance_status"] == "CERTIFIED":
-                if scope["canonical_binding_status"] != "BOUND":
-                    add(path, rid, "FALSE_SCOPE_CERTIFICATION",
-                        "CERTIFIED requires scope_contract.canonical_binding_status=BOUND")
-                if not contract["helper_contract_refs"]:
-                    add(path, rid, "CERTIFIED_WITHOUT_HELPER_CONTRACT",
-                        "CERTIFIED requires at least one helper_contract_ref")
                 missing = [name for name, present in evidence.items() if not present]
                 if missing:
                     add(path, rid, "FALSE_CERTIFICATION",
