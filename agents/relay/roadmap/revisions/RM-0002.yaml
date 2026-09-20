@@ -1,0 +1,32 @@
+schema_version: relay-v2.5
+revision:
+  id: RM-0002
+  from_revision: RM-0001
+  to_revision: RM-0002
+  classification: ENGINEERING_DISCOVERY_PROPOSAL
+  trigger:
+    type: ENGINEERING_DISCOVERY
+    ref: https://github.com/reallaksh19/Grade9V3/issues/162
+changes:
+  added:
+  - WP-162-BROWSER-RUNTIME-PROOF
+  removed: []
+  changed:
+  - WP-TAKEOVER-RECONCILE
+  - PHASE-TAKEOVER-RECONCILIATION
+  - OBJ-TOPIC-ATLAS-COMPLETE
+  unaffected: []
+invalidated_execution_packages: []
+issue_graph_reconciled: true
+progress_basis_change:
+  old_basis: PB-0001
+  new_basis: PB-0001
+  old_total_weight: 0
+  new_total_weight: 0
+frontier_after:
+- WP-162-BROWSER-RUNTIME-PROOF
+notes:
+- 'No concept change: issue #162 browser evidence is execution work under the existing
+  Shared Core completion objective.'
+- The overall programme denominator remains undefined; this revision does not invent
+  an overall completion percentage.
