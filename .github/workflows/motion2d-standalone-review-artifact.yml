@@ -1,0 +1,30 @@
+name: motion2d-standalone-review-artifact
+
+on:
+  push:
+    branches:
+      - review/motion2d-standalone-2026-09-20
+    paths:
+      - review/motion2d-standalone-review-2026-09-20.html
+      - .github/workflows/motion2d-standalone-review-artifact.yml
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify standalone review file
+        run: |
+          test -s review/motion2d-standalone-review-2026-09-20.html
+          ! grep -q '<script src="jee_questions_data.js"' review/motion2d-standalone-review-2026-09-20.html
+          grep -q 'window.JEE_QUESTIONS_DATA' review/motion2d-standalone-review-2026-09-20.html
+      - name: Upload standalone HTML
+        uses: actions/upload-artifact@v4
+        with:
+          name: motion2d-standalone-review-html
+          path: review/motion2d-standalone-review-2026-09-20.html
+          if-no-files-found: error
+          retention-days: 7
