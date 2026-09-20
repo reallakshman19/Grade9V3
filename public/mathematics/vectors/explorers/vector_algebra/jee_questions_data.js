@@ -489,8 +489,9 @@ window.JEE_QUESTIONS_DATA = [
     "correct": "A",
     "formula": "Volume V = | [a b c] | = | det(a, b, c) |",
     "steps": [
-      "Set up determinant of coordinate matrix: det = 2(3) - (-3)(5) + 4(-7) = 6 + 15 - 28 = -7.",
-      "Volume is absolute value: V = |-7| = 7 cubic units."
+      "Step 1: Set up the 3x3 determinant from vector components: [a b c] = det([[2, -3, 4], [1, 2, -1], [3, -1, 2]]).",
+      "Step 2: Expand along first row: 2(2·2 - (-1)·(-1)) - (-3)(1·2 - (-1)·3) + 4(1·(-1) - 2·3) = 2(3) + 3(5) + 4(-7) = 6 + 15 - 28 = -7.",
+      "Step 3: Geometric volume of a parallelepiped is the absolute magnitude of the scalar triple product: V = |[a b c]| = |-7| = 7 cubic units."
     ],
     "ans": "7 cubic units (Option A)",
     "trap": "Volume must be positive; always take the absolute value of the determinant!",

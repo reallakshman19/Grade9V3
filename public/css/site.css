@@ -470,6 +470,20 @@ nav.nav-links a.math-link.active { color: var(--math-accent); border-color: var(
 }
 .btn.primary-phy:hover { opacity: 0.9; }
 
+.btn.primary-chem {
+  background: var(--chem-accent);
+  color: #000;
+  border: 1px solid var(--chem-accent);
+}
+.btn.primary-chem:hover { opacity: 0.9; }
+
+.btn.primary-math {
+  background: var(--math-accent);
+  color: #000;
+  border: 1px solid var(--math-accent);
+}
+.btn.primary-math:hover { opacity: 0.9; }
+
 .btn.outline {
   background: transparent;
   color: var(--text);

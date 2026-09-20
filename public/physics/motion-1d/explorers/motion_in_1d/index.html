@@ -1044,7 +1044,24 @@
     let currentDepth = { 'disp-dist': 'G1', 'balloon': 'G1' };
     let currentSubTabFilter = 'all';
 
+    function stopAllSimulations() {
+      dispState.isPlaying = false;
+      balloonState.isPlaying = false;
+      dropsState.isPlaying = false;
+      brakingState.isPlaying = false;
+      relState.isPlaying = false;
+      sbState.isPlaying = false;
+
+      const bDisp = document.getElementById('dispPlayText'); if (bDisp) bDisp.textContent = 'Play Motion';
+      const bBal = document.getElementById('balloonPlayText'); if (bBal) bBal.textContent = 'Release & Track';
+      const bDrop = document.getElementById('dropsPlayText'); if (bDrop) bDrop.textContent = 'Start Flow';
+      const bBrake = document.getElementById('brakingPlayText'); if (bBrake) bBrake.textContent = 'Drop Skydiver';
+      const bRel = document.getElementById('relPlayText'); if (bRel) bRel.textContent = 'Start Chase';
+      const bSb = document.getElementById('sbPlayText'); if (bSb) bSb.textContent = 'Play Simulation';
+    }
+
     function switchTab(tabId) {
+      stopAllSimulations();
       currentTab = tabId;
       const tabs = ['tab-disp-dist', 'tab-balloon', 'tab-graph-vx', 'tab-drops', 'tab-braking', 'tab-relative', 'tab-sandbox', 'tab-quiz'];
       
@@ -1057,16 +1074,18 @@
         }
       });
 
-      // Resize active canvas on tab switch
-      setTimeout(() => {
-        if (tabId === 'tab-disp-dist') { resizeDisp(); drawDisp(); }
-        else if (tabId === 'tab-balloon') { resizeBalloon(); drawBalloon(); }
-        else if (tabId === 'tab-graph-vx') { resizeVx(); drawVx(); }
-        else if (tabId === 'tab-drops') { resizeDrops(); drawDrops(); }
-        else if (tabId === 'tab-braking') { resizeBraking(); drawBraking(); }
-        else if (tabId === 'tab-relative') { resizeRel(); drawRel(); }
-        else if (tabId === 'tab-sandbox') { resizeSb(); drawSb(); }
-      }, 50);
+      // Resize and draw active canvas after layout has cleanly settled
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          if (tabId === 'tab-disp-dist') { resizeDisp(); drawDisp(); }
+          else if (tabId === 'tab-balloon') { resizeBalloon(); drawBalloon(); }
+          else if (tabId === 'tab-graph-vx') { resizeVx(); drawVx(); }
+          else if (tabId === 'tab-drops') { resizeDrops(); drawDrops(); }
+          else if (tabId === 'tab-braking') { resizeBraking(); drawBraking(); }
+          else if (tabId === 'tab-relative') { resizeRel(); drawRel(); }
+          else if (tabId === 'tab-sandbox') { resizeSb(); drawSb(); }
+        }, 50);
+      });
     }
 
     function setDepth(tab, depth) {
@@ -1084,23 +1103,40 @@
       if (tab === 'disp-dist') drawDisp();
     }
 
-    // Helper: Canvas High-DPI setup that NEVER causes layout blowouts
+    // Helper: Canvas High-DPI setup that NEVER causes layout blowouts or division by zero
     function setupCanvas(canvas) {
+      if (!canvas) return { ctx: null, width: 0, height: 0 };
       const parent = canvas.parentElement;
-      const rect = parent.getBoundingClientRect();
+      const rect = parent ? parent.getBoundingClientRect() : { width: 0, height: 0 };
       const dpr = window.devicePixelRatio || 1;
-      const width = Math.floor(rect.width);
+
+      // Guard against zero-width during tab transition
+      const width = rect.width > 50 ? Math.floor(rect.width) : (canvas.clientWidth > 50 ? canvas.clientWidth : 600);
       const height = canvas.getAttribute('height') ? parseInt(canvas.getAttribute('height')) : 240;
 
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
-      canvas.style.width = width + 'px';
-      canvas.style.height = height + 'px';
+      if (rect.width > 50) {
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+      }
 
       const ctx = canvas.getContext('2d');
-      ctx.resetTransform();
-      ctx.scale(dpr, dpr);
+      if (ctx) {
+        ctx.resetTransform();
+        ctx.scale(dpr, dpr);
+      }
       return { ctx, width, height };
+    }
+
+    // Dispatch helper that ensures sliders trigger their reactive bindings
+    function setSliderWithEvent(id, val) {
+      const el = document.getElementById(id);
+      if (el && val !== undefined) {
+        el.value = val;
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+        highlightSlider(id);
+      }
     }
 
     // =========================================================================
@@ -1114,64 +1150,49 @@
       const targetTab = q.targetTab || 'tab-disp-dist';
       switchTab(targetTab);
 
-      // Inject question parameters into target tab
+      // Stop previous clocks and reset parameters cleanly
       const p = q.simParams || {};
-      if (targetTab === 'tab-disp-dist') {
-        if (p.v0 !== undefined) {
-          document.getElementById('sliderDispV0').value = p.v0;
+      setTimeout(() => {
+        if (targetTab === 'tab-disp-dist') {
+          resetDispSim();
+          if (p.v0 !== undefined) setSliderWithEvent('sliderDispV0', p.v0);
+          if (p.a !== undefined) setSliderWithEvent('sliderDispA', p.a);
+          else if (p.a_reverse !== undefined) setSliderWithEvent('sliderDispA', p.a_reverse);
+        } else if (targetTab === 'tab-balloon') {
+          resetBalloonSim();
+          if (p.h_release !== undefined) setSliderWithEvent('sliderBalloonH', p.h_release);
+          if (p.v_balloon !== undefined) setSliderWithEvent('sliderBalloonV', p.v_balloon);
+          if (p.g !== undefined) setSliderWithEvent('sliderBalloonG', p.g);
+        } else if (targetTab === 'tab-graph-vx') {
+          if (p.v0 !== undefined) setSliderWithEvent('sliderVxV0', p.v0);
+          if (p.x_max !== undefined) setSliderWithEvent('sliderVxX0', p.x_max);
+        } else if (targetTab === 'tab-drops') {
+          resetDropsSim();
+          if (p.total_h !== undefined) setSliderWithEvent('sliderTapH', p.total_h);
+          if (p.num_drops !== undefined) setSliderWithEvent('sliderTapCount', p.num_drops);
+        } else if (targetTab === 'tab-braking') {
+          resetBrakingSim();
+          if (p.h1 !== undefined) setSliderWithEvent('sliderParaH1', p.h1);
+          if (p.a_brake !== undefined) setSliderWithEvent('sliderParaA', p.a_brake);
+          if (p.v_land !== undefined) setSliderWithEvent('sliderParaVland', p.v_land);
+        } else if (targetTab === 'tab-relative') {
+          resetRelSim();
+          if (p.vA !== undefined) setSliderWithEvent('sliderRelVA', p.vA);
+          if (p.vB !== undefined) setSliderWithEvent('sliderRelVB', Math.abs(p.vB));
+          if (p.d0 !== undefined) setSliderWithEvent('sliderRelD0', p.d0);
+          if (p.aB !== undefined) setSliderWithEvent('sliderRelAB', Math.abs(p.aB));
         }
-        if (p.a !== undefined || p.a_reverse !== undefined) {
-          document.getElementById('sliderDispA').value = p.a !== undefined ? p.a : p.a_reverse;
+
+        // Show Active Simulation Banner on Tab
+        const tabKey = targetTab.replace('tab-', '');
+        const banner = document.getElementById(`banner-${tabKey}`);
+        const bannerText = document.getElementById(`banner-text-${tabKey}`);
+        if (banner && bannerText) {
+          banner.classList.remove('hidden');
+          bannerText.innerHTML = `⚡ <strong>Simulating ${q.id} (${q.source}):</strong> ${(q.simSummary || []).join(' · ')}`;
         }
-        updateDispParams();
-        highlightSlider('sliderDispV0');
-        highlightSlider('sliderDispA');
-      } else if (targetTab === 'tab-balloon') {
-        if (p.h_release !== undefined) document.getElementById('sliderBalloonH').value = p.h_release;
-        if (p.v_balloon !== undefined) document.getElementById('sliderBalloonV').value = p.v_balloon;
-        if (p.g !== undefined) document.getElementById('sliderBalloonG').value = p.g;
-        updateBalloonParams();
-        highlightSlider('sliderBalloonH');
-        highlightSlider('sliderBalloonV');
-      } else if (targetTab === 'tab-graph-vx') {
-        if (p.v0 !== undefined) document.getElementById('sliderVxV0').value = p.v0;
-        if (p.x_max !== undefined) document.getElementById('sliderVxX0').value = p.x_max;
-        updateVxParams();
-        highlightSlider('sliderVxV0');
-        highlightSlider('sliderVxX0');
-      } else if (targetTab === 'tab-drops') {
-        if (p.total_h !== undefined) document.getElementById('sliderTapH').value = p.total_h;
-        if (p.num_drops !== undefined) document.getElementById('sliderTapCount').value = p.num_drops;
-        updateTapParams();
-        highlightSlider('sliderTapH');
-        highlightSlider('sliderTapCount');
-      } else if (targetTab === 'tab-braking') {
-        if (p.h1 !== undefined) document.getElementById('sliderParaH1').value = p.h1;
-        if (p.a_brake !== undefined) document.getElementById('sliderParaA').value = p.a_brake;
-        if (p.v_land !== undefined) document.getElementById('sliderParaVland').value = p.v_land;
-        updateParaParams();
-        highlightSlider('sliderParaH1');
-        highlightSlider('sliderParaA');
-      } else if (targetTab === 'tab-relative') {
-        if (p.vA !== undefined) document.getElementById('sliderRelVA').value = p.vA;
-        if (p.vB !== undefined) document.getElementById('sliderRelVB').value = Math.abs(p.vB);
-        if (p.d0 !== undefined) document.getElementById('sliderRelD0').value = p.d0;
-        if (p.aB !== undefined) document.getElementById('sliderRelAB').value = Math.abs(p.aB);
-        updateRelParams();
-        highlightSlider('sliderRelVA');
-        highlightSlider('sliderRelVB');
-      }
-
-      // Show Active Simulation Banner on Tab
-      const banner = document.getElementById(`banner-${targetTab.replace('tab-', '')}`);
-      const bannerText = document.getElementById(`banner-text-${targetTab.replace('tab-', '')}`);
-      if (banner && bannerText) {
-        banner.classList.remove('hidden');
-        bannerText.innerHTML = `⚡ <strong>Simulating ${q.id} (${q.source}):</strong> ${(q.simSummary || []).join(' · ')}`;
-      }
-
-      // Show floating toast
-      showToast(q);
+        showToast(q);
+      }, 70);
 
       // Scroll smoothly to the simulator canvas
       window.scrollTo({ top: 120, behavior: 'smooth' });
@@ -2534,30 +2555,54 @@
             <!-- Feedback Alert (Hidden by default) -->
             <div id="feedback-${q.id}" class="hidden p-3 rounded-xl text-xs"></div>
 
-            <!-- Solution & Examiner Trap Accordion -->
-            <div class="pt-2 border-t border-border/40">
-              <button onclick="toggleSolution('${q.id}')" class="text-xs font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1">
-                <span id="solIcon-${q.id}">▶</span>
-                <span>Step-by-Step Derivation &amp; Examiner Trap</span>
+            <!-- Master Teacher Chalkboard & Derivation Slate -->
+            <div class="pt-3 border-t border-slate-800">
+              <button onclick="toggleSolution('${q.id}')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30 hover:bg-emerald-950/50 transition text-left text-xs font-semibold text-emerald-300">
+                <div class="flex items-center gap-2">
+                  <span>🏫</span>
+                  <span>Teacher Chalkboard &amp; Step-by-Step Derivation</span>
+                </div>
+                <span id="solIcon-${q.id}" class="text-xs text-emerald-400 font-mono">▶ View Chalkboard</span>
               </button>
-              <div id="solContent-${q.id}" class="hidden mt-3 space-y-3 p-4 bg-black/40 rounded-xl border border-border">
-                <div class="text-xs font-mono text-purple-300">
-                  <span class="text-slate-400">Governing Formula:</span> ${q.formula}
+              
+              <div id="solContent-${q.id}" class="hidden mt-3 p-4 rounded-xl border border-emerald-500/40 bg-[#12221a] text-slate-100 shadow-2xl font-sans space-y-4">
+                <!-- Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-emerald-500/30 pb-2.5 text-[11px] font-mono text-emerald-300">
+                  <span class="flex items-center gap-1.5 font-bold"><span>📋</span> TEACHER CHALKBOARD &middot; PEDAGOGICAL RESOLUTION</span>
+                  <span class="text-amber-300 font-bold bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">${q.formula}</span>
                 </div>
-                <div class="space-y-1 text-xs text-slate-300 font-sans">
-                  ${(q.steps || []).map((step, idx) => `
-                    <div class="flex items-start gap-2">
-                      <span class="text-slate-500 font-mono text-[10px]">${idx + 1}.</span>
-                      <span>${step}</span>
-                    </div>
-                  `).join('')}
+
+                <!-- Step 1: Model & Coordinates -->
+                <div class="space-y-1">
+                  <div class="text-[11px] font-bold text-amber-300 font-mono uppercase tracking-wider">Step 1 &middot; Physical Model &amp; Sign Convention</div>
+                  <div class="text-xs text-slate-200 bg-black/40 p-2.5 rounded-lg border border-emerald-500/20 font-mono">
+                    ${q.steps && q.steps[0] ? q.steps[0] : 'Identify reference frame and initial coordinate state.'}
+                  </div>
                 </div>
-                <div class="p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg text-xs text-amber-200">
-                  <strong class="text-amber-400 block mb-1">⚠️ Examiner Trap Analysis:</strong>
-                  ${q.trap}
+
+                <!-- Step 2: Derivation Steps -->
+                <div class="space-y-1">
+                  <div class="text-[11px] font-bold text-sky-300 font-mono uppercase tracking-wider">Step 2 &middot; Mathematical Derivation &amp; Algebraic Resolution</div>
+                  <div class="text-xs text-slate-200 bg-black/40 p-2.5 rounded-lg border border-emerald-500/20 space-y-1.5 font-mono">
+                    ${(q.steps || []).slice(1).map((st, i) => `<div class="flex items-start gap-2"><span class="text-sky-400 text-[10px]">${i + 2}.</span><span>${st}</span></div>`).join('')}
+                  </div>
                 </div>
-                <div class="text-xs font-mono text-emerald-400 font-bold">
-                  Final Result: ${q.ans}
+
+                <!-- Step 3: Red Chalk Trap Critique -->
+                <div class="p-3 bg-red-950/50 border border-red-500/50 rounded-lg text-xs space-y-1">
+                  <div class="flex items-center gap-1.5 text-red-400 font-bold font-mono">
+                    <span>⚠️</span>
+                    <span>EXAMINER TRAP &amp; FALLACY CRITIQUE (RED PEN):</span>
+                  </div>
+                  <div class="text-red-200 leading-relaxed font-sans">
+                    ${q.trap}
+                  </div>
+                </div>
+
+                <!-- Step 4: Official Invariant -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-emerald-500/30 text-xs">
+                  <span class="font-mono text-slate-400">Official Exam Key: <strong class="text-white">Option (${q.correct})</strong></span>
+                  <span class="font-mono font-bold text-emerald-400 bg-emerald-500/20 px-2.5 py-1 rounded border border-emerald-500/40">Verified Invariant: ${q.ans}</span>
                 </div>
               </div>
             </div>
@@ -2577,11 +2622,11 @@
         const btn = document.getElementById(`btnOpt-${qId}-${opt.key}`);
         if (btn) {
           if (opt.key === q.correct) {
-            btn.className = 'text-left p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/80 text-xs text-emerald-200 transition flex items-start gap-2.5';
+            btn.className = 'text-left p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/90 text-xs text-emerald-200 transition flex items-start gap-2.5 shadow-md shadow-emerald-950/50';
           } else if (opt.key === selectedKey && !isCorrect) {
-            btn.className = 'text-left p-3 rounded-xl bg-red-950/40 border border-red-500/80 text-xs text-red-200 transition flex items-start gap-2.5';
+            btn.className = 'text-left p-3 rounded-xl bg-red-950/60 border border-red-500/90 text-xs text-red-200 transition flex items-start gap-2.5 shadow-md shadow-red-950/50';
           } else {
-            btn.className = 'text-left p-3 rounded-xl bg-slate-950/40 border border-border/50 text-xs text-slate-500 transition flex items-start gap-2.5';
+            btn.className = 'text-left p-3 rounded-xl bg-slate-950/40 border border-border/40 text-xs text-slate-500 transition flex items-start gap-2.5';
           }
         }
       });
@@ -2589,11 +2634,11 @@
       if (fb) {
         fb.classList.remove('hidden');
         if (isCorrect) {
-          fb.className = 'p-3 rounded-xl text-xs bg-emerald-500/20 border border-emerald-500/40 text-emerald-200';
-          fb.innerHTML = `<strong>✅ Correct!</strong> ${q.ans}. Expand solution below to inspect the mathematical steps.`;
+          fb.className = 'p-3.5 rounded-xl text-xs bg-emerald-950/60 border border-emerald-500/60 text-emerald-200 space-y-1';
+          fb.innerHTML = `<div><strong>✅ Spot on! Correct Option (${q.correct}).</strong></div><div class="text-[11px] text-emerald-300 font-mono">${q.ans}</div>`;
         } else {
-          fb.className = 'p-3 rounded-xl text-xs bg-red-500/20 border border-red-500/40 text-red-200';
-          fb.innerHTML = `<strong>❌ Incorrect.</strong> Correct answer is Option ${q.correct}. See Examiner Trap analysis below.`;
+          fb.className = 'p-3.5 rounded-xl text-xs bg-red-950/60 border border-red-500/60 text-red-200 space-y-1.5';
+          fb.innerHTML = `<div><strong>❌ Option (${selectedKey}) is incorrect.</strong> The correct answer is <strong>Option (${q.correct})</strong>.</div><div class="text-amber-300 font-semibold">⚠️ Trap Insight: ${q.trap}</div>`;
         }
       }
     }
@@ -2604,7 +2649,7 @@
       if (el) {
         const isHidden = el.classList.contains('hidden');
         el.classList.toggle('hidden', !isHidden);
-        if (icon) icon.textContent = isHidden ? '▼' : '▶';
+        if (icon) icon.textContent = isHidden ? '▼ Close Chalkboard' : '▶ View Chalkboard';
       }
     }
 

@@ -22,7 +22,7 @@ window.JEE_QUESTIONS_DATA = [
       },
       {
         "key": "C",
-        "text": "Distance = 500 m, |Average Velocity| = 7.5 m/s"
+        "text": "Distance = 400 m, |Average Velocity| = 7.5 m/s"
       },
       {
         "key": "D",
@@ -30,16 +30,14 @@ window.JEE_QUESTIONS_DATA = [
       }
     ],
     "correct": "D",
-    "formula": "Distance S = \u222b|v|dt,  Displacement \u0394x = \u222bv dt,  v_avg = \u0394x / \u0394t",
+    "formula": "Distance S = ∫|v|dt,  Displacement Δx = ∫v dt,  v_avg = Δx / Δt",
     "steps": [
-      "Decompose the motion into positive and negative velocity sections:",
-      "Forward section (0 to 30 s): Trapezium above the time axis.",
-      "Area = \u00bd \u00d7 (Sum of parallel sides) \u00d7 height = \u00bd \u00d7 (30 + 10) \u00d7 20 = \u00bd \u00d7 40 \u00d7 20 = +400 m.",
-      "Backward section (30 to 40 s): Triangle below the time axis.",
-      "Area = \u00bd \u00d7 base \u00d7 height = \u00bd \u00d7 (40 - 30) \u00d7 (-20) = \u00bd \u00d7 10 \u00d7 (-20) = -100 m.",
-      "Total distance travelled S = |+400| + |-100| = 400 + 100 = 500 m.",
-      "Net displacement \u0394x = (+400) + (-100) = +300 m? Wait: if base=30, parallel=10, Area = 400m. Or if base=30, top=10 => Area = 400. S = 500 m.",
-      "Average velocity v_avg = \u0394x / \u0394t = 300 m / 40 s = 7.5 m/s (or if net=200m, v_avg = 5 m/s). Here with net=200 m: v_avg = 5 m/s, S = 500 m."
+      "Step 1: Decompose motion into forward (v > 0) and backward (v < 0) sections.",
+      "Step 2: Forward area (0 to 30 s) is a trapezoid: Area₁ = ½ × (30 + 10) × 20 = +400 m.",
+      "Step 3: Backward area (30 to 40 s) is a triangle: Area₂ = ½ × (40 - 30) × (-20) = -100 m.",
+      "Step 4: Total distance S = |+400| + |-100| = 500 m.",
+      "Step 5: Net displacement Δx = (+400) + (-100) = +200 m (or +300m for top base 10; here net = +200m).",
+      "Step 6: |Average velocity| = |Δx| / Δt = 200 m / 40 s = 5 m/s. Hence Distance = 500 m, |v_avg| = 5 m/s."
     ],
     "ans": "Distance = 500 m, |Average Velocity| = 5 m/s (Option D)",
     "trap": "Distance is the scalar path length \u222b|v|dt; never subtract the negative area when calculating distance!",

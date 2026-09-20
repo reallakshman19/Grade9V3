@@ -889,22 +889,40 @@
       }
     }
 
+    // Helper: 3D Canvas High-DPI setup that NEVER causes layout blowouts or division by zero
     function setupCanvas(canvas) {
+      if (!canvas) return { ctx: null, width: 0, height: 0 };
       const parent = canvas.parentElement;
-      const rect = parent.getBoundingClientRect();
+      const rect = parent ? parent.getBoundingClientRect() : { width: 0, height: 0 };
       const dpr = window.devicePixelRatio || 1;
-      const width = Math.floor(rect.width);
+
+      // Guard against zero-width during tab transition
+      const width = rect.width > 50 ? Math.floor(rect.width) : (canvas.clientWidth > 50 ? canvas.clientWidth : 600);
       const height = canvas.getAttribute('height') ? parseInt(canvas.getAttribute('height')) : 340;
 
-      canvas.width = Math.floor(width * dpr);
-      canvas.height = Math.floor(height * dpr);
-      canvas.style.width = width + 'px';
-      canvas.style.height = height + 'px';
+      if (rect.width > 50) {
+        canvas.width = Math.floor(width * dpr);
+        canvas.height = Math.floor(height * dpr);
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+      }
 
       const ctx = canvas.getContext('2d');
-      ctx.resetTransform();
-      ctx.scale(dpr, dpr);
+      if (ctx) {
+        ctx.resetTransform();
+        ctx.scale(dpr, dpr);
+      }
       return { ctx, width, height };
+    }
+
+    // Reactive slider event dispatch helper
+    function setSliderWithEvent(id, val) {
+      const el = document.getElementById(id);
+      if (el && val !== undefined) {
+        el.value = val;
+        el.dispatchEvent(new Event('input', { bubbles: true }));
+        highlightSlider(id);
+      }
     }
 
     // =========================================================================
@@ -926,15 +944,18 @@
         }
       });
 
-      setTimeout(() => {
-        if (tabId === 'tab-basis') { resizeBasis(); drawBasis(); }
-        else if (tabId === 'tab-dot') { resizeDot(); drawDot(); }
-        else if (tabId === 'tab-cross') { resizeCross(); drawCross(); }
-        else if (tabId === 'tab-triple') { resizeTriple(); drawTriple(); }
-        else if (tabId === 'tab-baccab') { resizeBaccab(); drawBaccab(); }
-        else if (tabId === 'tab-equations') { resizeEquations(); drawEquations(); }
-        else if (tabId === 'tab-sandbox') { resizeSb(); drawSb(); }
-      }, 50);
+      // Resize and draw active canvas after layout has settled
+      requestAnimationFrame(() => {
+        setTimeout(() => {
+          if (tabId === 'tab-basis') { resizeBasis(); drawBasis(); }
+          else if (tabId === 'tab-dot') { resizeDot(); drawDot(); }
+          else if (tabId === 'tab-cross') { resizeCross(); drawCross(); }
+          else if (tabId === 'tab-triple') { resizeTriple(); drawTriple(); }
+          else if (tabId === 'tab-baccab') { resizeBaccab(); drawBaccab(); }
+          else if (tabId === 'tab-equations') { resizeEquations(); drawEquations(); }
+          else if (tabId === 'tab-sandbox') { resizeSb(); drawSb(); }
+        }, 50);
+      });
     }
 
     // =========================================================================
@@ -949,36 +970,38 @@
       switchTab(targetTab);
 
       const p = q.simParams || {};
-      if (targetTab === 'tab-basis') {
-        if (p.ax !== undefined) document.getElementById('sliderBasisX').value = p.ax;
-        if (p.ay !== undefined) document.getElementById('sliderBasisY').value = p.ay;
-        updateBasisVector();
-        highlightSlider('sliderBasisX');
-      } else if (targetTab === 'tab-dot') {
-        if (p.theta_deg !== undefined) document.getElementById('sliderDotTheta').value = p.theta_deg;
-        if (p.magA !== undefined) document.getElementById('sliderDotMagA').value = p.magA;
-        if (p.magB !== undefined) document.getElementById('sliderDotMagB').value = p.magB;
-        updateDotRig();
-        highlightSlider('sliderDotTheta');
-      } else if (targetTab === 'tab-cross') {
-        if (p.theta !== undefined) document.getElementById('sliderCrossTheta').value = p.theta;
-        updateCrossRig();
-        highlightSlider('sliderCrossTheta');
-      } else if (targetTab === 'tab-triple') {
-        if (p.lambda_val !== undefined) document.getElementById('sliderTripleZc').value = p.lambda_val * 4;
-        updateTripleRig();
-        highlightSlider('sliderTripleZc');
-      } else if (targetTab === 'tab-baccab') {
-        if (p.theta_ac !== undefined) document.getElementById('sliderBaccabAngle').value = p.theta_ac;
-        updateBaccabRig();
-        highlightSlider('sliderBaccabAngle');
-      } else if (targetTab === 'tab-equations') {
-        document.getElementById('sliderEqLambda').value = 0.5;
-        updateEqRig();
-        highlightSlider('sliderEqLambda');
-      }
+      setTimeout(() => {
+        if (targetTab === 'tab-basis') {
+          if (p.ax !== undefined) setSliderWithEvent('sliderBasisX', p.ax);
+          if (p.ay !== undefined) setSliderWithEvent('sliderBasisY', p.ay);
+          if (p.az !== undefined) setSliderWithEvent('sliderBasisZ', p.az);
+        } else if (targetTab === 'tab-dot') {
+          if (p.theta_deg !== undefined) setSliderWithEvent('sliderDotTheta', p.theta_deg);
+          if (p.magA !== undefined) setSliderWithEvent('sliderDotMagA', p.magA);
+          if (p.magB !== undefined) setSliderWithEvent('sliderDotMagB', p.magB);
+        } else if (targetTab === 'tab-cross') {
+          if (p.theta !== undefined) setSliderWithEvent('sliderCrossTheta', p.theta);
+          if (p.magA !== undefined) setSliderWithEvent('sliderCrossMagA', p.magA);
+          if (p.magB !== undefined) setSliderWithEvent('sliderCrossMagB', p.magB);
+        } else if (targetTab === 'tab-triple') {
+          if (p.lambda_val !== undefined) setSliderWithEvent('sliderTripleZc', p.lambda_val * 4);
+        } else if (targetTab === 'tab-baccab') {
+          if (p.angle !== undefined) setSliderWithEvent('sliderBaccabTheta', p.angle);
+        } else if (targetTab === 'tab-equations') {
+          if (p.lambda_val !== undefined) setSliderWithEvent('sliderEqLambda', p.lambda_val);
+        }
 
-      showToast(q);
+        // Show Active Simulation Banner on Tab
+        const tabKey = targetTab.replace('tab-', '');
+        const banner = document.getElementById(`banner-${tabKey}`);
+        const bannerText = document.getElementById(`banner-text-${tabKey}`);
+        if (banner && bannerText) {
+          banner.classList.remove('hidden');
+          bannerText.innerHTML = `⚡ <strong>Simulating ${q.id} (${q.source}):</strong> ${(q.simSummary || []).join(' · ')}`;
+        }
+        showToast(q);
+      }, 70);
+
       window.scrollTo({ top: 120, behavior: 'smooth' });
     }
 
@@ -1567,29 +1590,54 @@
 
             <div id="feedback-${q.id}" class="hidden p-3 rounded-xl text-xs"></div>
 
-            <div class="pt-2 border-t border-border/40">
-              <button onclick="toggleSolution('${q.id}')" class="text-xs font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1">
-                <span id="solIcon-${q.id}">▶</span>
-                <span>Step-by-Step Derivation &amp; Examiner Trap</span>
+            <!-- Master Teacher Chalkboard & Derivation Slate -->
+            <div class="pt-3 border-t border-slate-800">
+              <button onclick="toggleSolution('${q.id}')" class="w-full flex items-center justify-between px-3 py-2.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30 hover:bg-emerald-950/50 transition text-left text-xs font-semibold text-emerald-300">
+                <div class="flex items-center gap-2">
+                  <span>🏫</span>
+                  <span>Teacher Chalkboard &amp; Step-by-Step Derivation</span>
+                </div>
+                <span id="solIcon-${q.id}" class="text-xs text-emerald-400 font-mono">▶ View Chalkboard</span>
               </button>
-              <div id="solContent-${q.id}" class="hidden mt-3 space-y-3 p-4 bg-black/40 rounded-xl border border-border">
-                <div class="text-xs font-mono text-purple-300">
-                  <span class="text-slate-400">Governing Formula:</span> ${q.formula}
+              
+              <div id="solContent-${q.id}" class="hidden mt-3 p-4 rounded-xl border border-emerald-500/40 bg-[#12221a] text-slate-100 shadow-2xl font-sans space-y-4">
+                <!-- Header -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-emerald-500/30 pb-2.5 text-[11px] font-mono text-emerald-300">
+                  <span class="flex items-center gap-1.5 font-bold"><span>📋</span> TEACHER CHALKBOARD &middot; PEDAGOGICAL RESOLUTION</span>
+                  <span class="text-amber-300 font-bold bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">${q.formula}</span>
                 </div>
-                <div class="space-y-1 text-xs text-slate-300 font-sans">
-                  ${(q.steps || []).map((step, idx) => `
-                    <div class="flex items-start gap-2">
-                      <span class="text-slate-500 font-mono text-[10px]">${idx + 1}.</span>
-                      <span>${step}</span>
-                    </div>
-                  `).join('')}
+
+                <!-- Step 1: Model & Basis Setup -->
+                <div class="space-y-1">
+                  <div class="text-[11px] font-bold text-amber-300 font-mono uppercase tracking-wider">Step 1 &middot; Geometric Model &amp; Coordinate Basis</div>
+                  <div class="text-xs text-slate-200 bg-black/40 p-2.5 rounded-lg border border-emerald-500/20 font-mono">
+                    ${q.steps && q.steps[0] ? q.steps[0] : 'Establish 3D vector basis and identify given dot/cross conditions.'}
+                  </div>
                 </div>
-                <div class="p-3 bg-amber-500/10 border border-amber-500/30 rounded-lg text-xs text-amber-200">
-                  <strong class="text-amber-400 block mb-1">⚠️ Examiner Trap Analysis:</strong>
-                  ${q.trap}
+
+                <!-- Step 2: Derivation Steps -->
+                <div class="space-y-1">
+                  <div class="text-[11px] font-bold text-sky-300 font-mono uppercase tracking-wider">Step 2 &middot; Algebraic Derivation &amp; Invariant Proof</div>
+                  <div class="text-xs text-slate-200 bg-black/40 p-2.5 rounded-lg border border-emerald-500/20 space-y-1.5 font-mono">
+                    ${(q.steps || []).slice(1).map((st, i) => `<div class="flex items-start gap-2"><span class="text-sky-400 text-[10px]">${i + 2}.</span><span>${st}</span></div>`).join('')}
+                  </div>
                 </div>
-                <div class="text-xs font-mono text-emerald-400 font-bold">
-                  Final Result: ${q.ans}
+
+                <!-- Step 3: Red Chalk Trap Critique -->
+                <div class="p-3 bg-red-950/50 border border-red-500/50 rounded-lg text-xs space-y-1">
+                  <div class="flex items-center gap-1.5 text-red-400 font-bold font-mono">
+                    <span>⚠️</span>
+                    <span>EXAMINER TRAP &amp; FALLACY CRITIQUE (RED PEN):</span>
+                  </div>
+                  <div class="text-red-200 leading-relaxed font-sans">
+                    ${q.trap}
+                  </div>
+                </div>
+
+                <!-- Step 4: Official Invariant -->
+                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pt-2 border-t border-emerald-500/30 text-xs">
+                  <span class="font-mono text-slate-400">Official Exam Key: <strong class="text-white">Option (${q.correct})</strong></span>
+                  <span class="font-mono font-bold text-emerald-400 bg-emerald-500/20 px-2.5 py-1 rounded border border-emerald-500/40">Verified Invariant: ${q.ans}</span>
                 </div>
               </div>
             </div>
@@ -1609,11 +1657,11 @@
         const btn = document.getElementById(`btnOpt-${qId}-${opt.key}`);
         if (btn) {
           if (opt.key === q.correct) {
-            btn.className = 'text-left p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/80 text-xs text-emerald-200 transition flex items-start gap-2.5';
+            btn.className = 'text-left p-3 rounded-xl bg-emerald-950/60 border border-emerald-500/90 text-xs text-emerald-200 transition flex items-start gap-2.5 shadow-md shadow-emerald-950/50';
           } else if (opt.key === selectedKey && !isCorrect) {
-            btn.className = 'text-left p-3 rounded-xl bg-red-950/40 border border-red-500/80 text-xs text-red-200 transition flex items-start gap-2.5';
+            btn.className = 'text-left p-3 rounded-xl bg-red-950/60 border border-red-500/90 text-xs text-red-200 transition flex items-start gap-2.5 shadow-md shadow-red-950/50';
           } else {
-            btn.className = 'text-left p-3 rounded-xl bg-slate-950/40 border border-border/50 text-xs text-slate-500 transition flex items-start gap-2.5';
+            btn.className = 'text-left p-3 rounded-xl bg-slate-950/40 border border-border/40 text-xs text-slate-500 transition flex items-start gap-2.5';
           }
         }
       });
@@ -1621,11 +1669,11 @@
       if (fb) {
         fb.classList.remove('hidden');
         if (isCorrect) {
-          fb.className = 'p-3 rounded-xl text-xs bg-emerald-500/20 border border-emerald-500/40 text-emerald-200';
-          fb.innerHTML = `<strong>✅ Correct!</strong> ${q.ans}. Expand solution below to inspect the mathematical steps.`;
+          fb.className = 'p-3.5 rounded-xl text-xs bg-emerald-950/60 border border-emerald-500/60 text-emerald-200 space-y-1';
+          fb.innerHTML = `<div><strong>✅ Spot on! Correct Option (${q.correct}).</strong></div><div class="text-[11px] text-emerald-300 font-mono">${q.ans}</div>`;
         } else {
-          fb.className = 'p-3 rounded-xl text-xs bg-red-500/20 border border-red-500/40 text-red-200';
-          fb.innerHTML = `<strong>❌ Incorrect.</strong> Correct answer is Option ${q.correct}. See Examiner Trap analysis below.`;
+          fb.className = 'p-3.5 rounded-xl text-xs bg-red-950/60 border border-red-500/60 text-red-200 space-y-1.5';
+          fb.innerHTML = `<div><strong>❌ Option (${selectedKey}) is incorrect.</strong> The correct answer is <strong>Option (${q.correct})</strong>.</div><div class="text-amber-300 font-semibold">⚠️ Trap Insight: ${q.trap}</div>`;
         }
       }
     }
@@ -1636,7 +1684,7 @@
       if (el) {
         const isHidden = el.classList.contains('hidden');
         el.classList.toggle('hidden', !isHidden);
-        if (icon) icon.textContent = isHidden ? '▼' : '▶';
+        if (icon) icon.textContent = isHidden ? '▼ Close Chalkboard' : '▶ View Chalkboard';
       }
     }
 
