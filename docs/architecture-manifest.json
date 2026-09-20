@@ -5,19 +5,19 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 193,
+  "component_count": 195,
   "relation_count": 235,
   "components_by_role": {
     "CONTRACT": 7,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 32,
-    "TEST": 89,
+    "TEST": 91,
     "TOOLING": 44,
     "WEB": 6,
     "WEB_RUNTIME": 3
   },
-  "digest": "sha256:c44c615cf3e074eacb053b5b70eb2f74ffd4a986adae58aecbecaa1745f997a3",
+  "digest": "sha256:d126ccd9e78e4ef93e10d8fccef552de0cd26ac402b8abfabc20d11038ea2a19",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -804,6 +804,13 @@
       "sha256": "1de5cdfb36e32cc769ce6305788d80bdccaed0a4ccee9d4e91fe3c4c752f9bf9"
     },
     {
+      "path": "tests/fixtures/workbench/arithmetic-division-semantic-identity.json",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 2207,
+      "sha256": "629dfb94bee3a600e80160ebd08bc004cbac5ecb8c9883417214bc0fb4ac8848"
+    },
+    {
       "path": "tests/fixtures/workbench/arithmetic-division.json",
       "role": "TEST",
       "role_description": "Executable checks",
@@ -816,6 +823,13 @@
       "role": "TEST",
       "role_description": "Executable checks",
       "sha256": "28d23aa8442784b84f727772c00aef46ce136afecaf4cfc4978ba27b14e3f93c"
+    },
+    {
+      "path": "tests/fixtures/workbench/browser-semantic-identity-host.html",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 3325,
+      "sha256": "e2277f3ed2a02e02e0cc3ac1b79891b2296d3f3f4413292af4ce857344c847eb"
     },
     {
       "path": "tests/test_agent_path_stress_prompts.py",
@@ -1315,18 +1329,18 @@
       "sha256": "3d0563b1e08a91fb25deaa42497d1df9ca81ebbb6d83ac0b70a249a2eac4303f"
     },
     {
-      "bytes": 21916,
       "path": "tests/workbench_browser.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "sha256": "8b3dfa5bcbe91dbb2328296d60154155fc6878758f261b29529f80ed9543e9ba"
+      "bytes": 26763,
+      "sha256": "72e4f5ea433950f25170b3041605c4033c35cab7939b67cb2b49d95f7cb02cd6"
     },
     {
       "path": "tests/workbench_runtime.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 11341,
-      "sha256": "8842d1eed601c97371af8baf6b63bd86182dace95cc5e71773614eb939e8f3ef"
+      "bytes": 16696,
+      "sha256": "1cfd47be66ae7663150c5cbdcb60bb9b80fef391e249eb308ab120257c5a1bf3"
     },
     {
       "path": "tools/app.css",
