@@ -14,7 +14,9 @@ from pathlib import Path
 import jsonschema
 
 REPO = Path(__file__).resolve().parents[2]
-SCHEMA = REPO / "Shared" / "library" / "explorer_design_contract.schema.json"
+SCHEMA_V12 = REPO / "Shared" / "library" / "explorer_design_contract.schema.json"
+SCHEMA_V13 = REPO / "Shared" / "library" / "explorer_design_contract.v1_3.schema.json"
+LATEST_SCHEMA_VERSION = "1.3.0"
 KIND = "GRAPHICAL_COGNITIVE_DECONSTRUCTION"
 MANDATORY_SEQUENCE = [
     "CONTEXT",
@@ -46,7 +48,10 @@ def packages(repo: Path = REPO):
 
 
 def findings(repo: Path = REPO) -> list[dict]:
-    schema = load(repo / "Shared" / "library" / "explorer_design_contract.schema.json")
+    schemas = {
+        "1.2.0": load(repo / "Shared" / "library" / "explorer_design_contract.schema.json"),
+        "1.3.0": load(repo / "Shared" / "library" / "explorer_design_contract.v1_3.schema.json"),
+    }
     loaded = list(packages(repo))
 
     capability_ids = {
@@ -93,6 +98,13 @@ def findings(repo: Path = REPO) -> list[dict]:
                     "GRAPHICAL_COGNITIVE_DECONSTRUCTION activity requires gcdr_contract")
                 continue
 
+            version = contract.get("schema_version")
+            schema = schemas.get(version)
+            if schema is None:
+                add(path, rid, "UNKNOWN_SCHEMA_VERSION",
+                    f"unsupported gcdr_contract.schema_version {version!r}")
+                continue
+
             try:
                 jsonschema.validate(instance=contract, schema=schema)
             except jsonschema.ValidationError as exc:
@@ -130,6 +142,44 @@ def findings(repo: Path = REPO) -> list[dict]:
             locator = resource.get("locator", "")
             if locator.startswith("public/") and not (repo / locator).is_file():
                 add(path, rid, "MISSING_IMPLEMENTATION", locator)
+
+            if version == "1.3.0":
+                scope = contract["scope_contract"]
+                scope_refs = scope["canonical_capability_refs"]
+                if scope["canonical_binding_status"] == "BOUND" and not scope_refs:
+                    add(path, rid, "BOUND_SCOPE_WITHOUT_CAPABILITIES",
+                        "BOUND canonical scope requires at least one canonical_capability_ref")
+                for cap in scope_refs:
+                    if cap not in claims:
+                        add(path, rid, "SCOPE_CAPABILITY_OUTSIDE_RESOURCE",
+                            f"scope capability {cap!r} must also appear in supports_claims")
+                if scope["canonical_binding_status"] == "UNBOUND_EXTENSION" and not scope["extension_reason"]:
+                    add(path, rid, "UNBOUND_EXTENSION_WITHOUT_REASON",
+                        "UNBOUND_EXTENSION requires a concrete extension_reason")
+
+                invariants = contract["representation_invariants"]
+                invariant_ids = [row["id"] for row in invariants]
+                if len(invariant_ids) != len(set(invariant_ids)):
+                    add(path, rid, "DUPLICATE_REPRESENTATION_INVARIANT_ID",
+                        "representation_invariants ids must be unique")
+
+                delivery = contract["delivery_contract"]
+                if delivery["entrypoint_locator"] != locator:
+                    add(path, rid, "DELIVERY_ENTRYPOINT_MISMATCH",
+                        "delivery_contract.entrypoint_locator must match the governed resource locator")
+                if delivery["profile"] == "SINGLE_FILE_OFFLINE":
+                    if delivery["external_dependencies"]:
+                        add(path, rid, "OFFLINE_PROFILE_EXTERNAL_DEPENDENCY",
+                            "SINGLE_FILE_OFFLINE cannot declare external dependencies")
+                    if delivery["local_dependency_policy"] != "NONE":
+                        add(path, rid, "OFFLINE_PROFILE_LOCAL_DEPENDENCY",
+                            "SINGLE_FILE_OFFLINE requires local_dependency_policy=NONE")
+                    if not delivery["offline_claim"]:
+                        add(path, rid, "OFFLINE_PROFILE_WITHOUT_CLAIM",
+                            "SINGLE_FILE_OFFLINE requires offline_claim=true")
+                elif delivery["offline_claim"]:
+                    add(path, rid, "INVALID_OFFLINE_CLAIM",
+                        "offline_claim=true is reserved for SINGLE_FILE_OFFLINE")
 
             evidence = contract["implementation_evidence"]
             quality = contract["quality_audit"]
@@ -252,6 +302,16 @@ def findings(repo: Path = REPO) -> list[dict]:
                         "quality_audit PASS requires non-empty audit provenance")
 
             if contract["conformance_status"] == "CERTIFIED":
+                if version != LATEST_SCHEMA_VERSION:
+                    add(path, rid, "LEGACY_CERTIFICATION_NOT_ALLOWED",
+                        f"CERTIFIED requires latest GCDR schema {LATEST_SCHEMA_VERSION}")
+                if version == "1.3.0":
+                    if contract["scope_contract"]["canonical_binding_status"] != "BOUND":
+                        add(path, rid, "FALSE_SCOPE_CERTIFICATION",
+                            "CERTIFIED requires scope_contract.canonical_binding_status=BOUND")
+                    if not contract["helper_contract_refs"]:
+                        add(path, rid, "CERTIFIED_WITHOUT_HELPER_CONTRACT",
+                            "CERTIFIED requires at least one helper_contract_ref")
                 missing = [name for name, present in evidence.items() if not present]
                 if missing:
                     add(path, rid, "FALSE_CERTIFICATION",
@@ -270,7 +330,10 @@ def findings(repo: Path = REPO) -> list[dict]:
 def audit(repo: Path = REPO) -> dict:
     rows = findings(repo)
     return {
-        "schema": str(SCHEMA.relative_to(REPO)),
+        "schemas": {
+            "1.2.0": str(SCHEMA_V12.relative_to(REPO)),
+            "1.3.0": str(SCHEMA_V13.relative_to(REPO)),
+        },
         "activity_kind": KIND,
         "findings": rows,
         "passed": not rows,
