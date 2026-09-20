@@ -13,10 +13,22 @@ window.JEE_QUESTIONS_DATA = [
     "year": "2026",
     "q": "According to Molecular Orbital Theory (MOT), which of the following oxygen species is diamagnetic and has the shortest bond length?",
     "options": [
-      { "key": "A", "text": "O₂²⁺" },
-      { "key": "B", "text": "O₂" },
-      { "key": "C", "text": "O₂⁻" },
-      { "key": "D", "text": "O₂²⁻" }
+      {
+        "key": "A",
+        "text": "O₂²⁺"
+      },
+      {
+        "key": "B",
+        "text": "O₂"
+      },
+      {
+        "key": "C",
+        "text": "O₂⁻"
+      },
+      {
+        "key": "D",
+        "text": "O₂²⁻"
+      }
     ],
     "correct": "A",
     "formula": "Bond Order BO = ½ (N_b - N_a). Bond Length ∝ 1 / (Bond Order). Species is diamagnetic if all electrons are paired.",
@@ -40,8 +52,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "O₂²⁻ is diamagnetic, but has the LONGEST bond length (BO = 1.0 vs 3.0)."
     },
     "targetTab": "tab-mot",
-    "simParams": { "species": "O2_2plus", "electrons": 14, "bo": 3.0, "magnetic": "Diamagnetic" },
-    "simSummary": ["O₂²⁺ (14 electrons)", "Bond Order = 3.0 (Triple Bond)", "Shortest Bond Length", "Diamagnetic (0 Unpaired)"]
+    "simParams": {
+      "species": "O2_2plus",
+      "electrons": 14,
+      "bo": 3.0,
+      "magnetic": "Diamagnetic"
+    },
+    "simSummary": [
+      "O₂²⁺ (14 electrons)",
+      "Bond Order = 3.0 (Triple Bond)",
+      "Shortest Bond Length",
+      "Diamagnetic (0 Unpaired)"
+    ]
   },
   {
     "id": "BOND-Q02",
@@ -52,10 +74,22 @@ window.JEE_QUESTIONS_DATA = [
     "year": "2025",
     "q": "The geometry and net dipole moment of XeF₄ and SF₄ respectively are:",
     "options": [
-      { "key": "A", "text": "XeF₄: Square planar, μ = 0; SF₄: See-saw, μ ≠ 0" },
-      { "key": "B", "text": "XeF₄: Tetrahedral, μ = 0; SF₄: Square planar, μ = 0" },
-      { "key": "C", "text": "XeF₄: See-saw, μ ≠ 0; SF₄: Square planar, μ = 0" },
-      { "key": "D", "text": "XeF₄: Square planar, μ ≠ 0; SF₄: See-saw, μ = 0" }
+      {
+        "key": "A",
+        "text": "XeF₄: Square planar, μ = 0; SF₄: See-saw, μ ≠ 0"
+      },
+      {
+        "key": "B",
+        "text": "XeF₄: Tetrahedral, μ = 0; SF₄: Square planar, μ = 0"
+      },
+      {
+        "key": "C",
+        "text": "XeF₄: See-saw, μ ≠ 0; SF₄: Square planar, μ = 0"
+      },
+      {
+        "key": "D",
+        "text": "XeF₄: Square planar, μ ≠ 0; SF₄: See-saw, μ = 0"
+      }
     ],
     "correct": "A",
     "formula": "Steric Number = Bond Pairs + Lone Pairs. XeF₄ = 4 + 2 = 6 (sp³d²). SF₄ = 4 + 1 = 5 (sp³d)",
@@ -76,8 +110,15 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Inverted dipole moments."
     },
     "targetTab": "tab-vsepr",
-    "simParams": { "molecule": "XeF4", "shape": "Square Planar", "dipole": 0 },
-    "simSummary": ["XeF₄: Steric 6 (sp³d²), 2 Axial Lone Pairs, Square Planar, μ = 0", "SF₄: Steric 5 (sp³d), 1 Equatorial Lone Pair, See-saw, μ ≠ 0"]
+    "simParams": {
+      "molecule": "XeF4",
+      "shape": "Square Planar",
+      "dipole": 0
+    },
+    "simSummary": [
+      "XeF₄: Steric 6 (sp³d²), 2 Axial Lone Pairs, Square Planar, μ = 0",
+      "SF₄: Steric 5 (sp³d), 1 Equatorial Lone Pair, See-saw, μ ≠ 0"
+    ]
   },
   {
     "id": "BOND-Q03",
@@ -88,10 +129,22 @@ window.JEE_QUESTIONS_DATA = [
     "year": "2024",
     "q": "Although Nitrogen and Fluorine are both highly electronegative, the dipole moment of NH₃ (1.47 D) is significantly greater than that of NF₃ (0.24 D). The correct explanation is:",
     "options": [
-      { "key": "A", "text": "In NH₃, the orbital dipole of the lone pair reinforces the resultant N-H bond dipoles, whereas in NF₃ it opposes the N-F bond dipoles." },
-      { "key": "B", "text": "The N-H bond is more polar than the N-F bond." },
-      { "key": "C", "text": "NF₃ is planar while NH₃ is pyramidal." },
-      { "key": "D", "text": "NH₃ has atomic number smaller than NF₃." }
+      {
+        "key": "A",
+        "text": "In NH₃, the orbital dipole of the lone pair reinforces the resultant N-H bond dipoles, whereas in NF₃ it opposes the N-F bond dipoles."
+      },
+      {
+        "key": "B",
+        "text": "The N-H bond is more polar than the N-F bond."
+      },
+      {
+        "key": "C",
+        "text": "NF₃ is planar while NH₃ is pyramidal."
+      },
+      {
+        "key": "D",
+        "text": "NH₃ has atomic number smaller than NF₃."
+      }
     ],
     "correct": "A",
     "formula": "μ_net = Σ μ_bond + μ_lonepair (Vector sum in 3D)",
@@ -110,8 +163,16 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Atomic number does not determine dipole moment."
     },
     "targetTab": "tab-dipole",
-    "simParams": { "molA": "NH3", "muA": 1.47, "molB": "NF3", "muB": 0.24 },
-    "simSummary": ["NH₃: 3 N-H (↑) + Lone Pair (↑) = Reinforcing (μ = 1.47 D)", "NF₃: 3 N-F (↓) + Lone Pair (↑) = Opposing (μ = 0.24 D)"]
+    "simParams": {
+      "molA": "NH3",
+      "muA": 1.47,
+      "molB": "NF3",
+      "muB": 0.24
+    },
+    "simSummary": [
+      "NH₃: 3 N-H (↑) + Lone Pair (↑) = Reinforcing (μ = 1.47 D)",
+      "NF₃: 3 N-F (↓) + Lone Pair (↑) = Opposing (μ = 0.24 D)"
+    ]
   },
   {
     "id": "BOND-Q04",
@@ -122,10 +183,22 @@ window.JEE_QUESTIONS_DATA = [
     "year": "2026",
     "q": "In gaseous phosphorus pentachloride (PCl₅), the axial P-Cl bonds are longer and weaker than the equatorial P-Cl bonds because:",
     "options": [
-      { "key": "A", "text": "Axial bond pairs experience three 90° repulsions from equatorial bond pairs, whereas equatorial pairs experience only two 90° repulsions." },
-      { "key": "B", "text": "Axial bonds are formed by pure p-orbitals while equatorial bonds are sp²." },
-      { "key": "C", "text": "Chlorine atoms in axial positions are more electronegative." },
-      { "key": "D", "text": "PCl₅ is unstable and immediately dissociates." }
+      {
+        "key": "A",
+        "text": "Axial bond pairs experience three 90° repulsions from equatorial bond pairs, whereas equatorial pairs experience only two 90° repulsions."
+      },
+      {
+        "key": "B",
+        "text": "Axial bonds are formed by pure p-orbitals while equatorial bonds are sp²."
+      },
+      {
+        "key": "C",
+        "text": "Chlorine atoms in axial positions are more electronegative."
+      },
+      {
+        "key": "D",
+        "text": "PCl₅ is unstable and immediately dissociates."
+      }
     ],
     "correct": "A",
     "formula": "In sp³d trigonal bipyramidal: Axial pairs suffer 3 × 90° bp-bp repulsions; Equatorial pairs suffer 2 × 90° bp-bp repulsions.",
@@ -144,8 +217,18 @@ window.JEE_QUESTIONS_DATA = [
       "D": "PCl₅ exists stably in the gas phase at moderate temperatures."
     },
     "targetTab": "tab-hybridization",
-    "simParams": { "axialLength": 240, "equatorialLength": 202, "repulsionAxial": 3, "repulsionEquat": 2 },
-    "simSummary": ["PCl₅ (sp³d Trigonal Bipyramidal)", "3 Equatorial P-Cl: 202 pm (Shorter, Stronger)", "2 Axial P-Cl: 240 pm (Longer, Weaker)", "Dissociation: PCl₅ → PCl₃ + Cl₂"]
+    "simParams": {
+      "axialLength": 240,
+      "equatorialLength": 202,
+      "repulsionAxial": 3,
+      "repulsionEquat": 2
+    },
+    "simSummary": [
+      "PCl₅ (sp³d Trigonal Bipyramidal)",
+      "3 Equatorial P-Cl: 202 pm (Shorter, Stronger)",
+      "2 Axial P-Cl: 240 pm (Longer, Weaker)",
+      "Dissociation: PCl₅ → PCl₃ + Cl₂"
+    ]
   },
   {
     "id": "BOND-Q05",
@@ -156,10 +239,22 @@ window.JEE_QUESTIONS_DATA = [
     "year": "2025",
     "q": "ortho-Nitrophenol is steam volatile and has a lower boiling point than para-nitrophenol because:",
     "options": [
-      { "key": "A", "text": "o-Nitrophenol exhibits intramolecular H-bonding (chelation), while p-nitrophenol exhibits intermolecular H-bonding." },
-      { "key": "B", "text": "o-Nitrophenol has a higher molecular weight." },
-      { "key": "C", "text": "p-Nitrophenol has intramolecular H-bonding." },
-      { "key": "D", "text": "o-Nitrophenol is non-polar." }
+      {
+        "key": "A",
+        "text": "o-Nitrophenol exhibits intramolecular H-bonding (chelation), while p-nitrophenol exhibits intermolecular H-bonding."
+      },
+      {
+        "key": "B",
+        "text": "o-Nitrophenol has a higher molecular weight."
+      },
+      {
+        "key": "C",
+        "text": "p-Nitrophenol has intramolecular H-bonding."
+      },
+      {
+        "key": "D",
+        "text": "o-Nitrophenol is non-polar."
+      }
     ],
     "correct": "A",
     "formula": "Intramolecular H-bonding prevents association with neighboring molecules; Intermolecular H-bonding causes molecular association.",
@@ -178,8 +273,15 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Both isomers have polar bonds."
     },
     "targetTab": "tab-hbonding",
-    "simParams": { "isomer": "ortho", "hBondType": "Intramolecular", "bp": "Lower (Volatile)" },
-    "simSummary": ["o-Nitrophenol: Intramolecular H-Bond (Cheled 6-Ring) → Steam Volatile", "p-Nitrophenol: Intermolecular H-Bond (Linear Chains) → High BP"]
+    "simParams": {
+      "isomer": "ortho",
+      "hBondType": "Intramolecular",
+      "bp": "Lower (Volatile)"
+    },
+    "simSummary": [
+      "o-Nitrophenol: Intramolecular H-Bond (Cheled 6-Ring) → Steam Volatile",
+      "p-Nitrophenol: Intermolecular H-Bond (Linear Chains) → High BP"
+    ]
   },
   {
     "id": "BOND-Q06",
@@ -190,10 +292,22 @@ window.JEE_QUESTIONS_DATA = [
     "year": "2024",
     "q": "According to Molecular Orbital Theory (MOT), which of the following homonuclear diatomic species is paramagnetic with two unpaired electrons in degenerate π orbitals despite having an even total number of electrons?",
     "options": [
-      { "key": "A", "text": "B₂ and O₂" },
-      { "key": "B", "text": "C₂ and N₂" },
-      { "key": "C", "text": "Li₂ and Be₂" },
-      { "key": "D", "text": "N₂ and O₂²⁻" }
+      {
+        "key": "A",
+        "text": "B₂ and O₂"
+      },
+      {
+        "key": "B",
+        "text": "C₂ and N₂"
+      },
+      {
+        "key": "C",
+        "text": "Li₂ and Be₂"
+      },
+      {
+        "key": "D",
+        "text": "N₂ and O₂²⁻"
+      }
     ],
     "correct": "A",
     "formula": "B₂ (10e⁻): π_2p_x¹ = π_2p_y¹ (2 unpaired e⁻). O₂ (16e⁻): π*_2p_x¹ = π*_2p_y¹ (2 unpaired e⁻)",
@@ -211,8 +325,14 @@ window.JEE_QUESTIONS_DATA = [
       "D": "N₂ and O₂²⁻ have all paired electrons."
     },
     "targetTab": "tab-mot",
-    "simParams": { "electrons": 16, "species": "O2" },
-    "simSummary": ["B₂ (10 e⁻): π_2p_x¹ = π_2p_y¹ (2 unpaired e⁻, Paramagnetic)", "O₂ (16 e⁻): π*_2p_x¹ = π*_2p_y¹ (2 unpaired e⁻, Paramagnetic)"]
+    "simParams": {
+      "electrons": 16,
+      "species": "O2"
+    },
+    "simSummary": [
+      "B₂ (10 e⁻): π_2p_x¹ = π_2p_y¹ (2 unpaired e⁻, Paramagnetic)",
+      "O₂ (16 e⁻): π*_2p_x¹ = π*_2p_y¹ (2 unpaired e⁻, Paramagnetic)"
+    ]
   },
   {
     "id": "BOND-Q07",
@@ -223,10 +343,22 @@ window.JEE_QUESTIONS_DATA = [
     "year": "2023",
     "q": "Both ammonia (NH₃) and nitrogen trifluoride (NF₃) have trigonal pyramidal geometries with one lone pair on nitrogen. However, the dipole moment of NH₃ (1.47 D) is substantially greater than that of NF₃ (0.24 D) because:",
     "options": [
-      { "key": "A", "text": "In NH₃, the lone-pair orbital dipole and N-H bond dipoles reinforce each other; in NF₃, the lone-pair dipole opposes the N-F bond dipoles." },
-      { "key": "B", "text": "Nitrogen is more electronegative than fluorine." },
-      { "key": "C", "text": "NF₃ is a planar molecule while NH₃ is pyramidal." },
-      { "key": "D", "text": "The N-H bond length is greater than the N-F bond length." }
+      {
+        "key": "A",
+        "text": "In NH₃, the lone-pair orbital dipole and N-H bond dipoles reinforce each other; in NF₃, the lone-pair dipole opposes the N-F bond dipoles."
+      },
+      {
+        "key": "B",
+        "text": "Nitrogen is more electronegative than fluorine."
+      },
+      {
+        "key": "C",
+        "text": "NF₃ is a planar molecule while NH₃ is pyramidal."
+      },
+      {
+        "key": "D",
+        "text": "The N-H bond length is greater than the N-F bond length."
+      }
     ],
     "correct": "A",
     "formula": "μ_net = μ_lone-pair + ∑ μ_bond (Vector addition)",
@@ -244,8 +376,15 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Bond length difference does not account for vector opposition."
     },
     "targetTab": "tab-dipole",
-    "simParams": { "molecule": "NH3_vs_NF3", "mu_NH3": 1.47, "mu_NF3": 0.24 },
-    "simSummary": ["NH₃: N-H dipoles add to lone pair vector (μ = 1.47 D)", "NF₃: N-F dipoles oppose lone pair vector (μ = 0.24 D)"]
+    "simParams": {
+      "molecule": "NH3_vs_NF3",
+      "mu_NH3": 1.47,
+      "mu_NF3": 0.24
+    },
+    "simSummary": [
+      "NH₃: N-H dipoles add to lone pair vector (μ = 1.47 D)",
+      "NF₃: N-F dipoles oppose lone pair vector (μ = 0.24 D)"
+    ]
   },
   {
     "id": "BOND-Q08",
@@ -256,10 +395,22 @@ window.JEE_QUESTIONS_DATA = [
     "year": "2025",
     "q": "In the resonance contributor of the ozone molecule (O₃: O_a - O_b = O_c), the formal charges on the single-bonded terminal oxygen (O_a), the central oxygen (O_b), and the double-bonded terminal oxygen (O_c) are respectively:",
     "options": [
-      { "key": "A", "text": "-1, +1, 0" },
-      { "key": "B", "text": "0, +1, -1" },
-      { "key": "C", "text": "+1, -1, 0" },
-      { "key": "D", "text": "0, 0, 0" }
+      {
+        "key": "A",
+        "text": "-1, +1, 0"
+      },
+      {
+        "key": "B",
+        "text": "0, +1, -1"
+      },
+      {
+        "key": "C",
+        "text": "+1, -1, 0"
+      },
+      {
+        "key": "D",
+        "text": "0, 0, 0"
+      }
     ],
     "correct": "A",
     "formula": "Formal Charge = Valence e⁻ - Non-bonding e⁻ - ½(Bonding e⁻)",
@@ -278,7 +429,640 @@ window.JEE_QUESTIONS_DATA = [
       "D": "Assumed all atoms in a neutral molecule have zero formal charge."
     },
     "targetTab": "tab-lewis",
-    "simParams": { "molecule": "O3", "fc_central": 1, "fc_single": -1, "fc_double": 0 },
-    "simSummary": ["O₃ Lewis Structure", "Central O: FC = 6 - 2 - 3 = +1", "Single-bonded O: FC = 6 - 6 - 1 = -1", "Double-bonded O: FC = 6 - 4 - 2 = 0"]
+    "simParams": {
+      "molecule": "O3",
+      "fc_central": 1,
+      "fc_single": -1,
+      "fc_double": 0
+    },
+    "simSummary": [
+      "O₃ Lewis Structure",
+      "Central O: FC = 6 - 2 - 3 = +1",
+      "Single-bonded O: FC = 6 - 6 - 1 = -1",
+      "Double-bonded O: FC = 6 - 4 - 2 = 0"
+    ]
+  },
+  {
+    "id": "BOND-Q09",
+    "num": "JEE Main 2024",
+    "source": "JEE Main 2024 (Online) 31st January Evening Shift",
+    "subtab": 2,
+    "subtabName": "3D VSEPR & Bent's Rule",
+    "year": "2024",
+    "q": "The total number of lone pairs on the central atom of XeF₄, SF₄, and ClF₃ respectively are:",
+    "options": [
+      {
+        "key": "A",
+        "text": "2, 1, 2"
+      },
+      {
+        "key": "B",
+        "text": "1, 2, 2"
+      },
+      {
+        "key": "C",
+        "text": "2, 2, 1"
+      },
+      {
+        "key": "D",
+        "text": "0, 1, 2"
+      }
+    ],
+    "correct": "A",
+    "formula": "Lone pairs LP = ½ [V - B], where V = valence e⁻ of central atom, B = bonded monovalent atoms",
+    "steps": [
+      "Step 1: For XeF₄: Xe has 8 valence electrons. Steric Number = 4 σ-bonds + ½(8 - 4) = 4 + 2 = 6 (sp³d²). Central atom has 2 lone pairs.",
+      "Step 2: For SF₄: S has 6 valence electrons. Steric Number = 4 σ-bonds + ½(6 - 4) = 4 + 1 = 5 (sp³d). Central atom has 1 lone pair (see-saw).",
+      "Step 3: For ClF₃: Cl has 7 valence electrons. Steric Number = 3 σ-bonds + ½(7 - 3) = 3 + 2 = 5 (sp³d). Central atom has 2 lone pairs (T-shaped).",
+      "Step 4: Compiling lone pairs on central atoms: XeF₄ = 2, SF₄ = 1, ClF₃ = 2."
+    ],
+    "ans": "2, 1, 2 (Option A)",
+    "trap": "Do not count lone pairs on fluorine atoms! The question specifically demands lone pairs ON THE CENTRAL ATOM.",
+    "distractorTraps": {
+      "B": "Swapped lone pairs of XeF₄ and SF₄.",
+      "C": "Assumed SF₄ has 2 lone pairs like XeF₄.",
+      "D": "Assumed XeF₄ is tetrahedral with 0 lone pairs."
+    },
+    "targetTab": "tab-vsepr",
+    "simParams": {
+      "molecule": "XeF4"
+    },
+    "simSummary": [
+      "XeF₄: 2 LP (Square Planar)",
+      "SF₄: 1 LP (See-saw)",
+      "ClF₃: 2 LP (T-shaped)"
+    ]
+  },
+  {
+    "id": "BOND-Q10",
+    "num": "JEE Main 2024",
+    "source": "JEE Main 2024 (Online) 29th January Morning Shift",
+    "subtab": 1,
+    "subtabName": "Lewis Structure & Formal Charge",
+    "year": "2024",
+    "q": "The formal charge on each oxygen atom in the resonance hybrid of the carbonate ion (CO₃²⁻) is:",
+    "options": [
+      {
+        "key": "A",
+        "text": "-2 / 3"
+      },
+      {
+        "key": "B",
+        "text": "-1 / 3"
+      },
+      {
+        "key": "C",
+        "text": "-1"
+      },
+      {
+        "key": "D",
+        "text": "-2"
+      }
+    ],
+    "correct": "A",
+    "formula": "Average Formal Charge = (Total ionic charge) / (Number of equivalent resonating oxygen atoms)",
+    "steps": [
+      "Step 1: Write the canonical Lewis resonance forms of CO₃²⁻. Carbon forms 1 C=O double bond and 2 C-O⁻ single bonds.",
+      "Step 2: Total formal charge on the oxygen atoms is -2 (since central carbon has FC = 4 - 0 - ½(8) = 0).",
+      "Step 3: All 3 oxygen atoms participate equally in resonance delocalization across 3 equivalent canonical forms.",
+      "Step 4: Average formal charge per oxygen atom: FC_avg = -2 / 3 ≈ -0.67.",
+      "Step 5: The C-O bond order in the hybrid is 4/3 = 1.33 (4 bonding pairs shared over 3 C-O linkages)."
+    ],
+    "ans": "-2 / 3 (Option A)",
+    "trap": "Do not report the charge of a single localized canonical form (-1 on single-bonded oxygen, 0 on double-bonded); the real molecule is the delocalized resonance hybrid (-2/3 on all oxygens)!",
+    "distractorTraps": {
+      "B": "Divided -1 by 3 instead of total charge -2.",
+      "C": "Reported the charge in a localized single-bonded canonical Lewis structure.",
+      "D": "Reported the total charge of the polyatomic ion."
+    },
+    "targetTab": "tab-lewis",
+    "simParams": {
+      "molecule": "CO3"
+    },
+    "simSummary": [
+      "CO₃²⁻ Hybrid: 3 equivalent O atoms",
+      "Average FC = -2/3",
+      "Bond Order = 4/3 = 1.33"
+    ]
+  },
+  {
+    "id": "BOND-Q11",
+    "num": "JEE Main 2023",
+    "source": "JEE Main 2023 (Online) 6th April Morning Shift",
+    "subtab": 5,
+    "subtabName": "Molecular Orbital Theory (MOT)",
+    "year": "2023",
+    "q": "According to Molecular Orbital Theory (MOT), in which of the following diatomic species does the double bond consist of ONLY π bonds with NO σ bond?",
+    "options": [
+      {
+        "key": "A",
+        "text": "C₂"
+      },
+      {
+        "key": "B",
+        "text": "O₂"
+      },
+      {
+        "key": "C",
+        "text": "N₂"
+      },
+      {
+        "key": "D",
+        "text": "B₂"
+      }
+    ],
+    "correct": "A",
+    "formula": "Electronic configuration of C₂ (12 e⁻): σ₁ₛ² σ*₁ₛ² σ₂ₛ² σ*₂ₛ² (π₂ₚ_x² = π₂ₚ_y²)",
+    "steps": [
+      "Step 1: Carbon has Z = 6 ≤ 7, so 2s-2p mixing occurs, pushing σ₂ₚ_z above the degenerate π₂ₚ orbitals.",
+      "Step 2: Neutral C₂ has 12 electrons. Fill molecular orbitals:",
+      "        σ₁ₛ² σ*₁ₛ² σ₂ₛ² σ*₂ₛ² (π₂ₚ_x² = π₂ₚ_y²).",
+      "Step 3: The 4 bonding electrons responsible for the double bond (BO = (8 - 4)/2 = 2) reside strictly in the degenerate π₂ₚ_x and π₂ₚ_y orbitals.",
+      "Step 4: The σ₂ₚ_z orbital is completely empty! Hence the double bond in C₂ consists exclusively of two π bonds and zero σ bonds."
+    ],
+    "ans": "C₂ (Option A)",
+    "trap": "Valence Bond Theory dogma states that a double bond is always 1σ + 1π. C₂ is the famous MOT proof that a double bond can consist solely of two π bonds!",
+    "distractorTraps": {
+      "B": "O₂ has 1 σ and 1 π bond (BO = 2 with 2 unpaired electrons in π*).",
+      "C": "N₂ has a triple bond (1 σ + 2 π).",
+      "D": "B₂ has a single bond (BO = 1) consisting of two half π bonds."
+    },
+    "targetTab": "tab-mot",
+    "simParams": {
+      "electrons": 12
+    },
+    "simSummary": [
+      "C₂ (12 e⁻): π₂ₚ_x² = π₂ₚ_y²",
+      "BO = 2.0 (Double π bond)",
+      "Zero σ bonds",
+      "Diamagnetic"
+    ]
+  },
+  {
+    "id": "BOND-Q12",
+    "num": "JEE Main 2023",
+    "source": "JEE Main 2023 (Online) 11th April Evening Shift",
+    "subtab": 4,
+    "subtabName": "Hybridization & PCl₅ Axial Elongation",
+    "year": "2023",
+    "q": "In gaseous PCl₅, the axial P-Cl bonds are longer (240 pm) than the equatorial P-Cl bonds (202 pm) because:",
+    "options": [
+      {
+        "key": "A",
+        "text": "Axial bond pairs experience three 90° repulsions, whereas equatorial pairs experience only two 90° repulsions"
+      },
+      {
+        "key": "B",
+        "text": "Axial bonds are formed by sp² hybrid orbitals and equatorial bonds by pd hybrid orbitals"
+      },
+      {
+        "key": "C",
+        "text": "Chlorine atoms at axial positions have greater electronegativity"
+      },
+      {
+        "key": "D",
+        "text": "Equatorial bonds have greater d-character than axial bonds"
+      }
+    ],
+    "correct": "A",
+    "formula": "sp³d = sp² (equatorial, 120°) + pd (axial, 180°). Repulsions at 90°: Axial = 3, Equatorial = 2.",
+    "steps": [
+      "Step 1: Trigonal bipyramidal geometry (sp³d) has two geometrically distinct sets of bonds: 3 equatorial and 2 axial.",
+      "Step 2: An equatorial bond makes two 90° angles (with the two axial bonds) and two 120° angles (with equatorial bonds).",
+      "Step 3: An axial bond makes three 90° angles (with all three equatorial bonds).",
+      "Step 4: Since electron-pair repulsion is extremely sensitive to angle (90° repulsions are far stronger than 120°), the three 90° repulsions push the axial chlorines further away from phosphorus.",
+      "Step 5: Therefore, axial bonds lengthen to 240 pm and are significantly weaker, explaining why PCl₅ dissociates upon mild heating: PCl₅ → PCl₃ + Cl₂."
+    ],
+    "ans": "Axial bond pairs experience three 90° repulsions, whereas equatorial pairs experience only two 90° repulsions (Option A)",
+    "trap": "Notice the orbital composition: axial bonds are formed from p_z + d_z² (zero s-character, longer), while equatorial bonds are formed from sp² (33% s-character, shorter).",
+    "distractorTraps": {
+      "B": "Inverted orbital allocation: equatorial is sp² and axial is pd, not vice-versa.",
+      "C": "All chlorine atoms have identical electronegativity.",
+      "D": "Axial bonds use the d_z² orbital, so axial has more d-character."
+    },
+    "targetTab": "tab-hybridization",
+    "simParams": {
+      "mode": "ground"
+    },
+    "simSummary": [
+      "Axial: 240 pm (Three 90° repulsions)",
+      "Equatorial: 202 pm (Two 90° repulsions)",
+      "Cleavage: PCl₅ → PCl₃ + Cl₂"
+    ]
+  },
+  {
+    "id": "BOND-Q13",
+    "num": "JEE Main 2022",
+    "source": "JEE Main 2022 (Online) 28th July Morning Shift",
+    "subtab": 3,
+    "subtabName": "Vectorial Dipole Sum",
+    "year": "2022",
+    "q": "Among the following molecules, which one has a non-zero permanent dipole moment (μ ≠ 0)?",
+    "options": [
+      {
+        "key": "A",
+        "text": "NF₃"
+      },
+      {
+        "key": "B",
+        "text": "BF₃"
+      },
+      {
+        "key": "C",
+        "text": "BeF₂"
+      },
+      {
+        "key": "D",
+        "text": "CO₂"
+      }
+    ],
+    "correct": "A",
+    "formula": "μ_net = ∑ μ_bond + μ_lp ≠ 0 for pyramidal geometry",
+    "steps": [
+      "Step 1: Check BF₃: Trigonal planar (sp²), 120° bond angles. The three equal B-F bond dipoles cancel completely by symmetry ⇒ μ = 0.",
+      "Step 2: Check BeF₂: Linear (sp), 180° bond angle. The two equal Be-F bond dipoles point in opposite directions ⇒ μ = 0.",
+      "Step 3: Check CO₂: Linear (sp), 180° bond angle. The two C=O bond dipoles cancel ⇒ μ = 0.",
+      "Step 4: Check NF₃: Trigonal pyramidal (sp³) with 1 lone pair on N. The geometry is non-planar and asymmetric, so vector sum of bond dipoles and lone pair dipole does not cancel ⇒ μ = 0.24 D ≠ 0."
+    ],
+    "ans": "NF₃ (Option A)",
+    "trap": "Although NF₃ has a very small dipole moment (0.24 D) because N-F dipoles oppose the lone pair, it is strictly NON-ZERO because geometry is trigonal pyramidal!",
+    "distractorTraps": {
+      "B": "BF₃ is perfectly planar with 120° symmetry, so μ = 0.",
+      "C": "BeF₂ is linear and symmetrical, μ = 0.",
+      "D": "CO₂ is linear and symmetrical, μ = 0."
+    },
+    "targetTab": "tab-dipole",
+    "simParams": {
+      "dipolePair": "NH3_NF3"
+    },
+    "simSummary": [
+      "NF₃: Pyramidal, μ = 0.24 D (≠ 0)",
+      "BF₃: Planar, μ = 0",
+      "CO₂, BeF₂: Linear, μ = 0"
+    ]
+  },
+  {
+    "id": "BOND-Q14",
+    "num": "JEE Main 2022",
+    "source": "JEE Main 2022 (Online) 25th June Evening Shift",
+    "subtab": 2,
+    "subtabName": "3D VSEPR & Bent's Rule",
+    "year": "2022",
+    "q": "The hybridization of the central atom and the molecular shape of BrF₅ are:",
+    "options": [
+      {
+        "key": "A",
+        "text": "sp³d² and Square Pyramidal"
+      },
+      {
+        "key": "B",
+        "text": "sp³d and Trigonal Bipyramidal"
+      },
+      {
+        "key": "C",
+        "text": "sp³d² and Octahedral"
+      },
+      {
+        "key": "D",
+        "text": "sp³d and See-saw"
+      }
+    ],
+    "correct": "A",
+    "formula": "Steric Number = Bond Pairs + Lone Pairs = 5 + 1 = 6 (sp³d²). Molecular geometry = Square Pyramidal.",
+    "steps": [
+      "Step 1: Bromine has 7 valence electrons in its outer shell.",
+      "Step 2: 5 valence electrons form 5 single σ-bonds with 5 fluorine atoms.",
+      "Step 3: Remaining 2 electrons form 1 lone pair on Br.",
+      "Step 4: Steric Number = 5 bond pairs + 1 lone pair = 6 ⇒ sp³d² hybridization.",
+      "Step 5: Electron geometry is Octahedral. Because 1 position is occupied by a lone pair, the molecular shape is Square Pyramidal."
+    ],
+    "ans": "sp³d² and Square Pyramidal (Option A)",
+    "trap": "Do not confuse ELECTRON GEOMETRY (octahedral) with MOLECULAR SHAPE (square pyramidal, which considers only atomic nuclei)!",
+    "distractorTraps": {
+      "B": "Assumed 5 bonds implies steric number 5 (sp³d), forgetting the lone pair.",
+      "C": "Reported electron pair geometry (Octahedral) instead of molecular shape.",
+      "D": "Confused with SF₄ (4 bonds + 1 lone pair = see-saw)."
+    },
+    "targetTab": "tab-vsepr",
+    "simParams": {
+      "molecule": "XeF4"
+    },
+    "simSummary": [
+      "BrF₅: 5 BP + 1 LP = 6 domains",
+      "Hybridization = sp³d²",
+      "Shape = Square Pyramidal"
+    ]
+  },
+  {
+    "id": "BOND-Q15",
+    "num": "JEE Main 2021",
+    "source": "JEE Main 2021 (Online) 25th February Morning Shift",
+    "subtab": 6,
+    "subtabName": "Hydrogen Bonding & Boiling Points",
+    "year": "2021",
+    "q": "The correct order of bond dissociation enthalpy of halogen molecules (X₂) is:",
+    "options": [
+      {
+        "key": "A",
+        "text": "Cl₂ > Br₂ > F₂ > I₂"
+      },
+      {
+        "key": "B",
+        "text": "F₂ > Cl₂ > Br₂ > I₂"
+      },
+      {
+        "key": "C",
+        "text": "Cl₂ > F₂ > Br₂ > I₂"
+      },
+      {
+        "key": "D",
+        "text": "I₂ > Br₂ > Cl₂ > F₂"
+      }
+    ],
+    "correct": "A",
+    "formula": "Bond Dissociation Enthalpies: Cl₂ (242.6) > Br₂ (192.8) > F₂ (158.8) > I₂ (151.1 kJ/mol)",
+    "steps": [
+      "Step 1: In general, bond dissociation energy decreases down the group as bond length increases: Cl₂ > Br₂ > I₂.",
+      "Step 2: Fluorine (F₂) has an exceptionally small internuclear distance (142 pm).",
+      "Step 3: The non-bonding lone pairs in the compact 2p orbitals experience severe interelectronic repulsion across the single F-F bond.",
+      "Step 4: This intense lone pair-lone pair repulsion significantly weakens the F-F bond (158.8 kJ/mol), dropping its dissociation energy below Cl₂ and Br₂!",
+      "Step 5: The verified experimental order is: Cl₂ > Br₂ > F₂ > I₂."
+    ],
+    "ans": "Cl₂ > Br₂ > F₂ > I₂ (Option A)",
+    "trap": "The Halogen Anomaly: students assume F₂ has the highest bond energy because it has the shortest bond length. Intense 2p lone pair repulsion makes it 3rd, not 1st!",
+    "distractorTraps": {
+      "B": "Standard periodic trend fallacy (assuming shortest bond F-F is strongest).",
+      "C": "Placed F₂ second instead of third.",
+      "D": "Inverted the entire periodic order."
+    },
+    "targetTab": "tab-hbonding",
+    "simParams": {
+      "pair": "ortho_para"
+    },
+    "simSummary": [
+      "Cl₂ (242.6 kJ/mol) > Br₂ (192.8) > F₂ (158.8) > I₂ (151.1)",
+      "F₂ weakened by 2p lone-pair repulsions"
+    ]
+  },
+  {
+    "id": "BOND-Q16",
+    "num": "JEE Main 2021",
+    "source": "JEE Main 2021 (Online) 20th July Evening Shift",
+    "subtab": 2,
+    "subtabName": "3D VSEPR & Bent's Rule",
+    "year": "2021",
+    "q": "The hybridization and geometry of the triiodide ion (I₃⁻) are:",
+    "options": [
+      {
+        "key": "A",
+        "text": "sp³d and Linear"
+      },
+      {
+        "key": "B",
+        "text": "sp³ and Bent"
+      },
+      {
+        "key": "C",
+        "text": "sp³d² and Linear"
+      },
+      {
+        "key": "D",
+        "text": "sp and Linear"
+      }
+    ],
+    "correct": "A",
+    "formula": "Steric Number = 2 σ-bonds + 3 lone pairs = 5 (sp³d). Equatorial lone pairs minimize 90° repulsion ⇒ Linear shape.",
+    "steps": [
+      "Step 1: Central iodine atom has 7 valence electrons + 1 extra electron (negative charge) = 8 electrons.",
+      "Step 2: 2 electrons are shared with two terminal iodine atoms to form 2 σ-bonds.",
+      "Step 3: Remaining 6 electrons form 3 lone pairs on the central iodine.",
+      "Step 4: Steric Number = 2 bond pairs + 3 lone pairs = 5 ⇒ sp³d hybridization (Trigonal Bipyramidal electron geometry).",
+      "Step 5: According to Bent's Rule / VSEPR, the 3 bulky lone pairs occupy the equatorial positions (120° apart) to minimize 90° repulsions.",
+      "Step 6: The two axial I-I bonds form a straight line with bond angle 180° ⇒ Molecular shape is Linear."
+    ],
+    "ans": "sp³d and Linear (Option A)",
+    "trap": "Do not assume a linear molecule must be sp hybridized! I₃⁻ and XeF₂ are linear with sp³d hybridization because 3 lone pairs occupy equatorial sites.",
+    "distractorTraps": {
+      "B": "Assumed I₃⁻ is bent like ICl₂⁺ or water.",
+      "C": "Calculated steric number 6.",
+      "D": "Assumed linear geometry implies sp hybridization (BeCl₂ fallacy)."
+    },
+    "targetTab": "tab-vsepr",
+    "simParams": {
+      "molecule": "XeF4"
+    },
+    "simSummary": [
+      "I₃⁻: 2 BP + 3 LP = 5 (sp³d)",
+      "3 LP equatorial at 120°",
+      "Linear shape, 180° angle"
+    ]
+  },
+  {
+    "id": "BOND-Q17",
+    "num": "JEE Main 2020",
+    "source": "JEE Main 2020 (Online) 5th September Morning Shift",
+    "subtab": 6,
+    "subtabName": "Hydrogen Bonding & Boiling Points",
+    "year": "2020",
+    "q": "The correct order of boiling points for the Group 16 hydrides (chalcogen hydrides) is:",
+    "options": [
+      {
+        "key": "A",
+        "text": "H₂O > H₂Te > H₂Se > H₂S"
+      },
+      {
+        "key": "B",
+        "text": "H₂O > H₂S > H₂Se > H₂Te"
+      },
+      {
+        "key": "C",
+        "text": "H₂Te > H₂Se > H₂S > H₂O"
+      },
+      {
+        "key": "D",
+        "text": "H₂S > H₂Se > H₂Te > H₂O"
+      }
+    ],
+    "correct": "A",
+    "formula": "H₂O (373 K) >> H₂Te (269 K) > H₂Se (232 K) > H₂S (213 K)",
+    "steps": [
+      "Step 1: From H₂S to H₂Te, molecular mass increases ⇒ van der Waals dispersion forces increase ⇒ boiling point increases: H₂Te > H₂Se > H₂S.",
+      "Step 2: However, oxygen is highly electronegative with a small atomic radius.",
+      "Step 3: H₂O forms an extensive 3D network of strong intermolecular hydrogen bonds (4 H-bonds per H₂O molecule in tetrahedral geometry).",
+      "Step 4: This massive hydrogen bonding energy pushes the boiling point of H₂O to 373 K (100°C), far above all other hydrides.",
+      "Step 5: Overall order: H₂O (100°C) > H₂Te (-4°C) > H₂Se (-41°C) > H₂S (-60°C)."
+    ],
+    "ans": "H₂O > H₂Te > H₂Se > H₂S (Option A)",
+    "trap": "Notice H₂S has the LOWEST boiling point of all, not the second highest! Do not assume monotonic decrease from H₂O.",
+    "distractorTraps": {
+      "B": "Assumed boiling point decreases monotonically down the group.",
+      "C": "Ignored hydrogen bonding and ranked strictly by molar mass.",
+      "D": "Inverted the order of the heavier hydrides."
+    },
+    "targetTab": "tab-hbonding",
+    "simParams": {
+      "pair": "ethanol_ether"
+    },
+    "simSummary": [
+      "H₂O: 373 K (Strong H-bonds)",
+      "H₂Te: 269 K, H₂Se: 232 K, H₂S: 213 K",
+      "H₂S has the lowest boiling point"
+    ]
+  },
+  {
+    "id": "BOND-Q18",
+    "num": "JEE Main 2020",
+    "source": "JEE Main 2020 (Online) 7th January Morning Shift",
+    "subtab": 4,
+    "subtabName": "Hybridization & PCl₅ Axial Elongation",
+    "year": "2020",
+    "q": "In the solid state, PCl₅ exists as an ionic compound composed of:",
+    "options": [
+      {
+        "key": "A",
+        "text": "[PCl₄]⁺ (tetrahedral) and [PCl₆]⁻ (octahedral)"
+      },
+      {
+        "key": "B",
+        "text": "[PCl₂]⁺ (linear) and [PCl₆]⁻ (octahedral)"
+      },
+      {
+        "key": "C",
+        "text": "[PCl₄]⁺ (square planar) and [PCl₆]⁻ (octahedral)"
+      },
+      {
+        "key": "D",
+        "text": "Discrete trigonal bipyramidal PCl₅ molecules held by van der Waals forces"
+      }
+    ],
+    "correct": "A",
+    "formula": "2 PCl₅(s) → [PCl₄]⁺ [PCl₆]⁻. [PCl₄]⁺ is sp³ (tetrahedral); [PCl₆]⁻ is sp³d² (octahedral).",
+    "steps": [
+      "Step 1: In the gas and liquid phases, PCl₅ exists as discrete trigonal bipyramidal molecules with sp³d hybridization.",
+      "Step 2: In the solid state, to minimize steric repulsions and achieve electrostatic lattice stabilization, it auto-ionizes:",
+      "        2 PCl₅(s) ⇌ [PCl₄]⁺ + [PCl₆]⁻.",
+      "Step 3: Cation [PCl₄]⁺: P has 5 - 1 = 4 valence electrons forming 4 σ-bonds ⇒ sp³ hybridization, Tetrahedral geometry.",
+      "Step 4: Anion [PCl₆]⁻: P has 5 + 1 = 6 valence electrons forming 6 σ-bonds ⇒ sp³d² hybridization, Octahedral geometry.",
+      "Step 5: Contrast with solid PBr₅, which exists as [PBr₄]⁺ Br⁻ due to the large steric bulk of bromine preventing [PBr₆]⁻ formation!"
+    ],
+    "ans": "[PCl₄]⁺ (tetrahedral) and [PCl₆]⁻ (octahedral) (Option A)",
+    "trap": "Notice the phase state! In gas phase PCl₅ is molecular TBP (sp³d), but in SOLID STATE it is ionic [PCl₄]⁺ [PCl₆]⁻!",
+    "distractorTraps": {
+      "B": "Incorrect formula for cation [PCl₂]⁺.",
+      "C": "[PCl₄]⁺ is tetrahedral (sp³), not square planar (dsp²).",
+      "D": "Discrete TBP molecules exist only in GAS or liquid phase, not solid state."
+    },
+    "targetTab": "tab-hybridization",
+    "simParams": {
+      "mode": "thermal"
+    },
+    "simSummary": [
+      "Solid PCl₅: [PCl₄]⁺ [PCl₆]⁻",
+      "[PCl₄]⁺: sp³ Tetrahedral",
+      "[PCl₆]⁻: sp³d² Octahedral"
+    ]
+  },
+  {
+    "id": "BOND-Q19",
+    "num": "JEE Main 2019",
+    "source": "JEE Main 2019 (Online) 10th April Morning Shift",
+    "subtab": 5,
+    "subtabName": "Molecular Orbital Theory (MOT)",
+    "year": "2019",
+    "q": "The bond order and magnetic behavior of the carbon monoxide cation (CO⁺) according to MOT are:",
+    "options": [
+      {
+        "key": "A",
+        "text": "Bond Order = 3.5 and Paramagnetic"
+      },
+      {
+        "key": "B",
+        "text": "Bond Order = 2.5 and Paramagnetic"
+      },
+      {
+        "key": "C",
+        "text": "Bond Order = 3.0 and Diamagnetic"
+      },
+      {
+        "key": "D",
+        "text": "Bond Order = 2.5 and Diamagnetic"
+      }
+    ],
+    "correct": "A",
+    "formula": "CO (14 e⁻, BO = 3.0). For CO⁺ (13 e⁻), electron is removed from antibonding σ* orbital ⇒ BO = 3.5.",
+    "steps": [
+      "Step 1: Neutral CO has 14 electrons (isoelectronic with N₂, BO = 3.0, diamagnetic).",
+      "Step 2: In heteronuclear CO, due to significant electronegativity difference between C and O, sp hybridization mixes orbitals such that the highest occupied molecular orbital (HOMO) is weakly antibonding σ* orbital (mostly C 2s character).",
+      "Step 3: Ionizing CO to CO⁺ removes an electron from this antibonding orbital!",
+      "Step 4: Removing an antibonding electron INCREASES the bond order: BO = 3.0 + 0.5 = 3.5.",
+      "Step 5: Since CO⁺ has 13 electrons (odd number), it has 1 unpaired electron ⇒ Paramagnetic!"
+    ],
+    "ans": "Bond Order = 3.5 and Paramagnetic (Option A)",
+    "trap": "THE CO⁺ ANOMALY: For N₂ → N₂⁺, removing an electron drops BO from 3.0 to 2.5. But for CO → CO⁺, removing an electron RAISES BO from 3.0 to 3.5 because HOMO is antibonding!",
+    "distractorTraps": {
+      "B": "Standard N₂ trap (assuming removing an electron always drops BO from 3.0 to 2.5).",
+      "C": "Assumed bond order remains 3.0.",
+      "D": "Assumed diamagnetic despite having 13 (odd) electrons."
+    },
+    "targetTab": "tab-mot",
+    "simParams": {
+      "electrons": 13
+    },
+    "simSummary": [
+      "CO⁺ (13 e⁻): HOMO is weakly antibonding",
+      "BO = 3.5 (Bond strengthens upon ionization!)",
+      "Paramagnetic (1 unpaired e⁻)"
+    ]
+  },
+  {
+    "id": "BOND-Q20",
+    "num": "JEE Main 2018",
+    "source": "JEE Main 2018 (Offline) 8th April Shift",
+    "subtab": 6,
+    "subtabName": "Hydrogen Bonding & Boiling Points",
+    "year": "2018",
+    "q": "Ortho-nitrophenol is more volatile in steam than para-nitrophenol because:",
+    "options": [
+      {
+        "key": "A",
+        "text": "Ortho-nitrophenol exhibits intramolecular hydrogen bonding (chelation), whereas para-nitrophenol forms intermolecular hydrogen bonds"
+      },
+      {
+        "key": "B",
+        "text": "Para-nitrophenol has a lower molecular mass than ortho-nitrophenol"
+      },
+      {
+        "key": "C",
+        "text": "Ortho-nitrophenol forms stronger intermolecular hydrogen bonds than water"
+      },
+      {
+        "key": "D",
+        "text": "Para-nitrophenol undergoes sublimation at room temperature"
+      }
+    ],
+    "correct": "A",
+    "formula": "Intramolecular H-bonding ⇒ Chelate ring ⇒ Discrete molecules ⇒ Lower BP, Steam Volatile. Intermolecular H-bonding ⇒ Association ⇒ Higher BP.",
+    "steps": [
+      "Step 1: In ortho-nitrophenol, the -OH and -NO₂ groups are on adjacent carbon atoms.",
+      "Step 2: The hydrogen of -OH forms an intramolecular H-bond with the oxygen of -NO₂, closing a planar 6-membered chelate ring.",
+      "Step 3: This intramolecular chelation shields the polar groups, preventing association with neighboring molecules ⇒ Low boiling point (216°C), steam-volatile.",
+      "Step 4: In para-nitrophenol, the -OH and -NO₂ groups are far apart (at positions 1 and 4), precluding intramolecular bonding.",
+      "Step 5: It forms extensive intermolecular H-bonding networks linking molecules into polymers ⇒ High boiling point (279°C), non-volatile in steam."
+    ],
+    "ans": "Ortho-nitrophenol exhibits intramolecular hydrogen bonding (chelation), whereas para-nitrophenol forms intermolecular hydrogen bonds (Option A)",
+    "trap": "Remember: INTRAmolecular H-bonding LOWERS boiling point (makes steam-volatile); INTERmolecular H-bonding RAISES boiling point!",
+    "distractorTraps": {
+      "B": "They are structural isomers and have identical molecular mass (139.11 g/mol).",
+      "C": "Ortho-nitrophenol does not form stronger intermolecular bonds with water.",
+      "D": "Para-nitrophenol does not sublime at room temperature."
+    },
+    "targetTab": "tab-hbonding",
+    "simParams": {
+      "pair": "ortho_para"
+    },
+    "simSummary": [
+      "o-nitrophenol: Intramolecular chelation (BP 216°C, Steam volatile)",
+      "p-nitrophenol: Intermolecular association (BP 279°C)"
+    ]
   }
 ];
