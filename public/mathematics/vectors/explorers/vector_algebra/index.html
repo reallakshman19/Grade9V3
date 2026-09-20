@@ -111,7 +111,7 @@
             <span class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider rounded bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
               IIT-JEE Mathematics · 3D Vector Geometry
             </span>
-            <span class="text-xs text-slate-400 font-mono">283 PYQ ExamSIDE Foundation</span>
+            <span class="text-xs text-slate-400 font-mono">13 audited diagnostics · live corpus 282 PYQs</span>
           </div>
           <h1 class="text-lg md:text-xl font-black tracking-tight text-white flex items-center gap-2">
             Vector Algebra &middot; 3D Master Suite
@@ -750,7 +750,7 @@
               <h2 class="font-bold text-base text-white">IIT-JEE Main Diagnostic Question Hub · Vector Algebra</h2>
             </div>
             <p class="text-xs text-slate-400 mt-1">
-              Curated authentic questions from ExamSIDE (2013–2026). Every question includes mathematical derivation, examiner trap analysis, and <span class="text-sky-300 font-bold">🚀 Load in 3D Simulator</span> integration.
+              13 audited diagnostics selected from the live ExamSIDE Mathematics Vector Algebra corpus (282 questions, 2002–2026). Each simulator action is explicitly labelled EXACT, CONSTRAINT_FAITHFUL, CONCEPT_ONLY or UNAVAILABLE.
             </p>
           </div>
 
@@ -940,18 +940,45 @@
     // =========================================================================
     // "LOAD IN 3D SIMULATOR" ENGINE
     // =========================================================================
+    function fidelityClass(fidelity) {
+      if (fidelity === 'EXACT') return 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300';
+      if (fidelity === 'CONSTRAINT_FAITHFUL') return 'bg-sky-500/15 border-sky-500/40 text-sky-300';
+      if (fidelity === 'CONCEPT_ONLY') return 'bg-amber-500/15 border-amber-500/40 text-amber-300';
+      return 'bg-slate-800 border-slate-600 text-slate-300';
+    }
+
+    function simulatorActionLabel(q) {
+      if (q.simFidelity === 'EXACT') return 'Load exact state';
+      if (q.simFidelity === 'CONSTRAINT_FAITHFUL') return 'Load constraints';
+      if (q.simFidelity === 'CONCEPT_ONLY') return 'Open concept rig';
+      return 'Simulator unavailable';
+    }
+
     function loadQuestionIntoSimulator(qId) {
       const questions = window.JEE_QUESTIONS_DATA || [];
       const q = questions.find(item => item.id === qId);
       if (!q) return;
 
+      const fidelity = q.simFidelity || 'UNAVAILABLE';
+      if (fidelity === 'UNAVAILABLE') {
+        showToast(q, false);
+        return;
+      }
+
       const targetTab = q.targetTab || 'tab-basis';
       switchTab(targetTab);
+
+      if (fidelity === 'CONCEPT_ONLY') {
+        showToast(q, false);
+        window.scrollTo({ top: 120, behavior: 'smooth' });
+        return;
+      }
 
       const p = q.simParams || {};
       if (targetTab === 'tab-basis') {
         if (p.ax !== undefined) document.getElementById('sliderBasisX').value = p.ax;
         if (p.ay !== undefined) document.getElementById('sliderBasisY').value = p.ay;
+        if (p.az !== undefined) document.getElementById('sliderBasisZ').value = p.az;
         updateBasisVector();
         highlightSlider('sliderBasisX');
       } else if (targetTab === 'tab-dot') {
@@ -960,25 +987,13 @@
         if (p.magB !== undefined) document.getElementById('sliderDotMagB').value = p.magB;
         updateDotRig();
         highlightSlider('sliderDotTheta');
-      } else if (targetTab === 'tab-cross') {
-        if (p.theta !== undefined) document.getElementById('sliderCrossTheta').value = p.theta;
-        updateCrossRig();
-        highlightSlider('sliderCrossTheta');
-      } else if (targetTab === 'tab-triple') {
-        if (p.lambda_val !== undefined) document.getElementById('sliderTripleZc').value = p.lambda_val * 4;
-        updateTripleRig();
-        highlightSlider('sliderTripleZc');
       } else if (targetTab === 'tab-baccab') {
         if (p.theta_ac !== undefined) document.getElementById('sliderBaccabAngle').value = p.theta_ac;
         updateBaccabRig();
         highlightSlider('sliderBaccabAngle');
-      } else if (targetTab === 'tab-equations') {
-        document.getElementById('sliderEqLambda').value = 0.5;
-        updateEqRig();
-        highlightSlider('sliderEqLambda');
       }
 
-      showToast(q);
+      showToast(q, true);
       window.scrollTo({ top: 120, behavior: 'smooth' });
     }
 
@@ -990,14 +1005,19 @@
       }
     }
 
-    function showToast(q) {
+    function showToast(q, stateWasInjected) {
       const toast = document.getElementById('simToast');
-      document.getElementById('simToastTitle').textContent = `Loaded ${q.id} (${q.year})`;
-      document.getElementById('simToastDesc').textContent = q.q.slice(0, 100) + '...';
-      document.getElementById('simToastParams').textContent = (q.simSummary || []).join(' | ');
+      const fidelity = q.simFidelity || 'UNAVAILABLE';
+      document.getElementById('simToastTitle').textContent = `${fidelity} · ${q.id} (${q.year})`;
+      document.getElementById('simToastDesc').textContent = q.simFidelityNote || q.q.slice(0, 100);
+      document.getElementById('simToastParams').textContent = stateWasInjected
+        ? (q.simSummary || []).join(' | ')
+        : (fidelity === 'CONCEPT_ONLY'
+            ? 'Concept rig opened; no question-specific vector state was invented.'
+            : 'No simulator state was changed.');
       toast.classList.remove('hidden');
       toast.classList.remove('translate-y-4');
-      setTimeout(() => closeSimToast(), 6000);
+      setTimeout(() => closeSimToast(), 7000);
     }
 
     function closeSimToast() {
@@ -1543,9 +1563,12 @@
                 <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">
                   ${q.subtabName}
                 </span>
-                <button onclick="loadQuestionIntoSimulator('${q.id}')" class="touch-target px-3 py-1 bg-sky-500/20 hover:bg-sky-500/30 border border-sky-500/50 text-sky-300 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                <span class="text-[10px] px-2 py-0.5 rounded border font-mono font-bold ${fidelityClass(q.simFidelity)}">
+                  ${q.simFidelity}
+                </span>
+                <button onclick="loadQuestionIntoSimulator('${q.id}')" class="touch-target px-3 py-1 border rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm ${fidelityClass(q.simFidelity)}">
                   <span>🚀</span>
-                  <span>Load in 3D Simulator</span>
+                  <span>${simulatorActionLabel(q)}</span>
                 </button>
               </div>
             </div>
@@ -1570,7 +1593,7 @@
             <div class="pt-2 border-t border-border/40">
               <button onclick="toggleSolution('${q.id}')" class="text-xs font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1">
                 <span id="solIcon-${q.id}">▶</span>
-                <span>Step-by-Step Derivation &amp; Examiner Trap</span>
+                <span>Teacher's Chalkboard · Derivation, Check, Trap &amp; Transfer</span>
               </button>
               <div id="solContent-${q.id}" class="hidden mt-3 space-y-3 p-4 bg-black/40 rounded-xl border border-border">
                 <div class="text-xs font-mono text-purple-300">
@@ -1590,6 +1613,19 @@
                 </div>
                 <div class="text-xs font-mono text-emerald-400 font-bold">
                   Final Result: ${q.ans}
+                </div>
+                <div class="p-3 bg-sky-500/10 border border-sky-500/30 rounded-lg text-xs text-sky-100">
+                  <strong class="text-sky-300 block mb-1">🧑‍🏫 Teacher's Chalkboard · Independent Check</strong>
+                  ${q.teacherCheck}
+                </div>
+                <div class="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-xs text-emerald-100">
+                  <strong class="text-emerald-300 block mb-1">↗ Transfer Takeaway</strong>
+                  ${q.takeaway}
+                </div>
+                <div class="p-3 border rounded-lg text-xs ${fidelityClass(q.simFidelity)}">
+                  <strong class="block mb-1">Simulator Fidelity · ${q.simFidelity}</strong>
+                  ${q.simFidelityNote}
+                  <div class="mt-1 text-[10px] font-mono opacity-80">Answer audit: ${q.answerAudit} · Source audit: ${q.sourceAudit}</div>
                 </div>
               </div>
             </div>
