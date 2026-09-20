@@ -1,0 +1,222 @@
+schema_version: relay-v2.5
+identity:
+  ep_id: EP-0162-REDO-PROOF
+  branch: feat/issue-162-semantic-workbench-core
+  base_ref: 965d0b1d02e4de989f88b4c612875ec52597599e
+  execution_state: EXECUTABLE
+  previous_checkpoint: NONE
+  previous_join: null
+  previous_replan: null
+replan_inheritance: null
+git_basis:
+  expected_branch: feat/issue-162-semantic-workbench-core
+  material_ref: 965d0b1d02e4de989f88b4c612875ec52597599e
+  base_branch: main
+  base_observed_ref: 843ec2d8d6faa2b8de15795ed1535905e4efc8a8
+  drift_policy: OWNER_EXCEPTION
+  drift_receipt: agents/relay/drift/DRIFT-0162-RM0008.yaml
+roadmap_source:
+  roadmap_id: RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER
+  roadmap_revision: RM-0002
+  objective: OBJ-TOPIC-ATLAS-COMPLETE
+  phase: PHASE-TAKEOVER-RECONCILIATION
+  work_package: WP-162-BROWSER-RUNTIME-PROOF
+  generated_from_frontier: false
+outcome:
+  user_visible:
+  - The workbench supports redo after undo with the same semantic state and visible text summary restored.
+  engineering:
+  - Reversible history remains generic, instance-local, monotonic in revision, and independent of subject validity rules.
+context_capsule:
+  product_goal: Complete the minimal reversible-history primitive promised by the #162 interaction grammar.
+  roadmap_position: Fourth bounded #162 Core slice; browser interaction, correspondence, and text-state fallback are already green.
+  why_this_work_exists: The runtime currently supports undo but not redo. #162 explicitly names undo/redo, and redo is now the smallest Core-owned unproved primitive after the semantic boundary survived browser falsification.
+  current_architecture: WorkbenchRuntime stores pre-commit snapshots in an instance-local history stack; SemanticWorkbench renders an Undo control and generic state summary.
+  prior_owner_decisions:
+  - ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT
+  - ODR-0162-DEFER-MERGE-ADVANCE-CORRESPONDENCE
+  - ODR-0162-ADVANCE-TEXT-SUMMARY
+  - ODR-0162-ADVANCE-REDO
+  current_implementation_state: Text-summary coding head cab014ff1c8a41be9d94152e89ab0aefd2de9d3f passed guardrails run 3280; relay bookkeeping head 965d0b1d02e4de989f88b4c612875ec52597599e records it complete.
+  known_problems:
+  - Undo has no redo counterpart.
+  deliberate_non_goals:
+  - No persisted history across remount/page reload.
+  - No authored timeline UI.
+  - No adapter re-validation during redo.
+  - No external-host or second-domain proof.
+repository_discovery:
+- id: DSTEP-R01
+  action: INSPECT
+  targets: [Shared/workbench/runtime.mjs, Shared/workbench/semantic-workbench.mjs]
+  question: Can redo be implemented by restoring validated semantic snapshots without adding domain logic or replaying adapter decisions?
+  expected_outputs: [history stack behavior, undo event/control behavior, revision semantics]
+  receipt_required: false
+  on_failure: Stop if redo requires domain-specific replay.
+inputs:
+- id: INPUT-R01
+  name: Green text-summary material basis
+  description: Current generic Core before adding redo.
+  authority: PR #165 coding branch
+  source: 965d0b1d02e4de989f88b4c612875ec52597599e
+  value: 965d0b1d02e4de989f88b4c612875ec52597599e
+  type: git material ref
+  units: NA
+  editable: true
+  applicability: CURRENT_EP_REQUIRED
+  resolution: READY
+  consumers: [STEP-R01, STEP-R02]
+  validation:
+  - Existing browser/runtime guardrails remain green before this slice.
+  stale_if:
+  - Runtime history semantics change outside this EP.
+benchmarks: []
+scope:
+  allowed:
+  - path: Shared/workbench/runtime.mjs
+    reason: Add generic redo stack and REDO intent/event semantics.
+  - path: Shared/workbench/semantic-workbench.mjs
+    reason: Add generic Redo control/status and preserve focus/state-summary behavior.
+  - path: tests/workbench_runtime.test.mjs
+    reason: Prove redo restoration and branch invalidation.
+  - path: tests/workbench_browser.test.mjs
+    reason: Prove undo→redo and redo invalidation in real Chrome.
+  - path: docs/architecture-manifest.json
+    reason: Refresh generated architecture evidence.
+  - path: agents/relay/**
+    reason: Record bounded execution/evidence.
+  protected:
+  - invariant: Redo restores prior validated semantic state and does not call the domain adapter.
+    reason: Domain validity belongs to the adapter at original commit time.
+  - invariant: New accepted semantic commits after undo clear redo history.
+    reason: Reversible history must not preserve an abandoned semantic branch.
+  - invariant: History remains per-runtime instance and is not persisted globally.
+    reason: Preserve isolation.
+  prohibited:
+  - domain: canonical academic content or adapter validity changes
+    reason: Not needed for generic redo.
+  - domain: timeline persistence or external-host packaging
+    reason: Outside this bounded Core slice.
+  owner_reserved:
+  - decision: Merge PR #165
+    reason: Deferred.
+anti_drift:
+  do_not:
+  - id: ADR-R01
+    restriction: Do not implement redo by replaying TRANSFER_REQUEST through the adapter.
+    reason: Redo must restore a previously accepted semantic state exactly, not make a fresh domain decision.
+  stale_if:
+  - id: STALE-R01
+    condition: Owner changes #162 ownership or revokes continuation.
+    effect: STOP
+    rationale: Scope authority would change.
+implementation_plan:
+- id: STEP-R01
+  objective: Add an instance-local redo stack with monotonic revision and branch invalidation on new accepted commit.
+  targets: [Shared/workbench/runtime.mjs, tests/workbench_runtime.test.mjs]
+  inputs: [INPUT-R01]
+  acceptance: [AC-R01, AC-R02]
+  tests: [TEST-R01]
+  expected_state: commit→undo→redo restores semantic entities/projections while revision advances; undo→new commit leaves nothing to redo.
+  stop_conditions:
+  - Stop if redo requires adapter replay or subject-specific logic.
+- id: STEP-R02
+  objective: Add the Redo UI/status path and prove it in real Chrome without regressing interaction/focus/text-summary behavior.
+  targets: [Shared/workbench/semantic-workbench.mjs, tests/workbench_browser.test.mjs, docs/architecture-manifest.json]
+  inputs: [INPUT-R01]
+  acceptance: [AC-R01, AC-R02, AC-R03]
+  tests: [TEST-R01, TEST-R02]
+  expected_state: Browser undo→redo restores the derived object and summary; redo is disabled/invalid after a new semantic branch.
+  stop_conditions:
+  - Stop if redo introduces global state or accessibility regression.
+next_work:
+  phase_transition: false
+  steps:
+  - order: 1
+    action: Execute STEP-R01 and STEP-R02 on PR #165.
+    targets: [Shared/workbench/runtime.mjs, Shared/workbench/semantic-workbench.mjs, tests/workbench_runtime.test.mjs, tests/workbench_browser.test.mjs]
+    inputs: [INPUT-R01]
+    tests: [TEST-R01, TEST-R02]
+    benchmarks: []
+    acceptance: [AC-R01, AC-R02, AC-R03]
+    expected_result: Generic redo is unit- and browser-proven without adapter replay or branch leakage.
+    stop_if:
+    - Domain replay, persistence, or integration work becomes necessary.
+qualification_boundary:
+  required: false
+  trigger: null
+  from_phase: null
+  to_phase: null
+  changed_dimensions: []
+  basis:
+  - Same #162 generic Core boundary.
+  question_set: null
+quality:
+  applicable:
+  - blueprint: coding
+    reason: Runtime history and component controls change.
+    review_focus: [state ownership, revision semantics, branch invalidation]
+  - blueprint: ui-ux
+    reason: Adds a Redo control and status.
+    review_focus: [control state, predictable recovery]
+  - blueprint: testing
+    reason: Requires negative history-branch falsifier and real-browser proof.
+    review_focus: [redo restoration, invalidation, exact-head evidence]
+  - blueprint: accessibility
+    reason: Keyboard-accessible history control and focus behavior are affected.
+    review_focus: [button semantics, focus preservation, text summary]
+  - blueprint: software-design
+    reason: Must preserve adapter/Core authority separation.
+    review_focus: [no adapter replay, instance-local history]
+  - blueprint: github-delivery
+    reason: Continues on draft PR #165 under Owner exception.
+    review_focus: [exact-head evidence, pending merge conflict]
+  not_applicable:
+  - blueprint: engineering-numerics
+    reason: No numerical authority changes.
+  - blueprint: code-review
+    reason: No separate independent review acceptance in this slice.
+  - blueprint: performance
+    reason: No performance target changes.
+  - blueprint: migration
+    reason: No persisted data or production migration.
+  review_contract:
+    required: true
+    required_before_checkpoint: true
+    receipt_namespace: QRV-
+    required_outputs: [procedure_results, findings, owner_report, successor_handover]
+  findings_policy: Quality findings remain quality state unless hard-stop mapped.
+  ordinary_findings_are_hard_stops: false
+acceptance:
+- id: AC-R01
+  description: Redo after undo restores the previously accepted semantic entities/projections without calling the adapter again, while revision increases monotonically.
+  weight: 45
+  verification: [TEST-R01, TEST-R02]
+- id: AC-R02
+  description: A new accepted semantic commit after undo invalidates the redo branch; transient interaction alone does not.
+  weight: 35
+  verification: [TEST-R01, TEST-R02]
+- id: AC-R03
+  description: Existing workbench/browser/repository guardrails remain green with no subject-specific Core branch or global history state.
+  weight: 20
+  verification: [TEST-R01, TEST-R02]
+validation:
+- id: TEST-R01
+  class: MUST_PASS
+  method: node --test tests/workbench_runtime.test.mjs
+  proves: [AC-R01, AC-R02, AC-R03]
+- id: TEST-R02
+  class: MUST_PASS
+  method: Grade9V3 guardrails including real Chrome workbench test on exact coding head
+  proves: [AC-R01, AC-R02, AC-R03]
+failure_and_stop_conditions:
+  hard_stop_categories: [OWNER_DECISION_REQUIRED, AUTHORITY_VIOLATION, PROTECTED_INVARIANT_FAILURE, UNSAFE_ENGINEERING_RESULT]
+report_contract:
+  sections: [Executive state, Progress, Work completed, Acceptance matrix, Tests and evidence, Known limitations, Exact next actions]
+  payloads: []
+checkpoint_contract:
+  required: true
+successor_relay:
+  required: true
+  duties: [reconcile current roadmap node, create checkpoint, update progress, compute next executable frontier]
+  required_outputs: [checkpoint, progress_reconciliation, next_frontier]
