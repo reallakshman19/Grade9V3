@@ -57,14 +57,15 @@ window.JEE_QUESTIONS_DATA = [
       "Z = 1 - a/(RTV_m) < 1",
       "Attractive Forces Dominant"
     ],
-    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "sourceAudit": "SOURCE_UNVERIFIED",
     "answerAudit": "PASS",
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [
       "simParams.tempK"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds tempK only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds tempK only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "ExamSIDE currently reports zero JEE Main Gaseous State questions in 2026 and labels the chapter out of syllabus; this 2026 attribution is therefore inconsistent with the live corpus snapshot."
   },
   {
     "id": "GAS-Q02",
@@ -120,7 +121,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q03",
@@ -181,7 +183,8 @@ window.JEE_QUESTIONS_DATA = [
       "simParams.tempK"
     ],
     "simFidelity": "CONSTRAINT_FAITHFUL",
-    "simFidelityNote": "The simulator binds tempK only. Remaining question details stay in the worked solution; this is not an exact full-state replay."
+    "simFidelityNote": "The simulator binds tempK only. Remaining question details stay in the worked solution; this is not an exact full-state replay.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q04",
@@ -238,7 +241,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q05",
@@ -295,7 +299,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q06",
@@ -345,12 +350,13 @@ window.JEE_QUESTIONS_DATA = [
       "Second Virial Coefficient B₂ = b - a/(RT) = 0",
       "(∂Z/∂P)_{P→0} = 0"
     ],
-    "sourceAudit": "SOURCE_PROVENANCE_PENDING",
+    "sourceAudit": "SOURCE_UNVERIFIED",
     "answerAudit": "PASS",
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "ExamSIDE currently reports zero JEE Main Gaseous State questions in 2026 and labels the chapter out of syllabus; this 2026 attribution is therefore inconsistent with the live corpus snapshot."
   },
   {
     "id": "GAS-Q07",
@@ -406,7 +412,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q08",
@@ -463,7 +470,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q09",
@@ -524,7 +532,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q10",
@@ -581,7 +590,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q11",
@@ -638,7 +648,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q12",
@@ -696,7 +707,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q13",
@@ -753,7 +765,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q14",
@@ -809,7 +822,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q15",
@@ -866,7 +880,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q16",
@@ -926,7 +941,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q17",
@@ -983,7 +999,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q18",
@@ -1038,7 +1055,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q19",
@@ -1096,7 +1114,8 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   },
   {
     "id": "GAS-Q20",
@@ -1154,6 +1173,7 @@ window.JEE_QUESTIONS_DATA = [
     "answerAuditNote": "Locally reviewed/recomputed on 2026-09-20; source-item provenance/key has not been independently verified.",
     "simBindingRefs": [],
     "simFidelity": "CONCEPT_ONLY",
-    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected."
+    "simFidelityNote": "The simulator opens the relevant mechanism only; no question-specific state is injected.",
+    "sourceAuditNote": "Attributed source item/key has not yet been independently matched against the cited ExamSIDE record."
   }
 ];
