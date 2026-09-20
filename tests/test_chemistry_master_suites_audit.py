@@ -45,7 +45,7 @@ SUITES = {
 
 REQUIRED = {
     "id", "q", "options", "formula", "steps", "ans", "trap",
-    "answerAudit", "answerAuditNote", "sourceAudit",
+    "answerAudit", "answerAuditNote", "sourceAudit", "sourceAuditNote",
     "simFidelity", "simFidelityNote", "targetTab", "simParams", "simBindingRefs",
 }
 
@@ -107,10 +107,23 @@ class ChemistryMasterSuitesAuditTest(unittest.TestCase):
         bonding = {q["id"]: q for q in load_bank(SUITES["bonding"][1])}
         mole = {q["id"]: q for q in load_bank(SUITES["mole"][1])}
 
-        self.assertEqual(bonding["BOND-Q19"]["answerAudit"], "PENDING")
+        self.assertEqual(bonding["BOND-Q19"]["answerAudit"], "PASS")
+        self.assertEqual(bonding["BOND-Q19"]["correct"], "B")
+        self.assertEqual(bonding["BOND-Q19"]["sourceAudit"], "SOURCE_UNVERIFIED")
         self.assertEqual(mole["CHEM02-Q04"]["answerAudit"], "FAIL")
+        self.assertEqual(mole["CHEM02-Q04"]["sourceAudit"], "SOURCE_UNVERIFIED")
         self.assertIsNone(mole["CHEM02-Q04"]["correct"])
         self.assertIn("C₄H₆", mole["CHEM02-Q04"]["ans"])
+
+    def test_known_source_attribution_mismatches_are_explicit(self):
+        bonding = {q["id"]: q for q in load_bank(SUITES["bonding"][1])}
+        mole = {q["id"]: q for q in load_bank(SUITES["mole"][1])}
+        gases = {q["id"]: q for q in load_bank(SUITES["gases"][1])}
+
+        self.assertEqual(bonding["BOND-Q19"]["sourceAudit"], "SOURCE_UNVERIFIED")
+        self.assertEqual(mole["CHEM02-Q04"]["sourceAudit"], "SOURCE_UNVERIFIED")
+        self.assertEqual(gases["GAS-Q01"]["sourceAudit"], "SOURCE_UNVERIFIED")
+        self.assertEqual(gases["GAS-Q06"]["sourceAudit"], "SOURCE_UNVERIFIED")
 
     def test_canvas_setup_does_not_recurse_dpr_height(self):
         for name, (html_path, _, _, _, _) in SUITES.items():
