@@ -33,6 +33,11 @@ jobs:
       - name: Graphical cognitive deconstruction contracts are valid
         run: python3 Shared/tools/explorer_design_guard.py --enforce
 
+      # Companion contracts govern question-level truth, helper activation and
+      # master-suite corpus/packaging claims without bloating the explorer schema.
+      - name: GCDR companion diagnostic helper and suite contracts are valid
+        run: python3 Shared/tools/gcdr_companion_guard.py --enforce
+
       # Execute each governed explorer's inline JS in a DOM-lite Node runtime, mutate
       # controls, verify causal handlers/reset behavior, and reject runtime claims that
       # overstate what the artifact actually does. This is not visual/browser-layout proof.
