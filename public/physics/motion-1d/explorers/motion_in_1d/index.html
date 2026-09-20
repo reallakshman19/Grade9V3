@@ -494,7 +494,7 @@
                 </button>
                 <button onclick="setVxProfile('parabola')" id="btnVxParabola" class="text-left p-2.5 rounded-lg bg-slate-800 border border-border text-xs font-semibold text-slate-300 hover:border-slate-600">
                   B. Parabolic Curve
-                  <span class="block text-[10px] font-normal text-slate-400">v² = 2ax (Constant Acceleration Line in a-x)</span>
+                  <span class="block text-[10px] font-normal text-slate-400">v² = v₀²(1-x/x₀) ⇒ constant negative acceleration</span>
                 </button>
                 <button onclick="setVxProfile('circle')" id="btnVxCircle" class="text-left p-2.5 rounded-lg bg-slate-800 border border-border text-xs font-semibold text-slate-300 hover:border-slate-600">
                   C. Elliptic Quarter-Circle
@@ -1775,7 +1775,28 @@
 
       const v0 = vxState.v0;
       const x0 = vxState.x0;
-      const px = vxState.probeX;
+      const px = Math.max(0, Math.min(x0, vxState.probeX));
+
+      function profileAt(x) {
+        const sx = Math.max(0, Math.min(x0, x));
+        if (vxState.profile === 'linear_down') {
+          const m = v0 / x0;
+          const v = v0 - m * sx;
+          return { v, dvdx: -m, a: -m * v };
+        }
+        if (vxState.profile === 'parabola') {
+          // Constant-acceleration stopping law: v² = v₀²(1 - x/x₀).
+          const inside = Math.max(0, 1 - sx / x0);
+          const v = v0 * Math.sqrt(inside);
+          const a = -(v0 * v0) / (2 * x0);
+          return { v, dvdx: v > 1e-9 ? a / v : Number.NEGATIVE_INFINITY, a };
+        }
+        // Elliptic quarter-circle: v²/v₀² + x²/x₀² = 1.
+        const inside = Math.max(0, 1 - (sx * sx) / (x0 * x0));
+        const v = v0 * Math.sqrt(inside);
+        const a = -(v0 * v0 * sx) / (x0 * x0);
+        return { v, dvdx: v > 1e-9 ? a / v : Number.NEGATIVE_INFINITY, a };
+      }
 
       const originX = 35;
       const originY = hV - 30;
@@ -1799,49 +1820,44 @@
       ctxV.strokeStyle = '#38bdf8';
       ctxV.lineWidth = 2.5;
       ctxV.beginPath();
-      for (let x = 0; x <= x0; x += 0.1) {
-        let v = 0;
-        if (vxState.profile === 'linear_down') {
-          v = - (v0 / x0) * x + v0;
-        } else if (vxState.profile === 'parabola') {
-          v = Math.sqrt(Math.max(0, 2 * 5 * (x0 - x)));
-        } else {
-          v = v0 * Math.sqrt(Math.max(0, 1 - (x * x) / (x0 * x0)));
-        }
+      let first = true;
+      for (let x = 0; x <= x0 + 1e-9; x += Math.max(0.05, x0 / 180)) {
+        const { v } = profileAt(x);
         const cx = originX + x * scaleX;
         const cy = originY - v * scaleV;
-        if (x === 0) ctxV.moveTo(cx, cy);
+        if (first) { ctxV.moveTo(cx, cy); first = false; }
         else ctxV.lineTo(cx, cy);
       }
       ctxV.stroke();
 
-      let curV = 0, dvdx = 0;
-      if (vxState.profile === 'linear_down') {
-        const m = v0 / x0;
-        curV = -m * px + v0;
-        dvdx = -m;
-      }
+      const probe = profileAt(px);
       const probeCx = originX + px * scaleX;
-      const probeCy = originY - curV * scaleV;
+      const probeCy = originY - probe.v * scaleV;
 
       ctxV.fillStyle = '#f59e0b';
       ctxV.beginPath();
       ctxV.arc(probeCx, probeCy, 5, 0, Math.PI * 2);
       ctxV.fill();
 
-      ctxV.strokeStyle = '#f59e0b';
-      ctxV.setLineDash([3, 3]);
-      ctxV.beginPath();
-      ctxV.moveTo(probeCx - 30, probeCy - 30 * (-dvdx * scaleV / scaleX));
-      ctxV.lineTo(probeCx + 30, probeCy + 30 * (-dvdx * scaleV / scaleX));
-      ctxV.stroke();
-      ctxV.setLineDash([]);
+      if (Number.isFinite(probe.dvdx)) {
+        ctxV.strokeStyle = '#f59e0b';
+        ctxV.setLineDash([3, 3]);
+        ctxV.beginPath();
+        ctxV.moveTo(probeCx - 30, probeCy - 30 * (-probe.dvdx * scaleV / scaleX));
+        ctxV.lineTo(probeCx + 30, probeCy + 30 * (-probe.dvdx * scaleV / scaleX));
+        ctxV.stroke();
+        ctxV.setLineDash([]);
+      }
 
-      document.getElementById('vxTangentVal').textContent = `dv/dx = ${dvdx.toFixed(2)}`;
+      document.getElementById('vxTangentVal').textContent = Number.isFinite(probe.dvdx)
+        ? `dv/dx = ${probe.dvdx.toFixed(2)}`
+        : 'dv/dx → -∞ at v = 0';
 
-      // 2. Draw Derived a-x Graph
+      // Derived a-x graph from a = v dv/dx, evaluated in a form that remains
+      // finite at endpoints even when dv/dx itself becomes singular.
       const aOriginY = hA * 0.55;
-      const scaleA = (hA * 0.4) / (v0 * v0 / x0);
+      const aScaleDen = Math.max(1e-9, v0 * v0 / x0);
+      const scaleA = (hA * 0.4) / aScaleDen;
 
       ctxA.strokeStyle = '#334155';
       ctxA.lineWidth = 1.5;
@@ -1860,29 +1876,29 @@
       ctxA.strokeStyle = '#10b981';
       ctxA.lineWidth = 2.5;
       ctxA.beginPath();
-      for (let x = 0; x <= x0; x += 0.1) {
-        let aVal = 0;
-        if (vxState.profile === 'linear_down') {
-          const m = v0 / x0;
-          aVal = m * m * x - m * v0;
-        }
+      first = true;
+      for (let x = 0; x <= x0 + 1e-9; x += Math.max(0.05, x0 / 180)) {
+        const aVal = profileAt(x).a;
         const cax = originX + x * scaleX;
         const cay = aOriginY - aVal * scaleA;
-        if (x === 0) ctxA.moveTo(cax, cay);
+        if (first) { ctxA.moveTo(cax, cay); first = false; }
         else ctxA.lineTo(cax, cay);
       }
       ctxA.stroke();
 
-      const curA = curV * dvdx;
       const probeAx = originX + px * scaleX;
-      const probeAy = aOriginY - curA * scaleA;
-
+      const probeAy = aOriginY - probe.a * scaleA;
       ctxA.fillStyle = '#10b981';
       ctxA.beginPath();
       ctxA.arc(probeAx, probeAy, 5, 0, Math.PI * 2);
       ctxA.fill();
 
-      document.getElementById('axSlopeVal').textContent = `Slope = +${((v0/x0)*(v0/x0)).toFixed(2)}`;
+      const relation = vxState.profile === 'linear_down'
+        ? `a(x) slope = +${((v0/x0)**2).toFixed(2)}`
+        : (vxState.profile === 'parabola'
+            ? `a = ${(-(v0*v0)/(2*x0)).toFixed(2)} m/s²`
+            : `a(x) slope = ${(-(v0*v0)/(x0*x0)).toFixed(2)}`);
+      document.getElementById('axSlopeVal').textContent = relation;
     }
 
     // =========================================================================
