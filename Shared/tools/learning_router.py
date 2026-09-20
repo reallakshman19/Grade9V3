@@ -283,13 +283,98 @@ def _stable_independent_family(evidence_history: list[dict], records: dict,
     }
 
 
-def visual_decision(records: dict, microtopic_refs: list[str], support: str | None) -> dict:
-    """Resolve one canonical representation, its initial stage and existing explorers.
+def _active_microtopic(records: dict, microtopic_refs: list[str]) -> dict:
+    """Resolve one canonical microtopic for session presentation decisions."""
+    found = []
+    for ref in microtopic_refs:
+        row = records.get(ref)
+        if row and row.get("_collection") == "microtopics":
+            found.append((ref, row))
+    if not found:
+        return {"status": "MISSING", "ref": None, "record": None, "candidates": []}
+    if len(found) != 1:
+        return {
+            "status": "AMBIGUOUS",
+            "ref": None,
+            "record": None,
+            "candidates": [ref for ref, _ in found],
+        }
+    ref, row = found[0]
+    return {"status": "RESOLVED", "ref": ref, "record": row, "candidates": [ref]}
 
-    Zero representations is a valid no-visual result. More than one is deliberately not
-    guessed. If starting support is withheld, the representation may still resolve but
-    no initial support stage is selected.
-    """
+
+def checkpoint_decision(records: dict, microtopic_refs: list[str], posture: str) -> dict:
+    """Choose one reasoning checkpoint from canonical elicitation, independent of visuals."""
+    active = _active_microtopic(records, microtopic_refs)
+    if active["status"] == "MISSING":
+        return {
+            "checkpoint_ref": None,
+            "checkpoint_prompt": None,
+            "pedagogy_injection_refs": [],
+            "finding": None,
+        }
+    if active["status"] == "AMBIGUOUS":
+        return {
+            "checkpoint_ref": None,
+            "checkpoint_prompt": None,
+            "pedagogy_injection_refs": [],
+            "finding": {
+                "point": "LEARNING_ROUTER_CHECKPOINT_AMBIGUOUS",
+                "detail": "more than one canonical microtopic is active; the runtime will not choose a reasoning checkpoint",
+                "candidates": active["candidates"],
+            },
+        }
+
+    microtopic_ref = active["ref"]
+    elicitation = (active["record"] or {}).get("elicitation") or {}
+    if posture == REBUILD:
+        route = ((elicitation.get("reconstruct") or {}).get("route") or [])
+        if not route or not route[0].get("ask"):
+            return {
+                "checkpoint_ref": None,
+                "checkpoint_prompt": None,
+                "pedagogy_injection_refs": [],
+                "finding": None,
+            }
+        return {
+            "checkpoint_ref": f"{microtopic_ref}#elicitation.reconstruct.0",
+            "checkpoint_prompt": route[0]["ask"],
+            "pedagogy_injection_refs": [
+                f"{microtopic_ref}#elicitation.reconstruct.{index}"
+                for index in range(1, len(route))
+            ],
+            "finding": None,
+        }
+
+    if posture == READY:
+        boundary = elicitation.get("boundary_test") or {}
+        if boundary.get("prompt"):
+            return {
+                "checkpoint_ref": f"{microtopic_ref}#elicitation.boundary_test",
+                "checkpoint_prompt": boundary["prompt"],
+                "pedagogy_injection_refs": [],
+                "finding": None,
+            }
+
+    predict = elicitation.get("predict") or {}
+    if predict.get("prompt"):
+        return {
+            "checkpoint_ref": f"{microtopic_ref}#elicitation.predict",
+            "checkpoint_prompt": predict["prompt"],
+            "pedagogy_injection_refs": [],
+            "finding": None,
+        }
+    return {
+        "checkpoint_ref": None,
+        "checkpoint_prompt": None,
+        "pedagogy_injection_refs": [],
+        "finding": None,
+    }
+
+
+def visual_decision(records: dict, microtopic_refs: list[str], support: str | None) -> dict:
+    """Resolve renderer-neutral representation/scene refs without copying renderer payloads."""
+    wanted = {ref for ref in microtopic_refs if ref}
     representation_refs = []
     for ref in microtopic_refs:
         microtopic = records.get(ref, {})
@@ -297,18 +382,20 @@ def visual_decision(records: dict, microtopic_refs: list[str], support: str | No
             if rep_ref not in representation_refs:
                 representation_refs.append(rep_ref)
 
+    empty = {
+        "representation_ref": None,
+        "scene_ref": None,
+        "initial_scene_step": None,
+        "visual_stage_ref": None,
+        "interactive_resource_refs": [],
+        "finding": None,
+        "scene_finding": None,
+    }
     if not representation_refs:
-        return {
-            "representation_ref": None,
-            "visual_stage_ref": None,
-            "interactive_resource_refs": [],
-            "finding": None,
-        }
+        return dict(empty)
     if len(representation_refs) != 1:
         return {
-            "representation_ref": None,
-            "visual_stage_ref": None,
-            "interactive_resource_refs": [],
+            **empty,
             "finding": {
                 "point": "LEARNING_ROUTER_VISUAL_AMBIGUOUS",
                 "detail": (
@@ -323,9 +410,7 @@ def visual_decision(records: dict, microtopic_refs: list[str], support: str | No
     representation = records.get(rep_ref)
     if not representation or representation.get("_collection") != "representations":
         return {
-            "representation_ref": None,
-            "visual_stage_ref": None,
-            "interactive_resource_refs": [],
+            **empty,
             "finding": {
                 "point": "LEARNING_ROUTER_VISUAL_UNRESOLVED",
                 "detail": f"{rep_ref} does not resolve to a canonical representation",
@@ -338,37 +423,59 @@ def visual_decision(records: dict, microtopic_refs: list[str], support: str | No
         if resource and resource.get("_collection") == "resources" and "ACTIVITY" in (resource.get("role") or []):
             explorers.append(resource_ref)
 
-    if support is None:
-        return {
-            "representation_ref": rep_ref,
-            "visual_stage_ref": None,
-            "interactive_resource_refs": explorers,
-            "finding": None,
+    scenes = [
+        row for row in representation.get("scene_instances", []) or []
+        if row.get("microtopic_ref") in wanted
+    ]
+    scene_ref = scenes[0].get("id") if len(scenes) == 1 else None
+    scene_finding = None
+    if len(scenes) > 1:
+        scene_finding = {
+            "point": "LEARNING_ROUTER_SCENE_AMBIGUOUS",
+            "detail": "more than one canonical scene is bound to the active microtopic; the runtime will not choose by renderer or id order",
+            "candidates": [row.get("id") for row in scenes],
         }
 
-    stage_ref = next(
-        (
-            row.get("visual_stage_ref")
-            for row in representation.get("support_stage_map", []) or []
-            if row.get("support_level") == support
-        ),
-        None,
-    )
-    return {
-        "representation_ref": rep_ref,
-        "visual_stage_ref": stage_ref,
-        "interactive_resource_refs": explorers,
-        "finding": (
-            None if stage_ref else {
+    stage_ref = None
+    stage_finding = None
+    if support is not None:
+        stage_ref = next(
+            (
+                row.get("visual_stage_ref")
+                for row in representation.get("support_stage_map", []) or []
+                if row.get("support_level") == support
+            ),
+            None,
+        )
+        if stage_ref is None:
+            stage_finding = {
                 "point": "LEARNING_ROUTER_VISUAL_STAGE_UNRESOLVED",
                 "detail": (
                     f"{rep_ref} has no support-stage mapping for {support}; "
                     "the runtime will not invent an initial visual state"
                 ),
             }
-        ),
+
+    return {
+        "representation_ref": rep_ref,
+        "scene_ref": scene_ref,
+        "initial_scene_step": None,
+        "visual_stage_ref": stage_ref,
+        "interactive_resource_refs": explorers,
+        "finding": stage_finding,
+        "scene_finding": scene_finding,
     }
 
+
+def interaction_policy(activity_refs: list[str]) -> dict:
+    """Portable semantic policy: interactions never become evidence by themselves."""
+    refs = list(dict.fromkeys(activity_refs or []))
+    return {
+        "presentation_mode": "OPTIONAL_CANONICAL_ACTIVITY" if refs else "STATIC_FALLBACK",
+        "activity_refs": refs,
+        "evidence_effect": "NONE_UNLESS_DIRECT_ATTEMPT",
+        "integration_surface": "PUBLIC_INPUTS_EVENTS_ONLY",
+    }
 
 def exercise_decision(
     posture: str,
@@ -486,6 +593,7 @@ def route_decision(
     family_context = family_support_context(microtopic_refs, repo)
     support = resolve_support(routed["requested_support"], family_context)
     visual = visual_decision(records, microtopic_refs, support["starting_support"])
+    checkpoint = checkpoint_decision(records, microtopic_refs, routed["routing_posture"])
     exercise = exercise_decision(
         routed["routing_posture"],
         capability_ref,
@@ -501,6 +609,10 @@ def route_decision(
         findings.append(support["finding"])
     if visual.get("finding"):
         findings.append(visual["finding"])
+    if visual.get("scene_finding"):
+        findings.append(visual["scene_finding"])
+    if checkpoint.get("finding"):
+        findings.append(checkpoint["finding"])
     if exercise.get("finding"):
         findings.append(exercise["finding"])
     return {
@@ -514,6 +626,13 @@ def route_decision(
             "visual_stage_ref": visual.get("visual_stage_ref"),
             "interactive_resource_refs": explorers,
         },
+        "representation_ref": visual.get("representation_ref"),
+        "scene_ref": visual.get("scene_ref"),
+        "initial_scene_step": visual.get("initial_scene_step"),
+        "interaction_policy": interaction_policy(explorers),
+        "checkpoint_ref": checkpoint.get("checkpoint_ref"),
+        "checkpoint_prompt": checkpoint.get("checkpoint_prompt"),
+        "pedagogy_injection_refs": checkpoint.get("pedagogy_injection_refs", []),
         "recommended_explorer_ref": (
             explorers[0]
             if routed["routing_posture"] == REBUILD and len(explorers) == 1

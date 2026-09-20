@@ -296,6 +296,138 @@ class LearningRouterTest(unittest.TestCase):
         self.assertFalse(routed["transfer_eligible"])
         self.assertEqual(routed["exercise_demand"], learning_router.PRACTICE)
 
+    def test_reasoning_checkpoint_can_exist_without_visual(self):
+        records = {
+            "MIC-X": {
+                "_collection": "microtopics",
+                "id": "MIC-X",
+                "representation_refs": [],
+                "elicitation": {
+                    "predict": {"prompt": "Which model applies first?"},
+                },
+            },
+        }
+        routed = learning_router.route_decision(
+            {"state": "UNCERTAIN", "independence_proven": False},
+            capability_ref="CAP-X",
+            microtopic_refs=["MIC-X"],
+            records=records,
+            prerequisites_ready=False,
+            repo=REPO,
+        )
+        self.assertIsNone(routed["representation_ref"])
+        self.assertIsNone(routed["scene_ref"])
+        self.assertEqual(routed["checkpoint_ref"], "MIC-X#elicitation.predict")
+        self.assertEqual(routed["checkpoint_prompt"], "Which model applies first?")
+        self.assertEqual(routed["interaction_policy"]["presentation_mode"], "STATIC_FALLBACK")
+
+    def test_visual_scene_can_exist_without_reasoning_checkpoint(self):
+        records = {
+            "MIC-X": {
+                "_collection": "microtopics",
+                "id": "MIC-X",
+                "representation_refs": ["REP-X"],
+            },
+            "REP-X": {
+                "_collection": "representations",
+                "id": "REP-X",
+                "scene_instances": [{
+                    "id": "SCENE-X",
+                    "microtopic_ref": "MIC-X",
+                    "scene": {
+                        "kind": "SYNTHETIC",
+                        "frame": "renderer-owned-frame",
+                        "caption": "Canonical scene payload must stay out of router output.",
+                    },
+                }],
+                "interactive_resource_refs": [],
+                "support_stage_map": [],
+            },
+        }
+        routed = learning_router.route_decision(
+            {"state": "UNCERTAIN", "independence_proven": False},
+            capability_ref="CAP-X",
+            microtopic_refs=["MIC-X"],
+            records=records,
+            prerequisites_ready=False,
+            repo=REPO,
+        )
+        self.assertEqual(routed["representation_ref"], "REP-X")
+        self.assertEqual(routed["scene_ref"], "SCENE-X")
+        self.assertIsNone(routed["checkpoint_ref"])
+        self.assertNotIn("scene", routed)
+        self.assertNotIn("frame", str(routed))
+        self.assertEqual(routed["interaction_policy"]["evidence_effect"], "NONE_UNLESS_DIRECT_ATTEMPT")
+
+    def test_multiple_bound_scenes_fail_closed_without_renderer_guess(self):
+        records = {
+            "MIC-X": {
+                "_collection": "microtopics",
+                "id": "MIC-X",
+                "representation_refs": ["REP-X"],
+            },
+            "REP-X": {
+                "_collection": "representations",
+                "id": "REP-X",
+                "scene_instances": [
+                    {"id": "SCENE-A", "microtopic_ref": "MIC-X"},
+                    {"id": "SCENE-B", "microtopic_ref": "MIC-X"},
+                ],
+                "interactive_resource_refs": [],
+                "support_stage_map": [],
+            },
+        }
+        routed = learning_router.route_decision(
+            {"state": "UNOBSERVED", "independence_proven": False},
+            capability_ref="CAP-X",
+            microtopic_refs=["MIC-X"],
+            records=records,
+            prerequisites_ready=False,
+            repo=REPO,
+        )
+        self.assertIsNone(routed["scene_ref"])
+        self.assertIn(
+            "LEARNING_ROUTER_SCENE_AMBIGUOUS",
+            [row["point"] for row in routed["routing_findings"]],
+        )
+
+    def test_nlm_checkpoint_visual_and_injection_refs_are_separate(self):
+        records = build_index(load_packages([
+            REPO / "Physics/library/phy-nlm-first-law.v1.json"
+        ]))
+        routed = learning_router.route_decision(
+            {"state": "MISSING", "error_stage": "CONCEPT"},
+            capability_ref="CAP-NLM-FRICTION-QUANT",
+            microtopic_refs=["MIC-PHY-NLM-FRICTION-QUANT"],
+            records=records,
+            prerequisites_ready=False,
+            repo=REPO,
+        )
+        self.assertEqual(routed["representation_ref"], "REP-NLM-FRICTION-THRESHOLD")
+        self.assertIsNone(routed["scene_ref"])
+        self.assertEqual(
+            routed["checkpoint_ref"],
+            "MIC-PHY-NLM-FRICTION-QUANT#elicitation.reconstruct.0",
+        )
+        self.assertTrue(routed["checkpoint_prompt"].startswith("What normal reaction"))
+        self.assertEqual(
+            routed["pedagogy_injection_refs"],
+            [
+                "MIC-PHY-NLM-FRICTION-QUANT#elicitation.reconstruct.1",
+                "MIC-PHY-NLM-FRICTION-QUANT#elicitation.reconstruct.2",
+                "MIC-PHY-NLM-FRICTION-QUANT#elicitation.reconstruct.3",
+            ],
+        )
+        self.assertNotEqual(routed["checkpoint_ref"], routed["representation_ref"])
+        self.assertEqual(
+            routed["interaction_policy"]["activity_refs"],
+            ["ACT-NLM-FRICTION-THRESHOLD"],
+        )
+        self.assertEqual(
+            routed["interaction_policy"]["integration_surface"],
+            "PUBLIC_INPUTS_EVENTS_ONLY",
+        )
+
     def test_routing_does_not_consume_question_hints(self):
         records = build_index(load_packages([
             REPO / "Physics/library/phy-nlm-first-law.v1.json"
@@ -341,6 +473,12 @@ class LearningRouterTest(unittest.TestCase):
             "VIS-NLM-FRICTION-V1",
         )
         self.assertEqual(friction["exercise_demand"], learning_router.PRACTICE)
+        self.assertEqual(friction["representation_ref"], "REP-NLM-FRICTION-THRESHOLD")
+        self.assertIsNone(friction["scene_ref"])
+        self.assertEqual(
+            friction["checkpoint_ref"],
+            "MIC-PHY-NLM-FRICTION-QUANT#elicitation.predict",
+        )
         self.assertEqual(friction["routing_persistence"], "NOT_WRITTEN")
 
 
