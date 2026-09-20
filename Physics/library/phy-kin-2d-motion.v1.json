@@ -312,7 +312,7 @@
                 "FOUNDATION",
                 "ADVANCED"
               ],
-              "certification_scope": "Certification, if later earned, is limited to the declared canonical capabilities and semantic teaching-step bindings for this explorer.",
+              "certification_scope": "Certification scope is limited to independent component equations reconstructed as one simultaneous particle state on a shared physical clock.",
               "extension_reason": null
             },
             "representation_invariants": [
@@ -629,7 +629,7 @@
                 "FOUNDATION",
                 "ADVANCED"
               ],
-              "certification_scope": "Certification, if later earned, is limited to the declared canonical capabilities and semantic teaching-step bindings for this explorer.",
+              "certification_scope": "Certification scope is limited to finding one named event time and sampling every coordinate of that same event at that time.",
               "extension_reason": null
             },
             "representation_invariants": [
@@ -946,7 +946,7 @@
                 "FOUNDATION",
                 "ADVANCED"
               ],
-              "certification_scope": "Certification, if later earned, is limited to the declared canonical capabilities and semantic teaching-step bindings for this explorer.",
+              "certification_scope": "Certification scope is limited to deciding when the ideal projectile specialization follows from the retained post-release interaction model.",
               "extension_reason": null
             },
             "representation_invariants": [
@@ -1264,7 +1264,7 @@
                 "FOUNDATION",
                 "ADVANCED"
               ],
-              "certification_scope": "Certification, if later earned, is limited to the declared canonical capabilities and semantic teaching-step bindings for this explorer.",
+              "certification_scope": "Certification scope is limited to reconstructing the projectile apex state without conflating zero vertical velocity with zero velocity or acceleration.",
               "extension_reason": null
             },
             "representation_invariants": [
@@ -1582,7 +1582,7 @@
                 "FOUNDATION",
                 "ADVANCED"
               ],
-              "certification_scope": "Certification, if later earned, is limited to the declared canonical capabilities and semantic teaching-step bindings for this explorer.",
+              "certification_scope": "Certification scope is limited to paired equal-height states on one ideal trajectory and their component/sign/speed relations.",
               "extension_reason": null
             },
             "representation_invariants": [
@@ -1903,7 +1903,7 @@
                 "FOUNDATION",
                 "ADVANCED"
               ],
-              "certification_scope": "Certification, if later earned, is limited to the declared canonical capabilities and semantic teaching-step bindings for this explorer.",
+              "certification_scope": "Certification scope is limited to unequal-elevation landing events using signed vertical displacement, one impact time, and synchronized horizontal range.",
               "extension_reason": null
             },
             "representation_invariants": [
