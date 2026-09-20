@@ -17,7 +17,7 @@
     "WEB": 6,
     "WEB_RUNTIME": 3
   },
-  "digest": "sha256:8d177cf92f603ed070faaa9efd9340d1b8aab41a3e24569ee6f4768fe1ce78f5",
+  "digest": "sha256:c44c615cf3e074eacb053b5b70eb2f74ffd4a986adae58aecbecaa1745f997a3",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -695,15 +695,15 @@
       "path": "Shared/workbench/runtime.mjs",
       "role": "WEB_RUNTIME",
       "role_description": "Subject-neutral semantic interaction and Web Component runtime",
-      "bytes": 16301,
-      "sha256": "863a53d5960a5a731ac9c5206073dad694644ab47be113e006a041688ed30f91"
+      "bytes": 17046,
+      "sha256": "95ac08b0c6952bb81b1e14d532bb36c102bc6a606cc78d9d132f736057044f66"
     },
     {
       "path": "Shared/workbench/semantic-workbench.mjs",
       "role": "WEB_RUNTIME",
       "role_description": "Subject-neutral semantic interaction and Web Component runtime",
-      "bytes": 18211,
-      "sha256": "f30654fac337275285038b2a3517ce8f4234855b4f9af481fdbdc85a0709445d"
+      "bytes": 18776,
+      "sha256": "bba7aef0476f3d9373ba8c14eae107ec56da6fd7d1677fc23f452218683aedfd"
     },
     {
       "path": "tests/fixtures/agent_path_stress/cases.json",
@@ -1315,18 +1315,18 @@
       "sha256": "3d0563b1e08a91fb25deaa42497d1df9ca81ebbb6d83ac0b70a249a2eac4303f"
     },
     {
-      "bytes": 20186,
+      "bytes": 21916,
       "path": "tests/workbench_browser.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "sha256": "d9c667063a3d96a3e3008edd954982043976bb281ca1462533f8590ef74050f2"
+      "sha256": "8b3dfa5bcbe91dbb2328296d60154155fc6878758f261b29529f80ed9543e9ba"
     },
     {
       "path": "tests/workbench_runtime.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 9230,
-      "sha256": "c641390c708bfdb1e452db00050bbab7b731a2766b40efe5ece9205bf2d24a2a"
+      "bytes": 11341,
+      "sha256": "8842d1eed601c97371af8baf6b63bd86182dace95cc5e71773614eb939e8f3ef"
     },
     {
       "path": "tools/app.css",
