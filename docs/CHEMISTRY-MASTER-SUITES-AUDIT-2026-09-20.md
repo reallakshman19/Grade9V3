@@ -264,3 +264,24 @@ explicit repair action. Generic independent-check and transfer boilerplate was r
 Source provenance status is unchanged: local answer/content review does not convert the attributed
 ExamSIDE labels into verified source records.
 
+
+
+## Redox adaptive visual-builder proof: 50% entry, hard concept + implementation (2026-09-20)
+
+A separate proof page was added at \`public/chemistry/redox/explorers/redox_reactions/adaptive-hard-concept-proof.html\` (plus a standalone copy) to test the proposed adaptive model without destabilising the audited master suite.
+
+The proof deliberately assumes a rough 50% knowledge estimate only as an entry coordinate. It does not mark foundations mastered and does not create canonical Chemistry evidence because the Redox suite remains \`UNBOUND_EXTENSION / JEE_EXTENSION\`.
+
+It tests three hard conceptual pivots:
+
+1. CrO5 structural oxidation-state exception: formula-only blanket rules versus peroxide connectivity, followed by charge-ledger implementation.
+2. Reaction-dependent permanganate n-factor: medium/product -> final Mn oxidation state -> electron uptake, followed by n-factor implementation.
+3. FeC2O4/dichromate electron equivalence: count both Fe and oxalate electron donation, followed by stoichiometric electron matching.
+
+Each block has two separate demands (concept model choice and implementation), up to three staged visual hints, and one coarse session outcome:
+
+- both first attempts correct with no help -> READY;
+- mixed performance or any help -> REINFORCE;
+- both first attempts incorrect -> REBUILD.
+
+This is intentionally a falsifiable UI proof rather than a canonical router. It does not perform per-click misconception classification, does not persist READY/REINFORCE/REBUILD as learner evidence, and does not replace the generic Core/Atlas work tracked in issues #159 and #160.
