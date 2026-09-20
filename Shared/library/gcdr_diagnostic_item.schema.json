@@ -1,0 +1,191 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:grade9v3:gcdr-diagnostic-item:1.0.0",
+  "title": "GCDR Diagnostic Item Contract",
+  "description": "Per-question truth, pedagogy and simulator-fidelity contract for diagnostic items embedded in a GCDR suite.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "item_id",
+    "source_provenance",
+    "answer_contract",
+    "teaching_contract",
+    "simulation_contract"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "item_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "source_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "source_url",
+        "source_item_verified",
+        "source_snapshot_date",
+        "source_claim_status"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "minLength": 2
+        },
+        "source_url": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "uri"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_item_verified": {
+          "type": "boolean"
+        },
+        "source_snapshot_date": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "date"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_claim_status": {
+          "enum": [
+            "VERIFIED",
+            "PENDING",
+            "AUTHORED_ADAPTATION",
+            "UNAVAILABLE"
+          ]
+        }
+      }
+    },
+    "answer_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "final_answer",
+        "derivation_specific",
+        "independent_check",
+        "audit_evidence_refs"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_RUN",
+            "PASS",
+            "FAIL",
+            "BLOCKED"
+          ]
+        },
+        "final_answer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "derivation_specific": {
+          "type": "boolean"
+        },
+        "independent_check": {
+          "type": "string",
+          "minLength": 10
+        },
+        "audit_evidence_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "teaching_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trap_alert",
+        "transfer_takeaway",
+        "chalkboard_check",
+        "helper_contract_refs"
+      ],
+      "properties": {
+        "trap_alert": {
+          "type": "string",
+          "minLength": 10
+        },
+        "transfer_takeaway": {
+          "type": "string",
+          "minLength": 10
+        },
+        "chalkboard_check": {
+          "type": "string",
+          "minLength": 10
+        },
+        "helper_contract_refs": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "simulation_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fidelity",
+        "target_activity",
+        "binding_refs",
+        "fidelity_note"
+      ],
+      "properties": {
+        "fidelity": {
+          "enum": [
+            "EXACT",
+            "CONSTRAINT_FAITHFUL",
+            "CONCEPT_ONLY",
+            "UNAVAILABLE"
+          ]
+        },
+        "target_activity": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "binding_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "fidelity_note": {
+          "type": "string",
+          "minLength": 10
+        }
+      }
+    }
+  }
+}
