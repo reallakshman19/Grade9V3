@@ -396,6 +396,32 @@ test("real browser semantic interaction contract", { skip: !driverPath, timeout:
     assert.match(undoneSummary, /Revision 2\./);
     assert.doesNotMatch(undoneSummary, /\[quotient digit\]/);
 
+    const redoButton = await driver.shadowElement("#primary", '[data-action="redo"]');
+    assert.equal(await driver.execute("return arguments[0].disabled;", [driver.ref(redoButton)]), false);
+    await driver.browserClick(redoButton);
+    const redone = await driver.execute("return window.workbenchHarness.snapshot('primary');");
+    assert.equal(redone.entities.some((row) => row.id === "quotient-digit-1"), true);
+    assert.equal(redone.revision, 3);
+    const redoneSummary = await driver.execute("return window.workbenchHarness.textSummary('primary');");
+    assert.match(redoneSummary, /Revision 3\./);
+    assert.match(redoneSummary, /1 \[quotient digit\]/);
+
+    const undoAgain = await driver.shadowElement("#primary", '[data-action="undo"]');
+    await driver.browserClick(undoAgain);
+    const transientSource = await driver.shadowElement("#primary", sourceSelector);
+    await driver.browserClick(transientSource);
+    const cancelButton = await driver.shadowElement("#primary", '[data-action="cancel"]');
+    await driver.browserClick(cancelButton);
+    const redoAfterTransient = await driver.shadowElement("#primary", '[data-action="redo"]');
+    assert.equal(await driver.execute("return arguments[0].disabled;", [driver.ref(redoAfterTransient)]), false);
+
+    const branchSource = await driver.shadowElement("#primary", sourceSelector);
+    await driver.browserClick(branchSource);
+    const branchTarget = await driver.shadowElement("#primary", targetSelector);
+    await driver.browserClick(branchTarget);
+    const redoAfterBranch = await driver.shadowElement("#primary", '[data-action="redo"]');
+    assert.equal(await driver.execute("return arguments[0].disabled;", [driver.ref(redoAfterBranch)]), true);
+
     await driver.execute("window.workbenchHarness.reset('primary'); window.workbenchHarness.reset('secondary');");
     const isolationSource = await driver.shadowElement("#primary", sourceSelector);
     await driver.browserClick(isolationSource);
