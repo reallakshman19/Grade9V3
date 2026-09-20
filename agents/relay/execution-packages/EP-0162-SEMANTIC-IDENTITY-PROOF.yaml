@@ -30,7 +30,7 @@ roadmap_source:
     - agents/relay/roadmap/PROGRESS.yaml
     - agents/relay/roadmap/ISSUE_GRAPH.yaml
     - agents/relay/roadmap/owner-decisions/
-    durable_basis:
+    basis:
     - WP-162-BROWSER-RUNTIME-PROOF already owns falsifiable semantic workbench browser/runtime proof.
     - ODR-0162-ADVANCE-SEMANTIC-IDENTITY records the Owner-authorized stronger 156 ÷ 12 identity falsifier.
     - No new product concept or neighbouring issue ownership is introduced.
@@ -48,7 +48,7 @@ context_capsule:
   - ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT
   - ODR-0162-ADVANCE-REDO
   - ODR-0162-ADVANCE-SEMANTIC-IDENTITY
-  current_implementation_state: Material Core code is unchanged since the green redo proof; the live branch head contains only later relay/handover bookkeeping.
+  current_implementation_state: The stronger semantic-identity fixtures and focused tests are now authored without changing Shared/workbench product runtime/component code; formal exact-head browser/full-guardrail evidence remains pending.
   known_problems:
   - The existing division witness conflates the textual idea "leading 15" with a projection of semantic entity dividend-156.
   deliberate_non_goals:
@@ -174,6 +174,13 @@ implementation_plan:
   targets:
   - tests/fixtures/workbench/
   - tests/workbench_runtime.test.mjs
+  reads:
+  - Shared/workbench/runtime.mjs
+  - tests/fixtures/workbench/arithmetic-division.json
+  writes:
+  - tests/fixtures/workbench/arithmetic-division-semantic-identity.json
+  - tests/fixtures/workbench/arithmetic-division.json
+  - tests/workbench_runtime.test.mjs
   inputs: [INPUT-I01, INPUT-I02]
   acceptance: [AC-I01, AC-I02]
   tests: [TEST-I01]
@@ -184,6 +191,16 @@ implementation_plan:
   objective: Carry the stronger identity lifecycle through the browser witness and run exact-head guardrails without regressing prior interaction/focus/history contracts.
   targets:
   - tests/fixtures/workbench/browser-host.html
+  - tests/fixtures/workbench/browser-semantic-identity-host.html
+  - tests/workbench_browser.test.mjs
+  - docs/architecture-manifest.json
+  reads:
+  - Shared/workbench/runtime.mjs
+  - Shared/workbench/semantic-workbench.mjs
+  - tests/fixtures/workbench/arithmetic-division-semantic-identity.json
+  writes:
+  - tests/fixtures/workbench/browser-host.html
+  - tests/fixtures/workbench/browser-semantic-identity-host.html
   - tests/workbench_browser.test.mjs
   - docs/architecture-manifest.json
   inputs: [INPUT-I01, INPUT-I02]
@@ -227,6 +244,9 @@ qualification_boundary:
   changed_dimensions: []
   basis:
   - Same Issue #162 work package, same generic Core authority boundary and same adapter-owned academic validity.
+  question_policy: DEFAULT
+  question_policy_basis: []
+  not_applicable_reason: null
   question_set: null
 quality:
   applicable:
@@ -292,8 +312,76 @@ validation:
 failure_and_stop_conditions:
   hard_stop_categories: [OWNER_DECISION_REQUIRED, AUTHORITY_VIOLATION, PROTECTED_INVARIANT_FAILURE, UNSAFE_ENGINEERING_RESULT]
 report_contract:
-  sections: [Executive state, Progress, Work completed, Acceptance matrix, Tests and evidence, Known limitations, Exact next actions]
-  payloads: []
+  status_publication:
+    default_after_minutes: 25
+    owner_override: null
+  sections:
+  - Executive state
+  - Overall / phase / EP progress
+  - Work completed
+  - Files changed
+  - Acceptance matrix
+  - Tests and evidence
+  - Quality findings
+  - Known limitations
+  - Owner decisions required
+  - GitHub issue changes
+  - Roadmap changes
+  - Exact next actions
+  - Successor EP
+  payloads:
+  - id: RPT-I01
+    section: Executive state
+    sources: [agents/relay/REPO_STATE.yaml]
+    required_fields: [execution_state, evidence_state, active_ep, material_authority]
+  - id: RPT-I02
+    section: Overall / phase / EP progress
+    sources: [agents/relay/roadmap/PROGRESS.yaml]
+    required_fields: [wp_progress, ep_progress, incomplete_acceptance]
+  - id: RPT-I03
+    section: Work completed
+    sources: [EP-0162-SEMANTIC-IDENTITY-PROOF, PR-165]
+    required_fields: [implemented_witness, runtime_change_disposition, generated_artifacts]
+  - id: RPT-I04
+    section: Files changed
+    sources: [PR-165-files-changed]
+    required_fields: [paths, purpose, product_vs_test_classification]
+  - id: RPT-I05
+    section: Acceptance matrix
+    sources: [agents/relay/roadmap/PROGRESS.yaml, EP-0162-SEMANTIC-IDENTITY-PROOF]
+    required_fields: [criterion, status, evidence, remaining_gap]
+  - id: RPT-I06
+    section: Tests and evidence
+    sources: [TEST-I01, TEST-I02, TEST-I03]
+    required_fields: [test_id, runner, result, exact_head]
+  - id: RPT-I07
+    section: Quality findings
+    sources: [agents/relay/REPO_STATE.yaml, EP-0162-SEMANTIC-IDENTITY-PROOF-quality-contract]
+    required_fields: [finding, severity, execution_effect]
+  - id: RPT-I08
+    section: Known limitations
+    sources: [EP-0162-SEMANTIC-IDENTITY-PROOF, PR-165]
+    required_fields: [limitation, scope_effect, owner]
+  - id: RPT-I09
+    section: Owner decisions required
+    sources: [ODR-0162-ADVANCE-SEMANTIC-IDENTITY, agents/relay/REPO_STATE.yaml]
+    required_fields: [decision, required_now, basis]
+  - id: RPT-I10
+    section: GitHub issue changes
+    sources: [Issue-162-comment-5753006855, PR-165]
+    required_fields: [provider_object, mutation, readback]
+  - id: RPT-I11
+    section: Roadmap changes
+    sources: [agents/relay/roadmap/PROGRESS.yaml, ODR-0162-ADVANCE-SEMANTIC-IDENTITY]
+    required_fields: [admission_disposition, denominator_change, scope_change]
+  - id: RPT-I12
+    section: Exact next actions
+    sources: [agents/relay/REPO_STATE.yaml, EP-0162-SEMANTIC-IDENTITY-PROOF-next_work]
+    required_fields: [order, action, evidence_required, stop_condition]
+  - id: RPT-I13
+    section: Successor EP
+    sources: [agents/relay/REPO_STATE.yaml, checkpoint_contract]
+    required_fields: [checkpoint_status, next_frontier, successor_disposition]
 checkpoint_contract:
   required: true
 successor_relay:
