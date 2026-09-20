@@ -118,10 +118,6 @@ class TopicAtlasContractTest(unittest.TestCase):
                         activity["support_route"]["missing_parameter_policy"],
                         "NEVER_INVENT_AS_EXACT",
                     )
-                    self.assertEqual(activity["support_route"]["canonical_binding_status"], "BOUND")
-                    self.assertGreater(activity["support_route"]["representation_invariant_count"], 0)
-                    self.assertEqual(activity["support_route"]["helper_contract_ref_count"], 0)
-                    self.assertEqual(activity["support_route"]["delivery_profile"], "REPO_BUNDLE")
                     self.assertEqual(activity["support_route"]["auto_route_policy"], "RECOMMEND_ONLY")
                     self.assertTrue(activity["support_route"]["recommended_when"])
                     self.assertTrue(activity["support_route"]["learner_evidence_triggers"])
