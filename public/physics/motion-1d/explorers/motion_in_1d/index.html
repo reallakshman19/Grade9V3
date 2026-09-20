@@ -114,7 +114,7 @@
             <span class="px-2 py-0.5 text-[10px] font-extrabold uppercase tracking-wider rounded bg-sky-500/20 text-sky-400 border border-sky-500/30">
               IIT-JEE Mechanics · 1D Invariant Rig
             </span>
-            <span class="text-xs text-slate-400 font-mono">124 PYQ ExamSIDE Foundation</span>
+            <span class="text-xs text-slate-400 font-mono">18 audited diagnostics · live corpus 123 PYQs</span>
           </div>
           <h1 class="text-lg md:text-xl font-black tracking-tight text-white flex items-center gap-2">
             Motion in One Dimension &middot; Master Suite
@@ -527,7 +527,7 @@
                   <span class="text-slate-300">Stopping Displacement x₀:</span>
                   <span id="vxX0Val" class="font-mono text-emerald-400 font-bold">10 m</span>
                 </div>
-                <input type="range" id="sliderVxX0" min="4" max="20" step="1" value="10" oninput="updateVxParams()" class="w-full accent-emerald-400 cursor-pointer">
+                <input type="range" id="sliderVxX0" min="4" max="40" step="1" value="10" oninput="updateVxParams()" class="w-full accent-emerald-400 cursor-pointer">
               </div>
             </div>
           </div>
@@ -1106,20 +1106,44 @@
     // =========================================================================
     // "LOAD IN SIMULATOR" ENGINE (USER EXPLICIT REQUIREMENT)
     // =========================================================================
+    function fidelityClass(fidelity) {
+      if (fidelity === 'EXACT') return 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300';
+      if (fidelity === 'CONSTRAINT_FAITHFUL') return 'bg-sky-500/15 border-sky-500/40 text-sky-300';
+      if (fidelity === 'CONCEPT_ONLY') return 'bg-amber-500/15 border-amber-500/40 text-amber-300';
+      return 'bg-slate-800 border-slate-600 text-slate-300';
+    }
+
+    function simulatorActionLabel(q) {
+      if (q.simFidelity === 'EXACT') return 'Load exact state';
+      if (q.simFidelity === 'CONSTRAINT_FAITHFUL') return 'Load constraints';
+      if (q.simFidelity === 'CONCEPT_ONLY') return 'Open concept rig';
+      return 'Simulator unavailable';
+    }
+
     function loadQuestionIntoSimulator(qId) {
       const questions = window.JEE_QUESTIONS_DATA || [];
       const q = questions.find(item => item.id === qId);
       if (!q) return;
 
+      const fidelity = q.simFidelity || 'UNAVAILABLE';
+      if (fidelity === 'UNAVAILABLE') {
+        showToast(q, false);
+        return;
+      }
+
       const targetTab = q.targetTab || 'tab-disp-dist';
       switchTab(targetTab);
 
-      // Inject question parameters into target tab
+      if (fidelity === 'CONCEPT_ONLY') {
+        showSimulationBanner(q, targetTab);
+        showToast(q, false);
+        window.scrollTo({ top: 120, behavior: 'smooth' });
+        return;
+      }
+
       const p = q.simParams || {};
       if (targetTab === 'tab-disp-dist') {
-        if (p.v0 !== undefined) {
-          document.getElementById('sliderDispV0').value = p.v0;
-        }
+        if (p.v0 !== undefined) document.getElementById('sliderDispV0').value = p.v0;
         if (p.a !== undefined || p.a_reverse !== undefined) {
           document.getElementById('sliderDispA').value = p.a !== undefined ? p.a : p.a_reverse;
         }
@@ -1134,6 +1158,7 @@
         highlightSlider('sliderBalloonH');
         highlightSlider('sliderBalloonV');
       } else if (targetTab === 'tab-graph-vx') {
+        if (p.profile) setVxProfile(p.profile === 'constant_accel' ? 'parabola' : p.profile);
         if (p.v0 !== undefined) document.getElementById('sliderVxV0').value = p.v0;
         if (p.x_max !== undefined) document.getElementById('sliderVxX0').value = p.x_max;
         updateVxParams();
@@ -1162,19 +1187,20 @@
         highlightSlider('sliderRelVB');
       }
 
-      // Show Active Simulation Banner on Tab
+      showSimulationBanner(q, targetTab);
+      showToast(q, true);
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+
+    function showSimulationBanner(q, targetTab) {
       const banner = document.getElementById(`banner-${targetTab.replace('tab-', '')}`);
       const bannerText = document.getElementById(`banner-text-${targetTab.replace('tab-', '')}`);
-      if (banner && bannerText) {
-        banner.classList.remove('hidden');
-        bannerText.innerHTML = `⚡ <strong>Simulating ${q.id} (${q.source}):</strong> ${(q.simSummary || []).join(' · ')}`;
-      }
-
-      // Show floating toast
-      showToast(q);
-
-      // Scroll smoothly to the simulator canvas
-      window.scrollTo({ top: 120, behavior: 'smooth' });
+      if (!banner || !bannerText) return;
+      banner.classList.remove('hidden');
+      const verb = q.simFidelity === 'EXACT'
+        ? 'Exact question state'
+        : (q.simFidelity === 'CONSTRAINT_FAITHFUL' ? 'Question constraints' : 'Concept demonstration');
+      bannerText.innerHTML = `⚡ <strong>${verb} · ${q.id}:</strong> ${q.simFidelityNote}`;
     }
 
     function highlightSlider(id) {
@@ -1185,14 +1211,19 @@
       }
     }
 
-    function showToast(q) {
+    function showToast(q, stateWasInjected) {
       const toast = document.getElementById('simToast');
-      document.getElementById('simToastTitle').textContent = `Loaded ${q.id} (${q.year})`;
-      document.getElementById('simToastDesc').textContent = q.q.slice(0, 100) + '...';
-      document.getElementById('simToastParams').textContent = (q.simSummary || []).join(' | ');
+      const fidelity = q.simFidelity || 'UNAVAILABLE';
+      document.getElementById('simToastTitle').textContent = `${fidelity} · ${q.id} (${q.year})`;
+      document.getElementById('simToastDesc').textContent = q.simFidelityNote || q.q.slice(0, 100);
+      document.getElementById('simToastParams').textContent = stateWasInjected
+        ? (q.simSummary || []).join(' | ')
+        : (fidelity === 'CONCEPT_ONLY'
+            ? 'Concept rig opened; no question-specific defaults were invented.'
+            : 'No simulator state was changed.');
       toast.classList.remove('hidden');
       toast.classList.remove('translate-y-4');
-      setTimeout(() => closeSimToast(), 6000);
+      setTimeout(() => closeSimToast(), 7000);
     }
 
     function closeSimToast() {
@@ -2507,9 +2538,12 @@
                 <span class="text-[10px] px-2 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">
                   ${q.subtabName}
                 </span>
-                <button onclick="loadQuestionIntoSimulator('${q.id}')" class="touch-target px-3 py-1 bg-sky-500/20 hover:bg-sky-500/30 border border-sky-500/50 text-sky-300 rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm">
+                <span class="text-[10px] px-2 py-0.5 rounded border font-mono font-bold ${fidelityClass(q.simFidelity)}">
+                  ${q.simFidelity}
+                </span>
+                <button onclick="loadQuestionIntoSimulator('${q.id}')" class="touch-target px-3 py-1 border rounded-lg text-xs font-bold transition flex items-center gap-1.5 shadow-sm ${fidelityClass(q.simFidelity)}">
                   <span>🚀</span>
-                  <span>Load in Simulator</span>
+                  <span>${simulatorActionLabel(q)}</span>
                 </button>
               </div>
             </div>
@@ -2538,7 +2572,7 @@
             <div class="pt-2 border-t border-border/40">
               <button onclick="toggleSolution('${q.id}')" class="text-xs font-semibold text-sky-400 hover:text-sky-300 flex items-center gap-1">
                 <span id="solIcon-${q.id}">▶</span>
-                <span>Step-by-Step Derivation &amp; Examiner Trap</span>
+                <span>Teacher's Chalkboard · Derivation, Check, Trap &amp; Transfer</span>
               </button>
               <div id="solContent-${q.id}" class="hidden mt-3 space-y-3 p-4 bg-black/40 rounded-xl border border-border">
                 <div class="text-xs font-mono text-purple-300">
@@ -2558,6 +2592,19 @@
                 </div>
                 <div class="text-xs font-mono text-emerald-400 font-bold">
                   Final Result: ${q.ans}
+                </div>
+                <div class="p-3 bg-sky-500/10 border border-sky-500/30 rounded-lg text-xs text-sky-100">
+                  <strong class="text-sky-300 block mb-1">🧑‍🏫 Teacher's Chalkboard · Independent Check</strong>
+                  ${q.teacherCheck}
+                </div>
+                <div class="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-lg text-xs text-emerald-100">
+                  <strong class="text-emerald-300 block mb-1">↗ Transfer Takeaway</strong>
+                  ${q.takeaway}
+                </div>
+                <div class="p-3 border rounded-lg text-xs ${fidelityClass(q.simFidelity)}">
+                  <strong class="block mb-1">Simulator Fidelity · ${q.simFidelity}</strong>
+                  ${q.simFidelityNote}
+                  <div class="mt-1 text-[10px] font-mono opacity-80">Answer audit: ${q.answerAudit} · Source audit: ${q.sourceAudit}</div>
                 </div>
               </div>
             </div>
