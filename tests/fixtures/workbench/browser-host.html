@@ -92,14 +92,16 @@
       metrics(id) {
         const host = document.getElementById(id);
         const root = host.shadowRoot;
-        const grid = root.querySelector(".logical-grid");
+        const grids = [...root.querySelectorAll(".logical-grid")];
         const source = root.querySelector('[data-role="entity"][data-projection-ref="dividend-expression"]');
         const target = root.querySelector('[data-role="target"][data-target-ref="quotient-first-digit"]');
         const sourceRect = source.getBoundingClientRect();
         const targetRect = target.getBoundingClientRect();
         const sourceStyle = getComputedStyle(source);
         return {
-          columnCount: getComputedStyle(grid).gridTemplateColumns.split(" ").filter(Boolean).length,
+          columnCounts: grids.map((grid) => getComputedStyle(grid).gridTemplateColumns.split(" ").filter(Boolean).length),
+          sourceGrid: source.closest(".grid-shell")?.querySelector("h3")?.textContent,
+          targetGrid: target.closest(".grid-shell")?.querySelector("h3")?.textContent,
           sourceLeft: sourceRect.left,
           sourceTop: sourceRect.top,
           targetLeft: targetRect.left,
