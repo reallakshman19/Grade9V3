@@ -127,6 +127,52 @@ test("undo restores the exact prior semantic state", () => {
   assert.equal(restored.interaction.pickedEntityRef, null);
 });
 
+test("redo restores an accepted semantic state without replaying adapter validity", () => {
+  let adapterCalls = 0;
+  const baseAdapter = divisionAdapter();
+  const adapter = {
+    evaluateTransfer(request, snapshot) {
+      adapterCalls += 1;
+      return baseAdapter.evaluateTransfer(request, snapshot);
+    }
+  };
+  const runtime = new WorkbenchRuntime(fixture, adapter);
+  runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "click" });
+  runtime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "click" });
+  const committed = runtime.snapshot;
+  assert.equal(adapterCalls, 1);
+  assert.equal(committed.revision, 1);
+
+  runtime.dispatch({ type: "UNDO", channel: "keyboard" });
+  runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "keyboard" });
+  runtime.dispatch({ type: "CANCEL", channel: "keyboard" });
+  const redo = runtime.dispatch({ type: "REDO", channel: "keyboard" });
+
+  assert.equal(redo.type, "REDO_APPLIED");
+  assert.equal(adapterCalls, 1);
+  const restored = runtime.snapshot;
+  assert.deepEqual(restored.entities, committed.entities);
+  assert.deepEqual(restored.projections, committed.projections);
+  assert.deepEqual(restored.canonicalTransformations, committed.canonicalTransformations);
+  assert.equal(restored.revision, 3);
+  assert.equal(restored.interaction.pickedEntityRef, null);
+});
+
+test("a new accepted commit after undo invalidates the redo branch", () => {
+  const runtime = new WorkbenchRuntime(fixture, divisionAdapter());
+  runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "click" });
+  runtime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "click" });
+  runtime.dispatch({ type: "UNDO", channel: "keyboard" });
+
+  runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "click" });
+  runtime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "click" });
+
+  assert.throws(
+    () => runtime.dispatch({ type: "REDO", channel: "keyboard" }),
+    (error) => error instanceof WorkbenchError && error.code === "WORKBENCH_NOTHING_TO_REDO"
+  );
+});
+
 test("named logical placement resolves without authored pixel coordinates", () => {
   const placement = fixture.projections[0].placement;
   assert.deepEqual(resolvePlacement(fixture, placement), { grid: "division-expression", row: 1, column: 1 });
