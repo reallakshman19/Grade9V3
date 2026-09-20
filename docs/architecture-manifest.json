@@ -16,7 +16,7 @@
     "TOOLING": 49,
     "WEB": 6
   },
-  "digest": "sha256:81f6f008c10d585410362d7fa58af7fbde6976fe1bcf314b64049ab96e812b85",
+  "digest": "sha256:72b207e9fa199ec4734e76b2c7c2b23ecb1e0f02c3508c9c0d32c5fd3fc60c73",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -568,8 +568,8 @@
       "path": "Shared/tools/learning_router.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 20309,
-      "sha256": "15068c98d21c08249f425c7072ca1d4cc6ebcf64fb1cdfbdedc7cf59bd9d6403"
+      "bytes": 25057,
+      "sha256": "28cb206c5357eaa2526c0d03af3ceea84a2905df8a2a4c8ce882813d043edb76"
     },
     {
       "path": "Shared/tools/matrix_conformance.py",
@@ -701,8 +701,8 @@
       "path": "Shared/tools/study_session.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 47781,
-      "sha256": "b200e2f7dac63da4fe14297988fc6669f0072b2d3e847e0c9056dc70afe0a264"
+      "bytes": 48222,
+      "sha256": "5eadb9626e5c61cc20d9a0fd7bd5178b071dc167fb3d724a533da236803ebb8c"
     },
     {
       "path": "Shared/tools/study_start.py",
@@ -729,8 +729,8 @@
       "path": "Shared/tools/worksheet_study_plan.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 26638,
-      "sha256": "6b79ce2bbd0ac031025dfc0abdb4f258293df10ed15bcf1c01a6848624a37ecd"
+      "bytes": 27107,
+      "sha256": "5ba21cef17d64647d4db822431cbccf6bc82037f3392570c1dc28fab0beff4fb"
     },
     {
       "path": "tests/fixtures/agent_path_stress/cases.json",
@@ -1156,8 +1156,8 @@
       "path": "tests/test_learning_router.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 15551,
-      "sha256": "743a0c0c8bfe5270bf4bca0c5e77d6b2deedbcdbdac3112bcbb6802e7fa32e88"
+      "bytes": 21113,
+      "sha256": "dc545ed1c4495a73312964263c19f3602baa5873826140bafc089856a1f048c4"
     },
     {
       "path": "tests/test_library.py",
@@ -1289,8 +1289,8 @@
       "path": "tests/test_study_session.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 34356,
-      "sha256": "a6e46c31b897ef669e35ad81824b1a109e352882f668c1d079c2ca915c784d02"
+      "bytes": 35020,
+      "sha256": "1b87fe3ec16c3f947b7738c56a32fa2dee338ac32835054e2aa831302b92e4e2"
     },
     {
       "path": "tests/test_study_session_scenario_scan.py",
