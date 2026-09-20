@@ -1,0 +1,52 @@
+schema_version: relay-v2.5-takeover-certification
+id: TC-0162-BROWSER-RUNTIME-PROOF
+candidate:
+  agent_instance_id: agent-gpt56sol-20260920T164842Z
+prepared_by:
+  agent_instance_id: agent-gpt56sol-20260920T164842Z
+evaluated_by:
+  type: DETERMINISTIC_VALIDATOR
+  identity: validate_takeover_certification.py
+  basis:
+  - Common@d9b84069683977b5c370f536f1c50095de926338 validate_takeover_certification.py reopens current EP, DISC, route and repository basis and rejects digest/route mismatches.
+self_certification:
+  allowed: false
+route:
+  route_key: SERIAL:EP-0162-BROWSER-RUNTIME-PROOF
+  mode: SERIAL
+  execution_ref: EP-0162-BROWSER-RUNTIME-PROOF
+  ep_id: EP-0162-BROWSER-RUNTIME-PROOF
+  ep_path: agents/relay/execution-packages/EP-0162-BROWSER-RUNTIME-PROOF.yaml
+  plan_id: null
+  plan_path: null
+  lane_id: null
+basis:
+  roadmap_id: RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER
+  roadmap_revision: RM-0002
+  relay_protocol_basis_ref: reallaksh19/Common@d9b84069683977b5c370f536f1c50095de926338:skills/engineering-pr-delivery-v2.5
+  material_ref: 5757dcefbe8af3031c2001f2a2f05259855c73aa
+  ep_contract_digest: sha256:b8396728ddb69ab5c1d4b30a4743c5ee2f8cfec5d0cf1d3cbf4da281860fc28b
+  repo_profile_digest: sha256:af982a7ee9938541f8bb21f276acc8e3dbebb92396fc38733379e8277aee6919
+  predecessor_baton:
+    type: NONE
+    id: NONE
+    path: null
+    digest: null
+discovery_receipt:
+  id: DISC-0162-BROWSER-RUNTIME-PROOF
+  path: agents/relay/certifications/discovery/DISC-0162-BROWSER-RUNTIME-PROOF.yaml
+qualification:
+  required: false
+  status: NOT_REQUIRED
+  receipt_id: null
+  receipt_path: null
+  receipt_digest: null
+checks:
+  baton_semantics: PASS
+  repository_discovery: PASS
+  route_grounding: PASS
+  input_oracle_readiness: PASS
+  scope_understood: PASS
+  report_successor_contract: PASS
+result: PASS
+conversation_context_used: false
