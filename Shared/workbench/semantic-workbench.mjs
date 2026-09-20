@@ -128,6 +128,7 @@ export class SemanticWorkbench extends HTMLElement {
     else if (event.type === "ENTITY_PICKED") this._lastStatus = "Source selected. Choose a target.";
     else if (event.type === "INTERACTION_CANCELLED") this._lastStatus = "Selection cancelled.";
     else if (event.type === "UNDO_APPLIED") this._lastStatus = "Previous transformation restored.";
+    else if (event.type === "REDO_APPLIED") this._lastStatus = "Undone transformation restored.";
 
     this.dispatchEvent(new CustomEvent("semantic-workbench-event", {
       detail: event,
@@ -186,7 +187,7 @@ export class SemanticWorkbench extends HTMLElement {
     }
     const action = event.target?.closest?.("[data-action]");
     if (action) {
-      const type = action.dataset.action === "undo" ? "UNDO" : "CANCEL";
+      const type = action.dataset.action === "undo" ? "UNDO" : (action.dataset.action === "redo" ? "REDO" : "CANCEL");
       try { this.dispatchIntent({ type, channel: "click" }); } catch (_) { /* no-op when unavailable */ }
       return;
     }
@@ -209,7 +210,13 @@ export class SemanticWorkbench extends HTMLElement {
     }
     if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "z") {
       event.preventDefault();
-      try { this.dispatchIntent({ type: "UNDO", channel: "keyboard" }); } catch (_) { /* nothing to undo */ }
+      const type = event.shiftKey ? "REDO" : "UNDO";
+      try { this.dispatchIntent({ type, channel: "keyboard" }); } catch (_) { /* history action unavailable */ }
+      return;
+    }
+    if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "y") {
+      event.preventDefault();
+      try { this.dispatchIntent({ type: "REDO", channel: "keyboard" }); } catch (_) { /* nothing to redo */ }
       return;
     }
     if (event.key !== "Enter" && event.key !== " ") return;
@@ -383,7 +390,7 @@ export class SemanticWorkbench extends HTMLElement {
         @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
       </style>
       <section class="frame" aria-label="Semantic transformation workbench">
-        <div class="toolbar"><button data-action="undo">Undo</button><button data-action="cancel">Cancel</button></div>
+        <div class="toolbar"><button data-action="undo">Undo</button><button data-action="redo">Redo</button><button data-action="cancel">Cancel</button></div>
         ${checkpoints}
         ${grids}
         <section class="text-summary" aria-label="Workbench text state"><h3>Text state</h3><p>${escapeHtml(textSummary)}</p></section>
