@@ -296,15 +296,19 @@ test("real browser semantic interaction contract", { skip: !driverPath, timeout:
     const touchState = await runFresh("primary", async () => {
       const source = await driver.shadowElement("#primary", sourceSelector);
       await driver.request("POST", `/session/${driver.sessionId}/actions`, { actions: [{
-        type: "pointer", id: "touch-semantic-transfer", parameters: { pointerType: "touch" }, actions: [
+        type: "pointer", id: "touch-source-pick", parameters: { pointerType: "touch" }, actions: [
           { type: "pointerMove", duration: 0, origin: driver.ref(source), x: 0, y: 0 },
           { type: "pointerDown", button: 0 },
+          { type: "pointerUp", button: 0 },
         ],
       }] });
+      await driver.request("DELETE", `/session/${driver.sessionId}/actions`);
+
       const target = await driver.shadowElement("#primary", targetSelector);
       await driver.request("POST", `/session/${driver.sessionId}/actions`, { actions: [{
-        type: "pointer", id: "touch-semantic-transfer", parameters: { pointerType: "touch" }, actions: [
-          { type: "pointerMove", duration: 100, origin: driver.ref(target), x: 0, y: 0 },
+        type: "pointer", id: "touch-target-drop", parameters: { pointerType: "touch" }, actions: [
+          { type: "pointerMove", duration: 0, origin: driver.ref(target), x: 0, y: 0 },
+          { type: "pointerDown", button: 0 },
           { type: "pointerUp", button: 0 },
         ],
       }] });
