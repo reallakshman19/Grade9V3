@@ -61,9 +61,10 @@ def load_bank(path: Path) -> list[dict]:
 
 def embedded_bank(html: str) -> list[dict]:
     marker = html.index("window.JEE_QUESTIONS_DATA")
-    start = html.index("[", marker)
-    end = html.index("];", start) + 1
-    return json.loads(html[start:end])
+    assign = html.index("=", marker) + 1
+    payload = html[assign:].lstrip()
+    data, _ = json.JSONDecoder().raw_decode(payload)
+    return data
 
 
 class ChemistryMasterSuitesAuditTest(unittest.TestCase):
@@ -78,7 +79,11 @@ class ChemistryMasterSuitesAuditTest(unittest.TestCase):
 
                 for q in bank:
                     self.assertTrue(REQUIRED.issubset(q), q["id"])
-                    self.assertEqual(q["sourceAudit"], "SOURCE_PROVENANCE_PENDING")
+                    self.assertIn(
+                        q["sourceAudit"],
+                        {"SOURCE_PROVENANCE_PENDING", "SOURCE_UNVERIFIED"},
+                        q["id"],
+                    )
                     self.assertIn(f'id="{q["targetTab"]}"', html, q["id"])
                     refs = q["simBindingRefs"]
                     self.assertEqual(
@@ -115,6 +120,17 @@ class ChemistryMasterSuitesAuditTest(unittest.TestCase):
                 self.assertEqual(
                     sum(q["simFidelity"] == "CONCEPT_ONLY" for q in bank),
                     concept,
+                )
+
+                expected_unverified = {
+                    "bonding": {"BOND-Q19"},
+                    "mole": {"CHEM02-Q04"},
+                    "redox": set(),
+                    "gases": {"GAS-Q01", "GAS-Q06"},
+                }[name]
+                self.assertEqual(
+                    {q["id"] for q in bank if q["sourceAudit"] == "SOURCE_UNVERIFIED"},
+                    expected_unverified,
                 )
 
     def test_known_answer_audit_exceptions_are_fail_closed(self):
