@@ -17,7 +17,7 @@
     "WEB": 6,
     "WEB_RUNTIME": 3
   },
-  "digest": "sha256:1af62ea993a20bd40cd3c2e586581a978b93df93c9e816d00ad40e03ab3cc14d",
+  "digest": "sha256:8d177cf92f603ed070faaa9efd9340d1b8aab41a3e24569ee6f4768fe1ce78f5",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -702,8 +702,8 @@
       "path": "Shared/workbench/semantic-workbench.mjs",
       "role": "WEB_RUNTIME",
       "role_description": "Subject-neutral semantic interaction and Web Component runtime",
-      "bytes": 15774,
-      "sha256": "c35afd3c5b842a87ce3fee80417f0eebb4d2fc1777ba248c7424cce13dd7f1c8"
+      "bytes": 18211,
+      "sha256": "f30654fac337275285038b2a3517ce8f4234855b4f9af481fdbdc85a0709445d"
     },
     {
       "path": "tests/fixtures/agent_path_stress/cases.json",
@@ -811,11 +811,11 @@
       "sha256": "71ae4b34a09b8cb4e93098fe630f0191d590ef946f72ee373b90b342ca95c75b"
     },
     {
-      "bytes": 4428,
+      "bytes": 4517,
       "path": "tests/fixtures/workbench/browser-host.html",
       "role": "TEST",
       "role_description": "Executable checks",
-      "sha256": "5bdbdeba185ac2aea4f2a3718400d8d81f8e447c2dc566acbcb2a340d0fdb338"
+      "sha256": "28d23aa8442784b84f727772c00aef46ce136afecaf4cfc4978ba27b14e3f93c"
     },
     {
       "path": "tests/test_agent_path_stress_prompts.py",
@@ -1315,11 +1315,11 @@
       "sha256": "3d0563b1e08a91fb25deaa42497d1df9ca81ebbb6d83ac0b70a249a2eac4303f"
     },
     {
-      "bytes": 18889,
+      "bytes": 20186,
       "path": "tests/workbench_browser.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "sha256": "e004b7d4acdafb9aca02737c64549db08fbfc883d4b74ef3790c6d7313efdf9b"
+      "sha256": "d9c667063a3d96a3e3008edd954982043976bb281ca1462533f8590ef74050f2"
     },
     {
       "path": "tests/workbench_runtime.test.mjs",
