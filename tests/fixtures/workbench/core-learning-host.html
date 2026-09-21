@@ -16,6 +16,7 @@
   <script type="module">
     import "/Shared/workbench/semantic-workbench.mjs";
     import "/Shared/workbench/core-learning-page.mjs";
+    import { mountCoreLearningPage } from "/Shared/workbench/core-learning-host.mjs";
 
     const [fixtureData, scene] = await Promise.all([
       fetch("/tests/fixtures/workbench/core-learning-projections.json").then((response) => {
@@ -77,14 +78,31 @@
       }));
     }
 
-    learner.projection = structuredClone(projection);
-    learner.scene = structuredClone(scene);
-    learner.adapter = makeAdapter();
+    const generatedData = {
+      core_projections: [{
+        id: "browser-core2b",
+        projection: structuredClone(projection),
+        scene_ref: "scene-division",
+        adapter_ref: "adapter-division",
+      }],
+    };
+    const mountResult = mountCoreLearningPage(
+      learner,
+      generatedData,
+      "browser-core2b",
+      {
+        scenes: { "scene-division": structuredClone(scene) },
+        adapters: { "adapter-division": makeAdapter() },
+      },
+    );
 
     const workbench = () => learner.shadowRoot.querySelector("semantic-workbench");
     window.coreLearnerHarness = {
       state() {
         return learner.state;
+      },
+      mountResult() {
+        return structuredClone(mountResult);
       },
       html() {
         return learner.shadowRoot.innerHTML;
