@@ -138,6 +138,14 @@ inputs:
   description: Rejected reuse attempts do not mutate canonical state/history or clear redo, while never-committed candidate IDs and genuinely new IDs remain usable.
   weight: 35
   verification: [TEST-I18, TEST-I19]
+- id: AC-I20
+  description: Provenance metadata, when present on initial or adapter-added entities, is an object; kind when present is a non-empty string; sourceEntityRefs when present is a unique list of non-empty strings and still obeys existence/cycle rules.
+  weight: 55
+  verification: [TEST-I20]
+- id: AC-I21
+  description: Exceptions thrown during adapter invocation always surface as WORKBENCH_ADAPTER_FAILURE, while malformed adapter decisions/patches validated by Core retain deterministic Core contract codes.
+  weight: 45
+  verification: [TEST-I20, TEST-I21]
 validation:
   - Guardrails on the redo material head and later relay-only branch head are green.
   stale_if:
@@ -380,6 +388,19 @@ implementation_plan:
   expected_state: Undo/branching cannot reuse a previously committed entity or projection ID for a new object; rejected candidate IDs remain reusable; redo remains available after a rejected reuse attempt.
   stop_conditions:
   - Stop if the fix requires an immutable transaction ledger, persistent storage, canonicalTransformation execution, or subject-specific identity rules.
+- id: STEP-I11
+  objective: Close remaining generic contract-integrity gaps in one batch: provenance metadata shape and adapter-vs-Core failure attribution.
+  targets:
+  - Shared/workbench/runtime.mjs
+  - tests/workbench_runtime.test.mjs
+  - Shared/workbench/README.md
+  - docs/architecture-manifest.json
+  inputs: [INPUT-I01]
+  acceptance: [AC-I20, AC-I21]
+  tests: [TEST-I20, TEST-I21]
+  expected_state: Malformed provenance cannot enter canonical state; adapter exceptions always surface as adapter failures while Core validation errors retain Core error codes.
+  stop_conditions:
+  - Stop if the work expands into provenance taxonomy, subject semantics, async error transport or a second failure channel.
 next_work:
   phase_transition: false
   steps:
@@ -513,6 +534,20 @@ next_work:
     expected_result: IDs removed by undo remain reserved against reassignment; rejected reuse is non-mutating and preserves redo; new IDs still branch normally.
     stop_if:
     - The solution needs a persistent ledger or promotes canonical transformation metadata into validity authority.
+  - order: 11
+    action: Execute one Core completion-integrity batch for provenance shape and failure-source attribution, then freeze discretionary hardening pending exact-head evidence.
+    targets:
+    - Shared/workbench/runtime.mjs
+    - tests/workbench_runtime.test.mjs
+    - Shared/workbench/README.md
+    - docs/architecture-manifest.json
+    inputs: [INPUT-I01]
+    tests: [TEST-I20, TEST-I21]
+    benchmarks: []
+    acceptance: [AC-I20, AC-I21]
+    expected_result: Provenance metadata is structurally trustworthy and adapter exceptions cannot masquerade as Core validation failures; no further speculative Core slice is admitted.
+    stop_if:
+    - A proposed fix changes academic validity, introduces subject vocabulary, or lacks a concrete failing generic falsifier.
 qualification_boundary:
   required: false
   trigger: null
@@ -682,6 +717,14 @@ validation:
   class: MUST_PASS
   method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the lifetime-identity coding head
   proves: [AC-I19]
+- id: TEST-I20
+  class: MUST_PASS
+  method: node --test tests/workbench_runtime.test.mjs
+  proves: [AC-I20, AC-I21]
+- id: TEST-I21
+  class: MUST_PASS
+  method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the Core completion-integrity material head
+  proves: [AC-I21]
 failure_and_stop_conditions:
   hard_stop_categories: [OWNER_DECISION_REQUIRED, AUTHORITY_VIOLATION, PROTECTED_INVARIANT_FAILURE, UNSAFE_ENGINEERING_RESULT]
 report_contract:
