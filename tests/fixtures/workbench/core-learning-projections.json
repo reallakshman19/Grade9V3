@@ -137,7 +137,24 @@
         ],
         "crux_move_ref": "R2",
         "hints": [],
-        "scaffolds": [],
+        "scaffolds": [
+          {
+            "text": "Focus on the supplied state before choosing the controlling condition.",
+            "support_kind": "REPRESENT",
+            "reveals": "CONCEPT",
+            "supports_move_ref": "R1",
+            "visual_ref": "REP-FIXTURE-1",
+            "visual_stage_ref": "V2"
+          },
+          {
+            "text": "Connect the controlling condition to the authored decision before executing.",
+            "support_kind": "CONNECT",
+            "reveals": "METHOD",
+            "supports_move_ref": "R2",
+            "visual_ref": "REP-FIXTURE-1",
+            "visual_stage_ref": "V3"
+          }
+        ],
         "transfer": null,
         "check": "Check against the supplied condition."
       },
@@ -191,7 +208,24 @@
         ],
         "crux_move_ref": "R-PROTECTED",
         "hints": [],
-        "scaffolds": [],
+        "scaffolds": [
+          {
+            "text": "Compare the changed state with the familiar state before deciding.",
+            "support_kind": "REPRESENT",
+            "reveals": "CONCEPT",
+            "supports_move_ref": "R1",
+            "visual_ref": "REP-FIXTURE-1",
+            "visual_stage_ref": "V2"
+          },
+          {
+            "text": "Use the changed condition to choose the controlling model or condition.",
+            "support_kind": "CONNECT",
+            "reveals": "METHOD",
+            "supports_move_ref": "R-PROTECTED",
+            "visual_ref": "REP-FIXTURE-1",
+            "visual_stage_ref": "V3"
+          }
+        ],
         "transfer": {
           "dimension": "model_choice",
           "statement": "Choose the controlling condition for the changed demand.",
