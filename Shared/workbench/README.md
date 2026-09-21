@@ -42,7 +42,13 @@ Runtime scene reference validation is lifecycle-aware: canonical transformation 
 must name a target already present in the scene, while `sourceEntityRefs` are validated as
 unique semantic-reference strings but may name entities established by later accepted
 transactions. Rejection `allowedTargets` are live host guidance, so every supplied ref must
-name a currently existing target.
+name a currently existing target. Provenance metadata, when present, is structurally validated:
+`kind` is a non-empty string when supplied and `sourceEntityRefs` is a unique string-ref list
+before referential and cycle checks run.
+
+Adapter invocation failures are attributed separately from Core contract failures. An exception
+thrown by `evaluateTransfer` surfaces as `WORKBENCH_ADAPTER_FAILURE`; deterministic Core
+validation codes are reserved for malformed decisions/patches validated after the adapter returns.
 
 The element emits one composed `semantic-workbench-event`. Its `detail.type` names the
 semantic event (`ENTITY_PICKED`, `TRANSFER_PREVIEW`, `TRANSFER_ACCEPTED`,
