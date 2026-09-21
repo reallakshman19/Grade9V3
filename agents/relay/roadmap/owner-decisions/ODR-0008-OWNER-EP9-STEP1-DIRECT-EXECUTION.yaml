@@ -1,0 +1,53 @@
+{
+  "schema_version": "relay-v2.5",
+  "id": "ODR-0008-OWNER-EP9-STEP1-DIRECT-EXECUTION",
+  "decision": {
+    "authority": "OWNER",
+    "kind": "AUTHORIZATION",
+    "statement": "Authorize the current agent to implement only STEP-TA9-001 / AC-TA9-001 / TEST-TA9-001 on EP-TA-009 despite the still-unmet independent-candidate qualification/material-write gate. Do not fabricate DISC/QUAL/TC, takeover admission, or a MATERIAL_WRITE_READY PASS; keep the protocol exception explicit.",
+    "source": "Owner instruction in the active Grade9V3 engineering session on 2026-09-21: 'qualifed, start coding'. Live repository readback still showed no DISC/QUAL/TC admission, so this decision records direct Owner execution authority rather than falsely asserting normal qualification."
+  },
+  "effects": {
+    "requirement_disposition": "OWNER_EXCEPTION",
+    "grants_material_write_authority": true,
+    "pending_items": [
+      "Normal independent EP-TA-009 DISC/QUAL/TC and candidate-specific material-write readiness remain unsatisfied."
+    ]
+  },
+  "delivery_authorization": null,
+  "impact": {
+    "class": [
+      "LOCAL",
+      "EXECUTION_GOVERNANCE",
+      "PROTOCOL_EXCEPTION"
+    ]
+  },
+  "affected": {
+    "objectives": [
+      "OBJ-TOPIC-ATLAS-COMPLETE"
+    ],
+    "phases": [
+      "PHASE-TAKEOVER-RECONCILIATION"
+    ],
+    "work_packages": [
+      "WP-TA-105"
+    ],
+    "execution_packages": [
+      "EP-TA-009"
+    ],
+    "issues": [
+      "ISSUE-169"
+    ],
+    "steps": [
+      "STEP-TA9-001"
+    ]
+  },
+  "required_reconciliation": [
+    "Do not create or relabel a fake independent candidate admission.",
+    "Keep the normal V2.5 material_write_ready result false until a genuinely certified candidate exists.",
+    "Limit this authorization to STEP-TA9-001; do not proceed to transition-blocker/report slices under this decision.",
+    "Preserve Physics/library, Physics/matrices and Learners as read-only inputs.",
+    "Report the protocol exception in exact-head evidence and PR status."
+  ],
+  "status": "APPLIED"
+}
