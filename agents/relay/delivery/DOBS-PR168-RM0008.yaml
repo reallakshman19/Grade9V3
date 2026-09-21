@@ -7,7 +7,7 @@
     "kind": "PULL_REQUEST",
     "number": 168,
     "url": "https://github.com/reallaksh19/Grade9V3/pull/168",
-    "lifecycle": "DRAFT",
+    "lifecycle": "MERGED",
     "head": {
       "ref": "takeover/topic-atlas-browser-correctness",
       "sha": "56f837783b82e08b1f3af0405bd2712d6312dcfb"
@@ -82,9 +82,9 @@
     ]
   },
   "readback_basis": [
-    "GitHub provider readback for PR #168 at head 56f837783b82e08b1f3af0405bd2712d6312dcfb",
-    "GitHub Actions guardrails run 35555764104 completed/success",
-    "GitHub Actions v25-relay run 35555763866 completed/failure only at candidate-specific material-write gate after all semantic/cold-start/baton/route/Git steps passed",
-    "GitHub provider review readback: zero reviews and zero unresolved review threads"
+    "GitHub provider readback: PR #168 merged at 19dc15dceb7424226b6c4b46e0905c81bfaf1edc on 2026-09-21.",
+    "Observed PR head cf3843b4780f374c1c3073d39987535d015cfa81 passed guardrails run 35563895659.",
+    "Observed V2.5 run 35563895667 passed all protocol/conformance/cold-start/baton/discovery/takeover/route/Git steps and failed only the fresh successor material-write gate.",
+    "Issue #159 provider state is CLOSED; successor Issue #169 is OPEN."
   ]
 }

@@ -12,7 +12,7 @@
     "lane_id": null,
     "roadmap_revision": "RM-0009",
     "work_package": "WP-TA-105",
-    "ep_contract_digest": "sha256:8b4701dc72f97a2d7268c32c0b37c5623b4bdd786a4d2c9f1d5eb7c71c2818fe"
+    "ep_contract_digest": "sha256:d554e868a6619de4b3dd23c39ee8195026dbd5fe4d4f98fcf779986ffa6fa532"
   },
   "boundary": {
     "trigger": "MATERIAL_QUALIFICATION_BOUNDARY_CHANGED",

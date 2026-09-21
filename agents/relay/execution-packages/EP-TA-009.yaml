@@ -2,8 +2,8 @@
   "schema_version": "relay-v2.5",
   "identity": {
     "ep_id": "EP-TA-009",
-    "branch": "takeover/topic-atlas-browser-correctness",
-    "base_ref": "56f837783b82e08b1f3af0405bd2712d6312dcfb",
+    "branch": "takeover/grade9-exit-transition",
+    "base_ref": "19dc15dceb7424226b6c4b46e0905c81bfaf1edc",
     "execution_state": "EXECUTABLE",
     "previous_checkpoint": "CP-TA-008",
     "previous_join": null,
@@ -11,10 +11,10 @@
   },
   "replan_inheritance": null,
   "git_basis": {
-    "expected_branch": "takeover/topic-atlas-browser-correctness",
-    "material_ref": "56f837783b82e08b1f3af0405bd2712d6312dcfb",
+    "expected_branch": "takeover/grade9-exit-transition",
+    "material_ref": "19dc15dceb7424226b6c4b46e0905c81bfaf1edc",
     "base_branch": "main",
-    "base_observed_ref": "843ec2d8d6faa2b8de15795ed1535905e4efc8a8",
+    "base_observed_ref": "19dc15dceb7424226b6c4b46e0905c81bfaf1edc",
     "drift_policy": "RECHECK_BEFORE_WRITE",
     "drift_receipt": null
   },
