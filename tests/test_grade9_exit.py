@@ -335,10 +335,65 @@ class Grade9ExitProjectionTest(unittest.TestCase):
         self.assertIn("GRADE9_REPAIR_REQUIRED", text)
         self.assertIn("CAP-GAP", text)
         self.assertIn("OBS-GAP", text)
-        self.assertNotIn("CAP-OPTIONAL", text)
+        self.assertIn("CAP-OPTIONAL", text)
+        self.assertIn("Visible non-blocking items:", text)
         self.assertIn("Major-misconception status is not inferred", text)
         self.assertNotIn("mastery_percentage", text.lower())
         self.assertNotIn("mastery_probability", text.lower())
+
+    def test_fragile_required_evidence_carries_targeted_recheck_into_transition(self):
+        projection = {
+            "profile_id": "PROFILE-FRAGILE",
+            "scope_source": grade9_exit.SCOPE_COVERAGE,
+            "capabilities": [{
+                "matrix_id": "MATRIX-REQ",
+                "capability_ref": "CAP-FRAGILE",
+                "matrix_role": "REQUIRED_CORE",
+                "ordinary_grade9_core": True,
+                "evidence_category": grade9_exit.USABLE_BUT_FRAGILE,
+                "basis": [{"observation_ref": "OBS-HINTED", "help": "HINT"}],
+            }],
+            "transition_boundary": [{
+                "matrix_id": "MATRIX-REQ",
+                "capability_ref": "CAP-FRAGILE",
+                "scope_relevance": "REQUIRED_SCOPE",
+                "blocks_transition": False,
+                "disposition": "NON_BLOCKING",
+                "reason": "NO_KNOWN_BLOCKER",
+            }],
+        }
+        report = grade9_exit.transition_report(projection)
+        self.assertEqual(report["transition_state"], "GRADE10_WITH_TARGETED_RECHECKS")
+        self.assertEqual(report["fragile_rechecks"], ["CAP-FRAGILE"])
+        self.assertIn("rechecked independently", report["transition_message"])
+
+    def test_optional_gap_remains_visible_but_nonblocking_in_parent_view(self):
+        projection = {
+            "profile_id": "PROFILE-OPTIONAL",
+            "scope_source": grade9_exit.SCOPE_COVERAGE,
+            "capabilities": [{
+                "matrix_id": "MATRIX-ENRICH",
+                "capability_ref": "CAP-OPTIONAL",
+                "matrix_role": "DECLARED_EXTENSION_NONBLOCKING",
+                "ordinary_grade9_core": False,
+                "evidence_category": grade9_exit.KNOWN_GAP,
+                "basis": [{"observation_ref": "OBS-OPTIONAL"}],
+            }],
+            "transition_boundary": [{
+                "matrix_id": "MATRIX-ENRICH",
+                "capability_ref": "CAP-OPTIONAL",
+                "scope_relevance": "NON_BLOCKING_SCOPE",
+                "blocks_transition": False,
+                "disposition": "NON_BLOCKING_GAP",
+                "reason": "NON_BLOCKING_SCOPE_GAP",
+            }],
+        }
+        report = grade9_exit.transition_report(projection)
+        text = grade9_exit.parent_agent_text(report)
+        self.assertIn("Visible non-blocking items:", text)
+        self.assertIn("CAP-OPTIONAL", text)
+        self.assertIn("NON_BLOCKING_GAP", text)
+        self.assertEqual(report["transition_state"], "GRADE10_NEXT_PRODUCTIVE_FRONTIER")
 
     def test_report_keeps_unknown_required_evidence_distinct_from_known_gap(self):
         projection = {
