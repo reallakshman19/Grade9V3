@@ -118,6 +118,14 @@ inputs:
   description: Valid acyclic initial provenance remains order-independent and adapter-added provenance/history behavior remains unchanged.
   weight: 40
   verification: [TEST-I12, TEST-I13]
+- id: AC-I14
+  description: Rejection allowedTargets, when supplied, are a unique non-empty string list whose refs resolve to current scene targets; malformed/unknown guidance fails closed without state mutation.
+  weight: 55
+  verification: [TEST-I14]
+- id: AC-I15
+  description: Canonical transformations require a valid current targetRef and a clean unique sourceEntityRefs list while preserving deferred source refs for entities created later by runtime transactions.
+  weight: 45
+  verification: [TEST-I14, TEST-I15]
 validation:
   - Guardrails on the redo material head and later relay-only branch head are green.
   stale_if:
@@ -173,6 +181,8 @@ scope:
     reason: Event observation is downstream of Core state transitions and must not throw through or mutate the Core event result.
   - invariant: Provenance source lineage is acyclic.
     reason: sourceEntityRefs describe semantic source lineage; runtime-created entities can only point to pre-existing identities, so initial scenes must not admit lineage impossible for runtime history to produce.
+  - invariant: Live target references are structurally trustworthy.
+    reason: Host guidance and transformation destinations must not name nonexistent targets; declarative transformation sources may remain deferred because runtime transactions can establish them later.
   - invariant: Declared provenance sources resolve to canonical semantic entities.
     reason: Core must not admit dangling semantic lineage merely because an entity arrived in the initial scene instead of an adapter patch.
   prohibited:
@@ -312,6 +322,19 @@ implementation_plan:
   expected_state: Initial sourceEntityRefs form an acyclic graph; self and multi-node cycles fail closed without imposing entity declaration ordering.
   stop_conditions:
   - Stop if the fix requires provenance kinds, subject semantics, derivation execution or transaction lineage.
+- id: STEP-I08
+  objective: Enforce live target/reference integrity without collapsing declarative future transformation sources into current scene identity.
+  targets:
+  - Shared/workbench/runtime.mjs
+  - tests/workbench_runtime.test.mjs
+  - Shared/workbench/README.md
+  - docs/architecture-manifest.json
+  inputs: [INPUT-I01]
+  acceptance: [AC-I14, AC-I15]
+  tests: [TEST-I14, TEST-I15]
+  expected_state: Rejection allowedTargets are unique existing targets; transformation targetRef resolves now; transformation sourceEntityRefs are clean unique strings and may refer to semantic entities created later.
+  stop_conditions:
+  - Stop if the fix requires Core to decide academic validity or require deferred transformation sources to exist before their runtime creation.
 next_work:
   phase_transition: false
   steps:
@@ -403,6 +426,20 @@ next_work:
     expected_result: Initial semantic lineage cannot contain A→A or A→B→A cycles; valid DAGs remain accepted regardless of declaration order.
     stop_if:
     - The change requires provenance taxonomy, execution semantics, or subject-specific lineage rules.
+  - order: 8
+    action: Validate live rejection target guidance and declarative canonical transformation references at their truthful lifecycle boundaries.
+    targets:
+    - Shared/workbench/runtime.mjs
+    - tests/workbench_runtime.test.mjs
+    - Shared/workbench/README.md
+    - docs/architecture-manifest.json
+    inputs: [INPUT-I01]
+    tests: [TEST-I14, TEST-I15]
+    benchmarks: []
+    acceptance: [AC-I14, AC-I15]
+    expected_result: Hosts never receive nonexistent allowed targets or transformations with nonexistent destinations, while future semantic source refs remain representable.
+    stop_if:
+    - The change starts interpreting academic validity or forbids runtime-created transformation sources.
 qualification_boundary:
   required: false
   trigger: null
@@ -540,6 +577,14 @@ validation:
   class: MUST_PASS
   method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the provenance-DAG coding head
   proves: [AC-I13]
+- id: TEST-I14
+  class: MUST_PASS
+  method: node --test tests/workbench_runtime.test.mjs
+  proves: [AC-I14, AC-I15]
+- id: TEST-I15
+  class: MUST_PASS
+  method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the reference-integrity coding head
+  proves: [AC-I15]
 failure_and_stop_conditions:
   hard_stop_categories: [OWNER_DECISION_REQUIRED, AUTHORITY_VIOLATION, PROTECTED_INVARIANT_FAILURE, UNSAFE_ENGINEERING_RESULT]
 report_contract:
