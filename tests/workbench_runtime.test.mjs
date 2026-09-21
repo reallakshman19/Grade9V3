@@ -216,6 +216,35 @@ test("pointer, click, and keyboard intents commit through the same semantic path
   assert.deepEqual(click, keyboard);
 });
 
+test("domain adapter request is input-neutral while transfer events retain channel", () => {
+  const requests = [];
+
+  for (const channel of ["pointer", "click", "keyboard", "touch"]) {
+    const baseAdapter = divisionAdapter();
+    const adapter = {
+      evaluateTransfer(request, snapshot) {
+        requests.push(structuredClone(request));
+        assert.equal("channel" in request, false);
+        return baseAdapter.evaluateTransfer(request, snapshot);
+      }
+    };
+
+    const runtime = new WorkbenchRuntime(fixture, adapter);
+    runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel });
+    const event = runtime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel });
+
+    assert.equal(event.type, "TRANSFER_ACCEPTED");
+    assert.equal(event.request.channel, channel);
+  }
+
+  const expected = {
+    sourceEntityRef: "dividend-156",
+    targetRef: "quotient-first-digit",
+    operation: "derive-first-quotient-digit",
+  };
+  requests.forEach((request) => assert.deepEqual(request, expected));
+});
+
 test("invalid domain action is rejected without mutation", () => {
   const runtime = new WorkbenchRuntime(fixture, divisionAdapter());
   runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "keyboard" });
