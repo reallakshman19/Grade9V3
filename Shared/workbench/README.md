@@ -57,7 +57,7 @@ than interleaving another transaction.
 The slice proves named row/column placement, not the full proposed AUTO/REGION/RELATIVE
 layout language. It proves one generic operation string passed to an adapter, not a
 Core-owned MOVE/COPY/DERIVE/REFERENCE taxonomy. Undo and redo are instance-local
-snapshot restoration; redo does not replay adapter validity. Input modality remains
+snapshot restoration; redo does not replay adapter validity. Committed entity and projection identifiers remain reserved for the lifetime of that runtime instance, so undo/branching cannot rebind an earlier identity to a different object. Input modality remains
 observable on emitted interaction events but is excluded from the adapter validity
 request. The component uses escaped text projections and target controls; richer
 SVG/MathML renderers remain deferred until a concrete falsifier requires an extension
