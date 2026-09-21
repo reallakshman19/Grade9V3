@@ -247,6 +247,133 @@ class Grade9ExitProjectionTest(unittest.TestCase):
         )
         self.assertFalse(decisions["CAP-REQ-UNKNOWN"]["blocks_transition"])
 
+    def test_bench_ta9_003_parent_report_reconstructs_transition_basis(self):
+        projection = {
+            "profile_id": "PROFILE-REPORT",
+            "scope_source": grade9_exit.SCOPE_COVERAGE,
+            "capabilities": [
+                {
+                    "matrix_id": "MATRIX-REQ",
+                    "capability_ref": "CAP-SECURE",
+                    "matrix_role": "REQUIRED_CORE",
+                    "ordinary_grade9_core": True,
+                    "evidence_category": grade9_exit.SECURE,
+                    "basis": [
+                        {
+                            "observation_ref": "OBS-SECURE",
+                            "help": "NONE",
+                            "error_stage": None,
+                        }
+                    ],
+                },
+                {
+                    "matrix_id": "MATRIX-REQ",
+                    "capability_ref": "CAP-GAP",
+                    "matrix_role": "REQUIRED_CORE",
+                    "ordinary_grade9_core": True,
+                    "evidence_category": grade9_exit.KNOWN_GAP,
+                    "basis": [
+                        {
+                            "observation_ref": "OBS-GAP",
+                            "help": "NONE",
+                            "error_stage": "CONCEPT",
+                        }
+                    ],
+                },
+                {
+                    "matrix_id": "MATRIX-ENRICH",
+                    "capability_ref": "CAP-OPTIONAL",
+                    "matrix_role": "DECLARED_EXTENSION_NONBLOCKING",
+                    "ordinary_grade9_core": False,
+                    "evidence_category": grade9_exit.KNOWN_GAP,
+                    "basis": [{"observation_ref": "OBS-OPTIONAL"}],
+                },
+            ],
+            "transition_boundary": [
+                {
+                    "matrix_id": "MATRIX-REQ",
+                    "capability_ref": "CAP-SECURE",
+                    "blocks_transition": False,
+                    "disposition": "NON_BLOCKING",
+                    "reason": "NO_KNOWN_BLOCKER",
+                },
+                {
+                    "matrix_id": "MATRIX-REQ",
+                    "capability_ref": "CAP-GAP",
+                    "blocks_transition": True,
+                    "disposition": "BLOCKER",
+                    "reason": "REQUIRED_SCOPE_GAP",
+                },
+                {
+                    "matrix_id": "MATRIX-ENRICH",
+                    "capability_ref": "CAP-OPTIONAL",
+                    "blocks_transition": False,
+                    "disposition": "NON_BLOCKING_GAP",
+                    "reason": "NON_BLOCKING_SCOPE_GAP",
+                },
+            ],
+        }
+
+        report = grade9_exit.transition_report(projection)
+        self.assertEqual(report["projection_kind"], "DERIVED_REPORT")
+        self.assertEqual(report["persistence"], "NOT_WRITTEN")
+        self.assertEqual(report["transition_state"], "GRADE9_REPAIR_REQUIRED")
+
+        gap = next(row for row in report["rows"] if row["capability_ref"] == "CAP-GAP")
+        self.assertEqual(gap["evidence_basis"][0]["observation_ref"], "OBS-GAP")
+        self.assertEqual(gap["blocker_status"], "BLOCKER")
+        self.assertIn("concept gap", gap["repair_recheck_context"])
+        self.assertIn("before treating Grade 10", gap["transition_implication"])
+
+        optional = next(
+            row for row in report["rows"]
+            if row["capability_ref"] == "CAP-OPTIONAL"
+        )
+        self.assertEqual(optional["blocker_status"], "NON_BLOCKING_GAP")
+
+        text = grade9_exit.parent_agent_text(report)
+        self.assertIn("GRADE9_REPAIR_REQUIRED", text)
+        self.assertIn("CAP-GAP", text)
+        self.assertIn("OBS-GAP", text)
+        self.assertNotIn("CAP-OPTIONAL", text)
+        self.assertIn("Major-misconception status is not inferred", text)
+        self.assertNotIn("mastery_percentage", text.lower())
+        self.assertNotIn("mastery_probability", text.lower())
+
+    def test_report_keeps_unknown_required_evidence_distinct_from_known_gap(self):
+        projection = {
+            "profile_id": "PROFILE-UNKNOWN",
+            "scope_source": grade9_exit.SCOPE_COVERAGE,
+            "capabilities": [
+                {
+                    "matrix_id": "MATRIX-REQ",
+                    "capability_ref": "CAP-UNKNOWN",
+                    "matrix_role": "REQUIRED_CORE",
+                    "ordinary_grade9_core": True,
+                    "evidence_category": grade9_exit.INSUFFICIENT_OR_UNKNOWN,
+                    "basis": [],
+                }
+            ],
+            "transition_boundary": [
+                {
+                    "matrix_id": "MATRIX-REQ",
+                    "capability_ref": "CAP-UNKNOWN",
+                    "blocks_transition": False,
+                    "disposition": "EVIDENCE_REQUIRED",
+                    "reason": "REQUIRED_SCOPE_EVIDENCE_UNKNOWN",
+                }
+            ],
+        }
+        report = grade9_exit.transition_report(projection)
+        self.assertEqual(
+            report["transition_state"],
+            "GRADE9_EVIDENCE_INCOMPLETE",
+        )
+        row = report["rows"][0]
+        self.assertEqual(row["blocker_status"], "EVIDENCE_REQUIRED")
+        self.assertNotEqual(row["evidence_category"], grade9_exit.KNOWN_GAP)
+        self.assertIn("Collect direct independent evidence", row["repair_recheck_context"])
+
     def test_projection_is_derived_and_does_not_create_grade_truth(self):
         profile = {"profile_id": "PROFILE-EMPTY", "held": {}, "observation_refs": []}
         with patch.object(
