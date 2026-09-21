@@ -2,8 +2,8 @@
   "schema_version": "relay-v2.5",
   "identity": {
     "ep_id": "EP-TA-009",
-    "branch": "takeover/topic-atlas-browser-correctness",
-    "base_ref": "56f837783b82e08b1f3af0405bd2712d6312dcfb",
+    "branch": "takeover/grade9-exit-transition-r2",
+    "base_ref": "411e8dc0108347933792fbbd5a6be8dfa59d655e",
     "execution_state": "EXECUTABLE",
     "previous_checkpoint": "CP-TA-008",
     "previous_join": null,
@@ -11,10 +11,10 @@
   },
   "replan_inheritance": null,
   "git_basis": {
-    "expected_branch": "takeover/topic-atlas-browser-correctness",
-    "material_ref": "56f837783b82e08b1f3af0405bd2712d6312dcfb",
+    "expected_branch": "takeover/grade9-exit-transition-r2",
+    "material_ref": "411e8dc0108347933792fbbd5a6be8dfa59d655e",
     "base_branch": "main",
-    "base_observed_ref": "843ec2d8d6faa2b8de15795ed1535905e4efc8a8",
+    "base_observed_ref": "411e8dc0108347933792fbbd5a6be8dfa59d655e",
     "drift_policy": "RECHECK_BEFORE_WRITE",
     "drift_receipt": null
   },
@@ -110,7 +110,7 @@
       "id": "INPUT-TA9-001",
       "name": "Grade-9 Physics scope coverage",
       "description": "Canonical required-scope/prerequisite/enrichment/later-grade classification used to decide what may block Grade-9 exit.",
-      "authority": "Repository Grade-9 scope coverage artifacts governed by RM-0008/WP-TA-105.",
+      "authority": "Repository Grade-9 scope coverage artifacts governed by RM-0009/WP-TA-105.",
       "source": "docs/grade9/grade9-physics-scope-coverage.json; docs/grade9/GRADE9-PHYSICS-SCOPE-COVERAGE.md",
       "type": "CANONICAL_SCOPE",
       "units": "NA",
