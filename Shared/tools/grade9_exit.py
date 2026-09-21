@@ -268,6 +268,146 @@ def transition_boundary(capabilities: list[dict]) -> list[dict]:
     return decisions
 
 
+def _repair_recheck_context(capability: dict, boundary: dict) -> str:
+    category = capability["evidence_category"]
+    basis = capability.get("basis", [])
+    latest = basis[0] if basis else {}
+    error_stage = latest.get("error_stage")
+    help_used = latest.get("help")
+
+    if category == SECURE:
+        return "Independent evidence is present; retain ordinary recheck/review rather than recertifying the whole grade."
+    if category == USABLE_BUT_FRAGILE:
+        if help_used and help_used != "NONE":
+            return f"Success used {help_used}; obtain a fresh independent verification."
+        return "Performance is usable but independence is not proven; obtain a fresh independent verification."
+    if category == KNOWN_GAP:
+        if error_stage and error_stage != "UNKNOWN":
+            return f"Repair the observed {error_stage.lower()} gap, then obtain fresh independent verification."
+        return "Repair the known gap, then obtain fresh independent verification."
+    if boundary["disposition"] == "EVIDENCE_REQUIRED":
+        return "Collect direct independent evidence before making the transition decision."
+    return "No repair is implied by current evidence; missing optional evidence remains visible without gating progression."
+
+
+def _transition_implication(boundary: dict) -> str:
+    disposition = boundary["disposition"]
+    if disposition == "BLOCKER":
+        return "Resolve this blocker before treating Grade 10 as the next productive frontier."
+    if disposition == "EVIDENCE_REQUIRED":
+        return "Verify this required/prerequisite capability before deciding the Grade-10 transition."
+    if disposition == "NON_BLOCKING_GAP":
+        return "Keep this gap visible for optional repair; it does not block Grade-9 exit under current scope authority."
+    return "This capability does not currently block the Grade-10 transition."
+
+
+def transition_report(projection: dict) -> dict:
+    """Build a derived machine-readable transition report from one projection."""
+    boundary_by_capability = {
+        row["capability_ref"]: row
+        for row in projection["transition_boundary"]
+    }
+    rows = []
+    for capability in projection["capabilities"]:
+        boundary = boundary_by_capability[capability["capability_ref"]]
+        rows.append({
+            "matrix_id": capability["matrix_id"],
+            "capability_ref": capability["capability_ref"],
+            "scope_role": capability["matrix_role"],
+            "required_grade9": capability["ordinary_grade9_core"],
+            "evidence_category": capability["evidence_category"],
+            "evidence_basis": list(capability.get("basis", [])),
+            "blocker_status": boundary["disposition"],
+            "blocker_reason": boundary["reason"],
+            "repair_recheck_context": _repair_recheck_context(capability, boundary),
+            "transition_implication": _transition_implication(boundary),
+        })
+
+    blockers = [row for row in rows if row["blocker_status"] == "BLOCKER"]
+    evidence_needed = [
+        row for row in rows
+        if row["blocker_status"] == "EVIDENCE_REQUIRED"
+    ]
+    if blockers:
+        transition_state = "GRADE9_REPAIR_REQUIRED"
+        transition_message = (
+            "Grade 10 is not yet the next productive frontier because one or more "
+            "known required/prerequisite Grade-9 gaps remain."
+        )
+    elif evidence_needed:
+        transition_state = "GRADE9_EVIDENCE_INCOMPLETE"
+        transition_message = (
+            "Grade-10 transition is not yet established because required/prerequisite "
+            "Grade-9 evidence is still insufficient or unknown."
+        )
+    else:
+        transition_state = "GRADE10_NEXT_PRODUCTIVE_FRONTIER"
+        transition_message = (
+            "No known required/prerequisite blocker or unresolved required evidence "
+            "remains in this projection, so Grade 10 is the next productive frontier."
+        )
+
+    return {
+        "schema_version": "grade9v3-grade9-transition-report-v1",
+        "projection_kind": "DERIVED_REPORT",
+        "persistence": "NOT_WRITTEN",
+        "profile_id": projection.get("profile_id"),
+        "scope_source": projection.get("scope_source"),
+        "transition_state": transition_state,
+        "transition_message": transition_message,
+        "rows": rows,
+        "known_limitations": [
+            "The governed learner-observation contract has no explicit misconception identifier/severity field, so this report does not infer a 'major unresolved misconception' from error_stage alone.",
+            "Unknown or missing evidence is never promoted to secure evidence.",
+            "Session-only READY/REINFORCE/REBUILD posture is not persisted or reused as grade-level mastery truth.",
+        ],
+    }
+
+
+def parent_agent_text(report: dict) -> str:
+    """Render a deterministic human-readable view without hidden scoring."""
+    lines = [
+        "Grade-9 Physics transition view",
+        f"Profile: {report.get('profile_id') or 'unspecified'}",
+        f"Transition: {report['transition_state']}",
+        report["transition_message"],
+        "",
+        "Required and relevant capability evidence:",
+    ]
+    for row in report["rows"]:
+        if not row["required_grade9"] and row["blocker_status"] not in {
+            "BLOCKER", "EVIDENCE_REQUIRED"
+        }:
+            continue
+        lines.extend([
+            (
+                f"- {row['capability_ref']} [{row['scope_role']}]: "
+                f"{row['evidence_category']} / {row['blocker_status']}"
+            ),
+            f"  Repair/recheck: {row['repair_recheck_context']}",
+            f"  Transition implication: {row['transition_implication']}",
+        ])
+        if row["evidence_basis"]:
+            refs = [
+                item.get("observation_ref") or item.get("source")
+                for item in row["evidence_basis"]
+                if item.get("observation_ref") or item.get("source")
+            ]
+            if refs:
+                lines.append(f"  Evidence basis: {', '.join(refs)}")
+
+    lines.extend([
+        "",
+        "Known limitation:",
+        (
+            "- Major-misconception status is not inferred from generic error_stage; "
+            "the current governed observation contract does not encode misconception "
+            "identity/severity."
+        ),
+    ])
+    return "\n".join(lines)
+
+
 def project(profile: dict, repo: Path = REPO) -> dict:
     """Return a reproducible matrix/capability exit-evidence projection."""
     coverage = scope_coverage(repo)
@@ -319,6 +459,12 @@ def project(profile: dict, repo: Path = REPO) -> dict:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--profile-id", required=True)
+    parser.add_argument(
+        "--format",
+        choices=("json", "text"),
+        default="json",
+        help="Emit the machine-readable report or parent/agent-readable text.",
+    )
     args = parser.parse_args()
 
     profiles = learner_evidence.load_profiles(REPO)
@@ -330,7 +476,11 @@ def main() -> int:
         }, indent=2))
         return 2
 
-    print(json.dumps(project(profile, REPO), indent=2, ensure_ascii=False))
+    report = transition_report(project(profile, REPO))
+    if args.format == "text":
+        print(parent_agent_text(report))
+    else:
+        print(json.dumps(report, indent=2, ensure_ascii=False))
     return 0
 
 
