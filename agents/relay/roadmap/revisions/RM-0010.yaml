@@ -28,7 +28,7 @@
     ]
   },
   "invalidated_execution_packages": [],
-  "issue_graph_reconciled": false,
+  "issue_graph_reconciled": true,
   "progress_basis_change": {
     "old_basis": "PB-0007",
     "new_basis": "PB-0008",
