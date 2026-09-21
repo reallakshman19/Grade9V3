@@ -1,28 +1,28 @@
 {
   "schema_version": "relay-v2.5",
   "progress_basis": {
-    "id": "PB-0007",
-    "roadmap_revision": "RM-0009"
+    "id": "PB-0008",
+    "roadmap_revision": "RM-0010"
   },
   "overall": {
-    "earned_weight": 85,
+    "earned_weight": 100,
     "total_weight": 100,
-    "percent": 85
+    "percent": 100
   },
   "objectives": [
     {
       "id": "OBJ-TOPIC-ATLAS-COMPLETE",
-      "earned_weight": 85,
+      "earned_weight": 100,
       "total_weight": 100,
-      "percent": 85
+      "percent": 100
     }
   ],
   "phases": [
     {
       "id": "PHASE-TAKEOVER-RECONCILIATION",
-      "earned_weight": 85,
+      "earned_weight": 100,
       "total_weight": 100,
-      "percent": 85
+      "percent": 100
     }
   ],
   "work_packages": [
@@ -64,9 +64,9 @@
     },
     {
       "id": "WP-TA-105",
-      "earned_weight": 0,
+      "earned_weight": 15,
       "total_weight": 15,
-      "percent": 0
+      "percent": 100
     }
   ],
   "execution_packages": [
@@ -120,9 +120,9 @@
     },
     {
       "id": "EP-TA-009",
-      "earned_weight": 0,
+      "earned_weight": 100,
       "total_weight": 100,
-      "percent": 0
+      "percent": 100
     }
   ],
   "implementation_steps": [
@@ -829,38 +829,58 @@
     {
       "id": "AC-TA9-001",
       "ep_id": "EP-TA-009",
-      "status": "NOT_STARTED",
-      "earned_weight": 0,
+      "status": "COMPLETE",
+      "earned_weight": 25,
       "total_weight": 25,
-      "percent": 0,
-      "basis": []
+      "percent": 100,
+      "basis": [
+        "CP-TA-009",
+        "QRV-TA-009",
+        "guardrails 35621628917",
+        "v25-relay 35621628935"
+      ]
     },
     {
       "id": "AC-TA9-002",
       "ep_id": "EP-TA-009",
-      "status": "NOT_STARTED",
-      "earned_weight": 0,
+      "status": "COMPLETE",
+      "earned_weight": 25,
       "total_weight": 25,
-      "percent": 0,
-      "basis": []
+      "percent": 100,
+      "basis": [
+        "CP-TA-009",
+        "QRV-TA-009",
+        "guardrails 35621628917",
+        "v25-relay 35621628935"
+      ]
     },
     {
       "id": "AC-TA9-003",
       "ep_id": "EP-TA-009",
-      "status": "NOT_STARTED",
-      "earned_weight": 0,
+      "status": "COMPLETE",
+      "earned_weight": 25,
       "total_weight": 25,
-      "percent": 0,
-      "basis": []
+      "percent": 100,
+      "basis": [
+        "CP-TA-009",
+        "QRV-TA-009",
+        "guardrails 35621628917",
+        "v25-relay 35621628935"
+      ]
     },
     {
       "id": "AC-TA9-004",
       "ep_id": "EP-TA-009",
-      "status": "NOT_STARTED",
-      "earned_weight": 0,
+      "status": "COMPLETE",
+      "earned_weight": 25,
       "total_weight": 25,
-      "percent": 0,
-      "basis": []
+      "percent": 100,
+      "basis": [
+        "CP-TA-009",
+        "QRV-TA-009",
+        "guardrails 35621628917",
+        "v25-relay 35621628935"
+      ]
     }
   ]
 }
