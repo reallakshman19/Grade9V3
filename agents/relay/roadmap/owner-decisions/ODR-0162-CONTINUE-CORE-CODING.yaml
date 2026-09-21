@@ -1,0 +1,36 @@
+schema_version: relay-v2.5
+id: ODR-0162-CONTINUE-CORE-CODING
+decision:
+  authority: OWNER
+  kind: AUTHORIZATION
+  statement: >-
+    Continue bounded Issue #162 Core coding on PR #165 even though exact-head
+    evidence for the semantic-identity slice and merge/base reconciliation remain
+    pending. Head/merge/evidence issues may be dealt with later. Advance only
+    generic Core invariants; do not broaden into #159 learner routing, #160
+    NLM/Atlas authoring, or #163 portability/integration.
+  source: >-
+    Owner instruction in the active Grade9V3 engineering session on 2026-09-21:
+    "Proceed core coding, head issues can be dealt later".
+effects:
+  requirement_disposition: NOT_APPLICABLE
+  grants_material_write_authority: true
+  pending_items:
+  - Preserve TEST-I01, TEST-I02 and TEST-I03 as unresolved evidence for the semantic-identity slice.
+  - Reconcile PR #165 against then-current main before merge and rerun final exact-head browser/full guardrails.
+  - Do not claim the normal drift/write gate passed.
+impact:
+  class: [LOCAL, EXECUTION_GOVERNANCE, PROTOCOL_EXCEPTION]
+affected:
+  objectives: [OBJ-TOPIC-ATLAS-COMPLETE]
+  phases: [PHASE-TAKEOVER-RECONCILIATION]
+  work_packages: [WP-162-BROWSER-RUNTIME-PROOF]
+  execution_packages: [EP-0162-SEMANTIC-IDENTITY-PROOF]
+  issues: [ISSUE-162]
+required_reconciliation:
+- Preserve all prior unverified semantic-identity acceptance/evidence as pending.
+- Continue within the existing #162 work package rather than opening neighbouring product scope.
+- Use a concrete falsifier before changing Core.
+- Keep modality mechanics observable, but do not allow input modality to alter domain validity.
+- Keep PR #165 draft; no merge/rebase is authorized by this decision.
+status: APPLIED
