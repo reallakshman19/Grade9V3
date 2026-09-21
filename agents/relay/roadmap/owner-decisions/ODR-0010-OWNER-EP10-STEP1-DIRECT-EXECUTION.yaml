@@ -1,0 +1,54 @@
+{
+  "schema_version": "relay-v2.5",
+  "id": "ODR-0010-OWNER-EP10-STEP1-DIRECT-EXECUTION",
+  "decision": {
+    "authority": "OWNER",
+    "kind": "AUTHORIZATION",
+    "statement": "Authorize the current agent to implement only STEP-TA10-001 / AC-TA10-001 / TEST-TA10-001 on EP-TA-010 despite the still-unmet independent-candidate qualification/material-write gate. Do not fabricate DISC/QUAL/TC, takeover admission, or a MATERIAL_WRITE_READY PASS; keep the protocol exception explicit.",
+    "source": "Owner instruction in the active Grade9V3 engineering session on 2026-09-21: 'start write'."
+  },
+  "effects": {
+    "requirement_disposition": "NOT_APPLICABLE",
+    "grants_material_write_authority": true,
+    "pending_items": [
+      "Normal independent EP-TA-010 DISC/QUAL/TC and candidate-specific material-write readiness remain unsatisfied.",
+      "This direct-execution exception is limited to STEP-TA10-001; later help/protection/browser slices require normal qualification or a separate Owner authorization."
+    ]
+  },
+  "delivery_authorization": null,
+  "impact": {
+    "class": [
+      "LOCAL",
+      "EXECUTION_GOVERNANCE",
+      "PROTOCOL_EXCEPTION"
+    ]
+  },
+  "affected": {
+    "objectives": [
+      "OBJ-TOPIC-ATLAS-COMPLETE"
+    ],
+    "phases": [
+      "PHASE-TAKEOVER-RECONCILIATION"
+    ],
+    "work_packages": [
+      "WP-TA-108"
+    ],
+    "execution_packages": [
+      "EP-TA-010"
+    ],
+    "issues": [
+      "ISSUE-175"
+    ],
+    "steps": [
+      "STEP-TA10-001"
+    ]
+  },
+  "required_reconciliation": [
+    "Do not create or relabel a fake independent candidate admission.",
+    "Limit direct-execution authority to STEP-TA10-001 / AC-TA10-001 / TEST-TA10-001.",
+    "Keep Physics/library, Physics/matrices, learner evidence and production #173/#174 provider work read-only.",
+    "Report the protocol exception separately from the actual candidate-specific material_write_ready result.",
+    "Stop after the first slice is implemented and its focused verification is observed."
+  ],
+  "status": "APPLIED"
+}
