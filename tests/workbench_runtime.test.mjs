@@ -577,6 +577,132 @@ test("synchronous callbacks cannot reenter semantic dispatch", () => {
   assert.equal(runtime.snapshot.entities.some((row) => row.id === "quotient-digit-1"), false);
 });
 
+test("undo branches cannot reassign committed entity or projection IDs", () => {
+  let phase = 0;
+  const baseAdapter = divisionAdapter();
+  const entityReuseAdapter = {
+    evaluateTransfer(request, snapshot) {
+      phase += 1;
+      if (phase === 1) return baseAdapter.evaluateTransfer(request, snapshot);
+      return {
+        accepted: true,
+        summary: "Attempt to rebind abandoned semantic identity.",
+        patch: {
+          addEntities: [{
+            id: "quotient-digit-1",
+            label: "Different semantic object",
+            provenance: { kind: "DERIVED", sourceEntityRefs: ["divisor-12"] }
+          }],
+          addProjections: [{
+            id: "different-result-view",
+            entityRef: "quotient-digit-1",
+            label: "Different result",
+            representation: "different result",
+            placement: { grid: "division-work", row: "result", column: "right" }
+          }]
+        }
+      };
+    }
+  };
+
+  const runtime = new WorkbenchRuntime(fixture, entityReuseAdapter);
+  runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "click" });
+  runtime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "click" });
+  runtime.dispatch({ type: "UNDO", channel: "keyboard" });
+  assert.equal(runtime.canRedo, true);
+
+  runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "keyboard" });
+  const beforeReuse = runtime.snapshot;
+  const reuse = runtime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "keyboard" });
+  assert.equal(reuse.type, "TRANSFER_REJECTED");
+  assert.equal(reuse.code, "WORKBENCH_ENTITY_ID_REUSED");
+  assert.deepEqual(runtime.snapshot.entities, beforeReuse.entities);
+  assert.deepEqual(runtime.snapshot.projections, beforeReuse.projections);
+  assert.equal(runtime.snapshot.revision, beforeReuse.revision);
+  assert.equal(runtime.canRedo, true);
+
+  const redo = runtime.dispatch({ type: "REDO", channel: "keyboard" });
+  assert.equal(redo.type, "REDO_APPLIED");
+  assert.equal(runtime.snapshot.entities.find((row) => row.id === "quotient-digit-1").label, "1");
+
+  let projectionPhase = 0;
+  const projectionRuntime = new WorkbenchRuntime(fixture, {
+    evaluateTransfer() {
+      projectionPhase += 1;
+      return {
+        accepted: true,
+        summary: projectionPhase === 1 ? "Add temporary representation." : "Rebind representation ID.",
+        patch: {
+          addEntities: [],
+          addProjections: [{
+            id: "temporary-dividend-view",
+            entityRef: "dividend-156",
+            label: projectionPhase === 1 ? "156 temporary" : "156 rebound",
+            representation: projectionPhase === 1 ? "temporary" : "rebound",
+            placement: { grid: "division-work", row: "result", column: "left" }
+          }]
+        }
+      };
+    }
+  });
+  projectionRuntime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "click" });
+  projectionRuntime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "click" });
+  projectionRuntime.dispatch({ type: "UNDO", channel: "keyboard" });
+  assert.equal(projectionRuntime.canRedo, true);
+
+  projectionRuntime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "keyboard" });
+  const projectionReuse = projectionRuntime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "keyboard" });
+  assert.equal(projectionReuse.type, "TRANSFER_REJECTED");
+  assert.equal(projectionReuse.code, "WORKBENCH_PROJECTION_ID_REUSED");
+  assert.equal(projectionRuntime.canRedo, true);
+});
+
+test("rejected candidate IDs are not reserved before a successful commit", () => {
+  let calls = 0;
+  const runtime = new WorkbenchRuntime(fixture, {
+    evaluateTransfer() {
+      calls += 1;
+      if (calls === 1) {
+        return {
+          accepted: true,
+          summary: "Malformed candidate should not reserve its ID.",
+          patch: {
+            addEntities: [{
+              id: "candidate-id",
+              label: "Candidate",
+              provenance: { kind: "DERIVED", sourceEntityRefs: ["missing-source"] }
+            }],
+            addProjections: []
+          }
+        };
+      }
+      return {
+        accepted: true,
+        summary: "Valid commit may still use the previously rejected candidate ID.",
+        patch: {
+          addEntities: [{
+            id: "candidate-id",
+            label: "Committed candidate",
+            provenance: { kind: "DERIVED", sourceEntityRefs: ["dividend-156"] }
+          }],
+          addProjections: []
+        }
+      };
+    }
+  });
+
+  runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "click" });
+  const rejected = runtime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "click" });
+  assert.equal(rejected.type, "TRANSFER_REJECTED");
+  assert.equal(rejected.code, "WORKBENCH_PROVENANCE_SOURCE_UNKNOWN");
+  assert.equal(runtime.snapshot.entities.some((row) => row.id === "candidate-id"), false);
+
+  runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "click" });
+  const accepted = runtime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "click" });
+  assert.equal(accepted.type, "TRANSFER_ACCEPTED");
+  assert.equal(runtime.snapshot.entities.find((row) => row.id === "candidate-id").label, "Committed candidate");
+});
+
 test("runtime instances are isolated", () => {
   const first = new WorkbenchRuntime(fixture, divisionAdapter());
   const second = new WorkbenchRuntime(fixture, divisionAdapter());
