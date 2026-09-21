@@ -42,25 +42,26 @@ takeover_admissions:
     id: TC-0162-BROWSER-RUNTIME-PROOF
     path: agents/relay/certifications/takeover/TC-0162-BROWSER-RUNTIME-PROOF.yaml
 owner_execution_exception:
-  id: ODR-0162-ADVANCE-TRANSACTION-INTEGRITY
-  path: agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-TRANSACTION-INTEGRITY.yaml
+  id: ODR-0162-ADVANCE-PROVENANCE-INTEGRITY
+  path: agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-PROVENANCE-INTEGRITY.yaml
   normal_drift_write_gate_passed: false
 progress:
   overall_percent: 0
   phase_percent: 0
   ep_percent: 0
-  basis_revision: PB-0004
+  basis_revision: PB-0005
 status_planes:
   execution:
     state: READY
     can_continue: true
     material_authority: WRITE
-    next_action: Preserve the transaction-integrity Core candidate at 979afce99ec2beddd895fc5b1a12e5541915e5a3; TEST-I06/TEST-I07 and earlier exact-head evidence remain pending while Owner-authorized bounded Core continuation stays available.
+    next_action: Execute STEP-I05: reject dangling initial-scene provenance source refs using the existing entity identity set; keep provenance semantics otherwise unchanged.
   quality:
     state: NEEDS_ATTENTION
     findings:
     - The channel-neutral adapter boundary is implemented at d05414c5edec3b92790239c85b489f5b7e95641c; exact-head evidence remains pending.
     - The accepted-empty-patch defect is fixed on 979afce99ec2beddd895fc5b1a12e5541915e5a3: no canonical delta means no commit/revision/history advancement; exact-head evidence remains pending.
+    - Initial-scene provenance can still contain dangling sourceEntityRefs even though adapter-added entities reject them; STEP-I05 is admitted to close this referential-integrity asymmetry.
     - The stronger witness now models partial-dividend-15 as a distinct entity and the focused lifecycle reproduction passes without a Shared/workbench product-code change; formal exact-head repository/browser evidence is still pending.
     - Main carries RM-0008 / EP-TA-008 while this branch carries the #162 RM-0002 execution package; normal drift/write validation remains unmet under the explicit Owner continuation exception.
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
@@ -89,6 +90,12 @@ status_planes:
     - id: TEST-I07
       reason: Existing real-Chrome/full guardrails must rerun on 979afce99ec2beddd895fc5b1a12e5541915e5a3; the current Actions reader exposes no runs/statuses for this exact head.
       cause: INFRASTRUCTURE
+    - id: TEST-I08
+      reason: Initial-provenance referential-integrity regression has not yet run on its coding candidate.
+      cause: NOT_SCHEDULED
+    - id: TEST-I09
+      reason: Existing real-Chrome/full guardrails must rerun after the provenance-integrity Core change.
+      cause: NOT_SCHEDULED
     - id: AC-05-POST-REBASE-BROWSER
       reason: Final post-rebase browser rerun is not scheduled until PR #165 is reconciled with then-current main.
       cause: NOT_SCHEDULED
@@ -104,6 +111,7 @@ status_planes:
     - agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-SEMANTIC-IDENTITY.yaml
     - agents/relay/roadmap/owner-decisions/ODR-0162-CONTINUE-CORE-CODING.yaml
     - agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-TRANSACTION-INTEGRITY.yaml
+    - agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-PROVENANCE-INTEGRITY.yaml
     - agents/relay/drift/DRIFT-0162-RM0008.yaml
 projection:
   required: true
