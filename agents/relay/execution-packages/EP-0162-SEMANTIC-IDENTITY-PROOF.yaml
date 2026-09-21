@@ -110,6 +110,14 @@ inputs:
   description: Synchronous eventSink exceptions are contained and cannot make committed, rejected or transient semantic dispatch throw or corrupt canonical history.
   weight: 50
   verification: [TEST-I10, TEST-I11]
+- id: AC-I12
+  description: Initial scene provenance rejects self-reference and multi-entity source cycles with a deterministic Core validation error.
+  weight: 60
+  verification: [TEST-I12]
+- id: AC-I13
+  description: Valid acyclic initial provenance remains order-independent and adapter-added provenance/history behavior remains unchanged.
+  weight: 40
+  verification: [TEST-I12, TEST-I13]
 validation:
   - Guardrails on the redo material head and later relay-only branch head are green.
   stale_if:
@@ -163,6 +171,8 @@ scope:
     reason: Pointer, click, keyboard and touch may use different browser mechanics, but evaluateTransfer must receive the same semantic request for the same source/target/operation.
   - invariant: Host observers cannot alter semantic dispatch outcome.
     reason: Event observation is downstream of Core state transitions and must not throw through or mutate the Core event result.
+  - invariant: Provenance source lineage is acyclic.
+    reason: sourceEntityRefs describe semantic source lineage; runtime-created entities can only point to pre-existing identities, so initial scenes must not admit lineage impossible for runtime history to produce.
   - invariant: Declared provenance sources resolve to canonical semantic entities.
     reason: Core must not admit dangling semantic lineage merely because an entity arrived in the initial scene instead of an adapter patch.
   prohibited:
@@ -290,6 +300,18 @@ implementation_plan:
   expected_state: eventSink receives an isolated clone; synchronous sink exceptions are contained; returned events and canonical state/history remain authoritative.
   stop_conditions:
   - Stop if the fix requires a second event system, async retry machinery, or host-specific semantics.
+- id: STEP-I07
+  objective: Reject self-referential and cyclic initial-scene provenance while preserving valid order-independent DAGs and existing adapter-added provenance rules.
+  targets:
+  - Shared/workbench/runtime.mjs
+  - tests/workbench_runtime.test.mjs
+  - docs/architecture-manifest.json
+  inputs: [INPUT-I01]
+  acceptance: [AC-I12, AC-I13]
+  tests: [TEST-I12, TEST-I13]
+  expected_state: Initial sourceEntityRefs form an acyclic graph; self and multi-node cycles fail closed without imposing entity declaration ordering.
+  stop_conditions:
+  - Stop if the fix requires provenance kinds, subject semantics, derivation execution or transaction lineage.
 next_work:
   phase_transition: false
   steps:
@@ -368,6 +390,19 @@ next_work:
     expected_result: Observer mutation cannot change the event returned by dispatch, and observer exceptions cannot make committed or transient semantic operations throw.
     stop_if:
     - The fix changes academic validity, browser gesture semantics, or requires a second event transport.
+  - order: 7
+    action: Enforce acyclic initial provenance while retaining order-independent valid DAGs and the existing backward-only patch rule.
+    targets:
+    - Shared/workbench/runtime.mjs
+    - tests/workbench_runtime.test.mjs
+    - docs/architecture-manifest.json
+    inputs: [INPUT-I01]
+    tests: [TEST-I12, TEST-I13]
+    benchmarks: []
+    acceptance: [AC-I12, AC-I13]
+    expected_result: Initial semantic lineage cannot contain A→A or A→B→A cycles; valid DAGs remain accepted regardless of declaration order.
+    stop_if:
+    - The change requires provenance taxonomy, execution semantics, or subject-specific lineage rules.
 qualification_boundary:
   required: false
   trigger: null
@@ -497,6 +532,14 @@ validation:
   class: MUST_PASS
   method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the observer-containment coding head
   proves: [AC-I11]
+- id: TEST-I12
+  class: MUST_PASS
+  method: node --test tests/workbench_runtime.test.mjs
+  proves: [AC-I12, AC-I13]
+- id: TEST-I13
+  class: MUST_PASS
+  method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the provenance-DAG coding head
+  proves: [AC-I13]
 failure_and_stop_conditions:
   hard_stop_categories: [OWNER_DECISION_REQUIRED, AUTHORITY_VIOLATION, PROTECTED_INVARIANT_FAILURE, UNSAFE_ENGINEERING_RESULT]
 report_contract:
