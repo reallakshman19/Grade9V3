@@ -433,7 +433,7 @@ class Grade9ExitProjectionTest(unittest.TestCase):
         self.assertIn("OBS-GAP", text)
         self.assertIn("CAP-OPTIONAL", text)
         self.assertIn("Visible non-blocking items:", text)
-        self.assertIn("Major-misconception status is not inferred", text)
+        self.assertIn("Named misconception identity/severity is not inferred", text)
         self.assertNotIn("mastery_percentage", text.lower())
         self.assertNotIn("mastery_probability", text.lower())
 
