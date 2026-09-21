@@ -1,0 +1,37 @@
+schema_version: relay-v2.5
+id: ODR-0162-ADVANCE-OBSERVER-CONTAINMENT
+decision:
+  authority: OWNER
+  kind: AUTHORIZATION
+  statement: >-
+    Continue bounded Issue #162 Core coding while merge/head reconciliation remains
+    deferred. Close the observer failure-containment boundary: host/event observers must
+    not be able to turn a completed semantic operation into a thrown dispatch result or
+    mutate the event object returned by Core. Preserve observer visibility by delivering
+    an isolated event clone; do not add subject logic, learner routing, renderer
+    architecture, persistence, or a second event system.
+  source: >-
+    Owner instruction in the active Grade9V3 engineering session on 2026-09-21:
+    "ok proceed next, provide the pending task that was supposed to be done by local agent."
+effects:
+  requirement_disposition: NOT_APPLICABLE
+  grants_material_write_authority: true
+  pending_items:
+  - Exact-head evidence for the semantic-identity, channel-neutral, empty-patch and provenance-integrity slices remains pending.
+  - PR #165 merge/base and relay custody reconciliation remains deferred before merge.
+delivery_authorization: null
+impact:
+  class: [LOCAL, EXECUTION_GOVERNANCE, PROTOCOL_EXCEPTION]
+affected:
+  objectives: [OBJ-TOPIC-ATLAS-COMPLETE]
+  phases: [PHASE-TAKEOVER-RECONCILIATION]
+  work_packages: [WP-162-BROWSER-RUNTIME-PROOF]
+  execution_packages: [EP-0162-SEMANTIC-IDENTITY-PROOF]
+  issues: [ISSUE-162]
+required_reconciliation:
+- Deliver a cloned semantic event to eventSink so observer mutation cannot change the event returned by dispatch.
+- Contain synchronous eventSink exceptions so observer failure cannot change semantic dispatch success/failure after canonical state has mutated.
+- Preserve canonical commit/history behavior and host-observable semantic event payloads.
+- Do not add a second event bus, subject-specific handling, learner evidence logic, or async retry machinery.
+- Keep PR #165 draft and leave merge/base reconciliation deferred.
+status: APPLIED
