@@ -507,11 +507,41 @@ export class CoreLearningPage extends HTMLElementBase {
     if (typeof this.attachShadow === "function") this.attachShadow({ mode: "open" });
   }
 
-  set projection(value) {
-    const projection = validateCoreProjection(value);
-    this._projection = projection;
-    this._state = deriveCoreLearningState(projection);
+  configure({
+    projection,
+    scene = null,
+    adapter = null,
+    injections = [],
+  }) {
+    const validated = validateCoreProjection(projection);
+    const hasScene = scene != null;
+    const hasAdapter = adapter != null;
+    requireCondition(
+      hasScene === hasAdapter,
+      "CORE_LEARNING_WORKBENCH_BINDING_INCOMPLETE",
+    );
+    requireCondition(
+      Array.isArray(injections),
+      "CORE_LEARNING_INJECTIONS_INVALID",
+    );
+
+    this._projection = validated;
+    this._state = deriveCoreLearningState(validated);
+    this._scene = scene ?? null;
+    this._adapter = adapter ?? null;
+    this._injections = [...injections];
+    this._injectionsVersion += 1;
     this._render();
+    return this.state;
+  }
+
+  set projection(value) {
+    this.configure({
+      projection: value,
+      scene: this._scene,
+      adapter: this._adapter,
+      injections: this._injections,
+    });
   }
 
   get projection() {
