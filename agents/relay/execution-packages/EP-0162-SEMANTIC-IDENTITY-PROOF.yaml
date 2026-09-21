@@ -59,6 +59,7 @@ context_capsule:
   - The accepted-empty-patch defect is fixed on 979afce99ec2beddd895fc5b1a12e5541915e5a3, but exact-head Node/browser/full-guardrail evidence remains pending.
   - Initial-scene provenance dangling-source validation is implemented on f715a2a0bb348825e7aef28f380a71031631dc88, but exact-head Node/browser/full-guardrail evidence remains pending.
   - Reentrant-dispatch containment is implemented on 8003880e84a5798f9a5eba0f8dfdc762c767845f, but exact-head Node/browser/full-guardrail evidence remains pending.
+  - Canonical-transformation/history coupling was falsified as the wrong authority boundary: adapter validity must remain authoritative. The surviving defect is lifetime ID reuse after undo/branching, which can reassign a committed semantic identity or projection identity within one runtime instance.
   deliberate_non_goals:
   - No arithmetic-specific Core API or entity type.
   - No generic derivation taxonomy in Core.
@@ -128,6 +129,14 @@ inputs:
   description: Canonical transformations require a valid current targetRef and a clean unique sourceEntityRefs list while preserving deferred source refs for entities created later by runtime transactions.
   weight: 45
   verification: [TEST-I14, TEST-I15]
+- id: AC-I18
+  description: Initial and successfully committed entity/projection IDs cannot be reassigned after undo or branch abandonment within the same WorkbenchRuntime instance.
+  weight: 65
+  verification: [TEST-I18]
+- id: AC-I19
+  description: Rejected reuse attempts do not mutate canonical state/history or clear redo, while never-committed candidate IDs and genuinely new IDs remain usable.
+  weight: 35
+  verification: [TEST-I18, TEST-I19]
 validation:
   - Guardrails on the redo material head and later relay-only branch head are green.
   stale_if:
@@ -189,6 +198,8 @@ scope:
     reason: Core must not admit dangling semantic lineage merely because an entity arrived in the initial scene instead of an adapter patch.
   - invariant: Semantic dispatch is non-reentrant.
     reason: Synchronous observers and adapters may run during dispatch, but they must not interleave a second Core transaction before the active dispatch returns.
+  - invariant: Committed semantic and projection IDs are lifetime-stable within one runtime instance.
+    reason: Undo may remove an object from the current branch, but it must not allow the same identifier to be rebound to a different semantic object or representation later in that runtime.
   prohibited:
   - domain: learner evidence/support routing
     reason: Owned by Issue #159.
@@ -355,6 +366,19 @@ implementation_plan:
   expected_state: Nested dispatch fails deterministically with WORKBENCH_REENTRANT_DISPATCH while the outer event, canonical state and history remain authoritative.
   stop_conditions:
   - Stop if the fix requires asynchronous dispatch, an intent queue, host-specific policy or changes academic validity.
+- id: STEP-I10
+  objective: Prevent semantic entity/projection identifier reassignment after undo/branching by reserving IDs once they have participated in initial or successfully committed runtime state.
+  targets:
+  - Shared/workbench/runtime.mjs
+  - tests/workbench_runtime.test.mjs
+  - Shared/workbench/README.md
+  - docs/architecture-manifest.json
+  inputs: [INPUT-I01]
+  acceptance: [AC-I18, AC-I19]
+  tests: [TEST-I18, TEST-I19]
+  expected_state: Undo/branching cannot reuse a previously committed entity or projection ID for a new object; rejected candidate IDs remain reusable; redo remains available after a rejected reuse attempt.
+  stop_conditions:
+  - Stop if the fix requires an immutable transaction ledger, persistent storage, canonicalTransformation execution, or subject-specific identity rules.
 next_work:
   phase_transition: false
   steps:
@@ -474,6 +498,20 @@ next_work:
     expected_result: The active dispatch owns runtime mutation until it returns; synchronous callbacks cannot interleave undo/redo/pick/drop or another transaction.
     stop_if:
     - The change requires async scheduling, a callback queue or subject-specific behavior.
+  - order: 10
+    action: Reserve committed entity/projection IDs for one runtime lifetime so undo branches cannot rebind prior identities.
+    targets:
+    - Shared/workbench/runtime.mjs
+    - tests/workbench_runtime.test.mjs
+    - Shared/workbench/README.md
+    - docs/architecture-manifest.json
+    inputs: [INPUT-I01]
+    tests: [TEST-I18, TEST-I19]
+    benchmarks: []
+    acceptance: [AC-I18, AC-I19]
+    expected_result: IDs removed by undo remain reserved against reassignment; rejected reuse is non-mutating and preserves redo; new IDs still branch normally.
+    stop_if:
+    - The solution needs a persistent ledger or promotes canonical transformation metadata into validity authority.
 qualification_boundary:
   required: false
   trigger: null
@@ -635,6 +673,14 @@ validation:
   class: MUST_PASS
   method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the reentrancy-containment coding head
   proves: [AC-I17]
+- id: TEST-I18
+  class: MUST_PASS
+  method: node --test tests/workbench_runtime.test.mjs
+  proves: [AC-I18, AC-I19]
+- id: TEST-I19
+  class: MUST_PASS
+  method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the lifetime-identity coding head
+  proves: [AC-I19]
 failure_and_stop_conditions:
   hard_stop_categories: [OWNER_DECISION_REQUIRED, AUTHORITY_VIOLATION, PROTECTED_INVARIANT_FAILURE, UNSAFE_ENGINEERING_RESULT]
 report_contract:
