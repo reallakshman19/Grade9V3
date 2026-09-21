@@ -6,8 +6,8 @@
     "path": "agents/relay/execution-packages/EP-TA-009.yaml",
     "contract_digest": "sha256:c362800e9ddedb8b1def9b8815341229ee88ed439ec13d2ef0f0eb4d30c61169"
   },
-  "roadmap_revision": "RM-0009",
-  "material_ref": "f8fa6a8aafdad7ab8a2d979af824240cd220b6c7",
+  "roadmap_revision": "RM-0010",
+  "material_ref": "0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494",
   "reviewer": {
     "type": "AGENT",
     "identity": "chatgpt-sol-wp105-closeout-20260921"
@@ -106,8 +106,8 @@
       "blueprint": "software-design",
       "result": "CLEAR",
       "evidence": [
-        "Grade-9 exit state remains a derived query/report over canonical scope and existing learner evidence; no second learner/grade state owner is introduced.",
-        "Unknown evidence stays distinct from known gaps, optional/later-grade scope remains non-blocking, and fragile required evidence carries targeted independent recheck rather than a score."
+        "The exit view remains a derived query/report over canonical scope and existing learner evidence; no second learner or grade-state owner is introduced.",
+        "Canonical changed-demand evidence is sampled only through existing question transfer metadata; missing authored transfer witnesses stay explicit evidence needs rather than inferred readiness."
       ],
       "reason": null,
       "cause": null
@@ -116,8 +116,8 @@
       "blueprint": "coding",
       "result": "CLEAR",
       "evidence": [
-        "Shared/tools/grade9_exit.py is deterministic and read-only; BENCH-TA9-004 forbids learner/Physics write primitives and persisted mastery/grade-state tokens.",
-        "Exact-head guardrails run 35621628917 passed 987 repository tests on f8fa6a8aafdad7ab8a2d979af824240cd220b6c7."
+        "The derived exit tool remains deterministic and read-only; the no-second-store falsifier rejects learner/Physics write primitives and persisted mastery/grade-state tokens.",
+        "Observation history is preserved so prior difficulty and later independent closure are visible without rewriting learner truth."
       ],
       "reason": null,
       "cause": null
@@ -126,8 +126,8 @@
       "blueprint": "testing",
       "result": "CLEAR",
       "evidence": [
-        "BENCH-TA9-001..004 all passed on exact head, covering evidence categories, blocker boundaries, parent/agent report reconstruction and no-second-store/protected-write invariants.",
-        "Exact-head guardrails 35621628917 and V2.5 relay 35621628935 both passed."
+        "All four Grade-9 exit benchmarks pass on the accepted material basis, with added coverage for canonical transfer sampling, independent changed-demand witnesses, and prior-difficulty closure.",
+        "Exact-head guardrails run 35623092328 passed 990 repository tests on 0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494."
       ],
       "reason": null,
       "cause": null
@@ -136,8 +136,8 @@
       "blueprint": "code-review",
       "result": "CLEAR",
       "evidence": [
-        "Base-to-head compare 411e8dc0108347933792fbbd5a6be8dfa59d655e...f8fa6a8aafdad7ab8a2d979af824240cd220b6c7 changes no Physics/ or Learners/ files.",
-        "The report exposes evidence basis, blockers, repair/recheck context and optional non-blocking items; it explicitly refuses to infer major-misconception identity/severity from generic error_stage."
+        "The base-to-material compare 411e8dc0108347933792fbbd5a6be8dfa59d655e...0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494 changes no Physics/ or Learners/ files.",
+        "Required/prerequisite gaps, unknown evidence, fragile rechecks and changed-demand evidence remain distinct; misconception identity/severity is not invented from generic error_stage."
       ],
       "reason": null,
       "cause": null
@@ -146,8 +146,8 @@
       "blueprint": "github-delivery",
       "result": "CLEAR",
       "evidence": [
-        "PR #170 is the live correlated delivery vehicle for Issue #169 / EP-TA-009 / WP-TA-105.",
-        "V2.5 run 35621628935 passes protocol unit/stress, conformance, cold-start, baton, DISC/TC validity, route/Git inspection and candidate-specific material-write gate on exact head."
+        "PR #170 remains the correlated provider vehicle for Issue #169 / EP-TA-009 / WP-TA-105.",
+        "Material acceptance is exact-head green; repository terminal-state/control reconciliation is the remaining V2.5 delivery step."
       ],
       "reason": null,
       "cause": null
@@ -160,16 +160,16 @@
     "blocking_findings": []
   },
   "owner_report": {
-    "summary": "EP-TA-009 satisfies the Grade-9 exit/Grade-10 transition contract on the validated head: categorical evidence remains derived, required/prerequisite gaps gate progression, fragile evidence triggers targeted rechecks, optional/later-grade gaps remain visible and non-blocking, and protected Physics/learner truth is unchanged.",
+    "summary": "The Grade-9 Physics exit/Grade-10 transition implementation meets its engineering contract on the accepted material basis: evidence categories remain conservative, required/prerequisite holes gate progression, changed-demand evidence is explicit where canonically available, optional scope stays non-blocking, and no protected learner/Physics truth is rewritten.",
     "visible_risks": [
-      "The governed learner-observation schema has no explicit misconception identity/severity field. The report surfaces concept-stage known gaps but does not invent a separate 'major misconception' classification from generic error_stage."
+      "The governed observation schema has no explicit misconception identity/severity field. Required concept/setup gaps remain visible, but no separate named misconception diagnosis is inferred."
     ],
     "decisions_required": []
   },
   "successor_handover": {
     "unresolved_findings": [],
     "follow_up": [
-      "Checkpoint WP-TA-105 against exact-head evidence, reconcile programme progress, and compute whether the roadmap is terminal."
+      "Reconcile terminal repository state, provider delivery tracking and the final external issue projection; no additional material work is required."
     ]
   }
 }
