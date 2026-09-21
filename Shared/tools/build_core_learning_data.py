@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Generate the bounded public Core learner projection payload.
 
-The general Topic Atlas data remains unchanged. This generator selects a small public
-learner slice from the same mechanically projected canonical rows, so the learner host
-does not download the full Atlas payload or infer pedagogy in the browser.
+The general Topic Atlas data remains unchanged. Each subject may opt canonical records
+into this static learner proof from its own content directory. Shared tooling only
+projects and validates those selections; it never names a subject or academic record.
 """
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ from Shared.contracts import load  # noqa: E402
 from Shared.library.resolve import build_index  # noqa: E402
 from Shared.tools import build_web_data  # noqa: E402
 
-SELECTION = REPO / "Shared" / "workbench" / "core-learning-public-selection.json"
+SELECTION_NAME = "core-learning-proof.json"
 OUT = REPO / "public" / "data" / "core-learning.js"
 
 
@@ -26,40 +26,95 @@ class CoreLearningDataError(ValueError):
     pass
 
 
-def all_projection_rows() -> list[dict]:
-    rows: list[dict] = []
-    for subject in build_web_data.subjects():
-        packages = [load(path) for path in sorted((REPO / subject / "library").glob("*.json"))]
-        if not packages:
-            continue
-        rows.extend(build_web_data.core_projection_rows(subject, build_index(packages)))
-    return rows
+def selection_paths() -> list[Path]:
+    return sorted(REPO.glob(f"*/content/{SELECTION_NAME}"))
+
+
+def _selection(path: Path) -> tuple[str, list[dict]]:
+    subject = path.relative_to(REPO).parts[0]
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("schema_version") != "1.0":
+        raise CoreLearningDataError(
+            f"CORE_LEARNING_SELECTION_VERSION_UNSUPPORTED: {path.relative_to(REPO)}"
+        )
+    requested = payload.get("projections")
+    if not isinstance(requested, list) or not requested:
+        raise CoreLearningDataError(
+            f"CORE_LEARNING_SELECTION_INVALID: {path.relative_to(REPO)}"
+        )
+
+    normalized = []
+    seen = set()
+    for index, row in enumerate(requested):
+        if not isinstance(row, dict):
+            raise CoreLearningDataError(
+                f"CORE_LEARNING_SELECTION_INVALID: {path.relative_to(REPO)}#{index}"
+            )
+        source_ref = row.get("source_ref")
+        cores = row.get("cores")
+        if (
+            not isinstance(source_ref, str) or not source_ref.strip()
+            or not isinstance(cores, list) or not cores
+            or any(core not in {"CORE1A", "CORE1B", "CORE2A", "CORE2B"} for core in cores)
+            or len(set(cores)) != len(cores)
+        ):
+            raise CoreLearningDataError(
+                f"CORE_LEARNING_SELECTION_INVALID: {path.relative_to(REPO)}#{index}"
+            )
+        for core in cores:
+            key = (source_ref, core)
+            if key in seen:
+                raise CoreLearningDataError(
+                    f"CORE_LEARNING_SELECTION_DUPLICATE: {subject}:{core}:{source_ref}"
+                )
+            seen.add(key)
+            normalized.append({"source_ref": source_ref, "core": core})
+    return subject, normalized
+
+
+def _subject_rows(subject: str) -> list[dict]:
+    packages = [
+        load(path)
+        for path in sorted((REPO / subject / "library").glob("*.json"))
+    ]
+    if not packages:
+        raise CoreLearningDataError(f"CORE_LEARNING_SUBJECT_LIBRARY_EMPTY: {subject}")
+    return build_web_data.core_projection_rows(subject, build_index(packages))
 
 
 def build() -> dict:
-    selection = json.loads(SELECTION.read_text(encoding="utf-8"))
-    if selection.get("schema_version") != "1.0":
-        raise CoreLearningDataError("CORE_LEARNING_SELECTION_VERSION_UNSUPPORTED")
-    projection_ids = selection.get("projection_ids")
-    if (
-        not isinstance(projection_ids, list)
-        or not projection_ids
-        or any(not isinstance(row, str) or not row.strip() for row in projection_ids)
-        or len(set(projection_ids)) != len(projection_ids)
-    ):
-        raise CoreLearningDataError("CORE_LEARNING_SELECTION_INVALID")
+    selected = []
+    ids = set()
+    paths = selection_paths()
+    if not paths:
+        raise CoreLearningDataError("CORE_LEARNING_SELECTION_REQUIRED")
 
-    by_id = {row["id"]: row for row in all_projection_rows()}
-    missing = [projection_id for projection_id in projection_ids if projection_id not in by_id]
-    if missing:
-        raise CoreLearningDataError(
-            "CORE_LEARNING_SELECTION_UNRESOLVED: " + ", ".join(missing)
-        )
+    for path in paths:
+        subject, requested = _selection(path)
+        candidates = _subject_rows(subject)
+        by_key = {
+            (row["source_ref"], row["projection"]["core"]): row
+            for row in candidates
+        }
+        for request in requested:
+            key = (request["source_ref"], request["core"])
+            row = by_key.get(key)
+            if row is None:
+                raise CoreLearningDataError(
+                    f"CORE_LEARNING_SELECTION_UNRESOLVED: "
+                    f"{subject}:{request['core']}:{request['source_ref']}"
+                )
+            if row["id"] in ids:
+                raise CoreLearningDataError(
+                    f"CORE_LEARNING_PROJECTION_ID_COLLISION: {row['id']}"
+                )
+            ids.add(row["id"])
+            selected.append(row)
 
     return {
         "generated_by": "Shared/tools/build_core_learning_data.py",
-        "selection_version": selection["schema_version"],
-        "core_projections": [by_id[projection_id] for projection_id in projection_ids],
+        "selection_version": "1.0",
+        "core_projections": selected,
     }
 
 
@@ -70,6 +125,10 @@ def render(payload: dict) -> str:
         + json.dumps(payload, indent=2, ensure_ascii=False)
         + ";\n"
     )
+
+
+def rendered_file() -> dict[str, bytes]:
+    return {OUT.relative_to(REPO).as_posix(): render(build()).encode("utf-8")}
 
 
 def write() -> dict:
