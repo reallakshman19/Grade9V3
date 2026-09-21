@@ -305,6 +305,7 @@ export class WorkbenchRuntime {
     };
     this._history = [];
     this._future = [];
+    this._dispatching = false;
   }
 
   get snapshot() {
@@ -419,7 +420,10 @@ export class WorkbenchRuntime {
   }
 
   dispatch(intentInput) {
-    const intent = clone(intentInput || {});
+    requireCondition(!this._dispatching, "WORKBENCH_REENTRANT_DISPATCH");
+    this._dispatching = true;
+    try {
+      const intent = clone(intentInput || {});
     const type = nonEmptyString(intent.type, "WORKBENCH_INTENT_TYPE_REQUIRED");
     const channel = intent.channel || "unknown";
 
@@ -519,6 +523,9 @@ export class WorkbenchRuntime {
       return this._emit("REDO_APPLIED", { channel });
     }
 
-    throw new WorkbenchError("WORKBENCH_INTENT_UNSUPPORTED", type);
+      throw new WorkbenchError("WORKBENCH_INTENT_UNSUPPORTED", type);
+    } finally {
+      this._dispatching = false;
+    }
   }
 }
