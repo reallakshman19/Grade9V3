@@ -354,7 +354,7 @@ function renderQuestion(projection, state) {
 }
 
 function renderAttempt(projection, state) {
-  const needed = state.questionVisible || Boolean(projection.concept?.elicitation?.prompt);
+  const needed = state.questionVisible || isConceptReconstruction(projection);
   if (!needed || state.completed) return "";
   if (state.attempted) {
     return `<section class="attempt-panel" aria-label="Attempt status">
