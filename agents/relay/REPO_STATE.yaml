@@ -55,20 +55,20 @@ status_planes:
     state: READY
     can_continue: true
     material_authority: WRITE
-    next_action: Execute STEP-I06: isolate eventSink observation from semantic dispatch so observer mutation/exception cannot alter Core outcomes; keep merge/head evidence deferred.
+    next_action: Preserve cumulative Core material head b865293567476ca79c7c4f2774eae8ba0c717085; obtain one cumulative exact-head Node, real-Chrome and full-guardrail validation covering TEST-I01..TEST-I11 while bounded Core continuation remains available.
   quality:
     state: NEEDS_ATTENTION
     findings:
     - The channel-neutral adapter boundary is implemented at d05414c5edec3b92790239c85b489f5b7e95641c; exact-head evidence remains pending.
     - The accepted-empty-patch defect is fixed on 979afce99ec2beddd895fc5b1a12e5541915e5a3: no canonical delta means no commit/revision/history advancement; exact-head evidence remains pending.
     - Initial-scene provenance dangling source refs are rejected on f715a2a0bb348825e7aef28f380a71031631dc88 using the existing entity identity set and failure contract; exact-head evidence remains pending.
-    - eventSink currently receives the same event object returned by dispatch and can throw after canonical state mutation; STEP-I06 is admitted to contain this observer authority leak.
+    - Observer containment is implemented at b865293567476ca79c7c4f2774eae8ba0c717085: eventSink receives an isolated clone and synchronous observer exceptions cannot alter dispatch results; exact-head evidence remains pending.
     - The stronger witness now models partial-dividend-15 as a distinct entity and the focused lifecycle reproduction passes without a Shared/workbench product-code change; formal exact-head repository/browser evidence is still pending.
     - Main carries RM-0008 / EP-TA-008 while this branch carries the #162 RM-0002 execution package; normal drift/write validation remains unmet under the explicit Owner continuation exception.
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
   evidence:
     state: PARTIAL
-    summary: The stronger identity witness, channel-neutral adapter boundary, and empty-patch transaction fix remain authored. Initial-scene provenance source refs now fail closed when dangling on f715a2a0bb348825e7aef28f380a71031631dc88; the refreshed architecture manifest digest is sha256:f7b0587611603b13d50bc0433e74f06869ef85af18928b9c9c720d1c0d63c033. Exact repository Node/Chrome/full-guardrail evidence remains unverified here.
+    summary: Cumulative Core candidate b865293567476ca79c7c4f2774eae8ba0c717085 contains the truthful 156 -> 15 -> 1 identity witness, channel-neutral adapter validity, empty-patch rejection, initial provenance referential integrity, and observer failure/mutation containment. Architecture manifest digest is sha256:65570d2b343b8413a0c9495f1b12183417ce7008b1315701fd8293c870291e73. Exact repository Node/Chrome/full-guardrail evidence remains unverified here.
     not_run:
     - id: TEST-I01
       reason: The exact repository Node suite has not been executed from a checkout of material head 726bb16085dd5f59f392a2fcc1805f3639c7e1ad; the focused lifecycle reproduction does not substitute for the declared test command.
@@ -96,6 +96,12 @@ status_planes:
       cause: UNAVAILABLE_TOOL
     - id: TEST-I09
       reason: Existing real-Chrome/full guardrails must rerun on f715a2a0bb348825e7aef28f380a71031631dc88; the current Actions/status readers expose no runs/statuses for this exact head.
+      cause: INFRASTRUCTURE
+    - id: TEST-I10
+      reason: Observer-containment regression is authored on b865293567476ca79c7c4f2774eae8ba0c717085, but the exact repository Node suite cannot be executed from this environment.
+      cause: UNAVAILABLE_TOOL
+    - id: TEST-I11
+      reason: Existing real-Chrome/full guardrails must rerun on b865293567476ca79c7c4f2774eae8ba0c717085; the current Actions/status readers expose no runs/statuses for this exact head.
       cause: INFRASTRUCTURE
     - id: AC-05-POST-REBASE-BROWSER
       reason: Final post-rebase browser rerun is not scheduled until PR #165 is reconciled with then-current main.
