@@ -1,28 +1,28 @@
 {
   "schema_version": "relay-v2.5",
   "progress_basis": {
-    "id": "PB-0008",
-    "roadmap_revision": "RM-0010"
+    "id": "PB-0009",
+    "roadmap_revision": "RM-0011"
   },
   "overall": {
     "earned_weight": 100,
-    "total_weight": 100,
-    "percent": 100
+    "total_weight": 115,
+    "percent": 86.96
   },
   "objectives": [
     {
       "id": "OBJ-TOPIC-ATLAS-COMPLETE",
       "earned_weight": 100,
-      "total_weight": 100,
-      "percent": 100
+      "total_weight": 115,
+      "percent": 86.96
     }
   ],
   "phases": [
     {
       "id": "PHASE-TAKEOVER-RECONCILIATION",
       "earned_weight": 100,
-      "total_weight": 100,
-      "percent": 100
+      "total_weight": 115,
+      "percent": 86.96
     }
   ],
   "work_packages": [
@@ -67,6 +67,12 @@
       "earned_weight": 15,
       "total_weight": 15,
       "percent": 100
+    },
+    {
+      "id": "WP-TA-108",
+      "earned_weight": 0,
+      "total_weight": 15,
+      "percent": 0
     }
   ],
   "execution_packages": [
@@ -123,6 +129,12 @@
       "earned_weight": 100,
       "total_weight": 100,
       "percent": 100
+    },
+    {
+      "id": "EP-TA-010",
+      "earned_weight": 0,
+      "total_weight": 100,
+      "percent": 0
     }
   ],
   "implementation_steps": [
@@ -381,6 +393,34 @@
     {
       "id": "STEP-TA9-004",
       "ep_id": "EP-TA-009",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0
+    },
+    {
+      "id": "STEP-TA10-001",
+      "ep_id": "EP-TA-010",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0
+    },
+    {
+      "id": "STEP-TA10-002",
+      "ep_id": "EP-TA-010",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0
+    },
+    {
+      "id": "STEP-TA10-003",
+      "ep_id": "EP-TA-010",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0
+    },
+    {
+      "id": "STEP-TA10-004",
+      "ep_id": "EP-TA-010",
       "earned_weight": 0,
       "total_weight": 25,
       "percent": 0
@@ -877,6 +917,42 @@
         "Final engineering quality review is clear",
         "990-test repository guardrails pass on accepted material head 0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494"
       ]
+    },
+    {
+      "id": "AC-TA10-001",
+      "ep_id": "EP-TA-010",
+      "status": "NOT_STARTED",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0,
+      "basis": []
+    },
+    {
+      "id": "AC-TA10-002",
+      "ep_id": "EP-TA-010",
+      "status": "NOT_STARTED",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0,
+      "basis": []
+    },
+    {
+      "id": "AC-TA10-003",
+      "ep_id": "EP-TA-010",
+      "status": "NOT_STARTED",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0,
+      "basis": []
+    },
+    {
+      "id": "AC-TA10-004",
+      "ep_id": "EP-TA-010",
+      "status": "NOT_STARTED",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0,
+      "basis": []
     }
   ]
 }
