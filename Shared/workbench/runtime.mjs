@@ -229,7 +229,7 @@ function validateAllowedTargets(state, allowedTargetsInput) {
   return allowedTargets;
 }
 
-function validatePatch(currentState, patchInput) {
+function validatePatch(currentState, patchInput, usedEntityIds, usedProjectionIds) {
   const patch = clone(patchInput || {});
   const allowedKeys = new Set(["addEntities", "addProjections"]);
   for (const key of Object.keys(patch)) {
@@ -249,6 +249,7 @@ function validatePatch(currentState, patchInput) {
   for (const entity of patch.addEntities) {
     nonEmptyString(entity.label, "WORKBENCH_ENTITY_LABEL_REQUIRED", entity.id);
     requireCondition(!nextEntityIds.has(entity.id), "WORKBENCH_PATCH_ENTITY_EXISTS", entity.id);
+    requireCondition(!usedEntityIds.has(entity.id), "WORKBENCH_ENTITY_ID_REUSED", entity.id);
     const sources = entity.provenance?.sourceEntityRefs || [];
     requireCondition(Array.isArray(sources), "WORKBENCH_PROVENANCE_INVALID", entity.id);
     for (const source of sources) {
@@ -272,6 +273,7 @@ function validatePatch(currentState, patchInput) {
     nonEmptyString(projection.entityRef, "WORKBENCH_PROJECTION_ENTITY_REQUIRED", projection.id);
     requireCondition(nextEntityIds.has(projection.entityRef), "WORKBENCH_PROJECTION_ENTITY_UNKNOWN", projection.id);
     requireCondition(!existingProjectionIds.has(projection.id), "WORKBENCH_PATCH_PROJECTION_EXISTS", projection.id);
+    requireCondition(!usedProjectionIds.has(projection.id), "WORKBENCH_PROJECTION_ID_REUSED", projection.id);
     nonEmptyString(projection.label, "WORKBENCH_PROJECTION_LABEL_REQUIRED", projection.id);
     validatePlacement(sceneLike, projection.placement, projection.id);
     existingProjectionIds.add(projection.id);
@@ -305,6 +307,8 @@ export class WorkbenchRuntime {
     };
     this._history = [];
     this._future = [];
+    this._usedEntityIds = new Set(scene.entities.map((row) => row.id));
+    this._usedProjectionIds = new Set(scene.projections.map((row) => row.id));
     this._dispatching = false;
   }
 
@@ -391,7 +395,7 @@ export class WorkbenchRuntime {
       return {
         accepted: true,
         summary: typeof raw.summary === "string" ? raw.summary : "Accepted",
-        patch: validatePatch(this._state, raw.patch),
+        patch: validatePatch(this._state, raw.patch, this._usedEntityIds, this._usedProjectionIds),
       };
     } catch (error) {
       const code = error instanceof WorkbenchError ? error.code : "WORKBENCH_ADAPTER_FAILURE";
@@ -410,6 +414,8 @@ export class WorkbenchRuntime {
     next.interaction.preview = null;
     this._history.push(before);
     this._future = [];
+    for (const entity of decision.patch.addEntities) this._usedEntityIds.add(entity.id);
+    for (const projection of decision.patch.addProjections) this._usedProjectionIds.add(projection.id);
     this._state = next;
     return this._emit("TRANSFER_ACCEPTED", {
       request,
