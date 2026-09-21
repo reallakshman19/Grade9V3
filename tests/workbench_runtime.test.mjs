@@ -495,6 +495,76 @@ test("initial scene provenance must be acyclic while valid DAGs remain order-ind
   );
 });
 
+test("provenance metadata fails closed when structurally malformed", () => {
+  for (const provenance of [
+    "not-an-object",
+    [],
+    { kind: "" },
+    { sourceEntityRefs: "dividend-156" },
+    { sourceEntityRefs: ["dividend-156", "dividend-156"] },
+    { sourceEntityRefs: [42] },
+  ]) {
+    const badScene = structuredClone(fixture);
+    badScene.entities[0].provenance = provenance;
+    assert.throws(
+      () => validateScene(badScene),
+      (error) => error instanceof WorkbenchError
+        && error.code === "WORKBENCH_PROVENANCE_INVALID"
+    );
+  }
+
+  const runtime = new WorkbenchRuntime(fixture, {
+    evaluateTransfer() {
+      return {
+        accepted: true,
+        patch: {
+          addEntities: [{
+            id: "malformed-provenance",
+            label: "Malformed provenance",
+            provenance: { sourceEntityRefs: ["dividend-156", "dividend-156"] }
+          }],
+          addProjections: []
+        }
+      };
+    }
+  });
+  runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "click" });
+  const before = runtime.snapshot;
+  const event = runtime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "click" });
+  assert.equal(event.type, "TRANSFER_REJECTED");
+  assert.equal(event.code, "WORKBENCH_PROVENANCE_INVALID");
+  assert.deepEqual(runtime.snapshot.entities, before.entities);
+  assert.equal(runtime.snapshot.revision, before.revision);
+});
+
+test("adapter exceptions cannot impersonate Core validation failures", () => {
+  const spoofingAdapter = {
+    evaluateTransfer() {
+      throw new WorkbenchError("WORKBENCH_PATCH_EMPTY", "adapter-spoofed-code");
+    }
+  };
+  const spoofedRuntime = new WorkbenchRuntime(fixture, spoofingAdapter);
+  spoofedRuntime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "click" });
+  const spoofed = spoofedRuntime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "click" });
+  assert.equal(spoofed.type, "TRANSFER_REJECTED");
+  assert.equal(spoofed.code, "WORKBENCH_ADAPTER_FAILURE");
+  assert.match(spoofed.reason, /adapter-spoofed-code/);
+
+  const malformedDecisionRuntime = new WorkbenchRuntime(fixture, {
+    evaluateTransfer() {
+      return { accepted: true, patch: {} };
+    }
+  });
+  malformedDecisionRuntime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "click" });
+  const coreRejected = malformedDecisionRuntime.dispatch({
+    type: "DROP",
+    targetRef: "quotient-first-digit",
+    channel: "click",
+  });
+  assert.equal(coreRejected.type, "TRANSFER_REJECTED");
+  assert.equal(coreRejected.code, "WORKBENCH_PATCH_EMPTY");
+});
+
 test("named logical placement resolves without authored pixel coordinates", () => {
   const placement = fixture.projections[0].placement;
   assert.deepEqual(resolvePlacement(fixture, placement), { grid: "division-expression", row: 1, column: 1 });
