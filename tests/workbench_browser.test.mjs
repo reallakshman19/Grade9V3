@@ -549,3 +549,122 @@ test("real browser preserves distinct intermediate semantic identity through und
     await new Promise((resolveClose) => staticServer.server.close(resolveClose));
   }
 });
+
+
+test("Core learner shell preserves workbench state across protected reveal flow", { skip: !driverPath, timeout: 30000 }, async () => {
+  const staticServer = await openStaticServer();
+  const driverProcess = await startDriver(driverPath);
+  const driver = new WebDriver(driverProcess.base);
+  try {
+    await driver.open();
+    await driver.navigate(`${staticServer.origin}/tests/fixtures/workbench/core-learning-host.html`);
+    await driver.waitFor("return window.__coreLearnerReady === true;");
+
+    const initial = await driver.execute("return window.coreLearnerHarness.state();");
+    assert.equal(initial.core, "CORE2B");
+    assert.equal(initial.stage, "AWAITING_ATTEMPT");
+    assert.equal(initial.attempted, false);
+    assert.equal(initial.supportIndex, 0);
+
+    const initialSummary = await driver.execute("return window.coreLearnerHarness.workbenchSummary();");
+    assert.match(initialSummary, /Scene arithmetic-division-fixture/);
+
+    const derived = await driver.execute("return window.coreLearnerHarness.deriveFixtureState();");
+    assert.equal(derived.revision, 1);
+    assert.equal(
+      derived.entities.some((row) => row.id === "quotient-digit-core-fixture"),
+      true,
+    );
+
+    const supportButton = await driver.shadowElement("#learner", '[data-action="support"]');
+    await driver.sendKeys(supportButton, ENTER);
+    await driver.waitFor("return window.coreLearnerHarness.state().supportIndex === 1;");
+
+    const supported = await driver.execute("return window.coreLearnerHarness.state();");
+    assert.equal(supported.currentVisualStageRef, "V2");
+    assert.equal(await driver.execute("return window.coreLearnerHarness.workbenchElementStable();"), true);
+    assert.equal((await driver.execute("return window.coreLearnerHarness.workbenchSnapshot();")).revision, 1);
+
+    const blocked = await driver.execute("return window.coreLearnerHarness.requestSupport();");
+    assert.equal(blocked.supportIndex, 1);
+    const beforeAttemptHtml = await driver.execute("return window.coreLearnerHarness.html();");
+    assert.doesNotMatch(beforeAttemptHtml, /Use the changed condition to choose the controlling model or condition/);
+    assert.doesNotMatch(beforeAttemptHtml, /Select the controlling model or condition/);
+    assert.doesNotMatch(beforeAttemptHtml, /Reasoning route/);
+    assert.equal((await driver.execute("return window.coreLearnerHarness.workbenchSnapshot();")).revision, 1);
+
+    const attemptInput = await driver.shadowElement("#learner", "[data-attempt-input]");
+    await driver.sendKeys(attemptInput, "learner decision");
+    const commitButton = await driver.shadowElement("#learner", '[data-action="commit"]');
+    await driver.sendKeys(commitButton, ENTER);
+    await driver.waitFor("return window.coreLearnerHarness.state().attempted === true;");
+
+    const afterAttempt = await driver.execute("return window.coreLearnerHarness.state();");
+    assert.equal(afterAttempt.stage, "REASONING_VISIBLE");
+    assert.equal(afterAttempt.attemptCount, 1);
+    const afterAttemptHtml = await driver.execute("return window.coreLearnerHarness.html();");
+    assert.match(afterAttemptHtml, /Reasoning route/);
+    assert.match(afterAttemptHtml, /Select the controlling model or condition/);
+    assert.match(afterAttemptHtml, /Key decision/);
+    assert.equal(await driver.execute("return window.coreLearnerHarness.workbenchElementStable();"), true);
+    assert.equal((await driver.execute("return window.coreLearnerHarness.workbenchSnapshot();")).revision, 1);
+
+    const postAttemptSupport = await driver.shadowElement("#learner", '[data-action="support"]');
+    await driver.sendKeys(postAttemptSupport, ENTER);
+    await driver.waitFor("return window.coreLearnerHarness.state().supportIndex === 2;");
+    const fullySupported = await driver.execute("return window.coreLearnerHarness.state();");
+    assert.equal(fullySupported.currentVisualStageRef, "V3");
+    assert.equal((await driver.execute("return window.coreLearnerHarness.workbenchSnapshot();")).revision, 1);
+
+    const summaryAfterRerenders = await driver.execute("return window.coreLearnerHarness.workbenchSummary();");
+    assert.match(summaryAfterRerenders, /Revision 1\./);
+    assert.match(summaryAfterRerenders, /1 \[fixture result\]/);
+
+    await driver.setWindow(420, 900);
+    await driver.execute("document.querySelector('#learner').style.width='320px';");
+    const narrow = await driver.execute("return window.coreLearnerHarness.metrics();");
+    assert.ok(narrow.hostWidth <= 322, JSON.stringify(narrow));
+    assert.ok(narrow.scrollWidth <= 322, JSON.stringify(narrow));
+
+    await driver.cdp("Emulation.setEmulatedMedia", {
+      media: "",
+      features: [{ name: "prefers-reduced-motion", value: "reduce" }],
+    });
+    const reduced = await driver.execute("return window.coreLearnerHarness.metrics();");
+    assert.equal(reduced.reducedMotion, true);
+    assert.equal(reduced.transitionDuration, "0s");
+
+    const resources = await driver.execute("return window.coreLearnerHarness.resourceUrls();");
+    const httpResources = resources.filter((url) => /^https?:/.test(url));
+    assert.ok(httpResources.length >= 3, JSON.stringify(resources));
+    assert.equal(
+      httpResources.every((url) => url.startsWith(staticServer.origin)),
+      true,
+      JSON.stringify(httpResources),
+    );
+
+    const completeButton = await driver.shadowElement("#learner", '[data-action="complete"]');
+    await driver.sendKeys(completeButton, ENTER);
+    await driver.waitFor("return window.coreLearnerHarness.state().stage === 'COMPLETE';");
+
+    const events = await driver.execute("return window.coreLearnerHarness.events();");
+    assert.deepEqual(
+      events.map((event) => event.type),
+      [
+        "support_requested",
+        "support_requested",
+        "attempt_committed",
+        "support_requested",
+        "activity_completed",
+      ],
+    );
+    assert.equal(events[1].detail.revealed, false);
+    assert.equal(events[1].detail.reason, "SUPPORT_PROTECTED_PREATTEMPT");
+    assert.equal(events[2].detail.response, "learner decision");
+    assert.doesNotMatch(JSON.stringify(events), /mastery|proficien|knowledge percentage/i);
+  } finally {
+    await driver.close();
+    driverProcess.child.kill("SIGTERM");
+    await new Promise((resolveClose) => staticServer.server.close(resolveClose));
+  }
+});
