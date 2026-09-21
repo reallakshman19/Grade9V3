@@ -1,0 +1,34 @@
+{
+  "schema_version": "relay-v2.5-github-observation",
+  "generation_id": "GHGEN-WP108-ISS175-R2",
+  "operation_id": "GHOP-WP108-ISSUE175-CHECKPOINT",
+  "candidate_basis": [
+    "roadmap:RM-0011",
+    "checkpoint:CP-TA-010",
+    "material:8ed02dcfcc9823271bcde409f3e781f252dd6e37",
+    "provider-update:issue-175",
+    "provider-readback:https://github.com/reallaksh19/Grade9V3/issues/175"
+  ],
+  "publication": {
+    "attempted": true,
+    "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
+    "error": null
+  },
+  "readback": {
+    "performed": true,
+    "found": true,
+    "issue_number": 175,
+    "issue_id": 5529711190,
+    "github_state": "OPEN",
+    "marker_present": true,
+    "relationships": [],
+    "body_digest": null,
+    "basis": [
+      "GitHub update response for Issue #175",
+      "GitHub provider readback after checkpoint publication",
+      "Verified relay-operation marker GHOP-WP108-ISSUE175-CHECKPOINT"
+    ]
+  },
+  "result": "VERIFIED",
+  "reason": "Provider readback found Issue #175 OPEN with the CP-TA-010 checkpoint marker and remaining production follow-on work preserved."
+}
