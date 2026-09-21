@@ -367,7 +367,7 @@ def transition_report(projection: dict) -> dict:
 def parent_agent_text(report: dict) -> str:
     """Render a deterministic human-readable view without hidden scoring."""
     lines = [
-        "Grade-9 Physics transition view",
+        "grade-exit transition view",
         f"Profile: {report.get('profile_id') or 'unspecified'}",
         f"Transition: {report['transition_state']}",
         report["transition_message"],
