@@ -10,7 +10,7 @@ identity:
 replan_inheritance: null
 git_basis:
   expected_branch: feat/issue-162-semantic-workbench-core
-  material_ref: 685b325b957c2c2e99f12e93f1866f66f00e8e7d
+  material_ref: 0f14e663b72de41c3a13e924755e935d309a83d9
   base_branch: main
   base_observed_ref: 843ec2d8d6faa2b8de15795ed1535905e4efc8a8
   drift_policy: OWNER_EXCEPTION
@@ -51,7 +51,7 @@ context_capsule:
   - ODR-0162-CONTINUE-CORE-CODING
   - ODR-0162-ADVANCE-TRANSACTION-INTEGRITY
   - ODR-0162-ADVANCE-PROVENANCE-INTEGRITY
-  current_implementation_state: The truthful identity witness plus channel-neutral validity, non-empty commit enforcement, initial provenance referential integrity, observer containment, and initial provenance DAG integrity are authored; exact-head Node/browser/full-guardrail evidence remains pending.
+  current_implementation_state: The truthful identity witness plus channel-neutral validity, non-empty commit enforcement, provenance referential/DAG integrity, observer containment, and lifecycle-aware target/reference integrity are authored; exact-head Node/browser/full-guardrail evidence remains pending.
   known_problems:
   - Exact-head semantic-identity evidence remains pending and must not be reported as complete.
   - Exact-head channel-neutral adapter evidence remains pending and must not be reported as complete.
