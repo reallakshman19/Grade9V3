@@ -355,6 +355,29 @@ test("a new accepted commit after undo invalidates the redo branch", () => {
   );
 });
 
+test("initial scene provenance source refs must resolve to scene entities", () => {
+  const valid = structuredClone(fixture);
+  valid.entities.push({
+    id: "initial-derived",
+    label: "Derived",
+    provenance: { kind: "DERIVED", sourceEntityRefs: ["dividend-156"] }
+  });
+  assert.doesNotThrow(() => validateScene(valid));
+
+  const dangling = structuredClone(fixture);
+  dangling.entities.push({
+    id: "initial-orphan",
+    label: "Orphan",
+    provenance: { kind: "DERIVED", sourceEntityRefs: ["missing-source"] }
+  });
+  assert.throws(
+    () => validateScene(dangling),
+    (error) => error instanceof WorkbenchError
+      && error.code === "WORKBENCH_PROVENANCE_SOURCE_UNKNOWN"
+      && error.detail === "initial-orphan -> missing-source"
+  );
+});
+
 test("named logical placement resolves without authored pixel coordinates", () => {
   const placement = fixture.projections[0].placement;
   assert.deepEqual(resolvePlacement(fixture, placement), { grid: "division-expression", row: 1, column: 1 });
