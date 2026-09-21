@@ -230,7 +230,7 @@ Core2 preserves source-provided wording and order. It must not be silently rewri
 
 ### `question.scaffolds[]`
 
-This is the optional Core2A pedagogical scaffold ladder.
+This is the optional pedagogical scaffold ladder for Core2A/Core2B. Core2B may use it only while preserving its changed/protected decision.
 
 Each scaffold has:
 
@@ -329,7 +329,7 @@ Rules:
 
 ## 8. Builder projection envelope
 
-#175 may develop against fixtures using this stable adapter envelope. The envelope is a **compiled projection**, not a new source of truth.
+#175 may develop against fixtures using this stable adapter envelope. The envelope is a **compiled projection**, not a new source of truth. Its machine-readable shape is frozen in `Shared/library/core-projection.schema.json`.
 
 ```json
 {
