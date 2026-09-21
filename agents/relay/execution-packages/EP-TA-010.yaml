@@ -58,7 +58,8 @@
     "prior_owner_decisions": [
       "ODR-0003-G9-PHYSICS-INDEPENDENCE",
       "ODR-0004-REPRESENTATION-ROUTER-ARCHITECTURE",
-      "ODR-0009-WEB-BUILDER-START"
+      "ODR-0009-WEB-BUILDER-START",
+      "ODR-0010-OWNER-EP10-STEP1-DIRECT-EXECUTION"
     ],
     "current_implementation_state": "No reusable Core learner page component exists on the predecessor branch. The first slice may use contract fixtures from #176 but must not depend on raw subject JSON as a permanent interface.",
     "known_problems": [
@@ -624,7 +625,7 @@
         ],
         "expected_result": "Projection-driven Core state rendering exists with no subject-specific branch.",
         "stop_if": [
-          "Fresh DISC/QUAL/TC or material_write_ready is absent."
+          "Stop after STEP-TA10-001 focused verification; do not proceed to STEP-TA10-002 without normal qualification or separate Owner authorization."
         ]
       },
       {
