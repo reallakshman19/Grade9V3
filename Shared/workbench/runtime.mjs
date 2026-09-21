@@ -267,7 +267,13 @@ export class WorkbenchRuntime {
       revision: this._state.revision,
       ...detail,
     });
-    if (this._eventSink) this._eventSink(event);
+    if (this._eventSink) {
+      try {
+        this._eventSink(clone(event));
+      } catch {
+        // Observers are downstream of semantic state; host failures cannot alter dispatch.
+      }
+    }
     return event;
   }
 
