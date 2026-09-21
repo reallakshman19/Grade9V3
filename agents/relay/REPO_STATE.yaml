@@ -55,7 +55,7 @@ status_planes:
     state: READY
     can_continue: true
     material_authority: WRITE
-    next_action: Execute STEP-I03 by removing input channel metadata from the adapter-validity boundary while retaining channel on host-observable transfer events; keep identity/head evidence pending.
+    next_action: Preserve the channel-neutral Core candidate at d05414c5edec3b92790239c85b489f5b7e95641c; executable TEST-I04/TEST-I05 and earlier identity/head evidence remain pending while Owner-authorized bounded Core continuation stays available.
   quality:
     state: NEEDS_ATTENTION
     findings:
@@ -65,7 +65,7 @@ status_planes:
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
   evidence:
     state: PARTIAL
-    summary: The stronger 156 -> partial-dividend-15 -> quotient-digit-1 witness is authored and a focused runtime lifecycle reproduction passes with revision 6 and exactly two adapter calls; exact branch Node suite, real-Chrome repository proof, and full exact-head guardrails remain unverified here.
+    summary: The stronger 156 -> partial-dividend-15 -> quotient-digit-1 witness remains authored. The channel-neutral adapter boundary is implemented at d05414c5edec3b92790239c85b489f5b7e95641c with a focused regression and refreshed manifest, but exact repository Node/Chrome/full-guardrail evidence for the pending identity and channel-neutral slices remains unverified here.
     not_run:
     - id: TEST-I01
       reason: The exact repository Node suite has not been executed from a checkout of material head 726bb16085dd5f59f392a2fcc1805f3639c7e1ad; the focused lifecycle reproduction does not substitute for the declared test command.
