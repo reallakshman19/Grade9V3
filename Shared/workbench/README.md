@@ -9,7 +9,7 @@ Core owns only generic browser mechanics:
 
 - persistent semantic entity identity with multiple projections;
 - named logical grid placement with no authored pixel coordinates;
-- one input-neutral inspect / pick / preview / drop / cancel / undo state machine;
+- one input-neutral inspect / pick / preview / drop / cancel / undo / redo state machine;
 - atomic adapter-approved patches and provenance for derived entities;
 - pedagogy injections stored separately from canonical transformations;
 - a standards-based `<semantic-workbench>` custom element with Shadow DOM isolation;
@@ -35,21 +35,24 @@ runtime contract survives its falsifiers; integration and packaging belong to #1
 `semantic-workbench.mjs` registers `<semantic-workbench>` and accepts three properties:
 
 - `scene`: validated runtime scene data;
-- `adapter`: object implementing `evaluateTransfer(request, snapshot)`;
+- `adapter`: object implementing `evaluateTransfer(request, snapshot)`; `request` contains only semantic `sourceEntityRef`, `targetRef`, and opaque `operation` fields, never pointer/click/keyboard/touch channel metadata;
 - `injections`: optional checkpoint/hint records kept outside canonical transformations.
 
 The element emits one composed `semantic-workbench-event`. Its `detail.type` names the
 semantic event (`ENTITY_PICKED`, `TRANSFER_PREVIEW`, `TRANSFER_ACCEPTED`,
-`TRANSFER_REJECTED`, `INTERACTION_CANCELLED`, `UNDO_APPLIED`, or `WORKBENCH_READY`).
+`TRANSFER_REJECTED`, `INTERACTION_CANCELLED`, `ENTITY_INSPECTED`, `UNDO_APPLIED`, `REDO_APPLIED`, or `WORKBENCH_READY`).
 No event claims mastery or learner state.
 
 ## Deliberate first-slice limits
 
 The slice proves named row/column placement, not the full proposed AUTO/REGION/RELATIVE
 layout language. It proves one generic operation string passed to an adapter, not a
-Core-owned MOVE/COPY/DERIVE/REFERENCE taxonomy. It implements undo but not redo. It
-uses escaped text projections and target controls; richer SVG/MathML renderers are
-future renderer plugins after the semantic contract is stable.
+Core-owned MOVE/COPY/DERIVE/REFERENCE taxonomy. Undo and redo are instance-local
+snapshot restoration; redo does not replay adapter validity. Input modality remains
+observable on emitted interaction events but is excluded from the adapter validity
+request. The component uses escaped text projections and target controls; richer
+SVG/MathML renderers remain deferred until a concrete falsifier requires an extension
+seam.
 
 The test fixture exercises one real long-division step only. It is a test witness, not
 canonical curriculum content and not a cross-subject portability claim.
