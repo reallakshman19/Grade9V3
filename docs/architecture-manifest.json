@@ -17,7 +17,7 @@
     "WEB": 6,
     "WEB_RUNTIME": 3
   },
-  "digest": "sha256:b024c28453cc9f8980c1df0b39de8a739f3881f632016fa7db1cedba6a05363a",
+  "digest": "sha256:93da5744ba63d84febe84cfb8f3cd840811d34f4df75a817f65e4c155fbc9dc0",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -688,15 +688,15 @@
       "path": "Shared/workbench/README.md",
       "role": "WEB_RUNTIME",
       "role_description": "Subject-neutral semantic interaction and Web Component runtime",
-      "bytes": 3260,
-      "sha256": "40ed0ec4b0349ef0e3562fc538f6537a556a75ff9dda688a637ed224f08da557"
+      "bytes": 3656,
+      "sha256": "b3fe3c99dbb5af8e5846740276502be3b22812dd13d052bcf338bc4b7a4e7eeb"
     },
     {
       "path": "Shared/workbench/runtime.mjs",
       "role": "WEB_RUNTIME",
       "role_description": "Subject-neutral semantic interaction and Web Component runtime",
-      "bytes": 18484,
-      "sha256": "4667d5a0b0378b6b8b689f05897fef49b4da4fa5a92f9547454ce5f7bc8894ba"
+      "bytes": 19850,
+      "sha256": "1a975b88555b0846f0bfe2ec7f27fe0c37f9139c8f90a7f1b8e686403a460fb7"
     },
     {
       "path": "Shared/workbench/semantic-workbench.mjs",
@@ -1339,8 +1339,8 @@
       "path": "tests/workbench_runtime.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 23050,
-      "sha256": "14361719c72cc57cc439280aee3707cbba82c6ae6e886eba66ef616fa81e497e"
+      "bytes": 25964,
+      "sha256": "1f03f274632ca22c877c3c370e5816906b69c02f04ff781ddbbf76b3bafdf96f"
     },
     {
       "path": "tools/app.css",
