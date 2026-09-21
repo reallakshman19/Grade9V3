@@ -1,0 +1,38 @@
+schema_version: relay-v2.5
+id: ODR-0162-ADVANCE-LIFETIME-IDENTITY-INTEGRITY
+decision:
+  authority: OWNER
+  kind: AUTHORIZATION
+  statement: >-
+    Continue bounded Issue #162 Core coding while merge/head evidence remains deferred.
+    Do not couple adapter-approved transactions to canonicalTransformation metadata:
+    current authority keeps academic validity in the adapter and transformations remain
+    declarative runtime metadata/injection anchors. Instead close the stronger surviving
+    semantic-identity falsifier: once an entity or projection ID has been committed in a
+    WorkbenchRuntime instance, undo/branching must not allow that ID to be reassigned to
+    a different semantic object or representation during the same runtime lifetime.
+  source: >-
+    Owner instruction in the active Grade9V3 engineering session on 2026-09-21:
+    "proceed"
+effects:
+  grants_material_write_authority: true
+  pending_items:
+  - Cumulative exact-head Node, real-Chrome and full-guardrail validation remains pending.
+  - PR #165 merge/base and relay custody reconciliation remains deferred before merge.
+delivery_authorization: null
+impact:
+  class: [LOCAL, EXECUTION_GOVERNANCE, PROTOCOL_EXCEPTION]
+affected:
+  objectives: [OBJ-TOPIC-ATLAS-COMPLETE]
+  phases: [PHASE-TAKEOVER-RECONCILIATION]
+  work_packages: [WP-162-BROWSER-RUNTIME-PROOF]
+  execution_packages: [EP-0162-SEMANTIC-IDENTITY-PROOF]
+  issues: [ISSUE-162]
+required_reconciliation:
+- Reserve initial and successfully committed entity/projection IDs for the lifetime of one runtime instance.
+- Undo/redo restore semantic snapshots but do not release committed IDs for reassignment.
+- A rejected/uncommitted candidate ID is not reserved.
+- A rejected reuse attempt must not destroy an existing redo branch.
+- Preserve adapter-owned validity; do not require accepted transfers to match canonicalTransformation metadata.
+- Keep PR #165 draft and leave merge/base reconciliation deferred.
+status: APPLIED
