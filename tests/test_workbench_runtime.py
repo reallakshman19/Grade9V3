@@ -4,7 +4,7 @@ import subprocess
 import unittest
 from pathlib import Path
 
-from Shared.tools import build_manifest
+from Shared.tools import build_core_learning_runtime, build_manifest
 
 REPO = Path(__file__).resolve().parents[1]
 
@@ -77,6 +77,21 @@ class WorkbenchRuntimeNodeTests(unittest.TestCase):
             check=False,
         )
         self.assertEqual(result.returncode, 0, result.stdout)
+
+    def test_public_core_learning_runtime_is_generated_from_shared(self):
+        rendered = build_core_learning_runtime.render()
+        self.assertEqual(
+            set(rendered),
+            {
+                "public/js/core-learning/runtime.mjs",
+                "public/js/core-learning/semantic-workbench.mjs",
+                "public/js/core-learning/core-learning-page.mjs",
+                "public/js/core-learning/core-learning-host.mjs",
+            },
+        )
+        for relative, expected in rendered.items():
+            with self.subTest(path=relative):
+                self.assertEqual((REPO / relative).read_bytes(), expected)
 
     def test_manifest_classifies_workbench_es_modules(self):
         runtime = REPO / "Shared/workbench/runtime.mjs"
