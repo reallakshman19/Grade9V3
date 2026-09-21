@@ -42,20 +42,20 @@ takeover_admissions:
     id: TC-0162-BROWSER-RUNTIME-PROOF
     path: agents/relay/certifications/takeover/TC-0162-BROWSER-RUNTIME-PROOF.yaml
 owner_execution_exception:
-  id: ODR-0162-ADVANCE-LIFETIME-IDENTITY-INTEGRITY
-  path: agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-LIFETIME-IDENTITY-INTEGRITY.yaml
+  id: ODR-0162-CORE-COMPLETION-INTEGRITY-BATCH
+  path: agents/relay/roadmap/owner-decisions/ODR-0162-CORE-COMPLETION-INTEGRITY-BATCH.yaml
   normal_drift_write_gate_passed: false
 progress:
   overall_percent: 0
   phase_percent: 0
   ep_percent: 0
-  basis_revision: PB-0010
+  basis_revision: PB-0011
 status_planes:
   execution:
     state: READY
     can_continue: true
     material_authority: WRITE
-    next_action: Preserve cumulative Core material head 34d9111cdb0c95ef608b98b0f24b1fe15ce43afc; obtain one cumulative exact-head Node, real-Chrome and full-guardrail validation covering TEST-I01..TEST-I19 while bounded Core continuation remains available.
+    next_action: Execute STEP-I11 as one Core completion-integrity batch: validate provenance metadata shape and isolate adapter failure attribution; then freeze discretionary Core hardening pending exact-head evidence.
   quality:
     state: NEEDS_ATTENTION
     findings:
@@ -68,6 +68,7 @@ status_planes:
     - Reentrant semantic dispatch is blocked on 8003880e84a5798f9a5eba0f8dfdc762c767845f: synchronous callbacks receive WORKBENCH_REENTRANT_DISPATCH before nested state/history mutation; exact-head evidence remains pending.
     - Canonical-transformation/history coupling was tested and deliberately not added because it would promote descriptive metadata over adapter-owned validity.
     - Runtime-lifetime ID stability is implemented at 34d9111cdb0c95ef608b98b0f24b1fe15ce43afc: committed entity/projection IDs remain reserved across undo branches, rejected candidate IDs are not burned, and rejected reuse leaves redo intact; exact-head evidence remains pending.
+    - Whole-runtime completion audit found two final high-confidence gaps: malformed provenance metadata can be treated as absent, and adapter-thrown WorkbenchError can impersonate Core failure codes. STEP-I11 closes both in one batch.
     - The stronger witness now models partial-dividend-15 as a distinct entity and the focused lifecycle reproduction passes without a Shared/workbench product-code change; formal exact-head repository/browser evidence is still pending.
     - Main carries RM-0008 / EP-TA-008 while this branch carries the #162 RM-0002 execution package; normal drift/write validation remains unmet under the explicit Owner continuation exception.
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
@@ -153,6 +154,7 @@ status_planes:
     - agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-REFERENCE-INTEGRITY.yaml
     - agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-REENTRANCY-INTEGRITY.yaml
     - agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-LIFETIME-IDENTITY-INTEGRITY.yaml
+    - agents/relay/roadmap/owner-decisions/ODR-0162-CORE-COMPLETION-INTEGRITY-BATCH.yaml
     - agents/relay/drift/DRIFT-0162-RM0008.yaml
 projection:
   required: true
