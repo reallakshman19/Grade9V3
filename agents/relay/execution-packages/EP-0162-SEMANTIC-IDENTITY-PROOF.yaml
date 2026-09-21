@@ -51,6 +51,7 @@ context_capsule:
   - ODR-0162-CONTINUE-CORE-CODING
   - ODR-0162-ADVANCE-TRANSACTION-INTEGRITY
   - ODR-0162-ADVANCE-PROVENANCE-INTEGRITY
+  - ODR-0162-ADVANCE-REENTRANCY-INTEGRITY
   current_implementation_state: The truthful identity witness plus channel-neutral validity, non-empty commit enforcement, provenance referential/DAG integrity, observer containment, and lifecycle-aware target/reference integrity are authored; exact-head Node/browser/full-guardrail evidence remains pending.
   known_problems:
   - Exact-head semantic-identity evidence remains pending and must not be reported as complete.
@@ -185,6 +186,8 @@ scope:
     reason: Host guidance and transformation destinations must not name nonexistent targets; declarative transformation sources may remain deferred because runtime transactions can establish them later.
   - invariant: Declared provenance sources resolve to canonical semantic entities.
     reason: Core must not admit dangling semantic lineage merely because an entity arrived in the initial scene instead of an adapter patch.
+  - invariant: Semantic dispatch is non-reentrant.
+    reason: Synchronous observers and adapters may run during dispatch, but they must not interleave a second Core transaction before the active dispatch returns.
   prohibited:
   - domain: learner evidence/support routing
     reason: Owned by Issue #159.
@@ -209,6 +212,9 @@ anti_drift:
   - id: ADR-I04
     restriction: Do not add a second event bus, observer retry queue or subject-specific error handling to contain eventSink failures.
     reason: A cloned observer payload plus synchronous exception containment is sufficient for this falsifier.
+  - id: ADR-I05
+    restriction: Do not make semantic dispatch asynchronous or queue nested intents to solve synchronous callback reentrancy.
+    reason: The smallest Core boundary is to reject interleaving while the active transaction owns dispatch.
   - id: ADR-I04
     restriction: Do not turn provenance referential integrity into a provenance taxonomy, executable derivation graph, cycle checker, or transaction ledger.
     reason: This slice only closes dangling source references in initial canonical state.
@@ -335,6 +341,19 @@ implementation_plan:
   expected_state: Rejection allowedTargets are unique existing targets; transformation targetRef resolves now; transformation sourceEntityRefs are clean unique strings and may refer to semantic entities created later.
   stop_conditions:
   - Stop if the fix requires Core to decide academic validity or require deferred transformation sources to exist before their runtime creation.
+- id: STEP-I09
+  objective: Prevent synchronous callback reentrancy from interleaving a second semantic transaction before the active dispatch returns.
+  targets:
+  - Shared/workbench/runtime.mjs
+  - tests/workbench_runtime.test.mjs
+  - Shared/workbench/README.md
+  - docs/architecture-manifest.json
+  inputs: [INPUT-I01]
+  acceptance: [AC-I16, AC-I17]
+  tests: [TEST-I16, TEST-I17]
+  expected_state: Nested dispatch fails deterministically with WORKBENCH_REENTRANT_DISPATCH while the outer event, canonical state and history remain authoritative.
+  stop_conditions:
+  - Stop if the fix requires asynchronous dispatch, an intent queue, host-specific policy or changes academic validity.
 next_work:
   phase_transition: false
   steps:
@@ -440,6 +459,20 @@ next_work:
     expected_result: Hosts never receive nonexistent allowed targets or transformations with nonexistent destinations, while future semantic source refs remain representable.
     stop_if:
     - The change starts interpreting academic validity or forbids runtime-created transformation sources.
+  - order: 9
+    action: Reject synchronous nested dispatch from observers/adapters while preserving the active semantic transaction.
+    targets:
+    - Shared/workbench/runtime.mjs
+    - tests/workbench_runtime.test.mjs
+    - Shared/workbench/README.md
+    - docs/architecture-manifest.json
+    inputs: [INPUT-I01]
+    tests: [TEST-I16, TEST-I17]
+    benchmarks: []
+    acceptance: [AC-I16, AC-I17]
+    expected_result: The active dispatch owns runtime mutation until it returns; synchronous callbacks cannot interleave undo/redo/pick/drop or another transaction.
+    stop_if:
+    - The change requires async scheduling, a callback queue or subject-specific behavior.
 qualification_boundary:
   required: false
   trigger: null
@@ -524,6 +557,14 @@ acceptance:
   description: Valid initial provenance, adapter-added provenance and prior runtime/browser contracts remain unchanged.
   weight: 30
   verification: [TEST-I08, TEST-I09]
+- id: AC-I16
+  description: A synchronous callback cannot reenter WorkbenchRuntime.dispatch while an outer semantic dispatch is active; the nested attempt fails with WORKBENCH_REENTRANT_DISPATCH before state/history mutation.
+  weight: 70
+  verification: [TEST-I16]
+- id: AC-I17
+  description: The outer semantic event, revision and history remain authoritative after a blocked reentrant attempt, and normal subsequent dispatch remains available.
+  weight: 30
+  verification: [TEST-I16, TEST-I17]
 validation:
 - id: TEST-I01
   class: MUST_PASS
@@ -585,6 +626,14 @@ validation:
   class: MUST_PASS
   method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the reference-integrity coding head
   proves: [AC-I15]
+- id: TEST-I16
+  class: MUST_PASS
+  method: node --test tests/workbench_runtime.test.mjs
+  proves: [AC-I16, AC-I17]
+- id: TEST-I17
+  class: MUST_PASS
+  method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the reentrancy-containment coding head
+  proves: [AC-I17]
 failure_and_stop_conditions:
   hard_stop_categories: [OWNER_DECISION_REQUIRED, AUTHORITY_VIOLATION, PROTECTED_INVARIANT_FAILURE, UNSAFE_ENGINEERING_RESULT]
 report_contract:
@@ -628,7 +677,7 @@ report_contract:
     required_fields: [criterion, status, evidence, remaining_gap]
   - id: RPT-I06
     section: Tests and evidence
-    sources: [TEST-I01, TEST-I02, TEST-I03, TEST-I04, TEST-I05, TEST-I06, TEST-I07, TEST-I08, TEST-I09]
+    sources: [TEST-I01, TEST-I02, TEST-I03, TEST-I04, TEST-I05, TEST-I06, TEST-I07, TEST-I08, TEST-I09, TEST-I10, TEST-I11, TEST-I12, TEST-I13, TEST-I14, TEST-I15, TEST-I16, TEST-I17]
     required_fields: [test_id, runner, result, exact_head]
   - id: RPT-I07
     section: Quality findings
