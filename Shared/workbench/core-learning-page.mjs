@@ -4,7 +4,7 @@ export const CORE_PROJECTION_CONTRACT_VERSION = "1.0";
 const CORE_MODES = new Set(["CORE1A", "CORE1B", "CORE2A", "CORE2B"]);
 const SUPPORT_KINDS = new Set(["REPRESENT", "CONNECT", "EXECUTE"]);
 const REVEAL_KINDS = new Set(["CONCEPT", "METHOD", "ANSWER"]);
-const clone = (value) => JSON.parse(JSON.stringify(value));
+const clone = (value) => value == null ? value : JSON.parse(JSON.stringify(value));
 
 export const CORE_LEARNER_EVENTS = Object.freeze({
   ATTEMPT_COMMITTED: "attempt_committed",
@@ -42,7 +42,8 @@ function optionalArray(value, code, detail = "") {
 }
 
 function validateReasoningRoute(projection) {
-  const route = projection.application.reasoning_route;
+  const application = projection.application;
+  const route = application?.reasoning_route ?? [];
   const moveIds = new Set();
   for (const move of route) {
     requireObject(move, "CORE_PROJECTION_REASONING_MOVE_INVALID");
@@ -53,7 +54,7 @@ function validateReasoningRoute(projection) {
     requireString(move.action, "CORE_PROJECTION_REASONING_MOVE_ACTION_REQUIRED", id);
   }
 
-  const crux = projection.application.crux_move_ref;
+  const crux = application?.crux_move_ref;
   if (crux != null) {
     requireString(crux, "CORE_PROJECTION_CRUX_MOVE_REF_INVALID");
     requireCondition(moveIds.has(crux), "CORE_PROJECTION_CRUX_MOVE_REF_UNKNOWN", crux);
@@ -64,7 +65,7 @@ function validateReasoningRoute(projection) {
     requireCondition(moveIds.has(ref), "CORE_PROJECTION_PROTECTED_MOVE_REF_UNKNOWN", ref);
   }
 
-  for (const scaffold of projection.application.scaffolds) {
+  for (const scaffold of application?.scaffolds ?? []) {
     requireObject(scaffold, "CORE_PROJECTION_SCAFFOLD_INVALID");
     requireString(scaffold.text, "CORE_PROJECTION_SCAFFOLD_TEXT_REQUIRED");
     requireCondition(
@@ -99,7 +100,7 @@ function validateReasoningRoute(projection) {
     }
   }
 
-  const transfer = projection.application.transfer;
+  const transfer = application?.transfer;
   if (transfer?.protected_move_ref != null) {
     const ref = requireString(
       transfer.protected_move_ref,
@@ -128,52 +129,54 @@ export function validateCoreProjection(input) {
     String(projection.core),
   );
 
-  projection.concept = requireObject(projection.concept, "CORE_PROJECTION_CONCEPT_REQUIRED");
-  projection.application = requireObject(
-    projection.application,
-    "CORE_PROJECTION_APPLICATION_REQUIRED",
-  );
+  projection.concept = projection.concept == null
+    ? null
+    : requireObject(projection.concept, "CORE_PROJECTION_CONCEPT_INVALID");
+  projection.application = projection.application == null
+    ? null
+    : requireObject(projection.application, "CORE_PROJECTION_APPLICATION_INVALID");
   projection.presentation = requireObject(
     projection.presentation,
     "CORE_PROJECTION_PRESENTATION_REQUIRED",
   );
 
-  requireString(projection.concept.microtopic_ref, "CORE_PROJECTION_MICROTOPIC_REF_REQUIRED");
-  requireString(projection.concept.inferential_jump, "CORE_PROJECTION_INFERENTIAL_JUMP_REQUIRED");
-  projection.concept.teaching_path = optionalArray(
-    projection.concept.teaching_path,
-    "CORE_PROJECTION_TEACHING_PATH_INVALID",
-    projection.concept.microtopic_ref,
-  );
-  projection.concept.misconceptions = optionalArray(
-    projection.concept.misconceptions,
-    "CORE_PROJECTION_MISCONCEPTIONS_INVALID",
-    projection.concept.microtopic_ref,
-  );
-  projection.concept.representation_refs = optionalArray(
-    projection.concept.representation_refs,
-    "CORE_PROJECTION_REPRESENTATION_REFS_INVALID",
-    projection.concept.microtopic_ref,
-  );
+  if (projection.concept) {
+    requireString(projection.concept.microtopic_ref, "CORE_PROJECTION_MICROTOPIC_REF_REQUIRED");
+    requireString(projection.concept.inferential_jump, "CORE_PROJECTION_INFERENTIAL_JUMP_REQUIRED");
+    projection.concept.teaching_path = optionalArray(
+      projection.concept.teaching_path,
+      "CORE_PROJECTION_TEACHING_PATH_INVALID",
+      projection.concept.microtopic_ref,
+    );
+    projection.concept.misconceptions = optionalArray(
+      projection.concept.misconceptions,
+      "CORE_PROJECTION_MISCONCEPTIONS_INVALID",
+      projection.concept.microtopic_ref,
+    );
+    projection.concept.representation_refs = optionalArray(
+      projection.concept.representation_refs,
+      "CORE_PROJECTION_REPRESENTATION_REFS_INVALID",
+      projection.concept.microtopic_ref,
+    );
+  }
 
-  if (projection.application.question_ref != null) {
-    requireString(projection.application.question_ref, "CORE_PROJECTION_QUESTION_REF_INVALID");
+  if (projection.application) {
+    requireString(projection.application.question_ref, "CORE_PROJECTION_QUESTION_REF_REQUIRED");
+    requireString(projection.application.family_ref, "CORE_PROJECTION_FAMILY_REF_REQUIRED");
+    requireString(projection.application.stem, "CORE_PROJECTION_STEM_REQUIRED");
+    projection.application.reasoning_route = optionalArray(
+      projection.application.reasoning_route,
+      "CORE_PROJECTION_REASONING_ROUTE_INVALID",
+    );
+    projection.application.hints = optionalArray(
+      projection.application.hints,
+      "CORE_PROJECTION_HINTS_INVALID",
+    );
+    projection.application.scaffolds = optionalArray(
+      projection.application.scaffolds,
+      "CORE_PROJECTION_SCAFFOLDS_INVALID",
+    );
   }
-  if (projection.application.family_ref != null) {
-    requireString(projection.application.family_ref, "CORE_PROJECTION_FAMILY_REF_INVALID");
-  }
-  projection.application.reasoning_route = optionalArray(
-    projection.application.reasoning_route,
-    "CORE_PROJECTION_REASONING_ROUTE_INVALID",
-  );
-  projection.application.hints = optionalArray(
-    projection.application.hints,
-    "CORE_PROJECTION_HINTS_INVALID",
-  );
-  projection.application.scaffolds = optionalArray(
-    projection.application.scaffolds,
-    "CORE_PROJECTION_SCAFFOLDS_INVALID",
-  );
 
   requireCondition(
     typeof projection.presentation.attempt_before_reveal === "boolean",
@@ -188,6 +191,13 @@ export function validateCoreProjection(input) {
     "CORE_PROJECTION_PROTECTED_MOVES_INVALID",
   );
 
+  if (["CORE1A", "CORE1B"].includes(projection.core)) {
+    requireCondition(projection.concept != null, "CORE_PROJECTION_CONCEPT_REQUIRED", projection.core);
+  }
+  if (["CORE2A", "CORE2B"].includes(projection.core)) {
+    requireCondition(projection.application != null, "CORE_PROJECTION_APPLICATION_REQUIRED", projection.core);
+  }
+
   validateReasoningRoute(projection);
   return projection;
 }
@@ -195,7 +205,7 @@ export function validateCoreProjection(input) {
 function isConceptReconstruction(projection) {
   return Boolean(
     projection.presentation.attempt_before_reveal
-    && !projection.application.question_ref
+    && !projection.application?.question_ref
     && projection.concept.teaching_path.length,
   );
 }
@@ -205,7 +215,7 @@ export function deriveCoreLearningState(input) {
   let stage = "ORIENTATION";
   if (projection.presentation.attempt_before_reveal) stage = "AWAITING_ATTEMPT";
   else if (projection.presentation.show_full_construction) stage = "CONSTRUCTION_VISIBLE";
-  else if (projection.application.question_ref) stage = "QUESTION_VISIBLE";
+  else if (projection.application?.question_ref) stage = "QUESTION_VISIBLE";
 
   return {
     contractVersion: projection.contract_version,
@@ -215,7 +225,7 @@ export function deriveCoreLearningState(input) {
     attemptCount: 0,
     reconstructionVisible: stage === "CONSTRUCTION_VISIBLE",
     reasoningVisible: false,
-    questionVisible: Boolean(projection.application.question_ref),
+    questionVisible: Boolean(projection.application?.question_ref),
     supportIndex: 0,
     protectedMoveRefs: clone(projection.presentation.protected_move_refs),
     currentVisualRef: projection.presentation.initial_visual_ref ?? null,
@@ -234,7 +244,7 @@ function validateState(projection, state) {
   requireCondition(Number.isInteger(state.attemptCount) && state.attemptCount >= 0, "CORE_LEARNING_STATE_ATTEMPT_COUNT_INVALID");
   requireCondition(Number.isInteger(state.supportIndex) && state.supportIndex >= 0, "CORE_LEARNING_STATE_SUPPORT_INDEX_INVALID");
   requireCondition(
-    state.supportIndex <= projection.application.scaffolds.length,
+    state.supportIndex <= (projection.application?.scaffolds.length ?? 0),
     "CORE_LEARNING_STATE_SUPPORT_INDEX_OUT_OF_RANGE",
   );
   if (!state.attempted) {
@@ -248,7 +258,7 @@ function validateState(projection, state) {
 }
 
 function nextScaffold(projection, state) {
-  const scaffold = projection.application.scaffolds[state.supportIndex] ?? null;
+  const scaffold = projection.application?.scaffolds[state.supportIndex] ?? null;
   if (!scaffold) return { scaffold: null, blocked: false };
   const blocked = !state.attempted
     && projection.presentation.protected_move_refs.includes(scaffold.supports_move_ref);
@@ -267,7 +277,7 @@ export function transitionCoreLearningState(input, currentState, command) {
     if (isConceptReconstruction(projection)) {
       state.reconstructionVisible = true;
       state.stage = "RECONSTRUCTION_VISIBLE";
-    } else if (projection.application.reasoning_route.length) {
+    } else if (projection.application?.reasoning_route.length) {
       state.reasoningVisible = true;
       state.stage = "REASONING_VISIBLE";
     } else {
@@ -317,6 +327,7 @@ function renderTeachingPath(path) {
 }
 
 function renderConcept(projection, state) {
+  if (!projection.concept) return "";
   const eliciting = isConceptReconstruction(projection) && !state.attempted;
   const text = eliciting
     ? projection.concept.elicitation?.prompt ?? "Reconstruct the connection before revealing it."
@@ -352,7 +363,7 @@ function renderAttempt(projection, state) {
 }
 
 function visibleScaffolds(projection, state) {
-  return projection.application.scaffolds.slice(0, state.supportIndex);
+  return (projection.application?.scaffolds ?? []).slice(0, state.supportIndex);
 }
 
 function renderSupport(projection, state) {
@@ -378,7 +389,7 @@ function renderSupport(projection, state) {
 }
 
 function renderReasoningRoute(projection, state) {
-  if (!state.reasoningVisible || !projection.application.reasoning_route.length) return "";
+  if (!state.reasoningVisible || !projection.application?.reasoning_route.length) return "";
   const crux = projection.application.crux_move_ref;
   return `<section class="reasoning-panel" aria-labelledby="core-reasoning-title">
     <h3 id="core-reasoning-title">Reasoning route</h3>
@@ -394,7 +405,7 @@ function renderReasoningRoute(projection, state) {
 }
 
 function renderConstruction(projection, state) {
-  if (!state.reconstructionVisible) return "";
+  if (!projection.concept || !state.reconstructionVisible) return "";
   return `<section class="construction-panel" data-semantic="reconstruction" aria-labelledby="core-construction-title">
     <h3 id="core-construction-title">Construction</h3>
     ${renderTeachingPath(projection.concept.teaching_path)}
