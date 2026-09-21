@@ -6,7 +6,7 @@
     "adapter"
   ],
   "component_count": 222,
-  "relation_count": 257,
+  "relation_count": 255,
   "components_by_role": {
     "CONTRACT": 7,
     "ENGINE": 10,
@@ -17,14 +17,14 @@
     "WEB": 8,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:2f1cf85d89b8621ae23c2a639596367771b831a3c53be77ad92f171a64a46850",
+  "digest": "sha256:98db51ee573d9525c01e927cf6c493dba34cac70480b9179e0457004fe903fad",
   "components": [
     {
       "path": "public/core-learning/data.js",
       "role": "WEB",
       "role_description": "Static Core learner host and generated projection data",
-      "bytes": 7654,
-      "sha256": "a0561c35da69218d4a094332c0fbcfa98b3a5bdbbebe45d8a5d27a22cce41b14"
+      "bytes": 8896,
+      "sha256": "f2ee34a96227766db6df637b29d1272598124e8e27461c3f7683f880656bcc58"
     },
     {
       "path": "public/core-learning/index.html",
@@ -471,8 +471,8 @@
       "path": "Shared/tools/build_core_learning_data.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 13077,
-      "sha256": "829c38447f66008a684a93d151f734c212d8e1ccd9af02345f66edb1190726de"
+      "bytes": 3377,
+      "sha256": "6303b24bf9785913f960407a5807e4c1970301a2966eac544f0a59bf617cc16a"
     },
     {
       "path": "Shared/tools/build_core_learning_runtime.py",
@@ -1479,8 +1479,8 @@
       "path": "tests/test_tools.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 96565,
-      "sha256": "de312384d790bc0a98ca527a3c3f2893fb0822835d7e1a50f45b0f35ad5f7a62"
+      "bytes": 89477,
+      "sha256": "6fb183c536eaa0878f37e0099b7b82873685ace695b598d87e16045067d5d449"
     },
     {
       "path": "tests/test_topic_atlas_contract.py",
@@ -1672,12 +1672,12 @@
     },
     {
       "from": "Shared/publication_host/audit.py",
-      "to": "adapter",
+      "to": "Shared.contracts",
       "kind": "IMPORTS"
     },
     {
       "from": "Shared/publication_host/audit.py",
-      "to": "Shared.contracts",
+      "to": "adapter",
       "kind": "IMPORTS"
     },
     {
@@ -1707,12 +1707,12 @@
     },
     {
       "from": "Shared/publication_host/science.py",
-      "to": "adapter",
+      "to": "Shared.contracts",
       "kind": "IMPORTS"
     },
     {
       "from": "Shared/publication_host/science.py",
-      "to": "Shared.contracts",
+      "to": "adapter",
       "kind": "IMPORTS"
     },
     {
@@ -1758,16 +1758,6 @@
     {
       "from": "Shared/tools/author_brief.py",
       "to": "Shared.tools.spec_conformance",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "Shared/tools/build_core_learning_data.py",
-      "to": "Shared.contracts",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "Shared/tools/build_core_learning_data.py",
-      "to": "Shared.library.resolve",
       "kind": "IMPORTS"
     },
     {
@@ -1887,12 +1877,12 @@
     },
     {
       "from": "Shared/tools/compile_execution_packet.py",
-      "to": "Shared.tools.spec_conformance",
+      "to": "Shared.tools",
       "kind": "IMPORTS"
     },
     {
       "from": "Shared/tools/compile_execution_packet.py",
-      "to": "Shared.tools",
+      "to": "Shared.tools.spec_conformance",
       "kind": "IMPORTS"
     },
     {
@@ -1907,12 +1897,12 @@
     },
     {
       "from": "Shared/tools/execute_authoring_run.py",
-      "to": "Shared.library.resolve",
+      "to": "Shared.library",
       "kind": "IMPORTS"
     },
     {
       "from": "Shared/tools/execute_authoring_run.py",
-      "to": "Shared.library",
+      "to": "Shared.library.resolve",
       "kind": "IMPORTS"
     },
     {
@@ -2077,17 +2067,17 @@
     },
     {
       "from": "Shared/tools/resolve_request.py",
+      "to": "Shared.tools",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "Shared/tools/resolve_request.py",
+      "to": "Shared.tools",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "Shared/tools/resolve_request.py",
       "to": "Shared.tools.author_brief",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "Shared/tools/resolve_request.py",
-      "to": "Shared.tools",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "Shared/tools/resolve_request.py",
-      "to": "Shared.tools",
       "kind": "IMPORTS"
     },
     {
@@ -2097,12 +2087,12 @@
     },
     {
       "from": "Shared/tools/review_authority.py",
-      "to": "Shared.library.resolve",
+      "to": "Shared.library",
       "kind": "IMPORTS"
     },
     {
       "from": "Shared/tools/review_authority.py",
-      "to": "Shared.library",
+      "to": "Shared.library.resolve",
       "kind": "IMPORTS"
     },
     {
@@ -2532,12 +2522,12 @@
     },
     {
       "from": "tests/test_import_sil.py",
-      "to": "Shared.library.intake",
+      "to": "Shared.library",
       "kind": "IMPORTS"
     },
     {
       "from": "tests/test_import_sil.py",
-      "to": "Shared.library",
+      "to": "Shared.library.intake",
       "kind": "IMPORTS"
     },
     {
@@ -2563,6 +2553,16 @@
     {
       "from": "tests/test_library.py",
       "to": "Shared.contracts",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_library.py",
+      "to": "Shared.library",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_library.py",
+      "to": "Shared.library",
       "kind": "IMPORTS"
     },
     {
@@ -2583,16 +2583,6 @@
     {
       "from": "tests/test_library.py",
       "to": "Shared.library.resolve",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "tests/test_library.py",
-      "to": "Shared.library",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "tests/test_library.py",
-      "to": "Shared.library",
       "kind": "IMPORTS"
     },
     {
@@ -2781,18 +2771,23 @@
       "kind": "IMPORTS"
     },
     {
-      "from": "tests/test_study_session_scenario_scan.py",
+      "from": "tests/test_study_session.py",
       "to": "Shared.tools",
       "kind": "IMPORTS"
     },
     {
-      "from": "tests/test_study_session.py",
+      "from": "tests/test_study_session_scenario_scan.py",
       "to": "Shared.tools",
       "kind": "IMPORTS"
     },
     {
       "from": "tests/test_study_start.py",
       "to": "Shared.tools",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_tools.py",
+      "to": "Shared.library",
       "kind": "IMPORTS"
     },
     {
@@ -2812,22 +2807,17 @@
     },
     {
       "from": "tests/test_tools.py",
-      "to": "Shared.library",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "tests/test_tools.py",
-      "to": "Shared.tools.topic_independence_guard",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "tests/test_tools.py",
-      "to": "Shared.tools.topic_independence_guard",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "tests/test_tools.py",
       "to": "Shared.tools",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_tools.py",
+      "to": "Shared.tools.topic_independence_guard",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_tools.py",
+      "to": "Shared.tools.topic_independence_guard",
       "kind": "IMPORTS"
     },
     {
