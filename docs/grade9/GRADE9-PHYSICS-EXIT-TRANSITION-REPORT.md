@@ -17,9 +17,10 @@ The report distinguishes three decision situations rather than forcing a binary 
 
 - `KNOWN_BLOCKER`: a required Grade-9 or genuine prerequisite gap is explicitly known. Repair it and obtain fresh verification before transition.
 - `EVIDENCE_INCOMPLETE`: there is no known blocker, but required/prerequisite evidence is still unknown. Gather fresh evidence before claiming that Grade 10 is the next productive frontier.
-- `NO_KNOWN_BLOCKER[_WITH_RECHECKS]`: required evidence does not show a blocker. Fragile evidence remains visible as targeted rechecks instead of becoming a hidden mastery assumption.
+- `GRADE10_WITH_TARGETED_RECHECKS`: there is no known blocker or unknown required evidence, but required/prerequisite evidence is usable-but-fragile. Grade 10 may begin while those items receive fresh independent rechecks.
+- `GRADE10_NEXT_PRODUCTIVE_FRONTIER`: there is no known required/prerequisite blocker, unknown required evidence, or fragile required/prerequisite evidence.
 
-Enrichment, later-grade sophistication, and other non-blocking scope remain visible but do not block merely because evidence is absent or a gap is known.
+Enrichment, later-grade sophistication, and other non-blocking scope remain visible in both machine and parent/agent views but do not block merely because evidence is absent or a gap is known.
 
 ## Usage
 
