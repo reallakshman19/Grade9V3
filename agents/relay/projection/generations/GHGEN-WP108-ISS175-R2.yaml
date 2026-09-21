@@ -6,7 +6,7 @@
     "roadmap_revision": "RM-0011",
     "issue_graph_revision": "IG-0007",
     "execution_ref": "CP-TA-010",
-    "state": "PUBLISHED_UNCONFIRMED",
+    "state": "IN_SYNC",
     "supersedes_generation": "GHGEN-WP108-ISS175-R1",
     "basis": [
       "CP-TA-010",
@@ -19,7 +19,7 @@
     {
       "id": "GHOP-WP108-ISSUE175-CHECKPOINT",
       "kind": "UPDATE",
-      "state": "ATTEMPTED_UNCONFIRMED",
+      "state": "VERIFIED",
       "idempotency_key": "relay:GHGEN-WP108-ISS175-R2:GHOP-WP108-ISSUE175-CHECKPOINT",
       "depends_on": [],
       "subject": {
@@ -48,16 +48,20 @@
           "provider-readback:issue-175:open",
           "pre-write-journal"
         ],
-        "receipt": null,
+        "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
         "last_error": null
       },
       "verification": {
-        "status": "NOT_RUN",
-        "observed_issue_number": null,
-        "observed_issue_id": null,
-        "observed_github_state": null,
+        "status": "PASS",
+        "observed_issue_number": 175,
+        "observed_issue_id": 5529711190,
+        "observed_github_state": "OPEN",
         "observed_relationships": [],
-        "basis": []
+        "basis": [
+          "GHOBS-WP108-ISS175-R2",
+          "provider-readback:issue-175:open",
+          "marker:GHOP-WP108-ISSUE175-CHECKPOINT"
+        ]
       },
       "reconciliation": {
         "issue_graph_effects": [
