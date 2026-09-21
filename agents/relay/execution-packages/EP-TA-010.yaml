@@ -1,0 +1,1168 @@
+{
+  "schema_version": "relay-v2.5",
+  "identity": {
+    "ep_id": "EP-TA-010",
+    "branch": "builder/core-learning-pages-r1",
+    "base_ref": "d49093db5994c2cd11f5c0ecd2d1cf967b9642df",
+    "execution_state": "EXECUTABLE",
+    "previous_checkpoint": "CP-TA-009",
+    "previous_join": null,
+    "previous_replan": null
+  },
+  "replan_inheritance": null,
+  "git_basis": {
+    "expected_branch": "builder/core-learning-pages-r1",
+    "material_ref": "d49093db5994c2cd11f5c0ecd2d1cf967b9642df",
+    "base_branch": "takeover/grade9-exit-transition-r2",
+    "base_observed_ref": "d49093db5994c2cd11f5c0ecd2d1cf967b9642df",
+    "drift_policy": "RECHECK_BEFORE_WRITE",
+    "drift_receipt": null
+  },
+  "roadmap_source": {
+    "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
+    "roadmap_revision": "RM-0011",
+    "objective": "OBJ-TOPIC-ATLAS-COMPLETE",
+    "phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "work_package": "WP-TA-108",
+    "generated_from_frontier": true,
+    "task_admission": {
+      "disposition": "ADDED_EXECUTION_WP",
+      "searched_paths": [
+        "agents/relay/REPO_STATE.yaml",
+        "agents/relay/roadmap/OVERALL_ROADMAP.yaml",
+        "agents/relay/checkpoints/CP-TA-009.yaml",
+        "GitHub Issue #175",
+        "GitHub PR #176"
+      ],
+      "basis": [
+        "RM-0010 was terminal with no successor; Issue #175 was not represented.",
+        "ODR-0009 admits a bounded learner-shell proof under the existing representation-first learner architecture."
+      ]
+    }
+  },
+  "outcome": {
+    "user_visible": [
+      "A self-paced learner can use one reusable Core-aware page shell with minimal unsolicited feedback: completed explanation for Core1A, attempt-first reconstruction for Core1B, optional staged help for Core2A, and protected changed-demand work for Core2B.",
+      "The shell remains usable with host-supplied routing context such as a knowledge coordinate or answer-sheet gap, but does not infer mastery from those inputs or from interaction events."
+    ],
+    "engineering": [
+      "Render only explicit Core projection and optional scientific-scene inputs; do not encode Motion2D equations, capability graphs, mastery logic or hint-routing rules in the component.",
+      "Reuse Shared/workbench for semantic manipulation and normalize learner interaction events without upgrading them to evidence/mastery."
+    ]
+  },
+  "context_capsule": {
+    "product_goal": "Replace bespoke learner-page pedagogy with a portable projection-driven shell while preserving self-paced minimal feedback.",
+    "roadmap_position": "WP-TA-108 is new serial execution work after terminal CP-TA-009 and is the only RM-0011 frontier.",
+    "why_this_work_exists": "Issue #175 identified the remaining seam between canonical/Core projections and bespoke learner pages. Draft PR #176 freezes the interface, while #173/#174 production providers are not yet landed.",
+    "current_architecture": "Shared/workbench already owns subject-neutral scene interaction; Topic Atlas owns routing; publication_host owns static composition; bespoke Motion2D pages still own page-local science/pedagogy.",
+    "prior_owner_decisions": [
+      "ODR-0003-G9-PHYSICS-INDEPENDENCE",
+      "ODR-0004-REPRESENTATION-ROUTER-ARCHITECTURE",
+      "ODR-0009-WEB-BUILDER-START"
+    ],
+    "current_implementation_state": "No reusable Core learner page component exists on the predecessor branch. The first slice may use contract fixtures from #176 but must not depend on raw subject JSON as a permanent interface.",
+    "known_problems": [
+      "PR #176 is draft/unmerged.",
+      "Production #173/#174 projection/data providers are not landed.",
+      "Current Motion2D repair explorers emit no host learner-lifecycle events and contain page-local scientific rules."
+    ],
+    "deliberate_non_goals": [
+      "Do not edit canonical Physics/matrix truth.",
+      "Do not close Issue #175 in this slice.",
+      "Do not migrate PR #134 or every existing explorer yet.",
+      "Do not add a mastery/proficiency score or a second learner-state store."
+    ],
+    "terminology": {
+      "projection": "Frozen #176 CoreProjection envelope supplied by host/compiler.",
+      "scene": "Host-supplied semantic-workbench scene and adapter.",
+      "attempt": "UI-local learner commitment event, not mastery evidence."
+    }
+  },
+  "repository_discovery": [
+    {
+      "id": "DSTEP-TA10-001",
+      "action": "VERIFY",
+      "targets": [
+        "agents/relay/REPO_STATE.yaml",
+        "agents/relay/checkpoints/CP-TA-009.yaml",
+        "GitHub Issue #175"
+      ],
+      "question": "Does repository custody place WP-TA-108 after CP-TA-009 with Issue #175 as the current owner?",
+      "expected_outputs": [
+        "RM-0011 frontier",
+        "CP-TA-009 predecessor",
+        "verified Issue #175 identity"
+      ],
+      "receipt_required": true,
+      "on_failure": "Stop and reconcile roadmap/provider custody."
+    },
+    {
+      "id": "DSTEP-TA10-002",
+      "action": "TRACE",
+      "targets": [
+        "Shared/workbench/runtime.mjs",
+        "Shared/workbench/semantic-workbench.mjs",
+        "Shared/publication_host/compose.py"
+      ],
+      "question": "Which interaction, event, reveal and static-composition behavior is reusable without academic truth duplication?",
+      "expected_outputs": [
+        "Reusable workbench API/events",
+        "Existing attempt/reveal semantics",
+        "Explicit ownership boundaries"
+      ],
+      "receipt_required": true,
+      "on_failure": "Stop if a new learner shell would duplicate an existing authoritative runtime."
+    },
+    {
+      "id": "DSTEP-TA10-003",
+      "action": "INSPECT",
+      "targets": [
+        "GitHub PR #176",
+        "GitHub issues #173/#174"
+      ],
+      "question": "What frozen CoreProjection fields may fixtures rely on, and which production inputs remain provider-owned?",
+      "expected_outputs": [
+        "Frozen envelope",
+        "Protected-move/scaffold semantics",
+        "Provider blockers"
+      ],
+      "receipt_required": true,
+      "on_failure": "Stop rather than invent a local projection ontology."
+    },
+    {
+      "id": "DSTEP-TA10-004",
+      "action": "VERIFY_GIT",
+      "targets": [
+        "live checkout"
+      ],
+      "question": "Does the live branch descend from the declared predecessor material ref and remain isolated from concurrent provider branches?",
+      "expected_outputs": [
+        "branch/head/base",
+        "drift classification"
+      ],
+      "receipt_required": true,
+      "on_failure": "Reconcile Git basis before material writes."
+    }
+  ],
+  "inputs": [
+    {
+      "id": "INPUT-TA10-001",
+      "name": "Frozen CoreProjection contract",
+      "description": "Draft #176 envelope/ownership rules used only for fixtures in this slice.",
+      "authority": "PR #176 + Issue #175 owner comment",
+      "source": "GitHub PR #176 docs/CORE-PROJECTION-CONTRACT.md and Shared/library/core-projection.schema.json",
+      "type": "EXTERNAL_CONTRACT",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "value": "Core Projection Contract v1.0 interface freeze",
+      "consumers": [
+        "STEP-TA10-001",
+        "STEP-TA10-002",
+        "STEP-TA10-003"
+      ],
+      "validation": [
+        "Fixture fields must be a subset of the frozen #176 envelope; no browser-only academic fields."
+      ],
+      "stale_if": [
+        "PR #176 contract version changes incompatibly."
+      ]
+    },
+    {
+      "id": "INPUT-TA10-002",
+      "name": "Semantic workbench runtime",
+      "description": "Existing subject-neutral scene/adapter/event runtime mounted by the learner shell.",
+      "authority": "Merged PR #171 / current repository runtime",
+      "source": "Shared/workbench/runtime.mjs; Shared/workbench/semantic-workbench.mjs",
+      "type": "RUNTIME",
+      "units": "NA",
+      "editable": true,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "value": "Existing workbench public API",
+      "consumers": [
+        "STEP-TA10-001",
+        "STEP-TA10-002",
+        "STEP-TA10-004"
+      ],
+      "validation": [
+        "Do not move academic validity into the shell."
+      ],
+      "stale_if": [
+        "Workbench public scene/adapter/event contract changes."
+      ]
+    },
+    {
+      "id": "INPUT-TA10-003",
+      "name": "Issue #175 product contract",
+      "description": "Builder ownership, Core behavior, accessibility/offline and parity requirements.",
+      "authority": "Owner GitHub issue #175",
+      "source": "https://github.com/reallaksh19/Grade9V3/issues/175",
+      "type": "OWNER_PRODUCT_CONTRACT",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "value": "Current Issue #175 body and owner comment",
+      "consumers": [
+        "STEP-TA10-001",
+        "STEP-TA10-002",
+        "STEP-TA10-003",
+        "STEP-TA10-004"
+      ],
+      "validation": [
+        "No permanent raw-subject JSON interface; no page-local mastery or hard-coded hint routing."
+      ],
+      "stale_if": [
+        "Issue #175 acceptance/ownership materially changes."
+      ]
+    },
+    {
+      "id": "INPUT-TA10-004",
+      "name": "Self-paced minimal-feedback requirement",
+      "description": "Host may supply sparse routing context; learner shell should avoid unsolicited tutoring/mastery inference.",
+      "authority": "Owner direct requirement",
+      "source": "ODR-0009-WEB-BUILDER-START",
+      "type": "OWNER_REQUIREMENT",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "value": "Self paced learning with minimal feedback; knowledge percentage/answer sheet may be host inputs only.",
+      "consumers": [
+        "STEP-TA10-001",
+        "STEP-TA10-002",
+        "STEP-TA10-003"
+      ],
+      "validation": [
+        "Interaction events remain semantic facts, not mastery decisions."
+      ],
+      "stale_if": [
+        "A later Owner decision changes feedback philosophy."
+      ]
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": "BENCH-TA10-001",
+      "name": "Core state truth table",
+      "purpose": "Independently define visible/revealed state for Core1A/1B/2A/2B.",
+      "source": "Issue #175 + Core Projection Contract v1.0",
+      "oracle_class": "FROZEN_GOLDEN",
+      "payload": {
+        "CORE1A": "completed construction visible",
+        "CORE1B": "attempt required before reconstruction",
+        "CORE2A": "question first; optional staged support; crux distinct",
+        "CORE2B": "attempt first; protected move absent from pre-attempt help"
+      },
+      "expected": "Each fixture reaches only the allowed reveal state.",
+      "tolerance": null,
+      "independence": "Expected states are declared by the owner/contract, not by the new runtime.",
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "verifies": [
+        "AC-TA10-001",
+        "AC-TA10-002",
+        "TEST-TA10-001",
+        "TEST-TA10-002"
+      ],
+      "stale_if": [
+        "#176 projection policy changes."
+      ]
+    },
+    {
+      "id": "BENCH-TA10-002",
+      "name": "No-academic-truth browser boundary",
+      "purpose": "Falsify page-local subject science or mastery policy.",
+      "source": "Issue #175 non-goals + workbench ownership contract",
+      "oracle_class": "STRUCTURAL_REVIEW",
+      "payload": [
+        "new learner-shell source",
+        "gold fixture",
+        "event vocabulary"
+      ],
+      "expected": "Runtime contains generic projection/state handling only; subject equations/answer rules live only in supplied fixture/scene data and no mastery event/state exists.",
+      "tolerance": null,
+      "independence": "Static source scan and event assertions inspect the implementation boundary rather than trusting runtime labels.",
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "verifies": [
+        "AC-TA10-003",
+        "TEST-TA10-003"
+      ],
+      "stale_if": [
+        "Issue #175 changes the ownership boundary."
+      ]
+    },
+    {
+      "id": "BENCH-TA10-003",
+      "name": "Browser accessibility/offline matrix",
+      "purpose": "Prove the reusable shell behaves in an actual browser without network/runtime discovery.",
+      "source": "Issue #175 accessibility/offline acceptance + existing workbench browser-test pattern",
+      "oracle_class": "REAL_BROWSER",
+      "payload": [
+        "keyboard/click interaction",
+        "touch pointer path where scene manipulation is present",
+        "aria-live reveal announcements",
+        "320px layout",
+        "local static server with blocked external network"
+      ],
+      "expected": "Equivalent semantic state and readable text fallback across supported inputs; no remote dependency required.",
+      "tolerance": null,
+      "independence": "ChromeDriver observes the built artifact from the outside.",
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "verifies": [
+        "AC-TA10-004",
+        "TEST-TA10-004"
+      ],
+      "stale_if": [
+        "Browser support contract changes."
+      ]
+    }
+  ],
+  "scope": {
+    "allowed": [
+      {
+        "path": "Shared/workbench/",
+        "reason": "Add the subject-neutral Core learner shell and minimal reusable state helpers."
+      },
+      {
+        "path": "tests/fixtures/workbench/",
+        "reason": "Add frozen CoreProjection/scene fixtures and static browser host."
+      },
+      {
+        "path": "tests/workbench_browser.test.mjs",
+        "reason": "Extend real-browser proof for learner-shell state/accessibility behavior."
+      },
+      {
+        "path": "tests/workbench_runtime.test.mjs",
+        "reason": "Add runtime/state-machine contract tests."
+      },
+      {
+        "path": "tests/test_workbench_runtime.py",
+        "reason": "Run the new Node/browser contract from repository tests if needed."
+      },
+      {
+        "path": "docs/architecture-manifest.json",
+        "reason": "Regenerate mechanically when runtime/test files change."
+      },
+      {
+        "path": "agents/relay/",
+        "reason": "Maintain EP/evidence/checkpoint/projection custody for WP-TA-108."
+      },
+      {
+        "path": ".github/workflows/v25-relay.yml",
+        "reason": "Pin the Owner-selected V2.5 protocol and successor candidate gate."
+      }
+    ],
+    "allowed_reads": [
+      {
+        "path": "Physics/library/phy-kin-2d-motion.v1.json",
+        "reason": "Verify gold-family semantics only; no writes."
+      },
+      {
+        "path": "public/physics/motion-2d/explorers/",
+        "reason": "Compare bespoke behavior and text fallback; no migration in this slice."
+      },
+      {
+        "path": "Shared/publication_host/",
+        "reason": "Reuse attempt/reveal semantics without duplicating publisher ownership."
+      },
+      {
+        "path": "GitHub PR #176 / issues #173/#174",
+        "reason": "Consume provider-owned frozen interface and blockers."
+      }
+    ],
+    "protected": [
+      {
+        "invariant": "No new scientific formula, answer key, capability graph or mastery rule is authored in learner-shell code.",
+        "reason": "The builder owns interaction/presentation only."
+      },
+      {
+        "invariant": "Core2B pre-attempt support must not expose a supplied protected_move_ref.",
+        "reason": "Transfer remains a learner decision."
+      },
+      {
+        "invariant": "Knowledge percentage/answer-sheet context is host routing input only.",
+        "reason": "Sparse feedback must not become hidden mastery inference."
+      },
+      {
+        "invariant": "Semantic workbench academic validity remains adapter/host supplied.",
+        "reason": "Scientific truth must stay outside generic interaction code."
+      }
+    ],
+    "prohibited": [
+      {
+        "domain": "Physics/library and Physics/matrices semantic edits",
+        "reason": "Canonical academic truth is provider-owned and read-only for this WP."
+      },
+      {
+        "domain": "Production #173/#174 compiler/data implementation",
+        "reason": "Those lanes own provider fields and canonical instances."
+      },
+      {
+        "domain": "PR #134 pulley migration",
+        "reason": "Re-evaluation follows after the generic shell proof."
+      },
+      {
+        "domain": "Learner mastery/proficiency persistence",
+        "reason": "Explicitly outside Issue #175 and Owner product direction."
+      }
+    ],
+    "owner_reserved": [
+      {
+        "decision": "Merge/close PR #170, PR #176, or future #175 delivery PR.",
+        "reason": "Provider merge authorization is separate from material-write authority."
+      }
+    ]
+  },
+  "anti_drift": {
+    "do_not": [
+      {
+        "id": "ADR-TA10-001",
+        "restriction": "Do not read raw subject JSON as the permanent learner-page interface.",
+        "reason": "The production adapter must consume compiled projection."
+      },
+      {
+        "id": "ADR-TA10-002",
+        "restriction": "Do not infer a reveal stage from question text, DOM text, concept names or subject IDs.",
+        "reason": "Projection/scaffold bindings own disclosure."
+      },
+      {
+        "id": "ADR-TA10-003",
+        "restriction": "Do not emit mastered/ready/proficient events or persist such state.",
+        "reason": "Interaction evidence and mastery decisions are separate."
+      },
+      {
+        "id": "ADR-TA10-004",
+        "restriction": "Do not turn this first fixture-backed proof into a bulk explorer rewrite.",
+        "reason": "Issue #175 explicitly requires one gold proof first."
+      }
+    ],
+    "stale_if": [
+      {
+        "id": "STALE-TA10-001",
+        "condition": "PR #176 changes CoreProjection v1.0 incompatibly.",
+        "effect": "STALE",
+        "rationale": "Fixture/runtime contract must be rebound."
+      },
+      {
+        "id": "STALE-TA10-002",
+        "condition": "Shared/workbench public scene/adapter/event API changes.",
+        "effect": "STALE",
+        "rationale": "The shell integration basis moved."
+      },
+      {
+        "id": "STALE-TA10-003",
+        "condition": "RM-0011 changes WP-TA-108 scope/dependencies/acceptance.",
+        "effect": "STALE",
+        "rationale": "Forward contract no longer matches roadmap."
+      }
+    ]
+  },
+  "implementation_plan": [
+    {
+      "id": "STEP-TA10-001",
+      "objective": "Add a generic learner-shell state machine and custom element over explicit projection + optional scene/adapter inputs.",
+      "targets": [
+        "Shared/workbench/core-learning-page.mjs",
+        "tests/workbench_runtime.test.mjs"
+      ],
+      "reads": [
+        "Shared/workbench/semantic-workbench.mjs",
+        "Issue #175",
+        "PR #176 contract"
+      ],
+      "writes": [
+        "Shared/workbench/core-learning-page.mjs",
+        "tests/workbench_runtime.test.mjs"
+      ],
+      "inputs": [
+        "INPUT-TA10-001",
+        "INPUT-TA10-002",
+        "INPUT-TA10-003",
+        "INPUT-TA10-004"
+      ],
+      "acceptance": [
+        "AC-TA10-001"
+      ],
+      "tests": [
+        "TEST-TA10-001"
+      ],
+      "expected_state": "One reusable component renders Core1A/1B/2A/2B fixtures without subject-specific branching.",
+      "stop_conditions": [
+        "Stop if contract fields are insufficient; raise provider issue instead of inventing academic fields."
+      ]
+    },
+    {
+      "id": "STEP-TA10-002",
+      "objective": "Implement attempt/help/reveal/protected-move transitions and semantic events with minimal-feedback defaults.",
+      "targets": [
+        "Shared/workbench/core-learning-page.mjs",
+        "tests/fixtures/workbench/core-learning-projections.json",
+        "tests/workbench_runtime.test.mjs"
+      ],
+      "reads": [
+        "PR #176 projection policy"
+      ],
+      "writes": [
+        "Shared/workbench/core-learning-page.mjs",
+        "tests/fixtures/workbench/core-learning-projections.json",
+        "tests/workbench_runtime.test.mjs"
+      ],
+      "inputs": [
+        "INPUT-TA10-001",
+        "INPUT-TA10-003",
+        "INPUT-TA10-004"
+      ],
+      "acceptance": [
+        "AC-TA10-002",
+        "AC-TA10-003"
+      ],
+      "tests": [
+        "TEST-TA10-002",
+        "TEST-TA10-003"
+      ],
+      "expected_state": "Core1B/Core2B cannot reveal protected decisions before attempt; Core2A help is optional and crux is visibly distinct; emitted events remain semantic only.",
+      "stop_conditions": [
+        "Stop if protecting a move would require guessing scaffold/visual semantics absent from the projection."
+      ]
+    },
+    {
+      "id": "STEP-TA10-003",
+      "objective": "Mount supplied semantic-workbench scene/adapter and provide accessible text/status fallback without scientific recomputation.",
+      "targets": [
+        "Shared/workbench/core-learning-page.mjs",
+        "tests/fixtures/workbench/core-learning-host.html"
+      ],
+      "reads": [
+        "Shared/workbench/README.md",
+        "Shared/workbench/semantic-workbench.mjs"
+      ],
+      "writes": [
+        "Shared/workbench/core-learning-page.mjs",
+        "tests/fixtures/workbench/core-learning-host.html"
+      ],
+      "inputs": [
+        "INPUT-TA10-002",
+        "INPUT-TA10-003"
+      ],
+      "acceptance": [
+        "AC-TA10-003",
+        "AC-TA10-004"
+      ],
+      "tests": [
+        "TEST-TA10-003",
+        "TEST-TA10-004"
+      ],
+      "expected_state": "Same supplied scientific scene is reusable across Core modes; reveal changes are announced and essential information is textual.",
+      "stop_conditions": [
+        "Stop if shell code needs subject formulas or local validity checks."
+      ]
+    },
+    {
+      "id": "STEP-TA10-004",
+      "objective": "Run real-browser/offline/narrow-layout/accessibility falsifiers, regenerate derived manifest, perform quality review and checkpoint the fixture-backed proof.",
+      "targets": [
+        "tests/workbench_browser.test.mjs",
+        "tests/test_workbench_runtime.py",
+        "docs/architecture-manifest.json",
+        "agents/relay/"
+      ],
+      "reads": [
+        "existing workbench real-browser tests",
+        "Issue #175 acceptance"
+      ],
+      "writes": [
+        "tests/workbench_browser.test.mjs",
+        "tests/test_workbench_runtime.py",
+        "docs/architecture-manifest.json",
+        "agents/relay/"
+      ],
+      "inputs": [
+        "INPUT-TA10-002",
+        "INPUT-TA10-003"
+      ],
+      "acceptance": [
+        "AC-TA10-004"
+      ],
+      "tests": [
+        "TEST-TA10-004"
+      ],
+      "expected_state": "Fixture-backed learner-shell proof is browser-verified and ready for later production projection adapter work without claiming Issue #175 complete.",
+      "stop_conditions": [
+        "Stop on any browser, protected-disclosure, accessibility, offline, generated-manifest or V2.5 validation failure."
+      ]
+    }
+  ],
+  "next_work": {
+    "phase_transition": false,
+    "steps": [
+      {
+        "order": 1,
+        "action": "Implement the generic Core learner shell only after fresh independent qualification passes.",
+        "targets": [
+          "Shared/workbench/core-learning-page.mjs",
+          "tests/workbench_runtime.test.mjs"
+        ],
+        "inputs": [
+          "INPUT-TA10-001",
+          "INPUT-TA10-002",
+          "INPUT-TA10-003",
+          "INPUT-TA10-004"
+        ],
+        "tests": [
+          "TEST-TA10-001"
+        ],
+        "benchmarks": [
+          "BENCH-TA10-001"
+        ],
+        "acceptance": [
+          "AC-TA10-001"
+        ],
+        "expected_result": "Projection-driven Core state rendering exists with no subject-specific branch.",
+        "stop_if": [
+          "Fresh DISC/QUAL/TC or material_write_ready is absent."
+        ]
+      },
+      {
+        "order": 2,
+        "action": "Add attempt/help/reveal/protected-move behavior and semantic events.",
+        "targets": [
+          "Shared/workbench/core-learning-page.mjs",
+          "tests/fixtures/workbench/core-learning-projections.json"
+        ],
+        "inputs": [
+          "INPUT-TA10-001",
+          "INPUT-TA10-003",
+          "INPUT-TA10-004"
+        ],
+        "tests": [
+          "TEST-TA10-002",
+          "TEST-TA10-003"
+        ],
+        "benchmarks": [
+          "BENCH-TA10-001",
+          "BENCH-TA10-002"
+        ],
+        "acceptance": [
+          "AC-TA10-002",
+          "AC-TA10-003"
+        ],
+        "expected_result": "Minimal-feedback Core behavior follows supplied policy and never emits mastery.",
+        "stop_if": [
+          "A protected decision would be disclosed or a browser-local academic rule would be required."
+        ]
+      },
+      {
+        "order": 3,
+        "action": "Mount supplied workbench scene and prove accessible static/offline behavior in a real browser.",
+        "targets": [
+          "tests/fixtures/workbench/core-learning-host.html",
+          "tests/workbench_browser.test.mjs"
+        ],
+        "inputs": [
+          "INPUT-TA10-002",
+          "INPUT-TA10-003"
+        ],
+        "tests": [
+          "TEST-TA10-004"
+        ],
+        "benchmarks": [
+          "BENCH-TA10-003"
+        ],
+        "acceptance": [
+          "AC-TA10-004"
+        ],
+        "expected_result": "One scene works across Core modes with keyboard/click/touch-compatible controls, announcements and text fallback.",
+        "stop_if": [
+          "Real-browser or offline evidence is unavailable; delegate exact browser run instead of claiming PASS."
+        ]
+      },
+      {
+        "order": 4,
+        "action": "Regenerate derived artifacts, perform QRV, checkpoint WP-TA-108, then define the production #173/#174 adapter follow-on.",
+        "targets": [
+          "docs/architecture-manifest.json",
+          "agents/relay/",
+          "Issue #175"
+        ],
+        "inputs": [
+          "INPUT-TA10-001",
+          "INPUT-TA10-003"
+        ],
+        "tests": [
+          "TEST-TA10-001",
+          "TEST-TA10-002",
+          "TEST-TA10-003",
+          "TEST-TA10-004"
+        ],
+        "benchmarks": [
+          "BENCH-TA10-001",
+          "BENCH-TA10-002",
+          "BENCH-TA10-003"
+        ],
+        "acceptance": [
+          "AC-TA10-001",
+          "AC-TA10-002",
+          "AC-TA10-003",
+          "AC-TA10-004"
+        ],
+        "expected_result": "Fixture-backed proof is accepted without claiming production adapter or broad migration complete.",
+        "stop_if": [
+          "Any acceptance, quality, provider-boundary or exact-head requirement remains unresolved."
+        ]
+      }
+    ]
+  },
+  "qualification_boundary": {
+    "required": true,
+    "trigger": "MATERIAL_QUALIFICATION_BOUNDARY_CHANGED",
+    "from_phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "to_phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "changed_dimensions": [
+      "PRODUCTION_PATH",
+      "INPUT_AUTHORITY",
+      "PROTECTED_INVARIANT",
+      "VERIFICATION_ORACLE",
+      "PROTOCOL_BASIS"
+    ],
+    "basis": [
+      "Production work changes from grade-exit reporting to browser UI/runtime composition.",
+      "The primary interface authority becomes the frozen #176 CoreProjection contract plus Issue #175 rather than Grade-9 exit evidence.",
+      "New protected invariants cover attempt-before-reveal, Core2B disclosure, no page-local academic truth and no mastery inference.",
+      "Verification changes to state-machine falsifiers plus real-browser accessibility/offline checks.",
+      "Owner pinned Common V2.5 protocol basis 1bc4eca6eac9d75900ddee1c338da4b44817eeec."
+    ],
+    "question_policy": "DEFAULT",
+    "question_policy_basis": [],
+    "not_applicable_reason": null,
+    "question_set": {
+      "id": "QSET-TA-011",
+      "path": "agents/relay/certifications/questions/QSET-TA-011.yaml"
+    }
+  },
+  "quality": {
+    "applicable": [
+      {
+        "blueprint": "software-design",
+        "reason": "The slice defines the ownership boundary between projection, scientific scene and learner UI state.",
+        "review_focus": [
+          "state ownership",
+          "no duplicate academic truth",
+          "host/component boundary"
+        ]
+      },
+      {
+        "blueprint": "coding",
+        "reason": "New reusable browser runtime code will be added.",
+        "review_focus": [
+          "small API",
+          "deterministic state transitions",
+          "failure semantics"
+        ]
+      },
+      {
+        "blueprint": "testing",
+        "reason": "Core reveal/protection behavior and browser parity require executable falsifiers.",
+        "review_focus": [
+          "attempt/reveal order",
+          "protected move",
+          "offline/browser coverage"
+        ]
+      },
+      {
+        "blueprint": "code-review",
+        "reason": "Generic runtime code can silently accumulate subject/pedagogy policy.",
+        "review_focus": [
+          "subject neutrality",
+          "event vocabulary",
+          "scope containment"
+        ]
+      },
+      {
+        "blueprint": "accessibility",
+        "reason": "Issue #175 explicitly requires keyboard/touch/text/announcement/zoom-safe behavior.",
+        "review_focus": [
+          "focus/keyboard",
+          "aria-live",
+          "text fallback",
+          "narrow layout",
+          "no color-only meaning"
+        ]
+      },
+      {
+        "blueprint": "ui-ux",
+        "reason": "The learner interaction states and feedback density are user-facing.",
+        "review_focus": [
+          "self-paced flow",
+          "minimal unsolicited feedback",
+          "crux visibility",
+          "help discoverability"
+        ]
+      },
+      {
+        "blueprint": "github-delivery",
+        "reason": "Issue #175 must remain correlated with its EP/PR and provider dependency state.",
+        "review_focus": [
+          "Issue↔EP↔WP↔PR correlation",
+          "stacked predecessor",
+          "provider blockers"
+        ]
+      }
+    ],
+    "not_applicable": [
+      {
+        "blueprint": "engineering-numerics",
+        "reason": "No scientific numerical method is implemented by the shell."
+      },
+      {
+        "blueprint": "performance",
+        "reason": "The bounded fixture-backed component is not performance-sensitive."
+      },
+      {
+        "blueprint": "migration",
+        "reason": "No persisted learner data/schema migration is authorized in this first proof."
+      }
+    ],
+    "review_contract": {
+      "required": true,
+      "required_before_checkpoint": true,
+      "receipt_namespace": "QRV-",
+      "required_outputs": [
+        "procedure_results",
+        "findings",
+        "owner_report",
+        "successor_handover"
+      ]
+    },
+    "findings_policy": "Quality findings remain quality state unless they map to an existing acceptance, authority, protected-invariant, or safety hard-stop condition.",
+    "ordinary_findings_are_hard_stops": false
+  },
+  "acceptance": [
+    {
+      "id": "AC-TA10-001",
+      "description": "One reusable learner shell consumes explicit Core projection state and renders Core1A/Core1B/Core2A/Core2B without subject-specific branching or raw-subject discovery.",
+      "weight": 25,
+      "verification": [
+        "TEST-TA10-001",
+        "BENCH-TA10-001"
+      ]
+    },
+    {
+      "id": "AC-TA10-002",
+      "description": "Core1B requires attempt before reconstruction; Core2A help is optional and crux-distinct; Core2B pre-attempt help never exposes a supplied protected move.",
+      "weight": 25,
+      "verification": [
+        "TEST-TA10-002",
+        "BENCH-TA10-001"
+      ]
+    },
+    {
+      "id": "AC-TA10-003",
+      "description": "Scientific scene and pedagogy remain separable; the shell mounts supplied workbench inputs and emits semantic attempt/help/reveal/manipulation/completion events without mastery inference.",
+      "weight": 25,
+      "verification": [
+        "TEST-TA10-003",
+        "BENCH-TA10-002"
+      ]
+    },
+    {
+      "id": "AC-TA10-004",
+      "description": "Real-browser proof covers accessible announcements, keyboard/click behavior, scene touch parity where applicable, text fallback, narrow layout and static/offline loading with current generated artifacts reconciled.",
+      "weight": 25,
+      "verification": [
+        "TEST-TA10-004",
+        "BENCH-TA10-003"
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "id": "TEST-TA10-001",
+      "obligation_class": "MUST_PASS",
+      "class": "MUST_PASS",
+      "method": "Node state-machine/component tests over four frozen CoreProjection fixtures; assert no subject identifier controls behavior.",
+      "proves": [
+        "AC-TA10-001"
+      ]
+    },
+    {
+      "id": "TEST-TA10-002",
+      "obligation_class": "MUST_PASS",
+      "class": "MUST_PASS",
+      "method": "Falsify reveal order and protected-move leakage across Core1B/Core2A/Core2B fixture transitions.",
+      "proves": [
+        "AC-TA10-002"
+      ]
+    },
+    {
+      "id": "TEST-TA10-003",
+      "obligation_class": "MUST_PASS",
+      "class": "MUST_PASS",
+      "method": "Assert workbench scene/adapter are supplied externally; inspect emitted event vocabulary and source for absence of mastery/scientific validity logic.",
+      "proves": [
+        "AC-TA10-003"
+      ]
+    },
+    {
+      "id": "TEST-TA10-004",
+      "obligation_class": "MUST_PASS",
+      "class": "MUST_PASS",
+      "method": "ChromeDriver static-server journey: keyboard/click/touch where applicable, aria-live reveal status, 320px layout, text fallback, reduced motion compatibility and no external network dependency.",
+      "proves": [
+        "AC-TA10-004"
+      ]
+    }
+  ],
+  "failure_and_stop_conditions": {
+    "hard_stop_categories": [
+      "OWNER_DECISION_REQUIRED",
+      "ESSENTIAL_INPUT_MISSING",
+      "AUTHORITY_VIOLATION",
+      "PROTECTED_INVARIANT_FAILURE",
+      "WRITE_COLLISION",
+      "SUPERSEDED_EP",
+      "ROADMAP_CONFLICT",
+      "REPOSITORY_STATE_CONFLICT",
+      "UNSAFE_ENGINEERING_RESULT"
+    ]
+  },
+  "report_contract": {
+    "status_publication": {
+      "default_after_minutes": 25,
+      "owner_override": null
+    },
+    "sections": [
+      "Executive state",
+      "Overall / phase / EP progress",
+      "Work completed",
+      "Files changed",
+      "Acceptance matrix",
+      "Tests and evidence",
+      "Quality findings",
+      "Known limitations",
+      "Owner decisions required",
+      "GitHub issue changes",
+      "Roadmap changes",
+      "Exact next actions",
+      "Successor EP",
+      "Qualification Q1-Q5 when applicable"
+    ],
+    "payloads": [
+      {
+        "id": "RPT-STATE",
+        "section": "Executive state",
+        "sources": [
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "relay_state",
+          "current_position",
+          "execution_state",
+          "material_authority",
+          "stop"
+        ]
+      },
+      {
+        "id": "RPT-PROGRESS",
+        "section": "Overall / phase / EP progress",
+        "sources": [
+          "PROGRESS",
+          "OVERALL_ROADMAP",
+          "EP"
+        ],
+        "required_fields": [
+          "progress_basis",
+          "overall",
+          "phase",
+          "work_package",
+          "step",
+          "acceptance"
+        ]
+      },
+      {
+        "id": "RPT-WORK",
+        "section": "Work completed",
+        "sources": [
+          "EP",
+          "CP"
+        ],
+        "required_fields": [
+          "completed_steps",
+          "implementation_result"
+        ]
+      },
+      {
+        "id": "RPT-FILES",
+        "section": "Files changed",
+        "sources": [
+          "CP"
+        ],
+        "required_fields": [
+          "files_changed"
+        ]
+      },
+      {
+        "id": "RPT-AC",
+        "section": "Acceptance matrix",
+        "sources": [
+          "EP",
+          "PROGRESS",
+          "CP"
+        ],
+        "required_fields": [
+          "criterion",
+          "status",
+          "percent",
+          "basis"
+        ]
+      },
+      {
+        "id": "RPT-EVIDENCE",
+        "section": "Tests and evidence",
+        "sources": [
+          "EP",
+          "CP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "validation_id",
+          "obligation_class",
+          "status",
+          "basis_ref",
+          "not_run_reason"
+        ]
+      },
+      {
+        "id": "RPT-QUALITY",
+        "section": "Quality findings",
+        "sources": [
+          "EP",
+          "QRV",
+          "CP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "quality_review",
+          "procedures",
+          "findings",
+          "disposition",
+          "execution_effect"
+        ]
+      },
+      {
+        "id": "RPT-LIMITS",
+        "section": "Known limitations",
+        "sources": [
+          "EP",
+          "CP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "limitations",
+          "evidence_gaps",
+          "deferred_items"
+        ]
+      },
+      {
+        "id": "RPT-OWNER",
+        "section": "Owner decisions required",
+        "sources": [
+          "ODR",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "decision_required",
+          "pending_items",
+          "authority_effect"
+        ]
+      },
+      {
+        "id": "RPT-ISSUES",
+        "section": "GitHub issue changes",
+        "sources": [
+          "ISSUE_GRAPH",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "operations",
+          "relationships",
+          "projection_state"
+        ]
+      },
+      {
+        "id": "RPT-ROADMAP",
+        "section": "Roadmap changes",
+        "sources": [
+          "OVERALL_ROADMAP",
+          "ROADMAP_REVISION",
+          "PROGRESS"
+        ],
+        "required_fields": [
+          "revision",
+          "topology_or_status_change",
+          "frontier_after",
+          "progress_basis_effect"
+        ]
+      },
+      {
+        "id": "RPT-NEXT",
+        "section": "Exact next actions",
+        "sources": [
+          "EP"
+        ],
+        "required_fields": [
+          "ordered_actions",
+          "targets",
+          "inputs",
+          "tests",
+          "benchmarks",
+          "acceptance",
+          "expected_result",
+          "stop_conditions"
+        ]
+      },
+      {
+        "id": "RPT-SUCCESSOR",
+        "section": "Successor EP",
+        "sources": [
+          "CP",
+          "OVERALL_ROADMAP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "successor_mode",
+          "next_frontier",
+          "ep_or_terminal_disposition"
+        ]
+      }
+    ]
+  },
+  "checkpoint_contract": {
+    "required": true
+  },
+  "successor_relay": {
+    "required": true,
+    "duties": [
+      "reconcile current roadmap node",
+      "create checkpoint",
+      "update progress",
+      "update issue projection when applicable",
+      "compute next executable frontier",
+      "create successor EP when work continues",
+      "validate successor EP",
+      "run cold-start check",
+      "update REPO_STATE"
+    ],
+    "required_outputs": [
+      "checkpoint",
+      "progress_reconciliation",
+      "issue_projection_disposition",
+      "next_frontier",
+      "successor_ep_or_terminal_disposition"
+    ]
+  }
+}
