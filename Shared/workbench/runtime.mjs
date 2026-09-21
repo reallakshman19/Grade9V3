@@ -31,6 +31,13 @@ function uniqueIds(rows, code) {
   requireCondition(new Set(ids).size === ids.length, code);
 }
 
+function validateStringRefs(values, code, detail = "") {
+  requireCondition(Array.isArray(values), code, detail);
+  values.forEach((value) => nonEmptyString(value, code, detail));
+  requireCondition(new Set(values).size === values.length, code, detail);
+  return values;
+}
+
 function indexById(rows) {
   return Object.fromEntries(rows.map((row) => [row.id, row]));
 }
@@ -136,6 +143,25 @@ export function validateScene(input) {
     validatePlacement(scene, target.placement, target.id);
   }
 
+  const targetIds = new Set(scene.targets.map((row) => row.id));
+  for (const transformation of scene.canonicalTransformations) {
+    validateStringRefs(
+      transformation.sourceEntityRefs,
+      "WORKBENCH_TRANSFORMATION_SOURCES_INVALID",
+      transformation.id,
+    );
+    const targetRef = nonEmptyString(
+      transformation.targetRef,
+      "WORKBENCH_TRANSFORMATION_TARGET_REQUIRED",
+      transformation.id,
+    );
+    requireCondition(
+      targetIds.has(targetRef),
+      "WORKBENCH_TRANSFORMATION_TARGET_UNKNOWN",
+      `${transformation.id} -> ${targetRef}`,
+    );
+  }
+
   return scene;
 }
 
@@ -186,6 +212,21 @@ function snapshotForAdapter(state) {
     targets: state.targets,
     canonicalTransformations: state.canonicalTransformations,
   });
+}
+
+function validateAllowedTargets(state, allowedTargetsInput) {
+  if (allowedTargetsInput == null) return [];
+  const allowedTargets = clone(allowedTargetsInput);
+  validateStringRefs(allowedTargets, "WORKBENCH_ALLOWED_TARGETS_INVALID", "allowedTargets");
+  const targetIds = new Set(state.targets.map((row) => row.id));
+  for (const targetRef of allowedTargets) {
+    requireCondition(
+      targetIds.has(targetRef),
+      "WORKBENCH_ALLOWED_TARGET_UNKNOWN",
+      targetRef,
+    );
+  }
+  return allowedTargets;
 }
 
 function validatePatch(currentState, patchInput) {
@@ -343,7 +384,7 @@ export class WorkbenchRuntime {
         return {
           accepted: false,
           reason: nonEmptyString(raw.reason, "WORKBENCH_REJECTION_REASON_REQUIRED"),
-          allowedTargets: Array.isArray(raw.allowedTargets) ? clone(raw.allowedTargets) : [],
+          allowedTargets: validateAllowedTargets(this._state, raw.allowedTargets),
         };
       }
       return {
