@@ -92,11 +92,11 @@
       const requested = new URL(window.location.href).searchParams.get("projection");
       if (requested && rows.some((row) => row.id === requested)) {
         mount(requested, { updateUrl: false });
-      } else {
+      } else if (requested) {
         select.value = rows[0].id;
-        setStatus(requested
-          ? "Requested projection was not found. Select an available compiled activity."
-          : "Select a compiled activity to begin.");
+        setStatus("Requested projection was not found. Select an available compiled activity.");
+      } else {
+        mount(rows[0].id);
       }
     }
 
