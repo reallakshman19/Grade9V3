@@ -9,6 +9,8 @@ const clone = (value) => value == null ? value : JSON.parse(JSON.stringify(value
 export const CORE_LEARNER_EVENTS = Object.freeze({
   ATTEMPT_COMMITTED: "attempt_committed",
   SUPPORT_REQUESTED: "support_requested",
+  REVEAL_CHANGED: "reveal_changed",
+  REPRESENTATION_MANIPULATED: "representation_manipulated",
   ACTIVITY_COMPLETED: "activity_completed",
 });
 
@@ -352,7 +354,7 @@ function renderQuestion(projection, state) {
 }
 
 function renderAttempt(projection, state) {
-  const needed = state.questionVisible || Boolean(projection.concept.elicitation?.prompt);
+  const needed = state.questionVisible || Boolean(projection.concept?.elicitation?.prompt);
   if (!needed || state.completed) return "";
   if (state.attempted) {
     return `<section class="attempt-panel" aria-label="Attempt status">
@@ -501,6 +503,7 @@ export class CoreLearningPage extends HTMLElementBase {
     this._injectionsVersion = 0;
     this._workbenchElement = null;
     this._workbenchInjectionsVersion = -1;
+    this._workbenchEventHandler = (event) => this._onWorkbenchEvent(event);
     if (typeof this.attachShadow === "function") this.attachShadow({ mode: "open" });
   }
 
@@ -557,6 +560,7 @@ export class CoreLearningPage extends HTMLElementBase {
 
   commitAttempt(response = "") {
     this._requireProjection();
+    const before = this._state;
     const result = transitionCoreLearningState(
       this._projection,
       this._state,
@@ -568,6 +572,15 @@ export class CoreLearningPage extends HTMLElementBase {
       attemptNumber: this._state.attemptCount,
       response: String(response ?? ""),
     });
+    if (
+      before.reconstructionVisible !== this._state.reconstructionVisible
+      || before.reasoningVisible !== this._state.reasoningVisible
+    ) {
+      this._emit(CORE_LEARNER_EVENTS.REVEAL_CHANGED, {
+        kind: this._state.reconstructionVisible ? "reconstruction" : "reasoning",
+        stage: this._state.stage,
+      });
+    }
     this._announce("Attempt committed. New material is available.");
     return this.state;
   }
@@ -588,7 +601,15 @@ export class CoreLearningPage extends HTMLElementBase {
       revealed: result.changed,
       reason: result.reason,
     });
-    if (result.changed) this._announce("Additional support is available.");
+    if (result.changed) {
+      this._emit(CORE_LEARNER_EVENTS.REVEAL_CHANGED, {
+        kind: "support",
+        supportTier: this._state.supportIndex,
+        visualRef: this._state.currentVisualRef,
+        visualStageRef: this._state.currentVisualStageRef,
+      });
+      this._announce("Additional support is available.");
+    }
     return this.state;
   }
 
@@ -633,6 +654,16 @@ export class CoreLearningPage extends HTMLElementBase {
     if (node) node.textContent = message;
   }
 
+  _onWorkbenchEvent(event) {
+    const detail = event?.detail;
+    if (!detail || !["TRANSFER_ACCEPTED", "UNDO_APPLIED", "REDO_APPLIED"].includes(detail.type)) return;
+    this._emit(CORE_LEARNER_EVENTS.REPRESENTATION_MANIPULATED, {
+      workbenchEventType: detail.type,
+      sceneId: detail.sceneId ?? this._scene?.id ?? null,
+      revision: detail.revision ?? this._workbenchElement?.snapshot?.revision ?? null,
+    });
+  }
+
   _mountWorkbench(preserved = null) {
     if (!this.shadowRoot?.querySelector) return;
     const mount = this.shadowRoot.querySelector("[data-workbench-mount]");
@@ -646,6 +677,8 @@ export class CoreLearningPage extends HTMLElementBase {
     if (!workbench) return;
     mount.append(workbench);
     this._workbenchElement = workbench;
+    workbench.removeEventListener?.("semantic-workbench-event", this._workbenchEventHandler);
+    workbench.addEventListener?.("semantic-workbench-event", this._workbenchEventHandler);
 
     const configured = Boolean(this._scene && this._adapter);
     const fallback = this.shadowRoot.querySelector("[data-workbench-fallback]");
