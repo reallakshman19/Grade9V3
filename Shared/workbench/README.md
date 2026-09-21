@@ -38,6 +38,12 @@ runtime contract survives its falsifiers; integration and packaging belong to #1
 - `adapter`: object implementing `evaluateTransfer(request, snapshot)`; `request` contains only semantic `sourceEntityRef`, `targetRef`, and opaque `operation` fields, never pointer/click/keyboard/touch channel metadata;
 - `injections`: optional checkpoint/hint records kept outside canonical transformations.
 
+Runtime scene reference validation is lifecycle-aware: canonical transformation `targetRef`
+must name a target already present in the scene, while `sourceEntityRefs` are validated as
+unique semantic-reference strings but may name entities established by later accepted
+transactions. Rejection `allowedTargets` are live host guidance, so every supplied ref must
+name a currently existing target.
+
 The element emits one composed `semantic-workbench-event`. Its `detail.type` names the
 semantic event (`ENTITY_PICKED`, `TRANSFER_PREVIEW`, `TRANSFER_ACCEPTED`,
 `TRANSFER_REJECTED`, `INTERACTION_CANCELLED`, `ENTITY_INSPECTED`, `UNDO_APPLIED`, `REDO_APPLIED`, or `WORKBENCH_READY`).
