@@ -112,7 +112,20 @@ def _core_projection_concept(microtopic: dict) -> dict | None:
            or not isinstance(step.get("why_valid"), str) or not step["why_valid"].strip()
            for step in teaching_path):
         return None
-    return {
+
+    authored_elicitation = microtopic.get("elicitation")
+    prompt = None
+    if isinstance(authored_elicitation, dict):
+        direct = authored_elicitation.get("prompt")
+        predict = authored_elicitation.get("predict")
+        if isinstance(direct, str) and direct.strip():
+            prompt = direct
+        elif isinstance(predict, dict):
+            candidate = predict.get("prompt")
+            if isinstance(candidate, str) and candidate.strip():
+                prompt = candidate
+
+    concept = {
         "microtopic_ref": microtopic["id"],
         "inferential_jump": jump,
         "teaching_path": [
@@ -128,8 +141,10 @@ def _core_projection_concept(microtopic: dict) -> dict | None:
         ],
         "misconceptions": list(microtopic.get("misconceptions") or []),
         "representation_refs": list(microtopic.get("representation_refs") or []),
-        **({"elicitation": microtopic["elicitation"]} if microtopic.get("elicitation") else {}),
     }
+    if prompt:
+        concept["elicitation"] = {"prompt": prompt}
+    return concept
 
 
 def _core_projection_application(question: dict) -> dict | None:
@@ -150,11 +165,18 @@ def _core_projection_application(question: dict) -> dict | None:
     if not isinstance(stem, str) or not stem.strip():
         return None
 
-    move_ids = {
-        move.get("id")
+    if any(
+        not isinstance(move, dict)
+        or not isinstance(move.get("id"), str) or not move["id"].strip()
+        or not isinstance(move.get("kind"), str) or not move["kind"].strip()
+        or not isinstance(move.get("action"), str) or not move["action"].strip()
+        or not isinstance(move.get("why_valid"), str) or not move["why_valid"].strip()
+        or not isinstance(move.get("inputs"), list)
+        or not isinstance(move.get("output"), str) or not move["output"].strip()
         for move in route
-        if isinstance(move, dict) and isinstance(move.get("id"), str) and move.get("id")
-    }
+    ):
+        return None
+    move_ids = {move["id"] for move in route}
     if crux not in move_ids or len(move_ids) != len(route):
         return None
 
@@ -172,7 +194,6 @@ def _core_projection_application(question: dict) -> dict | None:
         "crux_move_ref": crux,
         "hints": list(question.get("hints") or []),
         "scaffolds": scaffolds,
-        **({"transfer": question["transfer"]} if question.get("transfer") else {}),
     }
 
 
@@ -235,6 +256,7 @@ def core_projection_rows(subject: str, records: dict) -> list[dict]:
             if core not in exposed:
                 continue
             protected = []
+            application_for_core = dict(application)
             if core == "CORE2B":
                 transfer = question.get("transfer") or {}
                 protected_ref = transfer.get("protected_move_ref")
@@ -246,6 +268,7 @@ def core_projection_rows(subject: str, records: dict) -> list[dict]:
                 if any(scaffold.get("supports_move_ref") == protected_ref
                        for scaffold in application["scaffolds"]):
                     continue
+                application_for_core["transfer"] = transfer
 
             visual = next(
                 (
@@ -272,7 +295,7 @@ def core_projection_rows(subject: str, records: dict) -> list[dict]:
                     "contract_version": "1.0",
                     "core": core,
                     "concept": None,
-                    "application": application,
+                    "application": application_for_core,
                     "presentation": presentation,
                 },
                 "scene_ref": None,
