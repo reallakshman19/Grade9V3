@@ -6,7 +6,7 @@
     "roadmap_revision": "RM-0010",
     "issue_graph_revision": "IG-0006",
     "execution_ref": "EP-TA-009",
-    "state": "PUBLISHED_UNCONFIRMED",
+    "state": "IN_SYNC",
     "supersedes_generation": "GHGEN-WP105-ISS169-R1",
     "basis": [
       "agents/relay/checkpoints/CP-TA-009.yaml",
@@ -21,7 +21,7 @@
     {
       "id": "GHOP-WP105-ISSUE169-CHECKPOINT",
       "kind": "UPDATE",
-      "state": "ATTEMPTED_UNCONFIRMED",
+      "state": "VERIFIED",
       "idempotency_key": "relay:GHGEN-WP105-ISS169-R2:GHOP-WP105-ISSUE169-CHECKPOINT",
       "depends_on": [],
       "subject": {
@@ -46,16 +46,20 @@
         "last_attempt_basis": [
           "Issue #169 checkpoint update request with stable relay-operation marker"
         ],
-        "receipt": null,
+        "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/169",
         "last_error": null
       },
       "verification": {
-        "status": "PENDING",
-        "observed_issue_number": null,
-        "observed_issue_id": null,
-        "observed_github_state": null,
+        "status": "PASS",
+        "observed_issue_number": 169,
+        "observed_issue_id": 5522215316,
+        "observed_github_state": "OPEN",
         "observed_relationships": [],
-        "basis": []
+        "basis": [
+          "Issue #169 provider readback after CP-TA-009 / RM-0010 checkpoint projection",
+          "relay-operation marker present",
+          "PR #170 provider state remains DRAFT/OPEN"
+        ]
       },
       "reconciliation": {
         "issue_graph_effects": [
