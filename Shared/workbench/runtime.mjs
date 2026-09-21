@@ -167,6 +167,8 @@ function validatePatch(currentState, patchInput) {
   patch.addProjections = patch.addProjections || [];
   requireCondition(Array.isArray(patch.addEntities), "WORKBENCH_PATCH_ENTITIES_INVALID");
   requireCondition(Array.isArray(patch.addProjections), "WORKBENCH_PATCH_PROJECTIONS_INVALID");
+  requireCondition(patch.addEntities.length > 0 || patch.addProjections.length > 0,
+    "WORKBENCH_PATCH_EMPTY");
   uniqueIds(patch.addEntities, "WORKBENCH_PATCH_ENTITY_ID_INVALID");
   uniqueIds(patch.addProjections, "WORKBENCH_PATCH_PROJECTION_ID_INVALID");
 
