@@ -6,7 +6,7 @@
     "adapter"
   ],
   "component_count": 222,
-  "relation_count": 258,
+  "relation_count": 257,
   "components_by_role": {
     "CONTRACT": 7,
     "ENGINE": 10,
@@ -17,7 +17,7 @@
     "WEB": 8,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:782d5d6381f05bbc6cf980bb1d291e83fdc56cc303dbd005b7bddcb4703f2eb0",
+  "digest": "sha256:adac1cf37987b71b0356fa0b44acdb0e1e41c2a8fb6014e62a888f47c5c3b0ca",
   "components": [
     {
       "path": "public/core-learning/data.js",
@@ -30,8 +30,8 @@
       "path": "public/core-learning/index.html",
       "role": "WEB",
       "role_description": "Static Core learner host and generated projection data",
-      "bytes": 4209,
-      "sha256": "94d32f264e688e1cdb90e57b4c87c033c9a438ea74aa8210feca96a40cce3007"
+      "bytes": 4193,
+      "sha256": "491d8862dd96e3762986b92d54f65568e0644442f0b7f151da31099d3c6786a3"
     },
     {
       "path": "public/js/core-learning/core-learning-host.mjs",
@@ -471,8 +471,8 @@
       "path": "Shared/tools/build_core_learning_data.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 4934,
-      "sha256": "c46951d831ce698131b39aa56048f1d9641358eb420732b1c2aa1b8a95ed22c6"
+      "bytes": 13077,
+      "sha256": "829c38447f66008a684a93d151f734c212d8e1ccd9af02345f66edb1190726de"
     },
     {
       "path": "Shared/tools/build_core_learning_runtime.py",
@@ -492,8 +492,8 @@
       "path": "Shared/tools/build_web_data.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 23909,
-      "sha256": "33fd43b055464f189301562cade1df3b1d4f8e5f77ef662b865aca8194676c2e"
+      "bytes": 15697,
+      "sha256": "ec8101f35665200246c1f15efb9defed7b83ccbfa7f3c0bdf83bf09b6f1f6a6f"
     },
     {
       "path": "Shared/tools/capability_audit.py",
@@ -1479,8 +1479,8 @@
       "path": "tests/test_tools.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 96525,
-      "sha256": "917f851d8b1ff227e6dc03df164690a31cb078c700b8ad2e06fcc96bffcfe571"
+      "bytes": 96565,
+      "sha256": "de312384d790bc0a98ca527a3c3f2893fb0822835d7e1a50f45b0f35ad5f7a62"
     },
     {
       "path": "tests/test_topic_atlas_contract.py",
@@ -1521,8 +1521,8 @@
       "path": "tests/workbench_browser.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 38663,
-      "sha256": "6891906b75ab89b6348eed8dbaa0f67009a779b1e9999abb10b84bbfec8419be"
+      "bytes": 38658,
+      "sha256": "7421faf920bac42339ff63afc9debceabd55316db42b244690f797a01de42233"
     },
     {
       "path": "tests/workbench_runtime.test.mjs",
@@ -1762,18 +1762,13 @@
     },
     {
       "from": "Shared/tools/build_core_learning_data.py",
-      "kind": "IMPORTS",
-      "to": "Shared.contracts"
+      "to": "Shared.contracts",
+      "kind": "IMPORTS"
     },
     {
       "from": "Shared/tools/build_core_learning_data.py",
-      "kind": "IMPORTS",
-      "to": "Shared.library.resolve"
-    },
-    {
-      "from": "Shared/tools/build_core_learning_data.py",
-      "kind": "IMPORTS",
-      "to": "Shared.tools"
+      "to": "Shared.library.resolve",
+      "kind": "IMPORTS"
     },
     {
       "from": "Shared/tools/build_manifest.py",
@@ -1892,12 +1887,12 @@
     },
     {
       "from": "Shared/tools/compile_execution_packet.py",
-      "to": "Shared.tools",
+      "to": "Shared.tools.spec_conformance",
       "kind": "IMPORTS"
     },
     {
       "from": "Shared/tools/compile_execution_packet.py",
-      "to": "Shared.tools.spec_conformance",
+      "to": "Shared.tools",
       "kind": "IMPORTS"
     },
     {
@@ -1912,12 +1907,12 @@
     },
     {
       "from": "Shared/tools/execute_authoring_run.py",
-      "to": "Shared.library",
+      "to": "Shared.library.resolve",
       "kind": "IMPORTS"
     },
     {
       "from": "Shared/tools/execute_authoring_run.py",
-      "to": "Shared.library.resolve",
+      "to": "Shared.library",
       "kind": "IMPORTS"
     },
     {
@@ -2082,17 +2077,17 @@
     },
     {
       "from": "Shared/tools/resolve_request.py",
-      "to": "Shared.tools",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "Shared/tools/resolve_request.py",
-      "to": "Shared.tools",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "Shared/tools/resolve_request.py",
       "to": "Shared.tools.author_brief",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "Shared/tools/resolve_request.py",
+      "to": "Shared.tools",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "Shared/tools/resolve_request.py",
+      "to": "Shared.tools",
       "kind": "IMPORTS"
     },
     {
@@ -2102,12 +2097,12 @@
     },
     {
       "from": "Shared/tools/review_authority.py",
-      "to": "Shared.library",
+      "to": "Shared.library.resolve",
       "kind": "IMPORTS"
     },
     {
       "from": "Shared/tools/review_authority.py",
-      "to": "Shared.library.resolve",
+      "to": "Shared.library",
       "kind": "IMPORTS"
     },
     {
@@ -2537,12 +2532,12 @@
     },
     {
       "from": "tests/test_import_sil.py",
-      "to": "Shared.library",
+      "to": "Shared.library.intake",
       "kind": "IMPORTS"
     },
     {
       "from": "tests/test_import_sil.py",
-      "to": "Shared.library.intake",
+      "to": "Shared.library",
       "kind": "IMPORTS"
     },
     {
@@ -2568,16 +2563,6 @@
     {
       "from": "tests/test_library.py",
       "to": "Shared.contracts",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "tests/test_library.py",
-      "to": "Shared.library",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "tests/test_library.py",
-      "to": "Shared.library",
       "kind": "IMPORTS"
     },
     {
@@ -2598,6 +2583,16 @@
     {
       "from": "tests/test_library.py",
       "to": "Shared.library.resolve",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_library.py",
+      "to": "Shared.library",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_library.py",
+      "to": "Shared.library",
       "kind": "IMPORTS"
     },
     {
@@ -2802,11 +2797,6 @@
     },
     {
       "from": "tests/test_tools.py",
-      "to": "Shared.library",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "tests/test_tools.py",
       "to": "Shared.library.compile_inputs",
       "kind": "IMPORTS"
     },
@@ -2822,17 +2812,22 @@
     },
     {
       "from": "tests/test_tools.py",
+      "to": "Shared.library",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_tools.py",
+      "to": "Shared.tools.topic_independence_guard",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_tools.py",
+      "to": "Shared.tools.topic_independence_guard",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_tools.py",
       "to": "Shared.tools",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "tests/test_tools.py",
-      "to": "Shared.tools.topic_independence_guard",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "tests/test_tools.py",
-      "to": "Shared.tools.topic_independence_guard",
       "kind": "IMPORTS"
     },
     {
