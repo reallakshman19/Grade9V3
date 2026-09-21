@@ -1,0 +1,163 @@
+{
+  "schema_version": "relay-v2.5-qualification",
+  "id": "QUAL-TA-009",
+  "candidate": {
+    "agent_instance_id": "chatgpt-sol-wp105-candidate-20260921-a"
+  },
+  "question_set": {
+    "id": "QSET-TA-010",
+    "path": "agents/relay/certifications/questions/QSET-TA-010.yaml"
+  },
+  "route": {
+    "route_key": "SERIAL:EP-TA-009",
+    "mode": "SERIAL",
+    "execution_ref": "EP-TA-009",
+    "ep_id": "EP-TA-009",
+    "ep_path": "agents/relay/execution-packages/EP-TA-009.yaml",
+    "plan_id": null,
+    "plan_path": null,
+    "lane_id": null,
+    "roadmap_revision": "RM-0009",
+    "work_package": "WP-TA-105",
+    "ep_contract_digest": "sha256:6d985575b34d3ea73654370ea3bc11ce7cb4f2f4cb124e54198bfce35c995e08"
+  },
+  "answers": [
+    {
+      "id": "Q1",
+      "response": "The repository already separates curriculum scope authority from learner-evidence authority, so the exit view is a derived join rather than a new source of mastery truth.",
+      "outputs": {
+        "scope_owner": "Existing Grade-9 scope coverage/canonical Physics classifications",
+        "evidence_owner": "Shared/tools/learner_evidence and existing learner records",
+        "derived_projection": "A reproducible categorical exit view computed from scope plus evidence, not persisted as learner mastery truth",
+        "consumer": "Parent/agent transition report and Grade-10 planning handoff"
+      },
+      "evidence": [
+        "docs/grade9/grade9-physics-scope-coverage.json",
+        "Shared/tools/learner_evidence.py",
+        "RM-0009 WP-TA-105"
+      ]
+    },
+    {
+      "id": "Q2",
+      "response": "The decision sequence first limits itself to authoritative required scope, then joins conservative evidence, derives categories, and only afterward distinguishes blocking from non-blocking scope.",
+      "outputs": {
+        "reconstruction_steps": [
+          "Select required Grade-9 scope and genuine prerequisite relationships from existing coverage authority.",
+          "Join existing evidence without promoting helped/unknown observations.",
+          "Derive categorical evidence state per required capability/domain.",
+          "Classify blockers from required holes, prerequisite blockers and major unresolved misconceptions.",
+          "Keep enrichment/later-grade/optional improvement visible but non-blocking.",
+          "Render machine/human transition basis with explicit unknowns."
+        ],
+        "blocker_rule": "Only required-scope or genuine-prerequisite deficits and major unresolved misconceptions with explicit evidence basis may block.",
+        "non_blocker_rule": "Enrichment, later-grade sophistication and optional improvement do not block merely because they are unobserved or incomplete."
+      },
+      "evidence": [
+        "BENCH-TA9-001",
+        "BENCH-TA9-002",
+        "docs/grade9/grade9-physics-scope-coverage.json"
+      ]
+    },
+    {
+      "id": "Q3",
+      "response": "The slice fails if it upgrades weak evidence, turns optional scope into a blocker, persists readiness truth, or rewrites protected academic/evidence inputs.",
+      "outputs": {
+        "protected_invariant": "Unknown evidence remains unknown; helped-only evidence is not secure; enrichment is non-blocking; output is derived, not a second mastery store.",
+        "falsifier": "Any unknown/helped-only capability becomes secure, any enrichment/later-grade gap blocks exit without required-scope authority, or any persisted mastery/grade-readiness truth is introduced.",
+        "prohibited_mutation": "Canonical Physics meaning and existing learner observations may not be rewritten to make transition appear ready."
+      },
+      "evidence": [
+        "AC-TA9-001",
+        "AC-TA9-002",
+        "AC-TA9-004",
+        "ODR-0003-G9-PHYSICS-INDEPENDENCE"
+      ]
+    },
+    {
+      "id": "Q4",
+      "response": "Verification uses frozen truth-table/reference cases plus repository-level protected-domain and exact-head validators, independent of assertions inside the implementation.",
+      "outputs": {
+        "independent_method": "Run categorical evidence truth table, blocker-boundary cases, report reconstruction, overclaiming falsifiers, protected-domain diff, full guardrails and exact-head V2.5 validation.",
+        "predicted_result": "Unknown/helped evidence never overclaims security, enrichment/later-grade gaps remain non-blocking, parent report is reconstructable, and no second mastery store or unauthorized Physics edit appears.",
+        "tolerance_or_exactness": "Exact category/blocker membership and zero unauthorized persisted mastery/protected-domain edits."
+      },
+      "evidence": [
+        "TEST-TA9-001",
+        "TEST-TA9-002",
+        "TEST-TA9-003",
+        "TEST-TA9-004",
+        "BENCH-TA9-001",
+        "BENCH-TA9-002",
+        "BENCH-TA9-003",
+        "BENCH-TA9-004"
+      ]
+    },
+    {
+      "id": "Q5",
+      "response": "The first material slice is deliberately only the categorical scope-plus-evidence projection and its truth table; transition blockers and report complexity wait.",
+      "outputs": {
+        "first_change": "Build the smallest derived scope+evidence categorical projection and focused truth-table tests; do not add transition-blocker or reporting complexity yet.",
+        "predicted_before": "The repository has scope and evidence separately but no authoritative derived Grade-9 exit category view.",
+        "predicted_after": "Required capabilities/domains can be categorized from explicit evidence with unknown/helped cases preserved conservatively and no persisted mastery state.",
+        "verification": "TEST-TA9-001 with BENCH-TA9-001 must pass before STEP-TA9-002."
+      },
+      "evidence": [
+        "STEP-TA9-001",
+        "AC-TA9-001",
+        "TEST-TA9-001",
+        "BENCH-TA9-001"
+      ]
+    }
+  ],
+  "evaluated_by": {
+    "type": "DETERMINISTIC_VALIDATOR",
+    "identity": "validate_qualification_receipt.py",
+    "basis": [
+      "QSET-TA-010 deterministic_expected outputs",
+      "EP-TA-009 exact contract digest",
+      "repository-only discovery DISC-TA-019"
+    ]
+  },
+  "evaluations": [
+    {
+      "id": "Q1",
+      "status": "PASS",
+      "basis": [
+        "Outputs exactly match QSET-TA-010.Q1 deterministic_expected."
+      ]
+    },
+    {
+      "id": "Q2",
+      "status": "PASS",
+      "basis": [
+        "Outputs exactly match QSET-TA-010.Q2 deterministic_expected."
+      ]
+    },
+    {
+      "id": "Q3",
+      "status": "PASS",
+      "basis": [
+        "Outputs exactly match QSET-TA-010.Q3 deterministic_expected."
+      ]
+    },
+    {
+      "id": "Q4",
+      "status": "PASS",
+      "basis": [
+        "Outputs exactly match QSET-TA-010.Q4 deterministic_expected."
+      ]
+    },
+    {
+      "id": "Q5",
+      "status": "PASS",
+      "basis": [
+        "Outputs exactly match QSET-TA-010.Q5 deterministic_expected."
+      ]
+    }
+  ],
+  "self_evaluation": {
+    "allowed": false
+  },
+  "result": "PASS",
+  "conversation_context_used": false
+}
