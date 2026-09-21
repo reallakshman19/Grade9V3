@@ -143,6 +143,125 @@ class WebData(unittest.TestCase):
                          "regenerate with python3 Shared/tools/build_web_data.py")
 
 
+    def test_core_projection_rows_map_authored_concept_truth_without_subject_logic(self):
+        records = {
+            "MIC-X": {
+                "id": "MIC-X",
+                "_collection": "microtopics",
+                "inferential_jump": "A supplied inference.",
+                "teaching_path": [{
+                    "id": "STEP-X",
+                    "action": "Inspect the supplied state.",
+                    "why_valid": "The authored representation makes the relation visible.",
+                    "role": "REPRESENT",
+                }],
+                "misconceptions": [],
+                "representation_refs": ["REP-X"],
+            },
+            "ROUTE-X": {
+                "id": "ROUTE-X",
+                "_collection": "teaching_routes",
+                "cores": ["CORE1A", "CORE1B"],
+                "microtopic_refs": ["MIC-X"],
+            },
+        }
+        rows = build_web_data.core_projection_rows("Subject-X", records)
+        self.assertEqual([row["projection"]["core"] for row in rows], ["CORE1A", "CORE1B"])
+        self.assertTrue(rows[0]["projection"]["presentation"]["show_full_construction"])
+        self.assertFalse(rows[0]["projection"]["presentation"]["attempt_before_reveal"])
+        self.assertFalse(rows[1]["projection"]["presentation"]["show_full_construction"])
+        self.assertTrue(rows[1]["projection"]["presentation"]["attempt_before_reveal"])
+        self.assertEqual(rows[0]["projection"]["concept"]["inferential_jump"], "A supplied inference.")
+        self.assertEqual(rows[0]["scene_ref"], None)
+        self.assertEqual(rows[0]["adapter_ref"], None)
+
+    def test_core_projection_rows_emit_only_structured_application_truth(self):
+        structured = {
+            "id": "Q-X",
+            "_collection": "questions",
+            "stem": "Use the supplied state.",
+            "family_ref": "FAM-X",
+            "exposure": [{"core": "CORE2A"}],
+            "answer": {
+                "reasoning_route": [
+                    {
+                        "id": "MOVE-REP",
+                        "kind": "REPRESENT",
+                        "action": "Represent the state.",
+                        "why_valid": "The representation preserves the authored data.",
+                        "inputs": ["state"],
+                        "output": "represented state",
+                    },
+                    {
+                        "id": "MOVE-DECIDE",
+                        "kind": "DECIDE",
+                        "action": "Choose the controlling condition.",
+                        "why_valid": "The authored condition controls the next move.",
+                        "inputs": ["represented state"],
+                        "output": "selected condition",
+                    },
+                ],
+                "crux_move_ref": "MOVE-DECIDE",
+            },
+            "hints": [],
+            "scaffolds": [{
+                "text": "Represent the state first.",
+                "support_kind": "REPRESENT",
+                "reveals": "CONCEPT",
+                "supports_move_ref": "MOVE-REP",
+            }],
+        }
+        legacy = {
+            "id": "Q-LEGACY",
+            "_collection": "questions",
+            "stem": "Legacy question.",
+            "family_ref": "FAM-X",
+            "exposure": [{"core": "CORE2A"}],
+            "answer": {"reasoning": ["Legacy prose only."]},
+        }
+        rows = build_web_data.core_projection_rows(
+            "Subject-X",
+            {"Q-X": structured, "Q-LEGACY": legacy},
+        )
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]["projection"]["core"], "CORE2A")
+        self.assertEqual(rows[0]["projection"]["application"]["crux_move_ref"], "MOVE-DECIDE")
+        self.assertEqual(rows[0]["source_ref"], "Q-X")
+
+    def test_core2b_projection_fails_closed_when_scaffold_targets_protected_move(self):
+        question = {
+            "id": "Q-TRANSFER",
+            "_collection": "questions",
+            "stem": "Decide whether the familiar model applies.",
+            "family_ref": "FAM-X",
+            "exposure": [{"core": "CORE2B"}],
+            "answer": {
+                "reasoning_route": [{
+                    "id": "MOVE-DECIDE",
+                    "kind": "DECIDE",
+                    "action": "Choose the model.",
+                    "why_valid": "The changed demand determines model applicability.",
+                    "inputs": ["changed demand"],
+                    "output": "model decision",
+                }],
+                "crux_move_ref": "MOVE-DECIDE",
+            },
+            "scaffolds": [{
+                "text": "Choose the model from the changed demand.",
+                "support_kind": "CONNECT",
+                "reveals": "METHOD",
+                "supports_move_ref": "MOVE-DECIDE",
+            }],
+            "transfer": {
+                "dimension": "model_choice",
+                "statement": "A changed demand requires a fresh model decision.",
+                "builds_on": ["MIC-X"],
+                "protected_move_ref": "MOVE-DECIDE",
+            },
+        }
+        self.assertEqual(build_web_data.core_projection_rows("Subject-X", {"Q": question}), [])
+
+
 if __name__ == "__main__":
     unittest.main()
 
