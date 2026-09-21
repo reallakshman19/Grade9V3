@@ -1,0 +1,36 @@
+schema_version: relay-v2.5
+id: ODR-0162-ADVANCE-REENTRANCY-INTEGRITY
+decision:
+  authority: OWNER
+  kind: AUTHORIZATION
+  statement: >-
+    Continue the next bounded Issue #162 Core slice while cumulative exact-head evidence
+    and merge/head reconciliation remain deferred. Prevent synchronous callbacks invoked
+    during a semantic dispatch from reentering WorkbenchRuntime.dispatch and interleaving
+    a second semantic transaction before the first returns. Preserve downstream observer
+    containment and adapter-owned academic validity; do not introduce async queues or a
+    second event transport.
+  source: >-
+    Owner instruction in the active Grade9V3 engineering session on 2026-09-21:
+    "Proceed next"
+effects:
+  grants_material_write_authority: true
+  pending_items:
+  - Cumulative exact-head Node, real-Chrome and full-guardrail validation remains pending.
+  - PR #165 merge/base and relay custody reconciliation remains deferred before merge.
+delivery_authorization: null
+impact:
+  class: [LOCAL, EXECUTION_GOVERNANCE, PROTOCOL_EXCEPTION]
+affected:
+  objectives: [OBJ-TOPIC-ATLAS-COMPLETE]
+  phases: [PHASE-TAKEOVER-RECONCILIATION]
+  work_packages: [WP-162-BROWSER-RUNTIME-PROOF]
+  execution_packages: [EP-0162-SEMANTIC-IDENTITY-PROOF]
+  issues: [ISSUE-162]
+required_reconciliation:
+- Reject nested dispatch while an outer dispatch is active with a deterministic Core error.
+- Preserve the outer dispatch result, canonical state and history when an observer attempts reentry.
+- Preserve isolated observer payloads and synchronous exception containment.
+- Keep academic validity in the adapter and do not change browser gesture semantics.
+- Keep PR #165 draft and leave merge/base reconciliation deferred.
+status: APPLIED
