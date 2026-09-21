@@ -834,10 +834,9 @@
       "total_weight": 25,
       "percent": 100,
       "basis": [
-        "CP-TA-009",
-        "QRV-TA-009",
-        "guardrails 35621628917",
-        "v25-relay 35621628935"
+        "Accepted checkpoint CP-TA-009",
+        "Final engineering quality review is clear",
+        "990-test repository guardrails pass on accepted material head 0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494"
       ]
     },
     {
@@ -848,10 +847,9 @@
       "total_weight": 25,
       "percent": 100,
       "basis": [
-        "CP-TA-009",
-        "QRV-TA-009",
-        "guardrails 35621628917",
-        "v25-relay 35621628935"
+        "Accepted checkpoint CP-TA-009",
+        "Final engineering quality review is clear",
+        "990-test repository guardrails pass on accepted material head 0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494"
       ]
     },
     {
@@ -862,10 +860,9 @@
       "total_weight": 25,
       "percent": 100,
       "basis": [
-        "CP-TA-009",
-        "QRV-TA-009",
-        "guardrails 35621628917",
-        "v25-relay 35621628935"
+        "Accepted checkpoint CP-TA-009",
+        "Final engineering quality review is clear",
+        "990-test repository guardrails pass on accepted material head 0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494"
       ]
     },
     {
@@ -876,10 +873,9 @@
       "total_weight": 25,
       "percent": 100,
       "basis": [
-        "CP-TA-009",
-        "QRV-TA-009",
-        "guardrails 35621628917",
-        "v25-relay 35621628935"
+        "Accepted checkpoint CP-TA-009",
+        "Final engineering quality review is clear",
+        "990-test repository guardrails pass on accepted material head 0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494"
       ]
     }
   ]
