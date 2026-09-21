@@ -10,7 +10,7 @@ identity:
 replan_inheritance: null
 git_basis:
   expected_branch: feat/issue-162-semantic-workbench-core
-  material_ref: 34d9111cdb0c95ef608b98b0f24b1fe15ce43afc
+  material_ref: bb911b4c856d70855237a3f958b0457fb4014bd1
   base_branch: main
   base_observed_ref: 843ec2d8d6faa2b8de15795ed1535905e4efc8a8
   drift_policy: OWNER_EXCEPTION
@@ -52,7 +52,7 @@ context_capsule:
   - ODR-0162-ADVANCE-TRANSACTION-INTEGRITY
   - ODR-0162-ADVANCE-PROVENANCE-INTEGRITY
   - ODR-0162-ADVANCE-REENTRANCY-INTEGRITY
-  current_implementation_state: The truthful identity witness plus channel-neutral validity, non-empty commit enforcement, provenance referential/DAG integrity, observer containment, lifecycle-aware reference integrity, non-reentrant dispatch, and runtime-lifetime ID stability are authored; canonicalTransformation metadata remains descriptive and does not override adapter validity. Exact-head Node/browser/full-guardrail evidence remains pending.
+  current_implementation_state: Core completion-integrity batch is authored at bb911b4c856d70855237a3f958b0457fb4014bd1: truthful semantic identity plus all admitted generic integrity hardening through provenance shape and adapter-vs-Core failure attribution. Discretionary Core hardening is frozen pending exact-head Node/browser/full-guardrail evidence.
   known_problems:
   - Exact-head semantic-identity evidence remains pending and must not be reported as complete.
   - Exact-head channel-neutral adapter evidence remains pending and must not be reported as complete.
@@ -61,6 +61,7 @@ context_capsule:
   - Reentrant-dispatch containment is implemented on 8003880e84a5798f9a5eba0f8dfdc762c767845f, but exact-head Node/browser/full-guardrail evidence remains pending.
   - Canonical-transformation/history coupling was falsified as the wrong authority boundary: adapter validity remains authoritative and no coupling was added.
   - Runtime-lifetime ID stability is implemented at 34d9111cdb0c95ef608b98b0f24b1fe15ce43afc: initial and successfully committed entity/projection IDs remain reserved across undo/branching; rejected candidate IDs are not reserved. Exact-head evidence remains pending.
+  - Provenance shape and adapter failure attribution are implemented at bb911b4c856d70855237a3f958b0457fb4014bd1; no further discretionary Core hardening is admitted without a concrete failing test.
   deliberate_non_goals:
   - No arithmetic-specific Core API or entity type.
   - No generic derivation taxonomy in Core.
