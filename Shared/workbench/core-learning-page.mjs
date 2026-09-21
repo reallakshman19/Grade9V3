@@ -300,6 +300,10 @@ export function transitionCoreLearningState(input, currentState, command) {
   }
 
   if (command.type === "COMPLETE_ACTIVITY") {
+    const available = state.reconstructionVisible
+      || state.reasoningVisible
+      || state.stage === "CONSTRUCTION_VISIBLE";
+    requireCondition(available, "CORE_LEARNING_COMPLETION_NOT_AVAILABLE");
     state.completed = true;
     state.stage = "COMPLETE";
     return { state, changed: true, reason: "ACTIVITY_COMPLETED" };
@@ -412,6 +416,19 @@ function renderConstruction(projection, state) {
   </section>`;
 }
 
+function renderRepresentation(state) {
+  const visualRef = state.currentVisualRef ? escapeHtml(state.currentVisualRef) : "";
+  const visualStage = state.currentVisualStageRef ? escapeHtml(state.currentVisualStageRef) : "";
+  return `<section class="representation-panel" aria-labelledby="core-representation-title"
+    data-visual-ref="${visualRef}" data-visual-stage-ref="${visualStage}">
+    <h3 id="core-representation-title">Representation</h3>
+    <div data-workbench-mount></div>
+    <p class="representation-fallback" data-workbench-fallback>
+      Interactive representation is supplied by the host when available.
+    </p>
+  </section>`;
+}
+
 function renderCompletion(state) {
   if (state.completed) return '<p class="complete" role="status">Activity complete.</p>';
   const available = state.reconstructionVisible || state.reasoningVisible || state.stage === "CONSTRUCTION_VISIBLE";
@@ -428,7 +445,7 @@ export function renderCoreLearningProjection(input, stateInput = null) {
   return `<style>
     :host { display:block; font:inherit; color:inherit; }
     .shell { display:grid; gap:1rem; max-width:72rem; margin:0 auto; }
-    .orientation,.concept,.question,.attempt-panel,.support-panel,.reasoning-panel,.construction-panel {
+    .orientation,.concept,.question,.attempt-panel,.support-panel,.reasoning-panel,.construction-panel,.representation-panel {
       border:1px solid currentColor; border-radius:.75rem; padding:1rem;
     }
     .eyebrow { font-size:.8rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
@@ -447,7 +464,7 @@ export function renderCoreLearningProjection(input, stateInput = null) {
       clip:rect(0,0,0,0); white-space:nowrap; border:0;
     }
     @media (max-width: 36rem) {
-      .orientation,.concept,.question,.attempt-panel,.support-panel,.reasoning-panel,.construction-panel { padding:.75rem; }
+      .orientation,.concept,.question,.attempt-panel,.support-panel,.reasoning-panel,.construction-panel,.representation-panel { padding:.75rem; }
     }
     @media (prefers-reduced-motion: reduce) {
       *,*::before,*::after { animation-duration:0s !important; transition-duration:0s !important; scroll-behavior:auto !important; }
@@ -462,6 +479,7 @@ export function renderCoreLearningProjection(input, stateInput = null) {
     </header>
     ${renderConcept(projection, state)}
     ${renderQuestion(projection, state)}
+    ${renderRepresentation(state)}
     ${renderAttempt(projection, state)}
     ${renderSupport(projection, state)}
     ${renderConstruction(projection, state)}
@@ -477,6 +495,12 @@ export class CoreLearningPage extends HTMLElementBase {
     super();
     this._projection = null;
     this._state = null;
+    this._scene = null;
+    this._adapter = null;
+    this._injections = [];
+    this._injectionsVersion = 0;
+    this._workbenchElement = null;
+    this._workbenchInjectionsVersion = -1;
     if (typeof this.attachShadow === "function") this.attachShadow({ mode: "open" });
   }
 
@@ -493,6 +517,38 @@ export class CoreLearningPage extends HTMLElementBase {
 
   get state() {
     return this._state ? clone(this._state) : null;
+  }
+
+  set scene(value) {
+    this._scene = value ?? null;
+    this._render();
+  }
+
+  get scene() {
+    return this._scene ? clone(this._scene) : null;
+  }
+
+  set adapter(value) {
+    this._adapter = value ?? null;
+    this._render();
+  }
+
+  get adapter() {
+    return this._adapter;
+  }
+
+  set injections(value) {
+    this._injections = Array.isArray(value) ? [...value] : [];
+    this._injectionsVersion += 1;
+    this._render();
+  }
+
+  get injections() {
+    return clone(this._injections);
+  }
+
+  get workbenchTextSummary() {
+    return this._workbenchElement?.textSummary ?? "Interactive representation is not configured.";
   }
 
   connectedCallback() {
@@ -577,6 +633,33 @@ export class CoreLearningPage extends HTMLElementBase {
     if (node) node.textContent = message;
   }
 
+  _mountWorkbench(preserved = null) {
+    if (!this.shadowRoot?.querySelector) return;
+    const mount = this.shadowRoot.querySelector("[data-workbench-mount]");
+    if (!mount) return;
+
+    let workbench = preserved;
+    if (!workbench && globalThis.document?.createElement) {
+      workbench = globalThis.document.createElement("semantic-workbench");
+      workbench.dataset.workbench = "";
+    }
+    if (!workbench) return;
+    mount.append(workbench);
+    this._workbenchElement = workbench;
+
+    const configured = Boolean(this._scene && this._adapter);
+    const fallback = this.shadowRoot.querySelector("[data-workbench-fallback]");
+    if (fallback) fallback.hidden = configured;
+    if (!configured) return;
+
+    if (workbench.scene !== this._scene) workbench.scene = this._scene;
+    if (workbench.adapter !== this._adapter) workbench.adapter = this._adapter;
+    if (this._workbenchInjectionsVersion !== this._injectionsVersion) {
+      workbench.injections = this._injections;
+      this._workbenchInjectionsVersion = this._injectionsVersion;
+    }
+  }
+
   _bindActions() {
     if (!this.shadowRoot?.querySelector) return;
     const form = this.shadowRoot.querySelector("[data-attempt-form]");
@@ -599,7 +682,9 @@ export class CoreLearningPage extends HTMLElementBase {
       this.shadowRoot.innerHTML = '<p role="status">Core learning page requires a projection.</p>';
       return;
     }
+    const preservedWorkbench = this.shadowRoot.querySelector?.("[data-workbench]") ?? null;
     this.shadowRoot.innerHTML = renderCoreLearningProjection(this._projection, this._state);
+    this._mountWorkbench(preservedWorkbench);
     this._bindActions();
   }
 }
