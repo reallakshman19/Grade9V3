@@ -10,7 +10,7 @@ identity:
 replan_inheritance: null
 git_basis:
   expected_branch: feat/issue-162-semantic-workbench-core
-  material_ref: 726bb16085dd5f59f392a2fcc1805f3639c7e1ad
+  material_ref: d05414c5edec3b92790239c85b489f5b7e95641c
   base_branch: main
   base_observed_ref: 843ec2d8d6faa2b8de15795ed1535905e4efc8a8
   drift_policy: OWNER_EXCEPTION
@@ -49,7 +49,7 @@ context_capsule:
   - ODR-0162-ADVANCE-REDO
   - ODR-0162-ADVANCE-SEMANTIC-IDENTITY
   - ODR-0162-CONTINUE-CORE-CODING
-  current_implementation_state: The stronger semantic-identity fixtures are authored without a runtime/component change; their exact-head evidence remains pending by Owner direction. A new Core falsifier shows adapter.evaluateTransfer currently receives input channel metadata, allowing domain validity to branch on mouse/keyboard/touch.
+  current_implementation_state: The stronger semantic-identity fixtures remain authored with exact-head evidence pending. STEP-I03 is now implemented on d05414c5edec3b92790239c85b489f5b7e95641c: adapter validity receives only semantic source/target/operation fields, transfer events retain channel telemetry, the focused regression is authored, and the architecture manifest is refreshed; executable TEST-I04/TEST-I05 evidence remains pending.
   known_problems:
   - Exact-head semantic-identity evidence remains pending and must not be reported as complete.
   - Adapter validity currently receives request.channel, so an adapter can make the same semantic transfer valid for one input modality and invalid for another.
