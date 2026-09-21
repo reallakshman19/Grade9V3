@@ -1,0 +1,141 @@
+{
+  "schema_version": "relay-v2.5-discovery",
+  "id": "DISC-TA-019",
+  "candidate": {
+    "agent_instance_id": "chatgpt-sol-wp105-candidate-20260921-a"
+  },
+  "route": {
+    "route_key": "SERIAL:EP-TA-009",
+    "mode": "SERIAL",
+    "execution_ref": "EP-TA-009",
+    "ep_id": "EP-TA-009",
+    "ep_path": "agents/relay/execution-packages/EP-TA-009.yaml",
+    "plan_id": null,
+    "plan_path": null,
+    "lane_id": null
+  },
+  "basis": {
+    "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
+    "roadmap_revision": "RM-0009",
+    "relay_protocol_basis_ref": "reallaksh19/Common@d9b84069683977b5c370f536f1c50095de926338:skills/engineering-pr-delivery-v2.5",
+    "material_ref": "411e8dc0108347933792fbbd5a6be8dfa59d655e",
+    "ep_contract_digest": "sha256:6d985575b34d3ea73654370ea3bc11ce7cb4f2f4cb124e54198bfce35c995e08",
+    "repo_profile_digest": "sha256:954cdd371183121091d3690de67c9b699135f89cad93a0edad53a27b058e64b2",
+    "predecessor_baton": {
+      "type": "CHECKPOINT",
+      "id": "CP-TA-008",
+      "path": "agents/relay/checkpoints/CP-TA-008.yaml",
+      "digest": "sha256:dfe7925bdd613fda1834a2ec5a202ecc7d3bcc0d375d7e2894c80c20975a1ee7"
+    }
+  },
+  "steps": [
+    {
+      "id": "DSTEP-TA9-001",
+      "status": "PASS",
+      "outputs": [
+        {
+          "name": "Required-domain/capability inventory",
+          "value": "The Grade-9 scope coverage artifacts classify represented Physics matrices/capabilities into ordinary Grade-9 core, genuine prerequisites/question-driven additions, declared non-blocking extensions/enrichment, and deferred later/broader material; WP-TA-105 consumes that existing classification rather than redefining curriculum truth.",
+          "basis": [
+            "docs/grade9/GRADE9-PHYSICS-SCOPE-COVERAGE.md",
+            "docs/grade9/grade9-physics-scope-coverage.json",
+            "RM-0009 WP-TA-105"
+          ]
+        },
+        {
+          "name": "Explicit non-blocking enrichment and later-grade classifications",
+          "value": "Declared extensions/enrichment and deferred later-grade/broader matrices carry default_grade9_completion_blocker=false unless a more specific current required-scope authority says otherwise; they remain visible but cannot become blockers merely because evidence is absent.",
+          "basis": [
+            "docs/grade9/grade9-physics-scope-coverage.json",
+            "ODR-0003-G9-PHYSICS-INDEPENDENCE"
+          ]
+        }
+      ],
+      "basis": [
+        "current Grade-9 scope coverage authority"
+      ]
+    },
+    {
+      "id": "DSTEP-TA9-002",
+      "status": "PASS",
+      "outputs": [
+        {
+          "name": "Evidence-source map",
+          "value": "Shared/tools/learner_evidence.py resolves referenced Learners/observations over profile snapshots with precedence DIRECT_ATTEMPT > PRIOR_DIAGNOSTIC > PRIOR_STUDY_MAP > profile held > unobserved; newest wins within one evidence kind.",
+          "basis": [
+            "Shared/tools/learner_evidence.py",
+            "Learners/"
+          ]
+        },
+        {
+          "name": "Independence/help/error provenance rules",
+          "value": "Only DIRECT_ATTEMPT with help NONE proves independence. DEMONSTRATED with HINT, WORKED_EXAMPLE, or SOLUTION is effectively UNCERTAIN; profile snapshots are not proof; absent observations remain UNOBSERVED, with help/error_stage retained as evidence context.",
+          "basis": [
+            "Shared/tools/learner_evidence.py:_independence_proven",
+            "Shared/tools/learner_evidence.py:_effective_observation_result",
+            "Shared/tools/learner_evidence.py:effective_state"
+          ]
+        }
+      ],
+      "basis": [
+        "current Shared learner-evidence contract"
+      ]
+    },
+    {
+      "id": "DSTEP-TA9-003",
+      "status": "PASS",
+      "outputs": [
+        {
+          "name": "Protected independence rules",
+          "value": "Independent evidence must remain explicit; unknown/helped evidence cannot be promoted to secure readiness, no mastery percentage/probability or second learner truth store may be introduced, and canonical Physics meaning may not be edited to make the exit view green.",
+          "basis": [
+            "agents/relay/roadmap/owner-decisions/ODR-0003-G9-PHYSICS-INDEPENDENCE.yaml",
+            "agents/relay/execution-packages/EP-TA-009.yaml"
+          ]
+        },
+        {
+          "name": "Predecessor closure basis",
+          "value": "CP-TA-008 closes the session-loop predecessor. READY/REINFORCE/REBUILD and support routing remain session-derived behavior and are not persisted Grade-9 mastery; WP-TA-105 must derive its categorical view from existing scope plus learner evidence.",
+          "basis": [
+            "agents/relay/checkpoints/CP-TA-008.yaml",
+            "agents/relay/quality/QRV-TA-008.yaml",
+            "EP-TA-009 INPUT-TA9-003"
+          ]
+        }
+      ],
+      "basis": [
+        "predecessor checkpoint and Owner progression authority"
+      ]
+    },
+    {
+      "id": "DSTEP-TA9-004",
+      "status": "PASS",
+      "outputs": [
+        {
+          "name": "Exact branch/head/base",
+          "value": "Execution branch takeover/grade9-exit-transition-r2 is rebased onto main@411e8dc0108347933792fbbd5a6be8dfa59d655e; exact governance head 8387a13e875bdee018accd2b666689bdef0609f2 passed guardrails 35576444487 and V2.5 route/Git inspection in run 35576444450 before this admission chain.",
+          "basis": [
+            "GitHub PR #170 provider readback",
+            "guardrails:35576444487",
+            "v25-relay:35576444450",
+            "EP-TA-009 git_basis"
+          ]
+        },
+        {
+          "name": "Current frontier and route",
+          "value": "RM-0009 computes WP-TA-105 as the active serial frontier with route SERIAL:EP-TA-009; predecessor CP-TA-008 is baton-ready and no material implementation has started.",
+          "basis": [
+            "agents/relay/roadmap/OVERALL_ROADMAP.yaml",
+            "agents/relay/REPO_STATE.yaml",
+            "agents/relay/checkpoints/CP-TA-008.yaml"
+          ]
+        }
+      ],
+      "basis": [
+        "exact-head repository and provider reconciliation"
+      ]
+    }
+  ],
+  "result": "PASS",
+  "conversation_context_used": false
+}
