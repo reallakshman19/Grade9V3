@@ -429,6 +429,58 @@ class Grade9ExitProjectionTest(unittest.TestCase):
         self.assertNotEqual(row["evidence_category"], grade9_exit.KNOWN_GAP)
         self.assertIn("Collect direct independent evidence", row["repair_recheck_context"])
 
+
+    def test_bench_ta9_004_no_second_mastery_store_or_protected_write_path(self):
+        source = (REPO / "Shared/tools/grade9_exit.py").read_text(encoding="utf-8")
+        lowered = source.lower()
+
+        for forbidden in (
+            "mastery_percentage",
+            "mastery_probability",
+            "grade_readiness_store",
+            "persisted_grade_state",
+        ):
+            self.assertNotIn(forbidden, lowered)
+
+        for write_primitive in (
+            ".write_text(",
+            ".write_bytes(",
+            "unlink(",
+            "mkdir(",
+            "shutil.",
+        ):
+            self.assertNotIn(write_primitive, source)
+
+        self.assertNotIn("Learners/", source)
+        self.assertNotIn("Physics/library/", source)
+        self.assertNotIn("Physics/matrices/", source)
+
+        profile = {"profile_id": "PROFILE-EMPTY", "held": {}, "observation_refs": []}
+        with patch.object(
+            grade9_exit.learner_evidence,
+            "evidence_for_capability",
+            return_value=[],
+        ), patch.object(
+            grade9_exit.learner_evidence,
+            "effective_state",
+            return_value={
+                "state": "UNOBSERVED",
+                "source": "UNOBSERVED",
+                "independence_proven": False,
+                "independence_basis": "UNOBSERVED",
+            },
+        ):
+            projection = grade9_exit.project(profile, REPO)
+            report = grade9_exit.transition_report(projection)
+
+        self.assertEqual(projection["persistence"], "NOT_WRITTEN")
+        self.assertEqual(report["persistence"], "NOT_WRITTEN")
+        self.assertEqual(
+            report["transition_state"],
+            "GRADE9_EVIDENCE_INCOMPLETE",
+        )
+
+
     def test_projection_is_derived_and_does_not_create_grade_truth(self):
         profile = {"profile_id": "PROFILE-EMPTY", "held": {}, "observation_refs": []}
         with patch.object(
