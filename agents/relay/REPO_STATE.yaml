@@ -52,10 +52,10 @@ progress:
   basis_revision: PB-0011
 status_planes:
   execution:
-    state: READY
-    can_continue: true
-    material_authority: WRITE
-    next_action: Execute STEP-I11 as one Core completion-integrity batch: validate provenance metadata shape and isolate adapter failure attribution; then freeze discretionary Core hardening pending exact-head evidence.
+    state: WAITING
+    can_continue: false
+    material_authority: READ_ONLY
+    next_action: Obtain one exact-head validation on material head bb911b4c856d70855237a3f958b0457fb4014bd1: Node runtime contract, non-skipped real Chrome browser contract, and full guardrails. Do not admit more discretionary Core hardening unless that evidence exposes a concrete structural failure.
   quality:
     state: NEEDS_ATTENTION
     findings:
@@ -68,13 +68,14 @@ status_planes:
     - Reentrant semantic dispatch is blocked on 8003880e84a5798f9a5eba0f8dfdc762c767845f: synchronous callbacks receive WORKBENCH_REENTRANT_DISPATCH before nested state/history mutation; exact-head evidence remains pending.
     - Canonical-transformation/history coupling was tested and deliberately not added because it would promote descriptive metadata over adapter-owned validity.
     - Runtime-lifetime ID stability is implemented at 34d9111cdb0c95ef608b98b0f24b1fe15ce43afc: committed entity/projection IDs remain reserved across undo branches, rejected candidate IDs are not burned, and rejected reuse leaves redo intact; exact-head evidence remains pending.
-    - Whole-runtime completion audit found two final high-confidence gaps: malformed provenance metadata can be treated as absent, and adapter-thrown WorkbenchError can impersonate Core failure codes. STEP-I11 closes both in one batch.
+    - Core completion-integrity batch is implemented at bb911b4c856d70855237a3f958b0457fb4014bd1: malformed provenance metadata fails closed and adapter exceptions cannot impersonate deterministic Core validation codes.
+    - Discretionary Core hardening is frozen after STEP-I11; the next frontier is executable exact-head evidence, not another audit-driven micro-slice.
     - The stronger witness now models partial-dividend-15 as a distinct entity and the focused lifecycle reproduction passes without a Shared/workbench product-code change; formal exact-head repository/browser evidence is still pending.
     - Main carries RM-0008 / EP-TA-008 while this branch carries the #162 RM-0002 execution package; normal drift/write validation remains unmet under the explicit Owner continuation exception.
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
   evidence:
     state: PARTIAL
-    summary: Cumulative Core candidate 34d9111cdb0c95ef608b98b0f24b1fe15ce43afc contains the truthful 156 -> 15 -> 1 identity witness, channel-neutral adapter validity, empty-patch rejection, provenance referential/DAG integrity, observer containment, lifecycle-aware reference integrity, non-reentrant dispatch, and runtime-lifetime entity/projection ID stability. canonicalTransformation metadata remains non-authoritative for adapter validity. Architecture manifest digest is sha256:18fc9c03ddb07f505f03d60c621d4f6333f910d816092c9543a958d1b97dff96. Exact repository Node/Chrome/full-guardrail evidence remains unverified here.
+    summary: Cumulative Core candidate bb911b4c856d70855237a3f958b0457fb4014bd1 contains the truthful 156 -> 15 -> 1 identity witness; channel-neutral adapter validity; empty-patch rejection; provenance referential, DAG and shape integrity; observer containment; lifecycle-aware reference integrity; non-reentrant dispatch; runtime-lifetime entity/projection ID stability; and adapter-vs-Core failure-source separation. Architecture manifest digest is sha256:8ac5c6bdb2c4fcf92480c685f923db428ded227411209eb84cc4dec53f95abfc. Exact repository Node/Chrome/full-guardrail evidence remains unverified because the current local environment cannot resolve github.com and Actions/status readers expose no run/status for this material head.
     not_run:
     - id: TEST-I01
       reason: The exact repository Node suite has not been executed from a checkout of material head 726bb16085dd5f59f392a2fcc1805f3639c7e1ad; the focused lifecycle reproduction does not substitute for the declared test command.
@@ -133,6 +134,12 @@ status_planes:
     - id: TEST-I19
       reason: Existing real-Chrome/full guardrails must rerun on 34d9111cdb0c95ef608b98b0f24b1fe15ce43afc; the current Actions/status readers expose no runs/statuses for this exact head.
       cause: INFRASTRUCTURE
+    - id: TEST-I20
+      reason: Completion-integrity regressions are authored on bb911b4c856d70855237a3f958b0457fb4014bd1, but an exact local checkout cannot be obtained because github.com DNS resolution fails in this environment.
+      cause: UNAVAILABLE_TOOL
+    - id: TEST-I21
+      reason: Existing real-Chrome/full guardrails must rerun on bb911b4c856d70855237a3f958b0457fb4014bd1; the current Actions/status readers expose no runs/statuses for this exact head.
+      cause: INFRASTRUCTURE
     - id: AC-05-POST-REBASE-BROWSER
       reason: Final post-rebase browser rerun is not scheduled until PR #165 is reconciled with then-current main.
       cause: NOT_SCHEDULED
@@ -142,7 +149,7 @@ status_planes:
   stop:
     active: false
     category: NONE
-    reason: Owner explicitly authorized continued bounded Core coding while head/evidence/merge issues remain deferred; the normal drift gate is still not claimed as passed.
+    reason: Core completion-integrity coding is finished and intentionally frozen pending executable evidence; merge/base reconciliation remains deferred and the normal drift gate is still not claimed as passed.
     basis:
     - agents/relay/roadmap/owner-decisions/ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT.yaml
     - agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-SEMANTIC-IDENTITY.yaml
