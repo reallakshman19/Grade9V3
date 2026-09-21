@@ -10,7 +10,7 @@ identity:
 replan_inheritance: null
 git_basis:
   expected_branch: feat/issue-162-semantic-workbench-core
-  material_ref: 0f14e663b72de41c3a13e924755e935d309a83d9
+  material_ref: 8003880e84a5798f9a5eba0f8dfdc762c767845f
   base_branch: main
   base_observed_ref: 843ec2d8d6faa2b8de15795ed1535905e4efc8a8
   drift_policy: OWNER_EXCEPTION
@@ -52,12 +52,13 @@ context_capsule:
   - ODR-0162-ADVANCE-TRANSACTION-INTEGRITY
   - ODR-0162-ADVANCE-PROVENANCE-INTEGRITY
   - ODR-0162-ADVANCE-REENTRANCY-INTEGRITY
-  current_implementation_state: The truthful identity witness plus channel-neutral validity, non-empty commit enforcement, provenance referential/DAG integrity, observer containment, and lifecycle-aware target/reference integrity are authored; exact-head Node/browser/full-guardrail evidence remains pending.
+  current_implementation_state: The truthful identity witness plus channel-neutral validity, non-empty commit enforcement, provenance referential/DAG integrity, observer containment, lifecycle-aware target/reference integrity, and non-reentrant semantic dispatch are authored; exact-head Node/browser/full-guardrail evidence remains pending.
   known_problems:
   - Exact-head semantic-identity evidence remains pending and must not be reported as complete.
   - Exact-head channel-neutral adapter evidence remains pending and must not be reported as complete.
   - The accepted-empty-patch defect is fixed on 979afce99ec2beddd895fc5b1a12e5541915e5a3, but exact-head Node/browser/full-guardrail evidence remains pending.
   - Initial-scene provenance dangling-source validation is implemented on f715a2a0bb348825e7aef28f380a71031631dc88, but exact-head Node/browser/full-guardrail evidence remains pending.
+  - Reentrant-dispatch containment is implemented on 8003880e84a5798f9a5eba0f8dfdc762c767845f, but exact-head Node/browser/full-guardrail evidence remains pending.
   deliberate_non_goals:
   - No arithmetic-specific Core API or entity type.
   - No generic derivation taxonomy in Core.
