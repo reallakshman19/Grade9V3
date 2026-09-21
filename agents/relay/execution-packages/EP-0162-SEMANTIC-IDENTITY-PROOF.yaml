@@ -102,7 +102,15 @@ inputs:
   applicability: CURRENT_EP_REQUIRED
   resolution: READY
   consumers: [STEP-I01, STEP-I02]
-  validation:
+  - id: AC-I10
+  description: eventSink receives an isolated clone so host observer mutation cannot alter the semantic event returned by dispatch.
+  weight: 50
+  verification: [TEST-I10]
+- id: AC-I11
+  description: Synchronous eventSink exceptions are contained and cannot make committed, rejected or transient semantic dispatch throw or corrupt canonical history.
+  weight: 50
+  verification: [TEST-I10, TEST-I11]
+validation:
   - Guardrails on the redo material head and later relay-only branch head are green.
   stale_if:
   - Shared/workbench runtime semantics change outside this EP.
@@ -153,6 +161,8 @@ scope:
     reason: Preserve the green reversible-history contract.
   - invariant: Domain validity is input-modality neutral.
     reason: Pointer, click, keyboard and touch may use different browser mechanics, but evaluateTransfer must receive the same semantic request for the same source/target/operation.
+  - invariant: Host observers cannot alter semantic dispatch outcome.
+    reason: Event observation is downstream of Core state transitions and must not throw through or mutate the Core event result.
   - invariant: Declared provenance sources resolve to canonical semantic entities.
     reason: Core must not admit dangling semantic lineage merely because an entity arrived in the initial scene instead of an adapter patch.
   prohibited:
@@ -176,6 +186,9 @@ anti_drift:
   - id: ADR-I03
     restriction: Do not remove channel observability from semantic events merely to hide it from the domain adapter.
     reason: Input mechanics remain useful telemetry; only academic/domain validity must be modality-neutral.
+  - id: ADR-I04
+    restriction: Do not add a second event bus, observer retry queue or subject-specific error handling to contain eventSink failures.
+    reason: A cloned observer payload plus synchronous exception containment is sufficient for this falsifier.
   - id: ADR-I04
     restriction: Do not turn provenance referential integrity into a provenance taxonomy, executable derivation graph, cycle checker, or transaction ledger.
     reason: This slice only closes dangling source references in initial canonical state.
@@ -265,6 +278,18 @@ implementation_plan:
   expected_state: A scene with a declared missing provenance source fails validation before runtime construction; valid existing source refs remain accepted.
   stop_conditions:
   - Stop if the fix would require provenance graph execution, cycle semantics, transaction IDs or subject-specific derivation rules.
+- id: STEP-I06
+  objective: Isolate host observers from Core semantic dispatch so sink mutation/exception cannot alter the returned event or throw after a completed canonical transition.
+  targets:
+  - Shared/workbench/runtime.mjs
+  - tests/workbench_runtime.test.mjs
+  - docs/architecture-manifest.json
+  inputs: [INPUT-I01]
+  acceptance: [AC-I10, AC-I11]
+  tests: [TEST-I10, TEST-I11]
+  expected_state: eventSink receives an isolated clone; synchronous sink exceptions are contained; returned events and canonical state/history remain authoritative.
+  stop_conditions:
+  - Stop if the fix requires a second event system, async retry machinery, or host-specific semantics.
 next_work:
   phase_transition: false
   steps:
@@ -330,6 +355,19 @@ next_work:
     expected_result: Initial and adapter-added entity provenance share the same basic source-reference integrity boundary.
     stop_if:
     - The change expands into provenance ontology, graph execution or subject reasoning.
+  - order: 6
+    action: Isolate eventSink observation from semantic dispatch by cloning the observer payload and containing synchronous observer exceptions.
+    targets:
+    - Shared/workbench/runtime.mjs
+    - tests/workbench_runtime.test.mjs
+    - docs/architecture-manifest.json
+    inputs: [INPUT-I01]
+    tests: [TEST-I10, TEST-I11]
+    benchmarks: []
+    acceptance: [AC-I10, AC-I11]
+    expected_result: Observer mutation cannot change the event returned by dispatch, and observer exceptions cannot make committed or transient semantic operations throw.
+    stop_if:
+    - The fix changes academic validity, browser gesture semantics, or requires a second event transport.
 qualification_boundary:
   required: false
   trigger: null
@@ -451,6 +489,14 @@ validation:
   class: MUST_PASS
   method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the provenance-integrity coding head
   proves: [AC-I09]
+- id: TEST-I10
+  class: MUST_PASS
+  method: node --test tests/workbench_runtime.test.mjs
+  proves: [AC-I10, AC-I11]
+- id: TEST-I11
+  class: MUST_PASS
+  method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the observer-containment coding head
+  proves: [AC-I11]
 failure_and_stop_conditions:
   hard_stop_categories: [OWNER_DECISION_REQUIRED, AUTHORITY_VIOLATION, PROTECTED_INVARIANT_FAILURE, UNSAFE_ENGINEERING_RESULT]
 report_contract:
