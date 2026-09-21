@@ -64,7 +64,13 @@
 
     const learner = document.getElementById("learner");
     const pageEvents = [];
-    for (const type of ["attempt_committed", "support_requested", "activity_completed"]) {
+    for (const type of [
+      "attempt_committed",
+      "support_requested",
+      "reveal_changed",
+      "representation_manipulated",
+      "activity_completed",
+    ]) {
       learner.addEventListener(type, (event) => pageEvents.push({
         type: event.type,
         detail: structuredClone(event.detail),
@@ -85,6 +91,9 @@
       },
       events() {
         return structuredClone(pageEvents);
+      },
+      liveStatus() {
+        return learner.shadowRoot.querySelector("[data-live-status]")?.textContent ?? "";
       },
       visualBinding() {
         const panel = learner.shadowRoot.querySelector(".representation-panel");
