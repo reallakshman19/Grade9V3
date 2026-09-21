@@ -1,0 +1,178 @@
+{
+  "schema_version": "relay-v2.5-question-set",
+  "id": "QSET-TA-011",
+  "route": {
+    "route_key": "SERIAL:EP-TA-010",
+    "mode": "SERIAL",
+    "execution_ref": "EP-TA-010",
+    "ep_id": "EP-TA-010",
+    "ep_path": "agents/relay/execution-packages/EP-TA-010.yaml",
+    "plan_id": null,
+    "plan_path": null,
+    "lane_id": null,
+    "roadmap_revision": "RM-0011",
+    "work_package": "WP-TA-108",
+    "ep_contract_digest": "sha256:403613aea6ec58c4aa7ac1ab978e341b92f4bebab358c35d51bd1af96cdcd408"
+  },
+  "boundary": {
+    "trigger": "MATERIAL_QUALIFICATION_BOUNDARY_CHANGED",
+    "from_phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "to_phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "changed_dimensions": [
+      "PRODUCTION_PATH",
+      "INPUT_AUTHORITY",
+      "PROTECTED_INVARIANT",
+      "VERIFICATION_ORACLE",
+      "PROTOCOL_BASIS"
+    ],
+    "basis": [
+      "WP-TA-108 changes production work from Grade-9 exit reporting to reusable browser/runtime composition.",
+      "The browser input authority is Issue #175 plus the frozen CoreProjection v1.0 contract from PR #176 and the existing Shared/workbench API.",
+      "The protected boundary now includes attempt-before-reveal, Core2B protected-move disclosure, no page-local academic truth and no mastery inference.",
+      "Verification now includes independent Core-state falsifiers and real-browser accessibility/offline evidence.",
+      "Owner pinned engineering-pr-delivery V2.5 to Common@1bc4eca6eac9d75900ddee1c338da4b44817eeec."
+    ]
+  },
+  "questions": [
+    {
+      "id": "Q1",
+      "focus": "PRODUCTION_PATH",
+      "anchors": [
+        "WP-TA-108",
+        "INPUT-TA10-001",
+        "INPUT-TA10-002",
+        "INPUT-TA10-003"
+      ],
+      "prompt": "Trace the production path into the new learner shell. Name the state owner, academic authority source and downstream consumer, and distinguish UI-local interaction state from learner evidence/mastery.",
+      "required_output_keys": [
+        "production_entrypoint",
+        "state_owner",
+        "authority_source",
+        "downstream_consumer"
+      ],
+      "evidence_required": true,
+      "deterministic_expected": {
+        "production_entrypoint": "A host/compiler supplies a CoreProjection v1.0 object plus optional semantic-workbench scene/adapter inputs.",
+        "state_owner": "The learner shell owns only UI-local attempt/help/reveal/focus state; projection/adapter inputs own academic meaning and validity, while learner evidence/mastery remains host-owned.",
+        "authority_source": "GitHub Issue #175 + PR #176 Core Projection Contract v1.0 + Shared/workbench public scene/adapter/event contract + ODR-0009.",
+        "downstream_consumer": "A reusable learner-facing Core page shell that can be hosted by repository public/static or standalone delivery without discovering curriculum/mastery state."
+      }
+    },
+    {
+      "id": "Q2",
+      "focus": "ENGINEERING_PROBLEM",
+      "anchors": [
+        "BENCH-TA10-001",
+        "AC-TA10-001",
+        "AC-TA10-002"
+      ],
+      "prompt": "Reconstruct the generic learner-shell state sequence for Core1A, Core1B, Core2A and Core2B without using subject identifiers or DOM text as pedagogy.",
+      "required_output_keys": [
+        "reconstruction_steps",
+        "intermediate_result",
+        "expected_result"
+      ],
+      "evidence_required": true,
+      "reconstruction_mode": "DESIGN_REASONING",
+      "payload": {
+        "source": "Issue #175, Core Projection Contract v1.0, Shared/workbench runtime"
+      },
+      "deterministic_expected": {
+        "reconstruction_steps": [
+          "Accept explicit projection and optional scene/adapter inputs.",
+          "Initialize only presentation/UI-local state from supplied Core/presentation fields.",
+          "Render Core1A completed construction immediately when supplied.",
+          "For Core1B, record an explicit learner attempt before reconstruction becomes revealable.",
+          "For Core2A, keep help optional, advance only supplied scaffolds/visual bindings and distinguish the supplied crux move.",
+          "For Core2B, require attempt and suppress any pre-attempt scaffold/visual support bound to a protected move.",
+          "Mount the supplied semantic-workbench scene without recomputing science.",
+          "Emit semantic interaction events only; never persist or emit mastery/readiness."
+        ],
+        "intermediate_result": "A UI-local state machine whose transitions are driven by supplied projection policy rather than subject logic.",
+        "expected_result": "The same learner shell represents Core1A/Core1B/Core2A/Core2B over shared academic objects/scene while preserving different learner-work and disclosure states."
+      }
+    },
+    {
+      "id": "Q3",
+      "focus": "BOUNDARIES_INVARIANTS",
+      "anchors": [
+        "AC-TA10-002",
+        "AC-TA10-003"
+      ],
+      "prompt": "State the exact mutation, protected invariant and falsifier for the browser ownership boundary.",
+      "required_output_keys": [
+        "mutation_effect",
+        "protected_invariant",
+        "falsifier"
+      ],
+      "evidence_required": true,
+      "deterministic_expected": {
+        "mutation_effect": "Add only a projection-driven learner UI/runtime over explicit host inputs.",
+        "protected_invariant": "No learner-shell scientific formula/capability/mastery rule is introduced, and Core2B pre-attempt help never exposes a supplied protected_move_ref.",
+        "falsifier": "Any subject-specific formula/capability condition in generic runtime code, any pre-attempt support revealing a protected move, or any mastered/ready/proficient event/state persisted by the component."
+      },
+      "mutation": {
+        "condition": "Add the generic Core learner shell and fixture-backed interaction state.",
+        "protected_invariant": "Scientific truth and learner evidence remain external; protected transfer decisions remain undisclosed before attempt.",
+        "falsifier": "A browser-local academic rule, mastery inference, or protected-move leak is observed."
+      }
+    },
+    {
+      "id": "Q4",
+      "focus": "VERIFICATION",
+      "anchors": [
+        "TEST-TA10-001",
+        "TEST-TA10-002",
+        "TEST-TA10-003",
+        "TEST-TA10-004"
+      ],
+      "prompt": "Define an independent verification method and exact expected outcome for this first learner-shell proof.",
+      "required_output_keys": [
+        "independent_method",
+        "predicted_result",
+        "tolerance_or_exactness"
+      ],
+      "evidence_required": true,
+      "oracle_refs": [
+        "BENCH-TA10-001",
+        "BENCH-TA10-002",
+        "BENCH-TA10-003"
+      ],
+      "independence_requirement": "Use frozen contract expectations, static ownership scans and ChromeDriver observations rather than assertions sourced only from the implementation.",
+      "deterministic_expected": {
+        "independent_method": "Run Node Core-state/reveal falsifiers, static source/event-boundary checks, ChromeDriver accessibility/input/narrow/offline journeys, generated-manifest checks and exact-head V2.5 validation.",
+        "predicted_result": "Each Core exposes only its authorized state; no protected move, mastery claim or scientific rule leaks into the shell; browser interaction and text/a11y/offline behavior remain usable.",
+        "tolerance_or_exactness": "Exact reveal/event/protected-move membership and zero generic-runtime subject-science/mastery rules; browser assertions must pass exactly."
+      }
+    },
+    {
+      "id": "Q5",
+      "focus": "FIRST_SAFE_SLICE",
+      "anchors": [
+        "STEP-TA10-001",
+        "AC-TA10-001",
+        "TEST-TA10-001"
+      ],
+      "prompt": "Name the first bounded material change after qualification and the before/after verification that must pass before adding help/protection/browser complexity.",
+      "required_output_keys": [
+        "first_change",
+        "predicted_before",
+        "predicted_after",
+        "verification"
+      ],
+      "evidence_required": true,
+      "step_refs": [
+        "STEP-TA10-001"
+      ],
+      "deterministic_expected": {
+        "first_change": "Create Shared/workbench/core-learning-page.mjs with a generic projection-driven state surface plus Node tests over four frozen CoreProjection fixtures; do not add a public production adapter or subject data access.",
+        "predicted_before": "No reusable Core learner page shell exists; bespoke pages own their interaction sequencing.",
+        "predicted_after": "One generic component can initialize/render Core1A/Core1B/Core2A/Core2B fixture states with no subject-specific branch.",
+        "verification": "TEST-TA10-001 with BENCH-TA10-001 must pass before STEP-TA10-002 begins."
+      }
+    }
+  ],
+  "prepared_by": {
+    "agent_instance_id": "chatgpt-sol-webbuilder-preparer-20260921"
+  }
+}
