@@ -257,6 +257,44 @@ test("invalid domain action is rejected without mutation", () => {
   assert.equal(after.revision, before.revision);
 });
 
+test("accepted empty patch fails closed without creating a semantic revision", () => {
+  let adapterCalls = 0;
+  const baseAdapter = divisionAdapter();
+  const adapter = {
+    evaluateTransfer(request, snapshot) {
+      adapterCalls += 1;
+      if (adapterCalls === 1) return baseAdapter.evaluateTransfer(request, snapshot);
+      return { accepted: true, summary: "Accepted without a semantic delta", patch: {} };
+    }
+  };
+  const runtime = new WorkbenchRuntime(fixture, adapter);
+
+  runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "click" });
+  runtime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "click" });
+  runtime.dispatch({ type: "UNDO", channel: "keyboard" });
+  assert.equal(runtime.snapshot.revision, 2);
+  assert.equal(runtime.canUndo, false);
+  assert.equal(runtime.canRedo, true);
+
+  runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "keyboard" });
+  const before = runtime.snapshot;
+  const event = runtime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "keyboard" });
+
+  assert.equal(event.type, "TRANSFER_REJECTED");
+  assert.equal(event.code, "WORKBENCH_PATCH_EMPTY");
+  assert.deepEqual(runtime.snapshot.entities, before.entities);
+  assert.deepEqual(runtime.snapshot.projections, before.projections);
+  assert.equal(runtime.snapshot.revision, before.revision);
+  assert.equal(runtime.canUndo, false);
+  assert.equal(runtime.canRedo, true);
+
+  const redo = runtime.dispatch({ type: "REDO", channel: "keyboard" });
+  assert.equal(redo.type, "REDO_APPLIED");
+  assert.equal(runtime.snapshot.entities.some((row) => row.id === "quotient-digit-1"), true);
+  assert.equal(runtime.snapshot.revision, 3);
+  assert.equal(adapterCalls, 2);
+});
+
 test("undo restores the exact prior semantic state", () => {
   const runtime = new WorkbenchRuntime(fixture, divisionAdapter());
   const initial = runtime.snapshot;
