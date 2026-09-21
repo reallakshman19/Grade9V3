@@ -17,7 +17,7 @@
     "WEB": 6,
     "WEB_RUNTIME": 3
   },
-  "digest": "sha256:54a215285c438d19fa053bb7049c7f2788171152286513a999f1be33d5f9fbc3",
+  "digest": "sha256:7d002468155cfd2de29168b676befc5a0f07a104e4d4758499824588db491bf4",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -552,11 +552,11 @@
       "sha256": "8e40c31e255ae798c9775edb79667456b9a830415c8802c42657d9d76c057d28"
     },
     {
-      "bytes": 12384,
+      "bytes": 19072,
       "path": "Shared/tools/grade9_exit.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "sha256": "d9388af10fd295a8e7a7240b6adbe632ba6be80abfd8557f0a483205aa316390"
+      "sha256": "4addadc03e7bfbd20bcf33b7e6b1cb2f7d9d50f1c84413641b504c3c240229f3"
     },
     {
       "path": "Shared/tools/import_study_observations.py",
@@ -1077,11 +1077,11 @@
       "sha256": "9ab934fa087279391350fe6e027ea05934a99e40f7b7074f9f140c5aac66ac28"
     },
     {
-      "bytes": 10534,
+      "bytes": 15921,
       "path": "tests/test_grade9_exit.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "sha256": "329c61787052717de934c5f0fbf7c41587868118783acf8fa34025afe6c4f83c"
+      "sha256": "56dca2572d6a2e85955cac60a7e0b629cc02a64accde4f22bfc30b58b1d0ab3d"
     },
     {
       "path": "tests/test_grade9_force_laws_scope.py",
