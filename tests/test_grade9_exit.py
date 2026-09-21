@@ -167,6 +167,86 @@ class Grade9ExitProjectionTest(unittest.TestCase):
         self.assertFalse(domain["ordinary_grade9_core"])
         self.assertFalse(domain["default_grade9_completion_blocker"])
 
+    def test_bench_ta9_002_transition_blocker_boundary(self):
+        rows = [
+            {
+                "matrix_id": "MATRIX-REQ-A",
+                "capability_ref": "CAP-REQ-A",
+                "ordinary_grade9_core": True,
+                "matrix_role": "REQUIRED_CORE",
+                "prerequisite_refs": ["CAP-PREREQ"],
+                "evidence_category": grade9_exit.KNOWN_GAP,
+            },
+            {
+                "matrix_id": "MATRIX-SUPPORT",
+                "capability_ref": "CAP-PREREQ",
+                "ordinary_grade9_core": False,
+                "matrix_role": "SUPPORT_ONLY",
+                "prerequisite_refs": [],
+                "evidence_category": grade9_exit.KNOWN_GAP,
+            },
+            {
+                "matrix_id": "MATRIX-SUPPORT",
+                "capability_ref": "CAP-UNUSED-SUPPORT",
+                "ordinary_grade9_core": False,
+                "matrix_role": "SUPPORT_ONLY",
+                "prerequisite_refs": [],
+                "evidence_category": grade9_exit.KNOWN_GAP,
+            },
+            {
+                "matrix_id": "MATRIX-ENRICH",
+                "capability_ref": "CAP-ENRICH",
+                "ordinary_grade9_core": False,
+                "matrix_role": "DECLARED_EXTENSION_NONBLOCKING",
+                "prerequisite_refs": [],
+                "evidence_category": grade9_exit.KNOWN_GAP,
+            },
+            {
+                "matrix_id": "MATRIX-LATER",
+                "capability_ref": "CAP-LATER",
+                "ordinary_grade9_core": False,
+                "matrix_role": "DEFERRED_LATER_OR_BROADER",
+                "prerequisite_refs": [],
+                "evidence_category": grade9_exit.KNOWN_GAP,
+            },
+            {
+                "matrix_id": "MATRIX-REQ-B",
+                "capability_ref": "CAP-REQ-UNKNOWN",
+                "ordinary_grade9_core": True,
+                "matrix_role": "REQUIRED_CORE",
+                "prerequisite_refs": [],
+                "evidence_category": grade9_exit.INSUFFICIENT_OR_UNKNOWN,
+            },
+        ]
+
+        decisions = {
+            row["capability_ref"]: row
+            for row in grade9_exit.transition_boundary(rows)
+        }
+
+        self.assertTrue(decisions["CAP-REQ-A"]["blocks_transition"])
+        self.assertEqual(
+            decisions["CAP-REQ-A"]["reason"],
+            "REQUIRED_SCOPE_GAP",
+        )
+        self.assertTrue(decisions["CAP-PREREQ"]["blocks_transition"])
+        self.assertEqual(
+            decisions["CAP-PREREQ"]["reason"],
+            "GENUINE_PREREQUISITE_GAP",
+        )
+        self.assertFalse(decisions["CAP-UNUSED-SUPPORT"]["blocks_transition"])
+        self.assertEqual(
+            decisions["CAP-UNUSED-SUPPORT"]["disposition"],
+            "NON_BLOCKING_GAP",
+        )
+        self.assertFalse(decisions["CAP-ENRICH"]["blocks_transition"])
+        self.assertFalse(decisions["CAP-LATER"]["blocks_transition"])
+        self.assertEqual(
+            decisions["CAP-REQ-UNKNOWN"]["disposition"],
+            "EVIDENCE_REQUIRED",
+        )
+        self.assertFalse(decisions["CAP-REQ-UNKNOWN"]["blocks_transition"])
+
     def test_projection_is_derived_and_does_not_create_grade_truth(self):
         profile = {"profile_id": "PROFILE-EMPTY", "held": {}, "observation_refs": []}
         with patch.object(
