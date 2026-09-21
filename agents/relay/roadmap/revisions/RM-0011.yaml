@@ -1,0 +1,48 @@
+{
+  "schema_version": "relay-v2.5",
+  "revision": {
+    "id": "RM-0011",
+    "from_revision": "RM-0010",
+    "to_revision": "RM-0011",
+    "classification": "OWNER_INTENT_MUTATION",
+    "trigger": {
+      "type": "OWNER_DECISION",
+      "path": "agents/relay/roadmap/owner-decisions/ODR-0009-WEB-BUILDER-START.yaml"
+    }
+  },
+  "changes": {
+    "added": [
+      "WP-TA-108"
+    ],
+    "removed": [],
+    "changed": [
+      "OBJ-TOPIC-ATLAS-COMPLETE",
+      "PHASE-TAKEOVER-RECONCILIATION"
+    ],
+    "unaffected": [
+      "WP-TAKEOVER-RECONCILE",
+      "WP-TA-102",
+      "WP-TA-106",
+      "WP-TA-103",
+      "WP-TA-104",
+      "WP-TA-107",
+      "WP-TA-105"
+    ]
+  },
+  "invalidated_execution_packages": [],
+  "issue_graph_reconciled": true,
+  "progress_basis_change": {
+    "old_basis": "PB-0008",
+    "new_basis": "PB-0009",
+    "old_total_weight": 100,
+    "new_total_weight": 115
+  },
+  "frontier_after": [
+    "WP-TA-108"
+  ],
+  "notes": [
+    "Owner admitted Issue #175 as new execution work after terminal CP-TA-009; no previously accepted work is re-earned.",
+    "The first work package proves only the reusable fixture-backed learner shell. Production #173/#174 projection integration remains follow-on Issue #175 work.",
+    "The new Common V2.5 protocol basis is pinned at 1bc4eca6eac9d75900ddee1c338da4b44817eeec."
+  ]
+}
