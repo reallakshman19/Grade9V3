@@ -1,0 +1,72 @@
+{
+  "schema_version": "relay-v2.5-delivery-observation",
+  "id": "DOBS-PR170-RM0010",
+  "provider": "GITHUB",
+  "repository": "reallaksh19/Grade9V3",
+  "vehicle": {
+    "kind": "PULL_REQUEST",
+    "number": 170,
+    "url": "https://github.com/reallaksh19/Grade9V3/pull/170",
+    "lifecycle": "DRAFT",
+    "head": {
+      "ref": "takeover/grade9-exit-transition-r2",
+      "sha": "c88cda5a67507bf23da7626e414c36231434e87b"
+    },
+    "base": {
+      "ref": "main",
+      "sha": "411e8dc0108347933792fbbd5a6be8dfa59d655e"
+    }
+  },
+  "mergeability": {
+    "state": "MERGEABLE"
+  },
+  "checks": {
+    "state": "FAIL",
+    "head_sha": "c88cda5a67507bf23da7626e414c36231434e87b",
+    "required": [
+      "guardrails",
+      "v25-relay"
+    ],
+    "observations": [
+      {
+        "name": "guardrails",
+        "run_id": 35623655905,
+        "status": "PASS",
+        "basis": "pull_request run completed/success on observed control head c88cda5a67507bf23da7626e414c36231434e87b"
+      },
+      {
+        "name": "v25-relay",
+        "run_id": 35623655943,
+        "status": "FAIL",
+        "basis": "Terminal roadmap/progress had been reconciled while the repository bootstrap still advertised the obsolete active route; terminal-state reconciliation is the next control-plane step."
+      }
+    ]
+  },
+  "review": {
+    "state": "CLEAR",
+    "unresolved_threads": 0,
+    "change_requests": 0
+  },
+  "description_contract": {
+    "marker": "<!-- relay-pr-correlation:v1 -->",
+    "marker_present": true,
+    "body_digest": "sha256:cb8af9abae2903ee6c29183c6014fde2e0f1e25d244c696977157730c1dfbb92",
+    "correlations": [
+      {
+        "issue_node": "ISSUE-169",
+        "issue_number": 169,
+        "ep_id": "EP-TA-009",
+        "ep_path": "agents/relay/execution-packages/EP-TA-009.yaml",
+        "work_package": "WP-TA-105",
+        "relationship": "IMPLEMENTS",
+        "meaning": "PR #170 delivers the completed Grade-9 Physics exit/Grade-10 transition engineering work for WP-TA-105 owned by Issue #169."
+      }
+    ]
+  },
+  "readback_basis": [
+    "GitHub provider readback: PR #170 is DRAFT/OPEN and mergeable on observed head c88cda5a67507bf23da7626e414c36231434e87b.",
+    "No unresolved review threads or change requests were observed.",
+    "Material head 0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494 passed guardrails run 35623092328 with 990 tests.",
+    "Current provider delivery is intentionally pending terminal-state reconciliation and separate Owner merge authorization."
+  ]
+}
