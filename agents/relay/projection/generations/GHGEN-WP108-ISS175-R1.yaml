@@ -6,7 +6,7 @@
     "roadmap_revision": "RM-0011",
     "issue_graph_revision": "IG-0007",
     "execution_ref": "EP-TA-010",
-    "state": "PREPARED",
+    "state": "IN_SYNC",
     "supersedes_generation": "GHGEN-WP105-ISS169-R3",
     "basis": [
       "ODR-0009-WEB-BUILDER-START",
@@ -20,7 +20,7 @@
     {
       "id": "GHOP-WP108-ISSUE175-ADMIT",
       "kind": "UPDATE",
-      "state": "ATTEMPTED_UNCONFIRMED",
+      "state": "VERIFIED",
       "idempotency_key": "relay:GHGEN-WP108-ISS175-R1:GHOP-WP108-ISSUE175-ADMIT",
       "depends_on": [],
       "subject": {
@@ -50,16 +50,20 @@
           "provider-readback:issue-175:id-5529711190",
           "pre-write-journal"
         ],
-        "receipt": null,
+        "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
         "last_error": null
       },
       "verification": {
-        "status": "NOT_RUN",
-        "observed_issue_number": null,
-        "observed_issue_id": null,
-        "observed_github_state": null,
+        "status": "PASS",
+        "observed_issue_number": 175,
+        "observed_issue_id": 5529711190,
+        "observed_github_state": "OPEN",
         "observed_relationships": [],
-        "basis": []
+        "basis": [
+          "GHOBS-WP108-ISS175-R1",
+          "provider-readback:issue-175@2026-09-21T17:50:45Z",
+          "marker:GHOP-WP108-ISSUE175-ADMIT"
+        ]
       },
       "reconciliation": {
         "issue_graph_effects": [
