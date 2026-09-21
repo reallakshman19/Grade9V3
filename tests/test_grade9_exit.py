@@ -87,6 +87,102 @@ class Grade9ExitProjectionTest(unittest.TestCase):
             {row["capability_ref"] for row in grav},
         )
 
+    def test_required_transfer_sampling_comes_only_from_canonical_question_metadata(self):
+        coverage = grade9_exit.scope_coverage(REPO)
+        required = {
+            row["matrix_id"]: row
+            for row in coverage["matrices"]
+            if row["role"] == "REQUIRED_CORE"
+        }
+        motion = grade9_exit.matrix_capabilities(
+            required["MATRIX-PHY-KIN-1D-MOTION"], REPO
+        )
+        nlm = grade9_exit.matrix_capabilities(
+            required["MATRIX-PHY-NLM-FIRST-LAW"], REPO
+        )
+        grav = grade9_exit.matrix_capabilities(
+            required["MATRIX-PHY-GRAV-UNIVERSAL-LAW"], REPO
+        )
+
+        self.assertIn(
+            "representation_translation",
+            {
+                dimension
+                for row in motion
+                for dimension in row["transfer_question_dimensions"].values()
+            },
+        )
+        self.assertTrue(any(row["transfer_question_dimensions"] for row in nlm))
+        self.assertFalse(any(row["transfer_question_dimensions"] for row in grav))
+
+    def test_capability_projection_preserves_history_and_independent_transfer(self):
+        history = [
+            {
+                "observation_id": "OBS-TRANSFER",
+                "capability_ref": "CAP-X",
+                "method": "question attempt Q-X-TRANSFER",
+                "evidence_kind": "DIRECT_ATTEMPT",
+                "question_ref": "Q-X-TRANSFER",
+                "observed": "Solved without help.",
+                "result": "DEMONSTRATED",
+                "help": "NONE",
+                "when": "2026-09-21T10:00:00Z",
+                "error_stage": None,
+            },
+            {
+                "observation_id": "OBS-OLD-GAP",
+                "capability_ref": "CAP-X",
+                "method": "prior diagnostic",
+                "evidence_kind": "PRIOR_DIAGNOSTIC",
+                "question_ref": "Q-X-PRACTICE",
+                "observed": "Missed the model choice.",
+                "result": "MISSING",
+                "help": "NONE",
+                "when": "2026-09-20T10:00:00Z",
+                "error_stage": "CONCEPT",
+            },
+        ]
+        with patch.object(
+            grade9_exit.learner_evidence,
+            "evidence_for_capability",
+            return_value=history,
+        ), patch.object(
+            grade9_exit.learner_evidence,
+            "effective_state",
+            return_value={
+                "state": "DEMONSTRATED",
+                "source": "DIRECT_ATTEMPT",
+                "independence_proven": True,
+                "independence_basis": "DIRECT_ATTEMPT_WITH_NO_HELP",
+            },
+        ):
+            projected = grade9_exit.capability_projection(
+                {"profile_id": "PROFILE-X"},
+                "CAP-X",
+                REPO,
+                transfer_question_dimensions={
+                    "Q-X-TRANSFER": "representation_translation",
+                },
+            )
+
+        self.assertEqual(projected["evidence_category"], grade9_exit.SECURE)
+        self.assertEqual(
+            projected["independent_transfer_dimensions"],
+            ["representation_translation"],
+        )
+        self.assertEqual(
+            projected["evidence_change"],
+            "PRIOR_DIFFICULTY_NOW_INDEPENDENTLY_DEMONSTRATED",
+        )
+        self.assertEqual(
+            [row["observation_ref"] for row in projected["basis"]],
+            ["OBS-TRANSFER", "OBS-OLD-GAP"],
+        )
+        self.assertEqual(
+            projected["basis"][0]["transfer_dimension"],
+            "representation_translation",
+        )
+
     def test_enrichment_without_evidence_stays_unknown_and_nonblocking(self):
         coverage = grade9_exit.scope_coverage(REPO)
         enrichment = next(
@@ -340,6 +436,44 @@ class Grade9ExitProjectionTest(unittest.TestCase):
         self.assertIn("Major-misconception status is not inferred", text)
         self.assertNotIn("mastery_percentage", text.lower())
         self.assertNotIn("mastery_probability", text.lower())
+
+    def test_required_domain_with_authored_transfer_needs_one_independent_changed_demand_witness(self):
+        projection = {
+            "profile_id": "PROFILE-TRANSFER-GAP",
+            "scope_source": grade9_exit.SCOPE_COVERAGE,
+            "capabilities": [{
+                "matrix_id": "MATRIX-REQ",
+                "capability_ref": "CAP-SECURE",
+                "matrix_role": "REQUIRED_CORE",
+                "ordinary_grade9_core": True,
+                "evidence_category": grade9_exit.SECURE,
+                "basis": [{"observation_ref": "OBS-PRACTICE", "help": "NONE"}],
+                "independent_transfer_dimensions": [],
+            }],
+            "domains": [{
+                "matrix_id": "MATRIX-REQ",
+                "ordinary_grade9_core": True,
+                "transfer_evidence": {
+                    "status": "EVIDENCE_NEEDED",
+                    "available_dimensions": ["representation_translation"],
+                    "independent_observed_dimensions": [],
+                },
+            }],
+            "transition_boundary": [{
+                "matrix_id": "MATRIX-REQ",
+                "capability_ref": "CAP-SECURE",
+                "scope_relevance": "REQUIRED_SCOPE",
+                "blocks_transition": False,
+                "disposition": "NON_BLOCKING",
+                "reason": "NO_KNOWN_BLOCKER",
+            }],
+        }
+        report = grade9_exit.transition_report(projection)
+        self.assertEqual(report["transition_state"], "GRADE9_EVIDENCE_INCOMPLETE")
+        self.assertIn("changed-demand", report["transition_message"])
+        text = grade9_exit.parent_agent_text(report)
+        self.assertIn("Required-domain changed-demand evidence:", text)
+        self.assertIn("EVIDENCE_NEEDED", text)
 
     def test_fragile_required_evidence_carries_targeted_recheck_into_transition(self):
         projection = {
