@@ -1,0 +1,75 @@
+{
+  "schema_version": "relay-v2.5-github-projection",
+  "generation": {
+    "id": "GHGEN-WP105-ISS169-R3",
+    "repository": "reallaksh19/Grade9V3",
+    "roadmap_revision": "RM-0010",
+    "issue_graph_revision": "IG-0006",
+    "execution_ref": "NONE",
+    "state": "PREPARED",
+    "supersedes_generation": "GHGEN-WP105-ISS169-R2",
+    "basis": [
+      "agents/relay/checkpoints/CP-TA-009.yaml",
+      "agents/relay/quality/QRV-TA-009.yaml",
+      "agents/relay/roadmap/OVERALL_ROADMAP.yaml",
+      "agents/relay/roadmap/PROGRESS.yaml",
+      "agents/relay/roadmap/ISSUE_GRAPH.yaml",
+      "PR #170 provider readback"
+    ]
+  },
+  "operations": [
+    {
+      "id": "GHOP-WP105-ISSUE169-TERMINAL",
+      "kind": "UPDATE",
+      "state": "PREPARED",
+      "idempotency_key": "relay:GHGEN-WP105-ISS169-R3:GHOP-WP105-ISSUE169-TERMINAL",
+      "depends_on": [],
+      "subject": {
+        "issue_node": "ISSUE-169",
+        "related_nodes": [
+          "ISSUE-159"
+        ]
+      },
+      "preconditions": {
+        "repository_issue_state": "OPEN",
+        "work_state": "COMPLETE",
+        "handover_key": "WP-TA-105"
+      },
+      "desired": {
+        "body_marker": "<!-- relay-operation:GHOP-WP105-ISSUE169-TERMINAL -->",
+        "body_projection": "<!-- relay-operation:GHOP-WP105-ISSUE169-TERMINAL -->\n# Grade-9 Physics exit readiness and Grade-10 transition\n\n## Roadmap ownership\n\n- roadmap: `RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER@RM-0010`\n- work package: `WP-TA-105`\n- predecessor: `WP-TA-107 / EP-TA-008` (Issue #159)\n- sequence: Physics Grade 9 → Grade 10 → Grade 11\n\n## Outcome\n\nDerive an auditable Grade-9 exit view from canonical Grade-9 scope plus existing learner evidence so Grade 10 begins when it is the next productive place to learn, without demanding perfection, hiding foundational holes, or creating a second mastery system.\n\n## Required evidence\n\n- All required Grade-9 domains have coverage evidence; chapter-name coverage alone is insufficient.\n- Important concepts have some independent evidence and, where relevant, changed-representation or transfer evidence.\n- Known prerequisite blockers and major unresolved misconceptions are visible and progression-relevant.\n- States distinguish **secure**, **usable-but-fragile**, **known gap**, and **insufficient/unknown evidence** without a mastery percentage.\n- Non-blocking enrichment, optional improvement and future evidence remain visible but do not block transition.\n- A parent/agent can understand what was demonstrated, what remains uncertain, what was repaired and what should be rechecked without reading raw internal state.\n- Grade 10 inherits explicit transition evidence rather than either a blanket recertification of Grade 9 or a silent assumption of mastery.\n\n## Authority and design constraints\n\nUse existing authority first:\n\n- `agents/relay/roadmap/OVERALL_ROADMAP.yaml`\n- `agents/relay/roadmap/owner-decisions/ODR-0003-G9-PHYSICS-INDEPENDENCE.yaml`\n- `docs/grade9/GRADE9-PHYSICS-SCOPE-COVERAGE.md`\n- `docs/grade9/grade9-physics-scope-coverage.json`\n- existing learner evidence/profile contracts\n- the closed session-loop/router behavior from WP-TA-107\n\nPrefer a **derived query/report/view** over existing scope and learner evidence. Add new persisted state only if a concrete repository falsifier proves the existing model cannot answer the progression question.\n\n## Protected invariants\n\n- No mastery percentage, probability, grade-state database or second learner truth store.\n- Unknown/missing evidence remains unknown; it is not converted into mastery or failure.\n- Required Grade-9 scope, genuine prerequisites, school demand, approved question demand, enrichment and later-grade material remain distinct.\n- Non-required enrichment must not become a Grade-9 completion blocker.\n- Canonical Physics library/matrix meaning remains protected unless a separately authorized bounded package proves a content defect.\n- Existing learner observations remain evidence; the exit view is derived from them rather than rewriting them.\n- Grade 10 should not require blanket Grade-9 recertification, nor should it silently assume mastery.\n\n## Initial execution shape\n\n1. Reconstruct the current Grade-9 required-scope inventory and the existing learner-evidence surfaces that can support an exit view.\n2. Define a derived capability/domain state projection using evidence categories, not percentages.\n3. Derive transition blockers/non-blockers from required scope, prerequisites, major misconceptions and evidence sufficiency.\n4. Produce a parent/agent-readable transition report and machine-readable projection.\n5. Falsify overclaiming: unknown evidence, enrichment, one-off assisted success, and non-required later-grade content must not produce a false Grade-10-ready conclusion.\n6. Run protected-domain diff, quality review, full repository guardrails and V2.5 validation before checkpoint credit.\n\n## Completion rule\n\nThis issue is complete only when the repository can explain, from existing authoritative scope and learner evidence, why Grade 10 is or is not the next productive place to learn—without a mastery score, without hiding unknowns, and without requiring optional perfection.\n\n\n## Predecessor closure\n\nThis work follows Issue #159 / `WP-TA-107 / EP-TA-008`. It must not reuse the predecessor's Owner execution exception as material-write authority.\n\n\n## Active engineering branch\n\n`takeover/grade9-exit-transition-r2`, forked from merged PR #168 at `502282856206c685d0deb415fd32f61624d0add2`.\n\n\n## Engineering checkpoint — accepted; provider delivery pending\n\n- checkpoint: `CP-TA-009`\n- quality review: `QRV-TA-009` — CLEAR\n- accepted material head: `0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494`\n- guardrails: `35623092328` — PASS (990 tests) (987 tests)\n- V2.5 relay: `35621628935` — PASS, including candidate-specific material-write gate\n- roadmap: `RM-0010` / progress basis `PB-0008` — 100/100 accepted roadmap progress\n- successor material frontier: none\n- delivery vehicle: PR #170 remains DRAFT/OPEN and must be merged/read back before provider delivery is called complete\n\n### Accepted behavior\n\n- Grade-9 evidence is reported categorically as secure, usable-but-fragile, known gap, or insufficient/unknown; no mastery percentage or second grade-state store is introduced.\n- Explicit required Grade-9 gaps and genuine prerequisite gaps block transition; unknown required evidence stays evidence-required rather than being mislabeled as failure.\n- Fragile required/prerequisite evidence carries targeted independent rechecks rather than forcing blanket Grade-9 recertification.\n- Enrichment, later-grade and other optional gaps remain visible but non-blocking.\n- Base-to-head protected-domain comparison contains no changes under `Physics/` or `Learners/`.\n- The current observation schema does not encode misconception identity/severity, so the report does not invent a separate “major misconception” label from generic `error_stage`; explicit concept-stage known gaps remain visible through their evidence basis.\n\n- Required-domain changed-demand/transfer evidence is sampled from canonical question metadata and stays evidence-required until independently observed where applicable.\n",
+        "github_state": "OPEN",
+        "relationships": []
+      },
+      "publication": {
+        "attempt_count": 0,
+        "last_attempt_basis": [],
+        "receipt": null,
+        "last_error": null
+      },
+      "verification": {
+        "status": "NOT_RUN",
+        "observed_issue_number": null,
+        "observed_issue_id": null,
+        "observed_github_state": null,
+        "observed_relationships": [],
+        "basis": []
+      },
+      "reconciliation": {
+        "issue_graph_effects": [
+          {
+            "node": "ISSUE-169",
+            "set_github_state": "OPEN",
+            "set_issue_number": 169,
+            "set_issue_id": 5522215316
+          }
+        ],
+        "complete_when": [
+          "Issue #169 identity verified",
+          "terminal relay-operation marker verified",
+          "provider state remains OPEN pending PR #170 delivery"
+        ]
+      }
+    }
+  ]
+}
