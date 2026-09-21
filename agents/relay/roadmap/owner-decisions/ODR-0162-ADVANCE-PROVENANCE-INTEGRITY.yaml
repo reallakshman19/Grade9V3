@@ -1,0 +1,38 @@
+schema_version: relay-v2.5
+id: ODR-0162-ADVANCE-PROVENANCE-INTEGRITY
+decision:
+  authority: OWNER
+  kind: AUTHORIZATION
+  statement: >-
+    Continue the next bounded Issue #162 Core slice while head/merge evidence remains
+    deferred: make initial-scene provenance source references obey the same basic
+    referential-integrity boundary as adapter-added entities. Keep the change minimal;
+    do not introduce provenance taxonomy, graph execution, transaction lineage, subject
+    semantics, or neighbouring-issue work.
+  source: >-
+    Owner instruction in the active Grade9V3 engineering session on 2026-09-21:
+    "Continue", following the standing direction to proceed with Core coding while
+    head issues are dealt with later.
+effects:
+  requirement_disposition: NOT_APPLICABLE
+  grants_material_write_authority: true
+  pending_items:
+  - Exact-head evidence for earlier semantic-identity, channel-neutrality and transaction-integrity candidates remains pending.
+  - PR #165 merge/base and relay custody reconciliation remains required before merge.
+delivery_authorization: null
+impact:
+  class: [LOCAL, EXECUTION_GOVERNANCE, PROTOCOL_EXCEPTION]
+affected:
+  objectives: [OBJ-TOPIC-ATLAS-COMPLETE]
+  phases: [PHASE-TAKEOVER-RECONCILIATION]
+  work_packages: [WP-162-BROWSER-RUNTIME-PROOF]
+  execution_packages: [EP-0162-SEMANTIC-IDENTITY-PROOF]
+  issues: [ISSUE-162]
+required_reconciliation:
+- Initial-scene entity provenance sourceEntityRefs, when present, must be an array whose refs resolve to entities in that scene.
+- Preserve omission/empty-array as valid when the scene author does not declare provenance sources.
+- Reuse the existing WORKBENCH_PROVENANCE_SOURCE_UNKNOWN failure contract.
+- Do not add provenance kinds, DAG execution, cycle analysis, transaction IDs, or subject-specific derivation semantics.
+- Keep Issue #159 learner routing, Issue #160 NLM/Atlas authoring, and Issue #163 portability/integration outside this slice.
+- Keep PR #165 draft until merge/base reconciliation is complete.
+status: APPLIED
