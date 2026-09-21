@@ -19,7 +19,7 @@ from Shared.library.resolve import build_index  # noqa: E402
 from Shared.tools import build_web_data  # noqa: E402
 
 SELECTION_NAME = "core-learning-proof.json"
-OUT = REPO / "public" / "data" / "core-learning.js"
+OUT = REPO / "public" / "core-learning" / "data.js"
 
 
 class CoreLearningDataError(ValueError):
