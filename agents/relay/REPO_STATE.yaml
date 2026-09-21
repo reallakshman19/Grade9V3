@@ -42,26 +42,27 @@ takeover_admissions:
     id: TC-0162-BROWSER-RUNTIME-PROOF
     path: agents/relay/certifications/takeover/TC-0162-BROWSER-RUNTIME-PROOF.yaml
 owner_execution_exception:
-  id: ODR-0162-ADVANCE-PROVENANCE-INTEGRITY
-  path: agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-PROVENANCE-INTEGRITY.yaml
+  id: ODR-0162-ADVANCE-OBSERVER-CONTAINMENT
+  path: agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-OBSERVER-CONTAINMENT.yaml
   normal_drift_write_gate_passed: false
 progress:
   overall_percent: 0
   phase_percent: 0
   ep_percent: 0
-  basis_revision: PB-0005
+  basis_revision: PB-0006
 status_planes:
   execution:
     state: READY
     can_continue: true
     material_authority: WRITE
-    next_action: Preserve the initial-provenance integrity Core candidate at f715a2a0bb348825e7aef28f380a71031631dc88; TEST-I08/TEST-I09 and earlier exact-head evidence remain pending while Owner-authorized bounded Core continuation stays available.
+    next_action: Execute STEP-I06: isolate eventSink observation from semantic dispatch so observer mutation/exception cannot alter Core outcomes; keep merge/head evidence deferred.
   quality:
     state: NEEDS_ATTENTION
     findings:
     - The channel-neutral adapter boundary is implemented at d05414c5edec3b92790239c85b489f5b7e95641c; exact-head evidence remains pending.
     - The accepted-empty-patch defect is fixed on 979afce99ec2beddd895fc5b1a12e5541915e5a3: no canonical delta means no commit/revision/history advancement; exact-head evidence remains pending.
     - Initial-scene provenance dangling source refs are rejected on f715a2a0bb348825e7aef28f380a71031631dc88 using the existing entity identity set and failure contract; exact-head evidence remains pending.
+    - eventSink currently receives the same event object returned by dispatch and can throw after canonical state mutation; STEP-I06 is admitted to contain this observer authority leak.
     - The stronger witness now models partial-dividend-15 as a distinct entity and the focused lifecycle reproduction passes without a Shared/workbench product-code change; formal exact-head repository/browser evidence is still pending.
     - Main carries RM-0008 / EP-TA-008 while this branch carries the #162 RM-0002 execution package; normal drift/write validation remains unmet under the explicit Owner continuation exception.
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
@@ -112,6 +113,7 @@ status_planes:
     - agents/relay/roadmap/owner-decisions/ODR-0162-CONTINUE-CORE-CODING.yaml
     - agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-TRANSACTION-INTEGRITY.yaml
     - agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-PROVENANCE-INTEGRITY.yaml
+    - agents/relay/roadmap/owner-decisions/ODR-0162-ADVANCE-OBSERVER-CONTAINMENT.yaml
     - agents/relay/drift/DRIFT-0162-RM0008.yaml
 projection:
   required: true
