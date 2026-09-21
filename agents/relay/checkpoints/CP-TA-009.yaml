@@ -5,14 +5,14 @@
   "ep_id": "EP-TA-009",
   "roadmap_basis": {
     "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
-    "revision": "RM-0009"
+    "revision": "RM-0010"
   },
   "execution_basis": {
-    "material_ref": "f8fa6a8aafdad7ab8a2d979af824240cd220b6c7",
-    "validated_implementation_head": "f8fa6a8aafdad7ab8a2d979af824240cd220b6c7"
+    "material_ref": "0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494",
+    "validated_implementation_head": "0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494"
   },
   "implementation_result": {
-    "summary": "Completed the Grade-9 Physics exit/Grade-10 transition projection: conservative categorical evidence, explicit required/prerequisite blocker boundaries, targeted rechecks for fragile evidence, machine/parent-agent reporting, and no second mastery or grade-state store.",
+    "summary": "Completed the Grade-9 Physics exit/Grade-10 transition projection: conservative categorical evidence, explicit required/prerequisite blocker boundaries, canonical changed-demand/transfer evidence where available, prior-difficulty closure, targeted rechecks for fragile evidence, machine/parent-agent reporting, and no second mastery or grade-state store.",
     "completed_steps": [
       "STEP-TA9-001",
       "STEP-TA9-002",
@@ -35,7 +35,7 @@
       "basis": [
         "BENCH-TA9-001",
         "TEST-TA9-001",
-        "guardrails 35621628917"
+        "guardrails 35623092328"
       ]
     },
     {
@@ -44,7 +44,7 @@
       "basis": [
         "BENCH-TA9-002",
         "TEST-TA9-002",
-        "guardrails 35621628917"
+        "guardrails 35623092328"
       ]
     },
     {
@@ -53,7 +53,7 @@
       "basis": [
         "BENCH-TA9-003",
         "TEST-TA9-003",
-        "guardrails 35621628917"
+        "guardrails 35623092328"
       ]
     },
     {
@@ -63,8 +63,7 @@
         "BENCH-TA9-004",
         "TEST-TA9-004",
         "QRV-TA-009",
-        "guardrails 35621628917",
-        "v25-relay 35621628935"
+        "guardrails 35623092328"
       ]
     }
   ],
@@ -72,45 +71,45 @@
     {
       "id": "TEST-TA9-001",
       "status": "PASS",
-      "basis_ref": "f8fa6a8aafdad7ab8a2d979af824240cd220b6c7",
+      "basis_ref": "0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494",
       "evidence": [
-        "Frozen evidence-category truth table passed; helped-only and unknown evidence remain conservative."
+        "Frozen category truth table passed; helped-only and unknown evidence remain conservative."
       ]
     },
     {
       "id": "TEST-TA9-002",
       "status": "PASS",
-      "basis_ref": "f8fa6a8aafdad7ab8a2d979af824240cd220b6c7",
+      "basis_ref": "0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494",
       "evidence": [
-        "Required and genuine prerequisite known gaps block; optional/enrichment/later-grade gaps remain non-blocking; unknown required evidence remains EVIDENCE_REQUIRED."
+        "Required and genuine prerequisite known gaps block; optional/enrichment/later-grade gaps remain non-blocking; unknown required evidence remains evidence-required."
       ]
     },
     {
       "id": "TEST-TA9-003",
       "status": "PASS",
-      "basis_ref": "f8fa6a8aafdad7ab8a2d979af824240cd220b6c7",
+      "basis_ref": "0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494",
       "evidence": [
-        "Machine-readable and parent/agent-readable report reconstruction passed, including targeted rechecks and visible non-blocking items."
+        "Machine/parent-agent report reconstruction passed; fragile rechecks, visible non-blocking items, prior-difficulty closure and required-domain changed-demand evidence are preserved."
       ]
     },
     {
       "id": "TEST-TA9-004",
       "status": "PASS",
-      "basis_ref": "f8fa6a8aafdad7ab8a2d979af824240cd220b6c7",
+      "basis_ref": "0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494",
       "evidence": [
-        "No-second-store/protected-write falsifier passed; base-to-head compare changes no Physics/ or Learners/ files; guardrails ran 987 tests successfully and exact-head V2.5 material-write/route validation passed."
+        "No-second-store/protected-write falsifier passed; protected Physics/Learners diff is empty; guardrails run 35623092328 passed 990 tests."
       ]
     }
   ],
   "quality_review": {
     "id": "QRV-TA-009",
     "path": "agents/relay/quality/QRV-TA-009.yaml",
-    "digest": "sha256:560d2de185fa690488df390368bffc9cc125cf28ddae347962f4700394f4a6d1"
+    "digest": "sha256:8ce70915cd59b4659c411f6313f2d08ca4f053fe79cb36301a8b45fd7f641688"
   },
   "quality_findings": [],
   "known_limitations": [
     {
-      "statement": "The governed learner-observation schema has no explicit misconception identity/severity field; the report therefore surfaces concept-stage known gaps but does not infer a separate 'major misconception' classification from generic error_stage.",
+      "statement": "The governed learner-observation schema has no explicit misconception identity/severity field; required concept/setup gaps remain visible, but the report does not invent a separate named misconception classification from generic error_stage.",
       "basis": [
         "QRV-TA-009",
         "docs/grade9/GRADE9-PHYSICS-EXIT-TRANSITION-REPORT.md"
@@ -126,13 +125,20 @@
       ]
     },
     {
-      "statement": "A support/prerequisite area becomes transition-relevant only through an explicit prerequisite edge from required Grade-9 capability, not from a broad SUPPORT_ONLY label.",
+      "statement": "Support/prerequisite scope becomes transition-relevant only through explicit required-capability prerequisite edges, not broad support labels.",
       "basis": [
         "BENCH-TA9-002"
       ]
     },
     {
-      "statement": "Usable-but-fragile required evidence can allow Grade 10 to begin while retaining targeted independent rechecks, avoiding blanket Grade-9 recertification.",
+      "statement": "Canonical changed-demand question metadata can identify where independent transfer/representation evidence is applicable without synthesizing new academic truth.",
+      "basis": [
+        "TEST-TA9-003",
+        "guardrails 35623092328"
+      ]
+    },
+    {
+      "statement": "Usable-but-fragile evidence can carry targeted independent rechecks, and earlier difficulty can remain visible after fresh independent closure, avoiding blanket recertification.",
       "basis": [
         "BENCH-TA9-003",
         "QRV-TA-009"
