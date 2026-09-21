@@ -55,7 +55,7 @@ status_planes:
     state: READY
     can_continue: true
     material_authority: WRITE
-    next_action: Execute STEP-I10: reserve committed entity/projection IDs across undo/branching so prior identities cannot be rebound; do not couple adapter validity to canonicalTransformation metadata.
+    next_action: Preserve cumulative Core material head 34d9111cdb0c95ef608b98b0f24b1fe15ce43afc; obtain one cumulative exact-head Node, real-Chrome and full-guardrail validation covering TEST-I01..TEST-I19 while bounded Core continuation remains available.
   quality:
     state: NEEDS_ATTENTION
     findings:
@@ -66,13 +66,14 @@ status_planes:
     - Initial provenance DAG integrity is implemented at 685b325b957c2c2e99f12e93f1866f66f00e8e7d: self/multi-node cycles reject while valid declaration-order-independent DAGs remain accepted; exact-head evidence remains pending.
     - Lifecycle-aware reference integrity is implemented at 0f14e663b72de41c3a13e924755e935d309a83d9: live allowedTargets and transformation destinations resolve now, while deferred transformation source refs remain representable; exact-head evidence remains pending.
     - Reentrant semantic dispatch is blocked on 8003880e84a5798f9a5eba0f8dfdc762c767845f: synchronous callbacks receive WORKBENCH_REENTRANT_DISPATCH before nested state/history mutation; exact-head evidence remains pending.
-    - Canonical-transformation/history coupling is deliberately rejected as the wrong authority boundary; STEP-I10 instead closes lifetime entity/projection ID reassignment after undo/branching.
+    - Canonical-transformation/history coupling was tested and deliberately not added because it would promote descriptive metadata over adapter-owned validity.
+    - Runtime-lifetime ID stability is implemented at 34d9111cdb0c95ef608b98b0f24b1fe15ce43afc: committed entity/projection IDs remain reserved across undo branches, rejected candidate IDs are not burned, and rejected reuse leaves redo intact; exact-head evidence remains pending.
     - The stronger witness now models partial-dividend-15 as a distinct entity and the focused lifecycle reproduction passes without a Shared/workbench product-code change; formal exact-head repository/browser evidence is still pending.
     - Main carries RM-0008 / EP-TA-008 while this branch carries the #162 RM-0002 execution package; normal drift/write validation remains unmet under the explicit Owner continuation exception.
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
   evidence:
     state: PARTIAL
-    summary: Cumulative Core candidate 8003880e84a5798f9a5eba0f8dfdc762c767845f contains the truthful 156 -> 15 -> 1 identity witness, channel-neutral adapter validity, empty-patch rejection, initial provenance referential/DAG integrity, observer containment, lifecycle-aware rejection/transformation reference integrity, and non-reentrant semantic dispatch. Architecture manifest digest is sha256:3b8990c9166807999c8e8d7ba18a7bf1f00bc7639b8786577bf491a80243fd1f. Exact repository Node/Chrome/full-guardrail evidence remains unverified here.
+    summary: Cumulative Core candidate 34d9111cdb0c95ef608b98b0f24b1fe15ce43afc contains the truthful 156 -> 15 -> 1 identity witness, channel-neutral adapter validity, empty-patch rejection, provenance referential/DAG integrity, observer containment, lifecycle-aware reference integrity, non-reentrant dispatch, and runtime-lifetime entity/projection ID stability. canonicalTransformation metadata remains non-authoritative for adapter validity. Architecture manifest digest is sha256:18fc9c03ddb07f505f03d60c621d4f6333f910d816092c9543a958d1b97dff96. Exact repository Node/Chrome/full-guardrail evidence remains unverified here.
     not_run:
     - id: TEST-I01
       reason: The exact repository Node suite has not been executed from a checkout of material head 726bb16085dd5f59f392a2fcc1805f3639c7e1ad; the focused lifecycle reproduction does not substitute for the declared test command.
@@ -124,6 +125,12 @@ status_planes:
       cause: UNAVAILABLE_TOOL
     - id: TEST-I17
       reason: Existing real-Chrome/full guardrails must rerun on 8003880e84a5798f9a5eba0f8dfdc762c767845f; the current Actions/status readers expose no runs/statuses for this exact head.
+      cause: INFRASTRUCTURE
+    - id: TEST-I18
+      reason: Lifetime-identity regressions are authored on 34d9111cdb0c95ef608b98b0f24b1fe15ce43afc, but the exact repository Node suite cannot be executed from this environment.
+      cause: UNAVAILABLE_TOOL
+    - id: TEST-I19
+      reason: Existing real-Chrome/full guardrails must rerun on 34d9111cdb0c95ef608b98b0f24b1fe15ce43afc; the current Actions/status readers expose no runs/statuses for this exact head.
       cause: INFRASTRUCTURE
     - id: AC-05-POST-REBASE-BROWSER
       reason: Final post-rebase browser rerun is not scheduled until PR #165 is reconciled with then-current main.
