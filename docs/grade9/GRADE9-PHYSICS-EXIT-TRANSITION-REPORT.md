@@ -36,4 +36,8 @@ Parent/agent-readable Markdown:
 python3 Shared/tools/grade9_exit.py --profile-id <PROFILE_ID> --format markdown
 ```
 
-Every reported capability carries its scope role, evidence category, evidence basis when present, blocker disposition, repair/recheck action, and transition implication. The report is recomputed from source truth and is not persisted as grade readiness.
+Every reported capability carries its scope role, evidence category, evidence trail, blocker disposition, repair/recheck action, and transition implication. When earlier difficulty is followed by fresh independent evidence, both observations remain visible rather than being overwritten.
+
+For required domains that actually author canonical transfer questions, the projection also asks for one independent changed-demand witness at domain level. Today that applies only where the canonical library exposes such questions; it does not manufacture a transfer requirement for domains with no authored transfer witness. This keeps the check sparse while preventing ordinary same-form success from masquerading as transfer.
+
+The report is recomputed from source truth and is not persisted as grade readiness.
