@@ -104,7 +104,7 @@
   "quality_review": {
     "id": "QRV-TA-009",
     "path": "agents/relay/quality/QRV-TA-009.yaml",
-    "digest": "sha256:8ce70915cd59b4659c411f6313f2d08ca4f053fe79cb36301a8b45fd7f641688"
+    "digest": "sha256:cab4ca9e82cbf8ade905ed3af887f4700676594fb6c5591b7d1bf503e93524d7"
   },
   "quality_findings": [],
   "known_limitations": [

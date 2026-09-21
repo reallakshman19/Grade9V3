@@ -88,7 +88,33 @@
       "Issue #169 provider readback remains OPEN",
       "Final terminal Issue #169 projection is prepared but not yet published"
     ],
-    "superseded_operations": []
+    "superseded_operations": [
+      {
+        "operation_id": "GHGEN-WP105-ISS169-R1",
+        "target": "github:reallaksh19/Grade9V3:issues",
+        "roadmap_revision": "RM-0009",
+        "execution_ref": "EP-TA-009",
+        "disposition": "SUPERSEDED_AFTER_PUBLICATION_CONFIRMED",
+        "superseded_by": "GHGEN-WP105-ISS169-R2",
+        "receipt": "github-generation:GHGEN-WP105-ISS169-R1:issue-169",
+        "basis": [
+          "Issue #169 handoff projection was verified before CP-TA-009 advanced the roadmap to RM-0010.",
+          "GHGEN-WP105-ISS169-R2 supersedes this verified active-work projection."
+        ]
+      }
+    ],
+    "observed": {
+      "operation_id": "GHGEN-WP105-ISS169-R2",
+      "target": "github:reallaksh19/Grade9V3:issues",
+      "roadmap_revision": "RM-0010",
+      "execution_ref": "EP-TA-009",
+      "receipt": "github-generation:GHGEN-WP105-ISS169-R2:issue-169",
+      "basis": [
+        "Issue #169 provider readback after CP-TA-009 / RM-0010 checkpoint projection",
+        "relay-operation:GHOP-WP105-ISSUE169-CHECKPOINT",
+        "PR #170 provider state remained draft/open at the observed checkpoint generation"
+      ]
+    }
   },
   "delivery": {
     "required": true,
