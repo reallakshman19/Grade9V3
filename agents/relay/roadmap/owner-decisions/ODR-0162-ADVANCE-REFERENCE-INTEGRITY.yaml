@@ -1,0 +1,37 @@
+schema_version: relay-v2.5
+id: ODR-0162-ADVANCE-REFERENCE-INTEGRITY
+decision:
+  authority: OWNER
+  kind: AUTHORIZATION
+  statement: >-
+    Continue bounded Issue #162 Core coding while merge/head evidence remains deferred.
+    Close semantic-reference integrity gaps in live rejection guidance and declarative
+    canonical transformation metadata without turning Core into an academic truth engine.
+    Rejection allowedTargets must be a clean unique list of currently existing targets.
+    Canonical transformation targetRef must resolve at scene load, while sourceEntityRefs
+    must be well-formed and unique but may refer to semantic entities established later
+    by runtime transactions.
+  source: >-
+    Owner instruction in the active Grade9V3 engineering session on 2026-09-21:
+    "proceed next complex task"
+effects:
+  grants_material_write_authority: true
+  pending_items:
+  - Cumulative exact-head Node, real-Chrome and full-guardrail validation remains pending.
+  - PR #165 merge/base and relay custody reconciliation remains deferred before merge.
+delivery_authorization: null
+impact:
+  class: [LOCAL, EXECUTION_GOVERNANCE, PROTOCOL_EXCEPTION]
+affected:
+  objectives: [OBJ-TOPIC-ATLAS-COMPLETE]
+  phases: [PHASE-TAKEOVER-RECONCILIATION]
+  work_packages: [WP-162-BROWSER-RUNTIME-PROOF]
+  execution_packages: [EP-0162-SEMANTIC-IDENTITY-PROOF]
+  issues: [ISSUE-162]
+required_reconciliation:
+- Validate rejection allowedTargets as unique non-empty refs to existing scene targets.
+- Validate canonical transformation sourceEntityRefs as a string-ref list without requiring current entity existence.
+- Validate canonical transformation targetRef as an existing scene target.
+- Preserve adapter-owned validity, deferred semantic intermediates, and all prior Core contracts.
+- Keep PR #165 draft and leave merge/base reconciliation deferred.
+status: APPLIED
