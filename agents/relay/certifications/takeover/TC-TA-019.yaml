@@ -1,0 +1,69 @@
+{
+  "schema_version": "relay-v2.5-takeover-certification",
+  "id": "TC-TA-019",
+  "candidate": {
+    "agent_instance_id": "chatgpt-sol-wp105-candidate-20260921-a"
+  },
+  "prepared_by": {
+    "agent_instance_id": "chatgpt-sol-wp105-candidate-20260921-a"
+  },
+  "evaluated_by": {
+    "type": "DETERMINISTIC_VALIDATOR",
+    "identity": "validate_takeover_certification.py",
+    "basis": [
+      "Pinned repository V2.5 validators",
+      "DISC-TA-019 repository-only evidence",
+      "QSET-TA-010 / QUAL-TA-009 deterministic PASS",
+      "CP-TA-008 predecessor baton",
+      "EP-TA-009 exact contract digest"
+    ]
+  },
+  "self_certification": {
+    "allowed": false
+  },
+  "route": {
+    "route_key": "SERIAL:EP-TA-009",
+    "mode": "SERIAL",
+    "execution_ref": "EP-TA-009",
+    "ep_id": "EP-TA-009",
+    "ep_path": "agents/relay/execution-packages/EP-TA-009.yaml",
+    "plan_id": null,
+    "plan_path": null,
+    "lane_id": null
+  },
+  "basis": {
+    "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
+    "roadmap_revision": "RM-0009",
+    "relay_protocol_basis_ref": "reallaksh19/Common@d9b84069683977b5c370f536f1c50095de926338:skills/engineering-pr-delivery-v2.5",
+    "material_ref": "411e8dc0108347933792fbbd5a6be8dfa59d655e",
+    "ep_contract_digest": "sha256:6d985575b34d3ea73654370ea3bc11ce7cb4f2f4cb124e54198bfce35c995e08",
+    "repo_profile_digest": "sha256:954cdd371183121091d3690de67c9b699135f89cad93a0edad53a27b058e64b2",
+    "predecessor_baton": {
+      "type": "CHECKPOINT",
+      "id": "CP-TA-008",
+      "path": "agents/relay/checkpoints/CP-TA-008.yaml",
+      "digest": "sha256:dfe7925bdd613fda1834a2ec5a202ecc7d3bcc0d375d7e2894c80c20975a1ee7"
+    }
+  },
+  "discovery_receipt": {
+    "id": "DISC-TA-019",
+    "path": "agents/relay/certifications/discovery/DISC-TA-019.yaml"
+  },
+  "qualification": {
+    "required": true,
+    "status": "PASS",
+    "receipt_id": "QUAL-TA-009",
+    "receipt_path": "agents/relay/certifications/qualification/QUAL-TA-009.yaml",
+    "receipt_digest": "sha256:a35bd0f644e0062b8821295ae41e9729255088dd64d01b5bff122e0e96c9ccd3"
+  },
+  "checks": {
+    "baton_semantics": "PASS",
+    "repository_discovery": "PASS",
+    "route_grounding": "PASS",
+    "input_oracle_readiness": "PASS",
+    "scope_understood": "PASS",
+    "report_successor_contract": "PASS"
+  },
+  "result": "PASS",
+  "conversation_context_used": false
+}
