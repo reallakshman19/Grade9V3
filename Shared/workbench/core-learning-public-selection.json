@@ -1,7 +1,0 @@
-{
-  "schema_version": "1.0",
-  "projection_ids": [
-    "Physics:CORE1A:MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
-    "Physics:CORE1B:MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS"
-  ]
-}
