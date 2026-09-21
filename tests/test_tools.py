@@ -157,6 +157,11 @@ class WebData(unittest.TestCase):
                 }],
                 "misconceptions": [],
                 "representation_refs": ["REP-X"],
+                "elicitation": {
+                    "predict": {
+                        "prompt": "What remains shared when the representations separate?"
+                    }
+                },
             },
             "ROUTE-X": {
                 "id": "ROUTE-X",
@@ -172,6 +177,10 @@ class WebData(unittest.TestCase):
         self.assertFalse(rows[1]["projection"]["presentation"]["show_full_construction"])
         self.assertTrue(rows[1]["projection"]["presentation"]["attempt_before_reveal"])
         self.assertEqual(rows[0]["projection"]["concept"]["inferential_jump"], "A supplied inference.")
+        self.assertEqual(
+            rows[1]["projection"]["concept"]["elicitation"],
+            {"prompt": "What remains shared when the representations separate?"},
+        )
         self.assertEqual(rows[0]["scene_ref"], None)
         self.assertEqual(rows[0]["adapter_ref"], None)
 
@@ -227,6 +236,60 @@ class WebData(unittest.TestCase):
         self.assertEqual(rows[0]["projection"]["core"], "CORE2A")
         self.assertEqual(rows[0]["projection"]["application"]["crux_move_ref"], "MOVE-DECIDE")
         self.assertEqual(rows[0]["source_ref"], "Q-X")
+
+    def test_transfer_metadata_is_projected_only_for_core2b(self):
+        question = {
+            "id": "Q-BOTH",
+            "_collection": "questions",
+            "stem": "Choose the controlling model.",
+            "family_ref": "FAM-X",
+            "exposure": [{"core": "CORE2A"}, {"core": "CORE2B"}],
+            "answer": {
+                "reasoning_route": [
+                    {
+                        "id": "MOVE-REP",
+                        "kind": "REPRESENT",
+                        "action": "Represent the changed state.",
+                        "why_valid": "The state must be explicit before comparison.",
+                        "inputs": ["state"],
+                        "output": "represented state",
+                    },
+                    {
+                        "id": "MOVE-DECIDE",
+                        "kind": "DECIDE",
+                        "action": "Choose the controlling model.",
+                        "why_valid": "The changed demand determines which model applies.",
+                        "inputs": ["represented state"],
+                        "output": "model decision",
+                    },
+                ],
+                "crux_move_ref": "MOVE-DECIDE",
+            },
+            "scaffolds": [{
+                "text": "Represent the changed state first.",
+                "support_kind": "REPRESENT",
+                "reveals": "CONCEPT",
+                "supports_move_ref": "MOVE-REP",
+            }],
+            "transfer": {
+                "dimension": "model_choice",
+                "statement": "A changed demand requires a fresh model decision.",
+                "builds_on": ["MIC-X"],
+                "protected_move_ref": "MOVE-DECIDE",
+            },
+        }
+        rows = build_web_data.core_projection_rows("Subject-X", {"Q": question})
+        by_core = {row["projection"]["core"]: row for row in rows}
+        self.assertEqual(set(by_core), {"CORE2A", "CORE2B"})
+        self.assertNotIn("transfer", by_core["CORE2A"]["projection"]["application"])
+        self.assertEqual(
+            by_core["CORE2B"]["projection"]["application"]["transfer"]["protected_move_ref"],
+            "MOVE-DECIDE",
+        )
+        self.assertEqual(
+            by_core["CORE2B"]["projection"]["presentation"]["protected_move_refs"],
+            ["MOVE-DECIDE"],
+        )
 
     def test_core2b_projection_fails_closed_when_scaffold_targets_protected_move(self):
         question = {
