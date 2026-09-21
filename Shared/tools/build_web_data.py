@@ -446,7 +446,6 @@ def build() -> dict:
     payload = {
         "generated_by": "Shared/tools/build_web_data.py",
         "subjects": {},
-        "core_projections": [],
     }
     for subject in subjects():
         packages = [load(p) for p in sorted((REPO / subject / "library").glob("*.json"))]
@@ -468,7 +467,6 @@ def build() -> dict:
                                   "admitted": check(p)["admitted"]} for p in packages]
             records = build_index(packages)
             entry["matrices"] = matrix_summary(subject, records)
-            payload["core_projections"].extend(core_projection_rows(subject, records))
             for bucket_id in sorted(r for r, v in records.items() if v["_collection"] == "buckets"):
                 view = bucket_view(records, bucket_id)
                 view["compile_preview"] = compile_preview(records, bucket_id, subject)
