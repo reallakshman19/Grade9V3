@@ -42,22 +42,30 @@ test("frozen CoreProjection fixtures derive the contract-defined initial states"
 });
 
 test("initial state follows supplied presentation policy rather than subject or identifier text", () => {
-  const left = structuredClone(byId.core1a);
-  const right = structuredClone(byId.core1a);
+  const left = structuredClone(byId.core2a);
+  const right = structuredClone(byId.core2a);
 
-  left.core = "CORE1A";
   left.concept.microtopic_ref = "MIC-ALPHA";
   left.concept.inferential_jump = "Alpha supplied relation.";
+  left.application.question_ref = "Q-ALPHA";
 
-  right.core = "CORE2A";
   right.concept.microtopic_ref = "MIC-BETA";
   right.concept.inferential_jump = "Beta supplied relation.";
+  right.application.question_ref = "Q-BETA";
 
   const leftState = deriveCoreLearningState(left);
   const rightState = deriveCoreLearningState(right);
-  assert.equal(leftState.stage, "CONSTRUCTION_VISIBLE");
-  assert.equal(rightState.stage, "CONSTRUCTION_VISIBLE");
+  assert.equal(leftState.stage, "QUESTION_VISIBLE");
+  assert.equal(rightState.stage, "QUESTION_VISIBLE");
   assert.equal(leftState.reconstructionVisible, rightState.reconstructionVisible);
+  assert.equal(leftState.reasoningVisible, rightState.reasoningVisible);
+});
+
+test("Core1 fixtures use the frozen nullable application boundary", () => {
+  assert.equal(byId.core1a.application, null);
+  assert.equal(byId.core1b.application, null);
+  assert.doesNotThrow(() => validateCoreProjection(byId.core1a));
+  assert.doesNotThrow(() => validateCoreProjection(byId.core1b));
 });
 
 test("projection validation fails closed on unsupported, incomplete, or dangling envelopes", () => {
