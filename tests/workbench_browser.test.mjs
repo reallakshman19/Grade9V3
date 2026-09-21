@@ -560,6 +560,9 @@ test("Core learner shell preserves workbench state across protected reveal flow"
     await driver.navigate(`${staticServer.origin}/tests/fixtures/workbench/core-learning-host.html`);
     await driver.waitFor("return window.__coreLearnerReady === true;");
 
+    const mountResult = await driver.execute("return window.coreLearnerHarness.mountResult();");
+    assert.deepEqual(mountResult, { id: "browser-core2b", workbenchBound: true });
+
     const initial = await driver.execute("return window.coreLearnerHarness.state();");
     assert.equal(initial.core, "CORE2B");
     assert.equal(initial.stage, "AWAITING_ATTEMPT");
