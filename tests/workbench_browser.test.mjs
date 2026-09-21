@@ -773,6 +773,23 @@ test("public static Core learner host mounts a generated canonical projection", 
       true,
       JSON.stringify(httpResources),
     );
+
+    await driver.navigate(`${staticServer.origin}/public/core-learning/index.html`);
+    await driver.waitFor("return window.__coreLearningStaticHostReady === true;");
+    const defaultMount = await driver.execute(`
+      const learner = document.querySelector("#learner");
+      return {
+        state: learner.state,
+        selected: document.querySelector("#projection-select").value,
+        search: window.location.search,
+      };
+    `);
+    assert.equal(defaultMount.state.core, "CORE1A");
+    assert.equal(
+      defaultMount.selected,
+      "Physics:CORE1A:MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+    );
+    assert.match(defaultMount.search, /projection=Physics%3ACORE1A%3AMIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS/);
   } finally {
     await driver.close();
     driverProcess.child.kill("SIGTERM");
