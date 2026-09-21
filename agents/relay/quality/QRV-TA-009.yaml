@@ -1,0 +1,175 @@
+{
+  "schema_version": "relay-v2.5-quality-review",
+  "quality_review_id": "QRV-TA-009",
+  "ep": {
+    "id": "EP-TA-009",
+    "path": "agents/relay/execution-packages/EP-TA-009.yaml",
+    "contract_digest": "sha256:c362800e9ddedb8b1def9b8815341229ee88ed439ec13d2ef0f0eb4d30c61169"
+  },
+  "roadmap_revision": "RM-0009",
+  "material_ref": "f8fa6a8aafdad7ab8a2d979af824240cd220b6c7",
+  "reviewer": {
+    "type": "AGENT",
+    "identity": "chatgpt-sol-wp105-closeout-20260921"
+  },
+  "router_snapshot": {
+    "applicable": [
+      {
+        "blueprint": "software-design",
+        "reason": "The exit view must remain a derived query over existing scope/evidence owners rather than a second mastery architecture.",
+        "review_focus": [
+          "single evidence owner",
+          "derived categorical state",
+          "transition blocker boundary",
+          "no duplicate curriculum truth"
+        ]
+      },
+      {
+        "blueprint": "coding",
+        "reason": "A small Shared query/report module may be required.",
+        "review_focus": [
+          "determinism",
+          "small API",
+          "explicit unknowns",
+          "no persistence side effects"
+        ]
+      },
+      {
+        "blueprint": "testing",
+        "reason": "Truth tables and blocker/non-blocker falsifiers are the primary correctness proof.",
+        "review_focus": [
+          "unknown/helped evidence",
+          "enrichment non-blocking",
+          "prerequisite blockers",
+          "report reproducibility"
+        ]
+      },
+      {
+        "blueprint": "code-review",
+        "reason": "Grade-exit aggregation can silently overclaim mastery or turn enrichment into a completion gate.",
+        "review_focus": [
+          "evidence basis",
+          "scope classification",
+          "no percentage proxy",
+          "protected-domain diff"
+        ]
+      },
+      {
+        "blueprint": "github-delivery",
+        "reason": "The successor EP needs fresh qualification, checkpoint continuity and exact-head delivery custody.",
+        "review_focus": [
+          "QSET/QUAL/TC",
+          "checkpoint continuity",
+          "PR correlation",
+          "exact-head validation"
+        ]
+      }
+    ],
+    "not_applicable": [
+      {
+        "blueprint": "accessibility",
+        "reason": "No learner UI is required for the initial derived report contract."
+      },
+      {
+        "blueprint": "ui-ux",
+        "reason": "The first slice is a query/report view, not an interactive UI redesign."
+      },
+      {
+        "blueprint": "engineering-numerics",
+        "reason": "No scientific numerical algorithm changes."
+      },
+      {
+        "blueprint": "performance",
+        "reason": "The bounded Grade-9 scope/evidence projection is not performance-sensitive."
+      },
+      {
+        "blueprint": "migration",
+        "reason": "No persisted learner-state migration is authorized."
+      }
+    ],
+    "review_contract": {
+      "required": true,
+      "required_before_checkpoint": true,
+      "receipt_namespace": "QRV-",
+      "required_outputs": [
+        "procedure_results",
+        "findings",
+        "owner_report",
+        "successor_handover"
+      ]
+    },
+    "findings_policy": "Quality findings remain quality state unless they map to an existing acceptance, authority, protected-invariant, or safety hard-stop condition.",
+    "ordinary_findings_are_hard_stops": false
+  },
+  "procedure_results": [
+    {
+      "blueprint": "software-design",
+      "result": "CLEAR",
+      "evidence": [
+        "Grade-9 exit state remains a derived query/report over canonical scope and existing learner evidence; no second learner/grade state owner is introduced.",
+        "Unknown evidence stays distinct from known gaps, optional/later-grade scope remains non-blocking, and fragile required evidence carries targeted independent recheck rather than a score."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "coding",
+      "result": "CLEAR",
+      "evidence": [
+        "Shared/tools/grade9_exit.py is deterministic and read-only; BENCH-TA9-004 forbids learner/Physics write primitives and persisted mastery/grade-state tokens.",
+        "Exact-head guardrails run 35621628917 passed 987 repository tests on f8fa6a8aafdad7ab8a2d979af824240cd220b6c7."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "testing",
+      "result": "CLEAR",
+      "evidence": [
+        "BENCH-TA9-001..004 all passed on exact head, covering evidence categories, blocker boundaries, parent/agent report reconstruction and no-second-store/protected-write invariants.",
+        "Exact-head guardrails 35621628917 and V2.5 relay 35621628935 both passed."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "code-review",
+      "result": "CLEAR",
+      "evidence": [
+        "Base-to-head compare 411e8dc0108347933792fbbd5a6be8dfa59d655e...f8fa6a8aafdad7ab8a2d979af824240cd220b6c7 changes no Physics/ or Learners/ files.",
+        "The report exposes evidence basis, blockers, repair/recheck context and optional non-blocking items; it explicitly refuses to infer major-misconception identity/severity from generic error_stage."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "github-delivery",
+      "result": "CLEAR",
+      "evidence": [
+        "PR #170 is the live correlated delivery vehicle for Issue #169 / EP-TA-009 / WP-TA-105.",
+        "V2.5 run 35621628935 passes protocol unit/stress, conformance, cold-start, baton, DISC/TC validity, route/Git inspection and candidate-specific material-write gate on exact head."
+      ],
+      "reason": null,
+      "cause": null
+    }
+  ],
+  "findings": [],
+  "overall_state": "CLEAR",
+  "execution_effect": {
+    "blocks_execution": false,
+    "blocking_findings": []
+  },
+  "owner_report": {
+    "summary": "EP-TA-009 satisfies the Grade-9 exit/Grade-10 transition contract on the validated head: categorical evidence remains derived, required/prerequisite gaps gate progression, fragile evidence triggers targeted rechecks, optional/later-grade gaps remain visible and non-blocking, and protected Physics/learner truth is unchanged.",
+    "visible_risks": [
+      "The governed learner-observation schema has no explicit misconception identity/severity field. The report surfaces concept-stage known gaps but does not invent a separate 'major misconception' classification from generic error_stage."
+    ],
+    "decisions_required": []
+  },
+  "successor_handover": {
+    "unresolved_findings": [],
+    "follow_up": [
+      "Checkpoint WP-TA-105 against exact-head evidence, reconcile programme progress, and compute whether the roadmap is terminal."
+    ]
+  }
+}
