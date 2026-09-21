@@ -52,9 +52,11 @@ def scope_coverage(repo: Path = REPO) -> dict:
 def matrix_capabilities(scope_row: dict, repo: Path = REPO) -> list[dict]:
     """Resolve default-entry matrix rungs to canonical capability refs.
 
-    Non-default extension/diagnostic rungs remain visible in canonical content but
-    are not ordinary Grade-9 exit requirements.
+    Required Grade-9 scope fails closed when a default rung lacks its canonical
+    microtopic/capability binding. Non-required extension/deferred scope remains
+    visible without becoming a hard dependency on incomplete later-grade authoring.
     """
+    strict_required = scope_row.get("ordinary_grade9_core") is True
     matrix_path = str(scope_row["path"])
     matrix = load(repo / matrix_path)
     package_path = _package_path(matrix_path)
@@ -71,20 +73,26 @@ def matrix_capabilities(scope_row: dict, repo: Path = REPO) -> list[dict]:
             continue
         microtopic_ref = rung.get("microtopic_ref")
         if not microtopic_ref:
-            raise ValueError(
-                f'{scope_row["matrix_id"]}:{rung.get("rung")} has no microtopic_ref'
-            )
+            if strict_required:
+                raise ValueError(
+                    f'{scope_row["matrix_id"]}:{rung.get("rung")} has no microtopic_ref'
+                )
+            continue
         microtopic = microtopics.get(microtopic_ref)
         if not microtopic:
-            raise ValueError(
-                f'{scope_row["matrix_id"]}:{rung.get("rung")} references missing '
-                f"microtopic {microtopic_ref} in {package_path}"
-            )
+            if strict_required:
+                raise ValueError(
+                    f'{scope_row["matrix_id"]}:{rung.get("rung")} references missing '
+                    f"microtopic {microtopic_ref} in {package_path}"
+                )
+            continue
         capability_ref = microtopic.get("primary_capability_ref")
         if not capability_ref:
-            raise ValueError(
-                f"{microtopic_ref} has no primary_capability_ref in {package_path}"
-            )
+            if strict_required:
+                raise ValueError(
+                    f"{microtopic_ref} has no primary_capability_ref in {package_path}"
+                )
+            continue
         row = by_capability.setdefault(
             capability_ref,
             {
@@ -162,6 +170,8 @@ def capability_projection(profile: dict, capability_ref: str,
 
 def _domain_category(capabilities: list[dict]) -> str:
     categories = [row["evidence_category"] for row in capabilities]
+    if not categories:
+        return INSUFFICIENT_OR_UNKNOWN
     if KNOWN_GAP in categories:
         return KNOWN_GAP
     if INSUFFICIENT_OR_UNKNOWN in categories:
