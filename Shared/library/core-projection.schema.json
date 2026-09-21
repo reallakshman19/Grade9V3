@@ -1,0 +1,317 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "core-projection.schema.json",
+  "title": "Grade9V3 Core Projection Envelope v1.0",
+  "description": "Compiled, non-authoritative adapter envelope consumed by learner-facing builders. Canonical academic truth remains in subject packages/matrices/representations.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "core",
+    "concept",
+    "application",
+    "presentation"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "1.0"
+    },
+    "core": {
+      "enum": [
+        "CORE1",
+        "CORE2",
+        "CORE1A",
+        "CORE1B",
+        "CORE2A",
+        "CORE2B"
+      ]
+    },
+    "concept": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/concept_projection"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "application": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/application_projection"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "presentation": {
+      "$ref": "#/$defs/presentation_policy"
+    }
+  },
+  "$defs": {
+    "reasoning_move": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "kind",
+        "action",
+        "why_valid",
+        "inputs",
+        "output"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "kind": {
+          "enum": [
+            "REPRESENT",
+            "DECIDE",
+            "CONNECT",
+            "TRANSFORM",
+            "VERIFY"
+          ]
+        },
+        "action": {
+          "type": "string",
+          "minLength": 1
+        },
+        "why_valid": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "output": {
+          "type": "string",
+          "minLength": 1
+        },
+        "representation_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "visual_stage_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "dependentRequired": {
+        "representation_ref": [
+          "visual_stage_ref"
+        ],
+        "visual_stage_ref": [
+          "representation_ref"
+        ]
+      }
+    },
+    "scaffold": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "text",
+        "support_kind",
+        "reveals",
+        "supports_move_ref"
+      ],
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 1
+        },
+        "support_kind": {
+          "enum": [
+            "REPRESENT",
+            "CONNECT",
+            "EXECUTE"
+          ]
+        },
+        "reveals": {
+          "enum": [
+            "CONCEPT",
+            "METHOD",
+            "ANSWER"
+          ]
+        },
+        "supports_move_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "visual_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "visual_stage_ref": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "dependentRequired": {
+        "visual_ref": [
+          "visual_stage_ref"
+        ],
+        "visual_stage_ref": [
+          "visual_ref"
+        ]
+      }
+    },
+    "concept_projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "microtopic_ref",
+        "inferential_jump",
+        "teaching_path",
+        "elicitation",
+        "misconceptions",
+        "representation_refs"
+      ],
+      "properties": {
+        "microtopic_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inferential_jump": {
+          "type": "string",
+          "minLength": 1
+        },
+        "teaching_path": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "elicitation": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "misconceptions": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "representation_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "application_projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_ref",
+        "family_ref",
+        "stem",
+        "reasoning_route",
+        "crux_move_ref",
+        "hints",
+        "scaffolds",
+        "transfer",
+        "check"
+      ],
+      "properties": {
+        "question_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "family_ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stem": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reasoning_route": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/reasoning_move"
+          }
+        },
+        "crux_move_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hints": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "scaffolds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/scaffold"
+          }
+        },
+        "transfer": {
+          "type": [
+            "object",
+            "null"
+          ]
+        },
+        "check": {
+          "type": "string"
+        }
+      }
+    },
+    "presentation_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attempt_before_reveal",
+        "show_full_construction",
+        "initial_visual_ref",
+        "initial_visual_stage_ref",
+        "protected_move_refs"
+      ],
+      "properties": {
+        "attempt_before_reveal": {
+          "type": "boolean"
+        },
+        "show_full_construction": {
+          "type": "boolean"
+        },
+        "initial_visual_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "initial_visual_stage_ref": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "protected_move_refs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    }
+  }
+}
