@@ -50,11 +50,13 @@ context_capsule:
   - ODR-0162-ADVANCE-SEMANTIC-IDENTITY
   - ODR-0162-CONTINUE-CORE-CODING
   - ODR-0162-ADVANCE-TRANSACTION-INTEGRITY
+  - ODR-0162-ADVANCE-PROVENANCE-INTEGRITY
   current_implementation_state: The stronger semantic-identity and channel-neutral candidates remain authored with exact-head evidence pending. STEP-I04 is implemented on 979afce99ec2beddd895fc5b1a12e5541915e5a3: accepted empty patches are rejected before commit, the regression proves revision/history and an existing redo branch survive the rejected no-op, and the architecture manifest is refreshed; executable TEST-I06/TEST-I07 evidence remains pending.
   known_problems:
   - Exact-head semantic-identity evidence remains pending and must not be reported as complete.
   - Exact-head channel-neutral adapter evidence remains pending and must not be reported as complete.
   - The accepted-empty-patch defect is fixed on 979afce99ec2beddd895fc5b1a12e5541915e5a3, but exact-head Node/browser/full-guardrail evidence remains pending.
+  - Initial-scene provenance sourceEntityRefs are currently type-checked but are not required to resolve to scene entity identities.
   deliberate_non_goals:
   - No arithmetic-specific Core API or entity type.
   - No generic derivation taxonomy in Core.
@@ -151,6 +153,8 @@ scope:
     reason: Preserve the green reversible-history contract.
   - invariant: Domain validity is input-modality neutral.
     reason: Pointer, click, keyboard and touch may use different browser mechanics, but evaluateTransfer must receive the same semantic request for the same source/target/operation.
+  - invariant: Declared provenance sources resolve to canonical semantic entities.
+    reason: Core must not admit dangling semantic lineage merely because an entity arrived in the initial scene instead of an adapter patch.
   prohibited:
   - domain: learner evidence/support routing
     reason: Owned by Issue #159.
@@ -172,6 +176,9 @@ anti_drift:
   - id: ADR-I03
     restriction: Do not remove channel observability from semantic events merely to hide it from the domain adapter.
     reason: Input mechanics remain useful telemetry; only academic/domain validity must be modality-neutral.
+  - id: ADR-I04
+    restriction: Do not turn provenance referential integrity into a provenance taxonomy, executable derivation graph, cycle checker, or transaction ledger.
+    reason: This slice only closes dangling source references in initial canonical state.
   stale_if:
   - id: STALE-I01
     condition: Owner revokes #162 continuation or changes ownership.
@@ -246,6 +253,18 @@ implementation_plan:
   expected_state: accepted=true plus zero added entities/projections becomes fail-closed rejection with unchanged revision/history; existing non-empty generic patches remain valid.
   stop_conditions:
   - Stop if the fix requires a subject-specific operation or a broader mutation grammar.
+- id: STEP-I05
+  objective: Enforce initial-scene provenance source referential integrity using the existing semantic entity IDs and failure contract.
+  targets:
+  - Shared/workbench/runtime.mjs
+  - tests/workbench_runtime.test.mjs
+  - docs/architecture-manifest.json
+  inputs: [INPUT-I01]
+  acceptance: [AC-I08, AC-I09]
+  tests: [TEST-I08, TEST-I09]
+  expected_state: A scene with a declared missing provenance source fails validation before runtime construction; valid existing source refs remain accepted.
+  stop_conditions:
+  - Stop if the fix would require provenance graph execution, cycle semantics, transaction IDs or subject-specific derivation rules.
 next_work:
   phase_transition: false
   steps:
@@ -298,6 +317,19 @@ next_work:
     expected_result: Revision/history advances only when an accepted decision carries at least one canonical semantic addition.
     stop_if:
     - The change would require subject semantics or a new patch operation.
+  - order: 5
+    action: Make initial-scene provenance source references fail closed when they do not resolve to a scene entity.
+    targets:
+    - Shared/workbench/runtime.mjs
+    - tests/workbench_runtime.test.mjs
+    - docs/architecture-manifest.json
+    inputs: [INPUT-I01]
+    tests: [TEST-I08, TEST-I09]
+    benchmarks: []
+    acceptance: [AC-I08, AC-I09]
+    expected_result: Initial and adapter-added entity provenance share the same basic source-reference integrity boundary.
+    stop_if:
+    - The change expands into provenance ontology, graph execution or subject reasoning.
 qualification_boundary:
   required: false
   trigger: null
@@ -374,6 +406,14 @@ acceptance:
   description: Existing non-empty add-entity/add-projection patches and prior modality/history contracts remain unchanged.
   weight: 30
   verification: [TEST-I06, TEST-I07]
+- id: AC-I08
+  description: Initial-scene sourceEntityRefs fail closed when any declared source does not resolve to an entity in that scene.
+  weight: 70
+  verification: [TEST-I08]
+- id: AC-I09
+  description: Valid initial provenance, adapter-added provenance and prior runtime/browser contracts remain unchanged.
+  weight: 30
+  verification: [TEST-I08, TEST-I09]
 validation:
 - id: TEST-I01
   class: MUST_PASS
@@ -403,6 +443,14 @@ validation:
   class: MUST_PASS
   method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the transaction-integrity coding head
   proves: [AC-I07]
+- id: TEST-I08
+  class: MUST_PASS
+  method: node --test tests/workbench_runtime.test.mjs
+  proves: [AC-I08, AC-I09]
+- id: TEST-I09
+  class: MUST_PASS
+  method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the provenance-integrity coding head
+  proves: [AC-I09]
 failure_and_stop_conditions:
   hard_stop_categories: [OWNER_DECISION_REQUIRED, AUTHORITY_VIOLATION, PROTECTED_INVARIANT_FAILURE, UNSAFE_ENGINEERING_RESULT]
 report_contract:
@@ -446,7 +494,7 @@ report_contract:
     required_fields: [criterion, status, evidence, remaining_gap]
   - id: RPT-I06
     section: Tests and evidence
-    sources: [TEST-I01, TEST-I02, TEST-I03]
+    sources: [TEST-I01, TEST-I02, TEST-I03, TEST-I04, TEST-I05, TEST-I06, TEST-I07, TEST-I08, TEST-I09]
     required_fields: [test_id, runner, result, exact_head]
   - id: RPT-I07
     section: Quality findings
