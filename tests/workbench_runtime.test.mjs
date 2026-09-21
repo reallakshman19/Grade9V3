@@ -399,6 +399,35 @@ test("checkpoint injections remain outside canonical transformations", () => {
   assert.equal("placement" in runtime.injections[0], false);
 });
 
+test("observer mutation and exceptions cannot alter semantic dispatch", () => {
+  const observed = [];
+  const runtime = new WorkbenchRuntime(fixture, divisionAdapter(), {
+    eventSink(event) {
+      observed.push(structuredClone(event));
+      event.type = "HOST_MUTATED_EVENT";
+      event.revision = 999;
+      throw new Error("host observer failure");
+    }
+  });
+
+  const picked = runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "click" });
+  assert.equal(picked.type, "ENTITY_PICKED");
+  assert.equal(picked.revision, 0);
+
+  const accepted = runtime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "click" });
+  assert.equal(accepted.type, "TRANSFER_ACCEPTED");
+  assert.equal(accepted.revision, 1);
+  assert.equal(runtime.snapshot.revision, 1);
+  assert.equal(runtime.canUndo, true);
+  assert.equal(runtime.snapshot.entities.some((row) => row.id === "quotient-digit-1"), true);
+
+  const undo = runtime.dispatch({ type: "UNDO", channel: "keyboard" });
+  assert.equal(undo.type, "UNDO_APPLIED");
+  assert.equal(undo.revision, 2);
+  assert.equal(runtime.snapshot.entities.some((row) => row.id === "quotient-digit-1"), false);
+  assert.deepEqual(observed.map((event) => event.type), ["ENTITY_PICKED", "TRANSFER_ACCEPTED", "UNDO_APPLIED"]);
+});
+
 test("runtime instances are isolated", () => {
   const first = new WorkbenchRuntime(fixture, divisionAdapter());
   const second = new WorkbenchRuntime(fixture, divisionAdapter());
