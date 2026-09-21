@@ -4,7 +4,7 @@ import subprocess
 import unittest
 from pathlib import Path
 
-from Shared.tools import build_core_learning_runtime, build_manifest
+from Shared.tools import build_core_learning_data, build_core_learning_runtime, build_manifest
 
 REPO = Path(__file__).resolve().parents[1]
 
@@ -77,6 +77,35 @@ class WorkbenchRuntimeNodeTests(unittest.TestCase):
             check=False,
         )
         self.assertEqual(result.returncode, 0, result.stdout)
+
+    def test_public_core_learning_data_is_bounded_and_generated(self):
+        payload = build_core_learning_data.build()
+        rows = payload["core_projections"]
+        self.assertEqual(
+            [row["id"] for row in rows],
+            [
+                "Physics:CORE1A:MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+                "Physics:CORE1B:MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+            ],
+        )
+        self.assertEqual(
+            rows[1]["projection"]["concept"]["elicitation"]["prompt"],
+            "If x and y components are independent, does that mean the object has two different clocks?",
+        )
+        self.assertEqual(
+            (REPO / "public/core-learning/data.js").read_bytes(),
+            build_core_learning_data.rendered_file()["public/core-learning/data.js"],
+        )
+
+    def test_core_learning_selection_is_subject_owned(self):
+        self.assertFalse(
+            (REPO / "Shared/workbench/core-learning-public-selection.json").exists()
+        )
+        selections = [
+            path.relative_to(REPO).as_posix()
+            for path in build_core_learning_data.selection_paths()
+        ]
+        self.assertEqual(selections, ["Physics/content/core-learning-proof.json"])
 
     def test_public_core_learning_runtime_is_generated_from_shared(self):
         rendered = build_core_learning_runtime.render()
