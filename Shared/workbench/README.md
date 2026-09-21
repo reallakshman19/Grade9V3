@@ -47,7 +47,10 @@ name a currently existing target.
 The element emits one composed `semantic-workbench-event`. Its `detail.type` names the
 semantic event (`ENTITY_PICKED`, `TRANSFER_PREVIEW`, `TRANSFER_ACCEPTED`,
 `TRANSFER_REJECTED`, `INTERACTION_CANCELLED`, `ENTITY_INSPECTED`, `UNDO_APPLIED`, `REDO_APPLIED`, or `WORKBENCH_READY`).
-No event claims mastery or learner state.
+No event claims mastery or learner state. Runtime event sinks receive isolated event
+copies, synchronous sink failures are contained, and nested `dispatch()` calls made
+while a semantic dispatch is active fail with `WORKBENCH_REENTRANT_DISPATCH` rather
+than interleaving another transaction.
 
 ## Deliberate first-slice limits
 
