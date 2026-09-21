@@ -50,10 +50,10 @@
   },
   "status_planes": {
     "execution": {
-      "state": "READY",
+      "state": "ACTIVE",
       "can_continue": true,
       "material_authority": "WRITE",
-      "next_action": "A distinct repository-only candidate must complete DISC + QSET-TA-011 qualification + takeover certification for EP-TA-010, then pass material_write_ready before learner-runtime implementation."
+      "next_action": "Execute only STEP-TA10-001 under ODR-0010, run TEST-TA10-001, then stop. Normal independent EP-TA-010 qualification remains unsatisfied for later material slices."
     },
     "quality": {
       "state": "CLEAR",
@@ -63,7 +63,7 @@
     },
     "evidence": {
       "state": "PARTIAL",
-      "summary": "WP-TA-108 is admitted at zero accepted material evidence. Frozen #176 contract fixtures may be used, but production #173/#174 projection integration is not part of this first slice.",
+      "summary": "WP-TA-108 remains at zero accepted evidence. Owner ODR-0010 permits only STEP-TA10-001 direct execution; normal candidate qualification is still absent.",
       "not_run": [
         {
           "id": "fresh independent EP-TA-010 qualification",
