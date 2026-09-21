@@ -1,6 +1,6 @@
 schema_version: relay-v2.5
 progress_basis:
-  id: PB-0002
+  id: PB-0003
   roadmap_revision: RM-0002
 overall:
   earned_weight: 0
@@ -23,8 +23,8 @@ work_packages:
   percent: 0
 - id: WP-162-BROWSER-RUNTIME-PROOF
   earned_weight: 390
-  total_weight: 500
-  percent: 78
+  total_weight: 600
+  percent: 65
 execution_packages:
 - id: EP-0162-BROWSER-RUNTIME-PROOF
   earned_weight: 90
@@ -44,7 +44,7 @@ execution_packages:
   percent: 100
 - id: EP-0162-SEMANTIC-IDENTITY-PROOF
   earned_weight: 0
-  total_weight: 100
+  total_weight: 200
   percent: 0
 implementation_steps:
 - id: STEP-01
@@ -96,6 +96,11 @@ implementation_steps:
   ep_id: EP-0162-SEMANTIC-IDENTITY-PROOF
   earned_weight: 0
   total_weight: 40
+  percent: 0
+- id: STEP-I03
+  ep_id: EP-0162-SEMANTIC-IDENTITY-PROOF
+  earned_weight: 0
+  total_weight: 100
   percent: 0
 acceptance_criteria:
 - id: AC-01
@@ -254,6 +259,20 @@ acceptance_criteria:
   ep_id: EP-0162-SEMANTIC-IDENTITY-PROOF
   earned_weight: 0
   total_weight: 20
+  percent: 0
+  status: NOT_STARTED
+  basis: []
+- id: AC-I04
+  ep_id: EP-0162-SEMANTIC-IDENTITY-PROOF
+  earned_weight: 0
+  total_weight: 60
+  percent: 0
+  status: NOT_STARTED
+  basis: []
+- id: AC-I05
+  ep_id: EP-0162-SEMANTIC-IDENTITY-PROOF
+  earned_weight: 0
+  total_weight: 40
   percent: 0
   status: NOT_STARTED
   basis: []
