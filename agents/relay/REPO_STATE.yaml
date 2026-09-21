@@ -100,7 +100,22 @@
       "EP-TA-010",
       "ODR-0009-WEB-BUILDER-START"
     ],
-    "superseded_operations": []
+    "superseded_operations": [
+      {
+        "operation_id": "GHGEN-WP105-ISS169-R3",
+        "target": "github:reallaksh19/Grade9V3:issues",
+        "roadmap_revision": "RM-0010",
+        "execution_ref": "NONE",
+        "disposition": "SUPERSEDED_BEFORE_PUBLICATION",
+        "superseded_by": "GHGEN-WP108-ISS175-R1",
+        "receipt": null,
+        "basis": [
+          "generation:GHGEN-WP105-ISS169-R3",
+          "superseded_by:GHGEN-WP108-ISS175-R1",
+          "Issue #169 provider delivery remains separately carried by draft PR #170"
+        ]
+      }
+    ]
   },
   "delivery": {
     "required": true,
