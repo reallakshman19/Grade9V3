@@ -23,6 +23,19 @@ class WorkbenchRuntimeNodeTests(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 0, result.stdout)
 
+    def test_core_learning_page_contract(self):
+        node = shutil.which("node")
+        self.assertIsNotNone(node, "Node is required by the Core learner page contract tests")
+        result = subprocess.run(
+            [node, "--test", str(REPO / "tests/core_learning_page.test.mjs")],
+            cwd=REPO,
+            text=True,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            check=False,
+        )
+        self.assertEqual(result.returncode, 0, result.stdout)
+
     def test_real_browser_contract(self):
         node = shutil.which("node")
         self.assertIsNotNone(node, "Node is required by the workbench browser contract test")
