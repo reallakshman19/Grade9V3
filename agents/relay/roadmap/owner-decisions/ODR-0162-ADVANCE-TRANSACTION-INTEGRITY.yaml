@@ -1,0 +1,40 @@
+schema_version: relay-v2.5
+id: ODR-0162-ADVANCE-TRANSACTION-INTEGRITY
+decision:
+  authority: OWNER
+  kind: AUTHORIZATION
+  statement: >-
+    Continue the next bounded Issue #162 Core slice while head/merge reconciliation
+    remains deferred: falsify and close the empty-accepted-patch transaction defect.
+    An adapter decision may be academically accepted only if its current Core patch
+    produces a canonical semantic delta; do not create a revision/history entry for
+    an empty patch. Keep the fix generic and do not broaden into new patch operations,
+    learner routing, renderer architecture, packaging, or subject-specific semantics.
+  source: >-
+    Owner instruction in the active Grade9V3 engineering session on 2026-09-21:
+    "Proceed next", under the immediately preceding authorization to continue Core
+    coding while head issues are dealt with later.
+effects:
+  requirement_disposition: NOT_APPLICABLE
+  grants_material_write_authority: true
+  pending_items:
+  - Prior semantic-identity exact-head evidence remains pending.
+  - Prior channel-neutral adapter-boundary exact-head evidence remains pending.
+  - PR #165 merge/base and relay custody reconciliation remains required before merge.
+delivery_authorization: null
+impact:
+  class: [LOCAL, EXECUTION_GOVERNANCE, PROTOCOL_EXCEPTION]
+affected:
+  objectives: [OBJ-TOPIC-ATLAS-COMPLETE]
+  phases: [PHASE-TAKEOVER-RECONCILIATION]
+  work_packages: [WP-162-BROWSER-RUNTIME-PROOF]
+  execution_packages: [EP-0162-SEMANTIC-IDENTITY-PROOF]
+  issues: [ISSUE-162]
+required_reconciliation:
+- An accepted adapter decision with zero added entities and zero added projections must fail closed before commit.
+- Empty accepted patches must not increment revision, create undo history, clear redo history, or emit TRANSFER_ACCEPTED.
+- Existing non-empty generic entity/projection patches remain valid.
+- Do not add subject-specific vocabulary or broaden the patch grammar in this slice.
+- Keep Issue #159 learner routing, Issue #160 NLM/Atlas authoring, and Issue #163 portability/integration outside this slice.
+- Keep PR #165 draft until merge/base reconciliation is complete.
+status: APPLIED
