@@ -16,14 +16,14 @@
     {
       "id": "OBJ-TOPIC-ATLAS-COMPLETE",
       "title": "Make Grade 9 Physics independently navigable, repairable, verifiable, and transition-ready",
-      "state": "ACTIVE",
+      "state": "COMPLETE",
       "definition": "DEFINED",
       "weight": 100,
       "phases": [
         {
           "id": "PHASE-TAKEOVER-RECONCILIATION",
           "title": "Grade 9 Physics self-study completion and governed Grade 10 transition",
-          "state": "ACTIVE",
+          "state": "COMPLETE",
           "definition": "DETAILED",
           "weight": 100,
           "work_packages": [
@@ -149,9 +149,9 @@
             {
               "id": "WP-TA-108",
               "title": "Prove a portable Core learner shell against frozen projection fixtures",
-              "state": "ACTIVE",
+              "state": "COMPLETE",
               "definition": "DETAILED",
-              "execution_status": "ACTIVE",
+              "execution_status": "TERMINAL",
               "weight": 15,
               "depends_on": [
                 "WP-TA-105"
