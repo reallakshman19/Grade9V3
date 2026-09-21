@@ -136,6 +136,14 @@ export function validateInjections(injections, sceneInput) {
   return rows;
 }
 
+function requestForAdapter(request) {
+  return clone({
+    sourceEntityRef: request.sourceEntityRef,
+    targetRef: request.targetRef,
+    operation: request.operation,
+  });
+}
+
 function snapshotForAdapter(state) {
   return clone({
     sceneId: state.sceneId,
@@ -289,7 +297,7 @@ export class WorkbenchRuntime {
 
   _decision(request) {
     try {
-      const raw = this._adapter.evaluateTransfer(clone(request), snapshotForAdapter(this._state));
+      const raw = this._adapter.evaluateTransfer(requestForAdapter(request), snapshotForAdapter(this._state));
       requireCondition(raw && typeof raw === "object", "WORKBENCH_ADAPTER_DECISION_INVALID");
       requireCondition(typeof raw.accepted === "boolean", "WORKBENCH_ADAPTER_DECISION_INVALID");
       if (!raw.accepted) {
