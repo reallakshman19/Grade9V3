@@ -17,7 +17,7 @@
     "WEB": 6,
     "WEB_RUNTIME": 4
   },
-  "digest": "sha256:1f0f311aed861141a8340ea0b7b1a31bd7b98add04752d7e42ab000b7bc75426",
+  "digest": "sha256:44314b71e65390756cd3ec9a994415eaa587f4f747f6d90fe5c0c5b54b340a97",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -1451,8 +1451,8 @@
       "path": "tests/workbench_browser.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 34525,
-      "sha256": "a6a65138c43b1a0c3af009605628a7eb3006af2e49a7fc8059b9adcd50fc5b32"
+      "bytes": 34527,
+      "sha256": "da25be8e9a7cad4e92f289d9415c954d027ca815bf9eabc6864591eb618e7fd1"
     },
     {
       "path": "tests/workbench_runtime.test.mjs",
