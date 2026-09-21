@@ -217,10 +217,17 @@ def transition_boundary(capabilities: list[dict]) -> list[dict]:
         ordinary_required = row.get("ordinary_grade9_core") is True
         prerequisite_to_required = capability_ref in required_prerequisites
 
+        relevance = (
+            "GENUINE_PREREQUISITE"
+            if prerequisite_to_required
+            else ("REQUIRED_SCOPE" if ordinary_required else "NON_BLOCKING_SCOPE")
+        )
+
         if category == KNOWN_GAP and (ordinary_required or prerequisite_to_required):
             decisions.append({
                 "matrix_id": row["matrix_id"],
                 "capability_ref": capability_ref,
+                "scope_relevance": relevance,
                 "blocks_transition": True,
                 "disposition": "BLOCKER",
                 "reason": (
@@ -237,6 +244,7 @@ def transition_boundary(capabilities: list[dict]) -> list[dict]:
             decisions.append({
                 "matrix_id": row["matrix_id"],
                 "capability_ref": capability_ref,
+                "scope_relevance": relevance,
                 "blocks_transition": False,
                 "disposition": "EVIDENCE_REQUIRED",
                 "reason": (
@@ -251,6 +259,7 @@ def transition_boundary(capabilities: list[dict]) -> list[dict]:
             decisions.append({
                 "matrix_id": row["matrix_id"],
                 "capability_ref": capability_ref,
+                "scope_relevance": relevance,
                 "blocks_transition": False,
                 "disposition": "NON_BLOCKING_GAP",
                 "reason": "NON_BLOCKING_SCOPE_GAP",
@@ -260,6 +269,7 @@ def transition_boundary(capabilities: list[dict]) -> list[dict]:
         decisions.append({
             "matrix_id": row["matrix_id"],
             "capability_ref": capability_ref,
+            "scope_relevance": relevance,
             "blocks_transition": False,
             "disposition": "NON_BLOCKING",
             "reason": "NO_KNOWN_BLOCKER",
@@ -317,6 +327,10 @@ def transition_report(projection: dict) -> dict:
             "required_grade9": capability["ordinary_grade9_core"],
             "evidence_category": capability["evidence_category"],
             "evidence_basis": list(capability.get("basis", [])),
+            "scope_relevance": boundary.get(
+                "scope_relevance",
+                "REQUIRED_SCOPE" if capability["ordinary_grade9_core"] else "NON_BLOCKING_SCOPE",
+            ),
             "blocker_status": boundary["disposition"],
             "blocker_reason": boundary["reason"],
             "repair_recheck_context": _repair_recheck_context(capability, boundary),
@@ -327,6 +341,11 @@ def transition_report(projection: dict) -> dict:
     evidence_needed = [
         row for row in rows
         if row["blocker_status"] == "EVIDENCE_REQUIRED"
+    ]
+    fragile_rechecks = [
+        row for row in rows
+        if row["evidence_category"] == USABLE_BUT_FRAGILE
+        and row["scope_relevance"] in {"REQUIRED_SCOPE", "GENUINE_PREREQUISITE"}
     ]
     if blockers:
         transition_state = "GRADE9_REPAIR_REQUIRED"
@@ -340,11 +359,19 @@ def transition_report(projection: dict) -> dict:
             "Grade-10 transition is not yet established because required/prerequisite "
             "Grade-9 evidence is still insufficient or unknown."
         )
+    elif fragile_rechecks:
+        transition_state = "GRADE10_WITH_TARGETED_RECHECKS"
+        transition_message = (
+            "No known Grade-9 blocker or unknown required evidence remains, so Grade 10 "
+            "can begin as the next productive frontier while fragile required/prerequisite "
+            "evidence is rechecked independently."
+        )
     else:
         transition_state = "GRADE10_NEXT_PRODUCTIVE_FRONTIER"
         transition_message = (
-            "No known required/prerequisite blocker or unresolved required evidence "
-            "remains in this projection, so Grade 10 is the next productive frontier."
+            "No known required/prerequisite blocker, unresolved required evidence, or "
+            "fragile required/prerequisite evidence remains in this projection, so "
+            "Grade 10 is the next productive frontier."
         )
 
     return {
@@ -355,6 +382,7 @@ def transition_report(projection: dict) -> dict:
         "scope_source": projection.get("scope_source"),
         "transition_state": transition_state,
         "transition_message": transition_message,
+        "fragile_rechecks": [row["capability_ref"] for row in fragile_rechecks],
         "rows": rows,
         "known_limitations": [
             "The governed learner-observation contract has no explicit misconception identifier/severity field, so this report does not infer a 'major unresolved misconception' from error_stage alone.",
@@ -374,11 +402,18 @@ def parent_agent_text(report: dict) -> str:
         "",
         "Required and relevant capability evidence:",
     ]
-    for row in report["rows"]:
-        if not row["required_grade9"] and row["blocker_status"] not in {
-            "BLOCKER", "EVIDENCE_REQUIRED"
-        }:
-            continue
+    relevant = [
+        row for row in report["rows"]
+        if row["scope_relevance"] in {"REQUIRED_SCOPE", "GENUINE_PREREQUISITE"}
+        or row["blocker_status"] in {"BLOCKER", "EVIDENCE_REQUIRED"}
+    ]
+    optional_visible = [
+        row for row in report["rows"]
+        if row["scope_relevance"] == "NON_BLOCKING_SCOPE"
+        and row["evidence_category"] in {KNOWN_GAP, USABLE_BUT_FRAGILE}
+    ]
+
+    for row in relevant:
         lines.extend([
             (
                 f"- {row['capability_ref']} [{row['scope_role']}]: "
@@ -396,9 +431,17 @@ def parent_agent_text(report: dict) -> str:
             if refs:
                 lines.append(f"  Evidence basis: {', '.join(refs)}")
 
+    if optional_visible:
+        lines.extend(["", "Visible non-blocking items:"])
+        for row in optional_visible:
+            lines.append(
+                f"- {row['capability_ref']} [{row['scope_role']}]: "
+                f"{row['evidence_category']} / {row['blocker_status']}"
+            )
+
     lines.extend([
         "",
-        "Known limitation:",
+        "Known limitation:"
         (
             "- Major-misconception status is not inferred from generic error_stage; "
             "the current governed observation contract does not encode misconception "
