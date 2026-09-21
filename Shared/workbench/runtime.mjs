@@ -35,6 +35,31 @@ function indexById(rows) {
   return Object.fromEntries(rows.map((row) => [row.id, row]));
 }
 
+function validateProvenanceAcyclic(entities) {
+  const byId = indexById(entities);
+  const visiting = new Set();
+  const visited = new Set();
+
+  function visit(entityId, path) {
+    if (visited.has(entityId)) return;
+    if (visiting.has(entityId)) {
+      const start = path.indexOf(entityId);
+      const cycle = [...path.slice(start), entityId];
+      throw new WorkbenchError("WORKBENCH_PROVENANCE_CYCLE", cycle.join(" -> "));
+    }
+
+    visiting.add(entityId);
+    path.push(entityId);
+    const sources = byId[entityId]?.provenance?.sourceEntityRefs || [];
+    for (const source of sources) visit(source, path);
+    path.pop();
+    visiting.delete(entityId);
+    visited.add(entityId);
+  }
+
+  for (const entity of entities) visit(entity.id, []);
+}
+
 function validatePlacement(scene, placement, owner) {
   requireCondition(placement && typeof placement === "object" && !Array.isArray(placement),
     "WORKBENCH_PLACEMENT_REQUIRED", owner);
@@ -98,6 +123,7 @@ export function validateScene(input) {
       }
     }
   }
+  validateProvenanceAcyclic(scene.entities);
   for (const projection of scene.projections) {
     nonEmptyString(projection.entityRef, "WORKBENCH_PROJECTION_ENTITY_REQUIRED", projection.id);
     requireCondition(entityIds.has(projection.entityRef), "WORKBENCH_PROJECTION_ENTITY_UNKNOWN", projection.id);
