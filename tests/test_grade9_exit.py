@@ -121,6 +121,52 @@ class Grade9ExitProjectionTest(unittest.TestCase):
         self.assertFalse(cap["default_grade9_completion_blocker"])
         self.assertFalse(cap["ordinary_grade9_core"])
 
+    def test_deferred_scope_stays_visible_without_requiring_complete_bindings(self):
+        coverage = grade9_exit.scope_coverage(REPO)
+        electricity = next(
+            row for row in coverage["matrices"]
+            if row["matrix_id"] == "MATRIX-PHY-ELEC-CURRENT-OHM"
+        )
+
+        capabilities = grade9_exit.matrix_capabilities(electricity, REPO)
+        self.assertEqual(
+            {row["capability_ref"] for row in capabilities},
+            {
+                "CAP-ELEC-CURRENT-CONSERVATION",
+                "CAP-ELEC-OHMIC-MODEL-TEST",
+            },
+        )
+        self.assertFalse(electricity["ordinary_grade9_core"])
+        self.assertFalse(electricity["default_grade9_completion_blocker"])
+
+        profile = {"profile_id": "PROFILE-EMPTY", "held": {}, "observation_refs": []}
+        with patch.object(
+            grade9_exit.learner_evidence,
+            "evidence_for_capability",
+            return_value=[],
+        ), patch.object(
+            grade9_exit.learner_evidence,
+            "effective_state",
+            return_value={
+                "state": "UNOBSERVED",
+                "source": "UNOBSERVED",
+                "independence_proven": False,
+                "independence_basis": "UNOBSERVED",
+            },
+        ):
+            report = grade9_exit.project(profile, REPO)
+
+        domain = next(
+            row for row in report["domains"]
+            if row["matrix_id"] == "MATRIX-PHY-ELEC-CURRENT-OHM"
+        )
+        self.assertEqual(
+            domain["evidence_category"],
+            grade9_exit.INSUFFICIENT_OR_UNKNOWN,
+        )
+        self.assertFalse(domain["ordinary_grade9_core"])
+        self.assertFalse(domain["default_grade9_completion_blocker"])
+
     def test_projection_is_derived_and_does_not_create_grade_truth(self):
         profile = {"profile_id": "PROFILE-EMPTY", "held": {}, "observation_refs": []}
         with patch.object(
