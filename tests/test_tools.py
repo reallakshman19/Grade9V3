@@ -145,11 +145,18 @@ class WebData(unittest.TestCase):
     def test_general_atlas_payload_does_not_carry_core_learner_projection_rows(self):
         self.assertNotIn("core_projections", self.payload)
 
-    def test_bounded_core_learner_payload_matches_its_selection_and_generated_file(self):
+    def test_bounded_core_learner_payload_matches_subject_owned_selection_and_generated_file(self):
         payload = build_core_learning_data.build()
-        selected = json.loads(
-            build_core_learning_data.SELECTION.read_text(encoding="utf-8")
-        )["projection_ids"]
+        selected = []
+        for path in build_core_learning_data.selection_paths():
+            subject = path.relative_to(REPO).parts[0]
+            document = json.loads(path.read_text(encoding="utf-8"))
+            for row in document["projections"]:
+                selected.extend(
+                    f"{subject}:{core}:{row['source_ref']}"
+                    for core in row["cores"]
+                )
+
         self.assertEqual(
             [row["id"] for row in payload["core_projections"]],
             selected,
@@ -163,6 +170,11 @@ class WebData(unittest.TestCase):
             build_core_learning_data.render(payload),
             "regenerate with python3 Shared/tools/build_core_learning_data.py",
         )
+
+    def test_shared_core_data_generator_does_not_name_a_subject_or_source_record(self):
+        source = (REPO / "Shared/tools/build_core_learning_data.py").read_text(encoding="utf-8")
+        self.assertNotIn("Physics", source)
+        self.assertNotIn("MIC-PHY-", source)
 
 
     def test_core_projection_rows_map_authored_concept_truth_without_subject_logic(self):
