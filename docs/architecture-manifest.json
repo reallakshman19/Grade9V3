@@ -5,19 +5,19 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 210,
-  "relation_count": 258,
+  "component_count": 208,
+  "relation_count": 255,
   "components_by_role": {
     "CONTRACT": 7,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 34,
-    "TEST": 97,
-    "TOOLING": 51,
+    "TEST": 96,
+    "TOOLING": 50,
     "WEB": 6,
     "WEB_RUNTIME": 3
   },
-  "digest": "sha256:9845073f8fce5b5d090b3375b4baec58b25b12d9a1d95c2f4f54b6f80d71ab64",
+  "digest": "sha256:0273a09fc295ca5c6a35d342d3071cf7a359fb46924e9bebda7b6b805a6688bd",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -552,18 +552,11 @@
       "sha256": "8e40c31e255ae798c9775edb79667456b9a830415c8802c42657d9d76c057d28"
     },
     {
-      "bytes": 8629,
+      "bytes": 9072,
       "path": "Shared/tools/grade9_exit.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "sha256": "bc6f8f7dc39aed260e78ba9da0b5e8d31f0e0d429ce7c112c884de3fa40ff286"
-    },
-    {
-      "path": "Shared/tools/grade9_exit_readiness.py",
-      "role": "TOOLING",
-      "role_description": "Guardrails and generators",
-      "bytes": 4027,
-      "sha256": "4737bfba89f17a69b161508086f108730ff839123cd30d5df037fd610c01c2a1"
+      "sha256": "5aadd88f5268f1dabb7d2c5de8dfc32e7b5aeab6cac62608e2617189c7272e78"
     },
     {
       "path": "Shared/tools/import_study_observations.py",
@@ -1084,18 +1077,11 @@
       "sha256": "9ab934fa087279391350fe6e027ea05934a99e40f7b7074f9f140c5aac66ac28"
     },
     {
-      "bytes": 5681,
+      "bytes": 7407,
       "path": "tests/test_grade9_exit.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "sha256": "e77447daa272fe5a2f5dbf12a1acbe7f9c0b6a6cc0624e8c9e3dc43f2b226da4"
-    },
-    {
-      "path": "tests/test_grade9_exit_readiness.py",
-      "role": "TEST",
-      "role_description": "Executable checks",
-      "bytes": 6330,
-      "sha256": "67229b2f8c6eac0095d91f5afd5668daf88f489e96376769ed628e7fd6d903b2"
+      "sha256": "e0c62d879aca01899caf652b624c309d89111e5fdacf0df9464d5d4ee53fbea7"
     },
     {
       "path": "tests/test_grade9_force_laws_scope.py",
@@ -1867,16 +1853,6 @@
       "to": "Shared.tools"
     },
     {
-      "from": "Shared/tools/grade9_exit_readiness.py",
-      "to": "Shared.contracts",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "Shared/tools/grade9_exit_readiness.py",
-      "to": "Shared.tools",
-      "kind": "IMPORTS"
-    },
-    {
       "from": "Shared/tools/learner_evidence.py",
       "to": "Shared.contracts",
       "kind": "IMPORTS"
@@ -2340,11 +2316,6 @@
       "from": "tests/test_grade9_exit.py",
       "kind": "IMPORTS",
       "to": "Shared.tools"
-    },
-    {
-      "from": "tests/test_grade9_exit_readiness.py",
-      "to": "Shared.tools",
-      "kind": "IMPORTS"
     },
     {
       "from": "tests/test_grade9_gravitation_scope.py",
