@@ -1,0 +1,210 @@
+{
+  "schema_version": "relay-v2.5",
+  "contract_version": 2,
+  "checkpoint_id": "CP-TA-010",
+  "ep_id": "EP-TA-010",
+  "roadmap_basis": {
+    "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
+    "revision": "RM-0011"
+  },
+  "execution_basis": {
+    "material_ref": "8ed02dcfcc9823271bcde409f3e781f252dd6e37",
+    "validated_implementation_head": "8ed02dcfcc9823271bcde409f3e781f252dd6e37"
+  },
+  "implementation_result": {
+    "summary": "Completed the fixture-backed portable Core learner-shell proof: one projection-driven component covers Core1A/Core1B/Core2A/Core2B, enforces commit-gated reconstruction and protected transfer disclosure, preserves a host-supplied semantic-workbench scene across support/reveal changes, emits semantic non-mastery events, and is browser-tested for accessibility/static operation.",
+    "completed_steps": [
+      "STEP-TA10-001",
+      "STEP-TA10-002",
+      "STEP-TA10-003",
+      "STEP-TA10-004"
+    ],
+    "files_changed": [
+      "Shared/workbench/core-learning-page.mjs",
+      "tests/core_learning_page.test.mjs",
+      "tests/fixtures/workbench/core-learning-projections.json",
+      "tests/fixtures/workbench/core-learning-host.html",
+      "tests/workbench_browser.test.mjs",
+      "tests/test_workbench_runtime.py",
+      "docs/architecture-manifest.json",
+      ".github/workflows/v25-relay.yml",
+      "agents/relay/"
+    ]
+  },
+  "acceptance_results": [
+    {
+      "id": "AC-TA10-001",
+      "status": "PASS",
+      "basis": [
+        "BENCH-TA10-001",
+        "TEST-TA10-001",
+        "guardrails 35667608256"
+      ]
+    },
+    {
+      "id": "AC-TA10-002",
+      "status": "PASS",
+      "basis": [
+        "BENCH-TA10-001",
+        "TEST-TA10-002",
+        "guardrails 35667608256"
+      ]
+    },
+    {
+      "id": "AC-TA10-003",
+      "status": "PASS",
+      "basis": [
+        "BENCH-TA10-002",
+        "TEST-TA10-003",
+        "QRV-TA-010",
+        "guardrails 35667608256"
+      ]
+    },
+    {
+      "id": "AC-TA10-004",
+      "status": "PASS",
+      "basis": [
+        "BENCH-TA10-003",
+        "TEST-TA10-004",
+        "QRV-TA-010",
+        "guardrails 35667608256"
+      ]
+    }
+  ],
+  "validation_results": [
+    {
+      "id": "TEST-TA10-001",
+      "status": "PASS",
+      "basis_ref": "8ed02dcfcc9823271bcde409f3e781f252dd6e37",
+      "evidence": [
+        "Projection-driven Core initial-state/component contract passed inside the 991-test exact-head guardrails suite; behavior is driven by supplied projection fields rather than subject identifiers."
+      ]
+    },
+    {
+      "id": "TEST-TA10-002",
+      "status": "PASS",
+      "basis_ref": "8ed02dcfcc9823271bcde409f3e781f252dd6e37",
+      "evidence": [
+        "Core1B inferential jump/reconstruction is absent pre-commit; Core2A staged support/crux route and Core2B protected pre-attempt support/reasoning falsifiers passed."
+      ]
+    },
+    {
+      "id": "TEST-TA10-003",
+      "status": "PASS",
+      "basis_ref": "8ed02dcfcc9823271bcde409f3e781f252dd6e37",
+      "evidence": [
+        "Supplied scene/adapter integration preserves the same semantic-workbench instance/revision across learner-page rerenders; page events remain semantic and contain no mastery/proficiency/readiness inference; protected-domain diff contains no Physics/** or Learners/** changes."
+      ]
+    },
+    {
+      "id": "TEST-TA10-004",
+      "status": "PASS",
+      "basis_ref": "8ed02dcfcc9823271bcde409f3e781f252dd6e37",
+      "evidence": [
+        "Real-browser contract passed with keyboard learner controls, aria-live announcements, 320px layout, reduced-motion behavior, local-only resources, workbench text summary and existing pointer/touch parity; generated manifest check and all JSON parsing passed."
+      ]
+    }
+  ],
+  "quality_review": {
+    "id": "QRV-TA-010",
+    "path": "agents/relay/quality/QRV-TA-010.yaml",
+    "digest": "sha256:21b3a19a3fde4df4aa6eaf988c6103cd6bc41fe75e8640e2a366d49ff1aca179"
+  },
+  "quality_findings": [
+    {
+      "id": "FIND-TA10-001",
+      "statement": "Pinned Common V2.5 protocol unit suite fails upstream before Grade9V3 relay validation.",
+      "disposition": "CARRY_FORWARD"
+    },
+    {
+      "id": "FIND-TA10-002",
+      "statement": "Normal EP-TA-010 DISC/QUAL/TC was not established; bounded execution relied on explicit Owner direct-execution ODR-0010/ODR-0011.",
+      "disposition": "CARRY_FORWARD"
+    }
+  ],
+  "known_limitations": [
+    {
+      "statement": "This checkpoint proves the fixture-backed learner shell only; #173/#174 production projection integration is not landed.",
+      "basis": [
+        "Issue #175",
+        "PR #176",
+        "QRV-TA-010"
+      ]
+    },
+    {
+      "statement": "Generated public/standalone parity and migration/mounting of a bespoke production explorer remain outside WP-TA-108.",
+      "basis": [
+        "Issue #175",
+        "QRV-TA-010"
+      ]
+    },
+    {
+      "statement": "Full V2.5 relay green is unavailable because the pinned Common protocol suite fails before repository relay validators.",
+      "basis": [
+        "v25-relay 35667612080",
+        "QRV-TA-010"
+      ]
+    }
+  ],
+  "discoveries": [
+    {
+      "statement": "Attempt-before-reveal must protect the inferential jump itself as well as the reconstruction steps; merely hiding a construction panel can leak the target reasoning.",
+      "basis": [
+        "TEST-TA10-002",
+        "guardrails 35667608256"
+      ]
+    },
+    {
+      "statement": "A learner-page support/reveal controller can preserve the exact semantic-workbench element and revision, keeping pedagogy changes separate from scientific scene state.",
+      "basis": [
+        "TEST-TA10-003",
+        "TEST-TA10-004"
+      ]
+    },
+    {
+      "statement": "Core2B protected support can fail closed solely from supplied protected-move/scaffold bindings without topic-specific scientific conditionals in page code.",
+      "basis": [
+        "BENCH-TA10-001",
+        "TEST-TA10-002"
+      ]
+    }
+  ],
+  "roadmap_reconciliation": {
+    "result": "STATUS_UPDATE",
+    "status_updates": [
+      {
+        "statement": "WP-TA-108 is complete and earns its full 15/115 programme weight.",
+        "basis": [
+          "CP-TA-010",
+          "QRV-TA-010",
+          "guardrails 35667608256"
+        ]
+      },
+      {
+        "statement": "The current RM-0011 roadmap returns to terminal engineering state at 115/115 accepted weight; broader Issue #175 production integration remains open and must be separately admitted when provider inputs are executable.",
+        "basis": [
+          "WP-TA-108 exit evidence",
+          "Issue #175",
+          "CP-TA-010"
+        ]
+      }
+    ],
+    "proposals": [],
+    "owner_decisions_required": []
+  },
+  "remaining_work": [
+    "Keep GitHub Issue #175 open for the production #173/#174 compiled-projection adapter, generated public/standalone parity, and at least one bespoke-explorer mount/migration.",
+    "Re-evaluate PR #134 against the production builder boundary after provider integration exists.",
+    "Before any new material successor executes, establish a fresh normal V2.5 admission or record another explicit Owner authorization; do not reuse the EP-TA-010 direct-execution exception.",
+    "Track the pinned Common V2.5 Prompt-3 unit-suite failure separately from Grade9V3 product evidence."
+  ],
+  "successor": {
+    "mode": "NONE",
+    "frontier_work_package": null,
+    "ep_id": null,
+    "parallel_plan": null,
+    "join_id": null,
+    "lane_id": null,
+    "lanes": []
+  }
+}
