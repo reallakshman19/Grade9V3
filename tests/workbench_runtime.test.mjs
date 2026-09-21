@@ -545,6 +545,38 @@ test("observer mutation and exceptions cannot alter semantic dispatch", () => {
   assert.deepEqual(observed.map((event) => event.type), ["ENTITY_PICKED", "TRANSFER_ACCEPTED", "UNDO_APPLIED"]);
 });
 
+test("synchronous callbacks cannot reenter semantic dispatch", () => {
+  const nestedErrors = [];
+  let runtime;
+  runtime = new WorkbenchRuntime(fixture, divisionAdapter(), {
+    eventSink(event) {
+      if (event.type !== "TRANSFER_ACCEPTED") return;
+      try {
+        runtime.dispatch({ type: "UNDO", channel: "observer" });
+      } catch (error) {
+        nestedErrors.push(error);
+      }
+    }
+  });
+
+  runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "click" });
+  const accepted = runtime.dispatch({ type: "DROP", targetRef: "quotient-first-digit", channel: "click" });
+
+  assert.equal(accepted.type, "TRANSFER_ACCEPTED");
+  assert.equal(accepted.revision, 1);
+  assert.equal(nestedErrors.length, 1);
+  assert.equal(nestedErrors[0] instanceof WorkbenchError, true);
+  assert.equal(nestedErrors[0].code, "WORKBENCH_REENTRANT_DISPATCH");
+  assert.equal(runtime.snapshot.revision, 1);
+  assert.equal(runtime.canUndo, true);
+  assert.equal(runtime.snapshot.entities.some((row) => row.id === "quotient-digit-1"), true);
+
+  const undo = runtime.dispatch({ type: "UNDO", channel: "keyboard" });
+  assert.equal(undo.type, "UNDO_APPLIED");
+  assert.equal(undo.revision, 2);
+  assert.equal(runtime.snapshot.entities.some((row) => row.id === "quotient-digit-1"), false);
+});
+
 test("runtime instances are isolated", () => {
   const first = new WorkbenchRuntime(fixture, divisionAdapter());
   const second = new WorkbenchRuntime(fixture, divisionAdapter());
