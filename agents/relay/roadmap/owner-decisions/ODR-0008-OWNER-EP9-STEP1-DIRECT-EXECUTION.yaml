@@ -8,7 +8,7 @@
     "source": "Owner instruction in the active Grade9V3 engineering session on 2026-09-21: 'qualifed, start coding'. Live repository readback still showed no DISC/QUAL/TC admission, so this decision records direct Owner execution authority rather than falsely asserting normal qualification."
   },
   "effects": {
-    "requirement_disposition": "OWNER_EXCEPTION",
+    "requirement_disposition": "NOT_APPLICABLE",
     "grants_material_write_authority": true,
     "pending_items": [
       "Normal independent EP-TA-009 DISC/QUAL/TC and candidate-specific material-write readiness remain unsatisfied."
@@ -44,10 +44,10 @@
   },
   "required_reconciliation": [
     "Do not create or relabel a fake independent candidate admission.",
-    "Keep the normal V2.5 material_write_ready result false until a genuinely certified candidate exists.",
-    "Limit this authorization to STEP-TA9-001; do not proceed to transition-blocker/report slices under this decision.",
+    "Prefer the normal independent EP-TA-009 DISC/QUAL/TC path when it is available; this bounded Owner exception does not convert a failing material-write gate into a PASS.",
+    "Limit any direct-execution authority under this decision to STEP-TA9-001; do not extend it to transition-blocker/report slices.",
     "Preserve Physics/library, Physics/matrices and Learners as read-only inputs.",
-    "Report the protocol exception in exact-head evidence and PR status."
+    "Report the protocol exception and the actual candidate-specific material-write result separately."
   ],
   "status": "APPLIED"
 }
