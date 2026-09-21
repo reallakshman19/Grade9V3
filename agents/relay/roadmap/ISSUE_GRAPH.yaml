@@ -1,6 +1,6 @@
 {
   "schema_version": "relay-v2.5",
-  "graph_revision": "IG-0005",
+  "graph_revision": "IG-0006",
   "nodes": [
     {
       "id": "ISSUE-118",
@@ -324,14 +324,85 @@
     },
     {
       "id": "ISSUE-169",
-      "state": "ACTIVE",
+      "state": "COMPLETE",
       "github_state": "OPEN",
       "github": {
         "issue_number": 169,
         "issue_id": 5522215316,
         "url": "https://github.com/reallaksh19/Grade9V3/issues/169"
       },
-      "roadmap_node": "WP-TA-105"
+      "roadmap_node": "WP-TA-105",
+      "closure_receipt": {
+        "acceptance_terminal": true,
+        "evidence_terminal": true,
+        "acceptance": [
+          {
+            "id": "AC-TA9-001",
+            "status": "PASS",
+            "disposition": "SATISFIED",
+            "basis": [
+              "CP-TA-009"
+            ]
+          },
+          {
+            "id": "AC-TA9-002",
+            "status": "PASS",
+            "disposition": "SATISFIED",
+            "basis": [
+              "CP-TA-009"
+            ]
+          },
+          {
+            "id": "AC-TA9-003",
+            "status": "PASS",
+            "disposition": "SATISFIED",
+            "basis": [
+              "CP-TA-009"
+            ]
+          },
+          {
+            "id": "AC-TA9-004",
+            "status": "PASS",
+            "disposition": "SATISFIED",
+            "basis": [
+              "CP-TA-009"
+            ]
+          }
+        ],
+        "evidence": [
+          {
+            "id": "TEST-TA9-001",
+            "status": "PASS",
+            "disposition": "SATISFIED",
+            "basis_ref": "CP-TA-009"
+          },
+          {
+            "id": "TEST-TA9-002",
+            "status": "PASS",
+            "disposition": "SATISFIED",
+            "basis_ref": "CP-TA-009"
+          },
+          {
+            "id": "TEST-TA9-003",
+            "status": "PASS",
+            "disposition": "SATISFIED",
+            "basis_ref": "CP-TA-009"
+          },
+          {
+            "id": "TEST-TA9-004",
+            "status": "PASS",
+            "disposition": "SATISFIED",
+            "basis_ref": "CP-TA-009"
+          }
+        ],
+        "pr_disposition": "PR #170 remains DRAFT/OPEN; engineering acceptance is complete and provider delivery/merge readback remains pending.",
+        "remaining_work_disposition": "DELIVERY_PENDING",
+        "unresolved_items": [
+          "Merge PR #170 and reconcile verified provider delivery/Issue #169 closure."
+        ],
+        "successor": null,
+        "checkpoint": "CP-TA-009"
+      }
     }
   ],
   "relationships": [
