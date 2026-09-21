@@ -75,7 +75,7 @@
   },
   "projection": {
     "required": true,
-    "state": "PENDING",
+    "state": "STALE",
     "operation_id": "GHGEN-WP105-ISS169-R3",
     "target": "github:reallaksh19/Grade9V3:issues",
     "adapter": "GITHUB_ISSUES",
@@ -88,21 +88,7 @@
       "Issue #169 provider readback remains OPEN",
       "Final terminal Issue #169 projection is prepared but not yet published"
     ],
-    "superseded_operations": [
-      {
-        "operation_id": "GHGEN-WP105-ISS169-R1",
-        "target": "github:reallaksh19/Grade9V3:issues",
-        "roadmap_revision": "RM-0009",
-        "execution_ref": "EP-TA-009",
-        "disposition": "SUPERSEDED_AFTER_PUBLICATION_CONFIRMED",
-        "superseded_by": "GHGEN-WP105-ISS169-R2",
-        "receipt": "github-generation:GHGEN-WP105-ISS169-R1:issue-169",
-        "basis": [
-          "Issue #169 handoff projection was verified before CP-TA-009 advanced the roadmap to RM-0010.",
-          "GHGEN-WP105-ISS169-R2 supersedes this verified active-work projection."
-        ]
-      }
-    ],
+    "superseded_operations": [],
     "observed": {
       "operation_id": "GHGEN-WP105-ISS169-R2",
       "target": "github:reallaksh19/Grade9V3:issues",
