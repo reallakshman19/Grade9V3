@@ -10,7 +10,7 @@ identity:
 replan_inheritance: null
 git_basis:
   expected_branch: feat/issue-162-semantic-workbench-core
-  material_ref: d05414c5edec3b92790239c85b489f5b7e95641c
+  material_ref: 979afce99ec2beddd895fc5b1a12e5541915e5a3
   base_branch: main
   base_observed_ref: 843ec2d8d6faa2b8de15795ed1535905e4efc8a8
   drift_policy: OWNER_EXCEPTION
@@ -50,11 +50,11 @@ context_capsule:
   - ODR-0162-ADVANCE-SEMANTIC-IDENTITY
   - ODR-0162-CONTINUE-CORE-CODING
   - ODR-0162-ADVANCE-TRANSACTION-INTEGRITY
-  current_implementation_state: The stronger semantic-identity fixtures remain authored with exact-head evidence pending. STEP-I03 is now implemented on d05414c5edec3b92790239c85b489f5b7e95641c: adapter validity receives only semantic source/target/operation fields, transfer events retain channel telemetry, the focused regression is authored, and the architecture manifest is refreshed; executable TEST-I04/TEST-I05 evidence remains pending.
+  current_implementation_state: The stronger semantic-identity and channel-neutral candidates remain authored with exact-head evidence pending. STEP-I04 is implemented on 979afce99ec2beddd895fc5b1a12e5541915e5a3: accepted empty patches are rejected before commit, the regression proves revision/history and an existing redo branch survive the rejected no-op, and the architecture manifest is refreshed; executable TEST-I06/TEST-I07 evidence remains pending.
   known_problems:
   - Exact-head semantic-identity evidence remains pending and must not be reported as complete.
   - Exact-head channel-neutral adapter evidence remains pending and must not be reported as complete.
-  - An adapter can return accepted=true with an empty patch, causing revision/history to advance without a canonical semantic delta.
+  - The accepted-empty-patch defect is fixed on 979afce99ec2beddd895fc5b1a12e5541915e5a3, but exact-head Node/browser/full-guardrail evidence remains pending.
   deliberate_non_goals:
   - No arithmetic-specific Core API or entity type.
   - No generic derivation taxonomy in Core.
