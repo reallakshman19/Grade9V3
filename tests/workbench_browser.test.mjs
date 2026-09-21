@@ -704,3 +704,78 @@ test("Core learner shell preserves workbench state across protected reveal flow"
     await new Promise((resolveClose) => staticServer.server.close(resolveClose));
   }
 });
+
+
+test("public static Core learner host mounts a generated canonical projection", { skip: !driverPath, timeout: 30000 }, async () => {
+  const staticServer = await openStaticServer();
+  const driverProcess = await startDriver(driverPath);
+  const driver = new WebDriver(driverProcess.base);
+  const projectionId = "Physics:CORE1B:MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS";
+  try {
+    await driver.open();
+    await driver.navigate(
+      `${staticServer.origin}/public/core-learning/index.html?projection=${encodeURIComponent(projectionId)}`,
+    );
+    await driver.waitFor("return window.__coreLearningStaticHostReady === true;");
+
+    const mounted = await driver.execute(`
+      const learner = document.querySelector("#learner");
+      const row = window.GRADE9V3.core_projections.find(
+        (item) => item.id === "Physics:CORE1B:MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS"
+      );
+      return {
+        row,
+        state: learner.state,
+        selected: document.querySelector("#projection-select").value,
+        status: document.querySelector("#projection-status").textContent,
+      };
+    `);
+    assert.equal(mounted.row.subject, "Physics");
+    assert.equal(mounted.row.source_ref, "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS");
+    assert.equal(mounted.row.projection.core, "CORE1B");
+    assert.equal(mounted.selected, projectionId);
+    assert.equal(mounted.state.core, "CORE1B");
+    assert.equal(mounted.state.stage, "AWAITING_ATTEMPT");
+    assert.equal(mounted.state.reconstructionVisible, false);
+    assert.match(mounted.status, /Loaded Physics · CORE1B · MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS/);
+
+    const before = await driver.execute(
+      "return document.querySelector('#learner').shadowRoot.innerHTML;",
+    );
+    assert.doesNotMatch(
+      before,
+      /Perpendicular components may be solved separately because each axis equation contains only that axis's quantities/,
+    );
+
+    const attemptInput = await driver.shadowElement("#learner", "[data-attempt-input]");
+    await driver.sendKeys(attemptInput, "The x and y descriptions use the same event time.");
+    const commit = await driver.shadowElement("#learner", '[data-action="commit"]');
+    await driver.sendKeys(commit, ENTER);
+    await driver.waitFor(
+      "return document.querySelector('#learner').state.stage === 'RECONSTRUCTION_VISIBLE';",
+    );
+
+    const after = await driver.execute(
+      "return document.querySelector('#learner').shadowRoot.innerHTML;",
+    );
+    assert.match(
+      after,
+      /Perpendicular components may be solved separately because each axis equation contains only that axis's quantities/,
+    );
+
+    const resources = await driver.execute(
+      "return performance.getEntriesByType('resource').map((entry) => entry.name);",
+    );
+    const httpResources = resources.filter((url) => /^https?:/.test(url));
+    assert.ok(httpResources.length >= 4, JSON.stringify(resources));
+    assert.equal(
+      httpResources.every((url) => url.startsWith(staticServer.origin)),
+      true,
+      JSON.stringify(httpResources),
+    );
+  } finally {
+    await driver.close();
+    driverProcess.child.kill("SIGTERM");
+    await new Promise((resolveClose) => staticServer.server.close(resolveClose));
+  }
+});
