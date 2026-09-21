@@ -55,7 +55,7 @@ status_planes:
     state: READY
     can_continue: true
     material_authority: WRITE
-    next_action: Execute STEP-I08: validate live allowedTargets and canonical transformation target/source reference shape at their truthful lifecycle boundaries; keep cumulative exact-head evidence and merge reconciliation deferred.
+    next_action: Preserve cumulative Core material head 0f14e663b72de41c3a13e924755e935d309a83d9; obtain one cumulative exact-head Node, real-Chrome and full-guardrail validation covering TEST-I01..TEST-I15 while bounded Core continuation remains available.
   quality:
     state: NEEDS_ATTENTION
     findings:
@@ -64,13 +64,13 @@ status_planes:
     - Initial-scene provenance dangling source refs are rejected on f715a2a0bb348825e7aef28f380a71031631dc88 using the existing entity identity set and failure contract; exact-head evidence remains pending.
     - Observer containment is implemented at b865293567476ca79c7c4f2774eae8ba0c717085: eventSink receives an isolated clone and synchronous observer exceptions cannot alter dispatch results; exact-head evidence remains pending.
     - Initial provenance DAG integrity is implemented at 685b325b957c2c2e99f12e93f1866f66f00e8e7d: self/multi-node cycles reject while valid declaration-order-independent DAGs remain accepted; exact-head evidence remains pending.
-    - Rejection allowedTargets and canonical transformation reference shape are under-validated; STEP-I08 is admitted to close live target/reference integrity without forbidding deferred transformation sources.
+    - Lifecycle-aware reference integrity is implemented at 0f14e663b72de41c3a13e924755e935d309a83d9: live allowedTargets and transformation destinations resolve now, while deferred transformation source refs remain representable; exact-head evidence remains pending.
     - The stronger witness now models partial-dividend-15 as a distinct entity and the focused lifecycle reproduction passes without a Shared/workbench product-code change; formal exact-head repository/browser evidence is still pending.
     - Main carries RM-0008 / EP-TA-008 while this branch carries the #162 RM-0002 execution package; normal drift/write validation remains unmet under the explicit Owner continuation exception.
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
   evidence:
     state: PARTIAL
-    summary: Cumulative Core candidate 685b325b957c2c2e99f12e93f1866f66f00e8e7d contains the truthful 156 -> 15 -> 1 identity witness, channel-neutral adapter validity, empty-patch rejection, initial provenance referential integrity, observer containment, and initial provenance DAG integrity. Architecture manifest digest is sha256:b024c28453cc9f8980c1df0b39de8a739f3881f632016fa7db1cedba6a05363a. Exact repository Node/Chrome/full-guardrail evidence remains unverified here.
+    summary: Cumulative Core candidate 0f14e663b72de41c3a13e924755e935d309a83d9 contains the truthful 156 -> 15 -> 1 identity witness, channel-neutral adapter validity, empty-patch rejection, initial provenance referential/DAG integrity, observer containment, and lifecycle-aware rejection/transformation reference integrity. Architecture manifest digest is sha256:93da5744ba63d84febe84cfb8f3cd840811d34f4df75a817f65e4c155fbc9dc0. Exact repository Node/Chrome/full-guardrail evidence remains unverified here.
     not_run:
     - id: TEST-I01
       reason: The exact repository Node suite has not been executed from a checkout of material head 726bb16085dd5f59f392a2fcc1805f3639c7e1ad; the focused lifecycle reproduction does not substitute for the declared test command.
@@ -110,6 +110,12 @@ status_planes:
       cause: UNAVAILABLE_TOOL
     - id: TEST-I13
       reason: Existing real-Chrome/full guardrails must rerun on 685b325b957c2c2e99f12e93f1866f66f00e8e7d; the current Actions/status readers expose no runs/statuses for this exact head.
+      cause: INFRASTRUCTURE
+    - id: TEST-I14
+      reason: Reference-integrity regressions are authored on 0f14e663b72de41c3a13e924755e935d309a83d9, but the exact repository Node suite cannot be executed from this environment.
+      cause: UNAVAILABLE_TOOL
+    - id: TEST-I15
+      reason: Existing real-Chrome/full guardrails must rerun on 0f14e663b72de41c3a13e924755e935d309a83d9; the current Actions/status readers expose no runs/statuses for this exact head.
       cause: INFRASTRUCTURE
     - id: AC-05-POST-REBASE-BROWSER
       reason: Final post-rebase browser rerun is not scheduled until PR #165 is reconciled with then-current main.
