@@ -14,9 +14,8 @@
     <core-learning-page id="learner"></core-learning-page>
   </main>
   <script type="module">
-    import "/Shared/workbench/semantic-workbench.mjs";
-    import "/Shared/workbench/core-learning-page.mjs";
-    import { mountCoreLearningPage } from "/Shared/workbench/core-learning-host.mjs";
+    import "/public/js/core-learning/semantic-workbench.mjs";
+    import { mountCoreLearningPage } from "/public/js/core-learning/core-learning-host.mjs";
 
     const [fixtureData, scene] = await Promise.all([
       fetch("/tests/fixtures/workbench/core-learning-projections.json").then((response) => {
