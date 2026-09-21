@@ -17,7 +17,7 @@
     "WEB": 6,
     "WEB_RUNTIME": 3
   },
-  "digest": "sha256:323fbb64a2695891b765629320cbe9bcbab688bf4e7f5cd44f80fa7d3b1e5526",
+  "digest": "sha256:c3bbb9d0867542b0e30422834948dcbf42aab93e95086f7ab878dbf5738c2c7b",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -1077,11 +1077,11 @@
       "sha256": "9ab934fa087279391350fe6e027ea05934a99e40f7b7074f9f140c5aac66ac28"
     },
     {
-      "bytes": 18511,
+      "bytes": 20246,
       "path": "tests/test_grade9_exit.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "sha256": "87c7dd0d490002c4287534c996b11135ef89aac48301e87aec08033eb74da037"
+      "sha256": "ec7cf84561a3405195ffb55a931f04260929e9e3061301faaf199fc5aa3f95e8"
     },
     {
       "path": "tests/test_grade9_force_laws_scope.py",
