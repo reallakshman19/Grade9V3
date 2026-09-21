@@ -33,13 +33,13 @@
     <core-learning-page id="learner"></core-learning-page>
   </main>
 
-  <script src="../data/data.js"></script>
+  <script src="../data/core-learning.js"></script>
   <script type="module">
     import "../js/core-learning/semantic-workbench.mjs";
     import "../js/core-learning/core-learning-page.mjs";
     import { mountCoreLearningPage } from "../js/core-learning/core-learning-host.mjs";
 
-    const data = window.GRADE9V3;
+    const data = window.GRADE9V3_CORE;
     const rows = Array.isArray(data?.core_projections) ? data.core_projections : [];
     const learner = document.getElementById("learner");
     const select = document.getElementById("projection-select");
