@@ -38,6 +38,24 @@ function validateStringRefs(values, code, detail = "") {
   return values;
 }
 
+function validateProvenanceMetadata(provenance, owner) {
+  if (provenance == null) return [];
+  requireCondition(
+    typeof provenance === "object" && !Array.isArray(provenance),
+    "WORKBENCH_PROVENANCE_INVALID",
+    owner,
+  );
+  if (Object.prototype.hasOwnProperty.call(provenance, "kind")) {
+    nonEmptyString(provenance.kind, "WORKBENCH_PROVENANCE_INVALID", owner);
+  }
+  if (!Object.prototype.hasOwnProperty.call(provenance, "sourceEntityRefs")) return [];
+  return validateStringRefs(
+    provenance.sourceEntityRefs,
+    "WORKBENCH_PROVENANCE_INVALID",
+    owner,
+  );
+}
+
 function indexById(rows) {
   return Object.fromEntries(rows.map((row) => [row.id, row]));
 }
@@ -120,14 +138,10 @@ export function validateScene(input) {
   const entityIds = new Set(scene.entities.map((row) => row.id));
   for (const entity of scene.entities) {
     nonEmptyString(entity.label, "WORKBENCH_ENTITY_LABEL_REQUIRED", entity.id);
-    const sources = entity.provenance?.sourceEntityRefs;
-    if (sources != null) {
-      requireCondition(Array.isArray(sources),
-        "WORKBENCH_PROVENANCE_INVALID", entity.id);
-      for (const source of sources) {
-        requireCondition(entityIds.has(source),
-          "WORKBENCH_PROVENANCE_SOURCE_UNKNOWN", `${entity.id} -> ${source}`);
-      }
+    const sources = validateProvenanceMetadata(entity.provenance, entity.id);
+    for (const source of sources) {
+      requireCondition(entityIds.has(source),
+        "WORKBENCH_PROVENANCE_SOURCE_UNKNOWN", `${entity.id} -> ${source}`);
     }
   }
   validateProvenanceAcyclic(scene.entities);
@@ -250,8 +264,7 @@ function validatePatch(currentState, patchInput, usedEntityIds, usedProjectionId
     nonEmptyString(entity.label, "WORKBENCH_ENTITY_LABEL_REQUIRED", entity.id);
     requireCondition(!nextEntityIds.has(entity.id), "WORKBENCH_PATCH_ENTITY_EXISTS", entity.id);
     requireCondition(!usedEntityIds.has(entity.id), "WORKBENCH_ENTITY_ID_REUSED", entity.id);
-    const sources = entity.provenance?.sourceEntityRefs || [];
-    requireCondition(Array.isArray(sources), "WORKBENCH_PROVENANCE_INVALID", entity.id);
+    const sources = validateProvenanceMetadata(entity.provenance, entity.id);
     for (const source of sources) {
       requireCondition(existingEntityIds.has(source), "WORKBENCH_PROVENANCE_SOURCE_UNKNOWN", `${entity.id} -> ${source}`);
     }
@@ -381,8 +394,23 @@ export class WorkbenchRuntime {
   }
 
   _decision(request) {
+    let raw;
     try {
-      const raw = this._adapter.evaluateTransfer(requestForAdapter(request), snapshotForAdapter(this._state));
+      raw = this._adapter.evaluateTransfer(
+        requestForAdapter(request),
+        snapshotForAdapter(this._state),
+      );
+    } catch (error) {
+      const reason = error instanceof Error ? error.message : String(error);
+      return {
+        accepted: false,
+        reason,
+        code: "WORKBENCH_ADAPTER_FAILURE",
+        allowedTargets: [],
+      };
+    }
+
+    try {
       requireCondition(raw && typeof raw === "object", "WORKBENCH_ADAPTER_DECISION_INVALID");
       requireCondition(typeof raw.accepted === "boolean", "WORKBENCH_ADAPTER_DECISION_INVALID");
       if (!raw.accepted) {
@@ -398,7 +426,7 @@ export class WorkbenchRuntime {
         patch: validatePatch(this._state, raw.patch, this._usedEntityIds, this._usedProjectionIds),
       };
     } catch (error) {
-      const code = error instanceof WorkbenchError ? error.code : "WORKBENCH_ADAPTER_FAILURE";
+      const code = error instanceof WorkbenchError ? error.code : "WORKBENCH_ADAPTER_DECISION_INVALID";
       const reason = error instanceof Error ? error.message : String(error);
       return { accepted: false, reason, code, allowedTargets: [] };
     }
