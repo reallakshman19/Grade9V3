@@ -378,6 +378,56 @@ test("initial scene provenance source refs must resolve to scene entities", () =
   );
 });
 
+test("initial scene provenance must be acyclic while valid DAGs remain order-independent", () => {
+  const forwardDag = structuredClone(fixture);
+  forwardDag.entities.push(
+    {
+      id: "derived-first-declared",
+      label: "Derived first",
+      provenance: { kind: "DERIVED", sourceEntityRefs: ["derived-later-declared"] }
+    },
+    {
+      id: "derived-later-declared",
+      label: "Derived later",
+      provenance: { kind: "DERIVED", sourceEntityRefs: ["dividend-156"] }
+    }
+  );
+  assert.doesNotThrow(() => validateScene(forwardDag));
+
+  const selfCycle = structuredClone(fixture);
+  selfCycle.entities.push({
+    id: "self-cycle",
+    label: "Self cycle",
+    provenance: { kind: "DERIVED", sourceEntityRefs: ["self-cycle"] }
+  });
+  assert.throws(
+    () => validateScene(selfCycle),
+    (error) => error instanceof WorkbenchError
+      && error.code === "WORKBENCH_PROVENANCE_CYCLE"
+      && error.detail === "self-cycle -> self-cycle"
+  );
+
+  const twoNodeCycle = structuredClone(fixture);
+  twoNodeCycle.entities.push(
+    {
+      id: "cycle-a",
+      label: "Cycle A",
+      provenance: { kind: "DERIVED", sourceEntityRefs: ["cycle-b"] }
+    },
+    {
+      id: "cycle-b",
+      label: "Cycle B",
+      provenance: { kind: "DERIVED", sourceEntityRefs: ["cycle-a"] }
+    }
+  );
+  assert.throws(
+    () => validateScene(twoNodeCycle),
+    (error) => error instanceof WorkbenchError
+      && error.code === "WORKBENCH_PROVENANCE_CYCLE"
+      && error.detail === "cycle-a -> cycle-b -> cycle-a"
+  );
+});
+
 test("named logical placement resolves without authored pixel coordinates", () => {
   const placement = fixture.projections[0].placement;
   assert.deepEqual(resolvePlacement(fixture, placement), { grid: "division-expression", row: 1, column: 1 });
