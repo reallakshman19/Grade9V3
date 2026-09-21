@@ -356,6 +356,10 @@
       {
         "path": ".github/workflows/v25-relay.yml",
         "reason": "Pin the Owner-selected V2.5 protocol and successor candidate gate."
+      },
+      {
+        "path": "tests/core_learning_page.test.mjs",
+        "reason": "Focused frozen CoreProjection initial-state contract tests for STEP-TA10-001."
       }
     ],
     "allowed_reads": [
@@ -469,7 +473,9 @@
       "objective": "Add a generic learner-shell state machine and custom element over explicit projection + optional scene/adapter inputs.",
       "targets": [
         "Shared/workbench/core-learning-page.mjs",
-        "tests/workbench_runtime.test.mjs"
+        "tests/workbench_runtime.test.mjs",
+        "tests/core_learning_page.test.mjs",
+        "tests/fixtures/workbench/core-learning-projections.json"
       ],
       "reads": [
         "Shared/workbench/semantic-workbench.mjs",
@@ -478,7 +484,9 @@
       ],
       "writes": [
         "Shared/workbench/core-learning-page.mjs",
-        "tests/workbench_runtime.test.mjs"
+        "tests/workbench_runtime.test.mjs",
+        "tests/core_learning_page.test.mjs",
+        "tests/fixtures/workbench/core-learning-projections.json"
       ],
       "inputs": [
         "INPUT-TA10-001",
