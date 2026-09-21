@@ -323,16 +323,21 @@ test("custom element emits only page-level semantic events and keeps state insta
       first.events.map((event) => event.type),
       [
         CORE_LEARNER_EVENTS.SUPPORT_REQUESTED,
+        CORE_LEARNER_EVENTS.REVEAL_CHANGED,
         CORE_LEARNER_EVENTS.SUPPORT_REQUESTED,
         CORE_LEARNER_EVENTS.ATTEMPT_COMMITTED,
+        CORE_LEARNER_EVENTS.REVEAL_CHANGED,
         CORE_LEARNER_EVENTS.SUPPORT_REQUESTED,
+        CORE_LEARNER_EVENTS.REVEAL_CHANGED,
         CORE_LEARNER_EVENTS.ACTIVITY_COMPLETED,
       ],
     );
-    assert.equal(first.events[1].detail.revealed, false);
-    assert.equal(first.events[1].detail.reason, "SUPPORT_PROTECTED_PREATTEMPT");
-    assert.equal(first.events[2].detail.response, "learner decision");
-    assert.doesNotMatch(JSON.stringify(first.events), /mastery|proficien|knowledge percentage/i);
+    assert.equal(first.events[2].detail.revealed, false);
+    assert.equal(first.events[2].detail.reason, "SUPPORT_PROTECTED_PREATTEMPT");
+    assert.equal(first.events[3].detail.response, "learner decision");
+    assert.equal(first.events[4].detail.kind, "reasoning");
+    assert.equal(first.events[6].detail.kind, "support");
+    assert.doesNotMatch(JSON.stringify(first.events), /mastery|proficien|knowledge percentage|correct|score/i);
 
     const returned = first.projection;
     returned.core = "CORE1A";
