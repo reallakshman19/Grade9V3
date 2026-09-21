@@ -257,6 +257,73 @@ test("invalid domain action is rejected without mutation", () => {
   assert.equal(after.revision, before.revision);
 });
 
+test("rejection target guidance must reference unique existing targets", () => {
+  const validAdapter = {
+    evaluateTransfer() {
+      return {
+        accepted: false,
+        reason: "Use the first quotient target.",
+        allowedTargets: ["quotient-first-digit"],
+      };
+    }
+  };
+  const validRuntime = new WorkbenchRuntime(fixture, validAdapter);
+  validRuntime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "keyboard" });
+  const validEvent = validRuntime.dispatch({ type: "DROP", targetRef: "remainder-final", channel: "keyboard" });
+  assert.equal(validEvent.type, "TRANSFER_REJECTED");
+  assert.deepEqual(validEvent.allowedTargets, ["quotient-first-digit"]);
+
+  for (const [allowedTargets, expectedCode] of [
+    [["missing-target"], "WORKBENCH_ALLOWED_TARGET_UNKNOWN"],
+    [["quotient-first-digit", "quotient-first-digit"], "WORKBENCH_ALLOWED_TARGETS_INVALID"],
+    ["quotient-first-digit", "WORKBENCH_ALLOWED_TARGETS_INVALID"],
+  ]) {
+    const runtime = new WorkbenchRuntime(fixture, {
+      evaluateTransfer() {
+        return { accepted: false, reason: "Rejected.", allowedTargets };
+      }
+    });
+    runtime.dispatch({ type: "PICK", entityRef: "dividend-156", channel: "keyboard" });
+    const before = runtime.snapshot;
+    const event = runtime.dispatch({ type: "DROP", targetRef: "remainder-final", channel: "keyboard" });
+    assert.equal(event.type, "TRANSFER_REJECTED");
+    assert.equal(event.code, expectedCode);
+    assert.deepEqual(event.allowedTargets, []);
+    assert.deepEqual(runtime.snapshot.entities, before.entities);
+    assert.deepEqual(runtime.snapshot.projections, before.projections);
+    assert.equal(runtime.snapshot.revision, before.revision);
+  }
+});
+
+test("canonical transformation refs validate current targets without forbidding deferred sources", () => {
+  assert.doesNotThrow(() => validateScene(identityFixture));
+
+  const unknownTarget = structuredClone(fixture);
+  unknownTarget.canonicalTransformations[0].targetRef = "missing-target";
+  assert.throws(
+    () => validateScene(unknownTarget),
+    (error) => error instanceof WorkbenchError
+      && error.code === "WORKBENCH_TRANSFORMATION_TARGET_UNKNOWN"
+      && error.detail === "choose-first-quotient-digit -> missing-target"
+  );
+
+  const malformedSources = structuredClone(fixture);
+  malformedSources.canonicalTransformations[0].sourceEntityRefs = "dividend-156";
+  assert.throws(
+    () => validateScene(malformedSources),
+    (error) => error instanceof WorkbenchError
+      && error.code === "WORKBENCH_TRANSFORMATION_SOURCES_INVALID"
+  );
+
+  const duplicateSources = structuredClone(fixture);
+  duplicateSources.canonicalTransformations[0].sourceEntityRefs = ["dividend-156", "dividend-156"];
+  assert.throws(
+    () => validateScene(duplicateSources),
+    (error) => error instanceof WorkbenchError
+      && error.code === "WORKBENCH_TRANSFORMATION_SOURCES_INVALID"
+  );
+});
+
 test("accepted empty patch fails closed without creating a semantic revision", () => {
   let adapterCalls = 0;
   const baseAdapter = divisionAdapter();
