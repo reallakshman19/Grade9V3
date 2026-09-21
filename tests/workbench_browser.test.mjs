@@ -720,7 +720,7 @@ test("public static Core learner host mounts a generated canonical projection", 
 
     const mounted = await driver.execute(`
       const learner = document.querySelector("#learner");
-      const row = window.GRADE9V3.core_projections.find(
+      const row = window.GRADE9V3_CORE.core_projections.find(
         (item) => item.id === "Physics:CORE1B:MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS"
       );
       return {
