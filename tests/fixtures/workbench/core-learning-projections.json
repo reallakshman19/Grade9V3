@@ -28,17 +28,7 @@
           "REP-FIXTURE-1"
         ]
       },
-      "application": {
-        "question_ref": null,
-        "family_ref": null,
-        "stem": "",
-        "reasoning_route": [],
-        "crux_move_ref": null,
-        "hints": [],
-        "scaffolds": [],
-        "transfer": null,
-        "check": ""
-      },
+      "application": null,
       "presentation": {
         "attempt_before_reveal": false,
         "show_full_construction": true,
@@ -76,17 +66,7 @@
           "REP-FIXTURE-1"
         ]
       },
-      "application": {
-        "question_ref": null,
-        "family_ref": null,
-        "stem": "",
-        "reasoning_route": [],
-        "crux_move_ref": null,
-        "hints": [],
-        "scaffolds": [],
-        "transfer": null,
-        "check": ""
-      },
+      "application": null,
       "presentation": {
         "attempt_before_reveal": true,
         "show_full_construction": false,
