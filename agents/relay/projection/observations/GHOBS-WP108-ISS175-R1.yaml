@@ -1,0 +1,33 @@
+{
+  "schema_version": "relay-v2.5-github-observation",
+  "generation_id": "GHGEN-WP108-ISS175-R1",
+  "operation_id": "GHOP-WP108-ISSUE175-ADMIT",
+  "candidate_basis": [
+    "roadmap:RM-0011",
+    "execution:EP-TA-010",
+    "provider-update:issue-175@2026-09-21T17:50:45Z",
+    "provider-readback:https://api.github.com/repos/reallaksh19/Grade9V3/issues/175"
+  ],
+  "publication": {
+    "attempted": true,
+    "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
+    "error": null
+  },
+  "readback": {
+    "performed": true,
+    "found": true,
+    "issue_number": 175,
+    "issue_id": 5529711190,
+    "github_state": "OPEN",
+    "marker_present": true,
+    "relationships": [],
+    "body_digest": null,
+    "basis": [
+      "GitHub update response for https://github.com/reallaksh19/Grade9V3/issues/175",
+      "GitHub provider readback at 2026-09-21T17:50:45Z",
+      "Verified relay-operation marker GHOP-WP108-ISSUE175-ADMIT"
+    ]
+  },
+  "result": "VERIFIED",
+  "reason": "Independent provider readback found Issue #175 OPEN with the RM-0011 governed-execution marker and verified provider identity."
+}
