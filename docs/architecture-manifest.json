@@ -17,7 +17,7 @@
     "WEB": 8,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:17780dbea290af5d18c7f82128fd5373ebded26eed3de29dc03acde61562abb7",
+  "digest": "sha256:782d5d6381f05bbc6cf980bb1d291e83fdc56cc303dbd005b7bddcb4703f2eb0",
   "components": [
     {
       "path": "public/core-learning/data.js",
@@ -1521,8 +1521,8 @@
       "path": "tests/workbench_browser.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 37932,
-      "sha256": "258e34c967158713142b8c955f3612db5fb7a18d54258707a75c7a8944dd1e84"
+      "bytes": 38663,
+      "sha256": "6891906b75ab89b6348eed8dbaa0f67009a779b1e9999abb10b84bbfec8419be"
     },
     {
       "path": "tests/workbench_runtime.test.mjs",
