@@ -19,27 +19,28 @@
     "lane_id": null,
     "roadmap_revision": "RM-0009",
     "work_package": "WP-TA-105",
-    "ep_contract_digest": "sha256:6d985575b34d3ea73654370ea3bc11ce7cb4f2f4cb124e54198bfce35c995e08"
+    "ep_contract_digest": "sha256:c362800e9ddedb8b1def9b8815341229ee88ed439ec13d2ef0f0eb4d30c61169"
   },
   "answers": [
     {
       "id": "Q1",
-      "response": "The repository already separates curriculum scope authority from learner-evidence authority, so the exit view is a derived join rather than a new source of mastery truth.",
+      "response": "The production path combines the existing Grade-9 scope view with existing learner-evidence resolution; it derives a consumer view without taking ownership of learner state.",
       "outputs": {
-        "scope_owner": "Existing Grade-9 scope coverage/canonical Physics classifications",
-        "evidence_owner": "Shared/tools/learner_evidence and existing learner records",
-        "derived_projection": "A reproducible categorical exit view computed from scope plus evidence, not persisted as learner mastery truth",
-        "consumer": "Parent/agent transition report and Grade-10 planning handoff"
+        "production_entrypoint": "docs/grade9/grade9-physics-scope-coverage.json + Shared/tools/learner_evidence.effective_state",
+        "state_owner": "Existing learner observations/profiles remain the evidence owner; the exit projection owns no persisted learner state",
+        "authority_source": "ODR-0003 + RM-0009 WP-TA-105 + existing Grade-9 scope coverage and learner-evidence contracts",
+        "downstream_consumer": "Derived Grade-9 exit category view for parent/agent transition reporting and Grade-10 planning"
       },
       "evidence": [
         "docs/grade9/grade9-physics-scope-coverage.json",
         "Shared/tools/learner_evidence.py",
+        "ODR-0003",
         "RM-0009 WP-TA-105"
       ]
     },
     {
       "id": "Q2",
-      "response": "The decision sequence first limits itself to authoritative required scope, then joins conservative evidence, derives categories, and only afterward distinguishes blocking from non-blocking scope.",
+      "response": "The sequence first derives conservative categories from authoritative scope/evidence and only later permits blocker/report logic.",
       "outputs": {
         "reconstruction_steps": [
           "Select required Grade-9 scope and genuine prerequisite relationships from existing coverage authority.",
@@ -49,8 +50,8 @@
           "Keep enrichment/later-grade/optional improvement visible but non-blocking.",
           "Render machine/human transition basis with explicit unknowns."
         ],
-        "blocker_rule": "Only required-scope or genuine-prerequisite deficits and major unresolved misconceptions with explicit evidence basis may block.",
-        "non_blocker_rule": "Enrichment, later-grade sophistication and optional improvement do not block merely because they are unobserved or incomplete."
+        "intermediate_result": "A derived categorical scope+evidence projection that preserves secure, usable-but-fragile, known-gap and insufficient/unknown distinctions before transition blocking is evaluated.",
+        "expected_result": "Required-scope evidence categories are reproducible from authoritative inputs, while enrichment/later-grade scope remains visible but cannot become a blocker merely through missing evidence."
       },
       "evidence": [
         "BENCH-TA9-001",
@@ -60,22 +61,22 @@
     },
     {
       "id": "Q3",
-      "response": "The slice fails if it upgrades weak evidence, turns optional scope into a blocker, persists readiness truth, or rewrites protected academic/evidence inputs.",
+      "response": "The first mutation is derived-only and fails closed on any overclaiming or persistence of readiness truth.",
       "outputs": {
+        "mutation_effect": "Add a derived exit-category projection over existing scope/evidence; do not rewrite canonical Physics content, learner observations, or persist grade readiness.",
         "protected_invariant": "Unknown evidence remains unknown; helped-only evidence is not secure; enrichment is non-blocking; output is derived, not a second mastery store.",
-        "falsifier": "Any unknown/helped-only capability becomes secure, any enrichment/later-grade gap blocks exit without required-scope authority, or any persisted mastery/grade-readiness truth is introduced.",
-        "prohibited_mutation": "Canonical Physics meaning and existing learner observations may not be rewritten to make transition appear ready."
+        "falsifier": "Any unknown/helped-only capability becomes secure, any enrichment/later-grade gap blocks exit without required-scope authority, or any persisted mastery/grade-readiness truth is introduced."
       },
       "evidence": [
         "AC-TA9-001",
         "AC-TA9-002",
         "AC-TA9-004",
-        "ODR-0003-G9-PHYSICS-INDEPENDENCE"
+        "ODR-0003"
       ]
     },
     {
       "id": "Q4",
-      "response": "Verification uses frozen truth-table/reference cases plus repository-level protected-domain and exact-head validators, independent of assertions inside the implementation.",
+      "response": "Verification remains external to the implementation via frozen cases, protected-domain diff, and exact-head repository validators.",
       "outputs": {
         "independent_method": "Run categorical evidence truth table, blocker-boundary cases, report reconstruction, overclaiming falsifiers, protected-domain diff, full guardrails and exact-head V2.5 validation.",
         "predicted_result": "Unknown/helped evidence never overclaims security, enrichment/later-grade gaps remain non-blocking, parent report is reconstructable, and no second mastery store or unauthorized Physics edit appears.",
@@ -94,7 +95,7 @@
     },
     {
       "id": "Q5",
-      "response": "The first material slice is deliberately only the categorical scope-plus-evidence projection and its truth table; transition blockers and report complexity wait.",
+      "response": "Only the categorical projection and its truth table are admitted first; blocker and reporting work waits for that falsifier.",
       "outputs": {
         "first_change": "Build the smallest derived scope+evidence categorical projection and focused truth-table tests; do not add transition-blocker or reporting complexity yet.",
         "predicted_before": "The repository has scope and evidence separately but no authoritative derived Grade-9 exit category view.",
