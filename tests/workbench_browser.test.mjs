@@ -567,7 +567,7 @@ test("Core learner shell preserves workbench state across protected reveal flow"
     assert.equal(initial.supportIndex, 0);
 
     const initialSummary = await driver.execute("return window.coreLearnerHarness.workbenchSummary();");
-    assert.match(initialSummary, /Scene arithmetic-division-fixture/);
+    assert.match(initialSummary, /Scene division-first-quotient-digit/);
 
     const derived = await driver.execute("return window.coreLearnerHarness.deriveFixtureState();");
     assert.equal(derived.revision, 1);
