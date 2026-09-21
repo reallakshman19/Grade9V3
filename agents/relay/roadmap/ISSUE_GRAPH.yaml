@@ -410,7 +410,7 @@
       "github_state": "OPEN",
       "github": {
         "issue_number": 175,
-        "issue_id": 5529815598,
+        "issue_id": 5529711190,
         "url": "https://github.com/reallaksh19/Grade9V3/issues/175"
       },
       "roadmap_node": "WP-TA-108"
@@ -439,7 +439,7 @@
     },
     {
       "from": "ISSUE-175",
-      "relation": "FOLLOWS",
+      "relation": "RELATES_TO",
       "to": "ISSUE-169"
     }
   ]
