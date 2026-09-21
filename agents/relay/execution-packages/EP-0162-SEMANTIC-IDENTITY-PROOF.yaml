@@ -3,7 +3,7 @@ identity:
   ep_id: EP-0162-SEMANTIC-IDENTITY-PROOF
   branch: feat/issue-162-semantic-workbench-core
   base_ref: 143052823ba0cab69f9d5783010906bbae9b120a
-  execution_state: ACTIVE
+  execution_state: EXECUTABLE
   previous_checkpoint: NONE
   previous_join: null
   previous_replan: null
@@ -48,9 +48,11 @@ context_capsule:
   - ODR-0162-OWNER-CONTINUE-DESPITE-DRIFT
   - ODR-0162-ADVANCE-REDO
   - ODR-0162-ADVANCE-SEMANTIC-IDENTITY
-  current_implementation_state: The stronger semantic-identity fixtures and focused tests are now authored without changing Shared/workbench product runtime/component code; formal exact-head browser/full-guardrail evidence remains pending.
+  - ODR-0162-CONTINUE-CORE-CODING
+  current_implementation_state: The stronger semantic-identity fixtures are authored without a runtime/component change; their exact-head evidence remains pending by Owner direction. A new Core falsifier shows adapter.evaluateTransfer currently receives input channel metadata, allowing domain validity to branch on mouse/keyboard/touch.
   known_problems:
-  - The existing division witness conflates the textual idea "leading 15" with a projection of semantic entity dividend-156.
+  - Exact-head semantic-identity evidence remains pending and must not be reported as complete.
+  - Adapter validity currently receives request.channel, so an adapter can make the same semantic transfer valid for one input modality and invalid for another.
   deliberate_non_goals:
   - No arithmetic-specific Core API or entity type.
   - No generic derivation taxonomy in Core.
@@ -126,7 +128,7 @@ scope:
   - path: tests/workbench_browser.test.mjs
     reason: Prove the stronger lifecycle in real Chrome if the unit falsifier survives.
   - path: Shared/workbench/runtime.mjs
-    reason: Change only if the stronger generic witness cannot be represented by the current entity/projection/patch model.
+    reason: Preserve semantic request authority by preventing input-channel metadata from reaching domain validity; retain channel only on observable interaction events.
   - path: Shared/workbench/semantic-workbench.mjs
     reason: Change only if browser proof exposes a generic interaction defect.
   - path: docs/architecture-manifest.json
@@ -145,6 +147,8 @@ scope:
     reason: Improvement must remain minimal rather than architecture-driven.
   - invariant: Undo/redo restore recorded semantic state without adapter replay.
     reason: Preserve the green reversible-history contract.
+  - invariant: Domain validity is input-modality neutral.
+    reason: Pointer, click, keyboard and touch may use different browser mechanics, but evaluateTransfer must receive the same semantic request for the same source/target/operation.
   prohibited:
   - domain: learner evidence/support routing
     reason: Owned by Issue #159.
@@ -163,6 +167,9 @@ anti_drift:
   - id: ADR-I02
     restriction: Do not introduce a new runtime operation if two existing adapter-approved add-entity transactions can express the witness truthfully.
     reason: The falsifier must earn architecture.
+  - id: ADR-I03
+    restriction: Do not remove channel observability from semantic events merely to hide it from the domain adapter.
+    reason: Input mechanics remain useful telemetry; only academic/domain validity must be modality-neutral.
   stale_if:
   - id: STALE-I01
     condition: Owner revokes #162 continuation or changes ownership.
@@ -209,6 +216,22 @@ implementation_plan:
   expected_state: Real Chrome proves the intermediate identity can be created, inspected/selected, used for the quotient transaction, undone and redone with existing modality contracts intact.
   stop_conditions:
   - Stop if browser proof requires subject-specific component behavior.
+- id: STEP-I03
+  objective: Falsify and close the input-modality authority leak by ensuring evaluateTransfer receives only sourceEntityRef, targetRef and operation while emitted transfer events retain the interaction channel.
+  targets:
+  - Shared/workbench/runtime.mjs
+  - tests/workbench_runtime.test.mjs
+  reads:
+  - Shared/workbench/semantic-workbench.mjs
+  writes:
+  - Shared/workbench/runtime.mjs
+  - tests/workbench_runtime.test.mjs
+  inputs: [INPUT-I01]
+  acceptance: [AC-I04, AC-I05]
+  tests: [TEST-I04, TEST-I05]
+  expected_state: An adversarial adapter cannot distinguish click/keyboard/pointer/touch from its request, while host events still expose channel and existing semantic outcomes remain unchanged.
+  stop_conditions:
+  - Stop if the change requires subject-specific adapter behavior or changes browser gesture semantics.
 next_work:
   phase_transition: false
   steps:
@@ -236,6 +259,18 @@ next_work:
     expected_result: Browser behavior preserves prior contracts while exercising the new intermediate semantic identity.
     stop_if:
     - A subject-specific rendering or learner-routing feature would be required.
+  - order: 3
+    action: Remove channel from the adapter-validity boundary while preserving channel on host-observable transfer events.
+    targets:
+    - Shared/workbench/runtime.mjs
+    - tests/workbench_runtime.test.mjs
+    inputs: [INPUT-I01]
+    tests: [TEST-I04, TEST-I05]
+    benchmarks: []
+    acceptance: [AC-I04, AC-I05]
+    expected_result: The same semantic transfer produces an identical adapter request across input modalities, and event telemetry still identifies the originating channel.
+    stop_if:
+    - The change alters subject validity, gesture mechanics, or public semantic entity identity.
 qualification_boundary:
   required: false
   trigger: null
@@ -296,6 +331,14 @@ acceptance:
   description: Existing browser modality, correspondence, text-summary, responsive, reduced-motion, isolation and repository guardrails remain green without subject-specific Core branching.
   weight: 20
   verification: [TEST-I02, TEST-I03]
+- id: AC-I04
+  description: evaluateTransfer receives only semantic source/target/operation data and cannot branch academic validity on pointer, click, keyboard or touch channel.
+  weight: 60
+  verification: [TEST-I04]
+- id: AC-I05
+  description: Transfer events retain channel observability and prior modality-equivalence/browser contracts remain unchanged.
+  weight: 40
+  verification: [TEST-I04, TEST-I05]
 validation:
 - id: TEST-I01
   class: MUST_PASS
@@ -309,6 +352,14 @@ validation:
   class: MUST_PASS
   method: Grade9V3 guardrails on the exact coding head
   proves: [AC-I03]
+- id: TEST-I04
+  class: MUST_PASS
+  method: node --test tests/workbench_runtime.test.mjs
+  proves: [AC-I04, AC-I05]
+- id: TEST-I05
+  class: MUST_PASS
+  method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the channel-neutral coding head
+  proves: [AC-I05]
 failure_and_stop_conditions:
   hard_stop_categories: [OWNER_DECISION_REQUIRED, AUTHORITY_VIOLATION, PROTECTED_INVARIANT_FAILURE, UNSAFE_ENGINEERING_RESULT]
 report_contract:
