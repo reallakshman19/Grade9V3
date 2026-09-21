@@ -10,7 +10,7 @@ identity:
 replan_inheritance: null
 git_basis:
   expected_branch: feat/issue-162-semantic-workbench-core
-  material_ref: 8003880e84a5798f9a5eba0f8dfdc762c767845f
+  material_ref: 34d9111cdb0c95ef608b98b0f24b1fe15ce43afc
   base_branch: main
   base_observed_ref: 843ec2d8d6faa2b8de15795ed1535905e4efc8a8
   drift_policy: OWNER_EXCEPTION
@@ -52,14 +52,15 @@ context_capsule:
   - ODR-0162-ADVANCE-TRANSACTION-INTEGRITY
   - ODR-0162-ADVANCE-PROVENANCE-INTEGRITY
   - ODR-0162-ADVANCE-REENTRANCY-INTEGRITY
-  current_implementation_state: The truthful identity witness plus channel-neutral validity, non-empty commit enforcement, provenance referential/DAG integrity, observer containment, lifecycle-aware target/reference integrity, and non-reentrant semantic dispatch are authored; exact-head Node/browser/full-guardrail evidence remains pending.
+  current_implementation_state: The truthful identity witness plus channel-neutral validity, non-empty commit enforcement, provenance referential/DAG integrity, observer containment, lifecycle-aware reference integrity, non-reentrant dispatch, and runtime-lifetime ID stability are authored; canonicalTransformation metadata remains descriptive and does not override adapter validity. Exact-head Node/browser/full-guardrail evidence remains pending.
   known_problems:
   - Exact-head semantic-identity evidence remains pending and must not be reported as complete.
   - Exact-head channel-neutral adapter evidence remains pending and must not be reported as complete.
   - The accepted-empty-patch defect is fixed on 979afce99ec2beddd895fc5b1a12e5541915e5a3, but exact-head Node/browser/full-guardrail evidence remains pending.
   - Initial-scene provenance dangling-source validation is implemented on f715a2a0bb348825e7aef28f380a71031631dc88, but exact-head Node/browser/full-guardrail evidence remains pending.
   - Reentrant-dispatch containment is implemented on 8003880e84a5798f9a5eba0f8dfdc762c767845f, but exact-head Node/browser/full-guardrail evidence remains pending.
-  - Canonical-transformation/history coupling was falsified as the wrong authority boundary: adapter validity must remain authoritative. The surviving defect is lifetime ID reuse after undo/branching, which can reassign a committed semantic identity or projection identity within one runtime instance.
+  - Canonical-transformation/history coupling was falsified as the wrong authority boundary: adapter validity remains authoritative and no coupling was added.
+  - Runtime-lifetime ID stability is implemented at 34d9111cdb0c95ef608b98b0f24b1fe15ce43afc: initial and successfully committed entity/projection IDs remain reserved across undo/branching; rejected candidate IDs are not reserved. Exact-head evidence remains pending.
   deliberate_non_goals:
   - No arithmetic-specific Core API or entity type.
   - No generic derivation taxonomy in Core.
