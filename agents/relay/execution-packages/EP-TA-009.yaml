@@ -699,9 +699,26 @@
     ]
   },
   "qualification_boundary": {
-    "state": "REQUIRED",
-    "reason": "WP-TA-105 is a new material boundary with different input authority, aggregation semantics and falsifiers from EP-TA-008.",
-    "candidate_rule": "A candidate must complete fresh DISC/QUAL/TC for QSET-TA-010 before any WP-TA-105 material write; ODR-0006/ODR-0007 are scoped to EP-TA-008 and confer no successor write exception."
+    "required": true,
+    "trigger": "MATERIAL_QUALIFICATION_BOUNDARY_CHANGED",
+    "from_phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "to_phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "changed_dimensions": [
+      "PRODUCTION_PATH",
+      "INPUT_AUTHORITY",
+      "PROTECTED_INVARIANT",
+      "VERIFICATION_ORACLE"
+    ],
+    "basis": [
+      "WP-TA-105 changes the production path from session routing to a derived grade-exit projection over existing scope and evidence.",
+      "Input authority combines Grade-9 scope coverage with existing learner observations/profile evidence without creating a second learner-state owner.",
+      "Protected invariants add explicit no-overclaiming rules for unknown/helped evidence and non-blocking enrichment/later-grade scope.",
+      "Verification changes to categorical truth-table, blocker-boundary, report reconstruction and protected-domain falsifiers."
+    ],
+    "question_set": {
+      "id": "QSET-TA-010",
+      "path": "agents/relay/certifications/questions/QSET-TA-010.yaml"
+    }
   },
   "quality": {
     "applicable": [
