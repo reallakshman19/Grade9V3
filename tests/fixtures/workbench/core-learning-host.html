@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Core Learner Page Browser Contract Fixture</title>
+  <style>
+    body{margin:0;padding:24px;font:16px/1.4 system-ui,sans-serif}
+    main{max-width:1000px;margin:auto}
+  </style>
+</head>
+<body>
+  <main>
+    <core-learning-page id="learner"></core-learning-page>
+  </main>
+  <script type="module">
+    import "/Shared/workbench/semantic-workbench.mjs";
+    import "/Shared/workbench/core-learning-page.mjs";
+
+    const [fixtureData, scene] = await Promise.all([
+      fetch("/tests/fixtures/workbench/core-learning-projections.json").then((response) => {
+        if (!response.ok) throw new Error(`projection fixture fetch failed: ${response.status}`);
+        return response.json();
+      }),
+      fetch("/tests/fixtures/workbench/arithmetic-division.json").then((response) => {
+        if (!response.ok) throw new Error(`scene fixture fetch failed: ${response.status}`);
+        return response.json();
+      }),
+    ]);
+
+    const projection = fixtureData.projections.find((row) => row.id === "core2b");
+    if (!projection) throw new Error("core2b fixture missing");
+
+    const makeAdapter = () => ({
+      evaluateTransfer(request, snapshot) {
+        if (snapshot.sceneId !== scene.id) throw new Error("scene identity changed");
+        if (request.sourceEntityRef !== "dividend-156" || request.targetRef !== "quotient-first-digit") {
+          return {
+            accepted: false,
+            reason: "Use the supplied source and target.",
+            allowedTargets: ["quotient-first-digit"],
+          };
+        }
+        return {
+          accepted: true,
+          summary: "Derived fixture state.",
+          patch: {
+            addEntities: [{
+              id: "quotient-digit-core-fixture",
+              label: "1",
+              provenance: { kind: "DERIVED", sourceEntityRefs: ["dividend-156", "divisor-12"] },
+            }],
+            addProjections: [{
+              id: "quotient-digit-core-fixture-result",
+              entityRef: "quotient-digit-core-fixture",
+              label: "1",
+              representation: "fixture result",
+              placement: { grid: "division-work", row: "result", column: "main" },
+            }],
+          },
+        };
+      },
+    });
+
+    const learner = document.getElementById("learner");
+    const pageEvents = [];
+    for (const type of ["attempt_committed", "support_requested", "activity_completed"]) {
+      learner.addEventListener(type, (event) => pageEvents.push({
+        type: event.type,
+        detail: structuredClone(event.detail),
+      }));
+    }
+
+    learner.projection = structuredClone(projection);
+    learner.scene = structuredClone(scene);
+    learner.adapter = makeAdapter();
+
+    const workbench = () => learner.shadowRoot.querySelector("semantic-workbench");
+    window.coreLearnerHarness = {
+      state() {
+        return learner.state;
+      },
+      html() {
+        return learner.shadowRoot.innerHTML;
+      },
+      events() {
+        return structuredClone(pageEvents);
+      },
+      visualBinding() {
+        const panel = learner.shadowRoot.querySelector(".representation-panel");
+        return {
+          visualRef: panel?.dataset.visualRef ?? null,
+          visualStageRef: panel?.dataset.visualStageRef ?? null,
+        };
+      },
+      workbenchSnapshot() {
+        return workbench()?.snapshot ?? null;
+      },
+      workbenchSummary() {
+        return workbench()?.textSummary ?? null;
+      },
+      workbenchElementStable() {
+        return workbench() === window.__initialWorkbenchElement;
+      },
+      deriveFixtureState() {
+        const wb = workbench();
+        wb.dispatchIntent({ type: "PICK", entityRef: "dividend-156", channel: "fixture" });
+        wb.dispatchIntent({ type: "DROP", targetRef: "quotient-first-digit", channel: "fixture" });
+        return wb.snapshot;
+      },
+      requestSupport() {
+        return learner.requestSupport();
+      },
+      commit(value = "") {
+        return learner.commitAttempt(value);
+      },
+      complete() {
+        return learner.completeActivity();
+      },
+      metrics() {
+        const rect = learner.getBoundingClientRect();
+        const shell = learner.shadowRoot.querySelector(".shell");
+        const panel = learner.shadowRoot.querySelector(".representation-panel");
+        const style = panel ? getComputedStyle(panel) : null;
+        return {
+          hostWidth: rect.width,
+          scrollWidth: learner.scrollWidth,
+          shellWidth: shell?.getBoundingClientRect().width ?? null,
+          reducedMotion: matchMedia("(prefers-reduced-motion: reduce)").matches,
+          transitionDuration: style?.transitionDuration ?? null,
+        };
+      },
+      resourceUrls() {
+        return performance.getEntriesByType("resource").map((entry) => entry.name);
+      },
+    };
+
+    window.__initialWorkbenchElement = workbench();
+    if (!window.__initialWorkbenchElement?.snapshot) throw new Error("semantic workbench did not mount");
+    window.__coreLearnerReady = true;
+  </script>
+</body>
+</html>
