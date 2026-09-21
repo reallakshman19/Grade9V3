@@ -2,9 +2,9 @@
   "schema_version": "relay-v2.5",
   "roadmap": {
     "id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
-    "revision": "RM-0010",
+    "revision": "RM-0011",
     "title": "Grade 9 Physics learner independence and progression",
-    "revision_record": "agents/relay/roadmap/revisions/RM-0010.yaml",
+    "revision_record": "agents/relay/roadmap/revisions/RM-0011.yaml",
     "owner_outcome": "Make the learner increasingly capable of deciding what she knows, discovering with little external steering what she does not know, repairing the right Physics gap, and independently verifying a solution.",
     "progression_order": [
       "PHYSICS_GRADE_9",
@@ -16,14 +16,14 @@
     {
       "id": "OBJ-TOPIC-ATLAS-COMPLETE",
       "title": "Make Grade 9 Physics independently navigable, repairable, verifiable, and transition-ready",
-      "state": "COMPLETE",
+      "state": "ACTIVE",
       "definition": "DEFINED",
       "weight": 100,
       "phases": [
         {
           "id": "PHASE-TAKEOVER-RECONCILIATION",
           "title": "Grade 9 Physics self-study completion and governed Grade 10 transition",
-          "state": "COMPLETE",
+          "state": "ACTIVE",
           "definition": "DETAILED",
           "weight": 100,
           "work_packages": [
@@ -145,6 +145,27 @@
                 "Grade 10 inherits explicit transition evidence rather than either a blanket recertification of Grade 9 or a silent assumption of mastery."
               ],
               "issue": "ISSUE-169"
+            },
+            {
+              "id": "WP-TA-108",
+              "title": "Prove a portable Core learner shell against frozen projection fixtures",
+              "state": "ACTIVE",
+              "definition": "DETAILED",
+              "execution_status": "ACTIVE",
+              "weight": 15,
+              "depends_on": [
+                "WP-TA-105"
+              ],
+              "issue": "ISSUE-175",
+              "outcome": "A reusable self-paced learner shell renders supplied Core projection state and a supplied scientific workbench scene without embedding academic truth, mastery logic, or page-local hint/transfer policy.",
+              "exit_evidence": [
+                "A single reusable learner component consumes an explicit Core projection object plus optional host-supplied workbench scene/adapter inputs.",
+                "Core1A exposes the completed construction while Core1B requires an explicit learner attempt before reconstruction becomes available.",
+                "Core2A exposes staged optional help and distinctly marks the supplied reasoning crux; Core2B suppresses pre-attempt support bound to protected moves.",
+                "The component emits semantic interaction events only and never emits or persists mastery/readiness state.",
+                "Keyboard/click/touch-compatible native controls, aria-live reveal announcements, text fallbacks, narrow-layout behavior and static/offline loading are covered by browser tests.",
+                "This first slice uses contract fixtures only; production compiled-projection integration and bespoke-explorer migration remain Issue #175 follow-on work."
+              ]
             }
           ],
           "outcome": "Preserve proven Shared/Atlas machinery, then make the Grade-9 learner loop representation-aware and evidence-routed before deriving Grade-9 exit readiness."
