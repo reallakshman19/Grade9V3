@@ -1,0 +1,226 @@
+{
+  "schema_version": "relay-v2.5-quality-review",
+  "quality_review_id": "QRV-TA-010",
+  "ep": {
+    "id": "EP-TA-010",
+    "path": "agents/relay/execution-packages/EP-TA-010.yaml",
+    "contract_digest": "sha256:aab33c5f2aafcf075d7b932e4f66f1472569bb90cb0bca2fd792b15a587a1383"
+  },
+  "roadmap_revision": "RM-0011",
+  "material_ref": "8ed02dcfcc9823271bcde409f3e781f252dd6e37",
+  "reviewer": {
+    "type": "AGENT",
+    "identity": "chatgpt-sol-webbuilder-closeout-20260921"
+  },
+  "router_snapshot": {
+    "applicable": [
+      {
+        "blueprint": "software-design",
+        "reason": "The slice defines the ownership boundary between projection, scientific scene and learner UI state.",
+        "review_focus": [
+          "state ownership",
+          "no duplicate academic truth",
+          "host/component boundary"
+        ]
+      },
+      {
+        "blueprint": "coding",
+        "reason": "New reusable browser runtime code is added.",
+        "review_focus": [
+          "small API",
+          "deterministic state transitions",
+          "failure semantics"
+        ]
+      },
+      {
+        "blueprint": "testing",
+        "reason": "Core reveal/protection behavior and browser parity require executable falsifiers.",
+        "review_focus": [
+          "attempt/reveal order",
+          "protected move",
+          "offline/browser coverage"
+        ]
+      },
+      {
+        "blueprint": "code-review",
+        "reason": "Generic runtime code can silently accumulate subject/pedagogy policy.",
+        "review_focus": [
+          "subject neutrality",
+          "event vocabulary",
+          "scope containment"
+        ]
+      },
+      {
+        "blueprint": "accessibility",
+        "reason": "Issue #175 explicitly requires keyboard/touch/text/announcement/zoom-safe behavior.",
+        "review_focus": [
+          "focus/keyboard",
+          "aria-live",
+          "text fallback",
+          "narrow layout",
+          "no color-only meaning"
+        ]
+      },
+      {
+        "blueprint": "ui-ux",
+        "reason": "The learner interaction states and feedback density are user-facing.",
+        "review_focus": [
+          "self-paced flow",
+          "minimal unsolicited feedback",
+          "crux visibility",
+          "help discoverability"
+        ]
+      },
+      {
+        "blueprint": "github-delivery",
+        "reason": "Issue #175 must remain correlated with its EP/PR and provider dependency state.",
+        "review_focus": [
+          "Issue↔EP↔WP↔PR correlation",
+          "stacked predecessor",
+          "provider blockers"
+        ]
+      }
+    ],
+    "not_applicable": [
+      {
+        "blueprint": "engineering-numerics",
+        "reason": "No scientific numerical method is implemented by the shell."
+      },
+      {
+        "blueprint": "performance",
+        "reason": "The bounded fixture-backed component is not performance-sensitive."
+      },
+      {
+        "blueprint": "migration",
+        "reason": "No persisted learner data/schema migration is authorized in this first proof."
+      }
+    ],
+    "review_contract": {
+      "required": true,
+      "required_before_checkpoint": true,
+      "receipt_namespace": "QRV-",
+      "required_outputs": [
+        "procedure_results",
+        "findings",
+        "owner_report",
+        "successor_handover"
+      ]
+    },
+    "findings_policy": "Quality findings remain quality state unless they map to an existing acceptance, authority, protected-invariant, or safety hard-stop condition.",
+    "ordinary_findings_are_hard_stops": false
+  },
+  "procedure_results": [
+    {
+      "blueprint": "software-design",
+      "result": "CLEAR",
+      "evidence": [
+        "The learner shell consumes explicit CoreProjection and host-supplied scene/adapter inputs; scientific transformation validity remains in semantic-workbench/domain adapter ownership.",
+        "Core1B reveal state, Core2A support/crux state and Core2B protected-move state are represented by one generic learner component rather than topic-specific page branches."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "coding",
+      "result": "CLEAR",
+      "evidence": [
+        "State transitions are deterministic and fail closed on dangling reasoning, crux, scaffold, transfer and protected-move references.",
+        "The same semantic-workbench element is preserved across learner-page rerenders so support/reveal changes do not reset scientific scene state."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "testing",
+      "result": "CLEAR",
+      "evidence": [
+        "Exact implementation head 8ed02dcfcc9823271bcde409f3e781f252dd6e37 passed guardrails run 35667608256 with 991 repository tests.",
+        "The suite includes test_core_learning_page_contract and test_real_browser_contract, covering commit-gated reconstruction, protected pre-attempt support, crux rendering, scene preservation, browser accessibility/static loading and generated-manifest parity."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "code-review",
+      "result": "CLEAR",
+      "evidence": [
+        "The predecessor-to-implementation compare changes no Physics/** or Learners/** files and contains no #173 compiler/schema implementation.",
+        "Generic learner-shell source is explicitly tested against projectile/friction/Motion2D and mastery/proficiency/knowledge-percentage vocabulary."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "accessibility",
+      "result": "CLEAR",
+      "evidence": [
+        "Integrated browser proof exercises keyboard-native attempt/support/completion controls, aria-live reveal announcements, 320px layout and reduced-motion behavior.",
+        "The existing semantic-workbench real-browser contract remains green for keyboard, pointer/touch parity, text summary, narrow layout, reduced motion, multiple instances and undo/redo; the learner shell reuses that runtime rather than duplicating it."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "ui-ux",
+      "result": "CLEAR",
+      "evidence": [
+        "Support remains optional and projection-supplied; successful support does not replace/reset the scientific workbench scene.",
+        "Reasoning routes label the supplied crux as 'Key decision' with semantic markup, and protected Core2B reasoning/support is absent before commitment."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "github-delivery",
+      "result": "FINDINGS",
+      "evidence": [
+        "Draft PR #178 is the correlated delivery vehicle for Issue #175 / WP-TA-108 / EP-TA-010 and is intentionally stacked on predecessor PR #170.",
+        "The exact-head Grade9V3 guardrails are green, but v25-relay run 35667612080 fails inside the pinned Common protocol unit suite before repository relay validation.",
+        "Normal EP-TA-010 DISC/QUAL/TC is absent; ODR-0010 and ODR-0011 explicitly authorize bounded direct execution without fabricating certification."
+      ],
+      "reason": "Delivery governance has explicit carried exceptions/upstream protocol failure, while product/runtime acceptance is independently green.",
+      "cause": "DEPENDENCY_WAIT"
+    }
+  ],
+  "findings": [
+    {
+      "id": "FIND-TA10-001",
+      "severity": "MEDIUM",
+      "statement": "Pinned Common V2.5 currently fails test_prompt3_requires_withdrawal_when_architecture_unnecessary before Grade9V3 relay validators execute.",
+      "disposition": "CARRY_FORWARD",
+      "execution_effect": "Does not invalidate exact-head Grade9V3 guardrails/browser evidence; full V2.5 relay green remains unavailable until Common is corrected."
+    },
+    {
+      "id": "FIND-TA10-002",
+      "severity": "MEDIUM",
+      "statement": "EP-TA-010 has no normal candidate DISC/QUAL/TC because QSET-TA-011 is stale against the evolved EP digest; material execution used explicit Owner direct-execution ODR-0010/ODR-0011.",
+      "disposition": "CARRY_FORWARD",
+      "execution_effect": "Do not relabel the exception as TAKEOVER_CERTIFIED or MATERIAL_WRITE_READY; future production-integration execution must re-establish a fresh normal admission or obtain new explicit authority."
+    }
+  ],
+  "overall_state": "FINDINGS",
+  "execution_effect": {
+    "blocks_execution": false,
+    "blocking_findings": []
+  },
+  "owner_report": {
+    "summary": "The fixture-backed Core learner-shell implementation meets its bounded engineering contract on 8ed02dcf: one projection-driven component enforces attempt/reveal/support/protected-move behavior, preserves supplied workbench scientific state, emits semantic non-mastery events, and passes the full repository/browser guardrail suite.",
+    "visible_risks": [
+      "This is a fixture-backed proof, not the final #173/#174 production projection adapter or public/standalone generation path.",
+      "The pinned Common V2.5 protocol unit suite has an upstream failing Prompt-3 test.",
+      "Normal EP-TA-010 takeover qualification remains unsatisfied and was not fabricated."
+    ],
+    "decisions_required": []
+  },
+  "successor_handover": {
+    "unresolved_findings": [
+      "FIND-TA10-001",
+      "FIND-TA10-002"
+    ],
+    "follow_up": [
+      "Keep Issue #175 open for production #173/#174 adapter integration, generated public/standalone parity and at least one bespoke-explorer migration.",
+      "Require a fresh normal execution admission for the production-integration successor unless the Owner explicitly authorizes another exception.",
+      "Re-evaluate PR #134 only after the production builder path is available."
+    ]
+  }
+}
