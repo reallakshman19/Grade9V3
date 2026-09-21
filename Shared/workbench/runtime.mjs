@@ -88,9 +88,14 @@ export function validateScene(input) {
   const entityIds = new Set(scene.entities.map((row) => row.id));
   for (const entity of scene.entities) {
     nonEmptyString(entity.label, "WORKBENCH_ENTITY_LABEL_REQUIRED", entity.id);
-    if (entity.provenance?.sourceEntityRefs) {
-      requireCondition(Array.isArray(entity.provenance.sourceEntityRefs),
+    const sources = entity.provenance?.sourceEntityRefs;
+    if (sources != null) {
+      requireCondition(Array.isArray(sources),
         "WORKBENCH_PROVENANCE_INVALID", entity.id);
+      for (const source of sources) {
+        requireCondition(entityIds.has(source),
+          "WORKBENCH_PROVENANCE_SOURCE_UNKNOWN", `${entity.id} -> ${source}`);
+      }
     }
   }
   for (const projection of scene.projections) {
