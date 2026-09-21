@@ -86,17 +86,18 @@
   },
   "projection": {
     "required": true,
-    "state": "PENDING",
+    "state": "IN_SYNC",
     "operation_id": "GHGEN-WP108-ISS175-R1",
     "target": "github:reallaksh19/Grade9V3:issues",
     "adapter": "GITHUB_ISSUES",
     "plan": "agents/relay/projection/generations/GHGEN-WP108-ISS175-R1.yaml",
     "roadmap_revision": "RM-0011",
     "execution_ref": "EP-TA-010",
-    "receipt": null,
+    "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
     "basis": [
-      "Issue #175 provider readback",
-      "RM-0011 task admission",
+      "GHOBS-WP108-ISS175-R1",
+      "Issue #175 provider readback OPEN with marker GHOP-WP108-ISSUE175-ADMIT",
+      "RM-0011",
       "EP-TA-010",
       "ODR-0009-WEB-BUILDER-START"
     ],
@@ -115,7 +116,18 @@
           "Issue #169 provider delivery remains separately carried by draft PR #170"
         ]
       }
-    ]
+    ],
+    "observed": {
+      "operation_id": "GHGEN-WP108-ISS175-R1",
+      "target": "github:reallaksh19/Grade9V3:issues",
+      "roadmap_revision": "RM-0011",
+      "execution_ref": "EP-TA-010",
+      "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
+      "basis": [
+        "GHOBS-WP108-ISS175-R1",
+        "Issue #175 provider readback 2026-09-21T17:50:45Z"
+      ]
+    }
   },
   "delivery": {
     "required": true,
@@ -133,12 +145,12 @@
   },
   "relay_readiness": {
     "baton_ready": true,
-    "projection_ready": false,
-    "handover_ready": false,
+    "projection_ready": true,
+    "handover_ready": true,
     "reasons": [
-      "CP-TA-009 is the exact predecessor checkpoint and WP-TA-108 is the only new serial frontier.",
-      "Issue #175 is verified open and mapped, but the RM-0011 relay marker publication has not yet been verified.",
-      "Fresh independent qualification is required before material learner-runtime writes."
+      "CP-TA-009 is the exact predecessor checkpoint and WP-TA-108 is the only RM-0011 serial frontier.",
+      "Issue #175 is verified OPEN and in sync with the RM-0011 governed execution marker.",
+      "The execution baton is ready; material implementation remains gated on fresh independent EP-TA-010 qualification."
     ]
   },
   "chat_context_required": false
