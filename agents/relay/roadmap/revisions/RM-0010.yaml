@@ -1,0 +1,44 @@
+{
+  "schema_version": "relay-v2.5",
+  "revision": {
+    "id": "RM-0010",
+    "from_revision": "RM-0009",
+    "to_revision": "RM-0010",
+    "classification": "EXECUTION_DERIVED_STATUS",
+    "trigger": {
+      "type": "CHECKPOINT",
+      "path": "agents/relay/checkpoints/CP-TA-009.yaml"
+    }
+  },
+  "changes": {
+    "added": [],
+    "removed": [],
+    "changed": [
+      "OBJ-TOPIC-ATLAS-COMPLETE",
+      "PHASE-TAKEOVER-RECONCILIATION",
+      "WP-TA-105"
+    ],
+    "unaffected": [
+      "WP-TAKEOVER-RECONCILE",
+      "WP-TA-102",
+      "WP-TA-106",
+      "WP-TA-103",
+      "WP-TA-104",
+      "WP-TA-107"
+    ]
+  },
+  "invalidated_execution_packages": [],
+  "issue_graph_reconciled": false,
+  "progress_basis_change": {
+    "old_basis": "PB-0007",
+    "new_basis": "PB-0008",
+    "old_total_weight": 100,
+    "new_total_weight": 100
+  },
+  "frontier_after": [],
+  "notes": [
+    "CP-TA-009 closes WP-TA-105 after AC-TA9-001..004 and TEST-TA9-001..004 pass on the validated implementation head.",
+    "Programme progress advances from 85/100 to 100/100 solely from the final accepted WP-TA-105 slice.",
+    "The roadmap has no remaining material frontier; provider delivery for PR #170 / Issue #169 remains a separate custody obligation until verified merged/closed readback."
+  ]
+}
