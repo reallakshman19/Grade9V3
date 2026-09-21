@@ -33,8 +33,7 @@ ROLES = [
     ("Shared/gates", "GATES", "Technical gate schema and validator"),
     ("Shared/roles", "CONTRACT", "The six Core role specifications"),
     ("Shared/tools", "TOOLING", "Guardrails and generators"),
-    ("public/core-learning", "WEB", "Generated Core learner page host"),
-    ("public/data/core-learning.js", "WEB", "Generated bounded Core learner projection data"),
+    ("public/core-learning", "WEB", "Static Core learner host and generated projection data"),
     ("public/js/core-learning", "WEB_RUNTIME", "Generated public Core learner runtime"),
     ("tests", "TEST", "Executable checks"),
     ("tools", "WEB", "Browsable surfaces over generated data"),
@@ -95,7 +94,9 @@ def generated_files() -> dict[str, bytes]:
         build_web_data.OUT.relative_to(REPO).as_posix():
             build_web_data.render(build_web_data.build()).encode("utf-8")
     }
-    generated[build_core_learning_data.OUT.relative_to(REPO).as_posix()] = (\n        build_core_learning_data.render(build_core_learning_data.build()).encode("utf-8")\n    )\n    generated.update(build_core_learning_runtime.render())\n    return generated
+    generated.update(build_core_learning_data.rendered_file())
+    generated.update(build_core_learning_runtime.render())
+    return generated
 
 
 def collect(overrides: dict[str, bytes] | None = None) -> dict:
@@ -181,7 +182,10 @@ def main() -> int:
         print(f"architecture manifest up to date: {current['component_count']} components, "
               f"{current['relation_count']} relations")
         return 0
-    build_web_data.write()\n    build_core_learning_data.write()\n    build_core_learning_runtime.write()\n    MANIFEST.parent.mkdir(parents=True, exist_ok=True)
+    build_web_data.write()
+    build_core_learning_data.write()
+    build_core_learning_runtime.write()
+    MANIFEST.parent.mkdir(parents=True, exist_ok=True)
     MANIFEST.write_text(json.dumps(current, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     print(f"wrote {MANIFEST.relative_to(REPO)}: {current['component_count']} components, "
           f"{current['relation_count']} relations, {current['digest']}")
