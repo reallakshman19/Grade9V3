@@ -582,6 +582,10 @@ test("Core learner shell preserves workbench state across protected reveal flow"
 
     const supported = await driver.execute("return window.coreLearnerHarness.state();");
     assert.equal(supported.currentVisualStageRef, "V2");
+    assert.match(
+      await driver.execute("return window.coreLearnerHarness.liveStatus();"),
+      /Additional support is available/,
+    );
     assert.equal(await driver.execute("return window.coreLearnerHarness.workbenchElementStable();"), true);
     assert.equal((await driver.execute("return window.coreLearnerHarness.workbenchSnapshot();")).revision, 1);
 
@@ -593,6 +597,16 @@ test("Core learner shell preserves workbench state across protected reveal flow"
     assert.doesNotMatch(beforeAttemptHtml, /Reasoning route/);
     assert.equal((await driver.execute("return window.coreLearnerHarness.workbenchSnapshot();")).revision, 1);
 
+    const bypass = await driver.execute(`
+      const learner = document.querySelector("#learner");
+      learner.setAttribute("data-stage", "REASONING_VISIBLE");
+      learner.dispatchEvent(new CustomEvent("show-reveal", { bubbles: true, detail: { stage: "REASONING_VISIBLE" } }));
+      return { state: learner.state, html: learner.shadowRoot.innerHTML };
+    `);
+    assert.equal(bypass.state.attempted, false);
+    assert.equal(bypass.state.reasoningVisible, false);
+    assert.doesNotMatch(bypass.html, /Select the controlling model or condition/);
+
     const attemptInput = await driver.shadowElement("#learner", "[data-attempt-input]");
     await driver.sendKeys(attemptInput, "learner decision");
     const commitButton = await driver.shadowElement("#learner", '[data-action="commit"]');
@@ -602,6 +616,10 @@ test("Core learner shell preserves workbench state across protected reveal flow"
     const afterAttempt = await driver.execute("return window.coreLearnerHarness.state();");
     assert.equal(afterAttempt.stage, "REASONING_VISIBLE");
     assert.equal(afterAttempt.attemptCount, 1);
+    assert.match(
+      await driver.execute("return window.coreLearnerHarness.liveStatus();"),
+      /Attempt committed\. New material is available/,
+    );
     const afterAttemptHtml = await driver.execute("return window.coreLearnerHarness.html();");
     assert.match(afterAttemptHtml, /Reasoning route/);
     assert.match(afterAttemptHtml, /Select the controlling model or condition/);
@@ -614,6 +632,10 @@ test("Core learner shell preserves workbench state across protected reveal flow"
     await driver.waitFor("return window.coreLearnerHarness.state().supportIndex === 2;");
     const fullySupported = await driver.execute("return window.coreLearnerHarness.state();");
     assert.equal(fullySupported.currentVisualStageRef, "V3");
+    assert.match(
+      await driver.execute("return window.coreLearnerHarness.liveStatus();"),
+      /Additional support is available/,
+    );
     assert.equal((await driver.execute("return window.coreLearnerHarness.workbenchSnapshot();")).revision, 1);
 
     const summaryAfterRerenders = await driver.execute("return window.coreLearnerHarness.workbenchSummary();");
@@ -646,22 +668,33 @@ test("Core learner shell preserves workbench state across protected reveal flow"
     const completeButton = await driver.shadowElement("#learner", '[data-action="complete"]');
     await driver.sendKeys(completeButton, ENTER);
     await driver.waitFor("return window.coreLearnerHarness.state().stage === 'COMPLETE';");
+    assert.match(
+      await driver.execute("return window.coreLearnerHarness.liveStatus();"),
+      /Activity complete/,
+    );
 
     const events = await driver.execute("return window.coreLearnerHarness.events();");
     assert.deepEqual(
       events.map((event) => event.type),
       [
+        "representation_manipulated",
         "support_requested",
+        "reveal_changed",
         "support_requested",
         "attempt_committed",
+        "reveal_changed",
         "support_requested",
+        "reveal_changed",
         "activity_completed",
       ],
     );
-    assert.equal(events[1].detail.revealed, false);
-    assert.equal(events[1].detail.reason, "SUPPORT_PROTECTED_PREATTEMPT");
-    assert.equal(events[2].detail.response, "learner decision");
-    assert.doesNotMatch(JSON.stringify(events), /mastery|proficien|knowledge percentage/i);
+    assert.equal(events[0].detail.workbenchEventType, "TRANSFER_ACCEPTED");
+    assert.equal(events[3].detail.revealed, false);
+    assert.equal(events[3].detail.reason, "SUPPORT_PROTECTED_PREATTEMPT");
+    assert.equal(events[4].detail.response, "learner decision");
+    assert.equal(events[5].detail.kind, "reasoning");
+    assert.equal(events[7].detail.kind, "support");
+    assert.doesNotMatch(JSON.stringify(events), /mastery|proficien|knowledge percentage|correct|score/i);
   } finally {
     await driver.close();
     driverProcess.child.kill("SIGTERM");
