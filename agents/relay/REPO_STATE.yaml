@@ -55,18 +55,18 @@ status_planes:
     state: READY
     can_continue: true
     material_authority: WRITE
-    next_action: Execute STEP-I04: reject accepted empty patches before commit so revision/history cannot advance without a canonical semantic delta; preserve prior identity/channel candidates while exact-head evidence remains pending.
+    next_action: Preserve the transaction-integrity Core candidate at 979afce99ec2beddd895fc5b1a12e5541915e5a3; TEST-I06/TEST-I07 and earlier exact-head evidence remain pending while Owner-authorized bounded Core continuation stays available.
   quality:
     state: NEEDS_ATTENTION
     findings:
     - The channel-neutral adapter boundary is implemented at d05414c5edec3b92790239c85b489f5b7e95641c; exact-head evidence remains pending.
-    - Accepted empty patches can create a false semantic commit by incrementing revision/history without a canonical delta; STEP-I04 is admitted to close this transaction-integrity defect.
+    - The accepted-empty-patch defect is fixed on 979afce99ec2beddd895fc5b1a12e5541915e5a3: no canonical delta means no commit/revision/history advancement; exact-head evidence remains pending.
     - The stronger witness now models partial-dividend-15 as a distinct entity and the focused lifecycle reproduction passes without a Shared/workbench product-code change; formal exact-head repository/browser evidence is still pending.
     - Main carries RM-0008 / EP-TA-008 while this branch carries the #162 RM-0002 execution package; normal drift/write validation remains unmet under the explicit Owner continuation exception.
     - PR #165 remains draft and merge-conflicted with current main; no merge readiness is claimed.
   evidence:
     state: PARTIAL
-    summary: The stronger 156 -> partial-dividend-15 -> quotient-digit-1 witness remains authored. The channel-neutral adapter boundary is implemented at d05414c5edec3b92790239c85b489f5b7e95641c with a focused regression and refreshed manifest, but exact repository Node/Chrome/full-guardrail evidence for the pending identity and channel-neutral slices remains unverified here.
+    summary: The stronger 156 -> partial-dividend-15 -> quotient-digit-1 witness and channel-neutral adapter boundary remain authored. The empty-accepted-patch transaction defect is fixed at 979afce99ec2beddd895fc5b1a12e5541915e5a3 with a focused redo-preservation regression and manifest digest sha256:97ec158aa67aff2ea86bee8309c0f3f6461f19d9c060c1ac16e7e5a26773a6f8; exact repository Node/Chrome/full-guardrail evidence for these pending slices remains unverified here.
     not_run:
     - id: TEST-I01
       reason: The exact repository Node suite has not been executed from a checkout of material head 726bb16085dd5f59f392a2fcc1805f3639c7e1ad; the focused lifecycle reproduction does not substitute for the declared test command.
@@ -84,11 +84,11 @@ status_planes:
       reason: Existing real-Chrome/full guardrails must rerun after the channel-neutral Core change.
       cause: NOT_SCHEDULED
     - id: TEST-I06
-      reason: Empty-patch transaction-integrity regression has not yet run on its coding candidate.
-      cause: NOT_SCHEDULED
+      reason: The empty-patch transaction-integrity regression is authored on 979afce99ec2beddd895fc5b1a12e5541915e5a3, but the exact repository Node suite cannot be executed from this environment.
+      cause: UNAVAILABLE_TOOL
     - id: TEST-I07
-      reason: Existing real-Chrome/full guardrails must rerun after the transaction-integrity Core change.
-      cause: NOT_SCHEDULED
+      reason: Existing real-Chrome/full guardrails must rerun on 979afce99ec2beddd895fc5b1a12e5541915e5a3; the current Actions reader exposes no runs/statuses for this exact head.
+      cause: INFRASTRUCTURE
     - id: AC-05-POST-REBASE-BROWSER
       reason: Final post-rebase browser rerun is not scheduled until PR #165 is reconciled with then-current main.
       cause: NOT_SCHEDULED
