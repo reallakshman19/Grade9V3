@@ -204,7 +204,7 @@ class WebData(unittest.TestCase):
                 "microtopic_refs": ["MIC-X"],
             },
         }
-        rows = build_web_data.core_projection_rows("Subject-X", records)
+        rows = build_core_learning_data.core_projection_rows("Subject-X", records)
         self.assertEqual([row["projection"]["core"] for row in rows], ["CORE1A", "CORE1B"])
         self.assertTrue(rows[0]["projection"]["presentation"]["show_full_construction"])
         self.assertFalse(rows[0]["projection"]["presentation"]["attempt_before_reveal"])
@@ -262,7 +262,7 @@ class WebData(unittest.TestCase):
             "exposure": [{"core": "CORE2A"}],
             "answer": {"reasoning": ["Legacy prose only."]},
         }
-        rows = build_web_data.core_projection_rows(
+        rows = build_core_learning_data.core_projection_rows(
             "Subject-X",
             {"Q-X": structured, "Q-LEGACY": legacy},
         )
@@ -312,7 +312,7 @@ class WebData(unittest.TestCase):
                 "protected_move_ref": "MOVE-DECIDE",
             },
         }
-        rows = build_web_data.core_projection_rows("Subject-X", {"Q": question})
+        rows = build_core_learning_data.core_projection_rows("Subject-X", {"Q": question})
         by_core = {row["projection"]["core"]: row for row in rows}
         self.assertEqual(set(by_core), {"CORE2A", "CORE2B"})
         self.assertNotIn("transfer", by_core["CORE2A"]["projection"]["application"])
@@ -356,7 +356,7 @@ class WebData(unittest.TestCase):
                 "protected_move_ref": "MOVE-DECIDE",
             },
         }
-        self.assertEqual(build_web_data.core_projection_rows("Subject-X", {"Q": question}), [])
+        self.assertEqual(build_core_learning_data.core_projection_rows("Subject-X", {"Q": question}), [])
 
 
 if __name__ == "__main__":
