@@ -1,0 +1,9 @@
+{
+  "schema_version": "1.0",
+  "projections": [
+    {
+      "source_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "cores": ["CORE1A", "CORE1B"]
+    }
+  ]
+}
