@@ -1,0 +1,57 @@
+{
+  "schema_version": "relay-v2.5",
+  "id": "ODR-0011-OWNER-EP10-CONTINUE-DIRECT-EXECUTION",
+  "decision": {
+    "authority": "OWNER",
+    "kind": "AUTHORIZATION",
+    "statement": "Authorize the current agent to continue the bounded EP-TA-010 fixture-backed learner-shell implementation through STEP-TA10-002, STEP-TA10-003 and STEP-TA10-004. Preserve the existing scope and protected invariants. Do not fabricate DISC/QUAL/TC or a MATERIAL_WRITE_READY PASS; keep the stale QSET/normal qualification gap explicit.",
+    "source": "Owner direct instruction in the active Grade9V3 engineering session on 2026-09-21: 'authorized. start fix,' after requesting execution under Common main engineering-pr-delivery-v2.5."
+  },
+  "effects": {
+    "requirement_disposition": "NOT_APPLICABLE",
+    "grants_material_write_authority": true,
+    "pending_items": [
+      "Normal independent EP-TA-010 DISC/QUAL/TC remains unsatisfied; QSET-TA-011 is stale against the current EP contract digest.",
+      "The pinned Common V2.5 unit suite currently has an upstream Prompt-3 validator test failure before Grade9V3 relay validation runs.",
+      "Acceptance still requires exact-head repository tests, browser evidence, quality review and checkpoint reconciliation."
+    ]
+  },
+  "delivery_authorization": null,
+  "impact": {
+    "class": [
+      "LOCAL",
+      "EXECUTION_GOVERNANCE",
+      "PROTOCOL_EXCEPTION"
+    ]
+  },
+  "affected": {
+    "objectives": [
+      "OBJ-TOPIC-ATLAS-COMPLETE"
+    ],
+    "phases": [
+      "PHASE-TAKEOVER-RECONCILIATION"
+    ],
+    "work_packages": [
+      "WP-TA-108"
+    ],
+    "execution_packages": [
+      "EP-TA-010"
+    ],
+    "issues": [
+      "ISSUE-175"
+    ],
+    "steps": [
+      "STEP-TA10-002",
+      "STEP-TA10-003",
+      "STEP-TA10-004"
+    ]
+  },
+  "required_reconciliation": [
+    "Keep canonical Physics/matrix truth, learner evidence, and #173/#174 provider work read-only.",
+    "Implement only projection-driven learner UI/runtime behavior already described by EP-TA-010.",
+    "Do not treat this authorization as candidate certification or as a MATERIAL_WRITE_READY PASS.",
+    "Record PASS/FAIL/NOT_RUN evidence at exact material heads and stop on any protected-move, subject-truth, browser, accessibility, offline or generated-artifact failure.",
+    "Reconcile the stale qualification/QSET state before any future successor relies on normal takeover certification."
+  ],
+  "status": "APPLIED"
+}
