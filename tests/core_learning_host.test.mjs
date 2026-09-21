@@ -10,6 +10,7 @@ import {
   resolveCoreLearningInputs,
   resolveCoreLearningRecord,
 } from "../Shared/workbench/core-learning-host.mjs";
+import { CoreLearningPage } from "../Shared/workbench/core-learning-page.mjs";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const projectionFixtures = JSON.parse(
@@ -120,25 +121,44 @@ test("workbench binding is all-or-nothing and references explicit host registrie
   }]);
 });
 
-test("mount binds projection and supplied workbench inputs to one core-learning-page element", () => {
+test("mount configures projection and workbench inputs atomically and clears stale bindings", () => {
   const adapter = { evaluateTransfer() { return { accepted: false, reason: "fixture" }; } };
-  const data = dataWith([{
-    id: "core2b-mounted",
-    projection: byId.core2b,
-    scene_ref: "scene-division",
-    adapter_ref: "adapter-division",
-  }]);
-  const element = { localName: "core-learning-page" };
+  const data = dataWith([
+    {
+      id: "core2b-mounted",
+      projection: byId.core2b,
+      scene_ref: "scene-division",
+      adapter_ref: "adapter-division",
+      injection_refs: ["hint-1"],
+    },
+    {
+      id: "core1b-plain",
+      projection: byId.core1b,
+      scene_ref: null,
+      adapter_ref: null,
+      injection_refs: [],
+    },
+  ]);
+  const element = new CoreLearningPage();
+  element.localName = "core-learning-page";
 
   const result = mountCoreLearningPage(element, data, "core2b-mounted", {
     scenes: { "scene-division": sceneFixture },
     adapters: { "adapter-division": adapter },
+    injections: { "hint-1": { kind: "HINT", prompt: "Use supplied evidence only." } },
   });
 
   assert.deepEqual(result, { id: "core2b-mounted", workbenchBound: true });
   assert.equal(element.projection.core, "CORE2B");
   assert.equal(element.scene.id, sceneFixture.id);
   assert.equal(element.adapter, adapter);
+  assert.deepEqual(element.injections, [{ kind: "HINT", prompt: "Use supplied evidence only." }]);
+
+  const plain = mountCoreLearningPage(element, data, "core1b-plain");
+  assert.deepEqual(plain, { id: "core1b-plain", workbenchBound: false });
+  assert.equal(element.projection.core, "CORE1B");
+  assert.equal(element.scene, null);
+  assert.equal(element.adapter, null);
   assert.deepEqual(element.injections, []);
 });
 
