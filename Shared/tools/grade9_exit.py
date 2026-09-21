@@ -71,6 +71,14 @@ def matrix_capabilities(scope_row: dict, repo: Path = REPO) -> list[dict]:
         for row in package.get("microtopics", [])
         if isinstance(row, dict) and row.get("id")
     }
+    transfer_questions: dict[str, dict[str, str]] = {}
+    for question in package.get("questions", []):
+        transfer = question.get("transfer") or {}
+        capability_ref = question.get("primary_capability_ref")
+        dimension = transfer.get("dimension")
+        question_ref = question.get("id")
+        if capability_ref and dimension and question_ref:
+            transfer_questions.setdefault(capability_ref, {})[question_ref] = dimension
 
     by_capability: dict[str, dict] = {}
     for rung in matrix.get("rungs", []):
@@ -119,6 +127,9 @@ def matrix_capabilities(scope_row: dict, repo: Path = REPO) -> list[dict]:
                 ),
                 "rungs": [],
                 "microtopic_refs": [],
+                "transfer_question_dimensions": dict(
+                    sorted(transfer_questions.get(capability_ref, {}).items())
+                ),
             },
         )
         row["rungs"].append(rung.get("rung"))
@@ -148,29 +159,63 @@ def evidence_category(effective: dict, observation: dict | None = None) -> str:
     return INSUFFICIENT_OR_UNKNOWN
 
 
-def capability_projection(profile: dict, capability_ref: str,
-                          repo: Path = REPO) -> dict:
+def capability_projection(
+    profile: dict,
+    capability_ref: str,
+    repo: Path = REPO,
+    transfer_question_dimensions: dict[str, str] | None = None,
+) -> dict:
     history = learner_evidence.evidence_for_capability(profile, capability_ref, repo)
     observation = history[0] if history else None
     effective = learner_evidence.effective_state(profile, capability_ref, repo)
     category = evidence_category(effective, observation)
+    transfer_question_dimensions = transfer_question_dimensions or {}
 
     basis = []
-    if observation:
-        basis.append({
-            "observation_ref": observation.get("observation_id"),
-            "evidence_kind": observation.get("evidence_kind") or "OBSERVATION",
-            "result": observation.get("result"),
-            "help": observation.get("help"),
-            "when": observation.get("when"),
-            "error_stage": observation.get("error_stage"),
-        })
-    elif effective.get("source") != "UNOBSERVED":
+    for item in history:
+        row = {
+            "observation_ref": item.get("observation_id"),
+            "evidence_kind": item.get("evidence_kind") or "OBSERVATION",
+            "question_ref": item.get("question_ref"),
+            "observed": item.get("observed"),
+            "result": item.get("result"),
+            "help": item.get("help"),
+            "when": item.get("when"),
+            "error_stage": item.get("error_stage"),
+        }
+        dimension = transfer_question_dimensions.get(item.get("question_ref"))
+        if dimension:
+            row["transfer_dimension"] = dimension
+        basis.append(row)
+
+    if not basis and effective.get("source") != "UNOBSERVED":
         basis.append({
             "source": effective.get("source"),
             "state": effective.get("state"),
             "independence_basis": effective.get("independence_basis"),
         })
+
+    independent_transfer_dimensions = sorted({
+        transfer_question_dimensions[item.get("question_ref")]
+        for item in history
+        if item.get("evidence_kind") == "DIRECT_ATTEMPT"
+        and item.get("result") == "DEMONSTRATED"
+        and item.get("help") == "NONE"
+        and item.get("question_ref") in transfer_question_dimensions
+    })
+    prior_difficulty = any(
+        item.get("result") in {"MISSING", "UNCERTAIN"}
+        or (
+            item.get("result") == "DEMONSTRATED"
+            and item.get("help") not in {None, "NONE"}
+        )
+        for item in history[1:]
+    )
+    evidence_change = (
+        "PRIOR_DIFFICULTY_NOW_INDEPENDENTLY_DEMONSTRATED"
+        if category == SECURE and prior_difficulty
+        else None
+    )
 
     return {
         "capability_ref": capability_ref,
@@ -179,6 +224,8 @@ def capability_projection(profile: dict, capability_ref: str,
         "effective_state": effective.get("state"),
         "evidence_source": effective.get("source"),
         "basis": basis,
+        "independent_transfer_dimensions": independent_transfer_dimensions,
+        "evidence_change": evidence_change,
     }
 
 
@@ -286,6 +333,11 @@ def _repair_recheck_context(capability: dict, boundary: dict) -> str:
     help_used = latest.get("help")
 
     if category == SECURE:
+        if capability.get("evidence_change") == "PRIOR_DIFFICULTY_NOW_INDEPENDENTLY_DEMONSTRATED":
+            return (
+                "Earlier difficulty remains visible and is now closed by fresh independent "
+                "evidence; retain ordinary review rather than recertifying the whole grade."
+            )
         return "Independent evidence is present; retain ordinary recheck/review rather than recertifying the whole grade."
     if category == USABLE_BUT_FRAGILE:
         if help_used and help_used != "NONE":
@@ -327,6 +379,10 @@ def transition_report(projection: dict) -> dict:
             "required_grade9": capability["ordinary_grade9_core"],
             "evidence_category": capability["evidence_category"],
             "evidence_basis": list(capability.get("basis", [])),
+            "evidence_change": capability.get("evidence_change"),
+            "independent_transfer_dimensions": list(
+                capability.get("independent_transfer_dimensions", [])
+            ),
             "scope_relevance": boundary.get(
                 "scope_relevance",
                 "REQUIRED_SCOPE" if capability["ordinary_grade9_core"] else "NON_BLOCKING_SCOPE",
@@ -347,6 +403,12 @@ def transition_report(projection: dict) -> dict:
         if row["evidence_category"] == USABLE_BUT_FRAGILE
         and row["scope_relevance"] in {"REQUIRED_SCOPE", "GENUINE_PREREQUISITE"}
     ]
+    transfer_evidence_needed = [
+        domain
+        for domain in projection.get("domains", [])
+        if domain.get("ordinary_grade9_core") is True
+        and (domain.get("transfer_evidence") or {}).get("status") == "EVIDENCE_NEEDED"
+    ]
     if blockers:
         transition_state = "GRADE9_REPAIR_REQUIRED"
         transition_message = (
@@ -358,6 +420,13 @@ def transition_report(projection: dict) -> dict:
         transition_message = (
             "Grade-10 transition is not yet established because required/prerequisite "
             "Grade-9 evidence is still insufficient or unknown."
+        )
+    elif transfer_evidence_needed:
+        transition_state = "GRADE9_EVIDENCE_INCOMPLETE"
+        transition_message = (
+            "Required capability evidence has no known blocker, but one or more required "
+            "domains with canonical changed-demand tasks still lack an independent "
+            "transfer/representation witness."
         )
     elif fragile_rechecks:
         transition_state = "GRADE10_WITH_TARGETED_RECHECKS"
@@ -383,9 +452,17 @@ def transition_report(projection: dict) -> dict:
         "transition_state": transition_state,
         "transition_message": transition_message,
         "fragile_rechecks": [row["capability_ref"] for row in fragile_rechecks],
+        "domain_transfer_evidence": [
+            {
+                "matrix_id": domain["matrix_id"],
+                **dict(domain.get("transfer_evidence") or {}),
+            }
+            for domain in projection.get("domains", [])
+            if domain.get("ordinary_grade9_core") is True
+        ],
         "rows": rows,
         "known_limitations": [
-            "The governed learner-observation contract has no explicit misconception identifier/severity field, so this report does not infer a 'major unresolved misconception' from error_stage alone.",
+            "The governed learner-observation contract has no explicit misconception identifier/severity field. Required CONCEPT/SETUP gaps remain visible and progression-relevant, but this report does not invent a named misconception or severity label.",
             "Unknown or missing evidence is never promoted to secure evidence.",
             "Session-only READY/REINFORCE/REBUILD posture is not persisted or reused as grade-level mastery truth.",
         ],
@@ -431,6 +508,19 @@ def parent_agent_text(report: dict) -> str:
             if refs:
                 lines.append(f"  Evidence basis: {', '.join(refs)}")
 
+    transfer_rows = [
+        row for row in report.get("domain_transfer_evidence", [])
+        if row.get("status") != "NOT_APPLICABLE"
+    ]
+    if transfer_rows:
+        lines.extend(["", "Required-domain changed-demand evidence:"])
+        for row in transfer_rows:
+            lines.append(
+                f"- {row['matrix_id']}: {row['status']} "
+                f"(available={','.join(row.get('available_dimensions', [])) or 'none'}; "
+                f"observed={','.join(row.get('independent_observed_dimensions', [])) or 'none'})"
+            )
+
     if optional_visible:
         lines.extend(["", "Visible non-blocking items:"])
         for row in optional_visible:
@@ -443,9 +533,9 @@ def parent_agent_text(report: dict) -> str:
         "",
         "Known limitation:",
         (
-            "- Major-misconception status is not inferred from generic error_stage; "
-            "the current governed observation contract does not encode misconception "
-            "identity/severity."
+            "- Named misconception identity/severity is not inferred from generic "
+            "error_stage; required conceptual/setup gaps remain visible without "
+            "inventing a diagnosis."
         ),
     ])
     return "\n".join(lines)
@@ -460,7 +550,14 @@ def project(profile: dict, repo: Path = REPO) -> dict:
     for scope_row in coverage.get("matrices", []):
         resolved = []
         for capability in matrix_capabilities(scope_row, repo):
-            evidence = capability_projection(profile, capability["capability_ref"], repo)
+            evidence = capability_projection(
+                profile,
+                capability["capability_ref"],
+                repo,
+                transfer_question_dimensions=capability.get(
+                    "transfer_question_dimensions", {}
+                ),
+            )
             row = {**capability, **evidence}
             resolved.append(row)
             flat_capabilities.append(row)
@@ -468,6 +565,25 @@ def project(profile: dict, repo: Path = REPO) -> dict:
         counts = {category: 0 for category in sorted(CATEGORIES)}
         for row in resolved:
             counts[row["evidence_category"]] += 1
+
+        available_transfer_dimensions = sorted({
+            dimension
+            for row in resolved
+            for dimension in row.get("transfer_question_dimensions", {}).values()
+        })
+        observed_transfer_dimensions = sorted({
+            dimension
+            for row in resolved
+            for dimension in row.get("independent_transfer_dimensions", [])
+        })
+        if not available_transfer_dimensions:
+            transfer_status = "NOT_APPLICABLE"
+        elif observed_transfer_dimensions:
+            transfer_status = "OBSERVED"
+        elif scope_row.get("ordinary_grade9_core") is True:
+            transfer_status = "EVIDENCE_NEEDED"
+        else:
+            transfer_status = "VISIBLE_NONBLOCKING"
 
         domains.append({
             "matrix_id": scope_row["matrix_id"],
@@ -478,6 +594,11 @@ def project(profile: dict, repo: Path = REPO) -> dict:
             ),
             "evidence_category": _domain_category(resolved),
             "category_counts": counts,
+            "transfer_evidence": {
+                "status": transfer_status,
+                "available_dimensions": available_transfer_dimensions,
+                "independent_observed_dimensions": observed_transfer_dimensions,
+            },
             "capabilities": resolved,
         })
 
