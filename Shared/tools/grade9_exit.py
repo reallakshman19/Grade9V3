@@ -61,6 +61,11 @@ def matrix_capabilities(scope_row: dict, repo: Path = REPO) -> list[dict]:
     matrix = load(repo / matrix_path)
     package_path = _package_path(matrix_path)
     package = load(repo / package_path)
+    capability_defs = {
+        row["id"]: row
+        for row in package.get("capabilities", [])
+        if isinstance(row, dict) and row.get("id")
+    }
     microtopics = {
         row["id"]: row
         for row in package.get("microtopics", [])
@@ -93,10 +98,19 @@ def matrix_capabilities(scope_row: dict, repo: Path = REPO) -> list[dict]:
                     f"{microtopic_ref} has no primary_capability_ref in {package_path}"
                 )
             continue
+        capability_def = capability_defs.get(capability_ref)
+        if not capability_def:
+            if strict_required:
+                raise ValueError(
+                    f"{microtopic_ref} references missing capability {capability_ref} "
+                    f"in {package_path}"
+                )
+            continue
         row = by_capability.setdefault(
             capability_ref,
             {
                 "capability_ref": capability_ref,
+                "prerequisite_refs": list(capability_def.get("prerequisite_refs", [])),
                 "matrix_id": scope_row["matrix_id"],
                 "matrix_role": scope_row["role"],
                 "ordinary_grade9_core": bool(scope_row.get("ordinary_grade9_core")),
@@ -181,6 +195,79 @@ def _domain_category(capabilities: list[dict]) -> str:
     return SECURE
 
 
+def transition_boundary(capabilities: list[dict]) -> list[dict]:
+    """Classify known blockers without turning unknowns or optional scope into gaps.
+
+    Required capabilities may block when explicitly MISSING. A non-core capability
+    blocks only when a required Grade-9 capability names it as a prerequisite.
+    Unknown required/prerequisite evidence is reported separately as evidence needed,
+    not mislabeled as a known content gap.
+    """
+    required_prerequisites = {
+        prerequisite
+        for row in capabilities
+        if row.get("ordinary_grade9_core") is True
+        for prerequisite in row.get("prerequisite_refs", [])
+    }
+
+    decisions = []
+    for row in capabilities:
+        capability_ref = row["capability_ref"]
+        category = row["evidence_category"]
+        ordinary_required = row.get("ordinary_grade9_core") is True
+        prerequisite_to_required = capability_ref in required_prerequisites
+
+        if category == KNOWN_GAP and (ordinary_required or prerequisite_to_required):
+            decisions.append({
+                "matrix_id": row["matrix_id"],
+                "capability_ref": capability_ref,
+                "blocks_transition": True,
+                "disposition": "BLOCKER",
+                "reason": (
+                    "GENUINE_PREREQUISITE_GAP"
+                    if prerequisite_to_required
+                    else "REQUIRED_SCOPE_GAP"
+                ),
+            })
+            continue
+
+        if category == INSUFFICIENT_OR_UNKNOWN and (
+            ordinary_required or prerequisite_to_required
+        ):
+            decisions.append({
+                "matrix_id": row["matrix_id"],
+                "capability_ref": capability_ref,
+                "blocks_transition": False,
+                "disposition": "EVIDENCE_REQUIRED",
+                "reason": (
+                    "PREREQUISITE_EVIDENCE_UNKNOWN"
+                    if prerequisite_to_required
+                    else "REQUIRED_SCOPE_EVIDENCE_UNKNOWN"
+                ),
+            })
+            continue
+
+        if category == KNOWN_GAP:
+            decisions.append({
+                "matrix_id": row["matrix_id"],
+                "capability_ref": capability_ref,
+                "blocks_transition": False,
+                "disposition": "NON_BLOCKING_GAP",
+                "reason": "NON_BLOCKING_SCOPE_GAP",
+            })
+            continue
+
+        decisions.append({
+            "matrix_id": row["matrix_id"],
+            "capability_ref": capability_ref,
+            "blocks_transition": False,
+            "disposition": "NON_BLOCKING",
+            "reason": "NO_KNOWN_BLOCKER",
+        })
+
+    return decisions
+
+
 def project(profile: dict, repo: Path = REPO) -> dict:
     """Return a reproducible matrix/capability exit-evidence projection."""
     coverage = scope_coverage(repo)
@@ -225,6 +312,7 @@ def project(profile: dict, repo: Path = REPO) -> dict:
         ],
         "domains": domains,
         "capabilities": flat_capabilities,
+        "transition_boundary": transition_boundary(flat_capabilities),
     }
 
 
