@@ -49,10 +49,12 @@ context_capsule:
   - ODR-0162-ADVANCE-REDO
   - ODR-0162-ADVANCE-SEMANTIC-IDENTITY
   - ODR-0162-CONTINUE-CORE-CODING
+  - ODR-0162-ADVANCE-TRANSACTION-INTEGRITY
   current_implementation_state: The stronger semantic-identity fixtures remain authored with exact-head evidence pending. STEP-I03 is now implemented on d05414c5edec3b92790239c85b489f5b7e95641c: adapter validity receives only semantic source/target/operation fields, transfer events retain channel telemetry, the focused regression is authored, and the architecture manifest is refreshed; executable TEST-I04/TEST-I05 evidence remains pending.
   known_problems:
   - Exact-head semantic-identity evidence remains pending and must not be reported as complete.
-  - Adapter validity currently receives request.channel, so an adapter can make the same semantic transfer valid for one input modality and invalid for another.
+  - Exact-head channel-neutral adapter evidence remains pending and must not be reported as complete.
+  - An adapter can return accepted=true with an empty patch, causing revision/history to advance without a canonical semantic delta.
   deliberate_non_goals:
   - No arithmetic-specific Core API or entity type.
   - No generic derivation taxonomy in Core.
@@ -232,6 +234,18 @@ implementation_plan:
   expected_state: An adversarial adapter cannot distinguish click/keyboard/pointer/touch from its request, while host events still expose channel and existing semantic outcomes remain unchanged.
   stop_conditions:
   - Stop if the change requires subject-specific adapter behavior or changes browser gesture semantics.
+- id: STEP-I04
+  objective: Reject accepted empty patches before commit so canonical revision/history can only advance with a semantic delta.
+  targets:
+  - Shared/workbench/runtime.mjs
+  - tests/workbench_runtime.test.mjs
+  - docs/architecture-manifest.json
+  inputs: [INPUT-I01]
+  acceptance: [AC-I06, AC-I07]
+  tests: [TEST-I06, TEST-I07]
+  expected_state: accepted=true plus zero added entities/projections becomes fail-closed rejection with unchanged revision/history; existing non-empty generic patches remain valid.
+  stop_conditions:
+  - Stop if the fix requires a subject-specific operation or a broader mutation grammar.
 next_work:
   phase_transition: false
   steps:
@@ -271,6 +285,19 @@ next_work:
     expected_result: The same semantic transfer produces an identical adapter request across input modalities, and event telemetry still identifies the originating channel.
     stop_if:
     - The change alters subject validity, gesture mechanics, or public semantic entity identity.
+  - order: 4
+    action: Reject accepted empty patches before commit; do not broaden the current addEntities/addProjections patch grammar.
+    targets:
+    - Shared/workbench/runtime.mjs
+    - tests/workbench_runtime.test.mjs
+    - docs/architecture-manifest.json
+    inputs: [INPUT-I01]
+    tests: [TEST-I06, TEST-I07]
+    benchmarks: []
+    acceptance: [AC-I06, AC-I07]
+    expected_result: Revision/history advances only when an accepted decision carries at least one canonical semantic addition.
+    stop_if:
+    - The change would require subject semantics or a new patch operation.
 qualification_boundary:
   required: false
   trigger: null
@@ -339,6 +366,14 @@ acceptance:
   description: Transfer events retain channel observability and prior modality-equivalence/browser contracts remain unchanged.
   weight: 40
   verification: [TEST-I04, TEST-I05]
+- id: AC-I06
+  description: An adapter decision with accepted=true and an empty normalized patch is rejected before commit with no canonical-state, revision, undo-history or redo-history mutation.
+  weight: 70
+  verification: [TEST-I06]
+- id: AC-I07
+  description: Existing non-empty add-entity/add-projection patches and prior modality/history contracts remain unchanged.
+  weight: 30
+  verification: [TEST-I06, TEST-I07]
 validation:
 - id: TEST-I01
   class: MUST_PASS
@@ -360,6 +395,14 @@ validation:
   class: MUST_PASS
   method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the channel-neutral coding head
   proves: [AC-I05]
+- id: TEST-I06
+  class: MUST_PASS
+  method: node --test tests/workbench_runtime.test.mjs
+  proves: [AC-I06, AC-I07]
+- id: TEST-I07
+  class: MUST_PASS
+  method: Existing real-Chrome workbench contract plus full Grade9V3 guardrails on the transaction-integrity coding head
+  proves: [AC-I07]
 failure_and_stop_conditions:
   hard_stop_categories: [OWNER_DECISION_REQUIRED, AUTHORITY_VIOLATION, PROTECTED_INVARIANT_FAILURE, UNSAFE_ENGINEERING_RESULT]
 report_contract:
