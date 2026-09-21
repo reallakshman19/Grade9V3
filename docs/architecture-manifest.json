@@ -17,7 +17,7 @@
     "WEB": 6,
     "WEB_RUNTIME": 3
   },
-  "digest": "sha256:cae4d09be1e157a56d65ecf624d43a3f982d5092deab9296733a823c62705e06",
+  "digest": "sha256:323fbb64a2695891b765629320cbe9bcbab688bf4e7f5cd44f80fa7d3b1e5526",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -552,11 +552,11 @@
       "sha256": "8e40c31e255ae798c9775edb79667456b9a830415c8802c42657d9d76c057d28"
     },
     {
-      "bytes": 20885,
+      "bytes": 20886,
       "path": "Shared/tools/grade9_exit.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "sha256": "fc6b2f47399650b421d140864689bfa72df638672e3afb8c1b9dd594b7d91a11"
+      "sha256": "d2c3f248a5466edc31c1b143d618ec7ed45f2fe6151ae49e2d1958156126c736"
     },
     {
       "path": "Shared/tools/import_study_observations.py",
