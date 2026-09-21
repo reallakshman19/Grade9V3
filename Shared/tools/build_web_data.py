@@ -100,6 +100,188 @@ def compile_preview(records: dict, bucket_id: str, subject: str) -> dict:
             "authoring_requirements": compiled["authoring_requirements"]}
 
 
+def _core_projection_concept(microtopic: dict) -> dict | None:
+    """Project authored concept truth without synthesizing missing teaching semantics."""
+    jump = microtopic.get("inferential_jump")
+    teaching_path = microtopic.get("teaching_path") or []
+    if not isinstance(jump, str) or not jump.strip() or not teaching_path:
+        return None
+    if any(not isinstance(step, dict)
+           or not isinstance(step.get("id"), str) or not step["id"].strip()
+           or not isinstance(step.get("action"), str) or not step["action"].strip()
+           or not isinstance(step.get("why_valid"), str) or not step["why_valid"].strip()
+           for step in teaching_path):
+        return None
+    return {
+        "microtopic_ref": microtopic["id"],
+        "inferential_jump": jump,
+        "teaching_path": [
+            {
+                "id": step["id"],
+                "action": step["action"],
+                "why_valid": step["why_valid"],
+                **({"role": step["role"]} if step.get("role") else {}),
+                **({"inputs": list(step["inputs"])} if step.get("inputs") else {}),
+                **({"output": step["output"]} if step.get("output") else {}),
+            }
+            for step in teaching_path
+        ],
+        "misconceptions": list(microtopic.get("misconceptions") or []),
+        "representation_refs": list(microtopic.get("representation_refs") or []),
+        **({"elicitation": microtopic["elicitation"]} if microtopic.get("elicitation") else {}),
+    }
+
+
+def _core_projection_application(question: dict) -> dict | None:
+    """Project only the structured application route already authored on the question."""
+    answer = question.get("answer")
+    if not isinstance(answer, dict):
+        return None
+    route = answer.get("reasoning_route")
+    crux = answer.get("crux_move_ref")
+    family_ref = question.get("family_ref")
+    stem = question.get("stem")
+    if not isinstance(route, list) or not route:
+        return None
+    if not isinstance(crux, str) or not crux.strip():
+        return None
+    if not isinstance(family_ref, str) or not family_ref.strip():
+        return None
+    if not isinstance(stem, str) or not stem.strip():
+        return None
+
+    move_ids = {
+        move.get("id")
+        for move in route
+        if isinstance(move, dict) and isinstance(move.get("id"), str) and move.get("id")
+    }
+    if crux not in move_ids or len(move_ids) != len(route):
+        return None
+
+    scaffolds = list(question.get("scaffolds") or [])
+    if any(not isinstance(row, dict)
+           or row.get("supports_move_ref") not in move_ids
+           for row in scaffolds):
+        return None
+
+    return {
+        "question_ref": question["id"],
+        "family_ref": family_ref,
+        "stem": stem,
+        "reasoning_route": route,
+        "crux_move_ref": crux,
+        "hints": list(question.get("hints") or []),
+        "scaffolds": scaffolds,
+        **({"transfer": question["transfer"]} if question.get("transfer") else {}),
+    }
+
+
+def core_projection_rows(subject: str, records: dict) -> list[dict]:
+    """Build portable learner rows from canonical records only.
+
+    This is deliberately a projection, not an authoring fallback. Legacy records that
+    lack stable teaching steps or structured reasoning/crux data stay absent until the
+    canonical provider supplies them.
+    """
+    rows = []
+    claims = {"CORE1A": set(), "CORE1B": set()}
+    for record in records.values():
+        if record.get("_collection") != "teaching_routes":
+            continue
+        for core in claims:
+            if core in record.get("cores", []):
+                claims[core].update(record.get("microtopic_refs", []))
+
+    for microtopic in sorted(
+        (row for row in records.values() if row.get("_collection") == "microtopics"),
+        key=lambda row: row["id"],
+    ):
+        concept = _core_projection_concept(microtopic)
+        if concept is None:
+            continue
+        for core in ("CORE1A", "CORE1B"):
+            if microtopic["id"] not in claims[core]:
+                continue
+            rows.append({
+                "id": f"{subject}:{core}:{microtopic['id']}",
+                "subject": subject,
+                "source_ref": microtopic["id"],
+                "projection": {
+                    "contract_version": "1.0",
+                    "core": core,
+                    "concept": concept,
+                    "application": None,
+                    "presentation": {
+                        "attempt_before_reveal": core == "CORE1B",
+                        "show_full_construction": core == "CORE1A",
+                        "protected_move_refs": [],
+                    },
+                },
+                "scene_ref": None,
+                "adapter_ref": None,
+                "injection_refs": [],
+            })
+
+    questions = sorted(
+        (row for row in records.values() if row.get("_collection") == "questions"),
+        key=lambda row: row["id"],
+    )
+    for question in questions:
+        application = _core_projection_application(question)
+        if application is None:
+            continue
+        exposed = {row.get("core") for row in question.get("exposure", []) if isinstance(row, dict)}
+        for core in ("CORE2A", "CORE2B"):
+            if core not in exposed:
+                continue
+            protected = []
+            if core == "CORE2B":
+                transfer = question.get("transfer") or {}
+                protected_ref = transfer.get("protected_move_ref")
+                if not isinstance(protected_ref, str) or not protected_ref:
+                    continue
+                if protected_ref not in {move.get("id") for move in application["reasoning_route"]}:
+                    continue
+                protected = [protected_ref]
+                if any(scaffold.get("supports_move_ref") == protected_ref
+                       for scaffold in application["scaffolds"]):
+                    continue
+
+            visual = next(
+                (
+                    (move.get("representation_ref"), move.get("visual_stage_ref"))
+                    for move in application["reasoning_route"]
+                    if move.get("representation_ref") and move.get("visual_stage_ref")
+                ),
+                (None, None),
+            )
+            presentation = {
+                "attempt_before_reveal": core == "CORE2B",
+                "show_full_construction": False,
+                "protected_move_refs": protected,
+            }
+            if visual[0]:
+                presentation["initial_visual_ref"] = visual[0]
+                presentation["initial_visual_stage_ref"] = visual[1]
+
+            rows.append({
+                "id": f"{subject}:{core}:{question['id']}",
+                "subject": subject,
+                "source_ref": question["id"],
+                "projection": {
+                    "contract_version": "1.0",
+                    "core": core,
+                    "concept": None,
+                    "application": application,
+                    "presentation": presentation,
+                },
+                "scene_ref": None,
+                "adapter_ref": None,
+                "injection_refs": [],
+            })
+    return rows
+
+
 def matrix_summary(subject: str, records: dict) -> list[dict]:
     rows = []
     for path in sorted((REPO / subject / "matrices").glob("*.rungs.json")):
@@ -238,7 +420,11 @@ def matrix_summary(subject: str, records: dict) -> list[dict]:
 
 
 def build() -> dict:
-    payload = {"generated_by": "Shared/tools/build_web_data.py", "subjects": {}}
+    payload = {
+        "generated_by": "Shared/tools/build_web_data.py",
+        "subjects": {},
+        "core_projections": [],
+    }
     for subject in subjects():
         packages = [load(p) for p in sorted((REPO / subject / "library").glob("*.json"))]
         entry = {"contract": {}, "gates": gate_summary(subject), "buckets": [],
@@ -259,6 +445,7 @@ def build() -> dict:
                                   "admitted": check(p)["admitted"]} for p in packages]
             records = build_index(packages)
             entry["matrices"] = matrix_summary(subject, records)
+            payload["core_projections"].extend(core_projection_rows(subject, records))
             for bucket_id in sorted(r for r, v in records.items() if v["_collection"] == "buckets"):
                 view = bucket_view(records, bucket_id)
                 view["compile_preview"] = compile_preview(records, bucket_id, subject)
