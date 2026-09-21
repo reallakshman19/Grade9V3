@@ -1,0 +1,72 @@
+{
+  "schema_version": "relay-v2.5",
+  "id": "ODR-0009-WEB-BUILDER-START",
+  "decision": {
+    "authority": "OWNER",
+    "kind": "INTENT_MUTATION",
+    "statement": "Start the Issue #175 web-builder fix under engineering-pr-delivery V2.5 using the pinned Common protocol at 1bc4eca6eac9d75900ddee1c338da4b44817eeec. Preserve the self-paced, minimal-feedback product direction: the learner shell may expose optional knowledge/answer-sheet-derived routing supplied by the host, but must not infer or persist mastery.",
+    "source": "Owner instruction in the active Grade9V3 engineering session on 2026-09-21: 'ok start fix follow https://github.com/reallaksh19/Common/tree/1bc4eca6eac9d75900ddee1c338da4b44817eeec/skills/engineering-pr-delivery-v2.5', together with the same-session product requirement 'self paced learning with minimal feedback (may be knowledge % and sometime answer sheet)'."
+  },
+  "effects": {
+    "requirement_disposition": "NOT_APPLICABLE",
+    "grants_material_write_authority": false,
+    "pending_items": [
+      "Fresh EP-TA-010 candidate qualification and material-write readiness remain required before implementation."
+    ]
+  },
+  "delivery_authorization": null,
+  "impact": {
+    "class": [
+      "LEARNER_ARCHITECTURE",
+      "WEB_RUNTIME",
+      "ROADMAP",
+      "PROTOCOL_BASIS"
+    ]
+  },
+  "affected": {
+    "objectives": [
+      "OBJ-TOPIC-ATLAS-COMPLETE"
+    ],
+    "phases": [
+      "PHASE-TAKEOVER-RECONCILIATION"
+    ],
+    "work_packages": [
+      "WP-TA-108"
+    ],
+    "execution_packages": [
+      "EP-TA-010"
+    ],
+    "issues": [
+      "ISSUE-175"
+    ]
+  },
+  "change_intake": {
+    "previous_concept": "The Grade-9 learner-independence roadmap reached terminal engineering acceptance at RM-0010, while Issue #175 remained outside the governed roadmap as a known web-builder gap.",
+    "requested_concept": "Add a bounded serial execution package that proves a reusable Core-aware learner shell over explicit projection/scene inputs before production provider integration or bespoke explorer migration.",
+    "retained_behavior": [
+      "Canonical subject packages, matrices and learner evidence remain authoritative and read-only for this slice.",
+      "Knowledge percentage remains a routing coordinate rather than mastery evidence.",
+      "Starting support, post-failure help and transfer protection remain separate decisions.",
+      "Shared/workbench stays subject-neutral and academic validity remains host/adapter supplied."
+    ],
+    "invalidated_behavior": [
+      "Do not treat the terminal RM-0010 state as meaning the separate Issue #175 runtime gap is complete.",
+      "Do not continue one handcrafted learner HTML application per concept when the same interaction can be projection-driven."
+    ],
+    "new_scope": [
+      "Build one fixture-backed Core learner shell for Core1A/Core1B/Core2A/Core2B state transitions.",
+      "Mount an optional supplied semantic-workbench scene without embedding scientific rules in the page shell.",
+      "Emit semantic learner interaction events without converting them to mastery.",
+      "Prove accessibility, static/offline loading and protected Core2B disclosure behavior in a real browser.",
+      "Leave production #173/#174 adapter swap and broad explorer migration for Issue #175 follow-on work after this proof."
+    ]
+  },
+  "required_reconciliation": [
+    "Add WP-TA-108 after completed WP-TA-105 and reopen the objective/phase as ACTIVE.",
+    "Create RM-0011 and PB-0009 with 100 earned over a 115 total-weight programme.",
+    "Map verified GitHub Issue #175 to WP-TA-108 and create EP-TA-010 plus QSET-TA-011.",
+    "Pin the V2.5 relay workflow and REPO_STATE protocol basis to Common@1bc4eca6eac9d75900ddee1c338da4b44817eeec.",
+    "Do not begin material web-runtime writes until a distinct candidate passes fresh qualification and material_write_ready."
+  ],
+  "status": "APPLIED"
+}
