@@ -20,7 +20,7 @@
     {
       "id": "GHOP-WP108-ISSUE175-ADMIT",
       "kind": "UPDATE",
-      "state": "PREPARED",
+      "state": "ATTEMPTED_UNCONFIRMED",
       "idempotency_key": "relay:GHGEN-WP108-ISS175-R1:GHOP-WP108-ISSUE175-ADMIT",
       "depends_on": [],
       "subject": {
@@ -42,8 +42,14 @@
         "relationships": []
       },
       "publication": {
-        "attempt_count": 0,
-        "last_attempt_basis": [],
+        "attempt_count": 1,
+        "last_attempt_basis": [
+          "branch:builder/core-learning-pages-r1",
+          "roadmap:RM-0011",
+          "execution:EP-TA-010",
+          "provider-readback:issue-175:id-5529711190",
+          "pre-write-journal"
+        ],
         "receipt": null,
         "last_error": null
       },
@@ -61,7 +67,7 @@
             "node": "ISSUE-175",
             "set_github_state": "OPEN",
             "set_issue_number": 175,
-            "set_issue_id": 5529815598
+            "set_issue_id": 5529711190
           }
         ],
         "complete_when": [
