@@ -441,7 +441,7 @@ def parent_agent_text(report: dict) -> str:
 
     lines.extend([
         "",
-        "Known limitation:"
+        "Known limitation:",
         (
             "- Major-misconception status is not inferred from generic error_stage; "
             "the current governed observation contract does not encode misconception "
