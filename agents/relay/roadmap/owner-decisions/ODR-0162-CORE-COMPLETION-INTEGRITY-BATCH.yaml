@@ -1,0 +1,37 @@
+schema_version: relay-v2.5
+id: ODR-0162-CORE-COMPLETION-INTEGRITY-BATCH
+decision:
+  authority: OWNER
+  kind: AUTHORIZATION
+  statement: >-
+    Replace micro-slice cadence with one bounded Core completion-integrity batch for Issue #162.
+    Fix the remaining high-confidence generic integrity defects found by whole-runtime audit:
+    malformed provenance metadata must fail closed instead of being treated as absent, and
+    adapter-thrown exceptions must not be able to impersonate Core validation error codes.
+    After this batch, freeze discretionary Core hardening and move the frontier to executable
+    evidence / merge reconciliation unless a concrete failing test exposes another structural defect.
+  source: >-
+    Owner instruction in the active Grade9V3 engineering session on 2026-09-21:
+    "I think it will take years if you code only for 1 min just going chat bot like not an expert.
+    You may drop if unwilling"
+effects:
+  grants_material_write_authority: true
+  pending_items:
+  - Cumulative exact-head Node, real-Chrome and full-guardrail validation remains pending.
+  - PR #165 merge/base and relay custody reconciliation remains deferred before merge.
+delivery_authorization: null
+impact:
+  class: [LOCAL, EXECUTION_GOVERNANCE, PROTOCOL_EXCEPTION]
+affected:
+  objectives: [OBJ-TOPIC-ATLAS-COMPLETE]
+  phases: [PHASE-TAKEOVER-RECONCILIATION]
+  work_packages: [WP-162-BROWSER-RUNTIME-PROOF]
+  execution_packages: [EP-0162-SEMANTIC-IDENTITY-PROOF]
+  issues: [ISSUE-162]
+required_reconciliation:
+- Validate provenance as structured metadata when present; sourceEntityRefs must be unique non-empty string refs and kind, when present, must be a non-empty string.
+- Preserve existing missing-source and cycle checks after provenance shape validation.
+- Distinguish adapter invocation failure from Core contract-validation failure so adapter-thrown WorkbenchError cannot spoof a Core code.
+- Preserve adapter-owned academic validity, history semantics, identity stability, browser interaction contracts and subject neutrality.
+- After this batch, do not admit more speculative Core hardening without a concrete executable falsifier.
+status: APPLIED
