@@ -13,7 +13,7 @@ sys.path.insert(0, str(REPO))
 
 from Shared.library import compile_inputs  # noqa: E402
 from Shared.tools import (  # noqa: E402
-    author_brief, build_manifest, build_web_data, capability_audit, ceiling_audit,
+    author_brief, build_core_learning_data, build_manifest, build_web_data, capability_audit, ceiling_audit,
     check_subjects, capability_collisions, learner_evidence, matrix_conformance,
     publication_provenance, resolve_request, spec_conformance, spec_delivery,
     topic_independence_guard,
@@ -141,6 +141,28 @@ class WebData(unittest.TestCase):
         on_disk = json.loads(text[text.index("=") + 1:].rstrip().rstrip(";"))
         self.assertEqual(on_disk, json.loads(json.dumps(self.payload)),
                          "regenerate with python3 Shared/tools/build_web_data.py")
+
+    def test_general_atlas_payload_does_not_carry_core_learner_projection_rows(self):
+        self.assertNotIn("core_projections", self.payload)
+
+    def test_bounded_core_learner_payload_matches_its_selection_and_generated_file(self):
+        payload = build_core_learning_data.build()
+        selected = json.loads(
+            build_core_learning_data.SELECTION.read_text(encoding="utf-8")
+        )["projection_ids"]
+        self.assertEqual(
+            [row["id"] for row in payload["core_projections"]],
+            selected,
+        )
+        self.assertTrue(payload["core_projections"])
+        self.assertNotIn("subjects", payload)
+
+        committed = build_core_learning_data.OUT.read_text(encoding="utf-8")
+        self.assertEqual(
+            committed,
+            build_core_learning_data.render(payload),
+            "regenerate with python3 Shared/tools/build_core_learning_data.py",
+        )
 
 
     def test_core_projection_rows_map_authored_concept_truth_without_subject_logic(self):
