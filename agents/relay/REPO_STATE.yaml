@@ -53,7 +53,7 @@
       "state": "READY",
       "can_continue": true,
       "material_authority": "WRITE",
-      "next_action": "Complete fresh successor discovery and independent qualification/certification against the current question set, then pass the candidate-specific material-write gate before any Grade-9 exit/Grade-10 transition implementation."
+      "next_action": "On takeover/grade9-exit-transition-r2 rebased to main@411e8dc0108347933792fbbd5a6be8dfa59d655e, complete fresh independent successor discovery/qualification/certification and pass the candidate-specific material-write gate before any material implementation."
     },
     "quality": {
       "state": "CLEAR",
@@ -115,27 +115,22 @@
     }
   },
   "delivery": {
-    "required": true,
-    "provider": "GITHUB",
+    "required": false,
+    "provider": null,
     "observation": {
-      "id": "DOBS-PR168-RM0008",
-      "path": "agents/relay/delivery/DOBS-PR168-RM0008.yaml"
+      "id": null,
+      "path": null
     },
-    "observations": [
-      {
-        "id": "DOBS-PR168-RM0008",
-        "path": "agents/relay/delivery/DOBS-PR168-RM0008.yaml"
-      }
-    ]
+    "observations": []
   },
   "relay_readiness": {
     "baton_ready": true,
     "projection_ready": true,
     "handover_ready": true,
     "reasons": [
-      "The predecessor checkpoint closes the router work and establishes the Grade-9 exit/Grade-10 transition package as the zero-credit serial successor.",
-      "Issue #169 is verified open and mapped to the new frontier under ISSUE_GRAPH IG-0005.",
-      "The successor contract has a fresh bound qualification question set; independent candidate qualification remains required before material writes."
+      "The router package is merged and Issue #159 is closed.",
+      "Issue #169 is verified open and owns the Grade-9 exit/Grade-10 transition frontier.",
+      "EP-TA-009 and QSET-TA-010 are rebound to main@411e8dc0108347933792fbbd5a6be8dfa59d655e on takeover/grade9-exit-transition-r2; a distinct candidate must qualify before material writes."
     ]
   },
   "chat_context_required": false
