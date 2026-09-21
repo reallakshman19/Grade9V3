@@ -145,22 +145,18 @@ class WebData(unittest.TestCase):
     def test_general_atlas_payload_does_not_carry_core_learner_projection_rows(self):
         self.assertNotIn("core_projections", self.payload)
 
-    def test_bounded_core_learner_payload_matches_subject_owned_selection_and_generated_file(self):
+    def test_bounded_core_learner_payload_packages_only_precompiled_provider_fixture(self):
         payload = build_core_learning_data.build()
-        selected = []
-        for path in build_core_learning_data.selection_paths():
-            subject = path.relative_to(REPO).parts[0]
-            document = json.loads(path.read_text(encoding="utf-8"))
-            for row in document["projections"]:
-                selected.extend(
-                    f"{subject}:{core}:{row['source_ref']}"
-                    for core in row["cores"]
-                )
+        fixture = json.loads(
+            build_core_learning_data.PROVIDER_FIXTURE.read_text(encoding="utf-8")
+        )
+        expected_ids = [f"fixture:{row['id']}" for row in fixture["projections"]]
 
         self.assertEqual(
             [row["id"] for row in payload["core_projections"]],
-            selected,
+            expected_ids,
         )
+        self.assertEqual(payload["provider_status"], "FROZEN_PRECOMPILED_FIXTURE")
         self.assertTrue(payload["core_projections"])
         self.assertNotIn("subjects", payload)
 
@@ -171,192 +167,36 @@ class WebData(unittest.TestCase):
             "regenerate with python3 Shared/tools/build_core_learning_data.py",
         )
 
-    def test_shared_core_data_generator_does_not_name_a_subject_or_source_record(self):
+    def test_core_learner_builder_does_not_compile_subject_or_atlas_truth(self):
         source = (REPO / "Shared/tools/build_core_learning_data.py").read_text(encoding="utf-8")
-        self.assertNotIn("Physics", source)
-        self.assertNotIn("MIC-PHY-", source)
+        for forbidden in (
+            "Shared.contracts",
+            "Shared.library",
+            "build_index",
+            "teaching_routes",
+            "microtopics",
+            "questions",
+            "selection_paths",
+            "core_projection_rows",
+            "Physics",
+            "MIC-PHY-",
+        ):
+            self.assertNotIn(forbidden, source)
 
-
-    def test_core_projection_rows_map_authored_concept_truth_without_subject_logic(self):
-        records = {
-            "MIC-X": {
-                "id": "MIC-X",
-                "_collection": "microtopics",
-                "inferential_jump": "A supplied inference.",
-                "teaching_path": [{
-                    "id": "STEP-X",
-                    "action": "Inspect the supplied state.",
-                    "why_valid": "The authored representation makes the relation visible.",
-                    "role": "REPRESENT",
-                }],
-                "misconceptions": [],
-                "representation_refs": ["REP-X"],
-                "elicitation": {
-                    "predict": {
-                        "prompt": "What remains shared when the representations separate?"
-                    }
-                },
-            },
-            "ROUTE-X": {
-                "id": "ROUTE-X",
-                "_collection": "teaching_routes",
-                "cores": ["CORE1A", "CORE1B"],
-                "microtopic_refs": ["MIC-X"],
-            },
-        }
-        rows = build_core_learning_data.core_projection_rows("Subject-X", records)
-        self.assertEqual([row["projection"]["core"] for row in rows], ["CORE1A", "CORE1B"])
-        self.assertTrue(rows[0]["projection"]["presentation"]["show_full_construction"])
-        self.assertFalse(rows[0]["projection"]["presentation"]["attempt_before_reveal"])
-        self.assertFalse(rows[1]["projection"]["presentation"]["show_full_construction"])
-        self.assertTrue(rows[1]["projection"]["presentation"]["attempt_before_reveal"])
-        self.assertEqual(rows[0]["projection"]["concept"]["inferential_jump"], "A supplied inference.")
-        self.assertEqual(
-            rows[1]["projection"]["concept"]["elicitation"],
-            {"prompt": "What remains shared when the representations separate?"},
+    def test_precompiled_fixture_rows_are_packaged_without_semantic_rewrite(self):
+        fixture = json.loads(
+            build_core_learning_data.PROVIDER_FIXTURE.read_text(encoding="utf-8")
         )
-        self.assertEqual(rows[0]["scene_ref"], None)
-        self.assertEqual(rows[0]["adapter_ref"], None)
+        payload = build_core_learning_data.build()
+        packaged = payload["core_projections"]
 
-    def test_core_projection_rows_emit_only_structured_application_truth(self):
-        structured = {
-            "id": "Q-X",
-            "_collection": "questions",
-            "stem": "Use the supplied state.",
-            "family_ref": "FAM-X",
-            "exposure": [{"core": "CORE2A"}],
-            "answer": {
-                "reasoning_route": [
-                    {
-                        "id": "MOVE-REP",
-                        "kind": "REPRESENT",
-                        "action": "Represent the state.",
-                        "why_valid": "The representation preserves the authored data.",
-                        "inputs": ["state"],
-                        "output": "represented state",
-                    },
-                    {
-                        "id": "MOVE-DECIDE",
-                        "kind": "DECIDE",
-                        "action": "Choose the controlling condition.",
-                        "why_valid": "The authored condition controls the next move.",
-                        "inputs": ["represented state"],
-                        "output": "selected condition",
-                    },
-                ],
-                "crux_move_ref": "MOVE-DECIDE",
-            },
-            "hints": [],
-            "scaffolds": [{
-                "text": "Represent the state first.",
-                "support_kind": "REPRESENT",
-                "reveals": "CONCEPT",
-                "supports_move_ref": "MOVE-REP",
-            }],
-        }
-        legacy = {
-            "id": "Q-LEGACY",
-            "_collection": "questions",
-            "stem": "Legacy question.",
-            "family_ref": "FAM-X",
-            "exposure": [{"core": "CORE2A"}],
-            "answer": {"reasoning": ["Legacy prose only."]},
-        }
-        rows = build_core_learning_data.core_projection_rows(
-            "Subject-X",
-            {"Q-X": structured, "Q-LEGACY": legacy},
-        )
-        self.assertEqual(len(rows), 1)
-        self.assertEqual(rows[0]["projection"]["core"], "CORE2A")
-        self.assertEqual(rows[0]["projection"]["application"]["crux_move_ref"], "MOVE-DECIDE")
-        self.assertEqual(rows[0]["source_ref"], "Q-X")
-
-    def test_transfer_metadata_is_projected_only_for_core2b(self):
-        question = {
-            "id": "Q-BOTH",
-            "_collection": "questions",
-            "stem": "Choose the controlling model.",
-            "family_ref": "FAM-X",
-            "exposure": [{"core": "CORE2A"}, {"core": "CORE2B"}],
-            "answer": {
-                "reasoning_route": [
-                    {
-                        "id": "MOVE-REP",
-                        "kind": "REPRESENT",
-                        "action": "Represent the changed state.",
-                        "why_valid": "The state must be explicit before comparison.",
-                        "inputs": ["state"],
-                        "output": "represented state",
-                    },
-                    {
-                        "id": "MOVE-DECIDE",
-                        "kind": "DECIDE",
-                        "action": "Choose the controlling model.",
-                        "why_valid": "The changed demand determines which model applies.",
-                        "inputs": ["represented state"],
-                        "output": "model decision",
-                    },
-                ],
-                "crux_move_ref": "MOVE-DECIDE",
-            },
-            "scaffolds": [{
-                "text": "Represent the changed state first.",
-                "support_kind": "REPRESENT",
-                "reveals": "CONCEPT",
-                "supports_move_ref": "MOVE-REP",
-            }],
-            "transfer": {
-                "dimension": "model_choice",
-                "statement": "A changed demand requires a fresh model decision.",
-                "builds_on": ["MIC-X"],
-                "protected_move_ref": "MOVE-DECIDE",
-            },
-        }
-        rows = build_core_learning_data.core_projection_rows("Subject-X", {"Q": question})
-        by_core = {row["projection"]["core"]: row for row in rows}
-        self.assertEqual(set(by_core), {"CORE2A", "CORE2B"})
-        self.assertNotIn("transfer", by_core["CORE2A"]["projection"]["application"])
-        self.assertEqual(
-            by_core["CORE2B"]["projection"]["application"]["transfer"]["protected_move_ref"],
-            "MOVE-DECIDE",
-        )
-        self.assertEqual(
-            by_core["CORE2B"]["projection"]["presentation"]["protected_move_refs"],
-            ["MOVE-DECIDE"],
-        )
-
-    def test_core2b_projection_fails_closed_when_scaffold_targets_protected_move(self):
-        question = {
-            "id": "Q-TRANSFER",
-            "_collection": "questions",
-            "stem": "Decide whether the familiar model applies.",
-            "family_ref": "FAM-X",
-            "exposure": [{"core": "CORE2B"}],
-            "answer": {
-                "reasoning_route": [{
-                    "id": "MOVE-DECIDE",
-                    "kind": "DECIDE",
-                    "action": "Choose the model.",
-                    "why_valid": "The changed demand determines model applicability.",
-                    "inputs": ["changed demand"],
-                    "output": "model decision",
-                }],
-                "crux_move_ref": "MOVE-DECIDE",
-            },
-            "scaffolds": [{
-                "text": "Choose the model from the changed demand.",
-                "support_kind": "CONNECT",
-                "reveals": "METHOD",
-                "supports_move_ref": "MOVE-DECIDE",
-            }],
-            "transfer": {
-                "dimension": "model_choice",
-                "statement": "A changed demand requires a fresh model decision.",
-                "builds_on": ["MIC-X"],
-                "protected_move_ref": "MOVE-DECIDE",
-            },
-        }
-        self.assertEqual(build_core_learning_data.core_projection_rows("Subject-X", {"Q": question}), [])
+        self.assertEqual(len(packaged), len(fixture["projections"]))
+        for source, row in zip(fixture["projections"], packaged):
+            self.assertEqual(row["projection"], source)
+            self.assertEqual(row["source_ref"], source["id"])
+            self.assertIsNone(row["scene_ref"])
+            self.assertIsNone(row["adapter_ref"])
+            self.assertEqual(row["injection_refs"], [])
 
 
 if __name__ == "__main__":
