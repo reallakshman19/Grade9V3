@@ -1,6 +1,6 @@
 {
   "schema_version": "relay-v2.5",
-  "relay_state": "ACTIVE",
+  "relay_state": "TERMINAL",
   "repository": {
     "name": "Grade9V3",
     "remote": "reallaksh19/Grade9V3"
@@ -11,7 +11,7 @@
   },
   "roadmap": {
     "id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
-    "revision": "RM-0009",
+    "revision": "RM-0010",
     "path": "agents/relay/roadmap/OVERALL_ROADMAP.yaml"
   },
   "current_position": {
@@ -24,14 +24,14 @@
     "mode": "SERIAL"
   },
   "active_ep": {
-    "id": "EP-TA-009",
-    "path": "agents/relay/execution-packages/EP-TA-009.yaml",
-    "state": "EXECUTABLE",
+    "id": null,
+    "path": null,
+    "state": "NONE",
     "continuity_receipt": null
   },
   "last_checkpoint": {
-    "id": "CP-TA-008",
-    "path": "agents/relay/checkpoints/CP-TA-008.yaml"
+    "id": "CP-TA-009",
+    "path": "agents/relay/checkpoints/CP-TA-009.yaml"
   },
   "predecessor_join": {
     "id": null,
@@ -41,56 +41,30 @@
     "id": null,
     "path": null
   },
-  "takeover_admissions": [
-    {
-      "route_key": "SERIAL:EP-TA-009",
-      "candidate": {
-        "agent_instance_id": "chatgpt-sol-wp105-candidate-20260921-a"
-      },
-      "discovery_receipt": {
-        "id": "DISC-TA-019",
-        "path": "agents/relay/certifications/discovery/DISC-TA-019.yaml"
-      },
-      "certification": {
-        "id": "TC-TA-019",
-        "path": "agents/relay/certifications/takeover/TC-TA-019.yaml"
-      }
-    }
-  ],
+  "takeover_admissions": [],
   "progress": {
-    "overall_percent": 85,
-    "phase_percent": 85,
-    "ep_percent": 0,
-    "basis_revision": "PB-0007"
+    "overall_percent": 100,
+    "phase_percent": 100,
+    "ep_percent": 100,
+    "basis_revision": "PB-0008"
   },
   "status_planes": {
     "execution": {
-      "state": "READY",
-      "can_continue": true,
-      "material_authority": "WRITE",
-      "next_action": "Validate the admitted candidate material-write gate on exact head, then execute only STEP-TA9-001 / AC-TA9-001 / TEST-TA9-001 / BENCH-TA9-001 if the gate passes."
+      "state": "COMPLETE",
+      "can_continue": false,
+      "material_authority": "NONE",
+      "next_action": "Validate the terminal repository state, publish the final Issue #169 terminal status, and carry PR #170 as pending provider delivery."
     },
     "quality": {
       "state": "CLEAR",
       "findings": [
-        "The completed router package has a clear final quality review. The successor package has no material quality findings yet; its own fresh qualification and final quality review remain required."
+        "Final engineering quality review is clear; no blocking material findings remain."
       ]
     },
     "evidence": {
-      "state": "PARTIAL",
-      "summary": "The router package is fully accepted. The Grade-9 exit/Grade-10 transition frontier starts at zero accepted material evidence and requires fresh independent qualification before implementation.",
-      "not_run": [
-        {
-          "id": "fresh independent successor qualification",
-          "reason": "A distinct candidate has not yet completed discovery, qualification and takeover certification for the new material boundary.",
-          "cause": "DEPENDENCY_WAIT"
-        },
-        {
-          "id": "successor validation suite",
-          "reason": "The Grade-9 exit/Grade-10 transition implementation has not started.",
-          "cause": "NOT_SCHEDULED"
-        }
-      ]
+      "state": "COMPLETE",
+      "summary": "All four Grade-9 exit acceptance slices passed on the accepted material basis, including canonical changed-demand evidence checks, 990 repository tests, and protected-domain verification.",
+      "not_run": []
     },
     "stop": {
       "active": false,
@@ -101,51 +75,43 @@
   },
   "projection": {
     "required": true,
-    "state": "IN_SYNC",
-    "operation_id": "GHGEN-WP105-ISS169-R1",
+    "state": "PENDING",
+    "operation_id": "GHGEN-WP105-ISS169-R3",
     "target": "github:reallaksh19/Grade9V3:issues",
     "adapter": "GITHUB_ISSUES",
-    "plan": "agents/relay/projection/generations/GHGEN-WP105-ISS169-R1.yaml",
-    "roadmap_revision": "RM-0009",
-    "execution_ref": "EP-TA-009",
-    "receipt": "github-generation:GHGEN-WP105-ISS169-R1:issue-169",
+    "plan": "agents/relay/projection/generations/GHGEN-WP105-ISS169-R3.yaml",
+    "roadmap_revision": "RM-0010",
+    "execution_ref": "NONE",
+    "receipt": null,
     "basis": [
-      "Issue #169 provider readback",
-      "ISSUE_GRAPH IG-0005",
-      "EP-TA-009 successor contract",
-      "fresh successor qualification question set"
+      "Terminal roadmap/checkpoint reconciliation",
+      "Issue #169 provider readback remains OPEN",
+      "Final terminal Issue #169 projection is prepared but not yet published"
     ],
-    "superseded_operations": [],
-    "observed": {
-      "operation_id": "GHGEN-WP105-ISS169-R1",
-      "target": "github:reallaksh19/Grade9V3:issues",
-      "roadmap_revision": "RM-0009",
-      "execution_ref": "EP-TA-009",
-      "receipt": "github-generation:GHGEN-WP105-ISS169-R1:issue-169",
-      "basis": [
-        "Issue #169 provider readback",
-        "relay-operation:GHOP-WP105-ISSUE169-HANDOFF",
-        "ISSUE_GRAPH IG-0005"
-      ]
-    }
+    "superseded_operations": []
   },
   "delivery": {
-    "required": false,
-    "provider": null,
+    "required": true,
+    "provider": "GITHUB",
     "observation": {
-      "id": null,
-      "path": null
+      "id": "DOBS-PR170-RM0010",
+      "path": "agents/relay/delivery/DOBS-PR170-RM0010.yaml"
     },
-    "observations": []
+    "observations": [
+      {
+        "id": "DOBS-PR170-RM0010",
+        "path": "agents/relay/delivery/DOBS-PR170-RM0010.yaml"
+      }
+    ]
   },
   "relay_readiness": {
     "baton_ready": true,
-    "projection_ready": true,
-    "handover_ready": true,
+    "projection_ready": false,
+    "handover_ready": false,
     "reasons": [
-      "The router package is merged and Issue #159 is closed.",
-      "Issue #169 is verified open and owns the Grade-9 exit/Grade-10 transition frontier.",
-      "EP-TA-009 and QSET-TA-010 are rebound to main@411e8dc0108347933792fbbd5a6be8dfa59d655e on takeover/grade9-exit-transition-r2; a distinct candidate must qualify before material writes."
+      "The final Grade-9 Physics checkpoint closes the roadmap with no material successor.",
+      "The final Issue #169 terminal status is prepared but not yet published.",
+      "PR #170 remains draft and open for provider delivery; merge requires separate Owner authorization."
     ]
   },
   "chat_context_required": false
