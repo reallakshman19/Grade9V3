@@ -1,0 +1,177 @@
+{
+  "schema_version": "relay-v2.5",
+  "contract_version": 2,
+  "checkpoint_id": "CP-TA-009",
+  "ep_id": "EP-TA-009",
+  "roadmap_basis": {
+    "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
+    "revision": "RM-0009"
+  },
+  "execution_basis": {
+    "material_ref": "f8fa6a8aafdad7ab8a2d979af824240cd220b6c7",
+    "validated_implementation_head": "f8fa6a8aafdad7ab8a2d979af824240cd220b6c7"
+  },
+  "implementation_result": {
+    "summary": "Completed the Grade-9 Physics exit/Grade-10 transition projection: conservative categorical evidence, explicit required/prerequisite blocker boundaries, targeted rechecks for fragile evidence, machine/parent-agent reporting, and no second mastery or grade-state store.",
+    "completed_steps": [
+      "STEP-TA9-001",
+      "STEP-TA9-002",
+      "STEP-TA9-003",
+      "STEP-TA9-004"
+    ],
+    "files_changed": [
+      "Shared/tools/grade9_exit.py",
+      "tests/test_grade9_exit.py",
+      "docs/grade9/GRADE9-PHYSICS-EXIT-TRANSITION-REPORT.md",
+      "docs/architecture-manifest.json",
+      ".github/workflows/v25-relay.yml",
+      "agents/relay/"
+    ]
+  },
+  "acceptance_results": [
+    {
+      "id": "AC-TA9-001",
+      "status": "PASS",
+      "basis": [
+        "BENCH-TA9-001",
+        "TEST-TA9-001",
+        "guardrails 35621628917"
+      ]
+    },
+    {
+      "id": "AC-TA9-002",
+      "status": "PASS",
+      "basis": [
+        "BENCH-TA9-002",
+        "TEST-TA9-002",
+        "guardrails 35621628917"
+      ]
+    },
+    {
+      "id": "AC-TA9-003",
+      "status": "PASS",
+      "basis": [
+        "BENCH-TA9-003",
+        "TEST-TA9-003",
+        "guardrails 35621628917"
+      ]
+    },
+    {
+      "id": "AC-TA9-004",
+      "status": "PASS",
+      "basis": [
+        "BENCH-TA9-004",
+        "TEST-TA9-004",
+        "QRV-TA-009",
+        "guardrails 35621628917",
+        "v25-relay 35621628935"
+      ]
+    }
+  ],
+  "validation_results": [
+    {
+      "id": "TEST-TA9-001",
+      "status": "PASS",
+      "basis_ref": "f8fa6a8aafdad7ab8a2d979af824240cd220b6c7",
+      "evidence": [
+        "Frozen evidence-category truth table passed; helped-only and unknown evidence remain conservative."
+      ]
+    },
+    {
+      "id": "TEST-TA9-002",
+      "status": "PASS",
+      "basis_ref": "f8fa6a8aafdad7ab8a2d979af824240cd220b6c7",
+      "evidence": [
+        "Required and genuine prerequisite known gaps block; optional/enrichment/later-grade gaps remain non-blocking; unknown required evidence remains EVIDENCE_REQUIRED."
+      ]
+    },
+    {
+      "id": "TEST-TA9-003",
+      "status": "PASS",
+      "basis_ref": "f8fa6a8aafdad7ab8a2d979af824240cd220b6c7",
+      "evidence": [
+        "Machine-readable and parent/agent-readable report reconstruction passed, including targeted rechecks and visible non-blocking items."
+      ]
+    },
+    {
+      "id": "TEST-TA9-004",
+      "status": "PASS",
+      "basis_ref": "f8fa6a8aafdad7ab8a2d979af824240cd220b6c7",
+      "evidence": [
+        "No-second-store/protected-write falsifier passed; base-to-head compare changes no Physics/ or Learners/ files; guardrails ran 987 tests successfully and exact-head V2.5 material-write/route validation passed."
+      ]
+    }
+  ],
+  "quality_review": {
+    "id": "QRV-TA-009",
+    "path": "agents/relay/quality/QRV-TA-009.yaml",
+    "digest": "sha256:560d2de185fa690488df390368bffc9cc125cf28ddae347962f4700394f4a6d1"
+  },
+  "quality_findings": [],
+  "known_limitations": [
+    {
+      "statement": "The governed learner-observation schema has no explicit misconception identity/severity field; the report therefore surfaces concept-stage known gaps but does not infer a separate 'major misconception' classification from generic error_stage.",
+      "basis": [
+        "QRV-TA-009",
+        "docs/grade9/GRADE9-PHYSICS-EXIT-TRANSITION-REPORT.md"
+      ]
+    }
+  ],
+  "discoveries": [
+    {
+      "statement": "Grade-level transition can be derived without a mastery percentage or persisted grade state by composing canonical scope with current learner evidence.",
+      "basis": [
+        "BENCH-TA9-001",
+        "BENCH-TA9-004"
+      ]
+    },
+    {
+      "statement": "A support/prerequisite area becomes transition-relevant only through an explicit prerequisite edge from required Grade-9 capability, not from a broad SUPPORT_ONLY label.",
+      "basis": [
+        "BENCH-TA9-002"
+      ]
+    },
+    {
+      "statement": "Usable-but-fragile required evidence can allow Grade 10 to begin while retaining targeted independent rechecks, avoiding blanket Grade-9 recertification.",
+      "basis": [
+        "BENCH-TA9-003",
+        "QRV-TA-009"
+      ]
+    }
+  ],
+  "roadmap_reconciliation": {
+    "result": "STATUS_UPDATE",
+    "status_updates": [
+      {
+        "statement": "WP-TA-105 is complete and earns its full 15/100 programme weight.",
+        "basis": [
+          "CP-TA-009",
+          "QRV-TA-009",
+          "guardrails 35621628917",
+          "v25-relay 35621628935"
+        ]
+      },
+      {
+        "statement": "The Grade-9 Physics programme reaches 100/100 accepted roadmap progress; no material successor work package remains on this roadmap.",
+        "basis": [
+          "RM-0009 dependency graph",
+          "CP-TA-009"
+        ]
+      }
+    ],
+    "proposals": [],
+    "owner_decisions_required": []
+  },
+  "remaining_work": [
+    "Provider delivery remains: merge PR #170, close/reconcile Issue #169 from verified provider readback, and persist the final delivery observation. No further material roadmap work is authorized by this checkpoint."
+  ],
+  "successor": {
+    "mode": "NONE",
+    "frontier_work_package": null,
+    "ep_id": null,
+    "parallel_plan": null,
+    "join_id": null,
+    "lane_id": null,
+    "lanes": []
+  }
+}
