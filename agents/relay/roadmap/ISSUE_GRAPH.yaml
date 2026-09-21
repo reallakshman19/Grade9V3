@@ -217,7 +217,7 @@
     {
       "id": "ISSUE-159",
       "state": "COMPLETE",
-      "github_state": "OPEN",
+      "github_state": "CLOSED",
       "github": {
         "issue_number": 159,
         "issue_id": 5517410594,
@@ -287,7 +287,7 @@
             "basis_ref": "CP-TA-008"
           }
         ],
-        "pr_disposition": "PR #168 is the correlated continuation delivery vehicle and remains open until provider merge/readback.",
+        "pr_disposition": "PR #168 merged as 19dc15dceb7424226b6c4b46e0905c81bfaf1edc; provider merge/readback is complete.",
         "remaining_work_disposition": "TRANSFERRED_TO_SUCCESSOR",
         "unresolved_items": [],
         "successor": "ISSUE-169",
