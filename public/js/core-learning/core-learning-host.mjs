@@ -152,13 +152,16 @@ export function mountCoreLearningPage(
   );
 
   const inputs = resolveCoreLearningInputs(data, projectionId, registries);
-  element.projection = inputs.projection;
-
-  if (inputs.scene && inputs.adapter) {
-    element.scene = inputs.scene;
-    element.adapter = inputs.adapter;
-    element.injections = inputs.injections;
-  }
+  requireCondition(
+    typeof element.configure === "function",
+    "CORE_LEARNING_ELEMENT_CONFIGURE_REQUIRED",
+  );
+  element.configure({
+    projection: inputs.projection,
+    scene: inputs.scene,
+    adapter: inputs.adapter,
+    injections: inputs.injections,
+  });
 
   return {
     id: inputs.id,
