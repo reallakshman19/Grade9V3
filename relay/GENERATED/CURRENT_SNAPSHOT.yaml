@@ -2,13 +2,13 @@ schema_version: relay-v3.1-snapshot
 authority: DERIVED_READ_MODEL
 generated_from:
   roadmap_revision: RM-V31-ISS169-EXIT-001
-  state_digest: sha256:550b319a331d0e6d656a437c1414b6c595379612523008ff4faba34e28577922
+  state_digest: sha256:68ad2b20d894c0370bb9e03ee33501398173a63d44d23d875521004ff93412e1
   material_basis:
-    head: ad1f5a3d512eeacdbbc5c2f1f8a1740fe2d5ffb0
-    tree_digest: sha256:7ab68823f977fe4aa41e92e886a079c53fcbcb10726f48f4d14083bb386e5092
-    relevant_paths_digest: sha256:00fdeee50641c9e5e4d4f0e06fe3d0d2e625a1d3fada8ed1b768cb02907d00f1
+    head: f7f2c950f8f417a1b0ecbcc8234069130df4a344
+    tree_digest: sha256:7f139053c4000672268fe0456b36f8209f3f8490dfc4d0066924381e2606055d
+    relevant_paths_digest: sha256:8d845b786b13d4620ecdeca36cb0a38ef2644cb034d892ed29e3efa38c871284
     dependency_digest: sha256:400d2608e4b88557cce49b08baaf3f6827001f82ced4dfae65e7d977441e048d
-  coordination_head: 32fef9285b7f5abc1304179449e41842020742a9
+  coordination_head: f7f2c950f8f417a1b0ecbcc8234069130df4a344
 owner:
   outcome: 'Complete the remaining canonical-data, learner-page integration, and external-portability
     work while preserving delivered #162 and #173.'
@@ -16,8 +16,9 @@ owner:
     canonical Grade-9 scope plus existing learner evidence, without a mastery percentage
     or second learner truth store.
 programme:
-  accepted_progress: 6.5
+  accepted_progress: 12.2
   completed_work:
+  - WP-TA-105
   - WP-PORTABLE-163
   remaining_work:
   - WP-TAKEOVER-RECONCILE
@@ -27,7 +28,6 @@ programme:
   - WP-TA-104
   - WP-TA-107
   - WP-TA-108
-  - WP-TA-105
   - WP-CANONICAL-174-NLM
   - WP-CANONICAL-174-MOTION
   - WP-LEARNER-175-PRODUCTION
@@ -63,22 +63,26 @@ scope:
     prose.
 material:
   base: ad1f5a3d512eeacdbbc5c2f1f8a1740fe2d5ffb0
-  head: ad1f5a3d512eeacdbbc5c2f1f8a1740fe2d5ffb0
-  relevant_paths_digest: sha256:00fdeee50641c9e5e4d4f0e06fe3d0d2e625a1d3fada8ed1b768cb02907d00f1
+  head: f7f2c950f8f417a1b0ecbcc8234069130df4a344
+  relevant_paths_digest: sha256:8d845b786b13d4620ecdeca36cb0a38ef2644cb034d892ed29e3efa38c871284
   dependency_digest: sha256:400d2608e4b88557cce49b08baaf3f6827001f82ced4dfae65e7d977441e048d
 evidence:
-  latest_checkpoint: null
-  latest_material_validation: {}
+  latest_checkpoint: CP-G9EXIT-169-V31-001
+  latest_material_validation:
+    focused_tests: PASS
+    spec_delivery: PASS
+    full_guardrails: PASS
 controls:
   execution_blockers: []
   handover_blockers: []
   delivery_blockers: []
-  informational: []
+  informational:
+  - CTRL-OWNER-MERGE-ISS169-20260922
 delivery:
   issue: null
   pr: 193
   lifecycle: DECLARED
-  merge_authorized: false
+  merge_authorized: true
 next:
   immediate_material_action: Reconstruct the PR 170 derived-report implementation
     as bounded candidate material, correct the post-#173 demand-class and transition-requiredness
@@ -98,3 +102,4 @@ handoff:
   - relay/CONTROLS/controls.yaml
   - relay/WORK/EP-G9EXIT-169-V31-001.yaml
   - relay/LEASES/LEASE-G9EXIT-169-V31-001.yaml
+  - relay/CHECKPOINTS/CP-G9EXIT-169-V31-001.yaml

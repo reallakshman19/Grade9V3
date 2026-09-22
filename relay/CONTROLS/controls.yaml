@@ -16,3 +16,17 @@ controls:
     condition: PR 192 is merged or the Owner revokes this authority.
     evidence:
     - PR 192 merged at 4cb2da0b94e876ee294577d76b3c9ee6f4bb10c2 under V3.1 MERGE authorization.
+- id: CTRL-OWNER-MERGE-ISS169-20260922
+  kind: OWNER
+  state: OPEN
+  source:
+    type: OWNER
+    ref: direct-owner:2026-09-22T11:48:50Z:merge-if-mergeable;protocol-update:2026-09-22T15:49:12Z:v3.1
+  condition: Owner authorizes merging the current governed delivery when the selected
+    V3.1 MERGE gate and GitHub both report it mergeable.
+  blocks: []
+  permits:
+  - MERGE
+  resolution:
+    condition: PR 193 is merged or the Owner revokes this authority.
+    evidence: []

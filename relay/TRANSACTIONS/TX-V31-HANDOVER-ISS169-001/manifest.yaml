@@ -1,0 +1,30 @@
+schema_version: relay-v3.1-transaction
+id: TX-V31-HANDOVER-ISS169-001
+command: PUBLISH_HANDOVER
+actor: chatgpt-sol-g9exit-v31-20260922
+status: COMMITTED
+created_at: '2026-09-22T16:42:26.225086Z'
+updated_at: '2026-09-22T16:42:26.237081Z'
+operations:
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:4d5c167c52654ecdc3dc2b9a1c3e33b1bc757b0170316a7f72af4a0d950b0959
+  after_digest: sha256:adfbf50cf768186f5ed4d4b4f7abdb6a5459a23a2937a46e4e69f9e4930c63cd
+  staged_path: relay/TRANSACTIONS/TX-V31-HANDOVER-ISS169-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-V31-HANDOVER-ISS169-001/backups/000.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:0db685d6bd00ed1de1d190567812849bfdbeb4127d047576a02611af1b6634ce
+  after_digest: sha256:0db685d6bd00ed1de1d190567812849bfdbeb4127d047576a02611af1b6634ce
+  staged_path: relay/TRANSACTIONS/TX-V31-HANDOVER-ISS169-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-V31-HANDOVER-ISS169-001/backups/001.before
+- path: relay/GENERATED/HANDOVER.md
+  before_exists: true
+  before_digest: sha256:3d4e07a34cf8f4f51edabe66093e044d1d1082cada5163e7948095e071425877
+  after_digest: sha256:cd3c86e072e3ca4960c25e5376456ec3f42e7d24fc327d08a63eacad68723d5b
+  staged_path: relay/TRANSACTIONS/TX-V31-HANDOVER-ISS169-001/staged/002.after
+  backup_path: relay/TRANSACTIONS/TX-V31-HANDOVER-ISS169-001/backups/002.before
+applied:
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/GENERATED/HANDOVER.md
