@@ -1,0 +1,66 @@
+schema_version: relay-v3-snapshot
+authority: DERIVED_READ_MODEL
+generated_from:
+  roadmap_revision: RM-0012
+  state_digest: sha256:70d2e249546602643592f5d29a789807b748ec5472c013a54efd3d836341fc41
+  material_basis:
+    head: 785dc7119a90bd7ebcf5dd5157030555e1183582
+    tree_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+    relevant_paths_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+    dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+  coordination_head: 785dc7119a90bd7ebcf5dd5157030555e1183582
+owner:
+  outcome: 'Complete canonical data, learner-page integration, and external portability
+    while preserving delivered #162/#173 foundations.'
+  current_goal: 'Deliver Issue #174 in bounded slices: existing NLM PR #179 first,
+    then a separate Motion-in-2D canonical proof; do not fold Motion into PR #179.'
+programme:
+  accepted_progress: 0.0
+  completed_work: []
+  remaining_work:
+  - WP-TAKEOVER-RECONCILE
+  - WP-TA-102
+  - WP-TA-106
+  - WP-TA-103
+  - WP-TA-104
+  - WP-TA-107
+  - WP-TA-108
+  - WP-TA-105
+execution:
+  lifecycle: IDLE
+  work_package: null
+  ep: null
+  lease: null
+  executor: null
+scope:
+  allowed_writes: []
+  protected: []
+  prohibited: []
+material:
+  base: 785dc7119a90bd7ebcf5dd5157030555e1183582
+  head: 785dc7119a90bd7ebcf5dd5157030555e1183582
+  relevant_paths_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+  dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+evidence:
+  latest_checkpoint: null
+  latest_material_validation: {}
+controls:
+  execution_blockers: []
+  handover_blockers: []
+  delivery_blockers: []
+  informational: []
+delivery:
+  issue: null
+  pr: null
+  lifecycle: NOT_REQUIRED
+  merge_authorized: false
+next:
+  immediate_material_action: null
+  delivery_action: null
+  stop_conditions: []
+handoff:
+  zero_context_takeover_possible: false
+  reconstruction_sources:
+  - relay/ROADMAP/ROADMAP.yaml
+  - relay/STATE.yaml
+  - relay/CONTROLS/controls.yaml

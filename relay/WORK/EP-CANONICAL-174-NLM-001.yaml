@@ -1,0 +1,78 @@
+schema_version: relay-v3-ep
+id: EP-CANONICAL-174-NLM-001
+work_package: WP-CANONICAL-174-NLM
+outcome:
+  statement: 'Deliver the bounded NLM static-friction/inclined-plane canonical-data
+    proof for Issue #174 against delivered #162/#173, without adding Motion-in-2D.'
+basis:
+  predecessor_checkpoint: null
+  material_base: da91e9e42c641e9d2bdd970d1e87a6b8227c84a9
+  protocol_basis: reallaksh19/Common@c87cf87b313801e42ecd0fcc7d36af0d90c5f400:skills/engineering-pr-delivery-v3
+  semantic_dependencies:
+  - path: Shared/library
+    reason: Delivered canonical schema/compiler and structured application contract
+  - path: Shared/publication_host
+    reason: Delivered Core projection/publication preservation
+  - path: Physics/adapter
+    reason: Scientific depiction contract
+  - path: Physics/gates
+    reason: Canonical scientific relation authority
+scope:
+  write:
+  - Physics/library/phy-nlm-first-law.v1.json
+  - tests/test_g9_nlm_friction_connected.py
+  - docs/architecture-manifest.json
+  - tools/data.js
+  - public/data/data.js
+  read:
+  - Shared/
+  - Physics/
+  - tests/
+  - docs/
+  protect:
+  - Shared/
+  - Physics/adapter/
+  - Physics/gates/
+  - Learners/
+  prohibit:
+  - Mathematics/
+  - Chemistry/
+  - public/physics/
+  - standalone/
+acceptance:
+- id: AC-NLM-GOLD
+  statement: The NLM friction gold slice preserves structured reasoning, source hints,
+    scientific relation authority and the protected transfer decision.
+  evidence_requirements:
+  - test: python -m unittest discover -s tests -p test_g9_nlm_friction_connected.py
+      -v
+- id: AC-NLM-COMPILER
+  statement: Production compiler/publication preserve structured application truth
+    and protected transfer semantics.
+  evidence_requirements:
+  - test: python Shared/tools/spec_delivery.py --enforce --summary
+- id: AC-NLM-GENERATED
+  statement: Generated web data and architecture manifest are regenerated and drift-free.
+  evidence_requirements:
+  - test: python Shared/tools/build_manifest.py --check
+- id: AC-NLM-VALIDATION
+  statement: The exact committed NLM head passes the repository guardrail command
+    set and pinned V3 validation.
+  evidence_requirements:
+  - test: full guardrail command set plus pinned v3 validation
+quality_policy:
+  level: STANDARD
+  independent_review: OPTIONAL
+admission_policy:
+  qualification: NOT_REQUIRED
+  question_policy: NONE
+next:
+  first_action: 'Port only the academic/test NLM gold delta from PR #179, regenerate
+    derived artifacts, and run exact-head tests.'
+  stop_conditions:
+  - 'Do not import V2.5 relay or Owner-override records from PR #179.'
+  - Do not add Motion-in-2D to this delivery slice.
+  - Do not alter source hints/provenance or canonical scientific relation authority.
+  - 'A generic runtime/compiler falsifier requires a separately scoped repair rather
+    than redesigning delivered #162/#173.'
+  - No merge or release without action-specific delivery authorization.

@@ -1,0 +1,51 @@
+schema_version: relay-v3-transaction
+id: TX-ADMIT-CANONICAL-NLM-001
+command: ADMIT_TASK
+actor: codex-canonical-v3
+status: COMMITTED
+created_at: '2026-09-22T11:22:13.089187Z'
+updated_at: '2026-09-22T11:22:13.116619Z'
+operations:
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:579c7479415c3e4296ca48cd54903f424445ed622dd43fa400b6e4ddad111478
+  after_digest: sha256:0a61eeb34007ae91ed748d9e229412219d4a93fa75739e9bb67df5a596b4e71e
+  staged_path: relay/TRANSACTIONS/TX-ADMIT-CANONICAL-NLM-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-ADMIT-CANONICAL-NLM-001/backups/000.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:5e34127495e719191aa557c31d9338b00539241e5b599cbc94e048d7ad0366d5
+  after_digest: sha256:893d63a48d3c1b31a7c66751fcf89c52fd5d49d7dcc6b485ed76e8b77e52eb8f
+  staged_path: relay/TRANSACTIONS/TX-ADMIT-CANONICAL-NLM-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-ADMIT-CANONICAL-NLM-001/backups/001.before
+- path: relay/LEASES/LEASE-CANONICAL-174-NLM-001.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:345baf865f59604741145f246fea5e5f0fcccfaf0e21a64ee822adc097a2b950
+  staged_path: relay/TRANSACTIONS/TX-ADMIT-CANONICAL-NLM-001/staged/002.after
+  backup_path: null
+- path: relay/ROADMAP/ROADMAP.yaml
+  before_exists: true
+  before_digest: sha256:ecf1d71c8f0c48a7c72c9f8c38a0359c7d8988e490e213516c531154afe554e7
+  after_digest: sha256:b13d33747f1a2e036abbca6ce96b3ed4387d1bf71973347d2814cd081009ad89
+  staged_path: relay/TRANSACTIONS/TX-ADMIT-CANONICAL-NLM-001/staged/003.after
+  backup_path: relay/TRANSACTIONS/TX-ADMIT-CANONICAL-NLM-001/backups/003.before
+- path: relay/STATE.yaml
+  before_exists: true
+  before_digest: sha256:3f5ee9d31e0565647bef2ef95e1924fc745d27d7551fdf2a22b2a8f3dacf3015
+  after_digest: sha256:f86952fb0ec99de616c846441490d93418e82af0e03043b4d177221700e022b8
+  staged_path: relay/TRANSACTIONS/TX-ADMIT-CANONICAL-NLM-001/staged/004.after
+  backup_path: relay/TRANSACTIONS/TX-ADMIT-CANONICAL-NLM-001/backups/004.before
+- path: relay/WORK/EP-CANONICAL-174-NLM-001.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:79aca086722c0a0eed41b7cfa63e5a3635f3ab7881c427b6bbaf7f10810d1a1e
+  staged_path: relay/TRANSACTIONS/TX-ADMIT-CANONICAL-NLM-001/staged/005.after
+  backup_path: null
+applied:
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/LEASES/LEASE-CANONICAL-174-NLM-001.yaml
+- relay/ROADMAP/ROADMAP.yaml
+- relay/STATE.yaml
+- relay/WORK/EP-CANONICAL-174-NLM-001.yaml
