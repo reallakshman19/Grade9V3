@@ -1,0 +1,49 @@
+{
+  "schema_version": "relay-v2.5",
+  "revision": {
+    "id": "RM-0013",
+    "from_revision": "RM-0012",
+    "to_revision": "RM-0013",
+    "classification": "OWNER_INTENT_MUTATION",
+    "trigger": {
+      "type": "OWNER_DECISION",
+      "path": "agents/relay/roadmap/owner-decisions/ODR-0013-WEB-BUILDER-HOST-PARITY.yaml"
+    }
+  },
+  "changes": {
+    "added": [
+      "WP-TA-109"
+    ],
+    "removed": [],
+    "changed": [
+      "OBJ-TOPIC-ATLAS-COMPLETE",
+      "PHASE-TAKEOVER-RECONCILIATION",
+      "WP-TA-108"
+    ],
+    "unaffected": [
+      "WP-TAKEOVER-RECONCILE",
+      "WP-TA-102",
+      "WP-TA-106",
+      "WP-TA-103",
+      "WP-TA-104",
+      "WP-TA-107",
+      "WP-TA-105"
+    ]
+  },
+  "invalidated_execution_packages": [],
+  "issue_graph_reconciled": true,
+  "progress_basis_change": {
+    "old_basis": "PB-0010",
+    "new_basis": "PB-0011",
+    "old_total_weight": 115,
+    "new_total_weight": 125
+  },
+  "frontier_after": [
+    "WP-TA-109"
+  ],
+  "notes": [
+    "EP-TA-011 closes reconciliation without extra programme weight.",
+    "WP-TA-109 adds 10 programme weight for generated host parity.",
+    "Production #173/#174 integration is not admitted."
+  ]
+}
