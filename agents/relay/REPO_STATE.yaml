@@ -306,7 +306,7 @@
       "revisit_when": "Common PR #415, or an equivalent verified-projection supersession fix, lands on Common/main and Grade9V3 pins that revision."
     },
     {
-      "id": "DLG-TA11-QUAL-001",
+      "id": "DLG-TA11-INDEPENDENT-001",
       "kind": "DELEGATION",
       "state": "OPEN",
       "summary": "An independent planner must prepare the fresh repository-grounded qualification questions, followed by candidate discovery, deterministic evaluation and takeover certification, before Grade-9 exit product writes.",
