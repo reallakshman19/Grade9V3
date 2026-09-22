@@ -17,7 +17,7 @@
     "WEB": 8,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:d33eb0f9066d2a3936286fcdac00b35cf5fc30b40fea87f292f8466b80859db6",
+  "digest": "sha256:f4262336e6687aca836d2765129193c18adcfdd4cc1b2fa0aa79227810cffe59",
   "components": [
     {
       "path": "public/core-learning/data.js",
