@@ -1,0 +1,59 @@
+name: v3-relay
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-v3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Grade9V3
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout pinned Common V3
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: c87cf87b313801e42ecd0fcc7d36af0d90c5f400
+          path: _common_v3
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install V3 validator dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+
+      - name: Resolve selected protocol
+        run: python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_default.py .
+
+      - name: Validate V3 foundation
+        run: python _common_v3/skills/engineering-pr-delivery-v3/scripts/validate_foundation.py .
+
+      - name: Validate protocol selection
+        run: python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . validate
+
+      - name: Verify cutover readiness when still prepared
+        shell: bash
+        run: |
+          selected=$(python - <<'PY'
+          import yaml
+          with open('relay/PROTOCOL_SELECTION.yaml', encoding='utf-8') as f:
+              s=yaml.safe_load(f)
+          print(f"{s.get('selected_protocol')}:{s.get('status')}")
+          PY
+          )
+          if [ "$selected" = "V2_5:PREPARED" ]; then
+            set +e
+            python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . assess
+            rc=$?
+            set -e
+            if [ "$rc" -ne 0 ] && [ "$rc" -ne 1 ]; then exit "$rc"; fi
+          fi
