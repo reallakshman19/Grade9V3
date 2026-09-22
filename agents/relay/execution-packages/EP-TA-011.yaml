@@ -13,7 +13,7 @@
   "git_basis": {
     "expected_branch": "builder/core-learning-pages-r1",
     "material_ref": "91626fcb64373895cc9841fe44529b2b3520dc64",
-    "base_branch": "takeover/grade9-exit-transition-r2",
+    "base_branch": "origin/takeover/grade9-exit-transition-r2",
     "base_observed_ref": "ff211de6a5f6a465e842cf93725285c8a4f78450",
     "drift_policy": "RECHECK_BEFORE_WRITE",
     "drift_receipt": null
