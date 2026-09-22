@@ -7,7 +7,32 @@ on:
   workflow_dispatch:
 
 jobs:
+  protocol:
+    runs-on: ubuntu-latest
+    outputs:
+      v25_live: ${{ steps.selection.outputs.v25_live }}
+    steps:
+      - name: Checkout Grade9V3
+        uses: actions/checkout@v4
+      - id: selection
+        name: Resolve compatibility protocol
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          from pathlib import Path
+          import yaml
+          p=Path("relay/PROTOCOL_SELECTION.yaml")
+          if not p.exists():
+              print("v25_live=true")
+          else:
+              s=yaml.safe_load(p.read_text(encoding="utf-8")) or {}
+              live = not (s.get("selected_protocol") == "V3" and s.get("status") == "ACTIVE")
+              print("v25_live=" + ("true" if live else "false"))
+          PY
+
   relay:
+    needs: protocol
+    if: needs.protocol.outputs.v25_live == 'true'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Grade9V3 execution branch
@@ -34,9 +59,6 @@ jobs:
       - name: Install relay validator dependencies
         run: pip install --quiet pyyaml jsonschema
 
-      # SKILL.md defines Common's unit/stress/self-consistency suites as Common
-      # development/release checks. A downstream repository executes the repository
-      # validation entrypoints below against the pinned Common implementation.
       - name: Relay semantic conformance
         run: python3 _common/skills/engineering-pr-delivery-v2.5/scripts/validate_relay_conformance.py .
 
