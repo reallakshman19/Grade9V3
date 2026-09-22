@@ -69,7 +69,7 @@
           "cause": "DEPENDENCY_WAIT"
         },
         {
-          "id": "QRV-TA11-PENDING",
+          "id": "QUALITY-TA11-PENDING",
           "reason": "Quality review is required only after the bounded successor implementation exists.",
           "cause": "NOT_SCHEDULED"
         },
@@ -309,7 +309,7 @@
       "id": "DLG-TA11-QUAL-001",
       "kind": "DELEGATION",
       "state": "OPEN",
-      "summary": "Independent qualification for EP-TA-011 must produce QSET-TA-013 and candidate-specific DISC/QUAL/TC evidence before Grade-9 exit product writes.",
+      "summary": "An independent planner must prepare the fresh repository-grounded qualification questions, followed by candidate discovery, deterministic evaluation and takeover certification, before Grade-9 exit product writes.",
       "source": "EP-TA-011 qualification_boundary and exact-head V2.5 failure on a10826b6192af1eb22afdcd76c5e0db16016380d",
       "scope": {
         "route_key": "SERIAL:EP-TA-011",
@@ -323,9 +323,9 @@
         ]
       },
       "evidence": [
-        "Guardrails are green on the coordination route; V2.5 conformance now fails only because agents/relay/certifications/questions/QSET-TA-013.yaml is absent.",
-        "Candidate chatgpt-sol-g9exit-20260922-r1 must not prepare its own QSET or self-evaluate.",
-        "No EP-TA-011 product files have been written."
+        "Guardrails are green on the coordination route; relay conformance now fails only because the required independent question-set artifact is absent.",
+        "The execution candidate must not prepare its own qualification questions or self-evaluate.",
+        "No Grade-9 exit product files have been written on the fresh successor route."
       ],
       "must_resolve_before": [
         "PR_READY",
@@ -337,8 +337,8 @@
         "TESTS",
         "DRAFT_PR_UPDATES"
       ],
-      "resolution_condition": "An independent planner/qualifier commits QSET-TA-013, fresh repository-grounded discovery, deterministic qualification and takeover certification for candidate chatgpt-sol-g9exit-20260922-r1, and REPO_STATE carries exactly one valid admission for SERIAL:EP-TA-011.",
-      "success_condition": "Exact-head V2.5 reaches route/Git/material-write validation and MATERIAL_WRITE_READY passes for chatgpt-sol-g9exit-20260922-r1.",
+      "resolution_condition": "An independent planner prepares the fresh question set, the execution candidate answers it from repository evidence, deterministic evaluation and takeover certification pass, and repository state carries exactly one valid admission for the active Grade-9 exit route.",
+      "success_condition": "Exact-head relay validation reaches route and Git checks, and the candidate-specific write-readiness check passes before any Grade-9 exit product edit.",
       "monitor_role": "READ_ONLY",
       "supersedes": null
     }
