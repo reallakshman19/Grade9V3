@@ -16,7 +16,7 @@
     "base_branch": "origin/takeover/grade9-exit-transition-r2",
     "base_observed_ref": "ff211de6a5f6a465e842cf93725285c8a4f78450",
     "drift_policy": "RECHECK_BEFORE_WRITE",
-    "drift_receipt": null
+    "drift_receipt": "agents/relay/drift/DRIFT-TA-011-BASE-CB7.yaml"
   },
   "roadmap_source": {
     "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
