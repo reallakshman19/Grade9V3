@@ -87,7 +87,7 @@ class Grade9ExitProjectionTest(unittest.TestCase):
             {row["capability_ref"] for row in grav},
         )
 
-    def test_required_transfer_sampling_comes_only_from_canonical_question_metadata(self):
+    def test_required_changed_demand_sampling_requires_core2b_and_transfer_metadata(self):
         coverage = grade9_exit.scope_coverage(REPO)
         required = {
             row["matrix_id"]: row
@@ -160,8 +160,16 @@ class Grade9ExitProjectionTest(unittest.TestCase):
                 {"profile_id": "PROFILE-X"},
                 "CAP-X",
                 REPO,
-                transfer_question_dimensions={
-                    "Q-X-TRANSFER": "representation_translation",
+                question_demand_contexts={
+                    "Q-X-TRANSFER": {
+                        "demand_class": "CHANGED_DEMAND_TRANSFER",
+                        "exposure_cores": ["CORE2B"],
+                        "transfer_dimension": "representation_translation",
+                    },
+                    "Q-X-PRACTICE": {
+                        "demand_class": "FAMILIAR_APPLICATION",
+                        "exposure_cores": ["CORE2A"],
+                    },
                 },
             )
 
@@ -182,6 +190,120 @@ class Grade9ExitProjectionTest(unittest.TestCase):
             projected["basis"][0]["transfer_dimension"],
             "representation_translation",
         )
+
+    def test_question_demand_class_does_not_treat_transfer_metadata_as_core2b(self):
+        familiar_with_transfer = grade9_exit.question_demand_context({
+            "id": "Q-SYNTH-2A-WITH-TRANSFER",
+            "exposure": [{"core": "CORE2A", "role": "PRACTICE"}],
+            "transfer": {"dimension": "model_choice"},
+        })
+        changed = grade9_exit.question_demand_context({
+            "id": "Q-SYNTH-2B",
+            "exposure": [{"core": "CORE2B", "role": "anything-descriptive"}],
+            "transfer": {"dimension": "model_choice"},
+        })
+
+        self.assertEqual(familiar_with_transfer["demand_class"], "FAMILIAR_APPLICATION")
+        self.assertNotIn("transfer_dimension", familiar_with_transfer)
+        self.assertEqual(changed["demand_class"], "CHANGED_DEMAND_TRANSFER")
+        self.assertEqual(changed["transfer_dimension"], "model_choice")
+
+    def test_core2a_success_and_unresolved_question_do_not_manufacture_transfer_evidence(self):
+        history = [
+            {
+                "observation_id": "OBS-FAMILIAR",
+                "capability_ref": "CAP-X",
+                "evidence_kind": "DIRECT_ATTEMPT",
+                "question_ref": "Q-X-2A",
+                "result": "DEMONSTRATED",
+                "help": "NONE",
+                "when": "2026-09-22T10:00:00Z",
+                "error_stage": None,
+            },
+            {
+                "observation_id": "OBS-EXTERNAL",
+                "capability_ref": "CAP-X",
+                "evidence_kind": "DIRECT_ATTEMPT",
+                "question_ref": "EXTERNAL-TRANSFER-LABEL",
+                "result": "DEMONSTRATED",
+                "help": "NONE",
+                "when": "2026-09-22T09:00:00Z",
+                "error_stage": None,
+            },
+        ]
+        with patch.object(
+            grade9_exit.learner_evidence,
+            "evidence_for_capability",
+            return_value=history,
+        ), patch.object(
+            grade9_exit.learner_evidence,
+            "effective_state",
+            return_value={
+                "state": "DEMONSTRATED",
+                "source": "DIRECT_ATTEMPT",
+                "independence_proven": True,
+                "independence_basis": "DIRECT_ATTEMPT_WITH_NO_HELP",
+            },
+        ):
+            projected = grade9_exit.capability_projection(
+                {"profile_id": "PROFILE-X"},
+                "CAP-X",
+                REPO,
+                question_demand_contexts={
+                    "Q-X-2A": {
+                        "demand_class": "FAMILIAR_APPLICATION",
+                        "exposure_cores": ["CORE2A"],
+                    },
+                },
+            )
+
+        self.assertEqual(projected["independent_transfer_dimensions"], [])
+        self.assertEqual(projected["basis"][0]["demand_class"], "FAMILIAR_APPLICATION")
+        self.assertNotIn("transfer_dimension", projected["basis"][0])
+        self.assertNotIn("demand_class", projected["basis"][1])
+
+    def test_assisted_core2b_is_available_but_not_independent_transfer_evidence(self):
+        contexts = {
+            "Q-X-2B": {
+                "demand_class": "CHANGED_DEMAND_TRANSFER",
+                "exposure_cores": ["CORE2B"],
+                "transfer_dimension": "reasoning_steps",
+            },
+        }
+        for help_used in ("HINT", "WORKED_EXAMPLE", "SOLUTION"):
+            with self.subTest(help=help_used):
+                history = [{
+                    "observation_id": f"OBS-{help_used}",
+                    "capability_ref": "CAP-X",
+                    "evidence_kind": "DIRECT_ATTEMPT",
+                    "question_ref": "Q-X-2B",
+                    "result": "DEMONSTRATED",
+                    "help": help_used,
+                    "when": "2026-09-22T10:00:00Z",
+                    "error_stage": None,
+                }]
+                with patch.object(
+                    grade9_exit.learner_evidence,
+                    "evidence_for_capability",
+                    return_value=history,
+                ), patch.object(
+                    grade9_exit.learner_evidence,
+                    "effective_state",
+                    return_value={
+                        "state": "DEMONSTRATED",
+                        "source": "DIRECT_ATTEMPT",
+                        "independence_proven": False,
+                        "independence_basis": "ASSISTED_ATTEMPT",
+                    },
+                ):
+                    projected = grade9_exit.capability_projection(
+                        {"profile_id": "PROFILE-X"},
+                        "CAP-X",
+                        REPO,
+                        question_demand_contexts=contexts,
+                    )
+                self.assertEqual(projected["independent_transfer_dimensions"], [])
+                self.assertEqual(projected["basis"][0]["transfer_dimension"], "reasoning_steps")
 
     def test_enrichment_without_evidence_stays_unknown_and_nonblocking(self):
         coverage = grade9_exit.scope_coverage(REPO)
@@ -437,9 +559,10 @@ class Grade9ExitProjectionTest(unittest.TestCase):
         self.assertNotIn("mastery_percentage", text.lower())
         self.assertNotIn("mastery_probability", text.lower())
 
-    def test_required_domain_with_authored_transfer_needs_one_independent_changed_demand_witness(self):
-        projection = {
-            "profile_id": "PROFILE-TRANSFER-GAP",
+    def _secure_projection_with_transfer(self, *, status, transition_required, observed=None):
+        observed = observed or []
+        return {
+            "profile_id": "PROFILE-TRANSFER",
             "scope_source": grade9_exit.SCOPE_COVERAGE,
             "capabilities": [{
                 "matrix_id": "MATRIX-REQ",
@@ -448,15 +571,16 @@ class Grade9ExitProjectionTest(unittest.TestCase):
                 "ordinary_grade9_core": True,
                 "evidence_category": grade9_exit.SECURE,
                 "basis": [{"observation_ref": "OBS-PRACTICE", "help": "NONE"}],
-                "independent_transfer_dimensions": [],
+                "independent_transfer_dimensions": list(observed),
             }],
             "domains": [{
                 "matrix_id": "MATRIX-REQ",
                 "ordinary_grade9_core": True,
                 "transfer_evidence": {
-                    "status": "EVIDENCE_NEEDED",
+                    "status": status,
                     "available_dimensions": ["representation_translation"],
-                    "independent_observed_dimensions": [],
+                    "independent_observed_dimensions": list(observed),
+                    "transition_required": transition_required,
                 },
             }],
             "transition_boundary": [{
@@ -468,12 +592,48 @@ class Grade9ExitProjectionTest(unittest.TestCase):
                 "reason": "NO_KNOWN_BLOCKER",
             }],
         }
+
+    def test_authored_changed_demand_availability_is_not_transition_requiredness(self):
+        projection = self._secure_projection_with_transfer(
+            status="AVAILABLE_UNOBSERVED",
+            transition_required=False,
+        )
         report = grade9_exit.transition_report(projection)
-        self.assertEqual(report["transition_state"], "GRADE9_EVIDENCE_INCOMPLETE")
-        self.assertIn("changed-demand", report["transition_message"])
+
+        self.assertEqual(report["transition_state"], "GRADE10_NEXT_PRODUCTIVE_FRONTIER")
+        row = report["domain_transfer_evidence"][0]
+        self.assertEqual(row["status"], "AVAILABLE_UNOBSERVED")
+        self.assertFalse(row["transition_required"])
         text = grade9_exit.parent_agent_text(report)
-        self.assertIn("Required-domain changed-demand evidence:", text)
+        self.assertIn("Changed-demand evidence:", text)
+        self.assertIn("transition_required=no", text)
+        self.assertNotIn("Required-domain changed-demand evidence:", text)
+
+    def test_explicit_transition_authority_can_require_changed_demand_evidence(self):
+        projection = self._secure_projection_with_transfer(
+            status="EVIDENCE_NEEDED",
+            transition_required=True,
+        )
+        report = grade9_exit.transition_report(projection)
+
+        self.assertEqual(report["transition_state"], "GRADE9_EVIDENCE_INCOMPLETE")
+        self.assertIn("explicit transition authority", report["transition_message"])
+        text = grade9_exit.parent_agent_text(report)
         self.assertIn("EVIDENCE_NEEDED", text)
+        self.assertIn("transition_required=yes", text)
+
+    def test_explicit_changed_demand_requirement_is_satisfied_by_independent_observation(self):
+        projection = self._secure_projection_with_transfer(
+            status="OBSERVED",
+            transition_required=True,
+            observed=["representation_translation"],
+        )
+        report = grade9_exit.transition_report(projection)
+        self.assertEqual(report["transition_state"], "GRADE10_NEXT_PRODUCTIVE_FRONTIER")
+        self.assertEqual(
+            report["domain_transfer_evidence"][0]["independent_observed_dimensions"],
+            ["representation_translation"],
+        )
 
     def test_fragile_required_evidence_carries_targeted_recheck_into_transition(self):
         projection = {
