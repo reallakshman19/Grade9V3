@@ -1,0 +1,74 @@
+{
+  "schema_version": "relay-v2.5-delivery-observation",
+  "id": "DOBS-PR181-RM0012",
+  "provider": "GITHUB",
+  "repository": "reallaksh19/Grade9V3",
+  "vehicle": {
+    "kind": "PULL_REQUEST",
+    "number": 181,
+    "url": "https://github.com/reallaksh19/Grade9V3/pull/181",
+    "lifecycle": "DRAFT",
+    "head": {
+      "ref": "fix/issue-169-grade9-exit-reconcile-v25",
+      "sha": "8e38a79676d2bb2f4c97df616849239fb386425c"
+    },
+    "base": {
+      "ref": "main",
+      "sha": "da91e9e42c641e9d2bdd970d1e87a6b8227c84a9"
+    }
+  },
+  "mergeability": {
+    "state": "MERGEABLE"
+  },
+  "checks": {
+    "state": "FAIL",
+    "head_sha": "8e38a79676d2bb2f4c97df616849239fb386425c",
+    "required": [
+      "guardrails",
+      "v25-relay"
+    ],
+    "observations": [
+      {
+        "name": "guardrails",
+        "run_id": 35683469601,
+        "status": "PASS",
+        "basis": "PR guardrails completed/success on exact coordination head 8e38a79676d2bb2f4c97df616849239fb386425c."
+      },
+      {
+        "name": "v25-relay",
+        "run_id": 35683469593,
+        "status": "FAIL",
+        "basis": "PR V2.5 relay failed on exact coordination head only because QSET-TA-013 is not yet present; product writes have not started."
+      }
+    ]
+  },
+  "review": {
+    "state": "CLEAR",
+    "unresolved_threads": 0,
+    "change_requests": 0
+  },
+  "description_contract": {
+    "marker": "<!-- relay-pr-correlation:v1 -->",
+    "marker_present": true,
+    "body_digest": "sha256:f0c3ff816238c397cf7b3caf1d3b37d3f2d196657a5b06c90f57dd5643a93614",
+    "correlations": [
+      {
+        "issue_node": "ISSUE-169",
+        "issue_number": 169,
+        "ep_id": "EP-TA-011",
+        "ep_path": "agents/relay/execution-packages/EP-TA-011.yaml",
+        "work_package": "WP-TA-105",
+        "relationship": "IMPLEMENTS",
+        "meaning": "EP-TA-011 delivers the fresh post-Core reconciliation for WP-TA-105 owned by GitHub issue #169."
+      }
+    ]
+  },
+  "readback_basis": [
+    "GitHub provider readback for draft PR #181 at head 8e38a79676d2bb2f4c97df616849239fb386425c and base da91e9e42c641e9d2bdd970d1e87a6b8227c84a9; mergeable=true.",
+    "PR #181 description contains relay-pr-correlation:v1 and the Issue #169 / EP-TA-011 / WP-TA-105 IMPLEMENTS correlation.",
+    "No product code has been written on EP-TA-011; current commits are route/checkpoint/qualification-boundary coordination.",
+    "Guardrails are green on the exact observed head.",
+    "V2.5 currently fails only because the independent QSET-TA-013 qualification chain has not yet been supplied.",
+    "Review readback found no unresolved threads or change requests."
+  ]
+}

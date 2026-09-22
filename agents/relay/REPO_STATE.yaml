@@ -150,8 +150,8 @@
     "required": true,
     "provider": "GITHUB",
     "observation": {
-      "id": "DOBS-PR177-RM0010",
-      "path": "agents/relay/delivery/DOBS-PR177-RM0010.yaml"
+      "id": "DOBS-PR181-RM0012",
+      "path": "agents/relay/delivery/DOBS-PR181-RM0012.yaml"
     },
     "observations": [
       {
@@ -161,6 +161,10 @@
       {
         "id": "DOBS-PR177-RM0010",
         "path": "agents/relay/delivery/DOBS-PR177-RM0010.yaml"
+      },
+      {
+        "id": "DOBS-PR181-RM0012",
+        "path": "agents/relay/delivery/DOBS-PR181-RM0012.yaml"
       }
     ]
   },
