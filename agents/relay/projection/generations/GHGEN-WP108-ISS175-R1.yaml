@@ -6,7 +6,7 @@
     "roadmap_revision": "RM-0011",
     "issue_graph_revision": "IG-0007",
     "execution_ref": "EP-TA-010",
-    "state": "IN_SYNC",
+    "state": "SUPERSEDED",
     "supersedes_generation": "GHGEN-WP105-ISS169-R3",
     "basis": [
       "ODR-0009-WEB-BUILDER-START",
