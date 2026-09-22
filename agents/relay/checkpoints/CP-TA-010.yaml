@@ -108,18 +108,18 @@
   "quality_review": {
     "id": "QRV-TA-010",
     "path": "agents/relay/quality/QRV-TA-010.yaml",
-    "digest": "sha256:21b3a19a3fde4df4aa6eaf988c6103cd6bc41fe75e8640e2a366d49ff1aca179"
+    "digest": "sha256:fc6b82c8ea426936498abb601d3b0fb46126bfdb97a30a8a5a26e5f217d1160f"
   },
   "quality_findings": [
     {
       "id": "QF-TA10-001",
-      "statement": "Pinned Common V2.5 protocol unit suite fails upstream before Grade9V3 relay validation.",
-      "disposition": "CARRY_FORWARD"
+      "statement": "The Common V2.5 protocol basis used during the original fixture-proof closeout failed upstream before Grade9V3 relay validators executed.",
+      "disposition": "DEFERRED"
     },
     {
       "id": "QF-TA10-002",
-      "statement": "Normal EP-TA-010 DISC/QUAL/TC was not established; bounded execution relied on explicit Owner direct-execution ODR-0010/ODR-0011.",
-      "disposition": "CARRY_FORWARD"
+      "statement": "EP-TA-010 did not establish normal DISC/QUAL/TC; historical bounded execution used explicit Owner authorizations and must not be relabeled as normal certification.",
+      "disposition": "DEFERRED"
     }
   ],
   "known_limitations": [
