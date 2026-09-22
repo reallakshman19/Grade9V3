@@ -1,0 +1,81 @@
+{
+  "schema_version": "relay-v2.5-delivery-observation",
+  "id": "DOBS-PR178-RM0012",
+  "provider": "GITHUB",
+  "repository": "reallaksh19/Grade9V3",
+  "vehicle": {
+    "kind": "PULL_REQUEST",
+    "number": 178,
+    "url": "https://github.com/reallaksh19/Grade9V3/pull/178",
+    "lifecycle": "DRAFT",
+    "head": {
+      "ref": "builder/core-learning-pages-r1",
+      "sha": "4ef58b8567177c56b778556c40981f23a65a6c79"
+    },
+    "base": {
+      "ref": "takeover/grade9-exit-transition-r2",
+      "sha": "ff211de6a5f6a465e842cf93725285c8a4f78450"
+    }
+  },
+  "mergeability": {
+    "state": "CONFLICTING"
+  },
+  "checks": {
+    "state": "FAIL",
+    "head_sha": "4ef58b8567177c56b778556c40981f23a65a6c79",
+    "required": [
+      "guardrails",
+      "v25-relay"
+    ],
+    "observations": [
+      {
+        "name": "guardrails",
+        "run_id": 35673031778,
+        "status": "FAIL",
+        "basis": "Exact-head guardrails failed only at generated architecture-manifest freshness after all preceding guardrail checks passed."
+      },
+      {
+        "name": "v25-relay",
+        "run_id": 35673031783,
+        "status": "FAIL",
+        "basis": "Exact-head revised V2.5 passed protocol unit/stress tests and failed semantic conformance on owner communication, delivery correlation, projection freshness and historical generation state."
+      }
+    ]
+  },
+  "review": {
+    "state": "CLEAR",
+    "unresolved_threads": 0,
+    "change_requests": 0
+  },
+  "description_contract": {
+    "marker": "<!-- relay-pr-correlation:v1 -->",
+    "marker_present": true,
+    "body_digest": "sha256:ac4c3d3362c80efde3100ee04e4ded675f369ff0212ce46d1d214e1233289dae",
+    "correlations": [
+      {
+        "issue_node": "ISSUE-175",
+        "issue_number": 175,
+        "ep_id": "EP-TA-010",
+        "ep_path": "agents/relay/execution-packages/EP-TA-010.yaml",
+        "work_package": "WP-TA-108",
+        "relationship": "IMPLEMENTS",
+        "meaning": "PR #178 delivers the fixture-backed portable Core learner-shell proof accepted by CP-TA-010 for Issue #175."
+      },
+      {
+        "issue_node": "ISSUE-175",
+        "issue_number": 175,
+        "ep_id": "EP-TA-011",
+        "ep_path": "agents/relay/execution-packages/EP-TA-011.yaml",
+        "work_package": "WP-TA-108",
+        "relationship": "REMEDIATES",
+        "meaning": "PR #178 carries the bounded post-checkpoint reconciliation for the accepted learner shell under the revised V2.5 controls."
+      }
+    ]
+  },
+  "readback_basis": [
+    "GitHub provider readback: PR #178 is DRAFT/OPEN at 4ef58b8567177c56b778556c40981f23a65a6c79.",
+    "Provider body contains relay-pr-correlation:v1 with both EP-TA-010 and EP-TA-011 correlations.",
+    "Current exact-head guardrails and V2.5 checks are failing only on known reconciliation/generated-artifact work.",
+    "PR-ready, merge, checkpoint and release remain blocked by PEND-TA11-001."
+  ]
+}
