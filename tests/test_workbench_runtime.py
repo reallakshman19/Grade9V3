@@ -78,34 +78,25 @@ class WorkbenchRuntimeNodeTests(unittest.TestCase):
         )
         self.assertEqual(result.returncode, 0, result.stdout)
 
-    def test_public_core_learning_data_is_bounded_and_generated(self):
+    def test_public_core_learning_data_packages_precompiled_provider_rows(self):
         payload = build_core_learning_data.build()
         rows = payload["core_projections"]
         self.assertEqual(
             [row["id"] for row in rows],
-            [
-                "Physics:CORE1A:MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
-                "Physics:CORE1B:MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
-            ],
+            ["fixture:core1a", "fixture:core1b", "fixture:core2a", "fixture:core2b"],
         )
-        self.assertEqual(
-            rows[1]["projection"]["concept"]["elicitation"]["prompt"],
-            "If x and y components are independent, does that mean the object has two different clocks?",
-        )
+        self.assertEqual(payload["provider_status"], "FROZEN_PRECOMPILED_FIXTURE")
+        self.assertEqual(rows[1]["projection"]["core"], "CORE1B")
         self.assertEqual(
             (REPO / "public/core-learning/data.js").read_bytes(),
             build_core_learning_data.rendered_file()["public/core-learning/data.js"],
         )
 
-    def test_core_learning_selection_is_subject_owned(self):
-        self.assertFalse(
-            (REPO / "Shared/workbench/core-learning-public-selection.json").exists()
-        )
-        selections = [
-            path.relative_to(REPO).as_posix()
-            for path in build_core_learning_data.selection_paths()
-        ]
-        self.assertEqual(selections, ["Physics/content/core-learning-proof.json"])
+    def test_core_learning_data_generator_does_not_compile_subject_truth(self):
+        source = (REPO / "Shared/tools/build_core_learning_data.py").read_text(encoding="utf-8")
+        self.assertIn("PROVIDER_FIXTURE", source)
+        for forbidden in ("Shared.contracts", "Shared.library", "build_index", "teaching_routes"):
+            self.assertNotIn(forbidden, source)
 
     def test_public_core_learning_runtime_is_generated_from_shared(self):
         rendered = build_core_learning_runtime.render()
