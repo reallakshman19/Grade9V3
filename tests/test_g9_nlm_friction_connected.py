@@ -231,10 +231,23 @@ class Grade9NlmFrictionConnectedSlice(unittest.TestCase):
         self.assertEqual(route[protected]["kind"], "DECIDE")
         self.assertIn("sign of f_required", route[protected]["action"])
         self.assertNotIn(protected, {row["supports_move_ref"] for row in question["scaffolds"]})
-        self.assertTrue(all(
-            row.get("visual_stage_ref") in {"VIS-NLM-FRICTION-V1", "VIS-NLM-FRICTION-V2"}
-            for row in question["scaffolds"]
-        ))
+
+        rep = self.representations["REP-NLM-FRICTION-THRESHOLD"]
+        stage_ids = [stage["id"] for stage in rep["reveal_stages"]]
+        protected_stage = route[protected]["visual_stage_ref"]
+        self.assertEqual(route[protected]["representation_ref"], "REP-NLM-FRICTION-THRESHOLD")
+        self.assertEqual(protected_stage, "VIS-NLM-FRICTION-V3")
+        protected_stage_index = stage_ids.index(protected_stage)
+        for scaffold in question["scaffolds"]:
+            self.assertLess(stage_ids.index(scaffold["visual_stage_ref"]), protected_stage_index)
+
+        protected_visual = next(
+            stage for stage in rep["reveal_stages"] if stage["id"] == protected_stage
+        )
+        self.assertTrue(
+            {"static-friction arrow", "contact-state label", "friction-demand/limit comparison"}
+            .issubset(set(protected_visual["visible_elements"]))
+        )
 
     def test_gold_family_does_not_duplicate_or_mutate_static_friction_authority(self):
         relation = self.relations["REL-NLM-STATIC-FRICTION-BOUND"]

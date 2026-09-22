@@ -5782,7 +5782,9 @@
               "actual N",
               "REL-NLM-STATIC-FRICTION-BOUND"
             ],
-            "output": "static rest is feasible iff |mg sin(theta) - P cos(theta)| <= mu_s[mg cos(theta) + P sin(theta)]"
+            "output": "static rest is feasible iff |mg sin(theta) - P cos(theta)| <= mu_s[mg cos(theta) + P sin(theta)]",
+            "representation_ref": "REP-NLM-FRICTION-THRESHOLD",
+            "visual_stage_ref": "VIS-NLM-FRICTION-V3"
           },
           {
             "id": "R-NLM-INCLINE-HORIZONTAL-CHECK",
