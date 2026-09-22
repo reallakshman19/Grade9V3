@@ -68,18 +68,17 @@
       "state": "ACTIVE",
       "can_continue": true,
       "material_authority": "WRITE",
-      "next_action": "The deferred admission control is satisfied. Complete the final reconciliation quality review and provider-delivery readback before any Owner-reserved ready, merge, checkpoint, or release action."
+      "next_action": "The bounded reconciliation and final quality review are complete. Provider ready, merge, checkpoint and release actions remain Owner-reserved."
     },
     "quality": {
-      "state": "NEEDS_ATTENTION",
+      "state": "CLEAR",
       "findings": [
-        "CP-TA-010 remains accepted for the fixture-backed learner shell, but current PR #178 contains later uncheckpointed builder-boundary corrections.",
-        "The moved predecessor is now merged; exact-head product/control evidence must be recollected on EP-TA-011."
+        "Final reconciliation quality review is clear; no blocking material findings remain."
       ]
     },
     "evidence": {
       "state": "COMPLETE",
-      "summary": "The reconciliation has a normal current-route admission and exact-head product/control validation is green. The remaining work is final quality review and provider-delivery reconciliation.",
+      "summary": "The reconciliation has normal current-route admission, exact-head product/control validation, and a clear final quality review. No material engineering blocker remains inside the bounded package.",
       "not_run": []
     },
     "stop": {

@@ -1,0 +1,195 @@
+{
+  "schema_version": "relay-v2.5-quality-review",
+  "quality_review_id": "QRV-TA-011",
+  "ep": {
+    "id": "EP-TA-011",
+    "path": "agents/relay/execution-packages/EP-TA-011.yaml",
+    "contract_digest": "sha256:54c0d4a5b4fc4b4ce16ef2fd9730257ca11a76b9852e531ae00f99560c275f3c"
+  },
+  "roadmap_revision": "RM-0012",
+  "material_ref": "91626fcb64373895cc9841fe44529b2b3520dc64",
+  "reviewer": {
+    "type": "AGENT",
+    "identity": "chatgpt-sol-webbuilder-quality-20260922"
+  },
+  "router_snapshot": {
+    "applicable": [
+      {
+        "blueprint": "accessibility",
+        "reason": "Issue #175 explicitly requires keyboard/touch/text/announcement/zoom-safe behavior.",
+        "review_focus": [
+          "focus/keyboard",
+          "aria-live",
+          "text fallback",
+          "narrow layout",
+          "no color-only meaning"
+        ]
+      },
+      {
+        "blueprint": "code-review",
+        "reason": "Generic runtime code can silently accumulate subject/pedagogy policy.",
+        "review_focus": [
+          "subject neutrality",
+          "event vocabulary",
+          "scope containment"
+        ]
+      },
+      {
+        "blueprint": "coding",
+        "reason": "New reusable browser runtime code will be added.",
+        "review_focus": [
+          "small API",
+          "deterministic state transitions",
+          "failure semantics"
+        ]
+      },
+      {
+        "blueprint": "github-delivery",
+        "reason": "Issue #175 must remain correlated with its EP/PR and provider dependency state.",
+        "review_focus": [
+          "Issue↔EP↔WP↔PR correlation",
+          "stacked predecessor",
+          "provider blockers"
+        ]
+      },
+      {
+        "blueprint": "software-design",
+        "reason": "The slice defines the ownership boundary between projection, scientific scene and learner UI state.",
+        "review_focus": [
+          "state ownership",
+          "no duplicate academic truth",
+          "host/component boundary"
+        ]
+      },
+      {
+        "blueprint": "testing",
+        "reason": "Core reveal/protection behavior and browser parity require executable falsifiers.",
+        "review_focus": [
+          "attempt/reveal order",
+          "protected move",
+          "offline/browser coverage"
+        ]
+      },
+      {
+        "blueprint": "ui-ux",
+        "reason": "The learner interaction states and feedback density are user-facing.",
+        "review_focus": [
+          "self-paced flow",
+          "minimal unsolicited feedback",
+          "crux visibility",
+          "help discoverability"
+        ]
+      }
+    ],
+    "not_applicable": [
+      {
+        "blueprint": "engineering-numerics",
+        "reason": "No scientific numerical method is implemented by the shell.",
+        "review_focus": []
+      },
+      {
+        "blueprint": "migration",
+        "reason": "No persisted learner data/schema migration is authorized in this first proof.",
+        "review_focus": []
+      },
+      {
+        "blueprint": "performance",
+        "reason": "The bounded fixture-backed component is not performance-sensitive.",
+        "review_focus": []
+      }
+    ]
+  },
+  "procedure_results": [
+    {
+      "blueprint": "software-design",
+      "result": "CLEAR",
+      "evidence": [
+        "The reconciliation preserves the accepted precompiled-projection-only learner-shell boundary; curriculum/scientific truth, provider compilation and mastery remain outside page ownership.",
+        "The live predecessor is an explicit ancestor of the builder branch, and the reconciliation does not duplicate scientific scene state or subject rules in learner-page code."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "coding",
+      "result": "CLEAR",
+      "evidence": [
+        "The bounded reconciliation introduces no new subject-specific learner behavior; it carries the predecessor interaction fix and generated public parity through the existing small component/runtime interfaces.",
+        "Exact-head product validation at dd8916a82a035e553890887983e1b8cd785405c0 reports no code or generated-artifact failure."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "testing",
+      "result": "CLEAR",
+      "evidence": [
+        "Guardrails run 35681793585 passed on dd8916a82a035e553890887983e1b8cd785405c0 with 1000 repository tests.",
+        "The real-browser workbench contract passed, alongside generated-artifact freshness and JSON validation."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "code-review",
+      "result": "CLEAR",
+      "evidence": [
+        "EP-TA-011 scope excludes Physics/**, Learners/** and production #173/#174 implementation, and the reconciliation stayed within the declared workbench/generated/control surfaces.",
+        "The historical certification records were restored unchanged while fresh current-route receipts were added, avoiding mutation of prior governance evidence."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "accessibility",
+      "result": "CLEAR",
+      "evidence": [
+        "The exact-head real-browser contract remains green for keyboard interaction, touch/pointer parity, text summary, narrow layout and reduced-motion behavior.",
+        "The learner shell continues to reuse the existing semantic-workbench accessibility behavior rather than introducing a competing interaction layer."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "ui-ux",
+      "result": "CLEAR",
+      "evidence": [
+        "The accepted commit-before-reveal, staged support/crux visibility and protected transfer-decision behavior remain unchanged by the reconciliation.",
+        "No new unsolicited feedback, page-local pedagogy inference or subject-specific branching was added in the bounded post-checkpoint work."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "github-delivery",
+      "result": "CLEAR",
+      "evidence": [
+        "PR #178 is open, draft and mergeable against the live predecessor; its Issue/EP/WP correlations remain explicit and its draft state is truthful.",
+        "V2.5 run 35681793572 passed on dd8916a82a035e553890887983e1b8cd785405c0 using the normal candidate path with no errors after the deferred admission control was satisfied."
+      ],
+      "reason": null,
+      "cause": null
+    }
+  ],
+  "findings": [],
+  "overall_state": "CLEAR",
+  "execution_effect": {
+    "blocks_execution": false,
+    "blocking_findings": []
+  },
+  "owner_report": {
+    "summary": "The bounded learner-shell reconciliation is quality-clear: predecessor interaction behavior, generated parity, browser accessibility, product tests and current-route delivery controls coexist on one validated tree.",
+    "visible_risks": [
+      "Production provider integration remains outside this reconciliation package and is not claimed by this review.",
+      "The pull request remains draft; quality clearance does not itself authorize merge or release."
+    ],
+    "decisions_required": []
+  },
+  "successor_handover": {
+    "unresolved_findings": [],
+    "follow_up": [
+      "Keep production provider integration separately admitted when its upstream inputs are delivered.",
+      "Keep provider ready/merge/checkpoint/release actions under their existing Owner-reserved authority."
+    ]
+  }
+}
