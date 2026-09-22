@@ -4,7 +4,7 @@ import subprocess
 import unittest
 from pathlib import Path
 
-from Shared.tools import build_core_learning_data, build_core_learning_runtime, build_manifest
+from Shared.tools import build_core_learning_data, build_core_learning_host, build_core_learning_runtime, build_manifest
 
 REPO = Path(__file__).resolve().parents[1]
 
@@ -112,6 +112,50 @@ class WorkbenchRuntimeNodeTests(unittest.TestCase):
         for relative, expected in rendered.items():
             with self.subTest(path=relative):
                 self.assertEqual((REPO / relative).read_bytes(), expected)
+
+    def test_core_learning_hosts_are_generated_from_one_source(self):
+        rendered = build_core_learning_host.render()
+        self.assertEqual(
+            set(rendered),
+            {
+                "public/core-learning/index.html",
+                "standalone/core-learning/index.html",
+            },
+        )
+        for relative, expected in rendered.items():
+            with self.subTest(path=relative):
+                self.assertEqual((REPO / relative).read_bytes(), expected)
+
+        public = rendered["public/core-learning/index.html"].decode("utf-8")
+        standalone = rendered["standalone/core-learning/index.html"].decode("utf-8")
+        self.assertIn('<script src="./data.js"></script>', public)
+        self.assertIn('import "../js/core-learning/semantic-workbench.mjs";', public)
+        self.assertIn(
+            '<script src="../../public/core-learning/data.js"></script>',
+            standalone,
+        )
+        self.assertIn(
+            'import "../../public/js/core-learning/semantic-workbench.mjs";',
+            standalone,
+        )
+        normalized_standalone = (
+            standalone
+            .replace("../../public/core-learning/data.js", "./data.js")
+            .replace("../../public/js/core-learning", "../js/core-learning")
+        )
+        self.assertEqual(public, normalized_standalone)
+
+    def test_core_learning_host_generator_stays_subject_neutral(self):
+        source = (REPO / "Shared/tools/build_core_learning_host.py").read_text(encoding="utf-8")
+        for forbidden in (
+            "Physics/",
+            "Mathematics/",
+            "Shared.library",
+            "teaching_routes",
+            "knowledge_percentage",
+            "mastery_state",
+        ):
+            self.assertNotIn(forbidden, source)
 
     def test_manifest_classifies_workbench_es_modules(self):
         runtime = REPO / "Shared/workbench/runtime.mjs"

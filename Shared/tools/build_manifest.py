@@ -22,7 +22,7 @@ REPO = Path(__file__).resolve().parents[2]
 if __package__ in (None, ""):
     sys.path.insert(0, str(REPO))
 
-from Shared.tools import build_core_learning_data, build_core_learning_runtime, build_web_data  # noqa: E402
+from Shared.tools import build_core_learning_data, build_core_learning_host, build_core_learning_runtime, build_web_data  # noqa: E402
 
 MANIFEST = REPO / "docs" / "architecture-manifest.json"
 
@@ -35,6 +35,7 @@ ROLES = [
     ("Shared/tools", "TOOLING", "Guardrails and generators"),
     ("public/core-learning", "WEB", "Static Core learner host and generated projection data"),
     ("public/js/core-learning", "WEB_RUNTIME", "Generated public Core learner runtime"),
+    ("standalone/core-learning", "WEB", "Generated standalone Core learner host"),
     ("tests", "TEST", "Executable checks"),
     ("tools", "WEB", "Browsable surfaces over generated data"),
 ]
@@ -95,6 +96,7 @@ def generated_files() -> dict[str, bytes]:
             build_web_data.render(build_web_data.build()).encode("utf-8")
     }
     generated.update(build_core_learning_data.rendered_file())
+    generated.update(build_core_learning_host.render())
     generated.update(build_core_learning_runtime.render())
     return generated
 
@@ -184,6 +186,7 @@ def main() -> int:
         return 0
     build_web_data.write()
     build_core_learning_data.write()
+    build_core_learning_host.write()
     build_core_learning_runtime.write()
     MANIFEST.parent.mkdir(parents=True, exist_ok=True)
     MANIFEST.write_text(json.dumps(current, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")

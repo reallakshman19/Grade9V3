@@ -827,3 +827,110 @@ test("public static Core learner host mounts precompiled provider projections", 
     await new Promise((resolveClose) => staticServer.server.close(resolveClose));
   }
 });
+
+test("public and standalone Core learner hosts preserve equivalent Core1B behavior", { skip: !driverPath, timeout: 30000 }, async () => {
+  const staticServer = await openStaticServer();
+  const driverProcess = await startDriver(driverPath);
+  const driver = new WebDriver(driverProcess.base);
+  const projectionId = "fixture:core1b";
+  const paths = [
+    "/public/core-learning/index.html",
+    "/standalone/core-learning/index.html",
+  ];
+  const snapshots = [];
+  try {
+    await driver.open();
+    for (const path of paths) {
+      await driver.navigate(
+        `${staticServer.origin}${path}?projection=${encodeURIComponent(projectionId)}`,
+      );
+      await driver.waitFor("return window.__coreLearningStaticHostReady === true;");
+
+      const initial = await driver.execute(`
+        const learner = document.querySelector("#learner");
+        return {
+          providerStatus: window.GRADE9V3_CORE.provider_status,
+          selected: document.querySelector("#projection-select").value,
+          core: learner.state.core,
+          stage: learner.state.stage,
+          attempted: learner.state.attempted,
+          reconstructionVisible: learner.state.reconstructionVisible,
+        };
+      `);
+      const before = await driver.execute(
+        "return document.querySelector('#learner').shadowRoot.innerHTML;",
+      );
+      assert.doesNotMatch(
+        before,
+        /A supplied relation follows from the supplied representation and conditions/,
+      );
+
+      const attemptInput = await driver.shadowElement("#learner", "[data-attempt-input]");
+      await driver.sendKeys(attemptInput, "learner reconstruction");
+      const commit = await driver.shadowElement("#learner", '[data-action="commit"]');
+      await driver.sendKeys(commit, ENTER);
+      await driver.waitFor(
+        "return document.querySelector('#learner').state.stage === 'RECONSTRUCTION_VISIBLE';",
+      );
+
+      const after = await driver.execute(`
+        const learner = document.querySelector("#learner");
+        return {
+          core: learner.state.core,
+          stage: learner.state.stage,
+          attempted: learner.state.attempted,
+          attemptCount: learner.state.attemptCount,
+          reconstructionVisible: learner.state.reconstructionVisible,
+          html: learner.shadowRoot.innerHTML,
+        };
+      `);
+      assert.match(
+        after.html,
+        /A supplied relation follows from the supplied representation and conditions/,
+      );
+
+      const resources = await driver.execute(
+        "return performance.getEntriesByType('resource').map((entry) => entry.name);",
+      );
+      const httpResources = resources.filter((url) => /^https?:/.test(url));
+      assert.ok(httpResources.length >= 4, JSON.stringify(resources));
+      assert.equal(
+        httpResources.every((url) => url.startsWith(staticServer.origin)),
+        true,
+        JSON.stringify(resources),
+      );
+      snapshots.push({
+        initial,
+        after: {
+          core: after.core,
+          stage: after.stage,
+          attempted: after.attempted,
+          attemptCount: after.attemptCount,
+          reconstructionVisible: after.reconstructionVisible,
+        },
+      });
+    }
+
+    assert.deepEqual(snapshots[0], snapshots[1]);
+    assert.deepEqual(snapshots[0].initial, {
+      providerStatus: "FROZEN_PRECOMPILED_FIXTURE",
+      selected: projectionId,
+      core: "CORE1B",
+      stage: "AWAITING_ATTEMPT",
+      attempted: false,
+      reconstructionVisible: false,
+    });
+    assert.deepEqual(snapshots[0].after, {
+      core: "CORE1B",
+      stage: "RECONSTRUCTION_VISIBLE",
+      attempted: true,
+      attemptCount: 1,
+      reconstructionVisible: true,
+    });
+  } finally {
+    await driver.close();
+    driverProcess.child.kill("SIGTERM");
+    await new Promise((resolveClose) => staticServer.server.close(resolveClose));
+  }
+});
+
