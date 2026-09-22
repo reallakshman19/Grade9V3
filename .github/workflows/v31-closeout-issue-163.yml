@@ -1,0 +1,114 @@
+name: v31-closeout-issue-163
+
+on:
+  push:
+    branches:
+      - relay/v31-closeout-issue-163-runner
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  closeout:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout merged main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Checkout pinned Engineering Relay V3.1
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: edb845f06f32c87453dee6fbfcc2f84937017279
+          path: _common_v31
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install relay dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+
+      - name: Validate current V3.1 authority
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_default.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_cutover.py . validate
+
+      - name: Sync merged provider readback
+        run: |
+          cat > /tmp/pr192-delivery.yaml <<'YAML'
+          schema_version: relay-v3.1-delivery-status
+          authority: PROVIDER_READBACK
+          vehicle:
+            provider: GITHUB
+            kind: PULL_REQUEST
+            number: 192
+          observed_at: '2026-09-22T16:24:37Z'
+          provider_ref: 'github:reallaksh19/Grade9V3#192@4cb2da0b94e876ee294577d76b3c9ee6f4bb10c2'
+          lifecycle: MERGED
+          checks: PASS
+          review: NOT_APPLICABLE
+          mergeability: NOT_APPLICABLE
+          YAML
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . sync-delivery             --tx-id TX-V31-SYNC-ISS163-MERGED-001             --event-id EVT-V31-SYNC-ISS163-MERGED-001             --actor chatgpt-sol-portable-v31-20260922             --observation /tmp/pr192-delivery.yaml
+
+      - name: Resolve consumed Owner merge authority
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . resolve-control             --tx-id TX-V31-RESOLVE-ISS163-MERGE-001             --event-id EVT-V31-RESOLVE-ISS163-MERGE-001             --actor chatgpt-sol-portable-v31-20260922             --control-id CTRL-OWNER-MERGE-ISS163-PORTABLE-20260922             --evidence 'PR 192 merged at 4cb2da0b94e876ee294577d76b3c9ee6f4bb10c2 under V3.1 MERGE authorization.'             --base-ref origin/main
+
+      - name: Prove and close delivered task
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py CLOSE_TASK .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . close             --tx-id TX-V31-CLOSE-ISS163-001             --event-id EVT-V31-CLOSE-ISS163-001             --actor chatgpt-sol-portable-v31-20260922
+
+      - name: Reconcile roadmap completion
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import copy, yaml
+          root = Path(".")
+          current = yaml.safe_load((root / "relay/ROADMAP/ROADMAP.yaml").read_text(encoding="utf-8"))
+          after = copy.deepcopy(current)
+          after["revision"] = "RM-V31-ISS163-PORTABLE-003"
+          after["owner"]["current_goal"] = "Prove Grade-9 Physics exit readiness and Grade-10 transition from canonical Grade-9 scope plus existing learner evidence, without a mastery percentage or second learner truth store."
+          found = False
+          for wp in after["work_packages"]:
+              if wp["id"] == "WP-PORTABLE-163":
+                  assert wp["state"] == "ACTIVE"
+                  wp["state"] = "COMPLETE"
+                  found = True
+          assert found
+          rec = {
+              "schema_version": "relay-v3.1-roadmap-reconciliation",
+              "authority": "PROPOSED_RECONCILIATION",
+              "expected_revision": current["revision"],
+              "disposition": "COMPLETE_WORK_PACKAGE",
+              "basis": [
+                  "PR 192 is provider-readback MERGED at 4cb2da0b94e876ee294577d76b3c9ee6f4bb10c2.",
+                  "CP-PORTABLE-163-V31-001 is accepted with all six acceptance criteria PASS and quality CLEAR.",
+                  "Issue 169 / WP-TA-105 is the already-planned successor lane for Grade-9 exit readiness.",
+              ],
+              "roadmap_after": after,
+          }
+          Path("/tmp/roadmap-closeout.yaml").write_text(yaml.safe_dump(rec, sort_keys=False), encoding="utf-8")
+          PY
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . reconcile-roadmap             --tx-id TX-V31-ROADMAP-ISS163-COMPLETE-001             --event-id EVT-V31-ROADMAP-ISS163-COMPLETE-001             --actor chatgpt-sol-portable-v31-20260922             --reconciliation /tmp/roadmap-closeout.yaml             --base-ref origin/main
+
+      - name: Validate closed V3.1 authority
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_cutover.py . validate
+
+      - name: Commit closeout directly to main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add relay
+          git commit -m "[relay-v3.1] close Issue 163 portability delivery"
+          git push origin HEAD:main
