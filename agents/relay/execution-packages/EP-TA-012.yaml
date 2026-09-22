@@ -1,0 +1,1051 @@
+{
+  "schema_version": "relay-v2.5",
+  "identity": {
+    "ep_id": "EP-TA-012",
+    "branch": "builder/core-learning-pages-r1",
+    "base_ref": "37dc1903eb3688806d16d67ab5aa20ce95d47d63",
+    "execution_state": "EXECUTABLE",
+    "previous_checkpoint": "CP-TA-011",
+    "previous_join": null,
+    "previous_replan": null
+  },
+  "replan_inheritance": null,
+  "git_basis": {
+    "expected_branch": "builder/core-learning-pages-r1",
+    "material_ref": "37dc1903eb3688806d16d67ab5aa20ce95d47d63",
+    "base_branch": "origin/takeover/grade9-exit-transition-r2",
+    "base_observed_ref": "cb7a0cfeec0e14494e2c462791f0ce3cf7fb334b",
+    "drift_policy": "RECHECK_BEFORE_WRITE",
+    "drift_receipt": null
+  },
+  "roadmap_source": {
+    "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
+    "roadmap_revision": "RM-0013",
+    "objective": "OBJ-TOPIC-ATLAS-COMPLETE",
+    "phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "work_package": "WP-TA-109",
+    "generated_from_frontier": true,
+    "task_admission": {
+      "disposition": "ADDED_EXECUTION_WP",
+      "searched_paths": [
+        "CP-TA-011",
+        "Issue #175",
+        "public/core-learning/index.html",
+        "Shared/tools/build_core_learning_data.py",
+        "Shared/tools/build_core_learning_runtime.py"
+      ],
+      "basis": [
+        "CP-TA-011 leaves generated host parity as explicit follow-on work.",
+        "ODR-0013 admits this independent slice while provider integration remains unlanded."
+      ]
+    }
+  },
+  "outcome": {
+    "user_visible": [
+      "The same Core learner activity opens through public and standalone repository hosts generated from one source."
+    ],
+    "engineering": [
+      "One subject-neutral generator owns both host documents.",
+      "Both hosts consume the same generated precompiled projection data and Shared-derived runtime authority.",
+      "No raw-subject compilation, mastery state, or page-local science is introduced."
+    ]
+  },
+  "context_capsule": {
+    "product_goal": "Eliminate separately maintained learner-host markup while preserving the accepted Core learner runtime and static/offline repository operation.",
+    "roadmap_position": "WP-TA-109 is the sole RM-0013 frontier after CP-TA-011.",
+    "why_this_work_exists": "Issue #175 requires generated standalone/public parity independently of the still-unmerged production provider.",
+    "current_architecture": "public/core-learning/index.html is hand-maintained while data.js and public/js/core-learning modules are generated; no standalone Core learner host exists.",
+    "prior_owner_decisions": [
+      "ODR-0009-WEB-BUILDER-START",
+      "ODR-0013-WEB-BUILDER-HOST-PARITY"
+    ],
+    "current_implementation_state": "CP-TA-011 proves the reusable projection-driven learner shell, semantic-workbench reuse, protected disclosure and browser accessibility.",
+    "known_problems": [
+      "Public host markup is hand-maintained.",
+      "No standalone Core learner host exists.",
+      "Production #173/#174 provider is unmerged."
+    ],
+    "deliberate_non_goals": [
+      "Do not change learner state/reveal behavior.",
+      "Do not compile raw subject/library/matrix data.",
+      "Do not add mastery/routing policy.",
+      "Do not migrate bespoke explorers.",
+      "Do not claim Issue #175 complete."
+    ],
+    "terminology": {
+      "host": "Static HTML entry point mounting a precompiled CoreProjection through shared runtime.",
+      "parity": "Equivalent projection/runtime/state behavior from one generated host source; relative asset paths may differ."
+    }
+  },
+  "repository_discovery": [
+    {
+      "id": "DSTEP-TA12-001",
+      "action": "VERIFY",
+      "targets": [
+        "CP-TA-011",
+        "agents/relay/REPO_STATE.yaml",
+        "GitHub PR #178"
+      ],
+      "question": "Is WP-TA-109 the sole current frontier with clean predecessor custody?",
+      "expected_outputs": [
+        "checkpoint predecessor",
+        "current route",
+        "delivery vehicle"
+      ],
+      "receipt_required": true,
+      "on_failure": "Stop on stale or ambiguous custody."
+    },
+    {
+      "id": "DSTEP-TA12-002",
+      "action": "INSPECT",
+      "targets": [
+        "public/core-learning/index.html",
+        "Shared/tools/build_core_learning_data.py",
+        "Shared/tools/build_core_learning_runtime.py"
+      ],
+      "question": "Which host markup is hand-maintained and which generated authorities must both hosts reuse?",
+      "expected_outputs": [
+        "hand-maintained host",
+        "generated data authority",
+        "generated runtime authority"
+      ],
+      "receipt_required": true,
+      "on_failure": "Stop if parity needs a second authority."
+    },
+    {
+      "id": "DSTEP-TA12-003",
+      "action": "VERIFY",
+      "targets": [
+        "Issue #175",
+        "Issue #173",
+        "Issue #174",
+        "PR #176",
+        "PR #177"
+      ],
+      "question": "Is host parity current builder scope while production provider remains unavailable?",
+      "expected_outputs": [
+        "host parity requirement",
+        "provider readiness"
+      ],
+      "receipt_required": true,
+      "on_failure": "Reconcile scope before writes."
+    },
+    {
+      "id": "DSTEP-TA12-004",
+      "action": "VERIFY_GIT",
+      "targets": [
+        "live checkout"
+      ],
+      "question": "Does live Git context match EP-TA-012 branch/material/base?",
+      "expected_outputs": [
+        "branch",
+        "HEAD",
+        "material-ref ancestry",
+        "base drift result"
+      ],
+      "receipt_required": true,
+      "on_failure": "Reconcile Git before writes."
+    }
+  ],
+  "inputs": [
+    {
+      "id": "INPUT-TA12-001",
+      "name": "Accepted Core learner runtime",
+      "description": "CP-TA-011 learner component/workbench integration reused unchanged.",
+      "authority": "CP-TA-011",
+      "source": "Shared/workbench/core-learning-page.mjs; Shared/workbench/core-learning-host.mjs",
+      "value": "Accepted reusable learner runtime",
+      "resolution_method": "Read CP-TA-011 and Shared/workbench public API.",
+      "type": "RUNTIME",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "consumers": [
+        "STEP-TA12-001",
+        "STEP-TA12-002"
+      ],
+      "validation": [
+        "Host generation does not alter learner state behavior."
+      ],
+      "stale_if": [
+        "Learner-host API changes."
+      ]
+    },
+    {
+      "id": "INPUT-TA12-002",
+      "name": "Generated precompiled Core data/runtime",
+      "description": "Fixture-backed data and Shared-derived public modules reused by both hosts.",
+      "authority": "Shared Core learner generators",
+      "source": "public/core-learning/data.js; public/js/core-learning/",
+      "value": "FROZEN_PRECOMPILED_FIXTURE + generated runtime",
+      "resolution_method": "Run/read existing Core learner generators.",
+      "type": "GENERATED_DATA",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "consumers": [
+        "STEP-TA12-001",
+        "STEP-TA12-002"
+      ],
+      "validation": [
+        "No raw subject inputs or second projection database."
+      ],
+      "stale_if": [
+        "Production provider replaces fixture package."
+      ]
+    },
+    {
+      "id": "INPUT-TA12-003",
+      "name": "Issue #175 host parity contract",
+      "description": "Generate public/standalone learner surfaces from one source/build path.",
+      "authority": "Owner Issue #175",
+      "source": "https://github.com/reallaksh19/Grade9V3/issues/175",
+      "value": "Generated public/standalone parity",
+      "resolution_method": "Read current Issue #175 acceptance.",
+      "type": "OWNER_PRODUCT_CONTRACT",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "consumers": [
+        "STEP-TA12-001",
+        "STEP-TA12-002",
+        "STEP-TA12-003"
+      ],
+      "validation": [
+        "Both hosts expose the same projection/runtime behavior."
+      ],
+      "stale_if": [
+        "Issue ownership changes."
+      ]
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": "BENCH-TA12-001",
+      "name": "Single-source host golden",
+      "purpose": "Verify both host documents are generated by one contract.",
+      "source": "Shared/tools/build_core_learning_host.py",
+      "oracle_class": "FROZEN_GOLDEN",
+      "payload": [
+        "public/core-learning/index.html",
+        "standalone/core-learning/index.html"
+      ],
+      "expected": "Both checked-in hosts exactly match generated bytes; only configured relative asset paths/context differ.",
+      "tolerance": null,
+      "independence": "Fresh generator output is mechanically compared with committed files.",
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "verifies": [
+        "AC-TA12-001",
+        "AC-TA12-003",
+        "TEST-TA12-001",
+        "TEST-TA12-003"
+      ],
+      "stale_if": [
+        "Host generator changes."
+      ]
+    },
+    {
+      "id": "BENCH-TA12-002",
+      "name": "Browser host parity",
+      "purpose": "Observe equivalent learner state through both hosts.",
+      "source": "ChromeDriver browser contract",
+      "oracle_class": "OBSERVATIONAL",
+      "payload": [
+        "fixture:core1b public host",
+        "fixture:core1b standalone host",
+        "local resource list"
+      ],
+      "expected": "Both mount CORE1B at AWAITING_ATTEMPT, hide reconstruction before commit, reveal postcommit, and use repository-local resources.",
+      "tolerance": null,
+      "independence": "Browser observes shipped artifacts independently.",
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "verifies": [
+        "AC-TA12-002",
+        "AC-TA12-004",
+        "TEST-TA12-002",
+        "TEST-TA12-004"
+      ],
+      "stale_if": [
+        "Host contract changes."
+      ]
+    }
+  ],
+  "scope": {
+    "allowed": [
+      {
+        "path": "Shared/tools/build_core_learning_host.py",
+        "reason": "Single host generator."
+      },
+      {
+        "path": "Shared/tools/build_manifest.py",
+        "reason": "Generated host freshness."
+      },
+      {
+        "path": "public/core-learning/index.html",
+        "reason": "Generated public host."
+      },
+      {
+        "path": "standalone/core-learning/index.html",
+        "reason": "Generated standalone host."
+      },
+      {
+        "path": "tests/test_workbench_runtime.py",
+        "reason": "Generator contract tests."
+      },
+      {
+        "path": "tests/workbench_browser.test.mjs",
+        "reason": "Browser parity proof."
+      },
+      {
+        "path": "docs/architecture-manifest.json",
+        "reason": "Derived manifest."
+      },
+      {
+        "path": "agents/relay/",
+        "reason": "Execution/evidence state."
+      }
+    ],
+    "allowed_reads": [
+      {
+        "path": "Shared/workbench/",
+        "reason": "Reuse accepted runtime."
+      },
+      {
+        "path": "Shared/tools/build_core_learning_data.py",
+        "reason": "Reuse projection input."
+      },
+      {
+        "path": "Shared/tools/build_core_learning_runtime.py",
+        "reason": "Reuse runtime output."
+      },
+      {
+        "path": "Issue #175 / PR #178",
+        "reason": "Verify scope/delivery."
+      }
+    ],
+    "protected": [
+      {
+        "invariant": "Core learner state/reveal behavior remains unchanged.",
+        "reason": "Host parity only."
+      },
+      {
+        "invariant": "Hosts do not own subject truth.",
+        "reason": "Projection boundary."
+      },
+      {
+        "invariant": "Both hosts reuse one data/runtime authority.",
+        "reason": "No duplicate source ownership."
+      }
+    ],
+    "prohibited": [
+      {
+        "domain": "Physics/** or Mathematics/** semantic edits",
+        "reason": "Outside WP-TA-109."
+      },
+      {
+        "domain": "#173/#174 compiler implementation",
+        "reason": "Provider-owned."
+      },
+      {
+        "domain": "mastery persistence",
+        "reason": "Outside builder."
+      },
+      {
+        "domain": "bespoke explorer migration",
+        "reason": "Later package."
+      }
+    ],
+    "owner_reserved": [
+      {
+        "decision": "Merge PR #178 or close Issue #175.",
+        "reason": "Not implied by host parity."
+      }
+    ]
+  },
+  "anti_drift": {
+    "do_not": [
+      {
+        "id": "ADR-TA12-001",
+        "restriction": "Do not hand-maintain separate public and standalone host templates.",
+        "reason": "One source is required."
+      },
+      {
+        "id": "ADR-TA12-002",
+        "restriction": "Do not add raw subject/equation/answer/mastery logic.",
+        "reason": "Authority remains upstream."
+      },
+      {
+        "id": "ADR-TA12-003",
+        "restriction": "Do not change learner state behavior.",
+        "reason": "CP-TA-011 predecessor."
+      }
+    ],
+    "stale_if": [
+      {
+        "id": "STALE-TA12-001",
+        "condition": "Learner-host API changes.",
+        "effect": "STALE",
+        "rationale": "Bindings may need rebasing."
+      },
+      {
+        "id": "STALE-TA12-002",
+        "condition": "Production provider lands with different data entry contract.",
+        "effect": "RECONCILE",
+        "rationale": "Consume production interface."
+      },
+      {
+        "id": "STALE-TA12-003",
+        "condition": "RM-0013 changes WP-TA-109 scope.",
+        "effect": "STALE",
+        "rationale": "EP no longer matches roadmap."
+      }
+    ]
+  },
+  "implementation_plan": [
+    {
+      "id": "STEP-TA12-001",
+      "objective": "Create one subject-neutral generator for both Core learner hosts.",
+      "targets": [
+        "Shared/tools/build_core_learning_host.py",
+        "public/core-learning/index.html",
+        "standalone/core-learning/index.html",
+        "Shared/tools/build_manifest.py"
+      ],
+      "reads": [
+        "current public host",
+        "existing data/runtime generators"
+      ],
+      "writes": [
+        "Shared/tools/build_core_learning_host.py",
+        "public/core-learning/index.html",
+        "standalone/core-learning/index.html",
+        "Shared/tools/build_manifest.py"
+      ],
+      "inputs": [
+        "INPUT-TA12-001",
+        "INPUT-TA12-002",
+        "INPUT-TA12-003"
+      ],
+      "acceptance": [
+        "AC-TA12-001",
+        "AC-TA12-003"
+      ],
+      "tests": [
+        "TEST-TA12-001",
+        "TEST-TA12-003"
+      ],
+      "expected_state": "Both hosts are generated from one source and common authorities.",
+      "stop_conditions": [
+        "Stop if second academic authority is required."
+      ]
+    },
+    {
+      "id": "STEP-TA12-002",
+      "objective": "Prove public/standalone browser parity.",
+      "targets": [
+        "tests/workbench_browser.test.mjs"
+      ],
+      "reads": [
+        "both generated hosts"
+      ],
+      "writes": [
+        "tests/workbench_browser.test.mjs"
+      ],
+      "inputs": [
+        "INPUT-TA12-001",
+        "INPUT-TA12-002"
+      ],
+      "acceptance": [
+        "AC-TA12-002",
+        "AC-TA12-004"
+      ],
+      "tests": [
+        "TEST-TA12-002",
+        "TEST-TA12-004"
+      ],
+      "expected_state": "Same Core1B attempt/reveal path and local resources in both hosts.",
+      "stop_conditions": [
+        "Stop on host-specific pedagogy."
+      ]
+    },
+    {
+      "id": "STEP-TA12-003",
+      "objective": "Enforce freshness and collect exact-head evidence.",
+      "targets": [
+        "tests/test_workbench_runtime.py",
+        "docs/architecture-manifest.json",
+        "agents/relay/"
+      ],
+      "reads": [
+        "generated outputs"
+      ],
+      "writes": [
+        "tests/test_workbench_runtime.py",
+        "docs/architecture-manifest.json",
+        "agents/relay/"
+      ],
+      "inputs": [
+        "INPUT-TA12-003"
+      ],
+      "acceptance": [
+        "AC-TA12-001",
+        "AC-TA12-002",
+        "AC-TA12-003",
+        "AC-TA12-004"
+      ],
+      "tests": [
+        "TEST-TA12-001",
+        "TEST-TA12-002",
+        "TEST-TA12-003",
+        "TEST-TA12-004"
+      ],
+      "expected_state": "Host parity mechanically/browser proven without provider-completion claim.",
+      "stop_conditions": [
+        "Stop on drift, external dependency, subject duplication, or browser mismatch."
+      ]
+    }
+  ],
+  "next_work": {
+    "phase_transition": false,
+    "steps": [
+      {
+        "order": 1,
+        "action": "Generate both hosts from one source.",
+        "targets": [
+          "host generator",
+          "both hosts",
+          "manifest generator"
+        ],
+        "inputs": [
+          "INPUT-TA12-001",
+          "INPUT-TA12-002",
+          "INPUT-TA12-003"
+        ],
+        "tests": [
+          "TEST-TA12-001",
+          "TEST-TA12-003"
+        ],
+        "benchmarks": [
+          "BENCH-TA12-001"
+        ],
+        "acceptance": [
+          "AC-TA12-001",
+          "AC-TA12-003"
+        ],
+        "expected_result": "One generator owns both hosts.",
+        "stop_if": [
+          "Second authority required."
+        ],
+        "execution_requirement": null
+      },
+      {
+        "order": 2,
+        "action": "Run real-browser host parity.",
+        "targets": [
+          "browser test"
+        ],
+        "inputs": [
+          "INPUT-TA12-001",
+          "INPUT-TA12-002"
+        ],
+        "tests": [
+          "TEST-TA12-002",
+          "TEST-TA12-004"
+        ],
+        "benchmarks": [
+          "BENCH-TA12-002"
+        ],
+        "acceptance": [
+          "AC-TA12-002",
+          "AC-TA12-004"
+        ],
+        "expected_result": "Equivalent state/resources.",
+        "stop_if": [
+          "Host-specific academic behavior appears."
+        ],
+        "execution_requirement": null
+      },
+      {
+        "order": 3,
+        "action": "Regenerate derived artifacts and collect evidence.",
+        "targets": [
+          "tests",
+          "manifest",
+          "relay",
+          "PR #178"
+        ],
+        "inputs": [
+          "INPUT-TA12-003"
+        ],
+        "tests": [
+          "TEST-TA12-001",
+          "TEST-TA12-002",
+          "TEST-TA12-003",
+          "TEST-TA12-004"
+        ],
+        "benchmarks": [
+          "BENCH-TA12-001",
+          "BENCH-TA12-002"
+        ],
+        "acceptance": [
+          "AC-TA12-001",
+          "AC-TA12-002",
+          "AC-TA12-003",
+          "AC-TA12-004"
+        ],
+        "expected_result": "Exact-head parity proven.",
+        "stop_if": [
+          "Unresolved acceptance/control."
+        ],
+        "execution_requirement": null
+      }
+    ]
+  },
+  "qualification_boundary": {
+    "required": false,
+    "trigger": null,
+    "from_phase": null,
+    "to_phase": null,
+    "changed_dimensions": [],
+    "basis": [
+      "WP-TA-109 continues the same precompiled projection authority, learner runtime, protected invariants, and browser/generated verification classes accepted by CP-TA-011; only host generation/packaging changes."
+    ],
+    "question_policy": "DEFAULT",
+    "question_policy_basis": [],
+    "not_applicable_reason": null,
+    "question_set": null
+  },
+  "quality": {
+    "applicable": [
+      {
+        "blueprint": "software-design",
+        "reason": "The slice defines the ownership boundary between projection, scientific scene and learner UI state.",
+        "review_focus": [
+          "state ownership",
+          "no duplicate academic truth",
+          "host/component boundary"
+        ]
+      },
+      {
+        "blueprint": "coding",
+        "reason": "New reusable browser runtime code will be added.",
+        "review_focus": [
+          "small API",
+          "deterministic state transitions",
+          "failure semantics"
+        ]
+      },
+      {
+        "blueprint": "testing",
+        "reason": "Core reveal/protection behavior and browser parity require executable falsifiers.",
+        "review_focus": [
+          "attempt/reveal order",
+          "protected move",
+          "offline/browser coverage"
+        ]
+      },
+      {
+        "blueprint": "code-review",
+        "reason": "Generic runtime code can silently accumulate subject/pedagogy policy.",
+        "review_focus": [
+          "subject neutrality",
+          "event vocabulary",
+          "scope containment"
+        ]
+      },
+      {
+        "blueprint": "accessibility",
+        "reason": "Issue #175 explicitly requires keyboard/touch/text/announcement/zoom-safe behavior.",
+        "review_focus": [
+          "focus/keyboard",
+          "aria-live",
+          "text fallback",
+          "narrow layout",
+          "no color-only meaning"
+        ]
+      },
+      {
+        "blueprint": "ui-ux",
+        "reason": "The learner interaction states and feedback density are user-facing.",
+        "review_focus": [
+          "self-paced flow",
+          "minimal unsolicited feedback",
+          "crux visibility",
+          "help discoverability"
+        ]
+      },
+      {
+        "blueprint": "github-delivery",
+        "reason": "Issue #175 must remain correlated with its EP/PR and provider dependency state.",
+        "review_focus": [
+          "Issue↔EP↔WP↔PR correlation",
+          "stacked predecessor",
+          "provider blockers"
+        ]
+      }
+    ],
+    "not_applicable": [
+      {
+        "blueprint": "engineering-numerics",
+        "reason": "No scientific numerical method is implemented by the shell."
+      },
+      {
+        "blueprint": "performance",
+        "reason": "The bounded fixture-backed component is not performance-sensitive."
+      },
+      {
+        "blueprint": "migration",
+        "reason": "No persisted learner data/schema migration is authorized in this first proof."
+      }
+    ],
+    "review_contract": {
+      "required": true,
+      "required_before_checkpoint": true,
+      "receipt_namespace": "QRV-",
+      "required_outputs": [
+        "procedure_results",
+        "findings",
+        "owner_report",
+        "successor_handover"
+      ]
+    },
+    "findings_policy": "Quality findings remain quality state unless they map to an existing acceptance, authority, protected-invariant, or safety hard-stop condition.",
+    "ordinary_findings_are_hard_stops": false
+  },
+  "acceptance": [
+    {
+      "id": "AC-TA12-001",
+      "description": "One generator sources public and standalone Core learner host HTML.",
+      "weight": 25,
+      "verification": [
+        "TEST-TA12-001",
+        "BENCH-TA12-001"
+      ]
+    },
+    {
+      "id": "AC-TA12-002",
+      "description": "Same projection reaches equivalent learner state and commit/reveal behavior through both hosts.",
+      "weight": 25,
+      "verification": [
+        "TEST-TA12-002",
+        "BENCH-TA12-002"
+      ]
+    },
+    {
+      "id": "AC-TA12-003",
+      "description": "Hosts contain no duplicated academic truth/raw-subject reconstruction/mastery policy.",
+      "weight": 25,
+      "verification": [
+        "TEST-TA12-003",
+        "BENCH-TA12-001"
+      ]
+    },
+    {
+      "id": "AC-TA12-004",
+      "description": "Both hosts are repository-local/static browser-proven and freshness is enforced.",
+      "weight": 25,
+      "verification": [
+        "TEST-TA12-004",
+        "BENCH-TA12-002"
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "id": "TEST-TA12-001",
+      "obligation_class": "MUST_PASS",
+      "class": "MUST_PASS",
+      "method": "Run host generator --check and generated-file freshness.",
+      "proves": [
+        "AC-TA12-001"
+      ]
+    },
+    {
+      "id": "TEST-TA12-002",
+      "obligation_class": "MUST_PASS",
+      "class": "MUST_PASS",
+      "method": "ChromeDriver Core1B parity through both hosts.",
+      "proves": [
+        "AC-TA12-002"
+      ]
+    },
+    {
+      "id": "TEST-TA12-003",
+      "obligation_class": "MUST_PASS",
+      "class": "MUST_PASS",
+      "method": "Audit generator/hosts for no raw subject/library/matrix/equation/mastery logic.",
+      "proves": [
+        "AC-TA12-003"
+      ]
+    },
+    {
+      "id": "TEST-TA12-004",
+      "obligation_class": "MUST_PASS",
+      "class": "MUST_PASS",
+      "method": "Local-resource browser assertions plus full guardrails and manifest freshness.",
+      "proves": [
+        "AC-TA12-004"
+      ]
+    }
+  ],
+  "failure_and_stop_conditions": {
+    "hard_stop_categories": [
+      "OWNER_DECISION_REQUIRED",
+      "ESSENTIAL_INPUT_MISSING",
+      "AUTHORITY_VIOLATION",
+      "PROTECTED_INVARIANT_FAILURE",
+      "WRITE_COLLISION",
+      "SUPERSEDED_EP",
+      "ROADMAP_CONFLICT",
+      "REPOSITORY_STATE_CONFLICT",
+      "UNSAFE_ENGINEERING_RESULT"
+    ]
+  },
+  "report_contract": {
+    "status_publication": {
+      "default_after_minutes": 25,
+      "owner_override": {
+        "source": "OWNER",
+        "mode": "DISABLED",
+        "after_minutes": null,
+        "basis": [
+          "Owner disabled scheduled status publication for this session."
+        ]
+      }
+    },
+    "sections": [
+      "Executive state",
+      "Overall / phase / EP progress",
+      "Work completed",
+      "Files changed",
+      "Acceptance matrix",
+      "Tests and evidence",
+      "Quality findings",
+      "Known limitations",
+      "Owner decisions required",
+      "GitHub issue changes",
+      "Roadmap changes",
+      "Exact next actions",
+      "Successor EP",
+      "Qualification Q1-Q5 when applicable"
+    ],
+    "payloads": [
+      {
+        "id": "RPT-STATE",
+        "section": "Executive state",
+        "sources": [
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "relay_state",
+          "current_position",
+          "execution_state",
+          "material_authority",
+          "stop"
+        ]
+      },
+      {
+        "id": "RPT-PROGRESS",
+        "section": "Overall / phase / EP progress",
+        "sources": [
+          "PROGRESS",
+          "OVERALL_ROADMAP",
+          "EP"
+        ],
+        "required_fields": [
+          "progress_basis",
+          "overall",
+          "phase",
+          "work_package",
+          "step",
+          "acceptance"
+        ]
+      },
+      {
+        "id": "RPT-WORK",
+        "section": "Work completed",
+        "sources": [
+          "EP",
+          "CP"
+        ],
+        "required_fields": [
+          "completed_steps",
+          "implementation_result"
+        ]
+      },
+      {
+        "id": "RPT-FILES",
+        "section": "Files changed",
+        "sources": [
+          "CP"
+        ],
+        "required_fields": [
+          "files_changed"
+        ]
+      },
+      {
+        "id": "RPT-AC",
+        "section": "Acceptance matrix",
+        "sources": [
+          "EP",
+          "PROGRESS",
+          "CP"
+        ],
+        "required_fields": [
+          "criterion",
+          "status",
+          "percent",
+          "basis"
+        ]
+      },
+      {
+        "id": "RPT-EVIDENCE",
+        "section": "Tests and evidence",
+        "sources": [
+          "EP",
+          "CP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "validation_id",
+          "obligation_class",
+          "status",
+          "basis_ref",
+          "not_run_reason"
+        ]
+      },
+      {
+        "id": "RPT-QUALITY",
+        "section": "Quality findings",
+        "sources": [
+          "EP",
+          "QRV",
+          "CP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "quality_review",
+          "procedures",
+          "findings",
+          "disposition",
+          "execution_effect"
+        ]
+      },
+      {
+        "id": "RPT-LIMITS",
+        "section": "Known limitations",
+        "sources": [
+          "EP",
+          "CP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "limitations",
+          "evidence_gaps",
+          "deferred_items"
+        ]
+      },
+      {
+        "id": "RPT-OWNER",
+        "section": "Owner decisions required",
+        "sources": [
+          "ODR",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "decision_required",
+          "pending_items",
+          "authority_effect"
+        ]
+      },
+      {
+        "id": "RPT-ISSUES",
+        "section": "GitHub issue changes",
+        "sources": [
+          "ISSUE_GRAPH",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "operations",
+          "relationships",
+          "projection_state"
+        ]
+      },
+      {
+        "id": "RPT-ROADMAP",
+        "section": "Roadmap changes",
+        "sources": [
+          "OVERALL_ROADMAP",
+          "ROADMAP_REVISION",
+          "PROGRESS"
+        ],
+        "required_fields": [
+          "revision",
+          "topology_or_status_change",
+          "frontier_after",
+          "progress_basis_effect"
+        ]
+      },
+      {
+        "id": "RPT-NEXT",
+        "section": "Exact next actions",
+        "sources": [
+          "EP"
+        ],
+        "required_fields": [
+          "ordered_actions",
+          "targets",
+          "inputs",
+          "tests",
+          "benchmarks",
+          "acceptance",
+          "expected_result",
+          "stop_conditions"
+        ]
+      },
+      {
+        "id": "RPT-SUCCESSOR",
+        "section": "Successor EP",
+        "sources": [
+          "CP",
+          "OVERALL_ROADMAP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "successor_mode",
+          "next_frontier",
+          "ep_or_terminal_disposition"
+        ]
+      }
+    ]
+  },
+  "checkpoint_contract": {
+    "required": true
+  },
+  "successor_relay": {
+    "required": true,
+    "duties": [
+      "reconcile current roadmap node",
+      "create checkpoint",
+      "update progress",
+      "update issue projection when applicable",
+      "compute next executable frontier",
+      "create successor EP when work continues",
+      "validate successor EP",
+      "run cold-start check",
+      "update REPO_STATE"
+    ],
+    "required_outputs": [
+      "checkpoint",
+      "progress_reconciliation",
+      "issue_projection_disposition",
+      "next_frontier",
+      "successor_ep_or_terminal_disposition"
+    ]
+  }
+}
