@@ -87,21 +87,19 @@
   },
   "projection": {
     "required": true,
-    "state": "STALE",
-    "operation_id": "GHGEN-WP108-ISS175-R1",
+    "state": "PENDING",
+    "operation_id": "GHGEN-WP108-ISS175-R3",
     "target": "github:reallaksh19/Grade9V3:issues",
     "adapter": "GITHUB_ISSUES",
-    "plan": "agents/relay/projection/generations/GHGEN-WP108-ISS175-R1.yaml",
-    "roadmap_revision": "RM-0011",
-    "execution_ref": "EP-TA-010",
-    "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
+    "plan": "agents/relay/projection/generations/GHGEN-WP108-ISS175-R3.yaml",
+    "roadmap_revision": "RM-0012",
+    "execution_ref": "EP-TA-011",
+    "receipt": null,
     "basis": [
-      "GHOBS-WP108-ISS175-R1",
-      "Issue #175 provider readback OPEN with marker GHOP-WP108-ISSUE175-ADMIT",
-      "RM-0011",
-      "EP-TA-010",
-      "ODR-0009-WEB-BUILDER-START",
-      "RM-0012/EP-TA-011 changed execution custody after the last verified Issue #175 projection; refresh before handover/release."
+      "RM-0012",
+      "EP-TA-011",
+      "Issue #175 provider readback",
+      "Prepared generation GHGEN-WP108-ISS175-R3"
     ],
     "superseded_operations": [
       {
@@ -109,25 +107,53 @@
         "target": "github:reallaksh19/Grade9V3:issues",
         "roadmap_revision": "RM-0010",
         "execution_ref": "NONE",
-        "disposition": "SUPERSEDED_BEFORE_PUBLICATION",
+        "disposition": "SUPERSEDED_AFTER_PUBLICATION_UNCONFIRMED",
         "superseded_by": "GHGEN-WP108-ISS175-R1",
-        "receipt": null,
+        "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/169",
         "basis": [
           "generation:GHGEN-WP105-ISS169-R3",
-          "superseded_by:GHGEN-WP108-ISS175-R1",
-          "Issue #169 provider delivery remains separately carried by draft PR #170"
+          "Issue #169 projection was previously published",
+          "superseded by Issue #175 admission"
+        ]
+      },
+      {
+        "operation_id": "GHGEN-WP108-ISS175-R1",
+        "target": "github:reallaksh19/Grade9V3:issues",
+        "roadmap_revision": "RM-0011",
+        "execution_ref": "EP-TA-010",
+        "disposition": "SUPERSEDED_AFTER_PUBLICATION_UNCONFIRMED",
+        "superseded_by": "GHGEN-WP108-ISS175-R2",
+        "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
+        "basis": [
+          "generation:GHGEN-WP108-ISS175-R1",
+          "Issue #175 admission was previously published",
+          "superseded by CP-TA-010 projection"
+        ]
+      },
+      {
+        "operation_id": "GHGEN-WP108-ISS175-R2",
+        "target": "github:reallaksh19/Grade9V3:issues",
+        "roadmap_revision": "RM-0011",
+        "execution_ref": "CP-TA-010",
+        "disposition": "SUPERSEDED_AFTER_PUBLICATION_UNCONFIRMED",
+        "superseded_by": "GHGEN-WP108-ISS175-R3",
+        "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
+        "basis": [
+          "generation:GHGEN-WP108-ISS175-R2",
+          "CP-TA-010 checkpoint projection was previously published",
+          "RM-0012/EP-TA-011 requires a successor projection"
         ]
       }
     ],
     "observed": {
-      "operation_id": "GHGEN-WP108-ISS175-R1",
+      "operation_id": "GHGEN-WP108-ISS175-R2",
       "target": "github:reallaksh19/Grade9V3:issues",
       "roadmap_revision": "RM-0011",
-      "execution_ref": "EP-TA-010",
+      "execution_ref": "CP-TA-010",
       "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
       "basis": [
-        "GHOBS-WP108-ISS175-R1",
-        "Issue #175 provider readback 2026-09-21T17:50:45Z"
+        "Issue #175 provider readback",
+        "previous verified checkpoint generation GHGEN-WP108-ISS175-R2"
       ]
     }
   },
@@ -154,9 +180,9 @@
     "projection_ready": false,
     "handover_ready": false,
     "reasons": [
-      "RM-0012 / EP-TA-011 has a current semantic reconciliation contract and QSET-TA-012.",
-      "Issue #175 external projection still reflects prior execution state and is STALE.",
-      "PEND-TA11-001 blocks release boundaries while bounded Owner execution continues."
+      "The current reconciliation contract and predecessor checkpoint are present.",
+      "Issue #175 has a prepared RM-0012 projection awaiting provider publication/readback.",
+      "The deferred validation blocks release boundaries while bounded reconciliation continues."
     ]
   },
   "chat_context_required": false,
