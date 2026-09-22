@@ -1,0 +1,44 @@
+schema_version: relay-v3-transaction
+id: TX-MIGRATE-RECONCILE-001
+command: RESOLVE_CONTROL
+actor: chatgpt-sol-v3-migration-20260922
+status: COMMITTED
+created_at: '2026-09-22T09:16:05Z'
+updated_at: '2026-09-22T09:16:05Z'
+operations:
+- path: relay/CONTROLS/controls.yaml
+  before_exists: true
+  before_digest: sha256:f8ac22fc44d9ef2b943ab5398229df11929b4e3f56f195e80176f3f4b19c5622
+  after_digest: sha256:083f70f14a9858aff65468cddeacd444a4010780e32b1143e6ef35fd65e0bfa2
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-001/backups/000.before
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:33435cf2ed413494731b24c925c5dfec6e8b2ea16b5095aa6077abf8de04b136
+  after_digest: sha256:bf0cee02f4f6cab0db050f62286ed8bdcf89039d4df71d4bbb6c417d822e773c
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-001/backups/001.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:e881da25d12088b8a5b4796189a5fbcf966a6ea1e3589fef15721e0d5ec9db95
+  after_digest: sha256:393c9778f46ccd6ec135c43cc428004c7960e43263ea9d87f42129239075b3b1
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-001/staged/002.after
+  backup_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-001/backups/002.before
+- path: relay/ROADMAP/ROADMAP.yaml
+  before_exists: true
+  before_digest: sha256:beb44a48a2c5ea50e7ca90da1d11c4194d7f85bd0972225f51fde19b27d30751
+  after_digest: sha256:636195d981961fd349ee577364b75ccbdb9437cf261a617bc795f6c3dc20f86c
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-001/staged/003.after
+  backup_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-001/backups/003.before
+- path: relay/STATE.yaml
+  before_exists: true
+  before_digest: sha256:15546e13462655be7dc9480fabd3bffbf25548e10b1a25f3145572835742a293
+  after_digest: sha256:6f9e898a20b940b7f672989a7d2e1b9058e17c29cbca09edb5b62b15a77354f4
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-001/staged/004.after
+  backup_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-001/backups/004.before
+applied:
+- relay/CONTROLS/controls.yaml
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/ROADMAP/ROADMAP.yaml
+- relay/STATE.yaml

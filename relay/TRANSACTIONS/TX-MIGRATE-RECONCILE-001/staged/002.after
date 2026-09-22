@@ -1,0 +1,68 @@
+schema_version: relay-v3-snapshot
+authority: DERIVED_READ_MODEL
+generated_from:
+  roadmap_revision: RM-0014
+  state_digest: sha256:5233143ea709dc3397e7e0297deb97a362bfbeaa74a6598f8d5969a648dcfa7a
+  material_basis:
+    head: 3738fca4b0894913025f37ca36af8cc746a7c658
+    tree_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+    relevant_paths_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+    dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+  coordination_head: 3738fca4b0894913025f37ca36af8cc746a7c658
+owner:
+  outcome: Continue the complex Grade9V3 engineering programme under Engineering Relay
+    V3 without weakening accepted product, roadmap, evidence, or delivery truth.
+  current_goal: 'Complete Issue #175 generated public/standalone Core learner host
+    parity from the current WP-TA-109 / EP-TA-012 frontier while staging V3 safely.'
+programme:
+  accepted_progress: 0.0
+  completed_work: []
+  remaining_work:
+  - WP-TAKEOVER-RECONCILE
+  - WP-TA-102
+  - WP-TA-106
+  - WP-TA-103
+  - WP-TA-104
+  - WP-TA-107
+  - WP-TA-105
+  - WP-TA-108
+  - WP-TA-109
+execution:
+  lifecycle: IDLE
+  work_package: null
+  ep: null
+  lease: null
+  executor: null
+scope:
+  allowed_writes: []
+  protected: []
+  prohibited: []
+material:
+  base: 3738fca4b0894913025f37ca36af8cc746a7c658
+  head: 3738fca4b0894913025f37ca36af8cc746a7c658
+  relevant_paths_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+  dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+evidence:
+  latest_checkpoint: null
+  latest_material_validation: {}
+controls:
+  execution_blockers: []
+  handover_blockers: []
+  delivery_blockers:
+  - CTRL-V25-INTELLIGENCE-CONTINUITY
+  informational: []
+delivery:
+  issue: null
+  pr: null
+  lifecycle: NOT_REQUIRED
+  merge_authorized: false
+next:
+  immediate_material_action: null
+  delivery_action: null
+  stop_conditions: []
+handoff:
+  zero_context_takeover_possible: false
+  reconstruction_sources:
+  - relay/ROADMAP/ROADMAP.yaml
+  - relay/STATE.yaml
+  - relay/CONTROLS/controls.yaml
