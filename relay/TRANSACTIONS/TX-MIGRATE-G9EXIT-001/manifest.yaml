@@ -1,0 +1,58 @@
+schema_version: relay-v3-transaction
+id: TX-MIGRATE-G9EXIT-001
+command: BOOTSTRAP_V3_MIGRATION
+actor: chatgpt-sol-v3-migration-20260922
+status: COMMITTED
+created_at: '2026-09-22T05:24:04.689838Z'
+updated_at: '2026-09-22T05:24:04.705779Z'
+operations:
+- path: relay/CONTROLS/controls.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:f8ac22fc44d9ef2b943ab5398229df11929b4e3f56f195e80176f3f4b19c5622
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-G9EXIT-001/staged/000.after
+  backup_path: null
+- path: relay/EVENTS.jsonl
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:f03152b098e642f33e089cc0b5a87467f875829fe77dbf3bfc75b775b6550a4e
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-G9EXIT-001/staged/001.after
+  backup_path: null
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:9b32a003e05a27d69c8c99f1dd768fa64e4420b9fc3945400fc894541c682ee7
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-G9EXIT-001/staged/002.after
+  backup_path: null
+- path: relay/MIGRATION/V25_REPORT.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:87b47dbc36baaae5ec8e815d5d70e3ef9cca16970918b3d03f9ce6fc0a0edbd4
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-G9EXIT-001/staged/003.after
+  backup_path: null
+- path: relay/PROTOCOL_SELECTION.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:1c2a65958ab3ab10c17efcc5d2e08a873fade7979dbeb064d5ea6a6f58e71e82
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-G9EXIT-001/staged/004.after
+  backup_path: null
+- path: relay/ROADMAP/ROADMAP.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:4e63899b78535e19caa6814f8cb315fffe907b7eee4aeca649a37a2d37db2178
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-G9EXIT-001/staged/005.after
+  backup_path: null
+- path: relay/STATE.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:25bbafbc94bb94f261493ca8059e801072561fcca29f2597cfea9e8bacae2af3
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-G9EXIT-001/staged/006.after
+  backup_path: null
+applied:
+- relay/CONTROLS/controls.yaml
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/MIGRATION/V25_REPORT.yaml
+- relay/PROTOCOL_SELECTION.yaml
+- relay/ROADMAP/ROADMAP.yaml
+- relay/STATE.yaml
