@@ -706,11 +706,11 @@ test("Core learner shell preserves workbench state across protected reveal flow"
 });
 
 
-test("public static Core learner host mounts a generated canonical projection", { skip: !driverPath, timeout: 30000 }, async () => {
+test("public static Core learner host mounts precompiled provider projections", { skip: !driverPath, timeout: 30000 }, async () => {
   const staticServer = await openStaticServer();
   const driverProcess = await startDriver(driverPath);
   const driver = new WebDriver(driverProcess.base);
-  const projectionId = "Physics:CORE1B:MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS";
+  const projectionId = "fixture:core1b";
   try {
     await driver.open();
     await driver.navigate(
@@ -721,34 +721,36 @@ test("public static Core learner host mounts a generated canonical projection", 
     const mounted = await driver.execute(`
       const learner = document.querySelector("#learner");
       const row = window.GRADE9V3_CORE.core_projections.find(
-        (item) => item.id === "Physics:CORE1B:MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS"
+        (item) => item.id === "fixture:core1b"
       );
       return {
         row,
+        providerStatus: window.GRADE9V3_CORE.provider_status,
         state: learner.state,
         selected: document.querySelector("#projection-select").value,
         status: document.querySelector("#projection-status").textContent,
       };
     `);
-    assert.equal(mounted.row.subject, "Physics");
-    assert.equal(mounted.row.source_ref, "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS");
+    assert.equal(mounted.providerStatus, "FROZEN_PRECOMPILED_FIXTURE");
+    assert.equal(mounted.row.subject, "Fixture");
+    assert.equal(mounted.row.source_ref, "core1b");
     assert.equal(mounted.row.projection.core, "CORE1B");
     assert.equal(mounted.selected, projectionId);
     assert.equal(mounted.state.core, "CORE1B");
     assert.equal(mounted.state.stage, "AWAITING_ATTEMPT");
     assert.equal(mounted.state.reconstructionVisible, false);
-    assert.match(mounted.status, /Loaded Physics · CORE1B · MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS/);
+    assert.match(mounted.status, /Loaded Fixture · CORE1B · core1b/);
 
     const before = await driver.execute(
       "return document.querySelector('#learner').shadowRoot.innerHTML;",
     );
     assert.doesNotMatch(
       before,
-      /Perpendicular components may be solved separately because each axis equation contains only that axis's quantities/,
+      /A supplied relation follows from the supplied representation and conditions/,
     );
 
     const attemptInput = await driver.shadowElement("#learner", "[data-attempt-input]");
-    await driver.sendKeys(attemptInput, "The x and y descriptions use the same event time.");
+    await driver.sendKeys(attemptInput, "learner reconstruction");
     const commit = await driver.shadowElement("#learner", '[data-action="commit"]');
     await driver.sendKeys(commit, ENTER);
     await driver.waitFor(
@@ -760,7 +762,7 @@ test("public static Core learner host mounts a generated canonical projection", 
     );
     assert.match(
       after,
-      /Perpendicular components may be solved separately because each axis equation contains only that axis's quantities/,
+      /A supplied relation follows from the supplied representation and conditions/,
     );
 
     const resources = await driver.execute(
@@ -785,11 +787,8 @@ test("public static Core learner host mounts a generated canonical projection", 
       };
     `);
     assert.equal(defaultMount.state.core, "CORE1A");
-    assert.equal(
-      defaultMount.selected,
-      "Physics:CORE1A:MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
-    );
-    assert.match(defaultMount.search, /projection=Physics%3ACORE1A%3AMIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS/);
+    assert.equal(defaultMount.selected, "fixture:core1a");
+    assert.match(defaultMount.search, /projection=fixture%3Acore1a/);
   } finally {
     await driver.close();
     driverProcess.child.kill("SIGTERM");
