@@ -414,6 +414,17 @@
         "url": "https://github.com/reallaksh19/Grade9V3/issues/175"
       },
       "roadmap_node": "WP-TA-109"
+    },
+    {
+      "id": "ISSUE-175-WP108",
+      "state": "COMPLETE",
+      "github_state": "OPEN",
+      "github": {
+        "issue_number": 175,
+        "issue_id": 5529711190,
+        "url": "https://github.com/reallaksh19/Grade9V3/issues/175"
+      },
+      "roadmap_node": "WP-TA-108"
     }
   ],
   "relationships": [
@@ -441,6 +452,11 @@
       "from": "ISSUE-175",
       "relation": "RELATES_TO",
       "to": "ISSUE-169"
+    },
+    {
+      "from": "ISSUE-175-WP108",
+      "to": "ISSUE-175",
+      "relation": "REVISION_OF"
     }
   ]
 }
