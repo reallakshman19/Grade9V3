@@ -1,0 +1,75 @@
+{
+  "schema_version": "relay-v2.5-github-projection",
+  "generation": {
+    "id": "GHGEN-WP108-ISS175-R3",
+    "repository": "reallaksh19/Grade9V3",
+    "roadmap_revision": "RM-0012",
+    "issue_graph_revision": "IG-0007",
+    "execution_ref": "EP-TA-011",
+    "state": "PREPARED",
+    "supersedes_generation": "GHGEN-WP108-ISS175-R2",
+    "basis": [
+      "RM-0012",
+      "EP-TA-011",
+      "CP-TA-010",
+      "Issue #175 provider readback",
+      "PR #178 provider readback"
+    ]
+  },
+  "operations": [
+    {
+      "id": "GHOP-WP108-ISSUE175-RM0012",
+      "kind": "UPDATE",
+      "state": "PREPARED",
+      "idempotency_key": "relay:GHGEN-WP108-ISS175-R3:GHOP-WP108-ISSUE175-RM0012",
+      "depends_on": [],
+      "subject": {
+        "issue_node": "ISSUE-175",
+        "related_nodes": [
+          "ISSUE-173",
+          "ISSUE-174"
+        ]
+      },
+      "preconditions": {
+        "repository_issue_state": "OPEN",
+        "work_state": "ACTIVE",
+        "handover_key": "WP-TA-108"
+      },
+      "desired": {
+        "body_marker": "<!-- relay-operation:GHOP-WP108-ISSUE175-RM0012 -->",
+        "body_projection": "## Purpose\n\nCreate one **active interactive webpage-builder lane** that turns canonical subject data into learner-facing interactive pages without embedding academic truth in page-specific JavaScript/HTML.\n\nThis issue owns the **builder/runtime/host integration and generated learner surface**.\n\nIt consumes:\n- #173 — Shared six-Core projection contract;\n- #174 — canonical Atlas/matrix/representation/reasoning-family data.\n\nIt does not own curriculum truth or duplicate the canonical DB.\n\n## Target architecture\n\n```text\ncanonical subject package\n  concept graph + demand graph + representations\n                    |\n                    v\n          Core projection / compiler\n                    |\n                    v\n         portable scene + page data\n                    |\n          +---------+---------+\n          |                   |\n          v                   v\n   Grade9V3 webpage      standalone/offline host\n```\n\nThe page builder should assemble the learner experience from data, not maintain a second educational model.\n\n## Existing implementation status\n\nRelevant PRs:\n\n| PR | Status | Meaning |\n|---|---|---|\n| [#171 — Integrate semantic workbench Core on current main](https://github.com/reallaksh19/Grade9V3/pull/171) | **MERGED** 2026-09-21 | Shared semantic workbench/runtime foundation is now on main. |\n| [#140 — Topic Atlas + GCDR route on current main](https://github.com/reallaksh19/Grade9V3/pull/140) | **MERGED** | Generic Topic Atlas projection/runtime is present. |\n| [#135 — Motion-in-2D GCDR explorers with Topic Atlas](https://github.com/reallaksh19/Grade9V3/pull/135) | **MERGED** | Six Motion-2D interactive routes and Atlas bindings are present. |\n| [#152 — Motion2D answer bank/chalkboard/simulator fidelity](https://github.com/reallaksh19/Grade9V3/pull/152) | **MERGED** | Motion2D learner surface/data fidelity repairs are present. |\n| [#134 — Pulley Systems interactive webpage](https://github.com/reallaksh19/Grade9V3/pull/134) | **OPEN** | Standalone interactive explorer exists, but should be reviewed against the new builder boundary before merge. |\n| [#117 — original owner-facing NLM Topic Atlas page](https://github.com/reallaksh19/Grade9V3/pull/117) | **CLOSED, not merged** | Stale prototype path; #140 is the current-main integration. |\n\nRelated architecture/history:\n- #160 — NLM canonical visuals + staged-help proof;\n- #163 — detachable workbench/portable-scene proof;\n- #128–#133 — Motion-2D explorer designs.\n\n## What this issue owns\n\n### 1. One generated page shell\n\nBuild one reusable page composition capable of rendering:\n\n- topic/subtopic orientation;\n- current concept target;\n- canonical interactive representation/explorer;\n- question/exercise panel;\n- staged hints;\n- full reasoning route;\n- misconception/repair;\n- independent check;\n- transfer mode.\n\nAvoid one handcrafted HTML application per concept.\n\n### 2. Core-aware composition, not Core-specific duplicated pages\n\nThe same canonical concept/scene should support different projections.\n\nExample:\n\n```text\nCore1A\n  full explanatory construction\n\nCore1B\n  prediction + attempt first\n  reconstruction revealed afterward\n\nCore2A\n  question first\n  optional staged scaffold around the reasoning crux\n  complete reasoning route after reveal\n\nCore2B\n  changed demand\n  protected model/representation/reasoning decision\n  no scaffold that collapses that decision\n```\n\nThe builder receives projection state; it does not infer pedagogy from the DOM.\n\n### 3. Separate scientific scene from injected pedagogy\n\nFollow the boundary already suggested by the workbench work:\n\n```text\nscientific transformation / representation graph\n+\npedagogical injection:\n  Core mode\n  support level\n  hint/reveal state\n  question binding\n  repair state\n```\n\nDo not duplicate high-support and low-support scientific scenes when the physics is identical.\n\n### 4. Progressive visual states\n\nConsume canonical reveal stages.\n\nA hint may advance a visual stage only when authorized by the question/Core projection.\n\nThe builder must not contain hard-coded rules such as:\n\n```text\nif friction question -> show V2\n```\n\nThose bindings belong in canonical data/projection.\n\n### 5. Reasoning-route UI\n\nFor Core2A, visibly separate:\n\n- target;\n- representation;\n- **key decision / crux**;\n- execution/transformation;\n- result;\n- check.\n\nDo not render a reasoning route as an undifferentiated list of equations.\n\nFor Core1B, preserve attempt-before-reveal and show reconstruction/repair as a different state.\n\n### 6. Portable host boundary\n\nThe interactive component/page should consume explicit inputs only.\n\nNo direct discovery of:\n\n- learner mastery;\n- current matrix rung;\n- question choice;\n- support policy;\n- evidence classification.\n\nThose are supplied by the host/router.\n\nSemantic events may be emitted, such as:\n\n- attempt submitted;\n- hint requested;\n- representation manipulated;\n- reconstruction completed;\n- transfer answer submitted.\n\nThe component must not convert these directly into mastery state.\n\n### 7. Offline + accessibility\n\nThe proof page must work in the repository's supported offline/static mode.\n\nRequired:\n\n- keyboard-accessible controls;\n- touch/click parity;\n- no hover-only essential information;\n- textual fallback for visual invariants;\n- accessible announcement of reveal-stage changes;\n- zoom-safe layout;\n- no reliance on color alone.\n\n### 8. Generated parity\n\nDo not hand-maintain separate:\n\n- public page;\n- standalone copy;\n- explorer copy.\n\nGenerate/project them from one canonical scene/page package where feasible.\n\n## First proof page\n\nUse only **one** gold family from #174.\n\nRecommended proof:\n\n### Motion in 2D — shared/event clock\n\nIt has:\n- canonical concept truth;\n- existing explorer assets;\n- Core2A questions;\n- Core2B changed-demand examples;\n- clear visual stage progression;\n- a real reasoning crux.\n\nAlternative: NLM FBD/friction if #174 chooses that as the gold data slice.\n\n## Specific decision on open PR #134\n\n[#134](https://github.com/reallaksh19/Grade9V3/pull/134) is currently **OPEN**.\n\nDo not merge it merely because the standalone page works.\n\nFirst decide:\n\n1. Can its pulley scene be represented as canonical scene/data consumed by this builder?\n2. Can page-specific pedagogy be separated from the scientific scene?\n3. Can it be mounted inside the generated page shell without copying its own routing/question database?\n\nIf yes, port/rebase it into the builder architecture and then merge.\n\nIf not, keep it as a reference prototype and replace it with a generated implementation.\n\n## Non-goals\n\n- No new canonical curriculum database.\n- No page-local capability graph.\n- No page-local mastery state.\n- No duplicate question bank owned by the workbench.\n- No bespoke hard-coded hint routing.\n- No rewrite of every existing explorer before the one gold proof works.\n- No visual polish milestone before semantic correctness and Core projection correctness.\n\n## Acceptance criteria\n\n- [ ] One page shell consumes generated/canonical data rather than hand-authored academic truth.\n- [ ] Same canonical representation supports Core1A and Core1B with different reveal/learner-work state.\n- [ ] Same question-family truth supports Core2A and Core2B without conflating low support with transfer.\n- [ ] Core2A crux is visually distinguished in the reasoning route.\n- [ ] Core2B protected decision is not disclosed by hints/visual stages.\n- [ ] Scientific scene and pedagogical injection are separable.\n- [ ] Page works in static/offline mode.\n- [ ] Accessibility requirements pass.\n- [ ] Standalone/public parity comes from one source/build path.\n- [ ] At least one existing bespoke explorer is successfully mounted or migrated through the builder.\n\n## What to do next\n\n1. Wait only for the **minimum stable contract** from #173 and one gold data slice from #174; do not wait for all subjects.\n2. Use #171 workbench runtime and #140 Atlas projection as the starting code.\n3. Choose Motion-2D shared/event clock or the NLM proof family.\n4. Build the smallest generated shell that can render Core1A/Core1B/Core2A/Core2B states for that family.\n5. Add browser-level tests for reveal order, crux highlighting, protected transfer decisions, keyboard/touch behavior, and offline loading.\n6. Re-evaluate open PR #134 against this architecture.\n7. Open a **new PR referencing this issue**; keep page-builder code separate from bulk canonical-data edits.\n\n## Completion rule\n\nThis issue is complete when a learner-facing interactive page can be regenerated from canonical content and Core projection state, with no second academic truth hidden in the webpage implementation.\n\n\n<!-- relay-operation:GHOP-WP108-ISSUE175-CHECKPOINT -->\n## Governed execution checkpoint\n\n- roadmap: `RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER@RM-0011`\n- work package: `WP-TA-108` — **COMPLETE**\n- execution package: `EP-TA-010`\n- accepted checkpoint: `CP-TA-010`\n- accepted material head: `8ed02dcfcc9823271bcde409f3e781f252dd6e37`\n- product evidence: guardrails `35667612114` — **PASS**, 991 tests including the real-browser Core learner journey\n- delivery vehicle: draft PR #178, still open; no merge authorization is implied\n- protocol limitation: current Common V2.5 fails its own Prompt-3 unit test before Grade9V3 relay validators; normal EP-TA-010 DISC/QUAL/TC was not fabricated and bounded execution is recorded under Owner ODR-0010/ODR-0011\n- Issue #175 remains **OPEN**: production #173/#174 compiled-projection integration, generated public/standalone parity, one bespoke-explorer migration/mount, and PR #134 reconciliation remain follow-on work\n- no material successor is admitted by RM-0011; any follow-on implementation requires a separate roadmap admission and fresh write authority\n\n\n<!-- relay-operation:GHOP-WP108-ISSUE175-RM0012 -->\n## Current governed reconciliation\n\n- roadmap: `RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER@RM-0012`\n- work package: `WP-TA-108`\n- active reconciliation package: `EP-TA-011`\n- accepted predecessor checkpoint: `CP-TA-010` at `8ed02dcfcc9823271bcde409f3e781f252dd6e37`\n- delivery vehicle: draft PR #178\n- this package reconciles the accepted learner shell with the merged predecessor runtime and revised delivery controls; it does not implement the #173/#174 production provider\n- a deferred validation remains open before PR-ready, merge, checkpoint, or release\n",
+        "github_state": "OPEN",
+        "relationships": []
+      },
+      "publication": {
+        "attempt_count": 0,
+        "last_attempt_basis": [],
+        "receipt": null,
+        "last_error": null
+      },
+      "verification": {
+        "status": "NOT_RUN",
+        "observed_issue_number": null,
+        "observed_issue_id": null,
+        "observed_github_state": null,
+        "observed_relationships": [],
+        "basis": []
+      },
+      "reconciliation": {
+        "issue_graph_effects": [
+          {
+            "node": "ISSUE-175",
+            "set_github_state": "OPEN",
+            "set_issue_number": 175,
+            "set_issue_id": 5529711190
+          }
+        ],
+        "complete_when": [
+          "Issue #175 identity verified",
+          "RM-0012 reconciliation marker verified",
+          "provider state remains OPEN"
+        ]
+      }
+    }
+  ]
+}
