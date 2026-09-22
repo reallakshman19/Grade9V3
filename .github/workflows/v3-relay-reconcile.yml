@@ -1,0 +1,158 @@
+name: V3 staged migration reconciliation
+
+on:
+  push:
+    branches:
+      - fix/issue-169-grade9-exit-reconcile-v25
+    paths:
+      - '.github/workflows/v3-relay-reconcile.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile-v3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Grade9V3 branch
+        uses: actions/checkout@v4
+        with:
+          ref: fix/issue-169-grade9-exit-reconcile-v25
+          fetch-depth: 0
+      - name: Fetch current main
+        run: git fetch origin main:refs/remotes/origin/main
+      - name: Checkout pinned Common V3
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: 9c7b7cab8337e231c36d62453e1ed907da1c37d8
+          path: .relay-common
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install relay dependencies
+        run: python -m pip install --disable-pip-version-check PyYAML jsonschema
+      - name: Reconcile staged migration to native IDLE
+        env:
+          PYTHONPATH: .relay-common/skills/engineering-pr-delivery-v3/scripts
+        run: |
+          python - <<'PY'
+          import copy
+          from pathlib import Path
+          from transactionlib import execute, yaml_bytes, jsonl_bytes
+          from snapshot_projection import build as build_snapshot
+          from v3lib import load_yaml, load_events, validate_schema
+          from validate_foundation import validate_authority
+
+          root = Path(".").resolve()
+          errors = validate_authority(root)
+          if errors:
+              raise SystemExit("authority invalid before reconcile: " + "; ".join(errors[:8]))
+
+          state = load_yaml(root / "relay/STATE.yaml")
+          controls = load_yaml(root / "relay/CONTROLS/controls.yaml")
+          execution = state.get("execution") or {}
+          if execution.get("lifecycle") != "INITIALIZING":
+              raise SystemExit(f"expected INITIALIZING, got {execution.get('lifecycle')}")
+
+          migration = [x for x in controls.get("controls") or [] if x.get("id") == "CTRL-MIGRATION-RECONCILE"]
+          continuity = [x for x in controls.get("controls") or [] if x.get("id") == "CTRL-V25-INTELLIGENCE-CONTINUITY"]
+          if len(migration) != 1 or migration[0].get("state") != "OPEN":
+              raise SystemExit("migration control is not uniquely OPEN")
+          if len(continuity) != 1 or continuity[0].get("state") != "OPEN":
+              raise SystemExit("continuity control must remain OPEN at staged reconciliation")
+
+          new_state = copy.deepcopy(state)
+          new_state["execution"] = {"lifecycle": "IDLE", "ep": None, "lease": None, "route": None}
+
+          new_controls = copy.deepcopy(controls)
+          for row in new_controls["controls"]:
+              if row.get("id") == "CTRL-MIGRATION-RECONCILE":
+                  row["state"] = "RESOLVED"
+                  row["resolution"]["evidence"] = [
+                      "Pinned V3 bootstrap transaction TX-MIGRATE-G9EXIT-001 committed with foundation validation PASS.",
+                      "Legacy agents/relay tree remains preserved at migration digest sha256:ada51948889504e905305dba6d0a631ab455eeadae791d837755abacac8401a9.",
+                      "RM-0012 and the explicit Owner outcome/current goal are represented in native V3 roadmap authority.",
+                      "Native V3 present authority is intentionally IDLE: no V2.5 DISC/QSET/QUAL/TC/checkpoint acceptance was translated into V3 custody or acceptance.",
+                      "Common #421 continuity remains separately OPEN and blocks only PROTOCOL_CUTOVER."
+                  ]
+
+          snapshot = build_snapshot(
+              root,
+              "origin/main",
+              state_override=new_state,
+              controls_override=new_controls,
+          )
+
+          events, event_errors = load_events(root / "relay/EVENTS.jsonl")
+          if event_errors:
+              raise SystemExit("; ".join(event_errors[:8]))
+          event_id = "EVT-MIGRATION-RECONCILED-G9EXIT-001"
+          if any(x.get("event_id") == event_id for x in events):
+              raise SystemExit("event already exists")
+          event = {
+              "schema_version": "relay-v3-event",
+              "event_id": event_id,
+              "type": "CONTROL_RESOLVED",
+              "timestamp": "2026-09-22T05:29:00Z",
+              "actor": "chatgpt-sol-v3-migration-20260922",
+              "subject": "CTRL-MIGRATION-RECONCILE",
+              "basis": [
+                  "TX-MIGRATE-G9EXIT-001",
+                  "relay/MIGRATION/V25_REPORT.yaml",
+                  "RM-0012",
+                  "Common#421 remains unresolved"
+              ],
+              "details": {"native_lifecycle": "IDLE", "legacy_history_rewritten": False}
+          }
+          schema_errors = validate_schema("event", event, "EVENT")
+          if schema_errors:
+              raise SystemExit("; ".join(schema_errors))
+          events.append(event)
+
+          result = execute(
+              root,
+              tx_id="TX-RECONCILE-G9EXIT-001",
+              command="RESOLVE_CONTROL",
+              actor="chatgpt-sol-v3-migration-20260922",
+              replacements={
+                  "relay/STATE.yaml": yaml_bytes(new_state),
+                  "relay/CONTROLS/controls.yaml": yaml_bytes(new_controls),
+                  "relay/GENERATED/CURRENT_SNAPSHOT.yaml": yaml_bytes(snapshot),
+                  "relay/EVENTS.jsonl": jsonl_bytes(events),
+              },
+          )
+          if result.get("status") != "COMMITTED":
+              raise SystemExit(str(result))
+          print(f"{result['id']}: {result['status']}")
+          PY
+      - name: Validate reconciled V3 foundation
+        run: python .relay-common/skills/engineering-pr-delivery-v3/scripts/validate_foundation.py .
+      - name: Assess cutover
+        run: |
+          python .relay-common/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . assess | tee /tmp/readiness.yaml
+          python - <<'PY'
+          import yaml
+          r=yaml.safe_load(open("/tmp/readiness.yaml"))
+          expected={
+            "v3_conformance":"PASS",
+            "legacy_digest_unchanged":"PASS",
+            "source_validation":"PASS",
+            "migration_control_resolved":"PASS",
+            "roadmap_intelligence_continuity":"FAIL",
+            "native_lifecycle_ready":"PASS",
+            "protocol_selection_prepared":"PASS",
+          }
+          if r.get("checks") != expected:
+              raise SystemExit(f"unexpected readiness: {r}")
+          print("PASS: only Common#421 continuity blocks cutover")
+          PY
+      - name: Commit reconciled staged V3 state
+        run: |
+          git config user.name "relay-v3-migration"
+          git config user.email "relay-v3-migration@users.noreply.github.com"
+          git add relay/
+          git diff --cached --quiet && exit 0
+          git commit -m "relay: reconcile staged V3 migration"
+          git push origin HEAD:fix/issue-169-grade9-exit-reconcile-v25
