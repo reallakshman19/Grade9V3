@@ -17,7 +17,7 @@
     "WEB": 8,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:f4262336e6687aca836d2765129193c18adcfdd4cc1b2fa0aa79227810cffe59",
+  "digest": "sha256:e0998965311fb9ae51dbef831015d36fb19422fcdfa88b8a2427894abdf732e5",
   "components": [
     {
       "path": "public/core-learning/data.js",
@@ -1479,8 +1479,8 @@
       "path": "tests/test_tools.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 89477,
-      "sha256": "6fb183c536eaa0878f37e0099b7b82873685ace695b598d87e16045067d5d449"
+      "bytes": 89739,
+      "sha256": "794f3a00ec9fc7eef37955908e35e2bc8be5fcd01e6efb7894ae76f1867a5553"
     },
     {
       "path": "tests/test_topic_atlas_contract.py",
