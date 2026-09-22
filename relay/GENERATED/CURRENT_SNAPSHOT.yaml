@@ -2,13 +2,13 @@ schema_version: relay-v3-snapshot
 authority: DERIVED_READ_MODEL
 generated_from:
   roadmap_revision: RM-0012
-  state_digest: sha256:893bdea4890e6e954db2d63ef32e19248400b2262d59e0516d9a3cc5c1ceeae5
+  state_digest: sha256:70d2e249546602643592f5d29a789807b748ec5472c013a54efd3d836341fc41
   material_basis:
-    head: 8198ac0a6e8650e2b7700814cca46b69e1113fae
+    head: ebf1912ccdc2cf001bd0482a9c962310b2d0d4e5
     tree_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
     relevant_paths_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
     dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
-  coordination_head: 8198ac0a6e8650e2b7700814cca46b69e1113fae
+  coordination_head: ebf1912ccdc2cf001bd0482a9c962310b2d0d4e5
 owner:
   outcome: Complete Grade9V3 Grade-9 Physics exit-readiness reconciliation and establish
     an evidence-honest Grade-10 transition under the delivered six-Core contract.
@@ -28,7 +28,7 @@ programme:
   - WP-TA-108
   - WP-TA-105
 execution:
-  lifecycle: INITIALIZING
+  lifecycle: IDLE
   work_package: null
   ep: null
   lease: null
@@ -38,20 +38,17 @@ scope:
   protected: []
   prohibited: []
 material:
-  base: 8198ac0a6e8650e2b7700814cca46b69e1113fae
-  head: 8198ac0a6e8650e2b7700814cca46b69e1113fae
+  base: ebf1912ccdc2cf001bd0482a9c962310b2d0d4e5
+  head: ebf1912ccdc2cf001bd0482a9c962310b2d0d4e5
   relevant_paths_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
   dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
 evidence:
   latest_checkpoint: null
   latest_material_validation: {}
 controls:
-  execution_blockers:
-  - CTRL-MIGRATION-RECONCILE
-  handover_blockers:
-  - CTRL-MIGRATION-RECONCILE
+  execution_blockers: []
+  handover_blockers: []
   delivery_blockers:
-  - CTRL-MIGRATION-RECONCILE
   - CTRL-V25-INTELLIGENCE-CONTINUITY
   informational: []
 delivery:
@@ -60,16 +57,12 @@ delivery:
   lifecycle: NOT_REQUIRED
   merge_authorized: false
 next:
-  immediate_material_action: Reconcile legacy intent/evidence into one native V3 EP
-    and lease before material work.
+  immediate_material_action: null
   delivery_action: null
-  stop_conditions:
-  - Do not infer native V3 acceptance or custody from V2.5 receipts.
+  stop_conditions: []
 handoff:
   zero_context_takeover_possible: false
   reconstruction_sources:
   - relay/ROADMAP/ROADMAP.yaml
   - relay/STATE.yaml
   - relay/CONTROLS/controls.yaml
-  - relay/MIGRATION/V25_REPORT.yaml
-  - agents/relay/REPO_STATE.yaml

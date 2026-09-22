@@ -2,7 +2,7 @@ schema_version: relay-v3-controls
 controls:
 - id: CTRL-MIGRATION-RECONCILE
   kind: PROTOCOL
-  state: OPEN
+  state: RESOLVED
   source:
     type: VALIDATOR
     ref: relay/MIGRATION/V25_REPORT.yaml
@@ -25,7 +25,15 @@ controls:
   resolution:
     condition: Native V3 roadmap/frontier/EP/lease/checkpoint disposition is established
       without rewriting V2.5 history.
-    evidence: []
+    evidence:
+    - Pinned V3 bootstrap transaction TX-MIGRATE-G9EXIT-001 committed with foundation
+      validation PASS.
+    - Legacy agents/relay tree remains preserved at migration digest sha256:ada51948889504e905305dba6d0a631ab455eeadae791d837755abacac8401a9.
+    - RM-0012 and the explicit Owner outcome/current goal are represented in native
+      V3 roadmap authority.
+    - 'Native V3 present authority is intentionally IDLE: no V2.5 DISC/QSET/QUAL/TC/checkpoint
+      acceptance was translated into V3 custody or acceptance.'
+    - 'Common #421 continuity remains separately OPEN and blocks only PROTOCOL_CUTOVER.'
 - id: CTRL-V25-INTELLIGENCE-CONTINUITY
   kind: PROTOCOL
   state: OPEN

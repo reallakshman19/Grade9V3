@@ -3,7 +3,7 @@ roadmap:
   revision: RM-0012
   path: relay/ROADMAP/ROADMAP.yaml
 execution:
-  lifecycle: INITIALIZING
+  lifecycle: IDLE
   ep: null
   lease: null
   route: null

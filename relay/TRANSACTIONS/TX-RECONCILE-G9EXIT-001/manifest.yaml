@@ -1,0 +1,37 @@
+schema_version: relay-v3-transaction
+id: TX-RECONCILE-G9EXIT-001
+command: RESOLVE_CONTROL
+actor: chatgpt-sol-v3-migration-20260922
+status: COMMITTED
+created_at: '2026-09-22T05:30:30.923282Z'
+updated_at: '2026-09-22T05:30:30.941716Z'
+operations:
+- path: relay/CONTROLS/controls.yaml
+  before_exists: true
+  before_digest: sha256:f8ac22fc44d9ef2b943ab5398229df11929b4e3f56f195e80176f3f4b19c5622
+  after_digest: sha256:6c4c6b9ec02652b12d7547e1443c26954d50d563117bd69c3a32e6b44cd30352
+  staged_path: relay/TRANSACTIONS/TX-RECONCILE-G9EXIT-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-RECONCILE-G9EXIT-001/backups/000.before
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:f03152b098e642f33e089cc0b5a87467f875829fe77dbf3bfc75b775b6550a4e
+  after_digest: sha256:9c064688384166fb70bf6e229a4d0176995cb98f07bf98c71e8d88b219b06c3c
+  staged_path: relay/TRANSACTIONS/TX-RECONCILE-G9EXIT-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-RECONCILE-G9EXIT-001/backups/001.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:9b32a003e05a27d69c8c99f1dd768fa64e4420b9fc3945400fc894541c682ee7
+  after_digest: sha256:9ac7d6104b69bfa083ab49fd0f11375f296bfda39618d20e00d0affad8f1a96d
+  staged_path: relay/TRANSACTIONS/TX-RECONCILE-G9EXIT-001/staged/002.after
+  backup_path: relay/TRANSACTIONS/TX-RECONCILE-G9EXIT-001/backups/002.before
+- path: relay/STATE.yaml
+  before_exists: true
+  before_digest: sha256:25bbafbc94bb94f261493ca8059e801072561fcca29f2597cfea9e8bacae2af3
+  after_digest: sha256:3f5ee9d31e0565647bef2ef95e1924fc745d27d7551fdf2a22b2a8f3dacf3015
+  staged_path: relay/TRANSACTIONS/TX-RECONCILE-G9EXIT-001/staged/003.after
+  backup_path: relay/TRANSACTIONS/TX-RECONCILE-G9EXIT-001/backups/003.before
+applied:
+- relay/CONTROLS/controls.yaml
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/STATE.yaml
