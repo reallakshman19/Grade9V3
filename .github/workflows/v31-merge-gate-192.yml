@@ -1,0 +1,50 @@
+name: v31-merge-gate-192
+
+on:
+  push:
+    branches:
+      - relay/v31-merge-gate-192
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  authorize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout governed Issue 163 branch
+        uses: actions/checkout@v4
+        with:
+          ref: integration/issue-163-portable-workbench
+          fetch-depth: 0
+
+      - name: Fetch current main
+        run: git fetch origin main:refs/remotes/origin/main
+
+      - name: Checkout pinned Engineering Relay V3.1
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: edb845f06f32c87453dee6fbfcc2f84937017279
+          path: _common_v31
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install relay dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+
+      - name: Validate V3.1 authority
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_default.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_cutover.py . validate
+
+      - name: Prove PR-ready authorization
+        run: python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py PR_READY .
+
+      - name: Prove merge authorization
+        run: python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py MERGE .
