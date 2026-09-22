@@ -18,7 +18,8 @@
     "changed": [
       "OBJ-TOPIC-ATLAS-COMPLETE",
       "PHASE-TAKEOVER-RECONCILIATION",
-      "WP-TA-108"
+      "WP-TA-108",
+      "WP-TA-109"
     ],
     "unaffected": [
       "WP-TAKEOVER-RECONCILE",
