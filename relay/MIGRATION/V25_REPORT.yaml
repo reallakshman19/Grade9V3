@@ -1,30 +1,30 @@
 schema_version: relay-v3-migration-report
 authority: DERIVED_MIGRATION_REPORT
 source_protocol: '2.5'
-generated_at: '2026-09-22T05:26:09.738619Z'
+generated_at: '2026-09-22T09:31:49.670711Z'
 source:
   root: /home/runner/work/Grade9V3/Grade9V3
   state_path: agents/relay/REPO_STATE.yaml
-  state_digest: sha256:4bf194a9e2efffc00593ec6c1df1b6eb2094676cebed9ceff6e1c105d98ab0b0
+  state_digest: sha256:860dffe346fff8665808d7b4d78ad28284c084737d2efb2cf998703b84627d59
   roadmap_path: agents/relay/roadmap/OVERALL_ROADMAP.yaml
-  legacy_tree_digest: sha256:bdb48216f2474878b7925dbaabce8f4216d76b61bade7aaed6838d03ab9e99c7
+  legacy_tree_digest: sha256:e475bd57b62b3b7586c7cdc3f5c6504817dc06d5160376bc31fe2441a5d25432
 validation:
   repo_state: PASS
   basis:
   - validate_repo_state.py exit=0
   - PASS
 legacy_inventory:
-  file_count: 143
+  file_count: 148
   category_counts:
-    CHECKPOINT: 11
+    CHECKPOINT: 12
     DELIVERY: 4
     DISCOVERY: 21
     EP: 12
-    OTHER: 20
-    PROJECTION: 13
+    OTHER: 21
+    PROJECTION: 15
     QUALIFICATION: 3
     REPO_STATE: 1
-    ROADMAP: 32
+    ROADMAP: 33
     TAKEOVER_CERTIFICATION: 26
   entries:
   - path: agents/relay/REPO_PROFILE.yaml
@@ -32,7 +32,7 @@ legacy_inventory:
     category: OTHER
     schema_version: relay-v2.5
   - path: agents/relay/REPO_STATE.yaml
-    digest: sha256:4bf194a9e2efffc00593ec6c1df1b6eb2094676cebed9ceff6e1c105d98ab0b0
+    digest: sha256:860dffe346fff8665808d7b4d78ad28284c084737d2efb2cf998703b84627d59
     category: REPO_STATE
     schema_version: relay-v2.5
   - path: agents/relay/certifications/discovery/DISC-TA-001.yaml
@@ -275,6 +275,10 @@ legacy_inventory:
     digest: sha256:e260a00906410e6339e1050291bc588a4626fcd6285d3cea13879adb5ccb714d
     category: CHECKPOINT
     schema_version: relay-v2.5
+  - path: agents/relay/checkpoints/CP-TA-012.yaml
+    digest: sha256:00c37807f9cf37c03f3685758ecc5ee537a6861432d765360b1f64acc4bc160b
+    category: CHECKPOINT
+    schema_version: relay-v2.5
   - path: agents/relay/checkpoints/DRIFT-TA-001.yaml
     digest: sha256:d0eb0fd176aae4cfd0dac04d19eec7273c3ac4b514c0500246ada60a8f83c842
     category: CHECKPOINT
@@ -392,7 +396,15 @@ legacy_inventory:
     category: PROJECTION
     schema_version: relay-v2.5-github-projection
   - path: agents/relay/projection/generations/GHGEN-WP109-ISS175-R4.yaml
-    digest: sha256:2efc0b1794dec478c611091030792f68122826b83d549e8a068925e33184181b
+    digest: sha256:4d6d8c494f611a54f057192221432e0dbd890c4a03e565d4089ca261fc66167a
+    category: PROJECTION
+    schema_version: relay-v2.5-github-projection
+  - path: agents/relay/projection/generations/GHGEN-WP109-ISS175-R5.yaml
+    digest: sha256:0c11bd01fb95fe0220eefed7fc4eb2a85210e5365f0f4967007243d103349ec9
+    category: PROJECTION
+    schema_version: relay-v2.5-github-projection
+  - path: agents/relay/projection/generations/GHGEN-WP109-ISS175-R6.yaml
+    digest: sha256:11da9d830066a884ce3029fb3572dd88ac33e4df45992cf6a66f69076915e86e
     category: PROJECTION
     schema_version: relay-v2.5-github-projection
   - path: agents/relay/projection/observations/GHOBS-HO-79E29CBD0F01.yaml
@@ -451,6 +463,10 @@ legacy_inventory:
     digest: sha256:cab4fe9a7cbf500cda26d54ce57ddd1e707ef61b8e1ef5f4779b57ebac91336b
     category: OTHER
     schema_version: relay-v2.5-quality-review
+  - path: agents/relay/quality/QRV-TA-012.yaml
+    digest: sha256:9d6802623b40ffb21c15107904ff75c3cce31623006b2866cb3c963114613112
+    category: OTHER
+    schema_version: relay-v2.5-quality-review
   - path: agents/relay/reports/AUDIT-TA-008-MOTHER-CONTRACT.yaml
     digest: sha256:217a1d5b66c00cd2eb883f7a3e0a50671062547d534e1d5c5a0e10091323de7b
     category: OTHER
@@ -472,15 +488,15 @@ legacy_inventory:
     category: OTHER
     schema_version: relay-v2.5-evidence-note
   - path: agents/relay/roadmap/ISSUE_GRAPH.yaml
-    digest: sha256:42202eb8e12c66dd5b6fcc5ced72034ee0dd8fab32a26dbf02fd101a40361763
+    digest: sha256:8a19226c14bb989f1a0980d8af5be82b0a15329fab912fb638f5be46be5707ff
     category: ROADMAP
     schema_version: relay-v2.5
   - path: agents/relay/roadmap/OVERALL_ROADMAP.yaml
-    digest: sha256:4c5f33dbd2c24cb9c4e18d0832f497fdd049f9128641435ce8849031171b7be1
+    digest: sha256:32454418a71675fc5b18d19abee1beba81887a725bc5f89fb08c2a750e220a1a
     category: ROADMAP
     schema_version: relay-v2.5
   - path: agents/relay/roadmap/PROGRESS.yaml
-    digest: sha256:77ac1e4bf1b44643750a5a6daba378b6c4f7a68c0037a194a948e2eae17b892c
+    digest: sha256:5391007dcbe411f4b8eced1df4c1814fe864f2a1290c82dbefdd59cfe16086b5
     category: ROADMAP
     schema_version: relay-v2.5
   - path: agents/relay/roadmap/continuity/RC-TA-002.yaml
@@ -599,11 +615,15 @@ legacy_inventory:
     digest: sha256:134301bd3adcdf0a9c1ef844b7e0cfdd331dfdfcd9ce8f19642163f821090e72
     category: ROADMAP
     schema_version: relay-v2.5
+  - path: agents/relay/roadmap/revisions/RM-0014.yaml
+    digest: sha256:5ab58266a4ddb64c2324824927c6d53e44b6aaee487da967efca90226447a03b
+    category: ROADMAP
+    schema_version: relay-v2.5
 current:
-  relay_state: ACTIVE
-  active_ep: EP-TA-012
-  last_checkpoint: CP-TA-011
-  roadmap_revision: RM-0013
+  relay_state: IDLE
+  active_ep: null
+  last_checkpoint: CP-TA-012
+  roadmap_revision: RM-0014
   execution_policy: SERIAL
   delivery_required: true
 bootstrap:
