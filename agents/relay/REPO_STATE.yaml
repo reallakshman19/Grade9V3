@@ -68,7 +68,7 @@
       "state": "ACTIVE",
       "can_continue": true,
       "material_authority": "WRITE",
-      "next_action": "Rerun exact-head guardrails and revised V2.5 after normal candidate admission; close the deferred validation only if the ordinary material-write gate passes and no release blocker remains."
+      "next_action": "The deferred admission control is satisfied. Complete the final reconciliation quality review and provider-delivery readback before any Owner-reserved ready, merge, checkpoint, or release action."
     },
     "quality": {
       "state": "NEEDS_ATTENTION",
@@ -78,20 +78,9 @@
       ]
     },
     "evidence": {
-      "state": "PARTIAL",
-      "summary": "Normal EP-TA-011 candidate admission is present with fresh current-route receipts while historical certification records remain unchanged. Exact-head CI must prove the ordinary material-write gate before the deferred release control can close.",
-      "not_run": [
-        {
-          "id": "EP-TA-011 exact-head admission guardrails",
-          "reason": "The fresh current-route admission require exact-head CI readback.",
-          "cause": "NOT_SCHEDULED"
-        },
-        {
-          "id": "EP-TA-011 exact-head normal material_write_ready",
-          "reason": "Must be observed after historical certification preservation and the fresh current-route admission land.",
-          "cause": "NOT_SCHEDULED"
-        }
-      ]
+      "state": "COMPLETE",
+      "summary": "The reconciliation has a normal current-route admission and exact-head product/control validation is green. The remaining work is final quality review and provider-delivery reconciliation.",
+      "not_run": []
     },
     "stop": {
       "active": false,
@@ -196,8 +185,8 @@
     "handover_ready": true,
     "reasons": [
       "The current reconciliation contract and predecessor checkpoint are present.",
-      "Issue #175 projection is verified in sync for RM-0012 / EP-TA-011.",
-      "The deferred validation still blocks PR-ready, merge, checkpoint and release boundaries, but does not invalidate outgoing custody."
+      "Issue #175 projection is verified in sync for the current roadmap revision and execution package.",
+      "Normal current-route admission and exact-head product/control validation are complete; final quality review and Owner-reserved delivery decisions remain."
     ]
   },
   "chat_context_required": false,
@@ -205,7 +194,7 @@
     {
       "id": "PEND-TA11-001",
       "kind": "DEFERRED_VALIDATION",
-      "state": "OPEN",
+      "state": "SATISFIED",
       "summary": "Normal candidate admission and final exact-head release/checkpoint authority for EP-TA-011 remain deferred under the Owner's bounded session override.",
       "source": "ODR-0012-OWNER-REVISED-V25-OVERRIDE",
       "scope": {
@@ -220,9 +209,11 @@
         ]
       },
       "evidence": [
-        "CP-TA-010 predates current #178 head and remains the last accepted checkpoint.",
-        "Common/main V2.5 is healthy at 6cc47ea211d4e7b1fbff968cbeae9433a104db00.",
-        "No normal current-route candidate admission existed when the bounded override was granted."
+        "A unique normal current-route candidate admission is present and validates against the current execution package and predecessor checkpoint.",
+        "Exact-head V2.5 run 35681603633 passed on 43e9b49775acefc38e059d233a17548c516e88ff.",
+        "The ordinary material-write gate returned PASS with NORMAL_V25 basis, candidate_certified=true, and no errors.",
+        "Exact-head guardrails run 35681603744 passed on the same head.",
+        "The current base movement remains covered by the accepted drift receipt."
       ],
       "must_resolve_before": [
         "PR_READY",
@@ -240,7 +231,15 @@
       "revisit_when": "Before checkpoint, PR-ready, merge or release; also if predecessor/Common basis moves again.",
       "success_condition": "The ordinary material-write gate passes on the exact release candidate and all exact-head required checks are green.",
       "monitor_role": "READ_ONLY",
-      "supersedes": null
+      "supersedes": null,
+      "resolution_basis": {
+        "validated_head": "43e9b49775acefc38e059d233a17548c516e88ff",
+        "guardrails_run": 35681603744,
+        "v25_run": 35681603633,
+        "material_write_status": "PASS",
+        "write_basis": "NORMAL_V25",
+        "candidate_certified": true
+      }
     }
   ]
 }
