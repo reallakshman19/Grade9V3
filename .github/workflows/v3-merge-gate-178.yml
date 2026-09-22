@@ -1,0 +1,49 @@
+name: v3-merge-gate-178
+
+on:
+  push:
+    branches:
+      - relay/v3-merge-gate-178
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  authorize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout governed Issue 175 branch
+        uses: actions/checkout@v4
+        with:
+          ref: builder/core-learning-pages-r1
+          fetch-depth: 0
+
+      - name: Fetch current main
+        run: git fetch origin main:refs/remotes/origin/main
+
+      - name: Checkout pinned Engineering Relay V3
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: c87cf87b313801e42ecd0fcc7d36af0d90c5f400
+          path: _common_v3
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install validator dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+
+      - name: Validate V3 authority
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/validate_foundation.py .
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . validate
+
+      - name: Prove PR-ready authorization
+        run: python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_can.py PR_READY .
+
+      - name: Prove merge authorization
+        run: python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_can.py MERGE .
