@@ -1,0 +1,30 @@
+schema_version: relay-v3-transaction
+id: TX-CONTINUITY-RESOLVE-174-001
+command: RESOLVE_CONTROL
+actor: chatgpt-sol-canonical-20260922
+status: COMMITTED
+created_at: '2026-09-22T11:26:42.003088Z'
+updated_at: '2026-09-22T11:26:42.017168Z'
+operations:
+- path: relay/CONTROLS/controls.yaml
+  before_exists: true
+  before_digest: sha256:6c4c6b9ec02652b12d7547e1443c26954d50d563117bd69c3a32e6b44cd30352
+  after_digest: sha256:89fb8d839bf75eb4a9d59dafc3cb464b56037c19d205de06a61d8e1206abd9ff
+  staged_path: relay/TRANSACTIONS/TX-CONTINUITY-RESOLVE-174-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-CONTINUITY-RESOLVE-174-001/backups/000.before
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:22884ac4af851db79e81801b37d17c68dfb1825e4564a3307f6dec71af09eb97
+  after_digest: sha256:600575ef37126c4d9cb4cc3cfd7d1362f145dbbfa51add0b1b8d5413be0c53f7
+  staged_path: relay/TRANSACTIONS/TX-CONTINUITY-RESOLVE-174-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-CONTINUITY-RESOLVE-174-001/backups/001.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:9ac7d6104b69bfa083ab49fd0f11375f296bfda39618d20e00d0affad8f1a96d
+  after_digest: sha256:02efa7bc6651e23d0e619e40d63c364132dcf06b968ac72c4c6213212c056d83
+  staged_path: relay/TRANSACTIONS/TX-CONTINUITY-RESOLVE-174-001/staged/002.after
+  backup_path: relay/TRANSACTIONS/TX-CONTINUITY-RESOLVE-174-001/backups/002.before
+applied:
+- relay/CONTROLS/controls.yaml
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml

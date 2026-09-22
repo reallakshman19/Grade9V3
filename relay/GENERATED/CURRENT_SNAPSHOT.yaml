@@ -4,11 +4,11 @@ generated_from:
   roadmap_revision: RM-0012
   state_digest: sha256:70d2e249546602643592f5d29a789807b748ec5472c013a54efd3d836341fc41
   material_basis:
-    head: ebf1912ccdc2cf001bd0482a9c962310b2d0d4e5
+    head: 5375c2a9665452b76de95ba490d8042aa3f83ef3
     tree_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
     relevant_paths_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
     dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
-  coordination_head: ebf1912ccdc2cf001bd0482a9c962310b2d0d4e5
+  coordination_head: 5375c2a9665452b76de95ba490d8042aa3f83ef3
 owner:
   outcome: Complete Grade9V3 Grade-9 Physics exit-readiness reconciliation and establish
     an evidence-honest Grade-10 transition under the delivered six-Core contract.
@@ -38,8 +38,8 @@ scope:
   protected: []
   prohibited: []
 material:
-  base: ebf1912ccdc2cf001bd0482a9c962310b2d0d4e5
-  head: ebf1912ccdc2cf001bd0482a9c962310b2d0d4e5
+  base: 5375c2a9665452b76de95ba490d8042aa3f83ef3
+  head: 5375c2a9665452b76de95ba490d8042aa3f83ef3
   relevant_paths_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
   dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
 evidence:
@@ -48,8 +48,7 @@ evidence:
 controls:
   execution_blockers: []
   handover_blockers: []
-  delivery_blockers:
-  - CTRL-V25-INTELLIGENCE-CONTINUITY
+  delivery_blockers: []
   informational: []
 delivery:
   issue: null

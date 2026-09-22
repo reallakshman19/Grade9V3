@@ -1,0 +1,338 @@
+schema_version: relay-v3-task-snapshot
+authority: DERIVED_READ_MODEL
+source_protocol: V2_5
+identity:
+  work_package: WP-TA-105
+  ep: EP-TA-011
+  issue: null
+  delivery_vehicle: null
+purpose:
+  programme_outcome: Make Grade 9 Physics independently navigable, repairable, verifiable,
+    and transition-ready
+  current_goal: Grade 9 Physics self-study completion and governed Grade 10 transition
+  task_outcome: 'Reconcile the existing Grade-9 exit query/report against the delivered
+    six-Core contract from WP-TA-108 without creating a second learner-state store.;
+    Derive changed-demand evidence only from canonical Core2B exposure plus transfer
+    metadata, and separate task availability, learner observation and transition-requiredness.;
+    Treat PR #170 as candidate material: port only still-valid product logic and tests
+    onto delivered main; do not inherit stale relay/control-plane state or prior acceptance
+    credit.'
+  why_this_task_exists: The pre-#173 Grade-9 exit draft established a useful derived-report
+    architecture, but its transfer joins were written before Core2B gained stable
+    changed-demand identity and before WP-TA-105 explicitly depended on the delivered
+    Core contract.
+lineage:
+  predecessor_checkpoint: CP-TA-011
+  upstream_dependencies:
+  - WP-TA-108
+  roadmap_admission:
+    disposition: REVISED_EXISTING_WP
+    revision: RM-0012
+    basis:
+    - WP-TA-105 is the sole remaining detailed work package after completed WP-TA-108.
+    - 'PR #177 merged at da91e9e42c641e9d2bdd970d1e87a6b8227c84a9, satisfying the
+      Core-contract dependency.'
+    - 'PR #170 is candidate implementation material only; its earlier EP-TA-009 terminal/acceptance
+      state was invalidated by RM-0010 and carries no acceptance credit.'
+parent_issue:
+  repository: null
+  number: null
+  title: null
+  state: null
+  url: null
+  baseline: null
+  current: null
+  updates: []
+parent_issue_progress:
+  checklist: []
+  summary:
+    complete: 0
+    partial: 0
+    pending: 0
+    blocked: 0
+    deferred: 0
+    not_applicable: 0
+    unknown: 0
+    total: 0
+current_task_progress:
+  checklist:
+  - id: AC-TA11-001
+    statement: The valid Grade-9 exit architecture is ported onto delivered main as
+      a derived categorical query/report, preserving secure/fragile/gap/unknown evidence,
+      prerequisite/blocker boundaries, parent-readable basis and no second mastery
+      store.
+    state: PENDING
+    evidence: []
+  - id: AC-TA11-002
+    statement: Changed-demand evidence is mechanically tied to canonically resolved
+      Core2B exposure plus transfer metadata, and only direct/no-help demonstrated
+      attempts count as independent changed-demand evidence.
+    state: PENDING
+    evidence: []
+  - id: AC-TA11-003
+    statement: The exit projection distinguishes changed-demand task availability,
+      independent learner observation and explicit transition-requiredness; authored
+      task inventory alone cannot block or defer Grade 10.
+    state: PENDING
+    evidence: []
+  - id: AC-TA11-004
+    statement: No protected learner/Physics truth or second readiness store is introduced,
+      and full falsifiers, quality review, guardrails and exact-head V2.5 pass before
+      final programme credit.
+    state: PENDING
+    evidence: []
+  summary:
+    complete: 0
+    partial: 0
+    pending: 4
+    blocked: 0
+    total: 4
+offloads: []
+pending_items: []
+known_issues: []
+improvement_vs_original_issue:
+  baseline_digest: null
+  items: []
+scope:
+  write:
+  - Shared/tools/grade9_exit.py
+  - tests/test_grade9_exit.py
+  - docs/grade9/
+  - agents/relay/
+  - .github/workflows/v25-relay.yml
+  - docs/architecture-manifest.json
+  read:
+  - Shared/tools/learner_evidence.py
+  - Shared/library/
+  - docs/grade9/
+  - Learners/
+  - Physics/
+  - https://github.com/reallaksh19/Grade9V3/pull/170
+  protected:
+  - Physics/library/
+  - Physics/matrices/
+  - Learners/
+  - Unknown, missing, helped-only or unresolved evidence cannot be promoted to independent
+    security.
+  - Authored changed-demand availability is not transition-requiredness unless explicit
+    transition authority declares it.
+  prohibited:
+  - mastery_percentage_or_probability
+  - persisted_grade_readiness_truth_store
+  - transfer_metadata_as_core2b_shortcut
+  - authored_transfer_inventory_as_transition_authority
+  - stale_ep_ta009_acceptance_inheritance
+inputs:
+- id: INPUT-TA9-001
+  role: Grade-9 Physics scope coverage
+  authority: Repository Grade-9 scope coverage artifacts governed by RM-0008/WP-TA-105.
+  source_ref: docs/grade9/grade9-physics-scope-coverage.json; docs/grade9/GRADE9-PHYSICS-SCOPE-COVERAGE.md
+  freshness: CURRENT
+- id: INPUT-TA9-002
+  role: Existing learner evidence
+  authority: Shared learner evidence contracts and existing learner records.
+  source_ref: Shared/tools/learner_evidence.py; Learners/
+  freshness: CURRENT
+- id: INPUT-TA9-003
+  role: Delivered six-Core predecessor contract
+  authority: 'CP-TA-010 / delivered PR #177.'
+  source_ref: agents/relay/checkpoints/CP-TA-010.yaml; Shared/library/package.schema.json;
+    Shared/library/intake.py
+  freshness: CURRENT
+- id: INPUT-TA9-004
+  role: Grade-9 independence decision
+  authority: Owner decision ODR-0003-G9-PHYSICS-INDEPENDENCE.
+  source_ref: agents/relay/roadmap/owner-decisions/ODR-0003-G9-PHYSICS-INDEPENDENCE.yaml
+  freshness: CURRENT
+- id: INPUT-TA11-005
+  role: Pre-#173 Grade-9 exit candidate material
+  authority: 'GitHub PR #170 provider state plus repository diff against delivered
+    main.'
+  source_ref: https://github.com/reallaksh19/Grade9V3/pull/170; Shared/tools/grade9_exit.py;
+    tests/test_grade9_exit.py; docs/grade9/GRADE9-PHYSICS-EXIT-TRANSITION-REPORT.md
+  freshness: CURRENT
+benchmarks:
+- id: BENCH-TA11-001
+  purpose: Preserve the valid categorical evidence model and prove helped/unknown
+    evidence cannot become independent security.
+  role: Exit-state evidence truth table
+  source_ref: WP-TA-105 exit evidence + Shared learner evidence semantics
+  oracle: FROZEN_GOLDEN
+  expected:
+  - independent direct/no-help may be secure
+  - helped-only is not secure
+  - known gap stays visible
+  - unobserved stays unknown
+  - enrichment absence is non-blocking
+  required: true
+  current_result: UNKNOWN
+  evidence_basis:
+    material_ref: 411e8dc0108347933792fbbd5a6be8dfa59d655e
+    checkpoint: CP-TA-011
+- id: BENCH-TA11-002
+  purpose: Prevent transfer metadata or caller prose from manufacturing Core2B evidence.
+  role: Canonical changed-demand discriminator
+  source_ref: Delivered package.schema/intake contract plus required Grade-9 canonical
+    questions
+  oracle: REFERENCE_DATA
+  expected:
+  - Core2A is not changed-demand evidence
+  - Core2B + transfer is changed demand
+  - assisted attempt is not independent
+  - unresolved ref cannot manufacture transfer
+  required: true
+  current_result: UNKNOWN
+  evidence_basis:
+    material_ref: 411e8dc0108347933792fbbd5a6be8dfa59d655e
+    checkpoint: CP-TA-011
+- id: BENCH-TA11-003
+  purpose: Prevent authored Core2B inventory from becoming an automatic Grade-10 blocker.
+  role: Transfer availability versus transition authority
+  source_ref: ODR-0003 + RM-0012/WP-TA-105 exit evidence + Grade-9 scope coverage
+  oracle: FROZEN_GOLDEN
+  expected:
+  - availability alone is visible/non-blocking
+  - explicit requiredness may produce evidence-needed
+  - independent evidence satisfies an explicit requirement
+  required: true
+  current_result: UNKNOWN
+  evidence_basis:
+    material_ref: 411e8dc0108347933792fbbd5a6be8dfa59d655e
+    checkpoint: CP-TA-011
+- id: BENCH-TA11-004
+  purpose: Keep exit readiness a reproducible derived query/report without new learner
+    or grade truth.
+  role: No-second-mastery-store invariant
+  source_ref: ODR-0003 + WP-TA-105 protected invariants
+  oracle: OBSERVATIONAL
+  expected: No forbidden persisted state or protected academic edits are introduced.
+  required: true
+  current_result: UNKNOWN
+  evidence_basis:
+    material_ref: 411e8dc0108347933792fbbd5a6be8dfa59d655e
+    checkpoint: CP-TA-011
+benchmark_debt:
+  required_missing:
+  - BENCH-TA11-001
+  - BENCH-TA11-002
+  - BENCH-TA11-003
+  - BENCH-TA11-004
+  stale: []
+  optional: []
+execution:
+  lifecycle: ACTIVE
+  lease_or_custody: null
+  executor: null
+  route: SERIAL:EP-TA-011
+  branch: relay/v3-cutover-canonical-174
+material:
+  base: da91e9e42c641e9d2bdd970d1e87a6b8227c84a9
+  current_head: 5375c2a9665452b76de95ba490d8042aa3f83ef3
+acceptance:
+- id: AC-TA11-001
+  state: NOT_PROVED
+  statement: The valid Grade-9 exit architecture is ported onto delivered main as
+    a derived categorical query/report, preserving secure/fragile/gap/unknown evidence,
+    prerequisite/blocker boundaries, parent-readable basis and no second mastery store.
+  evidence: []
+- id: AC-TA11-002
+  state: NOT_PROVED
+  statement: Changed-demand evidence is mechanically tied to canonically resolved
+    Core2B exposure plus transfer metadata, and only direct/no-help demonstrated attempts
+    count as independent changed-demand evidence.
+  evidence: []
+- id: AC-TA11-003
+  state: NOT_PROVED
+  statement: The exit projection distinguishes changed-demand task availability, independent
+    learner observation and explicit transition-requiredness; authored task inventory
+    alone cannot block or defer Grade 10.
+  evidence: []
+- id: AC-TA11-004
+  state: NOT_PROVED
+  statement: No protected learner/Physics truth or second readiness store is introduced,
+    and full falsifiers, quality review, guardrails and exact-head V2.5 pass before
+    final programme credit.
+  evidence: []
+controls:
+  material_write:
+  - KI-TA10-PROJECTION-001
+  - DLG-TA11-INDEPENDENT-001
+  checkpoint:
+  - DLG-TA11-INDEPENDENT-001
+  handover: []
+  pr_ready:
+  - DLG-TA11-INDEPENDENT-001
+  merge:
+  - DLG-TA11-INDEPENDENT-001
+  release:
+  - KI-TA10-PROJECTION-001
+knowledge_state:
+  known_true:
+  - 'Delivery reconciliation checkpoint for completed EP-TA-010. No new Core product
+    code or programme credit is added here; this checkpoint records that PR #177 merged/read
+    back on main and therefore activates the already-planned WP-TA-105 successor boundary.'
+  - 'Provider delivery of PR #177 satisfies the control dependency that kept WP-TA-105
+    FUTURE/WAITING.'
+  known_false: []
+  unknown:
+  - 'Final Issue #173 projection convergence remains blocked by the upstream verified-predecessor
+    supersession defect in current Common/main.'
+  - Complete fresh independent QSET/DISC/QUAL/TC admission for EP-TA-011.
+  - 'Port and reconcile the bounded Grade-9 exit candidate logic from PR #170 only
+    after material_write_ready passes.'
+  - Resolve the upstream projection lifecycle known issue before final release.
+  assumptions: []
+negative_knowledge: []
+preserve:
+  accepted_do_not_reopen:
+  - claim: AC-TA10-001 accepted at CP-TA-011
+    checkpoint: CP-TA-011
+    evidence:
+    - CP-TA-011:AC-TA10-001
+    reopen_if:
+    - Required evidence becomes stale or fails.
+    - A dependency, counterexample, or Owner requirement changes the accepted basis.
+  - claim: AC-TA10-002 accepted at CP-TA-011
+    checkpoint: CP-TA-011
+    evidence:
+    - CP-TA-011:AC-TA10-002
+    reopen_if:
+    - Required evidence becomes stale or fails.
+    - A dependency, counterexample, or Owner requirement changes the accepted basis.
+  - claim: AC-TA10-003 accepted at CP-TA-011
+    checkpoint: CP-TA-011
+    evidence:
+    - CP-TA-011:AC-TA10-003
+    reopen_if:
+    - Required evidence becomes stale or fails.
+    - A dependency, counterexample, or Owner requirement changes the accepted basis.
+  - claim: AC-TA10-004 accepted at CP-TA-011
+    checkpoint: CP-TA-011
+    evidence:
+    - CP-TA-011:AC-TA10-004
+    reopen_if:
+    - Required evidence becomes stale or fails.
+    - A dependency, counterexample, or Owner requirement changes the accepted basis.
+history:
+  recent_events: []
+next:
+  immediate_action: 'Port the still-valid derived Grade-9 exit architecture from PR
+    #170 onto delivered main without importing stale relay state.'
+  next_value_frontier: Prove Grade-9 Physics exit readiness and Grade-10 transition
+  stop_conditions:
+  - OWNER_DECISION_REQUIRED
+  - ESSENTIAL_INPUT_MISSING
+  - AUTHORITY_VIOLATION
+  - PROTECTED_INVARIANT_FAILURE
+  - WRITE_COLLISION
+  - SUPERSEDED_EP
+  - ROADMAP_CONFLICT
+  - REPOSITORY_STATE_CONFLICT
+  - UNSAFE_ENGINEERING_RESULT
+reconstruction_sources:
+- agents/relay/REPO_STATE.yaml
+- agents/relay/roadmap/OVERALL_ROADMAP.yaml
+- agents/relay/roadmap/PROGRESS.yaml
+- agents/relay/roadmap/ROADMAP_EVENTS.yaml
+- agents/relay/execution-packages/EP-TA-011.yaml
+- agents/relay/checkpoints/CP-TA-011.yaml

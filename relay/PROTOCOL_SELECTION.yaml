@@ -1,16 +1,18 @@
 schema_version: relay-v3-protocol-selection
-selected_protocol: V2_5
-status: PREPARED
+selected_protocol: V3
+status: ACTIVE
 legacy:
   root: agents/relay
   tree_digest: sha256:ada51948889504e905305dba6d0a631ab455eeadae791d837755abacac8401a9
-  policy: LIVE_COMPATIBILITY
+  policy: READ_ONLY_HISTORY
 v3:
   state_path: relay/STATE.yaml
-  validation: PENDING
+  validation: PASS
 cutover:
-  owner_authorized: false
-  owner_basis: null
-  legacy_freeze_digest: null
-  readiness_digest: null
-  activated_at: null
+  owner_authorized: true
+  owner_basis:
+    direct_utterance_digest: sha256:4ad403bb77d967639b6827b28b590a9d1c3d6082043d0cd28cbcef1e1664b4ae
+    session_timestamp: '2026-09-22T11:08:03Z'
+  legacy_freeze_digest: sha256:ada51948889504e905305dba6d0a631ab455eeadae791d837755abacac8401a9
+  readiness_digest: sha256:84bd9964d094108dbc8d471d5ee3f72b7fc45975eb83bb10fe5c86857f0186c1
+  activated_at: '2026-09-22T11:26:52.427226Z'

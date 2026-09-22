@@ -1,0 +1,53 @@
+schema_version: relay-v3-improvement-view
+authority: DERIVED_READ_MODEL
+source_protocol: V2_5
+task: EP-TA-010
+checkpoint: CP-TA-011
+from:
+  predecessor_checkpoint: CP-TA-009
+  material_basis: 411e8dc0108347933792fbbd5a6be8dfa59d655e
+to:
+  accepted_checkpoint: CP-TA-011
+  material_basis: 411e8dc0108347933792fbbd5a6be8dfa59d655e
+improvement:
+  capability_added: []
+  capability_strengthened:
+  - 'Delivery reconciliation checkpoint for completed EP-TA-010. No new Core product
+    code or programme credit is added here; this checkpoint records that PR #177 merged/read
+    back on main and therefore activates the already-planned WP-TA-105 successor boundary.'
+  evidence_added:
+  - TEST-TA10-001=PASS
+  - TEST-TA10-002=PASS
+  - TEST-TA10-003=PASS
+  - TEST-TA10-004=PASS
+  - AC-TA10-001=PASS
+  - AC-TA10-002=PASS
+  - AC-TA10-003=PASS
+  - AC-TA10-004=PASS
+  understanding_improved:
+  - 'Provider delivery of PR #177 satisfies the control dependency that kept WP-TA-105
+    FUTURE/WAITING.'
+  downstream_unlocked:
+  - WP-TA-105
+  - EP-TA-011
+  controls_resolved: []
+  controls_created: []
+roadmap_effect:
+  concept_change: NO_CONCEPT_CHANGE
+  execution_disposition: CLOSE_WP
+  roadmap_revision: RM-0012
+not_improved: []
+still_not_proved:
+- 'Final Issue #173 projection convergence remains blocked by the upstream verified-predecessor
+  supersession defect in current Common/main.'
+- Complete fresh independent QSET/DISC/QUAL/TC admission for EP-TA-011.
+- 'Port and reconcile the bounded Grade-9 exit candidate logic from PR #170 only after
+  material_write_ready passes.'
+- Resolve the upstream projection lifecycle known issue before final release.
+new_questions: []
+reconstruction_sources:
+- agents/relay/REPO_STATE.yaml
+- agents/relay/checkpoints/CP-TA-011.yaml
+- agents/relay/execution-packages/EP-TA-010.yaml
+- agents/relay/roadmap/PROGRESS.yaml
+- agents/relay/roadmap/ROADMAP_EVENTS.yaml
