@@ -1,0 +1,44 @@
+name: v31-proof-issue-169-exact
+
+on:
+  push:
+    branches:
+      - relay/v31-proof-issue-169-exact
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  material-proof:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: git fetch origin main:refs/remotes/origin/main
+      - name: Checkout pinned Engineering Relay V3.1
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: edb845f06f32c87453dee6fbfcc2f84937017279
+          path: _common_v31
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+      - name: Prove exact Issue 169 material head
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/material_basis.py . --base-ref origin/main > /tmp/material.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          value=json.loads(Path("/tmp/material.json").read_text())
+          material=value["material_basis"]["head"]
+          coordination=value["coordination_basis"]["head"]
+          assert material == "f7f2c950f8f417a1b0ecbcc8234069130df4a344", (material, coordination)
+          print("exact_material_head", material)
+          print("coordination_head", coordination)
+          PY
