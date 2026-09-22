@@ -1,0 +1,196 @@
+name: v3-checkpoint-motion-187
+
+on:
+  push:
+    branches:
+      - relay/v3-checkpoint-motion-187
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  checkpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout governed Motion branch
+        uses: actions/checkout@v4
+        with:
+          ref: content/issue-174-motion2d-canonical
+          fetch-depth: 0
+
+      - name: Fetch current main
+        run: git fetch origin main:refs/remotes/origin/main
+
+      - name: Checkout pinned Engineering Relay V3
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: c87cf87b313801e42ecd0fcc7d36af0d90c5f400
+          path: _common_v3
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install validation dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+
+      - name: Focused Motion canonical tests
+        run: python -m unittest discover -s tests -p test_motion2d_canonical.py
+
+      - name: Delivered Core projection falsifiers
+        run: python -m unittest tests.test_core_projection_pipeline tests.test_core_projection_contract
+
+      - name: Deterministic generated-data checks
+        run: |
+          python Shared/tools/spec_delivery.py --enforce --summary
+          python Shared/tools/build_manifest.py --check
+
+      - name: Verify checkpoint authorization
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_can.py CHECKPOINT . \
+            --base-ref origin/main
+
+      - name: Build exact Motion checkpoint
+        env:
+          CHECKPOINT_RUN_ID: ${{ github.run_id }}
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/material_basis.py . \
+            --base-ref origin/main > /tmp/material.json
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import yaml
+
+          material = json.loads(Path("/tmp/material.json").read_text(encoding="utf-8"))["material_basis"]
+          run_id = os.environ["CHECKPOINT_RUN_ID"]
+          cp = {
+              "schema_version": "relay-v3-checkpoint",
+              "id": "CP-CANONICAL-174-MOTION-002",
+              "ep": "EP-CANONICAL-174-MOTION-002",
+              "material_result": {
+                  "head": material["head"],
+                  "relevant_paths_digest": material["relevant_paths_digest"],
+                  "dependency_digest": material["dependency_digest"],
+              },
+              "acceptance": [
+                  {
+                      "id": "AC-MOTION-CANONICAL",
+                      "result": "PASS",
+                      "evidence": [
+                          f"checkpoint workflow {run_id}: test_motion2d_canonical.py PASS",
+                          f"material head {material['head']}",
+                          "Three representations, familiar/transfer structured routes, source-hint custody and protected-transfer semantics are asserted.",
+                      ],
+                  },
+                  {
+                      "id": "AC-MOTION-AUTHORITY",
+                      "result": "PASS",
+                      "evidence": [
+                          f"checkpoint workflow {run_id}: matrix-authority assertions PASS",
+                          "Physics/matrices/phy-kin-2d-motion.rungs.json remains protected and unchanged by the Motion material delta.",
+                      ],
+                  },
+                  {
+                      "id": "AC-MOTION-PIPELINE",
+                      "result": "PASS",
+                      "evidence": [
+                          f"checkpoint workflow {run_id}: Core projection pipeline/contract tests PASS",
+                          "Protected-decision leakage falsifier and Core2A/Core2B publication checks pass without Shared changes.",
+                      ],
+                  },
+                  {
+                      "id": "AC-MOTION-REPO",
+                      "result": "PASS",
+                      "evidence": [
+                          "guardrails push run 35728404856 PASS",
+                          "pinned v3-relay push run 35728404855 PASS",
+                          "guardrails PR run 35728408931 PASS",
+                          "pinned v3-relay PR run 35728408922 PASS",
+                          f"checkpoint workflow {run_id}: spec_delivery and build_manifest --check PASS",
+                      ],
+                  },
+              ],
+              "validation": {
+                  "focused_tests": "PASS",
+                  "spec_delivery": "PASS",
+                  "full_guardrails": "PASS",
+              },
+              "quality": {
+                  "policy": "STANDARD",
+                  "result": "CLEAR",
+              },
+              "known_limitations": [
+                  "This checkpoint proves canonical Motion data/projection only; learner-page production integration remains Issue 175.",
+                  "External portable runtime packaging remains Issue 163.",
+              ],
+              "discoveries": [
+                  "The three Motion representations can reuse existing activity resources while the matrix remains family-level academic authority.",
+                  "Familiar event-time choice and transfer model-choice are independently expressible through the delivered structured reasoning contract.",
+                  "No Shared/Core modification is required for this Motion production proof.",
+              ],
+              "handoff": {
+                  "what_changed": [
+                      "Motion-in-2D now has three canonical representations bound to existing activity resources and microtopic teaching paths.",
+                      "The real familiar horizontal-launch and transfer projectile-validity items now carry structured routes, crux moves, scaffolds and transfer protection.",
+                  ],
+                  "what_is_true_now": [
+                      "Motion matrix family authority remains unchanged.",
+                      "Existing source hints remain unchanged.",
+                      "Generated architecture and web data match the canonical library.",
+                      f"Accepted material head is {material['head']}.",
+                  ],
+                  "what_remains_uncertain": [
+                      "Issue 175 still must consume real Issue 173/174 projections in production learner pages.",
+                      "Issue 163 external portability remains independent work.",
+                  ],
+                  "do_not_break": [
+                      "Do not duplicate Motion family matrix authority into library prose.",
+                      "Do not alter source hints or GCDR explorer/property authority to satisfy presentation concerns.",
+                      "Do not reopen delivered Shared Core contracts absent a generic falsifier.",
+                  ],
+                  "attempted_and_rejected": [
+                      "Combining Motion with PR 179 was rejected because PR 179 was the bounded NLM-only delivery.",
+                  ],
+                  "resume_from": [
+                      "Deliver PR 187 through V3 provider transition.",
+                      "Then move to Issue 175 production projection integration before portability closure work.",
+                  ],
+                  "first_successor_action": "If PR 187 is merged, close the Motion V3 task and proceed to Issue 175 production integration using delivered Issue 173/174 data.",
+              },
+          }
+          Path("/tmp/cp-motion.yaml").write_text(yaml.safe_dump(cp, sort_keys=False), encoding="utf-8")
+          PY
+
+      - name: Accept Motion checkpoint
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_tx.py . checkpoint \
+            --tx-id TX-CP-ISS174-MOTION-002 \
+            --event-id EVT-CP-ISS174-MOTION-002 \
+            --actor chatgpt-sol-canonical-20260922 \
+            --checkpoint /tmp/cp-motion.yaml \
+            --base-ref origin/main
+
+      - name: Publish Motion handover
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_tx.py . handover \
+            --tx-id TX-HANDOVER-ISS174-MOTION-002 \
+            --event-id EVT-HANDOVER-ISS174-MOTION-002 \
+            --actor chatgpt-sol-canonical-20260922 \
+            --base-ref origin/main
+
+      - name: Validate accepted V3 authority
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/validate_foundation.py .
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . validate
+
+      - name: Commit checkpoint and handover to Motion branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add relay
+          git commit -m "[relay-v3] Accept Issue 174 Motion checkpoint"
+          git push origin HEAD:content/issue-174-motion2d-canonical
