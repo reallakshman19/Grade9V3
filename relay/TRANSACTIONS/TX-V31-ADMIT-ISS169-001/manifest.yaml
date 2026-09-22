@@ -1,0 +1,51 @@
+schema_version: relay-v3.1-transaction
+id: TX-V31-ADMIT-ISS169-001
+command: ADMIT_TASK
+actor: chatgpt-sol-g9exit-v31-20260922
+status: COMMITTED
+created_at: '2026-09-22T16:30:10.220319Z'
+updated_at: '2026-09-22T16:30:10.247125Z'
+operations:
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:9ed8eaa08a1172740fe8991783b24022097c9afce3cb4b398e0f32b06b7e07ab
+  after_digest: sha256:c0b49ee0cd47cf05a23f475fa4ba13aee05ac1c55320d41c9b4970082dd3d53d
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS169-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS169-001/backups/000.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:df3d3646e3f7a2a786ee40dfdd4e7ef809c229c0bdde86bf16f6304a8a0282da
+  after_digest: sha256:b11f6934df325f073968760cd6cf281bfa2f96b637f936a20f0feddb12ab900a
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS169-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS169-001/backups/001.before
+- path: relay/LEASES/LEASE-G9EXIT-169-V31-001.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:6c795c8e90021b448bbce7655256fb7d88b4cab2645e85974c0e080c76642f3b
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS169-001/staged/002.after
+  backup_path: null
+- path: relay/ROADMAP/ROADMAP.yaml
+  before_exists: true
+  before_digest: sha256:0b86bfbdcf2f6ab79c6eea87ac7b40be9d42125b5032ac152e32c98e490197a8
+  after_digest: sha256:1661a25768bdbec91600d23e55dfdbb458e7442d8abf69e2ec6fe3da60296a9c
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS169-001/staged/003.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS169-001/backups/003.before
+- path: relay/STATE.yaml
+  before_exists: true
+  before_digest: sha256:e19a71da33765bf8a13e9a73a12b5b32f38f86184a5c58717e2c6c22e94f9ad1
+  after_digest: sha256:d0708f2b8030bcb7b1b4e4a5f03bb372e51510f22092d2f581555018cf8b9852
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS169-001/staged/004.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS169-001/backups/004.before
+- path: relay/WORK/EP-G9EXIT-169-V31-001.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:00a31e1a2d6b84139d8343702fdecca51098aeeeb90c020db89470d99a2aa3fb
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS169-001/staged/005.after
+  backup_path: null
+applied:
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/LEASES/LEASE-G9EXIT-169-V31-001.yaml
+- relay/ROADMAP/ROADMAP.yaml
+- relay/STATE.yaml
+- relay/WORK/EP-G9EXIT-169-V31-001.yaml

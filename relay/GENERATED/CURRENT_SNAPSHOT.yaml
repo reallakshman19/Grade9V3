@@ -1,14 +1,14 @@
 schema_version: relay-v3.1-snapshot
 authority: DERIVED_READ_MODEL
 generated_from:
-  roadmap_revision: RM-V31-ISS163-PORTABLE-003
-  state_digest: sha256:409f2700b982e1ab4b7cb34f1df156b6a5987eab1c4a30ddc16dece093ea1f98
+  roadmap_revision: RM-V31-ISS169-EXIT-001
+  state_digest: sha256:550b319a331d0e6d656a437c1414b6c595379612523008ff4faba34e28577922
   material_basis:
-    head: f9a83586c3b634c879f472fa6a764fae6edeafc3
-    tree_digest: sha256:27e4d659593ff6763fb1e71f3fac07e3f54f7126ba6477b4c27bc746d2ff851f
-    relevant_paths_digest: sha256:f3f4a20bffc4662a8ce3e6c1fc8d17e2725e865a0c77c72ff1405ba98d837400
-    dependency_digest: sha256:4b1e507c943a45bb6e0fcc520941958725f845ee5cd5373d360c0a337d4ea706
-  coordination_head: 4cb2da0b94e876ee294577d76b3c9ee6f4bb10c2
+    head: ad1f5a3d512eeacdbbc5c2f1f8a1740fe2d5ffb0
+    tree_digest: sha256:7ab68823f977fe4aa41e92e886a079c53fcbcb10726f48f4d14083bb386e5092
+    relevant_paths_digest: sha256:00fdeee50641c9e5e4d4f0e06fe3d0d2e625a1d3fada8ed1b768cb02907d00f1
+    dependency_digest: sha256:400d2608e4b88557cce49b08baaf3f6827001f82ced4dfae65e7d977441e048d
+  coordination_head: 32fef9285b7f5abc1304179449e41842020742a9
 owner:
   outcome: 'Complete the remaining canonical-data, learner-page integration, and external-portability
     work while preserving delivered #162 and #173.'
@@ -32,26 +32,43 @@ programme:
   - WP-CANONICAL-174-MOTION
   - WP-LEARNER-175-PRODUCTION
 execution:
-  lifecycle: TERMINAL
-  work_package: null
-  ep: null
-  lease: null
-  executor: null
+  lifecycle: ACTIVE
+  work_package: WP-TA-105
+  ep: EP-G9EXIT-169-V31-001
+  lease: LEASE-G9EXIT-169-V31-001
+  executor: chatgpt-sol-g9exit-v31-20260922
 scope:
-  allowed_writes: []
-  protected: []
-  prohibited: []
+  allowed_writes:
+  - Shared/tools/grade9_exit.py
+  - tests/test_grade9_exit.py
+  - docs/grade9/GRADE9-PHYSICS-EXIT-TRANSITION-REPORT.md
+  - docs/architecture-manifest.json
+  protected:
+  - Shared/tools/learner_evidence.py
+  - Shared/library/**
+  - Shared/publication_host/**
+  - Physics/**
+  - Learners/**
+  - agents/relay/**
+  prohibited:
+  - Do not persist mastery percentage, readiness probability, grade-state truth, or
+    a second learner evidence store.
+  - Do not write Physics canonical data or learner observations to make the report
+    pass.
+  - Do not treat transfer.dimension alone as changed-demand evidence; canonical CORE2B
+    exposure plus transfer metadata is required.
+  - Do not treat authored Core2B/transfer inventory as transition-requiredness without
+    explicit transition authority.
+  - Do not upgrade unresolved/external question refs into transfer evidence from caller
+    prose.
 material:
-  base: f9a83586c3b634c879f472fa6a764fae6edeafc3
-  head: f9a83586c3b634c879f472fa6a764fae6edeafc3
-  relevant_paths_digest: sha256:f3f4a20bffc4662a8ce3e6c1fc8d17e2725e865a0c77c72ff1405ba98d837400
-  dependency_digest: sha256:4b1e507c943a45bb6e0fcc520941958725f845ee5cd5373d360c0a337d4ea706
+  base: ad1f5a3d512eeacdbbc5c2f1f8a1740fe2d5ffb0
+  head: ad1f5a3d512eeacdbbc5c2f1f8a1740fe2d5ffb0
+  relevant_paths_digest: sha256:00fdeee50641c9e5e4d4f0e06fe3d0d2e625a1d3fada8ed1b768cb02907d00f1
+  dependency_digest: sha256:400d2608e4b88557cce49b08baaf3f6827001f82ced4dfae65e7d977441e048d
 evidence:
-  latest_checkpoint: CP-PORTABLE-163-V31-001
-  latest_material_validation:
-    focused_tests: PASS
-    spec_delivery: PASS
-    full_guardrails: PASS
+  latest_checkpoint: null
+  latest_material_validation: {}
 controls:
   execution_blockers: []
   handover_blockers: []
@@ -59,17 +76,25 @@ controls:
   informational: []
 delivery:
   issue: null
-  pr: 192
+  pr: 193
   lifecycle: DECLARED
   merge_authorized: false
 next:
-  immediate_material_action: null
+  immediate_material_action: Reconstruct the PR 170 derived-report implementation
+    as bounded candidate material, correct the post-#173 demand-class and transition-requiredness
+    shortcuts, then run focused falsifiers before repository-wide validation.
   delivery_action: Perform the explicitly authorized delivery transition.
-  stop_conditions: []
+  stop_conditions:
+  - Any need to modify learner_evidence.py, Physics canonical data, or learner observations
+    must be separately justified and scoped.
+  - Do not import V2.5/V3 relay files or old acceptance from PR 170/181.
+  - No merge without a fresh V3.1 checkpoint, CLEAR quality, GitHub mergeability,
+    and explicit Owner delivery authority.
 handoff:
   zero_context_takeover_possible: true
   reconstruction_sources:
   - relay/ROADMAP/ROADMAP.yaml
   - relay/STATE.yaml
   - relay/CONTROLS/controls.yaml
-  - relay/CHECKPOINTS/CP-PORTABLE-163-V31-001.yaml
+  - relay/WORK/EP-G9EXIT-169-V31-001.yaml
+  - relay/LEASES/LEASE-G9EXIT-169-V31-001.yaml
