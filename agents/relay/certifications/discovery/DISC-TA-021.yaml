@@ -19,7 +19,7 @@
     "roadmap_revision": "RM-0013",
     "relay_protocol_basis_ref": "reallaksh19/Common@6cc47ea211d4e7b1fbff968cbeae9433a104db00:skills/engineering-pr-delivery-v2.5",
     "material_ref": "37dc1903eb3688806d16d67ab5aa20ce95d47d63",
-    "ep_contract_digest": "sha256:7000bd3912ce2732ca05e0032e65655e3278730990f98a2763adeea985c12bf5",
+    "ep_contract_digest": "sha256:b2cb25a45db1fe3edbb293665a3e0a4cadbd4ac82177bebee70af087e524f962",
     "repo_profile_digest": "sha256:954cdd371183121091d3690de67c9b699135f89cad93a0edad53a27b058e64b2",
     "predecessor_baton": {
       "type": "CHECKPOINT",
