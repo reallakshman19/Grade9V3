@@ -1,28 +1,28 @@
 {
   "schema_version": "relay-v2.5",
   "progress_basis": {
-    "id": "PB-0010",
-    "roadmap_revision": "RM-0012"
+    "id": "PB-0011",
+    "roadmap_revision": "RM-0013"
   },
   "overall": {
     "earned_weight": 115,
-    "total_weight": 115,
-    "percent": 100
+    "total_weight": 125,
+    "percent": 92
   },
   "objectives": [
     {
       "id": "OBJ-TOPIC-ATLAS-COMPLETE",
       "earned_weight": 115,
-      "total_weight": 115,
-      "percent": 100
+      "total_weight": 125,
+      "percent": 92
     }
   ],
   "phases": [
     {
       "id": "PHASE-TAKEOVER-RECONCILIATION",
       "earned_weight": 115,
-      "total_weight": 115,
-      "percent": 100
+      "total_weight": 125,
+      "percent": 92
     }
   ],
   "work_packages": [
@@ -73,6 +73,12 @@
       "earned_weight": 15,
       "total_weight": 15,
       "percent": 100
+    },
+    {
+      "id": "WP-TA-109",
+      "earned_weight": 0,
+      "total_weight": 10,
+      "percent": 0
     }
   ],
   "execution_packages": [
@@ -141,6 +147,12 @@
       "earned_weight": 100,
       "total_weight": 100,
       "percent": 100
+    },
+    {
+      "id": "EP-TA-012",
+      "earned_weight": 0,
+      "total_weight": 100,
+      "percent": 0
     }
   ],
   "implementation_steps": [
@@ -444,6 +456,27 @@
       "earned_weight": 50,
       "total_weight": 50,
       "percent": 100
+    },
+    {
+      "id": "STEP-TA12-001",
+      "ep_id": "EP-TA-012",
+      "earned_weight": 0,
+      "total_weight": 34,
+      "percent": 0
+    },
+    {
+      "id": "STEP-TA12-002",
+      "ep_id": "EP-TA-012",
+      "earned_weight": 0,
+      "total_weight": 33,
+      "percent": 0
+    },
+    {
+      "id": "STEP-TA12-003",
+      "ep_id": "EP-TA-012",
+      "earned_weight": 0,
+      "total_weight": 33,
+      "percent": 0
     }
   ],
   "acceptance_criteria": [
@@ -1019,6 +1052,42 @@
         "v25-relay 35682030373 PASS @ QRV head 9186c5a5ccd891f25579833d1fea51f3f0c31b7c",
         "PEND-TA11-001 SATISFIED"
       ]
+    },
+    {
+      "id": "AC-TA12-001",
+      "ep_id": "EP-TA-012",
+      "status": "NOT_STARTED",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0,
+      "basis": []
+    },
+    {
+      "id": "AC-TA12-002",
+      "ep_id": "EP-TA-012",
+      "status": "NOT_STARTED",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0,
+      "basis": []
+    },
+    {
+      "id": "AC-TA12-003",
+      "ep_id": "EP-TA-012",
+      "status": "NOT_STARTED",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0,
+      "basis": []
+    },
+    {
+      "id": "AC-TA12-004",
+      "ep_id": "EP-TA-012",
+      "status": "NOT_STARTED",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0,
+      "basis": []
     }
   ]
 }
