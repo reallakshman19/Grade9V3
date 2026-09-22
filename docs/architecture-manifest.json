@@ -17,7 +17,7 @@
     "WEB": 6,
     "WEB_RUNTIME": 3
   },
-  "digest": "sha256:8736446eb785ac5a7443bfb9a148f29f37263dc22c4d04ac8f863e02724c30f0",
+  "digest": "sha256:30648af763816f49ca30e23c7d19929ca16b27a463396c9bd0575bbed467662f",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -1017,8 +1017,8 @@
       "path": "tests/test_g9_nlm_friction_connected.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 9544,
-      "sha256": "53a76e1ebd9857eb55aaae33e78858aa9ed5ce70508435641f2169935c297443"
+      "bytes": 13339,
+      "sha256": "559ac99fa23cdc9bff0f580defcc0ed617e51cb7493e151f8055ae1d12a12d76"
     },
     {
       "path": "tests/test_g9_nlm_momentum_transfer.py",
