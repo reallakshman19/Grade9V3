@@ -1,14 +1,14 @@
 schema_version: relay-v3.1-snapshot
 authority: DERIVED_READ_MODEL
 generated_from:
-  roadmap_revision: RM-V31-ISS163-PORTABLE-003
-  state_digest: sha256:409f2700b982e1ab4b7cb34f1df156b6a5987eab1c4a30ddc16dece093ea1f98
+  roadmap_revision: RM-V31-ISS169-EXIT-001
+  state_digest: sha256:8f83757d75f6b918ba46978a0f4a37bb53db1e1e8163dc636b4c330111c8a1b6
   material_basis:
-    head: f9a83586c3b634c879f472fa6a764fae6edeafc3
-    tree_digest: sha256:27e4d659593ff6763fb1e71f3fac07e3f54f7126ba6477b4c27bc746d2ff851f
-    relevant_paths_digest: sha256:f3f4a20bffc4662a8ce3e6c1fc8d17e2725e865a0c77c72ff1405ba98d837400
-    dependency_digest: sha256:4b1e507c943a45bb6e0fcc520941958725f845ee5cd5373d360c0a337d4ea706
-  coordination_head: 4cb2da0b94e876ee294577d76b3c9ee6f4bb10c2
+    head: ad1f5a3d512eeacdbbc5c2f1f8a1740fe2d5ffb0
+    tree_digest: sha256:7ab68823f977fe4aa41e92e886a079c53fcbcb10726f48f4d14083bb386e5092
+    relevant_paths_digest: sha256:2414eb9b3a5a29856f4231b6a509f64515300ebf52763970da4d6f2c730670f9
+    dependency_digest: sha256:8e1a674586ba5415471d296f7c8a9b6fcf272238df79fee00bd957d6f6abecf5
+  coordination_head: 4016f3bc9666633750e6d562a213649b816c988d
 owner:
   outcome: 'Complete the remaining canonical-data, learner-page integration, and external-portability
     work while preserving delivered #162 and #173.'
@@ -32,26 +32,42 @@ programme:
   - WP-CANONICAL-174-MOTION
   - WP-LEARNER-175-PRODUCTION
 execution:
-  lifecycle: TERMINAL
-  work_package: null
-  ep: null
-  lease: null
-  executor: null
+  lifecycle: ACTIVE
+  work_package: WP-TA-105
+  ep: EP-EXIT-169-V31-001
+  lease: LEASE-EXIT-169-V31-001
+  executor: chatgpt-sol-exit-v31-20260922
 scope:
-  allowed_writes: []
-  protected: []
-  prohibited: []
+  allowed_writes:
+  - Shared/tools/grade9_exit.py
+  - tests/test_grade9_exit.py
+  - docs/grade9/GRADE9-PHYSICS-EXIT-TRANSITION-REPORT.md
+  - docs/architecture-manifest.json
+  protected:
+  - Learners/**
+  - Physics/**
+  - Shared/library/**
+  - Shared/publication_host/**
+  - Shared/workbench/**
+  - public/core-learning/**
+  - standalone/core-learning/**
+  - agents/relay/**
+  prohibited:
+  - Do not add mastery percentages, probabilities, readiness scores or a second Grade-9
+    state store.
+  - Do not convert unknown/missing evidence into mastery or failure.
+  - Do not make authored Core2B inventory alone a transition requirement.
+  - Do not modify Physics or Learners canonical/persisted truth.
+  - Do not persist derived Core labels, family refs or transfer dimensions into learner
+    observations.
 material:
-  base: f9a83586c3b634c879f472fa6a764fae6edeafc3
-  head: f9a83586c3b634c879f472fa6a764fae6edeafc3
-  relevant_paths_digest: sha256:f3f4a20bffc4662a8ce3e6c1fc8d17e2725e865a0c77c72ff1405ba98d837400
-  dependency_digest: sha256:4b1e507c943a45bb6e0fcc520941958725f845ee5cd5373d360c0a337d4ea706
+  base: ad1f5a3d512eeacdbbc5c2f1f8a1740fe2d5ffb0
+  head: ad1f5a3d512eeacdbbc5c2f1f8a1740fe2d5ffb0
+  relevant_paths_digest: sha256:2414eb9b3a5a29856f4231b6a509f64515300ebf52763970da4d6f2c730670f9
+  dependency_digest: sha256:8e1a674586ba5415471d296f7c8a9b6fcf272238df79fee00bd957d6f6abecf5
 evidence:
-  latest_checkpoint: CP-PORTABLE-163-V31-001
-  latest_material_validation:
-    focused_tests: PASS
-    spec_delivery: PASS
-    full_guardrails: PASS
+  latest_checkpoint: null
+  latest_material_validation: {}
 controls:
   execution_blockers: []
   handover_blockers: []
@@ -59,17 +75,25 @@ controls:
   informational: []
 delivery:
   issue: null
-  pr: 192
+  pr: 194
   lifecycle: DECLARED
   merge_authorized: false
 next:
-  immediate_material_action: null
+  immediate_material_action: Reuse only the bounded PR 170 product candidate, implement
+    the post-Core2B compatibility corrections, replace authored-transfer-implies-required
+    tests with authority-driven falsifiers, and regenerate the readable report/manifest.
   delivery_action: Perform the explicitly authorized delivery transition.
-  stop_conditions: []
+  stop_conditions:
+  - Any need to mutate Physics or Learners requires a separately scoped defect.
+  - Do not import V2.5 relay/checkpoint/qualification files from PR 170 or PR 181.
+  - Do not make transfer evidence a completion denominator without explicit transition
+    authority.
+  - No merge until fresh V3.1 checkpoint and V3.1 MERGE authorization pass.
 handoff:
   zero_context_takeover_possible: true
   reconstruction_sources:
   - relay/ROADMAP/ROADMAP.yaml
   - relay/STATE.yaml
   - relay/CONTROLS/controls.yaml
-  - relay/CHECKPOINTS/CP-PORTABLE-163-V31-001.yaml
+  - relay/WORK/EP-EXIT-169-V31-001.yaml
+  - relay/LEASES/LEASE-EXIT-169-V31-001.yaml
