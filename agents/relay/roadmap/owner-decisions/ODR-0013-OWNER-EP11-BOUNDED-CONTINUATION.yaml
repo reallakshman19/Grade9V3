@@ -1,0 +1,89 @@
+{
+  "schema_version": "relay-v2.5",
+  "id": "ODR-0013-OWNER-EP11-BOUNDED-CONTINUATION",
+  "decision": {
+    "authority": "OWNER",
+    "kind": "AUTHORIZATION",
+    "statement": "Authorize bounded EP-TA-011 product, test, and draft-PR work on builder/core-learning-pages-r1 while candidate admission remains open; do not claim PR readiness, merge, checkpoint, or release until the deferred control is resolved.",
+    "source": "Owner direct instructions in the active Grade9V3 session: authorized start of the fix, explicit session override to stop scheduling and code directly, adoption of revised Common main engineering-pr-delivery-v2.5, and continue."
+  },
+  "effects": {
+    "requirement_disposition": "NOT_APPLICABLE",
+    "grants_material_write_authority": true,
+    "pending_items": [
+      "PEND-0175-001 remains OPEN until EP-TA-011 candidate/control admission is reconciled under revised Common V2.5."
+    ]
+  },
+  "delivery_authorization": null,
+  "execution_override": {
+    "disposition": "GRANTED",
+    "scope": {
+      "repository": "reallaksh19/Grade9V3",
+      "branch": "builder/core-learning-pages-r1",
+      "base_sha": "b9403eabc2d96fae62d1d94cb03bc4152cd3dd4b",
+      "route_key": "SERIAL:EP-TA-011",
+      "issues": [
+        175
+      ],
+      "pull_requests": [
+        178
+      ],
+      "allowed_write_paths": [
+        "Shared/tools/build_core_learning_host.py",
+        "public/core-learning/**",
+        "standalone/core-learning/**",
+        "tests/**",
+        "docs/architecture-manifest.json",
+        "agents/relay/**",
+        ".github/workflows/v25-relay.yml"
+      ]
+    },
+    "defers": [
+      "CANDIDATE_ADMISSION"
+    ],
+    "allows": [
+      "BOUNDED_PRODUCT_WRITES",
+      "TESTS",
+      "DRAFT_PR_UPDATES"
+    ],
+    "blocks": [
+      "PR_READY",
+      "MERGE",
+      "CHECKPOINT",
+      "RELEASE"
+    ],
+    "pending_obligations": [
+      "PEND-0175-001"
+    ]
+  },
+  "impact": {
+    "class": [
+      "LOCAL",
+      "EXECUTION_GOVERNANCE"
+    ]
+  },
+  "affected": {
+    "objectives": [
+      "OBJ-TOPIC-ATLAS-COMPLETE"
+    ],
+    "phases": [
+      "PHASE-TAKEOVER-RECONCILIATION"
+    ],
+    "work_packages": [
+      "WP-TA-109"
+    ],
+    "execution_packages": [
+      "EP-TA-011"
+    ],
+    "issues": [
+      "ISSUE-175"
+    ]
+  },
+  "required_reconciliation": [
+    "Do not fabricate DISC/QUAL/TC or candidate certification.",
+    "Limit material writes to the declared EP-TA-011 host-parity scope.",
+    "Resolve PEND-0175-001 before PR-ready, merge, checkpoint, or release claims.",
+    "Do not schedule heartbeat timers in this session because the Owner explicitly disabled scheduled status publication."
+  ],
+  "status": "APPLIED"
+}
