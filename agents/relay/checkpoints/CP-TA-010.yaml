@@ -112,12 +112,12 @@
   },
   "quality_findings": [
     {
-      "id": "FIND-TA10-001",
+      "id": "QF-TA10-001",
       "statement": "Pinned Common V2.5 protocol unit suite fails upstream before Grade9V3 relay validation.",
       "disposition": "CARRY_FORWARD"
     },
     {
-      "id": "FIND-TA10-002",
+      "id": "QF-TA10-002",
       "statement": "Normal EP-TA-010 DISC/QUAL/TC was not established; bounded execution relied on explicit Owner direct-execution ODR-0010/ODR-0011.",
       "disposition": "CARRY_FORWARD"
     }
@@ -193,15 +193,15 @@
     "owner_decisions_required": []
   },
   "remaining_work": [
-    "Keep GitHub Issue #175 open for the production #173/#174 compiled-projection adapter, generated public/standalone parity, and at least one bespoke-explorer mount/migration.",
-    "Re-evaluate PR #134 against the production builder boundary after provider integration exists.",
-    "Before any new material successor executes, establish a fresh normal V2.5 admission or record another explicit Owner authorization; do not reuse the EP-TA-010 direct-execution exception.",
-    "Track the pinned Common V2.5 Prompt-3 unit-suite failure separately from Grade9V3 product evidence."
+    "Complete EP-TA-011 exact-head predecessor/runtime and revised-control reconciliation without re-earning CP-TA-010 product acceptance.",
+    "Keep Issue #175 open for production #173/#174 compiled-projection integration, generated public/standalone parity, and at least one bespoke-explorer mount/migration.",
+    "Resolve PEND-TA11-001 before PR_READY, MERGE, CHECKPOINT or RELEASE.",
+    "Re-evaluate PR #134 only after the production builder path exists."
   ],
   "successor": {
-    "mode": "NONE",
-    "frontier_work_package": null,
-    "ep_id": null,
+    "mode": "SERIAL",
+    "frontier_work_package": "WP-TA-108",
+    "ep_id": "EP-TA-011",
     "parallel_plan": null,
     "join_id": null,
     "lane_id": null,
