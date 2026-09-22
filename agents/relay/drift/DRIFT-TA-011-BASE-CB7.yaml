@@ -1,0 +1,29 @@
+{
+  "schema_version": "relay-v2.5-drift",
+  "from_base": "ff211de6a5f6a465e842cf93725285c8a4f78450",
+  "to_base": "cb7a0cfeec0e14494e2c462791f0ce3cf7fb334b",
+  "classification": "WITHIN_QUALIFIED_BOUNDARY",
+  "changed_paths": [
+    ".github/workflows/v25-relay.yml",
+    "agents/relay/REPO_STATE.yaml"
+  ],
+  "affected_scope": [
+    "Execution-control workflow wiring",
+    "Repository relay bootstrap/control state"
+  ],
+  "rationale": "The base advanced by one control-plane commit only. The diff does not touch Shared/workbench, public Core learner runtime, fixtures, browser tests, Physics data, learner state, or any accepted CP-TA-010 product behavior. EP-TA-011 is itself a bounded control/runtime reconciliation package, so this drift is within its qualified reconciliation boundary rather than disjoint product work.",
+  "qualification": {
+    "basis": [
+      "GitHub compare ff211de6a5f6a465e842cf93725285c8a4f78450...cb7a0cfeec0e14494e2c462791f0ce3cf7fb334b reports exactly .github/workflows/v25-relay.yml and agents/relay/REPO_STATE.yaml.",
+      "V2.5 run 35675938991 on 228a4dbe078220e87b4a96dd12b8d9bdca537731 passed protocol unit/stress, semantic conformance, cold-start, zero-context, baton, discovery, QSET, qualification, takeover, route resolution, and live Git inspection before reaching the drift/candidate write gate.",
+      "Guardrails run 35675880037 passed on 3f1344bfa7107348f87421eddb1d260423821eec after generated-manifest reconciliation."
+    ],
+    "confirmation": "SATISFIED",
+    "confirmation_basis": [
+      "Provider compare confirms the drift is control-plane-only.",
+      "Independent revised-V2.5 validation confirms the active route remains reconstructable and semantically conformant after the base movement."
+    ]
+  },
+  "observed_by": "ChatGPT GPT-5.6 Sol under Owner-authorized bounded EP-TA-011 reconciliation",
+  "observed_at": "2026-09-22T01:31:00Z"
+}
