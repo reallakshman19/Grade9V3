@@ -5,19 +5,19 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 234,
-  "relation_count": 272,
+  "component_count": 236,
+  "relation_count": 275,
   "components_by_role": {
     "CONTRACT": 7,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 34,
-    "TEST": 109,
-    "TOOLING": 54,
+    "TEST": 110,
+    "TOOLING": 55,
     "WEB": 9,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:6a76a39575c41335bd189c345f7c63573e085a48f9677328f159efce79370c0f",
+  "digest": "sha256:2e0dcbe542ee927cf1d1fd54c66beab444689db05c89ded7eaf197cc28711220",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -585,6 +585,13 @@
       "role_description": "Guardrails and generators",
       "bytes": 14340,
       "sha256": "8e40c31e255ae798c9775edb79667456b9a830415c8802c42657d9d76c057d28"
+    },
+    {
+      "path": "Shared/tools/grade9_exit.py",
+      "role": "TOOLING",
+      "role_description": "Guardrails and generators",
+      "bytes": 28009,
+      "sha256": "27e6af667b60fb361776ced0be06efc56bc4e788336f56f90355f41ce3c4b342"
     },
     {
       "path": "Shared/tools/import_study_observations.py",
@@ -1250,6 +1257,13 @@
       "role_description": "Executable checks",
       "bytes": 7433,
       "sha256": "9ab934fa087279391350fe6e027ea05934a99e40f7b7074f9f140c5aac66ac28"
+    },
+    {
+      "path": "tests/test_grade9_exit.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 32540,
+      "sha256": "35ede6dba370debd3fdee77f55358bbdde629c6b3ec06a1c7d5c7221eea39828"
     },
     {
       "path": "tests/test_grade9_force_laws_scope.py",
@@ -2050,6 +2064,16 @@
       "kind": "IMPORTS"
     },
     {
+      "from": "Shared/tools/grade9_exit.py",
+      "to": "Shared.contracts",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "Shared/tools/grade9_exit.py",
+      "to": "Shared.tools",
+      "kind": "IMPORTS"
+    },
+    {
       "from": "Shared/tools/learner_evidence.py",
       "to": "Shared.contracts",
       "kind": "IMPORTS"
@@ -2541,6 +2565,11 @@
     },
     {
       "from": "tests/test_grade9_default_extension_routing.py",
+      "to": "Shared.tools",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_grade9_exit.py",
       "to": "Shared.tools",
       "kind": "IMPORTS"
     },
