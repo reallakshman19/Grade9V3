@@ -1,0 +1,160 @@
+{
+  "schema_version": "relay-v2.5",
+  "contract_version": 2,
+  "checkpoint_id": "CP-TA-011",
+  "ep_id": "EP-TA-010",
+  "roadmap_basis": {
+    "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
+    "revision": "RM-0012"
+  },
+  "execution_basis": {
+    "material_ref": "411e8dc0108347933792fbbd5a6be8dfa59d655e",
+    "validated_implementation_head": "9fe45c05edebd738188eb8da0524d9ee2a9b34db",
+    "validated_coordination_head": "d095b39e836e9fbffea1e13a5a4d56fe53ed3d45",
+    "provider_delivery_head": "da91e9e42c641e9d2bdd970d1e87a6b8227c84a9",
+    "provider_vehicle": "PR #177"
+  },
+  "implementation_result": {
+    "summary": "Delivery reconciliation checkpoint for completed EP-TA-010. No new Core product code or programme credit is added here; this checkpoint records that PR #177 merged/read back on main and therefore activates the already-planned WP-TA-105 successor boundary.",
+    "completed_steps": [],
+    "files_changed": [
+      "agents/relay/"
+    ]
+  },
+  "acceptance_results": [
+    {
+      "id": "AC-TA10-001",
+      "status": "PASS",
+      "basis": [
+        "BENCH-TA10-001",
+        "BENCH-TA10-002",
+        "TEST-TA10-001",
+        "guardrails 35672260012"
+      ]
+    },
+    {
+      "id": "AC-TA10-002",
+      "status": "PASS",
+      "basis": [
+        "BENCH-TA10-003",
+        "BENCH-TA10-004",
+        "TEST-TA10-002",
+        "guardrails 35672260012"
+      ]
+    },
+    {
+      "id": "AC-TA10-003",
+      "status": "PASS",
+      "basis": [
+        "BENCH-TA10-001",
+        "BENCH-TA10-002",
+        "TEST-TA10-003",
+        "real Motion-in-2D witness"
+      ]
+    },
+    {
+      "id": "AC-TA10-004",
+      "status": "PASS",
+      "basis": [
+        "BENCH-TA10-003",
+        "BENCH-TA10-004",
+        "TEST-TA10-004",
+        "guardrails 35672260012",
+        "v25-relay 35672260109"
+      ]
+    }
+  ],
+  "validation_results": [
+    {
+      "id": "TEST-TA10-001",
+      "status": "PASS",
+      "basis_ref": "411e8dc0108347933792fbbd5a6be8dfa59d655e",
+      "evidence": [
+        "Coordination head d095b39e836e9fbffea1e13a5a4d56fe53ed3d45; structured-ref and source-separation falsifiers pass in guardrails 35672260012."
+      ]
+    },
+    {
+      "id": "TEST-TA10-002",
+      "status": "PASS",
+      "basis_ref": "411e8dc0108347933792fbbd5a6be8dfa59d655e",
+      "evidence": [
+        "Coordination head d095b39e836e9fbffea1e13a5a4d56fe53ed3d45; source fidelity, compiler projection and frozen publications pass in guardrails 35672260012."
+      ]
+    },
+    {
+      "id": "TEST-TA10-003",
+      "status": "PASS",
+      "basis_ref": "411e8dc0108347933792fbbd5a6be8dfa59d655e",
+      "evidence": [
+        "Implementation head 9fe45c05edebd738188eb8da0524d9ee2a9b34db; real Motion-in-2D shared-concept/familiar-crux/protected-transfer witness passes."
+      ]
+    },
+    {
+      "id": "TEST-TA10-004",
+      "status": "PASS",
+      "basis_ref": "411e8dc0108347933792fbbd5a6be8dfa59d655e",
+      "evidence": [
+        "guardrails 35672260012 and revised v25-relay 35672260109 pass on d095b39e836e9fbffea1e13a5a4d56fe53ed3d45; Issue #173 handover projection is synchronized."
+      ]
+    }
+  ],
+  "quality_review": {
+    "id": "QRV-TA-010",
+    "path": "agents/relay/quality/QRV-TA-010.yaml",
+    "digest": "sha256:45b6f3b747446762229cfe87cb5aa9f430ebd7d8ca92867a871326630ce3a58f"
+  },
+  "quality_findings": [],
+  "known_limitations": [
+    {
+      "statement": "Final Issue #173 projection convergence remains blocked by the upstream verified-predecessor supersession defect in current Common/main.",
+      "basis": [
+        "KI-TA10-PROJECTION-001",
+        "Common PR #415"
+      ]
+    }
+  ],
+  "discoveries": [
+    {
+      "statement": "Provider delivery of PR #177 satisfies the control dependency that kept WP-TA-105 FUTURE/WAITING.",
+      "basis": [
+        "PR #177 merge da91e9e42c641e9d2bdd970d1e87a6b8227c84a9",
+        "Issue #173 provider closure"
+      ]
+    }
+  ],
+  "roadmap_reconciliation": {
+    "result": "STATUS_UPDATE",
+    "status_updates": [
+      {
+        "statement": "WP-TA-105 is now the sole PLANNED/EXECUTABLE frontier at unchanged programme progress 93/100.",
+        "basis": [
+          "RM-0012",
+          "PB-0010"
+        ]
+      },
+      {
+        "statement": "EP-TA-011 replaces invalidated EP-TA-009 with zero inherited acceptance credit and requires fresh qualification before product writes.",
+        "basis": [
+          "EP-TA-011",
+          "RM-0012"
+        ]
+      }
+    ],
+    "proposals": [],
+    "owner_decisions_required": []
+  },
+  "remaining_work": [
+    "Complete fresh independent QSET/DISC/QUAL/TC admission for EP-TA-011.",
+    "Port and reconcile the bounded Grade-9 exit candidate logic from PR #170 only after material_write_ready passes.",
+    "Resolve the upstream projection lifecycle known issue before final release."
+  ],
+  "successor": {
+    "mode": "SERIAL",
+    "frontier_work_package": "WP-TA-105",
+    "ep_id": "EP-TA-011",
+    "parallel_plan": null,
+    "join_id": null,
+    "lane_id": null,
+    "lanes": []
+  }
+}

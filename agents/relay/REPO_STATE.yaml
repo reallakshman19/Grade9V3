@@ -30,8 +30,8 @@
     "continuity_receipt": null
   },
   "last_checkpoint": {
-    "id": "CP-TA-010",
-    "path": "agents/relay/checkpoints/CP-TA-010.yaml"
+    "id": "CP-TA-011",
+    "path": "agents/relay/checkpoints/CP-TA-011.yaml"
   },
   "predecessor_join": {
     "id": null,
@@ -63,9 +63,21 @@
       "state": "PARTIAL",
       "summary": "WP-TA-108 is delivered and the fresh WP-TA-105 route is defined. Product acceptance is zero; fresh qualification and implementation evidence remain outstanding.",
       "not_run": [
-        "EP-TA-011 product tests",
-        "EP-TA-011 quality review",
-        "EP-TA-011 checkpoint"
+        {
+          "id": "TEST-TA11-001",
+          "reason": "Product implementation has not started; fresh qualification is still required.",
+          "cause": "DEPENDENCY_WAIT"
+        },
+        {
+          "id": "QRV-TA11-PENDING",
+          "reason": "Quality review is required only after the bounded successor implementation exists.",
+          "cause": "NOT_SCHEDULED"
+        },
+        {
+          "id": "CP-TA11-PENDING",
+          "reason": "Final WP-TA-105 checkpoint cannot run before implementation and exact-head validation.",
+          "cause": "NOT_SCHEDULED"
+        }
       ]
     },
     "stop": {

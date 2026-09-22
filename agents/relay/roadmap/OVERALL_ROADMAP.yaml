@@ -150,7 +150,7 @@
               "title": "Prove Grade-9 Physics exit readiness and Grade-10 transition",
               "state": "PLANNED",
               "definition": "DETAILED",
-              "execution_status": "READY",
+              "execution_status": "EXECUTABLE",
               "weight": 7,
               "depends_on": [
                 "WP-TA-108"

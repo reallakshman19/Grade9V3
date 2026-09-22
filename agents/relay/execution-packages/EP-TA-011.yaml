@@ -5,7 +5,7 @@
     "branch": "fix/issue-169-grade9-exit-reconcile-v25",
     "base_ref": "da91e9e42c641e9d2bdd970d1e87a6b8227c84a9",
     "execution_state": "EXECUTABLE",
-    "previous_checkpoint": "CP-TA-010",
+    "previous_checkpoint": "CP-TA-011",
     "previous_join": null,
     "previous_replan": null
   },
@@ -140,12 +140,12 @@
       "resolution": "READY",
       "value": "Existing Grade-9 scope coverage projection",
       "consumers": [
-        "STEP-TA9-001",
-        "STEP-TA9-002",
-        "AC-TA9-001",
-        "AC-TA9-002",
-        "TEST-TA9-001",
-        "TEST-TA9-002"
+        "STEP-TA11-001",
+        "STEP-TA11-002",
+        "AC-TA11-001",
+        "AC-TA11-002",
+        "TEST-TA11-001",
+        "TEST-TA11-002"
       ],
       "validation": [
         "Required scope, prerequisites, enrichment and later-grade classifications must remain distinguishable."
@@ -167,13 +167,13 @@
       "resolution": "READY",
       "value": "Existing evidence vocabulary and records",
       "consumers": [
-        "STEP-TA9-001",
-        "STEP-TA9-002",
-        "STEP-TA9-003",
-        "AC-TA9-001",
-        "AC-TA9-003",
-        "TEST-TA9-001",
-        "TEST-TA9-003"
+        "STEP-TA11-001",
+        "STEP-TA11-002",
+        "STEP-TA11-003",
+        "AC-TA11-001",
+        "AC-TA11-003",
+        "TEST-TA11-001",
+        "TEST-TA11-003"
       ],
       "validation": [
         "Independent/helped/uncertain/missing/unobserved evidence semantics must be preserved; unknown evidence cannot be promoted."
@@ -195,12 +195,12 @@
       "resolution": "READY",
       "value": "WP-TA-108 delivered contract",
       "consumers": [
-        "STEP-TA9-002",
-        "STEP-TA9-003",
-        "AC-TA9-002",
-        "AC-TA9-003",
-        "TEST-TA9-002",
-        "TEST-TA9-003"
+        "STEP-TA11-002",
+        "STEP-TA11-003",
+        "AC-TA11-002",
+        "AC-TA11-003",
+        "TEST-TA11-002",
+        "TEST-TA11-003"
       ],
       "validation": [
         "Grade-exit projection must not reinterpret session-only postures as persisted mastery."
@@ -222,10 +222,10 @@
       "resolution": "READY",
       "value": "Existing Owner decision",
       "consumers": [
-        "STEP-TA9-001",
-        "STEP-TA9-004",
-        "AC-TA9-004",
-        "TEST-TA9-004"
+        "STEP-TA11-001",
+        "STEP-TA11-004",
+        "AC-TA11-004",
+        "TEST-TA11-004"
       ],
       "validation": [
         "Owner constraints on independent evidence, unknowns and progression remain unchanged unless a new Owner decision supersedes them."
@@ -490,19 +490,68 @@
   },
   "anti_drift": {
     "do_not": [
-      "Do not create a second learner-state or grade-readiness store.",
-      "Do not infer changed-demand evidence from transfer.dimension alone; require canonical Core2B exposure plus transfer metadata.",
-      "Do not infer transition-requiredness from authored Core2B inventory.",
-      "Do not copy Core labels, transfer dimensions, crux refs or protected-move refs into learner observations merely to simplify joins.",
-      "Do not import stale relay/roadmap terminal state from PR #170.",
-      "Do not edit canonical Physics academic meaning in this package."
+      {
+        "id": "AD-TA11-001",
+        "restriction": "Do not create a second learner-state or grade-readiness store.",
+        "reason": "WP-TA-105 is a derived projection over existing scope/evidence truth."
+      },
+      {
+        "id": "AD-TA11-002",
+        "restriction": "Do not infer changed-demand evidence from transfer.dimension alone; require canonical Core2B exposure plus transfer metadata.",
+        "reason": "Transfer metadata alone is not the delivered Core demand-class invariant."
+      },
+      {
+        "id": "AD-TA11-003",
+        "restriction": "Do not infer transition-requiredness from authored Core2B inventory.",
+        "reason": "Task availability, learner observation and transition authority are separate facts."
+      },
+      {
+        "id": "AD-TA11-004",
+        "restriction": "Do not copy Core labels, transfer dimensions, crux refs or protected-move refs into learner observations for convenience.",
+        "reason": "Learner evidence remains owned by the existing observation contract."
+      },
+      {
+        "id": "AD-TA11-005",
+        "restriction": "Do not import stale relay/roadmap terminal state or acceptance credit from PR #170 / EP-TA-009.",
+        "reason": "RM-0010 invalidated that execution custody."
+      },
+      {
+        "id": "AD-TA11-006",
+        "restriction": "Do not edit canonical Physics academic meaning in this package.",
+        "reason": "This is a derived grade-exit projection, not subject authoring."
+      }
     ],
     "stale_if": [
-      "Shared learner-evidence precedence or observation schema changes.",
-      "Delivered Core exposure/transfer schema changes.",
-      "Grade-9 scope/transition authority adds or changes an explicit changed-demand requirement.",
-      "PR #170 product files materially change before the port.",
-      "main moves in overlapping Shared/tools/grade9_exit.py or transition-authority paths."
+      {
+        "id": "STALE-TA11-001",
+        "condition": "Shared learner-evidence precedence or observation schema changes.",
+        "effect": "RECONCILE",
+        "rationale": "Evidence-category and independence assumptions may no longer hold."
+      },
+      {
+        "id": "STALE-TA11-002",
+        "condition": "Delivered Core exposure/transfer schema changes.",
+        "effect": "RECONCILE",
+        "rationale": "Changed-demand classification depends on that canonical contract."
+      },
+      {
+        "id": "STALE-TA11-003",
+        "condition": "Grade-9 scope/transition authority adds or changes an explicit changed-demand requirement.",
+        "effect": "RECONCILE",
+        "rationale": "Transition-requiredness must come from authority rather than task inventory."
+      },
+      {
+        "id": "STALE-TA11-004",
+        "condition": "PR #170 product files materially change before the bounded port.",
+        "effect": "RECONCILE",
+        "rationale": "Candidate-material assumptions must be re-audited."
+      },
+      {
+        "id": "STALE-TA11-005",
+        "condition": "main moves in overlapping grade9_exit or transition-authority paths.",
+        "effect": "RECONCILE",
+        "rationale": "The qualified production path would no longer match."
+      }
     ]
   },
   "implementation_plan": [
@@ -773,7 +822,11 @@
     ],
     "question_policy": "DEFAULT",
     "question_policy_basis": [],
-    "not_applicable_reason": null
+    "not_applicable_reason": null,
+    "question_set": {
+      "id": "QSET-TA-013",
+      "path": "agents/relay/certifications/questions/QSET-TA-013.yaml"
+    }
   },
   "quality": {
     "applicable": [
@@ -1157,7 +1210,11 @@
           "ep_or_terminal_disposition"
         ]
       }
-    ]
+    ],
+    "status_publication": {
+      "default_after_minutes": 25,
+      "owner_override": null
+    }
   },
   "checkpoint_contract": {
     "required": true

@@ -6,7 +6,7 @@
     "roadmap_revision": "RM-0011",
     "issue_graph_revision": "IG-0007",
     "execution_ref": "NONE",
-    "state": "PUBLISHING",
+    "state": "SUPERSEDED",
     "supersedes_generation": "GHGEN-CORE173-R2",
     "basis": [
       "agents/relay/checkpoints/CP-TA-010.yaml",
@@ -22,7 +22,7 @@
     {
       "id": "GHOP-CORE173-CHECKPOINT-R3",
       "kind": "PUBLISH_HANDOVER",
-      "state": "ATTEMPTED_UNCONFIRMED",
+      "state": "SUPERSEDED",
       "idempotency_key": "relay:GHGEN-CORE173-R3:GHOP-CORE173-CHECKPOINT-R3",
       "depends_on": [],
       "subject": {
@@ -75,7 +75,8 @@
         "complete_when": [
           "Issue #173 contains the final checkpoint marker and current checkpoint body."
         ]
-      }
+      },
+      "superseded_by": "GHGEN-G9EXIT-R1"
     }
   ]
 }
