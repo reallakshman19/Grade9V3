@@ -60,7 +60,7 @@
   "progress": {
     "overall_percent": 100,
     "phase_percent": 100,
-    "ep_percent": 0,
+    "ep_percent": 100,
     "basis_revision": "PB-0010"
   },
   "status_planes": {
@@ -68,17 +68,17 @@
       "state": "ACTIVE",
       "can_continue": true,
       "material_authority": "WRITE",
-      "next_action": "The bounded reconciliation and final quality review are complete. Provider ready, merge, checkpoint and release actions remain Owner-reserved."
+      "next_action": "EP-TA-011 reconciliation evidence, quality review and provider readback are complete. Keep PR #178 DRAFT; PR-ready, merge, checkpoint and release remain Owner-reserved. Production #173/#174 integration requires a separately admitted package."
     },
     "quality": {
       "state": "CLEAR",
       "findings": [
-        "Final reconciliation quality review is clear; no blocking material findings remain."
+        "QRV-TA-011 is CLEAR; no blocking material findings remain inside EP-TA-011."
       ]
     },
     "evidence": {
       "state": "COMPLETE",
-      "summary": "The reconciliation has normal current-route admission, exact-head product/control validation, and a clear final quality review. No material engineering blocker remains inside the bounded package.",
+      "summary": "EP-TA-011 earned acceptance is fully evidenced by exact-head 1000-test/browser guardrails, normal V2.5 candidate admission, satisfied deferred validation, QRV-TA-011 CLEAR and a fresh PR #178 delivery readback.",
       "not_run": []
     },
     "stop": {

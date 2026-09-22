@@ -138,9 +138,9 @@
     },
     {
       "id": "EP-TA-011",
-      "earned_weight": 0,
+      "earned_weight": 100,
       "total_weight": 100,
-      "percent": 0
+      "percent": 100
     }
   ],
   "implementation_steps": [
@@ -434,16 +434,16 @@
     {
       "id": "STEP-TA11-001",
       "ep_id": "EP-TA-011",
-      "earned_weight": 0,
+      "earned_weight": 50,
       "total_weight": 50,
-      "percent": 0
+      "percent": 100
     },
     {
       "id": "STEP-TA11-002",
       "ep_id": "EP-TA-011",
-      "earned_weight": 0,
+      "earned_weight": 50,
       "total_weight": 50,
-      "percent": 0
+      "percent": 100
     }
   ],
   "acceptance_criteria": [
@@ -993,20 +993,32 @@
     {
       "id": "AC-TA11-001",
       "ep_id": "EP-TA-011",
-      "status": "NOT_STARTED",
-      "earned_weight": 0,
+      "status": "COMPLETE",
+      "earned_weight": 50,
       "total_weight": 50,
-      "percent": 0,
-      "basis": []
+      "percent": 100,
+      "basis": [
+        "QRV-TA-011",
+        "guardrails 35681793585 PASS @ dd8916a82a035e553890887983e1b8cd785405c0",
+        "guardrails 35682030322 PASS @ 9186c5a5ccd891f25579833d1fea51f3f0c31b7c",
+        "TEST-TA11-001 / BENCH-TA11-001",
+        "CP-TA-010 preserved learner-shell product invariants"
+      ]
     },
     {
       "id": "AC-TA11-002",
       "ep_id": "EP-TA-011",
-      "status": "NOT_STARTED",
-      "earned_weight": 0,
+      "status": "COMPLETE",
+      "earned_weight": 50,
       "total_weight": 50,
-      "percent": 0,
-      "basis": []
+      "percent": 100,
+      "basis": [
+        "QRV-TA-011",
+        "v25-relay 35676199756 proved PASS_WITH_OWNER_OVERRIDE while PEND-TA11-001 was OPEN",
+        "v25-relay 35681793572 proved PASS / NORMAL_V25 / candidate_certified=true after normal admission",
+        "v25-relay 35682030373 PASS @ QRV head 9186c5a5ccd891f25579833d1fea51f3f0c31b7c",
+        "PEND-TA11-001 SATISFIED"
+      ]
     }
   ]
 }

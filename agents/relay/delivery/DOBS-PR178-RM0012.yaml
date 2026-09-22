@@ -10,19 +10,19 @@
     "lifecycle": "DRAFT",
     "head": {
       "ref": "builder/core-learning-pages-r1",
-      "sha": "4ef58b8567177c56b778556c40981f23a65a6c79"
+      "sha": "9186c5a5ccd891f25579833d1fea51f3f0c31b7c"
     },
     "base": {
       "ref": "takeover/grade9-exit-transition-r2",
-      "sha": "ff211de6a5f6a465e842cf93725285c8a4f78450"
+      "sha": "cb7a0cfeec0e14494e2c462791f0ce3cf7fb334b"
     }
   },
   "mergeability": {
-    "state": "CONFLICTING"
+    "state": "MERGEABLE"
   },
   "checks": {
-    "state": "FAIL",
-    "head_sha": "4ef58b8567177c56b778556c40981f23a65a6c79",
+    "state": "PASS",
+    "head_sha": "9186c5a5ccd891f25579833d1fea51f3f0c31b7c",
     "required": [
       "guardrails",
       "v25-relay"
@@ -30,15 +30,15 @@
     "observations": [
       {
         "name": "guardrails",
-        "run_id": 35673031778,
-        "status": "FAIL",
-        "basis": "Exact-head guardrails failed only at generated architecture-manifest freshness after all preceding guardrail checks passed."
+        "run_id": 35682030322,
+        "status": "PASS",
+        "basis": "Exact-head QRV guardrails passed the full repository suite and generated/JSON checks; predecessor product proof had already passed 1000 tests including Core learner and real-browser contracts on dd8916a."
       },
       {
         "name": "v25-relay",
-        "run_id": 35673031783,
-        "status": "FAIL",
-        "basis": "Exact-head revised V2.5 passed protocol unit/stress tests and failed semantic conformance on owner communication, delivery correlation, projection freshness and historical generation state."
+        "run_id": 35682030373,
+        "status": "PASS",
+        "basis": "Exact-head QRV head passed revised V2.5 semantic conformance, cold/zero-context, baton, DISC/QSET/QUAL/TC, route/Git and normal material-write validation."
       }
     ]
   },
@@ -50,7 +50,7 @@
   "description_contract": {
     "marker": "<!-- relay-pr-correlation:v1 -->",
     "marker_present": true,
-    "body_digest": "sha256:ac4c3d3362c80efde3100ee04e4ded675f369ff0212ce46d1d214e1233289dae",
+    "body_digest": "sha256:d9582cb1532d8b84224fa80ea87a5a0d7377f7c580dcadfe8c852c8b976b1f38",
     "correlations": [
       {
         "issue_node": "ISSUE-175",
@@ -68,14 +68,15 @@
         "ep_path": "agents/relay/execution-packages/EP-TA-011.yaml",
         "work_package": "WP-TA-108",
         "relationship": "REMEDIATES",
-        "meaning": "PR #178 carries the bounded post-checkpoint reconciliation for the accepted learner shell under the revised V2.5 controls."
+        "meaning": "PR #178 reconciles the accepted learner-shell delivery with the live predecessor and revised V2.5 controls."
       }
     ]
   },
   "readback_basis": [
-    "GitHub provider readback: PR #178 is DRAFT/OPEN at 4ef58b8567177c56b778556c40981f23a65a6c79.",
-    "Provider body contains relay-pr-correlation:v1 with both EP-TA-010 and EP-TA-011 correlations.",
-    "Current exact-head guardrails and V2.5 checks are failing only on known reconciliation/generated-artifact work.",
-    "PR-ready, merge, checkpoint and release remain blocked by PEND-TA11-001."
+    "GitHub provider readback: PR #178 is DRAFT/OPEN and MERGEABLE at 9186c5a5ccd891f25579833d1fea51f3f0c31b7c.",
+    "Provider body contains relay-pr-correlation:v1 and states PEND-TA11-001 SATISFIED plus QRV-TA-011 CLEAR.",
+    "No submitted reviews or unresolved review threads were present at provider readback.",
+    "Exact-head guardrails 35682030322 and v25-relay 35682030373 are PASS.",
+    "No PR-ready, merge, checkpoint or release action has been taken."
   ]
 }
