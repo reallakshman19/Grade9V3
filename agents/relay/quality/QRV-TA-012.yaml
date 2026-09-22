@@ -1,0 +1,197 @@
+{
+  "schema_version": "relay-v2.5-quality-review",
+  "quality_review_id": "QRV-TA-012",
+  "ep": {
+    "id": "EP-TA-012",
+    "path": "agents/relay/execution-packages/EP-TA-012.yaml",
+    "contract_digest": "sha256:9517a0c98b5a54ea65d6b4d18231765be98018509b6eb4109602ce2026332914"
+  },
+  "roadmap_revision": "RM-0013",
+  "material_ref": "37dc1903eb3688806d16d67ab5aa20ce95d47d63",
+  "reviewer": {
+    "type": "AGENT",
+    "identity": "chatgpt-sol-webbuilder-quality-v3compat-20260922"
+  },
+  "router_snapshot": {
+    "applicable": [
+      {
+        "blueprint": "accessibility",
+        "reason": "Issue #175 explicitly requires keyboard/touch/text/announcement/zoom-safe behavior.",
+        "review_focus": [
+          "focus/keyboard",
+          "aria-live",
+          "text fallback",
+          "narrow layout",
+          "no color-only meaning"
+        ]
+      },
+      {
+        "blueprint": "code-review",
+        "reason": "Generic runtime code can silently accumulate subject/pedagogy policy.",
+        "review_focus": [
+          "subject neutrality",
+          "event vocabulary",
+          "scope containment"
+        ]
+      },
+      {
+        "blueprint": "coding",
+        "reason": "New reusable browser runtime code will be added.",
+        "review_focus": [
+          "small API",
+          "deterministic state transitions",
+          "failure semantics"
+        ]
+      },
+      {
+        "blueprint": "github-delivery",
+        "reason": "Issue #175 must remain correlated with its EP/PR and provider dependency state.",
+        "review_focus": [
+          "Issue↔EP↔WP↔PR correlation",
+          "stacked predecessor",
+          "provider blockers"
+        ]
+      },
+      {
+        "blueprint": "software-design",
+        "reason": "The slice defines the ownership boundary between projection, scientific scene and learner UI state.",
+        "review_focus": [
+          "state ownership",
+          "no duplicate academic truth",
+          "host/component boundary"
+        ]
+      },
+      {
+        "blueprint": "testing",
+        "reason": "Core reveal/protection behavior and browser parity require executable falsifiers.",
+        "review_focus": [
+          "attempt/reveal order",
+          "protected move",
+          "offline/browser coverage"
+        ]
+      },
+      {
+        "blueprint": "ui-ux",
+        "reason": "The learner interaction states and feedback density are user-facing.",
+        "review_focus": [
+          "self-paced flow",
+          "minimal unsolicited feedback",
+          "crux visibility",
+          "help discoverability"
+        ]
+      }
+    ],
+    "not_applicable": [
+      {
+        "blueprint": "engineering-numerics",
+        "reason": "No scientific numerical method is implemented by the shell.",
+        "review_focus": []
+      },
+      {
+        "blueprint": "migration",
+        "reason": "No persisted learner data/schema migration is authorized in this first proof.",
+        "review_focus": []
+      },
+      {
+        "blueprint": "performance",
+        "reason": "The bounded fixture-backed component is not performance-sensitive.",
+        "review_focus": []
+      }
+    ]
+  },
+  "procedure_results": [
+    {
+      "blueprint": "software-design",
+      "result": "CLEAR",
+      "evidence": [
+        "One subject-neutral host generator owns both public and standalone HTML while precompiled CoreProjection data and Shared-derived runtime remain separate authorities.",
+        "The host layer only composes resources/projections and does not gain curriculum, scientific-validity, routing, or mastery ownership."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "coding",
+      "result": "CLEAR",
+      "evidence": [
+        "Shared/tools/build_core_learning_host.py is a small deterministic render/check generator with configured relative paths and no duplicate learner state machine.",
+        "The host-parity slice leaves accepted Core learner/workbench behavior unchanged and reuses mountCoreLearningPage."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "testing",
+      "result": "CLEAR",
+      "evidence": [
+        "Guardrails 35691046209 PASS on 7032e6eda00bbdef877550c8bb952aa499d52ceb with 1002 repository tests.",
+        "Generator one-source checks, subject-neutrality checks, real Chrome workbench/browser coverage, generated-artifact freshness and JSON validation all pass."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "code-review",
+      "result": "CLEAR",
+      "evidence": [
+        "Generator-source assertions prohibit Physics/Mathematics/library/teaching-route/mastery vocabulary from becoming page authority.",
+        "Public and standalone host bytes normalize to one template; the only intended host difference is repository-relative resource wiring."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "accessibility",
+      "result": "CLEAR",
+      "evidence": [
+        "Both generated hosts retain an aria-live status region, labeled projection chooser, keyboard-operable controls, and the accepted accessible core-learning-page/workbench runtime.",
+        "Real-browser contracts remain green, including the underlying keyboard/touch/narrow/reduced-motion workbench behavior."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "ui-ux",
+      "result": "CLEAR",
+      "evidence": [
+        "Public and standalone Core1B hosts begin at the same AWAITING_ATTEMPT state, hide reconstruction before commit, and reveal the same reconstruction after a learner attempt.",
+        "No host-specific pedagogy or unsolicited subject-specific branching was introduced."
+      ],
+      "reason": null,
+      "cause": null
+    },
+    {
+      "blueprint": "github-delivery",
+      "result": "CLEAR",
+      "evidence": [
+        "PR #178 remains draft/open/mergeable and explicitly correlates active EP-TA-012 / WP-TA-109 with Issue #175.",
+        "V2.5 run 35691046145 PASS with NORMAL_V25 material write readiness and candidate_certified=true; staged V3 run 35691046226 PASS while V2.5 remains selected in PREPARED status."
+      ],
+      "reason": null,
+      "cause": null
+    }
+  ],
+  "findings": [],
+  "overall_state": "CLEAR",
+  "execution_effect": {
+    "blocks_execution": false,
+    "blocking_findings": []
+  },
+  "owner_report": {
+    "summary": "Generated public/standalone Core learner host parity is quality-clear: one neutral generator owns both hosts, Core1B behavior is browser-equivalent, resources remain repository-local, and no second academic/mastery authority was introduced.",
+    "visible_risks": [
+      "Production #173/#174 provider integration remains outside this host-parity slice and is not claimed complete.",
+      "Engineering Relay V3 is staged as V2_5/PREPARED; cutover is not authorized because native reconciliation and Common #421 intelligence-continuity remain unresolved.",
+      "PR #178 remains draft; quality clearance does not itself authorize merge or Issue #175 closure."
+    ],
+    "decisions_required": []
+  },
+  "successor_handover": {
+    "unresolved_findings": [],
+    "follow_up": [
+      "Checkpoint WP-TA-109 host parity against this exact product evidence.",
+      "Keep production provider integration and bespoke explorer migration separately admitted.",
+      "Keep V3 cutover blocked until Common #421 continuity evidence and native V3 reconciliation satisfy pinned V3 readiness."
+    ]
+  }
+}
