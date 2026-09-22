@@ -7,11 +7,11 @@
   },
   "relay_protocol": {
     "version": "2.5",
-    "basis_ref": "reallaksh19/Common@1bc4eca6eac9d75900ddee1c338da4b44817eeec:skills/engineering-pr-delivery-v2.5"
+    "basis_ref": "reallaksh19/Common@6cc47ea211d4e7b1fbff968cbeae9433a104db00:skills/engineering-pr-delivery-v2.5"
   },
   "roadmap": {
     "id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
-    "revision": "RM-0011",
+    "revision": "RM-0012",
     "path": "agents/relay/roadmap/OVERALL_ROADMAP.yaml"
   },
   "current_position": {
@@ -24,14 +24,14 @@
     "mode": "SERIAL"
   },
   "active_ep": {
-    "id": "EP-TA-010",
-    "path": "agents/relay/execution-packages/EP-TA-010.yaml",
-    "state": "EXECUTABLE",
+    "id": "EP-TA-011",
+    "path": "agents/relay/execution-packages/EP-TA-011.yaml",
+    "state": "ACTIVE",
     "continuity_receipt": null
   },
   "last_checkpoint": {
-    "id": "CP-TA-009",
-    "path": "agents/relay/checkpoints/CP-TA-009.yaml"
+    "id": "CP-TA-010",
+    "path": "agents/relay/checkpoints/CP-TA-010.yaml"
   },
   "predecessor_join": {
     "id": null,
@@ -43,36 +43,37 @@
   },
   "takeover_admissions": [],
   "progress": {
-    "overall_percent": 86.96,
-    "phase_percent": 86.96,
+    "overall_percent": 100,
+    "phase_percent": 100,
     "ep_percent": 0,
-    "basis_revision": "PB-0009"
+    "basis_revision": "PB-0010"
   },
   "status_planes": {
     "execution": {
       "state": "ACTIVE",
       "can_continue": true,
       "material_authority": "WRITE",
-      "next_action": "Execute only STEP-TA10-001 under ODR-0010, run TEST-TA10-001, then stop. Normal independent EP-TA-010 qualification remains unsatisfied for later material slices."
+      "next_action": "Execute only EP-TA-011 bounded reconciliation under ODR-0012. PEND-TA11-001 blocks PR_READY/MERGE/CHECKPOINT/RELEASE."
     },
     "quality": {
-      "state": "CLEAR",
+      "state": "NEEDS_ATTENTION",
       "findings": [
-        "The new learner-shell boundary is admitted but has no material implementation or quality review yet."
+        "CP-TA-010 remains accepted for the fixture-backed learner shell, but current PR #178 contains later uncheckpointed builder-boundary corrections.",
+        "The moved predecessor is now merged; exact-head product/control evidence must be recollected on EP-TA-011."
       ]
     },
     "evidence": {
       "state": "PARTIAL",
-      "summary": "WP-TA-108 remains at zero accepted evidence. Owner ODR-0010 permits only STEP-TA10-001 direct execution; normal candidate qualification is still absent.",
+      "summary": "Accepted CP-TA-010 evidence remains valid for its material head. Current merged/revised-protocol EP-TA-011 has no terminal exact-head evidence yet.",
       "not_run": [
         {
-          "id": "fresh independent EP-TA-010 qualification",
-          "reason": "No distinct candidate has completed DISC/QUAL/TC for the new browser/runtime boundary.",
+          "id": "EP-TA-011 normal candidate admission",
+          "reason": "Deferred by ODR-0012 / PEND-TA11-001.",
           "cause": "DEPENDENCY_WAIT"
         },
         {
-          "id": "EP-TA-010 learner-shell browser validation",
-          "reason": "Material implementation has not started.",
+          "id": "EP-TA-011 exact-head revised V2.5 + guardrails",
+          "reason": "Will run on the control-state commit.",
           "cause": "NOT_SCHEDULED"
         }
       ]
@@ -86,7 +87,7 @@
   },
   "projection": {
     "required": true,
-    "state": "IN_SYNC",
+    "state": "STALE",
     "operation_id": "GHGEN-WP108-ISS175-R1",
     "target": "github:reallaksh19/Grade9V3:issues",
     "adapter": "GITHUB_ISSUES",
@@ -99,7 +100,8 @@
       "Issue #175 provider readback OPEN with marker GHOP-WP108-ISSUE175-ADMIT",
       "RM-0011",
       "EP-TA-010",
-      "ODR-0009-WEB-BUILDER-START"
+      "ODR-0009-WEB-BUILDER-START",
+      "RM-0012/EP-TA-011 changed execution custody after the last verified Issue #175 projection; refresh before handover/release."
     ],
     "superseded_operations": [
       {
@@ -145,13 +147,55 @@
   },
   "relay_readiness": {
     "baton_ready": true,
-    "projection_ready": true,
-    "handover_ready": true,
+    "projection_ready": false,
+    "handover_ready": false,
     "reasons": [
-      "CP-TA-009 is the exact predecessor checkpoint and WP-TA-108 is the only RM-0011 serial frontier.",
-      "Issue #175 is verified OPEN and in sync with the RM-0011 governed execution marker.",
-      "The execution baton is ready; material implementation remains gated on fresh independent EP-TA-010 qualification."
+      "RM-0012 / EP-TA-011 has a current semantic reconciliation contract and QSET-TA-012.",
+      "Issue #175 external projection still reflects prior execution state and is STALE.",
+      "PEND-TA11-001 blocks release boundaries while bounded Owner execution continues."
     ]
   },
-  "chat_context_required": false
+  "chat_context_required": false,
+  "control_obligations": [
+    {
+      "id": "PEND-TA11-001",
+      "kind": "DEFERRED_VALIDATION",
+      "state": "OPEN",
+      "summary": "Normal candidate admission and final exact-head release/checkpoint authority for EP-TA-011 remain deferred under the Owner's bounded session override.",
+      "source": "ODR-0012-OWNER-REVISED-V25-OVERRIDE",
+      "scope": {
+        "route_key": "SERIAL:EP-TA-011",
+        "ep_id": "EP-TA-011",
+        "branch": "builder/core-learning-pages-r1",
+        "issues": [
+          175
+        ],
+        "pull_requests": [
+          178
+        ]
+      },
+      "evidence": [
+        "CP-TA-010 predates current #178 head and remains the last accepted checkpoint.",
+        "Common/main V2.5 is healthy at 6cc47ea211d4e7b1fbff968cbeae9433a104db00.",
+        "No current DISC/QUAL/TC/admission exists for EP-TA-011 at admission time."
+      ],
+      "must_resolve_before": [
+        "PR_READY",
+        "MERGE",
+        "CHECKPOINT",
+        "RELEASE"
+      ],
+      "allowed_before_resolution": [
+        "READ_ONLY_INSPECTION",
+        "BOUNDED_PRODUCT_WRITES",
+        "TESTS",
+        "DRAFT_PR_UPDATES"
+      ],
+      "resolution_condition": "Produce current repository-only DISC/QUAL/TC plus unique admission for EP-TA-011, rerun exact-head revised V2.5/guardrails, and verify no other blocked control remains.",
+      "revisit_when": "Before checkpoint, PR-ready, merge or release; also if predecessor/Common basis moves again.",
+      "success_condition": "Normal V2.5 material_write_ready returns PASS on the exact release candidate and all exact-head required checks are green.",
+      "monitor_role": "READ_ONLY",
+      "supersedes": null
+    }
+  ]
 }

@@ -1,0 +1,48 @@
+{
+  "schema_version": "relay-v2.5",
+  "revision": {
+    "id": "RM-0012",
+    "from_revision": "RM-0011",
+    "to_revision": "RM-0012",
+    "classification": "EXECUTION_DERIVED_STATUS",
+    "trigger": {
+      "type": "EXECUTION_RECONCILIATION",
+      "path": "agents/relay/roadmap/owner-decisions/ODR-0012-OWNER-REVISED-V25-OVERRIDE.yaml"
+    }
+  },
+  "changes": {
+    "added": [],
+    "removed": [],
+    "changed": [
+      "OBJ-TOPIC-ATLAS-COMPLETE",
+      "PHASE-TAKEOVER-RECONCILIATION",
+      "WP-TA-108"
+    ],
+    "unaffected": [
+      "WP-TAKEOVER-RECONCILE",
+      "WP-TA-102",
+      "WP-TA-106",
+      "WP-TA-103",
+      "WP-TA-104",
+      "WP-TA-107",
+      "WP-TA-105"
+    ]
+  },
+  "invalidated_execution_packages": [],
+  "issue_graph_reconciled": true,
+  "progress_basis_change": {
+    "old_basis": "PB-0009",
+    "new_basis": "PB-0010",
+    "old_total_weight": 115,
+    "new_total_weight": 115
+  },
+  "frontier_after": [
+    "WP-TA-108"
+  ],
+  "notes": [
+    "No concept/denominator change: CP-TA-010 remains the accepted fixture-backed learner-shell checkpoint.",
+    "WP-TA-108 is reopened only for post-checkpoint delivery/protocol reconciliation.",
+    "Active Common V2.5 basis is 6cc47ea211d4e7b1fbff968cbeae9433a104db00.",
+    "Production #173/#174 integration remains separate follow-on work."
+  ]
+}

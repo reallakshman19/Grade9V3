@@ -48,11 +48,20 @@ jobs:
       - name: Cold-start reconstructability
         run: python3 _common/skills/engineering-pr-delivery-v2.5/scripts/cold_start_check.py .
 
+      - name: Zero-context reconstructability
+        run: python3 _common/skills/engineering-pr-delivery-v2.5/scripts/validate_zero_context_reconstruction.py .
+
       - name: Baton readiness
         run: python3 _common/skills/engineering-pr-delivery-v2.5/scripts/validate_baton_readiness.py .
 
       - name: Discovery receipt validity
         run: python3 _common/skills/engineering-pr-delivery-v2.5/scripts/validate_discovery_receipt.py .
+
+      - name: Question-set validity
+        run: python3 _common/skills/engineering-pr-delivery-v2.5/scripts/validate_question_set.py .
+
+      - name: Qualification receipt validity
+        run: python3 _common/skills/engineering-pr-delivery-v2.5/scripts/validate_qualification_receipt.py .
 
       - name: Takeover certification validity
         run: python3 _common/skills/engineering-pr-delivery-v2.5/scripts/validate_takeover_certification.py .
@@ -81,7 +90,7 @@ jobs:
           PY
           )"
           if [ "$relay_state" = "ACTIVE" ] || [ "$relay_state" = "PARALLEL" ]; then
-            python3 _common/skills/engineering-pr-delivery-v2.5/scripts/material_write_ready.py . --candidate-id local-webbuilder-candidate-20260921-a
+            python3 _common/skills/engineering-pr-delivery-v2.5/scripts/material_write_ready.py . --candidate-id chatgpt-sol-webbuilder-revised-20260922
           else
             echo "Material write gate: NOT_APPLICABLE for relay_state=$relay_state"
           fi

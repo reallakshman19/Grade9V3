@@ -1,0 +1,167 @@
+{
+  "schema_version": "relay-v2.5-question-set",
+  "id": "QSET-TA-012",
+  "route": {
+    "route_key": "SERIAL:EP-TA-011",
+    "mode": "SERIAL",
+    "execution_ref": "EP-TA-011",
+    "ep_id": "EP-TA-011",
+    "ep_path": "agents/relay/execution-packages/EP-TA-011.yaml",
+    "plan_id": null,
+    "plan_path": null,
+    "lane_id": null,
+    "roadmap_revision": "RM-0012",
+    "work_package": "WP-TA-108",
+    "ep_contract_digest": "sha256:b364779f0c0d6098dd2308b60b52b44d4af48486ba8652d56ded6276a059cd2b"
+  },
+  "boundary": {
+    "trigger": "MATERIAL_QUALIFICATION_BOUNDARY_CHANGED",
+    "from_phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "to_phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "changed_dimensions": [
+      "INPUT_AUTHORITY",
+      "PROTECTED_INVARIANT",
+      "VERIFICATION_ORACLE"
+    ],
+    "basis": [
+      "Common V2.5 is 6cc47ea211d4e7b1fbff968cbeae9433a104db00.",
+      "The predecessor workbench/browser behavior changed and has been merged.",
+      "The #175 academic ownership boundary must remain unchanged."
+    ]
+  },
+  "questions": [
+    {
+      "id": "Q1",
+      "focus": "PRODUCTION_PATH",
+      "anchors": [
+        "WP-TA-108",
+        "INPUT-TA11-002",
+        "INPUT-TA11-003"
+      ],
+      "prompt": "Trace the current #175 delivery path and ownership after the predecessor merge.",
+      "required_output_keys": [
+        "production_entrypoint",
+        "state_owner",
+        "authority_source",
+        "downstream_consumer"
+      ],
+      "evidence_required": true,
+      "deterministic_expected": {
+        "production_entrypoint": "The #175 branch packages precompiled CoreProjection data and mounts host-supplied semantic-workbench scene/adapter inputs.",
+        "state_owner": "Learner shell owns local attempt/help/reveal/presentation state; workbench adapter owns transformation validity; curriculum/mastery remains external.",
+        "authority_source": "Issue #175 + CP-TA-010 + current predecessor workbench + frozen CoreProjection contract; #173/#174 remain provider-owned.",
+        "downstream_consumer": "Draft PR #178 static/public Core learner host and reusable browser component."
+      }
+    },
+    {
+      "id": "Q2",
+      "focus": "ENGINEERING_PROBLEM",
+      "anchors": [
+        "BENCH-TA11-001",
+        "AC-TA11-001"
+      ],
+      "prompt": "Reconstruct the predecessor merge without changing academic ownership.",
+      "required_output_keys": [
+        "reconstruction_steps",
+        "intermediate_result",
+        "expected_result"
+      ],
+      "evidence_required": true,
+      "reconstruction_mode": "DESIGN_REASONING",
+      "payload": {
+        "source": "Predecessor compare + CP-TA-010 + PR #178"
+      },
+      "deterministic_expected": {
+        "reconstruction_steps": [
+          "Merge predecessor ancestry instead of hiding overlap.",
+          "Adopt semantic-workbench pointercancel/click-suppression behavior.",
+          "Carry predecessor browser/runtime falsifiers into #175 tests.",
+          "Regenerate public semantic-workbench copy and architecture manifest.",
+          "Leave Core projection/reveal/protected-move semantics and precompiled-data boundary unchanged."
+        ],
+        "intermediate_result": "One branch contains both predecessor interaction correction and #175 learner behavior.",
+        "expected_result": "Full guardrails pass on one exact head without raw-subject or mastery logic."
+      }
+    },
+    {
+      "id": "Q3",
+      "focus": "BOUNDARIES_INVARIANTS",
+      "anchors": [
+        "AC-TA11-001",
+        "AC-TA11-002"
+      ],
+      "prompt": "State mutation, invariant and falsifier.",
+      "required_output_keys": [
+        "mutation_effect",
+        "protected_invariant",
+        "falsifier"
+      ],
+      "evidence_required": true,
+      "deterministic_expected": {
+        "mutation_effect": "Merge predecessor behavior and migrate to revised structured override/pending controls.",
+        "protected_invariant": "Builder remains precompiled-projection-only; protected decisions remain hidden; deferred controls remain OPEN.",
+        "falsifier": "Raw academic compilation, protected-move leak, loss of pointercancel behavior, fabricated normal certification, or release/checkpoint while PEND-TA11-001 is OPEN."
+      },
+      "mutation": {
+        "condition": "Reconcile base/protocol only.",
+        "protected_invariant": "Academic ownership and truthful pending state do not change.",
+        "falsifier": "Feature/provider expansion or false PASS."
+      }
+    },
+    {
+      "id": "Q4",
+      "focus": "VERIFICATION",
+      "anchors": [
+        "TEST-TA11-001",
+        "TEST-TA11-002",
+        "BENCH-TA11-001",
+        "BENCH-TA11-002"
+      ],
+      "prompt": "Define independent exact-head verification.",
+      "required_output_keys": [
+        "independent_method",
+        "predicted_result",
+        "tolerance_or_exactness"
+      ],
+      "evidence_required": true,
+      "oracle_refs": [
+        "BENCH-TA11-001",
+        "BENCH-TA11-002"
+      ],
+      "independence_requirement": "Use existing browser falsifiers and current Common validators.",
+      "deterministic_expected": {
+        "independent_method": "Run full Grade9V3 guardrails plus Common@6cc47ea211d4e7b1fbff968cbeae9433a104db00 semantic/cold-start/zero-context/baton/QSET/route/Git/material-write validators.",
+        "predicted_result": "Guardrails pass and material gate reports PASS_WITH_OWNER_OVERRIDE; pending release boundaries remain blocked.",
+        "tolerance_or_exactness": "Exact PASS for product tests and exact PASS_WITH_OWNER_OVERRIDE, not PASS, while PEND is OPEN."
+      }
+    },
+    {
+      "id": "Q5",
+      "focus": "FIRST_SAFE_SLICE",
+      "anchors": [
+        "STEP-TA11-001",
+        "AC-TA11-001"
+      ],
+      "prompt": "Name first bounded reconciliation and proof.",
+      "required_output_keys": [
+        "first_change",
+        "predicted_before",
+        "predicted_after",
+        "verification"
+      ],
+      "evidence_required": true,
+      "step_refs": [
+        "STEP-TA11-001"
+      ],
+      "deterministic_expected": {
+        "first_change": "Merge predecessor ff211de into #178 with explicit semantic-workbench/browser resolution and generated parity; no provider feature work.",
+        "predicted_before": "PR #178 is behind its predecessor and lacks the latest workbench interaction correction.",
+        "predicted_after": "The predecessor is an ancestor of #178 and both behavior contracts are in one tree.",
+        "verification": "TEST-TA11-001 / BENCH-TA11-001 pass before any provider-integration change."
+      }
+    }
+  ],
+  "prepared_by": {
+    "agent_instance_id": "chatgpt-sol-webbuilder-revised-preparer-20260922"
+  }
+}

@@ -1,0 +1,934 @@
+{
+  "schema_version": "relay-v2.5",
+  "identity": {
+    "ep_id": "EP-TA-011",
+    "branch": "builder/core-learning-pages-r1",
+    "base_ref": "ff211de6a5f6a465e842cf93725285c8a4f78450",
+    "execution_state": "EXECUTABLE",
+    "previous_checkpoint": "CP-TA-010",
+    "previous_join": null,
+    "previous_replan": null
+  },
+  "replan_inheritance": null,
+  "git_basis": {
+    "expected_branch": "builder/core-learning-pages-r1",
+    "material_ref": "91626fcb64373895cc9841fe44529b2b3520dc64",
+    "base_branch": "takeover/grade9-exit-transition-r2",
+    "base_observed_ref": "ff211de6a5f6a465e842cf93725285c8a4f78450",
+    "drift_policy": "RECHECK_BEFORE_WRITE",
+    "drift_receipt": null
+  },
+  "roadmap_source": {
+    "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
+    "roadmap_revision": "RM-0012",
+    "objective": "OBJ-TOPIC-ATLAS-COMPLETE",
+    "phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "work_package": "WP-TA-108",
+    "generated_from_frontier": true,
+    "task_admission": {
+      "disposition": "REVISED_EXISTING_WP",
+      "searched_paths": [
+        "agents/relay/REPO_STATE.yaml",
+        "agents/relay/roadmap/OVERALL_ROADMAP.yaml",
+        "agents/relay/checkpoints/CP-TA-010.yaml",
+        "GitHub Issue #175",
+        "GitHub PR #178",
+        "reallaksh19/Common@main:skills/engineering-pr-delivery-v2.5"
+      ],
+      "basis": [
+        "CP-TA-010 accepted the fixture-backed learner-shell proof, but PR #178 advanced afterward with builder-boundary corrections.",
+        "The predecessor branch moved to ff211de and changed semantic-workbench/browser behavior consumed by #175.",
+        "The Owner explicitly required the revised Common/main V2.5 model and authorized bounded continuation for this session."
+      ]
+    }
+  },
+  "outcome": "Reconcile the already-accepted fixture-backed Issue #175 learner shell onto the current predecessor and revised Common V2.5 control model without expanding into provider-owned #173/#174 production projection work.",
+  "context_capsule": {
+    "purpose": "Make the active #175 delivery branch truthful after post-checkpoint changes, predecessor movement, and the revised V2.5 override model.",
+    "current_truth": [
+      "CP-TA-010 remains the accepted fixture-backed checkpoint; later branch changes are uncheckpointed.",
+      "The predecessor is now merged at ff211de and its pointer/click suppression fix is carried into #175 Shared/public runtime and browser tests.",
+      "Common/main V2.5 is healthy at 6cc47ea211d4e7b1fbff968cbeae9433a104db00.",
+      "#173/#174 remain provider-owned and not ready for a #175 production adapter."
+    ],
+    "protected_boundaries": [
+      "No raw subject JSON compilation in the #175 builder.",
+      "No scientific truth, protected-transfer decision or mastery inference in learner runtime.",
+      "No PR_READY, MERGE, CHECKPOINT or RELEASE while PEND-TA11-001 is OPEN."
+    ]
+  },
+  "repository_discovery": [
+    {
+      "id": "DSTEP-TA11-001",
+      "action": "VERIFY_GIT",
+      "targets": [
+        "builder/core-learning-pages-r1",
+        "takeover/grade9-exit-transition-r2",
+        "GitHub PR #178"
+      ],
+      "question": "Is the moved predecessor genuinely merged and are overlapping workbench/browser changes retained?",
+      "expected_outputs": [
+        "merged predecessor ancestry",
+        "resolved overlap list",
+        "current branch/head/base"
+      ],
+      "receipt_required": true,
+      "on_failure": "Stop on unresolved drift or write collision."
+    },
+    {
+      "id": "DSTEP-TA11-002",
+      "action": "TRACE",
+      "targets": [
+        "CP-TA-010",
+        "Shared/tools/build_core_learning_data.py",
+        "current PR #178 diff"
+      ],
+      "question": "Do post-checkpoint changes preserve the precompiled-projection-only builder boundary?",
+      "expected_outputs": [
+        "checkpoint boundary",
+        "post-checkpoint delta",
+        "ownership disposition"
+      ],
+      "receipt_required": true,
+      "on_failure": "Stop on academic-truth or mastery-policy leakage."
+    },
+    {
+      "id": "DSTEP-TA11-003",
+      "action": "VERIFY",
+      "targets": [
+        "reallaksh19/Common@6cc47ea211d4e7b1fbff968cbeae9433a104db00:skills/engineering-pr-delivery-v2.5",
+        "agents/relay/REPO_STATE.yaml",
+        ".github/workflows/v25-relay.yml"
+      ],
+      "question": "Does revised Owner override state use structured execution_override plus OPEN PEND controls?",
+      "expected_outputs": [
+        "pinned Common SHA",
+        "override record",
+        "pending release boundaries"
+      ],
+      "receipt_required": true,
+      "on_failure": "Stop rather than emulate the retired direct-execution exception."
+    },
+    {
+      "id": "DSTEP-TA11-004",
+      "action": "INSPECT",
+      "targets": [
+        "GitHub Issue #173",
+        "GitHub Issue #174",
+        "GitHub PR #176",
+        "GitHub PR #177"
+      ],
+      "question": "Is the production provider path ready for #175?",
+      "expected_outputs": [
+        "provider state",
+        "production adapter go/no-go"
+      ],
+      "receipt_required": true,
+      "on_failure": "Keep the reconciliation fixture-backed."
+    }
+  ],
+  "inputs": [
+    {
+      "id": "INPUT-TA11-001",
+      "name": "Revised Common V2.5",
+      "description": "Current Owner-selected delivery rules.",
+      "authority": "Owner + Common/main",
+      "source": "reallaksh19/Common@6cc47ea211d4e7b1fbff968cbeae9433a104db00:skills/engineering-pr-delivery-v2.5",
+      "type": "EXTERNAL_CONTRACT",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "value": "V2.5@6cc47ea211d4e7b1fbff968cbeae9433a104db00",
+      "consumers": [
+        "STEP-TA11-001",
+        "STEP-TA11-002"
+      ],
+      "validation": [
+        "Scoped Common V2.5 workflow is green on this SHA."
+      ],
+      "stale_if": [
+        "Owner selects a newer protocol SHA."
+      ]
+    },
+    {
+      "id": "INPUT-TA11-002",
+      "name": "Accepted #175 fixture proof",
+      "description": "Last accepted learner-shell checkpoint.",
+      "authority": "CP-TA-010",
+      "source": "agents/relay/checkpoints/CP-TA-010.yaml",
+      "type": "CHECKPOINT",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "value": "CP-TA-010 @ 8ed02dcf",
+      "consumers": [
+        "STEP-TA11-001",
+        "STEP-TA11-002"
+      ],
+      "validation": [
+        "Do not re-earn or broaden accepted product scope."
+      ],
+      "stale_if": [
+        "CP-TA-010 is superseded."
+      ]
+    },
+    {
+      "id": "INPUT-TA11-003",
+      "name": "Merged predecessor",
+      "description": "Current predecessor workbench/browser behavior.",
+      "authority": "Git ancestry + provider compare",
+      "source": "ff211de6a5f6a465e842cf93725285c8a4f78450",
+      "type": "GIT_BASIS",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "value": "ff211de merged into #175 branch",
+      "consumers": [
+        "STEP-TA11-001"
+      ],
+      "validation": [
+        "Pointercancel/click suppression and its falsifiers remain present."
+      ],
+      "stale_if": [
+        "Predecessor advances again."
+      ]
+    },
+    {
+      "id": "INPUT-TA11-004",
+      "name": "Issue #175 boundary",
+      "description": "Builder ownership/provider dependency contract.",
+      "authority": "GitHub Issue #175",
+      "source": "https://github.com/reallaksh19/Grade9V3/issues/175",
+      "type": "OWNER_PRODUCT_CONTRACT",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "value": "Fixture-backed runtime may continue; production adapter remains provider-dependent.",
+      "consumers": [
+        "STEP-TA11-001",
+        "STEP-TA11-002"
+      ],
+      "validation": [
+        "No raw-subject permanent interface."
+      ],
+      "stale_if": [
+        "Issue ownership changes."
+      ]
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": "BENCH-TA11-001",
+      "name": "Merged browser/runtime proof",
+      "purpose": "Prove predecessor and #175 behavior coexist.",
+      "source": "CP-TA-010 + predecessor browser regression",
+      "oracle_class": "REAL_BROWSER",
+      "payload": [
+        "pointercancel/click suppression",
+        "Core1B commit gate",
+        "Core2B protected support",
+        "offline/generated runtime"
+      ],
+      "expected": "All predecessor and #175 browser/runtime checks pass on one exact head.",
+      "tolerance": null,
+      "independence": "Separate pre-existing failure-mode tests.",
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "verifies": [
+        "AC-TA11-001",
+        "TEST-TA11-001"
+      ],
+      "stale_if": [
+        "Workbench API moves again."
+      ]
+    },
+    {
+      "id": "BENCH-TA11-002",
+      "name": "Revised override truth",
+      "purpose": "Prove deferred controls are represented honestly.",
+      "source": "Common@6cc47ea211d4e7b1fbff968cbeae9433a104db00",
+      "oracle_class": "DETERMINISTIC_VALIDATOR",
+      "payload": [
+        "ODR-0012",
+        "PEND-TA11-001",
+        "material_write_ready.py"
+      ],
+      "expected": "PASS_WITH_OWNER_OVERRIDE with PEND open and PR_READY/MERGE/CHECKPOINT/RELEASE blocked.",
+      "tolerance": null,
+      "independence": "Derived by Common validator.",
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "verifies": [
+        "AC-TA11-002",
+        "TEST-TA11-002"
+      ],
+      "stale_if": [
+        "Override revoked or PEND resolved."
+      ]
+    }
+  ],
+  "scope": {
+    "allowed": [
+      {
+        "path": "Shared/workbench/semantic-workbench.mjs",
+        "reason": "Merged predecessor fix."
+      },
+      {
+        "path": "public/js/core-learning/semantic-workbench.mjs",
+        "reason": "Generated parity."
+      },
+      {
+        "path": "tests/workbench_browser.test.mjs",
+        "reason": "Merged browser falsifiers."
+      },
+      {
+        "path": "tests/workbench_runtime.test.mjs",
+        "reason": "Merged listener contract."
+      },
+      {
+        "path": "docs/architecture-manifest.json",
+        "reason": "Generated parity."
+      },
+      {
+        "path": "agents/relay/",
+        "reason": "Revised control state."
+      },
+      {
+        "path": ".github/workflows/v25-relay.yml",
+        "reason": "Pinned revised protocol."
+      }
+    ],
+    "allowed_reads": [
+      {
+        "path": "Shared/tools/build_core_learning_data.py",
+        "reason": "Boundary verification only."
+      },
+      {
+        "path": "public/core-learning/",
+        "reason": "Static host verification."
+      },
+      {
+        "path": "GitHub #173/#174/#176/#177",
+        "reason": "Provider status only."
+      }
+    ],
+    "protected": [
+      {
+        "invariant": "Builder remains precompiled-CoreProjection-only.",
+        "reason": "#173/#174 own academic/provider compilation."
+      },
+      {
+        "invariant": "Core disclosure and neutral non-mastery events remain unchanged.",
+        "reason": "Accepted CP-TA-010 semantics."
+      },
+      {
+        "invariant": "Merged predecessor interaction fix remains in Shared and public runtime.",
+        "reason": "Overlapping drift must be genuinely reconciled."
+      },
+      {
+        "invariant": "PEND-TA11-001 blocks release boundaries.",
+        "reason": "Override defers but does not satisfy controls."
+      }
+    ],
+    "prohibited": [
+      {
+        "domain": "Physics/** and Learners/**",
+        "reason": "No academic/learner-state mutation."
+      },
+      {
+        "domain": "#173/#174 production implementation",
+        "reason": "Provider lanes unresolved."
+      },
+      {
+        "domain": "New subject-specific learner behavior",
+        "reason": "Reconciliation only."
+      }
+    ],
+    "owner_reserved": [
+      {
+        "decision": "PR #178 ready/merge/checkpoint/release and provider PR merges.",
+        "reason": "Separate Owner/control authority."
+      }
+    ]
+  },
+  "anti_drift": {
+    "do_not": [
+      {
+        "id": "ADR-TA11-001",
+        "restriction": "Do not use Owner override to bypass drift/collision/protected invariant/unsafe results.",
+        "reason": "Non-deferrable under revised V2.5."
+      },
+      {
+        "id": "ADR-TA11-002",
+        "restriction": "Do not expand into #173/#174 adapter.",
+        "reason": "Provider not converged."
+      },
+      {
+        "id": "ADR-TA11-003",
+        "restriction": "Do not resolve PEND from product tests alone.",
+        "reason": "Candidate admission is distinct."
+      }
+    ],
+    "stale_if": [
+      {
+        "id": "STALE-TA11-001",
+        "condition": "Predecessor advances beyond ff211de.",
+        "effect": "STALE",
+        "rationale": "Recheck base."
+      },
+      {
+        "id": "STALE-TA11-002",
+        "condition": "Owner selects newer Common SHA.",
+        "effect": "STALE",
+        "rationale": "Control contract moved."
+      },
+      {
+        "id": "STALE-TA11-003",
+        "condition": "Production provider becomes authoritative and adapter work is admitted.",
+        "effect": "STALE",
+        "rationale": "New integration EP required."
+      }
+    ]
+  },
+  "implementation_plan": [
+    {
+      "id": "STEP-TA11-001",
+      "objective": "Prove the merged predecessor/runtime/browser tree preserves both predecessor and #175 invariants.",
+      "targets": [
+        "Shared/workbench/semantic-workbench.mjs",
+        "public/js/core-learning/semantic-workbench.mjs",
+        "tests/workbench_browser.test.mjs",
+        "tests/workbench_runtime.test.mjs",
+        "docs/architecture-manifest.json"
+      ],
+      "reads": [
+        "CP-TA-010",
+        "predecessor compare"
+      ],
+      "writes": [
+        "Shared/workbench/semantic-workbench.mjs",
+        "public/js/core-learning/semantic-workbench.mjs",
+        "tests/workbench_browser.test.mjs",
+        "tests/workbench_runtime.test.mjs",
+        "docs/architecture-manifest.json"
+      ],
+      "inputs": [
+        "INPUT-TA11-002",
+        "INPUT-TA11-003",
+        "INPUT-TA11-004"
+      ],
+      "acceptance": [
+        "AC-TA11-001"
+      ],
+      "tests": [
+        "TEST-TA11-001"
+      ],
+      "expected_state": "Merged exact head retains both behavior families.",
+      "stop_conditions": [
+        "Stop on browser, boundary or generated parity failure."
+      ]
+    },
+    {
+      "id": "STEP-TA11-002",
+      "objective": "Migrate active custody to revised structured override/pending semantics and collect exact-head control evidence.",
+      "targets": [
+        "agents/relay/",
+        ".github/workflows/v25-relay.yml",
+        "PR #178"
+      ],
+      "reads": [
+        "INPUT-TA11-001",
+        "Issue #175"
+      ],
+      "writes": [
+        "agents/relay/",
+        ".github/workflows/v25-relay.yml"
+      ],
+      "inputs": [
+        "INPUT-TA11-001",
+        "INPUT-TA11-004"
+      ],
+      "acceptance": [
+        "AC-TA11-002"
+      ],
+      "tests": [
+        "TEST-TA11-002"
+      ],
+      "expected_state": "PASS_WITH_OWNER_OVERRIDE only; release boundaries remain blocked.",
+      "stop_conditions": [
+        "Stop on baton, override uniqueness or any non-deferrable control failure."
+      ]
+    }
+  ],
+  "next_work": {
+    "phase_transition": false,
+    "steps": [
+      {
+        "order": 1,
+        "action": "Run merged predecessor/#175 product proof.",
+        "targets": [
+          "Shared/workbench/",
+          "public/js/core-learning/",
+          "tests/workbench_browser.test.mjs",
+          "docs/architecture-manifest.json"
+        ],
+        "inputs": [
+          "INPUT-TA11-002",
+          "INPUT-TA11-003",
+          "INPUT-TA11-004"
+        ],
+        "tests": [
+          "TEST-TA11-001"
+        ],
+        "benchmarks": [
+          "BENCH-TA11-001"
+        ],
+        "acceptance": [
+          "AC-TA11-001"
+        ],
+        "expected_result": "Merged exact head is product-green.",
+        "stop_if": [
+          "Protected invariant or generated parity fails."
+        ]
+      },
+      {
+        "order": 2,
+        "action": "Run revised V2.5 exact-head control proof under structured Owner override.",
+        "targets": [
+          "agents/relay/",
+          ".github/workflows/v25-relay.yml",
+          "PR #178"
+        ],
+        "inputs": [
+          "INPUT-TA11-001",
+          "INPUT-TA11-004"
+        ],
+        "tests": [
+          "TEST-TA11-002"
+        ],
+        "benchmarks": [
+          "BENCH-TA11-002"
+        ],
+        "acceptance": [
+          "AC-TA11-002"
+        ],
+        "expected_result": "PASS_WITH_OWNER_OVERRIDE with PEND open.",
+        "stop_if": [
+          "Any non-deferrable predicate fails."
+        ]
+      }
+    ]
+  },
+  "qualification_boundary": {
+    "required": true,
+    "trigger": "MATERIAL_QUALIFICATION_BOUNDARY_CHANGED",
+    "from_phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "to_phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "changed_dimensions": [
+      "INPUT_AUTHORITY",
+      "PROTECTED_INVARIANT",
+      "VERIFICATION_ORACLE"
+    ],
+    "basis": [
+      "Protocol authority is Common@6cc47ea211d4e7b1fbff968cbeae9433a104db00.",
+      "Predecessor workbench/browser behavior changed and is now merged.",
+      "Verification requires coexistence of predecessor and #175 browser falsifiers plus revised override truth."
+    ],
+    "question_policy": "DEFAULT",
+    "question_policy_basis": [],
+    "not_applicable_reason": null,
+    "question_set": {
+      "id": "QSET-TA-012",
+      "path": "agents/relay/certifications/questions/QSET-TA-012.yaml"
+    }
+  },
+  "quality": {
+    "applicable": [
+      {
+        "blueprint": "software-design",
+        "reason": "The slice defines the ownership boundary between projection, scientific scene and learner UI state.",
+        "review_focus": [
+          "state ownership",
+          "no duplicate academic truth",
+          "host/component boundary"
+        ]
+      },
+      {
+        "blueprint": "coding",
+        "reason": "New reusable browser runtime code will be added.",
+        "review_focus": [
+          "small API",
+          "deterministic state transitions",
+          "failure semantics"
+        ]
+      },
+      {
+        "blueprint": "testing",
+        "reason": "Core reveal/protection behavior and browser parity require executable falsifiers.",
+        "review_focus": [
+          "attempt/reveal order",
+          "protected move",
+          "offline/browser coverage"
+        ]
+      },
+      {
+        "blueprint": "code-review",
+        "reason": "Generic runtime code can silently accumulate subject/pedagogy policy.",
+        "review_focus": [
+          "subject neutrality",
+          "event vocabulary",
+          "scope containment"
+        ]
+      },
+      {
+        "blueprint": "accessibility",
+        "reason": "Issue #175 explicitly requires keyboard/touch/text/announcement/zoom-safe behavior.",
+        "review_focus": [
+          "focus/keyboard",
+          "aria-live",
+          "text fallback",
+          "narrow layout",
+          "no color-only meaning"
+        ]
+      },
+      {
+        "blueprint": "ui-ux",
+        "reason": "The learner interaction states and feedback density are user-facing.",
+        "review_focus": [
+          "self-paced flow",
+          "minimal unsolicited feedback",
+          "crux visibility",
+          "help discoverability"
+        ]
+      },
+      {
+        "blueprint": "github-delivery",
+        "reason": "Issue #175 must remain correlated with its EP/PR and provider dependency state.",
+        "review_focus": [
+          "Issue↔EP↔WP↔PR correlation",
+          "stacked predecessor",
+          "provider blockers"
+        ]
+      }
+    ],
+    "not_applicable": [
+      {
+        "blueprint": "engineering-numerics",
+        "reason": "No scientific numerical method is implemented by the shell."
+      },
+      {
+        "blueprint": "performance",
+        "reason": "The bounded fixture-backed component is not performance-sensitive."
+      },
+      {
+        "blueprint": "migration",
+        "reason": "No persisted learner data/schema migration is authorized in this first proof."
+      }
+    ],
+    "review_contract": {
+      "required": true,
+      "required_before_checkpoint": true,
+      "receipt_namespace": "QRV-",
+      "required_outputs": [
+        "procedure_results",
+        "findings",
+        "owner_report",
+        "successor_handover"
+      ]
+    },
+    "findings_policy": "Quality findings remain quality state unless they map to an existing acceptance, authority, protected-invariant, or safety hard-stop condition.",
+    "ordinary_findings_are_hard_stops": false
+  },
+  "acceptance": [
+    {
+      "id": "AC-TA11-001",
+      "description": "Merged predecessor workbench behavior, generated public parity and #175 learner-shell invariants coexist on one exact head.",
+      "weight": 50,
+      "verification": [
+        "TEST-TA11-001",
+        "BENCH-TA11-001"
+      ]
+    },
+    {
+      "id": "AC-TA11-002",
+      "description": "Revised V2.5 structured override/pending semantics are truthful; no deferred control is relabeled PASS or used to cross a blocked release boundary.",
+      "weight": 50,
+      "verification": [
+        "TEST-TA11-002",
+        "BENCH-TA11-002"
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "id": "TEST-TA11-001",
+      "obligation_class": "MUST_PASS",
+      "class": "MUST_PASS",
+      "method": "Full Grade9V3 guardrails including workbench Node/Chrome, Core learner, generated runtime and architecture manifest checks.",
+      "proves": [
+        "AC-TA11-001"
+      ]
+    },
+    {
+      "id": "TEST-TA11-002",
+      "obligation_class": "MUST_PASS",
+      "class": "MUST_PASS",
+      "method": "Common@6cc47ea211d4e7b1fbff968cbeae9433a104db00 protocol suites and relay validators; material_write_ready for chatgpt-sol-webbuilder-revised-20260922 must report PASS_WITH_OWNER_OVERRIDE while PEND-TA11-001 remains OPEN.",
+      "proves": [
+        "AC-TA11-002"
+      ]
+    }
+  ],
+  "failure_and_stop_conditions": {
+    "hard_stop_categories": [
+      "OWNER_DECISION_REQUIRED",
+      "ESSENTIAL_INPUT_MISSING",
+      "AUTHORITY_VIOLATION",
+      "PROTECTED_INVARIANT_FAILURE",
+      "WRITE_COLLISION",
+      "SUPERSEDED_EP",
+      "ROADMAP_CONFLICT",
+      "REPOSITORY_STATE_CONFLICT",
+      "UNSAFE_ENGINEERING_RESULT"
+    ]
+  },
+  "report_contract": {
+    "status_publication": {
+      "default_after_minutes": 25,
+      "owner_override": null
+    },
+    "sections": [
+      "Executive state",
+      "Overall / phase / EP progress",
+      "Work completed",
+      "Files changed",
+      "Acceptance matrix",
+      "Tests and evidence",
+      "Quality findings",
+      "Known limitations",
+      "Owner decisions required",
+      "GitHub issue changes",
+      "Roadmap changes",
+      "Exact next actions",
+      "Successor EP",
+      "Qualification Q1-Q5 when applicable"
+    ],
+    "payloads": [
+      {
+        "id": "RPT-STATE",
+        "section": "Executive state",
+        "sources": [
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "relay_state",
+          "current_position",
+          "execution_state",
+          "material_authority",
+          "stop"
+        ]
+      },
+      {
+        "id": "RPT-PROGRESS",
+        "section": "Overall / phase / EP progress",
+        "sources": [
+          "PROGRESS",
+          "OVERALL_ROADMAP",
+          "EP"
+        ],
+        "required_fields": [
+          "progress_basis",
+          "overall",
+          "phase",
+          "work_package",
+          "step",
+          "acceptance"
+        ]
+      },
+      {
+        "id": "RPT-WORK",
+        "section": "Work completed",
+        "sources": [
+          "EP",
+          "CP"
+        ],
+        "required_fields": [
+          "completed_steps",
+          "implementation_result"
+        ]
+      },
+      {
+        "id": "RPT-FILES",
+        "section": "Files changed",
+        "sources": [
+          "CP"
+        ],
+        "required_fields": [
+          "files_changed"
+        ]
+      },
+      {
+        "id": "RPT-AC",
+        "section": "Acceptance matrix",
+        "sources": [
+          "EP",
+          "PROGRESS",
+          "CP"
+        ],
+        "required_fields": [
+          "criterion",
+          "status",
+          "percent",
+          "basis"
+        ]
+      },
+      {
+        "id": "RPT-EVIDENCE",
+        "section": "Tests and evidence",
+        "sources": [
+          "EP",
+          "CP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "validation_id",
+          "obligation_class",
+          "status",
+          "basis_ref",
+          "not_run_reason"
+        ]
+      },
+      {
+        "id": "RPT-QUALITY",
+        "section": "Quality findings",
+        "sources": [
+          "EP",
+          "QRV",
+          "CP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "quality_review",
+          "procedures",
+          "findings",
+          "disposition",
+          "execution_effect"
+        ]
+      },
+      {
+        "id": "RPT-LIMITS",
+        "section": "Known limitations",
+        "sources": [
+          "EP",
+          "CP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "limitations",
+          "evidence_gaps",
+          "deferred_items"
+        ]
+      },
+      {
+        "id": "RPT-OWNER",
+        "section": "Owner decisions required",
+        "sources": [
+          "ODR",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "decision_required",
+          "pending_items",
+          "authority_effect"
+        ]
+      },
+      {
+        "id": "RPT-ISSUES",
+        "section": "GitHub issue changes",
+        "sources": [
+          "ISSUE_GRAPH",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "operations",
+          "relationships",
+          "projection_state"
+        ]
+      },
+      {
+        "id": "RPT-ROADMAP",
+        "section": "Roadmap changes",
+        "sources": [
+          "OVERALL_ROADMAP",
+          "ROADMAP_REVISION",
+          "PROGRESS"
+        ],
+        "required_fields": [
+          "revision",
+          "topology_or_status_change",
+          "frontier_after",
+          "progress_basis_effect"
+        ]
+      },
+      {
+        "id": "RPT-NEXT",
+        "section": "Exact next actions",
+        "sources": [
+          "EP"
+        ],
+        "required_fields": [
+          "ordered_actions",
+          "targets",
+          "inputs",
+          "tests",
+          "benchmarks",
+          "acceptance",
+          "expected_result",
+          "stop_conditions"
+        ]
+      },
+      {
+        "id": "RPT-SUCCESSOR",
+        "section": "Successor EP",
+        "sources": [
+          "CP",
+          "OVERALL_ROADMAP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "successor_mode",
+          "next_frontier",
+          "ep_or_terminal_disposition"
+        ]
+      }
+    ]
+  },
+  "checkpoint_contract": {
+    "required": true
+  },
+  "successor_relay": {
+    "required": true,
+    "duties": [
+      "reconcile current roadmap node",
+      "create checkpoint",
+      "update progress",
+      "update issue projection when applicable",
+      "compute next executable frontier",
+      "create successor EP when work continues",
+      "validate successor EP",
+      "run cold-start check",
+      "update REPO_STATE"
+    ],
+    "required_outputs": [
+      "checkpoint",
+      "progress_reconciliation",
+      "issue_projection_disposition",
+      "next_frontier",
+      "successor_ep_or_terminal_disposition"
+    ]
+  }
+}

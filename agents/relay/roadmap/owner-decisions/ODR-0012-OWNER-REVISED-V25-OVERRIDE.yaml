@@ -1,0 +1,94 @@
+{
+  "schema_version": "relay-v2.5",
+  "id": "ODR-0012-OWNER-REVISED-V25-OVERRIDE",
+  "decision": {
+    "authority": "OWNER",
+    "kind": "AUTHORIZATION",
+    "statement": "Use revised Common/main engineering-pr-delivery-v2.5 and continue only bounded Issue #175 reconciliation needed to merge current predecessor/runtime changes and revalidate the existing fixture-backed learner-shell delivery; do not expand into provider-owned #173/#174 production integration.",
+    "source": "Owner direct session instructions on 2026-09-22: 'authorized. start fix', 'stop scheduling further, just start coding. this is an over ride for this session', and 'follow revised https://github.com/reallaksh19/Common/tree/main/skills/engineering-pr-delivery-v2.5'."
+  },
+  "effects": {
+    "requirement_disposition": "NOT_APPLICABLE",
+    "grants_material_write_authority": true,
+    "pending_items": [
+      "PEND-TA11-001 remains OPEN for normal candidate admission/release authority."
+    ]
+  },
+  "execution_override": {
+    "disposition": "GRANTED",
+    "scope": {
+      "repository": "reallaksh19/Grade9V3",
+      "branch": "builder/core-learning-pages-r1",
+      "base_sha": "91626fcb64373895cc9841fe44529b2b3520dc64",
+      "route_key": "SERIAL:EP-TA-011",
+      "issues": [
+        175
+      ],
+      "pull_requests": [
+        178
+      ],
+      "allowed_write_paths": [
+        "Shared/workbench/semantic-workbench.mjs",
+        "public/js/core-learning/semantic-workbench.mjs",
+        "tests/workbench_browser.test.mjs",
+        "tests/workbench_runtime.test.mjs",
+        "docs/architecture-manifest.json",
+        "agents/relay/**",
+        ".github/workflows/v25-relay.yml"
+      ]
+    },
+    "defers": [
+      "CANDIDATE_ADMISSION"
+    ],
+    "allows": [
+      "BOUNDED_PRODUCT_WRITES",
+      "TESTS",
+      "DRAFT_PR_UPDATES"
+    ],
+    "blocks": [
+      "PR_READY",
+      "MERGE",
+      "CHECKPOINT",
+      "RELEASE"
+    ],
+    "pending_obligations": [
+      "PEND-TA11-001"
+    ]
+  },
+  "delivery_authorization": null,
+  "impact": {
+    "class": [
+      "LOCAL",
+      "EXECUTION_GOVERNANCE",
+      "PROTOCOL_MIGRATION",
+      "BOUNDED_OWNER_OVERRIDE"
+    ]
+  },
+  "affected": {
+    "objectives": [
+      "OBJ-TOPIC-ATLAS-COMPLETE"
+    ],
+    "phases": [
+      "PHASE-TAKEOVER-RECONCILIATION"
+    ],
+    "work_packages": [
+      "WP-TA-108"
+    ],
+    "execution_packages": [
+      "EP-TA-011"
+    ],
+    "issues": [
+      "ISSUE-175"
+    ],
+    "steps": [
+      "STEP-TA11-001",
+      "STEP-TA11-002"
+    ]
+  },
+  "required_reconciliation": [
+    "Keep PEND-TA11-001 OPEN until normal current-route admission and exact-head release controls are satisfied.",
+    "Do not mark PR #178 ready, merge, checkpoint or release under this override.",
+    "Keep Physics/**, Learners/** and #173/#174 provider implementation out of scope."
+  ],
+  "status": "APPLIED"
+}
