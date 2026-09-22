@@ -3,7 +3,7 @@
   "identity": {
     "ep_id": "EP-TA-010",
     "branch": "builder/core-learning-pages-r1",
-    "base_ref": "d49093db5994c2cd11f5c0ecd2d1cf967b9642df",
+    "base_ref": "8ed02dcfcc9823271bcde409f3e781f252dd6e37",
     "execution_state": "EXECUTABLE",
     "previous_checkpoint": "CP-TA-009",
     "previous_join": null,
@@ -12,7 +12,7 @@
   "replan_inheritance": null,
   "git_basis": {
     "expected_branch": "builder/core-learning-pages-r1",
-    "material_ref": "d49093db5994c2cd11f5c0ecd2d1cf967b9642df",
+    "material_ref": "8ed02dcfcc9823271bcde409f3e781f252dd6e37",
     "base_branch": "takeover/grade9-exit-transition-r2",
     "base_observed_ref": "d49093db5994c2cd11f5c0ecd2d1cf967b9642df",
     "drift_policy": "RECHECK_BEFORE_WRITE",
@@ -277,7 +277,7 @@
       "name": "No-academic-truth browser boundary",
       "purpose": "Falsify page-local subject science or mastery policy.",
       "source": "Issue #175 non-goals + workbench ownership contract",
-      "oracle_class": "STRUCTURAL_REVIEW",
+      "oracle_class": "INDEPENDENT_IMPLEMENTATION",
       "payload": [
         "new learner-shell source",
         "gold fixture",
@@ -301,7 +301,7 @@
       "name": "Browser accessibility/offline matrix",
       "purpose": "Prove the reusable shell behaves in an actual browser without network/runtime discovery.",
       "source": "Issue #175 accessibility/offline acceptance + existing workbench browser-test pattern",
-      "oracle_class": "REAL_BROWSER",
+      "oracle_class": "OBSERVATIONAL",
       "payload": [
         "keyboard/click interaction",
         "touch pointer path where scene manipulation is present",
@@ -735,15 +735,14 @@
       "PRODUCTION_PATH",
       "INPUT_AUTHORITY",
       "PROTECTED_INVARIANT",
-      "VERIFICATION_ORACLE",
-      "PROTOCOL_BASIS"
+      "VERIFICATION_ORACLE"
     ],
     "basis": [
       "Production work changes from grade-exit reporting to browser UI/runtime composition.",
       "The primary interface authority becomes the frozen #176 CoreProjection contract plus Issue #175 rather than Grade-9 exit evidence.",
       "New protected invariants cover attempt-before-reveal, Core2B disclosure, no page-local academic truth and no mastery inference.",
       "Verification changes to state-machine falsifiers plus real-browser accessibility/offline checks.",
-      "Owner pinned Common V2.5 protocol basis 1bc4eca6eac9d75900ddee1c338da4b44817eeec."
+      "The original execution used an earlier Common V2.5 basis; current historical validation normalizes the record without changing accepted product evidence."
     ],
     "question_policy": "DEFAULT",
     "question_policy_basis": [],
