@@ -1,0 +1,171 @@
+name: v3-nlm-checkpoint-once
+
+on:
+  push:
+    branches:
+      - content/issue-174-nlm-v3
+    paths:
+      - '.github/workflows/v3-nlm-checkpoint.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  checkpoint:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout V3 NLM branch
+        uses: actions/checkout@v4
+        with:
+          ref: content/issue-174-nlm-v3
+          fetch-depth: 0
+
+      - name: Fetch production main
+        run: git fetch origin main:refs/remotes/origin/main
+
+      - name: Checkout pinned Common V3
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: c87cf87b313801e42ecd0fcc7d36af0d90c5f400
+          path: _common_v3
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install validator dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+
+      - name: Verify exact V3 execution state
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/validate_foundation.py .
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . validate
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_can.py CHECKPOINT . --base-ref origin/main
+
+      - name: Build exact NLM checkpoint
+        shell: bash
+        run: |
+          PYTHONPATH=_common_v3/skills/engineering-pr-delivery-v3/scripts python - <<'PY'
+          from pathlib import Path
+          from material_basis import inspect
+          from transactionlib import yaml_bytes
+          from v3lib import load_yaml
+
+          root=Path('.').resolve()
+          state=load_yaml(root/'relay/STATE.yaml')
+          ep_id=state['execution']['ep']
+          assert ep_id == 'EP-CANONICAL-174-NLM-001', ep_id
+          ep=load_yaml(root/'relay/WORK'/f'{ep_id}.yaml')
+          material=inspect(root,ep,'origin/main')['material_basis']
+          assert material['head']=='dfc26feab8957ef612776262c135b2454fab1a16', material
+          cp={
+              'schema_version':'relay-v3-checkpoint',
+              'id':'CP-CANONICAL-174-NLM-001',
+              'ep':ep_id,
+              'material_result':{
+                  'head':material['head'],
+                  'relevant_paths_digest':material['relevant_paths_digest'],
+                  'dependency_digest':material['dependency_digest'],
+              },
+              'acceptance':[
+                  {'id':'AC-NLM-GOLD','result':'PASS','evidence':[
+                      'v3-nlm-delivery-once run 35721037703: focused NLM tests PASS on exact head dfc26feab8957ef612776262c135b2454fab1a16.'
+                  ]},
+                  {'id':'AC-NLM-COMPILER','result':'PASS','evidence':[
+                      'v3-nlm-delivery-once run 35721037703: spec_delivery, matrix, depiction, subject and capability guards PASS.'
+                  ]},
+                  {'id':'AC-NLM-GENERATED','result':'PASS','evidence':[
+                      'v3-nlm-delivery-once run 35721037703: build_manifest --check PASS after regeneration.'
+                  ]},
+                  {'id':'AC-NLM-VALIDATION','result':'PASS','evidence':[
+                      'v3-nlm-delivery-once run 35721037703: pinned V3 validation, full repository Python suite, remaining guardrail commands and JSON validation PASS on exact head.'
+                  ]},
+              ],
+              'validation':{
+                  'focused_tests':'PASS',
+                  'spec_delivery':'PASS',
+                  'full_guardrails':'PASS',
+              },
+              'quality':{'policy':'STANDARD','result':'CLEAR'},
+              'known_limitations':[
+                  'PR #183 is stacked on V3 cutover PR #182 and remains draft/unmerged.',
+                  'Issue #174 remains open because Motion-in-2D is a separate canonical-data proof slice.'
+              ],
+              'discoveries':[
+                  'PR #179 product truth ports cleanly without importing its V2.5 owner-override/relay records.',
+                  'The NLM static-friction crux, authored scaffolds and protected transfer decision survive delivered #173 compiler/publication semantics.'
+              ],
+              'handoff':{
+                  'what_changed':[
+                      'NLM static-friction/inclined-plane familiar and transfer items now carry structured reasoning routes, stable crux refs, authored scaffolds and protected transfer semantics under native V3 custody.'
+                  ],
+                  'what_is_true_now':[
+                      'The NLM gold slice is accepted at exact material head dfc26feab8957ef612776262c135b2454fab1a16.',
+                      'Existing source hints and REL-NLM-STATIC-FRICTION-BOUND authority are preserved.',
+                      'Motion-in-2D is not part of this accepted NLM slice.'
+                  ],
+                  'what_remains_uncertain':[
+                      'Provider merge/delivery is not authorized or completed.',
+                      'The separate Motion-in-2D canonical proof is not yet admitted.'
+                  ],
+                  'do_not_break':[
+                      'Do not reopen delivered #162/#173 without a reproduced generic falsifier.',
+                      'Do not merge Motion-in-2D into the NLM delivery vehicle.',
+                      'Do not rewrite source hints or move scientific authority into learner-page/explorer code.'
+                  ],
+                  'attempted_and_rejected':[
+                      'A combined NLM+Motion admission using PR #179 was rejected because it conflicted with PR #179 explicit NLM-only delivery scope.'
+                  ],
+                  'resume_from':[
+                      'PR #182 V3 control-plane delivery.',
+                      'PR #183 accepted NLM material checkpoint.',
+                      'Issue #174 separate Motion-in-2D follow-up.'
+                  ],
+                  'first_successor_action':'After the V3/NLM delivery chain is admitted for provider delivery, create a separate Motion-in-2D V3 PR and admit it as its own work package.'
+              },
+          }
+          Path('/tmp/cp-nlm.yaml').write_bytes(yaml_bytes(cp))
+          PY
+
+      - name: Accept NLM checkpoint transactionally
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_tx.py . checkpoint \
+            --tx-id TX-CHECKPOINT-CANONICAL-NLM-001 \
+            --event-id EVT-CHECKPOINT-CANONICAL-NLM-001 \
+            --actor codex-canonical-v3 \
+            --checkpoint /tmp/cp-nlm.yaml \
+            --base-ref origin/main
+
+      - name: Release NLM execution lease
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_tx.py . release-lease \
+            --tx-id TX-RELEASE-CANONICAL-NLM-001 \
+            --event-id EVT-RELEASE-CANONICAL-NLM-001 \
+            --actor codex-canonical-v3
+
+      - name: Validate accepted IDLE V3 state
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/validate_foundation.py .
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . validate
+          python - <<'PY'
+          import yaml
+          s=yaml.safe_load(open('relay/STATE.yaml',encoding='utf-8'))
+          assert s['accepted']['checkpoint']=='CP-CANONICAL-174-NLM-001'
+          assert s['execution']=={'lifecycle':'IDLE','ep':None,'lease':None,'route':None}
+          assert s['delivery']['primary_vehicle']=={'provider':'GITHUB','kind':'PULL_REQUEST','number':183}
+          print('PASS: checkpoint accepted, execution IDLE, delivery remains PR #183')
+          PY
+
+      - name: Commit checkpoint and remove one-shot workflow
+        shell: bash
+        run: |
+          rm -rf _common_v3
+          git rm .github/workflows/v3-nlm-checkpoint.yml
+          git add relay
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Relay: accept NLM canonical checkpoint'
+          git push origin HEAD:content/issue-174-nlm-v3
