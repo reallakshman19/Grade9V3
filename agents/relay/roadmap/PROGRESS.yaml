@@ -1,8 +1,8 @@
 {
   "schema_version": "relay-v2.5",
   "progress_basis": {
-    "id": "PB-0009",
-    "roadmap_revision": "RM-0011"
+    "id": "PB-0010",
+    "roadmap_revision": "RM-0012"
   },
   "overall": {
     "earned_weight": 93,
@@ -135,6 +135,12 @@
       "earned_weight": 100,
       "total_weight": 100,
       "percent": 100
+    },
+    {
+      "id": "EP-TA-011",
+      "earned_weight": 0,
+      "total_weight": 100,
+      "percent": 0
     }
   ],
   "implementation_steps": [
@@ -424,6 +430,30 @@
       "earned_weight": 25,
       "total_weight": 25,
       "percent": 100
+    },
+    {
+      "id": "STEP-TA11-001",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0
+    },
+    {
+      "id": "STEP-TA11-002",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0
+    },
+    {
+      "id": "STEP-TA11-003",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0
+    },
+    {
+      "id": "STEP-TA11-004",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0
     }
   ],
   "acceptance_criteria": [
@@ -953,6 +983,38 @@
         "guardrails 35672260012",
         "v25-relay 35672260109"
       ]
+    },
+    {
+      "id": "AC-TA11-001",
+      "status": "NOT_STARTED",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0,
+      "basis": []
+    },
+    {
+      "id": "AC-TA11-002",
+      "status": "NOT_STARTED",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0,
+      "basis": []
+    },
+    {
+      "id": "AC-TA11-003",
+      "status": "NOT_STARTED",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0,
+      "basis": []
+    },
+    {
+      "id": "AC-TA11-004",
+      "status": "NOT_STARTED",
+      "earned_weight": 0,
+      "total_weight": 25,
+      "percent": 0,
+      "basis": []
     }
   ]
 }

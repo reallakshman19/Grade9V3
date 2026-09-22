@@ -1,0 +1,71 @@
+{
+  "schema_version": "relay-v2.5-github-projection",
+  "generation": {
+    "id": "GHGEN-G9EXIT-R1",
+    "repository": "reallaksh19/Grade9V3",
+    "roadmap_revision": "RM-0012",
+    "issue_graph_revision": "IG-0008",
+    "execution_ref": "EP-TA-011",
+    "state": "PREPARED",
+    "supersedes_generation": "GHGEN-CORE173-R3",
+    "basis": [
+      "agents/relay/roadmap/revisions/RM-0012.yaml",
+      "agents/relay/execution-packages/EP-TA-011.yaml",
+      "PR #177 merge da91e9e42c641e9d2bdd970d1e87a6b8227c84a9",
+      "Issue #173 provider closure",
+      "Issue #169 / WP-TA-105 successor activation"
+    ]
+  },
+  "operations": [
+    {
+      "id": "GHOP-G9EXIT-ACTIVATE-R1",
+      "kind": "PUBLISH_HANDOVER",
+      "state": "PREPARED",
+      "idempotency_key": "relay:GHGEN-G9EXIT-R1:GHOP-G9EXIT-ACTIVATE-R1",
+      "depends_on": [],
+      "subject": {
+        "issue_node": "ISSUE-169",
+        "related_nodes": [
+          "ISSUE-173"
+        ]
+      },
+      "preconditions": {
+        "repository_issue_state": "OPEN",
+        "work_state": "PLANNED",
+        "work_package": "WP-TA-105"
+      },
+      "desired": {
+        "body_marker": "<!-- relay-operation:GHOP-G9EXIT-ACTIVATE-R1 -->",
+        "body_projection": "<!-- relay-operation:GHOP-G9EXIT-ACTIVATE-R1 -->\n## Successor activation — Grade-9 exit readiness\n\nPR #177 is merged on main at `da91e9e42c641e9d2bdd970d1e87a6b8227c84a9`, so the Core-contract dependency for Issue #169 is delivered.\n\nA fresh successor route is prepared on `fix/issue-169-grade9-exit-reconcile-v25` as `EP-TA-011`. The earlier PR #170 implementation is candidate material only; its stale RM-0010 terminal state and acceptance credit are not inherited.\n\nThe reconciliation is intentionally bounded:\n- preserve the existing categorical Grade-9 exit/report architecture;\n- derive changed-demand evidence from canonical Core2B exposure + transfer metadata, not transfer metadata alone;\n- separate changed-demand task availability, independent learner observation and transition-requiredness;\n- do not let authored Core2B inventory automatically block or defer Grade 10;\n- preserve the no-second-mastery-store and protected Physics/learner-evidence boundaries.\n\nFresh independent qualification is required before any product write on this route.\n",
+        "github_state": "OPEN",
+        "relationships": [
+          {
+            "from": "ISSUE-169",
+            "relation": "FOLLOWS",
+            "to": "ISSUE-173"
+          }
+        ]
+      },
+      "publication": {
+        "attempt_count": 0,
+        "last_attempt_basis": [],
+        "receipt": null,
+        "last_error": null
+      },
+      "verification": {
+        "status": "NOT_RUN",
+        "basis": [],
+        "observed_issue_number": null,
+        "observed_issue_id": null,
+        "observed_github_state": null,
+        "observed_relationships": []
+      },
+      "reconciliation": {
+        "issue_graph_effects": [],
+        "complete_when": [
+          "Issue #169 contains the successor activation marker and current route body."
+        ]
+      }
+    }
+  ]
+}

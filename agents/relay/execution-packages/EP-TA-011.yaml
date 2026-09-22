@@ -1,0 +1,1186 @@
+{
+  "schema_version": "relay-v2.5",
+  "identity": {
+    "ep_id": "EP-TA-011",
+    "branch": "fix/issue-169-grade9-exit-reconcile-v25",
+    "base_ref": "da91e9e42c641e9d2bdd970d1e87a6b8227c84a9",
+    "execution_state": "EXECUTABLE",
+    "previous_checkpoint": "CP-TA-010",
+    "previous_join": null,
+    "previous_replan": null
+  },
+  "replan_inheritance": null,
+  "git_basis": {
+    "expected_branch": "fix/issue-169-grade9-exit-reconcile-v25",
+    "material_ref": "da91e9e42c641e9d2bdd970d1e87a6b8227c84a9",
+    "base_branch": "main",
+    "base_observed_ref": "da91e9e42c641e9d2bdd970d1e87a6b8227c84a9",
+    "drift_policy": "RECHECK_BEFORE_WRITE",
+    "drift_receipt": null
+  },
+  "roadmap_source": {
+    "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
+    "roadmap_revision": "RM-0012",
+    "objective": "OBJ-TOPIC-ATLAS-COMPLETE",
+    "phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "work_package": "WP-TA-105",
+    "generated_from_frontier": true,
+    "task_admission": {
+      "disposition": "REVISED_EXISTING_WP",
+      "searched_paths": [
+        "agents/relay/roadmap/OVERALL_ROADMAP.yaml",
+        "agents/relay/roadmap/ISSUE_GRAPH.yaml",
+        "agents/relay/checkpoints/CP-TA-010.yaml",
+        "https://github.com/reallaksh19/Grade9V3/pull/170"
+      ],
+      "basis": [
+        "WP-TA-105 is the sole remaining detailed work package after completed WP-TA-108.",
+        "PR #177 merged at da91e9e42c641e9d2bdd970d1e87a6b8227c84a9, satisfying the Core-contract dependency.",
+        "PR #170 is candidate implementation material only; its earlier EP-TA-009 terminal/acceptance state was invalidated by RM-0010 and carries no acceptance credit."
+      ]
+    }
+  },
+  "outcome": {
+    "user_visible": [
+      "A parent/agent can inspect a derived Grade-9 Physics exit view that distinguishes secure, usable-but-fragile, known-gap and insufficient/unknown evidence without a mastery percentage.",
+      "The transition view explains which required Grade-9 blockers matter for Grade 10 and keeps changed-demand evidence visible without inventing a transition requirement from authored task inventory."
+    ],
+    "engineering": [
+      "Reconcile the existing Grade-9 exit query/report against the delivered six-Core contract from WP-TA-108 without creating a second learner-state store.",
+      "Derive changed-demand evidence only from canonical Core2B exposure plus transfer metadata, and separate task availability, learner observation and transition-requiredness.",
+      "Treat PR #170 as candidate material: port only still-valid product logic and tests onto delivered main; do not inherit stale relay/control-plane state or prior acceptance credit."
+    ]
+  },
+  "context_capsule": {
+    "product_goal": "Decide when Grade 10 is the next productive Physics learning frontier from canonical Grade-9 scope plus learner evidence, without demanding perfection, hiding foundational holes, or promoting authored transfer inventory into transition authority.",
+    "roadmap_position": "WP-TA-105 is the sole remaining 7/100 work package after WP-TA-108 completed and PR #177 delivered the six-Core contract to main.",
+    "why_this_work_exists": "The pre-#173 Grade-9 exit draft established a useful derived-report architecture, but its transfer joins were written before Core2B gained stable changed-demand identity and before WP-TA-105 explicitly depended on the delivered Core contract.",
+    "current_architecture": "Canonical scope remains in docs/grade9 and Physics contracts; learner evidence remains owned by Shared/tools/learner_evidence.py and Learners. Delivered Core semantics now distinguish Core2A familiar application from Core2B changed demand using canonical exposure, transfer metadata, stable reasoning/crux identity and protected decisions.",
+    "current_implementation_state": "PR #170 contains candidate grade9_exit.py/report/tests with no overlapping product-code conflict against delivered #173, but its branch-local relay state is stale. Two compatibility defects are known: transfer.dimension alone is used as demand-class proof, and authored transfer inventory is treated as if it were transition-required evidence."
+  },
+  "repository_discovery": [
+    {
+      "id": "DSTEP-TA11-001",
+      "action": "TRACE",
+      "targets": [
+        "Shared/tools/grade9_exit.py",
+        "Shared/tools/learner_evidence.py",
+        "tests/test_grade9_exit.py",
+        "https://github.com/reallaksh19/Grade9V3/pull/170"
+      ],
+      "question": "Reconstruct the candidate Grade-9 exit data flow and identify which logic remains valid versus which transfer joins must change after the delivered Core contract.",
+      "expected_outputs": [
+        "Valid reusable exit-readiness architecture",
+        "Exact post-#173 compatibility delta"
+      ],
+      "receipt_required": true,
+      "on_failure": "Stop if candidate material cannot be separated from stale relay state or if learner-evidence ownership is ambiguous."
+    },
+    {
+      "id": "DSTEP-TA11-002",
+      "action": "COMPARE",
+      "targets": [
+        "Shared/library/package.schema.json",
+        "Shared/library/intake.py",
+        "Physics/library/",
+        "docs/grade9/grade9-physics-scope-coverage.json"
+      ],
+      "question": "Determine the canonical mechanical proof of familiar versus changed-demand application and whether current Grade-9 transition authority explicitly requires transfer evidence.",
+      "expected_outputs": [
+        "Canonical demand-class discriminator",
+        "Transition-requiredness authority map"
+      ],
+      "receipt_required": true,
+      "on_failure": "Stop if Core2B demand classification or Grade-9 transition authority cannot be established from repository sources."
+    },
+    {
+      "id": "DSTEP-TA11-003",
+      "action": "VERIFY",
+      "targets": [
+        "agents/relay/checkpoints/CP-TA-010.yaml",
+        "agents/relay/roadmap/owner-decisions/ODR-0003-G9-PHYSICS-INDEPENDENCE.yaml",
+        "agents/relay/roadmap/OVERALL_ROADMAP.yaml"
+      ],
+      "question": "Verify predecessor acceptance, no-second-mastery-store constraints, blocker boundaries, and the exact remaining 7-point scope.",
+      "expected_outputs": [
+        "Inherited invariants",
+        "Zero-credit successor boundary"
+      ],
+      "receipt_required": true,
+      "on_failure": "Stop if predecessor custody or roadmap scope is inconsistent."
+    },
+    {
+      "id": "DSTEP-TA11-004",
+      "action": "VERIFY_GIT",
+      "targets": [
+        "agents/relay/REPO_STATE.yaml",
+        "agents/relay/roadmap/OVERALL_ROADMAP.yaml",
+        ".github/workflows/v25-relay.yml"
+      ],
+      "question": "Verify the fresh successor branch starts from delivered main da91e9e4, RM-0012 exposes only WP-TA-105, and the current Common/main V2.5 basis is used before material writes.",
+      "expected_outputs": [
+        "Exact branch/head/base",
+        "Current frontier/protocol basis"
+      ],
+      "receipt_required": true,
+      "on_failure": "Stop and reconcile route or Git drift before product implementation."
+    }
+  ],
+  "inputs": [
+    {
+      "id": "INPUT-TA9-001",
+      "name": "Grade-9 Physics scope coverage",
+      "description": "Canonical required-scope/prerequisite/enrichment/later-grade classification used to decide what may block Grade-9 exit.",
+      "authority": "Repository Grade-9 scope coverage artifacts governed by RM-0008/WP-TA-105.",
+      "source": "docs/grade9/grade9-physics-scope-coverage.json; docs/grade9/GRADE9-PHYSICS-SCOPE-COVERAGE.md",
+      "type": "CANONICAL_SCOPE",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "value": "Existing Grade-9 scope coverage projection",
+      "consumers": [
+        "STEP-TA9-001",
+        "STEP-TA9-002",
+        "AC-TA9-001",
+        "AC-TA9-002",
+        "TEST-TA9-001",
+        "TEST-TA9-002"
+      ],
+      "validation": [
+        "Required scope, prerequisites, enrichment and later-grade classifications must remain distinguishable."
+      ],
+      "stale_if": [
+        "Grade-9 scope coverage artifacts materially change."
+      ]
+    },
+    {
+      "id": "INPUT-TA9-002",
+      "name": "Existing learner evidence",
+      "description": "Observation/profile evidence used to derive secure/fragile/gap/unknown views without persisting a new mastery state.",
+      "authority": "Shared learner evidence contracts and existing learner records.",
+      "source": "Shared/tools/learner_evidence.py; Learners/",
+      "type": "LEARNER_EVIDENCE",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "value": "Existing evidence vocabulary and records",
+      "consumers": [
+        "STEP-TA9-001",
+        "STEP-TA9-002",
+        "STEP-TA9-003",
+        "AC-TA9-001",
+        "AC-TA9-003",
+        "TEST-TA9-001",
+        "TEST-TA9-003"
+      ],
+      "validation": [
+        "Independent/helped/uncertain/missing/unobserved evidence semantics must be preserved; unknown evidence cannot be promoted."
+      ],
+      "stale_if": [
+        "Learner evidence schema or precedence changes."
+      ]
+    },
+    {
+      "id": "INPUT-TA9-003",
+      "name": "Delivered six-Core predecessor contract",
+      "description": "Checkpoint and delivered main state that define Core1/Core2 projection identity, source/scaffold custody and changed-demand application semantics.",
+      "authority": "CP-TA-010 / delivered PR #177.",
+      "source": "agents/relay/checkpoints/CP-TA-010.yaml; Shared/library/package.schema.json; Shared/library/intake.py",
+      "type": "PREDECESSOR_CONTRACT",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "value": "WP-TA-108 delivered contract",
+      "consumers": [
+        "STEP-TA9-002",
+        "STEP-TA9-003",
+        "AC-TA9-002",
+        "AC-TA9-003",
+        "TEST-TA9-002",
+        "TEST-TA9-003"
+      ],
+      "validation": [
+        "Grade-exit projection must not reinterpret session-only postures as persisted mastery."
+      ],
+      "stale_if": [
+        "CP-TA-010 is superseded or six-Core application/disclosure semantics change on main."
+      ]
+    },
+    {
+      "id": "INPUT-TA9-004",
+      "name": "Grade-9 independence decision",
+      "description": "Owner decision that freezes independent-use Grade-9 Physics scope/transition philosophy and forbids percentage-based certification.",
+      "authority": "Owner decision ODR-0003-G9-PHYSICS-INDEPENDENCE.",
+      "source": "agents/relay/roadmap/owner-decisions/ODR-0003-G9-PHYSICS-INDEPENDENCE.yaml",
+      "type": "OWNER_AUTHORITY",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "value": "Existing Owner decision",
+      "consumers": [
+        "STEP-TA9-001",
+        "STEP-TA9-004",
+        "AC-TA9-004",
+        "TEST-TA9-004"
+      ],
+      "validation": [
+        "Owner constraints on independent evidence, unknowns and progression remain unchanged unless a new Owner decision supersedes them."
+      ],
+      "stale_if": [
+        "ODR-0003 is superseded by a later Owner decision."
+      ]
+    },
+    {
+      "id": "INPUT-TA11-005",
+      "name": "Pre-#173 Grade-9 exit candidate material",
+      "description": "Read-only candidate implementation from draft PR #170 used to port valid derived-report behavior without inheriting stale relay authority or acceptance credit.",
+      "authority": "GitHub PR #170 provider state plus repository diff against delivered main.",
+      "source": "https://github.com/reallaksh19/Grade9V3/pull/170; Shared/tools/grade9_exit.py; tests/test_grade9_exit.py; docs/grade9/GRADE9-PHYSICS-EXIT-TRANSITION-REPORT.md",
+      "type": "CANDIDATE_IMPLEMENTATION",
+      "units": "NA",
+      "editable": false,
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "value": "Candidate product logic only; stale control-plane state excluded",
+      "consumers": [
+        "STEP-TA11-001",
+        "STEP-TA11-002",
+        "STEP-TA11-003",
+        "AC-TA11-001",
+        "AC-TA11-002",
+        "AC-TA11-003",
+        "TEST-TA11-001",
+        "TEST-TA11-002",
+        "TEST-TA11-003"
+      ],
+      "validation": [
+        "No acceptance credit is inherited from EP-TA-009.",
+        "Only product/report/test logic is eligible for porting; stale roadmap/relay terminal state is not."
+      ],
+      "stale_if": [
+        "PR #170 product files materially change before porting."
+      ]
+    }
+  ],
+  "benchmarks": [
+    {
+      "id": "BENCH-TA11-001",
+      "name": "Exit-state evidence truth table",
+      "purpose": "Preserve the valid categorical evidence model and prove helped/unknown evidence cannot become independent security.",
+      "source": "WP-TA-105 exit evidence + Shared learner evidence semantics",
+      "independence": "Frozen cases are evaluated independently of grade9_exit implementation branches.",
+      "oracle_class": "FROZEN_GOLDEN",
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "payload": {
+        "cases": [
+          "required capability independently demonstrated",
+          "helped-only demonstrated",
+          "explicit missing",
+          "unobserved",
+          "enrichment unobserved"
+        ]
+      },
+      "expected": [
+        "independent direct/no-help may be secure",
+        "helped-only is not secure",
+        "known gap stays visible",
+        "unobserved stays unknown",
+        "enrichment absence is non-blocking"
+      ],
+      "tolerance": null,
+      "verifies": [
+        "AC-TA11-001",
+        "TEST-TA11-001"
+      ],
+      "stale_if": [
+        "Learner evidence vocabulary or WP-TA-105 category labels change."
+      ]
+    },
+    {
+      "id": "BENCH-TA11-002",
+      "name": "Canonical changed-demand discriminator",
+      "purpose": "Prevent transfer metadata or caller prose from manufacturing Core2B evidence.",
+      "source": "Delivered package.schema/intake contract plus required Grade-9 canonical questions",
+      "independence": "Expected demand class is derived from canonical exposure + transfer metadata, not grade9_exit helper output.",
+      "oracle_class": "REFERENCE_DATA",
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "payload": {
+        "cases": [
+          "Core2A with transfer block",
+          "Core2B with transfer block",
+          "Core2B helped attempt",
+          "unresolved question_ref"
+        ]
+      },
+      "expected": [
+        "Core2A is not changed-demand evidence",
+        "Core2B + transfer is changed demand",
+        "assisted attempt is not independent",
+        "unresolved ref cannot manufacture transfer"
+      ],
+      "tolerance": null,
+      "verifies": [
+        "AC-TA11-002",
+        "TEST-TA11-002"
+      ],
+      "stale_if": [
+        "Core exposure or transfer schema changes."
+      ]
+    },
+    {
+      "id": "BENCH-TA11-003",
+      "name": "Transfer availability versus transition authority",
+      "purpose": "Prevent authored Core2B inventory from becoming an automatic Grade-10 blocker.",
+      "source": "ODR-0003 + RM-0012/WP-TA-105 exit evidence + Grade-9 scope coverage",
+      "independence": "Expected blocker status is derived from explicit scope/transition authority, not task inventory.",
+      "oracle_class": "FROZEN_GOLDEN",
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "payload": {
+        "cases": [
+          "Core2B available but not required and unobserved",
+          "future explicit transition-required Core2B unobserved",
+          "explicit transition-required Core2B independently observed"
+        ]
+      },
+      "expected": [
+        "availability alone is visible/non-blocking",
+        "explicit requiredness may produce evidence-needed",
+        "independent evidence satisfies an explicit requirement"
+      ],
+      "tolerance": null,
+      "verifies": [
+        "AC-TA11-002",
+        "AC-TA11-003",
+        "TEST-TA11-002",
+        "TEST-TA11-003"
+      ],
+      "stale_if": [
+        "Owner or roadmap transition authority changes."
+      ]
+    },
+    {
+      "id": "BENCH-TA11-004",
+      "name": "No-second-mastery-store invariant",
+      "purpose": "Keep exit readiness a reproducible derived query/report without new learner or grade truth.",
+      "source": "ODR-0003 + WP-TA-105 protected invariants",
+      "independence": "Protected-domain diff and repository search are external to exit logic.",
+      "oracle_class": "OBSERVATIONAL",
+      "applicability": "CURRENT_EP_REQUIRED",
+      "resolution": "READY",
+      "payload": {
+        "forbidden": [
+          "mastery percentage/probability",
+          "persisted readiness category",
+          "Core labels copied into learner observations for convenience",
+          "canonical Physics edits"
+        ]
+      },
+      "expected": "No forbidden persisted state or protected academic edits are introduced.",
+      "tolerance": null,
+      "verifies": [
+        "AC-TA11-004",
+        "TEST-TA11-004"
+      ],
+      "stale_if": [
+        "Owner authority or protected-domain policy changes."
+      ]
+    }
+  ],
+  "scope": {
+    "allowed": [
+      {
+        "path": "Shared/tools/grade9_exit.py",
+        "reason": "Port and reconcile the derived Grade-9 exit query/report."
+      },
+      {
+        "path": "tests/test_grade9_exit.py",
+        "reason": "Add compatibility and blocker-boundary falsifiers."
+      },
+      {
+        "path": "docs/grade9/",
+        "reason": "Refresh the derived exit/transition report if output semantics change."
+      },
+      {
+        "path": "agents/relay/",
+        "reason": "Successor route, evidence, quality, checkpoint, progress and handoff records."
+      },
+      {
+        "path": ".github/workflows/v25-relay.yml",
+        "reason": "Only if relay candidate/protocol routing must be updated without changing product semantics."
+      }
+    ],
+    "allowed_reads": [
+      {
+        "path": "Shared/tools/learner_evidence.py",
+        "reason": "Evidence semantics remain authoritative and read-only for this slice."
+      },
+      {
+        "path": "Shared/library/",
+        "reason": "Read delivered Core exposure/transfer/reasoning contracts."
+      },
+      {
+        "path": "docs/grade9/",
+        "reason": "Read scope coverage and transition authority."
+      },
+      {
+        "path": "Learners/",
+        "reason": "Read learner evidence fixtures; do not rewrite them."
+      },
+      {
+        "path": "Physics/",
+        "reason": "Read canonical question exposure/transfer and prerequisite truth; no material academic edits."
+      },
+      {
+        "path": "https://github.com/reallaksh19/Grade9V3/pull/170",
+        "reason": "Read candidate product implementation and test intent only."
+      }
+    ],
+    "protected": [
+      {
+        "path": "Physics/library/",
+        "reason": "Canonical academic/question meaning is read-only."
+      },
+      {
+        "path": "Physics/matrices/",
+        "reason": "Scope/capability/question-family truth is read-only."
+      },
+      {
+        "path": "Learners/",
+        "reason": "Learner evidence remains input truth; exit projection may not persist derived grade state."
+      },
+      {
+        "invariant": "Unknown, missing, helped-only or unresolved evidence cannot be promoted to independent security.",
+        "reason": "Prevent false progression confidence."
+      },
+      {
+        "invariant": "Authored changed-demand availability is not transition-requiredness unless explicit transition authority declares it.",
+        "reason": "Prevent optional challenge inventory from becoming a hidden blocker."
+      }
+    ],
+    "prohibited": [
+      {
+        "domain": "mastery_percentage_or_probability",
+        "reason": "WP-TA-105 is categorical and derived, not a second mastery model."
+      },
+      {
+        "domain": "persisted_grade_readiness_truth_store",
+        "reason": "Transition state must remain reproducible from canonical scope and existing learner evidence."
+      },
+      {
+        "domain": "transfer_metadata_as_core2b_shortcut",
+        "reason": "Changed demand requires canonical Core2B exposure plus transfer metadata."
+      },
+      {
+        "domain": "authored_transfer_inventory_as_transition_authority",
+        "reason": "Availability, observation and requiredness are separate facts."
+      },
+      {
+        "domain": "stale_ep_ta009_acceptance_inheritance",
+        "reason": "RM-0010 invalidated prior successor acceptance custody."
+      }
+    ],
+    "owner_reserved": []
+  },
+  "anti_drift": {
+    "do_not": [
+      "Do not create a second learner-state or grade-readiness store.",
+      "Do not infer changed-demand evidence from transfer.dimension alone; require canonical Core2B exposure plus transfer metadata.",
+      "Do not infer transition-requiredness from authored Core2B inventory.",
+      "Do not copy Core labels, transfer dimensions, crux refs or protected-move refs into learner observations merely to simplify joins.",
+      "Do not import stale relay/roadmap terminal state from PR #170.",
+      "Do not edit canonical Physics academic meaning in this package."
+    ],
+    "stale_if": [
+      "Shared learner-evidence precedence or observation schema changes.",
+      "Delivered Core exposure/transfer schema changes.",
+      "Grade-9 scope/transition authority adds or changes an explicit changed-demand requirement.",
+      "PR #170 product files materially change before the port.",
+      "main moves in overlapping Shared/tools/grade9_exit.py or transition-authority paths."
+    ]
+  },
+  "implementation_plan": [
+    {
+      "id": "STEP-TA11-001",
+      "objective": "Port the still-valid derived Grade-9 exit architecture from PR #170 onto delivered main without importing stale relay state.",
+      "targets": [
+        "Shared/tools/grade9_exit.py",
+        "tests/test_grade9_exit.py",
+        "docs/grade9/"
+      ],
+      "reads": [
+        "https://github.com/reallaksh19/Grade9V3/pull/170",
+        "Shared/tools/learner_evidence.py",
+        "docs/grade9/grade9-physics-scope-coverage.json"
+      ],
+      "writes": [
+        "Shared/tools/grade9_exit.py",
+        "tests/test_grade9_exit.py",
+        "docs/grade9/"
+      ],
+      "inputs": [
+        "INPUT-TA9-001",
+        "INPUT-TA9-002",
+        "INPUT-TA9-004",
+        "INPUT-TA11-005"
+      ],
+      "acceptance": [
+        "AC-TA11-001"
+      ],
+      "tests": [
+        "TEST-TA11-001"
+      ],
+      "expected_state": "Existing secure/fragile/gap/unknown and blocker/non-blocker behavior is preserved on delivered main with no inherited acceptance credit.",
+      "stop_conditions": [
+        "Porting would require a second mastery store or protected learner/Physics writes."
+      ]
+    },
+    {
+      "id": "STEP-TA11-002",
+      "objective": "Replace transfer-only demand inference with canonical Core2B exposure plus transfer metadata and preserve independent-evidence semantics.",
+      "targets": [
+        "Shared/tools/grade9_exit.py",
+        "tests/test_grade9_exit.py"
+      ],
+      "reads": [
+        "Shared/library/package.schema.json",
+        "Shared/library/intake.py",
+        "Physics/library/"
+      ],
+      "writes": [
+        "Shared/tools/grade9_exit.py",
+        "tests/test_grade9_exit.py"
+      ],
+      "inputs": [
+        "INPUT-TA9-002",
+        "INPUT-TA9-003",
+        "INPUT-TA11-005"
+      ],
+      "acceptance": [
+        "AC-TA11-002"
+      ],
+      "tests": [
+        "TEST-TA11-002"
+      ],
+      "expected_state": "Core2A cannot manufacture transfer evidence; Core2B changed-demand evidence requires canonical resolution and direct/no-help demonstration.",
+      "stop_conditions": [
+        "Canonical demand class cannot be resolved from delivered question truth."
+      ]
+    },
+    {
+      "id": "STEP-TA11-003",
+      "objective": "Separate changed-demand task availability, learner observation and transition-requiredness in domain/report semantics.",
+      "targets": [
+        "Shared/tools/grade9_exit.py",
+        "tests/test_grade9_exit.py",
+        "docs/grade9/"
+      ],
+      "reads": [
+        "agents/relay/roadmap/owner-decisions/ODR-0003-G9-PHYSICS-INDEPENDENCE.yaml",
+        "docs/grade9/grade9-physics-scope-coverage.json",
+        "agents/relay/roadmap/OVERALL_ROADMAP.yaml"
+      ],
+      "writes": [
+        "Shared/tools/grade9_exit.py",
+        "tests/test_grade9_exit.py",
+        "docs/grade9/"
+      ],
+      "inputs": [
+        "INPUT-TA9-001",
+        "INPUT-TA9-004",
+        "INPUT-TA9-003"
+      ],
+      "acceptance": [
+        "AC-TA11-003"
+      ],
+      "tests": [
+        "TEST-TA11-003"
+      ],
+      "expected_state": "Authored Core2B availability is visible but non-blocking unless explicit transition authority requires independent changed-demand evidence.",
+      "stop_conditions": [
+        "Implementing requiredness would require inventing new Owner/scope authority."
+      ]
+    },
+    {
+      "id": "STEP-TA11-004",
+      "objective": "Run full exit-readiness falsifiers, protected-domain diff, quality review, exact-head guardrails/V2.5 and terminal roadmap reconciliation.",
+      "targets": [
+        "tests/test_grade9_exit.py",
+        "docs/grade9/",
+        "agents/relay/"
+      ],
+      "reads": [
+        "agents/relay/checkpoints/CP-TA-010.yaml"
+      ],
+      "writes": [
+        "agents/relay/"
+      ],
+      "inputs": [
+        "INPUT-TA9-001",
+        "INPUT-TA9-002",
+        "INPUT-TA9-003",
+        "INPUT-TA9-004",
+        "INPUT-TA11-005"
+      ],
+      "acceptance": [
+        "AC-TA11-004"
+      ],
+      "tests": [
+        "TEST-TA11-004"
+      ],
+      "expected_state": "WP-TA-105 earns its final 7 points only if the reconciled report is evidence-honest, protected-state safe and exact-head green.",
+      "stop_conditions": [
+        "Any protected-domain, transition-authority, evidence-honesty, quality or exact-head validation requirement remains unresolved."
+      ]
+    }
+  ],
+  "next_work": {
+    "phase_transition": false,
+    "steps": [
+      {
+        "order": 1,
+        "action": "Port the still-valid derived Grade-9 exit architecture from PR #170 onto delivered main without importing stale relay state.",
+        "targets": [
+          "Shared/tools/grade9_exit.py",
+          "tests/test_grade9_exit.py",
+          "docs/grade9/"
+        ],
+        "inputs": [
+          "INPUT-TA9-001",
+          "INPUT-TA9-002",
+          "INPUT-TA9-004",
+          "INPUT-TA11-005"
+        ],
+        "tests": [
+          "TEST-TA11-001"
+        ],
+        "benchmarks": [
+          "BENCH-TA11-001"
+        ],
+        "acceptance": [
+          "AC-TA11-001"
+        ],
+        "expected_result": "Existing secure/fragile/gap/unknown and blocker/non-blocker behavior is preserved on delivered main with no inherited acceptance credit.",
+        "stop_if": [
+          "Porting would require a second mastery store or protected learner/Physics writes."
+        ]
+      },
+      {
+        "order": 2,
+        "action": "Replace transfer-only demand inference with canonical Core2B exposure plus transfer metadata and preserve independent-evidence semantics.",
+        "targets": [
+          "Shared/tools/grade9_exit.py",
+          "tests/test_grade9_exit.py"
+        ],
+        "inputs": [
+          "INPUT-TA9-002",
+          "INPUT-TA9-003",
+          "INPUT-TA11-005"
+        ],
+        "tests": [
+          "TEST-TA11-002"
+        ],
+        "benchmarks": [
+          "BENCH-TA11-002"
+        ],
+        "acceptance": [
+          "AC-TA11-002"
+        ],
+        "expected_result": "Core2A cannot manufacture transfer evidence; Core2B changed-demand evidence requires canonical resolution and direct/no-help demonstration.",
+        "stop_if": [
+          "Canonical demand class cannot be resolved from delivered question truth."
+        ]
+      },
+      {
+        "order": 3,
+        "action": "Separate changed-demand task availability, learner observation and transition-requiredness in domain/report semantics.",
+        "targets": [
+          "Shared/tools/grade9_exit.py",
+          "tests/test_grade9_exit.py",
+          "docs/grade9/"
+        ],
+        "inputs": [
+          "INPUT-TA9-001",
+          "INPUT-TA9-004",
+          "INPUT-TA9-003"
+        ],
+        "tests": [
+          "TEST-TA11-003"
+        ],
+        "benchmarks": [
+          "BENCH-TA11-003"
+        ],
+        "acceptance": [
+          "AC-TA11-003"
+        ],
+        "expected_result": "Authored Core2B availability is visible but non-blocking unless explicit transition authority requires independent changed-demand evidence.",
+        "stop_if": [
+          "Implementing requiredness would require inventing new Owner/scope authority."
+        ]
+      },
+      {
+        "order": 4,
+        "action": "Run full exit-readiness falsifiers, protected-domain diff, quality review, exact-head guardrails/V2.5 and terminal roadmap reconciliation.",
+        "targets": [
+          "tests/test_grade9_exit.py",
+          "docs/grade9/",
+          "agents/relay/"
+        ],
+        "inputs": [
+          "INPUT-TA9-001",
+          "INPUT-TA9-002",
+          "INPUT-TA9-003",
+          "INPUT-TA9-004",
+          "INPUT-TA11-005"
+        ],
+        "tests": [
+          "TEST-TA11-004"
+        ],
+        "benchmarks": [
+          "BENCH-TA11-004"
+        ],
+        "acceptance": [
+          "AC-TA11-004"
+        ],
+        "expected_result": "WP-TA-105 earns its final 7 points only if the reconciled report is evidence-honest, protected-state safe and exact-head green.",
+        "stop_if": [
+          "Any protected-domain, transition-authority, evidence-honesty, quality or exact-head validation requirement remains unresolved."
+        ]
+      }
+    ]
+  },
+  "qualification_boundary": {
+    "required": true,
+    "trigger": "MATERIAL_QUALIFICATION_BOUNDARY_CHANGED",
+    "from_phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "to_phase": "PHASE-TAKEOVER-RECONCILIATION",
+    "changed_dimensions": [
+      "PRODUCTION_PATH",
+      "ENGINEERING_AUTHORITY",
+      "PROTECTED_INVARIANT",
+      "VERIFICATION_ORACLE"
+    ],
+    "basis": [
+      "WP-TA-105 resumes only after delivered WP-TA-108 and now consumes the six-Core application/demand contract.",
+      "PR #170 candidate material predates the delivered Core contract and contains two known transfer-policy shortcuts requiring explicit reconciliation.",
+      "No prior EP-TA-009 qualification/acceptance custody survives RM-0010 invalidation."
+    ],
+    "question_policy": "DEFAULT",
+    "question_policy_basis": [],
+    "not_applicable_reason": null
+  },
+  "quality": {
+    "applicable": [
+      {
+        "blueprint": "software-design",
+        "reason": "The task reconciles a grade-level derived query against newly delivered Core demand semantics without duplicating learner or transition truth.",
+        "review_focus": [
+          "authority separation",
+          "derived-only state",
+          "availability vs observation vs requiredness",
+          "no second readiness ontology"
+        ]
+      },
+      {
+        "blueprint": "coding",
+        "reason": "A small Shared query/report module may be required.",
+        "review_focus": [
+          "determinism",
+          "small API",
+          "explicit unknowns",
+          "no persistence side effects"
+        ]
+      },
+      {
+        "blueprint": "testing",
+        "reason": "Truth tables and blocker/non-blocker falsifiers are the primary correctness proof.",
+        "review_focus": [
+          "unknown/helped evidence",
+          "enrichment non-blocking",
+          "prerequisite blockers",
+          "report reproducibility"
+        ]
+      },
+      {
+        "blueprint": "code-review",
+        "reason": "Grade-exit aggregation can silently overclaim mastery or turn enrichment into a completion gate.",
+        "review_focus": [
+          "evidence basis",
+          "scope classification",
+          "no percentage proxy",
+          "protected-domain diff"
+        ]
+      },
+      {
+        "blueprint": "github-delivery",
+        "reason": "Issue #169 needs a fresh delivery vehicle/basis after #177 landed and the old PR #170 branch became control-plane stale.",
+        "review_focus": [
+          "fresh branch correlation",
+          "PR #170 supersession",
+          "provider readback",
+          "exact-head evidence"
+        ]
+      }
+    ],
+    "not_applicable": [
+      {
+        "blueprint": "accessibility",
+        "reason": "No learner UI is required for the initial derived report contract."
+      },
+      {
+        "blueprint": "ui-ux",
+        "reason": "The first slice is a query/report view, not an interactive UI redesign."
+      },
+      {
+        "blueprint": "engineering-numerics",
+        "reason": "No scientific numerical algorithm changes."
+      },
+      {
+        "blueprint": "performance",
+        "reason": "The bounded Grade-9 scope/evidence projection is not performance-sensitive."
+      },
+      {
+        "blueprint": "migration",
+        "reason": "No persisted learner-state migration is authorized."
+      }
+    ],
+    "review_contract": {
+      "required": true,
+      "required_before_checkpoint": true,
+      "receipt_namespace": "QRV-",
+      "required_outputs": [
+        "procedure_results",
+        "findings",
+        "owner_report",
+        "successor_handover"
+      ]
+    },
+    "findings_policy": "Quality findings remain quality state unless they map to an existing acceptance, authority, protected-invariant, or safety hard-stop condition.",
+    "ordinary_findings_are_hard_stops": false
+  },
+  "acceptance": [
+    {
+      "id": "AC-TA11-001",
+      "weight": 25,
+      "description": "The valid Grade-9 exit architecture is ported onto delivered main as a derived categorical query/report, preserving secure/fragile/gap/unknown evidence, prerequisite/blocker boundaries, parent-readable basis and no second mastery store.",
+      "verification": [
+        "TEST-TA11-001",
+        "BENCH-TA11-001"
+      ]
+    },
+    {
+      "id": "AC-TA11-002",
+      "weight": 25,
+      "description": "Changed-demand evidence is mechanically tied to canonically resolved Core2B exposure plus transfer metadata, and only direct/no-help demonstrated attempts count as independent changed-demand evidence.",
+      "verification": [
+        "TEST-TA11-002",
+        "BENCH-TA11-002"
+      ]
+    },
+    {
+      "id": "AC-TA11-003",
+      "weight": 25,
+      "description": "The exit projection distinguishes changed-demand task availability, independent learner observation and explicit transition-requiredness; authored task inventory alone cannot block or defer Grade 10.",
+      "verification": [
+        "TEST-TA11-003",
+        "BENCH-TA11-003"
+      ]
+    },
+    {
+      "id": "AC-TA11-004",
+      "weight": 25,
+      "description": "No protected learner/Physics truth or second readiness store is introduced, and full falsifiers, quality review, guardrails and exact-head V2.5 pass before final programme credit.",
+      "verification": [
+        "TEST-TA11-004",
+        "BENCH-TA11-004"
+      ]
+    }
+  ],
+  "validation": [
+    {
+      "id": "TEST-TA11-001",
+      "obligation_class": "MUST_PASS",
+      "method": "Run categorical evidence/blocker truth tables and legacy Grade-9 exit report tests after porting candidate product logic onto delivered main.",
+      "proves": [
+        "AC-TA11-001"
+      ],
+      "class": "MUST_PASS"
+    },
+    {
+      "id": "TEST-TA11-002",
+      "obligation_class": "MUST_PASS",
+      "method": "Run Core2A-with-transfer, Core2B-transfer, assisted Core2B and unresolved-question falsifiers proving canonical demand-class and independence behavior.",
+      "proves": [
+        "AC-TA11-002"
+      ],
+      "class": "MUST_PASS"
+    },
+    {
+      "id": "TEST-TA11-003",
+      "obligation_class": "MUST_PASS",
+      "method": "Run availability-versus-requiredness cases proving authored Core2B inventory is non-blocking unless explicit transition authority requires changed-demand evidence.",
+      "proves": [
+        "AC-TA11-003"
+      ],
+      "class": "MUST_PASS"
+    },
+    {
+      "id": "TEST-TA11-004",
+      "obligation_class": "MUST_PASS",
+      "method": "Run no-second-store/protected-domain checks, full repository tests, generated-artifact validation, quality review and exact-head V2.5.",
+      "proves": [
+        "AC-TA11-004"
+      ],
+      "class": "MUST_PASS"
+    }
+  ],
+  "failure_and_stop_conditions": {
+    "hard_stop_categories": [
+      "OWNER_DECISION_REQUIRED",
+      "ESSENTIAL_INPUT_MISSING",
+      "AUTHORITY_VIOLATION",
+      "PROTECTED_INVARIANT_FAILURE",
+      "WRITE_COLLISION",
+      "SUPERSEDED_EP",
+      "ROADMAP_CONFLICT",
+      "REPOSITORY_STATE_CONFLICT",
+      "UNSAFE_ENGINEERING_RESULT"
+    ]
+  },
+  "report_contract": {
+    "sections": [
+      "Executive state",
+      "Overall / phase / EP progress",
+      "Work completed",
+      "Files changed",
+      "Acceptance matrix",
+      "Tests and evidence",
+      "Quality findings",
+      "Known limitations",
+      "Owner decisions required",
+      "GitHub issue changes",
+      "Roadmap changes",
+      "Exact next actions",
+      "Successor EP"
+    ],
+    "payloads": [
+      {
+        "id": "RPT-STATE",
+        "section": "Executive state",
+        "sources": [
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "relay_state",
+          "current_position",
+          "execution_state",
+          "material_authority",
+          "stop"
+        ]
+      },
+      {
+        "id": "RPT-PROGRESS",
+        "section": "Overall / phase / EP progress",
+        "sources": [
+          "PROGRESS",
+          "OVERALL_ROADMAP",
+          "EP"
+        ],
+        "required_fields": [
+          "progress_basis",
+          "overall",
+          "phase",
+          "work_package",
+          "step",
+          "acceptance"
+        ]
+      },
+      {
+        "id": "RPT-WORK",
+        "section": "Work completed",
+        "sources": [
+          "EP",
+          "CP"
+        ],
+        "required_fields": [
+          "completed_steps",
+          "implementation_result"
+        ]
+      },
+      {
+        "id": "RPT-FILES",
+        "section": "Files changed",
+        "sources": [
+          "CP"
+        ],
+        "required_fields": [
+          "files_changed"
+        ]
+      },
+      {
+        "id": "RPT-AC",
+        "section": "Acceptance matrix",
+        "sources": [
+          "EP",
+          "PROGRESS",
+          "CP"
+        ],
+        "required_fields": [
+          "criterion",
+          "status",
+          "percent",
+          "basis"
+        ]
+      },
+      {
+        "id": "RPT-EVIDENCE",
+        "section": "Tests and evidence",
+        "sources": [
+          "EP",
+          "CP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "validation_id",
+          "obligation_class",
+          "status",
+          "basis_ref",
+          "not_run_reason"
+        ]
+      },
+      {
+        "id": "RPT-QUALITY",
+        "section": "Quality findings",
+        "sources": [
+          "EP",
+          "QRV",
+          "CP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "quality_review",
+          "procedures",
+          "findings",
+          "disposition",
+          "execution_effect"
+        ]
+      },
+      {
+        "id": "RPT-LIMITS",
+        "section": "Known limitations",
+        "sources": [
+          "EP",
+          "CP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "limitations",
+          "evidence_gaps",
+          "deferred_items"
+        ]
+      },
+      {
+        "id": "RPT-OWNER",
+        "section": "Owner decisions required",
+        "sources": [
+          "ODR",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "decision_required",
+          "pending_items",
+          "authority_effect"
+        ]
+      },
+      {
+        "id": "RPT-ISSUES",
+        "section": "GitHub issue changes",
+        "sources": [
+          "ISSUE_GRAPH",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "operations",
+          "relationships",
+          "projection_state"
+        ]
+      },
+      {
+        "id": "RPT-ROADMAP",
+        "section": "Roadmap changes",
+        "sources": [
+          "OVERALL_ROADMAP",
+          "ROADMAP_REVISION",
+          "PROGRESS"
+        ],
+        "required_fields": [
+          "revision",
+          "topology_or_status_change",
+          "frontier_after",
+          "progress_basis_effect"
+        ]
+      },
+      {
+        "id": "RPT-NEXT",
+        "section": "Exact next actions",
+        "sources": [
+          "EP"
+        ],
+        "required_fields": [
+          "ordered_actions",
+          "targets",
+          "inputs",
+          "tests",
+          "benchmarks",
+          "acceptance",
+          "expected_result",
+          "stop_conditions"
+        ]
+      },
+      {
+        "id": "RPT-SUCCESSOR",
+        "section": "Successor EP",
+        "sources": [
+          "CP",
+          "OVERALL_ROADMAP",
+          "REPO_STATE"
+        ],
+        "required_fields": [
+          "successor_mode",
+          "next_frontier",
+          "ep_or_terminal_disposition"
+        ]
+      }
+    ]
+  },
+  "checkpoint_contract": {
+    "required": true
+  },
+  "successor_relay": {
+    "required": true,
+    "duties": [
+      "reconcile current roadmap node",
+      "create checkpoint",
+      "update progress",
+      "update issue projection when applicable",
+      "compute next executable frontier",
+      "create successor EP when work continues",
+      "validate successor EP",
+      "run cold-start check",
+      "update REPO_STATE"
+    ],
+    "required_outputs": [
+      "checkpoint",
+      "progress_reconciliation",
+      "issue_projection_disposition",
+      "next_frontier",
+      "successor_ep_or_terminal_disposition"
+    ]
+  }
+}

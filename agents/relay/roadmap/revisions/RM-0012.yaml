@@ -1,0 +1,52 @@
+{
+  "schema_version": "relay-v2.5",
+  "revision": {
+    "id": "RM-0012",
+    "from_revision": "RM-0011",
+    "to_revision": "RM-0012",
+    "classification": "EXECUTION_DERIVED_STATUS",
+    "trigger": {
+      "type": "PROVIDER_DELIVERY",
+      "path": "https://github.com/reallaksh19/Grade9V3/pull/177"
+    }
+  },
+  "changes": {
+    "added": [
+      "EP-TA-011"
+    ],
+    "removed": [],
+    "changed": [
+      "WP-TA-105",
+      "ISSUE-169",
+      "ISSUE-173"
+    ],
+    "unaffected": [
+      "WP-TAKEOVER-RECONCILE",
+      "WP-TA-102",
+      "WP-TA-106",
+      "WP-TA-103",
+      "WP-TA-104",
+      "WP-TA-107",
+      "WP-TA-108"
+    ]
+  },
+  "invalidated_execution_packages": [
+    "EP-TA-009"
+  ],
+  "issue_graph_reconciled": true,
+  "progress_basis_change": {
+    "old_basis": "PB-0009",
+    "new_basis": "PB-0010",
+    "old_total_weight": 100,
+    "new_total_weight": 100
+  },
+  "frontier_after": [
+    "WP-TA-105"
+  ],
+  "notes": [
+    "PR #177 merged as da91e9e42c641e9d2bdd970d1e87a6b8227c84a9 and Issue #173 is provider-closed.",
+    "WP-TA-105 is restored to PLANNED/READY as the sole remaining detailed frontier with 7/100 programme weight.",
+    "EP-TA-011 replaces invalidated EP-TA-009. PR #170 is candidate product material only and confers zero acceptance credit.",
+    "Fresh qualification is required before any EP-TA-011 product write because the delivered six-Core contract changes the material qualification boundary."
+  ]
+}

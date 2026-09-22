@@ -1,6 +1,6 @@
 {
   "schema_version": "relay-v2.5",
-  "relay_state": "IDLE",
+  "relay_state": "ACTIVE",
   "repository": {
     "name": "Grade9V3",
     "remote": "reallaksh19/Grade9V3"
@@ -11,7 +11,7 @@
   },
   "roadmap": {
     "id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
-    "revision": "RM-0011",
+    "revision": "RM-0012",
     "path": "agents/relay/roadmap/OVERALL_ROADMAP.yaml"
   },
   "current_position": {
@@ -24,9 +24,9 @@
     "mode": "SERIAL"
   },
   "active_ep": {
-    "id": null,
-    "path": null,
-    "state": "NONE",
+    "id": "EP-TA-011",
+    "path": "agents/relay/execution-packages/EP-TA-011.yaml",
+    "state": "EXECUTABLE",
     "continuity_receipt": null
   },
   "last_checkpoint": {
@@ -45,24 +45,28 @@
   "progress": {
     "overall_percent": 93,
     "phase_percent": 93,
-    "ep_percent": 100,
-    "basis_revision": "PB-0009"
+    "ep_percent": 0,
+    "basis_revision": "PB-0010"
   },
   "status_planes": {
     "execution": {
-      "state": "WAITING",
-      "can_continue": false,
-      "material_authority": "NONE",
-      "next_action": "Complete provider delivery/readback for draft PR #177, then reconcile Grade-9 exit readiness against the delivered Core contract before any material successor work."
+      "state": "READY",
+      "can_continue": true,
+      "material_authority": "WRITE",
+      "next_action": "Obtain fresh independent QSET/DISC/QUAL/TC admission for EP-TA-011 before any product write, then port the bounded Grade-9 exit candidate logic from PR #170 onto delivered main."
     },
     "quality": {
       "state": "CLEAR",
       "findings": []
     },
     "evidence": {
-      "state": "COMPLETE",
-      "summary": "The Core projection implementation is accepted: all four criteria are complete, guardrails 35672260012 and revised relay validation 35672260109 passed, the Issue #173 handover is synchronized, and delivery ordering is resolved.",
-      "not_run": []
+      "state": "PARTIAL",
+      "summary": "WP-TA-108 is delivered and the fresh WP-TA-105 route is defined. Product acceptance is zero; fresh qualification and implementation evidence remain outstanding.",
+      "not_run": [
+        "EP-TA-011 product tests",
+        "EP-TA-011 quality review",
+        "EP-TA-011 checkpoint"
+      ]
     },
     "stop": {
       "active": false,
@@ -73,24 +77,20 @@
   },
   "projection": {
     "required": true,
-    "state": "PUBLISHED_UNCONFIRMED",
-    "operation_id": "GHGEN-CORE173-R3",
+    "state": "STALE",
+    "operation_id": "GHGEN-G9EXIT-R1",
     "target": "github:reallaksh19/Grade9V3:issues",
     "adapter": "GITHUB_ISSUES",
-    "plan": "agents/relay/projection/generations/GHGEN-CORE173-R3.yaml",
-    "roadmap_revision": "RM-0011",
-    "execution_ref": "NONE",
-    "receipt": "github-generation:GHGEN-CORE173-R3:issue-173:comment-5769610327",
+    "plan": "agents/relay/projection/generations/GHGEN-G9EXIT-R1.yaml",
+    "roadmap_revision": "RM-0012",
+    "execution_ref": "EP-TA-011",
+    "receipt": null,
     "basis": [
-      "agents/relay/checkpoints/CP-TA-010.yaml",
-      "agents/relay/roadmap/revisions/RM-0011.yaml",
-      "agents/relay/roadmap/ISSUE_GRAPH.yaml",
-      "guardrails 35672260012",
-      "v25-relay 35672260109",
-      "GitHub Issue #173 synchronized handover",
-      "GitHub PR #170 draft delivery-order readback",
-      "GitHub Issue #173 comment 5769610327 provider readback matched the prepared final checkpoint body.",
-      "Final projection reconciliation is deferred on the pinned protocol's verified-predecessor supersession limitation; Common PR #415 is the upstream fix."
+      "agents/relay/roadmap/revisions/RM-0012.yaml",
+      "agents/relay/execution-packages/EP-TA-011.yaml",
+      "PR #177 merge da91e9e42c641e9d2bdd970d1e87a6b8227c84a9",
+      "Issue #173 provider closure",
+      "Issue #169 / WP-TA-105 successor activation"
     ],
     "superseded_operations": [
       {
@@ -99,12 +99,25 @@
         "roadmap_revision": "RM-0010",
         "execution_ref": "EP-TA-010",
         "disposition": "SUPERSEDED_BEFORE_PUBLICATION",
-        "superseded_by": "GHGEN-CORE173-R3",
+        "superseded_by": "GHGEN-G9EXIT-R1",
         "receipt": null,
         "basis": [
           "generation:GHGEN-CORE173-R1",
-          "GHGEN-CORE173-R2 is preserved as the verified observed predecessor",
-          "superseded_by:GHGEN-CORE173-R3"
+          "superseded_by:GHGEN-G9EXIT-R1"
+        ]
+      },
+      {
+        "operation_id": "GHGEN-CORE173-R3",
+        "target": "github:reallaksh19/Grade9V3:issues",
+        "roadmap_revision": "RM-0011",
+        "execution_ref": "NONE",
+        "disposition": "SUPERSEDED_AFTER_PUBLICATION_UNCONFIRMED",
+        "superseded_by": "GHGEN-G9EXIT-R1",
+        "receipt": "github-generation:GHGEN-CORE173-R3:issue-173:comment-5769610327",
+        "basis": [
+          "Issue #173 checkpoint publication 5769610327",
+          "PR #177 provider delivery superseded the completed-work desired projection",
+          "superseded_by:GHGEN-G9EXIT-R1"
         ]
       }
     ],
@@ -140,14 +153,15 @@
     ]
   },
   "relay_readiness": {
-    "baton_ready": true,
+    "baton_ready": false,
     "projection_ready": false,
     "handover_ready": false,
     "reasons": [
-      "The Core projection implementation is checkpointed with all acceptance criteria complete.",
-      "Execution custody for the completed Core implementation is released.",
-      "The final Issue #173 checkpoint comment is published and provider-read back; final synchronization remains blocked because current Common/main still lacks faithful verified-predecessor supersession.",
-      "Grade-9 exit readiness remains waiting for draft PR #177 provider delivery; PR #170 is draft and ordered after it."
+      "PR #177 is delivered and WP-TA-105 is the sole remaining roadmap frontier.",
+      "EP-TA-011 is structurally prepared on delivered main with zero inherited acceptance credit.",
+      "Fresh qualification is required because the Core-contract delivery changes the material qualification boundary.",
+      "Issue #169 successor projection is prepared but not yet published/read back.",
+      "The upstream verified-projection supersession known issue remains release-blocking only."
     ]
   },
   "chat_context_required": false,
@@ -205,7 +219,7 @@
     {
       "id": "PEND-TA10-PROVIDER-002",
       "kind": "DEFERRED_VALIDATION",
-      "state": "OPEN",
+      "state": "SATISFIED",
       "summary": "Draft PR #177 must be delivered and read back before Grade-9 exit-readiness receives a fresh material route.",
       "source": "Core projection checkpoint successor boundary and provider delivery-order readback",
       "scope": {
@@ -224,7 +238,11 @@
       "evidence": [
         "guardrails 35672260012 PASS",
         "revised relay validation 35672260109 PASS",
-        "PR #170 is draft and explicitly blocked behind PR #177."
+        "PR #170 is draft and explicitly blocked behind PR #177.",
+        "Owner delivery authorization recorded on Issue #173 comment 5770738485.",
+        "PR #177 merged with exact authorized head d572be6758d6660ea2dd2a23ae650ea43f877ad2.",
+        "main readback is da91e9e42c641e9d2bdd970d1e87a6b8227c84a9.",
+        "Issue #173 is provider-closed as completed."
       ],
       "must_resolve_before": [
         "RELEASE",
