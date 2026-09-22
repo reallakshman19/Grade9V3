@@ -7,7 +7,7 @@
   },
   "relay_protocol": {
     "version": "2.5",
-    "basis_ref": "reallaksh19/Common@d9b84069683977b5c370f536f1c50095de926338:skills/engineering-pr-delivery-v2.5"
+    "basis_ref": "reallaksh19/Common@2de3c05908db3e1137bb3ad43c4feae7f541f88c:skills/engineering-pr-delivery-v2.5"
   },
   "roadmap": {
     "id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
@@ -89,7 +89,22 @@
       "GHGEN-WP105-ISS169-R3 operation VERIFIED",
       "provider issue state remains OPEN pending PR #170 delivery"
     ],
-    "superseded_operations": [],
+    "superseded_operations": [
+      {
+        "operation_id": "GHGEN-WP105-ISS169-R2",
+        "target": "github:reallaksh19/Grade9V3:issues",
+        "roadmap_revision": "RM-0010",
+        "execution_ref": "EP-TA-009",
+        "disposition": "SUPERSEDED_AFTER_VERIFIED_PUBLICATION",
+        "superseded_by": "GHGEN-WP105-ISS169-R3",
+        "receipt": "github-generation:GHGEN-WP105-ISS169-R2:issue-169",
+        "basis": [
+          "Issue #169 provider readback verified GHGEN-WP105-ISS169-R2 before terminal generation activation.",
+          "relay-operation:GHOP-WP105-ISSUE169-CHECKPOINT marker was observed on the predecessor generation.",
+          "GHGEN-WP105-ISS169-R3 is now the verified terminal generation."
+        ]
+      }
+    ],
     "observed": {
       "operation_id": "GHGEN-WP105-ISS169-R3",
       "target": "github:reallaksh19/Grade9V3:issues",
