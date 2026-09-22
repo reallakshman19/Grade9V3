@@ -1,0 +1,228 @@
+name: v3-native-reconcile-stage
+
+on:
+  push:
+    branches:
+      - migration/v3-native-reconcile-20260922
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout staging branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout pinned Common V3
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: 9c7b7cab8337e231c36d62453e1ed907da1c37d8
+          path: _common_v3
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install V3 dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+
+      - name: Reconcile V3 migration authority transactionally
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from __future__ import annotations
+          import copy
+          import sys
+          from datetime import datetime, timezone
+          from pathlib import Path
+
+          root = Path(".").resolve()
+          scripts = root / "_common_v3/skills/engineering-pr-delivery-v3/scripts"
+          sys.path.insert(0, str(scripts))
+
+          from snapshot_projection import build as build_snapshot
+          from transactionlib import execute, jsonl_bytes, yaml_bytes
+          from v25_migration import (
+              INTELLIGENCE_CONTINUITY_CONTROL,
+              MIGRATION_CONTROL,
+              MIGRATION_REPORT,
+              PROTOCOL_SELECTION,
+              _legacy_work_packages,
+              build_report,
+          )
+          from v3lib import canonical_digest, load_events, load_yaml, validate_schema
+          from validate_foundation import validate as validate_v3
+
+          tx_id = "TX-MIGRATE-RECONCILE-002"
+          event_id = "EVT-MIGRATE-RECONCILE-002"
+          actor = "chatgpt-sol-v3-migration-20260922"
+
+          controls_path = root / "relay/CONTROLS/controls.yaml"
+          controls = load_yaml(controls_path)
+          rows = {row["id"]: row for row in controls.get("controls") or []}
+          if rows.get(MIGRATION_CONTROL, {}).get("state") == "RESOLVED":
+              print("Migration control already resolved; skipping mutation.")
+              raise SystemExit(0)
+
+          report = build_report(root)
+          if report["validation"]["repo_state"] != "PASS":
+              raise SystemExit("Fresh V3 migration report did not validate legacy source state.")
+
+          state25 = load_yaml(root / "agents/relay/REPO_STATE.yaml")
+          title, migrated_wps = _legacy_work_packages(root, state25)
+
+          state = load_yaml(root / "relay/STATE.yaml")
+          roadmap = load_yaml(root / "relay/ROADMAP/ROADMAP.yaml")
+          selection = load_yaml(root / PROTOCOL_SELECTION)
+          events, event_errors = load_events(root / "relay/EVENTS.jsonl")
+          if event_errors:
+              raise SystemExit("; ".join(event_errors))
+          if any(row.get("event_id") == event_id for row in events):
+              raise SystemExit(f"duplicate event id {event_id}")
+
+          new_roadmap = copy.deepcopy(roadmap)
+          new_roadmap["revision"] = str(report["current"]["roadmap_revision"])
+          new_roadmap["title"] = title
+          new_roadmap["work_packages"] = migrated_wps
+          roadmap_errors = validate_schema("roadmap", new_roadmap, "ROADMAP")
+          if roadmap_errors:
+              raise SystemExit("; ".join(roadmap_errors))
+
+          source_lifecycle = str(report["current"]["relay_state"])
+          lifecycle = source_lifecycle if source_lifecycle in {"IDLE", "TERMINAL"} else "IDLE"
+          new_state = copy.deepcopy(state)
+          new_state["roadmap"]["revision"] = new_roadmap["revision"]
+          new_state["execution"] = {"lifecycle": lifecycle, "ep": None, "lease": None, "route": None}
+          new_state["accepted"] = {"checkpoint": None}
+          new_state["delivery"] = {"required": False, "primary_vehicle": None}
+          state_errors = validate_schema("state", new_state, "STATE")
+          if state_errors:
+              raise SystemExit("; ".join(state_errors))
+
+          new_controls = copy.deepcopy(controls)
+          migration_evidence = [
+              f"Fresh V3 migration report digest {canonical_digest(report)} inventories the current legacy source tree.",
+              f"Fresh migration source state is {report['current']['relay_state']} at roadmap {report['current']['roadmap_revision']}.",
+              f"Legacy last checkpoint {report['current']['last_checkpoint']} remains read-only migration evidence and is not imported as a native V3 checkpoint.",
+              f"Native V3 authority is reconciled to {lifecycle} at roadmap {new_roadmap['revision']} with no EP or lease.",
+              "No V2.5 DISC/QSET/QUAL/TC/checkpoint/projection object is promoted into native V3 action authority.",
+          ]
+          for row in new_controls["controls"]:
+              if row.get("id") == MIGRATION_CONTROL:
+                  row["state"] = "RESOLVED"
+                  row["resolution"]["evidence"] = migration_evidence
+              elif row.get("id") == INTELLIGENCE_CONTINUITY_CONTROL:
+                  if row.get("state") != "OPEN":
+                      raise SystemExit("Continuity control must remain OPEN under pinned V3 until Common #421 is accepted.")
+          control_errors = validate_schema("controls", new_controls, "CONTROLS")
+          if control_errors:
+              raise SystemExit("; ".join(control_errors))
+
+          new_selection = copy.deepcopy(selection)
+          new_selection["legacy"]["tree_digest"] = report["source"]["legacy_tree_digest"]
+          new_selection["legacy"]["policy"] = "LIVE_COMPATIBILITY"
+          new_selection["selected_protocol"] = "V2_5"
+          new_selection["status"] = "PREPARED"
+          new_selection["v3"]["validation"] = "PENDING"
+          new_selection["cutover"] = {
+              "owner_authorized": False,
+              "owner_basis": None,
+              "readiness_digest": None,
+              "activated_at": None,
+          }
+          selection_errors = validate_schema("protocol-selection", new_selection, "PROTOCOL_SELECTION")
+          if selection_errors:
+              raise SystemExit("; ".join(selection_errors))
+
+          snapshot = build_snapshot(
+              root,
+              state_override=new_state,
+              roadmap_override=new_roadmap,
+              controls_override=new_controls,
+          )
+
+          event = {
+              "schema_version": "relay-v3-event",
+              "event_id": event_id,
+              "type": "CONTROL_RESOLVED",
+              "timestamp": datetime.now(timezone.utc).isoformat().replace("+00:00", "Z"),
+              "actor": actor,
+              "subject": MIGRATION_CONTROL,
+              "basis": [tx_id, canonical_digest(report), *migration_evidence],
+              "details": {
+                  "native_roadmap_revision": new_roadmap["revision"],
+                  "native_execution_lifecycle": lifecycle,
+                  "native_checkpoint_imported": False,
+                  "legacy_history_rewritten": False,
+                  "protocol_cutover_activated": False,
+              },
+          }
+          event_errors = validate_schema("event", event, "EVENT")
+          if event_errors:
+              raise SystemExit("; ".join(event_errors))
+          events.append(event)
+
+          replacements = {
+              MIGRATION_REPORT: yaml_bytes(report),
+              PROTOCOL_SELECTION: yaml_bytes(new_selection),
+              "relay/ROADMAP/ROADMAP.yaml": yaml_bytes(new_roadmap),
+              "relay/STATE.yaml": yaml_bytes(new_state),
+              "relay/CONTROLS/controls.yaml": yaml_bytes(new_controls),
+              "relay/GENERATED/CURRENT_SNAPSHOT.yaml": yaml_bytes(snapshot),
+              "relay/EVENTS.jsonl": jsonl_bytes(events),
+          }
+          result = execute(
+              root,
+              tx_id=tx_id,
+              command="RESOLVE_CONTROL",
+              actor=actor,
+              replacements=replacements,
+          )
+          print(f"{result['id']}: {result['status']}")
+          PY
+
+      - name: Validate reconciled V3 foundation
+        run: python _common_v3/skills/engineering-pr-delivery-v3/scripts/validate_foundation.py .
+
+      - name: Assert cutover is blocked only by Common 421 continuity
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . assess > /tmp/readiness.yaml
+          rc=$?
+          set -e
+          cat /tmp/readiness.yaml
+          test "$rc" -eq 1
+          python - <<'PY'
+          import yaml
+          value = yaml.safe_load(open("/tmp/readiness.yaml", encoding="utf-8"))
+          checks = value["checks"]
+          failed = sorted(k for k, v in checks.items() if v != "PASS")
+          expected = ["roadmap_intelligence_continuity"]
+          if failed != expected:
+              raise SystemExit(f"unexpected cutover failures: {failed}")
+          print("Only Common #421 continuity remains as the V3 cutover blocker.")
+          PY
+
+      - name: Commit V3 reconciliation transaction
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- relay; then
+            echo "No V3 reconciliation delta to commit."
+            exit 0
+          fi
+          git config user.name "relay-v3-bot"
+          git config user.email "relay-v3-bot@users.noreply.github.com"
+          git add relay
+          git commit -m "relay-v3: reconcile native migration authority"
+          git push origin HEAD:migration/v3-native-reconcile-20260922
