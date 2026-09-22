@@ -6,7 +6,7 @@
     "roadmap_revision": "RM-0010",
     "issue_graph_revision": "IG-0006",
     "execution_ref": "NONE",
-    "state": "IN_SYNC",
+    "state": "SUPERSEDED",
     "supersedes_generation": "GHGEN-WP105-ISS169-R2",
     "basis": [
       "agents/relay/checkpoints/CP-TA-009.yaml",
