@@ -68,7 +68,7 @@
       "state": "ACTIVE",
       "can_continue": true,
       "material_authority": "WRITE",
-      "next_action": "Rerun exact-head guardrails and revised V2.5 after normal DISC/QUAL/TC admission; close PEND-TA11-001 only if material_write_ready reports ordinary PASS and no release blocker remains."
+      "next_action": "Rerun exact-head guardrails and revised V2.5 after normal candidate admission; close the deferred validation only if the ordinary material-write gate passes and no release blocker remains."
     },
     "quality": {
       "state": "NEEDS_ATTENTION",
@@ -79,16 +79,16 @@
     },
     "evidence": {
       "state": "PARTIAL",
-      "summary": "Normal current-route candidate admission is present using fresh discovery, qualification, and takeover receipts while historical certification records remain unchanged. Exact-head validation must prove ordinary write readiness before the deferred release control closes.",
+      "summary": "Normal EP-TA-011 candidate admission is present with fresh current-route receipts while historical certification records remain unchanged. Exact-head CI must prove the ordinary material-write gate before the deferred release control can close.",
       "not_run": [
         {
-          "id": "EP-TA-011 exact-head fresh-admission guardrails",
-          "reason": "Fresh current-route receipt IDs require exact-head CI readback.",
+          "id": "EP-TA-011 exact-head admission guardrails",
+          "reason": "The fresh current-route admission require exact-head CI readback.",
           "cause": "NOT_SCHEDULED"
         },
         {
           "id": "EP-TA-011 exact-head normal material_write_ready",
-          "reason": "Must be observed after historical receipt restoration and fresh admission pointers land.",
+          "reason": "Must be observed after historical certification preservation and the fresh current-route admission land.",
           "cause": "NOT_SCHEDULED"
         }
       ]
@@ -222,7 +222,7 @@
       "evidence": [
         "CP-TA-010 predates current #178 head and remains the last accepted checkpoint.",
         "Common/main V2.5 is healthy at 6cc47ea211d4e7b1fbff968cbeae9433a104db00.",
-        "No current DISC/QUAL/TC/admission exists for EP-TA-011 at admission time."
+        "No normal current-route candidate admission existed when the bounded override was granted."
       ],
       "must_resolve_before": [
         "PR_READY",
@@ -236,9 +236,9 @@
         "TESTS",
         "DRAFT_PR_UPDATES"
       ],
-      "resolution_condition": "Produce current repository-only DISC/QUAL/TC plus unique admission for EP-TA-011, rerun exact-head revised V2.5/guardrails, and verify no other blocked control remains.",
+      "resolution_condition": "Produce a normal current-route candidate admission from repository-only evidence, rerun exact-head revised V2.5 and guardrails, and verify no other blocked control remains.",
       "revisit_when": "Before checkpoint, PR-ready, merge or release; also if predecessor/Common basis moves again.",
-      "success_condition": "Normal V2.5 material_write_ready returns PASS on the exact release candidate and all exact-head required checks are green.",
+      "success_condition": "The ordinary material-write gate passes on the exact release candidate and all exact-head required checks are green.",
       "monitor_role": "READ_ONLY",
       "supersedes": null
     }
