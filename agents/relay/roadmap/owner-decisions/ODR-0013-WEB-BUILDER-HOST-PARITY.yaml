@@ -1,0 +1,64 @@
+{
+  "schema_version": "relay-v2.5",
+  "id": "ODR-0013-WEB-BUILDER-HOST-PARITY",
+  "decision": {
+    "authority": "OWNER",
+    "kind": "INTENT_MUTATION",
+    "statement": "Continue Issue #175 with the next independent builder slice: generate public and standalone Core learner hosts from one source while keeping production #173/#174 provider integration out of scope.",
+    "source": "Owner direct continuation instructions in this active Grade9V3 session under revised Common/main engineering-pr-delivery-v2.5."
+  },
+  "effects": {
+    "requirement_disposition": "NOT_APPLICABLE",
+    "grants_material_write_authority": false,
+    "pending_items": []
+  },
+  "delivery_authorization": null,
+  "execution_override": null,
+  "impact": {
+    "class": [
+      "LEARNER_ARCHITECTURE",
+      "WEB_RUNTIME",
+      "ROADMAP"
+    ]
+  },
+  "affected": {
+    "objectives": [
+      "OBJ-TOPIC-ATLAS-COMPLETE"
+    ],
+    "phases": [
+      "PHASE-TAKEOVER-RECONCILIATION"
+    ],
+    "work_packages": [
+      "WP-TA-109"
+    ],
+    "execution_packages": [
+      "EP-TA-012"
+    ],
+    "issues": [
+      "ISSUE-175"
+    ]
+  },
+  "change_intake": {
+    "previous_concept": "The reusable fixture-backed learner shell is checkpointed; public Core learner host markup is still hand-maintained and no generated standalone Core learner host exists.",
+    "requested_concept": "Generate both public and standalone Core learner hosts from one subject-neutral source while reusing the same generated projection data and Shared-derived runtime.",
+    "retained_behavior": [
+      "Core learner state/reveal behavior remains unchanged.",
+      "Semantic workbench remains the subject-neutral interaction runtime.",
+      "Academic truth, projection compilation and mastery remain external."
+    ],
+    "invalidated_behavior": [
+      "Do not maintain public and standalone learner-host markup separately."
+    ],
+    "new_scope": [
+      "Generate both host HTML files from one builder.",
+      "Prove equivalent Core1B attempt/reveal behavior in a real browser.",
+      "Enforce generated host freshness in guardrails."
+    ]
+  },
+  "required_reconciliation": [
+    "Add WP-TA-109 after completed WP-TA-108.",
+    "Create EP-TA-012 with CP-TA-011 predecessor custody.",
+    "Keep Issue #175 OPEN and production provider integration separate."
+  ],
+  "status": "APPLIED"
+}
