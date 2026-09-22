@@ -304,6 +304,43 @@
       ],
       "resolution_condition": "A merged Common/main protocol supports faithful verified-predecessor supersession; then the published final checkpoint generation is provider-verified into IN_SYNC without misclassifying historical truth.",
       "revisit_when": "Common PR #415, or an equivalent verified-projection supersession fix, lands on Common/main and Grade9V3 pins that revision."
+    },
+    {
+      "id": "DLG-TA11-QUAL-001",
+      "kind": "DELEGATION",
+      "state": "OPEN",
+      "summary": "Independent qualification for EP-TA-011 must produce QSET-TA-013 and candidate-specific DISC/QUAL/TC evidence before Grade-9 exit product writes.",
+      "source": "EP-TA-011 qualification_boundary and exact-head V2.5 failure on a10826b6192af1eb22afdcd76c5e0db16016380d",
+      "scope": {
+        "route_key": "SERIAL:EP-TA-011",
+        "ep_id": "EP-TA-011",
+        "branch": "fix/issue-169-grade9-exit-reconcile-v25",
+        "issues": [
+          169
+        ],
+        "pull_requests": [
+          181
+        ]
+      },
+      "evidence": [
+        "Guardrails are green on the coordination route; V2.5 conformance now fails only because agents/relay/certifications/questions/QSET-TA-013.yaml is absent.",
+        "Candidate chatgpt-sol-g9exit-20260922-r1 must not prepare its own QSET or self-evaluate.",
+        "No EP-TA-011 product files have been written."
+      ],
+      "must_resolve_before": [
+        "PR_READY",
+        "MERGE",
+        "CHECKPOINT"
+      ],
+      "allowed_before_resolution": [
+        "READ_ONLY_INSPECTION",
+        "TESTS",
+        "DRAFT_PR_UPDATES"
+      ],
+      "resolution_condition": "An independent planner/qualifier commits QSET-TA-013, fresh repository-grounded discovery, deterministic qualification and takeover certification for candidate chatgpt-sol-g9exit-20260922-r1, and REPO_STATE carries exactly one valid admission for SERIAL:EP-TA-011.",
+      "success_condition": "Exact-head V2.5 reaches route/Git/material-write validation and MATERIAL_WRITE_READY passes for chatgpt-sol-g9exit-20260922-r1.",
+      "monitor_role": "READ_ONLY",
+      "supersedes": null
     }
   ]
 }
