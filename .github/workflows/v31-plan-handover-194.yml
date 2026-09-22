@@ -53,6 +53,11 @@ jobs:
           provider_ref: github:reallaksh19/Grade9V3#194@a3c50cae8dbfa8f54f7021f8298e2d204f1ad1db
           YAML
 
+      - name: Expose standalone three-pass contract for planning
+        run: |
+          mkdir -p skills
+          cp -R _common_v31/skills/three-pass-prompt-generator skills/three-pass-prompt-generator
+
       - name: Prove handover authorization
         run: |
           python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py HANDOVER .
