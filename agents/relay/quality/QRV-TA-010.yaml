@@ -4,7 +4,7 @@
   "ep": {
     "id": "EP-TA-010",
     "path": "agents/relay/execution-packages/EP-TA-010.yaml",
-    "contract_digest": "sha256:aab33c5f2aafcf075d7b932e4f66f1472569bb90cb0bca2fd792b15a587a1383"
+    "contract_digest": "sha256:4a4533b7189d5c178ab874fba9a3a2d21a36433e9927dcdd923b34e2f1d77ef7"
   },
   "roadmap_revision": "RM-0011",
   "material_ref": "8ed02dcfcc9823271bcde409f3e781f252dd6e37",
@@ -14,42 +14,6 @@
   },
   "router_snapshot": {
     "applicable": [
-      {
-        "blueprint": "software-design",
-        "reason": "The slice defines the ownership boundary between projection, scientific scene and learner UI state.",
-        "review_focus": [
-          "state ownership",
-          "no duplicate academic truth",
-          "host/component boundary"
-        ]
-      },
-      {
-        "blueprint": "coding",
-        "reason": "New reusable browser runtime code is added.",
-        "review_focus": [
-          "small API",
-          "deterministic state transitions",
-          "failure semantics"
-        ]
-      },
-      {
-        "blueprint": "testing",
-        "reason": "Core reveal/protection behavior and browser parity require executable falsifiers.",
-        "review_focus": [
-          "attempt/reveal order",
-          "protected move",
-          "offline/browser coverage"
-        ]
-      },
-      {
-        "blueprint": "code-review",
-        "reason": "Generic runtime code can silently accumulate subject/pedagogy policy.",
-        "review_focus": [
-          "subject neutrality",
-          "event vocabulary",
-          "scope containment"
-        ]
-      },
       {
         "blueprint": "accessibility",
         "reason": "Issue #175 explicitly requires keyboard/touch/text/announcement/zoom-safe behavior.",
@@ -62,13 +26,21 @@
         ]
       },
       {
-        "blueprint": "ui-ux",
-        "reason": "The learner interaction states and feedback density are user-facing.",
+        "blueprint": "code-review",
+        "reason": "Generic runtime code can silently accumulate subject/pedagogy policy.",
         "review_focus": [
-          "self-paced flow",
-          "minimal unsolicited feedback",
-          "crux visibility",
-          "help discoverability"
+          "subject neutrality",
+          "event vocabulary",
+          "scope containment"
+        ]
+      },
+      {
+        "blueprint": "coding",
+        "reason": "New reusable browser runtime code will be added.",
+        "review_focus": [
+          "small API",
+          "deterministic state transitions",
+          "failure semantics"
         ]
       },
       {
@@ -79,35 +51,53 @@
           "stacked predecessor",
           "provider blockers"
         ]
+      },
+      {
+        "blueprint": "software-design",
+        "reason": "The slice defines the ownership boundary between projection, scientific scene and learner UI state.",
+        "review_focus": [
+          "state ownership",
+          "no duplicate academic truth",
+          "host/component boundary"
+        ]
+      },
+      {
+        "blueprint": "testing",
+        "reason": "Core reveal/protection behavior and browser parity require executable falsifiers.",
+        "review_focus": [
+          "attempt/reveal order",
+          "protected move",
+          "offline/browser coverage"
+        ]
+      },
+      {
+        "blueprint": "ui-ux",
+        "reason": "The learner interaction states and feedback density are user-facing.",
+        "review_focus": [
+          "self-paced flow",
+          "minimal unsolicited feedback",
+          "crux visibility",
+          "help discoverability"
+        ]
       }
     ],
     "not_applicable": [
       {
         "blueprint": "engineering-numerics",
-        "reason": "No scientific numerical method is implemented by the shell."
-      },
-      {
-        "blueprint": "performance",
-        "reason": "The bounded fixture-backed component is not performance-sensitive."
+        "reason": "No scientific numerical method is implemented by the shell.",
+        "review_focus": []
       },
       {
         "blueprint": "migration",
-        "reason": "No persisted learner data/schema migration is authorized in this first proof."
+        "reason": "No persisted learner data/schema migration is authorized in this first proof.",
+        "review_focus": []
+      },
+      {
+        "blueprint": "performance",
+        "reason": "The bounded fixture-backed component is not performance-sensitive.",
+        "review_focus": []
       }
-    ],
-    "review_contract": {
-      "required": true,
-      "required_before_checkpoint": true,
-      "receipt_namespace": "QRV-",
-      "required_outputs": [
-        "procedure_results",
-        "findings",
-        "owner_report",
-        "successor_handover"
-      ]
-    },
-    "findings_policy": "Quality findings remain quality state unless they map to an existing acceptance, authority, protected-invariant, or safety hard-stop condition.",
-    "ordinary_findings_are_hard_stops": false
+    ]
   },
   "procedure_results": [
     {
@@ -174,53 +164,65 @@
       "blueprint": "github-delivery",
       "result": "FINDINGS",
       "evidence": [
-        "Draft PR #178 is the correlated delivery vehicle for Issue #175 / WP-TA-108 / EP-TA-010 and is intentionally stacked on predecessor PR #170.",
-        "The exact-head Grade9V3 guardrails are green, but v25-relay run 35667612080 fails inside the pinned Common protocol unit suite before repository relay validation.",
-        "Normal EP-TA-010 DISC/QUAL/TC is absent; ODR-0010 and ODR-0011 explicitly authorize bounded direct execution without fabricating certification."
+        "Draft PR #178 carries the Issue #175 fixture-proof delivery.",
+        "Historical protocol/candidate-admission gaps are preserved as QF-TA10-001 and QF-TA10-002 rather than treated as product-test failures."
       ],
-      "reason": "Delivery governance has explicit carried exceptions/upstream protocol failure, while product/runtime acceptance is independently green.",
+      "reason": "Delivery governance retained two explicit deferred historical findings.",
       "cause": "DEPENDENCY_WAIT"
     }
   ],
   "findings": [
     {
-      "id": "FIND-TA10-001",
+      "id": "QF-TA10-001",
+      "blueprint": "github-delivery",
+      "classification": "DELIVERY_RISK",
       "severity": "MEDIUM",
-      "statement": "Pinned Common V2.5 currently fails test_prompt3_requires_withdrawal_when_architecture_unnecessary before Grade9V3 relay validators execute.",
-      "disposition": "CARRY_FORWARD",
-      "execution_effect": "Does not invalidate exact-head Grade9V3 guardrails/browser evidence; full V2.5 relay green remains unavailable until Common is corrected."
+      "statement": "The Common V2.5 protocol basis used during the original fixture-proof closeout failed upstream before Grade9V3 relay validators executed.",
+      "evidence": [
+        "v25-relay run 35667612080",
+        "CP-TA-010 accepted product evidence remains bound to exact Grade9V3 guardrails head 8ed02dcfcc9823271bcde409f3e781f252dd6e37"
+      ],
+      "disposition": "DEFERRED",
+      "blocks_execution": false,
+      "hard_stop": null
     },
     {
-      "id": "FIND-TA10-002",
+      "id": "QF-TA10-002",
+      "blueprint": "github-delivery",
+      "classification": "AUTHORITY",
       "severity": "MEDIUM",
-      "statement": "EP-TA-010 has no normal candidate DISC/QUAL/TC because QSET-TA-011 is stale against the evolved EP digest; material execution used explicit Owner direct-execution ODR-0010/ODR-0011.",
-      "disposition": "CARRY_FORWARD",
-      "execution_effect": "Do not relabel the exception as TAKEOVER_CERTIFIED or MATERIAL_WRITE_READY; future production-integration execution must re-establish a fresh normal admission or obtain new explicit authority."
+      "statement": "EP-TA-010 did not establish normal DISC/QUAL/TC; historical bounded execution used explicit Owner authorizations and must not be relabeled as normal certification.",
+      "evidence": [
+        "ODR-0010-OWNER-EP10-STEP1-DIRECT-EXECUTION",
+        "ODR-0011-OWNER-EP10-CONTINUE-DIRECT-EXECUTION",
+        "CP-TA-010"
+      ],
+      "disposition": "DEFERRED",
+      "blocks_execution": false,
+      "hard_stop": null
     }
   ],
-  "overall_state": "FINDINGS",
+  "overall_state": "NEEDS_ATTENTION",
   "execution_effect": {
     "blocks_execution": false,
     "blocking_findings": []
   },
   "owner_report": {
-    "summary": "The fixture-backed Core learner-shell implementation meets its bounded engineering contract on 8ed02dcf: one projection-driven component enforces attempt/reveal/support/protected-move behavior, preserves supplied workbench scientific state, emits semantic non-mastery events, and passes the full repository/browser guardrail suite.",
+    "summary": "The fixture-backed Core learner-shell product evidence remains accepted at 8ed02dcf; two historical delivery-governance findings are carried explicitly under the revised V2.5 quality schema.",
     "visible_risks": [
-      "This is a fixture-backed proof, not the final #173/#174 production projection adapter or public/standalone generation path.",
-      "The pinned Common V2.5 protocol unit suite has an upstream failing Prompt-3 test.",
-      "Normal EP-TA-010 takeover qualification remains unsatisfied and was not fabricated."
+      "This checkpoint proves the fixture-backed learner shell only, not production #173/#174 provider integration.",
+      "Historical direct-execution authority is preserved as an exception and not upgraded to normal takeover certification."
     ],
     "decisions_required": []
   },
   "successor_handover": {
     "unresolved_findings": [
-      "FIND-TA10-001",
-      "FIND-TA10-002"
+      "QF-TA10-001",
+      "QF-TA10-002"
     ],
     "follow_up": [
-      "Keep Issue #175 open for production #173/#174 adapter integration, generated public/standalone parity and at least one bespoke-explorer migration.",
-      "Require a fresh normal execution admission for the production-integration successor unless the Owner explicitly authorizes another exception.",
-      "Re-evaluate PR #134 only after the production builder path is available."
+      "Use the current healthy Common V2.5 basis for successor control validation.",
+      "Require normal current-route admission before release boundaries unless a current structured Owner override explicitly permits bounded work."
     ]
   }
 }
