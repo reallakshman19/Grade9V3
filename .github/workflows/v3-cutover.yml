@@ -1,0 +1,165 @@
+name: v3-cutover-once
+
+on:
+  push:
+    branches:
+      - fix/v3-cutover-canonical
+
+permissions:
+  contents: write
+
+jobs:
+  cutover:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout cutover branch
+        uses: actions/checkout@v4
+        with:
+          ref: fix/v3-cutover-canonical
+          fetch-depth: 0
+
+      - name: Fetch current main
+        run: git fetch origin main:refs/remotes/origin/main
+
+      - name: Checkout pinned Common V3
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: c87cf87b313801e42ecd0fcc7d36af0d90c5f400
+          path: _common_v3
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install relay dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+
+      - name: Re-bootstrap unactivated V3 staging with pinned final schema
+        shell: bash
+        run: |
+          rm -rf relay
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/v25_migration.py . bootstrap \
+            --tx-id TX-MIGRATE-CANONICAL-V3-001 \
+            --event-id EVT-MIGRATE-CANONICAL-V3-001 \
+            --actor owner-v3-cutover \
+            --owner-outcome 'Complete canonical data, learner-page integration, and external portability while preserving delivered #162/#173 foundations.' \
+            --current-goal 'Deliver Issue #174 in bounded slices: existing NLM PR #179 first, then a separate Motion-in-2D canonical proof; do not fold Motion into PR #179.'
+
+      - name: Reconcile bootstrap to native IDLE without importing V2.5 acceptance
+        shell: bash
+        run: |
+          PYTHONPATH=_common_v3/skills/engineering-pr-delivery-v3/scripts python - <<'PY'
+          from datetime import datetime, timezone
+          from pathlib import Path
+          from transactionlib import execute, yaml_bytes, jsonl_bytes
+          from snapshot_projection import build
+          from v3lib import load_yaml, load_events, validate_schema
+
+          root=Path('.').resolve()
+          state=load_yaml(root/'relay/STATE.yaml')
+          controls=load_yaml(root/'relay/CONTROLS/controls.yaml')
+          state['execution']={'lifecycle':'IDLE','ep':None,'lease':None,'route':None}
+          state['delivery']={'required':False,'primary_vehicle':None}
+          found=False
+          for row in controls['controls']:
+              if row['id']=='CTRL-MIGRATION-RECONCILE':
+                  found=True
+                  row['state']='RESOLVED'
+                  row['resolution']['evidence']=[
+                      'Pinned Common@c87cf87b V3 bootstrap completed from the preserved live V2.5 tree.',
+                      'Native present execution is intentionally IDLE; no legacy EP, lease, qualification or acceptance was promoted.',
+                      'Owner current goal preserves #162/#173 and separates #174 NLM delivery from Motion-in-2D follow-up.'
+                  ]
+          assert found
+          for name,obj in [('state',state),('controls',controls)]:
+              errors=validate_schema(name,obj,name)
+              assert not errors, errors
+          snapshot=build(root,'origin/main',state_override=state,controls_override=controls)
+          events, errors=load_events(root/'relay/EVENTS.jsonl')
+          assert not errors, errors
+          events.append({
+              'schema_version':'relay-v3-event',
+              'event_id':'EVT-MIGRATION-RECONCILED-CANONICAL-001',
+              'type':'CONTROL_RESOLVED',
+              'timestamp':datetime.now(timezone.utc).isoformat().replace('+00:00','Z'),
+              'actor':'owner-v3-cutover',
+              'subject':'CTRL-MIGRATION-RECONCILE',
+              'basis':['TX-RECONCILE-CANONICAL-V3-001','Common@c87cf87b313801e42ecd0fcc7d36af0d90c5f400'],
+              'details':{'legacy_history_rewritten':False,'native_acceptance_imported':False,'lifecycle':'IDLE'},
+          })
+          note='''# V3 canonical-delivery reconciliation
+
+          The live V2.5 tree under `agents/relay/**` is preserved as migration/history evidence.
+          Native V3 present authority starts IDLE with no imported EP, lease, qualification, checkpoint, or acceptance.
+
+          Delivered #162 and #173 remain immutable baselines. Issue #174 is split into the existing NLM PR #179 and a separate Motion-in-2D follow-up. Issue #175 consumes production projections after canonical data delivery; Issue #163 owns external portability/package proof.
+
+          This reconciliation does not merge, release, or accept product work.
+          '''
+          result=execute(root,tx_id='TX-RECONCILE-CANONICAL-V3-001',command='BOOTSTRAP_V3_MIGRATION',actor='owner-v3-cutover',replacements={
+              'relay/STATE.yaml':yaml_bytes(state),
+              'relay/CONTROLS/controls.yaml':yaml_bytes(controls),
+              'relay/GENERATED/CURRENT_SNAPSHOT.yaml':yaml_bytes(snapshot),
+              'relay/EVENTS.jsonl':jsonl_bytes(events),
+              'relay/MIGRATION/RECONCILIATION.md':note.encode(),
+          })
+          print(result['id'],result['status'])
+          PY
+
+      - name: Freeze final live V2.5 history
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . freeze \
+            --tx-id TX-FREEZE-CANONICAL-V3-001 \
+            --event-id EVT-FREEZE-CANONICAL-V3-001 \
+            --actor owner-v3-cutover
+
+      - name: Generate continuity evidence
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/intelligence_projection.py . continuity \
+            --base-ref origin/main \
+            --task-output relay/GENERATED/tasks/CUTOVER-V25.snapshot.yaml \
+            --improvement-output relay/GENERATED/improvements/CUTOVER-V25.improvement.yaml \
+            --output relay/GENERATED/INTELLIGENCE_CONTINUITY.yaml
+
+      - name: Resolve continuity control with generated evidence
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_tx.py . resolve-control \
+            --tx-id TX-RESOLVE-CONTINUITY-CANONICAL-V3-001 \
+            --event-id EVT-RESOLVE-CONTINUITY-CANONICAL-V3-001 \
+            --actor owner-v3-cutover \
+            --control-id CTRL-V25-INTELLIGENCE-CONTINUITY \
+            --evidence 'relay/GENERATED/INTELLIGENCE_CONTINUITY.yaml ready=true under Common@c87cf87b' \
+            --evidence 'Final legacy freeze digest is bound in relay/PROTOCOL_SELECTION.yaml' \
+            --base-ref origin/main
+
+      - name: Assess cutover readiness
+        run: python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . assess
+
+      - name: Activate V3 from direct Owner instruction
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . activate \
+            --tx-id TX-ACTIVATE-CANONICAL-V3-001 \
+            --event-id EVT-ACTIVATE-CANONICAL-V3-001 \
+            --actor owner-v3-cutover \
+            --owner-utterance-digest sha256:4ad403bb77d967639b6827b28b590a9d1c3d6082043d0cd28cbcef1e1664b4ae \
+            --owner-session-timestamp 2026-09-22T11:08:03Z
+
+      - name: Validate active V3
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/validate_foundation.py .
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . validate
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_default.py .
+
+      - name: Commit transactional cutover outputs and remove one-shot workflow
+        shell: bash
+        run: |
+          rm -rf _common_v3
+          git rm .github/workflows/v3-cutover.yml
+          git add relay .github/workflows/v3-relay.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Relay: activate pinned Engineering Relay V3'
+          git push origin HEAD:fix/v3-cutover-canonical
