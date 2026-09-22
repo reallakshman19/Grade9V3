@@ -6,7 +6,7 @@
     "roadmap_revision": "RM-0014",
     "issue_graph_revision": "IG-0009",
     "execution_ref": "NONE",
-    "state": "PREPARED",
+    "state": "IN_SYNC",
     "supersedes_generation": "GHGEN-WP109-ISS175-R5",
     "basis": [
       "CP-TA-012",
@@ -19,7 +19,7 @@
     {
       "id": "GHOP-WP109-ISSUE175-RM0014",
       "kind": "UPDATE",
-      "state": "PREPARED",
+      "state": "VERIFIED",
       "idempotency_key": "relay:GHGEN-WP109-ISS175-R6:GHOP-WP109-ISSUE175-RM0014",
       "depends_on": [],
       "subject": {
@@ -41,18 +41,28 @@
         "relationships": []
       },
       "publication": {
-        "attempt_count": 0,
-        "last_attempt_basis": [],
-        "receipt": null,
+        "attempt_count": 1,
+        "last_attempt_basis": [
+          "Published GHGEN-WP109-ISS175-R6 desired Issue #175 body",
+          "Provider readback after publication"
+        ],
+        "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
         "last_error": null
       },
       "verification": {
-        "status": "NOT_RUN",
-        "observed_issue_number": null,
-        "observed_issue_id": null,
-        "observed_github_state": null,
+        "status": "PASS",
+        "observed_issue_number": 175,
+        "observed_issue_id": 5529711190,
+        "observed_github_state": "OPEN",
         "observed_relationships": [],
-        "basis": []
+        "basis": [
+          "Issue #175 provider readback",
+          "GHOP-WP109-ISSUE175-CHECKPOINT marker present",
+          "GHOP-WP109-ISSUE175-RM0014 marker present",
+          "provider state OPEN",
+          "PR #178 remains DRAFT in projected body",
+          "V3 remains V2_5/PREPARED in projected body"
+        ]
       },
       "reconciliation": {
         "issue_graph_effects": [
