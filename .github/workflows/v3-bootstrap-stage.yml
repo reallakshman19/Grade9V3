@@ -1,0 +1,76 @@
+name: v3-bootstrap-stage
+
+on:
+  push:
+    branches:
+      - migration/v3-stage-20260922
+
+permissions:
+  contents: write
+
+jobs:
+  bootstrap-v3:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Grade9V3 staging branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout pinned Common V3
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: 9c7b7cab8337e231c36d62453e1ed907da1c37d8
+          path: _common_v3
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install V3 validator dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+
+      - name: Bootstrap staged V3 authority
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ ! -f relay/PROTOCOL_SELECTION.yaml ]; then
+            python _common_v3/skills/engineering-pr-delivery-v3/scripts/v25_migration.py . bootstrap \
+              --tx-id TX-MIGRATE-001 \
+              --event-id EVT-MIGRATE-001 \
+              --actor chatgpt-sol-v3-migration-20260922 \
+              --owner-outcome "Continue the complex Grade9V3 engineering programme under Engineering Relay V3 without weakening accepted product, roadmap, evidence, or delivery truth." \
+              --current-goal "Complete Issue #175 generated public/standalone Core learner host parity from the current WP-TA-109 / EP-TA-012 frontier while staging V3 safely."
+            git config user.name "relay-v3-bot"
+            git config user.email "relay-v3-bot@users.noreply.github.com"
+            git add relay
+            git commit -m "Bootstrap staged Engineering Relay V3 authority"
+            git push origin HEAD:migration/v3-stage-20260922
+          else
+            echo "V3 migration already bootstrapped on staging branch."
+          fi
+
+      - name: Validate staged V3 foundation
+        run: python _common_v3/skills/engineering-pr-delivery-v3/scripts/validate_foundation.py .
+
+      - name: Verify V2.5 remains selected while V3 is prepared
+        shell: bash
+        run: |
+          set -euo pipefail
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_default.py . | tee /tmp/protocol.txt
+          grep -q "selected_protocol: V2_5" /tmp/protocol.txt
+          grep -q "status: PREPARED" /tmp/protocol.txt
+
+      - name: Verify cutover remains gated by continuity
+        shell: bash
+        run: |
+          set +e
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . assess > /tmp/cutover.txt
+          rc=$?
+          set -e
+          cat /tmp/cutover.txt
+          test "$rc" -eq 1
+          grep -q "roadmap_intelligence_continuity: FAIL" /tmp/cutover.txt
