@@ -3,7 +3,7 @@
   "identity": {
     "ep_id": "EP-TA-011",
     "branch": "builder/core-learning-pages-r1",
-    "base_ref": "ff211de6a5f6a465e842cf93725285c8a4f78450",
+    "base_ref": "91626fcb64373895cc9841fe44529b2b3520dc64",
     "execution_state": "EXECUTABLE",
     "previous_checkpoint": "CP-TA-010",
     "previous_join": null,
@@ -42,20 +42,43 @@
       ]
     }
   },
-  "outcome": "Reconcile the already-accepted fixture-backed Issue #175 learner shell onto the current predecessor and revised Common V2.5 control model without expanding into provider-owned #173/#174 production projection work.",
-  "context_capsule": {
-    "purpose": "Make the active #175 delivery branch truthful after post-checkpoint changes, predecessor movement, and the revised V2.5 override model.",
-    "current_truth": [
-      "CP-TA-010 remains the accepted fixture-backed checkpoint; later branch changes are uncheckpointed.",
-      "The predecessor is now merged at ff211de and its pointer/click suppression fix is carried into #175 Shared/public runtime and browser tests.",
-      "Common/main V2.5 is healthy at 6cc47ea211d4e7b1fbff968cbeae9433a104db00.",
-      "#173/#174 remain provider-owned and not ready for a #175 production adapter."
+  "outcome": {
+    "user_visible": [
+      "The existing fixture-backed Issue #175 learner shell remains behaviorally intact after the predecessor workbench merge and revised delivery-control migration."
     ],
-    "protected_boundaries": [
-      "No raw subject JSON compilation in the #175 builder.",
-      "No scientific truth, protected-transfer decision or mastery inference in learner runtime.",
-      "No PR_READY, MERGE, CHECKPOINT or RELEASE while PEND-TA11-001 is OPEN."
+    "engineering": [
+      "Reconcile predecessor interaction behavior and revised V2.5 control state without expanding into provider-owned #173/#174 production projection work.",
+      "Preserve the precompiled-CoreProjection-only builder boundary and all CP-TA-010 reveal/protection invariants."
     ]
+  },
+  "context_capsule": {
+    "product_goal": "Keep the accepted portable Core learner shell truthful and testable after predecessor movement and the revised Common V2.5 control model.",
+    "roadmap_position": "RM-0012 reopens WP-TA-108 only for bounded post-checkpoint reconciliation; EP-TA-011 is the active serial route after CP-TA-010.",
+    "why_this_work_exists": "PR #178 advanced after CP-TA-010, its predecessor moved, and revised Common V2.5 replaced the retired direct-execution pattern with structured bounded Owner overrides.",
+    "current_architecture": "The learner shell consumes precompiled CoreProjection data and host-supplied semantic-workbench inputs. Shared/workbench owns subject-neutral manipulation; curriculum, scientific truth and mastery remain external.",
+    "prior_owner_decisions": [
+      "ODR-0009-WEB-BUILDER-START",
+      "ODR-0010-OWNER-EP10-STEP1-DIRECT-EXECUTION",
+      "ODR-0011-OWNER-EP10-CONTINUE-DIRECT-EXECUTION",
+      "ODR-0012-OWNER-REVISED-V25-OVERRIDE"
+    ],
+    "current_implementation_state": "CP-TA-010 accepted the fixture-backed learner shell at 8ed02dcfcc9823271bcde409f3e781f252dd6e37. The current branch additionally contains the merged predecessor interaction correction and revised control-state files; those later changes require exact-head revalidation.",
+    "known_problems": [
+      "Current EP-TA-011 has no normal candidate admission; bounded work proceeds only under the structured Owner override while PEND-TA11-001 remains open.",
+      "Issue #175 external projection and PR delivery observation still describe the earlier EP-TA-010 execution basis.",
+      "Production #173/#174 provider integration remains outside this reconciliation package."
+    ],
+    "deliberate_non_goals": [
+      "Do not add new learner features or host-parity work in EP-TA-011.",
+      "Do not edit Physics/** or Learners/**.",
+      "Do not implement #173/#174 compiler/data ownership.",
+      "Do not claim PR_READY, MERGE, CHECKPOINT or RELEASE while PEND-TA11-001 is open."
+    ],
+    "terminology": {
+      "accepted checkpoint": "CP-TA-010 at the fixture-backed learner-shell material head.",
+      "bounded override": "ODR-0012 structured execution_override that permits only declared reconciliation writes/tests.",
+      "pending control": "PEND-TA11-001, which remains OPEN until normal current-route admission and exact-head release controls are satisfied."
+    }
   },
   "repository_discovery": [
     {
@@ -226,7 +249,7 @@
       "name": "Merged browser/runtime proof",
       "purpose": "Prove predecessor and #175 behavior coexist.",
       "source": "CP-TA-010 + predecessor browser regression",
-      "oracle_class": "REAL_BROWSER",
+      "oracle_class": "OBSERVATIONAL",
       "payload": [
         "pointercancel/click suppression",
         "Core1B commit gate",
@@ -251,7 +274,7 @@
       "name": "Revised override truth",
       "purpose": "Prove deferred controls are represented honestly.",
       "source": "Common@6cc47ea211d4e7b1fbff968cbeae9433a104db00",
-      "oracle_class": "DETERMINISTIC_VALIDATOR",
+      "oracle_class": "INDEPENDENT_IMPLEMENTATION",
       "payload": [
         "ODR-0012",
         "PEND-TA11-001",
@@ -699,7 +722,14 @@
   "report_contract": {
     "status_publication": {
       "default_after_minutes": 25,
-      "owner_override": null
+      "owner_override": {
+        "source": "OWNER",
+        "mode": "DISABLED",
+        "after_minutes": null,
+        "basis": [
+          "Owner explicitly disabled scheduled status publication for this session and instructed direct coding."
+        ]
+      }
     },
     "sections": [
       "Executive state",
