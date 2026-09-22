@@ -12,7 +12,7 @@
   "replan_inheritance": null,
   "git_basis": {
     "expected_branch": "takeover/grade9-exit-transition-r2",
-    "material_ref": "411e8dc0108347933792fbbd5a6be8dfa59d655e",
+    "material_ref": "0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494",
     "base_branch": "main",
     "base_observed_ref": "411e8dc0108347933792fbbd5a6be8dfa59d655e",
     "drift_policy": "RECHECK_BEFORE_WRITE",
@@ -20,7 +20,7 @@
   },
   "roadmap_source": {
     "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
-    "roadmap_revision": "RM-0009",
+    "roadmap_revision": "RM-0010",
     "objective": "OBJ-TOPIC-ATLAS-COMPLETE",
     "phase": "PHASE-TAKEOVER-RECONCILIATION",
     "work_package": "WP-TA-105",

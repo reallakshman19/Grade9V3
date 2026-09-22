@@ -17,7 +17,7 @@
     "WEB": 8,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:59bf3908976242afc5f27005fa165a6b4d922b1c8d1a381b8f9d9a79e99cbd48",
+  "digest": "sha256:7627e4b2359c119372fb7b78158af2b0a64f479c174480f758d25e369e70fb10",
   "components": [
     {
       "path": "public/core-learning/data.js",
@@ -58,8 +58,8 @@
       "path": "public/js/core-learning/semantic-workbench.mjs",
       "role": "WEB_RUNTIME",
       "role_description": "Generated public Core learner runtime",
-      "bytes": 18776,
-      "sha256": "bba7aef0476f3d9373ba8c14eae107ec56da6fd7d1677fc23f452218683aedfd"
+      "bytes": 19627,
+      "sha256": "831eafce184ca9b17a14f57a5f4a9d246a9c05aca8d6f57834c54289ce703b9f"
     },
     {
       "path": "Shared/gates/gate.schema.json",
@@ -828,8 +828,8 @@
       "path": "Shared/workbench/semantic-workbench.mjs",
       "role": "WEB_RUNTIME",
       "role_description": "Subject-neutral semantic interaction and Web Component runtime",
-      "bytes": 18776,
-      "sha256": "bba7aef0476f3d9373ba8c14eae107ec56da6fd7d1677fc23f452218683aedfd"
+      "bytes": 19627,
+      "sha256": "831eafce184ca9b17a14f57a5f4a9d246a9c05aca8d6f57834c54289ce703b9f"
     },
     {
       "path": "tests/core_learning_host.test.mjs",
@@ -1521,15 +1521,15 @@
       "path": "tests/workbench_browser.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 38459,
-      "sha256": "c1362b90bd751db1196e891c14ba49be6702dc99a2c4ea40cac9f3adb35886d6"
+      "bytes": 40652,
+      "sha256": "dc3d3579a1dc5a18262b83cdda6e05acd138692e8454d843d3ca559b09bc47d0"
     },
     {
       "path": "tests/workbench_runtime.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 36185,
-      "sha256": "251a7fdd387da577c1df2b031fc1c2f28633c744877f9917ebcdb3216e2557ec"
+      "bytes": 36202,
+      "sha256": "005c1dabc4239d66a294af59a54c3d49fee208cc1ccb230aa2fa2cef4b14bd86"
     },
     {
       "path": "tools/app.css",

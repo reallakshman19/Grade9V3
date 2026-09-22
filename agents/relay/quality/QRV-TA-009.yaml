@@ -4,7 +4,7 @@
   "ep": {
     "id": "EP-TA-009",
     "path": "agents/relay/execution-packages/EP-TA-009.yaml",
-    "contract_digest": "sha256:c362800e9ddedb8b1def9b8815341229ee88ed439ec13d2ef0f0eb4d30c61169"
+    "contract_digest": "sha256:2d9a7b47d4d0881f759dbffe7c9ee943f0196e9c6a49f8b4cfe94132b6205e8f"
   },
   "roadmap_revision": "RM-0010",
   "material_ref": "0b7e16e216c1ad0bfc5b9ee48c6bcf3d05082494",
@@ -15,13 +15,13 @@
   "router_snapshot": {
     "applicable": [
       {
-        "blueprint": "software-design",
-        "reason": "The exit view must remain a derived query over existing scope/evidence owners rather than a second mastery architecture.",
+        "blueprint": "code-review",
+        "reason": "Grade-exit aggregation can silently overclaim mastery or turn enrichment into a completion gate.",
         "review_focus": [
-          "single evidence owner",
-          "derived categorical state",
-          "transition blocker boundary",
-          "no duplicate curriculum truth"
+          "evidence basis",
+          "scope classification",
+          "no percentage proxy",
+          "protected-domain diff"
         ]
       },
       {
@@ -35,26 +35,6 @@
         ]
       },
       {
-        "blueprint": "testing",
-        "reason": "Truth tables and blocker/non-blocker falsifiers are the primary correctness proof.",
-        "review_focus": [
-          "unknown/helped evidence",
-          "enrichment non-blocking",
-          "prerequisite blockers",
-          "report reproducibility"
-        ]
-      },
-      {
-        "blueprint": "code-review",
-        "reason": "Grade-exit aggregation can silently overclaim mastery or turn enrichment into a completion gate.",
-        "review_focus": [
-          "evidence basis",
-          "scope classification",
-          "no percentage proxy",
-          "protected-domain diff"
-        ]
-      },
-      {
         "blueprint": "github-delivery",
         "reason": "The successor EP needs fresh qualification, checkpoint continuity and exact-head delivery custody.",
         "review_focus": [
@@ -63,43 +43,55 @@
           "PR correlation",
           "exact-head validation"
         ]
+      },
+      {
+        "blueprint": "software-design",
+        "reason": "The exit view must remain a derived query over existing scope/evidence owners rather than a second mastery architecture.",
+        "review_focus": [
+          "single evidence owner",
+          "derived categorical state",
+          "transition blocker boundary",
+          "no duplicate curriculum truth"
+        ]
+      },
+      {
+        "blueprint": "testing",
+        "reason": "Truth tables and blocker/non-blocker falsifiers are the primary correctness proof.",
+        "review_focus": [
+          "unknown/helped evidence",
+          "enrichment non-blocking",
+          "prerequisite blockers",
+          "report reproducibility"
+        ]
       }
     ],
     "not_applicable": [
       {
         "blueprint": "accessibility",
-        "reason": "No learner UI is required for the initial derived report contract."
-      },
-      {
-        "blueprint": "ui-ux",
-        "reason": "The first slice is a query/report view, not an interactive UI redesign."
+        "reason": "No learner UI is required for the initial derived report contract.",
+        "review_focus": []
       },
       {
         "blueprint": "engineering-numerics",
-        "reason": "No scientific numerical algorithm changes."
-      },
-      {
-        "blueprint": "performance",
-        "reason": "The bounded Grade-9 scope/evidence projection is not performance-sensitive."
+        "reason": "No scientific numerical algorithm changes.",
+        "review_focus": []
       },
       {
         "blueprint": "migration",
-        "reason": "No persisted learner-state migration is authorized."
+        "reason": "No persisted learner-state migration is authorized.",
+        "review_focus": []
+      },
+      {
+        "blueprint": "performance",
+        "reason": "The bounded Grade-9 scope/evidence projection is not performance-sensitive.",
+        "review_focus": []
+      },
+      {
+        "blueprint": "ui-ux",
+        "reason": "The first slice is a query/report view, not an interactive UI redesign.",
+        "review_focus": []
       }
-    ],
-    "review_contract": {
-      "required": true,
-      "required_before_checkpoint": true,
-      "receipt_namespace": "QRV-",
-      "required_outputs": [
-        "procedure_results",
-        "findings",
-        "owner_report",
-        "successor_handover"
-      ]
-    },
-    "findings_policy": "Quality findings remain quality state unless they map to an existing acceptance, authority, protected-invariant, or safety hard-stop condition.",
-    "ordinary_findings_are_hard_stops": false
+    ]
   },
   "procedure_results": [
     {

@@ -6,7 +6,7 @@
     "roadmap_revision": "RM-0010",
     "issue_graph_revision": "IG-0006",
     "execution_ref": "NONE",
-    "state": "SUPERSEDED",
+    "state": "IN_SYNC",
     "supersedes_generation": "GHGEN-WP105-ISS169-R2",
     "basis": [
       "agents/relay/checkpoints/CP-TA-009.yaml",
@@ -21,7 +21,7 @@
     {
       "id": "GHOP-WP105-ISSUE169-TERMINAL",
       "kind": "UPDATE",
-      "state": "SUPERSEDED",
+      "state": "VERIFIED",
       "idempotency_key": "relay:GHGEN-WP105-ISS169-R3:GHOP-WP105-ISSUE169-TERMINAL",
       "depends_on": [],
       "subject": {
@@ -42,18 +42,26 @@
         "relationships": []
       },
       "publication": {
-        "attempt_count": 0,
-        "last_attempt_basis": [],
-        "receipt": null,
+        "attempt_count": 1,
+        "last_attempt_basis": [
+          "Issue #169 update using stable relay-operation:GHOP-WP105-ISSUE169-TERMINAL marker",
+          "Provider update readback at 2026-09-22T00:13:25Z"
+        ],
+        "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/169",
         "last_error": null
       },
       "verification": {
-        "status": "NOT_RUN",
-        "observed_issue_number": null,
-        "observed_issue_id": null,
-        "observed_github_state": null,
+        "status": "PASS",
+        "observed_issue_number": 169,
+        "observed_issue_id": 5522215316,
+        "observed_github_state": "OPEN",
         "observed_relationships": [],
-        "basis": []
+        "basis": [
+          "Issue #169 provider readback after terminal projection publication",
+          "relay-operation:GHOP-WP105-ISSUE169-TERMINAL marker present",
+          "checkpoint CP-TA-009 present in provider body",
+          "provider state remains OPEN pending PR #170 delivery"
+        ]
       },
       "reconciliation": {
         "issue_graph_effects": [
@@ -69,8 +77,7 @@
           "terminal relay-operation marker verified",
           "provider state remains OPEN pending PR #170 delivery"
         ]
-      },
-      "superseded_by": "GHGEN-WP108-ISS175-R1"
+      }
     }
   ]
 }
