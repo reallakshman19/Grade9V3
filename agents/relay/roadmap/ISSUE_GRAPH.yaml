@@ -1,6 +1,6 @@
 {
   "schema_version": "relay-v2.5",
-  "graph_revision": "IG-0008",
+  "graph_revision": "IG-0009",
   "nodes": [
     {
       "id": "ISSUE-118",
@@ -406,7 +406,7 @@
     },
     {
       "id": "ISSUE-175",
-      "state": "ACTIVE",
+      "state": "OPEN",
       "github_state": "OPEN",
       "github": {
         "issue_number": 175,

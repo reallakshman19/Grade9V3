@@ -1,6 +1,6 @@
 {
   "schema_version": "relay-v2.5",
-  "relay_state": "ACTIVE",
+  "relay_state": "IDLE",
   "repository": {
     "name": "Grade9V3",
     "remote": "reallaksh19/Grade9V3"
@@ -24,14 +24,14 @@
     "mode": "SERIAL"
   },
   "active_ep": {
-    "id": "EP-TA-012",
-    "path": "agents/relay/execution-packages/EP-TA-012.yaml",
-    "state": "EXECUTABLE",
+    "id": null,
+    "path": null,
+    "state": "NONE",
     "continuity_receipt": null
   },
   "last_checkpoint": {
-    "id": "CP-TA-011",
-    "path": "agents/relay/checkpoints/CP-TA-011.yaml"
+    "id": "CP-TA-012",
+    "path": "agents/relay/checkpoints/CP-TA-012.yaml"
   },
   "predecessor_join": {
     "id": null,
@@ -41,51 +41,28 @@
     "id": null,
     "path": null
   },
-  "takeover_admissions": [
-    {
-      "route_key": "SERIAL:EP-TA-012",
-      "candidate": {
-        "agent_instance_id": "chatgpt-sol-webbuilder-revised-20260922"
-      },
-      "discovery_receipt": {
-        "id": "DISC-TA-021",
-        "path": "agents/relay/certifications/discovery/DISC-TA-021.yaml"
-      },
-      "certification": {
-        "id": "TC-TA-021",
-        "path": "agents/relay/certifications/takeover/TC-TA-021.yaml"
-      }
-    }
-  ],
+  "takeover_admissions": [],
   "progress": {
-    "overall_percent": 92,
-    "phase_percent": 92,
-    "ep_percent": 0,
+    "overall_percent": 100,
+    "phase_percent": 100,
+    "ep_percent": 100,
     "basis_revision": "PB-0011"
   },
   "status_planes": {
     "execution": {
-      "state": "ACTIVE",
-      "can_continue": true,
-      "material_authority": "WRITE",
-      "next_action": "Run the normal material-write gate for EP-TA-012, then implement the single-source host generator and browser parity tests."
+      "state": "WAITING",
+      "can_continue": false,
+      "material_authority": "NONE",
+      "next_action": "RM-0013 host-parity engineering is checkpointed. Keep PR #178 draft and Issue #175 open; production provider integration requires separate roadmap admission. V3 remains staged until native reconciliation and Common #421 continuity are satisfied."
     },
     "quality": {
       "state": "CLEAR",
-      "findings": [
-        "CP-TA-011 closes the reconciliation cleanly; WP-TA-109 starts with no material quality findings."
-      ]
+      "findings": []
     },
     "evidence": {
-      "state": "PARTIAL",
-      "summary": "EP-TA-012 has a normal repository-only candidate admission; host-parity implementation evidence is still pending.",
-      "not_run": [
-        {
-          "id": "TEST-TA12-001..004",
-          "reason": "Host-parity implementation has not started.",
-          "cause": "NOT_SCHEDULED"
-        }
-      ]
+      "state": "COMPLETE",
+      "summary": "Generated public/standalone host parity is accepted: one neutral generator owns both hosts, browser behavior is equivalent, 1002 repository tests pass, and both live V2.5 and staged V3 validation are green.",
+      "not_run": []
     },
     "stop": {
       "active": false,
@@ -96,19 +73,18 @@
   },
   "projection": {
     "required": true,
-    "state": "IN_SYNC",
-    "operation_id": "GHGEN-WP109-ISS175-R4",
+    "state": "STALE",
+    "operation_id": "GHGEN-WP109-ISS175-R5",
     "target": "github:reallaksh19/Grade9V3:issues",
     "adapter": "GITHUB_ISSUES",
-    "plan": "agents/relay/projection/generations/GHGEN-WP109-ISS175-R4.yaml",
+    "plan": "agents/relay/projection/generations/GHGEN-WP109-ISS175-R5.yaml",
     "roadmap_revision": "RM-0013",
-    "execution_ref": "EP-TA-012",
-    "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
+    "execution_ref": "NONE",
+    "receipt": null,
     "basis": [
-      "GHGEN-WP109-ISS175-R4 verified",
-      "Issue #175 provider readback with RM-0013 host-parity marker",
-      "RM-0013",
-      "EP-TA-012"
+      "CP-TA-012",
+      "GHGEN-WP109-ISS175-R5",
+      "Issue #175 still reflects the verified EP-TA-012 generation until the checkpoint projection is published/read back"
     ],
     "superseded_operations": [
       {
@@ -165,6 +141,20 @@
           "RM-0012 projection was verified",
           "superseded by RM-0013 host-parity frontier"
         ]
+      },
+      {
+        "operation_id": "GHGEN-WP109-ISS175-R4",
+        "target": "github:reallaksh19/Grade9V3:issues",
+        "roadmap_revision": "RM-0013",
+        "execution_ref": "EP-TA-012",
+        "disposition": "SUPERSEDED_AFTER_PUBLICATION_UNCONFIRMED",
+        "superseded_by": "GHGEN-WP109-ISS175-R5",
+        "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
+        "basis": [
+          "generation:GHGEN-WP109-ISS175-R4",
+          "CP-TA-012 accepted WP-TA-109",
+          "superseded_by:GHGEN-WP109-ISS175-R5"
+        ]
       }
     ],
     "observed": {
@@ -174,8 +164,10 @@
       "execution_ref": "EP-TA-012",
       "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
       "basis": [
-        "Issue #175 provider readback",
-        "GHOP-WP109-ISSUE175-HOST-PARITY marker present"
+        "GHGEN-WP109-ISS175-R4 verified",
+        "Issue #175 provider readback with RM-0013 host-parity marker",
+        "RM-0013",
+        "EP-TA-012"
       ]
     }
   },
@@ -199,12 +191,13 @@
   },
   "relay_readiness": {
     "baton_ready": true,
-    "projection_ready": true,
-    "handover_ready": true,
+    "projection_ready": false,
+    "handover_ready": false,
     "reasons": [
-      "CP-TA-011 provides predecessor custody for WP-TA-109.",
-      "Issue #175 projection is verified IN_SYNC for RM-0013 / EP-TA-012.",
-      "Candidate admission remains the last control before normal material writes."
+      "CP-TA-012 accepts WP-TA-109 host parity and releases execution custody.",
+      "The newest desired Issue #175 checkpoint projection is not yet published/read back.",
+      "No material successor is admitted; production integration requires a future roadmap admission.",
+      "V3 remains V2_5/PREPARED and cutover is not ready."
     ]
   },
   "chat_context_required": false,

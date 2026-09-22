@@ -6,7 +6,7 @@
     "roadmap_revision": "RM-0013",
     "issue_graph_revision": "IG-0008",
     "execution_ref": "EP-TA-012",
-    "state": "IN_SYNC",
+    "state": "SUPERSEDED",
     "supersedes_generation": "GHGEN-WP108-ISS175-R3",
     "basis": [
       "RM-0013",

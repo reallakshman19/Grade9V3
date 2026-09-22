@@ -5,24 +5,24 @@
     "roadmap_revision": "RM-0013"
   },
   "overall": {
-    "earned_weight": 115,
+    "earned_weight": 125,
     "total_weight": 125,
-    "percent": 92
+    "percent": 100
   },
   "objectives": [
     {
       "id": "OBJ-TOPIC-ATLAS-COMPLETE",
-      "earned_weight": 115,
+      "earned_weight": 125,
       "total_weight": 125,
-      "percent": 92
+      "percent": 100
     }
   ],
   "phases": [
     {
       "id": "PHASE-TAKEOVER-RECONCILIATION",
-      "earned_weight": 115,
+      "earned_weight": 125,
       "total_weight": 125,
-      "percent": 92
+      "percent": 100
     }
   ],
   "work_packages": [
@@ -76,9 +76,9 @@
     },
     {
       "id": "WP-TA-109",
-      "earned_weight": 0,
+      "earned_weight": 10,
       "total_weight": 10,
-      "percent": 0
+      "percent": 100
     }
   ],
   "execution_packages": [
@@ -150,9 +150,9 @@
     },
     {
       "id": "EP-TA-012",
-      "earned_weight": 0,
+      "earned_weight": 100,
       "total_weight": 100,
-      "percent": 0
+      "percent": 100
     }
   ],
   "implementation_steps": [
@@ -460,23 +460,23 @@
     {
       "id": "STEP-TA12-001",
       "ep_id": "EP-TA-012",
-      "earned_weight": 0,
+      "earned_weight": 34,
       "total_weight": 34,
-      "percent": 0
+      "percent": 100
     },
     {
       "id": "STEP-TA12-002",
       "ep_id": "EP-TA-012",
-      "earned_weight": 0,
+      "earned_weight": 33,
       "total_weight": 33,
-      "percent": 0
+      "percent": 100
     },
     {
       "id": "STEP-TA12-003",
       "ep_id": "EP-TA-012",
-      "earned_weight": 0,
+      "earned_weight": 33,
       "total_weight": 33,
-      "percent": 0
+      "percent": 100
     }
   ],
   "acceptance_criteria": [
@@ -1056,38 +1056,58 @@
     {
       "id": "AC-TA12-001",
       "ep_id": "EP-TA-012",
-      "status": "NOT_STARTED",
-      "earned_weight": 0,
+      "status": "COMPLETE",
+      "earned_weight": 25,
       "total_weight": 25,
-      "percent": 0,
-      "basis": []
+      "percent": 100,
+      "basis": [
+        "CP-TA-012",
+        "Final engineering quality review: CLEAR",
+        "guardrails 35691427353 PASS",
+        "One generator owns both public and standalone host HTML"
+      ]
     },
     {
       "id": "AC-TA12-002",
       "ep_id": "EP-TA-012",
-      "status": "NOT_STARTED",
-      "earned_weight": 0,
+      "status": "COMPLETE",
+      "earned_weight": 25,
       "total_weight": 25,
-      "percent": 0,
-      "basis": []
+      "percent": 100,
+      "basis": [
+        "CP-TA-012",
+        "Final engineering quality review: CLEAR",
+        "guardrails 35691427353 PASS",
+        "Real-browser public/standalone Core1B parity passed"
+      ]
     },
     {
       "id": "AC-TA12-003",
       "ep_id": "EP-TA-012",
-      "status": "NOT_STARTED",
-      "earned_weight": 0,
+      "status": "COMPLETE",
+      "earned_weight": 25,
       "total_weight": 25,
-      "percent": 0,
-      "basis": []
+      "percent": 100,
+      "basis": [
+        "CP-TA-012",
+        "Final engineering quality review: CLEAR",
+        "guardrails 35691427353 PASS",
+        "Subject-neutral host-generator falsifier passed"
+      ]
     },
     {
       "id": "AC-TA12-004",
       "ep_id": "EP-TA-012",
-      "status": "NOT_STARTED",
-      "earned_weight": 0,
+      "status": "COMPLETE",
+      "earned_weight": 25,
       "total_weight": 25,
-      "percent": 0,
-      "basis": []
+      "percent": 100,
+      "basis": [
+        "CP-TA-012",
+        "Final engineering quality review: CLEAR",
+        "guardrails 35691427353 PASS",
+        "Repository-local resource and generated-freshness checks passed"
+      ]
     }
   ]
 }

@@ -1,0 +1,191 @@
+{
+  "schema_version": "relay-v2.5",
+  "contract_version": 2,
+  "checkpoint_id": "CP-TA-012",
+  "ep_id": "EP-TA-012",
+  "roadmap_basis": {
+    "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
+    "revision": "RM-0013"
+  },
+  "execution_basis": {
+    "material_ref": "37dc1903eb3688806d16d67ab5aa20ce95d47d63",
+    "validated_implementation_head": "7032e6eda00bbdef877550c8bb952aa499d52ceb"
+  },
+  "implementation_result": {
+    "summary": "Accepted generated public/standalone Core learner host parity: one subject-neutral generator owns both entry points, both consume the same precompiled projection/runtime authority, and real-browser Core1B behavior/resources are equivalent without adding academic or mastery truth.",
+    "completed_steps": [
+      "STEP-TA12-001",
+      "STEP-TA12-002",
+      "STEP-TA12-003"
+    ],
+    "files_changed": [
+      "Shared/tools/build_core_learning_host.py",
+      "Shared/tools/build_manifest.py",
+      "public/core-learning/index.html",
+      "standalone/core-learning/index.html",
+      "tests/test_workbench_runtime.py",
+      "tests/workbench_browser.test.mjs",
+      "docs/architecture-manifest.json"
+    ]
+  },
+  "acceptance_results": [
+    {
+      "id": "AC-TA12-001",
+      "status": "PASS",
+      "basis": [
+        "TEST-TA12-001",
+        "BENCH-TA12-001",
+        "guardrails 35691427353"
+      ]
+    },
+    {
+      "id": "AC-TA12-002",
+      "status": "PASS",
+      "basis": [
+        "TEST-TA12-002",
+        "BENCH-TA12-002",
+        "guardrails 35691427353"
+      ]
+    },
+    {
+      "id": "AC-TA12-003",
+      "status": "PASS",
+      "basis": [
+        "TEST-TA12-003",
+        "BENCH-TA12-001",
+        "guardrails 35691427353"
+      ]
+    },
+    {
+      "id": "AC-TA12-004",
+      "status": "PASS",
+      "basis": [
+        "TEST-TA12-004",
+        "BENCH-TA12-002",
+        "guardrails 35691427353"
+      ]
+    }
+  ],
+  "validation_results": [
+    {
+      "id": "TEST-TA12-001",
+      "status": "PASS",
+      "basis_ref": "37dc1903eb3688806d16d67ab5aa20ce95d47d63",
+      "evidence": [
+        "One-source host generator checks and generated-file freshness passed in guardrails 35691427353."
+      ]
+    },
+    {
+      "id": "TEST-TA12-002",
+      "status": "PASS",
+      "basis_ref": "37dc1903eb3688806d16d67ab5aa20ce95d47d63",
+      "evidence": [
+        "ChromeDriver browser suite passed; public and standalone Core1B state/commit/reveal behavior is equivalent."
+      ]
+    },
+    {
+      "id": "TEST-TA12-003",
+      "status": "PASS",
+      "basis_ref": "37dc1903eb3688806d16d67ab5aa20ce95d47d63",
+      "evidence": [
+        "Host generator subject-neutrality falsifier passed; no raw subject/library/matrix/mastery authority was introduced."
+      ]
+    },
+    {
+      "id": "TEST-TA12-004",
+      "status": "PASS",
+      "basis_ref": "37dc1903eb3688806d16d67ab5aa20ce95d47d63",
+      "evidence": [
+        "Repository-local resource assertions, architecture-manifest freshness, JSON parsing and the full 1002-test suite passed."
+      ]
+    }
+  ],
+  "quality_review": {
+    "id": "QRV-TA-012",
+    "path": "agents/relay/quality/QRV-TA-012.yaml",
+    "digest": "sha256:08ca4cac323a171b178b4df0cc5fc78fd3e1953aaf6d9c6b913ef0162d512c7d"
+  },
+  "quality_findings": [],
+  "known_limitations": [
+    {
+      "statement": "Production #173/#174 provider integration is not landed and is not claimed by this checkpoint.",
+      "basis": [
+        "Issue #175",
+        "staged V3 cutover diagnostic"
+      ]
+    },
+    {
+      "statement": "No existing bespoke explorer has yet been mounted/migrated through the generated builder path; PR #134 remains future reconciliation.",
+      "basis": [
+        "Issue #175 acceptance criteria",
+        "#134 provider state"
+      ]
+    },
+    {
+      "statement": "Engineering Relay V3 is staged but not active; native reconciliation and Common #421 intelligence-continuity still block cutover.",
+      "basis": [
+        "v3-relay 35691427392",
+        "relay/CONTROLS/controls.yaml"
+      ]
+    }
+  ],
+  "discoveries": [
+    {
+      "statement": "Public and standalone hosts can remain byte-equivalent after normalizing only repository-relative resource paths.",
+      "basis": [
+        "TEST-TA12-001",
+        "TEST-TA12-002"
+      ]
+    },
+    {
+      "statement": "Static host parity does not require a second projection data file or a copied learner runtime.",
+      "basis": [
+        "Shared/tools/build_core_learning_host.py",
+        "public/core-learning/data.js",
+        "public/js/core-learning/"
+      ]
+    }
+  ],
+  "roadmap_reconciliation": {
+    "result": "STATUS_UPDATE",
+    "status_updates": [
+      {
+        "statement": "WP-TA-109 is complete and the current RM-0013 admitted roadmap earns 125/125 weight.",
+        "basis": [
+          "CP-TA-012",
+          "guardrails 35691427353"
+        ]
+      },
+      {
+        "statement": "Issue #175 remains open for separately admitted production provider integration and bespoke-explorer migration; no successor EP is invented.",
+        "basis": [
+          "Issue #175",
+          "EP-TA-012 non-goals"
+        ]
+      },
+      {
+        "statement": "V3 remains staged as V2_5/PREPARED; this checkpoint does not authorize protocol cutover.",
+        "basis": [
+          "v3-relay 35691427392",
+          "Common #421 continuity control"
+        ]
+      }
+    ],
+    "proposals": [],
+    "owner_decisions_required": []
+  },
+  "remaining_work": [
+    "Admit production #173/#174 provider integration only when the minimum stable upstream output is executable.",
+    "Mount or migrate at least one existing bespoke explorer through the generated builder before Issue #175 can close.",
+    "Re-evaluate PR #134 against the generated builder boundary.",
+    "Reconcile staged V3 native authority and Common #421 intelligence continuity before any V3 cutover."
+  ],
+  "successor": {
+    "mode": "NONE",
+    "frontier_work_package": null,
+    "ep_id": null,
+    "parallel_plan": null,
+    "lane_id": null,
+    "lanes": []
+  }
+}
