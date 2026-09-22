@@ -1,0 +1,122 @@
+name: v3-migration-refresh-stage
+
+on:
+  push:
+    branches:
+      - migration/v3-digest-refresh-20260922
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: 9c7b7cab8337e231c36d62453e1ed907da1c37d8
+          path: _common_v3
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+
+      - name: Refresh pinned-V3 migration basis transactionally
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import copy, sys
+
+          root=Path(".").resolve()
+          scripts=root/"_common_v3/skills/engineering-pr-delivery-v3/scripts"
+          sys.path.insert(0,str(scripts))
+
+          from transactionlib import execute, yaml_bytes
+          from v25_migration import build_report, MIGRATION_REPORT, PROTOCOL_SELECTION
+          from snapshot_projection import build as build_snapshot
+          from v3lib import load_yaml, validate_schema
+
+          tx_id="TX-MIGRATE-REFRESH-003"
+          actor="chatgpt-sol-v3-refresh-20260922"
+
+          report=build_report(root)
+          if report["validation"]["repo_state"]!="PASS":
+              raise SystemExit("fresh migration source validation is not PASS")
+
+          selection=load_yaml(root/PROTOCOL_SELECTION)
+          selection=copy.deepcopy(selection)
+          selection["selected_protocol"]="V2_5"
+          selection["status"]="PREPARED"
+          selection["legacy"]["tree_digest"]=report["source"]["legacy_tree_digest"]
+          selection["legacy"]["policy"]="LIVE_COMPATIBILITY"
+          selection["v3"]["validation"]="PENDING"
+          selection["cutover"]={
+              "owner_authorized":False,
+              "owner_basis":None,
+              "readiness_digest":None,
+              "activated_at":None,
+          }
+          errs=validate_schema("protocol-selection",selection,"PROTOCOL_SELECTION")
+          if errs: raise SystemExit("; ".join(errs))
+
+          state=load_yaml(root/"relay/STATE.yaml")
+          controls=load_yaml(root/"relay/CONTROLS/controls.yaml")
+          migration=[x for x in controls["controls"] if x["id"]=="CTRL-MIGRATION-RECONCILE"]
+          if len(migration)!=1 or migration[0]["state"]!="RESOLVED":
+              raise SystemExit("migration control must already be RESOLVED")
+          continuity=[x for x in controls["controls"] if x["id"]=="CTRL-V25-INTELLIGENCE-CONTINUITY"]
+          if len(continuity)!=1 or continuity[0]["state"]!="OPEN":
+              raise SystemExit("continuity control must remain OPEN under pinned V3")
+
+          snapshot=build_snapshot(root)
+          replacements={
+              MIGRATION_REPORT:yaml_bytes(report),
+              PROTOCOL_SELECTION:yaml_bytes(selection),
+              "relay/GENERATED/CURRENT_SNAPSHOT.yaml":yaml_bytes(snapshot),
+          }
+          result=execute(root,tx_id=tx_id,command="RESOLVE_CONTROL",actor=actor,replacements=replacements)
+          print(f"{result['id']}: {result['status']}")
+          PY
+
+      - name: Validate pinned V3 foundation
+        run: python _common_v3/skills/engineering-pr-delivery-v3/scripts/validate_foundation.py .
+
+      - name: Prove only continuity blocks cutover
+        shell: bash
+        run: |
+          set -euo pipefail
+          set +e
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . assess > /tmp/readiness.yaml
+          rc=$?
+          set -e
+          cat /tmp/readiness.yaml
+          test "$rc" -eq 1
+          python - <<'PY'
+          import yaml
+          x=yaml.safe_load(open("/tmp/readiness.yaml",encoding="utf-8"))
+          failed=sorted(k for k,v in x["checks"].items() if v!="PASS")
+          if failed!=["roadmap_intelligence_continuity"]:
+              raise SystemExit(f"unexpected V3 cutover blockers: {failed}")
+          print("Pinned V3 reconciliation complete; Common #421 continuity is the sole blocker.")
+          PY
+
+      - name: Commit refresh transaction
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "relay-v3-bot"
+          git config user.email "relay-v3-bot@users.noreply.github.com"
+          git add relay
+          git diff --cached --quiet && exit 0
+          git commit -m "relay-v3: refresh migration digest basis"
+          git push origin HEAD:migration/v3-digest-refresh-20260922
