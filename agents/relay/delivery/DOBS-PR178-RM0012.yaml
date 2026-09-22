@@ -10,7 +10,7 @@
     "lifecycle": "DRAFT",
     "head": {
       "ref": "builder/core-learning-pages-r1",
-      "sha": "9186c5a5ccd891f25579833d1fea51f3f0c31b7c"
+      "sha": "4d9bd454f669e71ab2032bd8aa496bc067da07d1"
     },
     "base": {
       "ref": "takeover/grade9-exit-transition-r2",
@@ -21,8 +21,8 @@
     "state": "MERGEABLE"
   },
   "checks": {
-    "state": "PASS",
-    "head_sha": "9186c5a5ccd891f25579833d1fea51f3f0c31b7c",
+    "state": "FAIL",
+    "head_sha": "4d9bd454f669e71ab2032bd8aa496bc067da07d1",
     "required": [
       "guardrails",
       "v25-relay"
@@ -30,15 +30,15 @@
     "observations": [
       {
         "name": "guardrails",
-        "run_id": 35682030322,
+        "run_id": 35682802189,
         "status": "PASS",
-        "basis": "Exact-head QRV guardrails passed the full repository suite and generated/JSON checks; predecessor product proof had already passed 1000 tests including Core learner and real-browser contracts on dd8916a."
+        "basis": "Exact-head guardrails passed on 4d9bd454f669e71ab2032bd8aa496bc067da07d1."
       },
       {
         "name": "v25-relay",
-        "run_id": 35682030373,
-        "status": "PASS",
-        "basis": "Exact-head QRV head passed revised V2.5 semantic conformance, cold/zero-context, baton, DISC/QSET/QUAL/TC, route/Git and normal material-write validation."
+        "run_id": 35682802210,
+        "status": "FAIL",
+        "basis": "Exact-head V2.5 failed only PR correlation because the repository delivery observation still named predecessor Issue/EP ownership after RM-0013 activated EP-TA-012."
       }
     ]
   },
@@ -50,33 +50,33 @@
   "description_contract": {
     "marker": "<!-- relay-pr-correlation:v1 -->",
     "marker_present": true,
-    "body_digest": "sha256:d9582cb1532d8b84224fa80ea87a5a0d7377f7c580dcadfe8c852c8b976b1f38",
+    "body_digest": "sha256:77bb309cf511c026417618ee0c4e41271e7d4ad6918c1f7693bf1f89e31543ec",
     "correlations": [
       {
-        "issue_node": "ISSUE-175",
-        "issue_number": 175,
-        "ep_id": "EP-TA-010",
-        "ep_path": "agents/relay/execution-packages/EP-TA-010.yaml",
-        "work_package": "WP-TA-108",
-        "relationship": "IMPLEMENTS",
-        "meaning": "PR #178 delivers the fixture-backed portable Core learner-shell proof accepted by CP-TA-010 for Issue #175."
-      },
-      {
-        "issue_node": "ISSUE-175",
+        "issue_node": "ISSUE-175-WP108",
         "issue_number": 175,
         "ep_id": "EP-TA-011",
         "ep_path": "agents/relay/execution-packages/EP-TA-011.yaml",
         "work_package": "WP-TA-108",
         "relationship": "REMEDIATES",
-        "meaning": "PR #178 reconciles the accepted learner-shell delivery with the live predecessor and revised V2.5 controls."
+        "meaning": "Checkpointed post-proof reconciliation retained under historical Issue #175 ownership."
+      },
+      {
+        "issue_node": "ISSUE-175",
+        "issue_number": 175,
+        "ep_id": "EP-TA-012",
+        "ep_path": "agents/relay/execution-packages/EP-TA-012.yaml",
+        "work_package": "WP-TA-109",
+        "relationship": "IMPLEMENTS",
+        "meaning": "Active generated public/standalone Core learner host-parity slice."
       }
     ]
   },
   "readback_basis": [
-    "GitHub provider readback: PR #178 is DRAFT/OPEN and MERGEABLE at 9186c5a5ccd891f25579833d1fea51f3f0c31b7c.",
-    "Provider body contains relay-pr-correlation:v1 and states PEND-TA11-001 SATISFIED plus QRV-TA-011 CLEAR.",
-    "No submitted reviews or unresolved review threads were present at provider readback.",
-    "Exact-head guardrails 35682030322 and v25-relay 35682030373 are PASS.",
-    "No PR-ready, merge, checkpoint or release action has been taken."
+    "GitHub provider readback: PR #178 is DRAFT/OPEN and MERGEABLE at 4d9bd454f669e71ab2032bd8aa496bc067da07d1.",
+    "Provider body contains relay-pr-correlation:v1 with checkpointed WP-TA-108 and active WP-TA-109 ownership.",
+    "Issue graph maps ISSUE-175-WP108 to WP-TA-108 and ISSUE-175 to WP-TA-109.",
+    "Exact-head guardrails 35682802189 are PASS; v25-relay 35682802210 failed only stale PR-correlation evidence.",
+    "No PR-ready, merge, checkpoint or release action is implied by this observation refresh."
   ]
 }
