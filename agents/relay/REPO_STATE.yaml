@@ -79,7 +79,7 @@
     },
     "evidence": {
       "state": "PARTIAL",
-      "summary": "Normal EP-TA-011 DISC/QUAL/TC admission is present using fresh current-route receipt IDs DISC-TA-020 / QUAL-TA-012 / TC-TA-020; historical DISC-TA-012 and TC-TA-012 are restored unchanged. Exact-head CI must prove ordinary material_write_ready PASS before PEND-TA11-001 closes.",
+      "summary": "Normal current-route candidate admission is present using fresh discovery, qualification, and takeover receipts while historical certification records remain unchanged. Exact-head validation must prove ordinary write readiness before the deferred release control closes.",
       "not_run": [
         {
           "id": "EP-TA-011 exact-head fresh-admission guardrails",
