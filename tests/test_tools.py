@@ -167,6 +167,12 @@ class WebData(unittest.TestCase):
             "regenerate with python3 Shared/tools/build_core_learning_data.py",
         )
 
+    def test_core_learner_builder_has_no_subject_owned_selection_file(self):
+        self.assertFalse(
+            (REPO / "Physics/content/core-learning-proof.json").exists(),
+            "the #175 builder must not own subject projection selection",
+        )
+
     def test_core_learner_builder_does_not_compile_subject_or_atlas_truth(self):
         source = (REPO / "Shared/tools/build_core_learning_data.py").read_text(encoding="utf-8")
         for forbidden in (
