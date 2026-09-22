@@ -1,0 +1,255 @@
+name: v31-checkpoint-issue-169
+
+on:
+  push:
+    branches:
+      - relay/v31-checkpoint-issue-169
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  checkpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout governed Issue 169 branch
+        uses: actions/checkout@v4
+        with:
+          ref: delivery/issue-169-grade9-exit-v31
+          fetch-depth: 0
+
+      - name: Fetch current main
+        run: git fetch origin main:refs/remotes/origin/main
+
+      - name: Checkout pinned Engineering Relay V3.1
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: edb845f06f32c87453dee6fbfcc2f84937017279
+          path: _common_v31
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+
+      - name: Validate active V3.1 authority
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_default.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_cutover.py . validate
+
+      - name: Record standing Owner merge authority transactionally
+        run: |
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          import yaml
+
+          root = Path(".").resolve()
+          sys.path.insert(0, str(root / "_common_v31/skills/engineering-pr-delivery-v3.1/scripts"))
+          from snapshot_projection import build
+          from transactionlib import execute, yaml_bytes
+
+          state = yaml.safe_load((root / "relay/STATE.yaml").read_text(encoding="utf-8"))
+          controls_path = root / state["controls"]["path"]
+          controls = yaml.safe_load(controls_path.read_text(encoding="utf-8"))
+          control_id = "CTRL-OWNER-MERGE-ISS169-20260922"
+          if not any(row.get("id") == control_id for row in controls["controls"]):
+              controls["controls"].append({
+                  "id": control_id,
+                  "kind": "OWNER",
+                  "state": "OPEN",
+                  "source": {
+                      "type": "OWNER",
+                      "ref": "direct-owner:2026-09-22T11:48:50Z:merge-if-mergeable;protocol-update:2026-09-22T15:49:12Z:v3.1",
+                  },
+                  "condition": "Owner authorizes merging the current governed delivery when the selected V3.1 MERGE gate and GitHub both report it mergeable.",
+                  "blocks": [],
+                  "permits": ["MERGE"],
+                  "resolution": {
+                      "condition": "PR 193 is merged or the Owner revokes this authority.",
+                      "evidence": [],
+                  },
+              })
+          snapshot = build(root, "origin/main", controls_override=controls)
+          execute(
+              root,
+              tx_id="TX-V31-OWNER-MERGE-ISS169-001",
+              command="RECORD_OWNER_CONTROL",
+              actor="chatgpt-sol-g9exit-v31-20260922",
+              replacements={
+                  state["controls"]["path"]: yaml_bytes(controls),
+                  state["generated"]["snapshot"]: yaml_bytes(snapshot),
+              },
+          )
+          PY
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+
+      - name: Re-run focused Issue 169 acceptance
+        run: |
+          python -m unittest tests.test_grade9_exit
+          python Shared/tools/spec_delivery.py --enforce --summary
+          python Shared/tools/build_manifest.py --check
+          git diff --exit-code origin/main --             Shared/tools/learner_evidence.py             Shared/library             Shared/publication_host             Physics             Learners
+
+      - name: Prove checkpoint authorization
+        run: python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py CHECKPOINT . --base-ref origin/main
+
+      - name: Build exact V3.1 checkpoint
+        env:
+          CHECKPOINT_RUN_ID: ${{ github.run_id }}
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/material_basis.py . --base-ref origin/main > /tmp/material.json
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+          import yaml
+
+          material = json.loads(Path("/tmp/material.json").read_text(encoding="utf-8"))["material_basis"]
+          assert material["head"] == "f7f2c950f8f417a1b0ecbcc8234069130df4a344", material
+          run_id = os.environ["CHECKPOINT_RUN_ID"]
+          cp = {
+              "schema_version": "relay-v3.1-checkpoint",
+              "id": "CP-G9EXIT-169-V31-001",
+              "ep": "EP-G9EXIT-169-V31-001",
+              "material_result": {
+                  "head": material["head"],
+                  "relevant_paths_digest": material["relevant_paths_digest"],
+                  "dependency_digest": material["dependency_digest"],
+              },
+              "acceptance": [
+                  {
+                      "id": "AC-169-CATEGORIES",
+                      "result": "PASS",
+                      "evidence": [
+                          f"V3.1 checkpoint workflow {run_id}: test_grade9_exit PASS",
+                          "SECURE, USABLE_BUT_FRAGILE, KNOWN_GAP and INSUFFICIENT_OR_UNKNOWN remain derived from existing learner-evidence semantics.",
+                      ],
+                  },
+                  {
+                      "id": "AC-169-DEMAND-CLASS",
+                      "result": "PASS",
+                      "evidence": [
+                          f"V3.1 checkpoint workflow {run_id}: Core2A/Core2B, assisted and unresolved-ref falsifiers PASS",
+                          "Changed demand requires canonical CORE2B exposure plus transfer metadata and independent DIRECT_ATTEMPT/DEMONSTRATED/help NONE for observation credit.",
+                      ],
+                  },
+                  {
+                      "id": "AC-169-TRANSITION",
+                      "result": "PASS",
+                      "evidence": [
+                          f"V3.1 checkpoint workflow {run_id}: authority-driven blocker/non-blocker falsifiers PASS",
+                          "Authored changed-demand inventory is availability only; EVIDENCE_NEEDED requires explicit transition_required authority.",
+                      ],
+                  },
+                  {
+                      "id": "AC-169-REPORT",
+                      "result": "PASS",
+                      "evidence": [
+                          f"V3.1 checkpoint workflow {run_id}: parent/agent report reconstruction tests PASS",
+                          "Report documentation uses --format text and explains availability, observation and transition-requiredness separately.",
+                      ],
+                  },
+                  {
+                      "id": "AC-169-BOUNDARY",
+                      "result": "PASS",
+                      "evidence": [
+                          f"V3.1 checkpoint workflow {run_id}: protected-domain diff PASS",
+                          "No Physics, Learners, learner_evidence, Shared library or publication-host changes.",
+                          "No mastery percentage, readiness store or write primitive is introduced in grade9_exit.py.",
+                      ],
+                  },
+                  {
+                      "id": "AC-169-REPO",
+                      "result": "PASS",
+                      "evidence": [
+                          "exact-material V3.1 run 35755356047 PASS",
+                          "exact-material guardrails run 35755356105 PASS",
+                          "exact material-head proof run 35755356202 PASS",
+                          "focused author/manifest run 35755184302 PASS",
+                          f"V3.1 checkpoint workflow {run_id}: spec_delivery and manifest freshness PASS",
+                      ],
+                  },
+              ],
+              "validation": {
+                  "focused_tests": "PASS",
+                  "spec_delivery": "PASS",
+                  "full_guardrails": "PASS",
+              },
+              "quality": {
+                  "policy": "STANDARD",
+                  "result": "CLEAR",
+              },
+              "known_limitations": [
+                  "The learner-observation schema does not encode named misconception identity/severity; the report does not invent it from generic error_stage.",
+                  "Current Grade-9 scope authority contains no changed-demand-required field, so authored Core2B availability is descriptive unless future explicit transition authority declares a requirement.",
+                  "PR 170 and PR 181 remain historical/candidate sources only and provide no live V3.1 acceptance credit.",
+              ],
+              "discoveries": [
+                  "The original derived exit-view architecture remains valid after delivered Core projection changes.",
+                  "Canonical CORE2B exposure plus transfer metadata is sufficient to classify changed-demand availability without persisting Core labels in learner observations.",
+                  "Separating availability, observation and transition-requiredness removes the authored-inventory blocker shortcut without weakening explicit future transition requirements.",
+              ],
+              "handoff": {
+                  "what_changed": [
+                      "Added the Grade-9 exit/Grade-10 transition derived query and report on current main.",
+                      "Corrected changed-demand classification to require canonical CORE2B exposure plus transfer metadata.",
+                      "Separated changed-demand availability, independent observation and transition-requiredness.",
+                  ],
+                  "what_is_true_now": [
+                      "Known required/prerequisite gaps block; unknown required evidence remains evidence-required rather than failure.",
+                      "Fragile required evidence produces targeted independent rechecks.",
+                      "Authored changed-demand tasks without explicit transition requirement report AVAILABLE_UNOBSERVED and do not block Grade 10.",
+                      f"Accepted material head is {material['head']}.",
+                  ],
+                  "what_remains_uncertain": [
+                      "A future canonical transition authority may explicitly require changed-demand evidence; the report already supports that requirement without making current authored inventory authoritative.",
+                      "Named misconception identity/severity remains unavailable in the observation contract.",
+                  ],
+                  "do_not_break": [
+                      "Do not persist a mastery/readiness score or second learner truth store.",
+                      "Do not treat transfer.dimension without CORE2B exposure as changed demand.",
+                      "Do not treat authored Core2B inventory as transition-requiredness by itself.",
+                      "Do not modify Physics or Learners to satisfy a reporting concern.",
+                  ],
+                  "attempted_and_rejected": [
+                      "The PR 170 shortcut transfer.dimension => changed demand was rejected.",
+                      "The PR 170 shortcut authored changed-demand inventory => mandatory witness was rejected.",
+                      "Old V2.5/V3 acceptance from PR 170/181 was not imported.",
+                  ],
+                  "resume_from": [
+                      "Run V3.1 PR_READY and MERGE authorization for PR 193.",
+                      "If GitHub remains mergeable, merge PR 193, sync provider readback, close the task, reconcile WP-TA-105 COMPLETE and close Issue 169.",
+                  ],
+                  "first_successor_action": "Perform the separately authorized V3.1 delivery transition for PR 193 if provider and V3.1 merge gates remain green.",
+              },
+          }
+          Path("/tmp/cp-g9exit-v31.yaml").write_text(yaml.safe_dump(cp, sort_keys=False), encoding="utf-8")
+          PY
+
+      - name: Accept fresh V3.1 checkpoint
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . checkpoint             --tx-id TX-V31-CP-ISS169-001             --event-id EVT-V31-CP-ISS169-001             --actor chatgpt-sol-g9exit-v31-20260922             --checkpoint /tmp/cp-g9exit-v31.yaml             --base-ref origin/main
+
+      - name: Publish V3.1 handover
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . handover             --tx-id TX-V31-HANDOVER-ISS169-001             --event-id EVT-V31-HANDOVER-ISS169-001             --actor chatgpt-sol-g9exit-v31-20260922             --base-ref origin/main
+
+      - name: Validate accepted V3.1 authority
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_cutover.py . validate
+
+      - name: Commit checkpoint and Owner authority to PR 193
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add relay
+          git commit -m "[relay-v3.1] accept Issue 169 exit-readiness checkpoint"
+          git push origin HEAD:delivery/issue-169-grade9-exit-v31
