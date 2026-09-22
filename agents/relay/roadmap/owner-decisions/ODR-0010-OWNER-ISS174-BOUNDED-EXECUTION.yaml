@@ -1,0 +1,87 @@
+{
+  "schema_version": "relay-v2.5",
+  "id": "ODR-0010-OWNER-ISS174-BOUNDED-EXECUTION",
+  "decision": {
+    "authority": "OWNER",
+    "kind": "AUTHORIZATION",
+    "statement": "Start bounded Issue #174 NLM friction gold-slice execution on the existing draft branch despite unresolved normal route/admission/custody. Preserve the active Issue #169 serial route, do not fabricate DISC/QUAL/TC, and do not infer checkpoint, PR-ready, merge, or release authority.",
+    "source": "Direct Owner instruction in the active Grade9V3 engineering session on 2026-09-22T05:28:58Z: 'Owner override, start'."
+  },
+  "effects": {
+    "requirement_disposition": "PENDING_NOT_SATISFIED",
+    "grants_material_write_authority": true,
+    "pending_items": [
+      "PEND-ISS174-OWNER-OVERRIDE-001"
+    ]
+  },
+  "delivery_authorization": null,
+  "execution_override": {
+    "disposition": "GRANTED",
+    "scope": {
+      "repository": "reallaksh19/Grade9V3",
+      "branch": "content/issue-174-nlm-friction-gold",
+      "base_sha": "da91e9e42c641e9d2bdd970d1e87a6b8227c84a9",
+      "route_key": null,
+      "issues": [
+        174
+      ],
+      "pull_requests": [
+        179
+      ],
+      "allowed_write_paths": [
+        "Physics/library/phy-nlm-first-law.v1.json",
+        "tests/test_g9_nlm_friction_connected.py",
+        "docs/architecture-manifest.json",
+        "agents/relay/REPO_STATE.yaml",
+        "agents/relay/roadmap/owner-decisions/ODR-0010-OWNER-ISS174-BOUNDED-EXECUTION.yaml"
+      ]
+    },
+    "defers": [
+      "ROUTE_RECONCILIATION",
+      "CANDIDATE_ADMISSION"
+    ],
+    "allows": [
+      "BOUNDED_PRODUCT_WRITES",
+      "TESTS",
+      "DRAFT_PR_UPDATES"
+    ],
+    "blocks": [
+      "CHECKPOINT",
+      "PR_READY",
+      "MERGE",
+      "RELEASE"
+    ],
+    "pending_obligations": [
+      "PEND-ISS174-OWNER-OVERRIDE-001"
+    ]
+  },
+  "impact": {
+    "class": [
+      "LOCAL",
+      "EXECUTION_GOVERNANCE",
+      "PROTOCOL_EXCEPTION"
+    ]
+  },
+  "affected": {
+    "objectives": [
+      "OBJ-TOPIC-ATLAS-COMPLETE"
+    ],
+    "phases": [
+      "PHASE-TAKEOVER-RECONCILIATION"
+    ],
+    "work_packages": [],
+    "execution_packages": [],
+    "issues": [
+      "ISSUE-174"
+    ]
+  },
+  "required_reconciliation": [
+    "Keep Issue #169 / EP-TA-011 as the active serial route; this override does not replace it.",
+    "Limit product writes to the existing NLM gold-slice Physics/test/derived-manifest scope.",
+    "Do not create or relabel fake DISC/QUAL/TC or claim normal MATERIAL_WRITE_READY.",
+    "Keep PEND-ISS174-OWNER-OVERRIDE-001 OPEN through CHECKPOINT, PR_READY, MERGE and RELEASE boundaries.",
+    "No Motion-in-2D or Shared/compiler material edits are authorized.",
+    "Run exact-head focused tests, generated-artifact checks, guardrails and V2.5 validation after the bounded slice."
+  ],
+  "status": "APPLIED"
+}

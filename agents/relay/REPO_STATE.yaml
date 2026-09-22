@@ -270,6 +270,41 @@
       ],
       "resolution_condition": "A merged Common/main protocol supports faithful verified-predecessor supersession; then the published final checkpoint generation is provider-verified into IN_SYNC without misclassifying historical truth.",
       "revisit_when": "Common PR #415, or an equivalent verified-projection supersession fix, lands on Common/main and Grade9V3 pins that revision."
+    },
+    {
+      "id": "PEND-ISS174-OWNER-OVERRIDE-001",
+      "kind": "DEFERRED_VALIDATION",
+      "state": "OPEN",
+      "summary": "Issue #174 bounded NLM gold-slice execution is proceeding under direct Owner override while normal route/admission/custody reconciliation remains unresolved.",
+      "source": "ODR-0010-OWNER-ISS174-BOUNDED-EXECUTION",
+      "scope": {
+        "route_key": null,
+        "ep_id": null,
+        "branch": "content/issue-174-nlm-friction-gold",
+        "issues": [
+          174
+        ],
+        "pull_requests": [
+          179
+        ]
+      },
+      "evidence": [
+        "Direct Owner instruction on 2026-09-22T05:28:58Z: 'Owner override, start'.",
+        "Issue #174 remains outside the active serial Issue #169 / EP-TA-011 route on delivered main.",
+        "Existing PR #179 contains the previously proven bounded NLM gold-slice material but is based on a stale parent."
+      ],
+      "must_resolve_before": [
+        "CHECKPOINT",
+        "PR_READY",
+        "MERGE",
+        "RELEASE"
+      ],
+      "allowed_before_resolution": [
+        "BOUNDED_PRODUCT_WRITES",
+        "TESTS",
+        "DRAFT_PR_UPDATES"
+      ],
+      "resolution_condition": "Reconcile Issue #174 into a current governed route/admission or other explicitly authorized delivery boundary on the exact current head without replacing or falsifying the active Issue #169 serial route."
     }
   ]
 }
