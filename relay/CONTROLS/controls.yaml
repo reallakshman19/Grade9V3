@@ -2,7 +2,7 @@ schema_version: relay-v3-controls
 controls:
 - id: CTRL-MIGRATION-RECONCILE
   kind: PROTOCOL
-  state: OPEN
+  state: RESOLVED
   source:
     type: VALIDATOR
     ref: relay/MIGRATION/V25_REPORT.yaml
@@ -25,7 +25,12 @@ controls:
   resolution:
     condition: Native V3 roadmap/frontier/EP/lease/checkpoint disposition is established
       without rewriting V2.5 history.
-    evidence: []
+    evidence:
+    - "V2.5 source state is IDLE at RM-0014 with an empty executable frontier, no active execution package, and last accepted checkpoint CP-TA-012."
+    - "CP-TA-012 accepted WP-TA-109 host parity and left production provider integration, bespoke-explorer migration, and pull request 134 reconciliation as separately admitted future work."
+    - "Native V3 present authority is reconciled as IDLE at RM-0014 with no EP, lease, or checkpoint imported from legacy V2.5 receipts."
+    - "V3 remains staged and Common issue 421 continuity remains OPEN, so protocol cutover is not authorized."
+    - "The bootstrap migration inventory is not promoted to cutover evidence because the legacy tree continued changing after bootstrap; live legacy-digest reconciliation remains a separate cutover requirement."
 - id: CTRL-V25-INTELLIGENCE-CONTINUITY
   kind: PROTOCOL
   state: OPEN
