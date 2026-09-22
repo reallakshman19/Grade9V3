@@ -1,0 +1,93 @@
+schema_version: relay-v3-snapshot
+authority: DERIVED_READ_MODEL
+generated_from:
+  roadmap_revision: RM-V3-CANONICAL-NLM-001
+  state_digest: sha256:05a75bfcd2348146c9accba52f3b14debe303106c177f10eacadff3d13ed875a
+  material_basis:
+    head: dfc26feab8957ef612776262c135b2454fab1a16
+    tree_digest: sha256:c112b6b61ab44e91cefef097c68143f7e01b07c0b4e87f43e867fae7d005ee4a
+    relevant_paths_digest: sha256:982187f3b672ac05c5832f4ecd9f4784a74c5c42b5f9267bfa9a5f3435c7906b
+    dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+  coordination_head: 9d0647ec4c02a60f7a3f47aa3e9145700bc6da52
+owner:
+  outcome: 'Complete canonical data, learner-page integration, and external portability
+    while preserving delivered #162/#173 foundations.'
+  current_goal: 'Deliver Issue #174 in bounded slices: existing NLM PR #179 first,
+    then a separate Motion-in-2D canonical proof; do not fold Motion into PR #179.'
+programme:
+  accepted_progress: 3.85
+  completed_work:
+  - WP-CANONICAL-174-NLM
+  remaining_work:
+  - WP-TAKEOVER-RECONCILE
+  - WP-TA-102
+  - WP-TA-106
+  - WP-TA-103
+  - WP-TA-104
+  - WP-TA-107
+  - WP-TA-108
+  - WP-TA-105
+execution:
+  lifecycle: ACTIVE
+  work_package: WP-CANONICAL-174-NLM
+  ep: EP-CANONICAL-174-NLM-001
+  lease: LEASE-CANONICAL-174-NLM-001
+  executor: codex-canonical-v3
+scope:
+  allowed_writes:
+  - Physics/library/phy-nlm-first-law.v1.json
+  - tests/test_g9_nlm_friction_connected.py
+  - docs/architecture-manifest.json
+  - tools/data.js
+  - public/data/data.js
+  protected:
+  - Shared/
+  - Physics/adapter/
+  - Physics/gates/
+  - Learners/
+  prohibited:
+  - Mathematics/
+  - Chemistry/
+  - public/physics/
+  - standalone/
+material:
+  base: da91e9e42c641e9d2bdd970d1e87a6b8227c84a9
+  head: dfc26feab8957ef612776262c135b2454fab1a16
+  relevant_paths_digest: sha256:982187f3b672ac05c5832f4ecd9f4784a74c5c42b5f9267bfa9a5f3435c7906b
+  dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+evidence:
+  latest_checkpoint: CP-CANONICAL-174-NLM-001
+  latest_material_validation:
+    focused_tests: PASS
+    spec_delivery: PASS
+    full_guardrails: PASS
+controls:
+  execution_blockers: []
+  handover_blockers: []
+  delivery_blockers: []
+  informational: []
+delivery:
+  issue: null
+  pr: 183
+  lifecycle: DECLARED
+  merge_authorized: false
+next:
+  immediate_material_action: 'Port only the academic/test NLM gold delta from PR #179,
+    regenerate derived artifacts, and run exact-head tests.'
+  delivery_action: Perform the explicitly authorized delivery transition.
+  stop_conditions:
+  - 'Do not import V2.5 relay or Owner-override records from PR #179.'
+  - Do not add Motion-in-2D to this delivery slice.
+  - Do not alter source hints/provenance or canonical scientific relation authority.
+  - 'A generic runtime/compiler falsifier requires a separately scoped repair rather
+    than redesigning delivered #162/#173.'
+  - No merge or release without action-specific delivery authorization.
+handoff:
+  zero_context_takeover_possible: true
+  reconstruction_sources:
+  - relay/ROADMAP/ROADMAP.yaml
+  - relay/STATE.yaml
+  - relay/CONTROLS/controls.yaml
+  - relay/WORK/EP-CANONICAL-174-NLM-001.yaml
+  - relay/LEASES/LEASE-CANONICAL-174-NLM-001.yaml
+  - relay/CHECKPOINTS/CP-CANONICAL-174-NLM-001.yaml

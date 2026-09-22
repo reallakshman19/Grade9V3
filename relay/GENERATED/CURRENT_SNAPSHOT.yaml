@@ -2,21 +2,22 @@ schema_version: relay-v3-snapshot
 authority: DERIVED_READ_MODEL
 generated_from:
   roadmap_revision: RM-V3-CANONICAL-NLM-001
-  state_digest: sha256:05670dfbafc078953abebd794285f75502632a1fad6d7b472f3ec53465be3488
+  state_digest: sha256:acdbf99286ee3c304df881c1f6639f3a5f887163a2d28cbe42f18aa6ba7bb4d3
   material_basis:
-    head: da91e9e42c641e9d2bdd970d1e87a6b8227c84a9
-    tree_digest: sha256:b3671e3ab16744265c531e5908c8436c8089f52a80359292b23c76ae9edfab0b
-    relevant_paths_digest: sha256:e3b613622ecceb03f41f9c2d934fbccfa38171ecd4f8087c205eaf370c338cf0
+    head: dfc26feab8957ef612776262c135b2454fab1a16
+    tree_digest: sha256:050e6b890be56aadc91e94afdd36815f44930fe6ec167caee40fe4b34e297f00
+    relevant_paths_digest: sha256:982187f3b672ac05c5832f4ecd9f4784a74c5c42b5f9267bfa9a5f3435c7906b
     dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
-  coordination_head: 88f4b906911044362e2c4cfce16a5b6f2c1335e4
+  coordination_head: 9d0647ec4c02a60f7a3f47aa3e9145700bc6da52
 owner:
   outcome: 'Complete canonical data, learner-page integration, and external portability
     while preserving delivered #162/#173 foundations.'
   current_goal: 'Deliver Issue #174 in bounded slices: existing NLM PR #179 first,
     then a separate Motion-in-2D canonical proof; do not fold Motion into PR #179.'
 programme:
-  accepted_progress: 0.0
-  completed_work: []
+  accepted_progress: 3.85
+  completed_work:
+  - WP-CANONICAL-174-NLM
   remaining_work:
   - WP-TAKEOVER-RECONCILE
   - WP-TA-102
@@ -26,38 +27,27 @@ programme:
   - WP-TA-107
   - WP-TA-108
   - WP-TA-105
-  - WP-CANONICAL-174-NLM
 execution:
-  lifecycle: ACTIVE
-  work_package: WP-CANONICAL-174-NLM
-  ep: EP-CANONICAL-174-NLM-001
-  lease: LEASE-CANONICAL-174-NLM-001
-  executor: codex-canonical-v3
+  lifecycle: IDLE
+  work_package: null
+  ep: null
+  lease: null
+  executor: null
 scope:
-  allowed_writes:
-  - Physics/library/phy-nlm-first-law.v1.json
-  - tests/test_g9_nlm_friction_connected.py
-  - docs/architecture-manifest.json
-  - tools/data.js
-  - public/data/data.js
-  protected:
-  - Shared/
-  - Physics/adapter/
-  - Physics/gates/
-  - Learners/
-  prohibited:
-  - Mathematics/
-  - Chemistry/
-  - public/physics/
-  - standalone/
+  allowed_writes: []
+  protected: []
+  prohibited: []
 material:
-  base: da91e9e42c641e9d2bdd970d1e87a6b8227c84a9
-  head: da91e9e42c641e9d2bdd970d1e87a6b8227c84a9
-  relevant_paths_digest: sha256:e3b613622ecceb03f41f9c2d934fbccfa38171ecd4f8087c205eaf370c338cf0
+  base: dfc26feab8957ef612776262c135b2454fab1a16
+  head: dfc26feab8957ef612776262c135b2454fab1a16
+  relevant_paths_digest: sha256:982187f3b672ac05c5832f4ecd9f4784a74c5c42b5f9267bfa9a5f3435c7906b
   dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
 evidence:
-  latest_checkpoint: null
-  latest_material_validation: {}
+  latest_checkpoint: CP-CANONICAL-174-NLM-001
+  latest_material_validation:
+    focused_tests: PASS
+    spec_delivery: PASS
+    full_guardrails: PASS
 controls:
   execution_blockers: []
   handover_blockers: []
@@ -69,21 +59,13 @@ delivery:
   lifecycle: DECLARED
   merge_authorized: false
 next:
-  immediate_material_action: 'Port only the academic/test NLM gold delta from PR #179,
-    regenerate derived artifacts, and run exact-head tests.'
+  immediate_material_action: null
   delivery_action: Perform the explicitly authorized delivery transition.
-  stop_conditions:
-  - 'Do not import V2.5 relay or Owner-override records from PR #179.'
-  - Do not add Motion-in-2D to this delivery slice.
-  - Do not alter source hints/provenance or canonical scientific relation authority.
-  - 'A generic runtime/compiler falsifier requires a separately scoped repair rather
-    than redesigning delivered #162/#173.'
-  - No merge or release without action-specific delivery authorization.
+  stop_conditions: []
 handoff:
   zero_context_takeover_possible: true
   reconstruction_sources:
   - relay/ROADMAP/ROADMAP.yaml
   - relay/STATE.yaml
   - relay/CONTROLS/controls.yaml
-  - relay/WORK/EP-CANONICAL-174-NLM-001.yaml
-  - relay/LEASES/LEASE-CANONICAL-174-NLM-001.yaml
+  - relay/CHECKPOINTS/CP-CANONICAL-174-NLM-001.yaml

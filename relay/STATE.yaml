@@ -3,12 +3,12 @@ roadmap:
   revision: RM-V3-CANONICAL-NLM-001
   path: relay/ROADMAP/ROADMAP.yaml
 execution:
-  lifecycle: ACTIVE
-  ep: EP-CANONICAL-174-NLM-001
-  lease: LEASE-CANONICAL-174-NLM-001
-  route: SERIAL:EP-CANONICAL-174-NLM-001
+  lifecycle: IDLE
+  ep: null
+  lease: null
+  route: null
 accepted:
-  checkpoint: null
+  checkpoint: CP-CANONICAL-174-NLM-001
 controls:
   path: relay/CONTROLS/controls.yaml
 delivery:

@@ -1,0 +1,37 @@
+schema_version: relay-v3-transaction
+id: TX-CHECKPOINT-CANONICAL-NLM-001
+command: ACCEPT_CHECKPOINT
+actor: codex-canonical-v3
+status: COMMITTED
+created_at: '2026-09-22T11:26:03.722636Z'
+updated_at: '2026-09-22T11:26:03.740702Z'
+operations:
+- path: relay/CHECKPOINTS/CP-CANONICAL-174-NLM-001.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:13a035c70210ffe85c2859e4f6ec9355ac839a0f9a2da81ef1769eecb865c263
+  staged_path: relay/TRANSACTIONS/TX-CHECKPOINT-CANONICAL-NLM-001/staged/000.after
+  backup_path: null
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:0a61eeb34007ae91ed748d9e229412219d4a93fa75739e9bb67df5a596b4e71e
+  after_digest: sha256:6978bceb625b6d181c72b7fc341774ad6f48168c322a4440c792abae2ef42eff
+  staged_path: relay/TRANSACTIONS/TX-CHECKPOINT-CANONICAL-NLM-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-CHECKPOINT-CANONICAL-NLM-001/backups/001.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:893d63a48d3c1b31a7c66751fcf89c52fd5d49d7dcc6b485ed76e8b77e52eb8f
+  after_digest: sha256:12ee48775a48f49d636485e59440c4638e0527cf210a5d9480cf02aabf02fcda
+  staged_path: relay/TRANSACTIONS/TX-CHECKPOINT-CANONICAL-NLM-001/staged/002.after
+  backup_path: relay/TRANSACTIONS/TX-CHECKPOINT-CANONICAL-NLM-001/backups/002.before
+- path: relay/STATE.yaml
+  before_exists: true
+  before_digest: sha256:f86952fb0ec99de616c846441490d93418e82af0e03043b4d177221700e022b8
+  after_digest: sha256:9cadbec5fbb4867ead2f8aab0bf6126a9fdfbe3ccc38786190eff0946947ea76
+  staged_path: relay/TRANSACTIONS/TX-CHECKPOINT-CANONICAL-NLM-001/staged/003.after
+  backup_path: relay/TRANSACTIONS/TX-CHECKPOINT-CANONICAL-NLM-001/backups/003.before
+applied:
+- relay/CHECKPOINTS/CP-CANONICAL-174-NLM-001.yaml
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/STATE.yaml

@@ -1,0 +1,68 @@
+schema_version: relay-v3-checkpoint
+id: CP-CANONICAL-174-NLM-001
+ep: EP-CANONICAL-174-NLM-001
+material_result:
+  head: dfc26feab8957ef612776262c135b2454fab1a16
+  relevant_paths_digest: sha256:982187f3b672ac05c5832f4ecd9f4784a74c5c42b5f9267bfa9a5f3435c7906b
+  dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+acceptance:
+- id: AC-NLM-GOLD
+  result: PASS
+  evidence:
+  - 'v3-nlm-delivery-once run 35721037703: focused NLM tests PASS on exact head dfc26feab8957ef612776262c135b2454fab1a16.'
+- id: AC-NLM-COMPILER
+  result: PASS
+  evidence:
+  - 'v3-nlm-delivery-once run 35721037703: spec_delivery, matrix, depiction, subject
+    and capability guards PASS.'
+- id: AC-NLM-GENERATED
+  result: PASS
+  evidence:
+  - 'v3-nlm-delivery-once run 35721037703: build_manifest --check PASS after regeneration.'
+- id: AC-NLM-VALIDATION
+  result: PASS
+  evidence:
+  - 'v3-nlm-delivery-once run 35721037703: pinned V3 validation, full repository Python
+    suite, remaining guardrail commands and JSON validation PASS on exact head.'
+validation:
+  focused_tests: PASS
+  spec_delivery: PASS
+  full_guardrails: PASS
+quality:
+  policy: STANDARD
+  result: CLEAR
+known_limitations:
+- 'PR #183 is stacked on V3 cutover PR #182 and remains draft/unmerged.'
+- 'Issue #174 remains open because Motion-in-2D is a separate canonical-data proof
+  slice.'
+discoveries:
+- 'PR #179 product truth ports cleanly without importing its V2.5 owner-override/relay
+  records.'
+- 'The NLM static-friction crux, authored scaffolds and protected transfer decision
+  survive delivered #173 compiler/publication semantics.'
+handoff:
+  what_changed:
+  - NLM static-friction/inclined-plane familiar and transfer items now carry structured
+    reasoning routes, stable crux refs, authored scaffolds and protected transfer
+    semantics under native V3 custody.
+  what_is_true_now:
+  - The NLM gold slice is accepted at exact material head dfc26feab8957ef612776262c135b2454fab1a16.
+  - Existing source hints and REL-NLM-STATIC-FRICTION-BOUND authority are preserved.
+  - Motion-in-2D is not part of this accepted NLM slice.
+  what_remains_uncertain:
+  - Provider merge/delivery is not authorized or completed.
+  - The separate Motion-in-2D canonical proof is not yet admitted.
+  do_not_break:
+  - 'Do not reopen delivered #162/#173 without a reproduced generic falsifier.'
+  - Do not merge Motion-in-2D into the NLM delivery vehicle.
+  - Do not rewrite source hints or move scientific authority into learner-page/explorer
+    code.
+  attempted_and_rejected:
+  - 'A combined NLM+Motion admission using PR #179 was rejected because it conflicted
+    with PR #179 explicit NLM-only delivery scope.'
+  resume_from:
+  - 'PR #182 V3 control-plane delivery.'
+  - 'PR #183 accepted NLM material checkpoint.'
+  - 'Issue #174 separate Motion-in-2D follow-up.'
+  first_successor_action: After the V3/NLM delivery chain is admitted for provider
+    delivery, create a separate Motion-in-2D V3 PR and admit it as its own work package.
