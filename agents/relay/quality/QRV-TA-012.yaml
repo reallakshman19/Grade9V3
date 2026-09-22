@@ -4,7 +4,7 @@
   "ep": {
     "id": "EP-TA-012",
     "path": "agents/relay/execution-packages/EP-TA-012.yaml",
-    "contract_digest": "sha256:9517a0c98b5a54ea65d6b4d18231765be98018509b6eb4109602ce2026332914"
+    "contract_digest": "sha256:b2cb25a45db1fe3edbb293665a3e0a4cadbd4ac82177bebee70af087e524f962"
   },
   "roadmap_revision": "RM-0013",
   "material_ref": "37dc1903eb3688806d16d67ab5aa20ce95d47d63",
