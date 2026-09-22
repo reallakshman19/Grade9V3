@@ -2,11 +2,10 @@ schema_version: relay-v3-roadmap
 revision: RM-0012
 title: Grade 9 Physics learner independence and progression
 owner:
-  outcome: Complete Grade9V3 Grade-9 Physics exit-readiness reconciliation and establish
-    an evidence-honest Grade-10 transition under the delivered six-Core contract.
-  current_goal: 'Reconcile Issue #169 on PR #181 by porting only valid Grade-9 exit
-    logic, preserving categorical learner evidence and separating Core2B changed-demand
-    availability, independent observation, and transition-requiredness.'
+  outcome: 'Complete canonical data, learner-page integration, and external portability
+    while preserving delivered #162/#173 foundations.'
+  current_goal: 'Deliver Issue #174 in bounded slices: existing NLM PR #179 first,
+    then a separate Motion-in-2D canonical proof; do not fold Motion into PR #179.'
 work_packages:
 - id: WP-TAKEOVER-RECONCILE
   title: Correct Topic Atlas browser input, fallback, request, and handoff semantics

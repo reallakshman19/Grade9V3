@@ -1,0 +1,30 @@
+schema_version: relay-v3-transaction
+id: TX-RESOLVE-CONTINUITY-CANONICAL-V3-001
+command: RESOLVE_CONTROL
+actor: owner-v3-cutover
+status: COMMITTED
+created_at: '2026-09-22T11:15:30.081555Z'
+updated_at: '2026-09-22T11:15:30.091372Z'
+operations:
+- path: relay/CONTROLS/controls.yaml
+  before_exists: true
+  before_digest: sha256:d121283b0d668f08f07b0053dc6912c4220ed2f204dbdf5de4188f30d27fc972
+  after_digest: sha256:6bade134b7c4a1aa80b8d1d237af297ae09d451e8127558e6651103850092a62
+  staged_path: relay/TRANSACTIONS/TX-RESOLVE-CONTINUITY-CANONICAL-V3-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-RESOLVE-CONTINUITY-CANONICAL-V3-001/backups/000.before
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:952217491e2c74e8c92d979cd5fa6025478463a10a62eb0f63eeb0c79973cbb9
+  after_digest: sha256:20e2b1a91a44d3325d47c7fc1312ae9ef3c26c4e2d707b47e70fa17c27ec0bad
+  staged_path: relay/TRANSACTIONS/TX-RESOLVE-CONTINUITY-CANONICAL-V3-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-RESOLVE-CONTINUITY-CANONICAL-V3-001/backups/001.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:46e5e6383fa0da4e029cd694dbec5c9f5605a555a694ce0933e55aa3a3667a86
+  after_digest: sha256:5e34127495e719191aa557c31d9338b00539241e5b599cbc94e048d7ad0366d5
+  staged_path: relay/TRANSACTIONS/TX-RESOLVE-CONTINUITY-CANONICAL-V3-001/staged/002.after
+  backup_path: relay/TRANSACTIONS/TX-RESOLVE-CONTINUITY-CANONICAL-V3-001/backups/002.before
+applied:
+- relay/CONTROLS/controls.yaml
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml

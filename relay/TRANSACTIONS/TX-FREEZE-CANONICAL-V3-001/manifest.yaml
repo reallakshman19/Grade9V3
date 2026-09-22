@@ -1,0 +1,23 @@
+schema_version: relay-v3-transaction
+id: TX-FREEZE-CANONICAL-V3-001
+command: FREEZE_LEGACY_CUTOVER
+actor: owner-v3-cutover
+status: COMMITTED
+created_at: '2026-09-22T11:15:27.186462Z'
+updated_at: '2026-09-22T11:15:27.193922Z'
+operations:
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:faa8b9afb274a6c8162d76e38363782a651a7b67d625814421cc06874c86bdaf
+  after_digest: sha256:952217491e2c74e8c92d979cd5fa6025478463a10a62eb0f63eeb0c79973cbb9
+  staged_path: relay/TRANSACTIONS/TX-FREEZE-CANONICAL-V3-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-FREEZE-CANONICAL-V3-001/backups/000.before
+- path: relay/PROTOCOL_SELECTION.yaml
+  before_exists: true
+  before_digest: sha256:040ec7db85e2082fca16b2984ced2c5d54ae545ff199af827c96435efb8bc9b1
+  after_digest: sha256:982199c97cdbab44fbc58467142cd435d35beb603c3981c91d02b096dae9597f
+  staged_path: relay/TRANSACTIONS/TX-FREEZE-CANONICAL-V3-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-FREEZE-CANONICAL-V3-001/backups/001.before
+applied:
+- relay/EVENTS.jsonl
+- relay/PROTOCOL_SELECTION.yaml

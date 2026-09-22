@@ -1,0 +1,37 @@
+schema_version: relay-v3-transaction
+id: TX-ACTIVATE-CANONICAL-V3-001
+command: ACTIVATE_PROTOCOL_CUTOVER
+actor: owner-v3-cutover
+status: COMMITTED
+created_at: '2026-09-22T11:15:37.345555Z'
+updated_at: '2026-09-22T11:15:37.357568Z'
+operations:
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:20e2b1a91a44d3325d47c7fc1312ae9ef3c26c4e2d707b47e70fa17c27ec0bad
+  after_digest: sha256:579c7479415c3e4296ca48cd54903f424445ed622dd43fa400b6e4ddad111478
+  staged_path: relay/TRANSACTIONS/TX-ACTIVATE-CANONICAL-V3-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-ACTIVATE-CANONICAL-V3-001/backups/000.before
+- path: relay/MIGRATION/CUTOVER_READINESS.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:f78106e717809b741ce3a43f59cc427667a1d43dfe6dac5d23747a226d123332
+  staged_path: relay/TRANSACTIONS/TX-ACTIVATE-CANONICAL-V3-001/staged/001.after
+  backup_path: null
+- path: relay/MIGRATION/V25_DEPRECATION.md
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:fd3546259b89011565a3df519279b2ded9dd06260fe7edf0016f55037a31f11c
+  staged_path: relay/TRANSACTIONS/TX-ACTIVATE-CANONICAL-V3-001/staged/002.after
+  backup_path: null
+- path: relay/PROTOCOL_SELECTION.yaml
+  before_exists: true
+  before_digest: sha256:982199c97cdbab44fbc58467142cd435d35beb603c3981c91d02b096dae9597f
+  after_digest: sha256:21117f871212332f6e43bd5d006a71f171c533f06c2137ecd6cbaef16522b286
+  staged_path: relay/TRANSACTIONS/TX-ACTIVATE-CANONICAL-V3-001/staged/003.after
+  backup_path: relay/TRANSACTIONS/TX-ACTIVATE-CANONICAL-V3-001/backups/003.before
+applied:
+- relay/EVENTS.jsonl
+- relay/MIGRATION/CUTOVER_READINESS.yaml
+- relay/MIGRATION/V25_DEPRECATION.md
+- relay/PROTOCOL_SELECTION.yaml

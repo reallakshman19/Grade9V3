@@ -4,17 +4,16 @@ generated_from:
   roadmap_revision: RM-0012
   state_digest: sha256:70d2e249546602643592f5d29a789807b748ec5472c013a54efd3d836341fc41
   material_basis:
-    head: ebf1912ccdc2cf001bd0482a9c962310b2d0d4e5
+    head: 785dc7119a90bd7ebcf5dd5157030555e1183582
     tree_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
     relevant_paths_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
     dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
-  coordination_head: ebf1912ccdc2cf001bd0482a9c962310b2d0d4e5
+  coordination_head: 785dc7119a90bd7ebcf5dd5157030555e1183582
 owner:
-  outcome: Complete Grade9V3 Grade-9 Physics exit-readiness reconciliation and establish
-    an evidence-honest Grade-10 transition under the delivered six-Core contract.
-  current_goal: 'Reconcile Issue #169 on PR #181 by porting only valid Grade-9 exit
-    logic, preserving categorical learner evidence and separating Core2B changed-demand
-    availability, independent observation, and transition-requiredness.'
+  outcome: 'Complete canonical data, learner-page integration, and external portability
+    while preserving delivered #162/#173 foundations.'
+  current_goal: 'Deliver Issue #174 in bounded slices: existing NLM PR #179 first,
+    then a separate Motion-in-2D canonical proof; do not fold Motion into PR #179.'
 programme:
   accepted_progress: 0.0
   completed_work: []
@@ -38,8 +37,8 @@ scope:
   protected: []
   prohibited: []
 material:
-  base: ebf1912ccdc2cf001bd0482a9c962310b2d0d4e5
-  head: ebf1912ccdc2cf001bd0482a9c962310b2d0d4e5
+  base: 785dc7119a90bd7ebcf5dd5157030555e1183582
+  head: 785dc7119a90bd7ebcf5dd5157030555e1183582
   relevant_paths_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
   dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
 evidence:
@@ -48,8 +47,7 @@ evidence:
 controls:
   execution_blockers: []
   handover_blockers: []
-  delivery_blockers:
-  - CTRL-V25-INTELLIGENCE-CONTINUITY
+  delivery_blockers: []
   informational: []
 delivery:
   issue: null

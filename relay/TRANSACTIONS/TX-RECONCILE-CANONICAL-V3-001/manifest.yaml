@@ -1,0 +1,44 @@
+schema_version: relay-v3-transaction
+id: TX-RECONCILE-CANONICAL-V3-001
+command: BOOTSTRAP_V3_MIGRATION
+actor: owner-v3-cutover
+status: COMMITTED
+created_at: '2026-09-22T11:15:25.968644Z'
+updated_at: '2026-09-22T11:15:25.983902Z'
+operations:
+- path: relay/CONTROLS/controls.yaml
+  before_exists: true
+  before_digest: sha256:f8ac22fc44d9ef2b943ab5398229df11929b4e3f56f195e80176f3f4b19c5622
+  after_digest: sha256:d121283b0d668f08f07b0053dc6912c4220ed2f204dbdf5de4188f30d27fc972
+  staged_path: relay/TRANSACTIONS/TX-RECONCILE-CANONICAL-V3-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-RECONCILE-CANONICAL-V3-001/backups/000.before
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:9c946934fddb080926f6e092116c934e9ed3edd69e5853c24ba280e5bed89b97
+  after_digest: sha256:faa8b9afb274a6c8162d76e38363782a651a7b67d625814421cc06874c86bdaf
+  staged_path: relay/TRANSACTIONS/TX-RECONCILE-CANONICAL-V3-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-RECONCILE-CANONICAL-V3-001/backups/001.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:8a14b64c85d0d59b9f9f2683815e8b9945a95ea95d5a6fc1d6fed11663f6ac96
+  after_digest: sha256:46e5e6383fa0da4e029cd694dbec5c9f5605a555a694ce0933e55aa3a3667a86
+  staged_path: relay/TRANSACTIONS/TX-RECONCILE-CANONICAL-V3-001/staged/002.after
+  backup_path: relay/TRANSACTIONS/TX-RECONCILE-CANONICAL-V3-001/backups/002.before
+- path: relay/MIGRATION/RECONCILIATION.md
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:08b626785c20472142866d04b2add6fa645a1504a1402f0da2ede0771e1f8857
+  staged_path: relay/TRANSACTIONS/TX-RECONCILE-CANONICAL-V3-001/staged/003.after
+  backup_path: null
+- path: relay/STATE.yaml
+  before_exists: true
+  before_digest: sha256:25bbafbc94bb94f261493ca8059e801072561fcca29f2597cfea9e8bacae2af3
+  after_digest: sha256:3f5ee9d31e0565647bef2ef95e1924fc745d27d7551fdf2a22b2a8f3dacf3015
+  staged_path: relay/TRANSACTIONS/TX-RECONCILE-CANONICAL-V3-001/staged/004.after
+  backup_path: relay/TRANSACTIONS/TX-RECONCILE-CANONICAL-V3-001/backups/004.before
+applied:
+- relay/CONTROLS/controls.yaml
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/MIGRATION/RECONCILIATION.md
+- relay/STATE.yaml

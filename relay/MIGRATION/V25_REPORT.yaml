@@ -1,7 +1,7 @@
 schema_version: relay-v3-migration-report
 authority: DERIVED_MIGRATION_REPORT
 source_protocol: '2.5'
-generated_at: '2026-09-22T05:24:04.606685Z'
+generated_at: '2026-09-22T11:15:25.626412Z'
 source:
   root: /home/runner/work/Grade9V3/Grade9V3
   state_path: agents/relay/REPO_STATE.yaml

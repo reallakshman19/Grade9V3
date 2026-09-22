@@ -26,17 +26,14 @@ controls:
     condition: Native V3 roadmap/frontier/EP/lease/checkpoint disposition is established
       without rewriting V2.5 history.
     evidence:
-    - Pinned V3 bootstrap transaction TX-MIGRATE-G9EXIT-001 committed with foundation
-      validation PASS.
-    - Legacy agents/relay tree remains preserved at migration digest sha256:ada51948889504e905305dba6d0a631ab455eeadae791d837755abacac8401a9.
-    - RM-0012 and the explicit Owner outcome/current goal are represented in native
-      V3 roadmap authority.
-    - 'Native V3 present authority is intentionally IDLE: no V2.5 DISC/QSET/QUAL/TC/checkpoint
-      acceptance was translated into V3 custody or acceptance.'
-    - 'Common #421 continuity remains separately OPEN and blocks only PROTOCOL_CUTOVER.'
+    - Pinned Common@c87cf87b V3 bootstrap completed from the preserved live V2.5 tree.
+    - Native present execution is intentionally IDLE; no legacy EP, lease, qualification
+      or acceptance was promoted.
+    - 'Owner current goal preserves #162/#173 and separates #174 NLM delivery from
+      Motion-in-2D follow-up.'
 - id: CTRL-V25-INTELLIGENCE-CONTINUITY
   kind: PROTOCOL
-  state: OPEN
+  state: RESOLVED
   source:
     type: REPOSITORY
     ref: Common#421
@@ -51,4 +48,6 @@ controls:
   resolution:
     condition: 'Common#421 continuity acceptance is evidenced: governed roadmap/event/checkpoint/progress
       intelligence remains semantically intact across the selected V3 authority boundary.'
-    evidence: []
+    evidence:
+    - relay/GENERATED/INTELLIGENCE_CONTINUITY.yaml ready=true under Common@c87cf87b
+    - Final legacy freeze digest is bound in relay/PROTOCOL_SELECTION.yaml

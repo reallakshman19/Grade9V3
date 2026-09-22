@@ -11,5 +11,6 @@ v3:
 cutover:
   owner_authorized: false
   owner_basis: null
+  legacy_freeze_digest: null
   readiness_digest: null
   activated_at: null
