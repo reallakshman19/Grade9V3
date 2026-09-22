@@ -33,11 +33,13 @@ python3 Shared/tools/grade9_exit.py --profile-id <PROFILE_ID>
 Parent/agent-readable Markdown:
 
 ```bash
-python3 Shared/tools/grade9_exit.py --profile-id <PROFILE_ID> --format markdown
+python3 Shared/tools/grade9_exit.py --profile-id <PROFILE_ID> --format text
 ```
 
 Every reported capability carries its scope role, evidence category, evidence trail, blocker disposition, repair/recheck action, and transition implication. When earlier difficulty is followed by fresh independent evidence, both observations remain visible rather than being overwritten.
 
-For required domains that actually author canonical transfer questions, the projection also asks for one independent changed-demand witness at domain level. Today that applies only where the canonical library exposes such questions; it does not manufacture a transfer requirement for domains with no authored transfer witness. This keeps the check sparse while preventing ordinary same-form success from masquerading as transfer.
+Changed-demand availability is derived only when canonical question truth combines a `CORE2B` exposure with canonical `transfer.dimension` metadata. A `transfer` block on a familiar `CORE2A` question is not changed-demand evidence.
+
+Availability, learner observation, and transition-requiredness are separate. An authored changed-demand question means such a task exists; it does not by itself require an independent witness before Grade 10. Missing changed-demand evidence becomes `EVIDENCE_NEEDED` only when explicit transition authority requires it. Otherwise the report uses `AVAILABLE_UNOBSERVED` and keeps the information visible without making optional perfection a blocker.
 
 The report is recomputed from source truth and is not persisted as grade readiness.
