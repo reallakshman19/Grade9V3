@@ -2,7 +2,7 @@ schema_version: relay-v3-controls
 controls:
 - id: CTRL-MIGRATION-RECONCILE
   kind: PROTOCOL
-  state: OPEN
+  state: RESOLVED
   source:
     type: VALIDATOR
     ref: relay/MIGRATION/V25_REPORT.yaml
@@ -25,7 +25,15 @@ controls:
   resolution:
     condition: Native V3 roadmap/frontier/EP/lease/checkpoint disposition is established
       without rewriting V2.5 history.
-    evidence: []
+    evidence:
+    - Fresh V3 migration report digest sha256:e75a3da11e6b992981b6bc177974c260c30700b625f6053af15c9f76e87390f2
+      inventories the current legacy source tree.
+    - Fresh migration source state is IDLE at roadmap RM-0014.
+    - Legacy last checkpoint CP-TA-012 remains read-only migration evidence and is
+      not imported as a native V3 checkpoint.
+    - Native V3 authority is reconciled to IDLE at roadmap RM-0014 with no EP or lease.
+    - No V2.5 DISC/QSET/QUAL/TC/checkpoint/projection object is promoted into native
+      V3 action authority.
 - id: CTRL-V25-INTELLIGENCE-CONTINUITY
   kind: PROTOCOL
   state: OPEN

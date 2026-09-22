@@ -1,0 +1,58 @@
+schema_version: relay-v3-transaction
+id: TX-MIGRATE-RECONCILE-002
+command: RESOLVE_CONTROL
+actor: chatgpt-sol-v3-migration-20260922
+status: COMMITTED
+created_at: '2026-09-22T09:27:18.922319Z'
+updated_at: '2026-09-22T09:27:18.955348Z'
+operations:
+- path: relay/CONTROLS/controls.yaml
+  before_exists: true
+  before_digest: sha256:f8ac22fc44d9ef2b943ab5398229df11929b4e3f56f195e80176f3f4b19c5622
+  after_digest: sha256:f8c4db2f97382a194709ad9b252893af871d3a1ea65763b9db63dc9689351396
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-002/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-002/backups/000.before
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:33435cf2ed413494731b24c925c5dfec6e8b2ea16b5095aa6077abf8de04b136
+  after_digest: sha256:2458080f71759349f042d2443195fff708822881b2dc104f43561bf2e423a98c
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-002/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-002/backups/001.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:e881da25d12088b8a5b4796189a5fbcf966a6ea1e3589fef15721e0d5ec9db95
+  after_digest: sha256:0d2c5394ebce9f7fcc71e8cef5120702c5cd6540d0f28950e549c62aa8f7bcef
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-002/staged/002.after
+  backup_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-002/backups/002.before
+- path: relay/MIGRATION/V25_REPORT.yaml
+  before_exists: true
+  before_digest: sha256:79bb17127c67cfdbb828b881cdd630891434445ff0cdf1bf8007dd160c89b016
+  after_digest: sha256:0d5403ab5490e37de24f1f1cbe720ecdf2d9bb6082949b153a969fef1696414d
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-002/staged/003.after
+  backup_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-002/backups/003.before
+- path: relay/PROTOCOL_SELECTION.yaml
+  before_exists: true
+  before_digest: sha256:9ffd74053f6ee229af9559fd3b230d8597b3fe67152163e31b3eb34fbe62d010
+  after_digest: sha256:89c291c27fec8580c55086b7864d19c52e519d8bf0550a56034430636d8b3f3e
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-002/staged/004.after
+  backup_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-002/backups/004.before
+- path: relay/ROADMAP/ROADMAP.yaml
+  before_exists: true
+  before_digest: sha256:beb44a48a2c5ea50e7ca90da1d11c4194d7f85bd0972225f51fde19b27d30751
+  after_digest: sha256:636195d981961fd349ee577364b75ccbdb9437cf261a617bc795f6c3dc20f86c
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-002/staged/005.after
+  backup_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-002/backups/005.before
+- path: relay/STATE.yaml
+  before_exists: true
+  before_digest: sha256:15546e13462655be7dc9480fabd3bffbf25548e10b1a25f3145572835742a293
+  after_digest: sha256:6f9e898a20b940b7f672989a7d2e1b9058e17c29cbca09edb5b62b15a77354f4
+  staged_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-002/staged/006.after
+  backup_path: relay/TRANSACTIONS/TX-MIGRATE-RECONCILE-002/backups/006.before
+applied:
+- relay/CONTROLS/controls.yaml
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/MIGRATION/V25_REPORT.yaml
+- relay/PROTOCOL_SELECTION.yaml
+- relay/ROADMAP/ROADMAP.yaml
+- relay/STATE.yaml

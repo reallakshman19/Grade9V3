@@ -1,0 +1,635 @@
+schema_version: relay-v3-migration-report
+authority: DERIVED_MIGRATION_REPORT
+source_protocol: '2.5'
+generated_at: '2026-09-22T09:27:18.679433Z'
+source:
+  root: /home/runner/work/Grade9V3/Grade9V3
+  state_path: agents/relay/REPO_STATE.yaml
+  state_digest: sha256:860dffe346fff8665808d7b4d78ad28284c084737d2efb2cf998703b84627d59
+  roadmap_path: agents/relay/roadmap/OVERALL_ROADMAP.yaml
+  legacy_tree_digest: sha256:e475bd57b62b3b7586c7cdc3f5c6504817dc06d5160376bc31fe2441a5d25432
+validation:
+  repo_state: PASS
+  basis:
+  - validate_repo_state.py exit=0
+  - PASS
+legacy_inventory:
+  file_count: 148
+  category_counts:
+    CHECKPOINT: 12
+    DELIVERY: 4
+    DISCOVERY: 21
+    EP: 12
+    OTHER: 21
+    PROJECTION: 15
+    QUALIFICATION: 3
+    REPO_STATE: 1
+    ROADMAP: 33
+    TAKEOVER_CERTIFICATION: 26
+  entries:
+  - path: agents/relay/REPO_PROFILE.yaml
+    digest: sha256:69b21b86aa2e5248c26da752092f5e1388c440765a28831806a2292c6b129a45
+    category: OTHER
+    schema_version: relay-v2.5
+  - path: agents/relay/REPO_STATE.yaml
+    digest: sha256:860dffe346fff8665808d7b4d78ad28284c084737d2efb2cf998703b84627d59
+    category: REPO_STATE
+    schema_version: relay-v2.5
+  - path: agents/relay/certifications/discovery/DISC-TA-001.yaml
+    digest: sha256:e419b2e76c0162b5235a880d6e351e482deafe823ea1c78103d3eff1ccf38d5d
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-002.yaml
+    digest: sha256:9a2d10b7796a9a68196dbb41001ee35be95dc196e3ef4c480ccd347986f19065
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-003.yaml
+    digest: sha256:f6dee796f9e5366fd74dcbc4967b9bfcce7f632243d015a6ef165e1934bf50e1
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-004.yaml
+    digest: sha256:660b7c9f6f41796b016297173e5eac7831ebbf9ca0c9cc0cce95e71137e1746e
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-005.yaml
+    digest: sha256:4ccce1992bcc5cf26517bdf7c75d50ec0d1c8aa13a7dfe582c0654c661a32bbe
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-006.yaml
+    digest: sha256:ad50870916a8b7ea9587d2c9a4aae1d736b4b927b72ed5e2cc22ba1a86f6b9d3
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-007.yaml
+    digest: sha256:6cebd94cecd18cd3651b6a53fa6a81c28239625c20dca31eb2e7355f7c22d85d
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-008.yaml
+    digest: sha256:6b7f406355c9d6c4890e62792482a87aa687441a080e4aa4bdfe9b76cd972645
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-009.yaml
+    digest: sha256:4df3f7a05b3e9436367edb305a26929b31d4abd7135665057db6fd80700195bd
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-010.yaml
+    digest: sha256:9865d58ae17d7c946cd9ab9b445928a693af76729665e8cefdf18b7c449a9308
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-011.yaml
+    digest: sha256:e42308aa55c2f5c6e68fc55ac5b4d736b92adc5d5b319f707efe595517a56092
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-012.yaml
+    digest: sha256:4fcc4c2f2c9b0692291dedbf1224808a57783883ad193d47e63866dff76b0326
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-013.yaml
+    digest: sha256:8de44b7375205fbe9b3b33aa600027c674750592f52e9d760eb636ce4a993366
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-014.yaml
+    digest: sha256:572236bbbf3d31671ec5ace0581f6951ba13ea66c689df0445edaab9a969d776
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-015.yaml
+    digest: sha256:bbd7cedd3dd4f7492056c7d5313d905f7ed7cc32491baa3b73d1abf683f2b36b
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-016.yaml
+    digest: sha256:75b062453a2a802f27cb0a35df601546b7f22ea7496110c97a20e145d19c06ef
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-017.yaml
+    digest: sha256:3fec25d7c4e8f732a0b39337154d1498628cb19d6c7380ed5f39b767ddc994da
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-018.yaml
+    digest: sha256:45218f1194ada0f9ae10ff5f3c47fb4b4bc204bc0a916996c4e39861a05fa1e4
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-019.yaml
+    digest: sha256:6ee4794141af567f58cfc54508a963b14c3d4fe8e55f9bb09034fba98dd1e2bd
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-020.yaml
+    digest: sha256:826858fc4cb08d2e58a5b069e040f800c636c93f94165697eb9f025b013a84d2
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/discovery/DISC-TA-021.yaml
+    digest: sha256:c836c69c7d05f1768f348df84b3dac4556d3884a81f23f8b688638daf4d908ce
+    category: DISCOVERY
+    schema_version: relay-v2.5-discovery
+  - path: agents/relay/certifications/qualification/QUAL-TA-008.yaml
+    digest: sha256:353dcd7290d3e516e55431acc009603656fc32363142adcd2723cfabeb99ee3d
+    category: QUALIFICATION
+    schema_version: relay-v2.5-qualification
+  - path: agents/relay/certifications/qualification/QUAL-TA-009.yaml
+    digest: sha256:3a2982186ebf771d2f618945ba86c966c3d535182e0c890c00e66cb5b388131b
+    category: QUALIFICATION
+    schema_version: relay-v2.5-qualification
+  - path: agents/relay/certifications/qualification/QUAL-TA-012.yaml
+    digest: sha256:26e31042746dd4e75c804c94e866210784497883bb40d7379fe8a7676a6626f9
+    category: QUALIFICATION
+    schema_version: relay-v2.5-qualification
+  - path: agents/relay/certifications/questions/QSET-TA-008.yaml
+    digest: sha256:6e03c1c7ca09efd945c6e71d63d8f64610eb86832878c00c248d609dd0cc0daf
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-question-set
+  - path: agents/relay/certifications/questions/QSET-TA-009.yaml
+    digest: sha256:a6010686e599d0820cf2ac6852c4bd105e234884d035f39937a7e073ad0df614
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-question-set
+  - path: agents/relay/certifications/questions/QSET-TA-010.yaml
+    digest: sha256:63ad221c3591eb30d2cc9394e6c9a400a45c10361ec1a5f731c84b09624e33ad
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-question-set
+  - path: agents/relay/certifications/questions/QSET-TA-011.yaml
+    digest: sha256:9fd168234efdd7eec8d625e4ea0b676b38df7a4cb5aa7868d66ff8eec9d17b8e
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-question-set
+  - path: agents/relay/certifications/questions/QSET-TA-012.yaml
+    digest: sha256:bc312a760b15e1fe37e7e9384b56bab61d9900786ae135dc8b1ea3ca8b56bf30
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-question-set
+  - path: agents/relay/certifications/takeover/TC-TA-001.yaml
+    digest: sha256:82a80aa9821098e6a74ecc236f2e7107c97d5b75476bfbcd26ad7d1e04dbb9b6
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-002.yaml
+    digest: sha256:3f2a6097a175e2df5ecda5aaceee35eef5c6279fe416d99952047fbb0931f222
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-003.yaml
+    digest: sha256:4c645d5a9d2665b29922f3492ad8c6a841c7345321596e08ba2962e7b9f0da05
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-004.yaml
+    digest: sha256:5dc5fc90837482e4f25163601bee81ad37ad59a478bbafe198ec72928b7e93bc
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-005.yaml
+    digest: sha256:beea52f0c473ce8f0f7a736d5563f5a6f83f59758f82b8e08026b3b59c7df13e
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-006.yaml
+    digest: sha256:8f1882c5fb36cb49c90bd4a9261aff1eb4ee95a6f6031936ddf21d0c3b8c1d20
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-007.yaml
+    digest: sha256:5884fa243648766b21fb3a8b47dcef17ea94088fe64a481b18935ea6eb0f210a
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-008.yaml
+    digest: sha256:0f44da5d42ca475d938ae61eafb5b71a492e8a344c565bced2376d2327509260
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-009.yaml
+    digest: sha256:c1be610f1da13073c142c5bea1a3e89f0ae96db1b3a496fd7ad09a5c0f2f8b79
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-010.yaml
+    digest: sha256:513f3a184024828467dc5bd3e3ffd865efb32699138a12be0a2d48c41777117d
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-011.yaml
+    digest: sha256:381c4d9079ec2135cde41c0e80e6d42b837c73ef4178287f06d06c76dfd86ea6
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-012.yaml
+    digest: sha256:b3fcd9c778d7c9854d0a3b46776b0f42f263b9d60d0afac97e0a3988114ff197
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-013.yaml
+    digest: sha256:47de791e3793add9597cdd3582c6d0bfadf94b6bf4cf09fafd218ac742d7ca5e
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-014.yaml
+    digest: sha256:ad8428171df6612025b7397519dd1c42bfb697eef0e14a251ec79f82d41ddaea
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-015.yaml
+    digest: sha256:e2277be279014460169c8f7aa49402d63a422b4b539090c8253bc947d4419f74
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-016.yaml
+    digest: sha256:62d42fea2ea69a141fd848c42a925890c60d64e87565dc8affd5aa257725cd39
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-017.yaml
+    digest: sha256:5082f9cfa8ca08fafec0e7f0e624f09833c8c5c38df2732381a926c13460bc0e
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-018.yaml
+    digest: sha256:bd03d3854152660e6f61bcce1d85f5d7901b2c908359dde2d842f85b4fdbc31e
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-019.yaml
+    digest: sha256:1a9ea0943587070e091f2470f840bb3222544b51db129955e37a208c033f092f
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-020.yaml
+    digest: sha256:8b3c000da4a7e510f00fcdc576ad532c41afcbddd00473fe96194c812b121d61
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/certifications/takeover/TC-TA-021.yaml
+    digest: sha256:0bbf5b8790c8ee8ab95552a1fdff881061463d5607002baad2413978bb19381a
+    category: TAKEOVER_CERTIFICATION
+    schema_version: relay-v2.5-takeover-certification
+  - path: agents/relay/checkpoints/CP-TA-001.yaml
+    digest: sha256:ac51180373fdd2f04e66e7541b12e1851ed9bb6d8066e0b6c6d366ea5aaba7dc
+    category: CHECKPOINT
+    schema_version: relay-v2.5
+  - path: agents/relay/checkpoints/CP-TA-002.yaml
+    digest: sha256:d7f8db2e15d95c6084d2d62eece18bc24925b6c68284d6e3a401ff6e99633cf3
+    category: CHECKPOINT
+    schema_version: relay-v2.5
+  - path: agents/relay/checkpoints/CP-TA-003.yaml
+    digest: sha256:df98d49c8914a21d2d7a86cc48f7a14f953fa9c83d73bc41363e513d3aa6f1b1
+    category: CHECKPOINT
+    schema_version: relay-v2.5
+  - path: agents/relay/checkpoints/CP-TA-004.yaml
+    digest: sha256:0c1c9fa58abf89be70cbfe89cf8de766e7828ed5aa3bafb6676dded5ddc20eab
+    category: CHECKPOINT
+    schema_version: relay-v2.5
+  - path: agents/relay/checkpoints/CP-TA-005.yaml
+    digest: sha256:2d25f453fc99ff9277e7668ed82adfbef4ff7e08f2315d61add130345a3497cb
+    category: CHECKPOINT
+    schema_version: relay-v2.5
+  - path: agents/relay/checkpoints/CP-TA-007.yaml
+    digest: sha256:68754260546a098a9c2f3ccb9dbc621f0791096a2bac5f7dd6a2292e2f6fe14b
+    category: CHECKPOINT
+    schema_version: relay-v2.5
+  - path: agents/relay/checkpoints/CP-TA-008.yaml
+    digest: sha256:8164667cf10028eb83155c35b03aeb092bb76cbeed6164559e609156e096145b
+    category: CHECKPOINT
+    schema_version: relay-v2.5
+  - path: agents/relay/checkpoints/CP-TA-009.yaml
+    digest: sha256:8377fc0109c606bce2cbba8639a2429acb26b833d840ecd0d87125e49c9a37f6
+    category: CHECKPOINT
+    schema_version: relay-v2.5
+  - path: agents/relay/checkpoints/CP-TA-010.yaml
+    digest: sha256:1398bf694677726406a74de9cee3650fb9ec752d692e9b6f825818f62f789329
+    category: CHECKPOINT
+    schema_version: relay-v2.5
+  - path: agents/relay/checkpoints/CP-TA-011.yaml
+    digest: sha256:e260a00906410e6339e1050291bc588a4626fcd6285d3cea13879adb5ccb714d
+    category: CHECKPOINT
+    schema_version: relay-v2.5
+  - path: agents/relay/checkpoints/CP-TA-012.yaml
+    digest: sha256:00c37807f9cf37c03f3685758ecc5ee537a6861432d765360b1f64acc4bc160b
+    category: CHECKPOINT
+    schema_version: relay-v2.5
+  - path: agents/relay/checkpoints/DRIFT-TA-001.yaml
+    digest: sha256:d0eb0fd176aae4cfd0dac04d19eec7273c3ac4b514c0500246ada60a8f83c842
+    category: CHECKPOINT
+    schema_version: relay-v2.5-drift
+  - path: agents/relay/delivery/DOBS-PR148-RM0008.yaml
+    digest: sha256:05554b5ea73816be632fcaf7acb7f1a2f4504b9397739d0e46eef918fe59ca37
+    category: DELIVERY
+    schema_version: relay-v2.5-delivery-observation
+  - path: agents/relay/delivery/DOBS-PR168-RM0008.yaml
+    digest: sha256:402bb20b3e446f1ff70becbc97f6acd8d89f216b63507bee8c0a00d48256d7e2
+    category: DELIVERY
+    schema_version: relay-v2.5-delivery-observation
+  - path: agents/relay/delivery/DOBS-PR170-RM0010.yaml
+    digest: sha256:d555ff97a3cb209081380612354e6cfc3e5ca3bce44b1be7b5202d5c85445796
+    category: DELIVERY
+    schema_version: relay-v2.5-delivery-observation
+  - path: agents/relay/delivery/DOBS-PR178-RM0012.yaml
+    digest: sha256:7a01551b3da8be9de4fbd0be3caa8cc6adc788909f0c60d85394bd0c686b9cac
+    category: DELIVERY
+    schema_version: relay-v2.5-delivery-observation
+  - path: agents/relay/drift/DRIFT-TA-006.yaml
+    digest: sha256:a4dd52e630386ee407b59bf532f15a250dd1182e46f288acf4c51bb70492de9e
+    category: OTHER
+    schema_version: relay-v2.5-drift
+  - path: agents/relay/drift/DRIFT-TA-007.yaml
+    digest: sha256:9501da100d94fab40502a758bfe0c6dcb3dce54d11bba167cb95ad03d6103111
+    category: OTHER
+    schema_version: relay-v2.5-drift
+  - path: agents/relay/drift/DRIFT-TA-011-BASE-CB7.yaml
+    digest: sha256:0783aa817b539401a8452f8e13b7cf00718d1094497aa7be2fe380d15187fb29
+    category: OTHER
+    schema_version: relay-v2.5-drift
+  - path: agents/relay/execution-packages/EP-TA-001.yaml
+    digest: sha256:008f51ad0e77ad55bf5f8566741be0f9a49d3671d4d0dcda681490498e3a4a26
+    category: EP
+    schema_version: relay-v2.5
+  - path: agents/relay/execution-packages/EP-TA-002.yaml
+    digest: sha256:fa37fc7c1be6c1b83e9c5cf608d93ea3c636c8046bea4866a7d1c59466724118
+    category: EP
+    schema_version: relay-v2.5
+  - path: agents/relay/execution-packages/EP-TA-003.yaml
+    digest: sha256:147be7d3f525eb25c2c1708f4a0d327c48ed29c0bd33940736429f5819788b7a
+    category: EP
+    schema_version: relay-v2.5
+  - path: agents/relay/execution-packages/EP-TA-004.yaml
+    digest: sha256:9e487d78fcbb1839f56f9b561caafd8296d4825f16a09178bbd31fb05bffb67e
+    category: EP
+    schema_version: relay-v2.5
+  - path: agents/relay/execution-packages/EP-TA-005.yaml
+    digest: sha256:8d001f3badcc713d85ab4f3fafa736e4024fa508485e61abae0ae7f1824e4b53
+    category: EP
+    schema_version: relay-v2.5
+  - path: agents/relay/execution-packages/EP-TA-006.yaml
+    digest: sha256:ad9d2090e82be2c49437a60c71ea514d2887d931a6e75d6c149fb3dd8e462093
+    category: EP
+    schema_version: relay-v2.5
+  - path: agents/relay/execution-packages/EP-TA-007.yaml
+    digest: sha256:34369cd6536b8d52e8e8bc24322e62e4ad4d343e2442edc28eb45d3287fdb3ec
+    category: EP
+    schema_version: relay-v2.5
+  - path: agents/relay/execution-packages/EP-TA-008.yaml
+    digest: sha256:8f6a95c95b8bf2132edd686a515081514d91314673a8cf3e58820ef8f396185a
+    category: EP
+    schema_version: relay-v2.5
+  - path: agents/relay/execution-packages/EP-TA-009.yaml
+    digest: sha256:f4febc48b0c74b3a612b16226731a3c10417e79d6ebe2327a3e694d146bdb41b
+    category: EP
+    schema_version: relay-v2.5
+  - path: agents/relay/execution-packages/EP-TA-010.yaml
+    digest: sha256:623cf21c7bdedad72fa76211ce1be071e78745c9cd9ad1302b54238d9c67f137
+    category: EP
+    schema_version: relay-v2.5
+  - path: agents/relay/execution-packages/EP-TA-011.yaml
+    digest: sha256:0b12dc156c074c004fc98bf7b55db314a34f23c011a95e41b54eb4b096055ab0
+    category: EP
+    schema_version: relay-v2.5
+  - path: agents/relay/execution-packages/EP-TA-012.yaml
+    digest: sha256:c54d16b06cb9921b0ee9e80f451fd430d8b3a2b943078f5d27e8fe2e989fea80
+    category: EP
+    schema_version: relay-v2.5
+  - path: agents/relay/projection/generations/GHGEN-HO-03943C0B50F7.yaml
+    digest: sha256:d35988e55f5437fc591d0e343d5634e782d50476786faf04e555f7801aa7ea03
+    category: PROJECTION
+    schema_version: relay-v2.5-github-projection
+  - path: agents/relay/projection/generations/GHGEN-HO-159160-R2.yaml
+    digest: sha256:7fa14270edf54ba1e3a26c1223058758aad466ad34b7b9bcb5bb4a19f1cebbc3
+    category: PROJECTION
+    schema_version: relay-v2.5-github-projection
+  - path: agents/relay/projection/generations/GHGEN-HO-79E29CBD0F01.yaml
+    digest: sha256:8c35bb76b187427737128dfca8c79fcf25e16afd062375669abae1be0b16d5a8
+    category: PROJECTION
+    schema_version: relay-v2.5-github-projection
+  - path: agents/relay/projection/generations/GHGEN-WP105-ISS169-R1.yaml
+    digest: sha256:61331244d25a9654d00277065aafc0d8e03d1faf0e212f99581a4d46c7078047
+    category: PROJECTION
+    schema_version: relay-v2.5-github-projection
+  - path: agents/relay/projection/generations/GHGEN-WP105-ISS169-R2.yaml
+    digest: sha256:b1172e55739420bc7592cfc99d8f086efe94bfbb7a278ae4e6da2cdd2fd159b2
+    category: PROJECTION
+    schema_version: relay-v2.5-github-projection
+  - path: agents/relay/projection/generations/GHGEN-WP105-ISS169-R3.yaml
+    digest: sha256:ed892520a8f2d4c276a249e48a372f267ee05e779f27c7778ea5151338fb9a92
+    category: PROJECTION
+    schema_version: relay-v2.5-github-projection
+  - path: agents/relay/projection/generations/GHGEN-WP108-ISS175-R1.yaml
+    digest: sha256:097899f43515252d25980955f367a7a8b7f9a200c8fa2bed0026cc804c66310f
+    category: PROJECTION
+    schema_version: relay-v2.5-github-projection
+  - path: agents/relay/projection/generations/GHGEN-WP108-ISS175-R2.yaml
+    digest: sha256:637a10afa440eea29773e52135e2bd22c566ae9a242b39efe24c79cf507fbcbd
+    category: PROJECTION
+    schema_version: relay-v2.5-github-projection
+  - path: agents/relay/projection/generations/GHGEN-WP108-ISS175-R3.yaml
+    digest: sha256:d38b9d150ae39debfb43ddfb2b93d5b8d7b64ee0a950a9ea64f4c597a32cb0de
+    category: PROJECTION
+    schema_version: relay-v2.5-github-projection
+  - path: agents/relay/projection/generations/GHGEN-WP109-ISS175-R4.yaml
+    digest: sha256:4d6d8c494f611a54f057192221432e0dbd890c4a03e565d4089ca261fc66167a
+    category: PROJECTION
+    schema_version: relay-v2.5-github-projection
+  - path: agents/relay/projection/generations/GHGEN-WP109-ISS175-R5.yaml
+    digest: sha256:0c11bd01fb95fe0220eefed7fc4eb2a85210e5365f0f4967007243d103349ec9
+    category: PROJECTION
+    schema_version: relay-v2.5-github-projection
+  - path: agents/relay/projection/generations/GHGEN-WP109-ISS175-R6.yaml
+    digest: sha256:11da9d830066a884ce3029fb3572dd88ac33e4df45992cf6a66f69076915e86e
+    category: PROJECTION
+    schema_version: relay-v2.5-github-projection
+  - path: agents/relay/projection/observations/GHOBS-HO-79E29CBD0F01.yaml
+    digest: sha256:d0f04dbcc721298bf810a11f907abff16af9f855eb34f560d9f1ae1776f6b5b8
+    category: PROJECTION
+    schema_version: relay-v2.5-github-observation
+  - path: agents/relay/projection/observations/GHOBS-WP108-ISS175-R1.yaml
+    digest: sha256:6a55aed2d5655be89c2d267d43851fa8c748a53129b62bff0ce1eab52ac99e50
+    category: PROJECTION
+    schema_version: relay-v2.5-github-observation
+  - path: agents/relay/projection/observations/GHOBS-WP108-ISS175-R2.yaml
+    digest: sha256:820d37bc45a137efdf992e8e6ffe026b268c66847537223c9fd4368216873f13
+    category: PROJECTION
+    schema_version: relay-v2.5-github-observation
+  - path: agents/relay/publication/OWNER_PUBLICATION.yaml
+    digest: sha256:32db60db196d2d8ed5b2968508cf7f2b6558be2d444f18a5a9589fd974761ff7
+    category: OTHER
+    schema_version: relay-v2.5-owner-publication
+  - path: agents/relay/quality/QRV-TA-001.yaml
+    digest: sha256:a5bd473ede6c33cadafefa1e72705ed2580d3e205afca7c55179ae26f03571cb
+    category: OTHER
+    schema_version: relay-v2.5-quality-review
+  - path: agents/relay/quality/QRV-TA-002.yaml
+    digest: sha256:be8900bef8710bda47f61cfedaab27cb8ab9b754f0d1724e0b088024859aa2b1
+    category: OTHER
+    schema_version: relay-v2.5-quality-review
+  - path: agents/relay/quality/QRV-TA-003.yaml
+    digest: sha256:5647c18df0f999aa7a11850d36fa5605c9e3762485ed085c9764e138ae14f5e0
+    category: OTHER
+    schema_version: relay-v2.5-quality-review
+  - path: agents/relay/quality/QRV-TA-004.yaml
+    digest: sha256:558135c5e233253e995303a12ea623189155bbb723067d4c7ab75b433da0dee1
+    category: OTHER
+    schema_version: relay-v2.5-quality-review
+  - path: agents/relay/quality/QRV-TA-005.yaml
+    digest: sha256:36cd1916a8ec8a1531729340c09f39d23739612b60cd2077945e63cb16217d86
+    category: OTHER
+    schema_version: relay-v2.5-quality-review
+  - path: agents/relay/quality/QRV-TA-007.yaml
+    digest: sha256:f63645892a2362d84467efdbae156b2f4f2afa21f34b56e0c45a71ee29dd44a5
+    category: OTHER
+    schema_version: relay-v2.5-quality-review
+  - path: agents/relay/quality/QRV-TA-008.yaml
+    digest: sha256:86999d8ff2ef1f3612a404550cfbc251550422b2496c2e095e99a8003bd6ffc4
+    category: OTHER
+    schema_version: relay-v2.5-quality-review
+  - path: agents/relay/quality/QRV-TA-009.yaml
+    digest: sha256:12331899a265763b4e668bb8e512f5be6fc821f012bb1b103c7f4e3b0905b565
+    category: OTHER
+    schema_version: relay-v2.5-quality-review
+  - path: agents/relay/quality/QRV-TA-010.yaml
+    digest: sha256:71f9bcb9742910b0c782cb161113c11ced57963e44bf9a9629d53b7de0f8051a
+    category: OTHER
+    schema_version: relay-v2.5-quality-review
+  - path: agents/relay/quality/QRV-TA-011.yaml
+    digest: sha256:cab4fe9a7cbf500cda26d54ce57ddd1e707ef61b8e1ef5f4779b57ebac91336b
+    category: OTHER
+    schema_version: relay-v2.5-quality-review
+  - path: agents/relay/quality/QRV-TA-012.yaml
+    digest: sha256:9d6802623b40ffb21c15107904ff75c3cce31623006b2866cb3c963114613112
+    category: OTHER
+    schema_version: relay-v2.5-quality-review
+  - path: agents/relay/reports/AUDIT-TA-008-MOTHER-CONTRACT.yaml
+    digest: sha256:217a1d5b66c00cd2eb883f7a3e0a50671062547d534e1d5c5a0e10091323de7b
+    category: OTHER
+    schema_version: relay-v2.5-audit-note
+  - path: agents/relay/reports/EVIDENCE-TA8-001-STEP1.yaml
+    digest: sha256:8d909f1ed50fe09c7221f5b5381da2fbe8c9120ddeee938ddffe64f3408880ca
+    category: OTHER
+    schema_version: relay-v2.5-evidence-note
+  - path: agents/relay/reports/EVIDENCE-TA8-002-STEP2.yaml
+    digest: sha256:758816d789d751854689d84ed00fdc70078db548feb890f7b86c70ffa0e2f642
+    category: OTHER
+    schema_version: relay-v2.5-evidence-note
+  - path: agents/relay/reports/EVIDENCE-TA8-003-STEP3.yaml
+    digest: sha256:e4782c89242c18791c2ea067658cd44375b5aec5514b622eb04741662fc47a6f
+    category: OTHER
+    schema_version: relay-v2.5-evidence-note
+  - path: agents/relay/reports/EVIDENCE-TA8-004-STEP4.yaml
+    digest: sha256:8ec8ffc5523f300c1cd9e08184af06ce1ec1ee56b0fc62856fabb7503fcaf726
+    category: OTHER
+    schema_version: relay-v2.5-evidence-note
+  - path: agents/relay/roadmap/ISSUE_GRAPH.yaml
+    digest: sha256:8a19226c14bb989f1a0980d8af5be82b0a15329fab912fb638f5be46be5707ff
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/OVERALL_ROADMAP.yaml
+    digest: sha256:32454418a71675fc5b18d19abee1beba81887a725bc5f89fb08c2a750e220a1a
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/PROGRESS.yaml
+    digest: sha256:5391007dcbe411f4b8eced1df4c1814fe864f2a1290c82dbefdd59cfe16086b5
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/continuity/RC-TA-002.yaml
+    digest: sha256:fbf447d3cd5f20821f595d0b0ee9101fa62cdcf1da230d4f13571142585615cc
+    category: ROADMAP
+    schema_version: relay-v2.5-roadmap-continuity
+  - path: agents/relay/roadmap/continuity/RC-TA-003.yaml
+    digest: sha256:0f2ac9c8a35a7e104614320a4153ccf7a4e6767506952c491c931ff93f7b15d2
+    category: ROADMAP
+    schema_version: relay-v2.5-roadmap-continuity
+  - path: agents/relay/roadmap/continuity/RC-TA-008.yaml
+    digest: sha256:15ba0e3940cc6314e4621cb9706bcc11e098a283fff650fb6d233cb84bb8d5ba
+    category: ROADMAP
+    schema_version: relay-v2.5-roadmap-continuity
+  - path: agents/relay/roadmap/owner-decisions/ODR-0001-TOPIC-ATLAS-COMPLETION.yaml
+    digest: sha256:2f97c8f98f8ef53d2bfb50b2b62fb077c58a4302af0208d6fae4a0d069d9c5d0
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/owner-decisions/ODR-0002-ROADMAP-FIRST-READ.yaml
+    digest: sha256:424167e4d85a04b950a4aa6a786e9114aa00ea8e5c9a96076b7dbd8200aee20e
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/owner-decisions/ODR-0003-G9-PHYSICS-INDEPENDENCE.yaml
+    digest: sha256:1ebd9b09cd07c4497fcbb56a4e547eb17d71aec6991e35bf5830f7f9953fd20d
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/owner-decisions/ODR-0004-REPRESENTATION-ROUTER-ARCHITECTURE.yaml
+    digest: sha256:172dd55f4ea619179356ae0fd1a47a3b06484d39e6e41aa37fe9b6949263c764
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/owner-decisions/ODR-0005-ISSUE159-MOTHER-CONTRACT.yaml
+    digest: sha256:2ad18088726e88f656cea4eb1bf354f846dad43d24b50a0c2108ae58231b548f
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/owner-decisions/ODR-0006-OWNER-QUALIFICATION-OVERRIDE.yaml
+    digest: sha256:d6200f0db9e6616ab53dcfc1615bf87e1e26594578631f5394a5ad786e205ff9
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/owner-decisions/ODR-0007-OWNER-DIRECT-EXECUTION-CONTINUATION.yaml
+    digest: sha256:433fd4cf14b32f641005cc7af2700a67f54eae2cde46f74babf421caf668b33b
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/owner-decisions/ODR-0008-ISSUE162-PR180-MERGE-AUTHORIZATION.yaml
+    digest: sha256:7c49050a077b82bd8c8246d1dcb53b74c79b04942b2d5e06828ea299a485be25
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/owner-decisions/ODR-0008-OWNER-EP9-STEP1-DIRECT-EXECUTION.yaml
+    digest: sha256:3101fdf897becf104fd6ee9cb11b8a8a7d56f09895878e47ce145946649e4e3a
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/owner-decisions/ODR-0009-WEB-BUILDER-START.yaml
+    digest: sha256:3f99142d13fd1e7905c64a6114becf6e15a0b1a994d22f9c046a0f3141aa764e
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/owner-decisions/ODR-0010-OWNER-EP10-STEP1-DIRECT-EXECUTION.yaml
+    digest: sha256:0d6143687cbf0abef849f41ed7fab9bbf54291ab773ac6b328af51d8f5904fbf
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/owner-decisions/ODR-0011-OWNER-EP10-CONTINUE-DIRECT-EXECUTION.yaml
+    digest: sha256:c455ac09c28800ab3d104ef1fb6b369d5a401693e4fa5832ba0912a59793667d
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/owner-decisions/ODR-0012-OWNER-REVISED-V25-OVERRIDE.yaml
+    digest: sha256:ee0a3398d1c4059c937427ee434ff85820b70713232823f384e8ecfaa9a29fca
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/owner-decisions/ODR-0013-WEB-BUILDER-HOST-PARITY.yaml
+    digest: sha256:8c47dd14dfea9711a6001bfb88ef1a1481a8dface742ef3bd9c9a8d0c3711252
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/revisions/RM-0002.yaml
+    digest: sha256:aaa79b2f617f6ff17553f197a4e9a75357b05f45c98814502643b6e04e7d1038
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/revisions/RM-0003.yaml
+    digest: sha256:149cf0eb1d02d831d3cc35863cceac8fe33ec7387942a200768fa61dbdab2d9b
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/revisions/RM-0004.yaml
+    digest: sha256:f80c924ea57e1ea1e1869d15fd88cdbfd0824382aa76e3b5b1aff8e5b6783452
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/revisions/RM-0005.yaml
+    digest: sha256:fce62cc0e491b0eae1c17aafc9a9e00ee006f2899bbf7741e1bb0248cfb44b1c
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/revisions/RM-0006.yaml
+    digest: sha256:41073d23a37e699815d14c5061728e71eba5a3a3d5e0785df14f3d8b602c8704
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/revisions/RM-0007.yaml
+    digest: sha256:8cde29a16bd190a1f805894f5ea48d4fd4a8ea921b0065de8b5f93fc1b753318
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/revisions/RM-0008.yaml
+    digest: sha256:2cebeca533d642f9d4127c2d3c55e60134de6ef23b61e471275888e0a81b9471
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/revisions/RM-0009.yaml
+    digest: sha256:7f82dc2b66dd3d5a3bae85f8b2977cd9be56a6366cdc602bf9c0347fd91e363c
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/revisions/RM-0010.yaml
+    digest: sha256:c502d056a9afb1692900bb6715e7ed4464cd609eed0dd58238220f43be159697
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/revisions/RM-0011.yaml
+    digest: sha256:1533d23d1fa2d8b6357b9036ed20254a07771237f130595c368d51b58774252c
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/revisions/RM-0012.yaml
+    digest: sha256:f6eec88249a6f7e7a3ed4f4657506c1793f80d88ebfd9f901b941e2850b9c50a
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/revisions/RM-0013.yaml
+    digest: sha256:134301bd3adcdf0a9c1ef844b7e0cfdd331dfdfcd9ce8f19642163f821090e72
+    category: ROADMAP
+    schema_version: relay-v2.5
+  - path: agents/relay/roadmap/revisions/RM-0014.yaml
+    digest: sha256:5ab58266a4ddb64c2324824927c6d53e44b6aaee487da967efca90226447a03b
+    category: ROADMAP
+    schema_version: relay-v2.5
+current:
+  relay_state: IDLE
+  active_ep: null
+  last_checkpoint: CP-TA-012
+  roadmap_revision: RM-0014
+  execution_policy: SERIAL
+  delivery_required: true
+bootstrap:
+  allowed: true
+  lifecycle: INITIALIZING
+  preserves_legacy_tree: true
+  creates_native_history: false
+  reason: Bootstrap creates only present-day V3 INITIALIZING authority and retains
+    V2.5 evidence as read-only source history.

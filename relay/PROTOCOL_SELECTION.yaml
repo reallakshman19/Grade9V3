@@ -3,7 +3,7 @@ selected_protocol: V2_5
 status: PREPARED
 legacy:
   root: agents/relay
-  tree_digest: sha256:bdb48216f2474878b7925dbaabce8f4216d76b61bade7aaed6838d03ab9e99c7
+  tree_digest: sha256:e475bd57b62b3b7586c7cdc3f5c6504817dc06d5160376bc31fe2441a5d25432
   policy: LIVE_COMPATIBILITY
 v3:
   state_path: relay/STATE.yaml
