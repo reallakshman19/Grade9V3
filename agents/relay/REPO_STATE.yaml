@@ -11,27 +11,27 @@
   },
   "roadmap": {
     "id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
-    "revision": "RM-0012",
+    "revision": "RM-0013",
     "path": "agents/relay/roadmap/OVERALL_ROADMAP.yaml"
   },
   "current_position": {
     "objective": "OBJ-TOPIC-ATLAS-COMPLETE",
     "phase": "PHASE-TAKEOVER-RECONCILIATION",
-    "work_package": "WP-TA-108",
+    "work_package": "WP-TA-109",
     "work_packages": []
   },
   "execution_policy": {
     "mode": "SERIAL"
   },
   "active_ep": {
-    "id": "EP-TA-011",
-    "path": "agents/relay/execution-packages/EP-TA-011.yaml",
-    "state": "ACTIVE",
+    "id": "EP-TA-012",
+    "path": "agents/relay/execution-packages/EP-TA-012.yaml",
+    "state": "EXECUTABLE",
     "continuity_receipt": null
   },
   "last_checkpoint": {
-    "id": "CP-TA-010",
-    "path": "agents/relay/checkpoints/CP-TA-010.yaml"
+    "id": "CP-TA-011",
+    "path": "agents/relay/checkpoints/CP-TA-011.yaml"
   },
   "predecessor_join": {
     "id": null,
@@ -41,45 +41,41 @@
     "id": null,
     "path": null
   },
-  "takeover_admissions": [
-    {
-      "route_key": "SERIAL:EP-TA-011",
-      "candidate": {
-        "agent_instance_id": "chatgpt-sol-webbuilder-revised-20260922"
-      },
-      "discovery_receipt": {
-        "id": "DISC-TA-020",
-        "path": "agents/relay/certifications/discovery/DISC-TA-020.yaml"
-      },
-      "certification": {
-        "id": "TC-TA-020",
-        "path": "agents/relay/certifications/takeover/TC-TA-020.yaml"
-      }
-    }
-  ],
+  "takeover_admissions": [],
   "progress": {
-    "overall_percent": 100,
-    "phase_percent": 100,
-    "ep_percent": 100,
-    "basis_revision": "PB-0010"
+    "overall_percent": 92,
+    "phase_percent": 92,
+    "ep_percent": 0,
+    "basis_revision": "PB-0011"
   },
   "status_planes": {
     "execution": {
       "state": "ACTIVE",
       "can_continue": true,
       "material_authority": "WRITE",
-      "next_action": "EP-TA-011 reconciliation evidence, quality review and provider readback are complete. Keep PR #178 DRAFT; PR-ready, merge, checkpoint and release remain Owner-reserved. Production #173/#174 integration requires a separately admitted package."
+      "next_action": "Certify the current EP-TA-012 candidate from repository-only evidence, then implement single-source public/standalone Core learner host generation."
     },
     "quality": {
       "state": "CLEAR",
       "findings": [
-        "QRV-TA-011 is CLEAR; no blocking material findings remain inside EP-TA-011."
+        "CP-TA-011 closes the reconciliation cleanly; WP-TA-109 starts with no material quality findings."
       ]
     },
     "evidence": {
-      "state": "COMPLETE",
-      "summary": "EP-TA-011 earned acceptance is fully evidenced by exact-head 1000-test/browser guardrails, normal V2.5 candidate admission, satisfied deferred validation, QRV-TA-011 CLEAR and a fresh PR #178 delivery readback.",
-      "not_run": []
+      "state": "PARTIAL",
+      "summary": "WP-TA-109 starts from a green predecessor checkpoint; candidate admission and host-parity implementation evidence are pending.",
+      "not_run": [
+        {
+          "id": "EP-TA-012 candidate admission",
+          "reason": "Successor route has just been published.",
+          "cause": "NOT_SCHEDULED"
+        },
+        {
+          "id": "TEST-TA12-001..004",
+          "reason": "Host-parity implementation has not started.",
+          "cause": "NOT_SCHEDULED"
+        }
+      ]
     },
     "stop": {
       "active": false,
@@ -90,19 +86,19 @@
   },
   "projection": {
     "required": true,
-    "state": "IN_SYNC",
-    "operation_id": "GHGEN-WP108-ISS175-R3",
+    "state": "PENDING",
+    "operation_id": "GHGEN-WP109-ISS175-R4",
     "target": "github:reallaksh19/Grade9V3:issues",
     "adapter": "GITHUB_ISSUES",
-    "plan": "agents/relay/projection/generations/GHGEN-WP108-ISS175-R3.yaml",
-    "roadmap_revision": "RM-0012",
-    "execution_ref": "EP-TA-011",
-    "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
+    "plan": "agents/relay/projection/generations/GHGEN-WP109-ISS175-R4.yaml",
+    "roadmap_revision": "RM-0013",
+    "execution_ref": "EP-TA-012",
+    "receipt": null,
     "basis": [
-      "GHGEN-WP108-ISS175-R3 verified",
-      "Issue #175 provider readback with RM-0012 reconciliation marker",
-      "RM-0012",
-      "EP-TA-011"
+      "RM-0013",
+      "EP-TA-012",
+      "CP-TA-011",
+      "Prepared host-parity projection"
     ],
     "superseded_operations": [
       {
@@ -146,6 +142,19 @@
           "CP-TA-010 checkpoint projection was previously published",
           "RM-0012/EP-TA-011 requires a successor projection"
         ]
+      },
+      {
+        "operation_id": "GHGEN-WP108-ISS175-R3",
+        "target": "github:reallaksh19/Grade9V3:issues",
+        "roadmap_revision": "RM-0012",
+        "execution_ref": "EP-TA-011",
+        "disposition": "SUPERSEDED_AFTER_PUBLICATION_UNCONFIRMED",
+        "superseded_by": "GHGEN-WP109-ISS175-R4",
+        "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
+        "basis": [
+          "RM-0012 projection was verified",
+          "superseded by RM-0013 host-parity frontier"
+        ]
       }
     ],
     "observed": {
@@ -180,12 +189,12 @@
   },
   "relay_readiness": {
     "baton_ready": true,
-    "projection_ready": true,
-    "handover_ready": true,
+    "projection_ready": false,
+    "handover_ready": false,
     "reasons": [
-      "The current reconciliation contract and predecessor checkpoint are present.",
-      "Issue #175 projection is verified in sync for the current roadmap revision and execution package.",
-      "Normal current-route admission and exact-head product/control validation are complete; final quality review and Owner-reserved delivery decisions remain."
+      "CP-TA-011 provides predecessor custody for WP-TA-109.",
+      "Issue #175 RM-0013 projection is prepared but not yet published/read back.",
+      "EP-TA-012 candidate admission is required before normal material writes."
     ]
   },
   "chat_context_required": false,
