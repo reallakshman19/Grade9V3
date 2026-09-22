@@ -1,0 +1,65 @@
+{
+  "schema_version": "relay-v2.5-takeover-certification",
+  "id": "TC-TA-021",
+  "candidate": {
+    "agent_instance_id": "chatgpt-sol-webbuilder-revised-20260922"
+  },
+  "prepared_by": {
+    "agent_instance_id": "chatgpt-sol-webbuilder-revised-20260922"
+  },
+  "evaluated_by": {
+    "type": "DETERMINISTIC_VALIDATOR",
+    "identity": "validate_takeover_certification.py",
+    "basis": [
+      "Current route, EP contract, DISC-TA-021, CP-TA-011 and V2.5 validators."
+    ]
+  },
+  "self_certification": {
+    "allowed": false
+  },
+  "route": {
+    "route_key": "SERIAL:EP-TA-012",
+    "mode": "SERIAL",
+    "execution_ref": "EP-TA-012",
+    "ep_id": "EP-TA-012",
+    "ep_path": "agents/relay/execution-packages/EP-TA-012.yaml",
+    "plan_id": null,
+    "plan_path": null,
+    "lane_id": null
+  },
+  "basis": {
+    "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
+    "roadmap_revision": "RM-0013",
+    "relay_protocol_basis_ref": "reallaksh19/Common@6cc47ea211d4e7b1fbff968cbeae9433a104db00:skills/engineering-pr-delivery-v2.5",
+    "material_ref": "37dc1903eb3688806d16d67ab5aa20ce95d47d63",
+    "ep_contract_digest": "sha256:7000bd3912ce2732ca05e0032e65655e3278730990f98a2763adeea985c12bf5",
+    "repo_profile_digest": "sha256:954cdd371183121091d3690de67c9b699135f89cad93a0edad53a27b058e64b2",
+    "predecessor_baton": {
+      "type": "CHECKPOINT",
+      "id": "CP-TA-011",
+      "path": "agents/relay/checkpoints/CP-TA-011.yaml",
+      "digest": "sha256:89b69afeb4165638e1731bddbb7d0f75e2447edc0b5c99d8a60e8fd0e70588ec"
+    }
+  },
+  "discovery_receipt": {
+    "id": "DISC-TA-021",
+    "path": "agents/relay/certifications/discovery/DISC-TA-021.yaml"
+  },
+  "qualification": {
+    "required": false,
+    "status": "NOT_REQUIRED",
+    "receipt_id": null,
+    "receipt_path": null,
+    "receipt_digest": null
+  },
+  "checks": {
+    "baton_semantics": "PASS",
+    "repository_discovery": "PASS",
+    "route_grounding": "PASS",
+    "input_oracle_readiness": "PASS",
+    "scope_understood": "PASS",
+    "report_successor_contract": "PASS"
+  },
+  "result": "PASS",
+  "conversation_context_used": false
+}
