@@ -1,0 +1,126 @@
+{
+  "schema_version": "relay-v2.5",
+  "contract_version": 2,
+  "checkpoint_id": "CP-TA-011",
+  "ep_id": "EP-TA-011",
+  "roadmap_basis": {
+    "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
+    "revision": "RM-0012"
+  },
+  "execution_basis": {
+    "material_ref": "91626fcb64373895cc9841fe44529b2b3520dc64",
+    "validated_implementation_head": "0ad08745a890cf11ad0d3126bcd0c0fb7fcb959e"
+  },
+  "implementation_result": {
+    "summary": "Closed the post-checkpoint Issue #175 reconciliation with merged predecessor behavior, normal current-route admission, clear final quality review, fresh provider-delivery readback and exact-head green product/control evidence, without changing learner semantics or academic ownership.",
+    "completed_steps": [
+      "STEP-TA11-001",
+      "STEP-TA11-002"
+    ],
+    "files_changed": [
+      "Shared/workbench/semantic-workbench.mjs",
+      "public/js/core-learning/semantic-workbench.mjs",
+      "tests/workbench_browser.test.mjs",
+      "tests/workbench_runtime.test.mjs",
+      "docs/architecture-manifest.json",
+      ".github/workflows/v25-relay.yml",
+      "agents/relay/"
+    ]
+  },
+  "acceptance_results": [
+    {
+      "id": "AC-TA11-001",
+      "status": "PASS",
+      "basis": [
+        "QRV-TA-011",
+        "guardrails 35681793585",
+        "guardrails 35682030322"
+      ]
+    },
+    {
+      "id": "AC-TA11-002",
+      "status": "PASS",
+      "basis": [
+        "QRV-TA-011",
+        "v25-relay 35681793572",
+        "v25-relay 35682030373",
+        "PEND-TA11-001 SATISFIED"
+      ]
+    }
+  ],
+  "validation_results": [
+    {
+      "id": "TEST-TA11-001",
+      "status": "PASS",
+      "basis_ref": "91626fcb64373895cc9841fe44529b2b3520dc64",
+      "evidence": [
+        "Full repository guardrails and real-browser contracts green on reconciled heads."
+      ]
+    },
+    {
+      "id": "TEST-TA11-002",
+      "status": "PASS",
+      "basis_ref": "91626fcb64373895cc9841fe44529b2b3520dc64",
+      "evidence": [
+        "Revised V2.5 passes normal current-route admission/write checks."
+      ]
+    }
+  ],
+  "quality_review": {
+    "id": "QRV-TA-011",
+    "path": "agents/relay/quality/QRV-TA-011.yaml",
+    "digest": "sha256:826833441020ec926ddde9825028d890b36c0c3e9d34ae1763b53013ad96b87c"
+  },
+  "quality_findings": [],
+  "known_limitations": [
+    {
+      "statement": "Production #173/#174 compiled-projection integration is not landed.",
+      "basis": [
+        "Issue #173/#174 open",
+        "PR #176/#177 draft"
+      ]
+    },
+    {
+      "statement": "Generated public/standalone host parity remains follow-on work.",
+      "basis": [
+        "Issue #175"
+      ]
+    }
+  ],
+  "discoveries": [
+    {
+      "statement": "Current route can return from bounded override to normal V2.5 custody without changing learner behavior.",
+      "basis": [
+        "PEND-TA11-001 SATISFIED",
+        "QRV-TA-011"
+      ]
+    }
+  ],
+  "roadmap_reconciliation": {
+    "result": "STATUS_UPDATE",
+    "status_updates": [
+      {
+        "statement": "EP-TA-011 reconciliation is complete and ready to hand off to a separately admitted successor.",
+        "basis": [
+          "QRV-TA-011",
+          "earned acceptance"
+        ]
+      }
+    ],
+    "proposals": [],
+    "owner_decisions_required": []
+  },
+  "remaining_work": [
+    "Generate public and standalone Core learner hosts from one source.",
+    "Keep production provider integration separate until upstream lands.",
+    "Defer explorer migration."
+  ],
+  "successor": {
+    "mode": "SERIAL",
+    "frontier_work_package": "WP-TA-109",
+    "ep_id": "EP-TA-012",
+    "parallel_plan": null,
+    "lane_id": null,
+    "lanes": []
+  }
+}
