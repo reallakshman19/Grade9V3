@@ -53,7 +53,7 @@
       "state": "ACTIVE",
       "can_continue": true,
       "material_authority": "WRITE",
-      "next_action": "Execute only EP-TA-011 bounded reconciliation under ODR-0012. PEND-TA11-001 blocks PR_READY/MERGE/CHECKPOINT/RELEASE."
+      "next_action": "Execute only the bounded EP-TA-011 reconciliation. The open deferred validation blocks PR-ready, merge, checkpoint and release boundaries."
     },
     "quality": {
       "state": "NEEDS_ATTENTION",
@@ -68,7 +68,7 @@
       "not_run": [
         {
           "id": "EP-TA-011 normal candidate admission",
-          "reason": "Deferred by ODR-0012 / PEND-TA11-001.",
+          "reason": "Deferred by the current structured Owner override and tracked as an open control obligation.",
           "cause": "DEPENDENCY_WAIT"
         },
         {
@@ -135,13 +135,17 @@
     "required": true,
     "provider": "GITHUB",
     "observation": {
-      "id": "DOBS-PR170-RM0010",
-      "path": "agents/relay/delivery/DOBS-PR170-RM0010.yaml"
+      "id": "DOBS-PR178-RM0012",
+      "path": "agents/relay/delivery/DOBS-PR178-RM0012.yaml"
     },
     "observations": [
       {
         "id": "DOBS-PR170-RM0010",
         "path": "agents/relay/delivery/DOBS-PR170-RM0010.yaml"
+      },
+      {
+        "id": "DOBS-PR178-RM0012",
+        "path": "agents/relay/delivery/DOBS-PR178-RM0012.yaml"
       }
     ]
   },
