@@ -44,6 +44,9 @@ jobs:
           python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_can.py MATERIAL_WRITE . \
             --path docs/architecture-manifest.json --base-ref origin/main
 
+      - name: Remove pinned protocol checkout before repository scans
+        run: rm -rf _common_v3
+
       - name: Topic independence is clean
         run: python Shared/tools/topic_independence_guard.py
 
