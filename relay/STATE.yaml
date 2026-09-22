@@ -1,9 +1,9 @@
 schema_version: relay-v3
 roadmap:
-  revision: RM-0014
+  revision: RM-0013
   path: relay/ROADMAP/ROADMAP.yaml
 execution:
-  lifecycle: IDLE
+  lifecycle: INITIALIZING
   ep: null
   lease: null
   route: null

@@ -2,9 +2,9 @@ schema_version: relay-v3-transaction
 id: TX-MIGRATE-RECONCILE-001
 command: RESOLVE_CONTROL
 actor: chatgpt-sol-v3-migration-20260922
-status: COMMITTED
+status: ROLLED_BACK
 created_at: '2026-09-22T09:16:05Z'
-updated_at: '2026-09-22T09:16:05Z'
+updated_at: '2026-09-22T09:19:31Z'
 operations:
 - path: relay/CONTROLS/controls.yaml
   before_exists: true
@@ -42,3 +42,9 @@ applied:
 - relay/GENERATED/CURRENT_SNAPSHOT.yaml
 - relay/ROADMAP/ROADMAP.yaml
 - relay/STATE.yaml
+recovery:
+  strategy: ROLLBACK
+  basis:
+  - V3 foundation validation run 35709680236 rejected the committed after-image because relay/CONTROLS/controls.yaml was not valid YAML.
+  - The invalid scalar was caused by unquoted evidence containing #134, which YAML interpreted as a comment marker.
+  - Canonical V3 authority is restored from this transaction's recorded before-images before a fresh reconciliation is attempted.

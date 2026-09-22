@@ -1,5 +1,5 @@
 schema_version: relay-v3-roadmap
-revision: RM-0014
+revision: RM-0013
 title: Grade 9 Physics learner independence and progression
 owner:
   outcome: Continue the complex Grade9V3 engineering programme under Engineering Relay
@@ -58,6 +58,6 @@ work_packages:
 - id: WP-TA-109
   title: Generate public and standalone Core learner hosts from one source
   weight: 10.0
-  state: COMPLETE
+  state: ACTIVE
   depends_on:
   - WP-TA-108
