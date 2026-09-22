@@ -1,0 +1,267 @@
+name: v3-checkpoint-175-production
+
+on:
+  push:
+    branches:
+      - relay/v3-checkpoint-175-production
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+  pull-requests: read
+
+jobs:
+  checkpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout governed builder branch
+        uses: actions/checkout@v4
+        with:
+          ref: builder/core-learning-pages-r1
+          fetch-depth: 0
+
+      - name: Fetch current main
+        run: git fetch origin main:refs/remotes/origin/main
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install repository validation dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+
+      - name: Require exact-head guardrails success
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, time, urllib.request
+          url = "https://api.github.com/repos/reallaksh19/Grade9V3/actions/runs/35735703976"
+          headers = {
+              "Authorization": f"Bearer {os.environ['GH_TOKEN']}",
+              "Accept": "application/vnd.github+json",
+              "X-GitHub-Api-Version": "2022-11-28",
+          }
+          for _ in range(90):
+              req = urllib.request.Request(url, headers=headers)
+              with urllib.request.urlopen(req) as response:
+                  row = json.load(response)
+              if row["status"] == "completed":
+                  assert row["conclusion"] == "success", row
+                  print("exact-head guardrails PASS")
+                  break
+              time.sleep(5)
+          else:
+              raise SystemExit("exact-head guardrails did not complete in polling window")
+          PY
+
+      - name: Re-run production and generic-boundary checks
+        run: |
+          python Shared/tools/topic_independence_guard.py
+          python -m unittest tests.test_core_learning_adapter
+          node --test tests/core_learning_page.test.mjs tests/core_learning_host.test.mjs
+          python -m unittest tests.test_core_projection_pipeline tests.test_core_projection_contract
+          python Shared/tools/build_manifest.py --check
+
+      - name: Re-run real-browser production journey
+        run: python -m unittest tests.test_workbench_runtime
+
+      - name: Verify representative explorer remains protected
+        run: |
+          git diff --quiet origin/main -- public/physics/motion-2d/explorers/shared-clock/index.html
+          test -f public/physics/motion-2d/explorers/shared-clock/index.html
+
+      - name: Verify PR 134 disposition readback
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+          req = urllib.request.Request(
+              "https://api.github.com/repos/reallaksh19/Grade9V3/pulls/134",
+              headers={
+                  "Authorization": f"Bearer {os.environ['GH_TOKEN']}",
+                  "Accept": "application/vnd.github+json",
+                  "X-GitHub-Api-Version": "2022-11-28",
+              },
+          )
+          with urllib.request.urlopen(req) as response:
+              row = json.load(response)
+          assert row["state"] == "closed", row
+          assert row["merged"] is False, row
+          print("PR 134 closed unmerged; disposition preserved")
+          PY
+
+      - name: Checkout pinned Engineering Relay V3
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: c87cf87b313801e42ecd0fcc7d36af0d90c5f400
+          path: _common_v3
+          fetch-depth: 1
+
+      - name: Verify checkpoint authorization
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_can.py CHECKPOINT . \
+            --base-ref origin/main
+
+      - name: Build exact Issue 175 checkpoint
+        env:
+          CHECKPOINT_RUN_ID: ${{ github.run_id }}
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/material_basis.py . \
+            --base-ref origin/main > /tmp/material.json
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          import yaml
+
+          material = json.loads(Path("/tmp/material.json").read_text(encoding="utf-8"))["material_basis"]
+          run_id = os.environ["CHECKPOINT_RUN_ID"]
+          cp = {
+              "schema_version": "relay-v3-checkpoint",
+              "id": "CP-LEARNER-175-PRODUCTION-001",
+              "ep": "EP-LEARNER-175-PRODUCTION-001",
+              "material_result": {
+                  "head": material["head"],
+                  "relevant_paths_digest": material["relevant_paths_digest"],
+                  "dependency_digest": material["dependency_digest"],
+              },
+              "acceptance": [
+                  {
+                      "id": "AC-175-SHELL",
+                      "result": "PASS",
+                      "evidence": [
+                          f"checkpoint workflow {run_id}: core_learning_page + core_learning_host tests PASS",
+                          f"checkpoint workflow {run_id}: test_workbench_runtime real-browser journey PASS",
+                          "Public and standalone hosts are generated from the same subject-neutral source/runtime.",
+                      ],
+                  },
+                  {
+                      "id": "AC-175-PROVIDER",
+                      "result": "PASS",
+                      "evidence": [
+                          f"checkpoint workflow {run_id}: test_core_learning_adapter PASS",
+                          "public/core-learning/data.js provider_status=PRODUCTION_COMPILED_CANONICAL",
+                          "Provider adapter consumes compile_bucket output plus canonical records; browser does not compile raw subject truth.",
+                      ],
+                  },
+                  {
+                      "id": "AC-175-CORE-SEMANTICS",
+                      "result": "PASS",
+                      "evidence": [
+                          f"checkpoint workflow {run_id}: delivered Core projection pipeline/contract tests PASS",
+                          f"checkpoint workflow {run_id}: Core1/Core2 shell tests PASS",
+                          "Real-browser journey proves Core2A crux appears after attempt and Core2B protected model decision is absent pre-attempt.",
+                      ],
+                  },
+                  {
+                      "id": "AC-175-EXPLORER",
+                      "result": "PASS",
+                      "evidence": [
+                          f"checkpoint workflow {run_id}: shared-clock explorer mount is same-origin/offline-safe",
+                          "public/physics/motion-2d/explorers/shared-clock/index.html is unchanged from main",
+                          "Explorer locator arrives through generated provider metadata rather than page-local routing truth.",
+                      ],
+                  },
+                  {
+                      "id": "AC-175-PR134",
+                      "result": "PASS",
+                      "evidence": [
+                          "PR 134 is CLOSED and not merged.",
+                          "Disposition comment 5777606503 records it as a reference prototype because its HTML embeds prediction/diagnostic/feedback academic behavior.",
+                      ],
+                  },
+                  {
+                      "id": "AC-175-REPO",
+                      "result": "PASS",
+                      "evidence": [
+                          "exact-head guardrails run 35735703976 PASS",
+                          "exact-head pinned V3 run 35735703953 PASS",
+                          "production repair/browser run 35735535851 PASS",
+                          f"checkpoint workflow {run_id}: topic-independence and build_manifest --check PASS",
+                      ],
+                  },
+              ],
+              "validation": {
+                  "focused_tests": "PASS",
+                  "spec_delivery": "PASS",
+                  "full_guardrails": "PASS",
+              },
+              "quality": {
+                  "policy": "STANDARD",
+                  "result": "CLEAR",
+              },
+              "known_limitations": [
+                  "Issue 163 external portable runtime-package compilation remains a separate lane.",
+                  "Issue 169 Grade-9 exit readiness remains a separate route and is not claimed by the learner-page builder.",
+              ],
+              "discoveries": [
+                  "The production learner host can consume real Issue 173 compiler output and Issue 174 Motion canonical data without browser-side curriculum discovery.",
+                  "A pre-existing scientific explorer can be mounted unchanged through explicit canonical resource metadata while pedagogy remains projection-driven.",
+                  "PR 134 demonstrates why standalone page-local diagnostics must not become the builder's second academic database.",
+              ],
+              "handoff": {
+                  "what_changed": [
+                      "The existing Issue 175 shell/host-parity work is now backed by production compiler-generated Motion Core projections.",
+                      "Public and standalone hosts mount the existing shared-clock explorer through explicit generated metadata.",
+                      "PR 134 is dispositioned and closed unmerged as a reference prototype.",
+                  ],
+                  "what_is_true_now": [
+                      "One generated shell covers Core1A/Core1B/Core2A/Core2B using explicit projection state.",
+                      "Core2A visibly distinguishes the crux after attempt/reveal.",
+                      "Core2B protected decisions remain undisclosed before attempt.",
+                      "Public/standalone parity and offline same-origin explorer mounting are tested.",
+                      f"Accepted material head is {material['head']}.",
+                  ],
+                  "what_remains_uncertain": [
+                      "External portable/single-file packaging and cross-subject portability proofs belong to Issue 163.",
+                  ],
+                  "do_not_break": [
+                      "Do not add page-local curriculum, question-bank, mastery or support-policy truth.",
+                      "Do not move compiler/raw subject discovery into the browser runtime.",
+                      "Do not rewrite scientific explorer implementations merely to fit the generated shell.",
+                  ],
+                  "attempted_and_rejected": [
+                      "Merging PR 134 as-is was rejected because it combines scientific scene, prediction choices, diagnostics and correctness/feedback logic in one page-local model.",
+                  ],
+                  "resume_from": [
+                      "Deliver PR 178 through V3 provider transition.",
+                      "Then proceed to Issue 163 external portability without transferring learner-shell ownership into that lane.",
+                  ],
+                  "first_successor_action": "If PR 178 is merged, close Issue 175 after V3 provider readback and admit the next independent portability task.",
+              },
+          }
+          Path("/tmp/cp-175.yaml").write_text(yaml.safe_dump(cp, sort_keys=False), encoding="utf-8")
+          PY
+
+      - name: Accept Issue 175 checkpoint
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_tx.py . checkpoint \
+            --tx-id TX-CP-ISS175-PRODUCTION-001 \
+            --event-id EVT-CP-ISS175-PRODUCTION-001 \
+            --actor chatgpt-sol-builder-20260922 \
+            --checkpoint /tmp/cp-175.yaml \
+            --base-ref origin/main
+
+      - name: Publish Issue 175 handover
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_tx.py . handover \
+            --tx-id TX-HANDOVER-ISS175-PRODUCTION-001 \
+            --event-id EVT-HANDOVER-ISS175-PRODUCTION-001 \
+            --actor chatgpt-sol-builder-20260922 \
+            --base-ref origin/main
+
+      - name: Validate accepted V3 authority
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/validate_foundation.py .
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . validate
+
+      - name: Commit checkpoint and handover
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add relay
+          git commit -m "[relay-v3] Accept Issue 175 production checkpoint"
+          git push origin HEAD:builder/core-learning-pages-r1
