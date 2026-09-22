@@ -41,7 +41,22 @@
     "id": null,
     "path": null
   },
-  "takeover_admissions": [],
+  "takeover_admissions": [
+    {
+      "route_key": "SERIAL:EP-TA-011",
+      "candidate": {
+        "agent_instance_id": "chatgpt-sol-webbuilder-revised-20260922"
+      },
+      "discovery_receipt": {
+        "id": "DISC-TA-012",
+        "path": "agents/relay/certifications/discovery/DISC-TA-012.yaml"
+      },
+      "certification": {
+        "id": "TC-TA-012",
+        "path": "agents/relay/certifications/takeover/TC-TA-012.yaml"
+      }
+    }
+  ],
   "progress": {
     "overall_percent": 100,
     "phase_percent": 100,
@@ -53,7 +68,7 @@
       "state": "ACTIVE",
       "can_continue": true,
       "material_authority": "WRITE",
-      "next_action": "Execute only the bounded EP-TA-011 reconciliation. The open deferred validation blocks PR-ready, merge, checkpoint and release boundaries."
+      "next_action": "Rerun exact-head guardrails and revised V2.5 after normal DISC/QUAL/TC admission; close PEND-TA11-001 only if material_write_ready reports ordinary PASS and no release blocker remains."
     },
     "quality": {
       "state": "NEEDS_ATTENTION",
@@ -64,16 +79,16 @@
     },
     "evidence": {
       "state": "PARTIAL",
-      "summary": "Accepted CP-TA-010 evidence remains valid for its material head. Current merged/revised-protocol EP-TA-011 has no terminal exact-head evidence yet.",
+      "summary": "Normal EP-TA-011 DISC/QUAL/TC admission is now present for the workflow candidate; exact-head guardrails and revised V2.5 must rerun before the deferred release control can close.",
       "not_run": [
         {
-          "id": "EP-TA-011 normal candidate admission",
-          "reason": "Deferred by the current structured Owner override and tracked as an open control obligation.",
-          "cause": "DEPENDENCY_WAIT"
+          "id": "EP-TA-011 exact-head post-admission guardrails",
+          "reason": "Admission/control commit requires fresh exact-head CI.",
+          "cause": "NOT_SCHEDULED"
         },
         {
-          "id": "EP-TA-011 exact-head revised V2.5 + guardrails",
-          "reason": "Will run on the control-state commit.",
+          "id": "EP-TA-011 exact-head normal material_write_ready",
+          "reason": "Must be observed after DISC/QUAL/TC admission lands.",
           "cause": "NOT_SCHEDULED"
         }
       ]

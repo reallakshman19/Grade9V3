@@ -2,46 +2,43 @@
   "schema_version": "relay-v2.5-takeover-certification",
   "id": "TC-TA-012",
   "candidate": {
-    "agent_instance_id": "chatgpt-sol-topic-atlas-20260920"
+    "agent_instance_id": "chatgpt-sol-webbuilder-revised-20260922"
   },
   "prepared_by": {
-    "agent_instance_id": "chatgpt-sol-topic-atlas-20260920"
+    "agent_instance_id": "chatgpt-sol-webbuilder-revised-20260922"
   },
   "evaluated_by": {
     "type": "DETERMINISTIC_VALIDATOR",
     "identity": "validate_takeover_certification.py",
     "basis": [
-      "Pinned V2.5 validators",
-      "DISC-TA-012",
-      "CP-TA-005",
-      "EP-TA-006"
+      "Validator reopens current route/EP basis, DISC receipt, required QUAL receipt, EP semantic/self-contained/acceptance contracts and current predecessor baton before certifying."
     ]
   },
   "self_certification": {
     "allowed": false
   },
   "route": {
-    "route_key": "SERIAL:EP-TA-006",
+    "route_key": "SERIAL:EP-TA-011",
     "mode": "SERIAL",
-    "execution_ref": "EP-TA-006",
-    "ep_id": "EP-TA-006",
-    "ep_path": "agents/relay/execution-packages/EP-TA-006.yaml",
+    "execution_ref": "EP-TA-011",
+    "ep_id": "EP-TA-011",
+    "ep_path": "agents/relay/execution-packages/EP-TA-011.yaml",
     "plan_id": null,
     "plan_path": null,
     "lane_id": null
   },
   "basis": {
     "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
-    "roadmap_revision": "RM-0006",
-    "relay_protocol_basis_ref": "reallaksh19/Common@d9b84069683977b5c370f536f1c50095de926338:skills/engineering-pr-delivery-v2.5",
-    "material_ref": "7bb84873caeb01b9941450398a708224748cfc9e",
-    "ep_contract_digest": "sha256:9a1a913341a1a1e4c363228360830e8c75c411f6e0672ec70fa3e6ca17ed45a5",
+    "roadmap_revision": "RM-0012",
+    "relay_protocol_basis_ref": "reallaksh19/Common@6cc47ea211d4e7b1fbff968cbeae9433a104db00:skills/engineering-pr-delivery-v2.5",
+    "material_ref": "91626fcb64373895cc9841fe44529b2b3520dc64",
+    "ep_contract_digest": "sha256:54c0d4a5b4fc4b4ce16ef2fd9730257ca11a76b9852e531ae00f99560c275f3c",
     "repo_profile_digest": "sha256:954cdd371183121091d3690de67c9b699135f89cad93a0edad53a27b058e64b2",
     "predecessor_baton": {
       "type": "CHECKPOINT",
-      "id": "CP-TA-005",
-      "path": "agents/relay/checkpoints/CP-TA-005.yaml",
-      "digest": "sha256:a6d787052c00234f0b62d7664c2a2a83e6d314d0ff64510a5c78a0c07f73e6fe"
+      "id": "CP-TA-010",
+      "path": "agents/relay/checkpoints/CP-TA-010.yaml",
+      "digest": "sha256:6b023b15e174c04c4d2804095489f9239207d77b8e028df9d11909a4cf1c1f6a"
     }
   },
   "discovery_receipt": {
@@ -49,11 +46,11 @@
     "path": "agents/relay/certifications/discovery/DISC-TA-012.yaml"
   },
   "qualification": {
-    "required": false,
-    "status": "NOT_REQUIRED",
-    "receipt_id": null,
-    "receipt_path": null,
-    "receipt_digest": null
+    "required": true,
+    "status": "PASS",
+    "receipt_id": "QUAL-TA-012",
+    "receipt_path": "agents/relay/certifications/qualification/QUAL-TA-012.yaml",
+    "receipt_digest": "sha256:5d8c5e9bcbafed5646e7c0636eb8bc2390624ad275cf61edd8bf343b8186dda7"
   },
   "checks": {
     "baton_semantics": "PASS",
