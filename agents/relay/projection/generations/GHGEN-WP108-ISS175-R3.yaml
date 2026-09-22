@@ -26,8 +26,8 @@
       "subject": {
         "issue_node": "ISSUE-175",
         "related_nodes": [
-          "ISSUE-173",
-          "ISSUE-174"
+          "ISSUE-160",
+          "ISSUE-169"
         ]
       },
       "preconditions": {
