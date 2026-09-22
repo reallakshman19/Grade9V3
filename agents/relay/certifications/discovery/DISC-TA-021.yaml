@@ -1,0 +1,160 @@
+{
+  "schema_version": "relay-v2.5-discovery",
+  "id": "DISC-TA-021",
+  "candidate": {
+    "agent_instance_id": "chatgpt-sol-webbuilder-revised-20260922"
+  },
+  "route": {
+    "route_key": "SERIAL:EP-TA-012",
+    "mode": "SERIAL",
+    "execution_ref": "EP-TA-012",
+    "ep_id": "EP-TA-012",
+    "ep_path": "agents/relay/execution-packages/EP-TA-012.yaml",
+    "plan_id": null,
+    "plan_path": null,
+    "lane_id": null
+  },
+  "basis": {
+    "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
+    "roadmap_revision": "RM-0013",
+    "relay_protocol_basis_ref": "reallaksh19/Common@6cc47ea211d4e7b1fbff968cbeae9433a104db00:skills/engineering-pr-delivery-v2.5",
+    "material_ref": "37dc1903eb3688806d16d67ab5aa20ce95d47d63",
+    "ep_contract_digest": "sha256:7000bd3912ce2732ca05e0032e65655e3278730990f98a2763adeea985c12bf5",
+    "repo_profile_digest": "sha256:954cdd371183121091d3690de67c9b699135f89cad93a0edad53a27b058e64b2",
+    "predecessor_baton": {
+      "type": "CHECKPOINT",
+      "id": "CP-TA-011",
+      "path": "agents/relay/checkpoints/CP-TA-011.yaml",
+      "digest": "sha256:89b69afeb4165638e1731bddbb7d0f75e2447edc0b5c99d8a60e8fd0e70588ec"
+    }
+  },
+  "steps": [
+    {
+      "id": "DSTEP-TA12-001",
+      "status": "PASS",
+      "outputs": [
+        {
+          "name": "checkpoint predecessor",
+          "value": "CP-TA-011",
+          "basis": [
+            "agents/relay/checkpoints/CP-TA-011.yaml"
+          ]
+        },
+        {
+          "name": "current route",
+          "value": "RM-0013 / WP-TA-109 / EP-TA-012",
+          "basis": [
+            "REPO_STATE",
+            "OVERALL_ROADMAP"
+          ]
+        },
+        {
+          "name": "delivery vehicle",
+          "value": "Draft PR #178 at 90a2a68addffaa93937104cbe404f3f4bf84814c",
+          "basis": [
+            "GitHub PR #178 readback"
+          ]
+        }
+      ],
+      "basis": [
+        "Current repository relay state",
+        "GitHub PR readback"
+      ]
+    },
+    {
+      "id": "DSTEP-TA12-002",
+      "status": "PASS",
+      "outputs": [
+        {
+          "name": "hand-maintained host",
+          "value": "public/core-learning/index.html is the current manually maintained host markup.",
+          "basis": [
+            "Repository file inspection"
+          ]
+        },
+        {
+          "name": "generated data authority",
+          "value": "Shared/tools/build_core_learning_data.py -> public/core-learning/data.js",
+          "basis": [
+            "Repository file inspection"
+          ]
+        },
+        {
+          "name": "generated runtime authority",
+          "value": "Shared/tools/build_core_learning_runtime.py -> public/js/core-learning/* from Shared/workbench",
+          "basis": [
+            "Repository file inspection"
+          ]
+        }
+      ],
+      "basis": [
+        "Current repository source files"
+      ]
+    },
+    {
+      "id": "DSTEP-TA12-003",
+      "status": "PASS",
+      "outputs": [
+        {
+          "name": "host parity requirement",
+          "value": "Issue #175 remains OPEN and RM-0013 routes it to WP-TA-109 generated host parity.",
+          "basis": [
+            "Issue #175 provider readback",
+            "ISSUE_GRAPH IG-0008"
+          ]
+        },
+        {
+          "name": "provider readiness",
+          "value": "NO-GO for production adapter: #173=open, #174=open, PR176 open/DRAFT, PR177 open/DRAFT.",
+          "basis": [
+            "GitHub provider readback"
+          ]
+        }
+      ],
+      "basis": [
+        "Current GitHub provider state"
+      ]
+    },
+    {
+      "id": "DSTEP-TA12-004",
+      "status": "PASS",
+      "outputs": [
+        {
+          "name": "branch",
+          "value": "builder/core-learning-pages-r1",
+          "basis": [
+            "GitHub branch readback"
+          ]
+        },
+        {
+          "name": "HEAD",
+          "value": "90a2a68addffaa93937104cbe404f3f4bf84814c",
+          "basis": [
+            "GitHub branch readback"
+          ]
+        },
+        {
+          "name": "material-ref ancestry",
+          "value": "EP material_ref 37dc1903eb3688806d16d67ab5aa20ce95d47d63 is the CP-TA-011 handoff ancestor of current head.",
+          "basis": [
+            "EP-TA-012 git_basis",
+            "Git history"
+          ]
+        },
+        {
+          "name": "base drift result",
+          "value": "Base observed/current cb7a0cfeec0e14494e2c462791f0ce3cf7fb334b; no newer provider base movement observed for this admission.",
+          "basis": [
+            "EP-TA-012 git_basis",
+            "PR #178 base readback"
+          ]
+        }
+      ],
+      "basis": [
+        "GitHub Git/provider readback"
+      ]
+    }
+  ],
+  "result": "PASS",
+  "conversation_context_used": false
+}
