@@ -49,6 +49,39 @@ def scope_coverage(repo: Path = REPO) -> dict:
     return load(repo / SCOPE_COVERAGE)
 
 
+def question_demand_context(question: dict) -> dict:
+    """Classify one canonical question from exposure plus transfer truth.
+
+    A transfer block is descriptive metadata, not sufficient demand-class authority.
+    Changed-demand evidence requires an actual CORE2B exposure together with a
+    canonical transfer dimension.
+    """
+    exposure_cores = sorted({
+        row.get("core")
+        for row in question.get("exposure", [])
+        if isinstance(row, dict) and row.get("core")
+    })
+    transfer = question.get("transfer") or {}
+    dimension = transfer.get("dimension")
+
+    if "CORE2B" in exposure_cores and dimension:
+        demand_class = "CHANGED_DEMAND_TRANSFER"
+    elif "CORE2A" in exposure_cores:
+        demand_class = "FAMILIAR_APPLICATION"
+    elif exposure_cores:
+        demand_class = "SOURCE_CUSTODY"
+    else:
+        demand_class = "UNRESOLVED"
+
+    context = {
+        "demand_class": demand_class,
+        "exposure_cores": exposure_cores,
+    }
+    if demand_class == "CHANGED_DEMAND_TRANSFER":
+        context["transfer_dimension"] = dimension
+    return context
+
+
 def matrix_capabilities(scope_row: dict, repo: Path = REPO) -> list[dict]:
     """Resolve default-entry matrix rungs to canonical capability refs.
 
@@ -71,14 +104,19 @@ def matrix_capabilities(scope_row: dict, repo: Path = REPO) -> list[dict]:
         for row in package.get("microtopics", [])
         if isinstance(row, dict) and row.get("id")
     }
+    question_contexts: dict[str, dict[str, dict]] = {}
     transfer_questions: dict[str, dict[str, str]] = {}
     for question in package.get("questions", []):
-        transfer = question.get("transfer") or {}
         capability_ref = question.get("primary_capability_ref")
-        dimension = transfer.get("dimension")
         question_ref = question.get("id")
-        if capability_ref and dimension and question_ref:
-            transfer_questions.setdefault(capability_ref, {})[question_ref] = dimension
+        if not capability_ref or not question_ref:
+            continue
+        context = question_demand_context(question)
+        question_contexts.setdefault(capability_ref, {})[question_ref] = context
+        if context["demand_class"] == "CHANGED_DEMAND_TRANSFER":
+            transfer_questions.setdefault(capability_ref, {})[question_ref] = context[
+                "transfer_dimension"
+            ]
 
     by_capability: dict[str, dict] = {}
     for rung in matrix.get("rungs", []):
@@ -127,6 +165,9 @@ def matrix_capabilities(scope_row: dict, repo: Path = REPO) -> list[dict]:
                 ),
                 "rungs": [],
                 "microtopic_refs": [],
+                "question_demand_contexts": dict(
+                    sorted(question_contexts.get(capability_ref, {}).items())
+                ),
                 "transfer_question_dimensions": dict(
                     sorted(transfer_questions.get(capability_ref, {}).items())
                 ),
@@ -163,13 +204,13 @@ def capability_projection(
     profile: dict,
     capability_ref: str,
     repo: Path = REPO,
-    transfer_question_dimensions: dict[str, str] | None = None,
+    question_demand_contexts: dict[str, dict] | None = None,
 ) -> dict:
     history = learner_evidence.evidence_for_capability(profile, capability_ref, repo)
     observation = history[0] if history else None
     effective = learner_evidence.effective_state(profile, capability_ref, repo)
     category = evidence_category(effective, observation)
-    transfer_question_dimensions = transfer_question_dimensions or {}
+    question_demand_contexts = question_demand_contexts or {}
 
     basis = []
     for item in history:
@@ -183,9 +224,12 @@ def capability_projection(
             "when": item.get("when"),
             "error_stage": item.get("error_stage"),
         }
-        dimension = transfer_question_dimensions.get(item.get("question_ref"))
-        if dimension:
-            row["transfer_dimension"] = dimension
+        demand_context = question_demand_contexts.get(item.get("question_ref"))
+        if demand_context:
+            row["demand_class"] = demand_context.get("demand_class")
+            row["exposure_cores"] = list(demand_context.get("exposure_cores") or [])
+            if demand_context.get("demand_class") == "CHANGED_DEMAND_TRANSFER":
+                row["transfer_dimension"] = demand_context.get("transfer_dimension")
         basis.append(row)
 
     if not basis and effective.get("source") != "UNOBSERVED":
@@ -196,12 +240,14 @@ def capability_projection(
         })
 
     independent_transfer_dimensions = sorted({
-        transfer_question_dimensions[item.get("question_ref")]
+        context["transfer_dimension"]
         for item in history
-        if item.get("evidence_kind") == "DIRECT_ATTEMPT"
+        for context in [question_demand_contexts.get(item.get("question_ref"))]
+        if context
+        and context.get("demand_class") == "CHANGED_DEMAND_TRANSFER"
+        and item.get("evidence_kind") == "DIRECT_ATTEMPT"
         and item.get("result") == "DEMONSTRATED"
         and item.get("help") == "NONE"
-        and item.get("question_ref") in transfer_question_dimensions
     })
     prior_difficulty = any(
         item.get("result") in {"MISSING", "UNCERTAIN"}
@@ -406,7 +452,7 @@ def transition_report(projection: dict) -> dict:
     transfer_evidence_needed = [
         domain
         for domain in projection.get("domains", [])
-        if domain.get("ordinary_grade9_core") is True
+        if (domain.get("transfer_evidence") or {}).get("transition_required") is True
         and (domain.get("transfer_evidence") or {}).get("status") == "EVIDENCE_NEEDED"
     ]
     if blockers:
@@ -424,9 +470,9 @@ def transition_report(projection: dict) -> dict:
     elif transfer_evidence_needed:
         transition_state = "GRADE9_EVIDENCE_INCOMPLETE"
         transition_message = (
-            "Required capability evidence has no known blocker, but one or more required "
-            "domains with canonical changed-demand tasks still lack an independent "
-            "transfer/representation witness."
+            "Required capability evidence has no known blocker, but explicit transition "
+            "authority requires changed-demand evidence that has not yet been independently "
+            "demonstrated."
         )
     elif fragile_rechecks:
         transition_state = "GRADE10_WITH_TARGETED_RECHECKS"
@@ -513,12 +559,13 @@ def parent_agent_text(report: dict) -> str:
         if row.get("status") != "NOT_APPLICABLE"
     ]
     if transfer_rows:
-        lines.extend(["", "Required-domain changed-demand evidence:"])
+        lines.extend(["", "Changed-demand evidence:"])
         for row in transfer_rows:
             lines.append(
                 f"- {row['matrix_id']}: {row['status']} "
                 f"(available={','.join(row.get('available_dimensions', [])) or 'none'}; "
-                f"observed={','.join(row.get('independent_observed_dimensions', [])) or 'none'})"
+                f"observed={','.join(row.get('independent_observed_dimensions', [])) or 'none'}; "
+                f"transition_required={'yes' if row.get('transition_required') else 'no'})"
             )
 
     if optional_visible:
@@ -554,8 +601,8 @@ def project(profile: dict, repo: Path = REPO) -> dict:
                 profile,
                 capability["capability_ref"],
                 repo,
-                transfer_question_dimensions=capability.get(
-                    "transfer_question_dimensions", {}
+                question_demand_contexts=capability.get(
+                    "question_demand_contexts", {}
                 ),
             )
             row = {**capability, **evidence}
@@ -576,14 +623,17 @@ def project(profile: dict, repo: Path = REPO) -> dict:
             for row in resolved
             for dimension in row.get("independent_transfer_dimensions", [])
         })
+        transition_required = bool(
+            scope_row.get("changed_demand_evidence_required", False)
+        )
         if not available_transfer_dimensions:
             transfer_status = "NOT_APPLICABLE"
         elif observed_transfer_dimensions:
             transfer_status = "OBSERVED"
-        elif scope_row.get("ordinary_grade9_core") is True:
+        elif transition_required:
             transfer_status = "EVIDENCE_NEEDED"
         else:
-            transfer_status = "VISIBLE_NONBLOCKING"
+            transfer_status = "AVAILABLE_UNOBSERVED"
 
         domains.append({
             "matrix_id": scope_row["matrix_id"],
@@ -598,6 +648,7 @@ def project(profile: dict, repo: Path = REPO) -> dict:
                 "status": transfer_status,
                 "available_dimensions": available_transfer_dimensions,
                 "independent_observed_dimensions": observed_transfer_dimensions,
+                "transition_required": transition_required,
             },
             "capabilities": resolved,
         })
