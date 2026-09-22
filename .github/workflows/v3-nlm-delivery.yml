@@ -1,0 +1,286 @@
+name: v3-nlm-delivery-once
+
+on:
+  push:
+    branches:
+      - content/issue-174-nlm-v3
+    paths:
+      - '.github/workflows/v3-nlm-delivery.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  admit-build-validate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout V3 NLM branch
+        uses: actions/checkout@v4
+        with:
+          ref: content/issue-174-nlm-v3
+          fetch-depth: 0
+
+      - name: Fetch production main and source candidate
+        shell: bash
+        run: |
+          git fetch origin main:refs/remotes/origin/main
+          git fetch origin content/issue-174-nlm-friction-gold:refs/remotes/origin/content/issue-174-nlm-friction-gold
+
+      - name: Checkout pinned Common V3
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: c87cf87b313801e42ecd0fcc7d36af0d90c5f400
+          path: _common_v3
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install validator dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+
+      - name: Verify active pinned V3 authority
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_default.py .
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/validate_foundation.py .
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . validate
+
+      - name: Build canonical NLM task admission
+        shell: bash
+        run: |
+          PYTHONPATH=_common_v3/skills/engineering-pr-delivery-v3/scripts python - <<'PY'
+          from pathlib import Path
+          from transactionlib import yaml_bytes
+
+          protocol='reallaksh19/Common@c87cf87b313801e42ecd0fcc7d36af0d90c5f400:skills/engineering-pr-delivery-v3'
+          acceptance=[
+              ('AC-NLM-GOLD',
+               'The NLM friction gold slice preserves structured reasoning, source hints, scientific relation authority and the protected transfer decision.',
+               'python -m unittest discover -s tests -p test_g9_nlm_friction_connected.py -v'),
+              ('AC-NLM-COMPILER',
+               'Production compiler/publication preserve structured application truth and protected transfer semantics.',
+               'python Shared/tools/spec_delivery.py --enforce --summary'),
+              ('AC-NLM-GENERATED',
+               'Generated web data and architecture manifest are regenerated and drift-free.',
+               'python Shared/tools/build_manifest.py --check'),
+              ('AC-NLM-VALIDATION',
+               'The exact committed NLM head passes the repository guardrail command set and pinned V3 validation.',
+               'full guardrail command set plus pinned v3 validation'),
+          ]
+          ep={
+              'schema_version':'relay-v3-ep',
+              'id':'EP-CANONICAL-174-NLM-001',
+              'work_package':'WP-CANONICAL-174-NLM',
+              'outcome':{
+                  'statement':'Deliver the bounded NLM static-friction/inclined-plane canonical-data proof for Issue #174 against delivered #162/#173, without adding Motion-in-2D.'
+              },
+              'basis':{
+                  'predecessor_checkpoint':None,
+                  'material_base':'da91e9e42c641e9d2bdd970d1e87a6b8227c84a9',
+                  'protocol_basis':protocol,
+                  'semantic_dependencies':[
+                      {'path':'Shared/library','reason':'Delivered canonical schema/compiler and structured application contract'},
+                      {'path':'Shared/publication_host','reason':'Delivered Core projection/publication preservation'},
+                      {'path':'Physics/adapter','reason':'Scientific depiction contract'},
+                      {'path':'Physics/gates','reason':'Canonical scientific relation authority'},
+                  ],
+              },
+              'scope':{
+                  'write':[
+                      'Physics/library/phy-nlm-first-law.v1.json',
+                      'tests/test_g9_nlm_friction_connected.py',
+                      'docs/architecture-manifest.json',
+                      'tools/data.js',
+                      'public/data/data.js',
+                  ],
+                  'read':['Shared/','Physics/','tests/','docs/'],
+                  'protect':['Shared/','Physics/adapter/','Physics/gates/','Learners/'],
+                  'prohibit':['Mathematics/','Chemistry/','public/physics/','standalone/'],
+              },
+              'acceptance':[
+                  {'id':i,'statement':s,'evidence_requirements':[{'test':t}]}
+                  for i,s,t in acceptance
+              ],
+              'quality_policy':{'level':'STANDARD','independent_review':'OPTIONAL'},
+              'admission_policy':{'qualification':'NOT_REQUIRED','question_policy':'NONE'},
+              'next':{
+                  'first_action':'Port only the academic/test NLM gold delta from PR #179, regenerate derived artifacts, and run exact-head tests.',
+                  'stop_conditions':[
+                      'Do not import V2.5 relay or Owner-override records from PR #179.',
+                      'Do not add Motion-in-2D to this delivery slice.',
+                      'Do not alter source hints/provenance or canonical scientific relation authority.',
+                      'A generic runtime/compiler falsifier requires a separately scoped repair rather than redesigning delivered #162/#173.',
+                      'No merge or release without action-specific delivery authorization.',
+                  ],
+              },
+          }
+          admission={
+              'schema_version':'relay-v3-task-admission',
+              'roadmap':{
+                  'disposition':'ADDED_EXECUTION_WP',
+                  'new_revision':'RM-V3-CANONICAL-NLM-001',
+                  'basis':[
+                      'Direct Owner instruction to proceed using pinned Engineering Relay V3.',
+                      'Issue #174 canonical-data completion frontier.',
+                      'PR #179 is the bounded NLM source candidate; Motion-in-2D is explicitly separate.',
+                      'PR #183 is the V3-native delivery vehicle.',
+                  ],
+                  'work_package':{
+                      'id':'WP-CANONICAL-174-NLM',
+                      'title':'Deliver NLM friction canonical gold proof',
+                      'weight':4,
+                      'state':'ACTIVE',
+                      'depends_on':['WP-TA-108'],
+                  },
+              },
+              'ep':ep,
+              'lease':{
+                  'id':'LEASE-CANONICAL-174-NLM-001',
+                  'executor_id':'codex-canonical-v3',
+                  'method':'DETERMINISTIC',
+                  'branch':'content/issue-174-nlm-v3',
+              },
+              'delivery':{
+                  'required':True,
+                  'primary_vehicle':{'provider':'GITHUB','kind':'PULL_REQUEST','number':183},
+              },
+          }
+          Path('/tmp/canonical-nlm-admission.yaml').write_bytes(yaml_bytes(admission))
+          PY
+
+      - name: Admit NLM task transactionally
+        run: |
+          python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_tx.py . admit-task \
+            --tx-id TX-ADMIT-CANONICAL-NLM-001 \
+            --event-id EVT-ADMIT-CANONICAL-NLM-001 \
+            --actor codex-canonical-v3 \
+            --admission /tmp/canonical-nlm-admission.yaml \
+            --base-ref origin/main
+
+      - name: Prove material-write authorization
+        shell: bash
+        run: |
+          for path in \
+            Physics/library/phy-nlm-first-law.v1.json \
+            tests/test_g9_nlm_friction_connected.py \
+            docs/architecture-manifest.json \
+            tools/data.js \
+            public/data/data.js
+          do
+            python _common_v3/skills/engineering-pr-delivery-v3/scripts/relay_can.py MATERIAL_WRITE . \
+              --path "$path" --base-ref origin/main
+          done
+
+      - name: Port only the NLM product delta from PR 179
+        shell: bash
+        run: |
+          git show origin/content/issue-174-nlm-friction-gold:Physics/library/phy-nlm-first-law.v1.json \
+            > Physics/library/phy-nlm-first-law.v1.json
+          git show origin/content/issue-174-nlm-friction-gold:tests/test_g9_nlm_friction_connected.py \
+            > tests/test_g9_nlm_friction_connected.py
+
+      - name: Regenerate canonical derived artifacts
+        run: python Shared/tools/build_manifest.py
+
+      - name: Remove one-shot workflow and commit exact candidate
+        shell: bash
+        run: |
+          rm -rf _common_v3
+          git rm .github/workflows/v3-nlm-delivery.yml
+          git add \
+            relay \
+            Physics/library/phy-nlm-first-law.v1.json \
+            tests/test_g9_nlm_friction_connected.py \
+            docs/architecture-manifest.json \
+            tools/data.js \
+            public/data/data.js
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'Physics: admit and port NLM canonical gold under V3'
+          git rev-parse HEAD | tee /tmp/exact-head
+
+      - name: Re-check pinned V3 on exact candidate
+        run: |
+          git clone --depth 1 --branch master https://github.com/reallaksh19/Common.git /tmp/common-unused 2>/dev/null || true
+          git archive --remote=https://github.com/reallaksh19/Common.git c87cf87b313801e42ecd0fcc7d36af0d90c5f400 skills/engineering-pr-delivery-v3 2>/dev/null | tar -x -C /tmp 2>/dev/null || true
+          actions_dir=/tmp/pinned-common
+          git init -q "$actions_dir"
+          git -C "$actions_dir" remote add origin https://github.com/reallaksh19/Common.git
+          git -C "$actions_dir" fetch -q --depth=1 origin c87cf87b313801e42ecd0fcc7d36af0d90c5f400
+          git -C "$actions_dir" checkout -q FETCH_HEAD
+          python "$actions_dir"/skills/engineering-pr-delivery-v3/scripts/validate_foundation.py .
+          python "$actions_dir"/skills/engineering-pr-delivery-v3/scripts/protocol_cutover.py . validate
+          python "$actions_dir"/skills/engineering-pr-delivery-v3/scripts/relay_can.py MATERIAL_WRITE . \
+            --path Physics/library/phy-nlm-first-law.v1.json --base-ref origin/main
+
+      - name: Focused NLM acceptance
+        run: python -m unittest discover -s tests -p "test_g9_nlm_friction_connected.py" -v
+
+      - name: Compiler and canonical subject guards
+        run: |
+          python Shared/tools/spec_conformance.py --enforce
+          python Shared/tools/matrix_conformance.py --enforce
+          python Shared/library/depiction.py --enforce
+          python Shared/tools/spec_delivery.py --enforce --summary
+          python Shared/tools/check_subjects.py
+          python Shared/tools/capability_audit.py --enforce
+
+      - name: Generated artifacts are exact
+        run: python Shared/tools/build_manifest.py --check
+
+      - name: Full repository Python test suite
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Additional repository guardrail commands
+        run: |
+          python Shared/tools/topic_independence_guard.py --selftest
+          python Shared/tools/topic_independence_guard.py
+          python Shared/tools/explorer_design_guard.py --enforce
+          python Shared/tools/gcdr_suite_guard.py --enforce
+          python Shared/tools/gcdr_runtime_audit.py --enforce
+          python Physics/tools/motion2d_gcdr_properties.py --enforce
+          python Shared/tools/learner_evidence.py --enforce
+          python -m unittest discover -s tests -p "test_blueprint_regression.py" -v
+          python Shared/tools/empirical_acceptance.py --enforce
+          python Shared/tools/resolve_request.py --enforce
+          python Shared/tools/source_pipeline.py audit --enforce
+          python Shared/tools/source_receipts.py --audit --enforce
+          python Shared/tools/plan_request.py --audit --enforce
+          python Shared/tools/apply_owner_decisions.py --audit --enforce
+          python Shared/tools/compile_execution_packet.py --audit --enforce
+          python Shared/tools/execute_authoring_run.py --audit --enforce
+          python Shared/tools/review_authority.py --audit --enforce
+          python Shared/tools/release_authority.py --audit --enforce
+          python Shared/tools/academic_readiness.py
+          python Shared/tools/ceiling_audit.py --enforce
+          python Shared/tools/publication_provenance.py --enforce
+          python Shared/tools/republish.py
+
+      - name: All JSON parses
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, sys
+          from pathlib import Path
+          bad=[]
+          for path in sorted(Path('.').rglob('*.json')):
+              if '.git' in path.parts:
+                  continue
+              try:
+                  json.loads(path.read_text(encoding='utf-8'))
+              except Exception as exc:
+                  bad.append(f"{path}: {exc}")
+          if bad:
+              print("\n".join(bad))
+              sys.exit(1)
+          print("all JSON documents parse")
+          PY
+
+      - name: Push exact tested head
+        shell: bash
+        run: |
+          test "$(git rev-parse HEAD)" = "$(cat /tmp/exact-head)"
+          git push origin HEAD:content/issue-174-nlm-v3
