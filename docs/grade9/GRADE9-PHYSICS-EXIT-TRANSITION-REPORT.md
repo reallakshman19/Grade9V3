@@ -11,6 +11,22 @@ This view is a **derived report** over the existing Grade-9 scope audit and lear
 
 Unknown evidence is neither mastery nor failure.
 
+## Current repository evidence baseline
+
+The current repository does **not** contain a live measured Grade-9 learner evidence set. `Learners/profiles/` contains two design-preview profiles with `UNKNOWN` provenance and no observation references, and there is no `Learners/observations/` directory on this branch.
+
+Therefore the current programme-level learner disposition is **evidence incomplete**, not “Grade 9 failed” and not “Grade 10 ready”. The repository has enough canonical scope and routing machinery to make the transition decision once reviewed learner observations exist, but it must not manufacture that empirical evidence from authored coverage, profile estimates, or question inventory.
+
+The next learner-facing action is bounded evidence acquisition through the existing study-start/session machinery:
+
+1. start from the six required Grade-9 matrices and their genuine prerequisites;
+2. with no prior estimate/evidence, use the existing bounded gateway behaviour (at most one representative uncertain/unobserved `QUICK_CHECK` per matrix in a route);
+3. treat `QUICK_CHECK` as an attempt opportunity, never as evidence by itself;
+4. persist only reviewed observations of what the learner actually did, with direct/no-help attempts carrying the independent-evidence meaning already owned by `learner_evidence.py`;
+5. repair explicit known gaps, independently recheck fragile success, and rerun this derived exit view as evidence changes.
+
+This is deliberately not a one-shot blanket recertification battery. Existing evidence is reused; only unresolved required/prerequisite uncertainty is investigated, and optional/enrichment/later-grade material stays non-blocking unless a separate authority makes it relevant.
+
 ## Transition interpretation
 
 The report distinguishes three decision situations rather than forcing a binary grade verdict:
