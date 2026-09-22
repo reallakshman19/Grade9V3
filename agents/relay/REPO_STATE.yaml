@@ -75,30 +75,31 @@
   },
   "projection": {
     "required": true,
-    "state": "STALE",
+    "state": "IN_SYNC",
     "operation_id": "GHGEN-WP105-ISS169-R3",
     "target": "github:reallaksh19/Grade9V3:issues",
     "adapter": "GITHUB_ISSUES",
     "plan": "agents/relay/projection/generations/GHGEN-WP105-ISS169-R3.yaml",
     "roadmap_revision": "RM-0010",
     "execution_ref": "NONE",
-    "receipt": null,
+    "receipt": "github-generation:GHGEN-WP105-ISS169-R3:issue-169",
     "basis": [
-      "Terminal roadmap/checkpoint reconciliation",
-      "Issue #169 provider readback remains OPEN",
-      "Final terminal Issue #169 projection is prepared but not yet published"
+      "Issue #169 provider readback after terminal projection publication",
+      "relay-operation:GHOP-WP105-ISSUE169-TERMINAL marker verified",
+      "GHGEN-WP105-ISS169-R3 operation VERIFIED",
+      "provider issue state remains OPEN pending PR #170 delivery"
     ],
     "superseded_operations": [],
     "observed": {
-      "operation_id": "GHGEN-WP105-ISS169-R2",
+      "operation_id": "GHGEN-WP105-ISS169-R3",
       "target": "github:reallaksh19/Grade9V3:issues",
       "roadmap_revision": "RM-0010",
-      "execution_ref": "EP-TA-009",
-      "receipt": "github-generation:GHGEN-WP105-ISS169-R2:issue-169",
+      "execution_ref": "NONE",
+      "receipt": "github-generation:GHGEN-WP105-ISS169-R3:issue-169",
       "basis": [
-        "Issue #169 provider readback after CP-TA-009 / RM-0010 checkpoint projection",
-        "relay-operation:GHOP-WP105-ISSUE169-CHECKPOINT",
-        "PR #170 provider state remained draft/open at the observed checkpoint generation"
+        "Issue #169 provider readback at 2026-09-22T00:13:25Z",
+        "terminal relay-operation marker present",
+        "checkpoint CP-TA-009 present"
       ]
     }
   },
@@ -118,12 +119,12 @@
   },
   "relay_readiness": {
     "baton_ready": true,
-    "projection_ready": false,
-    "handover_ready": false,
+    "projection_ready": true,
+    "handover_ready": true,
     "reasons": [
       "The final Grade-9 Physics checkpoint closes the roadmap with no material successor.",
-      "The final Issue #169 terminal status is prepared but not yet published.",
-      "PR #170 remains draft and open for provider delivery; merge requires separate Owner authorization."
+      "Issue #169 terminal projection is verified and in sync at GHGEN-WP105-ISS169-R3.",
+      "PR #170 remains the pending provider delivery vehicle; merge/closure remains a separate delivery action."
     ]
   },
   "chat_context_required": false
