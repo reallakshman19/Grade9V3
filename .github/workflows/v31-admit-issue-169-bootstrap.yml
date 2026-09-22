@@ -1,0 +1,13 @@
+name: v31-admit-issue-169-bootstrap
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Bootstrap placeholder; replaced after the fresh V3.1 PR is assigned."
