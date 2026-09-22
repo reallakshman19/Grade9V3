@@ -43,18 +43,13 @@ jobs:
           python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
           python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_cutover.py . validate
 
-      - name: Record standing Owner merge authority transactionally
+      - name: Record standing Owner merge authority
         run: |
           python - <<'PY'
-          import sys
           from pathlib import Path
           import yaml
 
-          root = Path(".").resolve()
-          sys.path.insert(0, str(root / "_common_v31/skills/engineering-pr-delivery-v3.1/scripts"))
-          from snapshot_projection import build
-          from transactionlib import execute, yaml_bytes
-
+          root = Path(".")
           state = yaml.safe_load((root / "relay/STATE.yaml").read_text(encoding="utf-8"))
           controls_path = root / state["controls"]["path"]
           controls = yaml.safe_load(controls_path.read_text(encoding="utf-8"))
@@ -76,18 +71,9 @@ jobs:
                       "evidence": [],
                   },
               })
-          snapshot = build(root, "origin/main", controls_override=controls)
-          execute(
-              root,
-              tx_id="TX-V31-OWNER-MERGE-ISS169-001",
-              command="RECORD_OWNER_CONTROL",
-              actor="chatgpt-sol-g9exit-v31-20260922",
-              replacements={
-                  state["controls"]["path"]: yaml_bytes(controls),
-                  state["generated"]["snapshot"]: yaml_bytes(snapshot),
-              },
-          )
+          controls_path.write_text(yaml.safe_dump(controls, sort_keys=False), encoding="utf-8")
           PY
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/generate_snapshot.py . --base-ref origin/main --apply
           python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
 
       - name: Re-run focused Issue 169 acceptance
