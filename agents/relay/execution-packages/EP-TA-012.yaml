@@ -28,6 +28,7 @@
     "task_admission": {
       "disposition": "ADDED_EXECUTION_WP",
       "searched_paths": [
+        "agents/relay/roadmap/OVERALL_ROADMAP.yaml",
         "CP-TA-011",
         "Issue #175",
         "public/core-learning/index.html",
