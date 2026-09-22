@@ -2,151 +2,189 @@
   "schema_version": "relay-v2.5-discovery",
   "id": "DISC-TA-012",
   "candidate": {
-    "agent_instance_id": "chatgpt-sol-webbuilder-revised-20260922"
+    "agent_instance_id": "chatgpt-sol-topic-atlas-20260920"
   },
   "route": {
-    "route_key": "SERIAL:EP-TA-011",
+    "route_key": "SERIAL:EP-TA-006",
     "mode": "SERIAL",
-    "execution_ref": "EP-TA-011",
-    "ep_id": "EP-TA-011",
-    "ep_path": "agents/relay/execution-packages/EP-TA-011.yaml",
+    "execution_ref": "EP-TA-006",
+    "ep_id": "EP-TA-006",
+    "ep_path": "agents/relay/execution-packages/EP-TA-006.yaml",
     "plan_id": null,
     "plan_path": null,
     "lane_id": null
   },
   "basis": {
     "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
-    "roadmap_revision": "RM-0012",
-    "relay_protocol_basis_ref": "reallaksh19/Common@6cc47ea211d4e7b1fbff968cbeae9433a104db00:skills/engineering-pr-delivery-v2.5",
-    "material_ref": "91626fcb64373895cc9841fe44529b2b3520dc64",
-    "ep_contract_digest": "sha256:54c0d4a5b4fc4b4ce16ef2fd9730257ca11a76b9852e531ae00f99560c275f3c",
+    "roadmap_revision": "RM-0006",
+    "relay_protocol_basis_ref": "reallaksh19/Common@d9b84069683977b5c370f536f1c50095de926338:skills/engineering-pr-delivery-v2.5",
+    "material_ref": "7bb84873caeb01b9941450398a708224748cfc9e",
+    "ep_contract_digest": "sha256:9a1a913341a1a1e4c363228360830e8c75c411f6e0672ec70fa3e6ca17ed45a5",
     "repo_profile_digest": "sha256:954cdd371183121091d3690de67c9b699135f89cad93a0edad53a27b058e64b2",
     "predecessor_baton": {
       "type": "CHECKPOINT",
-      "id": "CP-TA-010",
-      "path": "agents/relay/checkpoints/CP-TA-010.yaml",
-      "digest": "sha256:6b023b15e174c04c4d2804095489f9239207d77b8e028df9d11909a4cf1c1f6a"
+      "id": "CP-TA-005",
+      "path": "agents/relay/checkpoints/CP-TA-005.yaml",
+      "digest": "sha256:a6d787052c00234f0b62d7664c2a2a83e6d314d0ff64510a5c78a0c07f73e6fe"
     }
   },
   "steps": [
     {
-      "id": "DSTEP-TA11-001",
+      "id": "DSTEP-TA6-001",
       "status": "PASS",
       "outputs": [
         {
-          "name": "merged predecessor ancestry",
-          "value": "Current builder head e0e162217d2138a6f8c23a54918cc683105eaef8 is a two-parent zero-diff merge containing predecessor cb7a0cfeec0e14494e2c462791f0ce3cf7fb334b as an ancestor.",
+          "name": "7 direct Core2A gaps",
+          "value": "Gravitation: inverse-square, free-fall/local-g, mass-vs-weight; WEP: mechanical-energy condition; Sound: reflection; Simple Machines: tradeoff and compare.",
           "basis": [
-            "GitHub commit e0e162217d2138a6f8c23a54918cc683105eaef8 parents a0ed9cb9fc3b197eacf2ec2bfe0d46b6717a09b3 and cb7a0cfeec0e14494e2c462791f0ce3cf7fb334b; stats total/additions/deletions are all 0."
+            "learner-loop audit",
+            "CP-TA-005"
           ]
         },
         {
-          "name": "resolved overlap list",
-          "value": "Predecessor pointercancel/click-suppression behavior and browser falsifiers coexist with the accepted #175 learner-shell/runtime tests; no merge-file delta remains at e0e1622.",
+          "name": "18 core-transfer Core2B gaps",
+          "value": "Gravitation 4, WEP 6, Sound 5, Simple Machines 3; Gravitation R4/R5 extensions excluded.",
           "basis": [
-            "Guardrails runs 35676197161 and 35676199762 PASS on e0e162217d2138a6f8c23a54918cc683105eaef8.",
-            "PR #178 current body records merged predecessor reconciliation and exact-head browser/runtime validation."
+            "learner-loop audit",
+            "affected matrix transfer rows"
           ]
         },
         {
-          "name": "current branch/head/base",
-          "value": "builder/core-learning-pages-r1 @ e0e162217d2138a6f8c23a54918cc683105eaef8; PR base takeover/grade9-exit-transition-r2 @ cb7a0cfeec0e14494e2c462791f0ce3cf7fb334b.",
+          "name": "four affected libraries",
+          "value": "Gravitation, WEP, Sound and Simple Machines canonical libraries only.",
           "basis": [
-            "GitHub PR #178 provider readback on 2026-09-22."
+            "QF-TA5-001"
+          ]
+        },
+        {
+          "name": "excluded extension rows",
+          "value": "Gravitation R4/R5 orbital transfer rows, all non-core matrices, Motion and NLM.",
+          "basis": [
+            "scope audit",
+            "G9-3 authoring audit"
           ]
         }
       ],
       "basis": [
-        "GitHub commit/PR ancestry readback plus exact-head green guardrails."
+        "CP-TA-005",
+        "learner-loop audit"
       ]
     },
     {
-      "id": "DSTEP-TA11-002",
+      "id": "DSTEP-TA6-002",
       "status": "PASS",
       "outputs": [
         {
-          "name": "checkpoint boundary",
-          "value": "CP-TA-010 accepts only the fixture-backed projection-driven learner shell; production #173/#174 projection integration, generated public/standalone parity, and bespoke explorer migration remain outside that checkpoint.",
+          "name": "Core2A fields",
+          "value": "Existing canonical source/origin, primary capability, family/exposure, answer reasoning/check and hints as needed.",
           "basis": [
-            "agents/relay/checkpoints/CP-TA-010.yaml known_limitations and remaining_work."
+            "CORE2A role",
+            "canonical exemplars"
           ]
         },
         {
-          "name": "post-checkpoint delta",
-          "value": "Post-checkpoint work reconciles predecessor interaction behavior, revised relay controls, provider projection/delivery metadata, generated manifest freshness, and base ancestry; it does not add raw-subject compilation or mastery logic.",
+          "name": "Core2B transfer fields",
+          "value": "transfer dimension/statement/builds_on, safe hints, answer/rubric, repair_ref and exposure lineage.",
           "basis": [
-            "EP-TA-011 deliberate_non_goals and scope.",
-            "PR #178 current purpose/control-boundary description.",
-            "Guardrails exact-head PASS."
+            "CORE2B role",
+            "Motion/NLM exemplars"
           ]
         },
         {
-          "name": "ownership disposition",
-          "value": "Builder remains precompiled-CoreProjection-only; semantic-workbench adapter owns transformation validity; curriculum/scientific truth and mastery remain external/provider-owned.",
+          "name": "AUTHORED provenance pattern",
+          "value": "Use the existing package-local author source/origin ref, AUTHORED origin, CANDIDATE status and new local identifier.",
           "basis": [
-            "EP-TA-011 protected scope and context capsule.",
-            "Shared/workbench/Core learner boundary accepted by CP-TA-010."
+            "affected library exemplars"
+          ]
+        },
+        {
+          "name": "repair-ref pattern",
+          "value": "Resolve the transfer row repair_to rung to an existing teaching-step repair_ref.",
+          "basis": [
+            "affected matrices/libraries"
           ]
         }
       ],
       "basis": [
-        "CP-TA-010 + EP-TA-011 + current PR/provider readback."
+        "current role contracts",
+        "canonical exemplars"
       ]
     },
     {
-      "id": "DSTEP-TA11-003",
+      "id": "DSTEP-TA6-003",
       "status": "PASS",
       "outputs": [
         {
-          "name": "pinned Common SHA",
-          "value": "6cc47ea211d4e7b1fbff968cbeae9433a104db00",
+          "name": "capability map",
+          "value": "All authorized gaps bind to existing required/prerequisite capabilities already present in the four libraries.",
           "basis": [
-            "agents/relay/REPO_STATE.yaml relay_protocol.basis_ref.",
-            "V2.5 exact-head runs 35676197156 and 35676199756 PASS."
+            "learner-loop audit"
           ]
         },
         {
-          "name": "override record",
-          "value": "ODR-0012-OWNER-REVISED-V25-OVERRIDE supplies a structured execution_override for bounded work while candidate admission is deferred.",
+          "name": "family/source map",
+          "value": "Each affected library already has local author source and question-family conventions; no new provenance system is needed.",
           "basis": [
-            "agents/relay/roadmap/owner-decisions/ODR-0012-OWNER-REVISED-V25-OVERRIDE.yaml.",
-            "V2.5 material write gate previously reported PASS_WITH_OWNER_OVERRIDE."
+            "affected libraries"
           ]
         },
         {
-          "name": "pending release boundaries",
-          "value": "PEND-TA11-001 blocks PR_READY, MERGE, CHECKPOINT and RELEASE until normal admission and exact-head proof are complete.",
+          "name": "repair-ref map",
+          "value": "Must be resolved from current microtopic teaching paths before each Core2B write; no synthetic repair ids allowed.",
           "basis": [
-            "agents/relay/REPO_STATE.yaml control_obligations.PEND-TA11-001."
+            "affected libraries"
+          ]
+        },
+        {
+          "name": "no extension leakage",
+          "value": "Gravitation R4/R5 are excluded from authorized transfer backlog.",
+          "basis": [
+            "G9-3 audit",
+            "learner-loop audit"
           ]
         }
       ],
       "basis": [
-        "Current REPO_STATE, structured Owner decision, exact-head V2.5 validation."
+        "affected matrix/library readback"
       ]
     },
     {
-      "id": "DSTEP-TA11-004",
+      "id": "DSTEP-TA6-004",
       "status": "PASS",
       "outputs": [
         {
-          "name": "provider state",
-          "value": "Issue #173 OPEN; Issue #174 OPEN; PR #176 OPEN/DRAFT/unmerged at 49f5285d8b02a28187aaf2ba3462bbadee98e242; PR #177 OPEN/DRAFT/unmerged at a283454fece94bace1175a0ef2247d3216db62cf.",
+          "name": "checked-out branch",
+          "value": "takeover/topic-atlas-browser-correctness",
           "basis": [
-            "GitHub provider readback on 2026-09-22T02:52Z session continuation."
+            "PR #148"
           ]
         },
         {
-          "name": "production adapter go/no-go",
-          "value": "NO-GO for production provider integration in EP-TA-011; continue fixture-backed reconciliation only until #173/#174 provider output is landed and executable.",
+          "name": "current HEAD",
+          "value": "Successor basis 7bb84873caeb01b9941450398a708224748cfc9e; coordination commit descends from it.",
           "basis": [
-            "EP-TA-011 deliberate_non_goals.",
-            "Issue/PR provider states above."
+            "Git history"
+          ]
+        },
+        {
+          "name": "material-ref ancestry",
+          "value": "7bb84873caeb01b9941450398a708224748cfc9e is the EP-TA-006 base/material ref and descends from validated EP-TA-005 material 9e18e26a8633cac664f75653ac9f874bc36f14a3.",
+          "basis": [
+            "Git history",
+            "CP-TA-005"
+          ]
+        },
+        {
+          "name": "base drift result",
+          "value": "PR base main is d67a9ccb49c2cf7fbfd72d736dafe3b86f4c6f59 at takeover and is recorded in EP-TA-006.",
+          "basis": [
+            "PR readback",
+            "EP-TA-006 git basis"
           ]
         }
       ],
       "basis": [
-        "Live GitHub readback for #173, #174, #176 and #177."
+        "GitHub provider readback"
       ]
     }
   ],

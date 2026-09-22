@@ -48,12 +48,12 @@
         "agent_instance_id": "chatgpt-sol-webbuilder-revised-20260922"
       },
       "discovery_receipt": {
-        "id": "DISC-TA-012",
-        "path": "agents/relay/certifications/discovery/DISC-TA-012.yaml"
+        "id": "DISC-TA-020",
+        "path": "agents/relay/certifications/discovery/DISC-TA-020.yaml"
       },
       "certification": {
-        "id": "TC-TA-012",
-        "path": "agents/relay/certifications/takeover/TC-TA-012.yaml"
+        "id": "TC-TA-020",
+        "path": "agents/relay/certifications/takeover/TC-TA-020.yaml"
       }
     }
   ],
@@ -79,16 +79,16 @@
     },
     "evidence": {
       "state": "PARTIAL",
-      "summary": "Normal EP-TA-011 DISC/QUAL/TC admission is now present for the workflow candidate; exact-head guardrails and revised V2.5 must rerun before the deferred release control can close.",
+      "summary": "Normal EP-TA-011 DISC/QUAL/TC admission is present using fresh current-route receipt IDs DISC-TA-020 / QUAL-TA-012 / TC-TA-020; historical DISC-TA-012 and TC-TA-012 are restored unchanged. Exact-head CI must prove ordinary material_write_ready PASS before PEND-TA11-001 closes.",
       "not_run": [
         {
-          "id": "EP-TA-011 exact-head post-admission guardrails",
-          "reason": "Admission/control commit requires fresh exact-head CI.",
+          "id": "EP-TA-011 exact-head fresh-admission guardrails",
+          "reason": "Fresh current-route receipt IDs require exact-head CI readback.",
           "cause": "NOT_SCHEDULED"
         },
         {
           "id": "EP-TA-011 exact-head normal material_write_ready",
-          "reason": "Must be observed after DISC/QUAL/TC admission lands.",
+          "reason": "Must be observed after historical receipt restoration and fresh admission pointers land.",
           "cause": "NOT_SCHEDULED"
         }
       ]

@@ -1,0 +1,155 @@
+{
+  "schema_version": "relay-v2.5-discovery",
+  "id": "DISC-TA-020",
+  "candidate": {
+    "agent_instance_id": "chatgpt-sol-webbuilder-revised-20260922"
+  },
+  "route": {
+    "route_key": "SERIAL:EP-TA-011",
+    "mode": "SERIAL",
+    "execution_ref": "EP-TA-011",
+    "ep_id": "EP-TA-011",
+    "ep_path": "agents/relay/execution-packages/EP-TA-011.yaml",
+    "plan_id": null,
+    "plan_path": null,
+    "lane_id": null
+  },
+  "basis": {
+    "roadmap_id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
+    "roadmap_revision": "RM-0012",
+    "relay_protocol_basis_ref": "reallaksh19/Common@6cc47ea211d4e7b1fbff968cbeae9433a104db00:skills/engineering-pr-delivery-v2.5",
+    "material_ref": "91626fcb64373895cc9841fe44529b2b3520dc64",
+    "ep_contract_digest": "sha256:54c0d4a5b4fc4b4ce16ef2fd9730257ca11a76b9852e531ae00f99560c275f3c",
+    "repo_profile_digest": "sha256:954cdd371183121091d3690de67c9b699135f89cad93a0edad53a27b058e64b2",
+    "predecessor_baton": {
+      "type": "CHECKPOINT",
+      "id": "CP-TA-010",
+      "path": "agents/relay/checkpoints/CP-TA-010.yaml",
+      "digest": "sha256:6b023b15e174c04c4d2804095489f9239207d77b8e028df9d11909a4cf1c1f6a"
+    }
+  },
+  "steps": [
+    {
+      "id": "DSTEP-TA11-001",
+      "status": "PASS",
+      "outputs": [
+        {
+          "name": "merged predecessor ancestry",
+          "value": "Current builder head e0e162217d2138a6f8c23a54918cc683105eaef8 is a two-parent zero-diff merge containing predecessor cb7a0cfeec0e14494e2c462791f0ce3cf7fb334b as an ancestor.",
+          "basis": [
+            "GitHub commit e0e162217d2138a6f8c23a54918cc683105eaef8 parents a0ed9cb9fc3b197eacf2ec2bfe0d46b6717a09b3 and cb7a0cfeec0e14494e2c462791f0ce3cf7fb334b; stats total/additions/deletions are all 0."
+          ]
+        },
+        {
+          "name": "resolved overlap list",
+          "value": "Predecessor pointercancel/click-suppression behavior and browser falsifiers coexist with the accepted #175 learner-shell/runtime tests; no merge-file delta remains at e0e1622.",
+          "basis": [
+            "Guardrails runs 35676197161 and 35676199762 PASS on e0e162217d2138a6f8c23a54918cc683105eaef8.",
+            "PR #178 current body records merged predecessor reconciliation and exact-head browser/runtime validation."
+          ]
+        },
+        {
+          "name": "current branch/head/base",
+          "value": "builder/core-learning-pages-r1 @ e0e162217d2138a6f8c23a54918cc683105eaef8; PR base takeover/grade9-exit-transition-r2 @ cb7a0cfeec0e14494e2c462791f0ce3cf7fb334b.",
+          "basis": [
+            "GitHub PR #178 provider readback on 2026-09-22."
+          ]
+        }
+      ],
+      "basis": [
+        "GitHub commit/PR ancestry readback plus exact-head green guardrails."
+      ]
+    },
+    {
+      "id": "DSTEP-TA11-002",
+      "status": "PASS",
+      "outputs": [
+        {
+          "name": "checkpoint boundary",
+          "value": "CP-TA-010 accepts only the fixture-backed projection-driven learner shell; production #173/#174 projection integration, generated public/standalone parity, and bespoke explorer migration remain outside that checkpoint.",
+          "basis": [
+            "agents/relay/checkpoints/CP-TA-010.yaml known_limitations and remaining_work."
+          ]
+        },
+        {
+          "name": "post-checkpoint delta",
+          "value": "Post-checkpoint work reconciles predecessor interaction behavior, revised relay controls, provider projection/delivery metadata, generated manifest freshness, and base ancestry; it does not add raw-subject compilation or mastery logic.",
+          "basis": [
+            "EP-TA-011 deliberate_non_goals and scope.",
+            "PR #178 current purpose/control-boundary description.",
+            "Guardrails exact-head PASS."
+          ]
+        },
+        {
+          "name": "ownership disposition",
+          "value": "Builder remains precompiled-CoreProjection-only; semantic-workbench adapter owns transformation validity; curriculum/scientific truth and mastery remain external/provider-owned.",
+          "basis": [
+            "EP-TA-011 protected scope and context capsule.",
+            "Shared/workbench/Core learner boundary accepted by CP-TA-010."
+          ]
+        }
+      ],
+      "basis": [
+        "CP-TA-010 + EP-TA-011 + current PR/provider readback."
+      ]
+    },
+    {
+      "id": "DSTEP-TA11-003",
+      "status": "PASS",
+      "outputs": [
+        {
+          "name": "pinned Common SHA",
+          "value": "6cc47ea211d4e7b1fbff968cbeae9433a104db00",
+          "basis": [
+            "agents/relay/REPO_STATE.yaml relay_protocol.basis_ref.",
+            "V2.5 exact-head runs 35676197156 and 35676199756 PASS."
+          ]
+        },
+        {
+          "name": "override record",
+          "value": "ODR-0012-OWNER-REVISED-V25-OVERRIDE supplies a structured execution_override for bounded work while candidate admission is deferred.",
+          "basis": [
+            "agents/relay/roadmap/owner-decisions/ODR-0012-OWNER-REVISED-V25-OVERRIDE.yaml.",
+            "V2.5 material write gate previously reported PASS_WITH_OWNER_OVERRIDE."
+          ]
+        },
+        {
+          "name": "pending release boundaries",
+          "value": "PEND-TA11-001 blocks PR_READY, MERGE, CHECKPOINT and RELEASE until normal admission and exact-head proof are complete.",
+          "basis": [
+            "agents/relay/REPO_STATE.yaml control_obligations.PEND-TA11-001."
+          ]
+        }
+      ],
+      "basis": [
+        "Current REPO_STATE, structured Owner decision, exact-head V2.5 validation."
+      ]
+    },
+    {
+      "id": "DSTEP-TA11-004",
+      "status": "PASS",
+      "outputs": [
+        {
+          "name": "provider state",
+          "value": "Issue #173 OPEN; Issue #174 OPEN; PR #176 OPEN/DRAFT/unmerged at 49f5285d8b02a28187aaf2ba3462bbadee98e242; PR #177 OPEN/DRAFT/unmerged at a283454fece94bace1175a0ef2247d3216db62cf.",
+          "basis": [
+            "GitHub provider readback on 2026-09-22T02:52Z session continuation."
+          ]
+        },
+        {
+          "name": "production adapter go/no-go",
+          "value": "NO-GO for production provider integration in EP-TA-011; continue fixture-backed reconciliation only until #173/#174 provider output is landed and executable.",
+          "basis": [
+            "EP-TA-011 deliberate_non_goals.",
+            "Issue/PR provider states above."
+          ]
+        }
+      ],
+      "basis": [
+        "Live GitHub readback for #173, #174, #176 and #177."
+      ]
+    }
+  ],
+  "result": "PASS",
+  "conversation_context_used": false
+}
