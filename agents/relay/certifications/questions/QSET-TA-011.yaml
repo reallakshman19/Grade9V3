@@ -12,7 +12,7 @@
     "lane_id": null,
     "roadmap_revision": "RM-0011",
     "work_package": "WP-TA-108",
-    "ep_contract_digest": "sha256:403613aea6ec58c4aa7ac1ab978e341b92f4bebab358c35d51bd1af96cdcd408"
+    "ep_contract_digest": "sha256:4a4533b7189d5c178ab874fba9a3a2d21a36433e9927dcdd923b34e2f1d77ef7"
   },
   "boundary": {
     "trigger": "MATERIAL_QUALIFICATION_BOUNDARY_CHANGED",
@@ -22,8 +22,7 @@
       "PRODUCTION_PATH",
       "INPUT_AUTHORITY",
       "PROTECTED_INVARIANT",
-      "VERIFICATION_ORACLE",
-      "PROTOCOL_BASIS"
+      "VERIFICATION_ORACLE"
     ],
     "basis": [
       "WP-TA-108 changes production work from Grade-9 exit reporting to reusable browser/runtime composition.",
