@@ -1,0 +1,67 @@
+{
+  "schema_version": "relay-v3-transaction",
+  "id": "TX-ISS175-ADAPTER-ADMIT-001",
+  "command": "ACTIVATE_LEASE",
+  "actor": "chatgpt-sol-v3-iss175-20260922",
+  "status": "COMMITTED",
+  "created_at": "2026-09-22T09:34:00Z",
+  "updated_at": "2026-09-22T09:34:00Z",
+  "operations": [
+    {
+      "path": "relay/EVENTS.jsonl",
+      "before_exists": true,
+      "before_digest": "sha256:0e89d188e6b8d6a79b37433aad32271164afb6338155a6eca853eaddfec4116a",
+      "after_digest": "sha256:162cec8188f0af9649fa5fd647a8deaa81b4cc9e80bb23a2ed28cb8d439252d3",
+      "staged_path": "relay/TRANSACTIONS/TX-ISS175-ADAPTER-ADMIT-001/staged/000.after",
+      "backup_path": "relay/TRANSACTIONS/TX-ISS175-ADAPTER-ADMIT-001/backups/000.before"
+    },
+    {
+      "path": "relay/GENERATED/CURRENT_SNAPSHOT.yaml",
+      "before_exists": true,
+      "before_digest": "sha256:69a7fa46fca30dc345dc259c0f415b2c07e1b7da98faaaa48ed5ff7f84572d6a",
+      "after_digest": "sha256:6ef6fe6cb24d1a42856108722e21a440a56506eb28d3fac7bd913cd4dc6d47c0",
+      "staged_path": "relay/TRANSACTIONS/TX-ISS175-ADAPTER-ADMIT-001/staged/001.after",
+      "backup_path": "relay/TRANSACTIONS/TX-ISS175-ADAPTER-ADMIT-001/backups/001.before"
+    },
+    {
+      "path": "relay/LEASES/LEASE-ISS175-ADAPTER-001.yaml",
+      "before_exists": false,
+      "before_digest": null,
+      "after_digest": "sha256:79e498eb46cc3397e3148aa3422471a4de83c05a6ac9f2a219dc42e3671daa51",
+      "staged_path": "relay/TRANSACTIONS/TX-ISS175-ADAPTER-ADMIT-001/staged/002.after",
+      "backup_path": null
+    },
+    {
+      "path": "relay/ROADMAP/ROADMAP.yaml",
+      "before_exists": true,
+      "before_digest": "sha256:636195d981961fd349ee577364b75ccbdb9437cf261a617bc795f6c3dc20f86c",
+      "after_digest": "sha256:e31991e03a2e63325320b5c0f03675b726d2eed0cb7005c65fc270c6f028aaf3",
+      "staged_path": "relay/TRANSACTIONS/TX-ISS175-ADAPTER-ADMIT-001/staged/003.after",
+      "backup_path": "relay/TRANSACTIONS/TX-ISS175-ADAPTER-ADMIT-001/backups/003.before"
+    },
+    {
+      "path": "relay/STATE.yaml",
+      "before_exists": true,
+      "before_digest": "sha256:6f9e898a20b940b7f672989a7d2e1b9058e17c29cbca09edb5b62b15a77354f4",
+      "after_digest": "sha256:12362a00bb751f456980a74f3049ce209b1c73f8dd97d2df9e2ef2bf3af6b27d",
+      "staged_path": "relay/TRANSACTIONS/TX-ISS175-ADAPTER-ADMIT-001/staged/004.after",
+      "backup_path": "relay/TRANSACTIONS/TX-ISS175-ADAPTER-ADMIT-001/backups/004.before"
+    },
+    {
+      "path": "relay/WORK/EP-ISS175-ADAPTER-001.yaml",
+      "before_exists": false,
+      "before_digest": null,
+      "after_digest": "sha256:6fc1f3d9c897eccf8f76fb581e6c867f9c79365bed65167965f6000574109d27",
+      "staged_path": "relay/TRANSACTIONS/TX-ISS175-ADAPTER-ADMIT-001/staged/005.after",
+      "backup_path": null
+    }
+  ],
+  "applied": [
+    "relay/EVENTS.jsonl",
+    "relay/GENERATED/CURRENT_SNAPSHOT.yaml",
+    "relay/LEASES/LEASE-ISS175-ADAPTER-001.yaml",
+    "relay/ROADMAP/ROADMAP.yaml",
+    "relay/STATE.yaml",
+    "relay/WORK/EP-ISS175-ADAPTER-001.yaml"
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "schema_version": "relay-v3-ep",
+  "id": "EP-ISS175-ADAPTER-001",
+  "work_package": "WP-TA-110",
+  "outcome": {
+    "statement": "Land a thin subject-neutral adapter from the delivered Issue 173 compiled Core plan into the existing learner projection envelope, with compiler-produced tests, while leaving Issue 174 canonical content and the proven learner runtime untouched."
+  },
+  "basis": {
+    "predecessor_checkpoint": null,
+    "material_base": "cff9ca2e9b0aa07becc92f5e321596319c7c0cac",
+    "protocol_basis": "reallaksh19/Common@9c7b7cab8337e231c36d62453e1ed907da1c37d8:skills/engineering-pr-delivery-v3",
+    "semantic_dependencies": [
+      {
+        "path": "Shared/library/compile_inputs.py",
+        "reason": "Delivered Issue 173 compiler is the governed source of Core product blocks."
+      },
+      {
+        "path": "Shared/library/package.schema.json",
+        "reason": "Delivered Issue 173 structured reasoning/scaffold/transfer fields define adapter input semantics."
+      },
+      {
+        "path": "Shared/library/intake.py",
+        "reason": "Upstream semantic reference validation must remain the academic gate."
+      },
+      {
+        "path": "Shared/library/visual_support.py",
+        "reason": "Upstream visual-stage ownership remains authoritative."
+      },
+      {
+        "path": "tests/test_core_projection_pipeline.py",
+        "reason": "Delivered Issue 173 structured projection falsifiers are the independent upstream oracle."
+      },
+      {
+        "path": "tests/fixtures/workbench/core-learning-projections.json",
+        "reason": "Existing learner envelope is the downstream runtime contract to preserve."
+      }
+    ]
+  },
+  "scope": {
+    "write": [
+      "Shared/tools/core_learning_projection_adapter.py",
+      "Shared/tools/build_core_learning_data.py",
+      "public/core-learning/data.js",
+      "tests/test_core_learning_adapter.py",
+      "tests/test_workbench_runtime.py",
+      "docs/architecture-manifest.json"
+    ],
+    "read": [
+      "Shared/library/compile_inputs.py",
+      "Shared/library/package.schema.json",
+      "Shared/library/intake.py",
+      "Shared/library/visual_support.py",
+      "tests/test_core_projection_contract.py",
+      "tests/test_core_projection_pipeline.py",
+      "tests/fixtures/workbench/core-learning-projections.json",
+      "Shared/workbench/core-learning-page.mjs",
+      "Shared/workbench/core-learning-host.mjs"
+    ],
+    "protect": [
+      "Physics/**",
+      "Shared/library/**",
+      "Shared/publication_host/**",
+      "Shared/roles/**",
+      "Shared/workbench/core-learning-page.mjs",
+      "Shared/workbench/core-learning-host.mjs",
+      "Shared/workbench/runtime.mjs",
+      "Shared/workbench/semantic-workbench.mjs"
+    ],
+    "prohibit": [
+      "Do not author or normalize canonical subject content owned by Issue 174.",
+      "Do not add page-local academic truth, mastery state, or subject-specific routing.",
+      "Do not change the proven learner/workbench runtime unless a new V3 scope expansion is admitted.",
+      "Do not mark PR 178 ready, merge, release, or close Issue 175 in this slice."
+    ]
+  },
+  "acceptance": [
+    {
+      "id": "AC-TA110-001",
+      "statement": "A subject-neutral adapter converts delivered compiler plan objects for CORE1A, CORE1B, CORE2A and CORE2B into the existing Core Projection Contract v1.0 envelope without reading raw subject truth inside the learner runtime.",
+      "evidence_requirements": [
+        {
+          "test": "tests/test_core_learning_adapter.py"
+        }
+      ]
+    },
+    {
+      "id": "AC-TA110-002",
+      "statement": "Core1A/Core1B share concept identity while Core1B remains attempt-before-reveal; presentation policy is derived from compiled Core structure rather than subject identifiers.",
+      "evidence_requirements": [
+        {
+          "test": "tests/test_core_learning_adapter.py"
+        }
+      ]
+    },
+    {
+      "id": "AC-TA110-003",
+      "statement": "Core2A/Core2B preserve source hints separately from scaffolds, reasoning_route, crux_move_ref and transfer protected_move_ref for staged support and protected decisions.",
+      "evidence_requirements": [
+        {
+          "test": "tests/test_core_learning_adapter.py"
+        },
+        {
+          "test": "tests/core_learning_page.test.mjs"
+        }
+      ]
+    },
+    {
+      "id": "AC-TA110-004",
+      "statement": "The shipped static host remains explicitly fixture-backed until canonical Issue 174 gold data is merged; existing host/runtime/browser behavior and generated-file freshness remain green.",
+      "evidence_requirements": [
+        {
+          "test": "tests/test_workbench_runtime.py"
+        },
+        {
+          "oracle": "docs/architecture-manifest.json"
+        }
+      ]
+    }
+  ],
+  "quality_policy": {
+    "level": "STANDARD",
+    "independent_review": "OPTIONAL"
+  },
+  "admission_policy": {
+    "qualification": "NOT_REQUIRED",
+    "question_policy": "NONE"
+  },
+  "next": {
+    "first_action": "Reconcile branch ancestry with current main@da91e9e42c641e9d2bdd970d1e87a6b8227c84a9; do not perform product MATERIAL_WRITE until the V3 drift gate reports a non-UNKNOWN compatible base.",
+    "stop_conditions": [
+      "Current main@da91e9e42c641e9d2bdd970d1e87a6b8227c84a9 is not an ancestor/current base for this branch.",
+      "The delivered Issue 173 compiler/schema contract moves or becomes incompatible.",
+      "Switching the shipped public learner data from fixtures would require unmerged Issue 174 canonical data.",
+      "Implementation requires any protected academic or learner-runtime path."
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "schema_version": "relay-v3-lease",
+  "id": "LEASE-ISS175-ADAPTER-001",
+  "route": "SERIAL:EP-ISS175-ADAPTER-001",
+  "executor": {
+    "id": "chatgpt-sol-v3-iss175-20260922"
+  },
+  "basis": {
+    "ep_id": "EP-ISS175-ADAPTER-001",
+    "ep_digest": "sha256:1e902a8c18299fcaeeab798dae42c721273b74a124182f601ee76e5dfa888533",
+    "material_base": "cff9ca2e9b0aa07becc92f5e321596319c7c0cac",
+    "predecessor_checkpoint": null,
+    "protocol_basis": "reallaksh19/Common@9c7b7cab8337e231c36d62453e1ed907da1c37d8:skills/engineering-pr-delivery-v3"
+  },
+  "authority": {
+    "actions": [
+      "READ",
+      "ANALYZE",
+      "MATERIAL_WRITE",
+      "TEST",
+      "CHECKPOINT",
+      "HANDOVER",
+      "LOCAL_EXECUTION_EXPORT",
+      "DRAFT_PR_UPDATE"
+    ]
+  },
+  "admission": {
+    "method": "OWNER_OVERRIDE",
+    "result": "PASS",
+    "repository_only": false,
+    "qualification": {
+      "required": false,
+      "qset": null,
+      "evaluator": null,
+      "result": null,
+      "evidence": []
+    },
+    "owner_basis": {
+      "direct_utterance_digest": "sha256:c436cf355cfc2eaaf142602b5c13759a8b7744371d879556b6293d4d47952e42",
+      "session_timestamp": "2026-09-22T09:09:25Z"
+    }
+  },
+  "scope": {
+    "ep_or_task": "EP-ISS175-ADAPTER-001",
+    "branch": "builder/core-learning-pages-r1",
+    "allowed_writes": [
+      "Shared/tools/core_learning_projection_adapter.py",
+      "Shared/tools/build_core_learning_data.py",
+      "public/core-learning/data.js",
+      "tests/test_core_learning_adapter.py",
+      "tests/test_workbench_runtime.py",
+      "docs/architecture-manifest.json"
+    ],
+    "prohibited": [
+      "Do not author or normalize canonical subject content owned by Issue 174.",
+      "Do not add page-local academic truth, mastery state, or subject-specific routing.",
+      "Do not change the proven learner/workbench runtime unless a new V3 scope expansion is admitted.",
+      "Do not mark PR 178 ready, merge, release, or close Issue 175 in this slice."
+    ]
+  },
+  "state": "ACTIVE",
+  "invalidation": {
+    "reasons": [
+      "A different executor acquires this serial route.",
+      "The EP contract or material base changes.",
+      "Current main changes in a way that intersects the EP material sensitivity.",
+      "A blocking V3 control is opened for execution."
+    ]
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "schema_version": "relay-v3-snapshot",
+  "authority": "DERIVED_READ_MODEL",
+  "generated_from": {
+    "roadmap_revision": "RM-0015",
+    "state_digest": "sha256:ebc5585e24ea170f63189987bc9839625577047084272050288ead67b4ddf510",
+    "material_basis": {
+      "head": "cff9ca2e9b0aa07becc92f5e321596319c7c0cac",
+      "tree_digest": "sha256:0d40b0a7fb46e5bc7bb711757a453bb700d9e0bde8157fab31624c327079f61c",
+      "relevant_paths_digest": "sha256:3a381d8b71d5f6ec87f0b1cd3e461723dbb02d24c83eafe98efa3625c702034d",
+      "dependency_digest": "sha256:fb2af8e6b6003b502653e601b066ffe661d829825a260c719093e13f1a075ded"
+    },
+    "coordination_head": "cff9ca2e9b0aa07becc92f5e321596319c7c0cac"
+  },
+  "owner": {
+    "outcome": "Continue the complex Grade9V3 engineering programme under Engineering Relay V3 without weakening accepted product, roadmap, evidence, or delivery truth.",
+    "current_goal": "Integrate the delivered Issue 173 Core compiler with the reusable Issue 175 learner shell through one thin governed adapter, without fabricating Issue 174 canonical content."
+  },
+  "programme": {
+    "accepted_progress": 0,
+    "completed_work": [],
+    "remaining_work": [
+      "WP-TAKEOVER-RECONCILE",
+      "WP-TA-102",
+      "WP-TA-106",
+      "WP-TA-103",
+      "WP-TA-104",
+      "WP-TA-107",
+      "WP-TA-105",
+      "WP-TA-108",
+      "WP-TA-109",
+      "WP-TA-110"
+    ]
+  },
+  "execution": {
+    "lifecycle": "ACTIVE",
+    "work_package": "WP-TA-110",
+    "ep": "EP-ISS175-ADAPTER-001",
+    "lease": "LEASE-ISS175-ADAPTER-001",
+    "executor": "chatgpt-sol-v3-iss175-20260922"
+  },
+  "scope": {
+    "allowed_writes": [
+      "Shared/tools/core_learning_projection_adapter.py",
+      "Shared/tools/build_core_learning_data.py",
+      "public/core-learning/data.js",
+      "tests/test_core_learning_adapter.py",
+      "tests/test_workbench_runtime.py",
+      "docs/architecture-manifest.json"
+    ],
+    "protected": [
+      "Physics/**",
+      "Shared/library/**",
+      "Shared/publication_host/**",
+      "Shared/roles/**",
+      "Shared/workbench/core-learning-page.mjs",
+      "Shared/workbench/core-learning-host.mjs",
+      "Shared/workbench/runtime.mjs",
+      "Shared/workbench/semantic-workbench.mjs"
+    ],
+    "prohibited": [
+      "Do not author or normalize canonical subject content owned by Issue 174.",
+      "Do not add page-local academic truth, mastery state, or subject-specific routing.",
+      "Do not change the proven learner/workbench runtime unless a new V3 scope expansion is admitted.",
+      "Do not mark PR 178 ready, merge, release, or close Issue 175 in this slice."
+    ]
+  },
+  "material": {
+    "base": "cff9ca2e9b0aa07becc92f5e321596319c7c0cac",
+    "head": "cff9ca2e9b0aa07becc92f5e321596319c7c0cac",
+    "relevant_paths_digest": "sha256:3a381d8b71d5f6ec87f0b1cd3e461723dbb02d24c83eafe98efa3625c702034d",
+    "dependency_digest": "sha256:fb2af8e6b6003b502653e601b066ffe661d829825a260c719093e13f1a075ded"
+  },
+  "evidence": {
+    "latest_checkpoint": null,
+    "latest_material_validation": {}
+  },
+  "controls": {
+    "execution_blockers": [],
+    "handover_blockers": [],
+    "delivery_blockers": [
+      "CTRL-V25-INTELLIGENCE-CONTINUITY"
+    ],
+    "informational": []
+  },
+  "delivery": {
+    "issue": null,
+    "pr": 178,
+    "lifecycle": "DECLARED",
+    "merge_authorized": false
+  },
+  "next": {
+    "immediate_material_action": "Reconcile branch ancestry with current main@da91e9e42c641e9d2bdd970d1e87a6b8227c84a9; do not perform product MATERIAL_WRITE until the V3 drift gate reports a non-UNKNOWN compatible base.",
+    "delivery_action": "Perform the explicitly authorized delivery transition.",
+    "stop_conditions": [
+      "Current main@da91e9e42c641e9d2bdd970d1e87a6b8227c84a9 is not an ancestor/current base for this branch.",
+      "The delivered Issue 173 compiler/schema contract moves or becomes incompatible.",
+      "Switching the shipped public learner data from fixtures would require unmerged Issue 174 canonical data.",
+      "Implementation requires any protected academic or learner-runtime path."
+    ]
+  },
+  "handoff": {
+    "zero_context_takeover_possible": true,
+    "reconstruction_sources": [
+      "relay/ROADMAP/ROADMAP.yaml",
+      "relay/STATE.yaml",
+      "relay/CONTROLS/controls.yaml",
+      "relay/WORK/EP-ISS175-ADAPTER-001.yaml",
+      "relay/LEASES/LEASE-ISS175-ADAPTER-001.yaml"
+    ]
+  }
+}
