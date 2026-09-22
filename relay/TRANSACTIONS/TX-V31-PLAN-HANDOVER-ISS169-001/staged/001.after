@@ -1,0 +1,99 @@
+schema_version: relay-v3.1-snapshot
+authority: DERIVED_READ_MODEL
+generated_from:
+  roadmap_revision: RM-V31-ISS169-EXIT-001
+  state_digest: sha256:8f83757d75f6b918ba46978a0f4a37bb53db1e1e8163dc636b4c330111c8a1b6
+  material_basis:
+    head: ad1f5a3d512eeacdbbc5c2f1f8a1740fe2d5ffb0
+    tree_digest: sha256:7ab68823f977fe4aa41e92e886a079c53fcbcb10726f48f4d14083bb386e5092
+    relevant_paths_digest: sha256:2414eb9b3a5a29856f4231b6a509f64515300ebf52763970da4d6f2c730670f9
+    dependency_digest: sha256:8e1a674586ba5415471d296f7c8a9b6fcf272238df79fee00bd957d6f6abecf5
+  coordination_head: a3c50cae8dbfa8f54f7021f8298e2d204f1ad1db
+owner:
+  outcome: 'Complete the remaining canonical-data, learner-page integration, and external-portability
+    work while preserving delivered #162 and #173.'
+  current_goal: Prove Grade-9 Physics exit readiness and Grade-10 transition from
+    canonical Grade-9 scope plus existing learner evidence, without a mastery percentage
+    or second learner truth store.
+programme:
+  accepted_progress: 6.5
+  completed_work:
+  - WP-PORTABLE-163
+  remaining_work:
+  - WP-TAKEOVER-RECONCILE
+  - WP-TA-102
+  - WP-TA-106
+  - WP-TA-103
+  - WP-TA-104
+  - WP-TA-107
+  - WP-TA-108
+  - WP-TA-105
+  - WP-CANONICAL-174-NLM
+  - WP-CANONICAL-174-MOTION
+  - WP-LEARNER-175-PRODUCTION
+execution:
+  lifecycle: ACTIVE
+  work_package: WP-TA-105
+  ep: EP-EXIT-169-V31-001
+  lease: LEASE-EXIT-169-V31-001
+  executor: chatgpt-sol-exit-v31-20260922
+scope:
+  allowed_writes:
+  - Shared/tools/grade9_exit.py
+  - tests/test_grade9_exit.py
+  - docs/grade9/GRADE9-PHYSICS-EXIT-TRANSITION-REPORT.md
+  - docs/architecture-manifest.json
+  protected:
+  - Learners/**
+  - Physics/**
+  - Shared/library/**
+  - Shared/publication_host/**
+  - Shared/workbench/**
+  - public/core-learning/**
+  - standalone/core-learning/**
+  - agents/relay/**
+  prohibited:
+  - Do not add mastery percentages, probabilities, readiness scores or a second Grade-9
+    state store.
+  - Do not convert unknown/missing evidence into mastery or failure.
+  - Do not make authored Core2B inventory alone a transition requirement.
+  - Do not modify Physics or Learners canonical/persisted truth.
+  - Do not persist derived Core labels, family refs or transfer dimensions into learner
+    observations.
+material:
+  base: ad1f5a3d512eeacdbbc5c2f1f8a1740fe2d5ffb0
+  head: ad1f5a3d512eeacdbbc5c2f1f8a1740fe2d5ffb0
+  relevant_paths_digest: sha256:2414eb9b3a5a29856f4231b6a509f64515300ebf52763970da4d6f2c730670f9
+  dependency_digest: sha256:8e1a674586ba5415471d296f7c8a9b6fcf272238df79fee00bd957d6f6abecf5
+evidence:
+  latest_checkpoint: null
+  latest_material_validation: {}
+controls:
+  execution_blockers: []
+  handover_blockers: []
+  delivery_blockers: []
+  informational: []
+delivery:
+  issue: null
+  pr: 194
+  lifecycle: DECLARED
+  merge_authorized: false
+next:
+  immediate_material_action: Reuse only the bounded PR 170 product candidate, implement
+    the post-Core2B compatibility corrections, replace authored-transfer-implies-required
+    tests with authority-driven falsifiers, and regenerate the readable report/manifest.
+  delivery_action: Perform the explicitly authorized delivery transition.
+  stop_conditions:
+  - Any need to mutate Physics or Learners requires a separately scoped defect.
+  - Do not import V2.5 relay/checkpoint/qualification files from PR 170 or PR 181.
+  - Do not make transfer evidence a completion denominator without explicit transition
+    authority.
+  - No merge until fresh V3.1 checkpoint and V3.1 MERGE authorization pass.
+handoff:
+  zero_context_takeover_possible: true
+  reconstruction_sources:
+  - relay/ROADMAP/ROADMAP.yaml
+  - relay/STATE.yaml
+  - relay/CONTROLS/controls.yaml
+  - relay/WORK/EP-EXIT-169-V31-001.yaml
+  - relay/LEASES/LEASE-EXIT-169-V31-001.yaml
