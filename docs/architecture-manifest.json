@@ -5,7 +5,7 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 222,
+  "component_count": 224,
   "relation_count": 255,
   "components_by_role": {
     "CONTRACT": 7,
@@ -13,11 +13,11 @@
     "GATES": 2,
     "LIBRARY": 34,
     "TEST": 100,
-    "TOOLING": 52,
-    "WEB": 8,
+    "TOOLING": 53,
+    "WEB": 9,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:23c83f34dea2c0158674080b1f7127615aba96771726e2064c737270cf54f94b",
+  "digest": "sha256:cd034019f2db20149f35f35e3b07d7825ff7f1201884378635995307f6ebbd00",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -433,6 +433,13 @@
       "sha256": "6303b24bf9785913f960407a5807e4c1970301a2966eac544f0a59bf617cc16a"
     },
     {
+      "path": "Shared/tools/build_core_learning_host.py",
+      "role": "TOOLING",
+      "role_description": "Guardrails and generators",
+      "bytes": 6658,
+      "sha256": "f21811c81993d6d6cb61a1a87ea458b566bcb5216e3414e8bc19b75fb720010a"
+    },
+    {
       "path": "Shared/tools/build_core_learning_runtime.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
@@ -443,8 +450,8 @@
       "path": "Shared/tools/build_manifest.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 8798,
-      "sha256": "a70e72ef95207e4b848e2477aa5cbf2c15ec5902fbeb60423c7eb57d74962fab"
+      "bytes": 9000,
+      "sha256": "0478b632e78cf579415f34a301f347fb9a60a92693ab138debdd360837ad66a7"
     },
     {
       "path": "Shared/tools/build_web_data.py",
@@ -566,10 +573,10 @@
       "sha256": "8e40c31e255ae798c9775edb79667456b9a830415c8802c42657d9d76c057d28"
     },
     {
-      "bytes": 25961,
       "path": "Shared/tools/grade9_exit.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
+      "bytes": 25961,
       "sha256": "23356a00387d394951214b0f303622189a5a62ff1182a4b92f037838d2821c91"
     },
     {
@@ -830,6 +837,13 @@
       "role_description": "Generated public Core learner runtime",
       "bytes": 19627,
       "sha256": "831eafce184ca9b17a14f57a5f4a9d246a9c05aca8d6f57834c54289ce703b9f"
+    },
+    {
+      "path": "standalone/core-learning/index.html",
+      "role": "WEB",
+      "role_description": "Generated standalone Core learner host",
+      "bytes": 4248,
+      "sha256": "0c201eb44d45a78ee2fbb66190ea8dc23f71a0a0035b51f7199ffe456baa3e52"
     },
     {
       "path": "tests/core_learning_host.test.mjs",
@@ -1175,10 +1189,10 @@
       "sha256": "9ab934fa087279391350fe6e027ea05934a99e40f7b7074f9f140c5aac66ac28"
     },
     {
-      "bytes": 25588,
       "path": "tests/test_grade9_exit.py",
       "role": "TEST",
       "role_description": "Executable checks",
+      "bytes": 25588,
       "sha256": "9b5aa75d086fe64e324c2f134072084247a947e1c12ce88e510720e3a70e76d0"
     },
     {
@@ -1507,8 +1521,8 @@
       "path": "tests/test_workbench_runtime.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 5162,
-      "sha256": "5dd2ac9025ba5f8a2819c26773cdebad239554327f73833668a74bb60ceea727"
+      "bytes": 6970,
+      "sha256": "d69f8df10939b3bb137aec43eabadd6ff458d1e173e4ea3cfaa8cb846273ff94"
     },
     {
       "path": "tests/test_worksheet_study_plan.py",
@@ -1521,8 +1535,8 @@
       "path": "tests/workbench_browser.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 40652,
-      "sha256": "dc3d3579a1dc5a18262b83cdda6e05acd138692e8454d843d3ca559b09bc47d0"
+      "bytes": 44517,
+      "sha256": "65282d30541ee00c1b1f9b8f01ff4a154224541aef646340f2573c77aee0965c"
     },
     {
       "path": "tests/workbench_runtime.test.mjs",
@@ -1942,13 +1956,13 @@
     },
     {
       "from": "Shared/tools/grade9_exit.py",
-      "kind": "IMPORTS",
-      "to": "Shared.contracts"
+      "to": "Shared.contracts",
+      "kind": "IMPORTS"
     },
     {
       "from": "Shared/tools/grade9_exit.py",
-      "kind": "IMPORTS",
-      "to": "Shared.tools"
+      "to": "Shared.tools",
+      "kind": "IMPORTS"
     },
     {
       "from": "Shared/tools/learner_evidence.py",
@@ -2412,8 +2426,8 @@
     },
     {
       "from": "tests/test_grade9_exit.py",
-      "kind": "IMPORTS",
-      "to": "Shared.tools"
+      "to": "Shared.tools",
+      "kind": "IMPORTS"
     },
     {
       "from": "tests/test_grade9_gravitation_scope.py",
