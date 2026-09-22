@@ -6,7 +6,7 @@
     "roadmap_revision": "RM-0013",
     "issue_graph_revision": "IG-0009",
     "execution_ref": "NONE",
-    "state": "PREPARED",
+    "state": "SUPERSEDED",
     "supersedes_generation": "GHGEN-WP109-ISS175-R4",
     "basis": [
       "CP-TA-012",
@@ -19,7 +19,7 @@
     {
       "id": "GHOP-WP109-ISSUE175-CHECKPOINT",
       "kind": "UPDATE",
-      "state": "PREPARED",
+      "state": "SUPERSEDED",
       "idempotency_key": "relay:GHGEN-WP109-ISS175-R5:GHOP-WP109-ISSUE175-CHECKPOINT",
       "depends_on": [],
       "subject": {
@@ -68,7 +68,8 @@
           "generated-host parity checkpoint marker verified",
           "provider state remains OPEN"
         ]
-      }
+      },
+      "superseded_by": "GHOP-WP109-ISSUE175-RM0014"
     }
   ]
 }

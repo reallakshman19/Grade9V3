@@ -11,7 +11,7 @@
   },
   "roadmap": {
     "id": "RM-GRADE9V3-TOPIC-ATLAS-TAKEOVER",
-    "revision": "RM-0013",
+    "revision": "RM-0014",
     "path": "agents/relay/roadmap/OVERALL_ROADMAP.yaml"
   },
   "current_position": {
@@ -53,7 +53,7 @@
       "state": "WAITING",
       "can_continue": false,
       "material_authority": "NONE",
-      "next_action": "RM-0013 host-parity engineering is checkpointed. Keep PR #178 draft and Issue #175 open; production provider integration requires separate roadmap admission. V3 remains staged until native reconciliation and Common #421 continuity are satisfied."
+      "next_action": "Publish and verify GHGEN-WP109-ISS175-R6 against Issue #175, then keep the relay IDLE until a separate roadmap admission establishes the next material frontier."
     },
     "quality": {
       "state": "CLEAR",
@@ -73,18 +73,18 @@
   },
   "projection": {
     "required": true,
-    "state": "STALE",
-    "operation_id": "GHGEN-WP109-ISS175-R5",
+    "state": "PENDING",
+    "operation_id": "GHOP-WP109-ISSUE175-RM0014",
     "target": "github:reallaksh19/Grade9V3:issues",
     "adapter": "GITHUB_ISSUES",
-    "plan": "agents/relay/projection/generations/GHGEN-WP109-ISS175-R5.yaml",
-    "roadmap_revision": "RM-0013",
+    "plan": "agents/relay/projection/generations/GHGEN-WP109-ISS175-R6.yaml",
+    "roadmap_revision": "RM-0014",
     "execution_ref": "NONE",
     "receipt": null,
     "basis": [
       "CP-TA-012",
-      "GHGEN-WP109-ISS175-R5",
-      "Issue #175 still reflects the verified EP-TA-012 generation until the checkpoint projection is published/read back"
+      "RM-0014",
+      "GHGEN-WP109-ISS175-R6"
     ],
     "superseded_operations": [
       {
@@ -155,21 +155,21 @@
           "CP-TA-012 accepted WP-TA-109",
           "superseded_by:GHGEN-WP109-ISS175-R5"
         ]
+      },
+      {
+        "operation_id": "GHOP-WP109-ISSUE175-CHECKPOINT",
+        "target": "github:reallaksh19/Grade9V3:issues",
+        "roadmap_revision": "RM-0013",
+        "execution_ref": "NONE",
+        "disposition": "SUPERSEDED_BEFORE_PUBLICATION",
+        "superseded_by": "GHOP-WP109-ISSUE175-RM0014",
+        "receipt": null,
+        "basis": [
+          "generation:GHGEN-WP109-ISS175-R5",
+          "superseded by RM-0014 execution-derived status reconciliation before publication"
+        ]
       }
-    ],
-    "observed": {
-      "operation_id": "GHGEN-WP109-ISS175-R4",
-      "target": "github:reallaksh19/Grade9V3:issues",
-      "roadmap_revision": "RM-0013",
-      "execution_ref": "EP-TA-012",
-      "receipt": "github-issue-update:https://github.com/reallaksh19/Grade9V3/issues/175",
-      "basis": [
-        "GHGEN-WP109-ISS175-R4 verified",
-        "Issue #175 provider readback with RM-0013 host-parity marker",
-        "RM-0013",
-        "EP-TA-012"
-      ]
-    }
+    ]
   },
   "delivery": {
     "required": true,
@@ -194,9 +194,9 @@
     "projection_ready": false,
     "handover_ready": false,
     "reasons": [
-      "CP-TA-012 accepts WP-TA-109 host parity and releases execution custody.",
-      "The newest desired Issue #175 checkpoint projection is not yet published/read back.",
-      "No material successor is admitted; production integration requires a future roadmap admission.",
+      "CP-TA-012 accepts WP-TA-109 and RM-0014 has an empty executable frontier.",
+      "GHGEN-WP109-ISS175-R6 still requires provider publication and verified readback.",
+      "No material successor is admitted; future Issue #175 work requires a separate roadmap admission.",
       "V3 remains V2_5/PREPARED and cutover is not ready."
     ]
   },

@@ -1,0 +1,47 @@
+{
+  "schema_version": "relay-v2.5",
+  "revision": {
+    "id": "RM-0014",
+    "from_revision": "RM-0013",
+    "to_revision": "RM-0014",
+    "classification": "EXECUTION_DERIVED_STATUS",
+    "trigger": {
+      "type": "CHECKPOINT",
+      "path": "agents/relay/checkpoints/CP-TA-012.yaml"
+    }
+  },
+  "changes": {
+    "added": [],
+    "removed": [],
+    "changed": [
+      "OBJ-TOPIC-ATLAS-COMPLETE",
+      "PHASE-TAKEOVER-RECONCILIATION",
+      "WP-TA-109"
+    ],
+    "unaffected": [
+      "WP-TAKEOVER-RECONCILE",
+      "WP-TA-102",
+      "WP-TA-106",
+      "WP-TA-103",
+      "WP-TA-104",
+      "WP-TA-107",
+      "WP-TA-105",
+      "WP-TA-108"
+    ]
+  },
+  "invalidated_execution_packages": [],
+  "issue_graph_reconciled": true,
+  "progress_basis_change": {
+    "old_basis": "PB-0011",
+    "new_basis": "PB-0011",
+    "old_total_weight": 125,
+    "new_total_weight": 125
+  },
+  "frontier_after": [],
+  "notes": [
+    "CP-TA-012 accepted WP-TA-109 and released EP-TA-012 execution custody.",
+    "The admitted RM-0013 programme is fully accepted at 125/125; no material successor is admitted by this status revision.",
+    "Issue #175 remains OPEN for separately admitted production provider integration, bespoke-explorer migration and PR #134 reconciliation.",
+    "Engineering Relay V3 remains staged as V2_5/PREPARED; no protocol cutover is authorized."
+  ]
+}
