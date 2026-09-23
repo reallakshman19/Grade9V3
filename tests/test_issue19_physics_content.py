@@ -253,6 +253,7 @@ class Issue19PhysicsFirstSlice(unittest.TestCase):
                 "PHY-NLM-CONTACT-CONSTRAINTS",
                 "PHY-NLM-MOMENTUM-TRANSFER-RATE",
                 "PHY-NLM-ACCELERATING-FRAME-EXTENSION",
+                "PHY-KIN-CIRCULAR-DYNAMICS-EXTENSION",
                 "PHY-POWER-RATES",
                 "PHY-WORK-ENERGY-GRADE9",
                 "PHY-WAVE-SPEED",
