@@ -1,0 +1,40 @@
+schema_version: relay-v3.1-lease
+id: LEASE-ISS201-EXAM-BANK-PASS1-V31-001
+route: SERIAL:EP-ISS201-EXAM-BANK-PASS1-V31-001
+executor:
+  id: chatgpt-sol-issue201-v31-20260923
+basis:
+  ep_id: EP-ISS201-EXAM-BANK-PASS1-V31-001
+  ep_digest: sha256:1320d3b4f172187c217643192190bee62eae634d2803789cbf8f6fcbfdeabb22
+  material_base: bf20357037f2e9a916a4fa42ea83a075d6ed0351
+  predecessor_checkpoint: null
+  protocol_basis: reallaksh19/Common@1c168695f237a8bef184a9e189be80fab87d1e78:skills/engineering-pr-delivery-v3.1
+authority:
+  actions:
+  - READ
+  - ANALYZE
+  - MATERIAL_WRITE
+  - TEST
+  - CHECKPOINT
+  - HANDOVER
+  - LOCAL_EXECUTION_EXPORT
+  - DRAFT_PR_UPDATE
+admission:
+  method: DETERMINISTIC
+  result: PASS
+  repository_only: true
+  qualification:
+    required: false
+    qset: null
+    evaluator: null
+    result: null
+    evidence: []
+custody:
+  epoch: 1
+  granted_at: '2026-09-23T08:20:43.313633Z'
+  renewed_at: '2026-09-23T08:20:43.313633Z'
+  recovery_after_seconds: 3600
+  recovery_policy: TAKEOVER_AFTER_EXPIRY
+state: ACTIVE
+invalidation:
+  reasons: []
