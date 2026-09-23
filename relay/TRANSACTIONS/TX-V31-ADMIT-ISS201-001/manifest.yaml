@@ -1,0 +1,51 @@
+schema_version: relay-v3.1-transaction
+id: TX-V31-ADMIT-ISS201-001
+command: ADMIT_TASK
+actor: chatgpt-sol-issue201-v31-20260923
+status: COMMITTED
+created_at: '2026-09-23T08:20:43.660119Z'
+updated_at: '2026-09-23T08:20:43.688285Z'
+operations:
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:b141b01948cbf2092fe9e21dd5170135a6b7fd0754c5131699fd4ec4feddb17e
+  after_digest: sha256:ab971c2b2fef15f9925e479c44bdf3e7c2d27c9b822be9726b6cd3e86284c7ee
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS201-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS201-001/backups/000.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:3aaefdb1398187eb7e2c185d99c8ffa8b154533ea6ab9ff94d0d26aab261e8e0
+  after_digest: sha256:f5cd4368c99137f5b64abf40316d53335aef8043fc884506665aad4e621184ca
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS201-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS201-001/backups/001.before
+- path: relay/LEASES/LEASE-ISS201-EXAM-BANK-PASS1-V31-001.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:e199e0dfb61e0398f56732e903f3cb7afab25859f59a7bac8a794eb39b0db1fe
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS201-001/staged/002.after
+  backup_path: null
+- path: relay/ROADMAP/ROADMAP.yaml
+  before_exists: true
+  before_digest: sha256:6b3d82c4ea9c3139487583348a92842cd76a10dea04ce421931db8487a4cf03c
+  after_digest: sha256:40f51c7c6568d87d86f045adeae6b6340b9d936033e802d4ca5fcea96dbf9d47
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS201-001/staged/003.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS201-001/backups/003.before
+- path: relay/STATE.yaml
+  before_exists: true
+  before_digest: sha256:e7ad976588aa097194f2344786b0b59bcfde496fa28915a91515ed111bbb7b46
+  after_digest: sha256:06e6ec406b353ee4a2bce0e1e642fd4d7b6e2361bb4aad97ad02f74198a086c3
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS201-001/staged/004.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS201-001/backups/004.before
+- path: relay/WORK/EP-ISS201-EXAM-BANK-PASS1-V31-001.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:f2887c8ff10584765aefdc472bff073afcb9d70fb15cb114b07c7ebbc9c84b88
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS201-001/staged/005.after
+  backup_path: null
+applied:
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/LEASES/LEASE-ISS201-EXAM-BANK-PASS1-V31-001.yaml
+- relay/ROADMAP/ROADMAP.yaml
+- relay/STATE.yaml
+- relay/WORK/EP-ISS201-EXAM-BANK-PASS1-V31-001.yaml
