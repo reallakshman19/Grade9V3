@@ -5,19 +5,19 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 242,
+  "component_count": 244,
   "relation_count": 282,
   "components_by_role": {
     "CONTRACT": 7,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 34,
-    "TEST": 115,
+    "TEST": 117,
     "TOOLING": 56,
     "WEB": 9,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:64b391312edd60db205361a8c2ad3da1937c71d92e2f458863e9bc25dfb41d2c",
+  "digest": "sha256:1a9f5d374ed89da65ef509aa8e4bdc5cec599a621d3d33152e2a4ac41764cf23",
   "components": [
     {
       "path": "public/core-learning/data.js",
@@ -1623,6 +1623,13 @@
       "sha256": "98096d19d3c437b8d479f1dc52330e1d715d2be5e4e203f9d84916d4e97a1d63"
     },
     {
+      "path": "tests/test_topic_atlas_browser_runtime.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 1445,
+      "sha256": "ad47b7b87e35b98be7d4db178addb089b2be11e74bf7064a75653ee6d6e200d2"
+    },
+    {
       "path": "tests/test_topic_atlas_contract.py",
       "role": "TEST",
       "role_description": "Executable checks",
@@ -1656,6 +1663,13 @@
       "role_description": "Executable checks",
       "bytes": 13266,
       "sha256": "3d92164cdc7548d4984ef0eb236d9ce32d5c9010fba001234f58967dc7a69765"
+    },
+    {
+      "path": "tests/topic_atlas_browser.test.mjs",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 11474,
+      "sha256": "ead05e78ced6d184e10359aad0e07500c68a41070b7d62f9aeeca9223d89d8f6"
     },
     {
       "path": "tests/workbench_browser.test.mjs",
