@@ -1,4 +1,4 @@
-"""Issue #124: horse-cart third-law/system-boundary explorer."""
+"""Issue #124: horse-cart transfer inside the existing NLM third-law explorer."""
 from __future__ import annotations
 
 import json
@@ -15,43 +15,39 @@ class HorseCartExplorerContract(unittest.TestCase):
             (REPO / "Physics/library/phy-nlm-first-law.v1.json").read_text(encoding="utf-8")
         )
         cls.html = (
-            REPO / "public/physics/nlm/explorers/horse-cart/index.html"
+            REPO / "public/physics/nlm/explorers/connected-blocks/index.html"
         ).read_text(encoding="utf-8")
         cls.resources = {row["id"]: row for row in cls.package["resources"]}
-        cls.microtopics = {row["id"]: row for row in cls.package["microtopics"]}
-        cls.representations = {row["id"]: row for row in cls.package["representations"]}
 
-    def test_activity_reuses_existing_third_law_truth(self):
-        row = self.resources["ACT-NLM-HORSE-CART-SYSTEM-BOUNDARY"]
-        self.assertEqual(
-            row["supports_claims"],
-            ["CAP-NLM-FBD-BODY-OWNERSHIP", "CAP-NLM-THIRD-LAW"],
-        )
+    def test_reuses_existing_canonical_activity_owner(self):
+        row = self.resources["ACT-NLM-CONNECTED-BLOCKS-THIRD-LAW"]
         self.assertEqual(
             row["locator"],
-            "public/physics/nlm/explorers/horse-cart/index.html",
+            "public/physics/nlm/explorers/connected-blocks/index.html",
         )
-        self.assertEqual(row["origin"], "AUTHORED")
-        self.assertEqual(row["depth"], ["FOUNDATION"])
+        self.assertIn("CAP-NLM-THIRD-LAW", row["supports_claims"])
+        self.assertIn("CAP-NLM-FBD-BODY-OWNERSHIP", row["supports_claims"])
+        self.assertNotIn("ACT-NLM-HORSE-CART-SYSTEM-BOUNDARY", self.resources)
 
-    def test_third_law_microtopic_binds_existing_fbd_representation(self):
-        micro = self.microtopics["MIC-PHY-NLM-THIRD-LAW"]
-        self.assertIn("REP-NLM-FBD-BODY-OWNERSHIP", micro["representation_refs"])
-        rep = self.representations["REP-NLM-FBD-BODY-OWNERSHIP"]
-        self.assertIn(
-            "ACT-NLM-HORSE-CART-SYSTEM-BOUNDARY",
-            rep["interactive_resource_refs"],
-        )
+    def test_horse_cart_transfer_is_interactive(self):
+        for control in (
+            'id="horseMass"',
+            'id="cartMass"',
+            'id="groundTraction"',
+            "syncHorseCart()",
+            "resetHorseCart()",
+        ):
+            self.assertIn(control, self.html)
 
     def test_explorer_keeps_partner_forces_on_different_bodies(self):
         self.assertIn("horse on cart = +T", self.html)
         self.assertIn("cart on horse = -T", self.html)
-        self.assertIn("act on different bodies", self.html)
-        self.assertIn("chosen system: horse + cart", self.html)
+        self.assertIn("they act on different bodies", self.html)
+        self.assertIn("one body's net-force equation", self.html)
 
     def test_combined_system_uses_external_ground_force(self):
         self.assertIn(
-            "ground-on-horse traction is external",
+            "Ground-on-horse traction crosses the system boundary and remains external",
             self.html,
         )
         self.assertIn(
@@ -59,11 +55,11 @@ class HorseCartExplorerContract(unittest.TestCase):
             self.html,
         )
         self.assertIn(
-            "the environment exerts a non-zero external force",
+            "the horse–cart interaction is internal",
             self.html,
         )
 
-    def test_single_body_equations_do_not_cancel_third_law_pair(self):
+    def test_single_body_equations_preserve_third_law_ownership(self):
         self.assertIn(
             "Horse: F<sub>g</sub> - T = m<sub>h</sub>a",
             self.html,
@@ -75,10 +71,9 @@ class HorseCartExplorerContract(unittest.TestCase):
 
     def test_slice_does_not_expand_to_other_open_backlog(self):
         lower = self.html.lower()
-        self.assertNotIn("pseudo force", lower)
-        self.assertNotIn("centripetal", lower)
-        row = self.resources["ACT-NLM-HORSE-CART-SYSTEM-BOUNDARY"]
-        self.assertNotIn("CAP-NLM-FRAME-CHOICE", row["supports_claims"])
+        horse_section = lower[lower.index("horse–cart transfer"):]
+        self.assertNotIn("pseudo force", horse_section)
+        self.assertNotIn("centripetal", horse_section)
 
 
 if __name__ == "__main__":
