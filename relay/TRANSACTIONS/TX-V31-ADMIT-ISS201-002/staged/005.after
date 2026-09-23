@@ -1,0 +1,138 @@
+schema_version: relay-v3.1-ep
+id: EP-ISS201-EXAM-BANK-PASS1-V31-002
+work_package: WP-ISS201-EXAM-BANK-PASS1
+outcome:
+  statement: 'Reconcile and deliver PR 202 as Pass 1 provenance-first competitive-exam
+    question custody: accept only independently organizer-verified historical PYQ
+    identities, quarantine unverifiable donors, preserve source-text custody by official
+    locator, and produce audit artifacts without constructing practice sets/exams
+    or widening learner curriculum scope.'
+basis:
+  predecessor_checkpoint: null
+  material_base: bf20357037f2e9a916a4fa42ea83a075d6ed0351
+  protocol_basis: reallaksh19/Common@1c168695f237a8bef184a9e189be80fab87d1e78:skills/engineering-pr-delivery-v3.1
+  semantic_dependencies:
+  - path: Shared/roles/CORE2.md
+    reason: Learner-facing question provenance boundary.
+  - path: Shared/roles/CORE2A.md
+    reason: Core2 practice-role contract.
+  - path: Shared/roles/CORE2B.md
+    reason: Changed-demand / transfer-role contract.
+  - path: Shared/library/package.schema.json
+    reason: Shared canonical library contract; must remain unchanged.
+  - path: Physics/library/phy-nlm-first-law.v1.json
+    reason: Canonical Physics NLM bucket/capability/family resolution.
+  - path: Physics/library/phy-kin-2d-motion.v1.json
+    reason: Canonical Motion-in-Plane bucket/capability/family resolution.
+  - path: Physics/library/relative-motion.v1.json
+    reason: Canonical relative-motion references and explicit acquisition hold boundary.
+scope:
+  write:
+  - .github/workflows/v3-relay.yml
+  - Physics/library/exam-bank/competitive-exam-question-bank.v1.json
+  - Chemistry/library/exam-bank/competitive-exam-question-bank.v1.json
+  - docs/question-bank/pass1/source-acquisition-ledger.json
+  - docs/question-bank/pass1/rejected-unverified-sources.md
+  - docs/question-bank/pass1/coverage-matrix.md
+  - docs/question-bank/pass1/concept-bucket-inventory.md
+  - tests/test_competitive_exam_question_bank.py
+  - docs/architecture-manifest.json
+  read:
+  - Shared/roles/**
+  - Shared/library/**
+  - Physics/library/**
+  - Chemistry/library/**
+  - public/physics/**
+  - docs/question-bank/**
+  - tests/**
+  protect:
+  - Learners/**
+  - Mathematics/**
+  - agents/relay/**
+  - Shared/library/package.schema.json
+  - Shared/publication_host/**
+  - Shared/workbench/**
+  - standalone/**
+  prohibit:
+  - Do not construct practice sets, mock exams, worksheets, or generated exam papers
+    in Pass 1.
+  - Do not add fully authored filler questions.
+  - Do not promote SOURCE_UNVERIFIED donors to canonical learner-facing Core2.
+  - Do not fabricate official exam identity, shift/session, source wording, answer-key
+    authority, or organizer provenance.
+  - Do not reproduce verbatim source text where the bank policy uses external-reference
+    custody.
+  - Do not add circular-motion content to this pass.
+  - Do not convert Chemistry local concept proposals into a canonical Chemistry teaching
+    package or shared schema change.
+  - Do not fill the Motion-in-1D relative-motion hold without independently matched
+    organizer evidence.
+  - Do not reinterpret this custody pass as Grade-10/11, Mathematics, or learner-route
+    expansion.
+  - Do not merge without a fresh accepted checkpoint and explicit Owner MERGE authority.
+acceptance:
+- id: AC-201-SCOPE
+  statement: 'Pass 1 contains question custody/audit only: no practice sets/exams,
+    no authored filler, and no circular-motion additions.'
+  evidence_requirements:
+  - test: tests/test_competitive_exam_question_bank.py::CompetitiveExamQuestionBankTest::test_pass1_contains_no_authored_questions_or_generated_sets
+  - test: tests/test_competitive_exam_question_bank.py::CompetitiveExamQuestionBankTest::test_scope_excludes_circular_motion_and_holds_unverified_1d_relative_motion
+- id: AC-201-PROVENANCE
+  statement: Exactly eight accepted canonical candidates are PYQ_VERIFIED and resolve
+    to official organizer archive records while historical examination identities
+    are preserved.
+  evidence_requirements:
+  - test: tests/test_competitive_exam_question_bank.py::CompetitiveExamQuestionBankTest::test_verified_question_source_refs_resolve_to_official_records
+  - test: tests/test_competitive_exam_question_bank.py::CompetitiveExamQuestionBankTest::test_original_identifiers_are_complete_without_invented_shift_or_number
+  - oracle: Official jeeadv.ac.in archive and cited paper locators independently spot-checked
+      for 2007, 2008, 2011 and 2023 identities.
+- id: AC-201-QUARANTINE
+  statement: All 162 donor records remain SOURCE_UNVERIFIED / QUARANTINED_DONOR_ONLY;
+    147 are in-scope and 15 are explicitly out-of-scope non-relative 1D donors.
+  evidence_requirements:
+  - test: tests/test_competitive_exam_question_bank.py::CompetitiveExamQuestionBankTest::test_provenance_classes_are_exact_and_unverified_is_not_promoted
+  - test: tests/test_competitive_exam_question_bank.py::CompetitiveExamQuestionBankTest::test_donor_registries_are_preserved
+- id: AC-201-TEXT-CUSTODY
+  statement: Canonical records use organizer-locator custody rather than reconstructed
+    verbatim source text, and independent reasoning is not misrepresented as source
+    hints.
+  evidence_requirements:
+  - test: tests/test_competitive_exam_question_bank.py::CompetitiveExamQuestionBankTest::test_source_text_custody_is_locator_backed_and_not_a_reconstructed_original
+- id: AC-201-RESOLUTION
+  statement: Physics bucket/capability/family references resolve canonically; Chemistry
+    identifiers remain namespaced local proposals pending a canonical Chemistry package,
+    with no Shared schema change.
+  evidence_requirements:
+  - test: tests/test_competitive_exam_question_bank.py::CompetitiveExamQuestionBankTest::test_concept_bucket_capability_and_family_resolution
+- id: AC-201-ANSWER
+  statement: Accepted items carry explicit answer-verification evidence and do not
+    infer correctness from an exam label.
+  evidence_requirements:
+  - test: tests/test_competitive_exam_question_bank.py::CompetitiveExamQuestionBankTest::test_answer_verification_is_present_and_never_exam_label_based
+- id: AC-201-HOLD
+  statement: Motion-in-1D relative-motion stays on acquisition hold because no organizer-hosted
+    item was independently matched; no unverified donor is used to fill the gap.
+  evidence_requirements:
+  - test: tests/test_competitive_exam_question_bank.py::CompetitiveExamQuestionBankTest::test_scope_excludes_circular_motion_and_holds_unverified_1d_relative_motion
+- id: AC-201-REPO
+  statement: Repository guardrails pass and v31-relay validates against exact Common@1c168695f237a8bef184a9e189be80fab87d1e78
+    on the exact PR head.
+  evidence_requirements:
+  - oracle: GitHub Actions guardrails + v31-relay on exact PR head.
+quality_policy:
+  level: STANDARD
+  independent_review: OPTIONAL
+admission_policy:
+  qualification: NOT_REQUIRED
+  question_policy: NONE
+next:
+  first_action: Use the current PR 202 candidate after the true main merge; authorize
+    and repin exact V3.1 validation, rerun provenance and repository falsifiers, then
+    checkpoint without widening Pass 1.
+  stop_conditions:
+  - Stop if any accepted identity cannot be supported by organizer-hosted evidence.
+  - Stop if quarantine or source-text custody would need weakening to make the candidate
+    pass.
+  - Stop if delivery requires practice-set/exam construction, learner-route expansion,
+    or shared-schema changes.
+  - Stop before merge without fresh checkpoint and explicit Owner MERGE authority.

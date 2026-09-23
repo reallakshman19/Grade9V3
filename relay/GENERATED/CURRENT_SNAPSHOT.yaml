@@ -1,14 +1,14 @@
 schema_version: relay-v3.1-snapshot
 authority: DERIVED_READ_MODEL
 generated_from:
-  roadmap_revision: RM-V31-ISS201-EXAM-BANK-PASS1-001
-  state_digest: sha256:a2e17d52cccf7b03c9d14c60985903c145e525213623da49373a44345b4b3468
+  roadmap_revision: RM-V31-ISS201-EXAM-BANK-PASS1-002
+  state_digest: sha256:813af5c6fe562e63ac968e531576e3698a845c71d43053663d1cbc03ddadb1d1
   material_basis:
-    head: 3e30db295aaa185447cfb12be8d3e3c320afbe52
-    tree_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
-    relevant_paths_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
-    dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
-  coordination_head: 3e30db295aaa185447cfb12be8d3e3c320afbe52
+    head: 2c1ac89c8ffc6d34c8df94d5198fbdc0c01fee84
+    tree_digest: sha256:c5e605beca3e91167c8b7981d0a586a00f7101e3ce02b05bee770aae2a583e69
+    relevant_paths_digest: sha256:50f9d6ac113fc81edf0efb2d9c14347261895cca7915846f1c05ceaa17806abe
+    dependency_digest: sha256:70df63d7dec6813e1cc1beb1efa29a01d5109cbbd9f2277004a2de578b4695b3
+  coordination_head: 2c41500e666c21ab85d6f64cce0518edbc60a085
 owner:
   outcome: Preserve the delivered self-study architecture and activate new work only
     from a concrete learner, worksheet, source, or product defect rather than from
@@ -34,21 +34,53 @@ programme:
   - WP-LEARNER-175-PRODUCTION
   - WP-ISS201-EXAM-BANK-PASS1
 execution:
-  lifecycle: IDLE
-  work_package: null
-  ep: null
-  lease: null
-  executor: null
+  lifecycle: ACTIVE
+  work_package: WP-ISS201-EXAM-BANK-PASS1
+  ep: EP-ISS201-EXAM-BANK-PASS1-V31-002
+  lease: LEASE-ISS201-EXAM-BANK-PASS1-V31-002
+  executor: chatgpt-sol-issue201-v31-20260923
   custody_epoch: 1
 scope:
-  allowed_writes: []
-  protected: []
-  prohibited: []
+  allowed_writes:
+  - .github/workflows/v3-relay.yml
+  - Physics/library/exam-bank/competitive-exam-question-bank.v1.json
+  - Chemistry/library/exam-bank/competitive-exam-question-bank.v1.json
+  - docs/question-bank/pass1/source-acquisition-ledger.json
+  - docs/question-bank/pass1/rejected-unverified-sources.md
+  - docs/question-bank/pass1/coverage-matrix.md
+  - docs/question-bank/pass1/concept-bucket-inventory.md
+  - tests/test_competitive_exam_question_bank.py
+  - docs/architecture-manifest.json
+  protected:
+  - Learners/**
+  - Mathematics/**
+  - agents/relay/**
+  - Shared/library/package.schema.json
+  - Shared/publication_host/**
+  - Shared/workbench/**
+  - standalone/**
+  prohibited:
+  - Do not construct practice sets, mock exams, worksheets, or generated exam papers
+    in Pass 1.
+  - Do not add fully authored filler questions.
+  - Do not promote SOURCE_UNVERIFIED donors to canonical learner-facing Core2.
+  - Do not fabricate official exam identity, shift/session, source wording, answer-key
+    authority, or organizer provenance.
+  - Do not reproduce verbatim source text where the bank policy uses external-reference
+    custody.
+  - Do not add circular-motion content to this pass.
+  - Do not convert Chemistry local concept proposals into a canonical Chemistry teaching
+    package or shared schema change.
+  - Do not fill the Motion-in-1D relative-motion hold without independently matched
+    organizer evidence.
+  - Do not reinterpret this custody pass as Grade-10/11, Mathematics, or learner-route
+    expansion.
+  - Do not merge without a fresh accepted checkpoint and explicit Owner MERGE authority.
 material:
-  base: 3e30db295aaa185447cfb12be8d3e3c320afbe52
-  head: 3e30db295aaa185447cfb12be8d3e3c320afbe52
-  relevant_paths_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
-  dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+  base: bf20357037f2e9a916a4fa42ea83a075d6ed0351
+  head: 2c1ac89c8ffc6d34c8df94d5198fbdc0c01fee84
+  relevant_paths_digest: sha256:50f9d6ac113fc81edf0efb2d9c14347261895cca7915846f1c05ceaa17806abe
+  dependency_digest: sha256:70df63d7dec6813e1cc1beb1efa29a01d5109cbbd9f2277004a2de578b4695b3
 evidence:
   latest_checkpoint: null
   latest_material_validation: {}
@@ -63,12 +95,22 @@ delivery:
   lifecycle: DECLARED
   merge_authorized: false
 next:
-  immediate_material_action: null
+  immediate_material_action: Use the current PR 202 candidate after the true main
+    merge; authorize and repin exact V3.1 validation, rerun provenance and repository
+    falsifiers, then checkpoint without widening Pass 1.
   delivery_action: Perform the explicitly authorized delivery transition.
-  stop_conditions: []
+  stop_conditions:
+  - Stop if any accepted identity cannot be supported by organizer-hosted evidence.
+  - Stop if quarantine or source-text custody would need weakening to make the candidate
+    pass.
+  - Stop if delivery requires practice-set/exam construction, learner-route expansion,
+    or shared-schema changes.
+  - Stop before merge without fresh checkpoint and explicit Owner MERGE authority.
 handoff:
-  zero_context_takeover_possible: false
+  zero_context_takeover_possible: true
   reconstruction_sources:
   - relay/ROADMAP/ROADMAP.yaml
   - relay/STATE.yaml
   - relay/CONTROLS/controls.yaml
+  - relay/WORK/EP-ISS201-EXAM-BANK-PASS1-V31-002.yaml
+  - relay/LEASES/LEASE-ISS201-EXAM-BANK-PASS1-V31-002.yaml
