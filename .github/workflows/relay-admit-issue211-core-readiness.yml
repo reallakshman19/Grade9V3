@@ -187,7 +187,7 @@ jobs:
               - id: AC-211-MAP
                 statement: "A reviewer-readable Core contract map records Core1/Core2, A/B semantics, ownership, version seams, input/output fields and current PASS/PARTIAL/MISSING evidence."
                 evidence_requirements:
-                  - path: docs/readiness/CORE-CONTRACT-MAP.md
+                  - oracle: "docs/readiness/CORE-CONTRACT-MAP.md exists and records PASS/PARTIAL/MISSING evidence for every Gate-1 requirement."
               - id: AC-211-REVEAL
                 statement: "Core1B attempt-before-reveal and Core2B protected-decision semantics remain distinct and are falsified by focused tests."
                 evidence_requirements:
