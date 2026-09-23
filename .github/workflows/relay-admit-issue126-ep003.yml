@@ -1,0 +1,192 @@
+name: relay-admit-issue126-ep003
+on:
+  push:
+    branches:
+      - relay/admit-issue126-ep003
+permissions:
+  contents: write
+jobs:
+  admit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: explorer/issue-126-circular-dynamics
+          fetch-depth: 0
+      - run: git fetch origin main:refs/remotes/origin/main
+      - uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: 1c168695f237a8bef184a9e189be80fab87d1e78
+          path: _common_v31
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+      - name: Build reconciled admission
+        run: |
+          cat > /tmp/issue126-ep003.yaml <<'YAML'
+          schema_version: relay-v3.1-task-admission
+          roadmap:
+            disposition: MAPPED_EXISTING_WP
+            new_revision: RM-V31-ISS126-CIRCULAR-DYNAMICS-003
+            basis:
+              - "EP-002 product and repository guardrails passed on head 99c24b0eee0f35b1e73ef8ec645d47e79dcc6b38."
+              - "Current main advanced to bf20357037f2e9a916a4fa42ea83a075d6ed0351 only through disjoint competitive-exam template files."
+              - "EP-002 material_base was branch-local and therefore could not be checkpointed against current main; custody was administratively released."
+              - "Branch 7f8090782e50183449cad5026e4eb85cd637807c now has current main as an ancestor with the two disjoint template updates incorporated."
+              - "No Issue 126 product semantics changed during the base reconciliation."
+            work_package:
+              id: WP-ISS126-CIRCULAR-DYNAMICS
+              title: Deliver circular-dynamics force-role explorer without expanding default Grade-9 scope
+              weight: 3
+              state: ACTIVE
+              depends_on:
+                - WP-CANONICAL-174-MOTION
+                - WP-CANONICAL-174-NLM
+          ep:
+            schema_version: relay-v3.1-ep
+            id: EP-ISS126-CIRCULAR-DYNAMICS-V31-003
+            work_package: WP-ISS126-CIRCULAR-DYNAMICS
+            outcome:
+              statement: "Finish Issue 126 on PR 200 by preserving the R5 Grade-9 meaning/ceiling/default boundary, keeping R6 non-default, and accepting the already-green circular-dynamics force-role explorer against a material basis that is an ancestor of current main."
+            basis:
+              predecessor_checkpoint: null
+              material_base: bf20357037f2e9a916a4fa42ea83a075d6ed0351
+              protocol_basis: "reallaksh19/Common@1c168695f237a8bef184a9e189be80fab87d1e78:skills/engineering-pr-delivery-v3.1"
+              semantic_dependencies:
+                - path: Physics/library/phy-kin-1d-motion.v1.json
+                  reason: "Canonical R6 capability/microtopic/route owner."
+                - path: Physics/matrices/phy-kin-1d-motion.rungs.json
+                  reason: "R5/R6 default-boundary and strict ladder ordering."
+                - path: Physics/library/phy-nlm-first-law.v1.json
+                  reason: "Newton-II and friction dependencies."
+                - path: Physics/gates/foundational-relations.v1.json
+                  reason: "Circular quantitative authority."
+                - path: docs/grade9/G9-1-MOTION-AUTHORING-AUDIT.md
+                  reason: "Human-readable Grade-9 versus Owner-extension scope authority."
+                - path: tests/test_grade9_default_extension_routing.py
+                  reason: "Non-default extension routing contract."
+                - path: tests/test_grade9_motion_scope.py
+                  reason: "Six-rung required Grade-9 spine boundary."
+                - path: tests/test_grade9_motion1d_vertical_gravity_agent_a_atlas.py
+                  reason: "Session-readiness route completeness witness."
+            scope:
+              write:
+                - .github/workflows/v3-relay.yml
+                - Physics/gates/foundational-relations.v1.json
+                - Physics/library/phy-kin-1d-motion.v1.json
+                - Physics/matrices/phy-kin-1d-motion.rungs.json
+                - docs/grade9/G9-1-MOTION-AUTHORING-AUDIT.md
+                - public/physics/motion-1d/explorers/circular-dynamics/index.html
+                - tests/test_issue126_circular_dynamics_explorer.py
+                - tests/test_gates.py
+                - tests/test_issue19_physics_content.py
+                - tests/test_grade9_physics_learner_loop.py
+                - tests/test_library.py
+                - tests/test_grade9_default_extension_routing.py
+                - tests/test_grade9_motion_scope.py
+                - tests/test_grade9_motion1d_vertical_gravity_agent_a_atlas.py
+                - tools/data.js
+                - public/data/data.js
+                - docs/architecture-manifest.json
+              read:
+                - Physics/library/**
+                - Physics/matrices/**
+                - Physics/gates/**
+                - Shared/library/**
+                - Shared/tools/**
+                - docs/grade9/**
+                - tests/**
+              protect:
+                - Learners/**
+                - Mathematics/**
+                - Chemistry/**
+                - agents/relay/**
+                - Shared/publication_host/**
+                - Shared/workbench/**
+                - standalone/**
+              prohibit:
+                - "Do not remove or weaken R5's centripetal-force ceiling."
+                - "Do not make R6 default_entry_eligible."
+                - "Do not reinterpret the R5 100->99 coordinate-only adjustment as a syllabus or teaching downgrade."
+                - "Do not add a separate centripetal-force arrow to inertial-frame FBDs."
+                - "Do not assert static friction equals mu_s N except at the declared limiting boundary."
+                - "Do not add rotating-frame centrifugal force without explicit non-inertial-frame labeling."
+                - "Do not merge without a fresh accepted checkpoint and explicit Owner MERGE authority."
+            acceptance:
+              - id: AC-126-BOUNDARY
+                statement: "R5 retains its elementary Grade-9 meaning, capability, ceiling and default eligibility; its ladder coordinate changes only from 100 to 99 to preserve strict prerequisite ordering, while R6 is a non-default Owner extension at 100."
+                evidence_requirements:
+                  - test: "tests/test_issue126_circular_dynamics_explorer.py::CircularDynamicsExplorerContract::test_r5_boundary_is_preserved_and_r6_is_nondefault"
+                  - test: "tests/test_grade9_default_extension_routing.py"
+                  - test: "tests/test_grade9_motion_scope.py"
+              - id: AC-126-PHYSICS
+                statement: "Radial acceleration, radial Newton-II, vertical-circle top/bottom, and minimum-speed claims are gate-owned; flat-curve capacity reuses the canonical static-friction bound."
+                evidence_requirements:
+                  - test: "tests/test_issue126_circular_dynamics_explorer.py::CircularDynamicsExplorerContract::test_quantitative_relations_are_gate_owned"
+              - id: AC-126-FALLACY
+                statement: "The canonical representation and explorer treat centripetal as the role of the net radial force, not an additional interaction."
+                evidence_requirements:
+                  - test: "tests/test_issue126_circular_dynamics_explorer.py::CircularDynamicsExplorerContract::test_no_extra_centripetal_force_arrow"
+              - id: AC-126-EXPLORER
+                statement: "Explorer visualizes velocity-direction change before forces and implements radial/tangential axes, m-v-r scaling, flat-curve threshold, tangent cut path, and vertical-circle transfer; R6 has complete Core1A/Core1B self-study route coverage."
+                evidence_requirements:
+                  - test: "tests/test_issue126_circular_dynamics_explorer.py"
+                  - test: "tests/test_grade9_motion1d_vertical_gravity_agent_a_atlas.py::Grade9Motion1DVerticalGravityAgentAAtlas::test_matrix_remains_session_ready"
+              - id: AC-126-SCOPE
+                statement: "The slice remains circular dynamics only and does not alter learner state, exit readiness, Grade-10/11 scope, or Mathematics."
+                evidence_requirements:
+                  - oracle: "PR changed-file set and focused boundary tests."
+              - id: AC-126-REPO
+                statement: "Repository guardrails pass and v31-relay validates against exact Common@1c168695f237a8bef184a9e189be80fab87d1e78."
+                evidence_requirements:
+                  - oracle: "GitHub Actions guardrails + v31-relay on exact PR head."
+              - id: AC-126-ROUTING
+                statement: "Ordinary Grade-9 routing excludes R6, while explicit Owner extension routing remains available."
+                evidence_requirements:
+                  - test: "tests/test_grade9_default_extension_routing.py"
+            quality_policy:
+              level: STANDARD
+              independent_review: OPTIONAL
+            admission_policy:
+              qualification: NOT_REQUIRED
+              question_policy: NONE
+            next:
+              first_action: "Rerun exact-head guardrails after base reconciliation; if green, accept a fresh checkpoint without changing product bytes."
+              stop_conditions:
+                - "Stop if any revalidation requires changing R5 meaning, ceiling, or default eligibility."
+                - "Stop if any repair would expand into learner state, Mathematics, Grade-10/11 scope, or shared routing semantics."
+                - "Stop before merge without fresh checkpoint and explicit Owner MERGE authority."
+          lease:
+            id: LEASE-ISS126-CIRCULAR-DYNAMICS-V31-003
+            executor_id: chatgpt-sol-issue126-v31-20260923
+            method: DETERMINISTIC
+            qualification: null
+            owner_basis: null
+            branch: explorer/issue-126-circular-dynamics
+            recovery_after_seconds: 3600
+            recovery_policy: TAKEOVER_AFTER_EXPIRY
+          delivery:
+            required: true
+            primary_vehicle:
+              provider: GITHUB
+              kind: PULL_REQUEST
+              number: 200
+          YAML
+      - name: Admit reconciled task
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . admit-task             --tx-id TX-V31-ADMIT-ISS126-003             --event-id EVT-V31-ADMIT-ISS126-003             --actor chatgpt-sol-issue126-v31-20260923             --admission /tmp/issue126-ep003.yaml             --base-ref origin/main
+      - name: Validate admitted authority
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_cutover.py . validate
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py CHECKPOINT .             --base-ref origin/main --expected-custody-epoch 1 || true
+      - name: Commit relay after-images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add relay
+          git commit -m "relay: re-admit issue126 against current main"
+          git push origin HEAD:explorer/issue-126-circular-dynamics
