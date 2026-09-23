@@ -1,0 +1,116 @@
+name: relay-reconcile-handoff-release-issue126
+on:
+  push:
+    branches:
+      - relay/reconcile-handoff-release-issue126
+permissions:
+  contents: write
+jobs:
+  park:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: explorer/issue-126-circular-dynamics
+          fetch-depth: 0
+      - run: git fetch origin main:refs/remotes/origin/main
+      - uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: 1c168695f237a8bef184a9e189be80fab87d1e78
+          path: _common_v31
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+      - name: Build NO_CHANGE roadmap reconciliation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+          roadmap = yaml.safe_load(Path("relay/ROADMAP/ROADMAP.yaml").read_text())
+          doc = {
+              "schema_version": "relay-v3.1-roadmap-reconciliation",
+              "authority": "PROPOSED_RECONCILIATION",
+              "expected_revision": roadmap["revision"],
+              "disposition": "NO_CHANGE",
+              "basis": [
+                  "CP-ISS126-CIRCULAR-DYNAMICS-V31-001 accepted with all acceptance criteria PASS.",
+                  "PR 200 is ready and mergeable; remaining work is delivery authority, not programme concept change.",
+                  "Issue 126 remains a non-default R6 Owner extension while R5 retains the ordinary Grade-9 UCM boundary."
+              ],
+              "roadmap_after": roadmap,
+          }
+          Path("/tmp/issue126-roadmap-reconciliation.yaml").write_text(
+              yaml.safe_dump(doc, sort_keys=False), encoding="utf-8"
+          )
+          PY
+      - name: Record roadmap reconciliation
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . reconcile-roadmap             --tx-id TX-V31-ISS126-ROADMAP-008             --event-id EVT-V31-ISS126-ROADMAP-008             --actor chatgpt-sol-issue126-v31-20260923             --reconciliation /tmp/issue126-roadmap-reconciliation.yaml             --base-ref origin/main             --expected-custody-epoch 1
+      - name: Stage standalone three-pass contract ephemerally
+        run: |
+          mkdir -p skills/three-pass-prompt-generator
+          cp _common_v31/skills/three-pass-prompt-generator/SKILL.md skills/three-pass-prompt-generator/SKILL.md
+          cp _common_v31/skills/three-pass-prompt-generator/schema.md skills/three-pass-prompt-generator/schema.md
+          cp _common_v31/skills/three-pass-prompt-generator/validate.py skills/three-pass-prompt-generator/validate.py
+      - name: Write provider target observation
+        run: |
+          cat > /tmp/pr200-target.yaml <<'YAML'
+          schema_version: relay-v3.1-handover-target
+          authority: PROVIDER_READBACK
+          provider: GITHUB
+          repository: reallaksh19/Grade9V3
+          kind: PULL_REQUEST
+          number: 200
+          title: "Motion: add non-default circular-dynamics force-role explorer"
+          url: https://github.com/reallaksh19/Grade9V3/pull/200
+          state: READY
+          observed_at: "2026-09-23T08:03:10Z"
+          provider_ref: "github:reallaksh19/Grade9V3/pull/200@986eebf3d78c35d06eb8fce7c52873660147192f"
+          YAML
+      - name: Reconfirm fenced HANDOVER authority
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py HANDOVER .             --expected-custody-epoch 1
+      - name: Plan verified handover
+        run: |
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          scripts = Path("_common_v31/skills/engineering-pr-delivery-v3.1/scripts").resolve()
+          sys.path.insert(0, str(scripts))
+          import plan_handover
+          import relay_can
+          original = plan_handover.can_action
+          plan_handover.can_action = lambda root, action: relay_can.evaluate(
+              root, action, expected_custody_epoch=1
+          )
+          try:
+              result = plan_handover.plan_handover(
+                  Path(".").resolve(),
+                  tx_id="TX-V31-ISS126-PLAN-HANDOVER-008",
+                  event_id="EVT-V31-ISS126-PLAN-HANDOVER-008",
+                  actor="chatgpt-sol-issue126-v31-20260923",
+                  target_path=Path("/tmp/pr200-target.yaml"),
+                  base_ref="origin/main",
+                  complex_mode=True,
+              )
+          finally:
+              plan_handover.can_action = original
+          print(f"{result['id']}: {result['status']}")
+          PY
+      - name: Release execution custody gracefully
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . release-lease             --tx-id TX-V31-ISS126-RELEASE-008             --event-id EVT-V31-ISS126-RELEASE-008             --actor chatgpt-sol-issue126-v31-20260923             --reason HANDOFF             --base-ref origin/main             --expected-custody-epoch 1
+      - name: Validate released foundation
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_cutover.py . validate
+      - name: Commit Relay parking state only
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add relay
+          git commit -m "relay: park issue 126 pending merge authority"
+          git push origin HEAD:explorer/issue-126-circular-dynamics
