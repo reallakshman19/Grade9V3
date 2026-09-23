@@ -1,0 +1,145 @@
+name: relay-checkpoint-issue211-gate1
+on:
+  push:
+    branches:
+      - relay/checkpoint-issue211-gate1
+permissions:
+  contents: write
+jobs:
+  checkpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: readiness/issue-211-core-contracts
+          fetch-depth: 0
+      - run: git fetch origin main:refs/remotes/origin/main
+      - uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: 1c168695f237a8bef184a9e189be80fab87d1e78
+          path: _common_v31
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+      - name: Build exact material checkpoint
+        run: |
+          python - <<'PY'
+          import sys
+          from pathlib import Path
+          import yaml
+          scripts = Path("_common_v31/skills/engineering-pr-delivery-v3.1/scripts").resolve()
+          sys.path.insert(0, str(scripts))
+          from material_basis import inspect_material_basis
+          from v3lib import load_yaml
+          root=Path(".").resolve()
+          ep=load_yaml(root/"relay/WORK/EP-ISS211-CORE-READINESS-V31-002.yaml")
+          mb=inspect_material_basis(root, ep, "origin/main")["material_basis"]
+          cp={
+            "schema_version":"relay-v3.1-checkpoint",
+            "id":"CP-ISS211-CORE-READINESS-V31-001",
+            "ep":"EP-ISS211-CORE-READINESS-V31-002",
+            "material_result":{
+              "head":mb["head"],
+              "relevant_paths_digest":mb["relevant_paths_digest"],
+              "dependency_digest":mb["dependency_digest"],
+            },
+            "acceptance":[
+              {"id":"AC-211-MAP","result":"PASS","evidence":[
+                "docs/readiness/CORE-CONTRACT-MAP.md records six-Core ownership, A/B semantics, version seams, consumer shape and PASS/PARTIAL/MISSING evidence."
+              ]},
+              {"id":"AC-211-REVEAL","result":"PASS","evidence":[
+                "Guardrails run 35863867079 PASS; Core1B reconstruction remains hidden until commitment and Core2B protected support remains blocked pre-attempt.",
+                "tests/test_issue211_core_readiness.py and tests/core_learning_page.test.mjs passed."
+              ]},
+              {"id":"AC-211-SOURCE","result":"PASS","evidence":[
+                "Guardrails run 35863867079 PASS; Motion-2D Core2A/Core2B witness preserves canonical question identity, family, source refs, original number, options/subparts fields, reasoning crux and independent check."
+              ]},
+              {"id":"AC-211-FAILCLOSED","result":"PASS","evidence":[
+                "Issue-211 availability falsifier proves every canonical bucket receives AVAILABLE or UNSUPPORTED and every unsupported bucket has a named finding.",
+                "CoreProjection validation continues to reject unsupported versions and dangling/incomplete refs."
+              ]},
+              {"id":"AC-211-NEUTRAL","result":"PASS","evidence":[
+                "Topic-independence guard passed in guardrails run 35863867079.",
+                "Issue-211 falsifier found no subject-specific equality switch in the Shared Core lane; runtime events remain non-mastery semantic events."
+              ]},
+              {"id":"AC-211-REPO","result":"PASS","evidence":[
+                "Guardrails run 35863867079 PASS on exact coordination head 0e61821fbb084e0bba3b9a3cc0d7e07d8b52f1e5; 1092 tests passed, generated artifacts fresh, all JSON parsed.",
+                "v31-relay run 35863866777 PASS against Common@1c168695f237a8bef184a9e189be80fab87d1e78.",
+                "Three pre-existing current-main circular-dynamics test-harness gaps were reconciled without changing Physics canonical truth."
+              ]}
+            ],
+            "validation":{
+              "focused_tests":"PASS",
+              "spec_delivery":"PASS",
+              "full_guardrails":"PASS"
+            },
+            "quality":{"policy":"STANDARD","result":"CLEAR"},
+            "known_limitations":[
+              "Gate 1 does not bind portable scene/adapter/injection packages; current production Core rows keep those slots explicit but unbound, owned by Gate 3 / Issue 214.",
+              "Gate 1 does not implement Atlas data, Atlas webpage routing, or cross-surface joins; those remain Issues 212-215.",
+              "Core1/Core2 remain compiler/publication roles while CoreProjection intentionally carries the four interactive A/B roles."
+            ],
+            "discoveries":[
+              "No production Core-code defect was demonstrated: existing compiler, adapter and runtime already satisfy Gate-1 reveal, provenance, fail-closed and subject-neutrality contracts.",
+              "Merged Issue 126 left three stale test-harness expectations on current main; repairing those tests restored repository guardrails without changing canonical Physics data.",
+              "The stable downstream consumer seam is projection contract 1.0 plus explicit bucket availability/findings and optional scene/adapter/injection binding slots."
+            ],
+            "handoff":{
+              "what_changed":[
+                "Added an independent Gate-1 Core readiness falsifier suite.",
+                "Added a reviewer-readable Core contract map and froze the downstream consumer shape.",
+                "Reconciled three stale current-main circular-dynamics test-harness expectations.",
+                "Refreshed the architecture manifest."
+              ],
+              "what_is_true_now":[
+                "Gate-1 Core contracts pass exact-head repository guardrails without production Core-code changes.",
+                "Every canonical bucket is represented by an explicit availability result rather than silent omission.",
+                "Core1B and Core2B reveal boundaries remain enforced and source/crux/protected-transfer fields survive projection."
+              ],
+              "what_remains_uncertain":[
+                "Portable visual binding is intentionally not proved until Issue 214.",
+                "Atlas index/routing compatibility is intentionally not proved until Issues 212-213.",
+                "No explicit Owner MERGE authority for PR 219 has been established."
+              ],
+              "do_not_break":[
+                "Do not create browser-side academic truth or subject-specific switches in Shared code.",
+                "Do not expose Core2B protected moves before learner commitment.",
+                "Do not treat missing portable visual bindings as permission to invent fallback visuals."
+              ],
+              "attempted_and_rejected":[
+                "A production Core runtime rewrite was rejected because the existing contracts and new falsifiers already pass.",
+                "Changing Physics canonical truth to repair post-Issue-126 tests was rejected; only stale test harness expectations were reconciled."
+              ],
+              "resume_from":[
+                "PR 219",
+                "docs/readiness/CORE-CONTRACT-MAP.md",
+                "tests/test_issue211_core_readiness.py",
+                "Issue 212 after Gate-1 delivery is authorized"
+              ],
+              "first_successor_action":"Evaluate PR_READY for PR 219; do not begin Issue 212 material work before Gate 1 is delivered or explicitly waived by the Owner."
+            }
+          }
+          Path("/tmp/cp211.yaml").write_text(yaml.safe_dump(cp,sort_keys=False),encoding="utf-8")
+          print(yaml.safe_dump(cp["material_result"],sort_keys=False))
+          PY
+      - name: Accept Gate-1 checkpoint
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . accept-checkpoint             --tx-id TX-V31-ISS211-CHECKPOINT-001             --event-id EVT-V31-ISS211-CHECKPOINT-001             --actor chatgpt-sol-issue211-v31-20260923             --checkpoint /tmp/cp211.yaml             --base-ref origin/main             --expected-custody-epoch 1
+      - name: Evaluate PR readiness
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py PR_READY .             --base-ref origin/main             --expected-custody-epoch 1
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py MERGE .             --base-ref origin/main             --expected-custody-epoch 1 || true
+      - name: Validate authority
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_cutover.py . validate
+      - name: Commit accepted checkpoint
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add relay
+          git commit -m "relay: accept issue 211 Gate-1 checkpoint"
+          git push origin HEAD:readiness/issue-211-core-contracts
