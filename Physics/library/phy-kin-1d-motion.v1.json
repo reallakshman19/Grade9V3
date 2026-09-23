@@ -1267,7 +1267,7 @@
           "inputs": [
             "REL-CIRC-RADIAL-ACCELERATION"
           ],
-          "output": "required radial acceleration magnitude."
+          "output": "a_r = v^2/r; for v=4 m/s and r=2 m, a_r=8 m/s^2."
         },
         {
           "id": "KIN6-3",
@@ -1376,7 +1376,15 @@
           "subpart_answers": [],
           "verification_status": "CHECKED_BY_AUTHOR"
         },
-        "oracle": {}
+        "oracle": {
+          "verification": {
+            "validator_id": "NEWTON_SECOND_LAW",
+            "bindings": {
+              "mass": "DAT-KIN-CIRC-EXIT-MASS",
+              "acceleration": "DAT-KIN-CIRC-EXIT-AR"
+            }
+          }
+        }
       },
       "research_contribution": "Owner-activated Issue 126 extension layered after the required R5 elementary UCM boundary.",
       "prerequisite_refs": [
@@ -2010,7 +2018,7 @@
       "conditions": [
         "r > 0.",
         "The path is circular at the represented instant.",
-        "Speed is constant for the acceleration to be exactly radial with no tangential component."
+        "For the acceleration to be exactly radial with no tangential component, speed is constant at that instant/over the uniform model."
       ],
       "derivation": [
         {
@@ -2086,9 +2094,10 @@
         }
       ],
       "conditions": [
-        "Choose one body and declare inward positive.",
-        "Only real interactions appear in the inertial-frame FBD.",
-        "The radial acceleration is v^2/r."
+        "Choose one body and declare inward as positive radial direction before resolving forces.",
+        "Only real interactions appear in an inertial-frame free-body diagram.",
+        "The represented motion has radial acceleration v^2/r.",
+        "Do not add an extra force named centripetal; Sigma F_r is the resultant radial role of the real forces."
       ],
       "derivation": [
         {
@@ -2172,9 +2181,9 @@
         }
       ],
       "conditions": [
-        "Body is at the top of a vertical circle.",
-        "String is taut and massless.",
-        "Inward is downward at the top."
+        "The body is at the top of the vertical circle.",
+        "The string is taut and massless in the bounded model.",
+        "Gravity acts downward and the radial positive direction is inward (downward at the top)."
       ],
       "derivation": [
         {
@@ -2185,13 +2194,13 @@
           "inputs": [
             "REL-CIRC-NET-RADIAL-FORCE"
           ],
-          "output": "Sigma F_r = T + mg."
+          "output": "At the top: inward/downward Sigma F_r = T + mg."
         },
         {
           "id": "CIRC-TOP-2",
           "role": "TRANSFORM",
           "action": "Set the real-force radial sum equal to m v_top^2/r.",
-          "why_valid": "The radial Newton-II relation owns the required inward resultant.",
+          "why_valid": "At the top, the downward inward resultant must equal m times the top radial acceleration v_top^2/r.",
           "inputs": [
             "REL-CIRC-NET-RADIAL-FORCE"
           ],
@@ -2248,9 +2257,9 @@
         }
       ],
       "conditions": [
-        "Body is at the bottom of a vertical circle.",
-        "String is taut and massless.",
-        "Inward is upward at the bottom."
+        "The body is at the bottom of the vertical circle.",
+        "The string is taut and massless in the bounded model.",
+        "Gravity acts downward and the radial positive direction is inward (upward at the bottom)."
       ],
       "derivation": [
         {
@@ -2261,13 +2270,13 @@
           "inputs": [
             "REL-CIRC-NET-RADIAL-FORCE"
           ],
-          "output": "Sigma F_r = T - mg."
+          "output": "At the bottom: inward/upward Sigma F_r = T - mg."
         },
         {
           "id": "CIRC-BOT-2",
           "role": "TRANSFORM",
           "action": "Set the real-force radial sum equal to m v_bottom^2/r.",
-          "why_valid": "The radial Newton-II relation owns the required inward resultant.",
+          "why_valid": "At the bottom, the upward inward resultant must equal m times the bottom radial acceleration v_bottom^2/r.",
           "inputs": [
             "REL-CIRC-NET-RADIAL-FORCE"
           ],
@@ -2314,9 +2323,10 @@
         }
       ],
       "conditions": [
-        "At the top of the vertical circle.",
-        "Just-taut boundary T=0.",
-        "g>0 and r>0."
+        "The body is at the top of the vertical circle.",
+        "The string is at the just-taut boundary, so T = 0.",
+        "r > 0 and g > 0.",
+        "This is a boundary result for the declared string model, not a generic circular-motion formula."
       ],
       "derivation": [
         {
@@ -4301,7 +4311,7 @@
         "dimension": "model_choice",
         "statement": "The learner must separate the required radial friction from the maximum available static friction and select no-slip only if the demand is within the bound.",
         "builds_on": [
-          "Q-PHY-KIN-CIRC-2A-FORCE-ROLE-01"
+          "MIC-PHY-NLM-FRICTION"
         ]
       },
       "repair_ref": "KIN6-5"
@@ -4374,7 +4384,7 @@
         "dimension": "reasoning_steps",
         "statement": "The learner must re-declare the radial positive direction at two positions and derive a boundary from T=0 instead of memorizing a minimum-speed formula.",
         "builds_on": [
-          "Q-PHY-KIN-CIRC-2A-FORCE-ROLE-01"
+          "MIC-PHY-KIN-UNIFORM-CIRCULAR-MOTION"
         ]
       },
       "repair_ref": "KIN6-7"
@@ -4878,6 +4888,42 @@
       "symbol": "v_axis",
       "meaning": "Zero-velocity graph baseline for the authored area decomposition.",
       "locator": "Author-created exact Grade 9 graphical-derivation datum."
+    },
+    {
+      "id": "DAT-KIN-CIRC-EXIT-MASS",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-AUTHOR-KIN-1D"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "issue126:scope_class": "OWNER_EXTENSION"
+      },
+      "kind": "DATUM",
+      "value": 2,
+      "unit": "kg",
+      "symbol": "m_exit",
+      "meaning": "Mass in the authored circular-dynamics force-role exit task.",
+      "locator": "Author-created exact Issue #126 exit-task datum."
+    },
+    {
+      "id": "DAT-KIN-CIRC-EXIT-AR",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-AUTHOR-KIN-1D"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "issue126:scope_class": "OWNER_EXTENSION"
+      },
+      "kind": "DATUM",
+      "value": 8,
+      "unit": "m/s^2",
+      "symbol": "a_r_exit",
+      "meaning": "Radial acceleration for v=4 m/s and r=2 m in the authored circular-dynamics exit task, obtained from REL-CIRC-RADIAL-ACCELERATION.",
+      "locator": "Author-created exact Issue #126 exit-task datum."
     }
   ],
   "application_contexts": [
