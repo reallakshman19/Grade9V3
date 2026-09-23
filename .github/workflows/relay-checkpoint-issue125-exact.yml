@@ -1,0 +1,174 @@
+name: relay-checkpoint-issue125-v31-exact
+on:
+  push:
+    branches:
+      - relay/checkpoint-issue125-v31-1c168
+
+permissions:
+  contents: write
+
+jobs:
+  checkpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout governed product branch
+        uses: actions/checkout@v4
+        with:
+          ref: explorer/issue-125-accelerated-frames
+          fetch-depth: 0
+
+      - name: Ensure base ref
+        run: git fetch origin main:refs/remotes/origin/main
+
+      - name: Checkout exact Engineering Relay V3.1
+        uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: 1c168695f237a8bef184a9e189be80fab87d1e78
+          path: _common_v31
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Relay dependencies
+        run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+
+      - name: Authorize checkpoint
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py CHECKPOINT .             --base-ref origin/main             --expected-custody-epoch 1
+
+      - name: Derive material basis and checkpoint document
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/material_basis.py .             --base-ref origin/main > /tmp/material.json
+          python - <<'PY'
+          import json, yaml
+          from pathlib import Path
+
+          material=json.loads(Path("/tmp/material.json").read_text())["material_basis"]
+          cp={
+            "schema_version":"relay-v3.1-checkpoint",
+            "id":"CP-ISS125-ACCELERATED-FRAMES-V31-001",
+            "ep":"EP-ISS125-ACCELERATED-FRAMES-V31-001",
+            "material_result":{
+              "head":material["head"],
+              "relevant_paths_digest":material["relevant_paths_digest"],
+              "dependency_digest":material["dependency_digest"],
+            },
+            "acceptance":[
+              {
+                "id":"AC-125-SCOPE","result":"PASS",
+                "evidence":[
+                  "Guardrails run 35815953427 PASS on 05a7c0e1a65cde16b6d8b82422a932717a95f21f.",
+                  "tests/test_issue125_accelerated_frames_explorer.py confirms R4 remains default_entry_eligible=false and the activity is QUESTION_DEMAND_EXTENSION."
+                ]
+              },
+              {
+                "id":"AC-125-GATE","result":"PASS",
+                "evidence":[
+                  "Guardrails run 35815953427 PASS, including gate/library contract validation and test_quantitative_relations_are_gate_owned.",
+                  "Canonical relations are REL-NLM-ELEVATOR-SUPPORT, REL-NLM-PSEUDO-FORCE, and REL-NLM-HANGING-BOB-TILT."
+                ]
+              },
+              {
+                "id":"AC-125-REPRESENTATION","result":"PASS",
+                "evidence":[
+                  "Guardrails run 35815953427 PASS, including depiction enforcement and canonical learner-loop representation inventory.",
+                  "MIC-PHY-NLM-FRAME-CHOICE binds REP-NLM-ACCELERATING-FRAME-COMPARISON and ACT-NLM-ACCELERATED-FRAMES."
+                ]
+              },
+              {
+                "id":"AC-125-BEHAVIOR","result":"PASS",
+                "evidence":[
+                  "Guardrails run 35815953427 PASS; all Issue 125 focused tests passed.",
+                  "Explorer independently controls velocity/acceleration, preserves mg at N=0 free fall, isolates pseudo-force to accelerating-frame bookkeeping, and includes bounded hanging-bob transfer."
+                ]
+              },
+              {
+                "id":"AC-125-BOUNDARY","result":"PASS",
+                "evidence":[
+                  "Guardrails run 35815953427 PASS; test_no_circular_motion_scope_leak passed.",
+                  "Issue 126 circular/centripetal dynamics remain outside this slice and were explicitly left demand-gated."
+                ]
+              },
+              {
+                "id":"AC-125-REPO","result":"PASS",
+                "evidence":[
+                  "Guardrails run 35815953427 PASS on exact product head 05a7c0e1a65cde16b6d8b82422a932717a95f21f.",
+                  "v31-relay run 35815953436 PASS using Common@1c168695f237a8bef184a9e189be80fab87d1e78."
+                ]
+              }
+            ],
+            "validation":{
+              "focused_tests":"PASS",
+              "spec_delivery":"PASS",
+              "full_guardrails":"PASS"
+            },
+            "quality":{"policy":"STANDARD","result":"CLEAR"},
+            "known_limitations":[
+              "R4 frame-choice remains an explicit-demand non-default Grade-9 extension; this checkpoint does not make it an exit-readiness requirement.",
+              "The Physics static FREE_BODY_DIAGRAM renderer remains PROPOSED; the canonical representation is implemented by the authored interactive activity.",
+              "Circular-motion/centripetal dynamics, rotating-frame inertial terms, and broader advanced mechanics remain outside Issue 125."
+            ],
+            "discoveries":[
+              "Issue 125's quantitative elevator and pseudo-force UI could not be honest page-owned math; those claims required subject-owned gate relations first.",
+              "Physics depiction enforcement requires the new canonical visual to reuse the declared FREE_BODY_DIAGRAM kind rather than invent a new representation kind.",
+              "The prior v31 workflow pin was older than the Owner-required exact V3.1 basis; custody-fenced admission exposed that mismatch and the workflow is now pinned to 1c168695f237a8bef184a9e189be80fab87d1e78."
+            ],
+            "handoff":{
+              "what_changed":[
+                "Added a demand-gated accelerating-frame quantitative gate with elevator support, pseudo-force, and hanging-bob relations.",
+                "Bound the frame-choice microtopic to one canonical FREE_BODY_DIAGRAM representation and authored accelerated-frames explorer.",
+                "Added focused falsifiers and updated frozen gate/representation/renderer inventories without weakening them.",
+                "Repinned repository V3.1 validation to exact Common@1c168695f237a8bef184a9e189be80fab87d1e78."
+              ],
+              "what_is_true_now":[
+                "Issue 125 product and repository guardrails pass on the exact material head.",
+                "R4 remains non-default and explicit-demand only.",
+                "The active lease is fenced at custody epoch 1 and this checkpoint is the fresh V3.1 acceptance candidate for PR 199."
+              ],
+              "what_remains_uncertain":[
+                "No explicit Owner MERGE authority for PR 199 is present in relay controls."
+              ],
+              "do_not_break":[
+                "Do not promote frame choice/pseudo-force into ordinary Grade-9 completion or exit-readiness scope.",
+                "Do not add pseudo-force to inertial-frame free-body diagrams.",
+                "Do not absorb Issue 126 circular-motion dynamics into this checkpoint.",
+                "Do not merge without explicit Owner MERGE authority."
+              ],
+              "attempted_and_rejected":[
+                "A page-only quantitative implementation was rejected because the existing frame-choice microtopic explicitly lacked relation authority.",
+                "A new DUAL_FRAME_FORCE_MODEL representation kind was rejected by Physics depiction enforcement; the canonical representation now reuses FREE_BODY_DIAGRAM.",
+                "GitHub Actions could not push the v3-relay workflow update due workflow-permission restrictions; the already-authorized one-line pin was applied through the connected GitHub API."
+              ],
+              "resume_from":[
+                "PR 199",
+                "CP-ISS125-ACCELERATED-FRAMES-V31-001",
+                "relay/STATE.yaml",
+                ".github/workflows/v3-relay.yml"
+              ],
+              "first_successor_action":"Evaluate PR_READY under exact V3.1, mark PR 199 ready if allowed, and stop before MERGE unless explicit Owner MERGE authority is present."
+            }
+          }
+          Path("/tmp/issue125-checkpoint.yaml").write_text(yaml.safe_dump(cp, sort_keys=False), encoding="utf-8")
+          PY
+
+      - name: Accept checkpoint transactionally
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . checkpoint             --tx-id TX-V31-CP-ISS125-001             --event-id EVT-V31-CP-ISS125-001             --actor chatgpt-sol-issue125-v31-20260923             --checkpoint /tmp/issue125-checkpoint.yaml             --base-ref origin/main             --expected-custody-epoch 1
+
+      - name: Validate post-checkpoint authority
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py PR_READY .             --expected-custody-epoch 1 || true
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py MERGE .             --expected-custody-epoch 1 || true
+
+      - name: Commit checkpoint after-images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add relay
+          git commit -m "relay: accept issue 125 checkpoint"
+          git push origin HEAD:explorer/issue-125-accelerated-frames
