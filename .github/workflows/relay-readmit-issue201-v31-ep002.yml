@@ -1,0 +1,91 @@
+name: relay-readmit-issue201-v31-ep002
+on:
+  push:
+    branches:
+      - relay/readmit-issue201-v31-ep002
+permissions:
+  contents: write
+jobs:
+  admit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: relay/readmit-issue201-v31-ep002
+          fetch-depth: 0
+      - run: git fetch origin main:refs/remotes/origin/main
+      - uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: 1c168695f237a8bef184a9e189be80fab87d1e78
+          path: _common_v31
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+      - name: Build reconciled admission
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+          ep = yaml.safe_load(Path("relay/WORK/EP-ISS201-EXAM-BANK-PASS1-V31-001.yaml").read_text())
+          roadmap = yaml.safe_load(Path("relay/ROADMAP/ROADMAP.yaml").read_text())
+          wp = next(x for x in roadmap["work_packages"] if x["id"] == "WP-ISS201-EXAM-BANK-PASS1")
+          ep["id"] = "EP-ISS201-EXAM-BANK-PASS1-V31-002"
+          ep["basis"]["material_base"] = "bf20357037f2e9a916a4fa42ea83a075d6ed0351"
+          ep["next"]["first_action"] = "Use the current PR 202 candidate after the true main merge; authorize and repin exact V3.1 validation, rerun provenance and repository falsifiers, then checkpoint without widening Pass 1."
+          admission = {
+              "schema_version": "relay-v3.1-task-admission",
+              "roadmap": {
+                  "disposition": "MAPPED_EXISTING_WP",
+                  "new_revision": "RM-V31-ISS201-EXAM-BANK-PASS1-002",
+                  "basis": [
+                      "EP-001 custody was released because its declared material base was not an ancestor of the candidate branch.",
+                      "Current main bf20357037f2e9a916a4fa42ea83a075d6ed0351 is now a real second parent of the PR 202 history via merge commit 8aa7fc95a7a5659e9d4605237eed209798679faa.",
+                      "Main's imported delta is limited to two competitive-exam template files and is disjoint from the Pass 1 bank/audit candidate.",
+                      "The existing WP-ISS201-EXAM-BANK-PASS1 outcome and acceptance contract remain unchanged."
+                  ],
+                  "work_package": wp,
+              },
+              "ep": ep,
+              "lease": {
+                  "id": "LEASE-ISS201-EXAM-BANK-PASS1-V31-002",
+                  "executor_id": "chatgpt-sol-issue201-v31-20260923",
+                  "method": "DETERMINISTIC",
+                  "qualification": None,
+                  "owner_basis": None,
+                  "branch": "question-bank/pass1-provenance",
+                  "recovery_after_seconds": 3600,
+                  "recovery_policy": "TAKEOVER_AFTER_EXPIRY",
+              },
+              "delivery": {
+                  "required": True,
+                  "primary_vehicle": {
+                      "provider": "GITHUB",
+                      "kind": "PULL_REQUEST",
+                      "number": 202,
+                  },
+              },
+          }
+          Path("/tmp/issue201-admission-002.yaml").write_text(yaml.safe_dump(admission, sort_keys=False), encoding="utf-8")
+          PY
+      - name: Re-admit task transactionally
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . admit-task \
+            --tx-id TX-V31-ADMIT-ISS201-002 \
+            --event-id EVT-V31-ADMIT-ISS201-002 \
+            --actor chatgpt-sol-issue201-v31-20260923 \
+            --admission /tmp/issue201-admission-002.yaml \
+            --base-ref origin/main
+      - name: Validate exact V3.1 foundation
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_cutover.py . validate
+      - name: Commit Relay EP-002 after-images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add relay
+          git commit -m "relay: readmit issue 201 on reconciled main base"
+          git push origin HEAD:relay/readmit-issue201-v31-ep002
