@@ -1,0 +1,37 @@
+schema_version: relay-v3.1-transaction
+id: TX-V31-ISS211-SCOPE-RELEASE-002
+command: RELEASE_LEASE
+actor: chatgpt-sol-issue211-v31-20260923
+status: COMMITTED
+created_at: '2026-09-23T12:54:44.654705Z'
+updated_at: '2026-09-23T12:54:45.158762Z'
+operations:
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:75593cfeda9d32368e84be5884eb5011e2f4b86fd5ecc86c8e14c5c5d58469f0
+  after_digest: sha256:ef330b54740e73127b8c90b180bfa92b0df2bc875728e3f7e2f40e3055e7d5cf
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS211-SCOPE-RELEASE-002/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS211-SCOPE-RELEASE-002/backups/000.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:1fe13436ee5fd1cf9b1eb8d24e5951d777465566c72271849ca6450393d70429
+  after_digest: sha256:9a73cedab49c6a3d923d8596203b72085c84881e969ede16099192d4dcad2244
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS211-SCOPE-RELEASE-002/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS211-SCOPE-RELEASE-002/backups/001.before
+- path: relay/LEASES/LEASE-ISS211-CORE-READINESS-V31-001.yaml
+  before_exists: true
+  before_digest: sha256:f6f6f9b936dc94ed204f213b184e73e9728a782ed79144a3009099178d9565e2
+  after_digest: sha256:e0712047d5fa26a9e55a9ceae28682b9815833f1ecc64a880432c836da00da10
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS211-SCOPE-RELEASE-002/staged/002.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS211-SCOPE-RELEASE-002/backups/002.before
+- path: relay/STATE.yaml
+  before_exists: true
+  before_digest: sha256:a983699014a185bb58cdcb76b3f7301ab559ffe71c1b779650dffba6d8c21a07
+  after_digest: sha256:fc035b93e0d5b07a85474aaf93c908463a3311f9daa3ca6cb812a57ec88ce6f3
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS211-SCOPE-RELEASE-002/staged/003.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS211-SCOPE-RELEASE-002/backups/003.before
+applied:
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/LEASES/LEASE-ISS211-CORE-READINESS-V31-001.yaml
+- relay/STATE.yaml

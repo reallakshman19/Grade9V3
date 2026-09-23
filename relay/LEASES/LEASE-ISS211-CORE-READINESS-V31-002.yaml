@@ -1,0 +1,40 @@
+schema_version: relay-v3.1-lease
+id: LEASE-ISS211-CORE-READINESS-V31-002
+route: SERIAL:EP-ISS211-CORE-READINESS-V31-002
+executor:
+  id: chatgpt-sol-issue211-v31-20260923
+basis:
+  ep_id: EP-ISS211-CORE-READINESS-V31-002
+  ep_digest: sha256:64b47cf3a699f6101a42f5395253878156562da9fc4085bc17734d52fff10e8f
+  material_base: c768c53270b559297d316ead70f50ef6e7a99ba9
+  predecessor_checkpoint: CP-ISS125-ACCELERATED-FRAMES-V31-001
+  protocol_basis: reallaksh19/Common@1c168695f237a8bef184a9e189be80fab87d1e78:skills/engineering-pr-delivery-v3.1
+authority:
+  actions:
+  - READ
+  - ANALYZE
+  - MATERIAL_WRITE
+  - TEST
+  - CHECKPOINT
+  - HANDOVER
+  - LOCAL_EXECUTION_EXPORT
+  - DRAFT_PR_UPDATE
+admission:
+  method: DETERMINISTIC
+  result: PASS
+  repository_only: true
+  qualification:
+    required: false
+    qset: null
+    evaluator: null
+    result: null
+    evidence: []
+custody:
+  epoch: 1
+  granted_at: '2026-09-23T12:54:45.582418Z'
+  renewed_at: '2026-09-23T12:54:45.582418Z'
+  recovery_after_seconds: 3600
+  recovery_policy: TAKEOVER_AFTER_EXPIRY
+state: ACTIVE
+invalidation:
+  reasons: []
