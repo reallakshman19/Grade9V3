@@ -1,0 +1,42 @@
+name: relay-release-issue201-invalid-base
+on:
+  push:
+    branches:
+      - relay/release-issue201-invalid-base
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: question-bank/pass1-provenance
+          fetch-depth: 0
+      - uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: 1c168695f237a8bef184a9e189be80fab87d1e78
+          path: _common_v31
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+      - name: Release invalid material-basis custody
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . release-lease \
+            --tx-id TX-V31-ISS201-BASE-RELEASE-001 \
+            --event-id EVT-V31-ISS201-BASE-RELEASE-001 \
+            --actor chatgpt-sol-issue201-v31-20260923 \
+            --reason ADMINISTRATIVE \
+            --expected-custody-epoch 1
+      - name: Validate released foundation
+        run: python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+      - name: Commit Relay release
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add relay
+          git commit -m "relay: release issue201 invalid-base custody"
+          git push origin HEAD:question-bank/pass1-provenance
