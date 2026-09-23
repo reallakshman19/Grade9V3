@@ -203,7 +203,7 @@
     },
     {
       "rung": "R6",
-      "ladder_position": 120,
+      "ladder_position": 100,
       "provenance": "AUTHORED",
       "microtopic_ref": "MIC-PHY-KIN-CIRCULAR-DYNAMICS-ROLE",
       "ceiling": [
