@@ -193,7 +193,18 @@
     return base + (base.includes('?') ? '&' : '?') + 'projection=' + encodeURIComponent(projectionId);
   }
 
+  function canonicalNavigationBlocked() {
+    return Boolean(
+      state.atlas_finding
+      && ['ATLAS_INDEX_VERSION_UNSUPPORTED', 'ATLAS_TARGET_INCOMPLETE', 'ATLAS_TARGET_NOT_FOUND', 'ATLAS_DUPLICATE_KEY']
+        .includes(state.atlas_finding.code)
+    );
+  }
+
   function renderActivityAction(rungId, activity, label) {
+    if (canonicalNavigationBlocked()) {
+      return '<span class="badge hold">' + escapeHtml(label) + ': navigation disabled</span>';
+    }
     const subjectPayload = currentSubjectPayload();
     const resolved = resolveAtlasComposite(subjectPayload, state.matrix.matrix_id, rungId);
     if (!resolved.row || resolved.status !== 'READY') {
@@ -225,7 +236,9 @@
     const visual = resolveVisualDestinationsFor(subjectPayload, row);
 
     let coreActions = '';
-    if (availability.core === 'READY' && core.status === 'READY' && core.ready.length) {
+    if (canonicalNavigationBlocked()) {
+      coreActions = '<span class="badge hold">Canonical navigation disabled by Atlas finding</span>';
+    } else if (availability.core === 'READY' && core.status === 'READY' && core.ready.length) {
       coreActions = core.ready.map(ref => {
         const href = coreProjectionHref(ref);
         return href
@@ -239,7 +252,9 @@
     }
 
     let visualActions = '';
-    if (visual.status === 'READY' && visual.ready.length) {
+    if (canonicalNavigationBlocked()) {
+      visualActions = '<span class="badge hold">Visual navigation disabled by Atlas finding</span>';
+    } else if (visual.status === 'READY' && visual.ready.length) {
       visualActions = visual.ready.map(item => {
         const href = activityHref(item.target.locator);
         return href
