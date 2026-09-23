@@ -3812,7 +3812,7 @@ window.GRADE9V3 = {
             ],
             "atoms": 78,
             "questions": 19,
-            "obligations": 10,
+            "obligations": 11,
             "authoring_requirements": [
               {
                 "kind": "FIGURE_AUTHORING",

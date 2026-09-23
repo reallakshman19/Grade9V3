@@ -17,7 +17,7 @@
     "WEB": 9,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:4600c793e56f5c0e55122054c4cdfeae70ac9ab83fe85c5035ee22b2bba2afdc",
+  "digest": "sha256:f2f0237604052d637842a538601c9ced5bfb815c76c3844e40043b1f2bb59e97",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -1255,8 +1255,8 @@
       "path": "tests/test_grade9_default_extension_routing.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 7433,
-      "sha256": "9ab934fa087279391350fe6e027ea05934a99e40f7b7074f9f140c5aac66ac28"
+      "bytes": 7445,
+      "sha256": "ecce00029f4a64a615b3a38bac589dfdce29d88a4603ffb0eb297c3b7759d400"
     },
     {
       "path": "tests/test_grade9_exit.py",
@@ -1304,8 +1304,8 @@
       "path": "tests/test_grade9_motion_scope.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 2109,
-      "sha256": "0bb207840f114ce219945d073f60eca00ae9f50071ea5cfb845403e2ca55a10d"
+      "bytes": 2459,
+      "sha256": "648ccacc69eb791b7e752f308d7a97eb8a75e496997695fd52fad128f145b0c0"
     },
     {
       "path": "tests/test_grade9_nlm_connected_string_agent_a_atlas.py",
@@ -1655,7 +1655,7 @@
       "role": "WEB",
       "role_description": "Browsable surfaces over generated data",
       "bytes": 1890429,
-      "sha256": "fb4710550ba8237faf6a92463e32821eadfdb21e20e2e5bd2e4c1133714e2855"
+      "sha256": "72d2a6efac485fa211d1458fcd42d21f752552d184b006ae8d41267ae0f7c10f"
     },
     {
       "path": "tools/index.html",
