@@ -9,7 +9,7 @@ execution:
   route: SERIAL:EP-ISS126-CIRCULAR-DYNAMICS-V31-003
   custody_epoch: 1
 accepted:
-  checkpoint: null
+  checkpoint: CP-ISS126-CIRCULAR-DYNAMICS-V31-001
 controls:
   path: relay/CONTROLS/controls.yaml
 delivery:

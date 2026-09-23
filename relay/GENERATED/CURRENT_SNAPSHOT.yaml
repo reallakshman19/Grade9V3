@@ -2,13 +2,13 @@ schema_version: relay-v3.1-snapshot
 authority: DERIVED_READ_MODEL
 generated_from:
   roadmap_revision: RM-V31-ISS126-CIRCULAR-DYNAMICS-003
-  state_digest: sha256:b811a4463b619c5a132ff8f9f514ea5b60dd0cab389a31b64b3a3e454c57c972
+  state_digest: sha256:d582b4486c3976d03ed9a613a4916a6eda327d0366298251d121a431d75d8c83
   material_basis:
     head: d2b683d627dbb2ffd26c7f4d623be060b3de5244
     tree_digest: sha256:276bcdd6aa19041b0cac4c8e8cbd987fb7a1b31e3edd8fe89a643cb6d73b98ad
     relevant_paths_digest: sha256:9b3bad12c2a27b7102f6ebf1fd5524f00beba047d02f203c0949c2418884398c
     dependency_digest: sha256:7a399b2f2a67ef1aa5fc9f9b8fd8dc6ff5e91a0259d064fe0af34b4bcfc9218f
-  coordination_head: 7f8090782e50183449cad5026e4eb85cd637807c
+  coordination_head: 46c1a6c32f3e2407c8a0577696dfc115ceae99d8
 owner:
   outcome: Preserve the delivered self-study architecture and activate new work only
     from a concrete learner, worksheet, source, or product defect rather than from
@@ -17,9 +17,10 @@ owner:
     and Mathematics expansion are Owner-skipped for now; dormant Physics inventory
     remains demand-gated and real learner evidence remains input-gated.
 programme:
-  accepted_progress: 6.35
+  accepted_progress: 8.73
   completed_work:
   - WP-PORTABLE-163
+  - WP-ISS126-CIRCULAR-DYNAMICS
   remaining_work:
   - WP-TAKEOVER-RECONCILE
   - WP-TA-102
@@ -32,7 +33,6 @@ programme:
   - WP-CANONICAL-174-NLM
   - WP-CANONICAL-174-MOTION
   - WP-LEARNER-175-PRODUCTION
-  - WP-ISS126-CIRCULAR-DYNAMICS
 execution:
   lifecycle: ACTIVE
   work_package: WP-ISS126-CIRCULAR-DYNAMICS
@@ -83,8 +83,11 @@ material:
   relevant_paths_digest: sha256:9b3bad12c2a27b7102f6ebf1fd5524f00beba047d02f203c0949c2418884398c
   dependency_digest: sha256:7a399b2f2a67ef1aa5fc9f9b8fd8dc6ff5e91a0259d064fe0af34b4bcfc9218f
 evidence:
-  latest_checkpoint: null
-  latest_material_validation: {}
+  latest_checkpoint: CP-ISS126-CIRCULAR-DYNAMICS-V31-001
+  latest_material_validation:
+    focused_tests: PASS
+    spec_delivery: PASS
+    full_guardrails: PASS
 controls:
   execution_blockers: []
   handover_blockers: []
@@ -112,3 +115,4 @@ handoff:
   - relay/CONTROLS/controls.yaml
   - relay/WORK/EP-ISS126-CIRCULAR-DYNAMICS-V31-003.yaml
   - relay/LEASES/LEASE-ISS126-CIRCULAR-DYNAMICS-V31-003.yaml
+  - relay/CHECKPOINTS/CP-ISS126-CIRCULAR-DYNAMICS-V31-001.yaml
