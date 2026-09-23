@@ -310,6 +310,10 @@ def _proj_symbol_no_unit(data):
 def _kin_avg_symbol_no_unit(data):
     _drop_first_symbol_unit(data, "PHY-KIN-AVERAGE-RATES")
 
+@mutates("FAL-CIRC-SYMBOL-NO-UNIT")
+def _circ_symbol_no_unit(data):
+    _drop_first_symbol_unit(data, "PHY-KIN-CIRCULAR-DYNAMICS-EXTENSION")
+
 
 @mutates("FAL-POWER-RATES-SYMBOL-NO-UNIT")
 def _power_rates_symbol_no_unit(data):
