@@ -5,19 +5,19 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 237,
+  "component_count": 238,
   "relation_count": 275,
   "components_by_role": {
     "CONTRACT": 7,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 34,
-    "TEST": 111,
+    "TEST": 112,
     "TOOLING": 55,
     "WEB": 9,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:6dbfc9205118999a1953cc5c75a9d0dfae38617fd3f0970cf8b663ae261a181b",
+  "digest": "sha256:4a697566f2bdf1d37d85d8e18c90ab78e4be357df5a529ce13d496026197c1be",
   "components": [
     {
       "path": "public/core-learning/data.js",
@@ -1110,6 +1110,13 @@
       "role_description": "Executable checks",
       "bytes": 19825,
       "sha256": "84369a80da26a73e78db6e995397bb4e92b866e4291b24b89fa3a32ff7d94789"
+    },
+    {
+      "path": "tests/test_competitive_exam_question_bank.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 12658,
+      "sha256": "8a74cc3e159be69d5a85530a8506a3deb9f3f295cc079ac5314720d99dc2694b"
     },
     {
       "path": "tests/test_core_issue19_integration.py",
