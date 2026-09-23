@@ -1,0 +1,37 @@
+schema_version: relay-v3.1-transaction
+id: TX-V31-ISS210-PREFLIGHT-ROADMAP-001
+command: RECONCILE_ROADMAP
+actor: chatgpt-sol-issue211-v31-20260923
+status: COMMITTED
+created_at: '2026-09-23T12:40:28.435795Z'
+updated_at: '2026-09-23T12:40:28.454356Z'
+operations:
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:abde955b33005d2c2304604de637727f9c4f4e9c2f1950716afbe3c450a37b5d
+  after_digest: sha256:ceac9c24cdadf0670c2ea6e2c1a77715eb73d93ebf2e3b27ae397481871fb9b2
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS210-PREFLIGHT-ROADMAP-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS210-PREFLIGHT-ROADMAP-001/backups/000.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:aab5de0d1ab1444df64cf5e3dd749483872b6255654d0c1bb1e2f5a4cace5279
+  after_digest: sha256:56478bc3c5a2b4ce1d6a9f0b8c041a3bcaaba4632fc066194e2fd6dac884d8a7
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS210-PREFLIGHT-ROADMAP-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS210-PREFLIGHT-ROADMAP-001/backups/001.before
+- path: relay/ROADMAP/ROADMAP.yaml
+  before_exists: true
+  before_digest: sha256:8211f29535c376192dc31fbd15bd39b7c6b4e28ede80bc3d5cb55165639061b7
+  after_digest: sha256:9be5644cbb255399e6882b86a419bb05020e0e3699b7ed8d5d5d16d9030ca71c
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS210-PREFLIGHT-ROADMAP-001/staged/002.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS210-PREFLIGHT-ROADMAP-001/backups/002.before
+- path: relay/STATE.yaml
+  before_exists: true
+  before_digest: sha256:76b475ccbb865c330532f6d7b0377479fe4d4f9353a3d04731d622f2e97cf12a
+  after_digest: sha256:5621dba972d9a18ea34323efeaab3c29e711da388f031fcb7b18ab3046aea489
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS210-PREFLIGHT-ROADMAP-001/staged/003.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS210-PREFLIGHT-ROADMAP-001/backups/003.before
+applied:
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/ROADMAP/ROADMAP.yaml
+- relay/STATE.yaml

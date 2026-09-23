@@ -1,0 +1,51 @@
+schema_version: relay-v3.1-transaction
+id: TX-V31-ADMIT-ISS211-001
+command: ADMIT_TASK
+actor: chatgpt-sol-issue211-v31-20260923
+status: COMMITTED
+created_at: '2026-09-23T12:40:29.372214Z'
+updated_at: '2026-09-23T12:40:29.399387Z'
+operations:
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:ceac9c24cdadf0670c2ea6e2c1a77715eb73d93ebf2e3b27ae397481871fb9b2
+  after_digest: sha256:75593cfeda9d32368e84be5884eb5011e2f4b86fd5ecc86c8e14c5c5d58469f0
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS211-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS211-001/backups/000.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:56478bc3c5a2b4ce1d6a9f0b8c041a3bcaaba4632fc066194e2fd6dac884d8a7
+  after_digest: sha256:1fe13436ee5fd1cf9b1eb8d24e5951d777465566c72271849ca6450393d70429
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS211-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS211-001/backups/001.before
+- path: relay/LEASES/LEASE-ISS211-CORE-READINESS-V31-001.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:f6f6f9b936dc94ed204f213b184e73e9728a782ed79144a3009099178d9565e2
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS211-001/staged/002.after
+  backup_path: null
+- path: relay/ROADMAP/ROADMAP.yaml
+  before_exists: true
+  before_digest: sha256:9be5644cbb255399e6882b86a419bb05020e0e3699b7ed8d5d5d16d9030ca71c
+  after_digest: sha256:498f98a53b4c1fa8f3a297886a7ff0607bfb0d5cbf8836c1b2d1bfd886d375bf
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS211-001/staged/003.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS211-001/backups/003.before
+- path: relay/STATE.yaml
+  before_exists: true
+  before_digest: sha256:5621dba972d9a18ea34323efeaab3c29e711da388f031fcb7b18ab3046aea489
+  after_digest: sha256:a983699014a185bb58cdcb76b3f7301ab559ffe71c1b779650dffba6d8c21a07
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS211-001/staged/004.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS211-001/backups/004.before
+- path: relay/WORK/EP-ISS211-CORE-READINESS-V31-001.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:e6f7742aaeb1545f4e1360ab5b0f4ad35d60df31e42263435d15e48ed05041fe
+  staged_path: relay/TRANSACTIONS/TX-V31-ADMIT-ISS211-001/staged/005.after
+  backup_path: null
+applied:
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/LEASES/LEASE-ISS211-CORE-READINESS-V31-001.yaml
+- relay/ROADMAP/ROADMAP.yaml
+- relay/STATE.yaml
+- relay/WORK/EP-ISS211-CORE-READINESS-V31-001.yaml

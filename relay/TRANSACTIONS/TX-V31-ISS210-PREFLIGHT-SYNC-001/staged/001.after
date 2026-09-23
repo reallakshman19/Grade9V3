@@ -1,0 +1,12 @@
+schema_version: relay-v3.1-delivery-status
+authority: PROVIDER_READBACK
+vehicle:
+  provider: GITHUB
+  kind: PULL_REQUEST
+  number: 199
+observed_at: '2026-09-23T12:34:00Z'
+provider_ref: github:reallaksh19/Grade9V3/pull/199@d2e1ddb5fc6b90affebb4fb1783bb629affbb476
+lifecycle: MERGED
+checks: PASS
+review: NOT_APPLICABLE
+mergeability: NOT_APPLICABLE

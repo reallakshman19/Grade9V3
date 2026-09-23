@@ -1,5 +1,5 @@
 schema_version: relay-v3.1-roadmap
-revision: RM-V31-ISS125-ACCELERATED-FRAMES-001
+revision: RM-V31-ISS211-CORE-READINESS-001
 title: Grade9V3 reconciled delivered baseline
 owner:
   outcome: Preserve the delivered self-study architecture and activate new work only
@@ -85,6 +85,26 @@ work_packages:
 - id: WP-ISS125-ACCELERATED-FRAMES
   title: Deliver demand-gated accelerated-frame and elevator extension explorer
   weight: 3
-  state: ACTIVE
+  state: COMPLETE
   depends_on:
   - WP-TA-105
+- id: WP-ISS126-CIRCULAR-DYNAMICS
+  title: Deliver circular-dynamics force-role explorer without expanding default Grade-9
+    scope
+  weight: 3
+  state: COMPLETE
+  depends_on:
+  - WP-CANONICAL-174-MOTION
+  - WP-CANONICAL-174-NLM
+- id: WP-ISS201-EXAM-BANK-PASS1
+  title: Deliver provenance-first competitive-exam question-bank Pass 1 custody
+  weight: 3
+  state: COMPLETE
+  depends_on: []
+- id: WP-ISS211-CORE-READINESS
+  title: Audit and harden six-Core projection and host contracts
+  weight: 4
+  state: ACTIVE
+  depends_on:
+  - WP-LEARNER-175-PRODUCTION
+  - WP-PORTABLE-163

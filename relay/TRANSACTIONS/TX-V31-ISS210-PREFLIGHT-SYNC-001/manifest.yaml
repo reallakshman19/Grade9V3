@@ -1,0 +1,23 @@
+schema_version: relay-v3.1-transaction
+id: TX-V31-ISS210-PREFLIGHT-SYNC-001
+command: SYNC_DELIVERY
+actor: chatgpt-sol-issue211-v31-20260923
+status: COMMITTED
+created_at: '2026-09-23T12:40:27.612705Z'
+updated_at: '2026-09-23T12:40:27.623958Z'
+operations:
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:c3bd96e1fdc2ebb7f0643a8af81b5f29dcae399dfb227c0a13617db2e2c9c429
+  after_digest: sha256:abde955b33005d2c2304604de637727f9c4f4e9c2f1950716afbe3c450a37b5d
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS210-PREFLIGHT-SYNC-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS210-PREFLIGHT-SYNC-001/backups/000.before
+- path: relay/GENERATED/DELIVERY_STATUS.yaml
+  before_exists: true
+  before_digest: sha256:fa68a000dbd9fbcee203eb665490f238815dce7aca03b0c5303eeb74dd52bd76
+  after_digest: sha256:11655ca8cd9d0bccb0e7743f36e815deff2877f49acef77dbd551d3cd570f853
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS210-PREFLIGHT-SYNC-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS210-PREFLIGHT-SYNC-001/backups/001.before
+applied:
+- relay/EVENTS.jsonl
+- relay/GENERATED/DELIVERY_STATUS.yaml

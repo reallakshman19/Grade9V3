@@ -1,0 +1,125 @@
+schema_version: relay-v3.1-snapshot
+authority: DERIVED_READ_MODEL
+generated_from:
+  roadmap_revision: RM-V31-ISS211-CORE-READINESS-001
+  state_digest: sha256:71edeeae8f31fce5664fccf2d9d3a185c6c2008a79384dc4b2a480c9905b9abc
+  material_basis:
+    head: c768c53270b559297d316ead70f50ef6e7a99ba9
+    tree_digest: sha256:6135355403c51cb1023cbb1e1202e913fecbb8392433de61db02c1db404fa340
+    relevant_paths_digest: sha256:7f0aa69005df4ab9406edd2fac5b64e85bd220261a5d65e2ce33a4acb17194be
+    dependency_digest: sha256:9a8d93cdf685c94821e129f2dcd15414f570c4d4997a147515a154d57410c5a0
+  coordination_head: b6105d391d28fe77fdb3bb40db0c98a532e4d20f
+owner:
+  outcome: Preserve the delivered self-study architecture and activate new work only
+    from a concrete learner, worksheet, source, or product defect rather than from
+    stale umbrella scope.
+  current_goal: No successor content lane is active. Grade-10 Physics, Grade-11 Physics,
+    and Mathematics expansion are Owner-skipped for now; dormant Physics inventory
+    remains demand-gated and real learner evidence remains input-gated.
+programme:
+  accepted_progress: 8.09
+  completed_work:
+  - WP-PORTABLE-163
+  - WP-ISS125-ACCELERATED-FRAMES
+  remaining_work:
+  - WP-TAKEOVER-RECONCILE
+  - WP-TA-102
+  - WP-TA-106
+  - WP-TA-103
+  - WP-TA-104
+  - WP-TA-107
+  - WP-TA-108
+  - WP-TA-105
+  - WP-CANONICAL-174-NLM
+  - WP-CANONICAL-174-MOTION
+  - WP-LEARNER-175-PRODUCTION
+  - WP-ISS126-CIRCULAR-DYNAMICS
+  - WP-ISS201-EXAM-BANK-PASS1
+  - WP-ISS211-CORE-READINESS
+execution:
+  lifecycle: ACTIVE
+  work_package: WP-ISS211-CORE-READINESS
+  ep: EP-ISS211-CORE-READINESS-V31-001
+  lease: LEASE-ISS211-CORE-READINESS-V31-001
+  executor: chatgpt-sol-issue211-v31-20260923
+  custody_epoch: 1
+scope:
+  allowed_writes:
+  - Shared/library/package.schema.json
+  - Shared/library/matrix.schema.json
+  - Shared/library/request.schema.json
+  - Shared/library/compile_inputs.py
+  - Shared/tools/core_learning_projection_adapter.py
+  - Shared/tools/build_core_learning_data.py
+  - Shared/workbench/core-learning-page.mjs
+  - Shared/workbench/core-learning-host.mjs
+  - tests/test_core_learning_adapter.py
+  - tests/core_learning_page.test.mjs
+  - tests/core_learning_host.test.mjs
+  - tests/test_issue211_core_readiness.py
+  - public/core-learning/data.js
+  - docs/readiness/CORE-CONTRACT-MAP.md
+  - docs/architecture-manifest.json
+  protected:
+  - Learners/**
+  - Physics/library/**
+  - Physics/matrices/**
+  - Chemistry/**
+  - Mathematics/**
+  - Shared/portable/**
+  - public/js/topic-atlas.js
+  - tools/data.js
+  - public/data/data.js
+  - standalone/**
+  - agents/relay/**
+  prohibited:
+  - Do not create new subject content.
+  - Do not add a seventh Core.
+  - Do not infer Core roles from browser text or raw DOM.
+  - Do not add subject-specific identifier switches in Shared code.
+  - Do not interpret interaction events as learner mastery.
+  - Do not disclose the Core2B protected move before learner commitment.
+  - Do not silently omit unsupported buckets; emit explicit findings.
+  - Do not merge before an accepted checkpoint and explicit Owner MERGE authority.
+material:
+  base: c768c53270b559297d316ead70f50ef6e7a99ba9
+  head: c768c53270b559297d316ead70f50ef6e7a99ba9
+  relevant_paths_digest: sha256:7f0aa69005df4ab9406edd2fac5b64e85bd220261a5d65e2ce33a4acb17194be
+  dependency_digest: sha256:9a8d93cdf685c94821e129f2dcd15414f570c4d4997a147515a154d57410c5a0
+evidence:
+  latest_checkpoint: CP-ISS125-ACCELERATED-FRAMES-V31-001
+  latest_material_validation:
+    focused_tests: PASS
+    spec_delivery: PASS
+    full_guardrails: PASS
+controls:
+  execution_blockers: []
+  handover_blockers: []
+  delivery_blockers: []
+  informational: []
+delivery:
+  issue: null
+  pr: 219
+  lifecycle: DECLARED
+  merge_authorized: false
+next:
+  immediate_material_action: Build the PASS/PARTIAL/MISSING contract map from current
+    code/tests, then add only falsifiers for demonstrated gaps before changing Shared
+    code.
+  delivery_action: Perform the explicitly authorized delivery transition.
+  stop_conditions:
+  - Stop if a proposed fix requires subject-package edits.
+  - Stop if projection envelope changes would break the frozen downstream handoff
+    without an explicit migration.
+  - Stop if the only way to satisfy a test is to infer learner mastery or duplicate
+    academic truth.
+  - Stop before merge without accepted checkpoint and explicit Owner MERGE authority.
+handoff:
+  zero_context_takeover_possible: true
+  reconstruction_sources:
+  - relay/ROADMAP/ROADMAP.yaml
+  - relay/STATE.yaml
+  - relay/CONTROLS/controls.yaml
+  - relay/WORK/EP-ISS211-CORE-READINESS-V31-001.yaml
+  - relay/LEASES/LEASE-ISS211-CORE-READINESS-V31-001.yaml
+  - relay/CHECKPOINTS/CP-ISS125-ACCELERATED-FRAMES-V31-001.yaml

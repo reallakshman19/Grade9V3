@@ -1,0 +1,128 @@
+schema_version: relay-v3.1-ep
+id: EP-ISS211-CORE-READINESS-V31-001
+work_package: WP-ISS211-CORE-READINESS
+outcome:
+  statement: Prove the subject-neutral Core compiler/projection/host path on current
+    main, preserve working six-Core semantics, expose unsupported/missing bindings
+    explicitly, and close only concrete contract gaps without authoring new subject
+    content.
+basis:
+  predecessor_checkpoint: CP-ISS125-ACCELERATED-FRAMES-V31-001
+  material_base: c768c53270b559297d316ead70f50ef6e7a99ba9
+  protocol_basis: reallaksh19/Common@1c168695f237a8bef184a9e189be80fab87d1e78:skills/engineering-pr-delivery-v3.1
+  semantic_dependencies:
+  - path: Shared/library/package.schema.json
+    reason: Canonical package/Core contract.
+  - path: Shared/library/matrix.schema.json
+    reason: Matrix/rung contract consumed by projections.
+  - path: Shared/library/request.schema.json
+    reason: Explicit request contract.
+  - path: Shared/library/compile_inputs.py
+    reason: Compiler authority.
+  - path: Shared/tools/core_learning_projection_adapter.py
+    reason: Subject-neutral projection adapter.
+  - path: Shared/tools/build_core_learning_data.py
+    reason: Generated Core learner data builder.
+  - path: Shared/workbench/core-learning-page.mjs
+    reason: Core learner page contract.
+  - path: Shared/workbench/core-learning-host.mjs
+    reason: Host/runtime seam.
+scope:
+  write:
+  - Shared/library/package.schema.json
+  - Shared/library/matrix.schema.json
+  - Shared/library/request.schema.json
+  - Shared/library/compile_inputs.py
+  - Shared/tools/core_learning_projection_adapter.py
+  - Shared/tools/build_core_learning_data.py
+  - Shared/workbench/core-learning-page.mjs
+  - Shared/workbench/core-learning-host.mjs
+  - tests/test_core_learning_adapter.py
+  - tests/core_learning_page.test.mjs
+  - tests/core_learning_host.test.mjs
+  - tests/test_issue211_core_readiness.py
+  - public/core-learning/data.js
+  - docs/readiness/CORE-CONTRACT-MAP.md
+  - docs/architecture-manifest.json
+  read:
+  - Shared/library/**
+  - Shared/tools/**
+  - Shared/workbench/**
+  - Physics/library/**
+  - Physics/matrices/**
+  - Mathematics/library/**
+  - Mathematics/matrices/**
+  - public/core-learning/**
+  - tests/**
+  protect:
+  - Learners/**
+  - Physics/library/**
+  - Physics/matrices/**
+  - Chemistry/**
+  - Mathematics/**
+  - Shared/portable/**
+  - public/js/topic-atlas.js
+  - tools/data.js
+  - public/data/data.js
+  - standalone/**
+  - agents/relay/**
+  prohibit:
+  - Do not create new subject content.
+  - Do not add a seventh Core.
+  - Do not infer Core roles from browser text or raw DOM.
+  - Do not add subject-specific identifier switches in Shared code.
+  - Do not interpret interaction events as learner mastery.
+  - Do not disclose the Core2B protected move before learner commitment.
+  - Do not silently omit unsupported buckets; emit explicit findings.
+  - Do not merge before an accepted checkpoint and explicit Owner MERGE authority.
+acceptance:
+- id: AC-211-MAP
+  statement: A reviewer-readable Core contract map records Core1/Core2, A/B semantics,
+    ownership, version seams, input/output fields and current PASS/PARTIAL/MISSING
+    evidence.
+  evidence_requirements:
+  - oracle: docs/readiness/CORE-CONTRACT-MAP.md exists and records PASS/PARTIAL/MISSING
+      evidence for every Gate-1 requirement.
+- id: AC-211-REVEAL
+  statement: Core1B attempt-before-reveal and Core2B protected-decision semantics
+    remain distinct and are falsified by focused tests.
+  evidence_requirements:
+  - test: tests/test_issue211_core_readiness.py
+  - test: tests/core_learning_page.test.mjs
+- id: AC-211-SOURCE
+  statement: Core2 source identity, options/subparts, reasoning crux and independent
+    check survive compilation/projection without invented custody.
+  evidence_requirements:
+  - test: tests/test_core_learning_adapter.py
+  - test: tests/test_issue211_core_readiness.py
+- id: AC-211-FAILCLOSED
+  statement: Missing or incompatible refs/bindings and unsupported buckets produce
+    named findings rather than silent absence or plausible fallback.
+  evidence_requirements:
+  - test: tests/test_issue211_core_readiness.py
+- id: AC-211-NEUTRAL
+  statement: Shared Core code remains subject-neutral with no topic-specific switches
+    and no academic-validity or mastery decisions moved into visual runtime.
+  evidence_requirements:
+  - oracle: python Shared/tools/topic_independence_guard.py
+- id: AC-211-REPO
+  statement: Focused Python/Node suites, generated-artifact freshness, manifest check,
+    and repository guardrails pass on the exact PR head.
+  evidence_requirements:
+  - oracle: GitHub Actions guardrails + v31-relay on exact PR head.
+quality_policy:
+  level: STANDARD
+  independent_review: OPTIONAL
+admission_policy:
+  qualification: NOT_REQUIRED
+  question_policy: NONE
+next:
+  first_action: Build the PASS/PARTIAL/MISSING contract map from current code/tests,
+    then add only falsifiers for demonstrated gaps before changing Shared code.
+  stop_conditions:
+  - Stop if a proposed fix requires subject-package edits.
+  - Stop if projection envelope changes would break the frozen downstream handoff
+    without an explicit migration.
+  - Stop if the only way to satisfy a test is to infer learner mastery or duplicate
+    academic truth.
+  - Stop before merge without accepted checkpoint and explicit Owner MERGE authority.
