@@ -1,0 +1,255 @@
+name: relay-admit-issue211-core-readiness
+on:
+  push:
+    branches:
+      - relay/admit-issue211-core-readiness
+permissions:
+  contents: write
+jobs:
+  reconcile_admit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: readiness/issue-211-core-contracts
+          fetch-depth: 0
+      - run: git fetch origin main:refs/remotes/origin/main
+      - uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: 1c168695f237a8bef184a9e189be80fab87d1e78
+          path: _common_v31
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+      - name: Sync merged PR 199 delivery
+        run: |
+          cat > /tmp/pr199-delivery.yaml <<'YAML'
+          schema_version: relay-v3.1-delivery-status
+          authority: PROVIDER_READBACK
+          vehicle:
+            provider: GITHUB
+            kind: PULL_REQUEST
+            number: 199
+          observed_at: "2026-09-23T12:34:00Z"
+          provider_ref: "github:reallaksh19/Grade9V3/pull/199@d2e1ddb5fc6b90affebb4fb1783bb629affbb476"
+          lifecycle: MERGED
+          checks: PASS
+          review: NOT_APPLICABLE
+          mergeability: NOT_APPLICABLE
+          YAML
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . sync-delivery             --tx-id TX-V31-ISS210-PREFLIGHT-SYNC-001             --event-id EVT-V31-ISS210-PREFLIGHT-SYNC-001             --actor chatgpt-sol-issue211-v31-20260923             --observation /tmp/pr199-delivery.yaml
+      - name: Reconcile merged delivery facts into roadmap
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+          path=Path("relay/ROADMAP/ROADMAP.yaml")
+          roadmap=yaml.safe_load(path.read_text())
+          rows=roadmap.get("work_packages") or []
+          for row in rows:
+              if row.get("id")=="WP-ISS125-ACCELERATED-FRAMES":
+                  row["state"]="COMPLETE"
+          def ensure(wp):
+              if not any(r.get("id")==wp["id"] for r in rows):
+                  rows.append(wp)
+          ensure({
+              "id":"WP-ISS126-CIRCULAR-DYNAMICS",
+              "title":"Deliver circular-dynamics force-role explorer without expanding default Grade-9 scope",
+              "weight":3,
+              "state":"COMPLETE",
+              "depends_on":["WP-CANONICAL-174-MOTION","WP-CANONICAL-174-NLM"],
+          })
+          ensure({
+              "id":"WP-ISS201-EXAM-BANK-PASS1",
+              "title":"Deliver provenance-first competitive-exam question-bank Pass 1 custody",
+              "weight":3,
+              "state":"COMPLETE",
+              "depends_on":[],
+          })
+          after=dict(roadmap)
+          after["revision"]="RM-V31-ISS210-PREFLIGHT-001"
+          after["work_packages"]=rows
+          doc={
+              "schema_version":"relay-v3.1-roadmap-reconciliation",
+              "authority":"PROPOSED_RECONCILIATION",
+              "expected_revision":roadmap["revision"],
+              "disposition":"UPDATE_WORK_PACKAGE",
+              "basis":[
+                  "PR 199 merged as d2e1ddb5fc6b90affebb4fb1783bb629affbb476.",
+                  "PR 200 merged as 3d4aed21f9c353b79045472a043a9082420bfe4d.",
+                  "PR 202 merged as c580ac57dac690a14f8cefead598dc2a4095733d.",
+                  "Issue 210 requires current Relay roadmap/provider state reconciled before admitting Gate 1."
+              ],
+              "roadmap_after":after,
+          }
+          Path("/tmp/issue210-preflight-reconciliation.yaml").write_text(yaml.safe_dump(doc,sort_keys=False))
+          PY
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . reconcile-roadmap             --tx-id TX-V31-ISS210-PREFLIGHT-ROADMAP-001             --event-id EVT-V31-ISS210-PREFLIGHT-ROADMAP-001             --actor chatgpt-sol-issue211-v31-20260923             --reconciliation /tmp/issue210-preflight-reconciliation.yaml             --base-ref origin/main             --expected-custody-epoch 1
+      - name: Build Issue 211 admission
+        run: |
+          cat > /tmp/issue211-admission.yaml <<'YAML'
+          schema_version: relay-v3.1-task-admission
+          roadmap:
+            disposition: ADDED_EXECUTION_WP
+            new_revision: RM-V31-ISS211-CORE-READINESS-001
+            basis:
+              - "Owner continuation: proceed next."
+              - "Issue 210 declares Gate 1 Core readiness as the first merge gate before Atlas and standalone visual work."
+              - "Merged PR 199/200/202 delivery facts were reconciled first."
+              - "Protocol basis pinned to Common@1c168695f237a8bef184a9e189be80fab87d1e78."
+            work_package:
+              id: WP-ISS211-CORE-READINESS
+              title: Audit and harden six-Core projection and host contracts
+              weight: 4
+              state: ACTIVE
+              depends_on:
+                - WP-LEARNER-175-PRODUCTION
+                - WP-PORTABLE-163
+          ep:
+            schema_version: relay-v3.1-ep
+            id: EP-ISS211-CORE-READINESS-V31-001
+            work_package: WP-ISS211-CORE-READINESS
+            outcome:
+              statement: "Prove the subject-neutral Core compiler/projection/host path on current main, preserve working six-Core semantics, expose unsupported/missing bindings explicitly, and close only concrete contract gaps without authoring new subject content."
+            basis:
+              predecessor_checkpoint: CP-ISS125-ACCELERATED-FRAMES-V31-001
+              material_base: c768c53270b559297d316ead70f50ef6e7a99ba9
+              protocol_basis: "reallaksh19/Common@1c168695f237a8bef184a9e189be80fab87d1e78:skills/engineering-pr-delivery-v3.1"
+              semantic_dependencies:
+                - path: Shared/library/package.schema.json
+                  reason: "Canonical package/Core contract."
+                - path: Shared/library/matrix.schema.json
+                  reason: "Matrix/rung contract consumed by projections."
+                - path: Shared/library/request.schema.json
+                  reason: "Explicit request contract."
+                - path: Shared/library/compile_inputs.py
+                  reason: "Compiler authority."
+                - path: Shared/tools/core_learning_projection_adapter.py
+                  reason: "Subject-neutral projection adapter."
+                - path: Shared/tools/build_core_learning_data.py
+                  reason: "Generated Core learner data builder."
+                - path: Shared/workbench/core-learning-page.mjs
+                  reason: "Core learner page contract."
+                - path: Shared/workbench/core-learning-host.mjs
+                  reason: "Host/runtime seam."
+            scope:
+              write:
+                - Shared/library/package.schema.json
+                - Shared/library/matrix.schema.json
+                - Shared/library/request.schema.json
+                - Shared/library/compile_inputs.py
+                - Shared/tools/core_learning_projection_adapter.py
+                - Shared/tools/build_core_learning_data.py
+                - Shared/workbench/core-learning-page.mjs
+                - Shared/workbench/core-learning-host.mjs
+                - tests/test_core_learning_adapter.py
+                - tests/core_learning_page.test.mjs
+                - tests/core_learning_host.test.mjs
+                - tests/test_issue211_core_readiness.py
+                - public/core-learning/data.js
+                - docs/readiness/CORE-CONTRACT-MAP.md
+                - docs/architecture-manifest.json
+              read:
+                - Shared/library/**
+                - Shared/tools/**
+                - Shared/workbench/**
+                - Physics/library/**
+                - Physics/matrices/**
+                - Mathematics/library/**
+                - Mathematics/matrices/**
+                - public/core-learning/**
+                - tests/**
+              protect:
+                - Learners/**
+                - Physics/library/**
+                - Physics/matrices/**
+                - Chemistry/**
+                - Mathematics/**
+                - Shared/portable/**
+                - public/js/topic-atlas.js
+                - tools/data.js
+                - public/data/data.js
+                - standalone/**
+                - agents/relay/**
+              prohibit:
+                - "Do not create new subject content."
+                - "Do not add a seventh Core."
+                - "Do not infer Core roles from browser text or raw DOM."
+                - "Do not add subject-specific identifier switches in Shared code."
+                - "Do not interpret interaction events as learner mastery."
+                - "Do not disclose the Core2B protected move before learner commitment."
+                - "Do not silently omit unsupported buckets; emit explicit findings."
+                - "Do not merge before an accepted checkpoint and explicit Owner MERGE authority."
+            acceptance:
+              - id: AC-211-MAP
+                statement: "A reviewer-readable Core contract map records Core1/Core2, A/B semantics, ownership, version seams, input/output fields and current PASS/PARTIAL/MISSING evidence."
+                evidence_requirements:
+                  - path: docs/readiness/CORE-CONTRACT-MAP.md
+              - id: AC-211-REVEAL
+                statement: "Core1B attempt-before-reveal and Core2B protected-decision semantics remain distinct and are falsified by focused tests."
+                evidence_requirements:
+                  - test: tests/test_issue211_core_readiness.py
+                  - test: tests/core_learning_page.test.mjs
+              - id: AC-211-SOURCE
+                statement: "Core2 source identity, options/subparts, reasoning crux and independent check survive compilation/projection without invented custody."
+                evidence_requirements:
+                  - test: tests/test_core_learning_adapter.py
+                  - test: tests/test_issue211_core_readiness.py
+              - id: AC-211-FAILCLOSED
+                statement: "Missing or incompatible refs/bindings and unsupported buckets produce named findings rather than silent absence or plausible fallback."
+                evidence_requirements:
+                  - test: tests/test_issue211_core_readiness.py
+              - id: AC-211-NEUTRAL
+                statement: "Shared Core code remains subject-neutral with no topic-specific switches and no academic-validity or mastery decisions moved into visual runtime."
+                evidence_requirements:
+                  - oracle: "python Shared/tools/topic_independence_guard.py"
+              - id: AC-211-REPO
+                statement: "Focused Python/Node suites, generated-artifact freshness, manifest check, and repository guardrails pass on the exact PR head."
+                evidence_requirements:
+                  - oracle: "GitHub Actions guardrails + v31-relay on exact PR head."
+            quality_policy:
+              level: STANDARD
+              independent_review: OPTIONAL
+            admission_policy:
+              qualification: NOT_REQUIRED
+              question_policy: NONE
+            next:
+              first_action: "Build the PASS/PARTIAL/MISSING contract map from current code/tests, then add only falsifiers for demonstrated gaps before changing Shared code."
+              stop_conditions:
+                - "Stop if a proposed fix requires subject-package edits."
+                - "Stop if projection envelope changes would break the frozen downstream handoff without an explicit migration."
+                - "Stop if the only way to satisfy a test is to infer learner mastery or duplicate academic truth."
+                - "Stop before merge without accepted checkpoint and explicit Owner MERGE authority."
+          lease:
+            id: LEASE-ISS211-CORE-READINESS-V31-001
+            executor_id: chatgpt-sol-issue211-v31-20260923
+            method: DETERMINISTIC
+            qualification: null
+            owner_basis: null
+            branch: readiness/issue-211-core-contracts
+            recovery_after_seconds: 3600
+            recovery_policy: TAKEOVER_AFTER_EXPIRY
+          delivery:
+            required: true
+            primary_vehicle:
+              provider: GITHUB
+              kind: PULL_REQUEST
+              number: 219
+          YAML
+      - name: Admit Issue 211
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . admit-task             --tx-id TX-V31-ADMIT-ISS211-001             --event-id EVT-V31-ADMIT-ISS211-001             --actor chatgpt-sol-issue211-v31-20260923             --admission /tmp/issue211-admission.yaml             --base-ref origin/main
+      - name: Validate authority
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_cutover.py . validate
+      - name: Commit Relay reconciliation and admission
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add relay
+          git commit -m "relay: reconcile merged work and admit issue 211"
+          git push origin HEAD:readiness/issue-211-core-contracts
