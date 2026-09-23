@@ -562,5 +562,19 @@
       "learner_facing_policy": "Only PYQ_VERIFIED/PYQ_ADAPTED may become learner-facing Core2; SOURCE_UNVERIFIED remains donor-only.",
       "no_practice_sets": true
     }
-  }
+  },
+  "variant_clusters": [
+    {
+      "id": "CLUSTER-CHEM-IITJEE-2007-P1-Q39-41",
+      "relation": "SHARED_SOURCE_CONTEXT_PEERS",
+      "shared_context_ref": "CTX-IITJEE-2007-P1-Q39-41",
+      "member_refs": [
+        "PYQ-CHEM-IITJEE-2007-P1-Q39",
+        "PYQ-CHEM-IITJEE-2007-P1-Q40",
+        "PYQ-CHEM-IITJEE-2007-P1-Q41"
+      ],
+      "parent_ref": null,
+      "note": "Three distinct original questions sharing one official paragraph; none is an adaptation or parent of another."
+    }
+  ]
 }
