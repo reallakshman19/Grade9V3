@@ -1,0 +1,193 @@
+name: relay-checkpoint-issue201-v31
+on:
+  push:
+    branches:
+      - relay/checkpoint-issue201-v31
+permissions:
+  contents: write
+jobs:
+  checkpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: question-bank/pass1-provenance
+          fetch-depth: 0
+      - run: git fetch origin main:refs/remotes/origin/main
+      - uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: 1c168695f237a8bef184a9e189be80fab87d1e78
+          path: _common_v31
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+      - name: Authorize checkpoint
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py CHECKPOINT . \
+            --base-ref origin/main \
+            --expected-custody-epoch 1
+      - name: Build checkpoint from exact material basis
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/material_basis.py . \
+            --base-ref origin/main > /tmp/material.json
+          python - <<'PY'
+          import json, yaml
+          from pathlib import Path
+          material=json.loads(Path("/tmp/material.json").read_text())["material_basis"]
+          cp={
+            "schema_version":"relay-v3.1-checkpoint",
+            "id":"CP-ISS201-EXAM-BANK-PASS1-V31-001",
+            "ep":"EP-ISS201-EXAM-BANK-PASS1-V31-002",
+            "material_result":{
+              "head":material["head"],
+              "relevant_paths_digest":material["relevant_paths_digest"],
+              "dependency_digest":material["dependency_digest"],
+            },
+            "acceptance":[
+              {
+                "id":"AC-201-SCOPE","result":"PASS",
+                "evidence":[
+                  "Guardrails run 35837343279 PASS on exact material head f923847c3441fc6784556725de13593639a563f3.",
+                  "Pass-1 focused tests prove no authored questions/generated sets and no circular-motion inclusion."
+                ]
+              },
+              {
+                "id":"AC-201-PROVENANCE","result":"PASS",
+                "evidence":[
+                  "Exactly 8 accepted bank questions carry provenance_status=PYQ_VERIFIED.",
+                  "Official organizer archive records resolve at jeeadv.ac.in for IIT-JEE 2007/2008/2011 and JEE (Advanced) 2023.",
+                  "Independent organizer-paper spot checks matched the recorded identities for 2007 Paper I Q3, 2008 Paper I Q66, 2011 Paper I Q41, 2011 Paper II Q33, 2007 Paper I Q39-Q41, and 2023 Paper 2 Q8.",
+                  "Historical labels remain IIT-JEE for 2007/2008/2011 and JEE (Advanced) for 2023."
+                ]
+              },
+              {
+                "id":"AC-201-QUARANTINE","result":"PASS",
+                "evidence":[
+                  "Source-acquisition ledger contains 162 donor records and all are SOURCE_UNVERIFIED / QUARANTINED_DONOR_ONLY.",
+                  "147 donor records are IN_SCOPE; 15 are explicitly OUT_OF_SCOPE_1D_NON_RELATIVE.",
+                  "Focused tests prove source-unverified donors are not promoted and donor registries remain preserved."
+                ]
+              },
+              {
+                "id":"AC-201-TEXT-CUSTODY","result":"PASS",
+                "evidence":[
+                  "Every accepted question uses source_text_custody.mode=EXTERNAL_REFERENCE with null verbatim stem/options and organizer-backed locator custody.",
+                  "Reasoning routes are explicitly INDEPENDENT_ANALYSIS_NOT_SOURCE_HINT."
+                ]
+              },
+              {
+                "id":"AC-201-RESOLUTION","result":"PASS",
+                "evidence":[
+                  "Focused tests resolve Physics buckets/capabilities/families against canonical NLM, Motion-in-2D and relative-motion packages.",
+                  "Chemistry concept_resolution remains LOCAL_PROPOSALS_PENDING_CANONICAL_CHEMISTRY_LIBRARY; Shared package schema is unchanged."
+                ]
+              },
+              {
+                "id":"AC-201-ANSWER","result":"PASS",
+                "evidence":[
+                  "Focused tests require explicit independent answer checks for every accepted item and prohibit exam-label-based verification.",
+                  "Organizer-key-backed items use SOURCE_KEY_AND_INDEPENDENT_CHECK; 2023 Chemistry Q8 is explicitly INDEPENDENTLY_SOLVED_NO_OFFICIAL_KEY_LOCATED with verified value 18."
+                ]
+              },
+              {
+                "id":"AC-201-HOLD","result":"PASS",
+                "evidence":[
+                  "Motion-in-1D relative-motion has no accepted canonical question in Pass 1.",
+                  "The bank records NO_PYQ_VERIFIED_ACCEPTED because no organizer-hosted straight-line relative-motion item was independently matched."
+                ]
+              },
+              {
+                "id":"AC-201-REPO","result":"PASS",
+                "evidence":[
+                  "Guardrails run 35837343279 PASS, including full repository tests, generated-artifact freshness and JSON parsing.",
+                  "v31-relay run 35837343260 PASS using Common@1c168695f237a8bef184a9e189be80fab87d1e78."
+                ]
+              }
+            ],
+            "validation":{
+              "focused_tests":"PASS",
+              "official_source_spot_check":"PASS",
+              "full_guardrails":"PASS",
+              "exact_v31":"PASS"
+            },
+            "quality":{"policy":"STANDARD","result":"CLEAR"},
+            "known_limitations":[
+              "Motion-in-1D relative-motion remains an acquisition hold; Pass 1 deliberately does not fill it with secondary-source attribution.",
+              "Chemistry bucket/capability/family identifiers are local proposals pending a canonical Chemistry library package and do not create that teaching package.",
+              "Source-text custody is locator-based; this bank does not reproduce official question wording as local verbatim content.",
+              "Pass 1 does not deliver practice sets, mock exams, worksheets, authored filler, or learner-route expansion."
+            ],
+            "discoveries":[
+              "PR prose stating 147 in-scope quarantined donors is consistent with the ledger: 162 total donors = 147 IN_SCOPE + 15 OUT_OF_SCOPE_1D_NON_RELATIVE.",
+              "The initial Relay admission had invalid ancestry because the historical candidate branch had not incorporated current main; merging bf20357037f2e9a916a4fa42ea83a075d6ed0351 as a real second parent repaired the material basis without changing bank content.",
+              "The official JEE archive independently supports the accepted historical identities while the repository avoids claiming reconstructed summaries as verbatim source text."
+            ],
+            "handoff":{
+              "what_changed":[
+                "Added Physics and Chemistry Pass-1 competitive-exam bank manifests with 8 PYQ_VERIFIED custody records.",
+                "Added source-acquisition ledger, unverified-source report, coverage matrix and concept-bucket inventory.",
+                "Quarantined 147 in-scope and 15 out-of-scope donor records instead of promoting unverifiable attribution.",
+                "Added focused provenance, identity, answer, duplicate, resolution and custody falsifiers.",
+                "Reconciled PR 202 onto current main and pinned V3.1 validation to exact Common@1c168695f237a8bef184a9e189be80fab87d1e78."
+              ],
+              "what_is_true_now":[
+                "Pass 1 is provenance/custody only and does not construct practice sets or exams.",
+                "Accepted questions are organizer-verified historical identities; source-unverified donors remain donor-only.",
+                "The relative-motion gap remains visible as an evidence acquisition hold rather than being filled speculatively.",
+                "PR 202 is technically mergeable and the exact-head repository evidence is green."
+              ],
+              "what_remains_uncertain":[
+                "No explicit Owner MERGE authority for PR 202 has been established.",
+                "No Pass-2 practice-set/exam construction is authorized by this checkpoint.",
+                "Chemistry local concept proposals still await a separate canonical Chemistry-library decision if such a teaching package is ever needed."
+              ],
+              "do_not_break":[
+                "Do not promote SOURCE_UNVERIFIED donors into learner-facing Core2.",
+                "Do not fabricate official source identity, wording, shifts, answer keys or historical exam labels.",
+                "Do not turn the relative-motion acquisition hold into an invented PYQ.",
+                "Do not interpret this provenance pass as Grade-10/11, Mathematics, or learner-route expansion.",
+                "Do not merge without explicit Owner MERGE authority."
+              ],
+              "attempted_and_rejected":[
+                "EP-001 was released because its material_base was not an ancestor of the historical candidate branch.",
+                "A workflow repin was denied under EP-001 with MATERIAL_BASIS_INVALID; the branch was then merged with current main and re-admitted as EP-002 rather than bypassing the denial.",
+                "Unverified secondary/explorer donor claims were retained as quarantine evidence instead of being promoted to PYQ_VERIFIED."
+              ],
+              "resume_from":[
+                "PR 202",
+                "CP-ISS201-EXAM-BANK-PASS1-V31-001",
+                "relay/STATE.yaml",
+                "docs/question-bank/pass1/source-acquisition-ledger.json"
+              ],
+              "first_successor_action":"Evaluate PR_READY and MERGE under exact V3.1; if merge authority remains absent, leave PR 202 delivery-pending and do not start Pass 2 from this checkpoint."
+            }
+          }
+          Path("/tmp/issue201-checkpoint.yaml").write_text(yaml.safe_dump(cp, sort_keys=False), encoding="utf-8")
+          PY
+      - name: Accept checkpoint transactionally
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . checkpoint \
+            --tx-id TX-V31-CP-ISS201-001 \
+            --event-id EVT-V31-CP-ISS201-001 \
+            --actor chatgpt-sol-issue201-v31-20260923 \
+            --checkpoint /tmp/issue201-checkpoint.yaml \
+            --base-ref origin/main \
+            --expected-custody-epoch 1
+      - name: Evaluate delivery gates
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py PR_READY . \
+            --expected-custody-epoch 1 || true
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py MERGE . \
+            --expected-custody-epoch 1 || true
+      - name: Validate post-checkpoint foundation
+        run: python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+      - name: Commit checkpoint after-images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add relay
+          git commit -m "relay: accept issue 201 Pass 1 checkpoint"
+          git push origin HEAD:question-bank/pass1-provenance
