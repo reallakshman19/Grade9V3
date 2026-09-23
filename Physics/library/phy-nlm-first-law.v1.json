@@ -170,6 +170,39 @@
       ],
       "selection_reason": "Interactive multi-block train simulation demonstrating contact normal force transmission, equal-and-opposite interface pairs, and system-boundary cancellation.",
       "fallback": []
+    },
+    {
+      "id": "ACT-NLM-HORSE-CART-SYSTEM-BOUNDARY",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-AUTHOR-NLM"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "Horse–Cart Paradox & System Boundary Explorer",
+      "origin": "AUTHORED",
+      "locator": "public/physics/nlm/explorers/horse-cart/index.html",
+      "edition": "1.0.0",
+      "section": "Newton-third-law interaction pairs, environment traction, and internal-versus-external system-force accounting",
+      "last_checked": "2026-09-23",
+      "access_status": "FULL_ITEM_INSPECTED",
+      "rights_status": "Author-created interactive cognitive model.",
+      "snapshot_ref": null,
+      "snapshot_digest": null,
+      "role": [
+        "ACTIVITY"
+      ],
+      "supports_claims": [
+        "CAP-NLM-FBD-BODY-OWNERSHIP",
+        "CAP-NLM-THIRD-LAW"
+      ],
+      "entry_capabilities": [],
+      "depth": [
+        "FOUNDATION"
+      ],
+      "selection_reason": "Interactive horse-cart paradox model showing that equal-and-opposite third-law partners act on different bodies and that only external forces determine the net force of the combined horse+cart system.",
+      "fallback": []
     }
   ],
   "buckets": [
@@ -1387,7 +1420,9 @@
         }
       ],
       "relation_refs": [],
-      "representation_refs": [],
+      "representation_refs": [
+        "REP-NLM-FBD-BODY-OWNERSHIP"
+      ],
       "question_family_refs": [],
       "misconceptions": [
         {
@@ -2558,7 +2593,8 @@
       "scene_instances": [],
       "correspondence": [],
       "interactive_resource_refs": [
-        "ACT-NLM-CONNECTED-BLOCKS-THIRD-LAW"
+        "ACT-NLM-CONNECTED-BLOCKS-THIRD-LAW",
+        "ACT-NLM-HORSE-CART-SYSTEM-BOUNDARY"
       ],
       "reveal_stages": [
         {
