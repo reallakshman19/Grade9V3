@@ -249,6 +249,7 @@ class Issue19PhysicsFirstSlice(unittest.TestCase):
             grade9_gate_ids,
             {
                 "PHY-KIN-AVERAGE-RATES",
+                "PHY-KIN-CIRCULAR-DYNAMICS-EXTENSION",
                 "PHY-NEWTON-SECOND-LAW",
                 "PHY-NLM-CONTACT-CONSTRAINTS",
                 "PHY-NLM-MOMENTUM-TRANSFER-RATE",
