@@ -4311,7 +4311,7 @@
         "dimension": "model_choice",
         "statement": "The learner must separate the required radial friction from the maximum available static friction and select no-slip only if the demand is within the bound.",
         "builds_on": [
-          "MIC-PHY-NLM-FRICTION"
+          "MIC-PHY-KIN-UNIFORM-CIRCULAR-MOTION"
         ]
       },
       "repair_ref": "KIN6-5"
@@ -4384,7 +4384,7 @@
         "dimension": "reasoning_steps",
         "statement": "The learner must re-declare the radial positive direction at two positions and derive a boundary from T=0 instead of memorizing a minimum-speed formula.",
         "builds_on": [
-          "MIC-PHY-KIN-UNIFORM-CIRCULAR-MOTION"
+          "Q-PHY-KIN-CIRC-2A-FORCE-ROLE-01"
         ]
       },
       "repair_ref": "KIN6-7"
