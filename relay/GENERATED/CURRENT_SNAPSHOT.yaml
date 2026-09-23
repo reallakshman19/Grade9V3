@@ -2,13 +2,13 @@ schema_version: relay-v3.1-snapshot
 authority: DERIVED_READ_MODEL
 generated_from:
   roadmap_revision: RM-V31-ISS201-EXAM-BANK-PASS1-002
-  state_digest: sha256:813af5c6fe562e63ac968e531576e3698a845c71d43053663d1cbc03ddadb1d1
+  state_digest: sha256:aebe3763b71425279057846a493a4d21fe4157aa0a56cddd760e4b530dc0b6b1
   material_basis:
-    head: 2c1ac89c8ffc6d34c8df94d5198fbdc0c01fee84
-    tree_digest: sha256:c5e605beca3e91167c8b7981d0a586a00f7101e3ce02b05bee770aae2a583e69
-    relevant_paths_digest: sha256:50f9d6ac113fc81edf0efb2d9c14347261895cca7915846f1c05ceaa17806abe
+    head: f923847c3441fc6784556725de13593639a563f3
+    tree_digest: sha256:90105bf2a6bc10814702db248fccd426d739eef11cb129f3983276d924b7c3e8
+    relevant_paths_digest: sha256:f808017b0c18105927215a3f67d94112bcb99b738af575d3c5be01857aeac44c
     dependency_digest: sha256:70df63d7dec6813e1cc1beb1efa29a01d5109cbbd9f2277004a2de578b4695b3
-  coordination_head: 2c41500e666c21ab85d6f64cce0518edbc60a085
+  coordination_head: f923847c3441fc6784556725de13593639a563f3
 owner:
   outcome: Preserve the delivered self-study architecture and activate new work only
     from a concrete learner, worksheet, source, or product defect rather than from
@@ -17,9 +17,10 @@ owner:
     and Mathematics expansion are Owner-skipped for now; dormant Physics inventory
     remains demand-gated and real learner evidence remains input-gated.
 programme:
-  accepted_progress: 6.3
+  accepted_progress: 9.45
   completed_work:
   - WP-PORTABLE-163
+  - WP-ISS201-EXAM-BANK-PASS1
   remaining_work:
   - WP-TAKEOVER-RECONCILE
   - WP-TA-102
@@ -32,7 +33,6 @@ programme:
   - WP-CANONICAL-174-NLM
   - WP-CANONICAL-174-MOTION
   - WP-LEARNER-175-PRODUCTION
-  - WP-ISS201-EXAM-BANK-PASS1
 execution:
   lifecycle: ACTIVE
   work_package: WP-ISS201-EXAM-BANK-PASS1
@@ -78,12 +78,15 @@ scope:
   - Do not merge without a fresh accepted checkpoint and explicit Owner MERGE authority.
 material:
   base: bf20357037f2e9a916a4fa42ea83a075d6ed0351
-  head: 2c1ac89c8ffc6d34c8df94d5198fbdc0c01fee84
-  relevant_paths_digest: sha256:50f9d6ac113fc81edf0efb2d9c14347261895cca7915846f1c05ceaa17806abe
+  head: f923847c3441fc6784556725de13593639a563f3
+  relevant_paths_digest: sha256:f808017b0c18105927215a3f67d94112bcb99b738af575d3c5be01857aeac44c
   dependency_digest: sha256:70df63d7dec6813e1cc1beb1efa29a01d5109cbbd9f2277004a2de578b4695b3
 evidence:
-  latest_checkpoint: null
-  latest_material_validation: {}
+  latest_checkpoint: CP-ISS201-EXAM-BANK-PASS1-V31-001
+  latest_material_validation:
+    focused_tests: PASS
+    spec_delivery: PASS
+    full_guardrails: PASS
 controls:
   execution_blockers: []
   handover_blockers: []
@@ -114,3 +117,4 @@ handoff:
   - relay/CONTROLS/controls.yaml
   - relay/WORK/EP-ISS201-EXAM-BANK-PASS1-V31-002.yaml
   - relay/LEASES/LEASE-ISS201-EXAM-BANK-PASS1-V31-002.yaml
+  - relay/CHECKPOINTS/CP-ISS201-EXAM-BANK-PASS1-V31-001.yaml

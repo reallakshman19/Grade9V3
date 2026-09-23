@@ -9,7 +9,7 @@ execution:
   route: SERIAL:EP-ISS201-EXAM-BANK-PASS1-V31-002
   custody_epoch: 1
 accepted:
-  checkpoint: null
+  checkpoint: CP-ISS201-EXAM-BANK-PASS1-V31-001
 controls:
   path: relay/CONTROLS/controls.yaml
 delivery:
