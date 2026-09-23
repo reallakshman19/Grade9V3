@@ -173,7 +173,7 @@
     },
     {
       "rung": "R5",
-      "ladder_position": 100,
+      "ladder_position": 99,
       "provenance": "AUTHORED",
       "microtopic_ref": "MIC-PHY-KIN-UNIFORM-CIRCULAR-MOTION",
       "ceiling": [
