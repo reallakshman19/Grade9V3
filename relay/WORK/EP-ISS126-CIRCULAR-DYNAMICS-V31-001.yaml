@@ -1,0 +1,111 @@
+schema_version: relay-v3.1-ep
+id: EP-ISS126-CIRCULAR-DYNAMICS-V31-001
+work_package: WP-ISS126-CIRCULAR-DYNAMICS
+outcome:
+  statement: Deliver Issue 126 as a non-default R6 Owner extension that derives radial
+    acceleration and net radial force from existing UCM + Newton-II authority, teaches
+    centripetal as a net-force role rather than an extra interaction, and provides
+    bounded flat-curve, cut-string and vertical-circle transfer without altering R5's
+    required Grade-9 boundary.
+basis:
+  predecessor_checkpoint: null
+  material_base: c6e2e825e9bd3e67f1e37228d6ddca19081edb23
+  protocol_basis: reallaksh19/Common@1c168695f237a8bef184a9e189be80fab87d1e78:skills/engineering-pr-delivery-v3.1
+  semantic_dependencies:
+  - path: Physics/library/phy-kin-1d-motion.v1.json
+    reason: Canonical elementary UCM owner and extension host.
+  - path: Physics/matrices/phy-kin-1d-motion.rungs.json
+    reason: R5 required boundary and current centripetal-force ceiling.
+  - path: Physics/library/phy-nlm-first-law.v1.json
+    reason: Newton-II and friction dependencies; circular dynamics must not invent
+      new force types.
+  - path: Physics/gates/foundational-relations.v1.json
+    reason: Subject-owned quantitative relation authority.
+  - path: docs/grade9/G9-1-MOTION-AUTHORING-AUDIT.md
+    reason: Grade-9 Motion scope classification.
+scope:
+  write:
+  - .github/workflows/v3-relay.yml
+  - Physics/gates/foundational-relations.v1.json
+  - Physics/library/phy-kin-1d-motion.v1.json
+  - Physics/matrices/phy-kin-1d-motion.rungs.json
+  - docs/grade9/G9-1-MOTION-AUTHORING-AUDIT.md
+  - public/physics/motion-1d/explorers/circular-dynamics/index.html
+  - tests/test_issue126_circular_dynamics_explorer.py
+  - tests/test_gates.py
+  - tests/test_issue19_physics_content.py
+  - tests/test_grade9_physics_learner_loop.py
+  - tests/test_library.py
+  - tools/data.js
+  - public/data/data.js
+  - docs/architecture-manifest.json
+  read:
+  - Physics/library/**
+  - Physics/matrices/**
+  - Physics/gates/**
+  - Shared/library/**
+  - docs/grade9/**
+  - tests/**
+  protect:
+  - Learners/**
+  - Mathematics/**
+  - Chemistry/**
+  - agents/relay/**
+  - Shared/publication_host/**
+  - Shared/workbench/**
+  - standalone/**
+  prohibit:
+  - Do not remove or weaken R5's centripetal-force ceiling.
+  - Do not make R6 default_entry_eligible.
+  - Do not add a separate centripetal-force arrow to inertial-frame FBDs.
+  - Do not assert static friction equals mu_s N except at the declared limiting boundary.
+  - Do not add rotating-frame centrifugal force without explicit non-inertial-frame
+    labeling.
+  - Do not merge without a fresh accepted checkpoint and explicit Owner MERGE authority.
+acceptance:
+- id: AC-126-BOUNDARY
+  statement: R5 remains unchanged as elementary syllabus UCM and R6 is a non-default
+    Owner extension.
+  evidence_requirements:
+  - test: tests/test_issue126_circular_dynamics_explorer.py::CircularDynamicsExplorerContract::test_r5_boundary_is_preserved_and_r6_is_nondefault
+- id: AC-126-PHYSICS
+  statement: Radial acceleration, radial Newton-II, vertical-circle top/bottom, and
+    minimum-speed claims are gate-owned; flat-curve capacity reuses the canonical
+    static-friction bound.
+  evidence_requirements:
+  - test: tests/test_issue126_circular_dynamics_explorer.py::CircularDynamicsExplorerContract::test_quantitative_relations_are_gate_owned
+- id: AC-126-FALLACY
+  statement: The canonical representation and explorer treat centripetal as the role
+    of the net radial force, not an additional interaction.
+  evidence_requirements:
+  - test: tests/test_issue126_circular_dynamics_explorer.py::CircularDynamicsExplorerContract::test_no_extra_centripetal_force_arrow
+- id: AC-126-EXPLORER
+  statement: Explorer visualizes velocity-direction change before forces and implements
+    radial/tangential axes, m-v-r scaling, flat-curve threshold, tangent cut path,
+    and vertical-circle transfer.
+  evidence_requirements:
+  - test: tests/test_issue126_circular_dynamics_explorer.py
+- id: AC-126-SCOPE
+  statement: The slice remains circular dynamics only and does not alter learner state,
+    exit readiness, Grade-10/11 scope, or Mathematics.
+  evidence_requirements:
+  - oracle: PR changed-file set and focused boundary tests.
+- id: AC-126-REPO
+  statement: Repository guardrails pass and v31-relay validates against exact Common@1c168695f237a8bef184a9e189be80fab87d1e78.
+  evidence_requirements:
+  - oracle: GitHub Actions guardrails + v31-relay on exact PR head.
+quality_policy:
+  level: STANDARD
+  independent_review: OPTIONAL
+admission_policy:
+  qualification: NOT_REQUIRED
+  question_policy: NONE
+next:
+  first_action: Add R6 extension authority without modifying R5, then build one canonical
+    circular-dynamics representation/activity and falsify force-role, friction-boundary,
+    cut-string and vertical-circle reasoning.
+  stop_conditions:
+  - Stop if any implementation weakens or removes the R5 ceiling.
+  - Stop if radial dynamics is represented as a new physical force interaction.
+  - Stop if the task expands into rotating-frame dynamics beyond explicit labeling.
+  - Stop before merge without fresh checkpoint and explicit Owner MERGE authority.
