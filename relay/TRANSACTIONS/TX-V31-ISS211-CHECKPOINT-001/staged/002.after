@@ -1,0 +1,126 @@
+schema_version: relay-v3.1-snapshot
+authority: DERIVED_READ_MODEL
+generated_from:
+  roadmap_revision: RM-V31-ISS211-CORE-READINESS-002
+  state_digest: sha256:52f5146ccf1e561c8e7bc0acc19e5ad9ff607e1fd6d08b1c020d9c5d3dbc5950
+  material_basis:
+    head: 3b313d6130196556b7e8fd40c7767da5709d3b52
+    tree_digest: sha256:4c37ff1bc97f5cb70ec6ddffc73f0920233a26c1958b0535f1346d71e21e5339
+    relevant_paths_digest: sha256:0fcdc10156e36cf74899095b4a74a6a26bb59fdf529db7dbd1ec9c9fb99e655f
+    dependency_digest: sha256:f7ba1d1462692f323bf622154a590e97139d27d6bb0ccb8ef73316f4456d911a
+  coordination_head: 0e61821fbb084e0bba3b9a3cc0d7e07d8b52f1e5
+owner:
+  outcome: Preserve the delivered self-study architecture and activate new work only
+    from a concrete learner, worksheet, source, or product defect rather than from
+    stale umbrella scope.
+  current_goal: No successor content lane is active. Grade-10 Physics, Grade-11 Physics,
+    and Mathematics expansion are Owner-skipped for now; dormant Physics inventory
+    remains demand-gated and real learner evidence remains input-gated.
+programme:
+  accepted_progress: 11.03
+  completed_work:
+  - WP-PORTABLE-163
+  - WP-ISS125-ACCELERATED-FRAMES
+  - WP-ISS211-CORE-READINESS
+  remaining_work:
+  - WP-TAKEOVER-RECONCILE
+  - WP-TA-102
+  - WP-TA-106
+  - WP-TA-103
+  - WP-TA-104
+  - WP-TA-107
+  - WP-TA-108
+  - WP-TA-105
+  - WP-CANONICAL-174-NLM
+  - WP-CANONICAL-174-MOTION
+  - WP-LEARNER-175-PRODUCTION
+  - WP-ISS126-CIRCULAR-DYNAMICS
+  - WP-ISS201-EXAM-BANK-PASS1
+execution:
+  lifecycle: ACTIVE
+  work_package: WP-ISS211-CORE-READINESS
+  ep: EP-ISS211-CORE-READINESS-V31-002
+  lease: LEASE-ISS211-CORE-READINESS-V31-002
+  executor: chatgpt-sol-issue211-v31-20260923
+  custody_epoch: 1
+scope:
+  allowed_writes:
+  - Shared/library/package.schema.json
+  - Shared/library/matrix.schema.json
+  - Shared/library/request.schema.json
+  - Shared/library/compile_inputs.py
+  - Shared/tools/core_learning_projection_adapter.py
+  - Shared/tools/build_core_learning_data.py
+  - Shared/workbench/core-learning-page.mjs
+  - Shared/workbench/core-learning-host.mjs
+  - tests/test_core_learning_adapter.py
+  - tests/core_learning_page.test.mjs
+  - tests/core_learning_host.test.mjs
+  - tests/test_issue211_core_readiness.py
+  - tests/test_gates.py
+  - tests/test_issue19_physics_content.py
+  - tests/test_library.py
+  - public/core-learning/data.js
+  - docs/readiness/CORE-CONTRACT-MAP.md
+  - docs/architecture-manifest.json
+  protected:
+  - Learners/**
+  - Physics/library/**
+  - Physics/matrices/**
+  - Physics/gates/**
+  - Chemistry/**
+  - Mathematics/**
+  - Shared/portable/**
+  - public/js/topic-atlas.js
+  - tools/data.js
+  - public/data/data.js
+  - standalone/**
+  - agents/relay/**
+  prohibited:
+  - Do not change Physics canonical truth to make stale tests pass.
+  - Do not create new subject content or add a seventh Core.
+  - Do not infer Core roles from browser text or raw DOM.
+  - Do not add subject-specific identifier switches in Shared code.
+  - Do not interpret interaction events as learner mastery.
+  - Do not disclose the Core2B protected move before learner commitment.
+  - Do not silently omit unsupported buckets.
+  - Do not merge before an accepted checkpoint and explicit Owner MERGE authority.
+material:
+  base: c768c53270b559297d316ead70f50ef6e7a99ba9
+  head: 3b313d6130196556b7e8fd40c7767da5709d3b52
+  relevant_paths_digest: sha256:0fcdc10156e36cf74899095b4a74a6a26bb59fdf529db7dbd1ec9c9fb99e655f
+  dependency_digest: sha256:f7ba1d1462692f323bf622154a590e97139d27d6bb0ccb8ef73316f4456d911a
+evidence:
+  latest_checkpoint: CP-ISS211-CORE-READINESS-V31-001
+  latest_material_validation:
+    focused_tests: PASS
+    spec_delivery: PASS
+    full_guardrails: PASS
+controls:
+  execution_blockers: []
+  handover_blockers: []
+  delivery_blockers: []
+  informational: []
+delivery:
+  issue: null
+  pr: 219
+  lifecycle: DECLARED
+  merge_authorized: false
+next:
+  immediate_material_action: Update only the three stale test-harness expectations
+    proven by current-main circular-dynamics truth, then rerun exact-head guardrails.
+  delivery_action: Perform the explicitly authorized delivery transition.
+  stop_conditions:
+  - Stop if any repair requires changing Physics canonical truth.
+  - Stop if any Issue-211 Core falsifier fails after baseline reconciliation.
+  - Stop if projection envelope changes become necessary without a migration.
+  - Stop before merge without accepted checkpoint and explicit Owner MERGE authority.
+handoff:
+  zero_context_takeover_possible: true
+  reconstruction_sources:
+  - relay/ROADMAP/ROADMAP.yaml
+  - relay/STATE.yaml
+  - relay/CONTROLS/controls.yaml
+  - relay/WORK/EP-ISS211-CORE-READINESS-V31-002.yaml
+  - relay/LEASES/LEASE-ISS211-CORE-READINESS-V31-002.yaml
+  - relay/CHECKPOINTS/CP-ISS211-CORE-READINESS-V31-001.yaml

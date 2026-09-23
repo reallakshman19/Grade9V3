@@ -2,13 +2,13 @@ schema_version: relay-v3.1-snapshot
 authority: DERIVED_READ_MODEL
 generated_from:
   roadmap_revision: RM-V31-ISS211-CORE-READINESS-002
-  state_digest: sha256:603233bfaf4768fd7de798f0b3645a03f8556e7652c821c88afc9ca4540eb342
+  state_digest: sha256:52f5146ccf1e561c8e7bc0acc19e5ad9ff607e1fd6d08b1c020d9c5d3dbc5950
   material_basis:
-    head: f92084cbeb70d0c9fac79197cebc92178af5e8de
-    tree_digest: sha256:3c84586c40d358cb0c3abda414faed874172697e67b13b9835e8c387a5d61bd8
-    relevant_paths_digest: sha256:974f7f43eeae7d9eeac24c885c8f47fdc8a4fa30601dd457821dd84087a2a5c5
-    dependency_digest: sha256:33cbd1cfb00a81011005ae22eb73abc236625aca0043d71e3855a5dd177c5b0d
-  coordination_head: 4d00f57f899f1c35682eebd1750d89e654f0d3e2
+    head: 3b313d6130196556b7e8fd40c7767da5709d3b52
+    tree_digest: sha256:4c37ff1bc97f5cb70ec6ddffc73f0920233a26c1958b0535f1346d71e21e5339
+    relevant_paths_digest: sha256:0fcdc10156e36cf74899095b4a74a6a26bb59fdf529db7dbd1ec9c9fb99e655f
+    dependency_digest: sha256:f7ba1d1462692f323bf622154a590e97139d27d6bb0ccb8ef73316f4456d911a
+  coordination_head: 0e61821fbb084e0bba3b9a3cc0d7e07d8b52f1e5
 owner:
   outcome: Preserve the delivered self-study architecture and activate new work only
     from a concrete learner, worksheet, source, or product defect rather than from
@@ -17,10 +17,11 @@ owner:
     and Mathematics expansion are Owner-skipped for now; dormant Physics inventory
     remains demand-gated and real learner evidence remains input-gated.
 programme:
-  accepted_progress: 8.09
+  accepted_progress: 11.03
   completed_work:
   - WP-PORTABLE-163
   - WP-ISS125-ACCELERATED-FRAMES
+  - WP-ISS211-CORE-READINESS
   remaining_work:
   - WP-TAKEOVER-RECONCILE
   - WP-TA-102
@@ -35,7 +36,6 @@ programme:
   - WP-LEARNER-175-PRODUCTION
   - WP-ISS126-CIRCULAR-DYNAMICS
   - WP-ISS201-EXAM-BANK-PASS1
-  - WP-ISS211-CORE-READINESS
 execution:
   lifecycle: ACTIVE
   work_package: WP-ISS211-CORE-READINESS
@@ -87,11 +87,11 @@ scope:
   - Do not merge before an accepted checkpoint and explicit Owner MERGE authority.
 material:
   base: c768c53270b559297d316ead70f50ef6e7a99ba9
-  head: f92084cbeb70d0c9fac79197cebc92178af5e8de
-  relevant_paths_digest: sha256:974f7f43eeae7d9eeac24c885c8f47fdc8a4fa30601dd457821dd84087a2a5c5
-  dependency_digest: sha256:33cbd1cfb00a81011005ae22eb73abc236625aca0043d71e3855a5dd177c5b0d
+  head: 3b313d6130196556b7e8fd40c7767da5709d3b52
+  relevant_paths_digest: sha256:0fcdc10156e36cf74899095b4a74a6a26bb59fdf529db7dbd1ec9c9fb99e655f
+  dependency_digest: sha256:f7ba1d1462692f323bf622154a590e97139d27d6bb0ccb8ef73316f4456d911a
 evidence:
-  latest_checkpoint: CP-ISS125-ACCELERATED-FRAMES-V31-001
+  latest_checkpoint: CP-ISS211-CORE-READINESS-V31-001
   latest_material_validation:
     focused_tests: PASS
     spec_delivery: PASS
@@ -123,4 +123,4 @@ handoff:
   - relay/CONTROLS/controls.yaml
   - relay/WORK/EP-ISS211-CORE-READINESS-V31-002.yaml
   - relay/LEASES/LEASE-ISS211-CORE-READINESS-V31-002.yaml
-  - relay/CHECKPOINTS/CP-ISS125-ACCELERATED-FRAMES-V31-001.yaml
+  - relay/CHECKPOINTS/CP-ISS211-CORE-READINESS-V31-001.yaml

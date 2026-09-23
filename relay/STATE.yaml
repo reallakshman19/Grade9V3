@@ -9,7 +9,7 @@ execution:
   route: SERIAL:EP-ISS211-CORE-READINESS-V31-002
   custody_epoch: 1
 accepted:
-  checkpoint: CP-ISS125-ACCELERATED-FRAMES-V31-001
+  checkpoint: CP-ISS211-CORE-READINESS-V31-001
 controls:
   path: relay/CONTROLS/controls.yaml
 delivery:
