@@ -3,10 +3,10 @@ roadmap:
   revision: RM-V31-ISS201-EXAM-BANK-PASS1-001
   path: relay/ROADMAP/ROADMAP.yaml
 execution:
-  lifecycle: ACTIVE
-  ep: EP-ISS201-EXAM-BANK-PASS1-V31-001
-  lease: LEASE-ISS201-EXAM-BANK-PASS1-V31-001
-  route: SERIAL:EP-ISS201-EXAM-BANK-PASS1-V31-001
+  lifecycle: IDLE
+  ep: null
+  lease: null
+  route: null
   custody_epoch: 1
 accepted:
   checkpoint: null
