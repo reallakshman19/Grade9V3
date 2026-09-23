@@ -1306,7 +1306,7 @@ class DepictionIsBackedByTheContract(unittest.TestCase):
     def test_unbuilt_kind_backlog_is_reported_without_claiming_a_renderer(self):
         """Canonical visual truth may legitimately arrive before its static renderer.
 
-        Grade-9 Physics now owns three FREE_BODY_DIAGRAM representations implemented
+        Grade-9 Physics now owns four FREE_BODY_DIAGRAM representations implemented
         by interactive ACTIVITY resources and staged hints, while the static depiction
         contract still says FREE_BODY_DIAGRAM is PROPOSED. The priority report must make
         that renderer backlog visible rather than forcing representation authoring to wait
@@ -1316,7 +1316,7 @@ class DepictionIsBackedByTheContract(unittest.TestCase):
             "Physics": [{
                 "kind": "FREE_BODY_DIAGRAM",
                 "status": "PROPOSED",
-                "representations_waiting": 3,
+                "representations_waiting": 4,
                 "buckets_waiting": 2,
             }],
         }
