@@ -3,10 +3,10 @@ roadmap:
   revision: RM-V31-ISS126-CIRCULAR-DYNAMICS-002
   path: relay/ROADMAP/ROADMAP.yaml
 execution:
-  lifecycle: ACTIVE
-  ep: EP-ISS126-CIRCULAR-DYNAMICS-V31-002
-  lease: LEASE-ISS126-CIRCULAR-DYNAMICS-V31-002
-  route: SERIAL:EP-ISS126-CIRCULAR-DYNAMICS-V31-002
+  lifecycle: IDLE
+  ep: null
+  lease: null
+  route: null
   custody_epoch: 1
 accepted:
   checkpoint: null

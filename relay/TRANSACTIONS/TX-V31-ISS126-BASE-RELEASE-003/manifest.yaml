@@ -1,0 +1,37 @@
+schema_version: relay-v3.1-transaction
+id: TX-V31-ISS126-BASE-RELEASE-003
+command: RELEASE_LEASE
+actor: chatgpt-sol-issue126-v31-20260923
+status: COMMITTED
+created_at: '2026-09-23T06:29:56.751871Z'
+updated_at: '2026-09-23T06:29:56.768591Z'
+operations:
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:a1db6893bc4a564912fb3e429e0550e469b338a4d61c89e93ebedfbfbe354a98
+  after_digest: sha256:b211b39bc6f63e4f2224cf650963efe3e6a426488b1d953004ea6e7921aa8e55
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS126-BASE-RELEASE-003/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS126-BASE-RELEASE-003/backups/000.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:e9809b8319480c66593b21ce7eaa0ed99a5f541ca0e669ce6b03850f929735e7
+  after_digest: sha256:9f053f13def7ffe979840cf598d5e396bcf2540ef61fe895588a56c4b5d900ff
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS126-BASE-RELEASE-003/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS126-BASE-RELEASE-003/backups/001.before
+- path: relay/LEASES/LEASE-ISS126-CIRCULAR-DYNAMICS-V31-002.yaml
+  before_exists: true
+  before_digest: sha256:eae32dd8c5b52ab84bf08735b1d7a19b6bcc3435f96091bdfc69a1be5c5a996e
+  after_digest: sha256:90fbdba27ae94ed1fff17078a2f343585bd9754821832b36af3c5162b5ffc602
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS126-BASE-RELEASE-003/staged/002.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS126-BASE-RELEASE-003/backups/002.before
+- path: relay/STATE.yaml
+  before_exists: true
+  before_digest: sha256:3018180639d585e9b94de76c66f842712ee931b019f4a53645e5c35bd6d7210d
+  after_digest: sha256:2078932f7ad53b9ece78d4148d88752cc2b562b8128642cf09e1ec00ccf9e01b
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS126-BASE-RELEASE-003/staged/003.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS126-BASE-RELEASE-003/backups/003.before
+applied:
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/LEASES/LEASE-ISS126-CIRCULAR-DYNAMICS-V31-002.yaml
+- relay/STATE.yaml
