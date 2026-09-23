@@ -1,12 +1,12 @@
 schema_version: relay-v3.1
 roadmap:
-  revision: RM-V31-ISS201-EXAM-BANK-PASS1-001
+  revision: RM-V31-ISS201-EXAM-BANK-PASS1-002
   path: relay/ROADMAP/ROADMAP.yaml
 execution:
-  lifecycle: IDLE
-  ep: null
-  lease: null
-  route: null
+  lifecycle: ACTIVE
+  ep: EP-ISS201-EXAM-BANK-PASS1-V31-002
+  lease: LEASE-ISS201-EXAM-BANK-PASS1-V31-002
+  route: SERIAL:EP-ISS201-EXAM-BANK-PASS1-V31-002
   custody_epoch: 1
 accepted:
   checkpoint: null

@@ -1,0 +1,74 @@
+schema_version: relay-v3.1-snapshot
+authority: DERIVED_READ_MODEL
+generated_from:
+  roadmap_revision: RM-V31-ISS201-EXAM-BANK-PASS1-001
+  state_digest: sha256:a2e17d52cccf7b03c9d14c60985903c145e525213623da49373a44345b4b3468
+  material_basis:
+    head: 3e30db295aaa185447cfb12be8d3e3c320afbe52
+    tree_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+    relevant_paths_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+    dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+  coordination_head: 3e30db295aaa185447cfb12be8d3e3c320afbe52
+owner:
+  outcome: Preserve the delivered self-study architecture and activate new work only
+    from a concrete learner, worksheet, source, or product defect rather than from
+    stale umbrella scope.
+  current_goal: No successor content lane is active. Grade-10 Physics, Grade-11 Physics,
+    and Mathematics expansion are Owner-skipped for now; dormant Physics inventory
+    remains demand-gated and real learner evidence remains input-gated.
+programme:
+  accepted_progress: 6.3
+  completed_work:
+  - WP-PORTABLE-163
+  remaining_work:
+  - WP-TAKEOVER-RECONCILE
+  - WP-TA-102
+  - WP-TA-106
+  - WP-TA-103
+  - WP-TA-104
+  - WP-TA-107
+  - WP-TA-108
+  - WP-TA-105
+  - WP-CANONICAL-174-NLM
+  - WP-CANONICAL-174-MOTION
+  - WP-LEARNER-175-PRODUCTION
+  - WP-ISS201-EXAM-BANK-PASS1
+execution:
+  lifecycle: IDLE
+  work_package: null
+  ep: null
+  lease: null
+  executor: null
+  custody_epoch: 1
+scope:
+  allowed_writes: []
+  protected: []
+  prohibited: []
+material:
+  base: 3e30db295aaa185447cfb12be8d3e3c320afbe52
+  head: 3e30db295aaa185447cfb12be8d3e3c320afbe52
+  relevant_paths_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+  dependency_digest: sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945
+evidence:
+  latest_checkpoint: null
+  latest_material_validation: {}
+controls:
+  execution_blockers: []
+  handover_blockers: []
+  delivery_blockers: []
+  informational: []
+delivery:
+  issue: null
+  pr: 202
+  lifecycle: DECLARED
+  merge_authorized: false
+next:
+  immediate_material_action: null
+  delivery_action: Perform the explicitly authorized delivery transition.
+  stop_conditions: []
+handoff:
+  zero_context_takeover_possible: false
+  reconstruction_sources:
+  - relay/ROADMAP/ROADMAP.yaml
+  - relay/STATE.yaml
+  - relay/CONTROLS/controls.yaml
