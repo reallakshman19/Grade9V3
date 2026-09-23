@@ -5,19 +5,19 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 240,
-  "relation_count": 277,
+  "component_count": 241,
+  "relation_count": 279,
   "components_by_role": {
     "CONTRACT": 7,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 34,
-    "TEST": 114,
+    "TEST": 115,
     "TOOLING": 55,
     "WEB": 9,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:ac8cf8c4b6505ec9206086c9f9c1ae28dcbb0e7f3321b2a139bbb8d1bf471904",
+  "digest": "sha256:1ac85c0c9a9875b4541507df96fefd66d7500ea9687a0a40129301a1b4648410",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -1427,6 +1427,13 @@
       "sha256": "8c0efdf31f0136a4747bb224fea110de1d4fff37dbd1de2f061c6197920979df"
     },
     {
+      "path": "tests/test_issue211_core_readiness.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 5488,
+      "sha256": "94491816d3f5efad0318c390f4a14de1b519a8da1047542b846d6f1c219ec607"
+    },
+    {
       "path": "tests/test_learning_router.py",
       "role": "TEST",
       "role_description": "Executable checks",
@@ -2728,6 +2735,16 @@
     },
     {
       "from": "tests/test_import_sil.py",
+      "to": "Shared.tools",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_issue211_core_readiness.py",
+      "to": "Shared.library.resolve",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_issue211_core_readiness.py",
       "to": "Shared.tools",
       "kind": "IMPORTS"
     },
