@@ -1,0 +1,37 @@
+schema_version: relay-v3.1-transaction
+id: TX-V31-ISS126-SCOPE-RELEASE-001
+command: RELEASE_LEASE
+actor: chatgpt-sol-issue126-v31-20260923
+status: COMMITTED
+created_at: '2026-09-23T06:19:25.037083Z'
+updated_at: '2026-09-23T06:19:25.055385Z'
+operations:
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:af4e14c2dc8284bb05b9cd0b23e6bd5f041d60a5cd0d1067cddd4986c1bd550f
+  after_digest: sha256:53d89cdf5df76c72d2db5a313f3ab673387840716519e199b9c6d337ee02a8b1
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-RELEASE-001/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-RELEASE-001/backups/000.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:8be69c86ddce202d2559240c95f0121d15add9d447483cfeecf6e6366be56134
+  after_digest: sha256:5d4068014f52755df177f858c1568ba24657cf6e353f147b48db012798b1ba8f
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-RELEASE-001/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-RELEASE-001/backups/001.before
+- path: relay/LEASES/LEASE-ISS126-CIRCULAR-DYNAMICS-V31-001.yaml
+  before_exists: true
+  before_digest: sha256:20d3867d85da6ea0ce1579d29b1b60e90845124b0fffd41f854b51b749ceffc3
+  after_digest: sha256:4152ba39f42ec7461a89dbf4be1db34ac4e2b62ef8b5a4b0262d96b0818877f2
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-RELEASE-001/staged/002.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-RELEASE-001/backups/002.before
+- path: relay/STATE.yaml
+  before_exists: true
+  before_digest: sha256:6b19e850177b228dc5bd5102736184331808957b5ca8d663278f0f1e85151499
+  after_digest: sha256:767f7b5a587b3954ff78c8aff98f12b782702465243b4d017d2a21801f682641
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-RELEASE-001/staged/003.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-RELEASE-001/backups/003.before
+applied:
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/LEASES/LEASE-ISS126-CIRCULAR-DYNAMICS-V31-001.yaml
+- relay/STATE.yaml

@@ -1,14 +1,14 @@
 schema_version: relay-v3.1-snapshot
 authority: DERIVED_READ_MODEL
 generated_from:
-  roadmap_revision: RM-V31-ISS126-CIRCULAR-DYNAMICS-001
-  state_digest: sha256:be0f078841cceb1a36f3fb23dbbaa35dfdfe08e197cb7b850c1b0f20674d2191
+  roadmap_revision: RM-V31-ISS126-CIRCULAR-DYNAMICS-002
+  state_digest: sha256:8600c79868ef1688a472231d0b9ec34c4db2ce3362e645b4e2c3b34c51f2c861
   material_basis:
-    head: c6e2e825e9bd3e67f1e37228d6ddca19081edb23
-    tree_digest: sha256:5588bf6db3db6096fd882e6bfc09a316f05631a9e79c52ddc774514a03c2c906
-    relevant_paths_digest: sha256:301107aece0fb54b54dcbbd921e0b00c3db8a108e7ae78f7d7ded81a4335ccd5
-    dependency_digest: sha256:a5960db80e191da1bd2839886b3a10578be78bc1e73afcfc4d8d396d88a07bce
-  coordination_head: 6b1f153ca1880d5bd804ac641d2e3702ec4f7b68
+    head: 468672368d963e1a27c091759fa52c6c5dac3339
+    tree_digest: sha256:2195e2ebe8754902e3ae370eaaf9e307ef6613f9f3cfb44e2a8600d8060e9f64
+    relevant_paths_digest: sha256:a1f28ecb92346185c2710465dddd36629b5ae0c4d6e73e2084d84e88d00e8f61
+    dependency_digest: sha256:b883e4d4e412f8146aad14b21d92e3dfb65e228d6f4990b78ddc4a117867ae41
+  coordination_head: 468672368d963e1a27c091759fa52c6c5dac3339
 owner:
   outcome: Preserve the delivered self-study architecture and activate new work only
     from a concrete learner, worksheet, source, or product defect rather than from
@@ -36,8 +36,8 @@ programme:
 execution:
   lifecycle: ACTIVE
   work_package: WP-ISS126-CIRCULAR-DYNAMICS
-  ep: EP-ISS126-CIRCULAR-DYNAMICS-V31-001
-  lease: LEASE-ISS126-CIRCULAR-DYNAMICS-V31-001
+  ep: EP-ISS126-CIRCULAR-DYNAMICS-V31-002
+  lease: LEASE-ISS126-CIRCULAR-DYNAMICS-V31-002
   executor: chatgpt-sol-issue126-v31-20260923
   custody_epoch: 1
 scope:
@@ -53,6 +53,9 @@ scope:
   - tests/test_issue19_physics_content.py
   - tests/test_grade9_physics_learner_loop.py
   - tests/test_library.py
+  - tests/test_grade9_default_extension_routing.py
+  - tests/test_grade9_motion_scope.py
+  - tests/test_grade9_motion1d_vertical_gravity_agent_a_atlas.py
   - tools/data.js
   - public/data/data.js
   - docs/architecture-manifest.json
@@ -67,16 +70,18 @@ scope:
   prohibited:
   - Do not remove or weaken R5's centripetal-force ceiling.
   - Do not make R6 default_entry_eligible.
+  - Do not reinterpret the R5 100->99 coordinate-only adjustment as a syllabus or
+    teaching downgrade.
   - Do not add a separate centripetal-force arrow to inertial-frame FBDs.
   - Do not assert static friction equals mu_s N except at the declared limiting boundary.
   - Do not add rotating-frame centrifugal force without explicit non-inertial-frame
     labeling.
   - Do not merge without a fresh accepted checkpoint and explicit Owner MERGE authority.
 material:
-  base: c6e2e825e9bd3e67f1e37228d6ddca19081edb23
-  head: c6e2e825e9bd3e67f1e37228d6ddca19081edb23
-  relevant_paths_digest: sha256:301107aece0fb54b54dcbbd921e0b00c3db8a108e7ae78f7d7ded81a4335ccd5
-  dependency_digest: sha256:a5960db80e191da1bd2839886b3a10578be78bc1e73afcfc4d8d396d88a07bce
+  base: 468672368d963e1a27c091759fa52c6c5dac3339
+  head: 468672368d963e1a27c091759fa52c6c5dac3339
+  relevant_paths_digest: sha256:a1f28ecb92346185c2710465dddd36629b5ae0c4d6e73e2084d84e88d00e8f61
+  dependency_digest: sha256:b883e4d4e412f8146aad14b21d92e3dfb65e228d6f4990b78ddc4a117867ae41
 evidence:
   latest_checkpoint: null
   latest_material_validation: {}
@@ -91,14 +96,14 @@ delivery:
   lifecycle: DECLARED
   merge_authorized: false
 next:
-  immediate_material_action: Add R6 extension authority without modifying R5, then
-    build one canonical circular-dynamics representation/activity and falsify force-role,
-    friction-boundary, cut-string and vertical-circle reasoning.
+  immediate_material_action: Add the R6 Core1A/Core1B teaching route; revise only
+    stale extension/scope tests to distinguish the six-rung required Grade-9 spine
+    from non-default R6; regenerate manifest and rerun exact-head guardrails.
   delivery_action: Perform the explicitly authorized delivery transition.
   stop_conditions:
-  - Stop if any implementation weakens or removes the R5 ceiling.
-  - Stop if radial dynamics is represented as a new physical force interaction.
-  - Stop if the task expands into rotating-frame dynamics beyond explicit labeling.
+  - Stop if any fix makes R6 default or changes R5 teaching meaning/ceiling.
+  - Stop if guardrail repair requires changing learner state, Mathematics, Grade-10/11
+    scope, or shared routing semantics.
   - Stop before merge without fresh checkpoint and explicit Owner MERGE authority.
 handoff:
   zero_context_takeover_possible: true
@@ -106,5 +111,5 @@ handoff:
   - relay/ROADMAP/ROADMAP.yaml
   - relay/STATE.yaml
   - relay/CONTROLS/controls.yaml
-  - relay/WORK/EP-ISS126-CIRCULAR-DYNAMICS-V31-001.yaml
-  - relay/LEASES/LEASE-ISS126-CIRCULAR-DYNAMICS-V31-001.yaml
+  - relay/WORK/EP-ISS126-CIRCULAR-DYNAMICS-V31-002.yaml
+  - relay/LEASES/LEASE-ISS126-CIRCULAR-DYNAMICS-V31-002.yaml

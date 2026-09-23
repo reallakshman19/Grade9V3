@@ -1,0 +1,51 @@
+schema_version: relay-v3.1-transaction
+id: TX-V31-ISS126-SCOPE-ADMIT-002
+command: ADMIT_TASK
+actor: chatgpt-sol-issue126-v31-20260923
+status: COMMITTED
+created_at: '2026-09-23T06:19:25.791990Z'
+updated_at: '2026-09-23T06:19:25.819444Z'
+operations:
+- path: relay/EVENTS.jsonl
+  before_exists: true
+  before_digest: sha256:53d89cdf5df76c72d2db5a313f3ab673387840716519e199b9c6d337ee02a8b1
+  after_digest: sha256:a1db6893bc4a564912fb3e429e0550e469b338a4d61c89e93ebedfbfbe354a98
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-ADMIT-002/staged/000.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-ADMIT-002/backups/000.before
+- path: relay/GENERATED/CURRENT_SNAPSHOT.yaml
+  before_exists: true
+  before_digest: sha256:5d4068014f52755df177f858c1568ba24657cf6e353f147b48db012798b1ba8f
+  after_digest: sha256:e9809b8319480c66593b21ce7eaa0ed99a5f541ca0e669ce6b03850f929735e7
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-ADMIT-002/staged/001.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-ADMIT-002/backups/001.before
+- path: relay/LEASES/LEASE-ISS126-CIRCULAR-DYNAMICS-V31-002.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:eae32dd8c5b52ab84bf08735b1d7a19b6bcc3435f96091bdfc69a1be5c5a996e
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-ADMIT-002/staged/002.after
+  backup_path: null
+- path: relay/ROADMAP/ROADMAP.yaml
+  before_exists: true
+  before_digest: sha256:e2dc444e614f55c6fd09c21cce18e8358f46d753d3a34942904c2393118cdd89
+  after_digest: sha256:060e773bc07fdaaee0ff81ec7475eaa5050486ddb96080ede7ac4016baf96d22
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-ADMIT-002/staged/003.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-ADMIT-002/backups/003.before
+- path: relay/STATE.yaml
+  before_exists: true
+  before_digest: sha256:767f7b5a587b3954ff78c8aff98f12b782702465243b4d017d2a21801f682641
+  after_digest: sha256:3018180639d585e9b94de76c66f842712ee931b019f4a53645e5c35bd6d7210d
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-ADMIT-002/staged/004.after
+  backup_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-ADMIT-002/backups/004.before
+- path: relay/WORK/EP-ISS126-CIRCULAR-DYNAMICS-V31-002.yaml
+  before_exists: false
+  before_digest: null
+  after_digest: sha256:c6bb06328961664b1b7cd231e3e038bf3167b087cc66f617953e7a87b2e24794
+  staged_path: relay/TRANSACTIONS/TX-V31-ISS126-SCOPE-ADMIT-002/staged/005.after
+  backup_path: null
+applied:
+- relay/EVENTS.jsonl
+- relay/GENERATED/CURRENT_SNAPSHOT.yaml
+- relay/LEASES/LEASE-ISS126-CIRCULAR-DYNAMICS-V31-002.yaml
+- relay/ROADMAP/ROADMAP.yaml
+- relay/STATE.yaml
+- relay/WORK/EP-ISS126-CIRCULAR-DYNAMICS-V31-002.yaml

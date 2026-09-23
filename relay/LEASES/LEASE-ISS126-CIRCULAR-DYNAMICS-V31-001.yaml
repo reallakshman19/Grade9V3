@@ -35,6 +35,6 @@ custody:
   renewed_at: '2026-09-23T05:51:51.571393Z'
   recovery_after_seconds: 3600
   recovery_policy: TAKEOVER_AFTER_EXPIRY
-state: ACTIVE
+state: RELEASED
 invalidation:
   reasons: []
