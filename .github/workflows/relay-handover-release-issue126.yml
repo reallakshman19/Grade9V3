@@ -1,0 +1,47 @@
+name: relay-handover-release-issue126
+on:
+  push:
+    branches:
+      - relay/handover-issue126-v31
+permissions:
+  contents: write
+jobs:
+  handover_release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: explorer/issue-126-circular-dynamics
+          fetch-depth: 0
+      - run: git fetch origin main:refs/remotes/origin/main
+      - uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: 1c168695f237a8bef184a9e189be80fab87d1e78
+          path: _common_v31
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+      - name: Reconfirm delivery authority
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py PR_READY .             --expected-custody-epoch 1
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py MERGE .             --expected-custody-epoch 1 || true
+      - name: Create fresh handover
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . handover             --tx-id TX-V31-ISS126-HANDOVER-004             --event-id EVT-V31-ISS126-HANDOVER-004             --actor chatgpt-sol-issue126-v31-20260923             --base-ref origin/main             --expected-custody-epoch 1
+      - name: Release execution custody gracefully
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . release-lease             --tx-id TX-V31-ISS126-RELEASE-004             --event-id EVT-V31-ISS126-RELEASE-004             --actor chatgpt-sol-issue126-v31-20260923             --reason HANDOFF             --base-ref origin/main             --expected-custody-epoch 1
+      - name: Validate released foundation
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/protocol_cutover.py . validate
+      - name: Commit Relay handover and release
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add relay
+          git commit -m "relay: hand over issue 126 pending merge authority"
+          git push origin HEAD:explorer/issue-126-circular-dynamics
