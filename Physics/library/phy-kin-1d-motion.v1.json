@@ -4486,6 +4486,101 @@
         "Do not turn the blocked quantitative rungs into lighter qualitative substitutes."
       ],
       "practice_profile_ref": null
+    },
+    {
+      "id": "ROUTE-PHY-KIN-CIRCULAR-DYNAMICS-A",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-AUTHOR-KIN-1D"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "issue126:scope_class": "OWNER_EXTENSION",
+        "issue126:owner_activation": "2026-09-23T05:48:14Z"
+      },
+      "title": "Construct the circular-dynamics force-role model",
+      "cores": [
+        "CORE1A"
+      ],
+      "microtopic_refs": [
+        "MIC-PHY-KIN-CIRCULAR-DYNAMICS-ROLE"
+      ],
+      "entry_needs": [
+        "Elementary uniform circular motion: tangent velocity with changing direction.",
+        "One-body Newton-II force inventory and signed-axis reasoning."
+      ],
+      "learner_actions": [
+        "Establish inward radial acceleration before naming a force mechanism.",
+        "Draw only real interactions and resolve their inward components.",
+        "Compare the required radial resultant with tension/friction/contact constraints.",
+        "Transfer the same force-role invariant to cut-string and vertical-circle cases."
+      ],
+      "help_plan": [
+        "Keep velocity and acceleration arrows visible before revealing any force equation.",
+        "Ask which physical agent owns each force arrow before writing Sigma F_r.",
+        "At a constraint boundary, compare required force with what the interaction can actually supply."
+      ],
+      "reveal_plan": "Reveal motion first, then inward acceleration, then real interactions, and only then the signed radial Newton-II equation.",
+      "source_preferences": [
+        {
+          "resource_ref": "ACT-KIN-CIRCULAR-DYNAMICS",
+          "purpose": "Interactive force-role construction",
+          "reason": "The Issue 126 explorer stages motion, radial requirement, real-force ownership and boundary checks without inventing a centripetal interaction."
+        }
+      ],
+      "when_not_suitable": [
+        "Do not use this non-default extension as an ordinary Grade-9 completion requirement.",
+        "Do not use it for rotating-frame centrifugal/Coriolis analysis."
+      ],
+      "practice_profile_ref": null
+    },
+    {
+      "id": "ROUTE-PHY-KIN-CIRCULAR-DYNAMICS-B",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-AUTHOR-KIN-1D"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "issue126:scope_class": "OWNER_EXTENSION",
+        "issue126:owner_activation": "2026-09-23T05:48:14Z"
+      },
+      "title": "Elicit independent circular-dynamics force-role reasoning",
+      "cores": [
+        "CORE1B"
+      ],
+      "microtopic_refs": [
+        "MIC-PHY-KIN-CIRCULAR-DYNAMICS-ROLE"
+      ],
+      "entry_needs": [
+        "Same intrinsic circular-dynamics content as Core1A; no learner-percentage assumption."
+      ],
+      "learner_actions": [
+        "Predict the acceleration direction before force labels are shown.",
+        "Classify proposed FBD arrows as real interactions or double-counted radial-resultant labels.",
+        "Determine whether friction/tension capacity can supply the required inward resultant.",
+        "Predict the immediate path after a string cut and re-declare inward at vertical-circle top/bottom."
+      ],
+      "help_plan": [
+        "Ask for the physical agent behind each proposed force arrow.",
+        "Ask for the inward-positive axis before accepting a signed equation.",
+        "Use the microtopic reconstruction route after an incorrect prediction rather than handing over the protected force-role choice."
+      ],
+      "reveal_plan": "Commit to a prediction first; reveal the minimum motion/interaction cue needed for reconstruction; close against the canonical equations and boundary checks.",
+      "source_preferences": [
+        {
+          "resource_ref": "ACT-KIN-CIRCULAR-DYNAMICS",
+          "purpose": "Elicitation and misconception repair",
+          "reason": "The same explorer supports staged prediction, force-role diagnosis, cut-string transfer and vertical-circle sign checks."
+        }
+      ],
+      "when_not_suitable": [
+        "Do not treat helped success as independent evidence.",
+        "Do not route this extension automatically from ordinary Grade-9 completion."
+      ],
+      "practice_profile_ref": null
     }
   ],
   "practice_profiles": [],
