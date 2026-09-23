@@ -1423,6 +1423,31 @@ window.GRADE9V3 = {
           ]
         },
         {
+          "gate_id": "PHY-KIN-CIRCULAR-DYNAMICS-EXTENSION",
+          "title": "Circular dynamics: inward acceleration and net radial force role",
+          "grade": 9,
+          "chapter": "Motion / Force and Laws of Motion",
+          "scope_class": "OWNER_EXTENSION",
+          "tier": "JEE_MAINS",
+          "scope_state": "ACTIVE",
+          "prerequisites": [
+            "PHY-KIN-AVERAGE-RATES",
+            "PHY-NEWTON-SECOND-LAW",
+            "PHY-NLM-CONTACT-CONSTRAINTS"
+          ],
+          "external_prerequisites": [],
+          "concepts": [
+            "For uniform circular motion, velocity is tangent while acceleration is radial and inward with magnitude v^2/r.",
+            "Centripetal describes the inward role of the net radial force; it is not an additional physical interaction to add to a free-body diagram.",
+            "Different real interactions such as tension, static friction, gravity, or normal-force components can supply the required inward resultant without changing the radial Newton-II relation."
+          ],
+          "misconceptions": [
+            "A free-body diagram should contain the real inward force plus another arrow labelled centripetal force.",
+            "Constant speed means acceleration is zero.",
+            "Static friction on every flat curve automatically equals mu_s N."
+          ]
+        },
+        {
           "gate_id": "PHY-NLM-MOMENTUM-TRANSFER-RATE",
           "title": "Force from discrete momentum transfer per unit time",
           "grade": 9,
@@ -1927,7 +1952,7 @@ window.GRADE9V3 = {
               "CORE1A",
               "CORE1B"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 0,
             "obligations": 2,
             "authoring_requirements": [
@@ -2201,7 +2226,7 @@ window.GRADE9V3 = {
               "CORE1A",
               "CORE1B"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 0,
             "obligations": 3,
             "authoring_requirements": [
@@ -2783,7 +2808,7 @@ window.GRADE9V3 = {
               "CORE1B",
               "CORE2A"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 1,
             "obligations": 8,
             "authoring_requirements": [
@@ -3329,6 +3354,147 @@ window.GRADE9V3 = {
               "prerequisites": [
                 "CAP-KIN-AVERAGE-RATES"
               ]
+            },
+            {
+              "id": "MIC-PHY-KIN-CIRCULAR-DYNAMICS-ROLE",
+              "title": "Circular dynamics: centripetal is a net-force role, not a new force",
+              "badge": "HARD",
+              "status": "CANDIDATE",
+              "badge_reason": "The same motion requirement can be supplied by different physical interactions, so learners must separate force type from radial role and re-declare the inward axis around the circle.",
+              "entry_assumptions": [
+                "Can identify tangent velocity and inward acceleration in elementary uniform circular motion.",
+                "Can draw a chosen-body FBD and apply Newton II along a declared axis."
+              ],
+              "inferential_jump": "The inward acceleration requirement v^2/r fixes only the net radial component m v^2/r; tension, friction, gravity, normal force, or combinations may supply that resultant, so 'centripetal force' must not be added as another interaction.",
+              "teaching_path": [
+                {
+                  "id": "KIN6-1",
+                  "action": "Hold speed constant and compare tangent velocity arrows at nearby points before showing any force.",
+                  "why_valid": "Direction change establishes nonzero inward acceleration without invoking a force label.",
+                  "role": "DECLARE",
+                  "output": "velocity tangent; acceleration inward.",
+                  "inputs": [
+                    "CAP-KIN-UNIFORM-CIRCULAR-MOTION"
+                  ]
+                },
+                {
+                  "id": "KIN6-2",
+                  "action": "Quantify the inward acceleration as a_r=v^2/r.",
+                  "why_valid": "REL-CIRC-RADIAL-ACCELERATION is the gate-owned curvature relation.",
+                  "role": "TRANSFORM",
+                  "output": "a_r = v^2/r; for v=4 m/s and r=2 m, a_r=8 m/s^2.",
+                  "inputs": [
+                    "REL-CIRC-RADIAL-ACCELERATION"
+                  ]
+                },
+                {
+                  "id": "KIN6-3",
+                  "action": "Choose one body and draw only real interactions, then declare inward-positive radial/tangential axes.",
+                  "why_valid": "Force ownership and sign choice must precede Newton-II components.",
+                  "role": "DECLARE",
+                  "output": "real-force FBD with radial components.",
+                  "inputs": [
+                    "CAP-NLM-SECOND-LAW"
+                  ]
+                },
+                {
+                  "id": "KIN6-4",
+                  "action": "Set the signed real-force radial resultant equal to m v^2/r.",
+                  "why_valid": "REL-CIRC-NET-RADIAL-FORCE is Newton II applied to the established radial acceleration.",
+                  "role": "TRANSFORM",
+                  "output": "Sigma F_r=m v^2/r without an extra Fc arrow.",
+                  "inputs": [
+                    "REL-CIRC-NET-RADIAL-FORCE"
+                  ]
+                },
+                {
+                  "id": "KIN6-5",
+                  "action": "Switch among string, flat-curve friction, and gravity-supplied mechanisms while holding the same radial requirement.",
+                  "why_valid": "The force type can change while the centripetal role remains the net radial resultant.",
+                  "role": "VERIFY",
+                  "output": "mechanism changes; radial invariant remains.",
+                  "inputs": [
+                    "REL-NLM-STATIC-FRICTION-BOUND"
+                  ]
+                },
+                {
+                  "id": "KIN6-6",
+                  "action": "Remove the string interaction and predict the immediate inertial path.",
+                  "why_valid": "Without inward tension, instantaneous velocity remains tangent at the cut event.",
+                  "role": "VERIFY",
+                  "output": "initial post-cut path tangent, not radially outward.",
+                  "inputs": []
+                },
+                {
+                  "id": "KIN6-7",
+                  "action": "At vertical-circle top and bottom, re-declare inward and write the corresponding signed radial equations.",
+                  "why_valid": "Gravity keeps its physical downward direction while the radial positive direction changes around the circle.",
+                  "role": "TRANSFORM",
+                  "output": "top T+mg=mv_top^2/r; bottom T-mg=mv_bottom^2/r.",
+                  "inputs": [
+                    "REL-CIRC-VERTICAL-TOP",
+                    "REL-CIRC-VERTICAL-BOTTOM"
+                  ]
+                },
+                {
+                  "id": "KIN6-8",
+                  "action": "At the top impose the just-taut boundary T=0 to derive the minimum top speed.",
+                  "why_valid": "A string cannot push, so negative tension signals failure of the taut-string model.",
+                  "role": "VERIFY",
+                  "output": "v_min=sqrt(gr).",
+                  "inputs": [
+                    "REL-CIRC-TOP-MIN-SPEED"
+                  ]
+                }
+              ],
+              "misconceptions": [
+                {
+                  "wrong_idea": "Tension plus an additional centripetal force both point inward.",
+                  "diagnostic_prompt": "A mass moves in a horizontal circle on one string. Which horizontal force arrows belong on its inertial-frame FBD?",
+                  "repair": "Draw the string tension only; 'centripetal' names the role of the net inward component."
+                },
+                {
+                  "wrong_idea": "A cut string makes the object fly radially outward.",
+                  "diagnostic_prompt": "At the instant a circular-motion string is cut, which direction does the object initially move?",
+                  "repair": "Keep the instantaneous tangent velocity; removing tension removes inward acceleration, not the tangent velocity."
+                },
+                {
+                  "wrong_idea": "Static friction on a flat curve always equals mu_s N.",
+                  "diagnostic_prompt": "At a low speed on a high-friction flat curve, must friction already be at its maximum?",
+                  "repair": "Compute m v^2/r first and compare that demand with the static bound."
+                }
+              ],
+              "exit_task": {
+                "prompt": "A 2 kg mass moves at 4 m/s in a horizontal circle of radius 2 m on a string. Draw the inertial-frame horizontal FBD and find the required inward net force. Then state the immediate path if the string is cut.",
+                "source_ref": "SRC-AUTHOR-KIN-1D",
+                "answer": {
+                  "kind": "MODEL_RESPONSE",
+                  "summary": "Only tension is drawn horizontally. The required inward net force is m v^2/r=16 N, so tension supplies 16 N in the simplified horizontal model. If the string is cut, tension vanishes and the mass initially follows the tangent.",
+                  "reasoning": [
+                    "Velocity is tangent while acceleration is inward.",
+                    "Draw the real string interaction only.",
+                    "Apply Sigma F_r=m v^2/r=2*16/2=16 N.",
+                    "The cut removes inward tension; instantaneous tangent velocity remains."
+                  ],
+                  "check": "Do not add a second Fc arrow; that would double-count the required inward resultant.",
+                  "acceptable_alternatives": [],
+                  "subpart_answers": [],
+                  "verification_status": "CHECKED_BY_AUTHOR"
+                },
+                "oracle": {
+                  "verification": {
+                    "validator_id": "NEWTON_SECOND_LAW",
+                    "bindings": {
+                      "mass": "DAT-KIN-CIRC-EXIT-MASS",
+                      "acceleration": "DAT-KIN-CIRC-EXIT-AR"
+                    }
+                  }
+                }
+              },
+              "prerequisites": [
+                "CAP-KIN-UNIFORM-CIRCULAR-MOTION",
+                "CAP-NLM-SECOND-LAW"
+              ]
             }
           ],
           "relations": [
@@ -3357,6 +3523,58 @@ window.GRADE9V3 = {
               "conditions": [
                 "Delta t > 0.",
                 "Delta x uses one declared axis/sign convention."
+              ]
+            },
+            {
+              "id": "REL-CIRC-NET-RADIAL-FORCE",
+              "expression": "Sigma F_r = m v^2 / r",
+              "meaning": "With inward chosen as positive radial direction, the signed sum of real radial force components equals m v^2/r for uniform circular motion.",
+              "conditions": [
+                "Choose one body and declare inward as positive radial direction before resolving forces.",
+                "Only real interactions appear in an inertial-frame free-body diagram.",
+                "The represented motion has radial acceleration v^2/r.",
+                "Do not add an extra force named centripetal; Sigma F_r is the resultant radial role of the real forces."
+              ]
+            },
+            {
+              "id": "REL-CIRC-RADIAL-ACCELERATION",
+              "expression": "a_r = v^2 / r",
+              "meaning": "For uniform circular motion of speed v on a path of positive radius r, the acceleration magnitude toward the centre is v^2/r.",
+              "conditions": [
+                "r > 0.",
+                "The path is circular at the represented instant.",
+                "For the acceleration to be exactly radial with no tangential component, speed is constant at that instant/over the uniform model."
+              ]
+            },
+            {
+              "id": "REL-CIRC-TOP-MIN-SPEED",
+              "expression": "v_min = sqrt(g r)",
+              "meaning": "At the just-taut top boundary T=0, the vertical-circle top radial equation gives v_min=sqrt(gr).",
+              "conditions": [
+                "The body is at the top of the vertical circle.",
+                "The string is at the just-taut boundary, so T = 0.",
+                "r > 0 and g > 0.",
+                "This is a boundary result for the declared string model, not a generic circular-motion formula."
+              ]
+            },
+            {
+              "id": "REL-CIRC-VERTICAL-BOTTOM",
+              "expression": "T - m g = m v_bottom^2 / r",
+              "meaning": "At the bottom of a vertical circle for a mass on a taut string, inward is upward so tension contributes positively and weight negatively to the radial resultant.",
+              "conditions": [
+                "The body is at the bottom of the vertical circle.",
+                "The string is taut and massless in the bounded model.",
+                "Gravity acts downward and the radial positive direction is inward (upward at the bottom)."
+              ]
+            },
+            {
+              "id": "REL-CIRC-VERTICAL-TOP",
+              "expression": "T + m g = m v_top^2 / r",
+              "meaning": "At the top of a vertical circle for a mass on a taut string, inward is downward so tension and weight both contribute positively to the radial resultant.",
+              "conditions": [
+                "The body is at the top of the vertical circle.",
+                "The string is taut and massless in the bounded model.",
+                "Gravity acts downward and the radial positive direction is inward (downward at the top)."
               ]
             },
             {
@@ -3515,6 +3733,12 @@ window.GRADE9V3 = {
               "acceptance": "CANDIDATE"
             },
             {
+              "id": "CAP-KIN-CIRCULAR-DYNAMICS-ROLE",
+              "action": "Relate inward radial acceleration to the signed net radial component of real forces, distinguishing the centripetal role from physical interaction types across string, friction, gravity and vertical-circle contexts.",
+              "provider": null,
+              "acceptance": "CANDIDATE"
+            },
+            {
               "id": "CAP-KIN-CONSTANT-ACCELERATION",
               "action": "Derive the constant-acceleration kinematic equations from a straight velocity-time graph, then choose and apply them only when one acceleration value describes the interval.",
               "provider": null,
@@ -3575,7 +3799,7 @@ window.GRADE9V3 = {
               "acceptance": "CANDIDATE"
             }
           ],
-          "record_count": 65,
+          "record_count": 74,
           "compile_preview": {
             "compilable": true,
             "supported_products": [
@@ -3586,10 +3810,15 @@ window.GRADE9V3 = {
               "CORE2A",
               "CORE2B"
             ],
-            "atoms": 76,
-            "questions": 16,
+            "atoms": 78,
+            "questions": 19,
             "obligations": 10,
             "authoring_requirements": [
+              {
+                "kind": "FIGURE_AUTHORING",
+                "representation": "REP-KIN-CIRCULAR-FORCE-ROLE",
+                "detail": "the representation states what a figure of this kind must show but holds no scene instance; a figure must be authored"
+              },
               {
                 "kind": "PROSE_AUTHORING",
                 "core": "CORE1A",
@@ -4292,7 +4521,7 @@ window.GRADE9V3 = {
               "CORE2A",
               "CORE2B"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 10,
             "obligations": 7,
             "authoring_requirements": [
@@ -4561,7 +4790,7 @@ window.GRADE9V3 = {
               "CORE1A",
               "CORE1B"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 0,
             "obligations": 3,
             "authoring_requirements": [
@@ -6134,7 +6363,7 @@ window.GRADE9V3 = {
               "CORE2A",
               "CORE2B"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 38,
             "obligations": 15,
             "authoring_requirements": [
@@ -6631,7 +6860,7 @@ window.GRADE9V3 = {
               "CORE2A",
               "CORE2B"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 10,
             "obligations": 5,
             "authoring_requirements": [
@@ -7137,7 +7366,7 @@ window.GRADE9V3 = {
               "CORE1A",
               "CORE1B"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 0,
             "obligations": 8,
             "authoring_requirements": [
@@ -7686,7 +7915,7 @@ window.GRADE9V3 = {
               "CORE1A",
               "CORE1B"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 0,
             "obligations": 8,
             "authoring_requirements": [
@@ -7882,7 +8111,7 @@ window.GRADE9V3 = {
               "CORE1A",
               "CORE1B"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 0,
             "obligations": 2,
             "authoring_requirements": [
@@ -8227,7 +8456,7 @@ window.GRADE9V3 = {
               "CORE1A",
               "CORE1B"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 0,
             "obligations": 4,
             "authoring_requirements": [
@@ -8799,7 +9028,7 @@ window.GRADE9V3 = {
               "CORE1B",
               "CORE2A"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 2,
             "obligations": 7,
             "authoring_requirements": [
@@ -9586,7 +9815,7 @@ window.GRADE9V3 = {
               "CORE1B",
               "CORE2A"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 5,
             "obligations": 9,
             "authoring_requirements": [
@@ -9916,7 +10145,7 @@ window.GRADE9V3 = {
               "CORE1A",
               "CORE1B"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 0,
             "obligations": 4,
             "authoring_requirements": [
@@ -10455,7 +10684,7 @@ window.GRADE9V3 = {
               "CORE2A",
               "CORE2B"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 11,
             "obligations": 8,
             "authoring_requirements": [
@@ -10829,7 +11058,7 @@ window.GRADE9V3 = {
               "CORE1A",
               "CORE1B"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 0,
             "obligations": 5,
             "authoring_requirements": [
@@ -11840,7 +12069,7 @@ window.GRADE9V3 = {
               "CORE1B",
               "CORE2A"
             ],
-            "atoms": 76,
+            "atoms": 78,
             "questions": 7,
             "obligations": 11,
             "authoring_requirements": [
@@ -12341,7 +12570,7 @@ window.GRADE9V3 = {
               "CORE1B",
               "CORE2A"
             ],
-            "atoms": 77,
+            "atoms": 79,
             "questions": 1,
             "obligations": 8,
             "authoring_requirements": [
@@ -12665,7 +12894,7 @@ window.GRADE9V3 = {
               "CORE1B",
               "CORE2A"
             ],
-            "atoms": 77,
+            "atoms": 79,
             "questions": 1,
             "obligations": 7,
             "authoring_requirements": [
@@ -15927,7 +16156,7 @@ window.GRADE9V3 = {
             },
             {
               "rung": "R5",
-              "ladder_position": 100,
+              "ladder_position": 99,
               "default_entry_eligible": true,
               "microtopic_ref": "MIC-PHY-KIN-UNIFORM-CIRCULAR-MOTION",
               "ceiling": [
@@ -16106,7 +16335,314 @@ window.GRADE9V3 = {
                   "repair_ref": null
                 }
               ],
-              "activities": []
+              "activities": [
+                {
+                  "id": "ACT-KIN-CIRCULAR-DYNAMICS",
+                  "title": "Circular Motion & the Centripetal-Force Fallacy Explorer",
+                  "locator": "public/physics/motion-1d/explorers/circular-dynamics/index.html",
+                  "section": "R6 circular-dynamics Owner extension",
+                  "supports_claims": [
+                    "CAP-KIN-CIRCULAR-DYNAMICS-ROLE",
+                    "CAP-KIN-UNIFORM-CIRCULAR-MOTION",
+                    "CAP-NLM-SECOND-LAW"
+                  ]
+                }
+              ]
+            },
+            {
+              "rung": "R6",
+              "ladder_position": 100,
+              "default_entry_eligible": false,
+              "microtopic_ref": "MIC-PHY-KIN-CIRCULAR-DYNAMICS-ROLE",
+              "ceiling": [
+                "angular velocity formalism",
+                "rotating-frame inertial-force derivations",
+                "calculus",
+                "banked-road design",
+                "general nonuniform-curvature dynamics"
+              ],
+              "must_contain": [
+                "A velocity-direction change / inward-acceleration view shown before force equations.",
+                "An inertial-frame FBD containing only real interactions and no added centripetal-force arrow.",
+                "An inward-positive radial axis with Sigma F_r = m v^2/r shown as the net requirement.",
+                "At least one mechanism comparison among tension, static friction, gravity or normal-force components.",
+                "A cut-string state whose immediate path is tangent.",
+                "Top and bottom vertical-circle states with separately declared inward directions."
+              ],
+              "controlled_variation": [
+                {
+                  "phase": 1,
+                  "vary": "the physical interaction supplying the inward resultant",
+                  "hold": "the same m, v and r",
+                  "notice": "the force type changes while the required net radial force m v^2/r does not"
+                },
+                {
+                  "phase": 2,
+                  "vary": "speed v at fixed m and r",
+                  "hold": "the same circular radius and mechanism",
+                  "notice": "the inward acceleration and required net radial force scale with v squared"
+                },
+                {
+                  "phase": 3,
+                  "vary": "position from top to bottom of a vertical circle",
+                  "hold": "gravity downward and the same chosen body",
+                  "notice": "the inward radial axis reverses physical direction, changing the sign contribution of gravity"
+                },
+                {
+                  "phase": 4,
+                  "vary": "string state from taut to cut",
+                  "hold": "the same instantaneous tangent velocity at the cut event",
+                  "notice": "removing inward tension removes the turning acceleration while the immediate motion remains tangent"
+                }
+              ],
+              "microtopic": {
+                "id": "MIC-PHY-KIN-CIRCULAR-DYNAMICS-ROLE",
+                "title": "Circular dynamics: centripetal is a net-force role, not a new force",
+                "intrinsic_badge": "HARD",
+                "badge_reason": "The same motion requirement can be supplied by different physical interactions, so learners must separate force type from radial role and re-declare the inward axis around the circle.",
+                "entry_assumptions": [
+                  "Can identify tangent velocity and inward acceleration in elementary uniform circular motion.",
+                  "Can draw a chosen-body FBD and apply Newton II along a declared axis."
+                ],
+                "inferential_jump": "The inward acceleration requirement v^2/r fixes only the net radial component m v^2/r; tension, friction, gravity, normal force, or combinations may supply that resultant, so 'centripetal force' must not be added as another interaction.",
+                "misconceptions": [
+                  {
+                    "wrong_idea": "Tension plus an additional centripetal force both point inward.",
+                    "diagnostic_prompt": "A mass moves in a horizontal circle on one string. Which horizontal force arrows belong on its inertial-frame FBD?",
+                    "repair": "Draw the string tension only; 'centripetal' names the role of the net inward component."
+                  },
+                  {
+                    "wrong_idea": "A cut string makes the object fly radially outward.",
+                    "diagnostic_prompt": "At the instant a circular-motion string is cut, which direction does the object initially move?",
+                    "repair": "Keep the instantaneous tangent velocity; removing tension removes inward acceleration, not the tangent velocity."
+                  },
+                  {
+                    "wrong_idea": "Static friction on a flat curve always equals mu_s N.",
+                    "diagnostic_prompt": "At a low speed on a high-friction flat curve, must friction already be at its maximum?",
+                    "repair": "Compute m v^2/r first and compare that demand with the static bound."
+                  }
+                ],
+                "exit_task": {
+                  "prompt": "A 2 kg mass moves at 4 m/s in a horizontal circle of radius 2 m on a string. Draw the inertial-frame horizontal FBD and find the required inward net force. Then state the immediate path if the string is cut.",
+                  "source_ref": "SRC-AUTHOR-KIN-1D",
+                  "answer": {
+                    "kind": "MODEL_RESPONSE",
+                    "summary": "Only tension is drawn horizontally. The required inward net force is m v^2/r=16 N, so tension supplies 16 N in the simplified horizontal model. If the string is cut, tension vanishes and the mass initially follows the tangent.",
+                    "reasoning": [
+                      "Velocity is tangent while acceleration is inward.",
+                      "Draw the real string interaction only.",
+                      "Apply Sigma F_r=m v^2/r=2*16/2=16 N.",
+                      "The cut removes inward tension; instantaneous tangent velocity remains."
+                    ],
+                    "check": "Do not add a second Fc arrow; that would double-count the required inward resultant.",
+                    "acceptable_alternatives": [],
+                    "subpart_answers": [],
+                    "verification_status": "CHECKED_BY_AUTHOR"
+                  },
+                  "oracle": {
+                    "verification": {
+                      "validator_id": "NEWTON_SECOND_LAW",
+                      "bindings": {
+                        "mass": "DAT-KIN-CIRC-EXIT-MASS",
+                        "acceleration": "DAT-KIN-CIRC-EXIT-AR"
+                      }
+                    }
+                  }
+                },
+                "elicitation": {
+                  "predict": {
+                    "prompt": "At constant speed around a circle, which changes first: speed magnitude, velocity direction, or the list of physical forces?",
+                    "defensible_answer": "Velocity direction changes; that establishes acceleration before any force mechanism is named."
+                  },
+                  "attempt": {
+                    "produces": "A real-force FBD, radial equation, mechanism-capacity check, and cut/vertical-circle transfer.",
+                    "closure": "RUBRIC",
+                    "rubric": [
+                      {
+                        "criterion": "Draws only real interactions before using radial language.",
+                        "evidence_of": "Separates force type from centripetal role."
+                      },
+                      {
+                        "criterion": "Uses inward-positive Sigma F_r=m v^2/r.",
+                        "evidence_of": "Maps the motion requirement through Newton II."
+                      },
+                      {
+                        "criterion": "Checks friction/tension constraints rather than assuming a mechanism can supply any required force.",
+                        "evidence_of": "Respects contact/string model boundaries."
+                      }
+                    ],
+                    "accepted": [
+                      "Tension-only horizontal FBD; required inward resultant m v^2/r; tangent post-cut path."
+                    ],
+                    "rejected": [
+                      "Tension + Fc as two forces; radial-outward post-cut path; f_s=mu_s N at all speeds."
+                    ]
+                  },
+                  "reconstruct": {
+                    "route": [
+                      {
+                        "ask": "Before forces, what happens to the tangent velocity direction?",
+                        "why_this_ask": "Rebuilds the kinematic requirement."
+                      },
+                      {
+                        "ask": "Which physical agents actually interact with the chosen body?",
+                        "why_this_ask": "Prevents fictitious force insertion.",
+                        "from_step_ref": "KIN6-3"
+                      },
+                      {
+                        "ask": "Which components point inward?",
+                        "why_this_ask": "Builds the signed radial resultant.",
+                        "from_step_ref": "KIN6-4"
+                      },
+                      {
+                        "ask": "Can the proposed interaction supply that amount without violating its constraint?",
+                        "why_this_ask": "Forces a friction/tension boundary check.",
+                        "from_step_ref": "KIN6-5"
+                      }
+                    ],
+                    "differs_from_teaching_path": "The teaching path derives radial acceleration explicitly; the reconstruction route starts from force ownership and uses the known inward acceleration as the bridge."
+                  },
+                  "boundary_test": {
+                    "prompt": "If the string is cut at one point on the circle, does a real outward radial force appear?",
+                    "answer": "No. Tension disappears; the object initially follows its tangent under whatever other real forces remain.",
+                    "confirms": "Centripetal was the inward role of the net force, not a stored force that reverses outward."
+                  }
+                },
+                "prerequisite_refs": [
+                  "CAP-KIN-UNIFORM-CIRCULAR-MOTION",
+                  "CAP-NLM-SECOND-LAW"
+                ],
+                "teaching_path": [
+                  {
+                    "id": "KIN6-1",
+                    "role": "DECLARE",
+                    "action": "Hold speed constant and compare tangent velocity arrows at nearby points before showing any force.",
+                    "why_valid": "Direction change establishes nonzero inward acceleration without invoking a force label.",
+                    "output": "velocity tangent; acceleration inward.",
+                    "inputs": [
+                      "CAP-KIN-UNIFORM-CIRCULAR-MOTION"
+                    ]
+                  },
+                  {
+                    "id": "KIN6-2",
+                    "role": "TRANSFORM",
+                    "action": "Quantify the inward acceleration as a_r=v^2/r.",
+                    "why_valid": "REL-CIRC-RADIAL-ACCELERATION is the gate-owned curvature relation.",
+                    "output": "a_r = v^2/r; for v=4 m/s and r=2 m, a_r=8 m/s^2.",
+                    "inputs": [
+                      "REL-CIRC-RADIAL-ACCELERATION"
+                    ]
+                  },
+                  {
+                    "id": "KIN6-3",
+                    "role": "DECLARE",
+                    "action": "Choose one body and draw only real interactions, then declare inward-positive radial/tangential axes.",
+                    "why_valid": "Force ownership and sign choice must precede Newton-II components.",
+                    "output": "real-force FBD with radial components.",
+                    "inputs": [
+                      "CAP-NLM-SECOND-LAW"
+                    ]
+                  },
+                  {
+                    "id": "KIN6-4",
+                    "role": "TRANSFORM",
+                    "action": "Set the signed real-force radial resultant equal to m v^2/r.",
+                    "why_valid": "REL-CIRC-NET-RADIAL-FORCE is Newton II applied to the established radial acceleration.",
+                    "output": "Sigma F_r=m v^2/r without an extra Fc arrow.",
+                    "inputs": [
+                      "REL-CIRC-NET-RADIAL-FORCE"
+                    ]
+                  },
+                  {
+                    "id": "KIN6-5",
+                    "role": "VERIFY",
+                    "action": "Switch among string, flat-curve friction, and gravity-supplied mechanisms while holding the same radial requirement.",
+                    "why_valid": "The force type can change while the centripetal role remains the net radial resultant.",
+                    "output": "mechanism changes; radial invariant remains.",
+                    "inputs": [
+                      "REL-NLM-STATIC-FRICTION-BOUND"
+                    ]
+                  },
+                  {
+                    "id": "KIN6-6",
+                    "role": "VERIFY",
+                    "action": "Remove the string interaction and predict the immediate inertial path.",
+                    "why_valid": "Without inward tension, instantaneous velocity remains tangent at the cut event.",
+                    "output": "initial post-cut path tangent, not radially outward.",
+                    "inputs": []
+                  },
+                  {
+                    "id": "KIN6-7",
+                    "role": "TRANSFORM",
+                    "action": "At vertical-circle top and bottom, re-declare inward and write the corresponding signed radial equations.",
+                    "why_valid": "Gravity keeps its physical downward direction while the radial positive direction changes around the circle.",
+                    "output": "top T+mg=mv_top^2/r; bottom T-mg=mv_bottom^2/r.",
+                    "inputs": [
+                      "REL-CIRC-VERTICAL-TOP",
+                      "REL-CIRC-VERTICAL-BOTTOM"
+                    ]
+                  },
+                  {
+                    "id": "KIN6-8",
+                    "role": "VERIFY",
+                    "action": "At the top impose the just-taut boundary T=0 to derive the minimum top speed.",
+                    "why_valid": "A string cannot push, so negative tension signals failure of the taut-string model.",
+                    "output": "v_min=sqrt(gr).",
+                    "inputs": [
+                      "REL-CIRC-TOP-MIN-SPEED"
+                    ]
+                  }
+                ]
+              },
+              "capability": {
+                "id": "CAP-KIN-CIRCULAR-DYNAMICS-ROLE",
+                "action": "Relate inward radial acceleration to the signed net radial component of real forces, distinguishing the centripetal role from physical interaction types across string, friction, gravity and vertical-circle contexts.",
+                "success_criterion": "Starts from tangent velocity/inward acceleration, draws only real interactions, chooses inward-positive radial axes, applies Sigma F_r = m v^2/r, checks interaction constraints, predicts tangent motion after constraint removal, and uses correct top/bottom radial signs without adding a separate centripetal-force arrow.",
+                "prerequisite_refs": [
+                  "CAP-KIN-UNIFORM-CIRCULAR-MOTION",
+                  "CAP-NLM-SECOND-LAW"
+                ],
+                "acceptance_status": "CANDIDATE"
+              },
+              "questions": [
+                {
+                  "id": "Q-PHY-KIN-CIRC-2A-FORCE-ROLE-01",
+                  "stem": "A 2.0 kg mass moves at 4.0 m/s in a horizontal circle of radius 2.0 m on a single ideal string. In an inertial frame, identify the horizontal force arrow(s) on the mass and calculate the required inward net force.",
+                  "answer": "Draw tension only, directed inward. The required net radial force is m v^2/r = 16 N, so the string tension supplies 16 N horizontally in this model. Do not add a second centripetal-force arrow.",
+                  "origin": "AUTHORED",
+                  "family_ref": "FAM-PHY-KIN-PRACTICE",
+                  "repair_ref": null
+                },
+                {
+                  "id": "Q-PHY-KIN-CIRC-2B-FLAT-CURVE-02",
+                  "stem": "A 1000 kg car takes a flat circular curve of radius 50 m at 10 m/s. With mu_s=0.30 and g=10 m/s^2, decide whether static friction can supply the required inward force without slipping. Do not assume f_s=mu_s N unless the threshold is reached.",
+                  "answer": "Required inward friction is m v^2/r=2000 N. The static limit is mu_s N=0.30*10000=3000 N, so no-slip is feasible and actual static friction is 2000 N, below its maximum.",
+                  "origin": "AUTHORED",
+                  "family_ref": "FAM-PHY-KIN-PRACTICE",
+                  "repair_ref": "KIN6-5"
+                },
+                {
+                  "id": "Q-PHY-KIN-CIRC-2B-VERTICAL-03",
+                  "stem": "A mass on a taut string moves in a vertical circle of radius r. Write the radial force equation at the top and at the bottom using inward positive at each point. Then obtain the minimum top speed for the just-taut boundary.",
+                  "answer": "Top: T+mg=m v_top^2/r. Bottom: T-mg=m v_bottom^2/r. At the just-taut top boundary T=0, mg=m v_min^2/r, so v_min=sqrt(gr).",
+                  "origin": "AUTHORED",
+                  "family_ref": "FAM-PHY-KIN-PRACTICE",
+                  "repair_ref": "KIN6-7"
+                }
+              ],
+              "activities": [
+                {
+                  "id": "ACT-KIN-CIRCULAR-DYNAMICS",
+                  "title": "Circular Motion & the Centripetal-Force Fallacy Explorer",
+                  "locator": "public/physics/motion-1d/explorers/circular-dynamics/index.html",
+                  "section": "R6 circular-dynamics Owner extension",
+                  "supports_claims": [
+                    "CAP-KIN-CIRCULAR-DYNAMICS-ROLE",
+                    "CAP-KIN-UNIFORM-CIRCULAR-MOTION",
+                    "CAP-NLM-SECOND-LAW"
+                  ]
+                }
+              ]
             }
           ]
         },
@@ -18720,7 +19256,19 @@ window.GRADE9V3 = {
                   "repair_ref": "NLM6-4"
                 }
               ],
-              "activities": []
+              "activities": [
+                {
+                  "id": "ACT-KIN-CIRCULAR-DYNAMICS",
+                  "title": "Circular Motion & the Centripetal-Force Fallacy Explorer",
+                  "locator": "public/physics/motion-1d/explorers/circular-dynamics/index.html",
+                  "section": "R6 circular-dynamics Owner extension",
+                  "supports_claims": [
+                    "CAP-KIN-CIRCULAR-DYNAMICS-ROLE",
+                    "CAP-KIN-UNIFORM-CIRCULAR-MOTION",
+                    "CAP-NLM-SECOND-LAW"
+                  ]
+                }
+              ]
             },
             {
               "rung": "R8",
