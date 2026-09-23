@@ -1,0 +1,140 @@
+name: relay-checkpoint-issue126-ep003
+on:
+  push:
+    branches:
+      - relay/checkpoint-issue126-ep003
+permissions:
+  contents: write
+jobs:
+  checkpoint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: explorer/issue-126-circular-dynamics
+          fetch-depth: 0
+      - run: git fetch origin main:refs/remotes/origin/main
+      - uses: actions/checkout@v4
+        with:
+          repository: reallaksh19/Common
+          ref: 1c168695f237a8bef184a9e189be80fab87d1e78
+          path: _common_v31
+          fetch-depth: 1
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check pyyaml jsonschema
+      - name: Authorize checkpoint
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py CHECKPOINT .             --base-ref origin/main             --expected-custody-epoch 1
+      - name: Build checkpoint from material basis
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/material_basis.py .             --base-ref origin/main > /tmp/material.json
+          python - <<'PY'
+          import json, yaml
+          from pathlib import Path
+          m=json.loads(Path("/tmp/material.json").read_text())["material_basis"]
+          cp={
+            "schema_version":"relay-v3.1-checkpoint",
+            "id":"CP-ISS126-CIRCULAR-DYNAMICS-V31-001",
+            "ep":"EP-ISS126-CIRCULAR-DYNAMICS-V31-003",
+            "material_result":{
+              "head":m["head"],
+              "relevant_paths_digest":m["relevant_paths_digest"],
+              "dependency_digest":m["dependency_digest"],
+            },
+            "acceptance":[
+              {"id":"AC-126-BOUNDARY","result":"PASS","evidence":[
+                "Guardrails run 35827226466 PASS on reconciled head 46c1a6c32f3e2407c8a0577696dfc115ceae99d8.",
+                "Focused Issue 126 test preserves R5 microtopic/centripetal ceiling/default eligibility and proves R6 default_entry_eligible=false; routing/scope tests pass."
+              ]},
+              {"id":"AC-126-PHYSICS","result":"PASS","evidence":[
+                "Guardrails run 35827226466 PASS including gate/library validation and Issue 126 quantitative relation checks.",
+                "PHY-KIN-CIRCULAR-DYNAMICS-EXTENSION owns radial acceleration, radial Newton-II, vertical-circle top/bottom, and top minimum-speed relations; flat-curve capacity reuses REL-NLM-STATIC-FRICTION-BOUND."
+              ]},
+              {"id":"AC-126-FALLACY","result":"PASS","evidence":[
+                "Guardrails run 35827226466 PASS; test_no_extra_centripetal_force_arrow passed.",
+                "REP-KIN-CIRCULAR-FORCE-ROLE displays m v^2/r as a resultant requirement and forbids a second inertial-frame centripetal interaction arrow."
+              ]},
+              {"id":"AC-126-EXPLORER","result":"PASS","evidence":[
+                "Guardrails run 35827226466 PASS; Issue 126 focused explorer tests and session-readiness route test passed.",
+                "Explorer covers motion-before-force reasoning, radial/tangential axes, m-v-r scaling, static-friction threshold, cut-string tangent, and vertical-circle transfer."
+              ]},
+              {"id":"AC-126-SCOPE","result":"PASS","evidence":[
+                "PR 200 changed-file set is confined to Motion/Physics canonical truth, explorer, tests, generated projections, manifest, workflow pin, and Relay records plus disjoint main template synchronization.",
+                "No Learners, Mathematics, Chemistry, Grade-10/11 product scope, or exit-readiness semantics were changed."
+              ]},
+              {"id":"AC-126-REPO","result":"PASS","evidence":[
+                "Guardrails run 35827226466 PASS on reconciled head 46c1a6c32f3e2407c8a0577696dfc115ceae99d8.",
+                "v31-relay run 35827226439 PASS against Common@1c168695f237a8bef184a9e189be80fab87d1e78."
+              ]},
+              {"id":"AC-126-ROUTING","result":"PASS","evidence":[
+                "tests/test_grade9_default_extension_routing.py passes in guardrails run 35827226466.",
+                "Ordinary Grade-9 routing preserves the six-rung required spine and excludes non-default R6 while explicit extension routing remains available."
+              ]}
+            ],
+            "validation":{"focused_tests":"PASS","spec_delivery":"PASS","full_guardrails":"PASS"},
+            "quality":{"policy":"STANDARD","result":"CLEAR"},
+            "known_limitations":[
+              "R6 circular dynamics is an Owner extension and is not an ordinary Grade-9 completion or exit-readiness requirement.",
+              "R5 remains the syllabus-required elementary UCM rung; its ladder coordinate 99 is ordering-only and not a teaching downgrade.",
+              "Rotating-frame centrifugal/Coriolis derivations, banked-road design, angular-velocity formalism, calculus and general nonuniform-curvature dynamics remain outside this checkpoint."
+            ],
+            "discoveries":[
+              "The existing R5 ceiling explicitly prohibited the centripetal-force formula, so Issue 126 required a separate non-default R6 rather than widening R5.",
+              "Centripetal-force pedagogy is safest when the representation separates physical interaction arrows from the signed net radial requirement.",
+              "The branch needed material-basis reconciliation after current main advanced through two disjoint competitive-exam template changes; no Issue 126 product semantics changed during that reconciliation."
+            ],
+            "handoff":{
+              "what_changed":[
+                "Added gate-owned circular-dynamics relations for radial acceleration/net force and vertical-circle boundary reasoning.",
+                "Added non-default R6 capability/microtopic while preserving R5 meaning, ceiling and ordinary Grade-9 routing.",
+                "Added canonical force-role representation/activity and interactive circular-dynamics explorer with focused falsifiers.",
+                "Updated audit/frozen routing inventories and regenerated data/manifest; pinned Relay validation to exact Common@1c168695f237a8bef184a9e189be80fab87d1e78.",
+                "Reconciled branch ancestry to current main without changing Issue 126 product bytes."
+              ],
+              "what_is_true_now":[
+                "Issue 126 product and repository guardrails pass on the reconciled material head.",
+                "R6 is non-default and R5 remains the required elementary UCM boundary.",
+                "PR 200 is the active delivery vehicle under fenced EP-003 custody epoch 1."
+              ],
+              "what_remains_uncertain":[
+                "No explicit Owner MERGE authority for PR 200 has been established."
+              ],
+              "do_not_break":[
+                "Do not turn centripetal into an extra physical force arrow.",
+                "Do not remove R5's centripetal-force ceiling or make R6 default.",
+                "Do not use f_s = mu_s N below the limiting static-friction boundary.",
+                "Do not merge without explicit Owner MERGE authority."
+              ],
+              "attempted_and_rejected":[
+                "Widening R5 was rejected because its canonical ceiling explicitly excludes the centripetal-force formula.",
+                "Checkpointing EP-002 was rejected after main advanced because EP-002's material base was branch-local and not an ancestor of current main; the task was re-admitted as EP-003 after disjoint base synchronization."
+              ],
+              "resume_from":[
+                "PR 200",
+                "CP-ISS126-CIRCULAR-DYNAMICS-V31-001",
+                "relay/STATE.yaml",
+                "Physics/matrices/phy-kin-1d-motion.rungs.json",
+                "public/physics/motion-1d/explorers/circular-dynamics/index.html"
+              ],
+              "first_successor_action":"Evaluate PR_READY under exact V3.1 and stop before MERGE unless explicit Owner MERGE authority is present."
+            }
+          }
+          Path("/tmp/issue126-checkpoint.yaml").write_text(yaml.safe_dump(cp,sort_keys=False),encoding="utf-8")
+          PY
+      - name: Accept checkpoint transactionally
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_tx.py . checkpoint             --tx-id TX-V31-CP-ISS126-001             --event-id EVT-V31-CP-ISS126-001             --actor chatgpt-sol-issue126-v31-20260923             --checkpoint /tmp/issue126-checkpoint.yaml             --base-ref origin/main             --expected-custody-epoch 1
+      - name: Evaluate delivery actions
+        run: |
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/validate_foundation.py .
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py PR_READY .             --expected-custody-epoch 1 || true
+          python _common_v31/skills/engineering-pr-delivery-v3.1/scripts/relay_can.py MERGE .             --expected-custody-epoch 1 || true
+      - name: Commit checkpoint after-images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add relay
+          git commit -m "relay: accept issue126 checkpoint"
+          git push origin HEAD:explorer/issue-126-circular-dynamics
