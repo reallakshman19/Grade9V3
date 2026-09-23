@@ -17,7 +17,7 @@
     "WEB": 9,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:336c7f9c9f9b244b6bd1cc7139c8209b2382a4e8adb5ce5435382a4400765ebc",
+  "digest": "sha256:64b391312edd60db205361a8c2ad3da1937c71d92e2f458863e9bc25dfb41d2c",
   "components": [
     {
       "path": "public/core-learning/data.js",
@@ -1633,8 +1633,8 @@
       "path": "tests/test_topic_atlas_takeover_contract.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 9605,
-      "sha256": "235911c8a64bbd2244f09f2ff84f6170e50513982d9b168dc3466b9835431efa"
+      "bytes": 13373,
+      "sha256": "1f31c056cf70e2ce1578e4796b761f420efc0cdddecb00c80a0a944e7671e8c8"
     },
     {
       "path": "tests/test_vector_foundations_modernization.py",
