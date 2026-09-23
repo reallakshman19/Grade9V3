@@ -142,3 +142,5 @@ R6  = circular dynamics force-role extension
 ```
 
 R6 therefore adds capability for an explicit Owner-requested extension while preserving the statement that no additional **Grade-9 required** Motion teaching was missing in the original audit.
+
+The matrix coordinate changes only to preserve strict prerequisite ordering inside the schema-bounded 0–100 ladder: R5 moves from 100 to 99 and R6 occupies 100. This is a routing coordinate change, not a change to R5's syllabus status, microtopic, capability, ceiling, teaching meaning, or default eligibility.
