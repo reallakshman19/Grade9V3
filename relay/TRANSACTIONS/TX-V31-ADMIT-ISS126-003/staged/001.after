@@ -1,0 +1,114 @@
+schema_version: relay-v3.1-snapshot
+authority: DERIVED_READ_MODEL
+generated_from:
+  roadmap_revision: RM-V31-ISS126-CIRCULAR-DYNAMICS-003
+  state_digest: sha256:b811a4463b619c5a132ff8f9f514ea5b60dd0cab389a31b64b3a3e454c57c972
+  material_basis:
+    head: d2b683d627dbb2ffd26c7f4d623be060b3de5244
+    tree_digest: sha256:276bcdd6aa19041b0cac4c8e8cbd987fb7a1b31e3edd8fe89a643cb6d73b98ad
+    relevant_paths_digest: sha256:9b3bad12c2a27b7102f6ebf1fd5524f00beba047d02f203c0949c2418884398c
+    dependency_digest: sha256:7a399b2f2a67ef1aa5fc9f9b8fd8dc6ff5e91a0259d064fe0af34b4bcfc9218f
+  coordination_head: 7f8090782e50183449cad5026e4eb85cd637807c
+owner:
+  outcome: Preserve the delivered self-study architecture and activate new work only
+    from a concrete learner, worksheet, source, or product defect rather than from
+    stale umbrella scope.
+  current_goal: No successor content lane is active. Grade-10 Physics, Grade-11 Physics,
+    and Mathematics expansion are Owner-skipped for now; dormant Physics inventory
+    remains demand-gated and real learner evidence remains input-gated.
+programme:
+  accepted_progress: 6.35
+  completed_work:
+  - WP-PORTABLE-163
+  remaining_work:
+  - WP-TAKEOVER-RECONCILE
+  - WP-TA-102
+  - WP-TA-106
+  - WP-TA-103
+  - WP-TA-104
+  - WP-TA-107
+  - WP-TA-108
+  - WP-TA-105
+  - WP-CANONICAL-174-NLM
+  - WP-CANONICAL-174-MOTION
+  - WP-LEARNER-175-PRODUCTION
+  - WP-ISS126-CIRCULAR-DYNAMICS
+execution:
+  lifecycle: ACTIVE
+  work_package: WP-ISS126-CIRCULAR-DYNAMICS
+  ep: EP-ISS126-CIRCULAR-DYNAMICS-V31-003
+  lease: LEASE-ISS126-CIRCULAR-DYNAMICS-V31-003
+  executor: chatgpt-sol-issue126-v31-20260923
+  custody_epoch: 1
+scope:
+  allowed_writes:
+  - .github/workflows/v3-relay.yml
+  - Physics/gates/foundational-relations.v1.json
+  - Physics/library/phy-kin-1d-motion.v1.json
+  - Physics/matrices/phy-kin-1d-motion.rungs.json
+  - docs/grade9/G9-1-MOTION-AUTHORING-AUDIT.md
+  - public/physics/motion-1d/explorers/circular-dynamics/index.html
+  - tests/test_issue126_circular_dynamics_explorer.py
+  - tests/test_gates.py
+  - tests/test_issue19_physics_content.py
+  - tests/test_grade9_physics_learner_loop.py
+  - tests/test_library.py
+  - tests/test_grade9_default_extension_routing.py
+  - tests/test_grade9_motion_scope.py
+  - tests/test_grade9_motion1d_vertical_gravity_agent_a_atlas.py
+  - tools/data.js
+  - public/data/data.js
+  - docs/architecture-manifest.json
+  protected:
+  - Learners/**
+  - Mathematics/**
+  - Chemistry/**
+  - agents/relay/**
+  - Shared/publication_host/**
+  - Shared/workbench/**
+  - standalone/**
+  prohibited:
+  - Do not remove or weaken R5's centripetal-force ceiling.
+  - Do not make R6 default_entry_eligible.
+  - Do not reinterpret the R5 100->99 coordinate-only adjustment as a syllabus or
+    teaching downgrade.
+  - Do not add a separate centripetal-force arrow to inertial-frame FBDs.
+  - Do not assert static friction equals mu_s N except at the declared limiting boundary.
+  - Do not add rotating-frame centrifugal force without explicit non-inertial-frame
+    labeling.
+  - Do not merge without a fresh accepted checkpoint and explicit Owner MERGE authority.
+material:
+  base: bf20357037f2e9a916a4fa42ea83a075d6ed0351
+  head: d2b683d627dbb2ffd26c7f4d623be060b3de5244
+  relevant_paths_digest: sha256:9b3bad12c2a27b7102f6ebf1fd5524f00beba047d02f203c0949c2418884398c
+  dependency_digest: sha256:7a399b2f2a67ef1aa5fc9f9b8fd8dc6ff5e91a0259d064fe0af34b4bcfc9218f
+evidence:
+  latest_checkpoint: null
+  latest_material_validation: {}
+controls:
+  execution_blockers: []
+  handover_blockers: []
+  delivery_blockers: []
+  informational: []
+delivery:
+  issue: null
+  pr: 200
+  lifecycle: DECLARED
+  merge_authorized: false
+next:
+  immediate_material_action: Rerun exact-head guardrails after base reconciliation;
+    if green, accept a fresh checkpoint without changing product bytes.
+  delivery_action: Perform the explicitly authorized delivery transition.
+  stop_conditions:
+  - Stop if any revalidation requires changing R5 meaning, ceiling, or default eligibility.
+  - Stop if any repair would expand into learner state, Mathematics, Grade-10/11 scope,
+    or shared routing semantics.
+  - Stop before merge without fresh checkpoint and explicit Owner MERGE authority.
+handoff:
+  zero_context_takeover_possible: true
+  reconstruction_sources:
+  - relay/ROADMAP/ROADMAP.yaml
+  - relay/STATE.yaml
+  - relay/CONTROLS/controls.yaml
+  - relay/WORK/EP-ISS126-CIRCULAR-DYNAMICS-V31-003.yaml
+  - relay/LEASES/LEASE-ISS126-CIRCULAR-DYNAMICS-V31-003.yaml
