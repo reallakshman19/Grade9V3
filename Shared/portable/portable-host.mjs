@@ -82,6 +82,34 @@ function validateAdapter(adapter, scene) {
   }
 }
 
+function validateRejections(value, adapter, scene) {
+  requirePortable(Array.isArray(value), "PORTABLE_REJECTIONS_INVALID");
+  const entities = new Set(scene.entities.map((row) => row.id));
+  const targets = new Map(scene.targets.map((row) => [row.id, row]));
+  const accepted = new Set((adapter.rules || []).map((row) =>
+    [row.sourceEntityRef, row.targetRef, row.operation].join("\u0000")
+  ));
+  const seen = new Set();
+  for (const rejection of value) {
+    const id = nonEmpty(rejection.id, "PORTABLE_REJECTION_ID_REQUIRED");
+    requirePortable(!seen.has(id), "PORTABLE_REJECTION_ID_DUPLICATE", id);
+    seen.add(id);
+    const source = nonEmpty(rejection.sourceEntityRef, "PORTABLE_REJECTION_SOURCE_REQUIRED", id);
+    const target = nonEmpty(rejection.targetRef, "PORTABLE_REJECTION_TARGET_REQUIRED", id);
+    const operation = nonEmpty(rejection.operation, "PORTABLE_REJECTION_OPERATION_REQUIRED", id);
+    nonEmpty(rejection.reason, "PORTABLE_REJECTION_REASON_REQUIRED", id);
+    requirePortable(entities.has(source), "PORTABLE_REJECTION_SOURCE_UNKNOWN", source);
+    requirePortable(targets.has(target), "PORTABLE_REJECTION_TARGET_UNKNOWN", target);
+    requirePortable(targets.get(target).operation === operation, "PORTABLE_REJECTION_OPERATION_MISMATCH", id);
+    requirePortable(
+      !accepted.has([source, target, operation].join("\u0000")),
+      "PORTABLE_REJECTION_CONFLICTS_WITH_RULE",
+      id,
+    );
+  }
+  return value;
+}
+
 export function validatePortablePackage(input) {
   const pkg = portableClone(input);
   scanData(pkg);
@@ -132,6 +160,7 @@ export function validatePortablePackage(input) {
   const scene = validateScene(pkg.scene);
   requirePortable(pkg.sceneRefs.length === 1 && pkg.sceneRefs[0] === scene.id, "PORTABLE_SCENE_REFS_MISMATCH");
   validateAdapter(pkg.adapter, scene);
+  pkg.rejections = validateRejections(pkg.rejections || [], pkg.adapter, scene);
   requirePortable(Array.isArray(pkg.injections), "PORTABLE_INJECTIONS_INVALID");
   return pkg;
 }
@@ -183,6 +212,18 @@ export function createDeclarativeAdapter(packageInput) {
         && row.operation === request.operation
       );
       if (!rule) {
+        const rejection = pkg.rejections.find((row) =>
+          row.sourceEntityRef === request.sourceEntityRef
+          && row.targetRef === request.targetRef
+          && row.operation === request.operation
+        );
+        if (rejection) {
+          return {
+            accepted: false,
+            reason: rejection.reason,
+            allowedTargets: [rejection.targetRef],
+          };
+        }
         const allowedTargets = pkg.adapter.rules
           .filter((row) => row.sourceEntityRef === request.sourceEntityRef)
           .map((row) => row.targetRef);
