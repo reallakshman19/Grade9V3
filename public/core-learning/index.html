@@ -63,7 +63,7 @@
     const availabilityList = document.getElementById("availability-list");
     const explorerPanel = document.getElementById("explorer-panel");
     const explorerFrame = document.getElementById("explorer-frame");
-    const registries = window.CORE_LEARNING_REGISTRIES || {};
+    const baseRegistries = window.CORE_LEARNING_REGISTRIES || {};
 
     function labelFor(row) {
       const core = row?.projection?.core || "Core";
@@ -72,6 +72,25 @@
     }
 
     function setStatus(message) { status.textContent = message; }
+
+    async function loadPortablePackages() {
+      try {
+        const catalogResponse = await fetch("../portable-workbench/catalog.json");
+        if (!catalogResponse.ok) return [];
+        const catalog = await catalogResponse.json();
+        const ids = Array.isArray(catalog?.packageIds) ? catalog.packageIds : [];
+        const packages = await Promise.all(ids.map(async (id) => {
+          if (typeof id !== "string" || !id || id.includes("/") || id.includes("..")) return null;
+          const response = await fetch("../portable-workbench/packages/" + encodeURIComponent(id) + ".json");
+          return response.ok ? response.json() : null;
+        }));
+        return packages.filter(Boolean);
+      } catch (_) {
+        return [];
+      }
+    }
+
+    const portablePackagesPromise = loadPortablePackages();
 
     function renderAvailability() {
       const unavailable = availability.filter((row) =>
@@ -101,13 +120,16 @@
       else explorerFrame.removeAttribute("src");
     }
 
-    function mount(id, { updateUrl = true } = {}) {
+    async function mount(id, { updateUrl = true } = {}) {
       try {
         const row = rows.find((item) => item.id === id);
+        const portablePackages = await portablePackagesPromise;
+        const registries = { ...baseRegistries, portablePackages };
         const result = mountCoreLearningPage(learner, data, id, registries);
         select.value = result.id;
         mountExplorer(row);
-        setStatus(`Loaded ${labelFor(row)}.`);
+        const portable = result.portablePackageId ? ` · in-page visual ${result.portablePackageId}` : "";
+        setStatus(`Loaded ${labelFor(row)}${portable}.`);
         if (updateUrl) {
           const url = new URL(window.location.href);
           url.searchParams.set("projection", result.id);
