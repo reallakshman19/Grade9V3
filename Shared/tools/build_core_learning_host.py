@@ -83,7 +83,7 @@ TEMPLATE = r'''<!doctype html>
     const availabilityList = document.getElementById("availability-list");
     const explorerPanel = document.getElementById("explorer-panel");
     const explorerFrame = document.getElementById("explorer-frame");
-    const registries = window.CORE_LEARNING_REGISTRIES || {};
+    const registries = data?.workbench_registries || window.CORE_LEARNING_REGISTRIES || {};
 
     function labelFor(row) {
       const core = row?.projection?.core || "Core";
