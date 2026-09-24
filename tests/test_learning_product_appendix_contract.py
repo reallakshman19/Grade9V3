@@ -64,6 +64,22 @@ class LearningProductAppendixContractTests(unittest.TestCase):
             findings,
         )
 
+    def test_publication_ready_requires_every_gate_resolved(self):
+        report = copy.deepcopy(self.fixture["audit_report"])
+        gate = next(
+            row for row in report["gates"] if row["gate"] == "MATH_RENDERING"
+        )
+        gate["state"] = "HOLD"
+        gate["evidence_refs"] = []
+        findings = learning_product_appendix_contract.validate_audit_report(
+            report,
+            self.contracts["audit"],
+        )
+        self.assertIn(
+            "AUDIT_PUBLICATION_READY_GATE_UNRESOLVED:MATH_RENDERING",
+            findings,
+        )
+
     def test_source_verification_is_explicit_even_when_not_applicable(self):
         report = copy.deepcopy(self.fixture["audit_report"])
         source = next(
