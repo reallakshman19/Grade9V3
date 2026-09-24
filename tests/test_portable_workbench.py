@@ -13,6 +13,12 @@ from Shared.portable.package import COMPONENT_API_VERSION, PortablePackageError,
 from Shared.tools import build_portable_workbench
 
 REPO = Path(__file__).resolve().parents[1]
+FIXTURE_IDS = {
+    "portable-long-division",
+    "portable-redox-electron-equivalence",
+    "portable-integration-riemann",
+}
+CANONICAL_ID = "portable-kin-2d-shared-clock"
 
 
 class PortableWorkbenchPackageTests(unittest.TestCase):
@@ -21,12 +27,8 @@ class PortableWorkbenchPackageTests(unittest.TestCase):
         cls.packages = build_portable_workbench.packages()
         cls.by_id = {row["id"]: row for row in cls.packages}
 
-    def test_three_cross_subject_packages_share_one_contract(self):
-        self.assertEqual(set(self.by_id), {
-            "portable-long-division",
-            "portable-redox-electron-equivalence",
-            "portable-integration-riemann",
-        })
+    def test_fixture_and_canonical_packages_share_one_contract(self):
+        self.assertEqual(set(self.by_id), FIXTURE_IDS | {CANONICAL_ID})
         versions = {
             (row["packageVersion"], row["componentApiVersion"], row["transformationIrVersion"],
              row["adapterApiVersion"], row["scenePackageVersion"], row["adapter"]["id"])
@@ -41,10 +43,48 @@ class PortableWorkbenchPackageTests(unittest.TestCase):
         )
         self.assertEqual(self.by_id["portable-long-division"]["scene"], source)
 
-    def test_packages_are_noncanonical_compiled_proofs(self):
-        for package in self.packages:
+    def test_fixture_packages_remain_noncanonical_compiled_proofs(self):
+        for package_id in FIXTURE_IDS:
+            package = self.by_id[package_id]
             self.assertEqual(package["provenance"]["authority"], "NON_CANONICAL_COMPILED_PROOF")
             self.assertNotIn("mastery", json.dumps(package).lower())
+
+    def test_motion_package_is_compiled_from_exact_canonical_source(self):
+        package = self.by_id[CANONICAL_ID]
+        self.assertEqual(package["provenance"]["authority"], "CANONICAL_COMPILED_RESOURCE")
+        self.assertEqual(package["resourceRef"], "ACT-KIN-2D-SHARED-CLOCK")
+        self.assertEqual(package["representationRefs"], ["REP-KIN-2D-SHARED-CLOCK"])
+        self.assertEqual(package["provenance"]["representationRef"], "REP-KIN-2D-SHARED-CLOCK")
+
+        source = json.loads(
+            (REPO / "Physics/library/phy-kin-2d-motion.v1.json").read_text(encoding="utf-8")
+        )
+        representation = next(
+            row for row in source["representations"]
+            if row["id"] == "REP-KIN-2D-SHARED-CLOCK"
+        )
+        scene = next(
+            row["scene"] for row in representation["scene_instances"]
+            if row["id"] == "SI-KIN-2D-SHARED-CLOCK-PORTABLE"
+        )
+        resource = next(
+            row for row in source["resources"]
+            if row["id"] == "ACT-KIN-2D-SHARED-CLOCK"
+        )
+        declaration = resource["extensions"]["topic_atlas"]["portable_workbench"]
+
+        self.assertEqual(package["scene"], scene)
+        self.assertEqual(package["id"], declaration["package_ref"])
+        self.assertEqual(package["sceneRefs"], [scene["id"]])
+        self.assertEqual(
+            package["adapter"]["rules"][0]["patch"],
+            declaration["adapter"]["actions"][0]["patch"],
+        )
+        self.assertEqual(
+            package["rejections"][0]["reason"],
+            declaration["adapter"]["actions"][1]["reason"],
+        )
+        self.assertIn("non-simultaneous", package["rejections"][0]["reason"].lower())
 
     def test_canonical_provenance_requires_explicit_resource_and_representation(self):
         canonical = copy.deepcopy(self.packages[0])
@@ -110,25 +150,14 @@ class PortableWorkbenchPackageTests(unittest.TestCase):
         self.assertEqual(raised.exception.code, "VISUAL_REF_UNAVAILABLE")
 
     def test_atlas_visual_target_binding_requires_exact_canonical_identity(self):
-        canonical = copy.deepcopy(self.packages[0])
-        canonical["id"] = "portable-motion-shared-clock"
-        canonical["resourceRef"] = "ACT-KIN-2D-SHARED-CLOCK"
-        canonical["representationRefs"] = ["REP-KIN-2D-SHARED-CLOCK"]
-        canonical["sourceRefs"] = ["SRC-AUTHOR-KIN-2D-EXAMSIDE-ADAPTATION"]
-        canonical["provenance"] = {
-            "authority": "CANONICAL_COMPILED_RESOURCE",
-            "sourceKind": "CANONICAL_RESOURCE",
-            "sourceRefs": ["SRC-AUTHOR-KIN-2D-EXAMSIDE-ADAPTATION"],
-            "resourceRef": "ACT-KIN-2D-SHARED-CLOCK",
-            "representationRef": "REP-KIN-2D-SHARED-CLOCK",
-        }
+        canonical = copy.deepcopy(self.by_id[CANONICAL_ID])
         target = {
             "resource_ref": "ACT-KIN-2D-SHARED-CLOCK",
             "representation_refs": ["REP-KIN-2D-SHARED-CLOCK"],
             "locator": "public/physics/motion-2d/explorers/shared-clock/index.html",
             "delivery_kind": "PORTABLE_PACKAGE",
             "delivery_profile": "SINGLE_FILE_OFFLINE",
-            "portable_package_ref": "portable-motion-shared-clock",
+            "portable_package_ref": CANONICAL_ID,
             "availability": {
                 "resource": "READY",
                 "locator": "READY",
@@ -139,9 +168,9 @@ class PortableWorkbenchPackageTests(unittest.TestCase):
         binding = resolve_portable_target(
             "ACT-KIN-2D-SHARED-CLOCK",
             {"ACT-KIN-2D-SHARED-CLOCK": target},
-            {"portable-motion-shared-clock": canonical},
+            {CANONICAL_ID: canonical},
         )
-        self.assertEqual(binding["portable_package_ref"], "portable-motion-shared-clock")
+        self.assertEqual(binding["portable_package_ref"], CANONICAL_ID)
         self.assertEqual(binding["representation_ref"], "REP-KIN-2D-SHARED-CLOCK")
 
         mismatched = copy.deepcopy(canonical)
@@ -151,7 +180,7 @@ class PortableWorkbenchPackageTests(unittest.TestCase):
             resolve_portable_target(
                 "ACT-KIN-2D-SHARED-CLOCK",
                 {"ACT-KIN-2D-SHARED-CLOCK": target},
-                {"portable-motion-shared-clock": mismatched},
+                {CANONICAL_ID: mismatched},
             )
         self.assertEqual(raised.exception.code, "PORTABLE_RESOURCE_BINDING_MISMATCH")
 
