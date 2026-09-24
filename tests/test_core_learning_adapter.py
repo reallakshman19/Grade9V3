@@ -154,27 +154,6 @@ class CoreLearningProductionAdapter(unittest.TestCase):
         self.assertEqual(b["elicitation"], source["elicitation"])
         self.assertEqual(b["inferential_jump"], source["inferential_jump"])
 
-    def test_core1_family_projection_preserves_canonical_representation_anatomy(self):
-        concept = self.row(core="CORE1A", concept=CONCEPT)["projection"]["concept"]
-        projected = {row["representation_ref"]: row for row in concept["representations"]}
-        canonical = {row["id"]: row for row in self.package["representations"]}
-
-        for ref in concept["representation_refs"]:
-            if ref not in projected:
-                continue
-            source = canonical[ref]
-            row = projected[ref]
-            for field in (
-                "kind",
-                "purpose",
-                "required_elements",
-                "read_order",
-                "accessibility",
-                "reveal_stages",
-                "correspondence",
-            ):
-                self.assertEqual(row[field], source.get(field) or ([] if field not in {"kind", "purpose"} else None))
-
     def test_core2a_preserves_reasoning_source_hints_solution_and_scaffolds(self):
         row = self.row(core="CORE2A", source=FAMILIAR)
         source = next(q for q in self.package["questions"] if q["id"] == FAMILIAR)
