@@ -111,12 +111,6 @@ def _concept_representations(records: dict, microtopic: dict, *, core: str) -> l
         ]
         result.append({
             "representation_ref": ref,
-            "kind": representation.get("kind"),
-            "purpose": representation.get("purpose"),
-            "required_elements": list(representation.get("required_elements") or []),
-            "read_order": list(representation.get("read_order") or []),
-            "accessibility": list(representation.get("accessibility") or []),
-            "reveal_stages": deepcopy(representation.get("reveal_stages") or []),
             "correspondence": deepcopy(representation.get("correspondence") or []),
             "scenes": scenes,
         })
