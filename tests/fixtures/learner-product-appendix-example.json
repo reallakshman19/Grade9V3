@@ -1,0 +1,145 @@
+{
+  "toolkit_card": {
+    "hack_id": "demo_speed_card",
+    "title": "Generic invariant recognition card",
+    "canonical_refs": [
+      "canonical_relation_demo"
+    ],
+    "recognition_trigger": "A familiar relation appears under its declared validity conditions.",
+    "invariant": "The governed relation remains unchanged under the stated transformation.",
+    "derivation_anchor": "Start from the canonical relation and apply the declared transformation without changing its assumptions.",
+    "shortcut": "Use the invariant directly after confirming the domain.",
+    "valid_when": [
+      "the canonical assumptions remain satisfied",
+      "the requested quantity is unchanged by the transformation"
+    ],
+    "fails_when": [
+      "a canonical assumption is removed",
+      "the transformation changes the requested quantity"
+    ],
+    "trap": "Do not use a memorised shortcut before checking the governing assumptions.",
+    "verification_check": "Substitute the transformed state back into the canonical relation.",
+    "lightning_drill": {
+      "prompt": "Which check must happen before using the shortcut?",
+      "answer": "Confirm that the canonical validity conditions still hold."
+    },
+    "scope_status": "CANONICAL_CONSEQUENCE",
+    "provenance": "CANONICAL_DERIVED"
+  },
+  "audit_report": {
+    "title": "Fixture publication audit",
+    "summary": "A provenance-safe structural fixture with explicit independent review claims.",
+    "claims": [
+      {
+        "claim": "STRUCTURALLY_VALIDATED",
+        "state": "PASS",
+        "evidence_refs": [
+          "fixture_structural_check"
+        ]
+      },
+      {
+        "claim": "SOURCE_VERIFIED",
+        "state": "NOT_APPLICABLE",
+        "evidence_refs": [],
+        "rationale": "This fixture contains no source-locked material."
+      },
+      {
+        "claim": "ACADEMICALLY_REVIEWED",
+        "state": "PASS",
+        "evidence_refs": [
+          "fixture_academic_review"
+        ]
+      },
+      {
+        "claim": "PUBLICATION_READY",
+        "state": "PASS",
+        "evidence_refs": [
+          "fixture_release_check"
+        ]
+      }
+    ],
+    "gates": [
+      {
+        "gate": "SOURCE_FIDELITY",
+        "state": "NOT_APPLICABLE",
+        "evidence_refs": [],
+        "rationale": "No source-locked fields are present."
+      },
+      {
+        "gate": "FIELD_LEVEL_PROVENANCE",
+        "state": "PASS",
+        "evidence_refs": [
+          "fixture_provenance_map"
+        ]
+      },
+      {
+        "gate": "DIFFICULTY_POLICY",
+        "state": "NOT_APPLICABLE",
+        "evidence_refs": [],
+        "rationale": "The fixture has no difficulty score."
+      },
+      {
+        "gate": "HINT_REVEAL_INTEGRITY",
+        "state": "NOT_APPLICABLE",
+        "evidence_refs": [],
+        "rationale": "The fixture has no hint or reveal sequence."
+      },
+      {
+        "gate": "VISUAL_SEMANTIC_BINDING",
+        "state": "PASS",
+        "evidence_refs": [
+          "fixture_visual_review"
+        ],
+        "details": {
+          "canonical_representation_ref": "canonical_representation_demo",
+          "required_elements": [
+            "state",
+            "relation",
+            "check"
+          ],
+          "present_elements": [
+            "state",
+            "relation",
+            "check"
+          ],
+          "provenance": "CANONICAL_DERIVED",
+          "semantic_review": true
+        }
+      },
+      {
+        "gate": "SOLUTION_REASONING_COMPLETENESS",
+        "state": "PASS",
+        "evidence_refs": [
+          "fixture_reasoning_review"
+        ]
+      },
+      {
+        "gate": "INDEPENDENT_VERIFICATION",
+        "state": "PASS",
+        "evidence_refs": [
+          "fixture_substitution_check"
+        ]
+      },
+      {
+        "gate": "MATH_RENDERING",
+        "state": "PASS",
+        "evidence_refs": [
+          "fixture_render_check"
+        ]
+      },
+      {
+        "gate": "MEDIA_GEOMETRY",
+        "state": "NOT_APPLICABLE",
+        "evidence_refs": [],
+        "rationale": "No fixed-layout publication is in scope."
+      },
+      {
+        "gate": "GENERATED_ARTIFACT_FRESHNESS",
+        "state": "PASS",
+        "evidence_refs": [
+          "fixture_manifest_check"
+        ]
+      }
+    ]
+  }
+}

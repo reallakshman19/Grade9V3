@@ -48,11 +48,13 @@ def _hosts_equivalent() -> bool:
         public
         .replace("./data.js", "__DATA__")
         .replace("../js/core-learning", "__RUNTIME__")
+        .replace("../portable-workbench", "__PORTABLE__")
     )
     normalized_standalone = (
         standalone
         .replace("../../public/core-learning/data.js", "__DATA__")
         .replace("../../public/js/core-learning", "__RUNTIME__")
+        .replace("../../public/portable-workbench", "__PORTABLE__")
     )
     return normalized_public == normalized_standalone
 

@@ -355,13 +355,14 @@
       {
         "id": "TA-265-V31-BINDING",
         "statement": "Current PR/issue Task Snapshot binding passes on the final Common V3.1 pin.",
-        "state": "PENDING",
+        "state": "PASS",
         "reason_class": "PROVIDER",
-        "evidence": [],
-        "trace_refs": [],
-        "remaining": [
-          "Run V3.1 binding validation after coordination update."
+        "evidence": [
+          "v31-relay #1434",
+          "Common@45301dc3e553b1b7be8ab66fac00512353479ee2"
         ],
+        "trace_refs": [],
+        "remaining": [],
         "owner": null,
         "weight": null,
         "parent_mappings": []
@@ -382,25 +383,25 @@
       }
     ],
     "summary": {
-      "pass": 1,
+      "pass": 2,
       "partial": 0,
       "fail": 0,
       "not_run": 0,
-      "pending": 2,
+      "pending": 1,
       "deferred": 0,
       "not_applicable": 0,
       "unknown": 0,
       "total": 3
     },
     "coverage": {
-      "satisfied": 1,
+      "satisfied": 2,
       "applicable_total": 3,
-      "percent": 33.3,
+      "percent": 66.7,
       "basis": "UNWEIGHTED_CRITERIA"
     }
   },
   "verification": {
-    "state": "PARTIAL",
+    "state": "PASS",
     "observations": [
       {
         "id": "V-265-GUARDRAILS",
@@ -419,21 +420,20 @@
       {
         "id": "V-265-BINDING",
         "statement": "Issue-local Task Snapshot binding on final V3.1 Common pin.",
-        "state": "PENDING",
+        "state": "PASS",
         "reason_class": "PROVIDER",
-        "evidence": [],
-        "trace_refs": [],
-        "remaining": [
-          "Await new v31-relay run."
+        "evidence": [
+          "v31-relay #1434",
+          "Common@45301dc3e553b1b7be8ab66fac00512353479ee2"
         ],
+        "trace_refs": [],
+        "remaining": [],
         "owner": null,
         "weight": null,
         "parent_mappings": []
       }
     ],
-    "failure_origins": {
-      "PROVIDER": 1
-    }
+    "failure_origins": {}
   },
   "delivery": {
     "pr": 268,
@@ -504,7 +504,7 @@
     "overall_state": "PARTIAL",
     "headline": "#265 PARTIAL — four implementation slices are material; stack integration and terminal TASK_RESULT remain.",
     "implementation": "COMPLETE",
-    "verification": "PARTIAL",
+    "verification": "PASS",
     "delivery": "DRAFT",
     "work_issue_acceptance": "PARTIAL",
     "programme_contribution": "UNKNOWN",
@@ -517,7 +517,6 @@
       "Plan rev 4 expected material slice has occurred."
     ],
     "what_remains": [
-      "Pass the new issue-local V3.1 Task Snapshot binding check on the final Common pin.",
       "Perform final integrated #265 acceptance review and publish TASK_RESULT.",
       "Integrate the remaining draft stack toward main in dependency order when authorized."
     ],
@@ -589,8 +588,10 @@
       {
         "id": "TA-265-V31-BINDING",
         "statement": "Current issue/PR Task Snapshot binding",
-        "state": "PENDING",
-        "evidence": []
+        "state": "COMPLETE",
+        "evidence": [
+          "v31-relay #1434"
+        ]
       },
       {
         "id": "TA-265-RESULT",
@@ -600,9 +601,9 @@
       }
     ],
     "summary": {
-      "complete": 1,
+      "complete": 2,
       "partial": 0,
-      "pending": 2,
+      "pending": 1,
       "blocked": 0,
       "total": 3
     }
@@ -696,7 +697,8 @@
     "known_true": [
       "Four planned implementation slices exist.",
       "#270 is merged into the #268 branch, not main.",
-      "#268 current material head fdde429c4802e1c5805e57970e95342d21d9cf75 passes guardrails #5491."
+      "#268 current material head fdde429c4802e1c5805e57970e95342d21d9cf75 passes guardrails #5491.",
+      "Issue #265 / PR #268 Task Snapshot binding passes under Common@45301dc3e553b1b7be8ab66fac00512353479ee2 (v31-relay #1434)."
     ],
     "known_false": [
       "PR #269 was adopted wholesale.",
@@ -718,7 +720,7 @@
     "recent_events": []
   },
   "next": {
-    "immediate_action": "Run the final Common-pinned V3.1 task-binding check on the open stack, then perform final integrated #265 acceptance review.",
+    "immediate_action": "Perform final integrated #265 acceptance review on the current #268 stack head and publish terminal TASK_RESULT if no concrete residual gap remains.",
     "next_value_frontier": "Publish terminal TASK_RESULT if #265 acceptance remains satisfied; otherwise publish a bounded PLAN_UPDATE for the concrete residual gap.",
     "stop_conditions": [
       "Do not claim #265 complete merely because #270 merged into #268.",

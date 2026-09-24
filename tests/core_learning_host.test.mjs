@@ -9,6 +9,7 @@ import {
   mountCoreLearningPage,
   resolveCoreLearningInputs,
   resolveCoreLearningRecord,
+  resolvePortableWorkbenchBinding,
 } from "../Shared/workbench/core-learning-host.mjs";
 import { CoreLearningPage } from "../Shared/workbench/core-learning-page.mjs";
 
@@ -123,6 +124,94 @@ test("workbench binding is all-or-nothing and references explicit host registrie
   }]);
 });
 
+test("canonical portable binding uses exact representation identity and excludes fixtures", () => {
+  const projection = structuredClone(byId.core1a);
+  projection.presentation.initial_visual_ref = "REP-PORTABLE-1";
+  projection.presentation.initial_visual_stage_ref = null;
+
+  const canonical = {
+    id: "portable-canonical",
+    representationRefs: ["REP-PORTABLE-1"],
+    provenance: {
+      authority: "CANONICAL_COMPILED_RESOURCE",
+      representationRef: "REP-PORTABLE-1",
+    },
+    scene: sceneFixture,
+    adapter: { id: "adapter-canonical", rules: [] },
+    injections: [],
+  };
+  const fixture = {
+    ...structuredClone(canonical),
+    id: "portable-fixture",
+    provenance: {
+      authority: "NON_CANONICAL_COMPILED_PROOF",
+      representationRef: "REP-PORTABLE-1",
+    },
+  };
+
+  assert.equal(resolvePortableWorkbenchBinding(projection, [fixture]), null);
+  const binding = resolvePortableWorkbenchBinding(projection, [fixture, canonical]);
+  assert.equal(binding.packageId, "portable-canonical");
+  assert.equal(binding.scene.id, sceneFixture.id);
+  assert.equal(binding.adapter.id, "adapter-canonical");
+
+  const core1 = structuredClone(byId.core1);
+  core1.presentation.initial_visual_ref = "REP-PORTABLE-1";
+  core1.presentation.initial_visual_stage_ref = null;
+  assert.equal(resolvePortableWorkbenchBinding(core1, [canonical]), null);
+
+  assert.throws(
+    () => resolvePortableWorkbenchBinding(projection, [canonical, structuredClone(canonical)]),
+    (error) => error instanceof CoreLearningHostError
+      && error.code === "CORE_LEARNING_PORTABLE_REPRESENTATION_DUPLICATE",
+  );
+
+  const ambiguous = structuredClone(canonical);
+  ambiguous.representationRefs = ["REP-PORTABLE-1", "REP-OTHER"];
+  assert.throws(
+    () => resolvePortableWorkbenchBinding(projection, [ambiguous]),
+    (error) => error instanceof CoreLearningHostError
+      && error.code === "CORE_LEARNING_PORTABLE_REPRESENTATION_AMBIGUOUS",
+  );
+});
+
+test("unbound projection can resolve a canonical portable workbench without mutating academic data", () => {
+  const projection = structuredClone(byId.core1a);
+  projection.presentation.initial_visual_ref = "REP-PORTABLE-1";
+  projection.presentation.initial_visual_stage_ref = null;
+  const data = dataWith([{
+    id: "portable-core1a",
+    source_ref: "MIC-FIXTURE-1",
+    projection,
+    scene_ref: null,
+    adapter_ref: null,
+    injection_refs: [],
+  }]);
+  const portable = {
+    id: "portable-canonical",
+    representationRefs: ["REP-PORTABLE-1"],
+    provenance: {
+      authority: "CANONICAL_COMPILED_RESOURCE",
+      representationRef: "REP-PORTABLE-1",
+    },
+    scene: sceneFixture,
+    adapter: { id: "adapter-canonical", rules: [] },
+    injections: [{ kind: "HINT", prompt: "Canonical portable prompt." }],
+  };
+
+  const inputs = resolveCoreLearningInputs(data, "portable-core1a", {
+    portablePackages: [portable],
+  });
+  assert.equal(inputs.portablePackageId, "portable-canonical");
+  assert.equal(inputs.scene.id, sceneFixture.id);
+  assert.equal(inputs.adapter.id, "adapter-canonical");
+  assert.deepEqual(inputs.injections, [{ kind: "HINT", prompt: "Canonical portable prompt." }]);
+
+  const record = resolveCoreLearningRecord(data, "portable-core1a");
+  assert.equal(record.sceneRef, null);
+  assert.equal(record.adapterRef, null);
+});
+
 test("host fails with named codes for missing, malformed, or unbound references", () => {
   const bound = {
     id: "bound",
@@ -201,14 +290,14 @@ test("mount configures projection and workbench inputs atomically and clears sta
     injections: { "hint-1": { kind: "HINT", prompt: "Use supplied evidence only." } },
   });
 
-  assert.deepEqual(result, { id: "core2b-mounted", workbenchBound: true });
+  assert.deepEqual(result, { id: "core2b-mounted", workbenchBound: true, portablePackageId: null });
   assert.equal(element.projection.core, "CORE2B");
   assert.equal(element.scene.id, sceneFixture.id);
   assert.equal(element.adapter, adapter);
   assert.deepEqual(element.injections, [{ kind: "HINT", prompt: "Use supplied evidence only." }]);
 
   const plain = mountCoreLearningPage(element, data, "core1b-plain");
-  assert.deepEqual(plain, { id: "core1b-plain", workbenchBound: false });
+  assert.deepEqual(plain, { id: "core1b-plain", workbenchBound: false, portablePackageId: null });
   assert.equal(element.projection.core, "CORE1B");
   assert.equal(element.scene, null);
   assert.equal(element.adapter, null);

@@ -11,10 +11,12 @@ HOSTS = {
     "public/core-learning/index.html": {
         "data_src": "./data.js",
         "runtime_base": "../js/core-learning",
+        "portable_base": "../portable-workbench",
     },
     "standalone/core-learning/index.html": {
         "data_src": "../../public/core-learning/data.js",
         "runtime_base": "../../public/js/core-learning",
+        "portable_base": "../../public/portable-workbench",
     },
 }
 
@@ -83,7 +85,7 @@ TEMPLATE = r'''<!doctype html>
     const availabilityList = document.getElementById("availability-list");
     const explorerPanel = document.getElementById("explorer-panel");
     const explorerFrame = document.getElementById("explorer-frame");
-    const registries = window.CORE_LEARNING_REGISTRIES || {};
+    const baseRegistries = window.CORE_LEARNING_REGISTRIES || {};
 
     function labelFor(row) {
       const core = row?.projection?.core || "Core";
@@ -92,6 +94,25 @@ TEMPLATE = r'''<!doctype html>
     }
 
     function setStatus(message) { status.textContent = message; }
+
+    async function loadPortablePackages() {
+      try {
+        const catalogResponse = await fetch("__PORTABLE_BASE__/catalog.json");
+        if (!catalogResponse.ok) return [];
+        const catalog = await catalogResponse.json();
+        const ids = Array.isArray(catalog?.packageIds) ? catalog.packageIds : [];
+        const packages = await Promise.all(ids.map(async (id) => {
+          if (typeof id !== "string" || !id || id.includes("/") || id.includes("..")) return null;
+          const response = await fetch("__PORTABLE_BASE__/packages/" + encodeURIComponent(id) + ".json");
+          return response.ok ? response.json() : null;
+        }));
+        return packages.filter(Boolean);
+      } catch (_) {
+        return [];
+      }
+    }
+
+    const portablePackagesPromise = loadPortablePackages();
 
     function renderAvailability() {
       const unavailable = availability.filter((row) =>
@@ -121,13 +142,16 @@ TEMPLATE = r'''<!doctype html>
       else explorerFrame.removeAttribute("src");
     }
 
-    function mount(id, { updateUrl = true } = {}) {
+    async function mount(id, { updateUrl = true } = {}) {
       try {
         const row = rows.find((item) => item.id === id);
+        const portablePackages = await portablePackagesPromise;
+        const registries = { ...baseRegistries, portablePackages };
         const result = mountCoreLearningPage(learner, data, id, registries);
         select.value = result.id;
         mountExplorer(row);
-        setStatus(`Loaded ${labelFor(row)}.`);
+        const portable = result.portablePackageId ? ` · in-page visual ${result.portablePackageId}` : "";
+        setStatus(`Loaded ${labelFor(row)}${portable}.`);
         if (updateUrl) {
           const url = new URL(window.location.href);
           url.searchParams.set("projection", result.id);
@@ -173,16 +197,25 @@ TEMPLATE = r'''<!doctype html>
 '''
 
 
-def render_host(*, data_src: str, runtime_base: str) -> bytes:
-    rendered = TEMPLATE.replace("__CORE_DATA_SRC__", data_src).replace("__CORE_RUNTIME_BASE__", runtime_base)
-    if "__CORE_DATA_SRC__" in rendered or "__CORE_RUNTIME_BASE__" in rendered:
+def render_host(*, data_src: str, runtime_base: str, portable_base: str) -> bytes:
+    rendered = (
+        TEMPLATE
+        .replace("__CORE_DATA_SRC__", data_src)
+        .replace("__CORE_RUNTIME_BASE__", runtime_base)
+        .replace("__PORTABLE_BASE__", portable_base)
+    )
+    if any(token in rendered for token in ("__CORE_DATA_SRC__", "__CORE_RUNTIME_BASE__", "__PORTABLE_BASE__")):
         raise ValueError("CORE_LEARNING_HOST_TEMPLATE_UNRESOLVED")
     return rendered.encode("utf-8")
 
 
 def render() -> dict[str, bytes]:
     return {
-        relative: render_host(data_src=config["data_src"], runtime_base=config["runtime_base"])
+        relative: render_host(
+            data_src=config["data_src"],
+            runtime_base=config["runtime_base"],
+            portable_base=config["portable_base"],
+        )
         for relative, config in HOSTS.items()
     }
 

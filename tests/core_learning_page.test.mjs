@@ -205,6 +205,25 @@ test("attempt-first products reject blank responses before reveal", () => {
   assert.equal(initial.solutionVisible, false);
 });
 
+test("attempt-first products do not mount a bound workbench before commitment", () => {
+  for (const id of ["core1b", "core2b"]) {
+    const projection = byId[id];
+    const initial = deriveCoreLearningState(projection);
+    const before = renderCoreLearningProjection(projection, initial);
+    assert.doesNotMatch(before, /data-workbench-mount/);
+    assert.match(before, /data-interactive-reveal="protected"/);
+
+    const committed = transitionCoreLearningState(
+      projection,
+      initial,
+      { type: "COMMIT_ATTEMPT", response: "A genuine bounded response." },
+    ).state;
+    const after = renderCoreLearningProjection(projection, committed);
+    assert.match(after, /data-workbench-mount/);
+    assert.match(after, /data-interactive-reveal="available"/);
+  }
+});
+
 test("source hints are a separate ordered channel from pedagogical scaffolds", () => {
   const projection = structuredClone(byId.core2b);
   projection.application.hints = [

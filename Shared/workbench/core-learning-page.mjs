@@ -968,17 +968,24 @@ function renderRepresentation(projection, state) {
         (item) => `<li>${escapeHtml(item)}</li>`,
       ).join("")}</ul></details>`
     : "";
+  const interactiveAllowed = !projection.presentation.attempt_before_reveal || state.attempted;
+  const workbenchMount = interactiveAllowed
+    ? '<div data-workbench-mount></div>'
+    : '<p class="representation-protected">Interactive manipulation becomes available after you commit an attempt.</p>';
   return `<section class="representation-panel" aria-labelledby="core-representation-title"
-    data-visual-ref="${visualRef}" data-visual-stage-ref="${visualStage}">
+    data-visual-ref="${visualRef}" data-visual-stage-ref="${visualStage}"
+    data-interactive-reveal="${interactiveAllowed ? "available" : "protected"}">
     <div class="section-kicker">Visual model</div>
     <h3 id="core-representation-title">Representation</h3>
     ${representation?.purpose ? `<p class="representation-purpose">${escapeHtml(representation.purpose)}</p>` : ""}
     ${staticVisual}
-    <div data-workbench-mount></div>
+    ${workbenchMount}
     <p class="representation-fallback" data-workbench-fallback>
       ${staticVisual
         ? "Canonical static representation shown. Interactive manipulation is optional when a bound workbench is available."
-        : "Interactive representation is supplied by the host when available."}
+        : (interactiveAllowed
+          ? "Interactive representation is supplied by the host when available."
+          : "Protected interactive representation is withheld until the attempt boundary.")}
     </p>
     ${accessibility}
   </section>`;

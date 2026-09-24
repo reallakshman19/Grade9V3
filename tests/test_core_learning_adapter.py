@@ -339,15 +339,19 @@ class CoreLearningProductionAdapter(unittest.TestCase):
             public
             .replace("./data.js", "__DATA__")
             .replace("../js/core-learning", "__RUNTIME__")
+            .replace("../portable-workbench", "__PORTABLE__")
         )
         normalized_standalone = (
             standalone
             .replace("../../public/core-learning/data.js", "__DATA__")
             .replace("../../public/js/core-learning", "__RUNTIME__")
+            .replace("../../public/portable-workbench", "__PORTABLE__")
         )
         self.assertEqual(normalized_public, normalized_standalone)
         self.assertIn("const rows = Array.isArray(data?.core_projections)", public)
         self.assertIn("mountCoreLearningPage", public)
+        self.assertIn("portablePackages", public)
+        self.assertIn("portable-workbench/catalog.json", public)
 
     def test_shared_clock_explorer_remains_available_when_canonical_resource_exists(self):
         row = self.row(core="CORE2A", source=FAMILIAR)

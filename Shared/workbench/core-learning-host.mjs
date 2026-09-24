@@ -96,6 +96,67 @@ function resolveRegistryEntry(registry, ref, code) {
   return registry[ref];
 }
 
+const PORTABLE_BINDABLE_CORES = new Set(["CORE1A", "CORE1B", "CORE2A", "CORE2B"]);
+
+export function resolvePortableWorkbenchBinding(projectionInput, portablePackages = []) {
+  const projection = validateCoreProjection(projectionInput);
+  requireCondition(
+    Array.isArray(portablePackages),
+    "CORE_LEARNING_PORTABLE_PACKAGES_INVALID",
+  );
+  if (!PORTABLE_BINDABLE_CORES.has(projection.core)) return null;
+
+  const representationRef = projection.presentation.initial_visual_ref;
+  if (!representationRef) return null;
+
+  const candidates = [];
+  for (const packageRow of portablePackages) {
+    if (!packageRow || typeof packageRow !== "object" || Array.isArray(packageRow)) continue;
+    const provenance = packageRow.provenance || {};
+    if (provenance.authority !== "CANONICAL_COMPILED_RESOURCE") continue;
+    const representationRefs = Array.isArray(packageRow.representationRefs)
+      ? packageRow.representationRefs
+      : [];
+    if (!representationRefs.includes(representationRef)) continue;
+    requireCondition(
+      representationRefs.length === 1,
+      "CORE_LEARNING_PORTABLE_REPRESENTATION_AMBIGUOUS",
+      String(packageRow.id || representationRef),
+    );
+    requireCondition(
+      provenance.representationRef === representationRef,
+      "CORE_LEARNING_PORTABLE_REPRESENTATION_MISMATCH",
+      String(packageRow.id || representationRef),
+    );
+    requireObject(packageRow.scene, "CORE_LEARNING_PORTABLE_SCENE_INVALID", String(packageRow.id || ""));
+    requireObject(packageRow.adapter, "CORE_LEARNING_PORTABLE_ADAPTER_INVALID", String(packageRow.id || ""));
+    requireCondition(
+      Array.isArray(packageRow.injections || []),
+      "CORE_LEARNING_PORTABLE_INJECTIONS_INVALID",
+      String(packageRow.id || ""),
+    );
+    candidates.push(packageRow);
+  }
+
+  requireCondition(
+    candidates.length <= 1,
+    "CORE_LEARNING_PORTABLE_REPRESENTATION_DUPLICATE",
+    representationRef,
+  );
+  if (!candidates.length) return null;
+  const packageRow = candidates[0];
+  return {
+    packageId: requireString(
+      packageRow.id,
+      "CORE_LEARNING_PORTABLE_PACKAGE_ID_REQUIRED",
+      representationRef,
+    ),
+    scene: clone(packageRow.scene),
+    adapter: clone(packageRow.adapter),
+    injections: clone(packageRow.injections || []),
+  };
+}
+
 export function resolveCoreLearningInputs(
   data,
   projectionId,
@@ -103,16 +164,19 @@ export function resolveCoreLearningInputs(
     scenes = {},
     adapters = {},
     injections = {},
+    portablePackages = [],
   } = {},
 ) {
   const record = resolveCoreLearningRecord(data, projectionId);
   if (!record.sceneRef) {
+    const portable = resolvePortableWorkbenchBinding(record.projection, portablePackages);
     return {
       id: record.id,
       projection: clone(record.projection),
-      scene: null,
-      adapter: null,
-      injections: [],
+      scene: portable?.scene ?? null,
+      adapter: portable?.adapter ?? null,
+      injections: portable?.injections ?? [],
+      portablePackageId: portable?.packageId ?? null,
     };
   }
 
@@ -138,6 +202,7 @@ export function resolveCoreLearningInputs(
     scene,
     adapter,
     injections: resolvedInjections.map((row) => clone(row)),
+    portablePackageId: null,
   };
 }
 
@@ -173,5 +238,6 @@ export function mountCoreLearningPage(
   return {
     id: inputs.id,
     workbenchBound: Boolean(inputs.scene && inputs.adapter),
+    portablePackageId: inputs.portablePackageId ?? null,
   };
 }
