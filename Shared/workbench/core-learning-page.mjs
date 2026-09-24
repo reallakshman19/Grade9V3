@@ -880,17 +880,127 @@ function renderOrientationMap(projection) {
   </section>`;
 }
 
-function renderRepresentation(state) {
-  const visualRef = state.currentVisualRef ? escapeHtml(state.currentVisualRef) : "";
+function activeRepresentation(projection, state) {
+  const rows = projection.concept?.representations ?? [];
+  if (!rows.length) return null;
+  return rows.find((row) => row.representation_ref === state.currentVisualRef) ?? rows[0];
+}
+
+function activeRepresentationStage(representation, state) {
+  if (!representation || !state.currentVisualStageRef) return null;
+  return (representation.reveal_stages ?? []).find(
+    (stage) => stage.id === state.currentVisualStageRef,
+  ) ?? null;
+}
+
+function visibleRepresentationElements(representation, state) {
+  if (!representation) return [];
+  const stage = activeRepresentationStage(representation, state);
+  const preferred = stage?.visible_elements?.length
+    ? stage.visible_elements
+    : (representation.read_order?.length
+      ? representation.read_order
+      : representation.required_elements ?? []);
+  return [...new Set(preferred.filter((item) => typeof item === "string" && item.trim()))];
+}
+
+function renderCanonicalSemanticSvg(representation, state) {
+  const elements = visibleRepresentationElements(representation, state);
+  if (!elements.length) return "";
+  const rowHeight = 72;
+  const top = 24;
+  const height = top * 2 + (elements.length * rowHeight);
+  const stage = activeRepresentationStage(representation, state);
+  const title = representation.purpose || "Canonical representation read order";
+  const nodes = elements.map((item, index) => {
+    const y = top + (index * rowHeight);
+    const connector = index < elements.length - 1
+      ? `<line x1="360" y1="${y + 48}" x2="360" y2="${y + rowHeight - 8}" class="semantic-arrow" marker-end="url(#semantic-arrowhead)"></line>`
+      : "";
+    return `<g data-semantic-element="${escapeHtml(item)}">
+      <rect x="70" y="${y}" width="580" height="48" rx="10" class="semantic-node"></rect>
+      <text x="94" y="${y + 30}" class="semantic-label">${escapeHtml(item)}</text>
+      ${connector}
+    </g>`;
+  }).join("");
+  return `<figure class="canonical-visual" data-canonical-svg>
+    <svg viewBox="0 0 720 ${height}" role="img" aria-labelledby="semantic-svg-title semantic-svg-desc">
+      <title id="semantic-svg-title">${escapeHtml(representation.representation_ref)}</title>
+      <desc id="semantic-svg-desc">${escapeHtml(title)}</desc>
+      <defs>
+        <marker id="semantic-arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" class="semantic-arrowhead"></path>
+        </marker>
+      </defs>
+      ${nodes}
+    </svg>
+    <figcaption>
+      ${stage?.label ? `<strong>${escapeHtml(stage.label)}.</strong> ` : ""}
+      ${escapeHtml(stage?.purpose || representation.purpose || "")}
+    </figcaption>
+  </figure>`;
+}
+
+function renderRepresentation(projection, state) {
+  const representation = activeRepresentation(projection, state);
+  const visualRef = state.currentVisualRef
+    ? escapeHtml(state.currentVisualRef)
+    : escapeHtml(representation?.representation_ref ?? "");
   const visualStage = state.currentVisualStageRef ? escapeHtml(state.currentVisualStageRef) : "";
+  if (!visualRef && !representation) return "";
+  const staticVisual = renderCanonicalSemanticSvg(representation, state);
+  const accessibility = representation?.accessibility?.length
+    ? `<details class="representation-accessibility"><summary>How to read this representation</summary><ul>${representation.accessibility.map(
+        (item) => `<li>${escapeHtml(item)}</li>`,
+      ).join("")}</ul></details>`
+    : "";
   return `<section class="representation-panel" aria-labelledby="core-representation-title"
     data-visual-ref="${visualRef}" data-visual-stage-ref="${visualStage}">
+    <div class="section-kicker">Visual model</div>
     <h3 id="core-representation-title">Representation</h3>
+    ${representation?.purpose ? `<p class="representation-purpose">${escapeHtml(representation.purpose)}</p>` : ""}
+    ${staticVisual}
     <div data-workbench-mount></div>
     <p class="representation-fallback" data-workbench-fallback>
-      Interactive representation is supplied by the host when available.
+      ${staticVisual
+        ? "Canonical static representation shown. Interactive manipulation is optional when a bound workbench is available."
+        : "Interactive representation is supplied by the host when available."}
     </p>
+    ${accessibility}
   </section>`;
+}
+
+function renderRoleBody(projection, state) {
+  const orientation = renderOrientationMap(projection);
+  const concept = renderConcept(projection, state);
+  const question = renderQuestion(projection, state);
+  const figures = renderQuestionFigures(projection, state);
+  const representation = renderRepresentation(projection, state);
+  const attempt = renderAttempt(projection, state);
+  const hints = renderHints(projection, state);
+  const support = renderSupport(projection, state);
+  const construction = renderConstruction(projection, state);
+  const reasoning = renderReasoningRoute(projection, state);
+  const check = renderIndependentCheck(projection, state);
+  const solution = renderSolution(projection, state);
+  const completion = renderCompletion(state);
+
+  switch (projection.core) {
+    case "CORE1":
+      return `${orientation}${representation}`;
+    case "CORE1A":
+      return `${concept}${representation}${construction}${completion}`;
+    case "CORE1B":
+      return `${concept}${representation}${attempt}${construction}${completion}`;
+    case "CORE2":
+      return `${question}${figures}${representation}${hints}${solution}${check}`;
+    case "CORE2A":
+      return `${question}${figures}${representation}${support}${hints}${attempt}${reasoning}${solution}${check}${completion}`;
+    case "CORE2B":
+      return `${question}${figures}${representation}${support}${attempt}${hints}${reasoning}${solution}${check}${completion}`;
+    default:
+      return "";
+  }
 }
 
 function renderCompletion(state) {
@@ -943,19 +1053,7 @@ export function renderCoreLearningProjection(input, stateInput = null) {
       <p class="status">${escapeHtml(state.stage.replaceAll("_", " ").toLowerCase())}</p>
       <p class="visually-hidden" aria-live="polite" data-live-status></p>
     </header>
-    ${renderOrientationMap(projection)}
-    ${renderConcept(projection, state)}
-    ${renderQuestion(projection, state)}
-    ${renderQuestionFigures(projection, state)}
-    ${renderRepresentation(state)}
-    ${renderAttempt(projection, state)}
-    ${renderHints(projection, state)}
-    ${renderSupport(projection, state)}
-    ${renderConstruction(projection, state)}
-    ${renderReasoningRoute(projection, state)}
-    ${renderIndependentCheck(projection, state)}
-    ${renderSolution(projection, state)}
-    ${renderCompletion(state)}
+    ${renderRoleBody(projection, state)}
   </article>`;
 }
 
