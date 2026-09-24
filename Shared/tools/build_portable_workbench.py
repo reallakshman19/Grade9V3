@@ -11,12 +11,142 @@ ROOT = Path(__file__).resolve().parents[2]
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
-from Shared.portable.package import build_package
+from Shared.contracts import load
+from Shared.library.resolve import build_index
+from Shared.portable.package import (
+    CANONICAL_PROVENANCE_AUTHORITY,
+    PortablePackageError,
+    build_package,
+)
 SOURCE_DIR = ROOT / "tests/fixtures/portable-workbench/sources"
 
 
 def _json(path: Path):
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def _require(condition: bool, code: str, detail: str = "") -> None:
+    if not condition:
+        raise PortablePackageError(code, detail)
+
+
+def _canonical_packages() -> list[dict]:
+    rows: list[dict] = []
+    for contract_path in sorted(ROOT.glob("*/adapter/CoreContracts.json")):
+        subject_root = contract_path.parent.parent
+        package_paths = sorted((subject_root / "library").glob("*.json"))
+        if not package_paths:
+            continue
+        records = build_index([load(path) for path in package_paths])
+        for resource_ref, resource in sorted(records.items()):
+            if resource.get("_collection") != "resources":
+                continue
+            declaration = (
+                (resource.get("extensions") or {})
+                .get("topic_atlas", {})
+                .get("portable_workbench")
+            )
+            if declaration is None:
+                continue
+            _require(isinstance(declaration, dict), "PORTABLE_CANONICAL_DECLARATION_INVALID", resource_ref)
+            _require(declaration.get("resource_ref") == resource_ref, "PORTABLE_CANONICAL_RESOURCE_REF_MISMATCH", resource_ref)
+
+            package_ref = declaration.get("package_ref")
+            representation_ref = declaration.get("representation_ref")
+            scene_instance_ref = declaration.get("scene_instance_ref")
+            for value, code in [
+                (package_ref, "PORTABLE_PACKAGE_ID_REQUIRED"),
+                (representation_ref, "PORTABLE_CANONICAL_REPRESENTATION_REF_REQUIRED"),
+                (scene_instance_ref, "PORTABLE_CANONICAL_SCENE_INSTANCE_REF_REQUIRED"),
+            ]:
+                _require(isinstance(value, str) and value.strip(), code, resource_ref)
+
+            representation = records.get(representation_ref)
+            _require(
+                isinstance(representation, dict) and representation.get("_collection") == "representations",
+                "PORTABLE_CANONICAL_REPRESENTATION_NOT_FOUND",
+                representation_ref,
+            )
+            scenes = [
+                row for row in representation.get("scene_instances") or []
+                if row.get("id") == scene_instance_ref
+            ]
+            _require(len(scenes) == 1, "PORTABLE_CANONICAL_SCENE_INSTANCE_UNRESOLVED", str(scene_instance_ref))
+            scene = scenes[0].get("scene")
+            _require(isinstance(scene, dict), "PORTABLE_CANONICAL_SCENE_REQUIRED", str(scene_instance_ref))
+
+            adapter = declaration.get("adapter")
+            _require(isinstance(adapter, dict), "PORTABLE_ADAPTER_REQUIRED", resource_ref)
+            _require(adapter.get("id") == "declarative-transfer-v1", "PORTABLE_ADAPTER_ID_UNSUPPORTED", str(adapter.get("id")))
+            _require(adapter.get("api_version") == "0.1.0", "PORTABLE_ADAPTER_API_VERSION_MISMATCH", str(adapter.get("api_version")))
+            actions = adapter.get("actions")
+            _require(isinstance(actions, list) and actions, "PORTABLE_CANONICAL_ACTIONS_REQUIRED", resource_ref)
+
+            rules: list[dict] = []
+            rejections: list[dict] = []
+            seen_actions: set[str] = set()
+            for action in actions:
+                action_id = action.get("id")
+                _require(isinstance(action_id, str) and action_id.strip(), "PORTABLE_CANONICAL_ACTION_ID_REQUIRED")
+                _require(action_id not in seen_actions, "PORTABLE_CANONICAL_ACTION_ID_DUPLICATE", action_id)
+                seen_actions.add(action_id)
+                source_entity_ref = action.get("source_entity_ref")
+                target_ref = action.get("target_ref")
+                operation = action.get("operation")
+                outcome = action.get("expected_outcome")
+                for value, code in [
+                    (source_entity_ref, "PORTABLE_ADAPTER_SOURCE_REQUIRED"),
+                    (target_ref, "PORTABLE_ADAPTER_TARGET_REQUIRED"),
+                    (operation, "PORTABLE_TARGET_OPERATION_REQUIRED"),
+                ]:
+                    _require(isinstance(value, str) and value.strip(), code, action_id)
+
+                if outcome == "ACCEPT":
+                    transformation_ref = action.get("transformation_ref")
+                    patch = action.get("patch")
+                    _require(isinstance(transformation_ref, str) and transformation_ref.strip(), "PORTABLE_ADAPTER_TRANSFORMATION_REQUIRED", action_id)
+                    _require(isinstance(patch, dict), "PORTABLE_ADAPTER_PATCH_REQUIRED", action_id)
+                    rules.append({
+                        "id": action_id,
+                        "transformationRef": transformation_ref,
+                        "sourceEntityRef": source_entity_ref,
+                        "targetRef": target_ref,
+                        "operation": operation,
+                        "summary": action.get("summary") or "Canonical transformation accepted.",
+                        "patch": patch,
+                    })
+                elif outcome == "REJECT":
+                    _require("transformation_ref" not in action, "PORTABLE_REJECTION_TRANSFORMATION_FORBIDDEN", action_id)
+                    reason = action.get("reason")
+                    _require(isinstance(reason, str) and reason.strip(), "PORTABLE_REJECTION_REASON_REQUIRED", action_id)
+                    rejections.append({
+                        "id": action_id,
+                        "sourceEntityRef": source_entity_ref,
+                        "targetRef": target_ref,
+                        "operation": operation,
+                        "reason": reason,
+                    })
+                else:
+                    raise PortablePackageError("PORTABLE_CANONICAL_ACTION_OUTCOME_INVALID", str(outcome))
+
+            source = {
+                "id": package_ref,
+                "title": resource.get("title") or package_ref,
+                "sourceKind": "CANONICAL_RESOURCE",
+                "sourceRefs": list(resource.get("source_refs") or []),
+                "representationRefs": [representation_ref],
+                "assetRefs": [],
+                "accessibilityRefs": list(representation.get("accessibility") or []),
+                "questionBindings": [],
+                "injections": [],
+                "provenanceAuthority": CANONICAL_PROVENANCE_AUTHORITY,
+                "resourceRef": resource_ref,
+                "representationRef": representation_ref,
+                "adapterRules": rules,
+                "rejections": rejections,
+            }
+            rows.append(build_package(source, scene))
+    return rows
 
 
 def packages() -> list[dict]:
@@ -25,6 +155,9 @@ def packages() -> list[dict]:
         source = _json(path)
         scene = _json(ROOT / source["sceneRef"]) if source.get("sceneRef") else source["scene"]
         rows.append(build_package(source, scene))
+    rows.extend(_canonical_packages())
+    ids = [row["id"] for row in rows]
+    _require(len(ids) == len(set(ids)), "PORTABLE_PACKAGE_ID_DUPLICATE")
     return rows
 
 
