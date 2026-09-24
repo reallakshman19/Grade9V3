@@ -151,7 +151,10 @@ class IndependentSourceOracleTest(unittest.TestCase):
             activity["locator"],
         )
         gcdr = activity.get("extensions", {}).get("topic_atlas", {}).get("gcdr_contract", {})
-        self.assertEqual("REPO_BUNDLE", gcdr.get("delivery_profile", {}).get("profile"))
+        delivery = gcdr.get("delivery_profile", {})
+        self.assertEqual("REPO_BUNDLE", delivery.get("profile"))
+        self.assertEqual("portable-motion-shared-clock", delivery.get("portable_package_ref"))
+        self.assertEqual("SINGLE_FILE_OFFLINE", delivery.get("portable_profile"))
         self.assertNotIn("portable_package_ref", activity)
 
         availability = core_availability(self.core, "Physics", MOTION_BUCKET)
@@ -276,8 +279,8 @@ class CurrentPayloadFailureSurfaceTest(unittest.TestCase):
         self.assertEqual("READY", row["availability"]["representation"])
         self.assertEqual("READY", row["availability"]["activity"])
         self.assertEqual("READY", row["availability"]["locator"])
-        self.assertEqual("UNAVAILABLE", row["availability"]["portable_package"])
-        self.assertEqual("UNAVAILABLE", row["availability"]["standalone"])
+        self.assertEqual("READY", row["availability"]["portable_package"])
+        self.assertEqual("READY", row["availability"]["standalone"])
         target = physics["visual_targets"]["ACT-KIN-2D-SHARED-CLOCK"]
         self.assertEqual(
             ["REP-KIN-2D-SHARED-CLOCK"],
@@ -287,11 +290,12 @@ class CurrentPayloadFailureSurfaceTest(unittest.TestCase):
             "public/physics/motion-2d/explorers/shared-clock/index.html",
             target["locator"],
         )
-        self.assertEqual("REPO_BUNDLE", target["delivery_profile"])
-        self.assertIsNone(target["portable_package_ref"])
+        self.assertEqual("PORTABLE_PACKAGE", target["delivery_kind"])
+        self.assertEqual("SINGLE_FILE_OFFLINE", target["delivery_profile"])
+        self.assertEqual("portable-motion-shared-clock", target["portable_package_ref"])
         self.assertEqual("READY", target["availability"]["locator"])
-        self.assertEqual("UNAVAILABLE", target["availability"]["portable_package"])
-        self.assertEqual("UNAVAILABLE", target["availability"]["standalone"])
+        self.assertEqual("READY", target["availability"]["portable_package"])
+        self.assertEqual("READY", target["availability"]["standalone"])
 
     def test_math_r1_consumer_row_does_not_collapse_prerequisites(self):
         math = subject_payload("Mathematics")

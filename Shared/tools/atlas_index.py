@@ -104,12 +104,27 @@ def _capability_activity_refs(capability_ref: str | None, records: dict) -> tupl
     ]
 
 
-def _delivery_profile(resource: dict | None) -> str | None:
+def _delivery_contract(resource: dict | None) -> dict:
     if not isinstance(resource, dict):
-        return None
+        return {}
     topic_atlas = resource.get("extensions", {}).get("topic_atlas", {})
     gcdr = topic_atlas.get("gcdr_contract", {})
-    return gcdr.get("delivery_profile", {}).get("profile")
+    delivery = gcdr.get("delivery_profile", {})
+    return delivery if isinstance(delivery, dict) else {}
+
+
+def _delivery_profile(resource: dict | None) -> str | None:
+    return _delivery_contract(resource).get("profile")
+
+
+def _portable_package_ref(resource: dict | None) -> str | None:
+    value = _delivery_contract(resource).get("portable_package_ref")
+    return value if isinstance(value, str) and value.strip() else None
+
+
+def _portable_profile(resource: dict | None) -> str | None:
+    value = _delivery_contract(resource).get("portable_profile")
+    return value if isinstance(value, str) and value.strip() else None
 
 
 def _visual_targets(records: dict) -> dict[str, dict]:
@@ -139,18 +154,27 @@ def _visual_targets(records: dict) -> dict[str, dict]:
         )
         locator = resource.get("locator") if valid_resource else None
         profile = _delivery_profile(resource if valid_resource else None)
+        portable_package_ref = _portable_package_ref(resource if valid_resource else None)
+        portable_profile = _portable_profile(resource if valid_resource else None)
         targets[resource_ref] = {
             "resource_ref": resource_ref,
             "representation_refs": sorted(set(representation_sources.get(resource_ref, []))),
             "locator": locator,
-            "delivery_kind": "EXISTING_ACTIVITY",
-            "delivery_profile": profile,
-            "portable_package_ref": None,
+            "delivery_kind": "PORTABLE_PACKAGE" if portable_package_ref else "EXISTING_ACTIVITY",
+            "delivery_profile": portable_profile if portable_package_ref else profile,
+            "portable_package_ref": portable_package_ref,
             "availability": {
                 "resource": READY if valid_resource else INVALID,
                 "locator": READY if valid_resource and locator else (INVALID if not valid_resource else UNAVAILABLE),
-                "portable_package": UNAVAILABLE,
-                "standalone": READY if profile == "SINGLE_FILE_OFFLINE" else UNAVAILABLE,
+                "portable_package": READY if portable_package_ref else UNAVAILABLE,
+                "standalone": (
+                    READY
+                    if (
+                        (portable_package_ref and portable_profile == "SINGLE_FILE_OFFLINE")
+                        or (not portable_package_ref and profile == "SINGLE_FILE_OFFLINE")
+                    )
+                    else UNAVAILABLE
+                ),
             },
             "provenance": {
                 "representation_ref_sources": sorted(set(representation_sources.get(resource_ref, []))),
@@ -445,13 +469,33 @@ def build_subject_index(
                         "ACTIVITY resource has no browser/repository locator.",
                     ))
 
-            portable_status = UNAVAILABLE
+            portable_refs = [
+                _portable_package_ref(records.get(ref))
+                for ref in activity_refs
+                if _record_is(records, ref, "resources")
+            ]
+            portable_status = READY if any(portable_refs) else UNAVAILABLE
             profiles = [
                 _delivery_profile(records.get(ref))
                 for ref in activity_refs
                 if _record_is(records, ref, "resources")
             ]
-            standalone_status = READY if "SINGLE_FILE_OFFLINE" in profiles else UNAVAILABLE
+            portable_profiles = [
+                _portable_profile(records.get(ref))
+                for ref in activity_refs
+                if _record_is(records, ref, "resources")
+            ]
+            standalone_status = (
+                READY
+                if (
+                    "SINGLE_FILE_OFFLINE" in portable_profiles
+                    or (
+                        not any(portable_refs)
+                        and "SINGLE_FILE_OFFLINE" in profiles
+                    )
+                )
+                else UNAVAILABLE
+            )
 
             if representation_status == UNAVAILABLE and activity_status == UNAVAILABLE:
                 findings.append(_finding(

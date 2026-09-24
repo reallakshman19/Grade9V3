@@ -343,7 +343,9 @@
             "delivery_profile": {
               "profile": "REPO_BUNDLE",
               "artifact_locator": "public/physics/motion-2d/explorers/shared-clock/index.html",
-              "remote_dependencies_declared": []
+              "remote_dependencies_declared": [],
+              "portable_package_ref": "portable-motion-shared-clock",
+              "portable_profile": "SINGLE_FILE_OFFLINE"
             }
           }
         }
