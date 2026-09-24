@@ -271,8 +271,12 @@ def validate_audit_report(
         str(report.get(field, ""))
         for field in ("title", "summary", "overall_claim")
     ).upper()
+    normalized_claim = re.sub(r"[^A-Z0-9]+", "_", joined).strip("_")
     for forbidden in contract.get("forbidden_overclaims") or []:
-        if forbidden in joined:
+        normalized_forbidden = re.sub(
+            r"[^A-Z0-9]+", "_", str(forbidden).upper()
+        ).strip("_")
+        if normalized_forbidden and normalized_forbidden in normalized_claim:
             findings.append(f"AUDIT_FORBIDDEN_OVERCLAIM:{forbidden}")
 
     return findings
