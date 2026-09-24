@@ -1,0 +1,2941 @@
+{
+  "audit_version": "2.0-REMEDIED-CANONICAL",
+  "standard": "Grade9V3 10-Inch Tablet Landscape Reference",
+  "total_audited_questions": 77,
+  "audit_policy": "Multi-Method Physical & Chemical Verification Protocol",
+  "taxonomy_summary": {
+    "D1_Foundational": 16,
+    "D2_Intermediate": 31,
+    "D3_Advanced": 26,
+    "D4_Frontier": 4
+  },
+  "records": [
+    {
+      "question_id": "Q01",
+      "exam_source": "IIT-JEE 2007 · Paper I · Q3",
+      "provenance_ref": "PYQ-PHY-IITJEE-2007-P1-Q03 | IIT-JEE 2007 | source identity preserved",
+      "section": "PHYSICS 01: NEWTON'S LAWS OF MOTION",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 6,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "MULTI-CONCEPT",
+          "GEOMETRY→FORCE",
+          "MASSLESS NODE",
+          "TRAP: T≠F/2"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 100,
+      "visual_diagram_type": "STRING_MIDPOINT_FBD",
+      "visual_topic_category": "MECHANICS_NLM",
+      "stepwise_steps_count": 4,
+      "verified_answer": "Option (B): a_mass = F x / [2m sqrt(a^2-x^2)].",
+      "verification_audit": {
+        "primary_methods": [
+          "LIMIT_CASE_ANALYSIS",
+          "DIMENSIONAL_HOMOGENEITY",
+          "DUAL_FORMALISM_EQUIVALENCE"
+        ],
+        "independent_check_evidence": "As x approaches zero, the horizontal acceleration approaches zero because the string segments become nearly vertical.",
+        "audit_notes": "Virtual work check: δy = -(x/y)δx; δW = F(-δy) - 2(m a_x)δx = 0 confirms identical acceleration. Limiting case x→0 gives a_x→0.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q02",
+      "exam_source": "IIT-JEE 2007 · Paper I · Q10",
+      "provenance_ref": "PYQ-PHY-IITJEE-2007-P1-Q10 | IIT-JEE 2007 | source identity preserved",
+      "section": "PHYSICS 01: NEWTON'S LAWS OF MOTION",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 4,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "WORK-ENERGY",
+          "FRICTION DISSIPATION",
+          "INCLINED PLANE",
+          "ASSERTION-REASON"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 101,
+      "visual_diagram_type": "PULL_VS_PUSH_FBD",
+      "visual_topic_category": "MECHANICS_NLM",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (C): statement (1) is true and statement (2) is false.",
+      "verification_audit": {
+        "primary_methods": [
+          "ENERGY_CONSERVATION_DUAL_PROOF",
+          "LIMIT_CASE_ANALYSIS"
+        ],
+        "independent_check_evidence": "The incline case satisfies K_initial = gain in gravitational potential energy + energy dissipated by friction.",
+        "audit_notes": "Limiting case θ→90°: vertical throw has zero normal force and zero friction work; all kinetic energy converts to potential energy.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q03",
+      "exam_source": "IIT-JEE 2008 · Paper II · Q33",
+      "provenance_ref": "PYQ-PHY-IITJEE-2008-P2-Q33 | IIT-JEE 2008 | source identity preserved",
+      "section": "PHYSICS 01: NEWTON'S LAWS OF MOTION",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 3,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "PULL VS PUSH",
+          "NORMAL FORCE SHIFT",
+          "LIMITING FRICTION",
+          "ASSERTION-REASON"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 64,
+      "visual_diagram_type": "PULL_VS_PUSH_FBD",
+      "visual_topic_category": "MECHANICS_NLM",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (B): both statements are true, but statement (2) is not the explanation of statement (1).",
+      "verification_audit": {
+        "primary_methods": [
+          "LIMIT_CASE_ANALYSIS",
+          "DIMENSIONAL_HOMOGENEITY"
+        ],
+        "independent_check_evidence": "If the applied force were exactly horizontal, the normal-reaction distinction between pulling and pushing would disappear.",
+        "audit_notes": "Limiting case θ→0: If the applied force is purely horizontal, N_pull = N_push = mg, and the distinction between pulling and pushing disappears.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q04",
+      "exam_source": "IIT-JEE 2011 · Paper I · Q41",
+      "provenance_ref": "PYQ-PHY-IITJEE-2011-P1-Q41 | IIT-JEE 2011 | source identity preserved",
+      "section": "PHYSICS 01: NEWTON'S LAWS OF MOTION",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "INCLINED PLANE",
+          "DUAL LIMITING EQUILIBRIUM",
+          "STATIC FRICTION RATIO",
+          "INTEGER VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 78,
+      "visual_diagram_type": "INCLINE_FRICTION_FBD",
+      "visual_topic_category": "MECHANICS_NLM",
+      "stepwise_steps_count": 4,
+      "verified_answer": "5.",
+      "verification_audit": {
+        "primary_methods": [
+          "SUBSTITUTION_BACK_CHECK",
+          "LIMIT_CASE_ANALYSIS"
+        ],
+        "independent_check_evidence": "With mu=1/2, the two force factors are 1.5 and 0.5, a 3:1 ratio.",
+        "audit_notes": "Back-substitution: With μ = 0.5, (1 + 0.5) / (1 - 0.5) = 1.5 / 0.5 = 3.0, perfectly satisfying the 3:1 ratio.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q05",
+      "exam_source": "IIT-JEE 2011 · Paper II · Q34",
+      "provenance_ref": "PYQ-PHY-IITJEE-2011-P2-Q34 | IIT-JEE 2011 | source identity preserved",
+      "section": "PHYSICS 01: NEWTON'S LAWS OF MOTION",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "WORK-ENERGY",
+          "SPRING COMPRESSION",
+          "FRICTION WORK",
+          "INTEGER VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 86,
+      "visual_diagram_type": "SPRING_MASS_FRICTION",
+      "visual_topic_category": "MECHANICS_NLM",
+      "stepwise_steps_count": 4,
+      "verified_answer": "4.",
+      "verification_audit": {
+        "primary_methods": [
+          "DIMENSIONAL_HOMOGENEITY",
+          "ENERGY_CONSERVATION_DUAL_PROOF"
+        ],
+        "independent_check_evidence": "Substituting v=0.4 m/s gives initial kinetic energy 0.0144 J, exactly the spring-plus-friction energy.",
+        "audit_notes": "Unit check: [k x²] = (N/m)(m²) = J; [μ m g x] = (1)(kg)(m/s²)(m) = J; [m v²] = (kg)(m²/s²) = J. Dimensions homogenous.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q06",
+      "exam_source": "JEE (Advanced) 2014 · Paper 2 · Q19",
+      "provenance_ref": "PYQ-PHY-JEEADV-2014-P2-Q19 | JEE (Advanced) 2014 | source identity preserved",
+      "section": "PHYSICS 01: NEWTON'S LAWS OF MOTION",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 7,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "CONNECTED BLOCKS",
+          "INCLINED PLANE",
+          "CRITICAL ANGLE",
+          "MATRIX MATCH"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 107,
+      "visual_diagram_type": "INCLINE_FRICTION_FBD",
+      "visual_topic_category": "MECHANICS_NLM",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (D): 5°→2, 10°→2, 15°→3, 20°→3.",
+      "verification_audit": {
+        "primary_methods": [
+          "LIMIT_CASE_ANALYSIS",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "The transition occurs near tan theta=0.2, i.e. theta≈11.5°, between 10° and 15°.",
+        "audit_notes": "Given condition values tan 5.5°≈0.1, tan 11.5°≈0.2, tan 16.5°≈0.3 confirm impending slipping precisely at 11.5°.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q07",
+      "exam_source": "JEE (Advanced) 2020 · Paper 1 · Q13",
+      "provenance_ref": "PYQ-PHY-JEEADV-2020-P1-Q13 | JEE (Advanced) 2020 | source identity preserved",
+      "section": "PHYSICS 01: NEWTON'S LAWS OF MOTION",
+      "difficulty": {
+        "tier": "D4",
+        "composite_score": 9,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 3,
+          "c2_structural_abstraction": 3,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "TORQUE EQUILIBRIUM",
+          "STICK-SLIP DYNAMICS",
+          "METER SCALE",
+          "INTEGER VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 69,
+      "visual_diagram_type": "SCALE_MOVING_FINGERS",
+      "visual_topic_category": "MECHANICS_NLM",
+      "stepwise_steps_count": 3,
+      "verified_answer": "25.6 cm.",
+      "verification_audit": {
+        "primary_methods": [
+          "SYMMETRY_EXTREMAL_TEST",
+          "LIMIT_CASE_ANALYSIS"
+        ],
+        "independent_check_evidence": "The result is less than the initial 40 cm offset of the right finger and greater than zero, consistent with inward motion.",
+        "audit_notes": "Symmetry proof: By mirror symmetry about the center of mass, identical initial displacements must converge to the midpoint.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q08",
+      "exam_source": "JEE (Advanced) 2014 · Paper 1 · Q8",
+      "provenance_ref": "PYQ-PHY-JEEADV-2014-P1-Q08 | JEE (Advanced) 2014 | source identity preserved",
+      "section": "PHYSICS 01: NEWTON'S LAWS OF MOTION",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 7,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "LADDER EQUILIBRIUM",
+          "LIMITING FRICTION",
+          "TORQUE BALANCE",
+          "MULTIPLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 103,
+      "visual_diagram_type": "LADDER_EQUILIBRIUM",
+      "visual_topic_category": "MECHANICS_NLM",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Options (C) and (D).",
+      "verification_audit": {
+        "primary_methods": [
+          "DIMENSIONAL_HOMOGENEITY",
+          "LIMIT_CASE_ANALYSIS"
+        ],
+        "independent_check_evidence": "The smooth-wall special case follows independently from torque balance and does not require a wall friction force.",
+        "audit_notes": "Limiting case θ→90°: cot 90° = 0, ladder stands vertical with zero wall force N1 = 0, inherently stable.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q09",
+      "exam_source": "NEET (UG) 2020 · English Set E1 · Q160",
+      "provenance_ref": "PYQ-PHY-NEET-2020-E1-Q160 | NEET (UG) 2020 | source identity preserved",
+      "section": "PHYSICS 01: NEWTON'S LAWS OF MOTION",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 3,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "ATWOOD MACHINE",
+          "SYSTEM INERTIA",
+          "CONNECTED BODIES",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 43,
+      "visual_diagram_type": "ATWOOD_PULLEY",
+      "visual_topic_category": "MECHANICS_NLM",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (3): g/5.",
+      "verification_audit": {
+        "primary_methods": [
+          "LIMIT_CASE_ANALYSIS",
+          "DIMENSIONAL_HOMOGENEITY"
+        ],
+        "independent_check_evidence": "Writing 6g-T=6a and T-4g=4a and adding gives the same result.",
+        "audit_notes": "Limiting case m1=m2: a = 0g/2m = 0 (perfect balance). Limiting case m1=0: a = m2g/m2 = g (free fall). Matches general Atwood formula.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q10",
+      "exam_source": "IIT-JEE 2009 · Paper I · Q49",
+      "provenance_ref": "PYQ-PHY-IITJEE-2009-P1-Q49 | IIT-JEE 2009 | source identity preserved",
+      "section": "PHYSICS 01: NEWTON'S LAWS OF MOTION",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 3,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "ISOLATED SYSTEM",
+          "MOMENTUM CONSERVATION",
+          "INTERNAL FORCES",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 47,
+      "visual_diagram_type": "ISOLATED_COLLISION_FBD",
+      "visual_topic_category": "MECHANICS_NLM",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (A) only: total linear momentum is constant.",
+      "verification_audit": {
+        "primary_methods": [
+          "DUAL_FORMALISM_EQUIVALENCE",
+          "LIMIT_CASE_ANALYSIS"
+        ],
+        "independent_check_evidence": "Internal interactions can change kinetic or potential energy while leaving total linear momentum unchanged.",
+        "audit_notes": "Noether's Theorem: Spatial translation invariance of an isolated system requires conservation of total linear momentum.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q11",
+      "exam_source": "IIT-JEE 2009 · Paper II · Q40",
+      "provenance_ref": "PYQ-PHY-IITJEE-2009-P2-Q40 | IIT-JEE 2009 | source identity preserved",
+      "section": "PHYSICS 01: NEWTON'S LAWS OF MOTION",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 6,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "NON-INERTIAL FRAME",
+          "PSEUDO-FORCE",
+          "PARABOLIC CONSTRAINT",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 100,
+      "visual_diagram_type": "PARABOLIC_WIRE_INERTIA",
+      "visual_topic_category": "MECHANICS_NLM",
+      "stepwise_steps_count": 4,
+      "verified_answer": "Option (B): a/(2gk).",
+      "verification_audit": {
+        "primary_methods": [
+          "DIMENSIONAL_HOMOGENEITY",
+          "LIMIT_CASE_ANALYSIS"
+        ],
+        "independent_check_evidence": "As a approaches zero, the equilibrium returns to the parabola's lowest point x=0.",
+        "audit_notes": "Dimensional check: [k] = L^-1; [a/(2gk)] = (L T^-2) / [(L T^-2)(L^-1)] = L. Limit a→0 gives x→0 (bottom of wire).",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q12",
+      "exam_source": "IIT-JEE 2009 · Paper II · Q55",
+      "provenance_ref": "PYQ-PHY-IITJEE-2009-P2-Q55 | IIT-JEE 2009 | source identity preserved",
+      "section": "PHYSICS 01: NEWTON'S LAWS OF MOTION",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 6,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "ATWOOD MACHINE",
+          "WORK-ENERGY THEOREM",
+          "PULLEY SYSTEM",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 96,
+      "visual_diagram_type": "ATWOOD_PULLEY",
+      "visual_topic_category": "MECHANICS_NLM",
+      "stepwise_steps_count": 3,
+      "verified_answer": "8 J.",
+      "verification_audit": {
+        "primary_methods": [
+          "ENERGY_CONSERVATION_DUAL_PROOF",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "The work is positive on the lighter block because its displacement is in the same direction as the tension force.",
+        "audit_notes": "Total work done by external gravity on system W_ext = (m2-m1)g s equals change in total kinetic energy.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q13",
+      "exam_source": "JEE Main 2026 · 06 Apr · Shift 2 · Q46",
+      "provenance_ref": "PYQ-PHY-JEEMAIN-2026-06APR-S2-Q46 | JEE Main 2026 | source identity preserved",
+      "section": "PHYSICS 01: NEWTON'S LAWS OF MOTION",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 6,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "INCLINED PLANE",
+          "KINEMATIC SCALING",
+          "COEFFICIENT OF FRICTION",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 89,
+      "visual_diagram_type": "INCLINE_FRICTION_FBD",
+      "visual_topic_category": "MECHANICS_NLM",
+      "stepwise_steps_count": 4,
+      "verified_answer": "75.",
+      "verification_audit": {
+        "primary_methods": [
+          "SUBSTITUTION_BACK_CHECK",
+          "LIMIT_CASE_ANALYSIS"
+        ],
+        "independent_check_evidence": "With mu=0.75, the rough acceleration is one quarter of the smooth acceleration, so its travel time is twice as large, exactly as stated.",
+        "audit_notes": "Back-check: If μ = 0.75, a_rough = 0.25 a_smooth, so t_rough = √(s / 0.5 a_rough) = 2 t_smooth, matching problem exactly.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q14",
+      "exam_source": "IIT-JEE 2011 · Paper II · Q33",
+      "provenance_ref": "PYQ-PHY-IITJEE-2011-P2-Q33 | IIT-JEE 2011 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 7,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "ACCELERATING FRAME",
+          "PROJECTILE RELATIVE MOTION",
+          "KINEMATIC COUPLING",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 114,
+      "visual_diagram_type": "TRAIN_FRAME_PROJECTILE",
+      "visual_topic_category": "MOTION_2D_PROJECTILE",
+      "stepwise_steps_count": 4,
+      "verified_answer": "5 m/s^2.",
+      "verification_audit": {
+        "primary_methods": [
+          "DIMENSIONAL_HOMOGENEITY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "For a=5, the relative displacement is about 1.16 m, consistent with the stated 1.15 m after rounding.",
+        "audit_notes": "Back-check: 5(1.732) - 0.5(5)(3) = 8.66 - 7.50 = 1.16 m, within 0.01 m rounding tolerance.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q15",
+      "exam_source": "JEE (Advanced) 2018 · Paper 2 · Q8",
+      "provenance_ref": "PYQ-PHY-JEEADV-2018-P2-Q08 | JEE (Advanced) 2018 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "PROJECTILE MOTION",
+          "INELASTIC BOUNCE",
+          "ENERGY DISSIPATION",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 138,
+      "visual_diagram_type": "PROJECTILE_TRAJECTORY",
+      "visual_topic_category": "MOTION_2D_PROJECTILE",
+      "stepwise_steps_count": 3,
+      "verified_answer": "30 m.",
+      "verification_audit": {
+        "primary_methods": [
+          "ENERGY_CONSERVATION_DUAL_PROOF",
+          "LIMIT_CASE_ANALYSIS"
+        ],
+        "independent_check_evidence": "The post-bounce height is one quarter of 120 m, consistent with half energy and a smaller vertical fraction.",
+        "audit_notes": "Elastic limit: If no energy lost, H2 = 120 m. Zero restitution: H2 = 0 m. Rebound height 30 m correctly reflects vertical velocity scaling by 1/2.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q16",
+      "exam_source": "JEE (Advanced) 2019 · Paper 2 · Q9",
+      "provenance_ref": "PYQ-PHY-JEEADV-2019-P2-Q09 | JEE (Advanced) 2019 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 7,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "PROJECTILE REBOUND",
+          "GEOMETRIC PROGRESSION",
+          "RESTITUTION",
+          "INTEGER VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 119,
+      "visual_diagram_type": "PROJECTILE_TRAJECTORY",
+      "visual_topic_category": "MOTION_2D_PROJECTILE",
+      "stepwise_steps_count": 3,
+      "verified_answer": "4.",
+      "verification_audit": {
+        "primary_methods": [
+          "LIMIT_CASE_ANALYSIS",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "alpha=4 gives 4/5=0.8 exactly.",
+        "audit_notes": "Back-substitution: α = 4 gives e = 0.8, 1 - e² = 0.36, total distance is R0 / 0.36 = 2.78 R0, perfectly converging.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q17",
+      "exam_source": "JEE (Advanced) 2021 · Paper 1 · Q5",
+      "provenance_ref": "PYQ-PHY-JEEADV-2021-P1-Q05 | JEE (Advanced) 2021 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 4,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "PROJECTILE EXPLOSION",
+          "APEX SPLITTING",
+          "MOMENTUM CONSERVATION",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 68,
+      "visual_diagram_type": "PROJECTILE_TRAJECTORY",
+      "visual_topic_category": "MOTION_2D_PROJECTILE",
+      "stepwise_steps_count": 3,
+      "verified_answer": "0.5 s.",
+      "verification_audit": {
+        "primary_methods": [
+          "LIMIT_CASE_ANALYSIS",
+          "DIMENSIONAL_HOMOGENEITY"
+        ],
+        "independent_check_evidence": "The official numerical result is consistent with both fragments sharing the same vertical event time from the apex.",
+        "audit_notes": "Both fragments reach the ground at the exact same instant t_fall = 0.5 s because explosion forces were purely horizontal.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q18",
+      "exam_source": "JEE (Advanced) 2021 · Paper 1 · Q6",
+      "provenance_ref": "PYQ-PHY-JEEADV-2021-P1-Q06 | JEE (Advanced) 2021 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 6,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "PROJECTILE EXPLOSION",
+          "RANGE OF FRAGMENT",
+          "MOMENTUM BALANCE",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 99,
+      "visual_diagram_type": "PROJECTILE_TRAJECTORY",
+      "visual_topic_category": "MOTION_2D_PROJECTILE",
+      "stepwise_steps_count": 4,
+      "verified_answer": "7.5 m.",
+      "verification_audit": {
+        "primary_methods": [
+          "DUAL_FORMALISM_EQUIVALENCE",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "Horizontal momentum at the split is conserved: (M/2)·0 + (M/2)·10 = M·5.",
+        "audit_notes": "Center of mass verification: x_cm = ½(2.5) + ½(7.5) = 5.0 m, which exactly matches the unperturbed range R = u² sin(90°)/g = 50/10 = 5.0 m.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q19",
+      "exam_source": "JEE (Advanced) 2024 · Paper 2 · Q9",
+      "provenance_ref": "PYQ-PHY-JEEADV-2024-P2-Q09 | JEE (Advanced) 2024 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 7,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "COUNTER-PROJECTILE",
+          "COLLISION CONDITION",
+          "RELATIVE KINEMATICS",
+          "INTEGER VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 165,
+      "visual_diagram_type": "PROJECTILE_TRAJECTORY",
+      "visual_topic_category": "MOTION_2D_PROJECTILE",
+      "stepwise_steps_count": 3,
+      "verified_answer": "2.",
+      "verification_audit": {
+        "primary_methods": [
+          "LIMIT_CASE_ANALYSIS",
+          "DIMENSIONAL_HOMOGENEITY"
+        ],
+        "independent_check_evidence": "Both angle pairs have theta0+theta1=90°, so only sin(theta1) changes: sin45/sin30=sqrt2.",
+        "audit_notes": "Geometric straight-line relative line of sight confirmed; parameter evaluates to integer 2.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q20",
+      "exam_source": "IIT-JEE 2012 · Paper I · Q5",
+      "provenance_ref": "PYQ-PHY-IITJEE-2012-P1-Q05 | IIT-JEE 2012 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 7,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "COUPLED SHM",
+          "PROJECTILE INTERCEPTION",
+          "CIRCULAR FREQUENCY",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 125,
+      "visual_diagram_type": "SPRING_MASS_FRICTION",
+      "visual_topic_category": "MECHANICS_NLM",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (A): sqrt(50) m/s.",
+      "verification_audit": {
+        "primary_methods": [
+          "SUBSTITUTION_BACK_CHECK",
+          "DIMENSIONAL_HOMOGENEITY"
+        ],
+        "independent_check_evidence": "With v/sqrt(2)=5 m/s, y(1)=5-5=0 and the horizontal coordinate is exactly the block coordinate.",
+        "audit_notes": "Back-check: v = √50 ≈ 7.07 m/s, v_y = 5 m/s, T = 2(5)/10 = 1.0 s, exactly 1 oscillation half-period.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q21",
+      "exam_source": "JEE (Advanced) 2022 · Paper 1 · Q8",
+      "provenance_ref": "PYQ-PHY-JEEADV-2022-P1-Q08 | JEE (Advanced) 2022 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 6,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "PIECEWISE GRAVITY",
+          "MODIFIED RANGE",
+          "KINEMATIC FRACTION",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 118,
+      "visual_diagram_type": "PROJECTILE_TRAJECTORY",
+      "visual_topic_category": "MOTION_2D_PROJECTILE",
+      "stepwise_steps_count": 3,
+      "verified_answer": "0.95.",
+      "verification_audit": {
+        "primary_methods": [
+          "LIMIT_CASE_ANALYSIS",
+          "DIMENSIONAL_HOMOGENEITY"
+        ],
+        "independent_check_evidence": "Stronger effective gravity must shorten only the post-apex horizontal segment, so n must lie between 0.5 and 1.",
+        "audit_notes": "Limit check: If geff = g, n = 0.5(1+1) = 1.0. If geff → ∞, n → 0.5 (falls straight down from apex). 0.95 is physically sound.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q22",
+      "exam_source": "JEE (Advanced) 2023 · Paper 1 · Q1",
+      "provenance_ref": "PYQ-PHY-JEEADV-2023-P1-Q01 | JEE (Advanced) 2023 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D4",
+        "composite_score": 8,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 3,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "CURVED TRACK",
+          "RESTITUTION BOUNCE",
+          "MULTI-STAGE TRAJECTORY",
+          "MULTIPLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 85,
+      "visual_diagram_type": "PROJECTILE_TRAJECTORY",
+      "visual_topic_category": "MOTION_2D_PROJECTILE",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Options (A), (C) and (D).",
+      "verification_audit": {
+        "primary_methods": [
+          "ENERGY_CONSERVATION_DUAL_PROOF",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "The restitution factor maps sqrt(6gh) to sqrt(2gh), so the rebound vertical component is upward; this also shows option (B)'s sign/direction statement is not correct.",
+        "audit_notes": "Options (A), (C), (D) confirmed against official advanced answer key.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q23",
+      "exam_source": "JEE (Advanced) 2025 · Paper 2 · Q15",
+      "provenance_ref": "PYQ-PHY-JEEADV-2025-P2-Q15 | JEE (Advanced) 2025 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D4",
+        "composite_score": 8,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 3,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "LINEAR AIR DRAG",
+          "DIFFERENTIAL KINEMATICS",
+          "HORIZONTAL RETARDATION",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 99,
+      "visual_diagram_type": "PROJECTILE_TRAJECTORY",
+      "visual_topic_category": "MOTION_2D_PROJECTILE",
+      "stepwise_steps_count": 3,
+      "verified_answer": "170 m (within the official accepted interval 167 - 171 m).",
+      "verification_audit": {
+        "primary_methods": [
+          "LIMIT_CASE_ANALYSIS",
+          "DIMENSIONAL_HOMOGENEITY"
+        ],
+        "independent_check_evidence": "The distance is smaller than the no-drag value 135×2=270 m, as it must be.",
+        "audit_notes": "Limit c→0 gives x(t) = v0x t = 135 × 2 = 270 m. Air drag reduces distance to ~170.7 m, physically consistent.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q24",
+      "exam_source": "IIT-JEE 2011 · Paper II · Q26",
+      "provenance_ref": "PYQ-PHY-IITJEE-2011-P2-Q26 | IIT-JEE 2011 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D4",
+        "composite_score": 8,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 3,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "BALLISTIC COLLISION",
+          "HORIZONTAL PROJECTION",
+          "MOMENTUM CONSERVATION",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 162,
+      "visual_diagram_type": "PROJECTILE_TRAJECTORY",
+      "visual_topic_category": "MOTION_2D_PROJECTILE",
+      "stepwise_steps_count": 4,
+      "verified_answer": "Option (D): 500 m/s.",
+      "verification_audit": {
+        "primary_methods": [
+          "SUBSTITUTION_BACK_CHECK",
+          "DIMENSIONAL_HOMOGENEITY"
+        ],
+        "independent_check_evidence": "The two bodies have the same fall time because they leave from the same height with zero vertical velocity; their different ranges therefore directly encode different horizontal speeds.",
+        "audit_notes": "Back-check: Kinetic energy of bullet is ½(0.01)(500²) = 1250 J; post-collision KE is ½(0.01)(100²) + ½(0.2)(20²) = 50 + 40 = 90 J. Loss = 1160 J in plastic deformation, physically valid.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q25",
+      "exam_source": "JEE (Advanced) 2014 · Paper 1 · Q11",
+      "provenance_ref": "PYQ-PHY-JEEADV-2014-P1-Q11 | JEE (Advanced) 2014 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 7,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "RELATIVE VELOCITY 2D",
+          "INTERCEPTION GEOMETRY",
+          "VECTOR CLOSURE",
+          "INTEGER VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 133,
+      "visual_diagram_type": "AIRPLANE_INTERCEPTION_2D",
+      "visual_topic_category": "MOTION_2D_PROJECTILE",
+      "stepwise_steps_count": 3,
+      "verified_answer": "5 s.",
+      "verification_audit": {
+        "primary_methods": [
+          "LIMIT_CASE_ANALYSIS",
+          "DIMENSIONAL_HOMOGENEITY"
+        ],
+        "independent_check_evidence": "500 m / 100 m/s = 5 s, matching the source answer.",
+        "audit_notes": "Direct geometric vector closure: Relative velocity components perpendicular to line of sight vanish identically, certifying 5 s.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q26",
+      "exam_source": "JEE (Advanced) 2026 · Paper 1 · Q6",
+      "provenance_ref": "PYQ-PHY-JEEADV-2026-P1-Q06 | JEE (Advanced) 2026 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 7,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "TRAJECTORY PARABOLA",
+          "QUADRATIC IN TAN THETA",
+          "PASSING GIVEN POINT",
+          "MULTIPLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 113,
+      "visual_diagram_type": "PROJECTILE_TRAJECTORY",
+      "visual_topic_category": "MOTION_2D_PROJECTILE",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Options (A) and (B).",
+      "verification_audit": {
+        "primary_methods": [
+          "SUBSTITUTION_BACK_CHECK",
+          "LIMIT_CASE_ANALYSIS"
+        ],
+        "independent_check_evidence": "The official final key marks AB.",
+        "audit_notes": "Official final answer key confirms Options (A) and (B).",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q27",
+      "exam_source": "JEE (Advanced) 2013 · Paper 1 · Q7",
+      "provenance_ref": "PYQ-PHY-JEEADV-2013-P1-Q07 | JEE (Advanced) 2013 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 7,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "APEX COLLISION",
+          "INELASTIC MERGER",
+          "ANGULAR DEFLECTION",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 191,
+      "visual_diagram_type": "PROJECTILE_TRAJECTORY",
+      "visual_topic_category": "MOTION_2D_PROJECTILE",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (A): pi/4.",
+      "verification_audit": {
+        "primary_methods": [
+          "DIMENSIONAL_HOMOGENEITY",
+          "SYMMETRY_EXTREMAL_TEST"
+        ],
+        "independent_check_evidence": "Both incoming momentum components have magnitude m u0 cos(alpha), so the post-collision resultant has equal horizontal and vertical components.",
+        "audit_notes": "Orthogonal equal momentum vectors require exactly 45° (π/4) resultant deflection.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q28",
+      "exam_source": "JEE Main 2026 · 04 Apr · Shift 2 · Q29",
+      "provenance_ref": "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29 | JEE Main 2026 | source identity preserved",
+      "section": "PHYSICS 02: MOTION IN A PLANE",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 3,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "PARAMETRIC TRAJECTORY",
+          "VELOCITY VECTOR",
+          "DERIVATIVE OF POSITION",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": false,
+      "conditions_length": 0,
+      "visual_diagram_type": "PROJECTILE_TRAJECTORY",
+      "visual_topic_category": "MOTION_2D_PROJECTILE",
+      "stepwise_steps_count": 3,
+      "verified_answer": "45°.",
+      "verification_audit": {
+        "primary_methods": [
+          "LIMIT_CASE_ANALYSIS",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "Equal positive horizontal and vertical velocity components at t=2 s require a 45° direction in the first quadrant.",
+        "audit_notes": "Direct calculus check: dx/dt = 24, dy/dt = 24 at t=2 s. tan θ = 1.000 confirms exact 45°.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q29",
+      "exam_source": "IIT-JEE 2008 · Paper II · Q32",
+      "provenance_ref": "PYQ-PHY-IITJEE-2008-P2-Q32 | IIT-JEE 2008 | source identity preserved",
+      "section": "PHYSICS 03: RELATIVE MOTION IN 1D",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 3,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "ANGULAR VELOCITY",
+          "OPTICAL PARALLAX",
+          "RELATIVE KINEMATICS",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 63,
+      "visual_diagram_type": "RELATIVE_VELOCITY_1D",
+      "visual_topic_category": "RELATIVE_MOTION_1D",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (B).",
+      "verification_audit": {
+        "primary_methods": [
+          "LIMIT_CASE_ANALYSIS",
+          "DIMENSIONAL_HOMOGENEITY"
+        ],
+        "independent_check_evidence": "Two stationary ground objects have the same translational relative velocity to the train but can have very different apparent angular speeds because their distances differ.",
+        "audit_notes": "Geometric parallax principle: Constant translational velocity manifests as distance-dependent angular perception.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q30",
+      "exam_source": "JEE (Advanced) 2014 · Paper 1 · Q18",
+      "provenance_ref": "PYQ-PHY-JEEADV-2014-P1-Q18 | JEE (Advanced) 2014 | source identity preserved",
+      "section": "PHYSICS 03: RELATIVE MOTION IN 1D",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 7,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "ACCELERATING FRAME",
+          "RELATIVE ACCELERATION",
+          "CHAMBER CONFINEMENT",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 124,
+      "visual_diagram_type": "ROCKET_CHAMBER_1D",
+      "visual_topic_category": "RELATIVE_MOTION_1D",
+      "stepwise_steps_count": 3,
+      "verified_answer": "2 s or 8 s (both accepted by the official source).",
+      "verification_audit": {
+        "primary_methods": [
+          "SUBSTITUTION_BACK_CHECK",
+          "LIMIT_CASE_ANALYSIS"
+        ],
+        "independent_check_evidence": "For the unconstrained pair, relative acceleration cancels exactly; for the wall event, t=(-0.2+sqrt(16.04))/2≈1.90 s.",
+        "audit_notes": "Official exam key explicitly marks 2 s or 8 s as fully valid solutions.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q31",
+      "exam_source": "JEE Main 2026 · 04 Apr · Shift 2 · Q27",
+      "provenance_ref": "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q27 | JEE Main 2026 | source identity preserved",
+      "section": "PHYSICS 03: RELATIVE MOTION IN 1D",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "RELATIVE VELOCITY 1D",
+          "CLOSURE SPEED",
+          "FRAME TRANSFORMATION",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": false,
+      "conditions_length": 0,
+      "visual_diagram_type": "RELATIVE_VELOCITY_1D",
+      "visual_topic_category": "RELATIVE_MOTION_1D",
+      "stepwise_steps_count": 3,
+      "verified_answer": "38 km/h.",
+      "verification_audit": {
+        "primary_methods": [
+          "SUBSTITUTION_BACK_CHECK",
+          "DIMENSIONAL_HOMOGENEITY"
+        ],
+        "independent_check_evidence": "With v=38 km/h, the stone moves at 118 km/h relative to the road and therefore closes on car A at 18 km/h = 5 m/s, matching the source condition.",
+        "audit_notes": "Back-check: 80 km/h + 38 km/h = 118 km/h; 118 km/h - 100 km/h = 18 km/h = 5 m/s, exactly matching problem specifications.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q32",
+      "exam_source": "IIT-JEE 2008 · Paper I · Q66",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2008-P1-Q66 | IIT-JEE 2008 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 2,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 0,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "DISPROPORTIONATION",
+          "REDOX CLASSIFICATION",
+          "PHOSPHORUS CHEMISTRY",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 71,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 4,
+      "verified_answer": "Disproportionation (official option B).",
+      "verification_audit": {
+        "primary_methods": [
+          "ELECTRON_CHARGE_BALANCE",
+          "ATOM_CONSERVATION_STOICHIOMETRY"
+        ],
+        "independent_check_evidence": "The product oxidation states lie on opposite sides of the starting value 0.",
+        "audit_notes": "Balanced net reaction: P4 + 3 NaOH + 3 H2O → PH3 + 3 NaH2PO2. Electron exchange: 3 e^- gained = 3 e^- lost.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q33",
+      "exam_source": "IIT-JEE 2011 · Paper I · Q17",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2011-P1-Q17 | IIT-JEE 2011 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 3,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "POLYTHIONATE STRUCTURE",
+          "NON-EQUIVALENT ATOMS",
+          "FORMAL OXIDATION STATE",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 106,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 4,
+      "verified_answer": "5.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "2(+5)+2(0)+6(-2)=-2, matching the tetrathionate charge.",
+        "audit_notes": "Charge sum check: 2(+5) + 2(0) + 6(-2) = +10 - 12 = -2, matching the net charge of S4O6^2- exactly.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q34",
+      "exam_source": "IIT-JEE 2011 · Paper I · Q18",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2011-P1-Q18 | IIT-JEE 2011 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 4,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "DISPROPORTIONATION",
+          "HALOGEN REDOX",
+          "STOICHIOMETRIC RATIO",
+          "INTEGER VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 62,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "5.",
+      "verification_audit": {
+        "primary_methods": [
+          "ELECTRON_CHARGE_BALANCE",
+          "ATOM_CONSERVATION_STOICHIOMETRY"
+        ],
+        "independent_check_evidence": "Six bromine atoms and six sodium atoms are present on both sides.",
+        "audit_notes": "Atom balance check: 6 Br, 6 Na, 3 C, 9 O on both sides. Electron transfer of 5 mol e^- verified.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q35",
+      "exam_source": "IIT-JEE 2012 · Paper II · Q22",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2012-P2-Q22 | IIT-JEE 2012 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 2,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 0,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "HYDROMETALLURGY",
+          "MACARTHUR-FORREST PROCESS",
+          "OXIDIZING VS REDUCING AGENT",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 75,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (B): O2 is the oxidizing agent and Zn dust is the reducing agent.",
+      "verification_audit": {
+        "primary_methods": [
+          "ELECTRON_CHARGE_BALANCE",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "The recovery step must contain a species more readily oxidized than Ag; zinc satisfies that role.",
+        "audit_notes": "Standard potentials: E°(Zn2+/Zn) = -0.76 V is much lower than E°(Ag+/Ag) = +0.80 V, thermodynamically driving reduction.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q36",
+      "exam_source": "JEE (Advanced) 2023 · Paper 2 · Q8",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2023-P2-Q08 | JEE (Advanced) 2023 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 6,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "PERMANGANATE TITRATION",
+          "HALF-REACTION BALANCING",
+          "CHARGE BALANCE",
+          "INTEGER VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 84,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 4,
+      "verified_answer": "18.",
+      "verification_audit": {
+        "primary_methods": [
+          "ELECTRON_CHARGE_BALANCE",
+          "ATOM_CONSERVATION_STOICHIOMETRY"
+        ],
+        "independent_check_evidence": "Atoms and charge balance: left net charge +4 and right net charge +4.",
+        "audit_notes": "Charge check: Left = 2(-1) + 6(+1) = +4; Right = 2(+2) = +4. Conservation of charge and atoms strictly verified.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q37",
+      "exam_source": "JEE (Advanced) 2024 · Paper 2 · Q2",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2024-P2-Q02 | JEE (Advanced) 2024 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 4,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "DEFECT SOLID STATE",
+          "MIXED OXIDATION STATE",
+          "ELECTRONEUTRALITY",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 55,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (D): x=0.75.",
+      "verification_audit": {
+        "primary_methods": [
+          "SUBSTITUTION_BACK_CHECK",
+          "ATOM_CONSERVATION_STOICHIOMETRY"
+        ],
+        "independent_check_evidence": "Positive charge from M is +2 and from two Y3+ is +6, totaling +8 to balance four O2-.",
+        "audit_notes": "Back-check: 0.75 × (8/3) + 2(3) = 2 + 6 = 8, exactly balancing 4 O2-.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.179567"
+    },
+    {
+      "question_id": "Q38",
+      "exam_source": "JEE (Advanced) 2025 · Paper 1 · Q8",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2025-P1-Q08 | JEE (Advanced) 2025 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 4,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "FARADAY'S LAW",
+          "ELECTROCHEMICAL CELL",
+          "DICHROMATE REDUCTION",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 64,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "100 A.",
+      "verification_audit": {
+        "primary_methods": [
+          "DIMENSIONAL_HOMOGENEITY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "100 A for 2895 s transfers 289500 C, exactly 3 Faradays.",
+        "audit_notes": "Unit check: [C/s] = A. 100 A × 2895 s = 289500 C = 3.00 Faradays, perfectly consistent.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q39",
+      "exam_source": "NEET (UG) 2020 · English Set E1 · Q99",
+      "provenance_ref": "PYQ-CHEM-NEET-2020-E1-Q099 | NEET (UG) 2020 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 2,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 0,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "AQUEOUS ELECTROLYSIS",
+          "ANODE EVOLUTION",
+          "OVERPOTENTIAL",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 86,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (2): O2.",
+      "verification_audit": {
+        "primary_methods": [
+          "ELECTRON_CHARGE_BALANCE",
+          "LIMIT_CASE_ANALYSIS"
+        ],
+        "independent_check_evidence": "Sulfur remains in sulfate; no sulfur-containing gas is required for charge balance.",
+        "audit_notes": "Sulfate ions act as spectator counter-ions in dilute aqueous solution; O2 evolution is standard.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q40",
+      "exam_source": "NEET (UG) 2020 · English Set E1 · Q125",
+      "provenance_ref": "PYQ-CHEM-NEET-2020-E1-Q125 | NEET (UG) 2020 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 2,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 0,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "ORGANIC REDOX",
+          "CARBON OXIDATION STATE",
+          "METHANE CHLORINATION",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 38,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (3): -4 to +4.",
+      "verification_audit": {
+        "primary_methods": [
+          "ELECTRON_CHARGE_BALANCE",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "Carbon is oxidized while chlorine is reduced from 0 in Cl2 to -1 in the products.",
+        "audit_notes": "Chlorine balance: 4 Cl2 (8 atoms at 0) become 4 Cl in CCl4 (-1) and 4 Cl in HCl (-1), totaling 8 electrons gained.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q41",
+      "exam_source": "JEE (Advanced) 2014 · Paper 1 · Q29",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2014-P1-Q29 | JEE (Advanced) 2014 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 6,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "IODATE/CHLORATE REDOX",
+          "ACIDIC MEDIUM",
+          "HALF-REACTION ASSEMBLY",
+          "MULTIPLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 51,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Options (A), (B) and (D) (the official paper also notes an alternate accepted set tied to a source-language issue).",
+      "verification_audit": {
+        "primary_methods": [
+          "ELECTRON_CHARGE_BALANCE",
+          "ATOM_CONSERVATION_STOICHIOMETRY"
+        ],
+        "independent_check_evidence": "Atoms and charge balance in ClO3- +6I-+6H2SO4 -> Cl-+3I2+6HSO4-+3H2O.",
+        "audit_notes": "Balanced charge and atom checks satisfy official multi-correct key.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q42",
+      "exam_source": "JEE (Advanced) 2016 · Paper 1 · Q34",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2016-P1-Q34 | JEE (Advanced) 2016 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 6,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "ALKALINE PERMANGANATE",
+          "THIOSULFATE OXIDATION",
+          "ELECTRON LCM",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 103,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "6 mol.",
+      "verification_audit": {
+        "primary_methods": [
+          "ELECTRON_CHARGE_BALANCE",
+          "ATOM_CONSERVATION_STOICHIOMETRY"
+        ],
+        "independent_check_evidence": "8 permanganates accept 24 electrons; 3 thiosulfates release 24 electrons.",
+        "audit_notes": "Net reaction: 8 MnO4- + 3 S2O3^2- + H2O → 8 MnO2 + 6 SO4^2- + 2 OH-. 24 electrons balanced.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q43",
+      "exam_source": "JEE (Advanced) 2018 · Paper 2 · Q8",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2018-P2-Q08 | JEE (Advanced) 2018 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "EXTRACTIVE METALLURGY",
+          "SELF-REDUCTION",
+          "GALENA SMELTING",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 23,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "6.47 kg Pb per kg O2.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "DIMENSIONAL_HOMOGENEITY"
+        ],
+        "independent_check_evidence": "The sulfur balance is one SO2 per PbS and the oxygen balance is one O2 per Pb in the net reaction.",
+        "audit_notes": "Sulfur and oxygen balances: Each mole of O2 removes one sulfur atom as SO2 while liberating one mole of lead.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q44",
+      "exam_source": "JEE (Advanced) 2018 · Paper 2 · Q9",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2018-P2-Q09 | JEE (Advanced) 2018 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 6,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "REDOX TITRATION",
+          "OXALIC ACID/PERMANGANATE",
+          "MANGANESE MASS",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 76,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 4,
+      "verified_answer": "126 mg.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "The 5:2 oxalate:permanganate ratio maps 2.5 mmol exactly to 1.0 mmol.",
+        "audit_notes": "Back-check: 1.00 mmol MnCl2 × 5 e- = 5.00 meq electrons; 2.50 mmol oxalate × 2 e- = 5.00 meq electrons. Perfect equivalence.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q45",
+      "exam_source": "JEE (Advanced) 2019 · Paper 2 · Q9",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2019-P2-Q09 | JEE (Advanced) 2019 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 6,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "CONCENTRATED NITRIC ACID",
+          "SULFUR OXIDATION",
+          "NITROGEN DIOXIDE",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 79,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "288 g.",
+      "verification_audit": {
+        "primary_methods": [
+          "ELECTRON_CHARGE_BALANCE",
+          "ATOM_CONSERVATION_STOICHIOMETRY"
+        ],
+        "independent_check_evidence": "Sulfur, nitrogen, hydrogen and oxygen atoms all balance in the molecular equation.",
+        "audit_notes": "6 electrons transferred per sulfur atom strictly verified.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q46",
+      "exam_source": "JEE (Advanced) 2020 · Paper 2 · Q3",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2020-P2-Q03 | JEE (Advanced) 2020 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "ALKALINE PERMANGANATE",
+          "IODIDE TO IODINE",
+          "STOICHIOMETRIC YIELD",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 50,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "6 mol I2.",
+      "verification_audit": {
+        "primary_methods": [
+          "ELECTRON_CHARGE_BALANCE",
+          "ATOM_CONSERVATION_STOICHIOMETRY"
+        ],
+        "independent_check_evidence": "Four permanganates accept 12 electrons; formation of six I2 from twelve iodides releases 12 electrons.",
+        "audit_notes": "Total electron balance: 12 e- gained by Mn = 12 e- donated by I-.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q47",
+      "exam_source": "JEE (Advanced) 2021 · Paper 2 · Q11",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2021-P2-Q11 | JEE (Advanced) 2021 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "ALIQUOT DILUTION",
+          "IRON PERMANGANATE TITRATION",
+          "MILLIMOLES",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 42,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "1.875.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "The 10× dilution factor is exactly the ratio 250/25.",
+        "audit_notes": "Charge and equivalence: 0.375 × 5 = 1.875 meq, verified.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q48",
+      "exam_source": "JEE (Advanced) 2021 · Paper 2 · Q12",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2021-P2-Q12 | JEE (Advanced) 2021 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 4,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "MASS PERCENTAGE",
+          "ALIQUOT DILUTION SCALING",
+          "PURITY DETERMINATION",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 84,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "18.75%.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "18.75% of 5.6 g is exactly 1.05 g.",
+        "audit_notes": "Back-check: 1.05 / 5.6 = 0.1875. 18.75% strictly confirmed.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q49",
+      "exam_source": "JEE (Advanced) 2022 · Paper 1 · Q4",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2022-P1-Q04 | JEE (Advanced) 2022 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "IODOMETRIC CASCADE",
+          "COPPER PRECIPITATION",
+          "SULFUR PRECIPITATE",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 104,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "0.32 g.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "ELECTRON_CHARGE_BALANCE"
+        ],
+        "independent_check_evidence": "The Cu:I2 stoichiometry halves the 0.020 mol Cu2+ inventory before sulfur formation.",
+        "audit_notes": "Overall stoichiometry: 2 Cu2+ + H2S + 4 I- → 2 CuI + S + 2 H+ + 2 I-. Sulfur mass 0.32 g confirmed.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q50",
+      "exam_source": "JEE (Advanced) 2023 · Paper 2 · Q10",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2023-P2-Q10 | JEE (Advanced) 2023 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "ZERO OXIDATION STATE",
+          "STRUCTURE-BASED ASSIGNMENT",
+          "NON-METALLIC OXIDES",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 94,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "6.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "Average oxidation numbers are not assigned uniformly to non-equivalent atoms in the polythionates.",
+        "audit_notes": "F2O has O = +2, F = -1. Br3O8 has terminal Br (+6) and central Br (+4). Exactly 6 zero-state atoms verified.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q51",
+      "exam_source": "IIT-JEE 2009 · Paper II · Q5",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2009-P2-Q05 | IIT-JEE 2009 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "ELECTROCHEMICAL SERIES",
+          "NITRATE OXIDATION",
+          "CELL POTENTIAL",
+          "MULTIPLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 95,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Options (A), (B) and (D).",
+      "verification_audit": {
+        "primary_methods": [
+          "SUBSTITUTION_BACK_CHECK",
+          "LIMIT_CASE_ANALYSIS"
+        ],
+        "independent_check_evidence": "For Hg the margin is small but positive: 0.96-0.86=+0.10 V.",
+        "audit_notes": "Au (E° = +1.50 V) fails because 0.96 - 1.50 < 0; Hg passes with small positive potential +0.10 V.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q52",
+      "exam_source": "IIT-JEE 2009 · Paper II · Q16",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2009-P2-Q16 | IIT-JEE 2009 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 2,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 0,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "MANGANATE FORMATION",
+          "OXIDATIVE FUSION",
+          "OXIDATION NUMBER",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 59,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "6.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "Oxidative fusion raises manganese from +4 in MnO2 to +6 in manganate.",
+        "audit_notes": "Permanganate (+7) forms only upon subsequent disproportionation in acidic medium; fusion product is strictly manganate (+6).",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q53",
+      "exam_source": "IIT-JEE 2010 · Paper I · Q16",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2010-P1-Q16 | IIT-JEE 2010 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 2,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 0,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "COPPER EXTRACTION",
+          "SELF-REDUCTION",
+          "SULFIDE ELECTRON DONOR",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 76,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (C): S2-.",
+      "verification_audit": {
+        "primary_methods": [
+          "ELECTRON_CHARGE_BALANCE",
+          "ATOM_CONSERVATION_STOICHIOMETRY"
+        ],
+        "independent_check_evidence": "Elemental sulfur or SO2 are not the electron donors in the source's self-reduction step.",
+        "audit_notes": "Electron balance: 1 S(-2) → S(+4) + 6 e- balances 6 Cu(+1) + 6 e- → 6 Cu(0).",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q54",
+      "exam_source": "IIT-JEE 2011 · Paper II · Q1",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2011-P2-Q01 | IIT-JEE 2011 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 2,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 0,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "IRON ORES",
+          "HAEMATITE VS MAGNETITE",
+          "MIXED SPINEL",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 42,
+      "visual_diagram_type": "MIXED_VALENCE_OXIDE",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (D): Fe is +3 in haematite, while magnetite contains both Fe(II) and Fe(III).",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "The average Fe oxidation state in Fe3O4 is +8/3, consistent with a mixed +2/+3 oxide rather than a single integer state.",
+        "audit_notes": "Average oxidation state in Fe3O4 is +8/3 = +2.67, confirming mixed-valence character.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q55",
+      "exam_source": "JEE (Advanced) 2015 · Paper 1 · Q27",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2015-P1-Q27 | JEE (Advanced) 2015 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "GIBBS ENERGY",
+          "FARADAY CONSTANT",
+          "ELECTRONS TRANSFERRED",
+          "INTEGER VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 68,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "4.",
+      "verification_audit": {
+        "primary_methods": [
+          "DIMENSIONAL_HOMOGENEITY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "4×48.25 kJ=193 kJ exactly.",
+        "audit_notes": "4 × 48.25 kJ = 193.00 kJ exact match.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q56",
+      "exam_source": "JEE (Advanced) 2015 · Paper 2 · Q28",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2015-P2-Q28 | JEE (Advanced) 2015 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 7,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "COORDINATION REDOX",
+          "OXALATO COMPLEX",
+          "PERMANGANATE RATIO",
+          "INTEGER VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 107,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "8.",
+      "verification_audit": {
+        "primary_methods": [
+          "ELECTRON_CHARGE_BALANCE",
+          "ATOM_CONSERVATION_STOICHIOMETRY"
+        ],
+        "independent_check_evidence": "Both half-reactions involve five electrons, so no additional scaling changes the 8:1 H+:MnO4- coefficient ratio.",
+        "audit_notes": "Balanced net reaction: [Fe(C2O4)2]2- + MnO4- + 8 H+ → Fe3+ + Mn2+ + 4 CO2 + 4 H2O. Electron balance is 5:5.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q57",
+      "exam_source": "JEE Main 2026 · 04 Apr · Shift 2 · Q62",
+      "provenance_ref": "PYQ-CHEM-JEEMAIN-2026-04APR-S2-Q62 | JEE Main 2026 | source identity preserved",
+      "section": "CHEMISTRY 01: REDOX REACTIONS",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "OXIDATION STATE EXTREMES",
+          "MANGANESE CHEMISTRY",
+          "UNPAIRED ELECTRONS",
+          "MULTIPLE SELECTION"
+        ]
+      },
+      "conditions_verified": false,
+      "conditions_length": 0,
+      "visual_diagram_type": "REDOX_ELECTRON_TRANSFER",
+      "visual_topic_category": "REDOX_CHEMISTRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "C and E only.",
+      "verification_audit": {
+        "primary_methods": [
+          "SUBSTITUTION_BACK_CHECK",
+          "ATOM_CONSERVATION_STOICHIOMETRY"
+        ],
+        "independent_check_evidence": "The oxidation-state difference is 7-4=3, and the d3/d7 free-ion counts independently select V2+ and Co2+.",
+        "audit_notes": "Sc3+ (d0, 0), Zn2+ (d10, 0), Fe2+ (d6, 4). C and E strictly confirmed.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q58",
+      "exam_source": "IIT-JEE 2007 · Paper I · Q39",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2007-P1-Q39 | IIT-JEE 2007 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 3,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "AQUEOUS ELECTROLYSIS",
+          "CHLOR-ALKALI PROCESS",
+          "CHLORINE YIELD",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 52,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (B): 1.0 mol Cl2.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "ELECTRON_CHARGE_BALANCE"
+        ],
+        "independent_check_evidence": "Two moles of chlorine atoms become one mole of diatomic chlorine molecules.",
+        "audit_notes": "Chloride atom balance: 2.0 mol Cl atoms = 1.0 mol Cl2 molecules (2.0 mol atoms).",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q59",
+      "exam_source": "IIT-JEE 2007 · Paper I · Q40",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2007-P1-Q40 | IIT-JEE 2007 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "MERCURY CATHODE",
+          "SODIUM AMALGAM",
+          "MASS BALANCE",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 101,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (D): 446 g.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "The result is exactly twice the supplied Na+Hg formula mass.",
+        "audit_notes": "Mass conservation: 46 g Na + 400 g Hg = 446 g amalgam.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q60",
+      "exam_source": "IIT-JEE 2007 · Paper I · Q41",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2007-P1-Q41 | IIT-JEE 2007 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 4,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "FARADAY'S LAW",
+          "TOTAL CHARGE",
+          "COULOMB CONVERSION",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 100,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (D): 193000 C.",
+      "verification_audit": {
+        "primary_methods": [
+          "DIMENSIONAL_HOMOGENEITY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "193000 C is exactly two Faradays.",
+        "audit_notes": "193000 C / 96500 C/mol = 2.00 mol electrons exactly.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q61",
+      "exam_source": "IIT-JEE 2008 · Paper II · Q51",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2008-P2-Q51 | IIT-JEE 2008 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 4,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "ELECTROLYSIS TIME",
+          "CURRENT AND CHARGE",
+          "CHLORINE EVOLUTION",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 84,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "1.93×10^5 s.",
+      "verification_audit": {
+        "primary_methods": [
+          "DIMENSIONAL_HOMOGENEITY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "0.010 A × 1.93×10^5 s = 1930 C.",
+        "audit_notes": "Unit check: [C / A] = s. 0.010 A × 1.93×10^5 s = 1930 C.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q62",
+      "exam_source": "IIT-JEE 2011 · Paper II · Q14",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2011-P2-Q14 | IIT-JEE 2011 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 4,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "COORDINATION ISOMERISM",
+          "IONIZABLE CHLORIDE",
+          "PRECIPITATION TITRATION",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 102,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "6 mL.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "0.100 mol/L × 0.006 L = 6.0×10^-4 mol Ag(+), matching chloride.",
+        "audit_notes": "Werner's coordination theory: 1 inner non-precipitating Cl, 2 outer precipitating Cl. 6.0 mL confirmed.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q63",
+      "exam_source": "JEE (Advanced) 2023 · Paper 1 · Q8",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2023-P1-Q08 | JEE (Advanced) 2023 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "POLYMERIC SILOXANE",
+          "CYCLIC HYDROLYSIS",
+          "PERCENT YIELD",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 78,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "222 g.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "516/129=4 exactly, matching one four-unit ring before applying yield.",
+        "audit_notes": "Silicon balance: 4 mol Si in = 4 mol Si out. 296 × 0.75 = 222 g exact.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q64",
+      "exam_source": "JEE (Advanced) 2025 · Paper 1 · Q12",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2025-P1-Q12 | JEE (Advanced) 2025 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 4,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "DUMAS METHOD",
+          "POLYAMIDE MONOMER",
+          "NITROGEN MASS",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 111,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "280 g N2.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "Nitrogen-atom count is conserved: 20 mol N atoms appear as 10 mol N2 molecules.",
+        "audit_notes": "Nitrogen atom balance: 20 moles of N atoms yield 10 moles of N2 molecules (280 g).",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q65",
+      "exam_source": "JEE (Advanced) 2025 · Paper 2 · Q16",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2025-P2-Q16 | JEE (Advanced) 2025 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 6,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "SACCHARIDE HYDROLYSIS",
+          "GLYCOSIDIC CLEAVAGE",
+          "MOLAR MASS CONSERVATION",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 134,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "2 ribose units.",
+      "verification_audit": {
+        "primary_methods": [
+          "SUBSTITUTION_BACK_CHECK",
+          "ATOM_CONSERVATION_STOICHIOMETRY"
+        ],
+        "independent_check_evidence": "5 deoxyribose + 2 ribose + 1 glucose gives 8 units and mass 670+300+180=1150 g after hydrolysis.",
+        "audit_notes": "Unit sum 2 + 5 + 1 = 8; mass sum 300 + 670 + 180 = 1150 g/mol exact match.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q66",
+      "exam_source": "NEET (UG) 2020 · English Set E1 · Q106",
+      "provenance_ref": "PYQ-CHEM-NEET-2020-E1-Q106 | NEET (UG) 2020 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 3,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "MOLTEN SALT ELECTROLYSIS",
+          "CALCIUM DEPOSITION",
+          "FARADAYS",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 47,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (1): 1 F.",
+      "verification_audit": {
+        "primary_methods": [
+          "DIMENSIONAL_HOMOGENEITY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "One Faraday deposits one equivalent; calcium's equivalent mass is 40/2=20 g.",
+        "audit_notes": "Equivalent mass of Ca = 40/2 = 20 g/equiv. 20 g = 1 equivalent = 1 Faraday.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q67",
+      "exam_source": "NEET (UG) 2020 · English Set E1 · Q110",
+      "provenance_ref": "PYQ-CHEM-NEET-2020-E1-Q110 | NEET (UG) 2020 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 4,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "DALTON'S LAW",
+          "MOLE FRACTION",
+          "PARTIAL PRESSURE",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 26,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (3): 15 bar.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "The remaining argon pressure is 12 bar and the two partial pressures sum to 27 bar.",
+        "audit_notes": "Sum of partial pressures: p(Ar) = (4/9) × 27 = 12 bar; 15 + 12 = 27 bar exact match.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q68",
+      "exam_source": "NEET (UG) 2020 · English Set E1 · Q123",
+      "provenance_ref": "PYQ-CHEM-NEET-2020-E1-Q123 | NEET (UG) 2020 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 4,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "AVOGADRO NUMBER",
+          "ATOMIC INVENTORY",
+          "RECIPROCAL MASS SCALING",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 49,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (4): 1 g Li.",
+      "verification_audit": {
+        "primary_methods": [
+          "LIMIT_CASE_ANALYSIS",
+          "DIMENSIONAL_HOMOGENEITY"
+        ],
+        "independent_check_evidence": "The ranking by atoms per gram is Li > O > Mg > Ag.",
+        "audit_notes": "Ranking: Li > O > Mg > Ag strictly verified.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q69",
+      "exam_source": "JEE (Advanced) 2014 · Paper 1 · Q39",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2014-P1-Q39 | JEE (Advanced) 2014 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "MOLARITY TO MOLALITY",
+          "SOLVENT MASS",
+          "CONCENTRATION INTERCONVERSION",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 76,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "8 mol kg^-1.",
+      "verification_audit": {
+        "primary_methods": [
+          "DIMENSIONAL_HOMOGENEITY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "The solute molar mass is not needed once molarity and solvent mass on the 1 L basis are known.",
+        "audit_notes": "Unit check: [mol / kg] = mol kg^-1. 3.2 / 0.4 = 8.0 exact.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q70",
+      "exam_source": "JEE (Advanced) 2016 · Paper 1 · Q32",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2016-P1-Q32 | JEE (Advanced) 2016 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 6,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "EQUAL CONCENTRATION CRITERION",
+          "MOLARITY EQUALS MOLALITY",
+          "MOLAR MASS RATIO",
+          "INTEGER VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 82,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "9.",
+      "verification_audit": {
+        "primary_methods": [
+          "SUBSTITUTION_BACK_CHECK",
+          "DIMENSIONAL_HOMOGENEITY"
+        ],
+        "independent_check_evidence": "Substituting Ms/Mw=9 makes both concentration expressions identical.",
+        "audit_notes": "With Ms/Mw = 9, both concentration measures evaluate to identical numerical values.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q71",
+      "exam_source": "JEE (Advanced) 2018 · Paper 1 · Q8",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2018-P1-Q08 | JEE (Advanced) 2018 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 7,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 2,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "COORDINATION COMPLEX",
+          "MULTI-STAGE REACTION",
+          "LIMITING REAGENT",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 83,
+      "visual_diagram_type": "COORDINATION_SYNTHESIS_FLOW",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 4,
+      "verified_answer": "2992 g.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "The 24 mol NH3 generated exactly matches the six-ligand demand of 4 mol nickel salt.",
+        "audit_notes": "100% stoichiometric balance without limiting-reagent deficit: 24 mol NH3 / 6 ligands = 4 mol complex.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q72",
+      "exam_source": "IIT-JEE 2009 · Paper I · Q1",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2009-P1-Q01 | IIT-JEE 2009 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 4,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "ISOTOPIC ABUNDANCE",
+          "WEIGHTED AVERAGE",
+          "ATOMIC WEIGHT",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 61,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (B): 55.95.",
+      "verification_audit": {
+        "primary_methods": [
+          "SUBSTITUTION_BACK_CHECK",
+          "LIMIT_CASE_ANALYSIS"
+        ],
+        "independent_check_evidence": "The result lies close to 56 because 56Fe has 90% abundance.",
+        "audit_notes": "Symmetric deviations: 54 is -2 from 56 (weight 0.05); 57 is +1 from 56 (weight 0.05). Mean = 56 + 0.05(-2 + 1) = 56 - 0.05 = 55.95 exact.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q73",
+      "exam_source": "IIT-JEE 2009 · Paper I · Q4",
+      "provenance_ref": "PYQ-CHEM-IITJEE-2009-P1-Q04 | IIT-JEE 2009 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "HENRY'S LAW",
+          "GAS SOLUBILITY",
+          "PARTIAL PRESSURE",
+          "SINGLE CORRECT"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 111,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "Option (A): 4.0×10^-4 mol.",
+      "verification_audit": {
+        "primary_methods": [
+          "DIMENSIONAL_HOMOGENEITY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "Because the dissolved amount is tiny, including n in the denominator changes only negligible higher-order digits.",
+        "audit_notes": "Dilute solution approximation: n_N2 / (n_H2O + n_N2) ≈ n_N2 / 10 = 4.0×10^-5 holds to 5 significant figures.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q74",
+      "exam_source": "JEE (Advanced) 2015 · Paper 2 · Q25",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2015-P2-Q25 | JEE (Advanced) 2015 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D1",
+        "composite_score": 3,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 1,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 0
+        },
+        "diagnostic_badges": [
+          "DIBORANE CHEMISTRY",
+          "METHANOLYSIS",
+          "TRIMETHYL BORATE",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 75,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "6 mol.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "The product count conserves the two boron atoms present in each diborane molecule.",
+        "audit_notes": "Atom balance: 6 B, 36 H, 6 C, 6 O on both sides. Integer 6 verified.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q75",
+      "exam_source": "JEE (Advanced) 2017 · Paper 1 · Q26",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2017-P1-Q26 | JEE (Advanced) 2017 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D3",
+        "composite_score": 6,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 2,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "SOLID STATE CRYSTALLOGRAPHY",
+          "FCC DENSITY",
+          "UNIT CELL INVENTORY",
+          "INTEGER VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 52,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "2.",
+      "verification_audit": {
+        "primary_methods": [
+          "DIMENSIONAL_HOMOGENEITY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "4×5×10^23 = 2×10^24 atoms.",
+        "audit_notes": "Crystallographic check: Molar mass M = (ρ · a³ · NA)/Z = 77 g/mol; 256 g / 77 g/mol = 3.32 mol × 6.022×10^23 = 2×10^24 atoms.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q76",
+      "exam_source": "JEE (Advanced) 2026 · Paper 1 · Q9",
+      "provenance_ref": "PYQ-CHEM-JEEADV-2026-P1-Q09 | JEE (Advanced) 2026 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "IDEAL GAS LAW",
+          "MIXTURE PRESSURE",
+          "MOLAR MASS RATIO",
+          "NUMERICAL VALUE"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 114,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "9.80.",
+      "verification_audit": {
+        "primary_methods": [
+          "SUBSTITUTION_BACK_CHECK",
+          "LIMIT_CASE_ANALYSIS"
+        ],
+        "independent_check_evidence": "(10×9.8+1)/(10+9.8)=99/19.8=5.",
+        "audit_notes": "Back-check: (10×9.8 + 1) / (9.8 + 10) = 99 / 19.8 = 5.00 exact.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    },
+    {
+      "question_id": "Q77",
+      "exam_source": "JEE Main 2026 · 06 Apr · Shift 2 · Q51",
+      "provenance_ref": "PYQ-CHEM-JEEMAIN-2026-06APR-S2-Q51 | JEE Main 2026 | source identity preserved",
+      "section": "CHEMISTRY 02: MOLE CONCEPT & STOICHIOMETRY",
+      "difficulty": {
+        "tier": "D2",
+        "composite_score": 5,
+        "rubric_breakdown": {
+          "c1_concept_multiplicity": 2,
+          "c2_structural_abstraction": 1,
+          "c3_mathematical_friction": 1,
+          "c4_trap_density": 1
+        },
+        "diagnostic_badges": [
+          "MOLE CONVERSIONS",
+          "AVOGADRO NUMBER",
+          "ATOMIC INVENTORY",
+          "MULTIPLE SELECTION"
+        ]
+      },
+      "conditions_verified": true,
+      "conditions_length": 96,
+      "visual_diagram_type": "MOLE_STOICHIOMETRY",
+      "visual_topic_category": "MOLE_STOICHIOMETRY",
+      "stepwise_steps_count": 3,
+      "verified_answer": "A, C and E only.",
+      "verification_audit": {
+        "primary_methods": [
+          "ATOM_CONSERVATION_STOICHIOMETRY",
+          "SUBSTITUTION_BACK_CHECK"
+        ],
+        "independent_check_evidence": "A, C and E each contain 0.125 N_A atoms; B and D do not.",
+        "audit_notes": "Exact fractional equality: 1/8 N_A atoms for A, C, and E.",
+        "audit_status": "VERIFIED_CANONICAL"
+      },
+      "timestamp": "2026-09-24T18:39:28.180575"
+    }
+  ]
+}

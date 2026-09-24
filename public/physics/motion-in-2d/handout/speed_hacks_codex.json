@@ -1,0 +1,381 @@
+{
+  "metadata": {
+    "title": "Grade 9 & 10 Foundation Ready-Reference Formulas & Exam Speed Hacks Handout",
+    "edition": "10-Inch Tablet Landscape Reference Edition (280mm x 175mm)",
+    "version": "2.0.0-FOUNDATION",
+    "target_audience": "Grade 9-10 Foundation, JEE Main, NEET (UG), and National Science Olympiad (NSEJS/IJSO)",
+    "total_modules": 5,
+    "total_core_formulas": 20,
+    "total_speed_hacks": 20,
+    "curriculum_scope": "Secondary Foundation & National Competitive Benchmarks"
+  },
+  "universal_meta_heuristics": [
+    {
+      "heuristic_name": "Dimensional Homogeneity Filter",
+      "rule": "Every additive term and both sides of an equality must possess identical SI dimensions [M^a L^b T^c].",
+      "exam_application": "Instantly eliminates 1 to 2 incorrect multiple-choice options before writing any physics derivation."
+    },
+    {
+      "heuristic_name": "Limiting Boundary-Case Stress Test",
+      "rule": "Test asymptotic parameter extremes (θ→0°, θ→90°, μ→0, μ→∞, m→0, M→∞).",
+      "exam_application": "If an acceleration formula on an incline does not yield a = g sinθ when μ→0, or a = g when θ→90°, reject it immediately."
+    },
+    {
+      "heuristic_name": "Redox Electron Charge Conservation Balance",
+      "rule": "Total ionic charges on the reactant side must strictly match total ionic charges on the product side (Σ q_initial = Σ q_final).",
+      "exam_application": "Validates redox equation balancing in 5 seconds without re-counting intermediate hydrogen and oxygen atoms."
+    },
+    {
+      "heuristic_name": "Stoichiometric Mass & Atom Invariance",
+      "rule": "In closed chemical reactions, total grams of reactants equal total grams of products (Σ m_reactants = Σ m_products).",
+      "exam_application": "Cracks complex multi-stage mixture and gas stoichiometry problems via global mass conservation."
+    }
+  ],
+  "modules": [
+    {
+      "module_id": "MOD-01",
+      "module_title": "1D Kinematics & Relative Motion Speed Codex",
+      "topic_category": "KINEMATICS_1D_AND_RELATIVE",
+      "target_exams": [
+        "Grade 9-10 Foundation",
+        "JEE Main",
+        "NEET (UG)",
+        "NSEJS"
+      ],
+      "sections": [
+        {
+          "title": "Galileo's Odd-Integer Free-Fall Law",
+          "formula": "s<sub>1</sub> : s<sub>2</sub> : s<sub>3</sub> : ... : s<sub>n</sub> = 1 : 3 : 5 : ... : (2n - 1)",
+          "rationale": "Over consecutive equal time intervals Δt from rest under constant acceleration a, distance s<sub>n</sub> = ½ a (Δt)² (2n - 1).",
+          "speed_hack": "Avoid quadratic displacement equations. If distance in the 1st second is h, distance in the 3rd second is identically 5h.",
+          "boundary_condition": "Initial velocity must be strictly zero (u = 0) and acceleration must be constant.",
+          "trap_warning": "Never apply if body has non-zero initial speed (u ≠ 0). In that case, s<sub>n</sub> = u Δt + ½ a (Δt)² (2n - 1).",
+          "drill": {
+            "topic": "Free Fall from Tower",
+            "exam_benchmark": "NEET (UG) / JEE Main Core",
+            "speed_vs_standard": "10s vs 60s",
+            "lightning_solution": "Distance in 4th second for dropped stone = (2×4 - 1) × (½ g) = 7 × 4.9 = 34.3 m directly."
+          }
+        },
+        {
+          "title": "Average Speed for Segmented Journeys",
+          "formula": "Equal Distances: v<sub>avg</sub> = 2 v<sub>1</sub> v<sub>2</sub> / (v<sub>1</sub> + v<sub>2</sub>) &nbsp;|&nbsp; Equal Times: v<sub>avg</sub> = (v<sub>1</sub> + v<sub>2</sub>) / 2",
+          "rationale": "Equal distances mandate harmonic mean (time varies inversely with speed); equal times mandate arithmetic mean.",
+          "speed_hack": "By AM-HM inequality, v<sub>avg, time</sub> ≥ v<sub>avg, dist</sub> with equality iff v<sub>1</sub> = v<sub>2</sub>.",
+          "boundary_condition": "Applicable strictly when motion occurs along a single straight direction without turning points.",
+          "trap_warning": "Round-trip journeys always have equal distances (use harmonic mean), not equal times.",
+          "drill": {
+            "topic": "Round-Trip Commute",
+            "exam_benchmark": "Grade 9 Foundation / NEET",
+            "speed_vs_standard": "5s vs 35s",
+            "lightning_solution": "Vehicle travels at 40 km/h and returns at 60 km/h: v<sub>avg</sub> = 2(40)(60)/(40 + 60) = 48 km/h (never 50 km/h!)."
+          }
+        },
+        {
+          "title": "Stopping Distance & Velocity Scaling Rule",
+          "formula": "d<sub>stop</sub> = v₀² / (2a) &nbsp; ∝ &nbsp; v₀², &nbsp;&nbsp; t<sub>stop</sub> = v₀ / a &nbsp; ∝ &nbsp; v₀",
+          "rationale": "From v² = u² - 2as, setting v = 0 gives stopping distance directly proportional to the square of initial speed.",
+          "speed_hack": "If speed is multiplied by factor k, stopping distance multiplies by k². Doubling speed (k=2) quadruples stopping distance (4×).",
+          "boundary_condition": "Braking acceleration a must remain constant throughout retardation.",
+          "trap_warning": "Stopping distance scales as v², but stopping time scales linearly as v. Never confuse the two exponents.",
+          "drill": {
+            "topic": "Automobile Emergency Braking",
+            "exam_benchmark": "JEE Main / Foundation",
+            "speed_vs_standard": "5s vs 40s",
+            "lightning_solution": "Car at 50 km/h stops in 12 m. At 150 km/h (3× speed), stopping distance = 12 × 3² = 12 × 9 = 108 m instantly."
+          }
+        },
+        {
+          "title": "Freeze-Frame Relative Collision & Overtaking",
+          "formula": "v<sub>A/B</sub> = v<sub>A</sub> - v<sub>B</sub>, &nbsp;&nbsp; a<sub>A/B</sub> = a<sub>A</sub> - a<sub>B</sub>, &nbsp;&nbsp; s<sub>min</sub> = v<sub>rel</sub>² / (2 |a<sub>rel</sub>|)",
+          "rationale": "Transforming into target B's reference frame reduces a two-body coupled differential system into a single 1D stopping calculation.",
+          "speed_hack": "To prevent rear-end collision when vehicle A approaches vehicle B: minimum safe initial gap is s<sub>min</sub> = (v<sub>A</sub> - v<sub>B</sub>)² / (2 a<sub>decel</sub>).",
+          "boundary_condition": "Relative acceleration a<sub>rel</sub> must remain constant throughout the braking maneuver.",
+          "trap_warning": "In opposing motion (head-on), remember vector signs: v<sub>rel</sub> = v<sub>A</sub> - (-v<sub>B</sub>) = v<sub>A</sub> + v<sub>B</sub>.",
+          "drill": {
+            "topic": "Highway Relative Tracking",
+            "exam_benchmark": "JEE Main 2026 · Shift 2 · Q27",
+            "speed_vs_standard": "15s vs 75s",
+            "lightning_solution": "Cars A (100 km/h) & B (80 km/h): passenger in B observes relative speed v<sub>rel</sub> = 100 - 80 = +20 km/h forward."
+          }
+        }
+      ]
+    },
+    {
+      "module_id": "MOD-02",
+      "module_title": "2D Motion & Projectile Dynamics Arsenal",
+      "topic_category": "MOTION_2D_PROJECTILE",
+      "target_exams": [
+        "Grade 9-10 Foundation",
+        "JEE Main",
+        "NEET (UG)",
+        "NSEJS"
+      ],
+      "sections": [
+        {
+          "title": "The Factored Trajectory Equation",
+          "formula": "y = x tanθ (1 - x / R)",
+          "rationale": "Factoring x tanθ from the standard parabola y = x tanθ - [g x² / (2 v₀² cos²θ)] directly exposes horizontal range R = (v₀² sin 2θ) / g.",
+          "speed_hack": "When given barrier coordinates (x₁, y₁), never expand cos²θ. Use tanθ = y₁ / [x₁ (1 - x₁ / R)] for an instant 1-line solve.",
+          "boundary_condition": "Launch and landing points must be at the same vertical datum (level horizontal terrain).",
+          "trap_warning": "Do not use when launching onto an elevated terrace (elevation mismatch breaks level range symmetry).",
+          "drill": {
+            "topic": "Target Obstacle Clearance",
+            "exam_benchmark": "JEE Main Core Kinematics",
+            "speed_vs_standard": "25s vs 110s",
+            "lightning_solution": "Passes through (x=5m, y=1m) with range R=20m: 1 = 5 tanθ (1 - 5/20) = 5 tanθ (3/4) ⇒ tanθ = 4/15."
+          }
+        },
+        {
+          "title": "Complementary Launch Angles Invariants",
+          "formula": "R<sub>θ</sub> = R<sub>90°-θ</sub> &nbsp;|&nbsp; R = 4 √(H<sub>1</sub> H<sub>2</sub>) &nbsp;|&nbsp; t<sub>1</sub> t<sub>2</sub> = 2R / g &nbsp;|&nbsp; H<sub>1</sub> + H<sub>2</sub> = v₀² / (2g)",
+          "rationale": "Angles θ and 90°-θ yield identical sin 2θ. Cross products of heights and times cancel trigonometric factors identically.",
+          "speed_hack": "Given maximum heights H₁ and H₂ of two complementary shots with identical speed, Range is 4√(H₁ H₂) without computing speed v₀ or angle θ.",
+          "boundary_condition": "Initial speeds must be identical, launched over horizontal ground.",
+          "trap_warning": "Remember factor 4 in R = 4√(H₁ H₂); forgetting factor 4 is the most common arithmetic trap.",
+          "drill": {
+            "topic": "Dual Trajectory Heights",
+            "exam_benchmark": "NEET (UG) / JEE Main Invariants",
+            "speed_vs_standard": "10s vs 75s",
+            "lightning_solution": "H₁ = 20 m, H₂ = 45 m. Range R = 4 √(20 × 45) = 4 √(900) = 4 × 30 = 120 m directly."
+          }
+        },
+        {
+          "title": "Horizontal Tower Launch & Free-Fall Decoupling",
+          "formula": "t<sub>fall</sub> = √(2h / g), &nbsp;&nbsp; v<sub>x</sub> = R / √(2h / g), &nbsp;&nbsp; v<sub>impact</sub> = √(v<sub>x</sub>² + 2gh)",
+          "rationale": "Vertical motion is pure free fall from rest independent of horizontal launch speed.",
+          "speed_hack": "For horizontal launch from height h, horizontal speed is directly v = R / t = R / √(2h / g).",
+          "boundary_condition": "Initial vertical velocity must be zero (purely horizontal takeoff).",
+          "trap_warning": "Do not treat landing distances as proportional to velocity if vertical fall heights differ.",
+          "drill": {
+            "topic": "Cliff Projectile Landing",
+            "exam_benchmark": "Grade 9 Foundation / NEET",
+            "speed_vs_standard": "15s vs 80s",
+            "lightning_solution": "h = 20m, lands at R = 40m. t = √(2(20)/10) = 2.0s ⇒ Horizontal launch speed v₀ = 40 / 2.0 = 20 m/s."
+          }
+        },
+        {
+          "title": "Maximum Range & Apex Energy Invariants",
+          "formula": "At θ = 45°: R<sub>max</sub> = v₀² / g = 4 H<sub>max</sub> &nbsp;|&nbsp; K<sub>apex</sub> = K₀ cos²θ",
+          "rationale": "Maximum range occurs when sin 2θ = 1 (θ = 45°). Vertical velocity at apex vanishes; horizontal velocity v₀ cosθ remains invariant.",
+          "speed_hack": "At maximum range angle (45°), Range is always exactly 4 times the maximum height (R = 4H). Apex kinetic energy is exactly half (½ K₀).",
+          "boundary_condition": "Constant gravitational acceleration g without atmospheric air drag.",
+          "trap_warning": "Kinetic energy at highest point is not zero; it equals ½ m (v₀ cosθ)², which is non-zero for any oblique angle.",
+          "drill": {
+            "topic": "Apex Kinetic Energy Fraction",
+            "exam_benchmark": "NEET (UG) / Foundation",
+            "speed_vs_standard": "10s vs 50s",
+            "lightning_solution": "If kinetic energy at apex is half of initial KE: cos²θ = ½ ⇒ cosθ = 1/√2 ⇒ θ = 45° (Maximum range angle!)."
+          }
+        }
+      ]
+    },
+    {
+      "module_id": "MOD-03",
+      "module_title": "Newton's Laws, Friction Engine & Constraint Relations",
+      "topic_category": "MECHANICS_NLM",
+      "target_exams": [
+        "Grade 9-10 Foundation",
+        "JEE Main",
+        "NEET (UG)",
+        "NSEJS"
+      ],
+      "sections": [
+        {
+          "title": "Whole-System Acceleration Heuristic",
+          "formula": "a<sub>sys</sub> = (Σ F<sub>driving</sub> - Σ F<sub>opposing</sub>) / Σ m<sub>inertial</sub>",
+          "rationale": "Internal constraint forces (tensions, mutual normal contact forces) form action-reaction pairs that cancel over the total free body.",
+          "speed_hack": "Never write simultaneous 3-variable equations for Atwood or connected incline systems. One line gives acceleration directly.",
+          "boundary_condition": "All interconnected components must share identical scalar acceleration magnitude along the constraint path.",
+          "trap_warning": "Include all moving masses in denominator, including pulleys if they have non-negligible rotational inertia.",
+          "drill": {
+            "topic": "Standard Atwood Machine",
+            "exam_benchmark": "NEET (UG) / Foundation",
+            "speed_vs_standard": "10s vs 60s",
+            "lightning_solution": "Masses 3 kg & 2 kg over smooth pulley: a = (3 - 2)g / (3 + 2) = g / 5 = 2.0 m/s². Tension T = 2(3)(2)g / 5 = 24 N."
+          }
+        },
+        {
+          "title": "Inclined Plane Friction & Time Ratio Scaling",
+          "formula": "a = g (sinθ - μ cosθ) &nbsp;|&nbsp; If t<sub>rough</sub> = n · t<sub>smooth</sub> ⇒ μ = tanθ [ 1 - (1 / n²) ]",
+          "rationale": "From s = ½ a t², acceleration varies inversely as t². Thus a_rough / a_smooth = 1 / n², yielding μ in one line.",
+          "speed_hack": "If a block takes n times longer to slide down a rough incline than a smooth incline of angle θ, μ = tanθ (1 - 1/n²) directly.",
+          "boundary_condition": "Incline angle θ must exceed the angle of repose (tanθ > μ) so that motion actually occurs from rest.",
+          "trap_warning": "Factor is (1 - 1/n²), never (1 - 1/n).",
+          "drill": {
+            "topic": "Incline Sliding Time Ratio",
+            "exam_benchmark": "JEE Main 2026 · Shift 2 · Q46",
+            "speed_vs_standard": "15s vs 90s",
+            "lightning_solution": "Takes twice as long (n=2) on 45° rough plane: μ = tan 45° [1 - 1/(2²)] = 1 × (1 - 1/4) = 0.75 in 5 seconds."
+          }
+        },
+        {
+          "title": "Pulling vs. Pushing Friction Margin",
+          "formula": "N<sub>pull</sub> = mg - F sinθ &nbsp;(f<sub>max</sub> = μ N<sub>pull</sub>) &nbsp;|&nbsp; N<sub>push</sub> = mg + F sinθ &nbsp;(f<sub>max</sub> = μ N<sub>push</sub>)",
+          "rationale": "Pulling has an upward vertical component reducing normal force; pushing has a downward vertical component increasing normal force.",
+          "speed_hack": "Normal shift is exactly ΔN = 2 F sinθ. Pushing jams completely when tanθ = μ (force required blows up to infinity!).",
+          "boundary_condition": "Force applied at angle θ to horizontal on rough horizontal surface.",
+          "trap_warning": "If pulling force is very large (F sinθ > mg), the body lifts off the surface (N = 0, friction vanishes completely).",
+          "drill": {
+            "topic": "Lawn Roller Dynamics",
+            "exam_benchmark": "Grade 9 Foundation / NEET",
+            "speed_vs_standard": "10s vs 50s",
+            "lightning_solution": "Pulling reduces normal force by F sinθ, decreasing friction resistance f = μ N. Pushing adds F sinθ, increasing resistance."
+          }
+        },
+        {
+          "title": "Two-Block Slipping Threshold Rule",
+          "formula": "a<sub>max</sub> = μ<sub>s</sub> g, &nbsp;&nbsp; F<sub>thresh</sub> = (M + m) μ<sub>s</sub> g",
+          "rationale": "Friction between the blocks is the sole force accelerating the upper block m; its maximum possible acceleration is μ_s g.",
+          "speed_hack": "Compute system acceleration a_sys = F / (M + m). If a_sys ≤ μ_s g, they move together without slip. If a_sys > μ_s g, slip occurs.",
+          "boundary_condition": "Smooth horizontal ground under lower block M; friction acts only at mutual interface.",
+          "trap_warning": "Once slipping begins, static friction μ_s must immediately be replaced by kinetic friction μ_k.",
+          "drill": {
+            "topic": "Block-on-Block Slip Threshold",
+            "exam_benchmark": "JEE Main / Foundation",
+            "speed_vs_standard": "15s vs 75s",
+            "lightning_solution": "m=2kg on M=3kg, μ_s=0.4: a_max = 0.4(10) = 4 m/s². Maximum pulling force without slipping is F_thresh = (2 + 3)(4) = 20 N."
+          }
+        }
+      ]
+    },
+    {
+      "module_id": "MOD-04",
+      "module_title": "Mole Concept, Solutions & Stoichiometric Mastery",
+      "topic_category": "MOLE_STOICHIOMETRY",
+      "target_exams": [
+        "Grade 9-10 Foundation",
+        "JEE Main",
+        "NEET (UG)",
+        "NSEJS"
+      ],
+      "sections": [
+        {
+          "title": "Molarity-to-Molality Direct Conversion",
+          "formula": "m = 1000 M / (1000 d - M M<sub>w</sub>) &nbsp;&nbsp; | &nbsp;&nbsp; d = (M / 1000) [ (1000 / m) + M<sub>w</sub> ]",
+          "rationale": "In 1000 mL solution: total mass = 1000 d grams, solute mass = M M_w grams, solvent mass = (1000 d - M M_w) / 1000 kg.",
+          "speed_hack": "Eliminates the tedious 2-page 'Assume 1 L solution' algebra. Direct plug-and-chug with density d in g/mL.",
+          "boundary_condition": "Density d must be in g/mL (or g/cm³). Solute molar mass M_w in g/mol.",
+          "trap_warning": "Ensure d is in g/mL, not kg/m³. If given in kg/m³, divide by 1000 first.",
+          "drill": {
+            "topic": "Concentration Unit Interconversion",
+            "exam_benchmark": "JEE Main / NEET (UG) Core",
+            "speed_vs_standard": "20s vs 90s",
+            "lightning_solution": "2.0 M aqueous urea (Mw=60) with d=1.06 g/mL: m = 1000(2) / [1000(1.06) - 2(60)] = 2000 / [1060 - 120] = 2000 / 940 = 2.13 m."
+          }
+        },
+        {
+          "title": "Alligation Cross for Binary Mixture Molar Mass",
+          "formula": "n₁ / n₂ = |M₂ - M_avg| / |M₁ - M_avg|",
+          "rationale": "M_avg = (n₁ M₁ + n₂ M₂) / (n₁ + n₂) rearranged gives n₁ (M_avg - M₁) = n₂ (M₂ - M_avg).",
+          "speed_hack": "Solves isotope natural abundances, binary alloy compositions, and gas mixture ratios in 5 seconds via cross subtraction.",
+          "boundary_condition": "Applies strictly to binary (two-component) mixtures.",
+          "trap_warning": "Alligation gives mole ratio for molar properties, but mass ratio for mass-specific properties (like mass percentages).",
+          "drill": {
+            "topic": "Partial Pressures in Gas Mixture",
+            "exam_benchmark": "NEET (UG) 2020 · Set E1 · Q110",
+            "speed_vs_standard": "15s vs 60s",
+            "lightning_solution": "7g N₂ (0.25 mol) & 8g Ar (0.20 mol): n_ratio = 5:4. Mole fraction of Ar = 4/9. Partial pressure P_Ar = (4/9)(27 bar) = 12 bar."
+          }
+        },
+        {
+          "title": "Faraday's Electrolysis Direct Electron Factor",
+          "formula": "1 Faraday = 96,500 C ≡ 1 mole of electrons &nbsp;|&nbsp; Mass m = (M / z) (Q / F)",
+          "rationale": "Reduction of 1 mole of M^(z+) requires exactly z moles of electrons (z Faradays of charge).",
+          "speed_hack": "Never use complex electrochemical equivalent formulas. Simply use: Moles deposited = Faradays / z.",
+          "boundary_condition": "100% current efficiency assumed unless specified otherwise.",
+          "trap_warning": "Identify cation charge z carefully: e.g., Cu²+ has z=2, but Cu+ (cuprous) has z=1.",
+          "drill": {
+            "topic": "Electrolytic Deposition of Calcium",
+            "exam_benchmark": "NEET (UG) 2020 · Set E1 · Q106",
+            "speed_vs_standard": "5s vs 40s",
+            "lightning_solution": "Ca²+ + 2e⁻ → Ca. Molar mass Ca = 40 g/mol ⇒ 40g requires 2 F. Therefore 20g requires exactly 1.0 F."
+          }
+        },
+        {
+          "title": "Limiting Reagent Dimensionless Ratio Test",
+          "formula": "R<sub>i</sub> = n<sub>i</sub> / ν<sub>i</sub> &nbsp;&nbsp; (ν<sub>i</sub> = stoichiometric coefficient)",
+          "rationale": "Reaction progress is bounded by the reactant with the minimum value of moles divided by its stoichiometric number.",
+          "speed_hack": "Divide initial moles of each reactant by its balanced coefficient. Smallest ratio is strictly the Limiting Reagent (LR).",
+          "boundary_condition": "Reaction must go to completion (irreversible stoichiometry).",
+          "trap_warning": "Never compare raw masses or raw moles directly; always divide by stoichiometric coefficients first.",
+          "drill": {
+            "topic": "Haber Ammonia Synthesis",
+            "exam_benchmark": "Grade 9 Foundation / NEET",
+            "speed_vs_standard": "10s vs 50s",
+            "lightning_solution": "N₂ + 3 H₂ → 2 NH₃ with 2 mol N₂ and 3 mol H₂. R_N = 2/1 = 2; R_H = 3/3 = 1. H₂ is LR (ratio 1 < 2), yielding 2 mol NH₃."
+          }
+        }
+      ]
+    },
+    {
+      "module_id": "MOD-05",
+      "module_title": "Redox Mastery, n-Factor Matrix & Rapid Titrations",
+      "topic_category": "REDOX_CHEMISTRY",
+      "target_exams": [
+        "Grade 9-10 Foundation",
+        "JEE Main",
+        "NEET (UG)",
+        "NSEJS"
+      ],
+      "sections": [
+        {
+          "title": "The 'BAN' Mnemonic for Permanganate (KMnO₄)",
+          "formula": "Basic (strongly alkaline): n = 1 &nbsp;|&nbsp; Acidic: n = 5 &nbsp;|&nbsp; Neutral / weakly basic: n = 3",
+          "rationale": "Acidic: MnO₄⁻ + 5e⁻ → Mn²⁺ (+7→+2). Neutral: MnO₄⁻ + 3e⁻ → MnO₂ (+7→+4). Strongly Basic: MnO₄⁻ + 1e⁻ → MnO₄²⁻ (+7→+6).",
+          "speed_hack": "Remember keyword 'BAN 1-5-3' (Basic=1, Acidic=5, Neutral=3) to instantly write equivalent weights without balancing half-cells.",
+          "boundary_condition": "Acidic medium must use dilute H₂SO₄, never concentrated HCl (which oxidizes Cl⁻ to Cl₂).",
+          "trap_warning": "In neutral or faintly alkaline medium, n = 3 (forms MnO₂), not n = 5.",
+          "drill": {
+            "topic": "Permanganate Equivalent Weight",
+            "exam_benchmark": "NEET (UG) / JEE Main Core",
+            "speed_vs_standard": "5s vs 45s",
+            "lightning_solution": "Equivalent weight of KMnO₄ in acid is M/5; in neutral medium (forming MnO₂) it is M/3; in strongly basic medium it is M/1."
+          }
+        },
+        {
+          "title": "Dichromate Acidic Invariant",
+          "formula": "Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O &nbsp;&nbsp; (n = 2 × |6 - 3| = 6)",
+          "rationale": "Two chromium atoms per formula unit each undergo a 3-electron reduction from +6 to +3.",
+          "speed_hack": "Equivalent weight of K₂Cr₂O₇ in acidic medium is always strictly M / 6.",
+          "boundary_condition": "Operates as an oxidant in acidic solution; in alkaline medium it hydrolyzes to yellow chromate CrO₄²⁻.",
+          "trap_warning": "Multiply change in oxidation state per atom (3) by number of Cr atoms in formula unit (2) = 6. Forgetting factor 2 is fatal.",
+          "drill": {
+            "topic": "Dichromate Charge Transfer",
+            "exam_benchmark": "JEE Main / NEET",
+            "speed_vs_standard": "10s vs 45s",
+            "lightning_solution": "Complete reduction of 1 mol K₂Cr₂O₇ to Cr³⁺ in acidic medium consumes exactly 6 Faradays (6 × 96,500 C) of charge."
+          }
+        },
+        {
+          "title": "Parallel Resistor Rule for Disproportionation",
+          "formula": "n<sub>eq</sub> = (n<sub>ox</sub> · n<sub>red</sub>) / (n<sub>ox</sub> + n<sub>red</sub>) &nbsp;&nbsp; ⇔ &nbsp;&nbsp; 1 / n<sub>eq</sub> = 1 / n<sub>ox</sub> + 1 / n<sub>red</sub>",
+          "rationale": "Conserving electrons across simultaneously oxidized and reduced branches yields equivalent weight E = M (1/n_ox + 1/n_red).",
+          "speed_hack": "Identical structure to parallel resistors. Disproportionation n-factor is computed in 5 seconds without writing full balanced stoichiometry.",
+          "boundary_condition": "Applicable strictly when a single reactant disproportionates into two distinct redox products.",
+          "trap_warning": "Do not simply add n_ox + n_red; addition is only valid when two different elements in the same compound both oxidize.",
+          "drill": {
+            "topic": "Chlorine Gas Disproportionation",
+            "exam_benchmark": "JEE Main / NEET Redox",
+            "speed_vs_standard": "15s vs 70s",
+            "lightning_solution": "Cl₂ + 2 OH⁻ → Cl⁻ (n_red = 1) + ClO⁻ (n_ox = 1). n_eq = (1×1)/(1+1) = 0.5. Equivalent weight of Cl₂ is M / 0.5 = 2M."
+          }
+        },
+        {
+          "title": "The Golden Law of Equivalents (Titration Shortcut)",
+          "formula": "(N₁ V₁)<sub>oxidant</sub> = (N₂ V₂)<sub>reductant</sub> &nbsp;&nbsp; ⇔ &nbsp;&nbsp; n₁ · moles₁ = n₂ · moles₂",
+          "rationale": "One equivalent of any oxidizing agent completely consumes exactly one equivalent of any reducing agent.",
+          "speed_hack": "Never balance full complex redox equations during exam conditions. Multiply moles by respective n-factors and equate directly.",
+          "boundary_condition": "All reactants must react completely without side reactions.",
+          "trap_warning": "In FeC₂O₄ (ferrous oxalate), both Fe²⁺ (1e⁻) and C₂O₄²⁻ (2e⁻) oxidize, so n-factor is 1 + 2 = 3!",
+          "drill": {
+            "topic": "Oxalic Acid Permanganate Titration",
+            "exam_benchmark": "Grade 9-10 Olympiad / NEET",
+            "speed_vs_standard": "15s vs 80s",
+            "lightning_solution": "Oxalic acid (H₂C₂O₄, n=2) titrated with acidified KMnO₄ (n=5): 2 × moles_ox = 5 × moles_perm ⇒ 5 mol oxalic acid requires 2 mol KMnO₄."
+          }
+        }
+      ]
+    }
+  ]
+}

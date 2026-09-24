@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Grade9V3 Ready-Reference & Exam Speed Hacks Handout</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Newsreader:ital,wght@0,500;1,400&display=swap');
+
+  @page {
+    size: 280mm 175mm;
+    margin: 0;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #0b1120;
+    color: #0f172a;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .sheet {
+    width: 280mm;
+    height: 175mm;
+    page-break-after: always;
+    break-after: page;
+    background-color: #f8fafc;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 5.5mm 9mm;
+  }
+
+  /* COVER & META-HEURISTICS SHEET */
+  .cover-sheet {
+    background: radial-gradient(circle at 80% 20%, #1e293b 0%, #0f172a 60%, #020617 100%);
+    color: #f8fafc;
+    padding: 8mm 12mm;
+    justify-content: space-between;
+  }
+
+  .cover-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(96, 165, 250, 0.3);
+    color: #93c5fd;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .cover-title {
+    font-size: 24px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #ffffff;
+    margin-top: 4px;
+  }
+
+  .cover-subtitle {
+    font-size: 11px;
+    font-weight: 400;
+    color: #94a3b8;
+    line-height: 1.35;
+    margin-top: 3px;
+  }
+
+  .heuristics-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 7px;
+    margin-top: 6px;
+  }
+
+  .heuristic-card {
+    background: rgba(30, 41, 59, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 6px;
+    padding: 6px 9px;
+  }
+
+  .heuristic-title {
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #38bdf8;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 2px;
+  }
+
+  .heuristic-rule {
+    font-size: 8px;
+    color: #f1f5f9;
+    line-height: 1.3;
+    margin-bottom: 2.5px;
+  }
+
+  .heuristic-app {
+    font-size: 7.5px;
+    color: #94a3b8;
+    line-height: 1.25;
+    border-left: 2px solid #0284c7;
+    padding-left: 5px;
+  }
+
+  .constants-bar {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    padding: 4.5px 8px;
+    margin-top: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 7.5px;
+    color: #cbd5e1;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  /* MODULE CONTENT PAGES */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1.5px solid #0f172a;
+    padding-bottom: 3.5px;
+    margin-bottom: 4.5px;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .mod-badge {
+    background: #0f172a;
+    color: #ffffff;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 800;
+    font-size: 8.5px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    letter-spacing: 0.05em;
+  }
+
+  .mod-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.01em;
+  }
+
+  .header-right {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+  }
+
+  .topic-pill {
+    background: #eff6ff;
+    color: #1e40af;
+    border: 1px solid #bfdbfe;
+    font-size: 7.5px;
+    font-weight: 700;
+    padding: 1.5px 6px;
+    border-radius: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+
+  .module-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5px;
+    flex: 1;
+  }
+
+  .concept-card {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 4.5px 7px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .concept-card-title {
+    font-size: 9px;
+    font-weight: 800;
+    color: #0f172a;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 1.5px;
+    margin-bottom: 3px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Invariant Formula Box */
+  .formula-box {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    border-left: 3px solid #2563eb;
+    border-radius: 4px;
+    padding: 2.5px 5.5px;
+    margin-bottom: 3px;
+  }
+
+  .formula-text {
+    font-family: 'Cambria Math', 'KaTeX_Math', 'STIX Two Math', 'Newsreader', 'Times New Roman', serif;
+    font-size: 9.5px;
+    color: #1e3a8a;
+    font-weight: 600;
+    line-height: 1.25;
+  }
+
+  .formula-text sub, .formula-text sup {
+    font-size: 72%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  .formula-text sup { top: -0.42em; }
+  .formula-text sub { bottom: -0.22em; }
+
+  .formula-rationale {
+    font-size: 7px;
+    color: #64748b;
+    margin-top: 1.5px;
+    line-height: 1.2;
+  }
+
+  sub, sup {
+    font-size: 72%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sup { top: -0.4em; }
+  sub { bottom: -0.2em; }
+
+  /* Speed Hack Box */
+  .speed-hack-box {
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 3px solid #d97706;
+    border-radius: 4px;
+    padding: 2px 5.5px;
+    margin-bottom: 2.5px;
+  }
+
+  .box-label {
+    font-size: 7px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    margin-bottom: 1px;
+  }
+  .label-amber { color: #b45309; }
+  .label-rose { color: #be123c; }
+  .label-emerald { color: #047857; }
+
+  .speed-hack-text {
+    font-size: 7.5px;
+    color: #78350f;
+    line-height: 1.25;
+    font-weight: 500;
+  }
+
+  /* Trap & Boundary Row */
+  .guardrail-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4px;
+    margin-bottom: 2.5px;
+  }
+
+  .boundary-box {
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+    border-radius: 3px;
+    padding: 1.5px 4.5px;
+    font-size: 7px;
+    color: #334155;
+    line-height: 1.2;
+  }
+
+  .trap-box {
+    background: #fff1f2;
+    border: 1px solid #fecdd3;
+    border-left: 2px solid #e11d48;
+    border-radius: 3px;
+    padding: 1.5px 4.5px;
+    font-size: 7px;
+    color: #881337;
+    line-height: 1.2;
+  }
+
+  /* PYQ Drill Box */
+  .drill-box {
+    background: #ecfdf5;
+    border: 1px solid #a7f3d0;
+    border-radius: 4px;
+    padding: 2px 5.5px;
+  }
+
+  .drill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 6.5px;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    color: #047857;
+    margin-bottom: 1px;
+  }
+
+  .drill-solution {
+    font-size: 7.5px;
+    color: #064e3b;
+    line-height: 1.22;
+  }
+
+  .page-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #cbd5e1;
+    padding-top: 2.5px;
+    margin-top: 3.5px;
+    font-size: 7px;
+    color: #64748b;
+  }
+</style>
+</head>
+<body>
+
+
+<section class="sheet cover-sheet">
+  <div>
+    <div class="cover-pill">GRADE 9 &amp; 10 FOUNDATION HANDBOOK &bull; 10" TABLET REFERENCE EDITION</div>
+    <h1 class="cover-title">Ready-Reference Formulas &amp; Exam Speed Codex</h1>
+    <p class="cover-subtitle">
+      Mathematical shortcuts, boundary condition guardrails, invariant equations, and sub-30-second lightning solvers for Foundation, JEE Main, NEET (UG), and National Science Olympiads.
+    </p>
+  </div>
+
+  <div>
+    <div style="font-size: 8.5px; font-weight: 800; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px;">
+      Universal Meta-Problem-Solving Verification Filters
+    </div>
+    <div class="heuristics-grid">
+      
+    <div class="heuristic-card">
+      <div class="heuristic-title">⚡ Dimensional Homogeneity Filter</div>
+      <div class="heuristic-rule"><b>Rule:</b> Every additive term and both sides of an equality must possess identical SI dimensions [M^a L^b T^c].</div>
+      <div class="heuristic-app"><b>Speed Impact:</b> Instantly eliminates 1 to 2 incorrect multiple-choice options before writing any physics derivation.</div>
+    </div>
+    
+    <div class="heuristic-card">
+      <div class="heuristic-title">⚡ Limiting Boundary-Case Stress Test</div>
+      <div class="heuristic-rule"><b>Rule:</b> Test asymptotic parameter extremes (θ→0°, θ→90°, μ→0, μ→∞, m→0, M→∞).</div>
+      <div class="heuristic-app"><b>Speed Impact:</b> If an acceleration formula on an incline does not yield a = g sinθ when μ→0, or a = g when θ→90°, reject it immediately.</div>
+    </div>
+    
+    <div class="heuristic-card">
+      <div class="heuristic-title">⚡ Redox Electron Charge Conservation Balance</div>
+      <div class="heuristic-rule"><b>Rule:</b> Total ionic charges on the reactant side must strictly match total ionic charges on the product side (Σ q_initial = Σ q_final).</div>
+      <div class="heuristic-app"><b>Speed Impact:</b> Validates redox equation balancing in 5 seconds without re-counting intermediate hydrogen and oxygen atoms.</div>
+    </div>
+    
+    <div class="heuristic-card">
+      <div class="heuristic-title">⚡ Stoichiometric Mass &amp; Atom Invariance</div>
+      <div class="heuristic-rule"><b>Rule:</b> In closed chemical reactions, total grams of reactants equal total grams of products (Σ m_reactants = Σ m_products).</div>
+      <div class="heuristic-app"><b>Speed Impact:</b> Cracks complex multi-stage mixture and gas stoichiometry problems via global mass conservation.</div>
+    </div>
+    
+    </div>
+  </div>
+
+  <div>
+    <div class="constants-bar">
+      <span><b>g:</b> 9.8 / 10 m/s²</span>
+      <span><b>R:</b> 8.314 J/(mol·K) = 0.0821 L·atm/(mol·K)</span>
+      <span><b>1 F:</b> 96,500 C/mol e⁻</span>
+      <span><b>N_A:</b> 6.022 × 10²³ mol⁻¹</span>
+      <span><b>STP V:</b> 22.7 L (IUPAC) / 22.4 L</span>
+      <span><b>1 atm:</b> 1.013 bar = 760 mmHg</span>
+    </div>
+
+    <div class="page-footer" style="border-top-color: rgba(255,255,255,0.15); color: #94a3b8; margin-top: 6px;">
+      <span>Grade 9 &amp; 10 Foundation Architecture Team &bull; Academic Quality Assurance</span>
+      <span>Page 1 of 6 &bull; Reference Viewport 280mm × 175mm</span>
+    </div>
+  </div>
+</section>
+
+
+<section class="sheet">
+  <div class="page-header">
+    <div class="header-left">
+      <span class="mod-badge">MOD-01</span>
+      <span class="mod-title">1D Kinematics &amp; Relative Motion Speed Codex</span>
+    </div>
+    <div class="header-right">
+      <span class="topic-pill">KINEMATICS_1D_AND_RELATIVE</span>
+      <span class="topic-pill" style="background: #f1f5f9; color: #475569; border-color: #cbd5e1;">4 SPEED HACKS</span>
+    </div>
+  </div>
+
+  <div class="module-grid">
+    
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Galileo&#x27;s Odd-Integer Free-Fall Law</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">s<sub>1</sub> : s<sub>2</sub> : s<sub>3</sub> : ... : s<sub>n</sub> = 1 : 3 : 5 : ... : (2n - 1)</div>
+            <div class="formula-rationale">Over consecutive equal time intervals Δt from rest under constant acceleration a, distance s<sub>n</sub> = ½ a (Δt)² (2n - 1).</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">Avoid quadratic displacement equations. If distance in the 1st second is h, distance in the 3rd second is identically 5h.</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Initial velocity must be strictly zero (u = 0) and acceleration must be constant.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Never apply if body has non-zero initial speed (u ≠ 0). In that case, s<sub>n</sub> = u Δt + ½ a (Δt)² (2n - 1).
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Free Fall from Tower (NEET (UG) / JEE Main Core)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 10s vs 60s</span>
+            </div>
+            <div class="drill-solution">Distance in 4th second for dropped stone = (2×4 - 1) × (½ g) = 7 × 4.9 = 34.3 m directly.</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Average Speed for Segmented Journeys</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">Equal Distances: v<sub>avg</sub> = 2 v<sub>1</sub> v<sub>2</sub> / (v<sub>1</sub> + v<sub>2</sub>) &nbsp;|&nbsp; Equal Times: v<sub>avg</sub> = (v<sub>1</sub> + v<sub>2</sub>) / 2</div>
+            <div class="formula-rationale">Equal distances mandate harmonic mean (time varies inversely with speed); equal times mandate arithmetic mean.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">By AM-HM inequality, v<sub>avg, time</sub> ≥ v<sub>avg, dist</sub> with equality iff v<sub>1</sub> = v<sub>2</sub>.</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Applicable strictly when motion occurs along a single straight direction without turning points.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Round-trip journeys always have equal distances (use harmonic mean), not equal times.
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Round-Trip Commute (Grade 9 Foundation / NEET)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 5s vs 35s</span>
+            </div>
+            <div class="drill-solution">Vehicle travels at 40 km/h and returns at 60 km/h: v<sub>avg</sub> = 2(40)(60)/(40 + 60) = 48 km/h (never 50 km/h!).</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Stopping Distance &amp; Velocity Scaling Rule</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">d<sub>stop</sub> = v₀² / (2a) &nbsp; ∝ &nbsp; v₀², &nbsp;&nbsp; t<sub>stop</sub> = v₀ / a &nbsp; ∝ &nbsp; v₀</div>
+            <div class="formula-rationale">From v² = u² - 2as, setting v = 0 gives stopping distance directly proportional to the square of initial speed.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">If speed is multiplied by factor k, stopping distance multiplies by k². Doubling speed (k=2) quadruples stopping distance (4×).</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Braking acceleration a must remain constant throughout retardation.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Stopping distance scales as v², but stopping time scales linearly as v. Never confuse the two exponents.
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Automobile Emergency Braking (JEE Main / Foundation)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 5s vs 40s</span>
+            </div>
+            <div class="drill-solution">Car at 50 km/h stops in 12 m. At 150 km/h (3× speed), stopping distance = 12 × 3² = 12 × 9 = 108 m instantly.</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Freeze-Frame Relative Collision &amp; Overtaking</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">v<sub>A/B</sub> = v<sub>A</sub> - v<sub>B</sub>, &nbsp;&nbsp; a<sub>A/B</sub> = a<sub>A</sub> - a<sub>B</sub>, &nbsp;&nbsp; s<sub>min</sub> = v<sub>rel</sub>² / (2 |a<sub>rel</sub>|)</div>
+            <div class="formula-rationale">Transforming into target B's reference frame reduces a two-body coupled differential system into a single 1D stopping calculation.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">To prevent rear-end collision when vehicle A approaches vehicle B: minimum safe initial gap is s<sub>min</sub> = (v<sub>A</sub> - v<sub>B</sub>)² / (2 a<sub>decel</sub>).</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Relative acceleration a<sub>rel</sub> must remain constant throughout the braking maneuver.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> In opposing motion (head-on), remember vector signs: v<sub>rel</sub> = v<sub>A</sub> - (-v<sub>B</sub>) = v<sub>A</sub> + v<sub>B</sub>.
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Highway Relative Tracking (JEE Main 2026 · Shift 2 · Q27)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 15s vs 75s</span>
+            </div>
+            <div class="drill-solution">Cars A (100 km/h) & B (80 km/h): passenger in B observes relative speed v<sub>rel</sub> = 100 - 80 = +20 km/h forward.</div>
+          </div>
+        </div>
+        
+  </div>
+
+  <div class="page-footer">
+    <span>Grade 9 &amp; 10 Foundation Reference Codex &bull; Secondary &amp; National Competitive Standards</span>
+    <span>Page 2 of 6 &bull; 10" Tablet Landscape Reference Edition</span>
+  </div>
+</section>
+
+
+<section class="sheet">
+  <div class="page-header">
+    <div class="header-left">
+      <span class="mod-badge">MOD-02</span>
+      <span class="mod-title">2D Motion &amp; Projectile Dynamics Arsenal</span>
+    </div>
+    <div class="header-right">
+      <span class="topic-pill">MOTION_2D_PROJECTILE</span>
+      <span class="topic-pill" style="background: #f1f5f9; color: #475569; border-color: #cbd5e1;">4 SPEED HACKS</span>
+    </div>
+  </div>
+
+  <div class="module-grid">
+    
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>The Factored Trajectory Equation</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">y = x tanθ (1 - x / R)</div>
+            <div class="formula-rationale">Factoring x tanθ from the standard parabola y = x tanθ - [g x² / (2 v₀² cos²θ)] directly exposes horizontal range R = (v₀² sin 2θ) / g.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">When given barrier coordinates (x₁, y₁), never expand cos²θ. Use tanθ = y₁ / [x₁ (1 - x₁ / R)] for an instant 1-line solve.</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Launch and landing points must be at the same vertical datum (level horizontal terrain).
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Do not use when launching onto an elevated terrace (elevation mismatch breaks level range symmetry).
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Target Obstacle Clearance (JEE Main Core Kinematics)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 25s vs 110s</span>
+            </div>
+            <div class="drill-solution">Passes through (x=5m, y=1m) with range R=20m: 1 = 5 tanθ (1 - 5/20) = 5 tanθ (3/4) ⇒ tanθ = 4/15.</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Complementary Launch Angles Invariants</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">R<sub>θ</sub> = R<sub>90°-θ</sub> &nbsp;|&nbsp; R = 4 √(H<sub>1</sub> H<sub>2</sub>) &nbsp;|&nbsp; t<sub>1</sub> t<sub>2</sub> = 2R / g &nbsp;|&nbsp; H<sub>1</sub> + H<sub>2</sub> = v₀² / (2g)</div>
+            <div class="formula-rationale">Angles θ and 90°-θ yield identical sin 2θ. Cross products of heights and times cancel trigonometric factors identically.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">Given maximum heights H₁ and H₂ of two complementary shots with identical speed, Range is 4√(H₁ H₂) without computing speed v₀ or angle θ.</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Initial speeds must be identical, launched over horizontal ground.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Remember factor 4 in R = 4√(H₁ H₂); forgetting factor 4 is the most common arithmetic trap.
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Dual Trajectory Heights (NEET (UG) / JEE Main Invariants)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 10s vs 75s</span>
+            </div>
+            <div class="drill-solution">H₁ = 20 m, H₂ = 45 m. Range R = 4 √(20 × 45) = 4 √(900) = 4 × 30 = 120 m directly.</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Horizontal Tower Launch &amp; Free-Fall Decoupling</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">t<sub>fall</sub> = √(2h / g), &nbsp;&nbsp; v<sub>x</sub> = R / √(2h / g), &nbsp;&nbsp; v<sub>impact</sub> = √(v<sub>x</sub>² + 2gh)</div>
+            <div class="formula-rationale">Vertical motion is pure free fall from rest independent of horizontal launch speed.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">For horizontal launch from height h, horizontal speed is directly v = R / t = R / √(2h / g).</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Initial vertical velocity must be zero (purely horizontal takeoff).
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Do not treat landing distances as proportional to velocity if vertical fall heights differ.
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Cliff Projectile Landing (Grade 9 Foundation / NEET)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 15s vs 80s</span>
+            </div>
+            <div class="drill-solution">h = 20m, lands at R = 40m. t = √(2(20)/10) = 2.0s ⇒ Horizontal launch speed v₀ = 40 / 2.0 = 20 m/s.</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Maximum Range &amp; Apex Energy Invariants</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">At θ = 45°: R<sub>max</sub> = v₀² / g = 4 H<sub>max</sub> &nbsp;|&nbsp; K<sub>apex</sub> = K₀ cos²θ</div>
+            <div class="formula-rationale">Maximum range occurs when sin 2θ = 1 (θ = 45°). Vertical velocity at apex vanishes; horizontal velocity v₀ cosθ remains invariant.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">At maximum range angle (45°), Range is always exactly 4 times the maximum height (R = 4H). Apex kinetic energy is exactly half (½ K₀).</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Constant gravitational acceleration g without atmospheric air drag.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Kinetic energy at highest point is not zero; it equals ½ m (v₀ cosθ)², which is non-zero for any oblique angle.
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Apex Kinetic Energy Fraction (NEET (UG) / Foundation)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 10s vs 50s</span>
+            </div>
+            <div class="drill-solution">If kinetic energy at apex is half of initial KE: cos²θ = ½ ⇒ cosθ = 1/√2 ⇒ θ = 45° (Maximum range angle!).</div>
+          </div>
+        </div>
+        
+  </div>
+
+  <div class="page-footer">
+    <span>Grade 9 &amp; 10 Foundation Reference Codex &bull; Secondary &amp; National Competitive Standards</span>
+    <span>Page 3 of 6 &bull; 10" Tablet Landscape Reference Edition</span>
+  </div>
+</section>
+
+
+<section class="sheet">
+  <div class="page-header">
+    <div class="header-left">
+      <span class="mod-badge">MOD-03</span>
+      <span class="mod-title">Newton&#x27;s Laws, Friction Engine &amp; Constraint Relations</span>
+    </div>
+    <div class="header-right">
+      <span class="topic-pill">MECHANICS_NLM</span>
+      <span class="topic-pill" style="background: #f1f5f9; color: #475569; border-color: #cbd5e1;">4 SPEED HACKS</span>
+    </div>
+  </div>
+
+  <div class="module-grid">
+    
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Whole-System Acceleration Heuristic</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">a<sub>sys</sub> = (Σ F<sub>driving</sub> - Σ F<sub>opposing</sub>) / Σ m<sub>inertial</sub></div>
+            <div class="formula-rationale">Internal constraint forces (tensions, mutual normal contact forces) form action-reaction pairs that cancel over the total free body.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">Never write simultaneous 3-variable equations for Atwood or connected incline systems. One line gives acceleration directly.</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> All interconnected components must share identical scalar acceleration magnitude along the constraint path.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Include all moving masses in denominator, including pulleys if they have non-negligible rotational inertia.
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Standard Atwood Machine (NEET (UG) / Foundation)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 10s vs 60s</span>
+            </div>
+            <div class="drill-solution">Masses 3 kg & 2 kg over smooth pulley: a = (3 - 2)g / (3 + 2) = g / 5 = 2.0 m/s². Tension T = 2(3)(2)g / 5 = 24 N.</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Inclined Plane Friction &amp; Time Ratio Scaling</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">a = g (sinθ - μ cosθ) &nbsp;|&nbsp; If t<sub>rough</sub> = n · t<sub>smooth</sub> ⇒ μ = tanθ [ 1 - (1 / n²) ]</div>
+            <div class="formula-rationale">From s = ½ a t², acceleration varies inversely as t². Thus a_rough / a_smooth = 1 / n², yielding μ in one line.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">If a block takes n times longer to slide down a rough incline than a smooth incline of angle θ, μ = tanθ (1 - 1/n²) directly.</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Incline angle θ must exceed the angle of repose (tanθ > μ) so that motion actually occurs from rest.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Factor is (1 - 1/n²), never (1 - 1/n).
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Incline Sliding Time Ratio (JEE Main 2026 · Shift 2 · Q46)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 15s vs 90s</span>
+            </div>
+            <div class="drill-solution">Takes twice as long (n=2) on 45° rough plane: μ = tan 45° [1 - 1/(2²)] = 1 × (1 - 1/4) = 0.75 in 5 seconds.</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Pulling vs. Pushing Friction Margin</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">N<sub>pull</sub> = mg - F sinθ &nbsp;(f<sub>max</sub> = μ N<sub>pull</sub>) &nbsp;|&nbsp; N<sub>push</sub> = mg + F sinθ &nbsp;(f<sub>max</sub> = μ N<sub>push</sub>)</div>
+            <div class="formula-rationale">Pulling has an upward vertical component reducing normal force; pushing has a downward vertical component increasing normal force.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">Normal shift is exactly ΔN = 2 F sinθ. Pushing jams completely when tanθ = μ (force required blows up to infinity!).</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Force applied at angle θ to horizontal on rough horizontal surface.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> If pulling force is very large (F sinθ > mg), the body lifts off the surface (N = 0, friction vanishes completely).
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Lawn Roller Dynamics (Grade 9 Foundation / NEET)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 10s vs 50s</span>
+            </div>
+            <div class="drill-solution">Pulling reduces normal force by F sinθ, decreasing friction resistance f = μ N. Pushing adds F sinθ, increasing resistance.</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Two-Block Slipping Threshold Rule</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">a<sub>max</sub> = μ<sub>s</sub> g, &nbsp;&nbsp; F<sub>thresh</sub> = (M + m) μ<sub>s</sub> g</div>
+            <div class="formula-rationale">Friction between the blocks is the sole force accelerating the upper block m; its maximum possible acceleration is μ_s g.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">Compute system acceleration a_sys = F / (M + m). If a_sys ≤ μ_s g, they move together without slip. If a_sys > μ_s g, slip occurs.</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Smooth horizontal ground under lower block M; friction acts only at mutual interface.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Once slipping begins, static friction μ_s must immediately be replaced by kinetic friction μ_k.
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Block-on-Block Slip Threshold (JEE Main / Foundation)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 15s vs 75s</span>
+            </div>
+            <div class="drill-solution">m=2kg on M=3kg, μ_s=0.4: a_max = 0.4(10) = 4 m/s². Maximum pulling force without slipping is F_thresh = (2 + 3)(4) = 20 N.</div>
+          </div>
+        </div>
+        
+  </div>
+
+  <div class="page-footer">
+    <span>Grade 9 &amp; 10 Foundation Reference Codex &bull; Secondary &amp; National Competitive Standards</span>
+    <span>Page 4 of 6 &bull; 10" Tablet Landscape Reference Edition</span>
+  </div>
+</section>
+
+
+<section class="sheet">
+  <div class="page-header">
+    <div class="header-left">
+      <span class="mod-badge">MOD-04</span>
+      <span class="mod-title">Mole Concept, Solutions &amp; Stoichiometric Mastery</span>
+    </div>
+    <div class="header-right">
+      <span class="topic-pill">MOLE_STOICHIOMETRY</span>
+      <span class="topic-pill" style="background: #f1f5f9; color: #475569; border-color: #cbd5e1;">4 SPEED HACKS</span>
+    </div>
+  </div>
+
+  <div class="module-grid">
+    
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Molarity-to-Molality Direct Conversion</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">m = 1000 M / (1000 d - M M<sub>w</sub>) &nbsp;&nbsp; | &nbsp;&nbsp; d = (M / 1000) [ (1000 / m) + M<sub>w</sub> ]</div>
+            <div class="formula-rationale">In 1000 mL solution: total mass = 1000 d grams, solute mass = M M_w grams, solvent mass = (1000 d - M M_w) / 1000 kg.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">Eliminates the tedious 2-page 'Assume 1 L solution' algebra. Direct plug-and-chug with density d in g/mL.</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Density d must be in g/mL (or g/cm³). Solute molar mass M_w in g/mol.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Ensure d is in g/mL, not kg/m³. If given in kg/m³, divide by 1000 first.
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Concentration Unit Interconversion (JEE Main / NEET (UG) Core)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 20s vs 90s</span>
+            </div>
+            <div class="drill-solution">2.0 M aqueous urea (Mw=60) with d=1.06 g/mL: m = 1000(2) / [1000(1.06) - 2(60)] = 2000 / [1060 - 120] = 2000 / 940 = 2.13 m.</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Alligation Cross for Binary Mixture Molar Mass</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">n₁ / n₂ = |M₂ - M_avg| / |M₁ - M_avg|</div>
+            <div class="formula-rationale">M_avg = (n₁ M₁ + n₂ M₂) / (n₁ + n₂) rearranged gives n₁ (M_avg - M₁) = n₂ (M₂ - M_avg).</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">Solves isotope natural abundances, binary alloy compositions, and gas mixture ratios in 5 seconds via cross subtraction.</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Applies strictly to binary (two-component) mixtures.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Alligation gives mole ratio for molar properties, but mass ratio for mass-specific properties (like mass percentages).
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Partial Pressures in Gas Mixture (NEET (UG) 2020 · Set E1 · Q110)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 15s vs 60s</span>
+            </div>
+            <div class="drill-solution">7g N₂ (0.25 mol) & 8g Ar (0.20 mol): n_ratio = 5:4. Mole fraction of Ar = 4/9. Partial pressure P_Ar = (4/9)(27 bar) = 12 bar.</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Faraday&#x27;s Electrolysis Direct Electron Factor</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">1 Faraday = 96,500 C ≡ 1 mole of electrons &nbsp;|&nbsp; Mass m = (M / z) (Q / F)</div>
+            <div class="formula-rationale">Reduction of 1 mole of M^(z+) requires exactly z moles of electrons (z Faradays of charge).</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">Never use complex electrochemical equivalent formulas. Simply use: Moles deposited = Faradays / z.</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> 100% current efficiency assumed unless specified otherwise.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Identify cation charge z carefully: e.g., Cu²+ has z=2, but Cu+ (cuprous) has z=1.
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Electrolytic Deposition of Calcium (NEET (UG) 2020 · Set E1 · Q106)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 5s vs 40s</span>
+            </div>
+            <div class="drill-solution">Ca²+ + 2e⁻ → Ca. Molar mass Ca = 40 g/mol ⇒ 40g requires 2 F. Therefore 20g requires exactly 1.0 F.</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Limiting Reagent Dimensionless Ratio Test</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">R<sub>i</sub> = n<sub>i</sub> / ν<sub>i</sub> &nbsp;&nbsp; (ν<sub>i</sub> = stoichiometric coefficient)</div>
+            <div class="formula-rationale">Reaction progress is bounded by the reactant with the minimum value of moles divided by its stoichiometric number.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">Divide initial moles of each reactant by its balanced coefficient. Smallest ratio is strictly the Limiting Reagent (LR).</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Reaction must go to completion (irreversible stoichiometry).
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Never compare raw masses or raw moles directly; always divide by stoichiometric coefficients first.
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Haber Ammonia Synthesis (Grade 9 Foundation / NEET)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 10s vs 50s</span>
+            </div>
+            <div class="drill-solution">N₂ + 3 H₂ → 2 NH₃ with 2 mol N₂ and 3 mol H₂. R_N = 2/1 = 2; R_H = 3/3 = 1. H₂ is LR (ratio 1 < 2), yielding 2 mol NH₃.</div>
+          </div>
+        </div>
+        
+  </div>
+
+  <div class="page-footer">
+    <span>Grade 9 &amp; 10 Foundation Reference Codex &bull; Secondary &amp; National Competitive Standards</span>
+    <span>Page 5 of 6 &bull; 10" Tablet Landscape Reference Edition</span>
+  </div>
+</section>
+
+
+<section class="sheet">
+  <div class="page-header">
+    <div class="header-left">
+      <span class="mod-badge">MOD-05</span>
+      <span class="mod-title">Redox Mastery, n-Factor Matrix &amp; Rapid Titrations</span>
+    </div>
+    <div class="header-right">
+      <span class="topic-pill">REDOX_CHEMISTRY</span>
+      <span class="topic-pill" style="background: #f1f5f9; color: #475569; border-color: #cbd5e1;">4 SPEED HACKS</span>
+    </div>
+  </div>
+
+  <div class="module-grid">
+    
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>The &#x27;BAN&#x27; Mnemonic for Permanganate (KMnO₄)</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">Basic (strongly alkaline): n = 1 &nbsp;|&nbsp; Acidic: n = 5 &nbsp;|&nbsp; Neutral / weakly basic: n = 3</div>
+            <div class="formula-rationale">Acidic: MnO₄⁻ + 5e⁻ → Mn²⁺ (+7→+2). Neutral: MnO₄⁻ + 3e⁻ → MnO₂ (+7→+4). Strongly Basic: MnO₄⁻ + 1e⁻ → MnO₄²⁻ (+7→+6).</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">Remember keyword 'BAN 1-5-3' (Basic=1, Acidic=5, Neutral=3) to instantly write equivalent weights without balancing half-cells.</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Acidic medium must use dilute H₂SO₄, never concentrated HCl (which oxidizes Cl⁻ to Cl₂).
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> In neutral or faintly alkaline medium, n = 3 (forms MnO₂), not n = 5.
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Permanganate Equivalent Weight (NEET (UG) / JEE Main Core)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 5s vs 45s</span>
+            </div>
+            <div class="drill-solution">Equivalent weight of KMnO₄ in acid is M/5; in neutral medium (forming MnO₂) it is M/3; in strongly basic medium it is M/1.</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Dichromate Acidic Invariant</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">Cr₂O₇²⁻ + 14H⁺ + 6e⁻ → 2Cr³⁺ + 7H₂O &nbsp;&nbsp; (n = 2 × |6 - 3| = 6)</div>
+            <div class="formula-rationale">Two chromium atoms per formula unit each undergo a 3-electron reduction from +6 to +3.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">Equivalent weight of K₂Cr₂O₇ in acidic medium is always strictly M / 6.</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Operates as an oxidant in acidic solution; in alkaline medium it hydrolyzes to yellow chromate CrO₄²⁻.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Multiply change in oxidation state per atom (3) by number of Cr atoms in formula unit (2) = 6. Forgetting factor 2 is fatal.
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Dichromate Charge Transfer (JEE Main / NEET)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 10s vs 45s</span>
+            </div>
+            <div class="drill-solution">Complete reduction of 1 mol K₂Cr₂O₇ to Cr³⁺ in acidic medium consumes exactly 6 Faradays (6 × 96,500 C) of charge.</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>Parallel Resistor Rule for Disproportionation</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">n<sub>eq</sub> = (n<sub>ox</sub> · n<sub>red</sub>) / (n<sub>ox</sub> + n<sub>red</sub>) &nbsp;&nbsp; ⇔ &nbsp;&nbsp; 1 / n<sub>eq</sub> = 1 / n<sub>ox</sub> + 1 / n<sub>red</sub></div>
+            <div class="formula-rationale">Conserving electrons across simultaneously oxidized and reduced branches yields equivalent weight E = M (1/n_ox + 1/n_red).</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">Identical structure to parallel resistors. Disproportionation n-factor is computed in 5 seconds without writing full balanced stoichiometry.</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> Applicable strictly when a single reactant disproportionates into two distinct redox products.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> Do not simply add n_ox + n_red; addition is only valid when two different elements in the same compound both oxidize.
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Chlorine Gas Disproportionation (JEE Main / NEET Redox)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 15s vs 70s</span>
+            </div>
+            <div class="drill-solution">Cl₂ + 2 OH⁻ → Cl⁻ (n_red = 1) + ClO⁻ (n_ox = 1). n_eq = (1×1)/(1+1) = 0.5. Equivalent weight of Cl₂ is M / 0.5 = 2M.</div>
+          </div>
+        </div>
+        
+        <div class="concept-card">
+          <div class="concept-card-title">
+            <span>The Golden Law of Equivalents (Titration Shortcut)</span>
+            <span style="font-size: 7px; color: #2563eb; font-weight: 700; font-family: 'JetBrains Mono', monospace;">INVARIANT</span>
+          </div>
+
+          <!-- Formula Box -->
+          <div class="formula-box">
+            <div class="formula-text">(N₁ V₁)<sub>oxidant</sub> = (N₂ V₂)<sub>reductant</sub> &nbsp;&nbsp; ⇔ &nbsp;&nbsp; n₁ · moles₁ = n₂ · moles₂</div>
+            <div class="formula-rationale">One equivalent of any oxidizing agent completely consumes exactly one equivalent of any reducing agent.</div>
+          </div>
+
+          <!-- Speed Hack -->
+          <div class="speed-hack-box">
+            <div class="box-label label-amber">⚡ In-Exam Speed Hack</div>
+            <div class="speed-hack-text">Never balance full complex redox equations during exam conditions. Multiply moles by respective n-factors and equate directly.</div>
+          </div>
+
+          <!-- Guardrails: Boundary & Trap -->
+          <div class="guardrail-row">
+            <div class="boundary-box">
+              <span style="font-weight: 700; color: #475569;">DOMAIN:</span> All reactants must react completely without side reactions.
+            </div>
+            <div class="trap-box">
+              <span style="font-weight: 700; color: #be123c;">TRAP:</span> In FeC₂O₄ (ferrous oxalate), both Fe²⁺ (1e⁻) and C₂O₄²⁻ (2e⁻) oxidize, so n-factor is 1 + 2 = 3!
+            </div>
+          </div>
+
+          <!-- Lightning Drill -->
+          <div class="drill-box">
+            <div class="drill-header">
+              <span>🎯 DRILL: Oxalic Acid Permanganate Titration (Grade 9-10 Olympiad / NEET)</span>
+              <span style="background: #d1fae5; padding: 0.5px 4px; border-radius: 2px;">⚡ 15s vs 80s</span>
+            </div>
+            <div class="drill-solution">Oxalic acid (H₂C₂O₄, n=2) titrated with acidified KMnO₄ (n=5): 2 × moles_ox = 5 × moles_perm ⇒ 5 mol oxalic acid requires 2 mol KMnO₄.</div>
+          </div>
+        </div>
+        
+  </div>
+
+  <div class="page-footer">
+    <span>Grade 9 &amp; 10 Foundation Reference Codex &bull; Secondary &amp; National Competitive Standards</span>
+    <span>Page 6 of 6 &bull; 10" Tablet Landscape Reference Edition</span>
+  </div>
+</section>
+
+</body></html>
