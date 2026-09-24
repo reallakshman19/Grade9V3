@@ -8,7 +8,7 @@ Every generated package declares `packageVersion`, `componentApiVersion`, `trans
 
 ## Data-only package
 
-A portable package contains an already-compiled semantic scene, a declarative transfer adapter payload, provenance/source references, optional question bindings, and pedagogy injections. Two provenance authorities are accepted:
+A portable package contains an already-compiled semantic scene, a declarative transfer adapter payload, optional explicit rejection cases, provenance/source references, optional question bindings, and pedagogy injections. Explicit rejection cases preserve canonical fail-closed reasons without granting a transformation rule. Two provenance authorities are accepted:
 
 - `NON_CANONICAL_COMPILED_PROOF` for portability fixtures. These packages prove runtime portability only and never become academic authority.
 - `CANONICAL_COMPILED_RESOURCE` for a package compiled from governed canonical inputs. This form must carry an explicit `resourceRef`, one declared canonical representation ref, and source refs that match the package provenance exactly.
@@ -41,11 +41,13 @@ The portable binding layer consumes the final AtlasIndex 2.0 visual-target contr
 
 Stable fail-closed findings include `VISUAL_REF_UNAVAILABLE`, `VISUAL_REF_INVALID`, `STANDALONE_PACKAGE_UNAVAILABLE`, `PORTABLE_PACKAGE_NOT_FOUND`, `PORTABLE_CANONICAL_PROVENANCE_REQUIRED`, `PORTABLE_RESOURCE_BINDING_MISMATCH` and `PORTABLE_REPRESENTATION_BINDING_MISMATCH`.
 
-At the Issue #212 AtlasIndex 2.0 release used by Issue #214, `ACT-KIN-2D-SHARED-CLOCK` has a READY canonical resource/locator but `portable_package: UNAVAILABLE` and `standalone: UNAVAILABLE`. The resolver therefore returns `STANDALONE_PACKAGE_UNAVAILABLE`; it does not promote the existing activity page or a proof fixture into a canonical package. A production Motion package still requires a governed portable-declarative scene/action input and an explicit package declaration.
+The governed Motion source introduced by #225 declares `portable-kin-2d-shared-clock` explicitly on `ACT-KIN-2D-SHARED-CLOCK` and binds it to `REP-KIN-2D-SHARED-CLOCK / SI-KIN-2D-SHARED-CLOCK-PORTABLE`. The generator compiles that source as `CANONICAL_COMPILED_RESOURCE`; its same-time action is the only accepted transformation rule and its mixed-time action remains an explicit non-simultaneity rejection.
+
+The currently released AtlasIndex 2.0 producer still reports that resource's `portable_package` and `standalone` availability as `UNAVAILABLE`. Until the Atlas producer is reconciled against the generated canonical package, `resolveCanonicalPortableTarget` must continue returning `STANDALONE_PACKAGE_UNAVAILABLE`. Package existence alone must not silently rewrite Atlas availability.
 
 ## Cross-subject proofs
 
-The same component and declarative adapter contract is used by long division, Redox, and integration proof packages. Long division reuses the existing Core witness; the Redox and integration rows are compiled portability proof fixtures, not a replacement subject database.
+The same component and declarative adapter contract is used by the canonical Motion package and by long division, Redox, and integration proof packages. The three proof packages remain `NON_CANONICAL_COMPILED_PROOF`; only the Motion package is compiled from governed subject records.
 
 ## Redox migration guidance
 
