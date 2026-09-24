@@ -17,7 +17,7 @@
     "WEB": 9,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:a08ae1ec328231b8e74e33be481813ef85ade90612233b66580849014cd3854a",
+  "digest": "sha256:b18b0ecef36eae9f93df35d92cbd19a9d538d120bbb30a94ab9d4d890d21a589",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -744,8 +744,8 @@
       "path": "Shared/tools/learning_product_appendix_contract.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 12148,
-      "sha256": "157d9e1233bb316a49f4f7cef86179ded1533be3c2860b5003c2aaff657a45e3"
+      "bytes": 12378,
+      "sha256": "78d47e1f047f7a44e5481d53b5d82d0c4a0d44c267120a8fce36afcb606b8de0"
     },
     {
       "path": "Shared/tools/learning_router.py",
