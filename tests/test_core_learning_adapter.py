@@ -348,6 +348,7 @@ class CoreLearningProductionAdapter(unittest.TestCase):
         self.assertEqual(normalized_public, normalized_standalone)
         self.assertIn("const rows = Array.isArray(data?.core_projections)", public)
         self.assertIn("mountCoreLearningPage", public)
+        self.assertIn("data?.workbench_registries", public)
 
     def test_shared_clock_explorer_remains_available_when_canonical_resource_exists(self):
         row = self.row(core="CORE2A", source=FAMILIAR)
@@ -356,6 +357,34 @@ class CoreLearningProductionAdapter(unittest.TestCase):
             "public/physics/motion-2d/explorers/shared-clock/index.html",
         )
         self.assertTrue((REPO / row["explorer_locator"]).is_file())
+
+    def test_canonical_portable_workbench_binds_by_exact_representation_identity(self):
+        core1a = self.row(core="CORE1A", concept=CONCEPT)
+        core1b = self.row(core="CORE1B", concept=CONCEPT)
+
+        for row in (core1a, core1b):
+            self.assertEqual(row["portable_package_ref"], "portable-motion-shared-clock")
+            self.assertTrue(row["scene_ref"].startswith("portable:"))
+            self.assertTrue(row["adapter_ref"].startswith("portable:"))
+            self.assertEqual(row["injection_refs"], [])
+
+        registries = self.payload["workbench_registries"]
+        self.assertIn(core1a["scene_ref"], registries["scenes"])
+        self.assertIn(core1a["adapter_ref"], registries["adapters"])
+        self.assertEqual(
+            registries["scenes"][core1a["scene_ref"]]["id"],
+            "portable-motion-shared-clock-scene",
+        )
+
+    def test_noncanonical_portable_fixtures_never_bind_to_production_core_rows(self):
+        bound = {
+            row.get("portable_package_ref")
+            for row in self.rows
+            if row.get("portable_package_ref")
+        }
+        self.assertNotIn("portable-long-division", bound)
+        self.assertNotIn("portable-redox-electron-equivalence", bound)
+        self.assertNotIn("portable-integration-riemann", bound)
 
     def test_shared_tooling_has_no_motion_specific_identifier_switch(self):
         adapter = (REPO / "Shared/tools/core_learning_projection_adapter.py").read_text(encoding="utf-8")
