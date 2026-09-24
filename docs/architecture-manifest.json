@@ -17,7 +17,7 @@
     "WEB": 9,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:b18b0ecef36eae9f93df35d92cbd19a9d538d120bbb30a94ab9d4d890d21a589",
+  "digest": "sha256:f7f844438e5ac85b902836013bc476971174b400d3f34eb36704857ccbd395ac",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -471,8 +471,8 @@
       "path": "Shared/roles/LEARNER-PRODUCT-APPENDICES.md",
       "role": "CONTRACT",
       "role_description": "The six Core role specifications",
-      "bytes": 7429,
-      "sha256": "5d05f3da02844cb47910ff3abdd3f958518aaf1faf03ce4b3292f208bd749d6f"
+      "bytes": 7729,
+      "sha256": "d2206fd12377589aa818e4aabc8378e9fb85f3d4a998dbdce579a3fc1dd6d666"
     },
     {
       "path": "Shared/roles/LEARNER-PRODUCT-TEMPLATES.md",
@@ -744,8 +744,8 @@
       "path": "Shared/tools/learning_product_appendix_contract.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 12378,
-      "sha256": "78d47e1f047f7a44e5481d53b5d82d0c4a0d44c267120a8fce36afcb606b8de0"
+      "bytes": 13629,
+      "sha256": "922c7c9ad6599373f45045bcd4dbaae89e84af3328c05e347b8c6d2dd81904ea"
     },
     {
       "path": "Shared/tools/learning_router.py",
@@ -1668,8 +1668,8 @@
       "path": "tests/test_learning_product_appendix_contract.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 5230,
-      "sha256": "a5c12ca13e846cfb0561c32595deff018c063c5a62ac96a65e9d191365c44dd9"
+      "bytes": 6446,
+      "sha256": "14204922d2b70b987295809a3f113da88183d50bb0907c9d056226643a4dd700"
     },
     {
       "path": "tests/test_learning_router.py",
