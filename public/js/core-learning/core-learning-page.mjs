@@ -203,6 +203,31 @@ export function validateCoreProjection(input) {
       "CORE_PROJECTION_REPRESENTATIONS_INVALID",
       projection.concept.microtopic_ref,
     );
+    for (const representation of projection.concept.representations) {
+      requireObject(representation, "CORE_PROJECTION_REPRESENTATION_INVALID");
+      requireString(
+        representation.representation_ref,
+        "CORE_PROJECTION_REPRESENTATION_REF_REQUIRED",
+      );
+      for (const field of ["required_elements", "read_order", "accessibility"]) {
+        representation[field] = optionalStringArray(
+          representation[field],
+          `CORE_PROJECTION_REPRESENTATION_${field.toUpperCase()}_INVALID`,
+        );
+      }
+      representation.reveal_stages = optionalArray(
+        representation.reveal_stages,
+        "CORE_PROJECTION_REPRESENTATION_REVEAL_STAGES_INVALID",
+      );
+      for (const stage of representation.reveal_stages) {
+        requireObject(stage, "CORE_PROJECTION_REPRESENTATION_REVEAL_STAGE_INVALID");
+        requireString(stage.id, "CORE_PROJECTION_REPRESENTATION_REVEAL_STAGE_ID_REQUIRED");
+        stage.visible_elements = optionalStringArray(
+          stage.visible_elements,
+          "CORE_PROJECTION_REPRESENTATION_REVEAL_VISIBLE_INVALID",
+        );
+      }
+    }
     projection.concept.relation_checks = optionalStringArray(
       projection.concept.relation_checks,
       "CORE_PROJECTION_RELATION_CHECKS_INVALID",
@@ -855,17 +880,141 @@ function renderOrientationMap(projection) {
   </section>`;
 }
 
-function renderRepresentation(state) {
-  const visualRef = state.currentVisualRef ? escapeHtml(state.currentVisualRef) : "";
+function activeRepresentation(projection, state) {
+  const rows = projection.concept?.representations ?? [];
+  if (!rows.length) return null;
+  return rows.find((row) => row.representation_ref === state.currentVisualRef) ?? rows[0];
+}
+
+function activeRepresentationStage(representation, state) {
+  if (!representation || !state.currentVisualStageRef) return null;
+  return (representation.reveal_stages ?? []).find(
+    (stage) => stage.id === state.currentVisualStageRef,
+  ) ?? null;
+}
+
+function visibleRepresentationElements(representation, state) {
+  if (!representation) return [];
+  const stage = activeRepresentationStage(representation, state);
+  const preferred = stage?.visible_elements?.length
+    ? stage.visible_elements
+    : (representation.read_order?.length
+      ? representation.read_order
+      : representation.required_elements ?? []);
+  const canonical = preferred.filter((item) => typeof item === "string" && item.trim());
+  if (canonical.length) return [...new Set(canonical)];
+
+  // Older compiled projections already carry canonical correspondence but not the
+  // full representation anatomy. Use that truth only after a reveal boundary so
+  // Core1B/Core2B do not gain a new pre-attempt leak.
+  const revealSafe = state.reconstructionVisible || state.reasoningVisible || state.solutionVisible;
+  if (!revealSafe) return [];
+  return [...new Set((representation.correspondence ?? [])
+    .map((row) => {
+      const element = typeof row?.element === "string" ? row.element.trim() : "";
+      const symbol = typeof row?.symbol === "string" ? row.symbol.trim() : "";
+      return element && symbol ? `${element} ↔ ${symbol}` : element || symbol;
+    })
+    .filter(Boolean))];
+}
+
+function renderCanonicalSemanticSvg(representation, state) {
+  const elements = visibleRepresentationElements(representation, state);
+  if (!elements.length) return "";
+  const rowHeight = 72;
+  const top = 24;
+  const height = top * 2 + (elements.length * rowHeight);
+  const stage = activeRepresentationStage(representation, state);
+  const title = representation.purpose || "Canonical representation read order";
+  const nodes = elements.map((item, index) => {
+    const y = top + (index * rowHeight);
+    const connector = index < elements.length - 1
+      ? `<line x1="360" y1="${y + 48}" x2="360" y2="${y + rowHeight - 8}" class="semantic-arrow" marker-end="url(#semantic-arrowhead)"></line>`
+      : "";
+    return `<g data-semantic-element="${escapeHtml(item)}">
+      <rect x="70" y="${y}" width="580" height="48" rx="10" class="semantic-node"></rect>
+      <text x="94" y="${y + 30}" class="semantic-label">${escapeHtml(item)}</text>
+      ${connector}
+    </g>`;
+  }).join("");
+  return `<figure class="canonical-visual" data-canonical-svg>
+    <svg viewBox="0 0 720 ${height}" role="img" aria-labelledby="semantic-svg-title semantic-svg-desc">
+      <title id="semantic-svg-title">${escapeHtml(representation.representation_ref)}</title>
+      <desc id="semantic-svg-desc">${escapeHtml(title)}</desc>
+      <defs>
+        <marker id="semantic-arrowhead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+          <path d="M 0 0 L 10 5 L 0 10 z" class="semantic-arrowhead"></path>
+        </marker>
+      </defs>
+      ${nodes}
+    </svg>
+    <figcaption>
+      ${stage?.label ? `<strong>${escapeHtml(stage.label)}.</strong> ` : ""}
+      ${escapeHtml(stage?.purpose || representation.purpose || "")}
+    </figcaption>
+  </figure>`;
+}
+
+function renderRepresentation(projection, state) {
+  const representation = activeRepresentation(projection, state);
+  const visualRef = state.currentVisualRef
+    ? escapeHtml(state.currentVisualRef)
+    : escapeHtml(representation?.representation_ref ?? "");
   const visualStage = state.currentVisualStageRef ? escapeHtml(state.currentVisualStageRef) : "";
+  if (!visualRef && !representation) return "";
+  const staticVisual = renderCanonicalSemanticSvg(representation, state);
+  const accessibility = representation?.accessibility?.length
+    ? `<details class="representation-accessibility"><summary>How to read this representation</summary><ul>${representation.accessibility.map(
+        (item) => `<li>${escapeHtml(item)}</li>`,
+      ).join("")}</ul></details>`
+    : "";
   return `<section class="representation-panel" aria-labelledby="core-representation-title"
     data-visual-ref="${visualRef}" data-visual-stage-ref="${visualStage}">
+    <div class="section-kicker">Visual model</div>
     <h3 id="core-representation-title">Representation</h3>
+    ${representation?.purpose ? `<p class="representation-purpose">${escapeHtml(representation.purpose)}</p>` : ""}
+    ${staticVisual}
     <div data-workbench-mount></div>
     <p class="representation-fallback" data-workbench-fallback>
-      Interactive representation is supplied by the host when available.
+      ${staticVisual
+        ? "Canonical static representation shown. Interactive manipulation is optional when a bound workbench is available."
+        : "Interactive representation is supplied by the host when available."}
     </p>
+    ${accessibility}
   </section>`;
+}
+
+function renderRoleBody(projection, state) {
+  const orientation = renderOrientationMap(projection);
+  const concept = renderConcept(projection, state);
+  const question = renderQuestion(projection, state);
+  const figures = renderQuestionFigures(projection, state);
+  const representation = renderRepresentation(projection, state);
+  const attempt = renderAttempt(projection, state);
+  const hints = renderHints(projection, state);
+  const support = renderSupport(projection, state);
+  const construction = renderConstruction(projection, state);
+  const reasoning = renderReasoningRoute(projection, state);
+  const check = renderIndependentCheck(projection, state);
+  const solution = renderSolution(projection, state);
+  const completion = renderCompletion(state);
+
+  switch (projection.core) {
+    case "CORE1":
+      return `${orientation}${representation}`;
+    case "CORE1A":
+      return `${concept}${representation}${construction}${completion}`;
+    case "CORE1B":
+      return `${concept}${representation}${attempt}${construction}${completion}`;
+    case "CORE2":
+      return `${question}${figures}${representation}${hints}${solution}${check}`;
+    case "CORE2A":
+      return `${question}${figures}${representation}${support}${hints}${attempt}${reasoning}${solution}${check}${completion}`;
+    case "CORE2B":
+      return `${question}${figures}${representation}${support}${attempt}${hints}${reasoning}${solution}${check}${completion}`;
+    default:
+      return "";
+  }
 }
 
 function renderCompletion(state) {
@@ -882,33 +1031,189 @@ export function renderCoreLearningProjection(input, stateInput = null) {
     : deriveCoreLearningState(projection);
 
   return `<style>
-    :host { display:block; font:inherit; color:inherit; }
-    .shell { display:grid; gap:1rem; max-width:72rem; margin:0 auto; }
-    .orientation,.orientation-map,.concept,.question,.question-figures,.attempt-panel,.hint-panel,.support-panel,.reasoning-panel,.check-panel,.solution-panel,.construction-panel,.representation-panel {
-      border:1px solid currentColor; border-radius:.75rem; padding:1rem;
+    :host {
+      display:block;
+      color:CanvasText;
+      background:Canvas;
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      font-size:clamp(1rem,.96rem + .24vw,1.125rem);
+      line-height:1.58;
     }
-    .eyebrow { font-size:.8rem; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
-    h2,h3,p { margin:.25rem 0 .75rem; }
-    ol { margin:.5rem 0 0; padding-left:1.25rem; }
-    li + li { margin-top:.65rem; }
-    small { display:block; margin-top:.2rem; opacity:.8; }
-    .source-identity { font-size:.85rem; opacity:.8; }
-    .question-parts h4 { margin:.75rem 0 .25rem; }
-    label { display:block; font-weight:600; margin-bottom:.35rem; }
-    textarea { box-sizing:border-box; width:100%; max-width:48rem; font:inherit; }
-    button { font:inherit; min-height:2.75rem; padding:.55rem .8rem; margin-top:.65rem; }
-    .status { font-weight:600; }
-    [data-crux="true"] { border-inline-start:.3rem solid currentColor; padding-inline-start:.75rem; }
-    .crux-label { display:block; margin-bottom:.2rem; }
+    .shell {
+      display:grid;
+      gap:1.15rem;
+      max-width:78rem;
+      margin:0 auto;
+      padding:.25rem 0 2rem;
+    }
+    .orientation {
+      padding:.25rem 0 1rem;
+      border-bottom:2px solid currentColor;
+    }
+    .orientation-map,.concept,.question,.question-figures,.representation-panel,.construction-panel,.reasoning-panel,.solution-panel {
+      border:1px solid color-mix(in srgb,currentColor 24%,transparent);
+      border-radius:1rem;
+      padding:clamp(1rem,2vw,1.4rem);
+      background:Canvas;
+    }
+    .attempt-panel,.hint-panel,.support-panel,.check-panel {
+      border-inline-start:.28rem solid currentColor;
+      padding:.85rem 1rem;
+      background:color-mix(in srgb,CanvasText 4%,Canvas);
+    }
+    .construction-panel,.reasoning-panel,.solution-panel {
+      box-shadow:0 .15rem .75rem color-mix(in srgb,CanvasText 8%,transparent);
+    }
+    .eyebrow,.section-kicker {
+      font-size:.78rem;
+      font-weight:750;
+      letter-spacing:.09em;
+      text-transform:uppercase;
+    }
+    .section-kicker { opacity:.72; margin-bottom:.2rem; }
+    h2,h3,h4,h5,p { margin:.2rem 0 .78rem; }
+    h2 { font-size:clamp(1.35rem,1.12rem + .9vw,1.9rem); line-height:1.22; }
+    h3 { font-size:clamp(1.12rem,1.04rem + .35vw,1.35rem); line-height:1.3; }
+    h4 { font-size:1rem; }
+    p,li { max-width:72ch; }
+    ol,ul { margin:.55rem 0 0; padding-left:1.35rem; }
+    li + li { margin-top:.62rem; }
+    small { display:block; margin-top:.28rem; opacity:.78; line-height:1.45; }
+    .source-identity {
+      font-size:.88rem;
+      opacity:.78;
+      padding-block:.35rem;
+      border-block:1px solid color-mix(in srgb,currentColor 18%,transparent);
+    }
+    .question > p:first-of-type,.concept > p:first-of-type {
+      font-size:1.06em;
+      line-height:1.62;
+    }
+    .question-parts { margin-top:1rem; }
+    .question-parts h4 { margin:.8rem 0 .28rem; }
+    .equation-expression {
+      font-size:1.15em;
+      overflow-x:auto;
+      padding:.55rem .7rem;
+      border-radius:.6rem;
+      background:color-mix(in srgb,CanvasText 4%,Canvas);
+    }
+    .entry-assumptions,.misconception-repair,.worked-anchors,.concept-closure,.solution-rubric,.repair-route,.boundary-test {
+      margin-top:1rem;
+      padding-top:.9rem;
+      border-top:1px solid color-mix(in srgb,currentColor 18%,transparent);
+    }
+    .construction > li,.reasoning-route > li,.solution-steps > li {
+      padding:.35rem 0 .45rem;
+    }
+    label { display:block; font-weight:650; margin-bottom:.4rem; }
+    textarea {
+      box-sizing:border-box;
+      width:100%;
+      min-height:8rem;
+      max-width:58rem;
+      resize:vertical;
+      padding:.75rem;
+      font:inherit;
+      line-height:1.5;
+    }
+    button {
+      font:inherit;
+      min-height:3rem;
+      padding:.62rem .95rem;
+      margin-top:.7rem;
+      touch-action:manipulation;
+    }
+    .status { font-weight:650; text-transform:none; }
+    [data-crux="true"] {
+      border-inline-start:.3rem solid currentColor;
+      padding-inline-start:.85rem;
+    }
+    .crux-label { display:block; margin-bottom:.24rem; }
+    .representation-purpose { margin-bottom:1rem; }
+    .canonical-visual {
+      margin:1rem 0;
+      padding:.7rem;
+      border:1px solid color-mix(in srgb,currentColor 18%,transparent);
+      border-radius:.8rem;
+      overflow:hidden;
+    }
+    .canonical-visual svg {
+      display:block;
+      width:100%;
+      height:auto;
+      max-height:32rem;
+    }
+    .semantic-node {
+      fill:Canvas;
+      stroke:currentColor;
+      stroke-width:2;
+    }
+    .semantic-label {
+      fill:currentColor;
+      font:600 18px system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    }
+    .semantic-arrow { stroke:currentColor; stroke-width:2; }
+    .semantic-arrowhead { fill:currentColor; }
+    .canonical-visual figcaption {
+      margin-top:.55rem;
+      font-size:.92rem;
+      line-height:1.45;
+    }
+    .representation-fallback {
+      font-size:.88rem;
+      opacity:.74;
+      margin-top:.65rem;
+    }
+    .representation-accessibility {
+      margin-top:.65rem;
+      font-size:.92rem;
+    }
+    .complete { font-weight:700; }
     .visually-hidden {
-      position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
-      clip:rect(0,0,0,0); white-space:nowrap; border:0;
+      position:absolute;
+      width:1px;
+      height:1px;
+      padding:0;
+      margin:-1px;
+      overflow:hidden;
+      clip:rect(0,0,0,0);
+      white-space:nowrap;
+      border:0;
     }
-    @media (max-width: 36rem) {
-      .orientation,.orientation-map,.concept,.question,.question-figures,.attempt-panel,.hint-panel,.support-panel,.reasoning-panel,.check-panel,.solution-panel,.construction-panel,.representation-panel { padding:.75rem; }
+    @media (min-width:58rem) {
+      [data-core="CORE1A"] .representation-panel,
+      [data-core="CORE1B"] .representation-panel,
+      [data-core="CORE2A"] .representation-panel,
+      [data-core="CORE2B"] .representation-panel {
+        margin-inline:clamp(1rem,4vw,3rem);
+      }
+    }
+    @media (max-width:36rem) {
+      .shell { gap:.85rem; }
+      .orientation-map,.concept,.question,.question-figures,.representation-panel,.construction-panel,.reasoning-panel,.solution-panel {
+        padding:.9rem;
+        border-radius:.75rem;
+      }
+      .attempt-panel,.hint-panel,.support-panel,.check-panel { padding:.75rem .8rem; }
+      .semantic-label { font-size:16px; }
+    }
+    @media print {
+      :host { font-size:11pt; line-height:1.45; }
+      .shell { max-width:none; gap:.7rem; }
+      button,textarea { display:none !important; }
+      .orientation-map,.concept,.question,.question-figures,.representation-panel,.construction-panel,.reasoning-panel,.solution-panel {
+        break-inside:avoid;
+        box-shadow:none;
+      }
+      .canonical-visual svg { max-height:22rem; }
     }
     @media (prefers-reduced-motion: reduce) {
-      *,*::before,*::after { animation-duration:0s !important; transition-duration:0s !important; scroll-behavior:auto !important; }
+      *,*::before,*::after {
+        animation-duration:0s !important;
+        transition-duration:0s !important;
+        scroll-behavior:auto !important;
+      }
     }
   </style>
   <article class="shell" data-core="${escapeHtml(projection.core)}" data-stage="${escapeHtml(state.stage)}">
@@ -918,19 +1223,7 @@ export function renderCoreLearningProjection(input, stateInput = null) {
       <p class="status">${escapeHtml(state.stage.replaceAll("_", " ").toLowerCase())}</p>
       <p class="visually-hidden" aria-live="polite" data-live-status></p>
     </header>
-    ${renderOrientationMap(projection)}
-    ${renderConcept(projection, state)}
-    ${renderQuestion(projection, state)}
-    ${renderQuestionFigures(projection, state)}
-    ${renderRepresentation(state)}
-    ${renderAttempt(projection, state)}
-    ${renderHints(projection, state)}
-    ${renderSupport(projection, state)}
-    ${renderConstruction(projection, state)}
-    ${renderReasoningRoute(projection, state)}
-    ${renderIndependentCheck(projection, state)}
-    ${renderSolution(projection, state)}
-    ${renderCompletion(state)}
+    ${renderRoleBody(projection, state)}
   </article>`;
 }
 
