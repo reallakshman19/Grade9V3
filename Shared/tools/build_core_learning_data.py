@@ -140,6 +140,8 @@ def _bind_portable_workbenches(rows: list[dict]) -> dict:
     by_representation, registries = _portable_workbench_bindings()
     for row in rows:
         projection = row.get("projection") or {}
+        if projection.get("core") not in {"CORE1A", "CORE1B", "CORE2A", "CORE2B"}:
+            continue
         presentation = projection.get("presentation") or {}
         representation_ref = presentation.get("initial_visual_ref")
         binding = by_representation.get(representation_ref)
