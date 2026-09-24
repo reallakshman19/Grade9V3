@@ -131,6 +131,21 @@ class SharedClockCanonicalPortableSourceTest(unittest.TestCase):
         self.assertIn(accepted["source_entity_ref"], transform["sourceEntityRefs"])
         self.assertEqual(transform["targetRef"], accepted["target_ref"])
         self.assertIn("same time", accepted["summary"].lower())
+        self.assertEqual(
+            accepted["patch"]["addEntities"][0],
+            {
+                "id": "simultaneous-state-t1",
+                "label": "r(1 s) = (2 m, 3 m)",
+                "provenance": {
+                    "kind": "DERIVED",
+                    "sourceEntityRefs": ["state-same-time"],
+                },
+            },
+        )
+        self.assertEqual(
+            accepted["patch"]["addProjections"][0]["placement"],
+            {"grid": "shared-clock-grid", "row": "result", "column": "state"},
+        )
 
         self.assertNotIn("transformation_ref", rejected)
         self.assertIn("non-simultaneous", rejected["reason"].lower())
