@@ -165,6 +165,38 @@ def _validate_adapter(adapter: dict[str, Any], scene: dict[str, Any]) -> dict[st
     return deepcopy(adapter)
 
 
+def _validate_rejections(
+    value: Any,
+    adapter: dict[str, Any],
+    scene: dict[str, Any],
+) -> list[dict[str, Any]]:
+    _require(isinstance(value, list), "PORTABLE_REJECTIONS_INVALID")
+    entities = {row["id"] for row in scene.get("entities") or []}
+    targets = {row["id"]: row for row in scene.get("targets") or []}
+    accepted = {
+        (row.get("sourceEntityRef"), row.get("targetRef"), row.get("operation"))
+        for row in adapter.get("rules") or []
+    }
+    seen: set[str] = set()
+    for rejection in value:
+        rejection_id = _text(rejection.get("id"), "PORTABLE_REJECTION_ID_REQUIRED")
+        _require(rejection_id not in seen, "PORTABLE_REJECTION_ID_DUPLICATE", rejection_id)
+        seen.add(rejection_id)
+        source = _text(rejection.get("sourceEntityRef"), "PORTABLE_REJECTION_SOURCE_REQUIRED", rejection_id)
+        target = _text(rejection.get("targetRef"), "PORTABLE_REJECTION_TARGET_REQUIRED", rejection_id)
+        operation = _text(rejection.get("operation"), "PORTABLE_REJECTION_OPERATION_REQUIRED", rejection_id)
+        _text(rejection.get("reason"), "PORTABLE_REJECTION_REASON_REQUIRED", rejection_id)
+        _require(source in entities, "PORTABLE_REJECTION_SOURCE_UNKNOWN", source)
+        _require(target in targets, "PORTABLE_REJECTION_TARGET_UNKNOWN", target)
+        _require(targets[target].get("operation") == operation, "PORTABLE_REJECTION_OPERATION_MISMATCH", rejection_id)
+        _require(
+            (source, target, operation) not in accepted,
+            "PORTABLE_REJECTION_CONFLICTS_WITH_RULE",
+            rejection_id,
+        )
+    return deepcopy(value)
+
+
 def validate_package(package: dict[str, Any]) -> dict[str, Any]:
     _require(isinstance(package, dict), "PORTABLE_PACKAGE_REQUIRED")
     _scan_data(package)
@@ -222,7 +254,8 @@ def validate_package(package: dict[str, Any]) -> dict[str, Any]:
         )
     scene = _validate_scene(package.get("scene"))
     _require(package["sceneRefs"] == [scene["id"]], "PORTABLE_SCENE_REFS_MISMATCH")
-    _validate_adapter(package.get("adapter"), scene)
+    adapter = _validate_adapter(package.get("adapter"), scene)
+    package["rejections"] = _validate_rejections(package.get("rejections", []), adapter, scene)
     _require(isinstance(package.get("injections"), list), "PORTABLE_INJECTIONS_INVALID")
     return deepcopy(package)
 
@@ -254,6 +287,7 @@ def build_package(source: dict[str, Any], scene: dict[str, Any]) -> dict[str, An
             "apiVersion": ADAPTER_API_VERSION,
             "rules": deepcopy(source["adapterRules"]),
         },
+        "rejections": deepcopy(source.get("rejections") or []),
         "injections": deepcopy(source.get("injections") or []),
     }
     if package["provenance"]["authority"] == CANONICAL_PROVENANCE_AUTHORITY:
