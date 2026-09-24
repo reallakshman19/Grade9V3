@@ -901,7 +901,21 @@ function visibleRepresentationElements(representation, state) {
     : (representation.read_order?.length
       ? representation.read_order
       : representation.required_elements ?? []);
-  return [...new Set(preferred.filter((item) => typeof item === "string" && item.trim()))];
+  const canonical = preferred.filter((item) => typeof item === "string" && item.trim());
+  if (canonical.length) return [...new Set(canonical)];
+
+  // Older compiled projections already carry canonical correspondence but not the
+  // full representation anatomy. Use that truth only after a reveal boundary so
+  // Core1B/Core2B do not gain a new pre-attempt leak.
+  const revealSafe = state.reconstructionVisible || state.reasoningVisible || state.solutionVisible;
+  if (!revealSafe) return [];
+  return [...new Set((representation.correspondence ?? [])
+    .map((row) => {
+      const element = typeof row?.element === "string" ? row.element.trim() : "";
+      const symbol = typeof row?.symbol === "string" ? row.symbol.trim() : "";
+      return element && symbol ? `${element} ↔ ${symbol}` : element || symbol;
+    })
+    .filter(Boolean))];
 }
 
 function renderCanonicalSemanticSvg(representation, state) {
