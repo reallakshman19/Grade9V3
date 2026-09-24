@@ -203,6 +203,31 @@ export function validateCoreProjection(input) {
       "CORE_PROJECTION_REPRESENTATIONS_INVALID",
       projection.concept.microtopic_ref,
     );
+    for (const representation of projection.concept.representations) {
+      requireObject(representation, "CORE_PROJECTION_REPRESENTATION_INVALID");
+      requireString(
+        representation.representation_ref,
+        "CORE_PROJECTION_REPRESENTATION_REF_REQUIRED",
+      );
+      for (const field of ["required_elements", "read_order", "accessibility"]) {
+        representation[field] = optionalStringArray(
+          representation[field],
+          `CORE_PROJECTION_REPRESENTATION_${field.toUpperCase()}_INVALID`,
+        );
+      }
+      representation.reveal_stages = optionalArray(
+        representation.reveal_stages,
+        "CORE_PROJECTION_REPRESENTATION_REVEAL_STAGES_INVALID",
+      );
+      for (const stage of representation.reveal_stages) {
+        requireObject(stage, "CORE_PROJECTION_REPRESENTATION_REVEAL_STAGE_INVALID");
+        requireString(stage.id, "CORE_PROJECTION_REPRESENTATION_REVEAL_STAGE_ID_REQUIRED");
+        stage.visible_elements = optionalStringArray(
+          stage.visible_elements,
+          "CORE_PROJECTION_REPRESENTATION_REVEAL_VISIBLE_INVALID",
+        );
+      }
+    }
     projection.concept.relation_checks = optionalStringArray(
       projection.concept.relation_checks,
       "CORE_PROJECTION_RELATION_CHECKS_INVALID",
