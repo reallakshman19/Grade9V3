@@ -260,6 +260,12 @@ def validate_audit_report(
             contract.get("publication_ready_source_states") or []
         ):
             findings.append("AUDIT_PUBLICATION_READY_SOURCE_NOT_RESOLVED")
+        for gate in expected_gates:
+            state = (gate_rows.get(gate) or {}).get("state")
+            if state not in {"PASS", "NOT_APPLICABLE"}:
+                findings.append(
+                    f"AUDIT_PUBLICATION_READY_GATE_UNRESOLVED:{gate}"
+                )
 
     joined = " ".join(
         str(report.get(field, ""))
