@@ -476,6 +476,63 @@ test("rendering uses supplied projection text for Core1A and Core2A", () => {
   assert.match(core2a, /data-stage="QUESTION_VISIBLE"/);
 });
 
+test("role-specific renderer orders learner work differently across Core products", () => {
+  const core1a = renderCoreLearningProjection(byId.core1a);
+  assert.ok(core1a.indexOf("Concept target") < core1a.indexOf("Completed construction"));
+
+  const core1b = renderCoreLearningProjection(byId.core1b);
+  assert.ok(core1b.indexOf("Predict and reconstruct") < core1b.indexOf("data-attempt-form"));
+  assert.doesNotMatch(core1b, /Reconstruction and repair/);
+
+  const core2a = renderCoreLearningProjection(byId.core2a);
+  assert.ok(core2a.indexOf("Support") < core2a.indexOf("data-attempt-form"));
+
+  const core2b = renderCoreLearningProjection(byId.core2b);
+  assert.ok(core2b.indexOf("Support") < core2b.indexOf("data-attempt-form"));
+  assert.doesNotMatch(core2b, /Reasoning route/);
+});
+
+test("canonical representation metadata renders an inline semantic SVG without inventing geometry", () => {
+  const projection = structuredClone(byId.core1a);
+  projection.concept.representations[0] = {
+    ...projection.concept.representations[0],
+    kind: "VECTOR",
+    purpose: "Connect one declared frame to one shared state.",
+    required_elements: ["physical object", "declared frame", "shared time marker"],
+    read_order: ["physical object", "declared frame", "shared time marker"],
+    accessibility: ["Read the shared time in text as well as visually."],
+    reveal_stages: [
+      {
+        id: "V1",
+        label: "Frame and clock",
+        purpose: "Expose the declared frame and shared clock.",
+        visible_elements: ["physical object", "declared frame", "shared time marker"],
+      },
+    ],
+  };
+  projection.presentation.initial_visual_ref = "REP-FIXTURE-1";
+  projection.presentation.initial_visual_stage_ref = "V1";
+
+  const rendered = renderCoreLearningProjection(projection);
+  assert.match(rendered, /data-canonical-svg/);
+  assert.match(rendered, /<svg viewBox=/);
+  assert.match(rendered, /physical object/);
+  assert.match(rendered, /declared frame/);
+  assert.match(rendered, /shared time marker/);
+  assert.match(rendered, /Frame and clock/);
+  assert.match(rendered, /Canonical static representation shown/);
+});
+
+test("renderer does not fabricate a canonical SVG when representation anatomy is absent", () => {
+  const projection = structuredClone(byId.core1a);
+  projection.concept.representations = [];
+  projection.presentation.initial_visual_ref = null;
+  projection.presentation.initial_visual_stage_ref = null;
+  const rendered = renderCoreLearningProjection(projection);
+  assert.doesNotMatch(rendered, /data-canonical-svg/);
+  assert.doesNotMatch(rendered, /class="representation-panel"/);
+});
+
 test("generic learner-shell source contains no subject-specific or learner-classification routing vocabulary", async () => {
   const source = await readFile(resolve(here, "../Shared/workbench/core-learning-page.mjs"), "utf8");
   for (const forbidden of [
