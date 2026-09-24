@@ -368,6 +368,10 @@ class CoreLearningProductionAdapter(unittest.TestCase):
             self.assertTrue(row["adapter_ref"].startswith("portable:"))
             self.assertEqual(row["injection_refs"], [])
 
+        core1 = self.row(core="CORE1", source="BUCKET-PHY-KIN-2D-MOTION")
+        self.assertIsNone(core1["scene_ref"])
+        self.assertIsNone(core1["adapter_ref"])
+
         registries = self.payload["workbench_registries"]
         self.assertIn(core1a["scene_ref"], registries["scenes"])
         self.assertIn(core1a["adapter_ref"], registries["adapters"])
