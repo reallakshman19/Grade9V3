@@ -363,7 +363,34 @@
                   "target_ref": "simultaneous-plane-state",
                   "operation": "reconstruct-simultaneous-state",
                   "expected_outcome": "ACCEPT",
-                  "summary": "Same time on both component samples reconstructs one simultaneous particle state."
+                  "summary": "Same time on both component samples reconstructs one simultaneous particle state.",
+                  "patch": {
+                    "addEntities": [
+                      {
+                        "id": "simultaneous-state-t1",
+                        "label": "r(1 s) = (2 m, 3 m)",
+                        "provenance": {
+                          "kind": "DERIVED",
+                          "sourceEntityRefs": [
+                            "state-same-time"
+                          ]
+                        }
+                      }
+                    ],
+                    "addProjections": [
+                      {
+                        "id": "simultaneous-state-result",
+                        "entityRef": "simultaneous-state-t1",
+                        "label": "r(1 s) = (2 m, 3 m)",
+                        "representation": "simultaneous ordered-pair state",
+                        "placement": {
+                          "grid": "shared-clock-grid",
+                          "row": "result",
+                          "column": "state"
+                        }
+                      }
+                    ]
+                  }
                 },
                 {
                   "id": "PWA-KIN-2D-MIXED-TIME-REJECT",
