@@ -160,7 +160,7 @@ specifications and canonical library.
         {"id": "source_question", "visibility": "IMMEDIATE"},
         {"id": "source_figure", "visibility": "IMMEDIATE"},
         {"id": "source_hint_ladder", "visibility": "ON_REVEAL"},
-        {"id": "source_answer_rubric", "visibility": "ON_REVEAL"},
+        {"id": "source_answer_rubric", "visibility": "IMMEDIATE"},
         {"id": "custody_status", "visibility": "IMMEDIATE"}
       ],
       "required_inputs": [
