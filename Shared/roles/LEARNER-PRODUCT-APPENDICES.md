@@ -113,6 +113,10 @@ The audit contract therefore separates four independent publication claims:
   publication-surface gates pass.
 
 A report may never infer the latter three from a structural pass.
+The `SOURCE_VERIFIED` claim and `SOURCE_FIDELITY` gate must also agree: a
+source-verification `PASS` requires a source-fidelity `PASS`, while a
+`NOT_APPLICABLE` source claim requires that gate to be explicitly
+`NOT_APPLICABLE` with its own rationale.
 
 ```publication-audit
 {
@@ -149,6 +153,7 @@ A report may never infer the latter three from a structural pass.
     "PASS",
     "NOT_APPLICABLE"
   ],
+  "source_verification_gate": "SOURCE_FIDELITY",
   "visual_semantic_binding": {
     "required_evidence_fields": [
       "canonical_representation_ref",

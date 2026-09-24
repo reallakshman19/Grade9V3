@@ -79,6 +79,27 @@ def _nonempty_text_list(value: Any) -> bool:
     )
 
 
+def _report_text_fragments(value: Any, field: str | None = None) -> list[str]:
+    """Collect human-readable report text while excluding controlled IDs/refs."""
+    if isinstance(value, dict):
+        fragments: list[str] = []
+        for key, nested in value.items():
+            fragments.extend(_report_text_fragments(nested, str(key)))
+        return fragments
+    if isinstance(value, list):
+        fragments = []
+        for nested in value:
+            fragments.extend(_report_text_fragments(nested, field))
+        return fragments
+    if not isinstance(value, str):
+        return []
+    if field in {"claim", "gate", "state"}:
+        return []
+    if field and (field.endswith("_ref") or field.endswith("_refs")):
+        return []
+    return [value]
+
+
 def validate_toolkit_card(
     card: dict[str, Any], contract: dict[str, Any] | None = None
 ) -> list[str]:
@@ -211,6 +232,18 @@ def validate_audit_report(
         if state == "NOT_APPLICABLE" and not _nonempty_text(row.get("rationale")):
             findings.append(f"AUDIT_GATE_NA_WITHOUT_RATIONALE:{gate}")
 
+    source_claim = claim_rows.get("SOURCE_VERIFIED")
+    source_gate_name = contract.get("source_verification_gate")
+    source_gate = gate_rows.get(source_gate_name) if source_gate_name else None
+    if source_claim and source_gate:
+        claim_state = source_claim.get("state")
+        gate_state = source_gate.get("state")
+        if claim_state in {"PASS", "NOT_APPLICABLE"} and gate_state != claim_state:
+            findings.append(
+                "AUDIT_SOURCE_CLAIM_GATE_MISMATCH:"
+                f"{claim_state}:{gate_state}"
+            )
+
     visual = gate_rows.get("VISUAL_SEMANTIC_BINDING")
     if visual and visual.get("state") == "PASS":
         details = visual.get("details")
@@ -267,10 +300,7 @@ def validate_audit_report(
                     f"AUDIT_PUBLICATION_READY_GATE_UNRESOLVED:{gate}"
                 )
 
-    joined = " ".join(
-        str(report.get(field, ""))
-        for field in ("title", "summary", "overall_claim")
-    ).upper()
+    joined = " ".join(_report_text_fragments(report)).upper()
     normalized_claim = re.sub(r"[^A-Z0-9]+", "_", joined).strip("_")
     for forbidden in contract.get("forbidden_overclaims") or []:
         normalized_forbidden = re.sub(

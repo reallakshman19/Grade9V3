@@ -92,6 +92,23 @@ class LearningProductAppendixContractTests(unittest.TestCase):
         )
         self.assertIn("AUDIT_CLAIM_NA_WITHOUT_RATIONALE:SOURCE_VERIFIED", findings)
 
+    def test_source_verified_claim_matches_source_fidelity_gate(self):
+        report = copy.deepcopy(self.fixture["audit_report"])
+        source = next(
+            row for row in report["claims"] if row["claim"] == "SOURCE_VERIFIED"
+        )
+        source["state"] = "PASS"
+        source["evidence_refs"] = ["fixture_source_review"]
+        source.pop("rationale")
+        findings = learning_product_appendix_contract.validate_audit_report(
+            report,
+            self.contracts["audit"],
+        )
+        self.assertIn(
+            "AUDIT_SOURCE_CLAIM_GATE_MISMATCH:PASS:NOT_APPLICABLE",
+            findings,
+        )
+
     def test_visual_gate_requires_semantic_elements_not_only_a_label(self):
         report = copy.deepcopy(self.fixture["audit_report"])
         visual = next(
@@ -125,6 +142,20 @@ class LearningProductAppendixContractTests(unittest.TestCase):
     def test_zero_defect_style_overclaim_is_rejected(self):
         report = copy.deepcopy(self.fixture["audit_report"])
         report["overall_claim"] = "Zero defect publication"
+        findings = learning_product_appendix_contract.validate_audit_report(
+            report,
+            self.contracts["audit"],
+        )
+        self.assertIn("AUDIT_FORBIDDEN_OVERCLAIM:ZERO_DEFECT", findings)
+
+    def test_nested_zero_defect_style_overclaim_is_rejected(self):
+        report = copy.deepcopy(self.fixture["audit_report"])
+        provenance = next(
+            row for row in report["gates"] if row["gate"] == "FIELD_LEVEL_PROVENANCE"
+        )
+        provenance["details"] = {
+            "review_note": "Certified zero-defect publication."
+        }
         findings = learning_product_appendix_contract.validate_audit_report(
             report,
             self.contracts["audit"],
