@@ -9,6 +9,7 @@ import { PortablePackageError, createDeclarativeAdapter, resolveCanonicalPortabl
 const here = dirname(fileURLToPath(import.meta.url));
 const repo = resolve(here, "..");
 const ids = ["portable-long-division", "portable-redox-electron-equivalence", "portable-integration-riemann"];
+const canonicalId = "portable-kin-2d-shared-clock";
 async function packageById(id) { return JSON.parse(await readFile(resolve(repo, `public/portable-workbench/packages/${id}.json`), "utf8")); }
 
 test("three packages validate under one portable version seam", async () => {
@@ -18,6 +19,33 @@ test("three packages validate under one portable version seam", async () => {
     versions.add([pkg.packageVersion,pkg.componentApiVersion,pkg.transformationIrVersion,pkg.adapterApiVersion,pkg.scenePackageVersion,pkg.adapter.id].join("|"));
   }
   assert.equal(versions.size, 1);
+});
+
+test("canonical Motion package is exact-source and preserves authored rejection", async () => {
+  const pkg = validatePortablePackage(await packageById(canonicalId));
+  assert.equal(pkg.provenance.authority, "CANONICAL_COMPILED_RESOURCE");
+  assert.equal(pkg.resourceRef, "ACT-KIN-2D-SHARED-CLOCK");
+  assert.deepEqual(pkg.representationRefs, ["REP-KIN-2D-SHARED-CLOCK"]);
+  assert.equal(pkg.scene.id, "scene-kin-2d-shared-clock");
+  assert.equal(pkg.adapter.rules.length, 1);
+  assert.equal(pkg.adapter.rules[0].id, "PWA-KIN-2D-SAME-TIME-ACCEPT");
+  assert.equal(pkg.rejections.length, 1);
+  assert.equal(pkg.rejections[0].id, "PWA-KIN-2D-MIXED-TIME-REJECT");
+  assert.match(pkg.rejections[0].reason, /non-simultaneous/i);
+
+  const acceptedRuntime = new WorkbenchRuntime(pkg.scene, createDeclarativeAdapter(pkg));
+  acceptedRuntime.dispatch({ type: "PICK", entityRef: "state-same-time", channel: "test" });
+  const accepted = acceptedRuntime.dispatch({ type: "DROP", targetRef: "simultaneous-plane-state", channel: "test" });
+  assert.equal(accepted.type, "TRANSFER_ACCEPTED");
+  assert.equal(acceptedRuntime.snapshot.revision, 1);
+  assert.ok(acceptedRuntime.snapshot.entities.some((row) => row.id === "simultaneous-state-t1"));
+
+  const rejectedRuntime = new WorkbenchRuntime(pkg.scene, createDeclarativeAdapter(pkg));
+  rejectedRuntime.dispatch({ type: "PICK", entityRef: "state-mixed-time", channel: "test" });
+  const rejected = rejectedRuntime.dispatch({ type: "DROP", targetRef: "simultaneous-plane-state", channel: "test" });
+  assert.equal(rejected.type, "TRANSFER_REJECTED");
+  assert.match(rejected.reason, /non-simultaneous/i);
+  assert.equal(rejectedRuntime.snapshot.revision, 0);
 });
 
 test("canonical provenance requires explicit resource and representation refs", async () => {
@@ -285,6 +313,47 @@ test("portable workbench runs in repository, external and single-file hosts", { 
       const events = await driver.execute("return window.__portableEvents;");
       assert.ok(events.some((event) => event.type === "TRANSFER_ACCEPTED"));
       assert.equal(JSON.stringify(events).toLowerCase().includes("mastery"), false);
+    }
+
+    for (const path of hosts) {
+      const separator = path.includes("?") ? "&" : "?";
+      await driver.navigate(`${staticServer.origin}${path}${separator}package=${canonicalId}`);
+      await driver.waitFor("return window.__portableWorkbenchReady === true;");
+      assert.equal(await driver.execute("return window.__portablePackageId;"), canonicalId);
+
+      const sameTime = await driver.shadowElement(
+        "semantic-workbench",
+        '[data-role="entity"][data-projection-ref="same-time-component-pair"]',
+      );
+      const target = await driver.shadowElement(
+        "semantic-workbench",
+        '[data-role="target"][data-target-ref="simultaneous-plane-state"]',
+      );
+      await driver.click(sameTime);
+      await driver.click(target);
+      await driver.waitFor("return document.querySelector('semantic-workbench').snapshot?.revision === 1;");
+      const acceptedEvents = await driver.execute("return window.__portableEvents;");
+      assert.ok(acceptedEvents.some((event) => event.type === "TRANSFER_ACCEPTED"));
+
+      await driver.navigate(`${staticServer.origin}${path}${separator}package=${canonicalId}`);
+      await driver.waitFor("return window.__portableWorkbenchReady === true;");
+      const mixedTime = await driver.shadowElement(
+        "semantic-workbench",
+        '[data-role="entity"][data-projection-ref="mixed-time-component-pair"]',
+      );
+      const rejectTarget = await driver.shadowElement(
+        "semantic-workbench",
+        '[data-role="target"][data-target-ref="simultaneous-plane-state"]',
+      );
+      await driver.click(mixedTime);
+      await driver.click(rejectTarget);
+      await driver.waitFor("return window.__portableEvents.some((event) => event.type === 'TRANSFER_REJECTED');");
+      const rejectedState = await driver.execute(`return {
+        revision: document.querySelector("semantic-workbench").snapshot?.revision,
+        event: [...window.__portableEvents].reverse().find((event) => event.type === "TRANSFER_REJECTED"),
+      };`);
+      assert.equal(rejectedState.revision, 0);
+      assert.match(rejectedState.event.reason, /non-simultaneous/i);
     }
 
     for (const path of [
