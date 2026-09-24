@@ -54,6 +54,20 @@ The template contract is intentionally narrower than the role specifications:
 The machine-readable fenced block in `LEARNER-PRODUCT-TEMPLATES.md` is validated by
 `Shared/tools/core_template_contract.py`.
 
+## Optional learner-product appendices and publication audit
+
+[Optional learner-product appendices](LEARNER-PRODUCT-APPENDICES.md) define two consumers
+of canonical truth that are deliberately **not** additional Core roles:
+
+- a ready-reference / exam-speed toolkit whose cards must declare their derivation anchor,
+  validity domain, failure domain, provenance and independent check;
+- a publication-quality audit contract that keeps structural validation, source verification,
+  academic review and publication readiness as explicit independent claims.
+
+These contracts prevent a useful shortcut sheet or machine test suite from silently becoming
+a second source of academic truth. They are structurally validated by
+`Shared/tools/learning_product_appendix_contract.py`.
+
 ## Cross-lane Core projection contract
 
 The role files above remain authoritative for learner-product meaning. The shared interface used by Core code, canonical Atlas/data authoring, and the interactive webpage builder is frozen in [Core Projection Contract v1.0](../../docs/CORE-PROJECTION-CONTRACT.md).

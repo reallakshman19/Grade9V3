@@ -5,19 +5,19 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 275,
-  "relation_count": 317,
+  "component_count": 279,
+  "relation_count": 318,
   "components_by_role": {
-    "CONTRACT": 8,
+    "CONTRACT": 9,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 46,
-    "TEST": 131,
-    "TOOLING": 60,
+    "TEST": 133,
+    "TOOLING": 61,
     "WEB": 9,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:c76d068c1539a1c9eb0d6a415acab2cbb665e9d744adff79dd50e0918934464a",
+  "digest": "sha256:f7f844438e5ac85b902836013bc476971174b400d3f34eb36704857ccbd395ac",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -468,6 +468,13 @@
       "sha256": "396e8a8048e51c68493c949b3100ca8a76daa1172aac24ed12efcac6e1581a67"
     },
     {
+      "path": "Shared/roles/LEARNER-PRODUCT-APPENDICES.md",
+      "role": "CONTRACT",
+      "role_description": "The six Core role specifications",
+      "bytes": 7729,
+      "sha256": "d2206fd12377589aa818e4aabc8378e9fb85f3d4a998dbdce579a3fc1dd6d666"
+    },
+    {
       "path": "Shared/roles/LEARNER-PRODUCT-TEMPLATES.md",
       "role": "CONTRACT",
       "role_description": "The six Core role specifications",
@@ -478,8 +485,8 @@
       "path": "Shared/roles/README.md",
       "role": "CONTRACT",
       "role_description": "The six Core role specifications",
-      "bytes": 5359,
-      "sha256": "411f7b8e45b336dadc6363dfc8a375906d7ce3ff0325da9964f8596082e6df30"
+      "bytes": 6133,
+      "sha256": "d0512659de79338a51e9849e8dd4f605648fe9967d45c40db77fb97724f4de14"
     },
     {
       "path": "Shared/tools/__init__.py",
@@ -732,6 +739,13 @@
       "role_description": "Guardrails and generators",
       "bytes": 10127,
       "sha256": "b25832a209f8e45e9e18909abe859d4f7a429198962001a89855e839be69ba2d"
+    },
+    {
+      "path": "Shared/tools/learning_product_appendix_contract.py",
+      "role": "TOOLING",
+      "role_description": "Guardrails and generators",
+      "bytes": 13629,
+      "sha256": "922c7c9ad6599373f45045bcd4dbaae89e84af3328c05e347b8c6d2dd81904ea"
     },
     {
       "path": "Shared/tools/learning_router.py",
@@ -1005,6 +1019,13 @@
       "role_description": "Executable checks",
       "bytes": 24706,
       "sha256": "e54e9b7515b1ec9e658aa9bc2a579e1b16859b7cb258a115af1a85e2407c87a9"
+    },
+    {
+      "path": "tests/fixtures/learner-product-appendix-example.json",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 4236,
+      "sha256": "4e2e328b1e4e461bf3b5e2bb357cf061b1800a0f01c84e45b47b27e1f871e5b8"
     },
     {
       "path": "tests/fixtures/portable-workbench/external-host.html",
@@ -1642,6 +1663,13 @@
       "role_description": "Executable checks",
       "bytes": 4388,
       "sha256": "6e1d6afc5c88c19670cd2afff96ece2d4891634415299af8ed46cfc306cba843"
+    },
+    {
+      "path": "tests/test_learning_product_appendix_contract.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 6446,
+      "sha256": "14204922d2b70b987295809a3f113da88183d50bb0907c9d056226643a4dd700"
     },
     {
       "path": "tests/test_learning_router.py",
@@ -3154,6 +3182,11 @@
     {
       "from": "tests/test_issue214_motion_portable_source.py",
       "to": "Shared.library.resolve",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_learning_product_appendix_contract.py",
+      "to": "Shared.tools",
       "kind": "IMPORTS"
     },
     {
