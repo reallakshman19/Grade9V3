@@ -3,6 +3,7 @@
   "packageIds": [
     "portable-long-division",
     "portable-redox-electron-equivalence",
-    "portable-integration-riemann"
+    "portable-integration-riemann",
+    "portable-kin-2d-shared-clock"
   ]
 }

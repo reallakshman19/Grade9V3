@@ -1,0 +1,190 @@
+{
+  "schemaVersion": "portable-workbench-package",
+  "packageVersion": "1.0.0",
+  "componentApiVersion": "0.1.0",
+  "transformationIrVersion": "0.1.0",
+  "adapterApiVersion": "0.1.0",
+  "scenePackageVersion": "1.0.0",
+  "id": "portable-kin-2d-shared-clock",
+  "title": "Independent Components, One Shared Clock Explorer",
+  "sourceRefs": [
+    "SRC-AUTHOR-KIN-2D-EXAMSIDE-ADAPTATION"
+  ],
+  "sceneRefs": [
+    "scene-kin-2d-shared-clock"
+  ],
+  "representationRefs": [
+    "REP-KIN-2D-SHARED-CLOCK"
+  ],
+  "assetRefs": [],
+  "accessibilityRefs": [
+    "The shared time is stated numerically or textually; synchronization must not be conveyed by colour alone.",
+    "Each component history is labelled with axis and signed quantity.",
+    "An invalid mixed-time state is identified in text as non-simultaneous."
+  ],
+  "questionBindings": [],
+  "provenance": {
+    "authority": "CANONICAL_COMPILED_RESOURCE",
+    "sourceKind": "CANONICAL_RESOURCE",
+    "sourceRefs": [
+      "SRC-AUTHOR-KIN-2D-EXAMSIDE-ADAPTATION"
+    ],
+    "resourceRef": "ACT-KIN-2D-SHARED-CLOCK",
+    "representationRef": "REP-KIN-2D-SHARED-CLOCK"
+  },
+  "scene": {
+    "kind": "VECTOR",
+    "frame": "One declared x-y frame for one particle; the portable proof contrasts a valid same-time ordered pair with a mixed-time counterexample.",
+    "caption": "Shared-clock proof: x(1 s)=2 m and y(1 s)=3 m form one simultaneous state; x(1 s) paired with y(2 s)=6 m is a non-simultaneous ghost state.",
+    "symbol": "r(t_1)",
+    "unit": "m",
+    "x_atom": "DAT-KIN-2D-SHARED-X1",
+    "y_atom": "DAT-KIN-2D-SHARED-Y1",
+    "x_label": "x position (m)",
+    "y_label": "y position (m)",
+    "apiVersion": "0.1.0",
+    "sceneVersion": "1.0.0",
+    "id": "scene-kin-2d-shared-clock",
+    "grids": [
+      {
+        "id": "shared-clock-grid",
+        "label": "Shared-clock component-state comparison",
+        "rows": [
+          "sample",
+          "result"
+        ],
+        "columns": [
+          "same-time",
+          "mixed-time",
+          "state"
+        ]
+      }
+    ],
+    "entities": [
+      {
+        "id": "state-same-time",
+        "label": "x(1 s)=2 m with y(1 s)=3 m",
+        "datumRefs": [
+          "DAT-KIN-2D-SHARED-T1",
+          "DAT-KIN-2D-SHARED-X1",
+          "DAT-KIN-2D-SHARED-Y1"
+        ],
+        "provenance": {
+          "kind": "SOURCE",
+          "sourceEntityRefs": []
+        }
+      },
+      {
+        "id": "state-mixed-time",
+        "label": "x(1 s)=2 m with y(2 s)=6 m",
+        "datumRefs": [
+          "DAT-KIN-2D-SHARED-T1",
+          "DAT-KIN-2D-SHARED-T2",
+          "DAT-KIN-2D-SHARED-X1",
+          "DAT-KIN-2D-SHARED-Y2"
+        ],
+        "provenance": {
+          "kind": "SOURCE",
+          "sourceEntityRefs": []
+        }
+      }
+    ],
+    "projections": [
+      {
+        "id": "same-time-component-pair",
+        "entityRef": "state-same-time",
+        "label": "Same-time pair: x(1 s), y(1 s)",
+        "representation": "simultaneous component samples",
+        "placement": {
+          "grid": "shared-clock-grid",
+          "row": "sample",
+          "column": "same-time"
+        }
+      },
+      {
+        "id": "mixed-time-component-pair",
+        "entityRef": "state-mixed-time",
+        "label": "Mixed-time pair: x(1 s), y(2 s)",
+        "representation": "non-simultaneous component samples",
+        "placement": {
+          "grid": "shared-clock-grid",
+          "row": "sample",
+          "column": "mixed-time"
+        }
+      }
+    ],
+    "targets": [
+      {
+        "id": "simultaneous-plane-state",
+        "label": "One physically valid simultaneous plane state",
+        "operation": "reconstruct-simultaneous-state",
+        "placement": {
+          "grid": "shared-clock-grid",
+          "row": "result",
+          "column": "state"
+        }
+      }
+    ],
+    "canonicalTransformations": [
+      {
+        "id": "reconstruct-same-time-state",
+        "sourceEntityRefs": [
+          "state-same-time"
+        ],
+        "targetRef": "simultaneous-plane-state"
+      }
+    ]
+  },
+  "adapter": {
+    "id": "declarative-transfer-v1",
+    "apiVersion": "0.1.0",
+    "rules": [
+      {
+        "id": "PWA-KIN-2D-SAME-TIME-ACCEPT",
+        "transformationRef": "reconstruct-same-time-state",
+        "sourceEntityRef": "state-same-time",
+        "targetRef": "simultaneous-plane-state",
+        "operation": "reconstruct-simultaneous-state",
+        "summary": "Same time on both component samples reconstructs one simultaneous particle state.",
+        "patch": {
+          "addEntities": [
+            {
+              "id": "simultaneous-state-t1",
+              "label": "r(1 s) = (2 m, 3 m)",
+              "provenance": {
+                "kind": "DERIVED",
+                "sourceEntityRefs": [
+                  "state-same-time"
+                ]
+              }
+            }
+          ],
+          "addProjections": [
+            {
+              "id": "simultaneous-state-result",
+              "entityRef": "simultaneous-state-t1",
+              "label": "r(1 s) = (2 m, 3 m)",
+              "representation": "simultaneous ordered-pair state",
+              "placement": {
+                "grid": "shared-clock-grid",
+                "row": "result",
+                "column": "state"
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "rejections": [
+    {
+      "id": "PWA-KIN-2D-MIXED-TIME-REJECT",
+      "sourceEntityRef": "state-mixed-time",
+      "targetRef": "simultaneous-plane-state",
+      "operation": "reconstruct-simultaneous-state",
+      "reason": "The pair is non-simultaneous: x(1 s) and y(2 s) are individually valid samples but do not describe one physical state of the particle."
+    }
+  ],
+  "injections": [],
+  "resourceRef": "ACT-KIN-2D-SHARED-CLOCK"
+}

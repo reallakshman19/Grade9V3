@@ -6,7 +6,7 @@
     "adapter"
   ],
   "component_count": 243,
-  "relation_count": 286,
+  "relation_count": 288,
   "components_by_role": {
     "CONTRACT": 7,
     "ENGINE": 10,
@@ -17,7 +17,7 @@
     "WEB": 9,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:6f4fbae8d9f51e90b013fe3650b67211d7df2b10cc054ba0d15ddabbeb3efc5e",
+  "digest": "sha256:b1d5960e503cc0bbe71f0f834bed3fafca9147e321605116a3a03f022ce6cdc3",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -464,8 +464,8 @@
       "path": "Shared/tools/build_portable_workbench.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 7381,
-      "sha256": "825b649c104c6efd07d69911879ebe9be0757f9e86d98348c98d2692f6916cb6"
+      "bytes": 14249,
+      "sha256": "073dbd633024e6e10e08fe6f87905d5d8a2f6fc9262367820e6d3a9ee53da8fa"
     },
     {
       "path": "Shared/tools/build_web_data.py",
@@ -1052,8 +1052,8 @@
       "path": "tests/portable_workbench.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 15594,
-      "sha256": "25ed29d1354b017026d7284e4886053b89a7653da7d2f517586ac27b4868eb2e"
+      "bytes": 19483,
+      "sha256": "ae73640671d162f54f08d6211ca7acc5c7128936a7703cb50068410d6761cde1"
     },
     {
       "path": "tests/test_agent_path_stress_prompts.py",
@@ -1507,8 +1507,8 @@
       "path": "tests/test_portable_workbench.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 10301,
-      "sha256": "806fad7ad0042e5101a6cadf12fecb4b5e39e478a5866f52b00bc4b6508b5621"
+      "bytes": 11446,
+      "sha256": "6f43833d90b5bd4cde1be1462531deef6bf84fd606afa018e64e84acb16fa462"
     },
     {
       "path": "tests/test_practical_learner_evidence.py",
@@ -1930,6 +1930,16 @@
     {
       "from": "Shared/tools/build_manifest.py",
       "to": "Shared.tools",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "Shared/tools/build_portable_workbench.py",
+      "to": "Shared.contracts",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "Shared/tools/build_portable_workbench.py",
+      "to": "Shared.library.resolve",
       "kind": "IMPORTS"
     },
     {
