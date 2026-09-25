@@ -1,0 +1,177 @@
+{
+  "artifact_id": "TRACE-DEMAND-PROJECTILE-FIVE-ANCHORS",
+  "repository_basis": "main@dd1fb0ca8374a398ea48aa3253a5d37ed0d62739",
+  "canonical_package_ref": "Physics/library/phy-kin-2d-motion.v1.json",
+  "bank_ref": "Physics/library/exam-bank/competitive-exam-question-bank.v2.json",
+  "owner_fixture_ref": "tests/fixtures/prompt-composer/projectile-stress-set.json",
+  "notes": [
+    "Demand evidence and learner eligibility are independent.",
+    "Competitive-bank verified demand does not become ordinary Core2 custody.",
+    "Q15 owner-label identity remains held."
+  ],
+  "questions": [
+    {
+      "owner_label": "Q28",
+      "demand": "Velocity direction from x(t) and y(t).",
+      "exact_repository_ref": "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
+      "candidate_refs": [],
+      "canonical_primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+      "candidate_primary_capability_refs": [],
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "canonical_rung": "R1",
+      "source_custody_status": "SOURCE_CUSTODY_HOLD: competitive-bank verified demand is not ordinary Core2 custody; bank record is adapted/CANDIDATE.",
+      "demand_evidence_status": "VALID_COMPETITIVE_BANK_VERIFIED_DEMAND",
+      "learner_eligibility_status": "NOT_ESTABLISHED",
+      "learner_eligibility_basis": "Question-set selector has not established learner eligibility.",
+      "extension_gap_classification": "UNTaught_CAPABILITY_GAP",
+      "analysis": {
+        "A_canonical_capability": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "B_real_bottleneck": "Recognize that instantaneous velocity direction comes from velocity components, not the position vector; the source route additionally requires differentiation.",
+        "C_prerequisite_assumed": "Differentiation of x(t), y(t) to obtain v_x, v_y; not established in this canonical bucket.",
+        "D_canonical_teaching": "Canonical teaching is Split one plane-motion event into independent x/y components with one clock: Perpendicular components may be solved separately because each axis equation contains only that axis's quantities, but they still describe one object at one physical time.",
+        "E_extension_or_bridge": "The canonical bucket explicitly excludes calculus-based differentiation of a time-dependent position vector. After velocity components are known, simultaneous-component reconstruction is canonical; obtaining them by differentiation is not.",
+        "F_core2_source_custody_sufficient": false,
+        "G_learner_eligibility_established": false,
+        "H_core2a_support": "HOLD_FOR_ANCHOR_SPECIFIC_USE",
+        "I_core2b_support": "NO_UNTAUGHT_CAPABILITY",
+        "J_hold_or_gap": "The canonical bucket explicitly excludes calculus-based differentiation of a time-dependent position vector. After velocity components are known, simultaneous-component reconstruction is canonical; obtaining them by differentiation is not."
+      }
+    },
+    {
+      "owner_label": "Q15",
+      "demand": "Maximum projectile height after an energy-losing bounce.",
+      "exact_repository_ref": null,
+      "candidate_refs": [
+        "PYQ-PHY-JEEADV-2018-P2-Q08",
+        "PYQ-PHY-JEEADV-2023-P1-Q01"
+      ],
+      "canonical_primary_capability_ref": null,
+      "candidate_primary_capability_refs": [
+        {
+          "question_ref": "PYQ-PHY-JEEADV-2018-P2-Q08",
+          "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL"
+        },
+        {
+          "question_ref": "PYQ-PHY-JEEADV-2023-P1-Q01",
+          "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL"
+        }
+      ],
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "canonical_rung": "R3",
+      "source_custody_status": "SOURCE_CUSTODY_HOLD: competitive-bank verified demand is not ordinary Core2 custody; bank record is adapted/CANDIDATE.",
+      "demand_evidence_status": "VALID_COMPETITIVE_BANK_VERIFIED_DEMAND",
+      "learner_eligibility_status": "EXCLUDED",
+      "learner_eligibility_basis": "Owner learner-set policy excludes JEE Advanced; retained as diagnostic demand evidence.",
+      "extension_gap_classification": "IDENTITY_HOLD",
+      "analysis": {
+        "A_canonical_capability": "IDENTITY_HOLD; candidates map to CAP-KIN-PROJECTILE-MODEL",
+        "B_real_bottleneck": "Translate the collision/energy change into the post-bounce vertical state before applying projectile height reasoning.",
+        "C_prerequisite_assumed": "Energy/restitution treatment across an impact; not established by this package.",
+        "D_canonical_teaching": "Canonical teaching is Select the gravity-only projectile model before using projectile consequences: After release in the ideal near-Earth model, projectile motion is not a new set of laws: it is the same component kinematics with a_x=0 and a_y=-g (for +y upward).",
+        "E_extension_or_bridge": "Both candidate records exercise projectile consequences but also require energy/restitution machinery outside the bounded Motion-in-2D package. Owner-label identity remains unresolved.",
+        "F_core2_source_custody_sufficient": false,
+        "G_learner_eligibility_established": false,
+        "H_core2a_support": "HOLD_IDENTITY_AND_UPSTREAM_TEACHING",
+        "I_core2b_support": "NO_IDENTITY_AND_UNTAUGHT_CAPABILITY",
+        "J_hold_or_gap": "QUESTION_IDENTITY_AMBIGUOUS plus learner exclusion and extension boundary"
+      }
+    },
+    {
+      "owner_label": "Q21",
+      "demand": "Gravity changes after the apex.",
+      "exact_repository_ref": "PYQ-PHY-JEEADV-2022-P1-Q08",
+      "candidate_refs": [],
+      "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "candidate_primary_capability_refs": [],
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "canonical_rung": "R3",
+      "source_custody_status": "SOURCE_CUSTODY_HOLD: competitive-bank verified demand is not ordinary Core2 custody; bank record is adapted/CANDIDATE.",
+      "demand_evidence_status": "VALID_COMPETITIVE_BANK_VERIFIED_DEMAND",
+      "learner_eligibility_status": "EXCLUDED",
+      "learner_eligibility_basis": "Owner learner-set policy excludes JEE Advanced; retained as diagnostic demand evidence.",
+      "extension_gap_classification": "EXTENSION",
+      "analysis": {
+        "A_canonical_capability": "CAP-KIN-PROJECTILE-MODEL",
+        "B_real_bottleneck": "Preserve the apex state, then apply a different descent acceleration without retroactively changing ascent.",
+        "C_prerequisite_assumed": "Piecewise-regime model transition with changed gravitational acceleration; not established as taught capability here.",
+        "D_canonical_teaching": "Canonical teaching is Select the gravity-only projectile model before using projectile consequences: After release in the ideal near-Earth model, projectile motion is not a new set of laws: it is the same component kinematics with a_x=0 and a_y=-g (for +y upward).",
+        "E_extension_or_bridge": "Canonical projectile teaching fixes one gravity-only constant-g interval. A post-apex change creates a staged acceleration regime; variable/changed gravity is explicitly outside the bucket.",
+        "F_core2_source_custody_sufficient": false,
+        "G_learner_eligibility_established": false,
+        "H_core2a_support": "HOLD_UPSTREAM_TEACHING_GAP",
+        "I_core2b_support": "NO_UNTAUGHT_CHANGED_MODEL",
+        "J_hold_or_gap": "Canonical projectile teaching fixes one gravity-only constant-g interval. A post-apex change creates a staged acceleration regime; variable/changed gravity is explicitly outside the bucket."
+      }
+    },
+    {
+      "owner_label": "Q26",
+      "demand": "Projectile trajectory through a specified point.",
+      "exact_repository_ref": "PYQ-PHY-JEEADV-2026-P1-Q06",
+      "candidate_refs": [],
+      "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "candidate_primary_capability_refs": [],
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "canonical_rung": "R3",
+      "source_custody_status": "SOURCE_CUSTODY_HOLD: competitive-bank verified demand is not ordinary Core2 custody; bank record is adapted/CANDIDATE.",
+      "demand_evidence_status": "VALID_COMPETITIVE_BANK_VERIFIED_DEMAND",
+      "learner_eligibility_status": "EXCLUDED",
+      "learner_eligibility_basis": "Owner learner-set policy excludes JEE Advanced; retained as diagnostic demand evidence.",
+      "extension_gap_classification": "EXTENSION",
+      "analysis": {
+        "A_canonical_capability": "CAP-KIN-PROJECTILE-MODEL",
+        "B_real_bottleneck": "Satisfy the prescribed-point condition and separately determine whether the projectile is before/after apex.",
+        "C_prerequisite_assumed": "Trajectory-equation/slope manipulation or an equivalent multi-constraint construction beyond the canonical first slice.",
+        "D_canonical_teaching": "Canonical teaching is Select the gravity-only projectile model before using projectile consequences: After release in the ideal near-Earth model, projectile motion is not a new set of laws: it is the same component kinematics with a_x=0 and a_y=-g (for +y upward).",
+        "E_extension_or_bridge": "The bank route uses a trajectory equation and trajectory slope/apex-location reasoning. Trajectory-equation derivation and advanced projectile geometry are explicitly excluded from this first slice.",
+        "F_core2_source_custody_sufficient": false,
+        "G_learner_eligibility_established": false,
+        "H_core2a_support": "HOLD_UPSTREAM_TEACHING_GAP",
+        "I_core2b_support": "NO_UNTAUGHT_ADVANCED_GEOMETRY",
+        "J_hold_or_gap": "The bank route uses a trajectory equation and trajectory slope/apex-location reasoning. Trajectory-equation derivation and advanced projectile geometry are explicitly excluded from this first slice."
+      }
+    },
+    {
+      "owner_label": "Q23",
+      "demand": "Projectile motion with linear drag.",
+      "exact_repository_ref": "PYQ-PHY-JEEADV-2025-P2-Q15",
+      "candidate_refs": [],
+      "canonical_primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+      "candidate_primary_capability_refs": [],
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "CAP-NLM-SECOND-LAW"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "canonical_rung": "R2",
+      "source_custody_status": "SOURCE_CUSTODY_HOLD: competitive-bank verified demand is not ordinary Core2 custody; bank record is adapted/CANDIDATE.",
+      "demand_evidence_status": "VALID_COMPETITIVE_BANK_VERIFIED_DEMAND",
+      "learner_eligibility_status": "EXCLUDED",
+      "learner_eligibility_basis": "Owner learner-set policy excludes JEE Advanced; retained as diagnostic demand evidence.",
+      "extension_gap_classification": "EXTENSION",
+      "analysis": {
+        "A_canonical_capability": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+        "B_real_bottleneck": "Reject constant-acceleration projectile equations and solve the velocity-dependent horizontal model.",
+        "C_prerequisite_assumed": "Newton-II differential equation and exponential/integral solution for linear drag; not established here.",
+        "D_canonical_teaching": "Canonical teaching is Apply constant-acceleration kinematics component by component: The one-dimensional constant-acceleration equations can be applied to each perpendicular component independently when a_x and a_y are each constant over the same interval.",
+        "E_extension_or_bridge": "Linear drag makes acceleration velocity-dependent. The canonical bucket explicitly excludes drag and licenses constant-acceleration equations only when each component acceleration is constant.",
+        "F_core2_source_custody_sufficient": false,
+        "G_learner_eligibility_established": false,
+        "H_core2a_support": "HOLD_UPSTREAM_TEACHING_GAP",
+        "I_core2b_support": "NO_UNTAUGHT_DRAG_MODEL",
+        "J_hold_or_gap": "Linear drag makes acceleration velocity-dependent. The canonical bucket explicitly excludes drag and licenses constant-acceleration equations only when each component acceleration is constant."
+      }
+    }
+  ]
+}
