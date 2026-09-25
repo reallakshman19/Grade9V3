@@ -44,6 +44,10 @@
       "title": "Demand bridge and prerequisite admission"
     },
     {
+      "id": "LEARNER_PRODUCT_CONTRACT",
+      "title": "Learner-product delivery contract"
+    },
+    {
       "id": "TOPIC_BOUNDARY",
       "title": "Topic and rung boundary"
     },
