@@ -18,7 +18,7 @@
     "WEB_CONTRACT": 2,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:aceaf332e039475bee383e64229c515be3e2889ac8a3dc3156bdd39d970a22e4",
+  "digest": "sha256:38dd5701a5a3458fa9f0041376e79be5991fa7b96206f390a10a8386ca3484fa",
   "components": [
     {
       "path": "public/core-learning/data.js",
@@ -1473,8 +1473,8 @@
       "path": "tests/test_core2a_projectile_study.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 9116,
-      "sha256": "f6506a319f2eb9c47ecf7781ddf6b5f3c13567f519fafd31fbde3a99e6ca7df0"
+      "bytes": 9113,
+      "sha256": "b18c7583cbc156b9a9a47f1d314dea22b876a4306fbb152adcf12275fa8cc185"
     },
     {
       "path": "tests/test_core2b_inventory.py",
