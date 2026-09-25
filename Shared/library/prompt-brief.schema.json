@@ -175,7 +175,8 @@
           "target_authority",
           "direct_source_use",
           "instructional_demand_use",
-          "assessment_claim"
+          "assessment_claim",
+          "candidate_set_provenance"
         ],
         "properties": {
           "owner_question_id": {
@@ -312,6 +313,12 @@
             "enum": [
               "ALLOWED",
               "HOLD"
+            ]
+          },
+          "candidate_set_provenance": {
+            "type": [
+              "string",
+              "null"
             ]
           }
         }
@@ -706,7 +713,8 @@
               "instructional_demand_use",
               "assessment_claim",
               "primary_capability_ref",
-              "demand_evidence_refs"
+              "demand_evidence_refs",
+              "candidate_set_provenance"
             ],
             "properties": {
               "owner_question_id": {
@@ -775,6 +783,12 @@
                   "type": "string"
                 },
                 "uniqueItems": true
+              },
+              "candidate_set_provenance": {
+                "type": [
+                  "string",
+                  "null"
+                ]
               }
             }
           }
