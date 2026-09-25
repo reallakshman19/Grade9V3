@@ -169,6 +169,26 @@
       "target": "physics/motion-1d/explorers/motion_in_1d/jee_questions_data.js"
     },
     {
+      "source": "public/physics/motion-2d/core2a-projectile-study/index.html",
+      "target": "physics/motion-2d/core2a-projectile-study/index.html"
+    },
+    {
+      "source": "public/physics/motion-2d/core2a-projectile-study/study-component.mjs",
+      "target": "physics/motion-2d/core2a-projectile-study/study-component.mjs"
+    },
+    {
+      "source": "public/physics/motion-2d/core2a-projectile-study/study-model.mjs",
+      "target": "physics/motion-2d/core2a-projectile-study/study-model.mjs"
+    },
+    {
+      "source": "public/physics/motion-2d/core2a-projectile-study/study-styles.mjs",
+      "target": "physics/motion-2d/core2a-projectile-study/study-styles.mjs"
+    },
+    {
+      "source": "public/physics/motion-2d/core2a-projectile-study/study-visuals.mjs",
+      "target": "physics/motion-2d/core2a-projectile-study/study-visuals.mjs"
+    },
+    {
       "source": "public/physics/motion-2d/explorers/apex-fallacy/index.html",
       "target": "physics/motion-2d/explorers/apex-fallacy/index.html"
     },
