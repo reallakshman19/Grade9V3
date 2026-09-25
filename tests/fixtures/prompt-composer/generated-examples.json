@@ -1,0 +1,6 @@
+[
+  {
+    "fixture": "tests/fixtures/prompt-composer/projectile-stress-set.json",
+    "output": "docs/prompts/projectile-stress-set.generated.md"
+  }
+]
