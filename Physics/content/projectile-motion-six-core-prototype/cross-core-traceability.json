@@ -30,7 +30,18 @@
       "protected_move_ref": null,
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": null,
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "representation_refs": [
+        "REP-KIN-2D-SHARED-CLOCK"
+      ],
+      "visual_statuses": [
+        {
+          "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "CORE1-CANONICAL-REPRESENTATION"
+        }
+      ]
     },
     {
       "artifact_id": "CORE1A-MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
@@ -70,6 +81,17 @@
       "hold_fail_reason": "HOLD_WORKED_ANCHOR",
       "unresolved_defects": [
         "No canonical Core1A worked conceptual anchor."
+      ],
+      "representation_refs": [
+        "REP-KIN-2D-SHARED-CLOCK"
+      ],
+      "visual_statuses": [
+        {
+          "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+          "status": "BOUND_CANONICAL_SCENE_AVAILABLE",
+          "reveal_stage": "IMMEDIATE",
+          "visual_audit_artifact_id": "CORE1A-MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS-REP-KIN-2D-SHARED-CLOCK"
+        }
       ]
     },
     {
@@ -107,7 +129,18 @@
       "protected_move_ref": null,
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": null,
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "representation_refs": [
+        "REP-KIN-2D-SHARED-CLOCK"
+      ],
+      "visual_statuses": [
+        {
+          "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+          "status": "BOUND_CANONICAL_SCENE_AVAILABLE",
+          "reveal_stage": "POST_ATTEMPT",
+          "visual_audit_artifact_id": "CORE1B-MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS-REP-KIN-2D-SHARED-CLOCK"
+        }
+      ]
     },
     {
       "artifact_id": "CORE1-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
@@ -138,7 +171,18 @@
       "protected_move_ref": null,
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": null,
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "representation_refs": [
+        "REP-KIN-2D-SHARED-CLOCK"
+      ],
+      "visual_statuses": [
+        {
+          "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "CORE1-CANONICAL-REPRESENTATION"
+        }
+      ]
     },
     {
       "artifact_id": "CORE1A-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
@@ -179,6 +223,24 @@
       "hold_fail_reason": "HOLD_WORKED_ANCHOR",
       "unresolved_defects": [
         "No canonical Core1A worked conceptual anchor."
+      ],
+      "representation_refs": [
+        "REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK"
+      ],
+      "visual_statuses": [
+        {
+          "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "CORE1A-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-SHARED-CLOCK"
+        },
+        {
+          "representation_ref": "REP-KIN-2D-EVENT-CLOCK",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "CORE1A-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-EVENT-CLOCK"
+        }
       ]
     },
     {
@@ -218,7 +280,25 @@
       "protected_move_ref": null,
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": null,
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "representation_refs": [
+        "REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK"
+      ],
+      "visual_statuses": [
+        {
+          "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "CORE1B-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-SHARED-CLOCK"
+        },
+        {
+          "representation_ref": "REP-KIN-2D-EVENT-CLOCK",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "CORE1B-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-EVENT-CLOCK"
+        }
+      ]
     },
     {
       "artifact_id": "CORE1-MIC-PHY-KIN-PROJECTILE-MODEL",
@@ -248,7 +328,18 @@
       "protected_move_ref": null,
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": null,
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "representation_refs": [
+        "REP-KIN-2D-SHARED-CLOCK"
+      ],
+      "visual_statuses": [
+        {
+          "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "CORE1-CANONICAL-REPRESENTATION"
+        }
+      ]
     },
     {
       "artifact_id": "CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL",
@@ -295,6 +386,31 @@
       "hold_fail_reason": "HOLD_WORKED_ANCHOR",
       "unresolved_defects": [
         "No canonical Core1A worked conceptual anchor."
+      ],
+      "representation_refs": [
+        "REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK",
+        "REP-KIN-2D-PROJECTILE-MODEL"
+      ],
+      "visual_statuses": [
+        {
+          "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-SHARED-CLOCK"
+        },
+        {
+          "representation_ref": "REP-KIN-2D-EVENT-CLOCK",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-EVENT-CLOCK"
+        },
+        {
+          "representation_ref": "REP-KIN-2D-PROJECTILE-MODEL",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-PROJECTILE-MODEL"
+        }
       ]
     },
     {
@@ -338,7 +454,32 @@
       "protected_move_ref": null,
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": null,
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "representation_refs": [
+        "REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK",
+        "REP-KIN-2D-PROJECTILE-MODEL"
+      ],
+      "visual_statuses": [
+        {
+          "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "CORE1B-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-SHARED-CLOCK"
+        },
+        {
+          "representation_ref": "REP-KIN-2D-EVENT-CLOCK",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "CORE1B-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-EVENT-CLOCK"
+        },
+        {
+          "representation_ref": "REP-KIN-2D-PROJECTILE-MODEL",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "CORE1B-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-PROJECTILE-MODEL"
+        }
+      ]
     },
     {
       "artifact_id": "CORE2-DEMAND-Q28",
@@ -522,10 +663,7 @@
       "misconception_addressed": [],
       "representation_ref": null,
       "reveal_state": "QUESTION_IMMEDIATE; SCAFFOLDS/ROUTE/SOLUTION_ON_REVEAL",
-      "source_hint_refs": [
-        "Q-PHY-KIN-2D-2A-SHARED-CLOCK-01.hints[0]",
-        "Q-PHY-KIN-2D-2A-SHARED-CLOCK-01.hints[1]"
-      ],
+      "source_hint_refs": [],
       "authored_scaffold_refs": [
         "Q-PHY-KIN-2D-2A-SHARED-CLOCK-01.scaffolds[0]",
         "Q-PHY-KIN-2D-2A-SHARED-CLOCK-01.scaffolds[1]"
@@ -543,7 +681,14 @@
       "protected_move_ref": null,
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD for personalised release",
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "question_hint_refs": [
+        "Q-PHY-KIN-2D-2A-SHARED-CLOCK-01.hints[0]",
+        "Q-PHY-KIN-2D-2A-SHARED-CLOCK-01.hints[1]"
+      ],
+      "question_hint_provenance": "AUTHORED_PRACTICE",
+      "representation_refs": [],
+      "visual_statuses": []
     },
     {
       "artifact_id": "Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02",
@@ -566,10 +711,7 @@
       "misconception_addressed": [],
       "representation_ref": null,
       "reveal_state": "QUESTION_IMMEDIATE; SCAFFOLDS/ROUTE/SOLUTION_ON_REVEAL",
-      "source_hint_refs": [
-        "Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02.hints[0]",
-        "Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02.hints[1]"
-      ],
+      "source_hint_refs": [],
       "authored_scaffold_refs": [
         "Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02.scaffolds[0]",
         "Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02.scaffolds[1]"
@@ -587,7 +729,14 @@
       "protected_move_ref": null,
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD for personalised release",
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "question_hint_refs": [
+        "Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02.hints[0]",
+        "Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02.hints[1]"
+      ],
+      "question_hint_provenance": "AUTHORED_PRACTICE",
+      "representation_refs": [],
+      "visual_statuses": []
     },
     {
       "artifact_id": "Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03",
@@ -609,10 +758,7 @@
       "misconception_addressed": [],
       "representation_ref": null,
       "reveal_state": "QUESTION_IMMEDIATE; SCAFFOLDS/ROUTE/SOLUTION_ON_REVEAL",
-      "source_hint_refs": [
-        "Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03.hints[0]",
-        "Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03.hints[1]"
-      ],
+      "source_hint_refs": [],
       "authored_scaffold_refs": [
         "Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03.scaffolds[0]",
         "Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03.scaffolds[1]"
@@ -630,7 +776,14 @@
       "protected_move_ref": null,
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD for personalised release",
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "question_hint_refs": [
+        "Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03.hints[0]",
+        "Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03.hints[1]"
+      ],
+      "question_hint_provenance": "AUTHORED_PRACTICE",
+      "representation_refs": [],
+      "visual_statuses": []
     },
     {
       "artifact_id": "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04",
@@ -652,10 +805,7 @@
       "misconception_addressed": [],
       "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
       "reveal_state": "QUESTION_IMMEDIATE; SCAFFOLDS/ROUTE/SOLUTION_ON_REVEAL",
-      "source_hint_refs": [
-        "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04.hints[0]",
-        "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04.hints[1]"
-      ],
+      "source_hint_refs": [],
       "authored_scaffold_refs": [
         "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04.scaffolds[0]",
         "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04.scaffolds[1]"
@@ -673,7 +823,30 @@
       "protected_move_ref": null,
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD for personalised release",
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "question_hint_refs": [
+        "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04.hints[0]",
+        "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04.hints[1]"
+      ],
+      "question_hint_provenance": "AUTHORED_PRACTICE",
+      "representation_refs": [
+        "REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK"
+      ],
+      "visual_statuses": [
+        {
+          "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04-REP-KIN-2D-SHARED-CLOCK"
+        },
+        {
+          "representation_ref": "REP-KIN-2D-EVENT-CLOCK",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04-REP-KIN-2D-EVENT-CLOCK"
+        }
+      ]
     },
     {
       "artifact_id": "Q-PHY-KIN-2D-2A-SAME-HEIGHT-05",
@@ -695,10 +868,7 @@
       "misconception_addressed": [],
       "representation_ref": null,
       "reveal_state": "QUESTION_IMMEDIATE; SCAFFOLDS/ROUTE/SOLUTION_ON_REVEAL",
-      "source_hint_refs": [
-        "Q-PHY-KIN-2D-2A-SAME-HEIGHT-05.hints[0]",
-        "Q-PHY-KIN-2D-2A-SAME-HEIGHT-05.hints[1]"
-      ],
+      "source_hint_refs": [],
       "authored_scaffold_refs": [
         "Q-PHY-KIN-2D-2A-SAME-HEIGHT-05.scaffolds[0]",
         "Q-PHY-KIN-2D-2A-SAME-HEIGHT-05.scaffolds[1]"
@@ -716,7 +886,14 @@
       "protected_move_ref": null,
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD for personalised release",
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "question_hint_refs": [
+        "Q-PHY-KIN-2D-2A-SAME-HEIGHT-05.hints[0]",
+        "Q-PHY-KIN-2D-2A-SAME-HEIGHT-05.hints[1]"
+      ],
+      "question_hint_provenance": "AUTHORED_PRACTICE",
+      "representation_refs": [],
+      "visual_statuses": []
     },
     {
       "artifact_id": "Q-PHY-KIN-2D-2B-REPRESENTATION-01",
@@ -736,10 +913,7 @@
       "misconception_addressed": [],
       "representation_ref": null,
       "reveal_state": "SAFE_PRE_ATTEMPT_SUPPORT; COMMIT; POST_ATTEMPT_REVEAL",
-      "source_hint_refs": [
-        "Q-PHY-KIN-2D-2B-REPRESENTATION-01.hints[0]",
-        "Q-PHY-KIN-2D-2B-REPRESENTATION-01.hints[1]"
-      ],
+      "source_hint_refs": [],
       "authored_scaffold_refs": [
         "Q-PHY-KIN-2D-2B-REPRESENTATION-01.scaffolds[0]"
       ],
@@ -758,7 +932,14 @@
       "protected_move_ref": "R-KIN-2D-BREP-FRAME",
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD: actual prior exposure not established for learner.",
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "question_hint_refs": [
+        "Q-PHY-KIN-2D-2B-REPRESENTATION-01.hints[0]",
+        "Q-PHY-KIN-2D-2B-REPRESENTATION-01.hints[1]"
+      ],
+      "question_hint_provenance": "AUTHORED_PRACTICE",
+      "representation_refs": [],
+      "visual_statuses": []
     },
     {
       "artifact_id": "Q-PHY-KIN-2D-2B-MODEL-VALIDITY-02",
@@ -781,9 +962,7 @@
       "misconception_addressed": [],
       "representation_ref": null,
       "reveal_state": "SAFE_PRE_ATTEMPT_SUPPORT; COMMIT; POST_ATTEMPT_REVEAL",
-      "source_hint_refs": [
-        "Q-PHY-KIN-2D-2B-MODEL-VALIDITY-02.hints[0]"
-      ],
+      "source_hint_refs": [],
       "authored_scaffold_refs": [
         "Q-PHY-KIN-2D-2B-MODEL-VALIDITY-02.scaffolds[0]"
       ],
@@ -802,7 +981,13 @@
       "protected_move_ref": "R-KIN-2D-BMODEL-DECIDE",
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD: actual prior exposure not established for learner.",
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "question_hint_refs": [
+        "Q-PHY-KIN-2D-2B-MODEL-VALIDITY-02.hints[0]"
+      ],
+      "question_hint_provenance": "AUTHORED_PRACTICE",
+      "representation_refs": [],
+      "visual_statuses": []
     },
     {
       "artifact_id": "Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03",
@@ -824,10 +1009,7 @@
       "misconception_addressed": [],
       "representation_ref": null,
       "reveal_state": "SAFE_PRE_ATTEMPT_SUPPORT; COMMIT; POST_ATTEMPT_REVEAL",
-      "source_hint_refs": [
-        "Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03.hints[0]",
-        "Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03.hints[1]"
-      ],
+      "source_hint_refs": [],
       "authored_scaffold_refs": [
         "Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03.scaffolds[0]"
       ],
@@ -847,7 +1029,14 @@
       "protected_move_ref": "R-KIN-2D-BHEIGHT-EVENT",
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD: actual prior exposure not established for learner.",
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "question_hint_refs": [
+        "Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03.hints[0]",
+        "Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03.hints[1]"
+      ],
+      "question_hint_provenance": "AUTHORED_PRACTICE",
+      "representation_refs": [],
+      "visual_statuses": []
     },
     {
       "artifact_id": "Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04",
@@ -869,9 +1058,7 @@
       "misconception_addressed": [],
       "representation_ref": "REP-KIN-2D-PROJECTILE-MODEL",
       "reveal_state": "SAFE_PRE_ATTEMPT_SUPPORT; COMMIT; POST_ATTEMPT_REVEAL",
-      "source_hint_refs": [
-        "Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04.hints[0]"
-      ],
+      "source_hint_refs": [],
       "authored_scaffold_refs": [
         "Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04.scaffolds[0]"
       ],
@@ -890,7 +1077,22 @@
       "protected_move_ref": "R-KIN-TRANSFER-MODEL",
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD: actual prior exposure not established for learner.",
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "question_hint_refs": [
+        "Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04.hints[0]"
+      ],
+      "question_hint_provenance": "AUTHORED_PRACTICE",
+      "representation_refs": [
+        "REP-KIN-2D-PROJECTILE-MODEL"
+      ],
+      "visual_statuses": [
+        {
+          "representation_ref": "REP-KIN-2D-PROJECTILE-MODEL",
+          "status": "VISUAL_HOLD",
+          "reveal_stage": "VISUAL_HOLD",
+          "visual_audit_artifact_id": "Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04-REP-KIN-2D-PROJECTILE-MODEL"
+        }
+      ]
     },
     {
       "artifact_id": "Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05",
@@ -912,10 +1114,7 @@
       "misconception_addressed": [],
       "representation_ref": null,
       "reveal_state": "SAFE_PRE_ATTEMPT_SUPPORT; COMMIT; POST_ATTEMPT_REVEAL",
-      "source_hint_refs": [
-        "Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05.hints[0]",
-        "Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05.hints[1]"
-      ],
+      "source_hint_refs": [],
       "authored_scaffold_refs": [
         "Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05.scaffolds[0]"
       ],
@@ -935,7 +1134,14 @@
       "protected_move_ref": "R-KIN-2D-BSTATE-DECIDE",
       "validation_state": "STRUCTURALLY_VALIDATED",
       "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD: actual prior exposure not established for learner.",
-      "unresolved_defects": []
+      "unresolved_defects": [],
+      "question_hint_refs": [
+        "Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05.hints[0]",
+        "Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05.hints[1]"
+      ],
+      "question_hint_provenance": "AUTHORED_PRACTICE",
+      "representation_refs": [],
+      "visual_statuses": []
     },
     {
       "artifact_id": "VISUAL-REP-KIN-2D-SHARED-CLOCK",
@@ -987,9 +1193,13 @@
         "actual_present_elements": [
           {
             "scene_id": "SCENE-KIN-2D-SHARED-CLOCK-PORTABLE-01",
-            "scene_kind": "SHARED_CLOCK_2D",
+            "eligible_cores": [
+              "CORE1A",
+              "CORE1B"
+            ],
             "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
             "question_ref": null,
+            "scene_kind": "SHARED_CLOCK_2D",
             "caption": "Same-time x and y samples may reconstruct one simultaneous particle state; mixed-time samples are non-simultaneous and must be rejected.",
             "portable_entities": [
               {
@@ -1022,14 +1232,14 @@
             "in_words": "The one elapsed time used by both component descriptions."
           }
         ],
-        "reveal_stage": "Rendered only where the canonical scene binding is eligible for the role; Core1B answer-bearing reconstruction remains post-attempt.",
+        "reveal_stage": "Determined per usage by eligible Core/microtopic/question binding; see usage_audit.",
         "accessibility_description": {
           "validity_is_textual": true,
           "synchronization_is_not_colour_only": true,
           "mixed_time_reason_required": true
         },
         "provenance": "CANONICAL_DERIVED",
-        "semantic_review_status": "BOUND_CANONICAL_SCENE_AVAILABLE"
+        "semantic_review_status": "CANONICAL_SCENE_EXISTS_USAGE_REVIEW_REQUIRED"
       }
     },
     {
