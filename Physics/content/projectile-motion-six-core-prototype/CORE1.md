@@ -41,7 +41,7 @@ Keep independently evolving x and y descriptions attached to one physical object
 - **y-component history** ↔ `v_y` ↔ The vertical velocity component at the same shared physical time.
 - **shared time marker** ↔ `t` ↔ The one elapsed time used by both component descriptions.
 
-A bound canonical scene exists for this shared-clock representation. Event-clock and projectile-model representations are academically named but currently have no bound scene instance, so learner rendering for those is `VISUAL_HOLD` rather than invented geometry.
+**Learner-facing visual status:** `VISUAL_HOLD`. The only bound scene for this representation is explicitly scoped to `CORE1A` and `CORE1B`, not `CORE1`. Core1 therefore preserves the canonical representation semantics and correspondence without borrowing an ineligible scene.
 
 ## Governing relations
 
