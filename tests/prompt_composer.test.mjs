@@ -80,6 +80,10 @@ test('browser and Python agree on mapping semantics and deterministic prompt dig
     JSON.parse(JSON.stringify(browser.prompt_brief.demand_bridge)),
     python.prompt_brief.demand_bridge
   );
+  assert.deepEqual(
+    JSON.parse(JSON.stringify(browser.prompt_brief.learner_product_contract)),
+    python.prompt_brief.learner_product_contract
+  );
 });
 
 test('browser prompt emits the blueprint authority graph explicitly', () => {
@@ -109,6 +113,18 @@ test('browser prompt projects the demand-bridge blueprint for every fixed demand
   assert.match(result.agent_prompt, /UNRESOLVED_CAPABILITY_GAP/);
   assert.match(result.agent_prompt, /Unrelated easier practice may support prerequisites but does not close the fixed target demand/);
   assert.match(result.agent_prompt, /Core2A\/Core2B may consume a target demand only after capability closure is ESTABLISHED or ROUTED/);
+});
+
+test('browser prompt consumes the learner-product delivery contract', () => {
+  const w = runtime();
+  const result = w.PROMPT_COMPOSER.composeDocument(fixture, w.GRADE9V3_PROMPT_COMPOSER, w.GRADE9V3);
+  assert.equal(result.prompt_brief.learner_product_contract.path, 'Shared/roles/LEARNER-PRODUCT-TEMPLATES.md');
+  assert.match(result.agent_prompt, /\[LEARNER_PRODUCT_CONTRACT\]/);
+  assert.match(result.agent_prompt, /The actual learner artifact must contain the required blocks/);
+  assert.match(result.agent_prompt, /Interactive reveal must have a semantically complete static\/print closure route/);
+  assert.match(result.agent_prompt, /Required canonical visuals must actually render in the learner artifact/);
+  assert.match(result.agent_prompt, /Math must render as readable mathematics/);
+  assert.match(result.agent_prompt, /Use the shared learner projection\/runtime by default/);
 });
 
 test('pasted hostile markup stays plain parsed data and exact 0 is not blank', () => {
