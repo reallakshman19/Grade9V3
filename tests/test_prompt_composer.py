@@ -70,7 +70,7 @@ class PromptComposerTests(unittest.TestCase):
         text = result["agent_prompt"]
         for clause in [
             "GOAL_OUTCOME", "FIXED_SOURCE_QUESTIONS", "LEARNER_PROFILE",
-            "EXECUTION_ORDER", "AUTHORITY_GRAPH", "TOPIC_BOUNDARY", "CORE_OBLIGATIONS",
+            "EXECUTION_ORDER", "AUTHORITY_GRAPH", "DEMAND_BRIDGE", "TOPIC_BOUNDARY", "CORE_OBLIGATIONS",
             "DIFFICULTY_PROGRESSION", "PROVENANCE_TRACE", "ACCEPTANCE",
             "NON_GOALS", "HOLD_FAIL", "DOWNSTREAM_DELIVERABLE",
         ]:
@@ -97,6 +97,47 @@ class PromptComposerTests(unittest.TestCase):
         self.assertIn(
             "A Core2 HOLD does not become academic authority",
             result["agent_prompt"],
+        )
+
+    def test_demand_bridge_is_schema_projected_for_every_fixed_demand(self):
+        result = prompt_composer.compose(self.load("projectile-stress-set.json"))
+        bridge = result["prompt_brief"]["demand_bridge"]
+        self.assertFalse(bridge["is_core_role"])
+        self.assertTrue(bridge["required_for_every_fixed_demand"])
+        self.assertEqual(len(bridge["rows"]), 5)
+        self.assertEqual(
+            set(bridge["allowed_dispositions"]),
+            {
+                "WITHIN_CANONICAL_SCOPE",
+                "CANONICAL_PREREQUISITE_ROUTE",
+                "EXTENSION_ADMISSION_CANDIDATE",
+                "UNRESOLVED_CAPABILITY_GAP",
+                "IDENTITY_HOLD",
+            },
+        )
+        q15 = next(row for row in bridge["rows"] if row["demand_ref"] == "Q15")
+        self.assertEqual(q15["classification_state"], "IDENTITY_HOLD")
+        q28 = next(row for row in bridge["rows"] if row["demand_ref"] == "Q28")
+        self.assertEqual(q28["classification_state"], "READY_FOR_CAPABILITY_ANALYSIS")
+        self.assertEqual(
+            q28["canonical_primary_capability_ref"],
+            "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        )
+
+    def test_generated_prompt_requires_bridge_route_not_generic_substitution(self):
+        result = prompt_composer.compose(self.load("projectile-stress-set.json"))
+        text = result["agent_prompt"]
+        self.assertIn("[DEMAND_BRIDGE]", text)
+        self.assertIn("Demand Bridge / Admission is a planning control, not a seventh Core", text)
+        self.assertIn("EXTENSION_ADMISSION_CANDIDATE", text)
+        self.assertIn("UNRESOLVED_CAPABILITY_GAP", text)
+        self.assertIn(
+            "Unrelated easier practice may support prerequisites but does not close the fixed target demand",
+            text,
+        )
+        self.assertIn(
+            "Core2A/Core2B may consume a target demand only after capability closure is ESTABLISHED or ROUTED",
+            text,
         )
 
     def test_mixed_subtopic_fails_closed(self):
