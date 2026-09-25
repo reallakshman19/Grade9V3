@@ -17,6 +17,18 @@
       "direct_source_use": "HOLD",
       "instructional_demand_use": "ALLOWED",
       "assessment_claim": "HOLD"
+    },
+    {
+      "question_id": "SCOPE-ANCHOR",
+      "summary": "Mapped scope anchor so semantic identity review can remain non-blocking.",
+      "canonical_question_ref": "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
+      "candidate_set_provenance": "Exact repository ref supplied solely to establish the canonical composition scope for this falsifier.",
+      "learner_eligibility": "NOT_ESTABLISHED",
+      "learner_eligibility_basis": "Scope-anchor fixture only.",
+      "target_authority": "OPTIONAL",
+      "direct_source_use": "HOLD",
+      "instructional_demand_use": "HOLD",
+      "assessment_claim": "HOLD"
     }
   ],
   "owner_confirmed_rung": {
