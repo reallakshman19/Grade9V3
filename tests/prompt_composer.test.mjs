@@ -35,28 +35,30 @@ test('browser digest uses standard SHA-256 vectors', () => {
   );
 });
 
-test('browser composition preserves authority boundaries and holds ambiguous identity', () => {
+test('browser composition preserves fixed target authority and routes identity review', () => {
   const w = runtime();
   const result = w.PROMPT_COMPOSER.composeDocument(fixture, w.GRADE9V3_PROMPT_COMPOSER, w.GRADE9V3);
-  assert.equal(result.passed, false);
+  assert.equal(result.passed, true);
   assert.equal(result.prompt_brief.scope.status, 'OWNER_CONFIRMED_CANONICAL_RUNG');
-  assert.deepEqual(JSON.parse(JSON.stringify(result.prompt_brief.scope.canonical_primary_rungs)), ['R1','R2','R3']);
   const q15 = result.prompt_brief.question_rows.find(row => row.owner_question_id === 'Q15');
-  assert.equal(q15.identity_status, 'IDENTITY_HOLD');
-  assert.equal(q15.mapping_status, 'IDENTITY_HOLD');
+  assert.equal(q15.identity_status, 'IDENTITY_REVIEW_REQUIRED');
+  assert.equal(q15.mapping_status, 'IDENTITY_REVIEW_REQUIRED');
   assert.deepEqual(JSON.parse(JSON.stringify(q15.candidate_question_refs)).sort(), [
     'PYQ-PHY-JEEADV-2018-P2-Q08',
     'PYQ-PHY-JEEADV-2023-P1-Q01'
   ]);
-  assert.equal(q15.primary_capability_ref, null);
-  assert.equal(result.prompt_brief.holds.some(h => h.point === 'QUESTION_IDENTITY_AMBIGUOUS'), true);
-  assert.deepEqual(
-    JSON.parse(JSON.stringify(result.prompt_brief.question_rows.filter(row => row.primary_location).map(row => row.primary_location.rung))),
-    ['R1','R3','R3','R2']
-  );
-  assert.equal(result.prompt_brief.learner_entry.owner_estimate.knowledge_percentage, 50);
-  assert.equal(result.prompt_brief.planner_handoff.state, 'COMPOSER_HOLD');
+  assert.equal(result.prompt_brief.holds.some(h => h.point === 'QUESTION_IDENTITY_AMBIGUOUS'), false);
+  result.prompt_brief.question_rows.forEach(row => {
+    assert.equal(row.target_authority, 'OWNER_FIXED');
+    assert.equal(row.instructional_demand_use, 'ALLOWED');
+    assert.equal(row.assessment_claim, 'HOLD');
+  });
+  assert.equal(result.prompt_brief.learner_entry.owner_routing_waiver, true);
+  assert.equal(result.prompt_brief.learner_entry.readiness_claim_allowed, false);
+  assert.equal(result.prompt_brief.target_route_output.seed_rows.length, 5);
+  assert.equal(result.prompt_brief.planner_handoff.state, 'READY_FOR_PLANNER');
 });
+
 
 test('browser and Python agree on mapping semantics and deterministic prompt digests', () => {
   const w = runtime();
@@ -69,12 +71,16 @@ test('browser and Python agree on mapping semantics and deterministic prompt dig
   assert.equal(browser.prompt_brief.scope.status, python.prompt_brief.scope.status);
   assert.deepEqual(JSON.parse(JSON.stringify(browser.prompt_brief.scope.canonical_primary_rungs)), python.prompt_brief.scope.canonical_primary_rungs);
   assert.deepEqual(
-    JSON.parse(JSON.stringify(browser.prompt_brief.question_rows.map(r => [r.canonical_question_ref,r.primary_capability_ref,r.primary_location?.rung||null,r.mapping_status,r.learner_eligibility]))),
-    python.prompt_brief.question_rows.map(r => [r.canonical_question_ref,r.primary_capability_ref,r.primary_location?.rung||null,r.mapping_status,r.learner_eligibility])
+    JSON.parse(JSON.stringify(browser.prompt_brief.question_rows.map(r => [r.canonical_question_ref,r.primary_capability_ref,r.primary_location?.rung||null,r.mapping_status,r.target_authority,r.direct_source_use,r.instructional_demand_use,r.assessment_claim]))),
+    python.prompt_brief.question_rows.map(r => [r.canonical_question_ref,r.primary_capability_ref,r.primary_location?.rung||null,r.mapping_status,r.target_authority,r.direct_source_use,r.instructional_demand_use,r.assessment_claim])
   );
   assert.deepEqual(
     JSON.parse(JSON.stringify(browser.prompt_brief.trace_rows.map(r => [r.question_ids,r.primary_capability_ref,r.matrix_ref,r.rung,r.status]))),
     python.prompt_brief.trace_rows.map(r => [r.question_ids,r.primary_capability_ref,r.matrix_ref,r.rung,r.status])
+  );
+  assert.deepEqual(
+    JSON.parse(JSON.stringify(browser.prompt_brief.target_route_output)),
+    python.prompt_brief.target_route_output
   );
 });
 
@@ -87,6 +93,11 @@ test('browser prompt emits the blueprint authority graph explicitly', () => {
   assert.match(result.agent_prompt, /Demand evidence and learner eligibility are independent states/);
   assert.match(result.agent_prompt, /question\.primary_capability_ref/);
   assert.doesNotMatch(result.agent_prompt, /primary_concept_id/);
+  assert.match(result.agent_prompt, /\[TARGET_DEMAND_ROUTING\]/);
+  assert.match(result.agent_prompt, /target-demand-route\.schema\.json/);
+  assert.match(result.agent_prompt, /Generic easier practice cannot close a fixed target/);
+  assert.match(result.agent_prompt, /AUTHORABLE_EXTENSION/);
+  assert.match(result.agent_prompt, /Owner routing waiver is ON/);
 });
 
 test('pasted hostile markup stays plain parsed data and exact 0 is not blank', () => {
