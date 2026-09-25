@@ -5,8 +5,8 @@ window.GRADE9V3_PROMPT_COMPOSER = {
   "repository_basis": "architecture-manifest@sha256:16a4682f88f97987e1979fa95e680ca9333ba3fc2ebeac95d7b8c8352afba6e9",
   "template": {
     "template_id": "CORE-AGENT-PROMPT",
-    "version": "1.0.0",
-    "description": "Stable clause map for traceable Core-agent authoring prompts. Role meaning remains owned by Shared/roles/*.md.",
+    "version": "1.1.0",
+    "description": "Stable clause map for traceable Core-agent authoring prompts, including the blueprint-owned demand-bridge admission step. Role meaning remains owned by Shared/roles/*.md.",
     "role_contract_refs": {
       "CORE1": "Shared/roles/CORE1.md",
       "CORE2": "Shared/roles/CORE2.md",
@@ -43,6 +43,14 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       {
         "id": "AUTHORITY_GRAPH",
         "title": "Core authority and dependency graph"
+      },
+      {
+        "id": "DEMAND_BRIDGE",
+        "title": "Demand bridge and prerequisite admission"
+      },
+      {
+        "id": "LEARNER_PRODUCT_CONTRACT",
+        "title": "Learner-product delivery contract"
       },
       {
         "id": "TOPIC_BOUNDARY",
@@ -83,7 +91,7 @@ window.GRADE9V3_PROMPT_COMPOSER = {
     ]
   },
   "authority_contract": {
-    "version": "1.0",
+    "version": "1.1",
     "authority_classes": {
       "CANONICAL_ACADEMIC_TRUTH": {
         "description": "Canonical subject package records: bucket/microtopic/capability/relation/representation truth.",
@@ -210,7 +218,15 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       "learner_estimate_is_not_mastery_evidence": true,
       "learner_estimate_cannot_change_core1_family_intrinsic_scope": true,
       "prompt_and_planning_outputs_are_not_academic_authority": true,
-      "unresolved_authority_dependency_must_hold": true
+      "unresolved_authority_dependency_must_hold": true,
+      "every_fixed_demand_requires_bridge_disposition": true,
+      "fixed_demand_cannot_disappear_on_scope_mismatch": true,
+      "bridge_does_not_create_core_role": true,
+      "bridge_does_not_admit_extension_to_core1_family": true,
+      "core2a_requires_established_capability_closure": true,
+      "core2b_requires_established_capability_closure_and_prior_exposure": true,
+      "fixed_demand_progression_must_remain_visible": true,
+      "generic_practice_does_not_close_fixed_demand": true
     },
     "canonical_field_rules": {
       "question_primary": "question.primary_capability_ref",
@@ -222,15 +238,454 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       "execution_order": "PRODUCTION_CONTROL_ONLY",
       "set_level_scope": "COMPOSITION_CONTEXT_ONLY",
       "demand_evidence": "MAY_EXIST_WITHOUT_LEARNER_ELIGIBILITY",
-      "learner_eligibility": "INDEPENDENT_REVIEW_STATE"
+      "learner_eligibility": "INDEPENDENT_REVIEW_STATE",
+      "demand_bridge": "CAPABILITY_CLOSURE_CONTROL_ONLY"
     },
     "allowed_dependency_states": [
       "PASS",
       "HOLD",
       "FAIL"
-    ]
+    ],
+    "demand_bridge": {
+      "is_core_role": false,
+      "required_for_every_fixed_demand": true,
+      "dispositions": {
+        "WITHIN_CANONICAL_SCOPE": {
+          "capability_closure": "ESTABLISHED",
+          "requires": [
+            "canonical_capability_refs"
+          ]
+        },
+        "CANONICAL_PREREQUISITE_ROUTE": {
+          "capability_closure": "ROUTED",
+          "requires": [
+            "canonical_prerequisite_refs",
+            "prerequisite_route"
+          ]
+        },
+        "EXTENSION_ADMISSION_CANDIDATE": {
+          "capability_closure": "NOT_YET_ADMITTED",
+          "requires": [
+            "unresolved_prerequisite_demands",
+            "extension_admission_candidate"
+          ],
+          "downstream_application_state": "HOLD"
+        },
+        "UNRESOLVED_CAPABILITY_GAP": {
+          "capability_closure": "UNRESOLVED",
+          "requires": [
+            "unresolved_prerequisite_demands",
+            "hold_close_when"
+          ],
+          "downstream_application_state": "HOLD"
+        },
+        "IDENTITY_HOLD": {
+          "capability_closure": "UNRESOLVED",
+          "requires": [
+            "candidate_question_refs",
+            "hold_close_when"
+          ],
+          "downstream_application_state": "HOLD"
+        }
+      },
+      "required_record_fields": [
+        "demand_ref",
+        "canonical_primary_capability_ref",
+        "canonical_capability_refs",
+        "canonical_prerequisite_refs",
+        "unresolved_prerequisite_demands",
+        "disposition",
+        "prerequisite_route",
+        "extension_admission_candidate",
+        "source_custody_state",
+        "learner_eligibility_state",
+        "core2a_eligibility",
+        "core2b_eligibility",
+        "hold_close_when"
+      ],
+      "core2a_allowed_capability_closure": [
+        "ESTABLISHED",
+        "ROUTED"
+      ],
+      "core2b_allowed_capability_closure": [
+        "ESTABLISHED",
+        "ROUTED"
+      ],
+      "core2b_requires_prior_exposure": true
+    }
   },
   "authority_contract_ref": "Shared/roles/CORE-AUTHORITY-CONTRACT.md",
+  "learner_product_contract": {
+    "version": "1.1",
+    "roles": {
+      "CORE1": {
+        "learner_job": "Orient to the bucket without replacing detailed teaching.",
+        "ordered_blocks": [
+          {
+            "id": "identity_scope",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "objects_conventions",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "canonical_representation",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "governing_relations",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "compact_anchor",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "hard_transition_map",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "exclusions_extensions",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "orientation_closure",
+            "visibility": "IMMEDIATE"
+          }
+        ],
+        "required_inputs": [
+          "bucket.title",
+          "bucket.conventions[]",
+          "bucket.primary_representation_ref",
+          "bucket.scope.covers",
+          "bucket.scope.excluded[]",
+          "bucket.scope.extension_refs[]",
+          "relation.expression",
+          "relation.meaning",
+          "relation.conditions[]",
+          "microtopic.intrinsic_badge",
+          "microtopic.badge_reason"
+        ],
+        "withheld_pre_attempt": [],
+        "forbidden": [
+          "FULL_INFERENTIAL_CONSTRUCTION",
+          "FULL_MISCONCEPTION_REPAIR_LESSON",
+          "PERSONALISED_PRACTICE_ROUTING"
+        ]
+      },
+      "CORE1A": {
+        "learner_job": "Receive a complete declarative construction of the microtopic's inferential truth.",
+        "ordered_blocks": [
+          {
+            "id": "identity_entry_assumptions",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "convention_declaration",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "inferential_jump",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "completed_construction",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "representation_bridge",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "worked_conceptual_anchor",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "plausible_wrong_path",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "diagnose",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "repair",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "independent_checks",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "exit_task_closure",
+            "visibility": "IMMEDIATE"
+          }
+        ],
+        "required_inputs": [
+          "microtopic.entry_assumptions[]",
+          "microtopic.inferential_jump",
+          "microtopic.teaching_path[]",
+          "microtopic.representation_refs[]",
+          "microtopic.misconceptions[]",
+          "microtopic.exit_task"
+        ],
+        "withheld_pre_attempt": [],
+        "forbidden": [
+          "ATTEMPT_FIRST_AS_PRIMARY_MODE",
+          "RANDOM_BLANK_DELETION",
+          "UNANSWERED_PROMPT"
+        ]
+      },
+      "CORE1B": {
+        "learner_job": "Reconstruct the same inferential truth before seeing the completed route.",
+        "ordered_blocks": [
+          {
+            "id": "identity_concept",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "predict",
+            "visibility": "ATTEMPT_FIRST"
+          },
+          {
+            "id": "attempt",
+            "visibility": "ATTEMPT_FIRST"
+          },
+          {
+            "id": "reconstruct",
+            "visibility": "POST_ATTEMPT"
+          },
+          {
+            "id": "diagnose",
+            "visibility": "POST_ATTEMPT"
+          },
+          {
+            "id": "repair",
+            "visibility": "POST_ATTEMPT"
+          },
+          {
+            "id": "boundary_test",
+            "visibility": "POST_ATTEMPT"
+          },
+          {
+            "id": "model_response_or_rubric",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "rejoin_inferential_jump",
+            "visibility": "ON_REVEAL"
+          }
+        ],
+        "required_inputs": [
+          "microtopic.inferential_jump",
+          "microtopic.elicitation.predict.prompt",
+          "microtopic.elicitation.attempt.produces",
+          "microtopic.elicitation.reconstruct.route[]",
+          "microtopic.misconceptions[]",
+          "microtopic.elicitation.boundary_test"
+        ],
+        "withheld_pre_attempt": [
+          "DEFENSIBLE_ANSWER",
+          "COMPLETED_RECONSTRUCTION",
+          "MODEL_RESPONSE"
+        ],
+        "forbidden": [
+          "CORE1A_WITH_RANDOM_BLANKS",
+          "ANSWER_BEFORE_ATTEMPT",
+          "COVERAGE_REDUCTION_RELATIVE_TO_CORE1A"
+        ]
+      },
+      "CORE2": {
+        "learner_job": "Preserve and expose the authentic assessment demand with source custody intact.",
+        "ordered_blocks": [
+          {
+            "id": "source_identity_provenance",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "source_question",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "source_figure",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "source_hint_ladder",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "source_answer_rubric",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "custody_status",
+            "visibility": "IMMEDIATE"
+          }
+        ],
+        "required_inputs": [
+          "question.source_refs[]",
+          "question.original_identifier",
+          "question.stem",
+          "question.subparts[]",
+          "question.options[]",
+          "question.conditions[]",
+          "question.figure_refs[]",
+          "question.hints[]",
+          "question.answer",
+          "question.origin"
+        ],
+        "withheld_pre_attempt": [
+          "SOURCE_ANSWER",
+          "ANSWER_REVEALING_SOURCE_HINT"
+        ],
+        "forbidden": [
+          "AUTHORED_SCAFFOLD_PRESENTED_AS_SOURCE_HINT",
+          "GENERATED_OFFICIAL_IDENTITY",
+          "RECONSTRUCTED_WORDING_PRESENTED_AS_ORIGINAL"
+        ]
+      },
+      "CORE2A": {
+        "learner_job": "Learn a familiar question-family application route with pedagogical support and complete closure.",
+        "ordered_blocks": [
+          {
+            "id": "family_identity_provenance",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "question",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "initial_representation",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "pedagogical_scaffolds",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "reasoning_route",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "application_crux",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "bound_representation",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "complete_solution",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "independent_check",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "failure_signal_repair",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "exposure_family_closure",
+            "visibility": "IMMEDIATE"
+          }
+        ],
+        "required_inputs": [
+          "question.family_ref",
+          "question.source_refs[]",
+          "question.answer.reasoning_route[]",
+          "question.answer.crux_move_ref",
+          "question.scaffolds[]",
+          "question.figure_refs[]",
+          "question.answer.check",
+          "question.exposure[]"
+        ],
+        "withheld_pre_attempt": [],
+        "forbidden": [
+          "TRANSFER_CLAIM_FROM_NUMBER_CHANGE_ONLY",
+          "SOURCE_HINT_AND_AUTHORED_SCAFFOLD_COLLAPSE",
+          "MASTERY_CLAIM_FROM_SUCCESSFUL_GENERATION"
+        ]
+      },
+      "CORE2B": {
+        "learner_job": "Carry an established capability into a changed demand while protecting the changed learner decision before commitment.",
+        "ordered_blocks": [
+          {
+            "id": "question_prior_exposure",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "safe_initial_representation",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "safe_pre_attempt_support",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "attempt_commitment",
+            "visibility": "ATTEMPT_FIRST"
+          },
+          {
+            "id": "post_attempt_support",
+            "visibility": "POST_ATTEMPT"
+          },
+          {
+            "id": "full_answer_rubric",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "changed_demand_review",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "repair_route",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "lineage_continuity_check",
+            "visibility": "ON_REVEAL"
+          }
+        ],
+        "required_inputs": [
+          "question.transfer.dimension",
+          "question.transfer.statement",
+          "question.transfer.builds_on[]",
+          "question.transfer.protected_move_ref",
+          "question.scaffolds[]",
+          "question.answer.rubric[]",
+          "question.repair_ref"
+        ],
+        "withheld_pre_attempt": [
+          "PROTECTED_MOVE",
+          "CHANGED_DECISION",
+          "METHOD_OR_ANSWER_SUPPORT_THAT_COLLAPSES_TRANSFER"
+        ],
+        "forbidden": [
+          "PROTECTED_MOVE_DISCLOSED_PRE_ATTEMPT",
+          "NEW_UNTAUGHT_CAPABILITY_AS_TRANSFER",
+          "TRANSFER_CLAIM_FROM_COVER_STORY_ONLY"
+        ]
+      }
+    },
+    "delivery_invariants": {
+      "required_role_blocks_must_exist_in_learner_artifact": true,
+      "summary_pointer_to_external_file_does_not_satisfy_required_block": true,
+      "static_delivery_must_be_semantically_complete": true,
+      "interactive_reveal_requires_static_closure_equivalent": true,
+      "canonical_representation_binding_required": true,
+      "required_visual_must_render_in_learner_artifact": true,
+      "reviewer_engineering_metadata_must_not_dominate_learner_surface": true,
+      "math_must_render_as_readable_math_not_broken_control_sequences": true,
+      "shared_learner_projection_runtime_is_default_delivery_path": true,
+      "topic_local_parallel_renderer_requires_proven_shared_stack_gap": true
+    }
+  },
+  "learner_product_contract_ref": "Shared/roles/LEARNER-PRODUCT-TEMPLATES.md",
   "subjects": {
     "Chemistry": {
       "nested_questions": {
