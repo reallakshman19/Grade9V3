@@ -444,7 +444,7 @@
             "enum": [
               "READY",
               "ACADEMIC_REVIEW_HOLD",
-              "SOURCE_USE_HOLD",
+              "INSTRUCTIONAL_USE_HOLD",
               "IDENTITY_HOLD"
             ]
           },
