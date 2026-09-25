@@ -77,6 +77,8 @@ requested generation order never authorizes fabricated closure.
 builders and publication manifests may carry and validate references. They may not create
 curriculum truth, source custody, learner mastery or canonical question identity.
 
+**Fixed target routing is separately governed.** When a requested target requires capabilities outside the current packet, consumers must use `TARGET-DEMAND-ROUTING-CONTRACT.md`. The routing layer may connect canonical prerequisites and reviewed extension candidates, but it cannot become academic authority or expand Core1-family scope.
+
 ## Machine-readable authority contract
 
 The fenced block below is the machine-readable authority for the invariants above. It is not
