@@ -5,8 +5,8 @@ window.GRADE9V3_PROMPT_COMPOSER = {
   "repository_basis": "architecture-manifest@sha256:62de79e2cd1249dc25532bd822e7807b37e99e65a1f471193bcdf9abd800b748",
   "template": {
     "template_id": "CORE-AGENT-PROMPT",
-    "version": "1.0.0",
-    "description": "Stable clause map for traceable Core-agent authoring prompts. Role meaning remains owned by Shared/roles/*.md.",
+    "version": "1.1.0",
+    "description": "Stable clause map for traceable Core-agent authoring prompts, including the blueprint-owned demand-bridge admission step. Role meaning remains owned by Shared/roles/*.md.",
     "role_contract_refs": {
       "CORE1": "Shared/roles/CORE1.md",
       "CORE2": "Shared/roles/CORE2.md",
@@ -43,6 +43,10 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       {
         "id": "AUTHORITY_GRAPH",
         "title": "Core authority and dependency graph"
+      },
+      {
+        "id": "DEMAND_BRIDGE",
+        "title": "Demand bridge and prerequisite admission"
       },
       {
         "id": "TOPIC_BOUNDARY",
@@ -83,7 +87,7 @@ window.GRADE9V3_PROMPT_COMPOSER = {
     ]
   },
   "authority_contract": {
-    "version": "1.0",
+    "version": "1.1",
     "authority_classes": {
       "CANONICAL_ACADEMIC_TRUTH": {
         "description": "Canonical subject package records: bucket/microtopic/capability/relation/representation truth.",
@@ -210,7 +214,15 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       "learner_estimate_is_not_mastery_evidence": true,
       "learner_estimate_cannot_change_core1_family_intrinsic_scope": true,
       "prompt_and_planning_outputs_are_not_academic_authority": true,
-      "unresolved_authority_dependency_must_hold": true
+      "unresolved_authority_dependency_must_hold": true,
+      "every_fixed_demand_requires_bridge_disposition": true,
+      "fixed_demand_cannot_disappear_on_scope_mismatch": true,
+      "bridge_does_not_create_core_role": true,
+      "bridge_does_not_admit_extension_to_core1_family": true,
+      "core2a_requires_established_capability_closure": true,
+      "core2b_requires_established_capability_closure_and_prior_exposure": true,
+      "fixed_demand_progression_must_remain_visible": true,
+      "generic_practice_does_not_close_fixed_demand": true
     },
     "canonical_field_rules": {
       "question_primary": "question.primary_capability_ref",
@@ -222,13 +234,81 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       "execution_order": "PRODUCTION_CONTROL_ONLY",
       "set_level_scope": "COMPOSITION_CONTEXT_ONLY",
       "demand_evidence": "MAY_EXIST_WITHOUT_LEARNER_ELIGIBILITY",
-      "learner_eligibility": "INDEPENDENT_REVIEW_STATE"
+      "learner_eligibility": "INDEPENDENT_REVIEW_STATE",
+      "demand_bridge": "CAPABILITY_CLOSURE_CONTROL_ONLY"
     },
     "allowed_dependency_states": [
       "PASS",
       "HOLD",
       "FAIL"
-    ]
+    ],
+    "demand_bridge": {
+      "is_core_role": false,
+      "required_for_every_fixed_demand": true,
+      "dispositions": {
+        "WITHIN_CANONICAL_SCOPE": {
+          "capability_closure": "ESTABLISHED",
+          "requires": [
+            "canonical_capability_refs"
+          ]
+        },
+        "CANONICAL_PREREQUISITE_ROUTE": {
+          "capability_closure": "ROUTED",
+          "requires": [
+            "canonical_prerequisite_refs",
+            "prerequisite_route"
+          ]
+        },
+        "EXTENSION_ADMISSION_CANDIDATE": {
+          "capability_closure": "NOT_YET_ADMITTED",
+          "requires": [
+            "unresolved_prerequisite_demands",
+            "extension_admission_candidate"
+          ],
+          "downstream_application_state": "HOLD"
+        },
+        "UNRESOLVED_CAPABILITY_GAP": {
+          "capability_closure": "UNRESOLVED",
+          "requires": [
+            "unresolved_prerequisite_demands",
+            "hold_close_when"
+          ],
+          "downstream_application_state": "HOLD"
+        },
+        "IDENTITY_HOLD": {
+          "capability_closure": "UNRESOLVED",
+          "requires": [
+            "candidate_question_refs",
+            "hold_close_when"
+          ],
+          "downstream_application_state": "HOLD"
+        }
+      },
+      "required_record_fields": [
+        "demand_ref",
+        "canonical_primary_capability_ref",
+        "canonical_capability_refs",
+        "canonical_prerequisite_refs",
+        "unresolved_prerequisite_demands",
+        "disposition",
+        "prerequisite_route",
+        "extension_admission_candidate",
+        "source_custody_state",
+        "learner_eligibility_state",
+        "core2a_eligibility",
+        "core2b_eligibility",
+        "hold_close_when"
+      ],
+      "core2a_allowed_capability_closure": [
+        "ESTABLISHED",
+        "ROUTED"
+      ],
+      "core2b_allowed_capability_closure": [
+        "ESTABLISHED",
+        "ROUTED"
+      ],
+      "core2b_requires_prior_exposure": true
+    }
   },
   "authority_contract_ref": "Shared/roles/CORE-AUTHORITY-CONTRACT.md",
   "subjects": {
