@@ -19,7 +19,7 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(REPO))
 
 from Shared.contracts import load  # noqa: E402
-from Shared.tools import core_authority_contract, study_map, target_demand_routing_contract  # noqa: E402
+from Shared.tools import core_authority_contract, core_template_contract, study_map, target_demand_routing_contract  # noqa: E402
 
 BRIEF_SCHEMA = REPO / "Shared/library/prompt-brief.schema.json"
 AUTHORING_SCHEMA = "Shared/library/authoring-request.schema.json"
@@ -520,7 +520,7 @@ def _difficulty(rows: list[dict]) -> list[str]:
     return sorted(bands, key=lambda value: (int(value[1:]) if value.startswith("D") and value[1:].isdigit() else 999, value))
 
 
-def render_prompt(brief: dict, template: dict, authority_contract: dict | None = None, routing_contract: dict | None = None) -> str:
+def render_prompt(brief: dict, template: dict, authority_contract: dict | None = None, routing_contract: dict | None = None, learner_product_contract: dict | None = None) -> str:
     role_refs = template["role_contract_refs"]
     role_guardrails = template["role_guardrails"]
     rows = brief["question_rows"]
@@ -554,6 +554,7 @@ def render_prompt(brief: dict, template: dict, authority_contract: dict | None =
     )
     authority_contract = authority_contract or core_authority_contract.load_contract()
     routing_contract = routing_contract or target_demand_routing_contract.load_contract()
+    learner_product_contract = learner_product_contract or core_template_contract.load_contract()
     authority_lines = []
     for core in brief["requested_cores"]:
         rule = authority_contract["roles"][core]
@@ -609,6 +610,16 @@ def render_prompt(brief: dict, template: dict, authority_contract: dict | None =
         "Route validity does not imply learner-product quality; physical accuracy, diagram legibility, math rendering, worked→faded→independent progression and lesson→move connection require a separate delivery gate.\n"
         "Seed targets:\n" + seed_lines
     )
+    quality = learner_product_contract["learner_product_quality_gate"]
+    learner_product_quality_text = (
+        "Route validity and learner-product quality are separate claims. "
+        "Before any learner-facing artifact is treated as publishable, record one quality-gate disposition using "
+        + ", ".join(quality["acceptance_states"])
+        + ". Required checks: " + ", ".join(quality["required_checks"]) + ". "
+        "Required visuals must actually render in the learner artifact; mathematical notation must be legible; static/print delivery must preserve closure; "
+        "worked→faded→independent progression must be visible where application practice is used; and each lesson→target connection must name target_ref, move_ref and an observable_lesson_change. "
+        "A route PASS does not imply a product PASS. Reviewer/debug metadata must not dominate the learner surface."
+    )
     diff = " → ".join(brief["validation"].get("difficulty_bands") or []) or "Use the canonical/intrinsic difficulty information available in the referenced records; do not infer it from learner percentage."
     kws = "\n".join(f"- {item['phrase']} ({item['kind']}; evidence: {', '.join(item['evidence_refs'])})" for item in fingerprint)
     trace = "\n".join(
@@ -629,6 +640,7 @@ def render_prompt(brief: dict, template: dict, authority_contract: dict | None =
         "EXECUTION_ORDER": order + "\nTreat this as production control only. It does not override readiness, HOLD decisions, or the authority graph.",
         "AUTHORITY_GRAPH": authority_text,
         "TARGET_DEMAND_ROUTING": target_route_text,
+        "LEARNER_PRODUCT_QUALITY": learner_product_quality_text,
         "TOPIC_BOUNDARY": boundary,
         "CORE_OBLIGATIONS": core_lines,
         "DIFFICULTY_PROGRESSION": diff + "\nPreserve intrinsic Core1A/Core1B depth regardless of the learner estimate.",
@@ -671,6 +683,8 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
     authority = core_authority_contract.load_contract(authority_path)
     routing_path = target_demand_routing_contract.discover_contract(repo / "Shared" / "roles")
     routing = target_demand_routing_contract.load_contract(routing_path)
+    learner_product_path = core_template_contract.discover_template_spec(repo / "Shared" / "roles")
+    learner_product = core_template_contract.load_contract(learner_product_path)
     route_schema_path = repo / "Shared" / "library" / "target-demand-route.schema.json"
     route_schema = load(route_schema_path)
     normalized = json.loads(canonical_json(doc))
@@ -751,6 +765,11 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
             "path": str(routing_path.relative_to(repo)),
             "digest": digest(routing),
         },
+        "learner_product_contract": {
+            "version": learner_product["version"],
+            "path": str(learner_product_path.relative_to(repo)),
+            "digest": digest(learner_product),
+        },
         "target_route_output": {
             "schema_path": str(route_schema_path.relative_to(repo)),
             "required": True,
@@ -797,7 +816,7 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
             "note": "Composer PASS means only that the prompt bundle is structurally/mapping-ready for the existing planner; it does not mean any Core product is ready.",
         },
     }
-    prompt = render_prompt(brief, template, authority, routing)
+    prompt = render_prompt(brief, template, authority, routing, learner_product)
     brief["prompt_digest"] = digest(prompt)
     structure_findings = _validate_brief(brief, repo)
     if structure_findings:
