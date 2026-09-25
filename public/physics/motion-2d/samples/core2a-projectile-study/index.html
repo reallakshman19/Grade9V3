@@ -153,6 +153,11 @@
     <p class="runtime-status" id="runtimeStatus" role="status" aria-live="polite">Loading canonical question data…</p>
   </main>
 
+  <script>
+    window.__core2aProjectileErrors = [];
+    window.addEventListener("error", (event) => window.__core2aProjectileErrors.push(String(event.message || event.error || "error")));
+    window.addEventListener("unhandledrejection", (event) => window.__core2aProjectileErrors.push(String(event.reason || "unhandled rejection")));
+  </script>
   <script src="../../../../data/question-bank-data.js"></script>
   <script src="../../../../js/display-controls.js"></script>
   <script src="../../../../js/site-header.js" data-site-root="../../../../" data-site-parent="../../index.html"></script>
