@@ -31,27 +31,39 @@ class PromptComposerTests(unittest.TestCase):
         report = study_map.resolve(mapping)
         self.assertTrue(report["passed"], report["findings"])
 
-    def test_projectile_stress_set_preserves_fixed_target_authority_and_routes_identity_review(self):
+    def test_projectile_stress_set_preserves_fixed_target_authority_with_resolved_q15(self):
         result = prompt_composer.compose(self.load("projectile-stress-set.json"))
         self.assertTrue(result["passed"], result["prompt_brief"]["holds"])
         brief = result["prompt_brief"]
         self.assertEqual(brief["scope"]["matrix_ref"], "MATRIX-PHY-KIN-2D-MOTION")
         self.assertEqual(brief["scope"]["status"], "OWNER_CONFIRMED_CANONICAL_RUNG")
         q15 = next(row for row in brief["question_rows"] if row["owner_question_id"] == "Q15")
-        self.assertEqual(q15["identity_status"], "IDENTITY_REVIEW_REQUIRED")
-        self.assertEqual(q15["mapping_status"], "IDENTITY_REVIEW_REQUIRED")
-        self.assertEqual(
-            set(q15["candidate_question_refs"]),
-            {"PYQ-PHY-JEEADV-2018-P2-Q08", "PYQ-PHY-JEEADV-2023-P1-Q01"},
-        )
-        self.assertFalse(any(h["point"] == "QUESTION_IDENTITY_AMBIGUOUS" for h in brief["holds"]))
+        self.assertEqual(q15["identity_status"], "EXACT_CONFIRMED")
+        self.assertEqual(q15["canonical_question_ref"], "PYQ-PHY-JEEADV-2018-P2-Q08")
+        self.assertEqual(q15["mapping_status"], "CANONICAL_MATCH")
+        self.assertIn("uniquely matches", q15["candidate_set_provenance"])
         for row in brief["question_rows"]:
             self.assertEqual(row["target_authority"], "OWNER_FIXED")
+            self.assertEqual(row["direct_source_use"], "HOLD")
             self.assertEqual(row["instructional_demand_use"], "ALLOWED")
             self.assertEqual(row["assessment_claim"], "HOLD")
         self.assertTrue(brief["learner_entry"]["owner_routing_waiver"])
         self.assertFalse(brief["learner_entry"]["readiness_claim_allowed"])
         self.assertEqual(brief["planner_handoff"]["state"], "READY_FOR_PLANNER")
+
+    def test_semantic_identity_review_uses_separate_fixture_and_does_not_become_permanent_hold(self):
+        result = prompt_composer.compose(self.load("identity-review.json"))
+        self.assertTrue(result["passed"], result["prompt_brief"]["holds"])
+        row = result["prompt_brief"]["question_rows"][0]
+        self.assertEqual(row["identity_status"], "IDENTITY_REVIEW_REQUIRED")
+        self.assertEqual(row["mapping_status"], "IDENTITY_REVIEW_REQUIRED")
+        self.assertEqual(
+            set(row["candidate_question_refs"]),
+            {"PYQ-PHY-JEEADV-2018-P2-Q08", "PYQ-PHY-JEEADV-2023-P1-Q01"},
+        )
+        self.assertIn("Owner supplied candidate set", row["candidate_set_provenance"])
+        self.assertFalse(any(h["point"] == "QUESTION_IDENTITY_AMBIGUOUS" for h in result["prompt_brief"]["holds"]))
+
 
     def test_target_route_output_is_required_for_every_fixed_target(self):
         result = prompt_composer.compose(self.load("projectile-stress-set.json"))
@@ -67,7 +79,9 @@ class PromptComposerTests(unittest.TestCase):
             {"Q28", "Q15", "Q21", "Q26", "Q23"},
         )
         q15 = next(row for row in route["seed_rows"] if row["owner_question_id"] == "Q15")
-        self.assertEqual(q15["identity_status"], "IDENTITY_REVIEW_REQUIRED")
+        self.assertEqual(q15["identity_status"], "EXACT_CONFIRMED")
+        self.assertEqual(q15["canonical_question_ref"], "PYQ-PHY-JEEADV-2018-P2-Q08")
+        self.assertIn("uniquely matches", q15["candidate_set_provenance"])
 
 
     def test_prompt_contains_clause_ids_role_refs_and_downstream_pdf_intent_without_rendering_pdf(self):
@@ -75,7 +89,7 @@ class PromptComposerTests(unittest.TestCase):
         text = result["agent_prompt"]
         for clause in [
             "GOAL_OUTCOME", "FIXED_SOURCE_QUESTIONS", "LEARNER_PROFILE",
-            "EXECUTION_ORDER", "AUTHORITY_GRAPH", "TARGET_DEMAND_ROUTING", "TOPIC_BOUNDARY", "CORE_OBLIGATIONS",
+            "EXECUTION_ORDER", "AUTHORITY_GRAPH", "TARGET_DEMAND_ROUTING", "LEARNER_PRODUCT_QUALITY", "TOPIC_BOUNDARY", "CORE_OBLIGATIONS",
             "DIFFICULTY_PROGRESSION", "PROVENANCE_TRACE", "ACCEPTANCE",
             "NON_GOALS", "HOLD_FAIL", "DOWNSTREAM_DELIVERABLE",
         ]:
@@ -90,6 +104,12 @@ class PromptComposerTests(unittest.TestCase):
         self.assertIn("Shared/library/target-demand-route.schema.json", text)
         self.assertIn("Generic easier practice cannot close a fixed target", text)
         self.assertIn("AUTHORABLE_EXTENSION", text)
+        self.assertIn("Every move needs a coverage ledger", text)
+        self.assertIn("PREPARED requires independent evidence", text)
+        self.assertIn("candidate-set provenance", text)
+        self.assertIn("observable teaching change", text)
+        self.assertIn("Route validity and learner-product quality are separate claims", text)
+        self.assertIn("TARGET_MOVE_CONNECTION", text)
         self.assertIn("owner routing waiver is ON", text.lower())
         self.assertIn("#273 owns PDF publication", text)
         self.assertFalse(any(path.suffix == ".pdf" for path in (REPO / "public").rglob("*.pdf")))
@@ -112,6 +132,11 @@ class PromptComposerTests(unittest.TestCase):
             "Shared/roles/TARGET-DEMAND-ROUTING-CONTRACT.md",
         )
         self.assertRegex(brief["target_routing_contract"]["digest"], r"^sha256:[a-f0-9]{64}$")
+        self.assertEqual(
+            brief["learner_product_contract"]["path"],
+            "Shared/roles/LEARNER-PRODUCT-TEMPLATES.md",
+        )
+        self.assertRegex(brief["learner_product_contract"]["digest"], r"^sha256:[a-f0-9]{64}$")
 
     def test_mixed_subtopic_fails_closed(self):
         result = prompt_composer.compose(self.load("mixed-subtopic.json"))
