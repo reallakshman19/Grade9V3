@@ -1,0 +1,194 @@
+{
+  "schema_version": "relay-v3.1-task-snapshot",
+  "authority": "DERIVED_READ_MODEL",
+  "source_protocol": "V3_1",
+  "identity": {
+    "work_package": "ISSUE-280-CORE-DEMAND-BRIDGE",
+    "ep": "ISSUE-280-PROVIDER-VIEW",
+    "issue": 280,
+    "delivery_vehicle": 281
+  },
+  "purpose": {
+    "programme_outcome": "Keep fixed assessment targets pedagogically reachable without allowing question pressure to silently redefine canonical Core1-family curriculum.",
+    "current_goal": "Add a subject-neutral Demand Bridge / Admission contract and make the Core Prompt Composer generate the five-question authoring prompt from schema/template authority.",
+    "task_outcome": "Blueprint-owned capability-closure dispositions, prompt-brief projection, generated prompt example, browser/Python parity, and exact-head validation.",
+    "why_this_task_exists": "PR #277 exposed a blueprint gap: an out-of-packet fixed demand could be held and then effectively replaced by easier generic practice, losing the path to the requested target."
+  },
+  "lineage": {
+    "predecessor_checkpoint": null,
+    "upstream_dependencies": [
+      "ISSUE-265-CORE-TEMPLATES",
+      "ISSUE-272-CORE-PROMPT-COMPOSER"
+    ],
+    "roadmap_admission": {
+      "disposition": "ISSUE_LOCAL_PROVIDER_VIEW",
+      "revision": null,
+      "basis": [
+        "github:reallaksh19/Grade9V3#280"
+      ]
+    }
+  },
+  "parent_issue": {
+    "repository": "reallaksh19/Grade9V3",
+    "number": 280,
+    "title": "[Core Blueprint] Add demand-bridge admission before six-Core generation",
+    "state": "OPEN",
+    "url": "https://github.com/reallaksh19/Grade9V3/issues/280",
+    "disposition": "IMPLEMENT"
+  },
+  "planning": {
+    "state": "PRESENT",
+    "provider_ref": "github:reallaksh19/Grade9V3#280/comment-5829046473",
+    "revision": 1,
+    "observed_at": "2026-09-25T08:03:00Z",
+    "responsibility_basis_ref": "github:reallaksh19/Grade9V3#280",
+    "expected_next_observable": {
+      "statement": "Draft PR with blueprint + composer changes and a five-question prompt generated from the schema/template.",
+      "evidence": [
+        "github:reallaksh19/Grade9V3#280/comment-5829046473"
+      ]
+    }
+  },
+  "task_publications": [
+    {
+      "type": "IMPLEMENTATION_PLAN",
+      "ref": "github:reallaksh19/Grade9V3#280/comment-5829046473",
+      "observed_at": "2026-09-25T08:03:00Z",
+      "summary": "Blueprint-first Demand Bridge / Admission implementation plan.",
+      "exact_head": "ca0de27e307e4f532412ac52713a6faf14b216a4"
+    }
+  ],
+  "work_issue_progress": {
+    "criteria": [
+      {
+        "id": "AC-280-BLUEPRINT",
+        "statement": "Demand Bridge / Admission is subject-neutral planning control and not a seventh Core.",
+        "state": "PASS",
+        "reason_class": "CURRENT_TASK",
+        "evidence": [
+          "github:reallaksh19/Grade9V3/pull/281"
+        ]
+      },
+      {
+        "id": "AC-280-PROMPT",
+        "statement": "Prompt composer consumes the bridge and learner-product contracts through schema/template projection.",
+        "state": "PASS",
+        "reason_class": "CURRENT_TASK",
+        "evidence": [
+          "github:reallaksh19/Grade9V3/pull/281"
+        ]
+      },
+      {
+        "id": "AC-280-TARGET",
+        "statement": "Every fixed demand stays visible until capability closure; generic easier practice cannot count as target closure.",
+        "state": "PASS",
+        "reason_class": "CURRENT_TASK",
+        "evidence": [
+          "github:reallaksh19/Grade9V3/pull/281"
+        ]
+      },
+      {
+        "id": "AC-280-VALIDATION",
+        "statement": "Exact delivery head passes Guardrails and V3.1 Relay.",
+        "state": "PENDING",
+        "reason_class": "CURRENT_TASK",
+        "evidence": []
+      }
+    ]
+  },
+  "verification": {
+    "state": "PARTIAL",
+    "observations": [
+      {
+        "kind": "GUARDRAILS",
+        "state": "PENDING",
+        "ref": null,
+        "detail": "Exact coordination head must re-run after Task Snapshot publication."
+      },
+      {
+        "kind": "V31_BINDING",
+        "state": "PENDING",
+        "ref": null,
+        "detail": "Issue-local Task Snapshot is being published for PR #281."
+      }
+    ],
+    "failure_origins": {}
+  },
+  "delivery": {
+    "pr": 281,
+    "url": "https://github.com/reallaksh19/Grade9V3/pull/281",
+    "lifecycle": "DRAFT_VALIDATION",
+    "base": "ca0de27e307e4f532412ac52713a6faf14b216a4",
+    "head": "ee55ec90c8a763bae7656048416802af031be3f6",
+    "mergeability": "MERGEABLE_AS_DRAFT"
+  },
+  "delivery_stack": [],
+  "completion": {
+    "overall_state": "PARTIAL",
+    "implementation": "COMPLETE",
+    "verification": "PARTIAL",
+    "delivery": "DRAFT",
+    "what_done": [
+      "Added Demand Bridge / Admission to the shared authority blueprint.",
+      "Added capability-closure dispositions and fixed-demand visibility invariants.",
+      "Updated prompt-brief schema and prompt template with DEMAND_BRIDGE.",
+      "Updated Python/browser composer parity and generated five-question prompt example.",
+      "Extended learner-product delivery contract to prevent summary-only, broken-math, missing-visual, and JS-only closure regressions.",
+      "Refreshed prompt composer data and Pages mirrors."
+    ],
+    "what_remains": [
+      "Pass exact-head Guardrails and V3.1 Relay.",
+      "Publish TASK_EVIDENCE / TASK_RESULT.",
+      "Merge PR #281 if validation remains green."
+    ]
+  },
+  "scope": {
+    "write": [
+      "relay/GENERATED/tasks/ISSUE-280.snapshot.yaml",
+      "Shared/roles/CORE-AUTHORITY-CONTRACT.md",
+      "Shared/roles/LEARNER-PRODUCT-TEMPLATES.md",
+      "Shared/roles/README.md",
+      "Shared/library/prompt-brief.schema.json",
+      "Shared/tools/core_authority_contract.py",
+      "Shared/tools/core_template_contract.py",
+      "Shared/tools/prompt_composer.py",
+      "Shared/tools/build_prompt_composer_data.py",
+      "Shared/tools/build_prompt_examples.py",
+      "template/core-prompt-composer/core-agent-prompt.v1.json",
+      "public/data/prompt-composer-data.js",
+      "public/js/core-prompt-composer.js",
+      "docs/<generated prompt/Pages/manifest outputs>",
+      "tests/test_core_authority_contract.py",
+      "tests/test_core_template_contract.py",
+      "tests/test_prompt_composer.py",
+      "tests/prompt_composer.test.mjs"
+    ],
+    "protected": [
+      "Canonical subject academic truth",
+      "Canonical question identity/source custody",
+      "Existing six Core role meanings"
+    ],
+    "prohibited": [
+      "No seventh Core",
+      "No Physics-specific demand logic in Shared",
+      "No silent Core1A/Core1B expansion",
+      "No generic-practice substitution as closure of a fixed target demand"
+    ]
+  },
+  "material": {
+    "base": "ca0de27e307e4f532412ac52713a6faf14b216a4",
+    "current_head": "ee55ec90c8a763bae7656048416802af031be3f6"
+  },
+  "next": {
+    "immediate_action": "Require green exact-head Guardrails and V3.1 Relay; then publish result and merge.",
+    "next_value_frontier": "A new agent can consume the generated five-question prompt with an explicit prerequisite/admission path for every target demand.",
+    "stop_conditions": [
+      "Do not merge if Guardrails or V3.1 Relay fails.",
+      "Do not move target-specific Physics truth into Shared blueprint code."
+    ]
+  },
+  "reconstruction_sources": [
+    "https://github.com/reallaksh19/Grade9V3/issues/280",
+    "https://github.com/reallaksh19/Grade9V3/pull/281"
+  ]
+}
