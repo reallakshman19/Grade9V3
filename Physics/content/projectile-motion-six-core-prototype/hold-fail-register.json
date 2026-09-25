@@ -132,6 +132,160 @@
       ],
       "reason": "Artifact lineage exists, but this learner's actual prior exposure and capability closure are not established.",
       "closes_when": "Prior exposure to the named Core2A parents and prerequisite closure are established for the learner, or an allowed owner routing decision is recorded without claiming mastery."
+    },
+    {
+      "id": "HOLD-VISUAL-USAGE-CORE1-CORE1-CANONICAL-REPRESENTATION",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1",
+        "CORE1-CANONICAL-REPRESENTATION",
+        "REP-KIN-2D-SHARED-CLOCK"
+      ],
+      "reason": "No canonical scene is bound to this exact Core + microtopic/question usage; representation identity alone is insufficient.",
+      "closes_when": "Add an academically reviewed canonical scene binding whose Core and microtopic/question scope matches this learner-product usage."
+    },
+    {
+      "id": "HOLD-VISUAL-USAGE-CORE1A-CORE1A-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-SHARED-CLOCK",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1A",
+        "CORE1A-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-SHARED-CLOCK"
+      ],
+      "reason": "No canonical scene is bound to this exact Core + microtopic/question usage; representation identity alone is insufficient.",
+      "closes_when": "Add an academically reviewed canonical scene binding whose Core and microtopic/question scope matches this learner-product usage."
+    },
+    {
+      "id": "HOLD-VISUAL-USAGE-CORE1B-CORE1B-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-SHARED-CLOCK",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1B",
+        "CORE1B-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-SHARED-CLOCK"
+      ],
+      "reason": "No canonical scene is bound to this exact Core + microtopic/question usage; representation identity alone is insufficient.",
+      "closes_when": "Add an academically reviewed canonical scene binding whose Core and microtopic/question scope matches this learner-product usage."
+    },
+    {
+      "id": "HOLD-VISUAL-USAGE-CORE1A-CORE1A-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-EVENT-CLOCK",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1A",
+        "CORE1A-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-EVENT-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK"
+      ],
+      "reason": "No canonical scene is bound to this exact Core + microtopic/question usage; representation identity alone is insufficient.",
+      "closes_when": "Add an academically reviewed canonical scene binding whose Core and microtopic/question scope matches this learner-product usage."
+    },
+    {
+      "id": "HOLD-VISUAL-USAGE-CORE1B-CORE1B-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-EVENT-CLOCK",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1B",
+        "CORE1B-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-EVENT-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK"
+      ],
+      "reason": "No canonical scene is bound to this exact Core + microtopic/question usage; representation identity alone is insufficient.",
+      "closes_when": "Add an academically reviewed canonical scene binding whose Core and microtopic/question scope matches this learner-product usage."
+    },
+    {
+      "id": "HOLD-VISUAL-USAGE-CORE1A-CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-SHARED-CLOCK",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1A",
+        "CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-SHARED-CLOCK"
+      ],
+      "reason": "No canonical scene is bound to this exact Core + microtopic/question usage; representation identity alone is insufficient.",
+      "closes_when": "Add an academically reviewed canonical scene binding whose Core and microtopic/question scope matches this learner-product usage."
+    },
+    {
+      "id": "HOLD-VISUAL-USAGE-CORE1B-CORE1B-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-SHARED-CLOCK",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1B",
+        "CORE1B-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-SHARED-CLOCK"
+      ],
+      "reason": "No canonical scene is bound to this exact Core + microtopic/question usage; representation identity alone is insufficient.",
+      "closes_when": "Add an academically reviewed canonical scene binding whose Core and microtopic/question scope matches this learner-product usage."
+    },
+    {
+      "id": "HOLD-VISUAL-USAGE-CORE1A-CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-EVENT-CLOCK",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1A",
+        "CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-EVENT-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK"
+      ],
+      "reason": "No canonical scene is bound to this exact Core + microtopic/question usage; representation identity alone is insufficient.",
+      "closes_when": "Add an academically reviewed canonical scene binding whose Core and microtopic/question scope matches this learner-product usage."
+    },
+    {
+      "id": "HOLD-VISUAL-USAGE-CORE1B-CORE1B-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-EVENT-CLOCK",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1B",
+        "CORE1B-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-EVENT-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK"
+      ],
+      "reason": "No canonical scene is bound to this exact Core + microtopic/question usage; representation identity alone is insufficient.",
+      "closes_when": "Add an academically reviewed canonical scene binding whose Core and microtopic/question scope matches this learner-product usage."
+    },
+    {
+      "id": "HOLD-VISUAL-USAGE-CORE1A-CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-PROJECTILE-MODEL",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1A",
+        "CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-PROJECTILE-MODEL",
+        "REP-KIN-2D-PROJECTILE-MODEL"
+      ],
+      "reason": "No canonical scene is bound to this exact Core + microtopic/question usage; representation identity alone is insufficient.",
+      "closes_when": "Add an academically reviewed canonical scene binding whose Core and microtopic/question scope matches this learner-product usage."
+    },
+    {
+      "id": "HOLD-VISUAL-USAGE-CORE1B-CORE1B-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-PROJECTILE-MODEL",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1B",
+        "CORE1B-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-PROJECTILE-MODEL",
+        "REP-KIN-2D-PROJECTILE-MODEL"
+      ],
+      "reason": "No canonical scene is bound to this exact Core + microtopic/question usage; representation identity alone is insufficient.",
+      "closes_when": "Add an academically reviewed canonical scene binding whose Core and microtopic/question scope matches this learner-product usage."
+    },
+    {
+      "id": "HOLD-VISUAL-USAGE-CORE2A-Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04-REP-KIN-2D-SHARED-CLOCK",
+      "severity": "HOLD",
+      "affected": [
+        "CORE2A",
+        "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04-REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-SHARED-CLOCK"
+      ],
+      "reason": "No canonical scene is bound to this exact Core + microtopic/question usage; representation identity alone is insufficient.",
+      "closes_when": "Add an academically reviewed canonical scene binding whose Core and microtopic/question scope matches this learner-product usage."
+    },
+    {
+      "id": "HOLD-VISUAL-USAGE-CORE2A-Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04-REP-KIN-2D-EVENT-CLOCK",
+      "severity": "HOLD",
+      "affected": [
+        "CORE2A",
+        "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04-REP-KIN-2D-EVENT-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK"
+      ],
+      "reason": "No canonical scene is bound to this exact Core + microtopic/question usage; representation identity alone is insufficient.",
+      "closes_when": "Add an academically reviewed canonical scene binding whose Core and microtopic/question scope matches this learner-product usage."
+    },
+    {
+      "id": "HOLD-VISUAL-USAGE-CORE2B-Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04-REP-KIN-2D-PROJECTILE-MODEL",
+      "severity": "HOLD",
+      "affected": [
+        "CORE2B",
+        "Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04-REP-KIN-2D-PROJECTILE-MODEL",
+        "REP-KIN-2D-PROJECTILE-MODEL"
+      ],
+      "reason": "No canonical scene is bound to this exact Core + microtopic/question usage; representation identity alone is insufficient.",
+      "closes_when": "Add an academically reviewed canonical scene binding whose Core and microtopic/question scope matches this learner-product usage."
     }
   ],
   "fails": []
