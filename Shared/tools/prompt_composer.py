@@ -121,6 +121,7 @@ def _resolve_question_row(raw: dict, index: dict, owner_scope: dict | None) -> t
     summary = str(raw.get("summary") or "").strip()
     canonical_ref = raw.get("canonical_question_ref")
     candidates = list(dict.fromkeys(raw.get("candidate_question_refs") or []))
+    candidate_set_provenance = raw.get("candidate_set_provenance")
     canonical = index["canonical_questions"].get(canonical_ref or "") if canonical_ref else None
     holds: list[dict] = []
     target_policy, policy_holds = _target_policy(raw)
@@ -154,6 +155,7 @@ def _resolve_question_row(raw: dict, index: dict, owner_scope: dict | None) -> t
             "summary": summary,
             "canonical_question_ref": None,
             "candidate_question_refs": candidates,
+            "candidate_set_provenance": candidate_set_provenance,
             "identity_status": "IDENTITY_REVIEW_REQUIRED",
             "demand_evidence_refs": valid_candidates,
             "learner_eligibility": eligibility,
@@ -187,6 +189,7 @@ def _resolve_question_row(raw: dict, index: dict, owner_scope: dict | None) -> t
             "summary": summary,
             "canonical_question_ref": canonical_ref,
             "candidate_question_refs": candidates,
+            "candidate_set_provenance": candidate_set_provenance,
             "identity_status": "EXACT_CONFIRMED",
             "demand_evidence_refs": [canonical_ref],
             "learner_eligibility": eligibility,
@@ -210,6 +213,7 @@ def _resolve_question_row(raw: dict, index: dict, owner_scope: dict | None) -> t
             "summary": summary,
             "canonical_question_ref": canonical_ref,
             "candidate_question_refs": candidates,
+            "candidate_set_provenance": candidate_set_provenance,
             "identity_status": "UNMAPPED",
             "demand_evidence_refs": [],
             "learner_eligibility": eligibility,
@@ -235,6 +239,7 @@ def _resolve_question_row(raw: dict, index: dict, owner_scope: dict | None) -> t
         "summary": summary,
         "canonical_question_ref": None,
         "candidate_question_refs": candidates,
+        "candidate_set_provenance": candidate_set_provenance,
         "identity_status": "UNMAPPED",
         "demand_evidence_refs": [],
         "learner_eligibility": eligibility,
@@ -570,24 +575,38 @@ def render_prompt(brief: dict, template: dict, authority_contract: dict | None =
         "\nExtension demands do not become Core1/Core1A/Core1B microtopics unless canonical academic authority admits them."
     )
     route_states = ", ".join(routing_contract["capability_closure_states"])
+    move_coverage_states = ", ".join(routing_contract["move_coverage_states"])
+    target_coverage_states = ", ".join(routing_contract["target_coverage_states"])
+    target_authorization_states = ", ".join(routing_contract["target_authorization_states"])
+    target_preparation_states = ", ".join(routing_contract["target_preparation_states"])
     route_output = brief["target_route_output"]
     seed_lines = "\n".join(
         f"- {row['owner_question_id']}: identity={row['identity_status']}; target_authority={row['target_authority']}; "
         f"direct_source_use={row['direct_source_use']}; instructional_demand_use={row['instructional_demand_use']}; "
-        f"assessment_claim={row['assessment_claim']}; primary={row['primary_capability_ref'] or 'UNRESOLVED'}"
+        f"assessment_claim={row['assessment_claim']}; primary={row['primary_capability_ref'] or 'UNRESOLVED'}; "
+        f"candidate_set_provenance={row.get('candidate_set_provenance') or 'not supplied'}"
         for row in route_output["seed_rows"]
     )
     learner_entry = brief.get("learner_entry") or {}
     waiver = learner_entry.get("owner_routing_waiver", False)
     target_route_text = (
         f"Produce a completed artifact conforming to {route_output['schema_path']}. "
-        "For every fixed target, decompose the actual required solution decisions into demand_moves[], classify each move independently, and build an explicit target_route or justified terminal_block. "
+        "For every fixed target, decompose the actual required solution decisions into demand_moves[]; do not collapse a cross-topic target into its primary capability. "
         f"Allowed capability closure states: {route_states}. "
-        "AUTHORABLE_EXTENSION requires a content-bearing bridge candidate with construction, worked anchor, misconceptions, representation requirements, check and exit task. "
+        f"Every move needs a coverage ledger using: {move_coverage_states}; record teaching, supported attempt, independent evidence and final target use. "
+        f"Compute target coverage independently using: {target_coverage_states}. "
+        f"Compute instructional/academic authorization independently using: {target_authorization_states}. "
+        f"Then compute preparation state using: {target_preparation_states}. PREPARED requires independent evidence for every required move plus READY authorization. "
+        "A BLOCKED target is a valid diagnostic result but cannot pass fixed-target preparation acceptance. "
+        "AUTHORABLE_EXTENSION requires a content-bearing bridge candidate with grade/scope decision, mathematical prerequisites, construction, representation requirements, checked worked solution, misconception repair, independent transfer evidence and explicit academic-review decision. "
+        "Owner routing waiver never waives that academic review. "
         "Generic easier practice cannot close a fixed target. "
-        "Use demand_influence_refs to shape Core composition without expanding canonical Core1-family scope. "
-        "Multiple candidate refs require semantic identity comparison against the owner demand; a unique semantic match may resolve identity while source custody remains HOLD. "
-        f"Owner routing waiver is {'ON' if waiver else 'OFF'}; when ON it permits supported work with UNKNOWN readiness but never a mastery/readiness claim and never bypasses a capability gap or Core2B prior exposure.\n"
+        "Every target_route node must name the DemandMove IDs it prepares. "
+        "Use demand_influence_refs only when each influence names a target move, an observable teaching change and the affected learner-product blocks; a bare target ID on a generic page is insufficient. "
+        "Multiple candidate refs require documented semantic identity review: candidate-set provenance, demand fingerprint, discriminating features, rejected alternatives, reviewer decision and confidence. A unique semantic match may resolve identity while source custody remains HOLD. "
+        "Direct source-item use, instructional demand use and authentic assessment-surface claims remain separate. A source-use HOLD may coexist with clearly labelled authored analogues, but it cannot support a claim of authentic PYQ exposure. "
+        f"Owner routing waiver is {'ON' if waiver else 'OFF'}; when ON it permits supported work with UNKNOWN readiness but never a mastery/readiness claim and never bypasses a capability gap, academic review, or Core2B prior exposure. "
+        "Route validity does not imply learner-product quality; physical accuracy, diagram legibility, math rendering, worked→faded→independent progression and lesson→move connection require a separate delivery gate.\n"
         "Seed targets:\n" + seed_lines
     )
     diff = " → ".join(brief["validation"].get("difficulty_bands") or []) or "Use the canonical/intrinsic difficulty information available in the referenced records; do not infer it from learner percentage."
@@ -615,7 +634,7 @@ def render_prompt(brief: dict, template: dict, authority_contract: dict | None =
         "DIFFICULTY_PROGRESSION": diff + "\nPreserve intrinsic Core1A/Core1B depth regardless of the learner estimate.",
         "KEYWORD_FINGERPRINT": kws,
         "PROVENANCE_TRACE": trace + "\nUse only the cited repository/owner inputs. Do not expose or invent private reasoning traces.",
-        "ACCEPTANCE": "Keep every fixed target visible through a validated target route or justified terminal block; decompose partially established targets move-by-move; preserve per-question primary_capability_ref independently from set-level scope; keep target authority, source custody, direct source use, instructional demand use and assessment claims separate; use owner waiver only for support with UNKNOWN readiness; distinguish source hints from authored scaffolds; do not promote extension demand into Core1-family teaching; and do not count unrelated generic practice as target closure.",
+        "ACCEPTANCE": "Keep every fixed target visible through a validated target route or justified terminal block; decompose every required move and give each move a coverage ledger; require independent evidence for every required move before PREPARED; keep academic/instructional authorization separate from move coverage and from source-use claims; preserve per-question primary_capability_ref independently from set-level scope; keep target authority, source custody, direct source use, instructional demand use and assessment claims separate; use owner waiver only for support with UNKNOWN readiness; require documented semantic candidate review for identity resolution; make every demand influence produce an observable learner-product change; distinguish source hints from authored scaffolds; do not promote extension demand into Core1-family teaching; and do not count blocked targets or unrelated generic practice as fixed-target preparation.",
         "NON_GOALS": "Do not select a new canonical question set, create a seventh Core, infer mastery, fabricate source receipts, duplicate plan_request.py, or author/publish PDFs in this task.",
         "HOLD_FAIL": hold_text + "\nIf a composer HOLD is present, do not silently resolve it. A target capability gap must still produce a concrete closure route or terminal block in the target-demand-route artifact. Identity review is distinct from source custody.",
         "DOWNSTREAM_DELIVERABLE": downstream,
@@ -694,6 +713,7 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
         "summary": row.get("summary") or "",
         "canonical_question_ref": row.get("canonical_question_ref"),
         "candidate_question_refs": list(row.get("candidate_question_refs") or []),
+        "candidate_set_provenance": row.get("candidate_set_provenance"),
         "identity_status": row.get("identity_status"),
         "target_authority": row.get("target_authority"),
         "direct_source_use": row.get("direct_source_use"),
