@@ -1,5 +1,5 @@
 {
-  "repository_basis": "main@7982850a5d5d5ed133e3098522a889b89f1fc54a",
+  "repository_basis": "main@9a1be5704f57931c830adcfee79d872e22c52b21",
   "worksheet_id": "OWNER-PROJECTILE-STRESS-SET",
   "subject": "Physics",
   "questions": [
@@ -8,7 +8,11 @@
       "summary": "Velocity direction from x(t), y(t).",
       "canonical_question_ref": "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
       "learner_eligibility": "NOT_ESTABLISHED",
-      "learner_eligibility_basis": "Question-set selector has not established learner eligibility."
+      "learner_eligibility_basis": "Learner readiness is not established; direct source-item use and owner-fixed instructional demand use are tracked separately.",
+      "target_authority": "OWNER_FIXED",
+      "direct_source_use": "HOLD",
+      "instructional_demand_use": "ALLOWED",
+      "assessment_claim": "HOLD"
     },
     {
       "question_id": "Q15",
@@ -17,29 +21,45 @@
         "PYQ-PHY-JEEADV-2018-P2-Q08",
         "PYQ-PHY-JEEADV-2023-P1-Q01"
       ],
-      "learner_eligibility": "EXCLUDED",
-      "learner_eligibility_basis": "Owner learner-set policy excludes JEE Advanced; retained as diagnostic demand evidence."
+      "learner_eligibility": "NOT_ESTABLISHED",
+      "learner_eligibility_basis": "Learner readiness is not established; direct source-item use and owner-fixed instructional demand use are tracked separately.",
+      "target_authority": "OWNER_FIXED",
+      "direct_source_use": "EXCLUDED",
+      "instructional_demand_use": "ALLOWED",
+      "assessment_claim": "HOLD"
     },
     {
       "question_id": "Q21",
       "summary": "Gravity changes after apex.",
       "canonical_question_ref": "PYQ-PHY-JEEADV-2022-P1-Q08",
-      "learner_eligibility": "EXCLUDED",
-      "learner_eligibility_basis": "Owner learner-set policy excludes JEE Advanced; retained as diagnostic demand evidence."
+      "learner_eligibility": "NOT_ESTABLISHED",
+      "learner_eligibility_basis": "Learner readiness is not established; direct source-item use and owner-fixed instructional demand use are tracked separately.",
+      "target_authority": "OWNER_FIXED",
+      "direct_source_use": "EXCLUDED",
+      "instructional_demand_use": "ALLOWED",
+      "assessment_claim": "HOLD"
     },
     {
       "question_id": "Q26",
       "summary": "Projectile passing through a specified point.",
       "canonical_question_ref": "PYQ-PHY-JEEADV-2026-P1-Q06",
-      "learner_eligibility": "EXCLUDED",
-      "learner_eligibility_basis": "Owner learner-set policy excludes JEE Advanced; retained as diagnostic demand evidence."
+      "learner_eligibility": "NOT_ESTABLISHED",
+      "learner_eligibility_basis": "Learner readiness is not established; direct source-item use and owner-fixed instructional demand use are tracked separately.",
+      "target_authority": "OWNER_FIXED",
+      "direct_source_use": "EXCLUDED",
+      "instructional_demand_use": "ALLOWED",
+      "assessment_claim": "HOLD"
     },
     {
       "question_id": "Q23",
       "summary": "Projectile with linear drag.",
       "canonical_question_ref": "PYQ-PHY-JEEADV-2025-P2-Q15",
-      "learner_eligibility": "EXCLUDED",
-      "learner_eligibility_basis": "Owner learner-set policy excludes JEE Advanced; retained as diagnostic demand evidence."
+      "learner_eligibility": "NOT_ESTABLISHED",
+      "learner_eligibility_basis": "Learner readiness is not established; direct source-item use and owner-fixed instructional demand use are tracked separately.",
+      "target_authority": "OWNER_FIXED",
+      "direct_source_use": "EXCLUDED",
+      "instructional_demand_use": "ALLOWED",
+      "assessment_claim": "HOLD"
     }
   ],
   "owner_confirmed_rung": {
@@ -51,8 +71,11 @@
     "owner_estimate": {
       "knowledge_percentage": 50,
       "by": "owner",
-      "instruction": "Starting coordinate only; not evidence of prerequisite mastery."
-    }
+      "instruction": "Starting coordinate only; not evidence of prerequisite mastery. Owner explicitly authorises high-scaffold preparation toward all five fixed demands while readiness remains UNKNOWN."
+    },
+    "owner_routing_waiver": true,
+    "support_policy": "HIGH_SCAFFOLD",
+    "readiness_claim_allowed": false
   },
   "requested_cores": [
     "CORE2",
