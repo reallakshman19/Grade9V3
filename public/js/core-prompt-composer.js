@@ -248,6 +248,36 @@
     return bands.sort((a,b)=>{const ai=/^D\d+$/.test(a)?Number(a.slice(1)):999,bi=/^D\d+$/.test(b)?Number(b.slice(1)):999;return ai-bi||a.localeCompare(b);});
   }
 
+  function demandBridge(rows,authority){
+    const contract=authority.demand_bridge||{}, seeds=rows.map(row=>{
+      let state='READY_FOR_CAPABILITY_ANALYSIS';
+      if(row.identity_status==='IDENTITY_HOLD') state='IDENTITY_HOLD';
+      else if(!row.primary_capability_ref) state='UNMAPPED_HOLD';
+      return {
+        demand_ref:row.owner_question_id,
+        canonical_question_ref:row.canonical_question_ref||null,
+        candidate_question_refs:[...(row.candidate_question_refs||[])],
+        canonical_primary_capability_ref:row.primary_capability_ref||null,
+        demand_evidence_refs:[...(row.demand_evidence_refs||[])],
+        source_custody:row.source_custody||null,
+        learner_eligibility_state:row.learner_eligibility||'NOT_ESTABLISHED',
+        identity_status:row.identity_status||'UNMAPPED',
+        classification_state:state
+      };
+    });
+    return {
+      contract_version:authority.version,
+      is_core_role:contract.is_core_role,
+      required_for_every_fixed_demand:contract.required_for_every_fixed_demand,
+      allowed_dispositions:Object.keys(contract.dispositions||{}),
+      required_output_fields:[...(contract.required_record_fields||[])],
+      core2a_allowed_capability_closure:[...(contract.core2a_allowed_capability_closure||[])],
+      core2b_allowed_capability_closure:[...(contract.core2b_allowed_capability_closure||[])],
+      core2b_requires_prior_exposure:contract.core2b_requires_prior_exposure===true,
+      rows:seeds
+    };
+  }
+
   function traceRows(rows,fp){
     const byRef={}; fp.forEach(item=>item.evidence_refs.forEach(ref=>{if(!(ref in byRef))byRef[ref]=item.phrase;}));
     return rows.map((row,i)=>{
@@ -271,6 +301,23 @@
       return line;
     }).join('\n');
     const authorityText=authorityLines+'\nExecution order is production control only; it is not derivation or authority order.\nA Core2 HOLD does not become academic authority and does not automatically block valid Core1-family study products.\nPreserve question.primary_capability_ref; set-level topic/rung scope is composition context only.\nDemand evidence and learner eligibility are independent states.\nSource question.hints[] and authored question.scaffolds[] remain separate custody classes.\nExtension demands do not become Core1/Core1A/Core1B microtopics unless canonical academic authority admits them.';
+    const bridge=brief.demand_bridge, bridgeContract=authority.demand_bridge;
+    const dispositionLines=bridge.allowed_dispositions.map(name=>{
+      const row=bridgeContract.dispositions[name]||{};
+      return '- '+name+': capability_closure='+(row.capability_closure||'UNRESOLVED')+(row.downstream_application_state?'; downstream_application_state='+row.downstream_application_state:'');
+    }).join('\n');
+    const bridgeSeedLines=bridge.rows.map(row=>
+      '- '+row.demand_ref+': classification_state='+row.classification_state+
+      '; canonical_primary='+(row.canonical_primary_capability_ref||'UNRESOLVED')+
+      '; identity='+row.identity_status+
+      '; learner_eligibility='+row.learner_eligibility_state+
+      '; demand_evidence='+((row.demand_evidence_refs||[]).join(', ')||'none')
+    ).join('\n');
+    const bridgeText='Demand Bridge / Admission is a planning control, not a seventh Core. Before authoring application products, produce one final bridge record for every fixed demand using exactly one allowed disposition.\n'
+      +dispositionLines
+      +'\nRequired bridge output fields: '+bridge.required_output_fields.join(', ')
+      +'\nSeed rows from canonical mapping/identity state:\n'+bridgeSeedLines
+      +'\nDo not drop a fixed demand because it is outside the current packet. Do not silently expand Core1/Core1A/Core1B. If canonical prerequisite truth exists elsewhere, route to it explicitly. If not, create an EXTENSION_ADMISSION_CANDIDATE or keep UNRESOLVED_CAPABILITY_GAP with a concrete close condition. Unrelated easier practice may support prerequisites but does not close the fixed target demand. Core2A/Core2B may consume a target demand only after capability closure is ESTABLISHED or ROUTED; Core2B additionally requires prior exposure.';
     const diff=(brief.validation.difficulty_bands||[]).join(' → ')||'Use the canonical/intrinsic difficulty information available in the referenced records; do not infer it from learner percentage.';
     const kws=fp.map(item=>'- '+item.phrase+' ('+item.kind+'; evidence: '+item.evidence_refs.join(', ')+')').join('\n');
     const trace=brief.trace_rows.map(row=>'- '+row.trace_id+': '+row.question_ids.join(', ')+' → '+(row.primary_capability_ref||'UNMAPPED')+' → '+(row.matrix_ref||'UNMAPPED')+'/'+(row.rung||'UNMAPPED')+'; status='+row.status).join('\n');
@@ -281,14 +328,15 @@
       LEARNER_PROFILE:learner+'\nA percentage is a starting coordinate only; it is not evidence of prerequisite mastery.',
       EXECUTION_ORDER:brief.execution_order.join(' → ')+'\nTreat this as production control only. It does not override readiness, HOLD decisions, or the authority graph.',
       AUTHORITY_GRAPH:authorityText,
+      DEMAND_BRIDGE:bridgeText,
       TOPIC_BOUNDARY:boundary,
       CORE_OBLIGATIONS:coreLines,
       DIFFICULTY_PROGRESSION:diff+'\nPreserve intrinsic Core1A/Core1B depth regardless of the learner estimate.',
       KEYWORD_FINGERPRINT:kws,
-      PROVENANCE_TRACE:trace+'\nUse only the cited repository/owner inputs. Do not expose or invent private reasoning traces.',
-      ACCEPTANCE:'Keep every fixed question traceable to its mapping finding; preserve per-question primary_capability_ref independently from set-level scope; keep demand evidence separate from learner eligibility; preserve the requested Core set/order without treating order as authority; distinguish source hints from authored scaffolds and source/adapted/authored material; do not promote extension demand into Core1-family teaching without canonical admission; and hand the unchanged authoring request to the existing planner.',
+      PROVENANCE_TRACE:trace+'\nUse only the cited repository/owner inputs. Do not expose or invent private reasoning traces. Every fixed demand must retain a bridge/admission footprint until its target capability closure is established.',
+      ACCEPTANCE:'Keep every fixed question traceable to its mapping finding and Demand Bridge disposition; preserve per-question primary_capability_ref independently from set-level scope; keep demand evidence separate from learner eligibility; preserve the requested Core set/order without treating order as authority; distinguish source hints from authored scaffolds and source/adapted/authored material; do not promote extension demand into Core1-family teaching without canonical admission; do not substitute easier generic practice as closure of a fixed target demand; require ESTABLISHED or ROUTED capability closure before Core2A/Core2B target-demand use and prior exposure before Core2B; and hand the unchanged authoring request to the existing planner.',
       NON_GOALS:'Do not select a new canonical question set, create a seventh Core, infer mastery, fabricate source receipts, duplicate plan_request.py, or author/publish PDFs in this task.',
-      HOLD_FAIL:hold+'\nIf a composer HOLD is present, do not silently resolve it. If the planner requests source basis, prerequisites or owner input, preserve that HOLD.',
+      HOLD_FAIL:hold+'\nIf a composer HOLD is present, do not silently resolve it. A capability HOLD must still leave a concrete prerequisite/admission path where repository truth supports one. If the planner requests source basis, prerequisites or owner input, preserve that HOLD.',
       DOWNSTREAM_DELIVERABLE:'The intended downstream publication is one role-specific PDF for each valid/publishable requested Core. Do not render PDFs here; #273 owns PDF publication after validated learner products exist.'
     };
     const sections=['# Core-agent authoring prompt\n\nPrompt brief: '+brief.prompt_brief_id+'\nRepository basis: '+brief.repository_basis];
@@ -309,13 +357,13 @@
     const rows=(doc.questions||[]).map(raw=>{const r=resolveRow(raw,subjectData,ownerScope);holds=holds.concat(r.holds);return r.row;});
     const scoped=resolveScope(rows,ownerScope,subjectData);holds=holds.concat(scoped.holds,coreOrderHolds(requested,order),sourceBasisHolds(doc.source_basis||[],rows));
     const seen=new Set();holds=holds.filter(h=>{const k=h.status+'|'+h.point+'|'+h.detail;if(seen.has(k))return false;seen.add(k);return true;});
-    const fp=fingerprint(rows,scoped.scope,subjectData), trace=traceRows(rows,fp);
+    const fp=fingerprint(rows,scoped.scope,subjectData), bridge=demandBridge(rows,data.authority_contract), trace=traceRows(rows,fp);
     const brief={
       prompt_brief_id:briefId,template:{id:data.template.template_id,version:data.template.version,path:'template/core-prompt-composer/core-agent-prompt.v1.json'},
       repository_basis:doc.repository_basis||data.repository_basis,authority_contract:{version:data.authority_contract.version,path:data.authority_contract_ref,digest:digest(data.authority_contract)},input_digest:inputDigest,prompt_digest:'sha256:'+'0'.repeat(64),subject,
-      scope:scoped.scope,question_rows:rows,keyword_fingerprint:fp,learner_entry:doc.learner||null,requested_cores:requested,execution_order:order,
+      scope:scoped.scope,question_rows:rows,demand_bridge:bridge,keyword_fingerprint:fp,learner_entry:doc.learner||null,requested_cores:requested,execution_order:order,
       source_authoring_policy:{question_identity_rule:'Exact canonical_question_ref may adopt stored mapping metadata without promoting record lifecycle status.',source_basis_rule:'authoring-request source_basis accepts source locator/receipt basis only; canonical question IDs remain in this brief/worksheet map.',source_receipt_rule:'The composer never creates or upgrades source receipts and never claims source-product readiness.',supplemental_question_policy:doc.supplemental_question_policy||null},
-      scope_boundaries:['Canonical subject/question records remain authority.','Existing six Core role contracts remain authority; no seventh Core is created.','Learner percentage is a routing coordinate only and cannot shrink CORE1A/CORE1B intrinsic depth.','plan_request.py remains authoritative for readiness, prerequisite bridges, source receipts and product holds.','Reusable question-set selection and strict exam mode remain outside this composer.','PDF publication remains downstream under issue #273.'],
+      scope_boundaries:['Canonical subject/question records remain authority.','Existing six Core role contracts remain authority; Demand Bridge / Admission is planning control, not a seventh Core.','Learner percentage is a routing coordinate only and cannot shrink CORE1A/CORE1B intrinsic depth.','plan_request.py remains authoritative for readiness, prerequisite bridges, source receipts and product holds.','Reusable question-set selection and strict exam mode remain outside this composer.','PDF publication remains downstream under issue #273.'],
       validation:{composer_state:holds.length?'HOLD':'PASS',difficulty_bands:difficulty(rows),question_count:rows.length,mapped_question_count:rows.filter(r=>r.primary_capability_ref).length,core_order_exact:!holds.some(h=>h.point==='CORE_ORDER_INVALID'),source_basis_contains_question_ids:holds.some(h=>h.point==='SOURCE_BASIS_QUESTION_ID_INVALID')},
       trace_rows:trace,holds,planner_handoff:{state:holds.length?'COMPOSER_HOLD':'READY_FOR_PLANNER',authoring_request_schema:'Shared/library/authoring-request.schema.json',planner_command:'python3 Shared/tools/plan_request.py --plan <authoring-request.json>',run_builder:'tools/run-builder/index.html',note:'Composer PASS means only that the prompt bundle is structurally/mapping-ready for the existing planner; it does not mean any Core product is ready.'}
     };
@@ -390,6 +438,6 @@
     $('downloadRequest').addEventListener('click',()=>current&&download('authoring-request.json',JSON.stringify(current.authoring_request,null,2)+'\n','application/json'));
   }
 
-  global.PROMPT_COMPOSER={composeDocument,canonicalize,digest,sha256,parseRows,HANDOFF_KEY,__test:{browserSubjectData,resolveRow,resolveScope,fingerprint,traceRows,renderPrompt}};
+  global.PROMPT_COMPOSER={composeDocument,canonicalize,digest,sha256,parseRows,HANDOFF_KEY,__test:{browserSubjectData,resolveRow,resolveScope,fingerprint,demandBridge,traceRows,renderPrompt}};
   if(typeof document!=='undefined')document.addEventListener('DOMContentLoaded',initUi);
 })(typeof window!=='undefined'?window:globalThis);
