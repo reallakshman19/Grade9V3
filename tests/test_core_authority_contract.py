@@ -20,7 +20,7 @@ class CoreAuthorityContractTests(unittest.TestCase):
         )
         self.assertTrue(report["passed"], report["findings"])
         self.assertEqual(report["roles_checked"], 6)
-        self.assertEqual(report["contract_version"], "1.0")
+        self.assertEqual(report["contract_version"], "1.1")
 
     def test_execution_order_cannot_be_used_as_authority_order(self):
         self.assertTrue(
@@ -102,6 +102,50 @@ class CoreAuthorityContractTests(unittest.TestCase):
                 "learner_estimate_cannot_change_core1_family_intrinsic_scope"
             ]
         )
+
+
+    def test_every_fixed_demand_requires_non_core_bridge_disposition(self):
+        bridge = self.contract["demand_bridge"]
+        self.assertFalse(bridge["is_core_role"])
+        self.assertTrue(bridge["required_for_every_fixed_demand"])
+        self.assertTrue(
+            self.contract["invariants"]["every_fixed_demand_requires_bridge_disposition"]
+        )
+        self.assertTrue(
+            self.contract["invariants"]["fixed_demand_cannot_disappear_on_scope_mismatch"]
+        )
+
+    def test_bridge_routes_or_holds_without_expanding_core1_family(self):
+        bridge = self.contract["demand_bridge"]["dispositions"]
+        self.assertEqual(
+            bridge["WITHIN_CANONICAL_SCOPE"]["capability_closure"],
+            "ESTABLISHED",
+        )
+        self.assertEqual(
+            bridge["CANONICAL_PREREQUISITE_ROUTE"]["capability_closure"],
+            "ROUTED",
+        )
+        for name in (
+            "EXTENSION_ADMISSION_CANDIDATE",
+            "UNRESOLVED_CAPABILITY_GAP",
+            "IDENTITY_HOLD",
+        ):
+            self.assertEqual(bridge[name]["downstream_application_state"], "HOLD")
+        self.assertTrue(
+            self.contract["invariants"]["bridge_does_not_admit_extension_to_core1_family"]
+        )
+
+    def test_application_roles_require_bridge_closure(self):
+        bridge = self.contract["demand_bridge"]
+        self.assertEqual(
+            set(bridge["core2a_allowed_capability_closure"]),
+            {"ESTABLISHED", "ROUTED"},
+        )
+        self.assertEqual(
+            set(bridge["core2b_allowed_capability_closure"]),
+            {"ESTABLISHED", "ROUTED"},
+        )
+        self.assertTrue(bridge["core2b_requires_prior_exposure"])
 
 
 if __name__ == "__main__":
