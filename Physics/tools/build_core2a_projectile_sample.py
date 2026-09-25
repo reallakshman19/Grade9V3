@@ -53,7 +53,8 @@ def _num(pattern: str, text: str, label: str) -> float:
     match = re.search(pattern, text, re.IGNORECASE)
     if not match:
         raise ValueError(f"{label}: could not resolve from canonical stem")
-    return float(match.group(1))
+    value = float(match.group(1))
+    return int(value) if value.is_integer() else value
 
 
 def _visual_binding(owner: str, record: dict) -> dict:
@@ -65,7 +66,7 @@ def _visual_binding(owner: str, record: dict) -> dict:
             "kind": "TWO_STAGE_APEX",
             "mount_mode": "COMPONENT",
             "representation_refs": REPRESENTATION_BINDINGS[owner],
-            "normalization": {"ordinary_range_d": 1.0, "apex_height": 1.0},
+            "normalization": {"ordinary_range_d": 1, "apex_height": 1},
             "post_apex_gravity_divisor": divisor,
             "derived_modified_range_ratio": round(ratio, 12),
         }
@@ -78,7 +79,10 @@ def _visual_binding(owner: str, record: dict) -> dict:
             "kind": "POINT_CONSTRAINED_TRAJECTORY",
             "mount_mode": "COMPONENT",
             "representation_refs": REPRESENTATION_BINDINGS[owner],
-            "point": [float(point_match.group(1)), float(point_match.group(2))],
+            "point": [
+                int(float(point_match.group(1))) if float(point_match.group(1)).is_integer() else float(point_match.group(1)),
+                int(float(point_match.group(2))) if float(point_match.group(2)).is_integer() else float(point_match.group(2)),
+            ],
             "source_angle_cases": ["45°", "30°", "tan⁻¹(1/5)"],
             "visualization_g_m_s2": 9.8,
             "visualization_g_is_canonical": False,
