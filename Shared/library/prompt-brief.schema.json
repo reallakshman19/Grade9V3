@@ -10,6 +10,7 @@
     "template",
     "repository_basis",
     "authority_contract",
+    "learner_product_contract",
     "input_digest",
     "prompt_digest",
     "subject",
@@ -721,6 +722,28 @@
               }
             }
           }
+        }
+      }
+    },
+    "learner_product_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "path",
+        "digest"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "const": "Shared/roles/LEARNER-PRODUCT-TEMPLATES.md"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
         }
       }
     }
