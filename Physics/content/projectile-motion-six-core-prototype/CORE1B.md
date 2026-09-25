@@ -1,8 +1,8 @@
 # Core1B — Self-tutor conceptual reconstruction
 
 **Coverage:** identical to Core1A: `MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS`, `MIC-PHY-KIN-2D-CONSTANT-ACCELERATION`, `MIC-PHY-KIN-PROJECTILE-MODEL`.  
-**Reveal contract:** PREDICT and ATTEMPT appear before any reconstruction/model response.  
-**Status:** structurally assembled from canonical elicitation truth; visual availability is governed by the same representation audit as Core1A.
+**Reveal contract:** PREDICT and ATTEMPT appear before any reconstruction/model response. Canonical scene content, where eligible, is also post-attempt.  
+**Status:** structurally assembled from canonical elicitation truth; visual availability is audited by Core + microtopic binding rather than representation name alone.
 
 ## Split one plane-motion event into independent x/y components with one clock
 
@@ -38,6 +38,10 @@ A two-column x/y setup with one shared t.
 
 **A/B difference:** Teaching states the independence/common-time rule; reconstruction makes the learner distinguish what separates from what stays shared.
 
+### POST-ATTEMPT VISUAL STATE
+
+- `REP-KIN-2D-SHARED-CLOCK`: BOUND_CANONICAL_SCENE_AVAILABLE — `SCENE-KIN-2D-SHARED-CLOCK-PORTABLE-01`
+
 ### DIAGNOSE
 
 - **Plausible wrong answer:** Independent x and y motions may use different elapsed times.  
@@ -71,7 +75,6 @@ A two-column x/y setup with one shared t.
 **Prediction defensible answer:** No. The component equations are separate, but the event uses one common elapsed time.
 
 </details>
-
 
 ---
 
@@ -109,6 +112,11 @@ Two correct component constant-acceleration equations using one t.
 
 **A/B difference:** Teaching supplies component forms; reconstruction derives them by applying the existing 1D model separately to each axis.
 
+### POST-ATTEMPT VISUAL STATE
+
+- `REP-KIN-2D-SHARED-CLOCK`: VISUAL_HOLD — no canonical scene is bound to this Core + microtopic usage.
+- `REP-KIN-2D-EVENT-CLOCK`: VISUAL_HOLD — no canonical scene is bound to this Core + microtopic usage.
+
 ### DIAGNOSE
 
 - **Plausible wrong answer:** The magnitude of acceleration should be inserted unchanged into both x and y equations.  
@@ -145,7 +153,6 @@ Two correct component constant-acceleration equations using one t.
 **Prediction defensible answer:** Only v_x changes; v_y remains constant.
 
 </details>
-
 
 ---
 
@@ -188,6 +195,12 @@ A model declaration and component-equation setup for a horizontal or oblique pro
    Canonical step: `K2D3-5`
 
 **A/B difference:** Teaching states the projectile specialization; reconstruction derives it from the post-release interaction model and coordinate choice.
+
+### POST-ATTEMPT VISUAL STATE
+
+- `REP-KIN-2D-SHARED-CLOCK`: VISUAL_HOLD — no canonical scene is bound to this Core + microtopic usage.
+- `REP-KIN-2D-EVENT-CLOCK`: VISUAL_HOLD — no canonical scene is bound to this Core + microtopic usage.
+- `REP-KIN-2D-PROJECTILE-MODEL`: VISUAL_HOLD — no canonical scene is bound to this Core + microtopic usage.
 
 ### DIAGNOSE
 
@@ -234,4 +247,3 @@ A model declaration and component-equation setup for a horizontal or oblique pro
 **Prediction defensible answer:** a_x is zero; a_y is -g if +y is upward.
 
 </details>
-
