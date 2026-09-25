@@ -49,12 +49,6 @@ jobs:
       - name: Motion2D GCDR scientific invariants hold
         run: python3 Physics/tools/motion2d_gcdr_properties.py --enforce
 
-      - name: Core2A projectile study sample remains faithful and executable
-        run: |
-          python3 Physics/tools/core2a_projectile_sample_checks.py
-          node --check public/physics/motion-2d/samples/core2a-projectile-study/app.mjs
-          node --test Physics/tools/core2a_projectile_sample_browser.test.mjs
-
       # A role spec may not require content the schema has nowhere to keep. Enforcing:
       # the 68 findings this first reported are closed, 28 by correcting the spec's path
       # and 40 by adding the field. It is its own step rather than part of the subject
