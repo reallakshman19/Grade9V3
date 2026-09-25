@@ -62,6 +62,11 @@ function setSim(patch, rerender=true) {
   state = out.state;
   if (rerender) renderVisualOnly();
 }
+function setAttempt(value) {
+  const out = transitionStudyState(state, {type:"SET_ATTEMPT", value});
+  state = out.state;
+  renderProgress();
+}
 function stopAnimation() {
   if (animationFrame) cancelAnimationFrame(animationFrame);
   animationFrame = 0;
@@ -141,7 +146,7 @@ function renderAttempt() {
       '<p class="attempt-feedback" id="attempt-feedback">'+(isCommitted()?"Attempt committed. The answer is still hidden; use support or open the reasoning when you are ready.":"No choices are marked correct until you commit.")+'</p></div>';
     attemptArea.querySelectorAll("[data-choice]").forEach((box) => box.addEventListener("change", () => {
       const values=[...attemptArea.querySelectorAll("[data-choice]:checked")].map((n)=>n.dataset.choice);
-      dispatch({type:"SET_ATTEMPT", value:values});
+      setAttempt(values);
     }));
   } else {
     const label=activeOwner==="Q21"?"Predict n = d′/d":"Predict the wall distance (m)";
@@ -150,7 +155,7 @@ function renderAttempt() {
       '<div class="answer-row"><input id="numeric-attempt" inputmode="decimal" type="number" step="'+(activeOwner==="Q21"?"0.01":"1")+'" value="'+esc(state.attempt)+'" '+(isCommitted()?"disabled":"")+'><button class="primary-action" id="commit-answer" type="button" '+(isCommitted()?"disabled":"")+'>Commit answer</button><button class="secondary-action" id="reset-question" type="button">Reset</button></div>'+
       '<p class="attempt-feedback" id="attempt-feedback">'+(isCommitted()?"Attempt committed. The answer is still hidden; use support or open the reasoning when you are ready.":"Your prediction unlocks support and the complete reasoning route.")+'</p></div>';
     const input=document.getElementById("numeric-attempt");
-    input.addEventListener("input",()=>dispatch({type:"SET_ATTEMPT",value:input.value}));
+    input.addEventListener("input",()=>setAttempt(input.value));
   }
   document.getElementById("commit-answer").addEventListener("click", () => {
     const out=dispatch({type:"COMMIT"});
