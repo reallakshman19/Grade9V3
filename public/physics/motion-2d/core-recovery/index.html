@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Motion in 2D — Core recovery preview</title>
+  <style>
+    :root { color-scheme: light; --ink:#162439; --muted:#506079; --line:#d5deec; --wash:#f4f8ff; --accent:#1661b6; --hold:#8b570d; }
+    * { box-sizing:border-box; }
+    body { margin:0; color:var(--ink); background:#fff; font:18px/1.55 system-ui,-apple-system,Segoe UI,sans-serif; }
+    .shell { max-width:1160px; margin:auto; padding:clamp(16px,4vw,42px); }
+    header { border-bottom:1px solid var(--line); padding-bottom:24px; }
+    h1 { font-size:clamp(30px,4vw,48px); line-height:1.12; margin:.25em 0; }
+    h2 { line-height:1.2; font-size:1.5rem; }
+    .eyebrow { color:var(--accent); text-transform:uppercase; letter-spacing:.09em; font-weight:750; font-size:.8rem; }
+    .lede { max-width:75ch; }
+    .notice { background:#fff8e8; border-left:5px solid #b27418; padding:12px 16px; font-size:.93rem; }
+    nav { display:flex; flex-wrap:wrap; gap:8px; margin:24px 0; }
+    button { font:inherit; cursor:pointer; border:1px solid #9dbce2; background:#fff; color:var(--ink); border-radius:10px; padding:8px 16px; }
+    button[aria-pressed="true"] { background:var(--accent); color:#fff; }
+    button:focus-visible, a:focus-visible { outline:3px solid #b45600; outline-offset:3px; }
+    .card { border:1px solid var(--line); border-radius:14px; padding:clamp(16px,3vw,28px); margin:18px 0; background:#fff; }
+    .card h3 { margin:0 0 .6em; font-size:1.25rem; }
+    .meta { color:var(--muted); font-size:.82rem; overflow-wrap:anywhere; }
+    .status { color:var(--hold); font-size:.85rem; font-weight:700; }
+    .activity { background:var(--wash); border-radius:12px; padding:14px; margin-top:18px; }
+    .activity p { margin:.2em 0 .8em; }
+    .activity img { display:block; width:100%; max-height:470px; object-fit:contain; background:#f5f9ff; margin:10px 0; }
+    .activity iframe { width:100%; height:530px; border:1px solid var(--line); border-radius:8px; background:#111; }
+    .activity[hidden], section[hidden] { display:none; }
+    .hold { padding:22px; background:#fff8e8; border-radius:12px; }
+    .hold li { margin:.4em 0; }
+    footer { margin-top:40px; border-top:1px solid var(--line); padding-top:22px; color:var(--muted); font-size:.9rem; }
+    @media (max-width:650px) { body {font-size:16px} .activity iframe {height:460px} }
+    @media print { nav, .activity iframe {display:none} .card {break-inside:avoid} }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header>
+      <p class="eyebrow">Grade 9 Physics · learner preview</p>
+      <h1>Motion in two dimensions</h1>
+      <p class="lede">One particle, one clock, two component equations. Explore the three concepts below, then try the supported questions and changed-demand tasks. This preview follows the existing canonical Motion-in-2D package.</p>
+      <p class="notice"><strong>Publication status: held.</strong> Core 2 ordinary source custody is unresolved. Core 1A also lacks some reviewed worked-anchor and scene bindings. These pages are a learner trial, not six published Cores or a source-question bank.</p>
+    </header>
+    <nav aria-label="Choose a Core">
+      <button type="button" data-view="CORE1" aria-pressed="true">Core 1 · map</button>
+      <button type="button" data-view="CORE1A" aria-pressed="false">Core 1A · learn</button>
+      <button type="button" data-view="CORE1B" aria-pressed="false">Core 1B · try</button>
+      <button type="button" data-view="CORE2" aria-pressed="false">Core 2 · custody</button>
+      <button type="button" data-view="CORE2A" aria-pressed="false">Core 2A · apply</button>
+      <button type="button" data-view="CORE2B" aria-pressed="false">Core 2B · transfer</button>
+    </nav>
+    <main id="content" aria-live="polite"></main>
+    <footer>
+      Academic content is projected from the repository's canonical three-microtopic packet.
+      The supplied Q28/Q15/Q21/Q26/Q23 exam questions are kept in the diagnostic manifest;
+      their contested selection and Core 2 custody are not presented as learner authority.
+    </footer>
+  </div>
+  <script type="module">
+    import "../../../js/core-learning/core-learning-page.mjs";
+    import { projections, recoveryManifest, activityLinks } from "./data.mjs";
+
+    const container = document.getElementById("content");
+    const labels = {
+      CORE1:"Concept map",
+      CORE1A:"Completed teaching",
+      CORE1B:"Predict, attempt, reconstruct",
+      CORE2:"Source question custody",
+      CORE2A:"Supported application",
+      CORE2B:"Changed decision",
+    };
+    const statusLabels = {
+      CORE1:"Study preview · under review",
+      CORE1A:"Teaching preview · academic and figure review pending",
+      CORE1B:"Self-tutor preview · under review",
+      CORE2A:"Practice preview · source-custody hold inherited",
+      CORE2B:"Transfer preview · source-custody hold inherited",
+    };
+    const figures = {
+      "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS": ["shared-clock.svg", "Same-time x and y make one particle state; a mixed-time pair is invalid."],
+      "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION": ["event-clock.svg", "The time for one named event is reused in both axes."],
+      "MIC-PHY-KIN-PROJECTILE-MODEL": ["projectile-model.svg", "At the ideal apex vertical velocity is zero, horizontal velocity continues, and gravity remains downward."],
+    };
+    function card(projection) {
+      const article = document.createElement("article");
+      article.className = "card";
+      const title = document.createElement("h3");
+      title.textContent = projection.concept?.title || projection.orientation?.title ||
+        projection.application?.question_ref || projection.id;
+      const status = document.createElement("p");
+      status.className = "status";
+      status.textContent = statusLabels[projection.core];
+      const provenance = document.createElement("p");
+      provenance.className = "meta";
+      provenance.textContent = "Canonical ref: " + (
+        projection.concept?.microtopic_ref || projection.orientation?.bucket_ref ||
+        projection.application?.question_ref);
+      const sourceDetails = document.createElement("details");
+      const sourceSummary = document.createElement("summary");
+      sourceSummary.textContent = "Source and audit reference";
+      sourceDetails.append(sourceSummary,provenance);
+      article.append(title,status,sourceDetails);
+
+      const learner = document.createElement("core-learning-page");
+      learner.configure({ projection });
+      article.append(learner);
+
+      const link = activityLinks[projection.concept?.microtopic_ref];
+      if (link && ["CORE1A","CORE1B","CORE2A","CORE2B"].includes(projection.core)) {
+        const activity = document.createElement("aside");
+        activity.className = "activity";
+        // Candidate figures show worked numeric states. All question roles see them
+        // only after a submitted attempt; Core1A's completed teaching reveals at once.
+        const gated = projection.core !== "CORE1A";
+        if (gated) activity.hidden = true;
+        const intro = document.createElement("p");
+        intro.textContent = "Visual model and canonical interactive activity:";
+        const [figureName, figureAlt] = figures[projection.concept.microtopic_ref];
+        const img = document.createElement("img");
+        img.src = "./figures/" + figureName;
+        img.alt = figureAlt;
+        const review = document.createElement("p");
+        review.className = "meta";
+        review.textContent = "Illustration is an authored candidate tied to the named canonical microtopic; semantic admission into the canonical representation record remains HOLD.";
+        const iframe = document.createElement("iframe");
+        iframe.loading = "lazy";
+        iframe.title = "Interactive representation for " + projection.concept.title;
+        iframe.src = link;
+        const direct = document.createElement("a");
+        direct.href = link;
+        direct.textContent = "Open the representation in its own tab";
+        activity.append(intro,img,review,iframe,direct);
+        article.append(activity);
+        if (gated) {
+          learner.addEventListener("attempt_committed", () => { activity.hidden = false; });
+        }
+      }
+      return article;
+    }
+    function show(core) {
+      for (const button of document.querySelectorAll("[data-view]")) {
+        button.setAttribute("aria-pressed", String(button.dataset.view === core));
+      }
+      container.replaceChildren();
+      const heading = document.createElement("h2");
+      heading.textContent = labels[core];
+      container.append(heading);
+      if (core === "CORE2") {
+        const hold = document.createElement("div");
+        hold.className = "hold";
+        const p = document.createElement("p");
+        p.textContent = "HOLD: No ordinary source-backed Core 2 questions can be shown for this packet until source custody is authorized and reviewed.";
+        const ul = document.createElement("ul");
+        for (const text of recoveryManifest.holds.slice(0,2)) {
+          const li = document.createElement("li");
+          li.textContent = text;
+          ul.append(li);
+        }
+        hold.append(p,ul);
+        container.append(hold);
+        return;
+      }
+      for (const projection of projections.filter(row => row.core === core)) {
+        container.append(card(projection));
+      }
+    }
+    for (const button of document.querySelectorAll("[data-view]")) {
+      button.addEventListener("click", () => show(button.dataset.view));
+    }
+    show("CORE1");
+  </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 470" role="img" aria-labelledby="title desc">
+  <title id="title">One particle, one clock: simultaneous and mixed-time positions</title>
+  <desc id="desc">In a fixed x-y frame, the particle described by x(t)=4t and y(t)=10-2t squared is at (8,2) at 2 seconds and (12,-8) at 3 seconds. A hollow cross at (8,-8) mixes x at 2 seconds with y at 3 seconds and is rejected as a simultaneous position.</desc>
+  <rect width="840" height="470" rx="22" fill="#f5f9ff"/>
+  <text x="42" y="44" font-family="sans-serif" font-size="24" font-weight="700" fill="#172d4c">One physical object · one event time</text>
+  <text x="42" y="78" font-family="sans-serif" font-size="17" fill="#425775">x(t)=4t   ·   y(t)=10−2t²   ·   same frame for both components</text>
+  <path d="M92 277H730M110 390V104" fill="none" stroke="#344969" stroke-width="3"/>
+  <path d="m730 277-12-7v14zm-620-173-7 12h14z" fill="#344969"/>
+  <text x="736" y="282" font-family="sans-serif" font-size="18" fill="#344969">x</text>
+  <text x="100" y="96" font-family="sans-serif" font-size="18" fill="#344969">y</text>
+  <text x="82" y="299" font-family="sans-serif" font-size="16" fill="#344969">0</text>
+  <path d="M110 147C240 185 365 231 470 251S600 338 660 381" fill="none" stroke="#2874ca" stroke-width="5"/>
+  <circle cx="470" cy="251" r="12" fill="#1661b6"/>
+  <circle cx="660" cy="381" r="12" fill="#1661b6"/>
+  <path d="M470 251V277M110 251H470M660 381V277M110 381H660" stroke="#1661b6" stroke-width="2" stroke-dasharray="6 5" fill="none"/>
+  <text x="342" y="213" font-family="sans-serif" font-size="18" font-weight="700" fill="#134d92">t=2 s: (8, 2)</text>
+  <text x="623" y="416" font-family="sans-serif" font-size="18" font-weight="700" fill="#134d92">t=3 s: (12, −8)</text>
+  <circle cx="470" cy="381" r="15" fill="none" stroke="#b54b2c" stroke-width="3" stroke-dasharray="5 4"/>
+  <path d="m461 371 18 20m0-20-18 20" stroke="#b54b2c" stroke-width="3"/>
+  <text x="150" y="422" font-family="sans-serif" font-size="18" fill="#9b3c22">× Ghost pair x(2 s), y(3 s): no particle at that simultaneous state</text>
+</svg>
