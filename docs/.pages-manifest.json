@@ -217,22 +217,6 @@
       "target": "physics/motion-2d/index.html"
     },
     {
-      "source": "public/physics/motion-2d/samples/core2a-projectile-study/app.mjs",
-      "target": "physics/motion-2d/samples/core2a-projectile-study/app.mjs"
-    },
-    {
-      "source": "public/physics/motion-2d/samples/core2a-projectile-study/index.html",
-      "target": "physics/motion-2d/samples/core2a-projectile-study/index.html"
-    },
-    {
-      "source": "public/physics/motion-2d/samples/core2a-projectile-study/model.mjs",
-      "target": "physics/motion-2d/samples/core2a-projectile-study/model.mjs"
-    },
-    {
-      "source": "public/physics/motion-2d/samples/core2a-projectile-study/study.css",
-      "target": "physics/motion-2d/samples/core2a-projectile-study/study.css"
-    },
-    {
       "source": "public/physics/motion-in-2d/explorers/independent_components_shared_clock/index.html",
       "target": "physics/motion-in-2d/explorers/independent_components_shared_clock/index.html"
     },
