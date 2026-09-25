@@ -24,6 +24,8 @@ A particle is described verbally: at t=0 it is at the origin, moving east at 6 m
 
 - First list the raw direction words and magnitudes without plus or minus signs. (supports `R-KIN-2D-BREP-FACTS`)
 
+Any scaffold visual marked `VISUAL_HOLD` remains textual only; no replacement geometry is invented.
+
 ### ATTEMPT / learner commitment
 
 Commit to the model/representation/event decision and justify it before revealing post-attempt support.
@@ -94,6 +96,8 @@ Over 0<=t<=4 s, a particle has a_x=2 m/s^2 but a_y=3t m/s^2. Decide whether the 
 
 - Make one row for a_x(t) and one for a_y(t), and write the validity condition each row must satisfy. (supports `R-KIN-2D-BMODEL-REPRESENT`)
 
+Any scaffold visual marked `VISUAL_HOLD` remains textual only; no replacement geometry is invented.
+
 ### ATTEMPT / learner commitment
 
 Commit to the model/representation/event decision and justify it before revealing post-attempt support.
@@ -162,6 +166,8 @@ An ideal projectile begins 15 m above level ground with u_x=10 m/s and u_y=10 m/
 ### Safe pre-attempt support
 
 - Sketch only the launch level and ground relative to one vertical origin before writing an event equation. (supports `R-KIN-2D-BHEIGHT-REPRESENT`)
+
+Any scaffold visual marked `VISUAL_HOLD` remains textual only; no replacement geometry is invented.
 
 ### ATTEMPT / learner commitment
 
@@ -232,7 +238,9 @@ An object is launched and, after release, a small rocket motor continues to prov
 
 ### Safe pre-attempt support
 
-- List the post-release interactions and the acceleration components they imply before you name any motion model. (supports `R-KIN-TRANSFER-INTERACTIONS`)
+- List the post-release interactions and the acceleration components they imply before you name any motion model. (supports `R-KIN-TRANSFER-INTERACTIONS`; visual `REP-KIN-2D-PROJECTILE-MODEL` = VISUAL_HOLD)
+
+Any scaffold visual marked `VISUAL_HOLD` remains textual only; no replacement geometry is invented.
 
 ### ATTEMPT / learner commitment
 
@@ -253,7 +261,7 @@ Commit to the model/representation/event decision and justify it before revealin
 - [CONCEPT] Which post-release assumption makes a_x=0 in the standard projectile model, and is it true here?
 
 **Pedagogical scaffolds**
-- [REPRESENT; reveals CONCEPT; supports `R-KIN-TRANSFER-INTERACTIONS`] List the post-release interactions and the acceleration components they imply before you name any motion model.
+- [REPRESENT; reveals CONCEPT; supports `R-KIN-TRANSFER-INTERACTIONS`; visual `REP-KIN-2D-PROJECTILE-MODEL`] List the post-release interactions and the acceleration components they imply before you name any motion model.
 
 ### Full answer
 
@@ -302,6 +310,8 @@ An ideal projectile passes the same height once on the way up and once on the wa
 ### Safe pre-attempt support
 
 - Make a comparison table for v_x, v_y, speed and acceleration; enter only ‘same height’, ‘upward’ and ‘downward’ before choosing a method. (supports `R-KIN-2D-BSTATE-REPRESENT`)
+
+Any scaffold visual marked `VISUAL_HOLD` remains textual only; no replacement geometry is invented.
 
 ### ATTEMPT / learner commitment
 
