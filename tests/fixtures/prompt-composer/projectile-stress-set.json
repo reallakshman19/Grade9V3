@@ -12,21 +12,20 @@
       "target_authority": "OWNER_FIXED",
       "direct_source_use": "HOLD",
       "instructional_demand_use": "ALLOWED",
-      "assessment_claim": "HOLD"
+      "assessment_claim": "HOLD",
+      "candidate_set_provenance": "Owner supplied exact repository ref; confirm against the current canonical question record."
     },
     {
       "question_id": "Q15",
       "summary": "Projectile height after an energy-losing bounce.",
-      "candidate_question_refs": [
-        "PYQ-PHY-JEEADV-2018-P2-Q08",
-        "PYQ-PHY-JEEADV-2023-P1-Q01"
-      ],
       "learner_eligibility": "NOT_ESTABLISHED",
       "learner_eligibility_basis": "Learner readiness is not established; direct source-item use and owner-fixed instructional demand use are tracked separately.",
       "target_authority": "OWNER_FIXED",
-      "direct_source_use": "EXCLUDED",
+      "direct_source_use": "HOLD",
       "instructional_demand_use": "ALLOWED",
-      "assessment_claim": "HOLD"
+      "assessment_claim": "HOLD",
+      "candidate_set_provenance": "Resolved from the current canonical bank: the owner demand 'maximum projectile height after an energy-losing bounce' uniquely matches PYQ-PHY-JEEADV-2018-P2-Q08.",
+      "canonical_question_ref": "PYQ-PHY-JEEADV-2018-P2-Q08"
     },
     {
       "question_id": "Q21",
@@ -35,9 +34,10 @@
       "learner_eligibility": "NOT_ESTABLISHED",
       "learner_eligibility_basis": "Learner readiness is not established; direct source-item use and owner-fixed instructional demand use are tracked separately.",
       "target_authority": "OWNER_FIXED",
-      "direct_source_use": "EXCLUDED",
+      "direct_source_use": "HOLD",
       "instructional_demand_use": "ALLOWED",
-      "assessment_claim": "HOLD"
+      "assessment_claim": "HOLD",
+      "candidate_set_provenance": "Owner supplied exact repository ref; confirm against the current canonical question record."
     },
     {
       "question_id": "Q26",
@@ -46,9 +46,10 @@
       "learner_eligibility": "NOT_ESTABLISHED",
       "learner_eligibility_basis": "Learner readiness is not established; direct source-item use and owner-fixed instructional demand use are tracked separately.",
       "target_authority": "OWNER_FIXED",
-      "direct_source_use": "EXCLUDED",
+      "direct_source_use": "HOLD",
       "instructional_demand_use": "ALLOWED",
-      "assessment_claim": "HOLD"
+      "assessment_claim": "HOLD",
+      "candidate_set_provenance": "Owner supplied exact repository ref; confirm against the current canonical question record."
     },
     {
       "question_id": "Q23",
@@ -57,9 +58,10 @@
       "learner_eligibility": "NOT_ESTABLISHED",
       "learner_eligibility_basis": "Learner readiness is not established; direct source-item use and owner-fixed instructional demand use are tracked separately.",
       "target_authority": "OWNER_FIXED",
-      "direct_source_use": "EXCLUDED",
+      "direct_source_use": "HOLD",
       "instructional_demand_use": "ALLOWED",
-      "assessment_claim": "HOLD"
+      "assessment_claim": "HOLD",
+      "candidate_set_provenance": "Owner supplied exact repository ref; confirm against the current canonical question record."
     }
   ],
   "owner_confirmed_rung": {
