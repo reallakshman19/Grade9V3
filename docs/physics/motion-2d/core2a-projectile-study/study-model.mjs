@@ -1,15 +1,3 @@
-export const CORE2A_PROJECTILE_REFS = Object.freeze({
-  Q21: "PYQ-PHY-JEEADV-2022-P1-Q08",
-  Q26: "PYQ-PHY-JEEADV-2026-P1-Q06",
-  Q23: "PYQ-PHY-JEEADV-2025-P2-Q15",
-});
-
-export const CORE2A_PROJECTILE_BLUEPRINT = Object.freeze({
-  ref: "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
-  shellRef: "G9-TABLET-SHELL-V1",
-  layoutFamily: "QUESTION_STUDY",
-});
-
 export const ORDER = Object.freeze(["Q21", "Q26", "Q23"]);
 const PHASES = new Set(["INITIAL", "ATTEMPTING", "COMMITTED", "SUPPORTED", "SOLUTION_OPEN", "CHECKED"]);
 const clone = (value) => value == null ? value : JSON.parse(JSON.stringify(value));
