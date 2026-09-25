@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.0.0",
+  "prototype_id": "G9-PHY-PROJECTILE-STANDARD-MODIFIED-SIX-CORE-2026-09-25",
+  "authority": {
+    "role_contracts": [
+      "Shared/roles/README.md",
+      "Shared/roles/CORE-AUTHORITY-CONTRACT.md",
+      "Shared/roles/LEARNER-PRODUCT-TEMPLATES.md",
+      "Shared/roles/CORE1.md",
+      "Shared/roles/CORE2.md",
+      "Shared/roles/CORE1A.md",
+      "Shared/roles/CORE1B.md",
+      "Shared/roles/CORE2A.md",
+      "Shared/roles/CORE2B.md"
+    ],
+    "package_schema": "Shared/library/package.schema.json",
+    "canonical_academic_package": "Physics/library/phy-kin-2d-motion.v1.json",
+    "canonical_package_id": "LIB-PHY-KIN-2D-MOTION-AUTHORED",
+    "canonical_package_version": "0.1.0",
+    "canonical_package_status": "CANDIDATE",
+    "question_bank": "Physics/library/exam-bank/competitive-exam-question-bank.v2.json",
+    "rule": "Core1/Core1A/Core1B derive from canonical academic truth, never Core2; execution order is not authority order."
+  },
+  "records": [
+    {
+      "owner_label": "Q28",
+      "demand": "Velocity direction from x(t) and y(t).",
+      "exact_repository_ref": "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
+      "candidate_refs": [],
+      "canonical_primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+      "primary_capability_state": "RESOLVED_FROM_CANONICAL_QUESTION_RECORD",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "canonical_microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "canonical_rung": "R1",
+      "source_custody_status": "SOURCE_IDENTITY_VERIFIED_PARENT; CORE2_SOURCE_CUSTODY_HOLD_NONVERBATIM_NO_COMPONENT_PROOF",
+      "demand_evidence_status": "VALID_DIAGNOSTIC_DEMAND_EVIDENCE",
+      "learner_eligibility_status": "NOT_ESTABLISHED",
+      "extension_gap_classification": "UNTaught_CAPABILITY_GAP",
+      "demand_bridge_disposition": "UNRESOLVED_CAPABILITY_GAP",
+      "analysis": {
+        "A_canonical_capability": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "B_real_bottleneck": "Use instantaneous velocity direction, not position direction; obtaining v_x and v_y from x(t), y(t) requires differentiation.",
+        "C_assumed_prerequisite": "Differentiation of x(t), y(t) and direction-from-components.",
+        "D_canonical_teaching": "Same-time component reconstruction.",
+        "E_extension_or_bridge": "Calculus differentiation is an explicit local gap.",
+        "F_core2_source_custody_sufficient": false,
+        "G_learner_eligibility_established": false,
+        "H_can_support_core2a_full_demand": false,
+        "I_can_legitimately_support_core2b": false,
+        "J_hold_or_gap": "Untaught calculus operation; learner eligibility not established."
+      }
+    },
+    {
+      "owner_label": "Q15",
+      "demand": "Maximum projectile height after an energy-losing bounce.",
+      "exact_repository_ref": null,
+      "candidate_refs": [
+        "PYQ-PHY-JEEADV-2018-P2-Q08",
+        "PYQ-PHY-JEEADV-2023-P1-Q01"
+      ],
+      "canonical_primary_capability_ref": null,
+      "primary_capability_state": "IDENTITY_HOLD",
+      "secondary_capability_refs": [],
+      "candidate_capability_mappings": [
+        {
+          "question_ref": "PYQ-PHY-JEEADV-2018-P2-Q08",
+          "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+          "secondary_capability_refs": [
+            "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+          ],
+          "wording_custody": "FAITHFUL_NON_VERBATIM_RESTATEMENT"
+        },
+        {
+          "question_ref": "PYQ-PHY-JEEADV-2023-P1-Q01",
+          "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+          "secondary_capability_refs": [
+            "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+          ],
+          "wording_custody": "FAITHFUL_NON_VERBATIM_RESTATEMENT"
+        }
+      ],
+      "canonical_microtopic_ref": null,
+      "canonical_rung": null,
+      "source_custody_status": "IDENTITY_HOLD_PLUS_SOURCE_CUSTODY_HOLD",
+      "demand_evidence_status": "VALID_DIAGNOSTIC_DEMAND_EVIDENCE_WITH_IDENTITY_AMBIGUITY",
+      "learner_eligibility_status": "EXCLUDED",
+      "extension_gap_classification": "IDENTITY_HOLD",
+      "demand_bridge_disposition": "IDENTITY_HOLD",
+      "analysis": {
+        "A_canonical_capability": "UNRESOLVED_UNTIL_IDENTITY",
+        "B_real_bottleneck": "Cannot assign one question-specific bottleneck until identity resolves; both candidates add impact/energy machinery.",
+        "C_assumed_prerequisite": "Candidate-dependent energy/restitution plus projectile components.",
+        "D_canonical_teaching": "Post-impact free flight can use the projectile model once post-impact velocity is known.",
+        "E_extension_or_bridge": "Deriving post-impact velocity from energy loss/restitution is outside canonical Motion-in-2D teaching.",
+        "F_core2_source_custody_sufficient": false,
+        "G_learner_eligibility_established": false,
+        "H_can_support_core2a_full_demand": false,
+        "I_can_legitimately_support_core2b": false,
+        "J_hold_or_gap": "IDENTITY_HOLD; both candidates learner-excluded."
+      }
+    },
+    {
+      "owner_label": "Q21",
+      "demand": "Gravity changes after the apex.",
+      "exact_repository_ref": "PYQ-PHY-JEEADV-2022-P1-Q08",
+      "candidate_refs": [],
+      "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "primary_capability_state": "RESOLVED_FROM_CANONICAL_QUESTION_RECORD",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "canonical_microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "canonical_rung": "R3",
+      "source_custody_status": "SOURCE_IDENTITY_VERIFIED_PARENT; CORE2_SOURCE_CUSTODY_HOLD_NONVERBATIM_NO_COMPONENT_PROOF",
+      "demand_evidence_status": "VALID_DIAGNOSTIC_DEMAND_EVIDENCE",
+      "learner_eligibility_status": "EXCLUDED",
+      "extension_gap_classification": "BRIDGE",
+      "demand_bridge_disposition": "CANONICAL_PREREQUISITE_ROUTE",
+      "analysis": {
+        "A_canonical_capability": "CAP-KIN-PROJECTILE-MODEL",
+        "B_real_bottleneck": "Separate the apex event from the model change, then stop using the unchanged gravity-only specialization.",
+        "C_assumed_prerequisite": "Projectile event selection plus componentwise constant acceleration on a new interval.",
+        "D_canonical_teaching": "Apex v_y=0, one event time, component relations.",
+        "E_extension_or_bridge": "Changed post-apex acceleration bridges back to the parent constant-acceleration model.",
+        "F_core2_source_custody_sufficient": false,
+        "G_learner_eligibility_established": false,
+        "H_can_support_core2a_full_demand": false,
+        "I_can_legitimately_support_core2b": true,
+        "J_hold_or_gap": "Source learner-excluded/Core2-held; may only inform authored transfer after capability/prior-exposure closure."
+      }
+    },
+    {
+      "owner_label": "Q26",
+      "demand": "Projectile trajectory through a specified point.",
+      "exact_repository_ref": "PYQ-PHY-JEEADV-2026-P1-Q06",
+      "candidate_refs": [],
+      "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "primary_capability_state": "RESOLVED_FROM_CANONICAL_QUESTION_RECORD",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "canonical_microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "canonical_rung": "R3",
+      "source_custody_status": "SOURCE_IDENTITY_VERIFIED_PARENT; CORE2_SOURCE_CUSTODY_HOLD_NONVERBATIM_NO_COMPONENT_PROOF",
+      "demand_evidence_status": "VALID_DIAGNOSTIC_DEMAND_EVIDENCE",
+      "learner_eligibility_status": "EXCLUDED",
+      "extension_gap_classification": "UNTaught_CAPABILITY_GAP",
+      "demand_bridge_disposition": "EXTENSION_ADMISSION_CANDIDATE",
+      "analysis": {
+        "A_canonical_capability": "CAP-KIN-PROJECTILE-MODEL",
+        "B_real_bottleneck": "Translate specified-point constraint into a trajectory relation.",
+        "C_assumed_prerequisite": "Trajectory-equation construction/elimination.",
+        "D_canonical_teaching": "Gravity-only component equations and event-state consistency.",
+        "E_extension_or_bridge": "Trajectory-equation derivation is above R3 ceiling and LOCAL_GAP.",
+        "F_core2_source_custody_sufficient": false,
+        "G_learner_eligibility_established": false,
+        "H_can_support_core2a_full_demand": false,
+        "I_can_legitimately_support_core2b": false,
+        "J_hold_or_gap": "Untaught trajectory-equation capability; learner-excluded."
+      }
+    },
+    {
+      "owner_label": "Q23",
+      "demand": "Projectile motion with linear drag.",
+      "exact_repository_ref": "PYQ-PHY-JEEADV-2025-P2-Q15",
+      "candidate_refs": [],
+      "canonical_primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+      "primary_capability_state": "RESOLVED_FROM_CANONICAL_QUESTION_RECORD",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "CAP-NLM-SECOND-LAW"
+      ],
+      "canonical_microtopic_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "canonical_rung": "R2",
+      "source_custody_status": "SOURCE_IDENTITY_VERIFIED_PARENT; CORE2_SOURCE_CUSTODY_HOLD_NONVERBATIM_NO_COMPONENT_PROOF",
+      "demand_evidence_status": "VALID_DIAGNOSTIC_DEMAND_EVIDENCE",
+      "learner_eligibility_status": "EXCLUDED",
+      "extension_gap_classification": "UNTaught_CAPABILITY_GAP",
+      "demand_bridge_disposition": "EXTENSION_ADMISSION_CANDIDATE",
+      "analysis": {
+        "A_canonical_capability": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+        "B_real_bottleneck": "Reject constant acceleration and solve velocity-dependent drag dynamics.",
+        "C_assumed_prerequisite": "Newton II plus linear-drag differential equation/exponential solution and integration.",
+        "D_canonical_teaching": "Model-validity checking.",
+        "E_extension_or_bridge": "Linear-drag law/solution is outside this packet.",
+        "F_core2_source_custody_sufficient": false,
+        "G_learner_eligibility_established": false,
+        "H_can_support_core2a_full_demand": false,
+        "I_can_legitimately_support_core2b": false,
+        "J_hold_or_gap": "Untaught scientific/mathematical model; not legitimate Core2B transfer."
+      }
+    }
+  ]
+}
