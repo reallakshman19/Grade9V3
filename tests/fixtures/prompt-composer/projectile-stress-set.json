@@ -51,7 +51,7 @@
     "owner_estimate": {
       "knowledge_percentage": 50,
       "by": "owner",
-      "instruction": "Starting coordinate only; not evidence of prerequisite mastery."
+      "instruction": "Starting coordinate only; not evidence of prerequisite mastery. Learner understands basic velocity components and standard projectile equations but selects equations inconsistently. Learner confuses position direction, velocity direction and trajectory direction, and struggles with apex/impact event conditions. Learner struggles when acceleration changes or the standard projectile model no longer applies. Support should emphasize visual reasoning, worked examples, staged authored scaffolds, misconception diagnosis and immediate independent verification where the Core role permits them."
     }
   },
   "requested_cores": [
