@@ -197,11 +197,9 @@ const manifest = {
   ],
 };
 fs.mkdirSync(destination, { recursive: true });
-const data = "export const projections = " + JSON.stringify(records, null, 2) +
-  ";\nexport const recoveryManifest = " + JSON.stringify(manifest, null, 2) +
-  ";\nexport const activityLinks = " + JSON.stringify(activityLinks, null, 2) + ";\n";
-fs.writeFileSync(path.join(destination, "data.mjs"), data);
-manifest.data_sha256 = sha256(path.join(destination, "data.mjs"));
+const data = JSON.stringify({ projections: records, recoveryManifest: manifest, activityLinks }, null, 2) + "\n";
+fs.writeFileSync(path.join(destination, "data.json"), data);
+manifest.data_sha256 = sha256(path.join(destination, "data.json"));
 fs.writeFileSync(path.join(destination, "manifest.json"), JSON.stringify(manifest, null, 2) + "\n");
 console.log("Wrote " + path.relative(root, destination) + ": " + records.length +
   " role projections; CORE2 stays HOLD.");

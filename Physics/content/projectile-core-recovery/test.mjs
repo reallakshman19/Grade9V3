@@ -5,9 +5,10 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { renderCoreLearningProjection, deriveCoreLearningState, transitionCoreLearningState } from "../../../Shared/workbench/core-learning-page.mjs";
-import { projections, recoveryManifest, activityLinks } from "../../../public/physics/motion-2d/core-recovery/data.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../..");
+const { projections, recoveryManifest, activityLinks } = JSON.parse(fs.readFileSync(
+  path.join(root, "public/physics/motion-2d/core-recovery/data.json"), "utf8"));
 const source = JSON.parse(fs.readFileSync(path.join(root, "Physics/library/phy-kin-2d-motion.v1.json")));
 const bucket = source.buckets.find(x => x.id === "BUCKET-PHY-KIN-2D-MOTION");
 const microtopics = new Map(source.microtopics.map(row => [row.id, row]));

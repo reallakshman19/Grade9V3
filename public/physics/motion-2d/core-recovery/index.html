@@ -60,12 +60,15 @@
   </div>
   <script type="module">
     import "../../../js/core-learning/core-learning-page.mjs";
-    import { projections, recoveryManifest, activityLinks } from "./data.mjs";
+    const { projections, recoveryManifest, activityLinks } = await fetch("./data.json").then(response => {
+      if (!response.ok) throw new Error("Recovery data unavailable: HTTP " + response.status);
+      return response.json();
+    });
 
     const container = document.getElementById("content");
     const labels = {
       CORE1:"Concept map",
-      CORE1A:"Completed teaching",
+      CORE1A:"Teaching walkthrough · under review",
       CORE1B:"Predict, attempt, reconstruct",
       CORE2:"Source question custody",
       CORE2A:"Supported application",
