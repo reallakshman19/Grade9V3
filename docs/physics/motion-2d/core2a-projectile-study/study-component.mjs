@@ -1,10 +1,9 @@
 import {
-  CORE2A_PROJECTILE_REFS, ORDER, parseQ21, q21State, parseQ26, solvePointPassage, parseQ23, q23Horizontal,
+  ORDER, parseQ21, q21State, parseQ26, solvePointPassage, parseQ23, q23Horizontal,
   createStudyState, transitionStudyState, clamp, round, requirePublicCondition,
 } from "./study-model.mjs";
 import { STUDY_STYLES } from "./study-styles.mjs";
 import { renderQ21Stage, renderQ26Stage, renderQ23Stage } from "./study-visuals.mjs";
-export { CORE2A_PROJECTILE_REFS, CORE2A_PROJECTILE_BLUEPRINT } from "./study-model.mjs";
 
 function esc(value) {
   return String(value ?? "")
@@ -26,6 +25,7 @@ export class Core2AProjectileStudy extends HTMLElementBase {
     super();
     this.attachShadow?.({ mode: "open" });
     this._records = null;
+    this._ownerRefs = new Map();
     this._byOwner = new Map();
     this.state = createStudyState("Q21");
     this._raf = null;
@@ -33,16 +33,22 @@ export class Core2AProjectileStudy extends HTMLElementBase {
     this._reduceMotion = globalThis.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches || false;
   }
 
+  set ownerRefs(value) {
+    const entries = value && typeof value === "object" ? Object.entries(value) : [];
+    this._ownerRefs = new Map(entries);
+    for (const owner of ORDER) requirePublicCondition(this._ownerRefs.has(owner), "STUDY_OWNER_REF_MISSING", owner);
+  }
+
   set records(value) {
     const rows = Array.isArray(value) ? value : [];
     const byId = new Map(rows.map((row) => [row?.id, row]));
     this._byOwner = new Map();
     for (const owner of ORDER) {
-      const record = byId.get(CORE2A_PROJECTILE_REFS[owner]);
-      requirePublicCondition(record, "STUDY_CANONICAL_RECORD_MISSING", CORE2A_PROJECTILE_REFS[owner]);
+      const ref = this._ownerRefs.get(owner);
+      requirePublicCondition(typeof ref === "string" && ref, "STUDY_OWNER_REF_MISSING", owner);
+      const record = byId.get(ref);
+      requirePublicCondition(record, "STUDY_CANONICAL_RECORD_MISSING", ref);
       requirePublicCondition(record.status === "CANDIDATE", "STUDY_STATUS_DRIFT", `${owner}:${record.status}`);
-      requirePublicCondition(record.subject === "Physics", "STUDY_SUBJECT_DRIFT", owner);
-      requirePublicCondition(record.family_ref === "FAM-PHY-KIN-2D-PRACTICE", "STUDY_FAMILY_DRIFT", owner);
       requirePublicCondition(Array.isArray(record.scaffolds), "STUDY_SCAFFOLDS_MISSING", owner);
       requirePublicCondition(Array.isArray(record.answer?.reasoning_route), "STUDY_REASONING_MISSING", owner);
       this._byOwner.set(owner, record);
@@ -100,12 +106,12 @@ export class Core2AProjectileStudy extends HTMLElementBase {
     const vx0 = p.speed * Math.cos(p.angleDegrees * Math.PI / 180);
     const tau = p.mass / p.c;
     return [
-      { id: "Q23-UI-1", kind: "REPRESENT", action: `vₓ₀ = ${p.speed} cos ${p.angleDegrees}° = ${round(vx0, 0)} m/s`, sourceMove: record.answer.reasoning_route[1]?.id },
-      { id: "Q23-UI-2", kind: "CONNECT", action: `m/c = ${p.mass}/${p.c} = ${round(tau, 0)} s`, sourceMove: record.answer.reasoning_route[1]?.id },
-      { id: "Q23-UI-3", kind: "REPRESENT", action: "m dvₓ/dt = −c vₓ, so vₓ(t) = vₓ₀ exp[−(c/m)t]", sourceMove: record.answer.reasoning_route[0]?.id },
-      { id: "Q23-UI-4", kind: "CONNECT", action: "Integrate vₓ(t): x(t) = vₓ₀(m/c)[1 − exp(−ct/m)]", sourceMove: record.answer.reasoning_route[1]?.id, crux: true },
-      { id: "Q23-UI-5", kind: "EXECUTE", action: `At t = ${p.wallTime} s, use the source approximation e = ${p.eBase}.`, sourceMove: record.answer.reasoning_route[2]?.id },
-      { id: "Q23-UI-6", kind: "TRANSFORM", action: record.answer.reasoning_route[2]?.action || record.answer.reasoning?.[2] || answerLabel(record), sourceMove: record.answer.reasoning_route[2]?.id },
+      { id: "step-1", kind: "REPRESENT", action: `vₓ₀ = ${p.speed} cos ${p.angleDegrees}° = ${round(vx0, 0)} m/s`, sourceMove: record.answer.reasoning_route[1]?.id },
+      { id: "step-2", kind: "CONNECT", action: `m/c = ${p.mass}/${p.c} = ${round(tau, 0)} s`, sourceMove: record.answer.reasoning_route[1]?.id },
+      { id: "step-3", kind: "REPRESENT", action: "m dvₓ/dt = −c vₓ, so vₓ(t) = vₓ₀ exp[−(c/m)t]", sourceMove: record.answer.reasoning_route[0]?.id },
+      { id: "step-4", kind: "CONNECT", action: "Integrate vₓ(t): x(t) = vₓ₀(m/c)[1 − exp(−ct/m)]", sourceMove: record.answer.reasoning_route[1]?.id, crux: true },
+      { id: "step-5", kind: "EXECUTE", action: `At t = ${p.wallTime} s, use the source approximation e = ${p.eBase}.`, sourceMove: record.answer.reasoning_route[2]?.id },
+      { id: "step-6", kind: "TRANSFORM", action: record.answer.reasoning_route[2]?.action || record.answer.reasoning?.[2] || answerLabel(record), sourceMove: record.answer.reasoning_route[2]?.id },
     ];
   }
 
