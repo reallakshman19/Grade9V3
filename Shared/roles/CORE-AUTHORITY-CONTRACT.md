@@ -77,6 +77,24 @@ requested generation order never authorizes fabricated closure.
 builders and publication manifests may carry and validate references. They may not create
 curriculum truth, source custody, learner mastery or canonical question identity.
 
+## Demand Bridge / Admission
+
+A fixed assessment demand can require capability that is not yet taught in the current canonical topic packet. That creates a planning obligation, not permission to expand Core1A/Core1B and not permission to drop the demand.
+
+Before any fixed demand is used to shape learner application, create a **Demand Bridge / Admission** record. This is not a seventh Core and is not learner-facing academic authority.
+
+Each fixed demand must receive exactly one capability-closure disposition:
+
+- `WITHIN_CANONICAL_SCOPE` — required academic capability is already taught in the current canonical scope.
+- `CANONICAL_PREREQUISITE_ROUTE` — required capability exists canonically elsewhere and must be linked as an explicit prerequisite route.
+- `EXTENSION_ADMISSION_CANDIDATE` — required academic content is not currently canonical in the relevant teaching route; create an authoring/admission candidate for review rather than silently teaching it inside Core1A/Core1B.
+- `UNRESOLVED_CAPABILITY_GAP` — required capability cannot yet be mapped to canonical truth or an admissible extension candidate; downstream learner use remains HOLD.
+- `IDENTITY_HOLD` — exact assessment demand identity is unresolved, so capability closure cannot be claimed for that source item.
+
+Source custody and learner eligibility remain independent of this disposition. A demand may be valid evidence, source-custody-held, learner-excluded and still require a bridge record.
+
+A bridge HOLD must not be a dead end. When repository truth supports it, record the canonical prerequisite route or the exact extension-admission work that would close the gap.
+
 ## Machine-readable authority contract
 
 The fenced block below is the machine-readable authority for the invariants above. It is not
