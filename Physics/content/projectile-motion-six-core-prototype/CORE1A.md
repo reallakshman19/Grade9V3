@@ -2,7 +2,7 @@
 
 **Authority:** canonical Motion-in-2D package only.  
 **Coverage invariant:** exactly the same three canonical microtopics used by Core1B.  
-**Status:** structurally complete with explicit `HOLD_WORKED_ANCHOR` and visual holds where canonical bindings are absent; not publication-ready.
+**Status:** structurally complete with explicit `HOLD_WORKED_ANCHOR` and role/microtopic-specific visual holds where canonical bindings are absent; not publication-ready.
 
 ## Split one plane-motion event into independent x/y components with one clock
 
@@ -42,7 +42,10 @@ Perpendicular components may be solved separately because each axis equation con
 - y-component history ↔ `v_y` ↔ The vertical velocity component at the same shared physical time.
 - shared time marker ↔ `t` ↔ The one elapsed time used by both component descriptions.
 
-**Visual state:** BOUND_CANONICAL_SCENE_AVAILABLE (`SCENE-KIN-2D-SHARED-CLOCK-PORTABLE-01`)
+**Role-specific visual binding**
+- `REP-KIN-2D-SHARED-CLOCK`: BOUND_CANONICAL_SCENE_AVAILABLE — `SCENE-KIN-2D-SHARED-CLOCK-PORTABLE-01`
+
+A representation can be canonical while its learner-facing scene remains held; this prototype never borrows a scene bound to a different microtopic or Core.
 
 ### 7. Worked conceptual anchor
 
@@ -114,15 +117,17 @@ The one-dimensional constant-acceleration equations can be applied to each perpe
 - y-component history ↔ `v_y` ↔ The vertical velocity component at the same shared physical time.
 - shared time marker ↔ `t` ↔ The one elapsed time used by both component descriptions.
 
-**Visual state:** BOUND_CANONICAL_SCENE_AVAILABLE (`SCENE-KIN-2D-SHARED-CLOCK-PORTABLE-01`)
-
 **REP-KIN-2D-EVENT-CLOCK:** Make event selection explicit: one component condition identifies the requested event time, and that same time is then reused on every component before reconstructing the requested state.
 
 - solved event-time marker ↔ `t` ↔ The single elapsed time at which both component descriptions are evaluated for the selected event.
 - x-component evaluation ↔ `Delta x` ↔ The horizontal displacement evaluated at the shared event time.
 - y-component evaluation ↔ `Delta y` ↔ The vertical displacement evaluated at the same shared event time.
 
-**Visual state:** VISUAL_HOLD — canonical representation exists, but no bound scene instance is present; no subject geometry is invented.
+**Role-specific visual binding**
+- `REP-KIN-2D-SHARED-CLOCK`: VISUAL_HOLD — no canonical scene is bound to this Core + microtopic usage.
+- `REP-KIN-2D-EVENT-CLOCK`: VISUAL_HOLD — no canonical scene is bound to this Core + microtopic usage.
+
+A representation can be canonical while its learner-facing scene remains held; this prototype never borrows a scene bound to a different microtopic or Core.
 
 ### 7. Worked conceptual anchor
 
@@ -208,15 +213,11 @@ After release in the ideal near-Earth model, projectile motion is not a new set 
 - y-component history ↔ `v_y` ↔ The vertical velocity component at the same shared physical time.
 - shared time marker ↔ `t` ↔ The one elapsed time used by both component descriptions.
 
-**Visual state:** BOUND_CANONICAL_SCENE_AVAILABLE (`SCENE-KIN-2D-SHARED-CLOCK-PORTABLE-01`)
-
 **REP-KIN-2D-EVENT-CLOCK:** Make event selection explicit: one component condition identifies the requested event time, and that same time is then reused on every component before reconstructing the requested state.
 
 - solved event-time marker ↔ `t` ↔ The single elapsed time at which both component descriptions are evaluated for the selected event.
 - x-component evaluation ↔ `Delta x` ↔ The horizontal displacement evaluated at the shared event time.
 - y-component evaluation ↔ `Delta y` ↔ The vertical displacement evaluated at the same shared event time.
-
-**Visual state:** VISUAL_HOLD — canonical representation exists, but no bound scene instance is present; no subject geometry is invented.
 
 **REP-KIN-2D-PROJECTILE-MODEL:** Make the ideal projectile specialization conditional on the interactions that remain after release: gravity-only free flight licenses a_x=0 and a_y=-g; retained thrust, significant drag or contact requires a more general model.
 
@@ -224,7 +225,12 @@ After release in the ideal near-Earth model, projectile motion is not a new set 
 - horizontal acceleration readout ↔ `v_x` ↔ The horizontal component whose constancy is a consequence of zero horizontal acceleration in the ideal specialization.
 - vertical acceleration readout ↔ `v_y` ↔ The vertical velocity component that changes under the retained gravitational acceleration.
 
-**Visual state:** VISUAL_HOLD — canonical representation exists, but no bound scene instance is present; no subject geometry is invented.
+**Role-specific visual binding**
+- `REP-KIN-2D-SHARED-CLOCK`: VISUAL_HOLD — no canonical scene is bound to this Core + microtopic usage.
+- `REP-KIN-2D-EVENT-CLOCK`: VISUAL_HOLD — no canonical scene is bound to this Core + microtopic usage.
+- `REP-KIN-2D-PROJECTILE-MODEL`: VISUAL_HOLD — no canonical scene is bound to this Core + microtopic usage.
+
+A representation can be canonical while its learner-facing scene remains held; this prototype never borrows a scene bound to a different microtopic or Core.
 
 ### 7. Worked conceptual anchor
 
