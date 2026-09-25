@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" data-blueprint-ref="BP-CORE2A-SUPPORTED-APPLICATION@1.0.0" data-layout-family="QUESTION_STUDY">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="grade9v3-sample-status" content="DESIGN_REVIEW_SAMPLE_CANDIDATE_NOT_LEARNER_ASSIGNMENT">
+  <title>Projectile Motion · Core2A Study Sample</title>
+  <link rel="stylesheet" href="../../../css/site.css">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="site-nav" data-shell-ref="G9-TABLET-SHELL-V1">
+  <button id="back" type="button" aria-label="Back">← Back</button>
+  <a id="home" href="../../../index.html">Home</a>
+  <span id="subject-context" class="context">Physics · Motion in 2D</span>
+  <a id="question-bank" href="../../../question-bank/index.html">Question Bank</a>
+  <form id="site-search" role="search">
+    <input id="site-search-input" type="search" aria-label="Search this page" placeholder="Find on page">
+    <button type="submit">Search</button>
+  </form>
+  <button id="refresh" type="button" aria-label="Refresh">↻ Refresh</button>
+  <button id="display-down" type="button" aria-label="Decrease text size">A−</button>
+  <button id="display-up" type="button" aria-label="Increase text size">A+</button>
+  <details class="shell-more">
+    <summary>More</summary>
+    <div><strong>Sample interface</strong><br>Candidate questions are shown for design review, not as approved learner assignments.</div>
+  </details>
+</header>
+
+<main class="page-shell">
+  <section class="sample-note" aria-label="Sample status">
+    <strong>Core2A study sample</strong>
+    <span>These repository questions are currently <code>CANDIDATE</code> and learner-eligibility excluded. This page demonstrates the governed study interaction; it does not change assignment status.</span>
+  </section>
+
+  <header class="study-heading">
+    <div>
+      <div class="eyebrow">Grade 9 Physics · Motion in 2D · supported application</div>
+      <h1>Projectile motion: see the state change that matters</h1>
+      <p>Try first. Then use the visual model, request support, inspect the reasoning, and check the result.</p>
+    </div>
+    <div class="contract-chip" id="contract-chip"></div>
+  </header>
+
+  <nav class="question-tabs" role="tablist" aria-label="Choose a sample question">
+    <button role="tab" id="tab-Q21" data-question="Q21" aria-controls="study-pane" aria-selected="true">Q21 <span>Changed gravity</span></button>
+    <button role="tab" id="tab-Q26" data-question="Q26" aria-controls="study-pane" aria-selected="false">Q26 <span>Through P</span></button>
+    <button role="tab" id="tab-Q23" data-question="Q23" aria-controls="study-pane" aria-selected="false">Q23 <span>Linear drag</span></button>
+  </nav>
+
+  <section id="study-pane" class="study-grid" role="tabpanel" aria-live="polite">
+    <div class="primary-pane">
+      <section class="question-card" aria-labelledby="question-title">
+        <div class="identity-row">
+          <div>
+            <span class="owner-badge" id="owner-label"></span>
+            <span class="status-badge">Sample · candidate record</span>
+          </div>
+          <div class="provenance" id="provenance"></div>
+        </div>
+        <h2 id="question-title"></h2>
+        <p id="question-stem" class="stem"></p>
+        <div id="conditions" class="conditions"></div>
+        <div id="attempt-area"></div>
+      </section>
+
+      <section class="visual-card" aria-labelledby="visual-title">
+        <div class="visual-heading">
+          <div>
+            <div class="eyebrow">Initial / bound representation</div>
+            <h2 id="visual-title">Visualize</h2>
+          </div>
+          <p id="visual-status" role="status" aria-live="polite"></p>
+        </div>
+        <div id="visual-controls" class="control-row"></div>
+        <div id="visual-stage" class="visual-stage"></div>
+        <p id="visual-caption" class="visual-caption"></p>
+      </section>
+    </div>
+
+    <aside class="support-pane" aria-label="Support and reasoning">
+      <section class="progress-card">
+        <div class="eyebrow">Study path</div>
+        <ol id="study-progress" class="study-progress"></ol>
+      </section>
+      <section id="support-slot" class="support-card"></section>
+      <section id="reasoning-slot" class="support-card"></section>
+    </aside>
+  </section>
+</main>
+
+<script src="./data.js"></script>
+<script type="module" src="./app.mjs"></script>
+</body>
+</html>
