@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 430" role="img" aria-labelledby="title desc">
+  <title id="title">Gravity-only projectile model and apex velocity</title>
+  <desc id="desc">A projectile launched from the origin follows a curved path to an apex and back under gravity alone. Horizontal velocity remains to the right at the apex; vertical velocity is zero only at the apex, and acceleration remains downward everywhere. If horizontal thrust or appreciable drag is present, this ideal model is not licensed.</desc>
+  <rect width="840" height="430" rx="22" fill="#f5f9ff"/>
+  <text x="40" y="47" font-family="sans-serif" font-size="24" font-weight="700" fill="#172d4c">Model first: gravity-only flight after release</text>
+  <text x="40" y="82" font-family="sans-serif" font-size="17" fill="#425775">Same component laws · aₓ=0 · aᵧ=−g · one common time</text>
+  <path d="M100 350H740M110 365V105" stroke="#344969" stroke-width="3" fill="none"/>
+  <path d="m740 350-12-7v14zm-630-245-7 12h14z" fill="#344969"/>
+  <text x="746" y="356" font-family="sans-serif" font-size="18" fill="#344969">x</text>
+  <text x="96" y="98" font-family="sans-serif" font-size="18" fill="#344969">y</text>
+  <path d="M112 350Q415 54 714 350" fill="none" stroke="#2874ca" stroke-width="5"/>
+  <circle cx="112" cy="350" r="9" fill="#1661b6"/>
+  <circle cx="414" cy="201" r="10" fill="#1661b6"/>
+  <path d="M414 200h112" stroke="#159369" stroke-width="5"/>
+  <path d="m526 200-15-8v16z" fill="#159369"/>
+  <path d="M414 200v85" stroke="#b54b2c" stroke-width="5"/>
+  <path d="m414 285-9-14h18z" fill="#b54b2c"/>
+  <text x="535" y="205" font-family="sans-serif" font-size="19" fill="#126d51">vₓ continues</text>
+  <text x="426" y="277" font-family="sans-serif" font-size="18" fill="#9d3925">aᵧ=−g</text>
+  <text x="344" y="174" font-family="sans-serif" font-size="19" font-weight="700" fill="#164d93">apex: vᵧ=0</text>
+  <text x="40" y="409" font-family="sans-serif" font-size="18" fill="#425775">Gate: active horizontal thrust or appreciable drag → use a different model.</text>
+</svg>

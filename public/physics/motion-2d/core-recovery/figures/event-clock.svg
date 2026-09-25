@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 390" role="img" aria-labelledby="title desc">
+  <title id="title">The apex event uses the same time in both component equations</title>
+  <desc id="desc">Two parallel time rows share a vertical marker at t=2 seconds. In the authored canonical practice example with u-x 12 metres per second, u-y 20 metres per second and g 10 metres per second squared, the vertical row reaches v-y zero at the apex while the horizontal row retains v-x 12 metres per second.</desc>
+  <rect width="840" height="390" rx="22" fill="#f5f9ff"/>
+  <text x="42" y="46" font-family="sans-serif" font-size="24" font-weight="700" fill="#172d4c">Find an event in one axis · use its time in both</text>
+  <text x="42" y="80" font-family="sans-serif" font-size="17" fill="#425775">Ideal free flight · +y upward · uₓ=12 m/s · uᵧ=20 m/s · g=10 m/s²</text>
+  <text x="48" y="157" font-family="sans-serif" font-size="21" fill="#172d4c">vertical</text>
+  <text x="48" y="269" font-family="sans-serif" font-size="21" fill="#172d4c">horizontal</text>
+  <path d="M165 150H770M165 260H770" stroke="#344969" stroke-width="3"/>
+  <path d="M770 150l-12-7v14zM770 260l-12-7v14z" fill="#344969"/>
+  <path d="M455 123V290" stroke="#bc4e20" stroke-width="4" stroke-dasharray="9 7"/>
+  <circle cx="455" cy="150" r="11" fill="#bc4e20"/>
+  <circle cx="455" cy="260" r="11" fill="#bc4e20"/>
+  <text x="320" y="120" font-family="sans-serif" font-size="20" font-weight="700" fill="#963917">Apex: vᵧ=0 at t=2 s</text>
+  <text x="505" y="243" font-family="sans-serif" font-size="19" font-weight="700" fill="#144d92">same t: vₓ=12 m/s</text>
+  <text x="165" y="330" font-family="sans-serif" font-size="18" fill="#425775">t=0</text>
+  <text x="435" y="330" font-family="sans-serif" font-size="18" fill="#963917">t=2 s</text>
+  <text x="730" y="330" font-family="sans-serif" font-size="18" fill="#425775">time →</text>
+</svg>

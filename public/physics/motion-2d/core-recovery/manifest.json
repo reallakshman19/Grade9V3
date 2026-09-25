@@ -1,0 +1,89 @@
+{
+  "issue": 274,
+  "source_main_sha": "7982850a5d5d5ed133e3098522a889b89f1fc54a",
+  "renderer_draft_head": "97005291accdfd85ea07f6b8e40693714334bd9d",
+  "generated_by": "Physics/content/projectile-core-recovery/build.mjs",
+  "source_package": "Physics/library/phy-kin-2d-motion.v1.json",
+  "source_sha256": "ba7d7c937b3ecca2c84f6f919cd074a8b65393fe237cda4ee551beb6dc7a9b56",
+  "bank_sha256": "5ba0ea9c3538214ade771b69570c2edff12feab630a70c1b66c20b3e22fde3e5",
+  "renderer_sha256": "36a7d7d668ca27c0eb42979e5ac9ae09e0f970e8cc15fbee5eff8833be4ec1fd",
+  "outputs": {
+    "CORE1": "CANDIDATE_LEARNER_PREVIEW",
+    "CORE1A": "HOLD_WORKED_ANCHOR_AND_SCENE_BINDING",
+    "CORE1B": "CANDIDATE_INTERACTIVE_RECONSTRUCTION",
+    "CORE2": "HOLD_ORDINARY_SOURCE_CUSTODY",
+    "CORE2A": "CANDIDATE_INHERITED_HOLD",
+    "CORE2B": "CANDIDATE_INHERITED_HOLD"
+  },
+  "question_identity": [
+    {
+      "owner_alias": "Q28",
+      "canonical_question_ref": "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
+      "original_identifier": "JEE Main|2026|Session 2 · 04 Apr 2026 · Shift 2|Physics|Q29",
+      "primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+      "wording_custody": "BANK_RECORD_ONLY",
+      "bank_status": "CANDIDATE",
+      "disposition": "DIAGNOSTIC_ONLY",
+      "learner_eligibility": "NOT_ESTABLISHED"
+    },
+    {
+      "owner_alias": "Q15",
+      "canonical_question_ref": "PYQ-PHY-JEEADV-2018-P2-Q08",
+      "original_identifier": "JEE (Advanced)|2018|Paper 2|Physics|Q8",
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "wording_custody": "BANK_RECORD_ONLY",
+      "bank_status": "CANDIDATE",
+      "disposition": "IDENTITY_HOLD",
+      "learner_eligibility": "NOT_ESTABLISHED"
+    },
+    {
+      "owner_alias": "Q15",
+      "canonical_question_ref": "PYQ-PHY-JEEADV-2023-P1-Q01",
+      "original_identifier": "JEE (Advanced)|2023|Paper 1|Physics|Q1",
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "wording_custody": "BANK_RECORD_ONLY",
+      "bank_status": "CANDIDATE",
+      "disposition": "IDENTITY_HOLD",
+      "learner_eligibility": "NOT_ESTABLISHED"
+    },
+    {
+      "owner_alias": "Q21",
+      "canonical_question_ref": "PYQ-PHY-JEEADV-2022-P1-Q08",
+      "original_identifier": "JEE (Advanced)|2022|Paper 1|Physics|Q8",
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "wording_custody": "BANK_RECORD_ONLY",
+      "bank_status": "CANDIDATE",
+      "disposition": "DIAGNOSTIC_ONLY",
+      "learner_eligibility": "NOT_ESTABLISHED"
+    },
+    {
+      "owner_alias": "Q26",
+      "canonical_question_ref": "PYQ-PHY-JEEADV-2026-P1-Q06",
+      "original_identifier": "JEE (Advanced)|2026|Paper 1|Physics|Q6",
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "wording_custody": "BANK_RECORD_ONLY",
+      "bank_status": "CANDIDATE",
+      "disposition": "DIAGNOSTIC_ONLY",
+      "learner_eligibility": "NOT_ESTABLISHED"
+    },
+    {
+      "owner_alias": "Q23",
+      "canonical_question_ref": "PYQ-PHY-JEEADV-2025-P2-Q15",
+      "original_identifier": "JEE (Advanced)|2025|Paper 2|Physics|Q15",
+      "primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+      "wording_custody": "BANK_RECORD_ONLY",
+      "bank_status": "CANDIDATE",
+      "disposition": "DIAGNOSTIC_ONLY",
+      "learner_eligibility": "NOT_ESTABLISHED"
+    }
+  ],
+  "holds": [
+    "Core2 has no authorized ordinary source corpus for this bucket.",
+    "Core1A has no canonical questions exposed as worked conceptual anchors.",
+    "Event-clock and projectile-model representations lack canonical scene instances.",
+    "Q15 source identity is ambiguous: 2018 P2 Q08 and 2023 P1 Q01 are different items.",
+    "Five competitive-bank anchors are diagnostic evidence, not an accepted learner question set.",
+    "PDF publication belongs to issue #273 and has not been validated."
+  ],
+  "data_sha256": "b74e8f540420934220ccc6d8cc59ceac4c905b176c0f07114411b0472680bd54"
+}
