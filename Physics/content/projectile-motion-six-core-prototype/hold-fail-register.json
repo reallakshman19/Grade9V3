@@ -1,0 +1,138 @@
+{
+  "artifact_id": "HOLD-REGISTER-PROJECTILE-SIX-CORE",
+  "repository_basis": "main@dd1fb0ca8374a398ea48aa3253a5d37ed0d62739",
+  "holds": [
+    {
+      "id": "HOLD-CORE2-ORDINARY-CUSTODY",
+      "severity": "HOLD",
+      "affected": [
+        "CORE2",
+        "five demand anchors"
+      ],
+      "reason": "Competitive-bank verified demand is not ordinary Core2 custody; target bank records are adapted CANDIDATE records, not eligible ordinary REVIEWED/CURATED source questions.",
+      "closes_when": "Ordinary canonical source-derived reviewed/curated question custody is established under current repository contracts."
+    },
+    {
+      "id": "HOLD-Q15-IDENTITY",
+      "severity": "HOLD",
+      "affected": [
+        "Q15"
+      ],
+      "reason": "Owner label is ambiguous between 2018-P2-Q08 and 2023-P1-Q01.",
+      "closes_when": "Authoritative owner/source evidence establishes the intended exact repository question identity."
+    },
+    {
+      "id": "HOLD-Q28-CALCULUS",
+      "severity": "HOLD",
+      "affected": [
+        "Q28",
+        "anchor-specific Core2A/Core2B"
+      ],
+      "reason": "Differentiating x(t), y(t) is explicitly excluded from the canonical bucket.",
+      "closes_when": "Upstream canonical teaching admits the differentiation capability, or the demand is intentionally routed to a different taught capability set."
+    },
+    {
+      "id": "HOLD-Q21-CHANGED-G",
+      "severity": "HOLD",
+      "affected": [
+        "Q21",
+        "anchor-specific Core2A/Core2B"
+      ],
+      "reason": "Post-apex changed gravity requires staged/changed-acceleration teaching not established in this bucket.",
+      "closes_when": "Canonical upstream teaching establishes the changed-regime capability and prior exposure."
+    },
+    {
+      "id": "HOLD-Q26-TRAJECTORY-GEOMETRY",
+      "severity": "HOLD",
+      "affected": [
+        "Q26",
+        "anchor-specific Core2A/Core2B"
+      ],
+      "reason": "Trajectory-equation/slope or equivalent advanced specified-point geometry lies outside the canonical first slice.",
+      "closes_when": "Canonical upstream teaching establishes the required advanced geometry/trajectory capability."
+    },
+    {
+      "id": "HOLD-Q23-DRAG",
+      "severity": "HOLD",
+      "affected": [
+        "Q23",
+        "anchor-specific Core2A/Core2B"
+      ],
+      "reason": "Linear drag requires a velocity-dependent dynamics model and calculus outside the canonical package.",
+      "closes_when": "Canonical upstream teaching establishes the drag model and its mathematical prerequisites."
+    },
+    {
+      "id": "HOLD-WORKED-ANCHOR-MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1A",
+        "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "reason": "No canonical Core1A-exposed worked conceptual anchor is bound to this microtopic; application questions are not relabelled as teaching anchors.",
+      "closes_when": "Canonical authority adds/reviews a worked conceptual anchor for Core1A."
+    },
+    {
+      "id": "HOLD-WORKED-ANCHOR-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1A",
+        "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION"
+      ],
+      "reason": "No canonical Core1A-exposed worked conceptual anchor is bound to this microtopic; application questions are not relabelled as teaching anchors.",
+      "closes_when": "Canonical authority adds/reviews a worked conceptual anchor for Core1A."
+    },
+    {
+      "id": "HOLD-WORKED-ANCHOR-MIC-PHY-KIN-PROJECTILE-MODEL",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1A",
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "reason": "No canonical Core1A-exposed worked conceptual anchor is bound to this microtopic; application questions are not relabelled as teaching anchors.",
+      "closes_when": "Canonical authority adds/reviews a worked conceptual anchor for Core1A."
+    },
+    {
+      "id": "HOLD-VISUAL-REP-KIN-2D-EVENT-CLOCK",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1A",
+        "CORE1B",
+        "preview",
+        "REP-KIN-2D-EVENT-CLOCK"
+      ],
+      "reason": "Canonical representation exists but no bound canonical scene instance is present.",
+      "closes_when": "Canonical/academically reviewed scene binding is added; do not invent subject geometry in Shared code."
+    },
+    {
+      "id": "HOLD-VISUAL-REP-KIN-2D-PROJECTILE-MODEL",
+      "severity": "HOLD",
+      "affected": [
+        "CORE1A",
+        "CORE1B",
+        "preview",
+        "REP-KIN-2D-PROJECTILE-MODEL"
+      ],
+      "reason": "Canonical representation exists but no bound canonical scene instance is present.",
+      "closes_when": "Canonical/academically reviewed scene binding is added; do not invent subject geometry in Shared code."
+    },
+    {
+      "id": "HOLD-CORE2A-LEARNER-FIT",
+      "severity": "HOLD",
+      "affected": [
+        "CORE2A learner release"
+      ],
+      "reason": "Owner estimate ~50% is not scoped capability evidence or measured mastery.",
+      "closes_when": "Scoped prerequisite evidence or an explicit owner routing waiver satisfying current Core2A contract is established."
+    },
+    {
+      "id": "HOLD-CORE2B-PRIOR-EXPOSURE",
+      "severity": "HOLD",
+      "affected": [
+        "CORE2B learner release"
+      ],
+      "reason": "Artifact lineage exists, but this learner's actual prior exposure and capability closure are not established.",
+      "closes_when": "Prior exposure to the named Core2A parents and prerequisite closure are established for the learner, or an allowed owner routing decision is recorded without claiming mastery."
+    }
+  ],
+  "fails": []
+}
