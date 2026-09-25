@@ -54,6 +54,9 @@ Its central rules are:
 - execution order is production control only and never changes those ownership boundaries;
 - per-question `question.primary_capability_ref` survives set-level topic/rung planning;
 - demand evidence and learner eligibility remain separate states;
+- every fixed assessment demand receives a Demand Bridge / Admission disposition before it can shape Core2A/Core2B learner application;
+- a demand outside the current packet is routed to canonical prerequisite truth, an explicit extension-admission candidate, or a visible capability HOLD rather than disappearing or silently expanding Core1A/Core1B;
+- unrelated easier practice may support prerequisites but does not close a fixed target demand;
 - unresolved authority dependencies remain explicit `HOLD` rather than being filled to
   satisfy a requested product count.
 
