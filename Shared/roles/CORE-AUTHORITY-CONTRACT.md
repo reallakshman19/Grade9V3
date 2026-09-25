@@ -84,7 +84,7 @@ a new academic schema and it does not replace subject package schemas.
 
 ```core-authority
 {
-  "version": "1.0",
+  "version": "1.1",
   "authority_classes": {
     "CANONICAL_ACADEMIC_TRUTH": {
       "description": "Canonical subject package records: bucket/microtopic/capability/relation/representation truth.",
