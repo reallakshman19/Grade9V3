@@ -1,0 +1,282 @@
+{
+  "schema_version": "1.0.0",
+  "prototype_id": "G9-PHY-PROJECTILE-STANDARD-MODIFIED-SIX-CORE-2026-09-25",
+  "title": "Projectile Motion — Standard Model and Modified-Dynamics Demand",
+  "repository_basis": {
+    "repository": "reallaksh19/Grade9V3",
+    "recorded_main_sha": "9a1be5704f57931c830adcfee79d872e22c52b21",
+    "pr_number": 281,
+    "pr_branch": "issue-280/core-demand-bridge",
+    "inspected_pr_head_sha": "90dda7abb16265666a0b5499c37a2b5aa691f470"
+  },
+  "authority": {
+    "role_contracts": [
+      "Shared/roles/README.md",
+      "Shared/roles/CORE-AUTHORITY-CONTRACT.md",
+      "Shared/roles/LEARNER-PRODUCT-TEMPLATES.md",
+      "Shared/roles/CORE1.md",
+      "Shared/roles/CORE2.md",
+      "Shared/roles/CORE1A.md",
+      "Shared/roles/CORE1B.md",
+      "Shared/roles/CORE2A.md",
+      "Shared/roles/CORE2B.md"
+    ],
+    "package_schema": "Shared/library/package.schema.json",
+    "canonical_academic_package": "Physics/library/phy-kin-2d-motion.v1.json",
+    "canonical_package_id": "LIB-PHY-KIN-2D-MOTION-AUTHORED",
+    "canonical_package_version": "0.1.0",
+    "canonical_package_status": "CANDIDATE",
+    "question_bank": "Physics/library/exam-bank/competitive-exam-question-bank.v2.json",
+    "rule": "Core1/Core1A/Core1B derive from canonical academic truth, never Core2; execution order is not authority order."
+  },
+  "learner_input": {
+    "owner_estimate_percent": 50,
+    "evidence_class": "OWNER_ESTIMATE_ONLY",
+    "measured_mastery": "NOT_ESTABLISHED",
+    "prerequisite_mastery": "NOT_ESTABLISHED",
+    "transfer_readiness": "NOT_ESTABLISHED",
+    "permitted_use": "support/routing only"
+  },
+  "canonical_coverage": {
+    "bucket_ref": "BUCKET-PHY-KIN-2D-MOTION",
+    "microtopics": [
+      {
+        "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+        "rung": "R1",
+        "primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "intrinsic_badge": "MEDIUM",
+        "representation_refs": [
+          "REP-KIN-2D-SHARED-CLOCK"
+        ]
+      },
+      {
+        "microtopic_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+        "rung": "R2",
+        "primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+        "intrinsic_badge": "MEDIUM",
+        "representation_refs": [
+          "REP-KIN-2D-SHARED-CLOCK",
+          "REP-KIN-2D-EVENT-CLOCK"
+        ]
+      },
+      {
+        "microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+        "rung": "R3",
+        "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+        "intrinsic_badge": "HARD",
+        "representation_refs": [
+          "REP-KIN-2D-SHARED-CLOCK",
+          "REP-KIN-2D-EVENT-CLOCK",
+          "REP-KIN-2D-PROJECTILE-MODEL"
+        ]
+      }
+    ],
+    "exclusions": [
+      "trajectory-equation derivation",
+      "calculus differentiation of time-dependent 2D position",
+      "air/linear drag dynamics",
+      "variable or changed-gravity projectile specialization",
+      "advanced projectile geometry outside the packet"
+    ]
+  },
+  "products": {
+    "CORE1": {
+      "role": "compact semantic orientation",
+      "authority_class": "CANONICAL_ACADEMIC_TRUTH",
+      "status": "STRUCTURALLY_AVAILABLE_WITH_VISUAL_HOLD",
+      "projection_refs": [
+        "physics:bucket-phy-kin-2d-motion:core1"
+      ],
+      "canonical_microtopic_refs": [
+        "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+        "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "governing_relation_refs": [
+        "REL-KIN-2D-VELOCITY",
+        "REL-KIN-2D-DISPLACEMENT",
+        "REL-PROJECTILE-COMPONENT-MODEL"
+      ],
+      "representation_refs": [
+        "REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK",
+        "REP-KIN-2D-PROJECTILE-MODEL"
+      ],
+      "provenance_class": "CANONICAL_DERIVED",
+      "hold_refs": [
+        "HOLD-VISUAL-SEMANTIC-REVIEW",
+        "HOLD-ACADEMIC-REVIEW-STATE"
+      ]
+    },
+    "CORE2": {
+      "role": "source custody",
+      "authority_class": "AUTHORIZED_SOURCE_CUSTODY",
+      "status": "HOLD",
+      "projection_refs": [],
+      "hold_code": "SOURCE_CUSTODY_HOLD",
+      "resolved_anchor_refs": [
+        "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
+        "PYQ-PHY-JEEADV-2022-P1-Q08",
+        "PYQ-PHY-JEEADV-2026-P1-Q06",
+        "PYQ-PHY-JEEADV-2025-P2-Q15"
+      ],
+      "ambiguous_anchor": {
+        "owner_label": "Q15",
+        "candidate_refs": [
+          "PYQ-PHY-JEEADV-2018-P2-Q08",
+          "PYQ-PHY-JEEADV-2023-P1-Q01"
+        ],
+        "state": "IDENTITY_HOLD"
+      },
+      "finding": "Verified-parent records are FAITHFUL_NON_VERBATIM_RESTATEMENT and do not establish the current Core2 component-by-component custody proof.",
+      "closure_required": [
+        "resolve Q15 authoritatively",
+        "pin retained source bytes and precise item locators",
+        "verify stem/options/subparts/conditions/figures/captions/source hints/source answer or rubric component-by-component"
+      ],
+      "provenance_class": "SOURCE_DERIVED",
+      "hold_refs": [
+        "HOLD-CORE2-SOURCE-CUSTODY",
+        "HOLD-Q15-IDENTITY"
+      ]
+    },
+    "CORE1A": {
+      "role": "detailed declarative teaching",
+      "authority_class": "CANONICAL_ACADEMIC_TRUTH",
+      "status": "STRUCTURALLY_AVAILABLE_WITH_VISUAL_HOLD",
+      "projection_refs": [
+        "physics:mic-phy-kin-2d-independent-components:core1a",
+        "physics:mic-phy-kin-2d-constant-acceleration:core1a",
+        "physics:mic-phy-kin-projectile-model:core1a"
+      ],
+      "canonical_microtopic_refs": [
+        "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+        "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "canonical_coverage_identity_with_core1b": true,
+      "provenance_class": "CANONICAL_DERIVED",
+      "extension_policy": "Anchor extensions annotate boundaries/bridges only; no new Core1A microtopic.",
+      "hold_refs": [
+        "HOLD-VISUAL-SEMANTIC-REVIEW",
+        "HOLD-ACADEMIC-REVIEW-STATE"
+      ]
+    },
+    "CORE1B": {
+      "role": "self-tutor reconstruction",
+      "authority_class": "CANONICAL_ACADEMIC_TRUTH",
+      "status": "STRUCTURALLY_AVAILABLE_WITH_VISUAL_HOLD",
+      "projection_refs": [
+        "physics:mic-phy-kin-2d-independent-components:core1b",
+        "physics:mic-phy-kin-2d-constant-acceleration:core1b",
+        "physics:mic-phy-kin-projectile-model:core1b"
+      ],
+      "canonical_microtopic_refs": [
+        "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+        "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "canonical_coverage_identity_with_core1a": true,
+      "cycle": [
+        "PREDICT",
+        "ATTEMPT",
+        "RECONSTRUCT",
+        "DIAGNOSE",
+        "REPAIR",
+        "BOUNDARY TEST"
+      ],
+      "reveal_rule": "learner attempt precedes reconstruction/model response in the shared runtime",
+      "provenance_class": "CANONICAL_DERIVED",
+      "hold_refs": [
+        "HOLD-VISUAL-SEMANTIC-REVIEW",
+        "HOLD-ACADEMIC-REVIEW-STATE"
+      ]
+    },
+    "CORE2A": {
+      "role": "supported familiar application",
+      "authority_class": "CANONICAL_ACADEMIC_TRUTH_PLUS_AUTHORED_PRACTICE",
+      "status": "STRUCTURALLY_AVAILABLE_LEARNER_ROUTING_HOLD",
+      "question_refs": [
+        "Q-PHY-KIN-2D-2A-SHARED-CLOCK-01",
+        "Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02",
+        "Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03",
+        "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04",
+        "Q-PHY-KIN-2D-2A-SAME-HEIGHT-05"
+      ],
+      "projection_refs": [
+        "physics:q-phy-kin-2d-2a-shared-clock-01:core2a",
+        "physics:q-phy-kin-2d-2a-constant-accel-02:core2a",
+        "physics:q-phy-kin-2d-2a-projectile-apex-03:core2a",
+        "physics:q-phy-kin-2d-2a-horizontal-launch-04:core2a",
+        "physics:q-phy-kin-2d-2a-same-height-05:core2a"
+      ],
+      "provenance_class": "AUTHORED_PRACTICE",
+      "hints_scaffolds": "No fixed-PYQ source hints imported; authored pedagogical scaffolds remain question.scaffolds[].",
+      "assessment_surface_claim": "HOLD — ordinary Core2 custody is not closed.",
+      "learner_routing": "HOLD — 50% owner estimate is not scoped capability evidence and no explicit waiver is recorded.",
+      "hold_refs": [
+        "HOLD-LEARNER-ROUTING",
+        "HOLD-CORE2-SOURCE-CUSTODY",
+        "HOLD-VISUAL-SEMANTIC-REVIEW"
+      ]
+    },
+    "CORE2B": {
+      "role": "changed-demand transfer",
+      "authority_class": "ESTABLISHED_CANONICAL_CAPABILITY_PLUS_AUTHORED_TRANSFER",
+      "status": "STRUCTURALLY_AVAILABLE_LEARNER_ROUTING_HOLD",
+      "question_refs": [
+        "Q-PHY-KIN-2D-2B-REPRESENTATION-01",
+        "Q-PHY-KIN-2D-2B-MODEL-VALIDITY-02",
+        "Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03",
+        "Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04",
+        "Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05"
+      ],
+      "projection_refs": [
+        "physics:q-phy-kin-2d-2b-representation-01:core2b",
+        "physics:q-phy-kin-2d-2b-model-validity-02:core2b",
+        "physics:q-phy-kin-2d-2b-unequal-height-03:core2b",
+        "physics:q-phy-kin-2d-2b-projectile-validity-04:core2b",
+        "physics:q-phy-kin-2d-2b-same-height-velocity-05:core2b"
+      ],
+      "provenance_class": "AUTHORED_PRACTICE",
+      "designed_prior_exposure_lineage": {
+        "Q-PHY-KIN-2D-2B-REPRESENTATION-01": [
+          "Q-PHY-KIN-2D-2A-SHARED-CLOCK-01"
+        ],
+        "Q-PHY-KIN-2D-2B-MODEL-VALIDITY-02": [
+          "Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02"
+        ],
+        "Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03": [
+          "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04"
+        ],
+        "Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04": [
+          "Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03"
+        ],
+        "Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05": [
+          "Q-PHY-KIN-2D-2A-SAME-HEIGHT-05"
+        ]
+      },
+      "protected_move_refs": {
+        "Q-PHY-KIN-2D-2B-REPRESENTATION-01": "READ_FROM_CANONICAL_QUESTION_RECORD",
+        "Q-PHY-KIN-2D-2B-MODEL-VALIDITY-02": "READ_FROM_CANONICAL_QUESTION_RECORD",
+        "Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03": "READ_FROM_CANONICAL_QUESTION_RECORD",
+        "Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04": "READ_FROM_CANONICAL_QUESTION_RECORD",
+        "Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05": "READ_FROM_CANONICAL_QUESTION_RECORD"
+      },
+      "scientific_rule": "No linear drag, trajectory derivation, restitution or energy-loss model is introduced as transfer.",
+      "actual_learner_prior_exposure": "NOT_ESTABLISHED",
+      "learner_routing": "HOLD — designed lineage is not learner-specific prior exposure evidence.",
+      "hold_refs": [
+        "HOLD-LEARNER-ROUTING",
+        "HOLD-CORE2-SOURCE-CUSTODY",
+        "HOLD-VISUAL-SEMANTIC-REVIEW"
+      ]
+    }
+  },
+  "delivery": {
+    "shared_runtime": "docs/core-learning/index.html + docs/js/core-learning/*",
+    "projection_data": "docs/core-learning/data.js",
+    "bounded_preview": "docs/core-learning/projectile-motion-standard-modified-preview.html",
+    "pdf_generation": "NOT_RUN — publication readiness is held"
+  }
+}
