@@ -95,6 +95,8 @@ Source custody and learner eligibility remain independent of this disposition. A
 
 A bridge HOLD must not be a dead end. When repository truth supports it, record the canonical prerequisite route or the exact extension-admission work that would close the gap.
 
+Unrelated easier practice may support prerequisites, but it does not count as closure of the fixed demand. The learner progression to every fixed target must remain visible in the bridge record until the target is genuinely reachable.
+
 ## Machine-readable authority contract
 
 The fenced block below is the machine-readable authority for the invariants above. It is not
@@ -235,7 +237,9 @@ a new academic schema and it does not replace subject package schemas.
     "bridge_does_not_create_core_role": true,
     "bridge_does_not_admit_extension_to_core1_family": true,
     "core2a_requires_established_capability_closure": true,
-    "core2b_requires_established_capability_closure_and_prior_exposure": true
+    "core2b_requires_established_capability_closure_and_prior_exposure": true,
+    "fixed_demand_progression_must_remain_visible": true,
+    "generic_practice_does_not_close_fixed_demand": true
   },
   "canonical_field_rules": {
     "question_primary": "question.primary_capability_ref",
