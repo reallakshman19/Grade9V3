@@ -28,7 +28,7 @@
 | 12 | Core2A reasoning routes explain model/representation/event choice, not only algebra. | **PASS** | Existing reasoning_route kinds include REPRESENT/DECIDE/CONNECT/TRANSFORM/VERIFY with crux refs. |
 | 13 | Core2B introduces no untaught scientific capability. | **PASS** | Uses only canonical authored transfer items; five advanced demand anchors are excluded from transfer. |
 | 14 | Every Core2B protected decision remains undisclosed pre-attempt. | **PASS** | Preview shows only CONCEPT scaffolds whose supports_move_ref differs from protected_move_ref. |
-| 15 | Actual learner-facing visuals resolve to semantic representations or explicitly HOLD. | **PASS** | Shared-clock scene is rendered; event-clock and projectile-model visuals are VISUAL_HOLD. |
+| 15 | Actual learner-facing visuals resolve to semantic representations or explicitly HOLD. | **PASS** | Scene eligibility is checked by Core plus microtopic/question binding. Only the shared-clock scene for the independent-components Core1A/Core1B usage renders; every other required usage is explicit VISUAL_HOLD. |
 | 16 | Terminology/equations/conditions agree across all six products. | **PASS** | Derived from the same package/bank snapshot at starting SHA. |
 | 17 | Every prompt/task closes without requiring a live tutor. | **PASS** | Canonical exit tasks/elicitation closures and authored practice answers/checks are retained. |
 | 18 | Unresolved authority dependencies remain HOLD/FAIL. | **PASS** | Core2 custody, Q15 identity, advanced gaps, worked anchors, visual bindings, learner-fit and prior-exposure gaps are all registered. |
@@ -43,7 +43,7 @@
 - No linear-drag, changed-gravity, bounce/restitution, trajectory-equation or calculus content is taught inside Core1A.
 - Core2B safe pre-attempt support is filtered so it cannot target the protected move.
 - Missing representation scene bindings are surfaced as `VISUAL_HOLD`.
-- `visual-audit.json` records, for every canonical representation, purpose, required semantic elements, actual bound elements, correspondence, reveal stage, accessibility, provenance and semantic-review status.
+- `visual-audit.json` records, for every canonical representation and every required learner-product usage, purpose, required semantic elements, actual bound elements, correspondence, reveal stage, accessibility, provenance and semantic-review status; scene eligibility is checked by exact Core plus microtopic/question binding.
 
 ## Outcome
 
