@@ -19,7 +19,7 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(REPO))
 
 from Shared.contracts import load  # noqa: E402
-from Shared.tools import core_authority_contract, study_map  # noqa: E402
+from Shared.tools import core_authority_contract, core_template_contract, study_map  # noqa: E402
 
 BRIEF_SCHEMA = REPO / "Shared/library/prompt-brief.schema.json"
 AUTHORING_SCHEMA = "Shared/library/authoring-request.schema.json"
@@ -513,7 +513,7 @@ def _demand_bridge(rows: list[dict], authority: dict) -> dict:
     }
 
 
-def render_prompt(brief: dict, template: dict, authority_contract: dict | None = None) -> str:
+def render_prompt(brief: dict, template: dict, authority_contract: dict | None = None, learner_template_contract: dict | None = None) -> str:
     role_refs = template["role_contract_refs"]
     role_guardrails = template["role_guardrails"]
     rows = brief["question_rows"]
@@ -544,6 +544,7 @@ def render_prompt(brief: dict, template: dict, authority_contract: dict | None =
         for core in brief["requested_cores"]
     )
     authority_contract = authority_contract or core_authority_contract.load_contract()
+    learner_template_contract = learner_template_contract or core_template_contract.load_contract()
     authority_lines = []
     for core in brief["requested_cores"]:
         rule = authority_contract["roles"][core]
@@ -595,6 +596,31 @@ def render_prompt(brief: dict, template: dict, authority_contract: dict | None =
           "Unrelated easier practice may support prerequisites but does not close the fixed target demand. "
           "Core2A/Core2B may consume a target demand only after capability closure is ESTABLISHED or ROUTED; Core2B additionally requires prior exposure."
     )
+    delivery = learner_template_contract["delivery_invariants"]
+    delivery_lines = [
+        f"- {name}={str(value).lower()}"
+        for name, value in delivery.items()
+    ]
+    role_anatomy_lines = []
+    for core in brief["requested_cores"]:
+        role = learner_template_contract["roles"][core]
+        ordered = " → ".join(
+            f"{block['id']}[{block['visibility']}]"
+            for block in role["ordered_blocks"]
+        )
+        role_anatomy_lines.append(f"- {core}: {ordered}")
+    delivery_text = (
+        f"Contract: {brief['learner_product_contract']['path']} "
+        f"(version {brief['learner_product_contract']['version']}).\n"
+        + "\n".join(delivery_lines)
+        + "\nRequired role anatomy:\n"
+        + "\n".join(role_anatomy_lines)
+        + "\nThe actual learner artifact must contain the required blocks; a summary page that points elsewhere for the full teaching/solution does not satisfy the role. "
+          "Interactive reveal must have a semantically complete static/print closure route. "
+          "Required canonical visuals must actually render in the learner artifact. "
+          "Math must render as readable mathematics. "
+          "Use the shared learner projection/runtime by default; a topic-local parallel renderer requires a proven shared-stack gap."
+    )
     diff = " → ".join(brief["validation"].get("difficulty_bands") or []) or "Use the canonical/intrinsic difficulty information available in the referenced records; do not infer it from learner percentage."
     kws = "\n".join(f"- {item['phrase']} ({item['kind']}; evidence: {', '.join(item['evidence_refs'])})" for item in fingerprint)
     trace = "\n".join(
@@ -615,6 +641,7 @@ def render_prompt(brief: dict, template: dict, authority_contract: dict | None =
         "EXECUTION_ORDER": order + "\nTreat this as production control only. It does not override readiness, HOLD decisions, or the authority graph.",
         "AUTHORITY_GRAPH": authority_text,
         "DEMAND_BRIDGE": bridge_text,
+        "LEARNER_PRODUCT_CONTRACT": delivery_text,
         "TOPIC_BOUNDARY": boundary,
         "CORE_OBLIGATIONS": core_lines,
         "DIFFICULTY_PROGRESSION": diff + "\nPreserve intrinsic Core1A/Core1B depth regardless of the learner estimate.",
@@ -655,6 +682,8 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
     template = load(repo / "template/core-prompt-composer/core-agent-prompt.v1.json")
     authority_path = core_authority_contract.discover_contract(repo / "Shared" / "roles")
     authority = core_authority_contract.load_contract(authority_path)
+    learner_template_path = core_template_contract.discover_template_spec(repo / "Shared" / "roles")
+    learner_template = core_template_contract.load_contract(learner_template_path)
     normalized = json.loads(canonical_json(doc))
     input_digest = digest(normalized)
     brief_id = "PB-" + input_digest.split(":", 1)[1][:16].upper()
@@ -715,6 +744,11 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
             "path": str(authority_path.relative_to(repo)),
             "digest": digest(authority),
         },
+        "learner_product_contract": {
+            "version": learner_template["version"],
+            "path": str(learner_template_path.relative_to(repo)),
+            "digest": digest(learner_template),
+        },
         "input_digest": input_digest,
         "prompt_digest": "sha256:" + ("0" * 64),
         "subject": subject,
@@ -757,7 +791,7 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
             "note": "Composer PASS means only that the prompt bundle is structurally/mapping-ready for the existing planner; it does not mean any Core product is ready.",
         },
     }
-    prompt = render_prompt(brief, template, authority)
+    prompt = render_prompt(brief, template, authority, learner_template)
     brief["prompt_digest"] = digest(prompt)
     structure_findings = _validate_brief(brief, repo)
     if structure_findings:
