@@ -217,6 +217,7 @@ class PromptComposerTests(unittest.TestCase):
             ["node", "--check", "public/js/topic-atlas.js"],
             ["node", "--test", "tests/prompt_composer.test.mjs"],
             ["python3", "Shared/tools/build_prompt_composer_data.py", "--check"],
+            ["python3", "Shared/tools/build_prompt_examples.py", "--check"],
         ]
         for command in commands:
             completed = subprocess.run(
