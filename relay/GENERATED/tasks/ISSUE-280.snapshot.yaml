@@ -119,7 +119,7 @@
     "url": "https://github.com/reallaksh19/Grade9V3/pull/281",
     "lifecycle": "DRAFT_VALIDATION",
     "base": "ca0de27e307e4f532412ac52713a6faf14b216a4",
-    "head": "ee55ec90c8a763bae7656048416802af031be3f6",
+    "head": "df6228e21f120b43e2c5ff1604086bee30a2207c",
     "mergeability": "MERGEABLE_AS_DRAFT"
   },
   "delivery_stack": [],
@@ -134,7 +134,8 @@
       "Updated prompt-brief schema and prompt template with DEMAND_BRIDGE.",
       "Updated Python/browser composer parity and generated five-question prompt example.",
       "Extended learner-product delivery contract to prevent summary-only, broken-math, missing-visual, and JS-only closure regressions.",
-      "Refreshed prompt composer data and Pages mirrors."
+      "Refreshed prompt composer data and Pages mirrors.",
+      "Added a source-grounded Projectile Motion six-Core prototype review bundle with explicit custody, eligibility, extension, visual and publication HOLDs."
     ],
     "what_remains": [
       "Pass exact-head Guardrails and V3.1 Relay.",
@@ -161,7 +162,9 @@
       "tests/test_core_authority_contract.py",
       "tests/test_core_template_contract.py",
       "tests/test_prompt_composer.py",
-      "tests/prompt_composer.test.mjs"
+      "tests/prompt_composer.test.mjs",
+      "docs/grade9/projectile-motion-standard-modified/",
+      "docs/core-learning/projectile-motion-standard-modified-preview.html"
     ],
     "protected": [
       "Canonical subject academic truth",
@@ -177,7 +180,7 @@
   },
   "material": {
     "base": "ca0de27e307e4f532412ac52713a6faf14b216a4",
-    "current_head": "ee55ec90c8a763bae7656048416802af031be3f6"
+    "current_head": "df6228e21f120b43e2c5ff1604086bee30a2207c"
   },
   "next": {
     "immediate_action": "Require green exact-head Guardrails and V3.1 Relay; then publish result and merge.",
