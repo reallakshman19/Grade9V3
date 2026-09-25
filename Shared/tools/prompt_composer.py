@@ -479,6 +479,40 @@ def _difficulty(rows: list[dict]) -> list[str]:
     return sorted(bands, key=lambda value: (int(value[1:]) if value.startswith("D") and value[1:].isdigit() else 999, value))
 
 
+def _demand_bridge(rows: list[dict], authority: dict) -> dict:
+    contract = authority["demand_bridge"]
+    seeds = []
+    for row in rows:
+        if row.get("identity_status") == "IDENTITY_HOLD":
+            state = "IDENTITY_HOLD"
+        elif not row.get("primary_capability_ref"):
+            state = "UNMAPPED_HOLD"
+        else:
+            state = "READY_FOR_CAPABILITY_ANALYSIS"
+        seeds.append({
+            "demand_ref": row["owner_question_id"],
+            "canonical_question_ref": row.get("canonical_question_ref"),
+            "candidate_question_refs": list(row.get("candidate_question_refs") or []),
+            "canonical_primary_capability_ref": row.get("primary_capability_ref"),
+            "demand_evidence_refs": list(row.get("demand_evidence_refs") or []),
+            "source_custody": row.get("source_custody"),
+            "learner_eligibility_state": row.get("learner_eligibility") or "NOT_ESTABLISHED",
+            "identity_status": row.get("identity_status") or "UNMAPPED",
+            "classification_state": state,
+        })
+    return {
+        "contract_version": authority["version"],
+        "is_core_role": contract["is_core_role"],
+        "required_for_every_fixed_demand": contract["required_for_every_fixed_demand"],
+        "allowed_dispositions": list(contract["dispositions"].keys()),
+        "required_output_fields": list(contract["required_record_fields"]),
+        "core2a_allowed_capability_closure": list(contract["core2a_allowed_capability_closure"]),
+        "core2b_allowed_capability_closure": list(contract["core2b_allowed_capability_closure"]),
+        "core2b_requires_prior_exposure": contract["core2b_requires_prior_exposure"],
+        "rows": seeds,
+    }
+
+
 def render_prompt(brief: dict, template: dict, authority_contract: dict | None = None) -> str:
     role_refs = template["role_contract_refs"]
     role_guardrails = template["role_guardrails"]
@@ -530,6 +564,37 @@ def render_prompt(brief: dict, template: dict, authority_contract: dict | None =
         "\nSource question.hints[] and authored question.scaffolds[] remain separate custody classes."
         "\nExtension demands do not become Core1/Core1A/Core1B microtopics unless canonical academic authority admits them."
     )
+
+    bridge = brief["demand_bridge"]
+    bridge_contract = authority_contract["demand_bridge"]
+    disposition_lines = []
+    for name in bridge["allowed_dispositions"]:
+        row = bridge_contract["dispositions"][name]
+        disposition_lines.append(
+            f"- {name}: capability_closure={row['capability_closure']}"
+            + (f"; downstream_application_state={row['downstream_application_state']}" if row.get("downstream_application_state") else "")
+        )
+    bridge_seed_lines = []
+    for row in bridge["rows"]:
+        bridge_seed_lines.append(
+            f"- {row['demand_ref']}: classification_state={row['classification_state']}; "
+            f"canonical_primary={row['canonical_primary_capability_ref'] or 'UNRESOLVED'}; "
+            f"identity={row['identity_status']}; learner_eligibility={row['learner_eligibility_state']}; "
+            f"demand_evidence={', '.join(row['demand_evidence_refs']) or 'none'}"
+        )
+    bridge_text = (
+        "Demand Bridge / Admission is a planning control, not a seventh Core. "
+        "Before authoring application products, produce one final bridge record for every fixed demand using exactly one allowed disposition.\n"
+        + "\n".join(disposition_lines)
+        + "\nRequired bridge output fields: " + ", ".join(bridge["required_output_fields"])
+        + "\nSeed rows from canonical mapping/identity state:\n" + "\n".join(bridge_seed_lines)
+        + "\nDo not drop a fixed demand because it is outside the current packet. "
+          "Do not silently expand Core1/Core1A/Core1B. "
+          "If canonical prerequisite truth exists elsewhere, route to it explicitly. "
+          "If not, create an EXTENSION_ADMISSION_CANDIDATE or keep UNRESOLVED_CAPABILITY_GAP with a concrete close condition. "
+          "Unrelated easier practice may support prerequisites but does not close the fixed target demand. "
+          "Core2A/Core2B may consume a target demand only after capability closure is ESTABLISHED or ROUTED; Core2B additionally requires prior exposure."
+    )
     diff = " → ".join(brief["validation"].get("difficulty_bands") or []) or "Use the canonical/intrinsic difficulty information available in the referenced records; do not infer it from learner percentage."
     kws = "\n".join(f"- {item['phrase']} ({item['kind']}; evidence: {', '.join(item['evidence_refs'])})" for item in fingerprint)
     trace = "\n".join(
@@ -549,14 +614,15 @@ def render_prompt(brief: dict, template: dict, authority_contract: dict | None =
         "LEARNER_PROFILE": learner_text + "\nA percentage is a starting coordinate only; it is not evidence of prerequisite mastery.",
         "EXECUTION_ORDER": order + "\nTreat this as production control only. It does not override readiness, HOLD decisions, or the authority graph.",
         "AUTHORITY_GRAPH": authority_text,
+        "DEMAND_BRIDGE": bridge_text,
         "TOPIC_BOUNDARY": boundary,
         "CORE_OBLIGATIONS": core_lines,
         "DIFFICULTY_PROGRESSION": diff + "\nPreserve intrinsic Core1A/Core1B depth regardless of the learner estimate.",
         "KEYWORD_FINGERPRINT": kws,
-        "PROVENANCE_TRACE": trace + "\nUse only the cited repository/owner inputs. Do not expose or invent private reasoning traces.",
-        "ACCEPTANCE": "Keep every fixed question traceable to its mapping finding; preserve per-question primary_capability_ref independently from set-level scope; keep demand evidence separate from learner eligibility; preserve the requested Core set/order without treating order as authority; distinguish source hints from authored scaffolds and source/adapted/authored material; do not promote extension demand into Core1-family teaching without canonical admission; and hand the unchanged authoring request to the existing planner.",
+        "PROVENANCE_TRACE": trace + "\nUse only the cited repository/owner inputs. Do not expose or invent private reasoning traces. Every fixed demand must retain a bridge/admission footprint until its target capability closure is established.",
+        "ACCEPTANCE": "Keep every fixed question traceable to its mapping finding and Demand Bridge disposition; preserve per-question primary_capability_ref independently from set-level scope; keep demand evidence separate from learner eligibility; preserve the requested Core set/order without treating order as authority; distinguish source hints from authored scaffolds and source/adapted/authored material; do not promote extension demand into Core1-family teaching without canonical admission; do not substitute easier generic practice as closure of a fixed target demand; require ESTABLISHED or ROUTED capability closure before Core2A/Core2B target-demand use and prior exposure before Core2B; and hand the unchanged authoring request to the existing planner.",
         "NON_GOALS": "Do not select a new canonical question set, create a seventh Core, infer mastery, fabricate source receipts, duplicate plan_request.py, or author/publish PDFs in this task.",
-        "HOLD_FAIL": hold_text + "\nIf a composer HOLD is present, do not silently resolve it. If the planner requests source basis, prerequisites or owner input, preserve that HOLD.",
+        "HOLD_FAIL": hold_text + "\nIf a composer HOLD is present, do not silently resolve it. A capability HOLD must still leave a concrete prerequisite/admission path where repository truth supports one. If the planner requests source basis, prerequisites or owner input, preserve that HOLD.",
         "DOWNSTREAM_DELIVERABLE": downstream,
     }
 
@@ -623,6 +689,7 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
     holds.extend(_source_basis_hold(source_basis, rows))
 
     fingerprint = _fingerprint(rows, scope, subject, repo, index)
+    demand_bridge = _demand_bridge(rows, authority)
     trace_rows = _trace(rows, fingerprint)
     worksheet = _worksheet_map(doc, rows)
 
@@ -653,6 +720,7 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
         "subject": subject,
         "scope": scope,
         "question_rows": rows,
+        "demand_bridge": demand_bridge,
         "keyword_fingerprint": fingerprint,
         "learner_entry": doc.get("learner"),
         "requested_cores": requested,
@@ -665,7 +733,7 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
         },
         "scope_boundaries": [
             "Canonical subject/question records remain authority.",
-            "Existing six Core role contracts remain authority; no seventh Core is created.",
+            "Existing six Core role contracts remain authority; Demand Bridge / Admission is planning control, not a seventh Core.",
             "Learner percentage is a routing coordinate only and cannot shrink CORE1A/CORE1B intrinsic depth.",
             "plan_request.py remains authoritative for readiness, prerequisite bridges, source receipts and product holds.",
             "Reusable question-set selection and strict exam mode remain outside this composer.",
