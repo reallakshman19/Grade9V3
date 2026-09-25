@@ -3,7 +3,7 @@ import {
   createStudyState, transitionStudyState, clamp, round, requirePublicCondition,
 } from "./study-model.mjs";
 import { STUDY_STYLES } from "./study-styles.mjs";
-import { renderQ21Stage, renderQ26Stage, renderQ23Stage } from "./study-visuals.mjs";
+import { renderLockedStage, renderQ21Stage, renderQ26Stage, renderQ23Stage } from "./study-visuals.mjs";
 
 function esc(value) {
   return String(value ?? "")
@@ -218,7 +218,6 @@ export class Core2AProjectileStudy extends HTMLElementBase {
   _q26Action(action, angle) {
     if (action === "angle" && ["degree0", "degree1", "atan"].includes(angle)) {
       this.state.q26.angle = angle;
-      if (!this.state.attempted && this.state.phase === "INITIAL") this.state.phase = "ATTEMPTING";
       this.render();
     }
   }
@@ -293,9 +292,10 @@ export class Core2AProjectileStudy extends HTMLElementBase {
   _renderSupport(record) {
     const visible = record.scaffolds.slice(0, this.state.supportIndex);
     const blocked = !this.state.attempted && this.state.supportIndex === this._blockedSupportIndex();
-    const canReveal = this.state.supportIndex < record.scaffolds.length && !blocked;
+    const attemptStarted = this.state.phase !== "INITIAL";
+    const canReveal = attemptStarted && this.state.supportIndex < record.scaffolds.length && !blocked;
     const supportRows = visible.length ? `<ol class="support-list">${visible.map((item,index)=>`<li><span class="step-num">${index+1}</span><div><b>${esc(item.support_kind)}</b><p>${esc(item.text)}</p></div></li>`).join("")}</ol>` : `<p class="muted">Ask only when you need a nudge. These are repository-authored scaffolds, not source hints.</p>`;
-    return `<section class="support-card"><div class="section-kicker">Optional support</div><h3>Need a hint?</h3>${supportRows}${canReveal ? `<button type="button" data-action="support">Show next support</button>` : blocked ? `<p class="lock-note">Commit your attempt before the next support step. It touches the protected decision.</p>` : `<p class="muted">All available scaffolds are open.</p>`}</section>`;
+    return `<section class="support-card"><div class="section-kicker">Optional support</div><h3>Need a hint?</h3>${supportRows}${canReveal ? `<button type="button" data-action="support">Show next support</button>` : !attemptStarted ? `<p class="lock-note">Start a prediction first. Support comes after Try.</p>` : blocked ? `<p class="lock-note">Commit your attempt before the next support step. It touches the protected decision.</p>` : `<p class="muted">All available scaffolds are open.</p>`}</section>`;
   }
 
   _renderReasoning(record) {
@@ -319,9 +319,10 @@ export class Core2AProjectileStudy extends HTMLElementBase {
     }
     const record = this.activeRecord;
     let stage = "";
-    if (this.state.owner === "Q21") stage = renderQ21Stage(this, record);
-    if (this.state.owner === "Q26") stage = renderQ26Stage(this, record);
-    if (this.state.owner === "Q23") stage = renderQ23Stage(this, record);
+    if (this.state.phase === "INITIAL") stage = renderLockedStage(this.state.owner);
+    else if (this.state.owner === "Q21") stage = renderQ21Stage(this, record);
+    else if (this.state.owner === "Q26") stage = renderQ26Stage(this, record);
+    else if (this.state.owner === "Q23") stage = renderQ23Stage(this, record);
     this.shadowRoot.innerHTML = `<style>${STUDY_STYLES}</style><div class="study-shell" data-owner="${this.state.owner}" data-phase-root="${this.state.phase}">${this._renderTabs()}${this._renderIdentity(record)}<div class="study-layout"><main class="primary-pane">${this._renderQuestion(record)}${stage}</main><aside class="support-pane" aria-label="Support and reasoning">${this._renderSupport(record)}${this._renderReasoning(record)}${this._renderSolution(record)}</aside></div></div>`;
   }
 }
