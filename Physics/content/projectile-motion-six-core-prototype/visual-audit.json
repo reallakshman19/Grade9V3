@@ -1,7 +1,7 @@
 {
   "artifact_id": "VISUAL-AUDIT-PROJECTILE-SIX-CORE",
   "repository_basis": "main@dd1fb0ca8374a398ea48aa3253a5d37ed0d62739",
-  "records": [
+  "representation_records": [
     {
       "canonical_representation_ref": "REP-KIN-2D-SHARED-CLOCK",
       "purpose": "Keep independently evolving x and y descriptions attached to one physical object, one declared frame and one shared clock, so only simultaneous component values are recombined into a plane state.",
@@ -25,9 +25,13 @@
       "actual_present_elements": [
         {
           "scene_id": "SCENE-KIN-2D-SHARED-CLOCK-PORTABLE-01",
-          "scene_kind": "SHARED_CLOCK_2D",
+          "eligible_cores": [
+            "CORE1A",
+            "CORE1B"
+          ],
           "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
           "question_ref": null,
+          "scene_kind": "SHARED_CLOCK_2D",
           "caption": "Same-time x and y samples may reconstruct one simultaneous particle state; mixed-time samples are non-simultaneous and must be rejected.",
           "portable_entities": [
             {
@@ -60,14 +64,14 @@
           "in_words": "The one elapsed time used by both component descriptions."
         }
       ],
-      "reveal_stage": "Rendered only where the canonical scene binding is eligible for the role; Core1B answer-bearing reconstruction remains post-attempt.",
+      "reveal_stage": "Determined per usage by eligible Core/microtopic/question binding; see usage_audit.",
       "accessibility_description": {
         "validity_is_textual": true,
         "synchronization_is_not_colour_only": true,
         "mixed_time_reason_required": true
       },
       "provenance": "CANONICAL_DERIVED",
-      "semantic_review_status": "BOUND_CANONICAL_SCENE_AVAILABLE"
+      "semantic_review_status": "CANONICAL_SCENE_EXISTS_USAGE_REVIEW_REQUIRED"
     },
     {
       "canonical_representation_ref": "REP-KIN-2D-EVENT-CLOCK",
@@ -152,6 +156,772 @@
       ],
       "reveal_stage": "VISUAL_HOLD",
       "accessibility_description": "VISUAL_HOLD: no canonical scene instance exists, so no learner-facing subject geometry is invented.",
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "VISUAL_HOLD"
+    }
+  ],
+  "usage_audit": [
+    {
+      "artifact_id": "CORE1-CANONICAL-REPRESENTATION",
+      "core_role": "CORE1",
+      "canonical_representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "microtopic_ref": null,
+      "question_ref": null,
+      "purpose": "Keep independently evolving x and y descriptions attached to one physical object, one declared frame and one shared clock, so only simultaneous component values are recombined into a plane state.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "actual_present_elements": [],
+      "representation_correspondence": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "reveal_stage": "VISUAL_HOLD",
+      "accessibility_description": "VISUAL_HOLD: no canonical scene is bound to this exact learner-product usage.",
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "VISUAL_HOLD"
+    },
+    {
+      "artifact_id": "CORE1A-MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS-REP-KIN-2D-SHARED-CLOCK",
+      "core_role": "CORE1A",
+      "canonical_representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "question_ref": null,
+      "purpose": "Keep independently evolving x and y descriptions attached to one physical object, one declared frame and one shared clock, so only simultaneous component values are recombined into a plane state.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "actual_present_elements": [
+        "SCENE-KIN-2D-SHARED-CLOCK-PORTABLE-01"
+      ],
+      "representation_correspondence": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "reveal_stage": "IMMEDIATE",
+      "accessibility_description": {
+        "validity_is_textual": true,
+        "synchronization_is_not_colour_only": true,
+        "mixed_time_reason_required": true
+      },
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "BOUND_CANONICAL_SCENE_AVAILABLE"
+    },
+    {
+      "artifact_id": "CORE1B-MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS-REP-KIN-2D-SHARED-CLOCK",
+      "core_role": "CORE1B",
+      "canonical_representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "question_ref": null,
+      "purpose": "Keep independently evolving x and y descriptions attached to one physical object, one declared frame and one shared clock, so only simultaneous component values are recombined into a plane state.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "actual_present_elements": [
+        "SCENE-KIN-2D-SHARED-CLOCK-PORTABLE-01"
+      ],
+      "representation_correspondence": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "reveal_stage": "POST_ATTEMPT",
+      "accessibility_description": {
+        "validity_is_textual": true,
+        "synchronization_is_not_colour_only": true,
+        "mixed_time_reason_required": true
+      },
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "BOUND_CANONICAL_SCENE_AVAILABLE"
+    },
+    {
+      "artifact_id": "CORE1A-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-SHARED-CLOCK",
+      "core_role": "CORE1A",
+      "canonical_representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "microtopic_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "question_ref": null,
+      "purpose": "Keep independently evolving x and y descriptions attached to one physical object, one declared frame and one shared clock, so only simultaneous component values are recombined into a plane state.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "actual_present_elements": [],
+      "representation_correspondence": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "reveal_stage": "VISUAL_HOLD",
+      "accessibility_description": "VISUAL_HOLD: no canonical scene is bound to this exact learner-product usage.",
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "VISUAL_HOLD"
+    },
+    {
+      "artifact_id": "CORE1B-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-SHARED-CLOCK",
+      "core_role": "CORE1B",
+      "canonical_representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "microtopic_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "question_ref": null,
+      "purpose": "Keep independently evolving x and y descriptions attached to one physical object, one declared frame and one shared clock, so only simultaneous component values are recombined into a plane state.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "actual_present_elements": [],
+      "representation_correspondence": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "reveal_stage": "VISUAL_HOLD",
+      "accessibility_description": "VISUAL_HOLD: no canonical scene is bound to this exact learner-product usage.",
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "VISUAL_HOLD"
+    },
+    {
+      "artifact_id": "CORE1A-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-EVENT-CLOCK",
+      "core_role": "CORE1A",
+      "canonical_representation_ref": "REP-KIN-2D-EVENT-CLOCK",
+      "microtopic_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "question_ref": null,
+      "purpose": "Make event selection explicit: one component condition identifies the requested event time, and that same time is then reused on every component before reconstructing the requested state.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "solved event-time marker",
+          "symbol": "t",
+          "in_words": "The single elapsed time at which both component descriptions are evaluated for the selected event."
+        },
+        {
+          "element": "x-component evaluation",
+          "symbol": "Delta x",
+          "in_words": "The horizontal displacement evaluated at the shared event time."
+        },
+        {
+          "element": "y-component evaluation",
+          "symbol": "Delta y",
+          "in_words": "The vertical displacement evaluated at the same shared event time."
+        }
+      ],
+      "actual_present_elements": [],
+      "representation_correspondence": [
+        {
+          "element": "solved event-time marker",
+          "symbol": "t",
+          "in_words": "The single elapsed time at which both component descriptions are evaluated for the selected event."
+        },
+        {
+          "element": "x-component evaluation",
+          "symbol": "Delta x",
+          "in_words": "The horizontal displacement evaluated at the shared event time."
+        },
+        {
+          "element": "y-component evaluation",
+          "symbol": "Delta y",
+          "in_words": "The vertical displacement evaluated at the same shared event time."
+        }
+      ],
+      "reveal_stage": "VISUAL_HOLD",
+      "accessibility_description": "VISUAL_HOLD: no canonical scene is bound to this exact learner-product usage.",
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "VISUAL_HOLD"
+    },
+    {
+      "artifact_id": "CORE1B-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION-REP-KIN-2D-EVENT-CLOCK",
+      "core_role": "CORE1B",
+      "canonical_representation_ref": "REP-KIN-2D-EVENT-CLOCK",
+      "microtopic_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "question_ref": null,
+      "purpose": "Make event selection explicit: one component condition identifies the requested event time, and that same time is then reused on every component before reconstructing the requested state.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "solved event-time marker",
+          "symbol": "t",
+          "in_words": "The single elapsed time at which both component descriptions are evaluated for the selected event."
+        },
+        {
+          "element": "x-component evaluation",
+          "symbol": "Delta x",
+          "in_words": "The horizontal displacement evaluated at the shared event time."
+        },
+        {
+          "element": "y-component evaluation",
+          "symbol": "Delta y",
+          "in_words": "The vertical displacement evaluated at the same shared event time."
+        }
+      ],
+      "actual_present_elements": [],
+      "representation_correspondence": [
+        {
+          "element": "solved event-time marker",
+          "symbol": "t",
+          "in_words": "The single elapsed time at which both component descriptions are evaluated for the selected event."
+        },
+        {
+          "element": "x-component evaluation",
+          "symbol": "Delta x",
+          "in_words": "The horizontal displacement evaluated at the shared event time."
+        },
+        {
+          "element": "y-component evaluation",
+          "symbol": "Delta y",
+          "in_words": "The vertical displacement evaluated at the same shared event time."
+        }
+      ],
+      "reveal_stage": "VISUAL_HOLD",
+      "accessibility_description": "VISUAL_HOLD: no canonical scene is bound to this exact learner-product usage.",
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "VISUAL_HOLD"
+    },
+    {
+      "artifact_id": "CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-SHARED-CLOCK",
+      "core_role": "CORE1A",
+      "canonical_representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "question_ref": null,
+      "purpose": "Keep independently evolving x and y descriptions attached to one physical object, one declared frame and one shared clock, so only simultaneous component values are recombined into a plane state.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "actual_present_elements": [],
+      "representation_correspondence": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "reveal_stage": "VISUAL_HOLD",
+      "accessibility_description": "VISUAL_HOLD: no canonical scene is bound to this exact learner-product usage.",
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "VISUAL_HOLD"
+    },
+    {
+      "artifact_id": "CORE1B-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-SHARED-CLOCK",
+      "core_role": "CORE1B",
+      "canonical_representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "question_ref": null,
+      "purpose": "Keep independently evolving x and y descriptions attached to one physical object, one declared frame and one shared clock, so only simultaneous component values are recombined into a plane state.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "actual_present_elements": [],
+      "representation_correspondence": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "reveal_stage": "VISUAL_HOLD",
+      "accessibility_description": "VISUAL_HOLD: no canonical scene is bound to this exact learner-product usage.",
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "VISUAL_HOLD"
+    },
+    {
+      "artifact_id": "CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-EVENT-CLOCK",
+      "core_role": "CORE1A",
+      "canonical_representation_ref": "REP-KIN-2D-EVENT-CLOCK",
+      "microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "question_ref": null,
+      "purpose": "Make event selection explicit: one component condition identifies the requested event time, and that same time is then reused on every component before reconstructing the requested state.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "solved event-time marker",
+          "symbol": "t",
+          "in_words": "The single elapsed time at which both component descriptions are evaluated for the selected event."
+        },
+        {
+          "element": "x-component evaluation",
+          "symbol": "Delta x",
+          "in_words": "The horizontal displacement evaluated at the shared event time."
+        },
+        {
+          "element": "y-component evaluation",
+          "symbol": "Delta y",
+          "in_words": "The vertical displacement evaluated at the same shared event time."
+        }
+      ],
+      "actual_present_elements": [],
+      "representation_correspondence": [
+        {
+          "element": "solved event-time marker",
+          "symbol": "t",
+          "in_words": "The single elapsed time at which both component descriptions are evaluated for the selected event."
+        },
+        {
+          "element": "x-component evaluation",
+          "symbol": "Delta x",
+          "in_words": "The horizontal displacement evaluated at the shared event time."
+        },
+        {
+          "element": "y-component evaluation",
+          "symbol": "Delta y",
+          "in_words": "The vertical displacement evaluated at the same shared event time."
+        }
+      ],
+      "reveal_stage": "VISUAL_HOLD",
+      "accessibility_description": "VISUAL_HOLD: no canonical scene is bound to this exact learner-product usage.",
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "VISUAL_HOLD"
+    },
+    {
+      "artifact_id": "CORE1B-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-EVENT-CLOCK",
+      "core_role": "CORE1B",
+      "canonical_representation_ref": "REP-KIN-2D-EVENT-CLOCK",
+      "microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "question_ref": null,
+      "purpose": "Make event selection explicit: one component condition identifies the requested event time, and that same time is then reused on every component before reconstructing the requested state.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "solved event-time marker",
+          "symbol": "t",
+          "in_words": "The single elapsed time at which both component descriptions are evaluated for the selected event."
+        },
+        {
+          "element": "x-component evaluation",
+          "symbol": "Delta x",
+          "in_words": "The horizontal displacement evaluated at the shared event time."
+        },
+        {
+          "element": "y-component evaluation",
+          "symbol": "Delta y",
+          "in_words": "The vertical displacement evaluated at the same shared event time."
+        }
+      ],
+      "actual_present_elements": [],
+      "representation_correspondence": [
+        {
+          "element": "solved event-time marker",
+          "symbol": "t",
+          "in_words": "The single elapsed time at which both component descriptions are evaluated for the selected event."
+        },
+        {
+          "element": "x-component evaluation",
+          "symbol": "Delta x",
+          "in_words": "The horizontal displacement evaluated at the shared event time."
+        },
+        {
+          "element": "y-component evaluation",
+          "symbol": "Delta y",
+          "in_words": "The vertical displacement evaluated at the same shared event time."
+        }
+      ],
+      "reveal_stage": "VISUAL_HOLD",
+      "accessibility_description": "VISUAL_HOLD: no canonical scene is bound to this exact learner-product usage.",
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "VISUAL_HOLD"
+    },
+    {
+      "artifact_id": "CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-PROJECTILE-MODEL",
+      "core_role": "CORE1A",
+      "canonical_representation_ref": "REP-KIN-2D-PROJECTILE-MODEL",
+      "microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "question_ref": null,
+      "purpose": "Make the ideal projectile specialization conditional on the interactions that remain after release: gravity-only free flight licenses a_x=0 and a_y=-g; retained thrust, significant drag or contact requires a more general model.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "gravity-only status",
+          "symbol": "g",
+          "in_words": "The retained gravitational acceleration magnitude in the ideal projectile specialization."
+        },
+        {
+          "element": "horizontal acceleration readout",
+          "symbol": "v_x",
+          "in_words": "The horizontal component whose constancy is a consequence of zero horizontal acceleration in the ideal specialization."
+        },
+        {
+          "element": "vertical acceleration readout",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component that changes under the retained gravitational acceleration."
+        }
+      ],
+      "actual_present_elements": [],
+      "representation_correspondence": [
+        {
+          "element": "gravity-only status",
+          "symbol": "g",
+          "in_words": "The retained gravitational acceleration magnitude in the ideal projectile specialization."
+        },
+        {
+          "element": "horizontal acceleration readout",
+          "symbol": "v_x",
+          "in_words": "The horizontal component whose constancy is a consequence of zero horizontal acceleration in the ideal specialization."
+        },
+        {
+          "element": "vertical acceleration readout",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component that changes under the retained gravitational acceleration."
+        }
+      ],
+      "reveal_stage": "VISUAL_HOLD",
+      "accessibility_description": "VISUAL_HOLD: no canonical scene is bound to this exact learner-product usage.",
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "VISUAL_HOLD"
+    },
+    {
+      "artifact_id": "CORE1B-MIC-PHY-KIN-PROJECTILE-MODEL-REP-KIN-2D-PROJECTILE-MODEL",
+      "core_role": "CORE1B",
+      "canonical_representation_ref": "REP-KIN-2D-PROJECTILE-MODEL",
+      "microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "question_ref": null,
+      "purpose": "Make the ideal projectile specialization conditional on the interactions that remain after release: gravity-only free flight licenses a_x=0 and a_y=-g; retained thrust, significant drag or contact requires a more general model.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "gravity-only status",
+          "symbol": "g",
+          "in_words": "The retained gravitational acceleration magnitude in the ideal projectile specialization."
+        },
+        {
+          "element": "horizontal acceleration readout",
+          "symbol": "v_x",
+          "in_words": "The horizontal component whose constancy is a consequence of zero horizontal acceleration in the ideal specialization."
+        },
+        {
+          "element": "vertical acceleration readout",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component that changes under the retained gravitational acceleration."
+        }
+      ],
+      "actual_present_elements": [],
+      "representation_correspondence": [
+        {
+          "element": "gravity-only status",
+          "symbol": "g",
+          "in_words": "The retained gravitational acceleration magnitude in the ideal projectile specialization."
+        },
+        {
+          "element": "horizontal acceleration readout",
+          "symbol": "v_x",
+          "in_words": "The horizontal component whose constancy is a consequence of zero horizontal acceleration in the ideal specialization."
+        },
+        {
+          "element": "vertical acceleration readout",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component that changes under the retained gravitational acceleration."
+        }
+      ],
+      "reveal_stage": "VISUAL_HOLD",
+      "accessibility_description": "VISUAL_HOLD: no canonical scene is bound to this exact learner-product usage.",
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "VISUAL_HOLD"
+    },
+    {
+      "artifact_id": "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04-REP-KIN-2D-SHARED-CLOCK",
+      "core_role": "CORE2A",
+      "canonical_representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "microtopic_ref": null,
+      "question_ref": "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04",
+      "purpose": "Keep independently evolving x and y descriptions attached to one physical object, one declared frame and one shared clock, so only simultaneous component values are recombined into a plane state.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "actual_present_elements": [],
+      "representation_correspondence": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "reveal_stage": "VISUAL_HOLD",
+      "accessibility_description": "VISUAL_HOLD: no canonical scene is bound to this exact learner-product usage.",
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "VISUAL_HOLD"
+    },
+    {
+      "artifact_id": "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04-REP-KIN-2D-EVENT-CLOCK",
+      "core_role": "CORE2A",
+      "canonical_representation_ref": "REP-KIN-2D-EVENT-CLOCK",
+      "microtopic_ref": null,
+      "question_ref": "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04",
+      "purpose": "Make event selection explicit: one component condition identifies the requested event time, and that same time is then reused on every component before reconstructing the requested state.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "solved event-time marker",
+          "symbol": "t",
+          "in_words": "The single elapsed time at which both component descriptions are evaluated for the selected event."
+        },
+        {
+          "element": "x-component evaluation",
+          "symbol": "Delta x",
+          "in_words": "The horizontal displacement evaluated at the shared event time."
+        },
+        {
+          "element": "y-component evaluation",
+          "symbol": "Delta y",
+          "in_words": "The vertical displacement evaluated at the same shared event time."
+        }
+      ],
+      "actual_present_elements": [],
+      "representation_correspondence": [
+        {
+          "element": "solved event-time marker",
+          "symbol": "t",
+          "in_words": "The single elapsed time at which both component descriptions are evaluated for the selected event."
+        },
+        {
+          "element": "x-component evaluation",
+          "symbol": "Delta x",
+          "in_words": "The horizontal displacement evaluated at the shared event time."
+        },
+        {
+          "element": "y-component evaluation",
+          "symbol": "Delta y",
+          "in_words": "The vertical displacement evaluated at the same shared event time."
+        }
+      ],
+      "reveal_stage": "VISUAL_HOLD",
+      "accessibility_description": "VISUAL_HOLD: no canonical scene is bound to this exact learner-product usage.",
+      "provenance": "CANONICAL_DERIVED",
+      "semantic_review_status": "VISUAL_HOLD"
+    },
+    {
+      "artifact_id": "Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04-REP-KIN-2D-PROJECTILE-MODEL",
+      "core_role": "CORE2B",
+      "canonical_representation_ref": "REP-KIN-2D-PROJECTILE-MODEL",
+      "microtopic_ref": null,
+      "question_ref": "Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04",
+      "purpose": "Make the ideal projectile specialization conditional on the interactions that remain after release: gravity-only free flight licenses a_x=0 and a_y=-g; retained thrust, significant drag or contact requires a more general model.",
+      "required_physical_semantic_elements": [
+        {
+          "element": "gravity-only status",
+          "symbol": "g",
+          "in_words": "The retained gravitational acceleration magnitude in the ideal projectile specialization."
+        },
+        {
+          "element": "horizontal acceleration readout",
+          "symbol": "v_x",
+          "in_words": "The horizontal component whose constancy is a consequence of zero horizontal acceleration in the ideal specialization."
+        },
+        {
+          "element": "vertical acceleration readout",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component that changes under the retained gravitational acceleration."
+        }
+      ],
+      "actual_present_elements": [],
+      "representation_correspondence": [
+        {
+          "element": "gravity-only status",
+          "symbol": "g",
+          "in_words": "The retained gravitational acceleration magnitude in the ideal projectile specialization."
+        },
+        {
+          "element": "horizontal acceleration readout",
+          "symbol": "v_x",
+          "in_words": "The horizontal component whose constancy is a consequence of zero horizontal acceleration in the ideal specialization."
+        },
+        {
+          "element": "vertical acceleration readout",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component that changes under the retained gravitational acceleration."
+        }
+      ],
+      "reveal_stage": "VISUAL_HOLD",
+      "accessibility_description": "VISUAL_HOLD: no canonical scene is bound to this exact learner-product usage.",
       "provenance": "CANONICAL_DERIVED",
       "semantic_review_status": "VISUAL_HOLD"
     }
