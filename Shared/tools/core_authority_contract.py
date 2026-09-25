@@ -36,6 +36,8 @@ REQUIRED_INVARIANTS = (
     "bridge_does_not_admit_extension_to_core1_family",
     "core2a_requires_established_capability_closure",
     "core2b_requires_established_capability_closure_and_prior_exposure",
+    "fixed_demand_progression_must_remain_visible",
+    "generic_practice_does_not_close_fixed_demand",
 )
 
 EXPECTED_ROLE_RULES = {
