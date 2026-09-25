@@ -110,7 +110,7 @@ class PromptComposerTests(unittest.TestCase):
         self.assertIn("observable teaching change", text)
         self.assertIn("Route validity and learner-product quality are separate claims", text)
         self.assertIn("TARGET_MOVE_CONNECTION", text)
-        self.assertIn("owner routing waiver is ON", text.lower())
+        self.assertIn("owner routing waiver is on", text.lower())
         self.assertIn("#273 owns PDF publication", text)
         self.assertFalse(any(path.suffix == ".pdf" for path in (REPO / "public").rglob("*.pdf")))
 
