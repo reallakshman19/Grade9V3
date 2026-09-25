@@ -22,7 +22,8 @@ A tracker reports x(t)=4t metres and y(t)=10-2t^2 metres for one particle in one
 
 ### Representation
 
-No figure is required by the canonical question record.
+No source/canonical question figure is required by `question.figure_refs[]`.
+
 
 ### Authored question hints — question custody, not source hints
 
@@ -68,7 +69,6 @@ A response that skips or contradicts the crux move, mixes event times/components
 
 `K2D1-4`
 
-
 ---
 
 ## Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02
@@ -88,7 +88,8 @@ A particle starts with velocity (3 i + 4 j) m/s and has constant acceleration (2
 
 ### Representation
 
-No figure is required by the canonical question record.
+No source/canonical question figure is required by `question.figure_refs[]`.
+
 
 ### Authored question hints — question custody, not source hints
 
@@ -134,7 +135,6 @@ A response that skips or contradicts the crux move, mixes event times/components
 
 `K2D2-2`
 
-
 ---
 
 ## Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03
@@ -155,7 +155,8 @@ An ideal projectile is launched with already-resolved components u_x=12 m/s and 
 
 ### Representation
 
-No figure is required by the canonical question record.
+No source/canonical question figure is required by `question.figure_refs[]`.
+
 
 ### Authored question hints — question custody, not source hints
 
@@ -201,7 +202,6 @@ A response that skips or contradicts the crux move, mixes event times/components
 
 `K2D3-4`
 
-
 ---
 
 ## Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04
@@ -222,7 +222,11 @@ A stone is launched horizontally at 15 m/s from a cliff 20 m above level ground.
 
 ### Representation
 
-No figure is required by the canonical question record.
+No source/canonical question figure is required by `question.figure_refs[]`.
+
+**Scaffold visual bindings**
+- `REP-KIN-2D-SHARED-CLOCK`: VISUAL_HOLD — no scene is bound to this Core + question; textual support remains, but no visual is fabricated.
+- `REP-KIN-2D-EVENT-CLOCK`: VISUAL_HOLD — no scene is bound to this Core + question; textual support remains, but no visual is fabricated.
 
 ### Authored question hints — question custody, not source hints
 
@@ -231,8 +235,8 @@ No figure is required by the canonical question record.
 
 ### Authored pedagogical scaffold ladder
 
-- [REPRESENT; reveals CONCEPT; supports `R-KIN-LAUNCH-REPRESENT`] Draw x and y as separate columns tied to one shared t, and place the 20 m drop only in the y column.
-- [CONNECT; reveals METHOD; supports `R-KIN-LAUNCH-EVENT`] Name the physical condition that says the stone has reached the ground before solving for the event time.
+- [REPRESENT; reveals CONCEPT; supports `R-KIN-LAUNCH-REPRESENT`; visual `REP-KIN-2D-SHARED-CLOCK`] Draw x and y as separate columns tied to one shared t, and place the 20 m drop only in the y column.
+- [CONNECT; reveals METHOD; supports `R-KIN-LAUNCH-EVENT`; visual `REP-KIN-2D-EVENT-CLOCK`] Name the physical condition that says the stone has reached the ground before solving for the event time.
 
 ### Complete reasoning route
 
@@ -267,7 +271,6 @@ A response that skips or contradicts the crux move, mixes event times/components
 
 `K2D3-6`
 
-
 ---
 
 ## Q-PHY-KIN-2D-2A-SAME-HEIGHT-05
@@ -288,7 +291,8 @@ An ideal projectile is launched and later lands at the same height with u_x=12 m
 
 ### Representation
 
-No figure is required by the canonical question record.
+No source/canonical question figure is required by `question.figure_refs[]`.
+
 
 ### Authored question hints — question custody, not source hints
 
@@ -332,4 +336,3 @@ A response that skips or contradicts the crux move, mixes event times/components
 ### Repair pointer
 
 `K2D3-5`
-
