@@ -15,6 +15,8 @@ export function createStudyState(ownerLabel) {
     phase: STUDY_STATES.INITIAL,
     attempt: ownerLabel === "Q26" ? [] : "",
     supportIndex: 0,
+    reasoningOpen: false,
+    cruxOpen: false,
     solutionOpen: false,
     checked: false,
     simulation: ownerLabel === "Q21"
@@ -37,7 +39,7 @@ export function transitionStudyState(current, action) {
       break;
     case "COMMIT":
       if (state.ownerLabel === "Q26") {
-        if (!Array.isArray(state.attempt)) return {state, accepted:false, reason:"SELECT_AT_LEAST_ONE_OPTION"};
+        if (!Array.isArray(state.attempt) || state.attempt.length < 1) return {state, accepted:false, reason:"SELECT_AT_LEAST_ONE_OPTION"};
       } else if (!String(state.attempt ?? "").trim()) {
         return {state, accepted:false, reason:"ANSWER_REQUIRED"};
       }
@@ -50,10 +52,18 @@ export function transitionStudyState(current, action) {
       state.supportIndex = Math.max(state.supportIndex, Number(action.index || 1));
       state.phase = STUDY_STATES.SUPPORTED;
       break;
-    case "OPEN_SOLUTION":
+    case "OPEN_REASONING":
       if (![STUDY_STATES.COMMITTED, STUDY_STATES.SUPPORTED].includes(state.phase)) {
         return {state, accepted:false, reason:"ATTEMPT_REQUIRED"};
       }
+      state.reasoningOpen = true;
+      break;
+    case "OPEN_CRUX":
+      if (!state.reasoningOpen) return {state, accepted:false, reason:"REASONING_REQUIRED"};
+      state.cruxOpen = true;
+      break;
+    case "OPEN_SOLUTION":
+      if (!state.cruxOpen) return {state, accepted:false, reason:"CRUX_REQUIRED"};
       state.solutionOpen = true;
       state.phase = STUDY_STATES.SOLUTION_OPEN;
       break;
