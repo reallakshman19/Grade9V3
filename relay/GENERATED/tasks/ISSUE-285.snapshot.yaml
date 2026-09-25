@@ -163,25 +163,28 @@
     "observations": [
       {
         "kind": "V31_BINDING",
-        "state": "PASS",
-        "ref": "github-actions:36129890692",
-        "detail": "V3.1 Relay #1932 passed on pre-snapshot coordination head 876a3b703fe16f805948e5d2ad97b3383b9f0b01."
+        "state": "PENDING",
+        "ref": null,
+        "detail": "Final exact-head relay required after recorder refresh."
       },
       {
         "kind": "GUARDRAILS",
         "state": "PENDING",
-        "ref": "github-actions:36129890769",
-        "detail": "Guardrails #6004 is running on pre-snapshot coordination head; final exact-head rerun required after this snapshot update."
+        "ref": null,
+        "detail": "Final exact-head guardrails required after identity-review fixture and generated-manifest refresh."
       }
     ],
-    "failure_origins": {}
+    "failure_origins": {
+      "guardrails-6013": "Browser semantic-identity falsifier expected global composer PASS with no mapped scope anchor; corrected the fixture by adding an independent exact mapped scope anchor without weakening identity review.",
+      "guardrails-6025": "Expected architecture-manifest drift after changing the identity-review fixture; refreshed from the generated-artifact preview and rebound composer data to the new manifest digest."
+    }
   },
   "delivery": {
     "pr": 286,
     "url": "https://github.com/reallaksh19/Grade9V3/pull/286",
     "lifecycle": "DRAFT_VALIDATION",
     "base": "9a1be5704f57931c830adcfee79d872e22c52b21",
-    "head": "876a3b703fe16f805948e5d2ad97b3383b9f0b01",
+    "head": "6bf36a03078aa7bc841751d5c7f162a78a48238d",
     "mergeability": "MERGEABLE_AS_DRAFT"
   },
   "delivery_stack": [],
@@ -205,7 +208,7 @@
       "Refreshed generated browser/Page composer data and architecture manifest."
     ],
     "what_remains": [
-      "Pass exact-head Guardrails and V3.1 Relay after this recorder update.",
+      "Pass final exact-head Guardrails and V3.1 Relay after this recorder refresh.",
       "Publish TASK_EVIDENCE / TASK_RESULT.",
       "Keep PR #286 draft pending owner merge direction."
     ]
@@ -250,10 +253,10 @@
   },
   "material": {
     "base": "9a1be5704f57931c830adcfee79d872e22c52b21",
-    "current_head": "876a3b703fe16f805948e5d2ad97b3383b9f0b01"
+    "current_head": "6bf36a03078aa7bc841751d5c7f162a78a48238d"
   },
   "next": {
-    "immediate_action": "Pass exact-head Guardrails and V3.1 Relay after snapshot publication, then publish final evidence.",
+    "immediate_action": "Run final exact-head Guardrails and V3.1 Relay; publish evidence if both remain green.",
     "next_value_frontier": "Use the generated five-target prompt in a separate consumer proof; the blueprint must not absorb topic-specific learner content.",
     "stop_conditions": [
       "Do not merge in this task.",
