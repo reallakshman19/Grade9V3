@@ -19,14 +19,14 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(REPO))
 
 from Shared.contracts import load  # noqa: E402
-from Shared.tools import core_authority_contract, study_map  # noqa: E402
+from Shared.tools import core_authority_contract, study_map, target_demand_routing_contract  # noqa: E402
 
 BRIEF_SCHEMA = REPO / "Shared/library/prompt-brief.schema.json"
 AUTHORING_SCHEMA = "Shared/library/authoring-request.schema.json"
 TEMPLATE_PATH = REPO / "template/core-prompt-composer/core-agent-prompt.v1.json"
 ALL_CORES = ("CORE1", "CORE2", "CORE1A", "CORE1B", "CORE2A", "CORE2B")
 DEFAULT_EXECUTION_ORDER = ("CORE2", "CORE1", "CORE1A", "CORE1B", "CORE2A", "CORE2B")
-HOLD_STATUSES = {"AGENT_PROPOSAL_PENDING_REVIEW", "IDENTITY_HOLD", "MIXED_SUBTOPIC_HOLD", "UNMAPPED_HOLD"}
+HOLD_STATUSES = {"AGENT_PROPOSAL_PENDING_REVIEW", "IDENTITY_HOLD", "MIXED_SUBTOPIC_HOLD", "UNMAPPED_HOLD"}\nTARGET_AUTHORITY = {"OWNER_FIXED", "SELECTED", "OPTIONAL"}\nDIRECT_SOURCE_USE = {"ALLOWED", "EXCLUDED", "HOLD"}\nINSTRUCTIONAL_DEMAND_USE = {"ALLOWED", "HOLD"}\nASSESSMENT_CLAIM = {"ALLOWED", "HOLD"}
 LEARNER_ELIGIBILITY = {"ELIGIBLE", "EXCLUDED", "HOLD", "NOT_ESTABLISHED"}
 
 
@@ -89,6 +89,29 @@ def _analysis(question: dict) -> dict | None:
     return value if isinstance(value, dict) else None
 
 
+def _target_policy(raw: dict) -> tuple[dict, list[dict]]:
+    holds: list[dict] = []
+    target_authority = str(raw.get("target_authority") or "SELECTED").strip().upper()
+    direct_source_use = str(raw.get("direct_source_use") or "HOLD").strip().upper()
+    instructional_demand_use = str(raw.get("instructional_demand_use") or "ALLOWED").strip().upper()
+    assessment_claim = str(raw.get("assessment_claim") or "HOLD").strip().upper()
+    values = [
+        ("TARGET_AUTHORITY_INVALID", target_authority, TARGET_AUTHORITY),
+        ("DIRECT_SOURCE_USE_INVALID", direct_source_use, DIRECT_SOURCE_USE),
+        ("INSTRUCTIONAL_DEMAND_USE_INVALID", instructional_demand_use, INSTRUCTIONAL_DEMAND_USE),
+        ("ASSESSMENT_CLAIM_INVALID", assessment_claim, ASSESSMENT_CLAIM),
+    ]
+    for point, value, allowed in values:
+        if value not in allowed:
+            holds.append({"status": "UNMAPPED_HOLD", "point": point, "detail": f"{raw.get('question_id')}: {value!r} is invalid"})
+    return ({
+        "target_authority": target_authority if target_authority in TARGET_AUTHORITY else "SELECTED",
+        "direct_source_use": direct_source_use if direct_source_use in DIRECT_SOURCE_USE else "HOLD",
+        "instructional_demand_use": instructional_demand_use if instructional_demand_use in INSTRUCTIONAL_DEMAND_USE else "HOLD",
+        "assessment_claim": assessment_claim if assessment_claim in ASSESSMENT_CLAIM else "HOLD",
+    }, holds)
+
+
 def _resolve_question_row(raw: dict, index: dict, owner_scope: dict | None) -> tuple[dict, list[dict]]:
     owner_id = str(raw.get("question_id") or "").strip()
     summary = str(raw.get("summary") or "").strip()
@@ -96,6 +119,8 @@ def _resolve_question_row(raw: dict, index: dict, owner_scope: dict | None) -> t
     candidates = list(dict.fromkeys(raw.get("candidate_question_refs") or []))
     canonical = index["canonical_questions"].get(canonical_ref or "") if canonical_ref else None
     holds: list[dict] = []
+    target_policy, policy_holds = _target_policy(raw)
+    holds.extend(policy_holds)
 
     eligibility = str(raw.get("learner_eligibility") or "NOT_ESTABLISHED").strip().upper()
     if eligibility not in LEARNER_ELIGIBILITY:
@@ -116,22 +141,22 @@ def _resolve_question_row(raw: dict, index: dict, owner_scope: dict | None) -> t
         )
         if unknown_candidates:
             detail += "; unknown candidate refs: " + ", ".join(unknown_candidates)
-        holds.append({
-            "status": "IDENTITY_HOLD",
-            "point": "QUESTION_IDENTITY_AMBIGUOUS",
-            "detail": detail,
-        })
+        # Multiple candidates require semantic identity review, but do not permanently block
+        # prompt generation. The downstream target resolver must compare the owner demand
+        # fingerprint against candidate records and may resolve a unique semantic match.
+        detail += "; semantic identity review required before target route completion"
         return ({
             "owner_question_id": owner_id,
             "summary": summary,
             "canonical_question_ref": None,
             "candidate_question_refs": candidates,
-            "identity_status": "IDENTITY_HOLD",
+            "identity_status": "IDENTITY_REVIEW_REQUIRED",
             "demand_evidence_refs": valid_candidates,
             "learner_eligibility": eligibility,
             "learner_eligibility_basis": eligibility_basis,
+            **target_policy,
             "mapping_basis": "UNMAPPED",
-            "mapping_status": "IDENTITY_HOLD",
+            "mapping_status": "IDENTITY_REVIEW_REQUIRED",
             "primary_capability_ref": None,
             "secondary_capability_refs": [],
             "primary_location": None,
@@ -162,6 +187,7 @@ def _resolve_question_row(raw: dict, index: dict, owner_scope: dict | None) -> t
             "demand_evidence_refs": [canonical_ref],
             "learner_eligibility": eligibility,
             "learner_eligibility_basis": eligibility_basis,
+            **target_policy,
             "mapping_basis": "CANONICAL_QUESTION",
             "mapping_status": status,
             "primary_capability_ref": primary,
@@ -184,6 +210,7 @@ def _resolve_question_row(raw: dict, index: dict, owner_scope: dict | None) -> t
             "demand_evidence_refs": [],
             "learner_eligibility": eligibility,
             "learner_eligibility_basis": eligibility_basis,
+            **target_policy,
             "mapping_basis": "UNMAPPED",
             "mapping_status": "UNMAPPED_HOLD",
             "primary_capability_ref": None,
@@ -208,6 +235,7 @@ def _resolve_question_row(raw: dict, index: dict, owner_scope: dict | None) -> t
         "demand_evidence_refs": [],
         "learner_eligibility": eligibility,
         "learner_eligibility_basis": eligibility_basis,
+            **target_policy,
         "primary_capability_ref": primary,
         "secondary_capability_refs": secondary,
         "primary_location": location,
@@ -452,6 +480,10 @@ def _trace(rows: list[dict], fingerprint: list[dict]) -> list[dict]:
             "candidate_question_refs": row.get("candidate_question_refs") or [],
             "demand_evidence_refs": row.get("demand_evidence_refs") or [],
             "learner_eligibility": row.get("learner_eligibility"),
+            "target_authority": row.get("target_authority"),
+            "direct_source_use": row.get("direct_source_use"),
+            "instructional_demand_use": row.get("instructional_demand_use"),
+            "assessment_claim": row.get("assessment_claim"),
             "primary_capability_ref": row.get("primary_capability_ref"),
             "secondary_capability_refs": row.get("secondary_capability_refs") or [],
             "matrix_ref": loc.get("matrix_id"),
@@ -479,7 +511,7 @@ def _difficulty(rows: list[dict]) -> list[str]:
     return sorted(bands, key=lambda value: (int(value[1:]) if value.startswith("D") and value[1:].isdigit() else 999, value))
 
 
-def render_prompt(brief: dict, template: dict, authority_contract: dict | None = None) -> str:
+def render_prompt(brief: dict, template: dict, authority_contract: dict | None = None, routing_contract: dict | None = None) -> str:
     role_refs = template["role_contract_refs"]
     role_guardrails = template["role_guardrails"]
     rows = brief["question_rows"]
@@ -493,7 +525,9 @@ def render_prompt(brief: dict, template: dict, authority_contract: dict | None =
         + (f" [canonical: {row['canonical_question_ref']}]" if row.get("canonical_question_ref") else "")
         + (f" [candidates: {', '.join(row.get('candidate_question_refs') or [])}]" if row.get("candidate_question_refs") else "")
         + f" [mapping: {row['mapping_status']}]"
-        + f" [learner eligibility: {row.get('learner_eligibility') or 'NOT_ESTABLISHED'}]"
+        + f" [target authority: {row.get('target_authority')}]"
+        + f" [direct source use: {row.get('direct_source_use')}]"
+        + f" [instructional demand use: {row.get('instructional_demand_use')}]"
         for row in rows
     )
     learner = brief.get("learner_entry")
@@ -510,6 +544,7 @@ def render_prompt(brief: dict, template: dict, authority_contract: dict | None =
         for core in brief["requested_cores"]
     )
     authority_contract = authority_contract or core_authority_contract.load_contract()
+    routing_contract = routing_contract or target_demand_routing_contract.load_contract()
     authority_lines = []
     for core in brief["requested_cores"]:
         rule = authority_contract["roles"][core]
@@ -530,6 +565,27 @@ def render_prompt(brief: dict, template: dict, authority_contract: dict | None =
         "\nSource question.hints[] and authored question.scaffolds[] remain separate custody classes."
         "\nExtension demands do not become Core1/Core1A/Core1B microtopics unless canonical academic authority admits them."
     )
+    route_states = ", ".join(routing_contract["capability_closure_states"])
+    route_output = brief["target_route_output"]
+    seed_lines = "\n".join(
+        f"- {row['owner_question_id']}: identity={row['identity_status']}; target_authority={row['target_authority']}; "
+        f"direct_source_use={row['direct_source_use']}; instructional_demand_use={row['instructional_demand_use']}; "
+        f"assessment_claim={row['assessment_claim']}; primary={row['primary_capability_ref'] or 'UNRESOLVED'}"
+        for row in route_output["seed_rows"]
+    )
+    learner_entry = brief.get("learner_entry") or {}
+    waiver = learner_entry.get("owner_routing_waiver", False)
+    target_route_text = (
+        f"Produce a completed artifact conforming to {route_output['schema_path']}. "
+        "For every fixed target, decompose the actual required solution decisions into demand_moves[], classify each move independently, and build an explicit target_route or justified terminal_block. "
+        f"Allowed capability closure states: {route_states}. "
+        "AUTHORABLE_EXTENSION requires a content-bearing bridge candidate with construction, worked anchor, misconceptions, representation requirements, check and exit task. "
+        "Generic easier practice cannot close a fixed target. "
+        "Use demand_influence_refs to shape Core composition without expanding canonical Core1-family scope. "
+        "Multiple candidate refs require semantic identity comparison against the owner demand; a unique semantic match may resolve identity while source custody remains HOLD. "
+        f"Owner routing waiver is {'ON' if waiver else 'OFF'}; when ON it permits supported work with UNKNOWN readiness but never a mastery/readiness claim and never bypasses a capability gap or Core2B prior exposure.\n"
+        "Seed targets:\n" + seed_lines
+    )
     diff = " → ".join(brief["validation"].get("difficulty_bands") or []) or "Use the canonical/intrinsic difficulty information available in the referenced records; do not infer it from learner percentage."
     kws = "\n".join(f"- {item['phrase']} ({item['kind']}; evidence: {', '.join(item['evidence_refs'])})" for item in fingerprint)
     trace = "\n".join(
@@ -549,14 +605,15 @@ def render_prompt(brief: dict, template: dict, authority_contract: dict | None =
         "LEARNER_PROFILE": learner_text + "\nA percentage is a starting coordinate only; it is not evidence of prerequisite mastery.",
         "EXECUTION_ORDER": order + "\nTreat this as production control only. It does not override readiness, HOLD decisions, or the authority graph.",
         "AUTHORITY_GRAPH": authority_text,
+        "TARGET_DEMAND_ROUTING": target_route_text,
         "TOPIC_BOUNDARY": boundary,
         "CORE_OBLIGATIONS": core_lines,
         "DIFFICULTY_PROGRESSION": diff + "\nPreserve intrinsic Core1A/Core1B depth regardless of the learner estimate.",
         "KEYWORD_FINGERPRINT": kws,
         "PROVENANCE_TRACE": trace + "\nUse only the cited repository/owner inputs. Do not expose or invent private reasoning traces.",
-        "ACCEPTANCE": "Keep every fixed question traceable to its mapping finding; preserve per-question primary_capability_ref independently from set-level scope; keep demand evidence separate from learner eligibility; preserve the requested Core set/order without treating order as authority; distinguish source hints from authored scaffolds and source/adapted/authored material; do not promote extension demand into Core1-family teaching without canonical admission; and hand the unchanged authoring request to the existing planner.",
+        "ACCEPTANCE": "Keep every fixed target visible through a validated target route or justified terminal block; decompose partially established targets move-by-move; preserve per-question primary_capability_ref independently from set-level scope; keep target authority, source custody, direct source use, instructional demand use and assessment claims separate; use owner waiver only for support with UNKNOWN readiness; distinguish source hints from authored scaffolds; do not promote extension demand into Core1-family teaching; and do not count unrelated generic practice as target closure.",
         "NON_GOALS": "Do not select a new canonical question set, create a seventh Core, infer mastery, fabricate source receipts, duplicate plan_request.py, or author/publish PDFs in this task.",
-        "HOLD_FAIL": hold_text + "\nIf a composer HOLD is present, do not silently resolve it. If the planner requests source basis, prerequisites or owner input, preserve that HOLD.",
+        "HOLD_FAIL": hold_text + "\nIf a composer HOLD is present, do not silently resolve it. A target capability gap must still produce a concrete closure route or terminal block in the target-demand-route artifact. Identity review is distinct from source custody.",
         "DOWNSTREAM_DELIVERABLE": downstream,
     }
 
@@ -589,6 +646,10 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
     template = load(repo / "template/core-prompt-composer/core-agent-prompt.v1.json")
     authority_path = core_authority_contract.discover_contract(repo / "Shared" / "roles")
     authority = core_authority_contract.load_contract(authority_path)
+    routing_path = repo / "Shared" / "roles" / "TARGET-DEMAND-ROUTING-CONTRACT.md"
+    routing = target_demand_routing_contract.load_contract(routing_path)
+    route_schema_path = repo / "Shared" / "library" / "target-demand-route.schema.json"
+    route_schema = load(route_schema_path)
     normalized = json.loads(canonical_json(doc))
     input_digest = digest(normalized)
     brief_id = "PB-" + input_digest.split(":", 1)[1][:16].upper()
@@ -624,6 +685,19 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
 
     fingerprint = _fingerprint(rows, scope, subject, repo, index)
     trace_rows = _trace(rows, fingerprint)
+    route_seed_rows = [{
+        "owner_question_id": row["owner_question_id"],
+        "summary": row.get("summary") or "",
+        "canonical_question_ref": row.get("canonical_question_ref"),
+        "candidate_question_refs": list(row.get("candidate_question_refs") or []),
+        "identity_status": row.get("identity_status"),
+        "target_authority": row.get("target_authority"),
+        "direct_source_use": row.get("direct_source_use"),
+        "instructional_demand_use": row.get("instructional_demand_use"),
+        "assessment_claim": row.get("assessment_claim"),
+        "primary_capability_ref": row.get("primary_capability_ref"),
+        "demand_evidence_refs": list(row.get("demand_evidence_refs") or []),
+    } for row in rows]
     worksheet = _worksheet_map(doc, rows)
 
     unique_holds = []
@@ -648,6 +722,16 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
             "path": str(authority_path.relative_to(repo)),
             "digest": digest(authority),
         },
+        "target_routing_contract": {
+            "version": routing["version"],
+            "path": str(routing_path.relative_to(repo)),
+            "digest": digest(routing),
+        },
+        "target_route_output": {
+            "schema_path": str(route_schema_path.relative_to(repo)),
+            "required": True,
+            "seed_rows": route_seed_rows,
+        },
         "input_digest": input_digest,
         "prompt_digest": "sha256:" + ("0" * 64),
         "subject": subject,
@@ -665,7 +749,7 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
         },
         "scope_boundaries": [
             "Canonical subject/question records remain authority.",
-            "Existing six Core role contracts remain authority; no seventh Core is created.",
+            "Existing six Core role contracts remain authority; target-demand routing is planning control, not a seventh Core.",
             "Learner percentage is a routing coordinate only and cannot shrink CORE1A/CORE1B intrinsic depth.",
             "plan_request.py remains authoritative for readiness, prerequisite bridges, source receipts and product holds.",
             "Reusable question-set selection and strict exam mode remain outside this composer.",
@@ -689,7 +773,7 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
             "note": "Composer PASS means only that the prompt bundle is structurally/mapping-ready for the existing planner; it does not mean any Core product is ready.",
         },
     }
-    prompt = render_prompt(brief, template, authority)
+    prompt = render_prompt(brief, template, authority, routing)
     brief["prompt_digest"] = digest(prompt)
     structure_findings = _validate_brief(brief, repo)
     if structure_findings:
