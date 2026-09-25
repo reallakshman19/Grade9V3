@@ -70,7 +70,7 @@ class PromptComposerTests(unittest.TestCase):
         text = result["agent_prompt"]
         for clause in [
             "GOAL_OUTCOME", "FIXED_SOURCE_QUESTIONS", "LEARNER_PROFILE",
-            "EXECUTION_ORDER", "AUTHORITY_GRAPH", "DEMAND_BRIDGE", "TOPIC_BOUNDARY", "CORE_OBLIGATIONS",
+            "EXECUTION_ORDER", "AUTHORITY_GRAPH", "DEMAND_BRIDGE", "LEARNER_PRODUCT_CONTRACT", "TOPIC_BOUNDARY", "CORE_OBLIGATIONS",
             "DIFFICULTY_PROGRESSION", "PROVENANCE_TRACE", "ACCEPTANCE",
             "NON_GOALS", "HOLD_FAIL", "DOWNSTREAM_DELIVERABLE",
         ]:
@@ -137,6 +137,37 @@ class PromptComposerTests(unittest.TestCase):
         )
         self.assertIn(
             "Core2A/Core2B may consume a target demand only after capability closure is ESTABLISHED or ROUTED",
+            text,
+        )
+
+    def test_generated_prompt_consumes_learner_product_contract_not_parallel_topic_renderer_rules(self):
+        result = prompt_composer.compose(self.load("projectile-stress-set.json"))
+        brief = result["prompt_brief"]
+        self.assertEqual(
+            brief["learner_product_contract"]["path"],
+            "Shared/roles/LEARNER-PRODUCT-TEMPLATES.md",
+        )
+        self.assertRegex(
+            brief["learner_product_contract"]["digest"],
+            r"^sha256:[a-f0-9]{64}$",
+        )
+        text = result["agent_prompt"]
+        self.assertIn("[LEARNER_PRODUCT_CONTRACT]", text)
+        self.assertIn(
+            "The actual learner artifact must contain the required blocks",
+            text,
+        )
+        self.assertIn(
+            "Interactive reveal must have a semantically complete static/print closure route",
+            text,
+        )
+        self.assertIn(
+            "Required canonical visuals must actually render in the learner artifact",
+            text,
+        )
+        self.assertIn("Math must render as readable mathematics", text)
+        self.assertIn(
+            "Use the shared learner projection/runtime by default",
             text,
         )
 
