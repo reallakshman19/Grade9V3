@@ -153,8 +153,14 @@ export class Core2AProjectileStudy extends HTMLElementBase {
 
   _onInput(event) {
     if (event.target.matches("[data-attempt-text]")) {
+      const unlocksVisual = this.state.phase === "INITIAL" && String(event.target.value || "").trim().length > 0;
       this.state = transitionStudyState(this.state, { type: "SET_ATTEMPT", value: event.target.value });
-      this._syncPhase();
+      if (unlocksVisual) {
+        this.render();
+        const input = this.shadowRoot?.querySelector("[data-attempt-text]");
+        input?.focus();
+        input?.setSelectionRange?.(String(this.state.attempt).length, String(this.state.attempt).length);
+      } else this._syncPhase();
       return;
     }
     if (event.target.matches("[data-time-scrubber]")) {
