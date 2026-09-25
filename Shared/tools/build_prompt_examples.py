@@ -17,12 +17,18 @@ if __package__ in (None, ""):
 from Shared.contracts import load  # noqa: E402
 from Shared.tools import prompt_composer  # noqa: E402
 
-FIXTURE = REPO / "tests" / "fixtures" / "prompt-composer" / "projectile-stress-set.json"
-OUT = REPO / "docs" / "prompts" / "projectile-stress-set.generated.md"
+CONFIG = REPO / "tests" / "fixtures" / "prompt-composer" / "generated-examples.json"
 
 
-def render(repo: Path = REPO) -> bytes:
-    fixture = repo / FIXTURE.relative_to(REPO)
+def _examples(repo: Path = REPO) -> list[dict]:
+    rows = load(repo / CONFIG.relative_to(REPO))
+    if not isinstance(rows, list):
+        raise ValueError("prompt example config must be an array")
+    return rows
+
+
+def _render_one(row: dict, repo: Path = REPO) -> bytes:
+    fixture = repo / row["fixture"]
     doc = load(fixture)
     result = prompt_composer.compose(
         doc,
@@ -33,29 +39,39 @@ def render(repo: Path = REPO) -> bytes:
 
 
 def rendered_file(repo: Path = REPO) -> dict[str, bytes]:
-    return {OUT.relative_to(REPO).as_posix(): render(repo)}
+    return {
+        row["output"]: _render_one(row, repo)
+        for row in _examples(repo)
+    }
 
 
 def write(repo: Path = REPO) -> None:
-    target = repo / OUT.relative_to(REPO)
-    target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_bytes(render(repo))
+    for relative, content in rendered_file(repo).items():
+        target = repo / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(content)
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
-    intended = render()
+    intended = rendered_file()
     if args.check:
-        if not OUT.is_file() or OUT.read_bytes() != intended:
-            print(f"generated prompt example is stale: {OUT.relative_to(REPO)}")
+        stale = [
+            path for path, content in intended.items()
+            if not (REPO / path).is_file() or (REPO / path).read_bytes() != content
+        ]
+        if stale:
+            for path in stale:
+                print(f"generated prompt example is stale: {path}")
             print("Regenerate with: python3 Shared/tools/build_prompt_examples.py")
             return 1
-        print(f"prompt example up to date: {OUT.relative_to(REPO)}")
+        print(f"prompt examples up to date: {len(intended)}")
         return 0
     write()
-    print(f"wrote {OUT.relative_to(REPO)}")
+    for path in intended:
+        print(f"wrote {path}")
     return 0
 
 
