@@ -10,6 +10,8 @@
     "template",
     "repository_basis",
     "authority_contract",
+    "target_routing_contract",
+    "target_route_output",
     "input_digest",
     "prompt_digest",
     "subject",
@@ -169,7 +171,11 @@
           "identity_status",
           "demand_evidence_refs",
           "learner_eligibility",
-          "learner_eligibility_basis"
+          "learner_eligibility_basis",
+          "target_authority",
+          "direct_source_use",
+          "instructional_demand_use",
+          "assessment_claim"
         ],
         "properties": {
           "owner_question_id": {
@@ -198,6 +204,7 @@
               "CANONICAL_MATCH",
               "OWNER_CONFIRMED_CANONICAL_RUNG",
               "AGENT_PROPOSAL_PENDING_REVIEW",
+              "IDENTITY_REVIEW_REQUIRED",
               "IDENTITY_HOLD",
               "UNMAPPED_HOLD"
             ]
@@ -255,6 +262,7 @@
           "identity_status": {
             "enum": [
               "EXACT_CONFIRMED",
+              "IDENTITY_REVIEW_REQUIRED",
               "IDENTITY_HOLD",
               "UNMAPPED"
             ]
@@ -278,6 +286,32 @@
             "type": [
               "string",
               "null"
+            ]
+          },
+          "target_authority": {
+            "enum": [
+              "OWNER_FIXED",
+              "SELECTED",
+              "OPTIONAL"
+            ]
+          },
+          "direct_source_use": {
+            "enum": [
+              "ALLOWED",
+              "EXCLUDED",
+              "HOLD"
+            ]
+          },
+          "instructional_demand_use": {
+            "enum": [
+              "ALLOWED",
+              "HOLD"
+            ]
+          },
+          "assessment_claim": {
+            "enum": [
+              "ALLOWED",
+              "HOLD"
             ]
           }
         }
@@ -326,7 +360,26 @@
       "type": [
         "object",
         "null"
-      ]
+      ],
+      "additionalProperties": true,
+      "properties": {
+        "owner_estimate": {
+          "type": "object"
+        },
+        "owner_routing_waiver": {
+          "type": "boolean"
+        },
+        "support_policy": {
+          "enum": [
+            "STANDARD",
+            "HIGH_SCAFFOLD",
+            "OWNER_SPECIFIED"
+          ]
+        },
+        "readiness_claim_allowed": {
+          "const": false
+        }
+      }
     },
     "requested_cores": {
       "type": "array",
@@ -566,6 +619,135 @@
         "digest": {
           "type": "string",
           "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      }
+    },
+    "target_routing_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "path",
+        "digest"
+      ],
+      "properties": {
+        "version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "path": {
+          "const": "Shared/roles/TARGET-DEMAND-ROUTING-CONTRACT.md"
+        },
+        "digest": {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      }
+    },
+    "target_route_output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_path",
+        "required",
+        "seed_rows"
+      ],
+      "properties": {
+        "schema_path": {
+          "const": "Shared/library/target-demand-route.schema.json"
+        },
+        "required": {
+          "const": true
+        },
+        "seed_rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "owner_question_id",
+              "summary",
+              "canonical_question_ref",
+              "candidate_question_refs",
+              "identity_status",
+              "target_authority",
+              "direct_source_use",
+              "instructional_demand_use",
+              "assessment_claim",
+              "primary_capability_ref",
+              "demand_evidence_refs"
+            ],
+            "properties": {
+              "owner_question_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "summary": {
+                "type": "string"
+              },
+              "canonical_question_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "candidate_question_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              },
+              "identity_status": {
+                "enum": [
+                  "EXACT_CONFIRMED",
+                  "IDENTITY_REVIEW_REQUIRED",
+                  "IDENTITY_HOLD",
+                  "UNMAPPED"
+                ]
+              },
+              "target_authority": {
+                "enum": [
+                  "OWNER_FIXED",
+                  "SELECTED",
+                  "OPTIONAL"
+                ]
+              },
+              "direct_source_use": {
+                "enum": [
+                  "ALLOWED",
+                  "EXCLUDED",
+                  "HOLD"
+                ]
+              },
+              "instructional_demand_use": {
+                "enum": [
+                  "ALLOWED",
+                  "HOLD"
+                ]
+              },
+              "assessment_claim": {
+                "enum": [
+                  "ALLOWED",
+                  "HOLD"
+                ]
+              },
+              "primary_capability_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "demand_evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              }
+            }
+          }
         }
       }
     }
