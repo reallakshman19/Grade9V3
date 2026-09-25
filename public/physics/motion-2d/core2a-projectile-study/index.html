@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-web-blueprint="BP-CORE2A-SUPPORTED-APPLICATION@1.0.0" data-layout-family="QUESTION_STUDY">
+<html lang="en" data-web-blueprint="BP-CORE2A-SUPPORTED-APPLICATION@1.0.0" data-shell-ref="G9-TABLET-SHELL-V1" data-layout-family="QUESTION_STUDY">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -44,25 +44,39 @@
     <core2a-projectile-study id="projectile-study" aria-label="Interactive projectile motion Core2A study"></core2a-projectile-study>
   </main>
 
+  <script type="application/json" id="projectile-study-config">
+    {
+      "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+      "shell_ref": "G9-TABLET-SHELL-V1",
+      "layout_family": "QUESTION_STUDY",
+      "question_refs": {
+        "Q21": "PYQ-PHY-JEEADV-2022-P1-Q08",
+        "Q26": "PYQ-PHY-JEEADV-2026-P1-Q06",
+        "Q23": "PYQ-PHY-JEEADV-2025-P2-Q15"
+      }
+    }
+  </script>
   <script src="../../../data/question-bank-data.js"></script>
   <script src="../../../js/display-controls.js"></script>
   <script src="../../../js/site-header.js" data-site-root="../../../" data-site-parent="../index.html"></script>
   <script type="module">
-    import {
-      CORE2A_PROJECTILE_REFS,
-      CORE2A_PROJECTILE_BLUEPRINT,
-    } from "./study-component.mjs";
+    import "./study-component.mjs";
 
     const bank = window.GRADE9_QUESTION_BANK;
     const study = document.getElementById("projectile-study");
-    const expected = document.documentElement.dataset.webBlueprint;
-    if (!bank || !Array.isArray(bank.questions)) throw new Error("CORE2A_PROJECTILE_BANK_PROJECTION_MISSING");
-    if (expected !== CORE2A_PROJECTILE_BLUEPRINT.ref) throw new Error("CORE2A_PROJECTILE_BLUEPRINT_DRIFT");
-    if (document.documentElement.dataset.layoutFamily !== CORE2A_PROJECTILE_BLUEPRINT.layoutFamily) throw new Error("CORE2A_PROJECTILE_LAYOUT_DRIFT");
+    const configNode = document.getElementById("projectile-study-config");
+    const config = JSON.parse(configNode.textContent);
+    const root = document.documentElement;
 
-    const refs = new Set(Object.values(CORE2A_PROJECTILE_REFS));
+    if (!bank || !Array.isArray(bank.questions)) throw new Error("CORE2A_PROJECTILE_BANK_PROJECTION_MISSING");
+    if (root.dataset.webBlueprint !== config.blueprint_ref) throw new Error("CORE2A_PROJECTILE_BLUEPRINT_DRIFT");
+    if (root.dataset.shellRef !== config.shell_ref) throw new Error("CORE2A_PROJECTILE_SHELL_DRIFT");
+    if (root.dataset.layoutFamily !== config.layout_family) throw new Error("CORE2A_PROJECTILE_LAYOUT_DRIFT");
+
+    const refs = new Set(Object.values(config.question_refs));
     const records = bank.questions.filter((row) => refs.has(row.id));
     if (records.length !== refs.size) throw new Error("CORE2A_PROJECTILE_CANONICAL_RECORD_MISSING");
+    study.ownerRefs = config.question_refs;
     study.records = records;
     window.__core2aProjectileStudyReady = true;
   </script>
