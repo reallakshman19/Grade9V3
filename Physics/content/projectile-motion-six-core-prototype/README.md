@@ -14,6 +14,7 @@ This directory is a derived learner-product prototype for **PROJECTILE MOTION �
 - `CORE2B.md` — existing canonical authored transfer designs, with prior-exposure/learner-release HOLD.
 - `demand-map.json` — five fixed owner anchors and A–J demand analysis.
 - `cross-core-traceability.json` — machine-readable artifact trace.
+- `visual-audit.json` — per-representation semantic/reveal/accessibility audit; missing scene bindings stay `VISUAL_HOLD`.
 - `VALIDATION.md` — validation-state audit.
 - `hold-fail-register.json` — unresolved authority/content/release dependencies.
 - `preview.html` — rendered review preview of visuals and reveal ordering.
