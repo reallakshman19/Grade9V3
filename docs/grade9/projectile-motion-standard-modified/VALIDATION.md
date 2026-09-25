@@ -64,7 +64,7 @@ The three canonical representations resolve to existing learner-facing interacti
 
 ## State separation
 
-- **STRUCTURALLY_VALIDATED** applies only to encoded contract/trace invariants and the focused falsifier test.
+- **STRUCTURALLY_VALIDATED** applies only to encoded contract/trace invariants rechecked against the canonical package and question-bank records.
 - **SOURCE_VERIFIED** applies to the parent exam identities stored in the bank; it does not resolve Q15 owner-label identity or exact Core2 wording custody.
 - **ACADEMICALLY_REVIEWED:** not claimed. The canonical package/resources remain CANDIDATE/partial-review artifacts.
 - **PUBLICATION_READY:** **NO**.
