@@ -1,0 +1,45 @@
+{
+  "repository_basis": "main@9a1be5704f57931c830adcfee79d872e22c52b21",
+  "worksheet_id": "OWNER-IDENTITY-REVIEW-FIXTURE",
+  "subject": "Physics",
+  "questions": [
+    {
+      "question_id": "AMBIG",
+      "summary": "Owner demand requiring semantic identity review.",
+      "candidate_question_refs": [
+        "PYQ-PHY-JEEADV-2018-P2-Q08",
+        "PYQ-PHY-JEEADV-2023-P1-Q01"
+      ],
+      "candidate_set_provenance": "Owner supplied candidate set for identity-review falsifier.",
+      "learner_eligibility": "NOT_ESTABLISHED",
+      "learner_eligibility_basis": "Identity-review fixture only.",
+      "target_authority": "OWNER_FIXED",
+      "direct_source_use": "HOLD",
+      "instructional_demand_use": "ALLOWED",
+      "assessment_claim": "HOLD"
+    }
+  ],
+  "owner_confirmed_rung": {
+    "matrix_id": "MATRIX-PHY-KIN-2D-MOTION",
+    "rung": "R3",
+    "by": "owner"
+  },
+  "learner": {
+    "owner_estimate": {
+      "knowledge_percentage": 50,
+      "by": "owner",
+      "instruction": "Starting coordinate only."
+    },
+    "owner_routing_waiver": true,
+    "support_policy": "HIGH_SCAFFOLD",
+    "readiness_claim_allowed": false
+  },
+  "requested_cores": [
+    "CORE1A",
+    "CORE2A"
+  ],
+  "execution_order": [
+    "CORE1A",
+    "CORE2A"
+  ]
+}
