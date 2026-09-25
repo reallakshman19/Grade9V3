@@ -171,12 +171,14 @@
         "kind": "GUARDRAILS",
         "state": "PENDING",
         "ref": null,
-        "detail": "Final exact-head guardrails required after identity-review fixture and generated-manifest refresh."
+        "detail": "Final exact-head guardrails required after prompt assertion and generated-data freshness fixes."
       }
     ],
     "failure_origins": {
-      "guardrails-6013": "Browser semantic-identity falsifier expected global composer PASS with no mapped scope anchor; corrected the fixture by adding an independent exact mapped scope anchor without weakening identity review.",
-      "guardrails-6025": "Expected architecture-manifest drift after changing the identity-review fixture; refreshed from the generated-artifact preview and rebound composer data to the new manifest digest."
+      "guardrails-6013": "Browser semantic-identity falsifier expected global composer PASS without an independently mapped scope anchor. Added a separate exact scope anchor while retaining identity-review state.",
+      "guardrails-6025": "Expected architecture-manifest drift after identity-review fixture change. Refreshed the generated manifest and composer manifest basis.",
+      "guardrails-6033": "Two test-only defects: prompt-composer generated-data field order was stale relative to the deterministic builder, and one case-normalized assertion compared against uppercase text. Normalized builder field order and assertion case.",
+      "guardrails-6048": "Expected manifest drift after the test assertion edit. Refreshed manifest and composer manifest basis."
     }
   },
   "delivery": {
@@ -184,7 +186,7 @@
     "url": "https://github.com/reallaksh19/Grade9V3/pull/286",
     "lifecycle": "DRAFT_VALIDATION",
     "base": "9a1be5704f57931c830adcfee79d872e22c52b21",
-    "head": "6bf36a03078aa7bc841751d5c7f162a78a48238d",
+    "head": "2a27ed6b67a7f7213ae30612ade7555aa1664bda",
     "mergeability": "MERGEABLE_AS_DRAFT"
   },
   "delivery_stack": [],
@@ -253,10 +255,10 @@
   },
   "material": {
     "base": "9a1be5704f57931c830adcfee79d872e22c52b21",
-    "current_head": "6bf36a03078aa7bc841751d5c7f162a78a48238d"
+    "current_head": "2a27ed6b67a7f7213ae30612ade7555aa1664bda"
   },
   "next": {
-    "immediate_action": "Run final exact-head Guardrails and V3.1 Relay; publish evidence if both remain green.",
+    "immediate_action": "Run final exact-head Guardrails and V3.1 Relay; publish evidence if both are green.",
     "next_value_frontier": "Use the generated five-target prompt in a separate consumer proof; the blueprint must not absorb topic-specific learner content.",
     "stop_conditions": [
       "Do not merge in this task.",
