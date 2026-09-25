@@ -1,0 +1,109 @@
+{
+  "schema_version": "1.0.0",
+  "prototype_id": "G9-PHY-PROJECTILE-STANDARD-MODIFIED-SIX-CORE-2026-09-25",
+  "holds": [
+    {
+      "id": "HOLD-Q15-IDENTITY",
+      "state": "HOLD",
+      "scope": [
+        "Q15",
+        "CORE2",
+        "CORE2A",
+        "CORE2B"
+      ],
+      "reason": "Owner label Q15 maps to two live repository candidates; no authoritative owner/source locator resolves it.",
+      "closes_when": "Authoritative mapping identifies the exact repository ref."
+    },
+    {
+      "id": "HOLD-CORE2-SOURCE-CUSTODY",
+      "state": "HOLD",
+      "scope": [
+        "CORE2",
+        "Q28",
+        "Q15",
+        "Q21",
+        "Q26",
+        "Q23"
+      ],
+      "reason": "Anchor records are faithful non-verbatim adaptations and lack current-contract component-by-component custody proof.",
+      "closes_when": "Retained source bytes, precise item locators and component verification close CORE2.md."
+    },
+    {
+      "id": "HOLD-Q28-CALCULUS-GAP",
+      "state": "HOLD",
+      "scope": [
+        "Q28",
+        "CORE2A",
+        "CORE2B"
+      ],
+      "reason": "Position-vector differentiation is LOCAL_GAP and above the R1 calculus ceiling.",
+      "closes_when": "A separately authorised canonical capability/bridge teaches it."
+    },
+    {
+      "id": "HOLD-Q26-TRAJECTORY-GAP",
+      "state": "HOLD",
+      "scope": [
+        "Q26",
+        "CORE2A",
+        "CORE2B"
+      ],
+      "reason": "Trajectory-equation derivation is LOCAL_GAP and above the R3 ceiling.",
+      "closes_when": "The capability is explicitly admitted and canonically taught."
+    },
+    {
+      "id": "HOLD-Q23-LINEAR-DRAG-GAP",
+      "state": "HOLD",
+      "scope": [
+        "Q23",
+        "CORE2A",
+        "CORE2B"
+      ],
+      "reason": "Linear drag needs an untaught velocity-dependent differential-equation/integration model.",
+      "closes_when": "Upstream scientific/mathematical capability closure is canonical."
+    },
+    {
+      "id": "HOLD-Q21-MODIFIED-GRAVITY-BRIDGE",
+      "state": "HOLD",
+      "scope": [
+        "Q21"
+      ],
+      "reason": "Post-apex acceleration differs from unchanged gravity-only R3 specialization.",
+      "closes_when": "A reviewed bridge licenses the piecewise route; learner eligibility remains separately governed."
+    },
+    {
+      "id": "HOLD-LEARNER-ROUTING",
+      "state": "HOLD",
+      "scope": [
+        "CORE2A",
+        "CORE2B"
+      ],
+      "reason": "50% estimate is not scoped capability evidence; no explicit waiver is recorded; designed lineage is not actual exposure.",
+      "closes_when": "Scoped learner evidence or explicit owner waiver is supplied."
+    },
+    {
+      "id": "HOLD-VISUAL-SEMANTIC-REVIEW",
+      "state": "HOLD",
+      "scope": [
+        "CORE1",
+        "CORE1A",
+        "CORE1B",
+        "CORE2A",
+        "CORE2B"
+      ],
+      "reason": "Explorers exist and runtime checks pass, but GCDR academic/semantic review remains PARTIAL; Core1 has PRIMARY_REPRESENTATION_CORE1_SCENE_MISSING.",
+      "closes_when": "Semantic/academic visual review and Core1 scene coverage close."
+    },
+    {
+      "id": "HOLD-ACADEMIC-REVIEW-STATE",
+      "state": "HOLD",
+      "scope": [
+        "CORE1",
+        "CORE1A",
+        "CORE1B"
+      ],
+      "reason": "Canonical package status is CANDIDATE.",
+      "closes_when": "Repository review authority records academic acceptance."
+    }
+  ],
+  "fails": []
+}
