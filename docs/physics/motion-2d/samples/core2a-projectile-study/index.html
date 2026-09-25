@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en" data-web-blueprint="BP-CORE2A-SUPPORTED-APPLICATION@1.0.0" data-shell-ref="G9-TABLET-SHELL-V1" data-layout-family="QUESTION_STUDY">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="grade9v3-sample" content="CORE2A_PROJECTILE_STUDY">
+  <title>Projectile Motion · Core2A sample · Grade9V3</title>
+  <link rel="stylesheet" href="../../../../css/site.css">
+  <link rel="stylesheet" href="./study.css">
+</head>
+<body>
+  <header class="site-nav">
+    <a href="../../../../index.html" class="brand-link">
+      <span class="logo-icon" aria-hidden="true">⚡</span>
+      <span>Grade9V3 Knowledge Portal</span>
+      <span class="brand-badge">Core2A sample</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../../../../index.html">Home</a>
+      <a href="../../../index.html" class="phy-link active">Physics</a>
+      <a href="../../index.html">Motion in 2D</a>
+      <a href="../../../../question-bank/index.html" data-site-question-bank>Question Bank</a>
+      <button type="button" class="g9-display-trigger-btn" onclick="window.Grade9Display.togglePopover()" title="Adjust Font Size and UI Zoom Scale"><span>🔤 / 🔍 Display</span></button>
+    </nav>
+  </header>
+
+  <main class="study-shell" id="studyApp">
+    <section class="study-intro" aria-labelledby="studyTitle">
+      <div>
+        <p class="eyebrow">Motion in 2D · supported application</p>
+        <h1 id="studyTitle">Projectile motion: three ways the model changes</h1>
+        <p class="lede">Try first. Then use the visual model, request support, inspect the reasoning route, and check your own answer.</p>
+      </div>
+      <div class="contract-stack" aria-label="Delivery contract">
+        <span class="contract-chip">QUESTION_STUDY</span>
+        <span class="contract-chip subtle">Candidate-record demo</span>
+      </div>
+    </section>
+
+    <nav class="question-tabs" aria-label="Sample questions" role="tablist">
+      <button type="button" role="tab" data-question-tab="Q21" aria-selected="true">Q21 <small>Gravity changes at apex</small></button>
+      <button type="button" role="tab" data-question-tab="Q26" aria-selected="false">Q26 <small>Trajectory through P</small></button>
+      <button type="button" role="tab" data-question-tab="Q23" aria-selected="false">Q23 <small>Linear drag</small></button>
+    </nav>
+
+    <section class="identity-band" data-slot="identity" aria-label="Question identity and provenance">
+      <div class="identity-main">
+        <span class="owner-pill" id="ownerLabel">Q21</span>
+        <div>
+          <strong id="examBadge">Loading canonical record…</strong>
+          <div class="mono meta-line" id="canonicalRef">—</div>
+        </div>
+      </div>
+      <div class="identity-status">
+        <span class="status-pill" id="recordStatus">CANDIDATE</span>
+        <span>Sample study interface · not an approved assignment</span>
+      </div>
+    </section>
+
+    <div class="study-grid">
+      <section class="primary-pane" data-slot="attempt">
+        <article class="question-card" aria-labelledby="questionHeading">
+          <div class="section-kicker">Question</div>
+          <h2 id="questionHeading">Loading…</h2>
+          <p class="question-stem" id="questionStem"></p>
+          <ul class="condition-list" id="questionConditions"></ul>
+          <div id="attemptArea"></div>
+        </article>
+
+        <section class="visual-card" data-slot="bound_representation" aria-labelledby="visualHeading">
+          <div class="visual-heading">
+            <div>
+              <div class="section-kicker">Visualize</div>
+              <h2 id="visualHeading">Interactive model</h2>
+            </div>
+            <span class="state-chip" id="stateChip">INITIAL</span>
+          </div>
+          <div id="stage" class="stage" tabindex="0" aria-describedby="stageHelp"></div>
+          <p class="stage-help" id="stageHelp">Keyboard: Tab moves through controls. On the visual stage, Space plays/pauses and Home resets.</p>
+          <div id="visualControls" class="control-row"></div>
+        </section>
+      </section>
+
+      <aside class="support-pane" data-slot="support" aria-label="Support and reasoning">
+        <section class="progress-card" aria-labelledby="progressHeading">
+          <div class="section-kicker">Study path</div>
+          <h2 id="progressHeading">One decision at a time</h2>
+          <ol class="flow-strip" id="flowStrip">
+            <li data-flow="TRY">Try</li>
+            <li data-flow="VISUALIZE">Visualize</li>
+            <li data-flow="SUPPORT">Support</li>
+            <li data-flow="REASONING">Reasoning</li>
+            <li data-flow="SOLUTION">Solution</li>
+            <li data-flow="CHECK">Check</li>
+          </ol>
+        </section>
+
+        <section class="support-card">
+          <div class="section-title-row">
+            <div>
+              <div class="section-kicker">Optional support</div>
+              <h2>Need a hint?</h2>
+            </div>
+            <button type="button" class="secondary-action" id="supportButton" disabled>Need a hint?</button>
+          </div>
+          <div id="supportContent" class="support-content">
+            <p class="locked-copy">Commit an attempt before authored support is available.</p>
+          </div>
+        </section>
+
+        <section class="reasoning-card" data-slot="reasoning">
+          <div class="section-title-row">
+            <div>
+              <div class="section-kicker">Reasoning</div>
+              <h2>Connect the model</h2>
+            </div>
+            <button type="button" class="secondary-action" id="reasoningButton" disabled>Why?</button>
+          </div>
+          <div id="reasoningContent">
+            <p class="locked-copy">The reasoning route and crux remain closed until you commit.</p>
+          </div>
+        </section>
+
+        <section class="solution-card">
+          <div class="section-title-row">
+            <div>
+              <div class="section-kicker">Complete solution</div>
+              <h2>Close the loop</h2>
+            </div>
+            <button type="button" class="primary-action" id="solutionButton" disabled>Open solution</button>
+          </div>
+          <div id="solutionContent">
+            <p class="locked-copy">Your answer comes first.</p>
+          </div>
+        </section>
+
+        <section class="check-card">
+          <div class="section-title-row">
+            <div>
+              <div class="section-kicker">Independent check / repair</div>
+              <h2>Check</h2>
+            </div>
+            <button type="button" class="secondary-action" id="checkButton" disabled>Check</button>
+          </div>
+          <div id="checkContent">
+            <p class="locked-copy">Open the solution, then check your attempt against the canonical closure.</p>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <p class="authority-note">Academic authority: generated Question Bank projection from <code>Physics/library/exam-bank/competitive-exam-question-bank.v2.json</code>. This page owns interaction and visualization only.</p>
+    <p class="runtime-status" id="runtimeStatus" role="status" aria-live="polite">Loading canonical question data…</p>
+  </main>
+
+  <script>
+    window.__core2aProjectileErrors = [];
+    window.addEventListener("error", (event) => window.__core2aProjectileErrors.push(String(event.message || event.error || "error")));
+    window.addEventListener("unhandledrejection", (event) => window.__core2aProjectileErrors.push(String(event.reason || "unhandled rejection")));
+  </script>
+  <script src="../../../../data/question-bank-data.js"></script>
+  <script src="../../../../js/display-controls.js"></script>
+  <script src="../../../../js/site-header.js" data-site-root="../../../../" data-site-parent="../../index.html"></script>
+  <script type="module" src="./app.mjs"></script>
+</body>
+</html>
