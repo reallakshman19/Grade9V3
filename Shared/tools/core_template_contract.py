@@ -157,6 +157,26 @@ def audit(path: Path | None = None) -> dict[str, Any]:
             "findings": [_finding("CORE_TEMPLATE_ROLES_MISSING")],
         }
 
+    delivery = contract.get("delivery_invariants")
+    required_delivery = (
+        "required_role_blocks_must_exist_in_learner_artifact",
+        "summary_pointer_to_external_file_does_not_satisfy_required_block",
+        "static_delivery_must_be_semantically_complete",
+        "interactive_reveal_requires_static_closure_equivalent",
+        "canonical_representation_binding_required",
+        "required_visual_must_render_in_learner_artifact",
+        "reviewer_engineering_metadata_must_not_dominate_learner_surface",
+        "math_must_render_as_readable_math_not_broken_control_sequences",
+        "shared_learner_projection_runtime_is_default_delivery_path",
+        "topic_local_parallel_renderer_requires_proven_shared_stack_gap",
+    )
+    if not isinstance(delivery, dict):
+        findings.append(_finding("CORE_TEMPLATE_DELIVERY_INVARIANTS_MISSING"))
+        delivery = {}
+    for name in required_delivery:
+        if delivery.get(name) is not True:
+            findings.append(_finding("CORE_TEMPLATE_DELIVERY_INVARIANT_NOT_TRUE", detail=name))
+
     actual = set(roles)
     expected = set(ROLE_ORDER)
     for missing in sorted(expected - actual):
