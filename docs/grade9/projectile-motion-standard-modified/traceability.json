@@ -1,0 +1,1043 @@
+{
+  "schema_version": "1.0.0",
+  "prototype_id": "G9-PHY-PROJECTILE-STANDARD-MODIFIED-SIX-CORE-2026-09-25",
+  "rows": [
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "VISUAL_HOLD + ACADEMIC_REVIEW_HOLD",
+      "unresolved_defects": [
+        "PRIMARY_REPRESENTATION_CORE1_SCENE_MISSING",
+        "canonical package CANDIDATE"
+      ],
+      "artifact_id": "ART-CORE1-PHY-KIN-2D",
+      "core_role": "CORE1",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#BUCKET-PHY-KIN-2D-MOTION",
+      "canonical_primary_capability_ref": null,
+      "secondary_capability_refs": [],
+      "canonical_microtopic": [
+        "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+        "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "prerequisite_refs": [],
+      "misconception_addressed": "Shared clock, model validity and event condition.",
+      "representation_ref": [
+        "REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK",
+        "REP-KIN-2D-PROJECTILE-MODEL"
+      ],
+      "reveal_state": "IMMEDIATE_ORIENTATION",
+      "solution_reasoning_refs": [],
+      "verification_ref": "canonical relations + docs/core1-orientation-baseline.json",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_upstream_canonical_truth": "Compiler semantic orientation; never derived from Core2.",
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_HOLDS"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "SOURCE_CUSTODY_HOLD; Q15 IDENTITY_HOLD",
+      "unresolved_defects": [
+        "Exact source form/component proof unavailable."
+      ],
+      "artifact_id": "ART-CORE2-HOLD-PHY-KIN-2D",
+      "core_role": "CORE2",
+      "canonical_academic_source_ref": null,
+      "canonical_primary_capability_ref": null,
+      "secondary_capability_refs": [],
+      "canonical_microtopic": null,
+      "prerequisite_refs": [],
+      "misconception_addressed": null,
+      "representation_ref": null,
+      "reveal_state": "HOLD_ONLY",
+      "solution_reasoning_refs": [],
+      "verification_ref": "Shared/roles/CORE2.md + question-bank source_custody",
+      "provenance_class": "SOURCE_DERIVED",
+      "transformation_from_upstream_canonical_truth": "None; source custody is independent.",
+      "validation_state": "HOLD"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "VISUAL_HOLD + ACADEMIC_REVIEW_HOLD",
+      "unresolved_defects": [
+        "Visual semantic review partial."
+      ],
+      "artifact_id": "ART-CORE1A-MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "core_role": "CORE1A",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "canonical_primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+      "secondary_capability_refs": [],
+      "canonical_microtopic": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "prerequisite_refs": [
+        "CAP-VECTOR-SIGNED-COMPONENT"
+      ],
+      "misconception_addressed": [
+        "Independent x and y motions may use different elapsed times.",
+        "The x-motion and y-motion are two different objects that can be paired arbitrarily later."
+      ],
+      "representation_ref": [
+        "REP-KIN-2D-SHARED-CLOCK"
+      ],
+      "reveal_state": "FULL_CONSTRUCTION",
+      "solution_reasoning_refs": [
+        "K2D1-1",
+        "K2D1-2",
+        "K2D1-3",
+        "K2D1-4"
+      ],
+      "verification_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS.exit_task + relation checks",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_upstream_canonical_truth": "Declarative construction from canonical microtopic.",
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_HOLDS"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "VISUAL_HOLD + ACADEMIC_REVIEW_HOLD",
+      "unresolved_defects": [
+        "Visual semantic review partial."
+      ],
+      "artifact_id": "ART-CORE1A-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "core_role": "CORE1A",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "canonical_primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+      "secondary_capability_refs": [],
+      "canonical_microtopic": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "prerequisite_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "CAP-KIN-CONSTANT-ACCELERATION"
+      ],
+      "misconception_addressed": [
+        "The magnitude of acceleration should be inserted unchanged into both x and y equations.",
+        "If one acceleration component is constant, the constant-acceleration equations are automatically valid on both axes.",
+        "A time found from the x equation may be replaced by a different convenient time in the y equation."
+      ],
+      "representation_ref": [
+        "REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK"
+      ],
+      "reveal_state": "FULL_CONSTRUCTION",
+      "solution_reasoning_refs": [
+        "K2D2-1",
+        "K2D2-2",
+        "K2D2-3"
+      ],
+      "verification_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION.exit_task + relation checks",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_upstream_canonical_truth": "Declarative construction from canonical microtopic.",
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_HOLDS"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "VISUAL_HOLD + ACADEMIC_REVIEW_HOLD",
+      "unresolved_defects": [
+        "Visual semantic review partial."
+      ],
+      "artifact_id": "ART-CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL",
+      "core_role": "CORE1A",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#MIC-PHY-KIN-PROJECTILE-MODEL",
+      "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [],
+      "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "prerequisite_refs": [
+        "CAP-KIN-2D-CONSTANT-ACCELERATION"
+      ],
+      "misconception_addressed": [
+        "A projectile needs a horizontal force to keep moving horizontally.",
+        "A horizontal launch has no vertical velocity throughout the flight.",
+        "At the highest point the whole velocity and the acceleration are both zero.",
+        "Same-height flight formulas may be used whenever the question is about a projectile range or flight time.",
+        "At two points of the same height on an ideal trajectory, the velocity vectors are identical.",
+        "Horizontal speed determines how long a horizontally launched object takes to fall."
+      ],
+      "representation_ref": [
+        "REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK",
+        "REP-KIN-2D-PROJECTILE-MODEL"
+      ],
+      "reveal_state": "FULL_CONSTRUCTION",
+      "solution_reasoning_refs": [
+        "K2D3-1",
+        "K2D3-2",
+        "K2D3-3",
+        "K2D3-4",
+        "K2D3-5",
+        "K2D3-6",
+        "K2D3-7"
+      ],
+      "verification_ref": "MIC-PHY-KIN-PROJECTILE-MODEL.exit_task + relation checks",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_upstream_canonical_truth": "Declarative construction from canonical microtopic.",
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_HOLDS"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "VISUAL_HOLD + ACADEMIC_REVIEW_HOLD",
+      "unresolved_defects": [
+        "Visual semantic review partial."
+      ],
+      "artifact_id": "ART-CORE1B-MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "core_role": "CORE1B",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "canonical_primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+      "secondary_capability_refs": [],
+      "canonical_microtopic": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "prerequisite_refs": [
+        "CAP-VECTOR-SIGNED-COMPONENT"
+      ],
+      "misconception_addressed": [
+        "Independent x and y motions may use different elapsed times.",
+        "The x-motion and y-motion are two different objects that can be paired arbitrarily later."
+      ],
+      "representation_ref": [
+        "REP-KIN-2D-SHARED-CLOCK"
+      ],
+      "reveal_state": "PREDICT_ATTEMPT_BEFORE_RECONSTRUCTION",
+      "solution_reasoning_refs": [
+        "K2D1-1",
+        "K2D1-2",
+        "K2D1-3",
+        "K2D1-4"
+      ],
+      "verification_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS.exit_task + relation checks",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_upstream_canonical_truth": "Self-tutor elicitation from same canonical microtopic/inferential jump.",
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_HOLDS"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "VISUAL_HOLD + ACADEMIC_REVIEW_HOLD",
+      "unresolved_defects": [
+        "Visual semantic review partial."
+      ],
+      "artifact_id": "ART-CORE1B-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "core_role": "CORE1B",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "canonical_primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+      "secondary_capability_refs": [],
+      "canonical_microtopic": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "prerequisite_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "CAP-KIN-CONSTANT-ACCELERATION"
+      ],
+      "misconception_addressed": [
+        "The magnitude of acceleration should be inserted unchanged into both x and y equations.",
+        "If one acceleration component is constant, the constant-acceleration equations are automatically valid on both axes.",
+        "A time found from the x equation may be replaced by a different convenient time in the y equation."
+      ],
+      "representation_ref": [
+        "REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK"
+      ],
+      "reveal_state": "PREDICT_ATTEMPT_BEFORE_RECONSTRUCTION",
+      "solution_reasoning_refs": [
+        "K2D2-1",
+        "K2D2-2",
+        "K2D2-3"
+      ],
+      "verification_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION.exit_task + relation checks",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_upstream_canonical_truth": "Self-tutor elicitation from same canonical microtopic/inferential jump.",
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_HOLDS"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "VISUAL_HOLD + ACADEMIC_REVIEW_HOLD",
+      "unresolved_defects": [
+        "Visual semantic review partial."
+      ],
+      "artifact_id": "ART-CORE1B-MIC-PHY-KIN-PROJECTILE-MODEL",
+      "core_role": "CORE1B",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#MIC-PHY-KIN-PROJECTILE-MODEL",
+      "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [],
+      "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "prerequisite_refs": [
+        "CAP-KIN-2D-CONSTANT-ACCELERATION"
+      ],
+      "misconception_addressed": [
+        "A projectile needs a horizontal force to keep moving horizontally.",
+        "A horizontal launch has no vertical velocity throughout the flight.",
+        "At the highest point the whole velocity and the acceleration are both zero.",
+        "Same-height flight formulas may be used whenever the question is about a projectile range or flight time.",
+        "At two points of the same height on an ideal trajectory, the velocity vectors are identical.",
+        "Horizontal speed determines how long a horizontally launched object takes to fall."
+      ],
+      "representation_ref": [
+        "REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK",
+        "REP-KIN-2D-PROJECTILE-MODEL"
+      ],
+      "reveal_state": "PREDICT_ATTEMPT_BEFORE_RECONSTRUCTION",
+      "solution_reasoning_refs": [
+        "K2D3-1",
+        "K2D3-2",
+        "K2D3-3",
+        "K2D3-4",
+        "K2D3-5",
+        "K2D3-6",
+        "K2D3-7"
+      ],
+      "verification_ref": "MIC-PHY-KIN-PROJECTILE-MODEL.exit_task + relation checks",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_upstream_canonical_truth": "Self-tutor elicitation from same canonical microtopic/inferential jump.",
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_HOLDS"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "R-KIN-2D-CLOCK-REPRESENT",
+        "R-KIN-2D-CLOCK-PAIR"
+      ],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD + inherited SOURCE_CUSTODY_HOLD",
+      "unresolved_defects": [
+        "No scoped learner capability evidence/waiver."
+      ],
+      "artifact_id": "ART-CORE2A-Q-PHY-KIN-2D-2A-SHARED-CLOCK-01",
+      "core_role": "CORE2A",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#Q-PHY-KIN-2D-2A-SHARED-CLOCK-01",
+      "canonical_primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+      "secondary_capability_refs": [],
+      "canonical_microtopic": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "prerequisite_refs": [],
+      "misconception_addressed": "Repair to K2D1-4",
+      "representation_ref": [],
+      "reveal_state": "SUPPORTED_FAMILIAR_APPLICATION",
+      "solution_reasoning_refs": [
+        "R-KIN-2D-CLOCK-REPRESENT",
+        "R-KIN-2D-CLOCK-EVALUATE",
+        "R-KIN-2D-CLOCK-PAIR",
+        "R-KIN-2D-CLOCK-CHECK"
+      ],
+      "verification_ref": "Q-PHY-KIN-2D-2A-SHARED-CLOCK-01.answer.check",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_upstream_canonical_truth": "Familiar application of already-taught canonical capability; not a fixed PYQ substitute.",
+      "validation_state": "STRUCTURALLY_VALIDATED_LEARNER_ROUTING_HOLD"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "R-KIN-2D-CA-REPRESENT",
+        "R-KIN-2D-CA-MODEL"
+      ],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD + inherited SOURCE_CUSTODY_HOLD",
+      "unresolved_defects": [
+        "No scoped learner capability evidence/waiver."
+      ],
+      "artifact_id": "ART-CORE2A-Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02",
+      "core_role": "CORE2A",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02",
+      "canonical_primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "prerequisite_refs": [],
+      "misconception_addressed": "Repair to K2D2-2",
+      "representation_ref": [],
+      "reveal_state": "SUPPORTED_FAMILIAR_APPLICATION",
+      "solution_reasoning_refs": [
+        "R-KIN-2D-CA-REPRESENT",
+        "R-KIN-2D-CA-MODEL",
+        "R-KIN-2D-CA-CALCULATE",
+        "R-KIN-2D-CA-CHECK"
+      ],
+      "verification_ref": "Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02.answer.check",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_upstream_canonical_truth": "Familiar application of already-taught canonical capability; not a fixed PYQ substitute.",
+      "validation_state": "STRUCTURALLY_VALIDATED_LEARNER_ROUTING_HOLD"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "R-KIN-2D-APEX-REPRESENT",
+        "R-KIN-2D-APEX-EVENT"
+      ],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD + inherited SOURCE_CUSTODY_HOLD",
+      "unresolved_defects": [
+        "No scoped learner capability evidence/waiver."
+      ],
+      "artifact_id": "ART-CORE2A-Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03",
+      "core_role": "CORE2A",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03",
+      "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-CONSTANT-ACCELERATION"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "prerequisite_refs": [],
+      "misconception_addressed": "Repair to K2D3-4",
+      "representation_ref": [],
+      "reveal_state": "SUPPORTED_FAMILIAR_APPLICATION",
+      "solution_reasoning_refs": [
+        "R-KIN-2D-APEX-REPRESENT",
+        "R-KIN-2D-APEX-EVENT",
+        "R-KIN-2D-APEX-CALCULATE",
+        "R-KIN-2D-APEX-CHECK"
+      ],
+      "verification_ref": "Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03.answer.check",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_upstream_canonical_truth": "Familiar application of already-taught canonical capability; not a fixed PYQ substitute.",
+      "validation_state": "STRUCTURALLY_VALIDATED_LEARNER_ROUTING_HOLD"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "R-KIN-LAUNCH-REPRESENT",
+        "R-KIN-LAUNCH-EVENT"
+      ],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD + inherited SOURCE_CUSTODY_HOLD",
+      "unresolved_defects": [
+        "No scoped learner capability evidence/waiver."
+      ],
+      "artifact_id": "ART-CORE2A-Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04",
+      "core_role": "CORE2A",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04",
+      "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "prerequisite_refs": [],
+      "misconception_addressed": "Repair to K2D3-6",
+      "representation_ref": [
+        "REP-KIN-2D-SHARED-CLOCK",
+        "REP-KIN-2D-EVENT-CLOCK"
+      ],
+      "reveal_state": "SUPPORTED_FAMILIAR_APPLICATION",
+      "solution_reasoning_refs": [
+        "R-KIN-LAUNCH-REPRESENT",
+        "R-KIN-LAUNCH-EVENT",
+        "R-KIN-LAUNCH-REUSE",
+        "R-KIN-LAUNCH-CHECK"
+      ],
+      "verification_ref": "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04.answer.check",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_upstream_canonical_truth": "Familiar application of already-taught canonical capability; not a fixed PYQ substitute.",
+      "validation_state": "STRUCTURALLY_VALIDATED_LEARNER_ROUTING_HOLD"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "R-KIN-2D-SAME-REPRESENT",
+        "R-KIN-2D-SAME-EVENT"
+      ],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD + inherited SOURCE_CUSTODY_HOLD",
+      "unresolved_defects": [
+        "No scoped learner capability evidence/waiver."
+      ],
+      "artifact_id": "ART-CORE2A-Q-PHY-KIN-2D-2A-SAME-HEIGHT-05",
+      "core_role": "CORE2A",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#Q-PHY-KIN-2D-2A-SAME-HEIGHT-05",
+      "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-CONSTANT-ACCELERATION"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "prerequisite_refs": [],
+      "misconception_addressed": "Repair to K2D3-5",
+      "representation_ref": [],
+      "reveal_state": "SUPPORTED_FAMILIAR_APPLICATION",
+      "solution_reasoning_refs": [
+        "R-KIN-2D-SAME-REPRESENT",
+        "R-KIN-2D-SAME-EVENT",
+        "R-KIN-2D-SAME-REUSE",
+        "R-KIN-2D-SAME-CHECK"
+      ],
+      "verification_ref": "Q-PHY-KIN-2D-2A-SAME-HEIGHT-05.answer.check",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_upstream_canonical_truth": "Familiar application of already-taught canonical capability; not a fixed PYQ substitute.",
+      "validation_state": "STRUCTURALLY_VALIDATED_LEARNER_ROUTING_HOLD"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "R-KIN-2D-BREP-FACTS"
+      ],
+      "prior_exposure_refs": [
+        "Q-PHY-KIN-2D-2A-SHARED-CLOCK-01"
+      ],
+      "protected_move_ref": "R-KIN-2D-BREP-FRAME",
+      "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD + inherited SOURCE_CUSTODY_HOLD",
+      "unresolved_defects": [
+        "Actual learner prior exposure not established."
+      ],
+      "artifact_id": "ART-CORE2B-Q-PHY-KIN-2D-2B-REPRESENTATION-01",
+      "core_role": "CORE2B",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#Q-PHY-KIN-2D-2B-REPRESENTATION-01",
+      "canonical_primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+      "secondary_capability_refs": [],
+      "canonical_microtopic": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "prerequisite_refs": [],
+      "misconception_addressed": "Repair to K2D1-2",
+      "representation_ref": [],
+      "reveal_state": "PRE_ATTEMPT_SAFE_SUPPORT_ONLY; protected DECIDE post-commitment",
+      "solution_reasoning_refs": [
+        "R-KIN-2D-BREP-FACTS",
+        "R-KIN-2D-BREP-FRAME",
+        "R-KIN-2D-BREP-TRANSLATE",
+        "R-KIN-2D-BREP-CHECK"
+      ],
+      "verification_ref": "Q-PHY-KIN-2D-2B-REPRESENTATION-01.answer.check",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_upstream_canonical_truth": "Changed demand (representation_translation) over named prior exposure without adding a scientific model.",
+      "validation_state": "STRUCTURALLY_VALIDATED_LEARNER_ROUTING_HOLD"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "R-KIN-2D-BMODEL-REPRESENT"
+      ],
+      "prior_exposure_refs": [
+        "Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02"
+      ],
+      "protected_move_ref": "R-KIN-2D-BMODEL-DECIDE",
+      "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD + inherited SOURCE_CUSTODY_HOLD",
+      "unresolved_defects": [
+        "Actual learner prior exposure not established."
+      ],
+      "artifact_id": "ART-CORE2B-Q-PHY-KIN-2D-2B-MODEL-VALIDITY-02",
+      "core_role": "CORE2B",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#Q-PHY-KIN-2D-2B-MODEL-VALIDITY-02",
+      "canonical_primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "prerequisite_refs": [],
+      "misconception_addressed": "Repair to K2D2-1",
+      "representation_ref": [],
+      "reveal_state": "PRE_ATTEMPT_SAFE_SUPPORT_ONLY; protected DECIDE post-commitment",
+      "solution_reasoning_refs": [
+        "R-KIN-2D-BMODEL-REPRESENT",
+        "R-KIN-2D-BMODEL-DECIDE",
+        "R-KIN-2D-BMODEL-BOUND",
+        "R-KIN-2D-BMODEL-CHECK"
+      ],
+      "verification_ref": "Q-PHY-KIN-2D-2B-MODEL-VALIDITY-02.answer.check",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_upstream_canonical_truth": "Changed demand (model_choice) over named prior exposure without adding a scientific model.",
+      "validation_state": "STRUCTURALLY_VALIDATED_LEARNER_ROUTING_HOLD"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "R-KIN-2D-BHEIGHT-REPRESENT"
+      ],
+      "prior_exposure_refs": [
+        "Q-PHY-KIN-2D-2A-SAME-HEIGHT-05"
+      ],
+      "protected_move_ref": "R-KIN-2D-BHEIGHT-EVENT",
+      "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD + inherited SOURCE_CUSTODY_HOLD",
+      "unresolved_defects": [
+        "Actual learner prior exposure not established."
+      ],
+      "artifact_id": "ART-CORE2B-Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03",
+      "core_role": "CORE2B",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03",
+      "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-CONSTANT-ACCELERATION"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "prerequisite_refs": [],
+      "misconception_addressed": "Repair to K2D3-6",
+      "representation_ref": [],
+      "reveal_state": "PRE_ATTEMPT_SAFE_SUPPORT_ONLY; protected DECIDE post-commitment",
+      "solution_reasoning_refs": [
+        "R-KIN-2D-BHEIGHT-REPRESENT",
+        "R-KIN-2D-BHEIGHT-EVENT",
+        "R-KIN-2D-BHEIGHT-SOLVE",
+        "R-KIN-2D-BHEIGHT-REUSE",
+        "R-KIN-2D-BHEIGHT-CHECK"
+      ],
+      "verification_ref": "Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03.answer.check",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_upstream_canonical_truth": "Changed demand (reasoning_steps) over named prior exposure without adding a scientific model.",
+      "validation_state": "STRUCTURALLY_VALIDATED_LEARNER_ROUTING_HOLD"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "R-KIN-TRANSFER-INTERACTIONS"
+      ],
+      "prior_exposure_refs": [
+        "Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04"
+      ],
+      "protected_move_ref": "R-KIN-TRANSFER-MODEL",
+      "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD + inherited SOURCE_CUSTODY_HOLD",
+      "unresolved_defects": [
+        "Actual learner prior exposure not established."
+      ],
+      "artifact_id": "ART-CORE2B-Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04",
+      "core_role": "CORE2B",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04",
+      "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-CONSTANT-ACCELERATION"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "prerequisite_refs": [],
+      "misconception_addressed": "Repair to K2D3-1",
+      "representation_ref": [
+        "REP-KIN-2D-PROJECTILE-MODEL",
+        "REP-KIN-2D-SHARED-CLOCK"
+      ],
+      "reveal_state": "PRE_ATTEMPT_SAFE_SUPPORT_ONLY; protected DECIDE post-commitment",
+      "solution_reasoning_refs": [
+        "R-KIN-TRANSFER-INTERACTIONS",
+        "R-KIN-TRANSFER-MODEL",
+        "R-KIN-TRANSFER-PARENT",
+        "R-KIN-TRANSFER-CHECK"
+      ],
+      "verification_ref": "Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04.answer.check",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_upstream_canonical_truth": "Changed demand (model_choice) over named prior exposure without adding a scientific model.",
+      "validation_state": "STRUCTURALLY_VALIDATED_LEARNER_ROUTING_HOLD"
+    },
+    {
+      "owner_question_label": null,
+      "exact_question_ref": null,
+      "candidate_refs": [],
+      "demand_evidence_status": "NOT_APPLICABLE",
+      "learner_eligibility_status": "NOT_PERSONALISED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "R-KIN-2D-BSTATE-REPRESENT"
+      ],
+      "prior_exposure_refs": [
+        "Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03"
+      ],
+      "protected_move_ref": "R-KIN-2D-BSTATE-DECIDE",
+      "hold_fail_reason": "LEARNER_ELIGIBILITY_HOLD + inherited SOURCE_CUSTODY_HOLD",
+      "unresolved_defects": [
+        "Actual learner prior exposure not established."
+      ],
+      "artifact_id": "ART-CORE2B-Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05",
+      "core_role": "CORE2B",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05",
+      "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "prerequisite_refs": [],
+      "misconception_addressed": "Repair to K2D3-7",
+      "representation_ref": [],
+      "reveal_state": "PRE_ATTEMPT_SAFE_SUPPORT_ONLY; protected DECIDE post-commitment",
+      "solution_reasoning_refs": [
+        "R-KIN-2D-BSTATE-REPRESENT",
+        "R-KIN-2D-BSTATE-DECIDE",
+        "R-KIN-2D-BSTATE-RECOMBINE",
+        "R-KIN-2D-BSTATE-ACCEL",
+        "R-KIN-2D-BSTATE-CHECK"
+      ],
+      "verification_ref": "Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05.answer.check",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_upstream_canonical_truth": "Changed demand (reasoning_steps) over named prior exposure without adding a scientific model.",
+      "validation_state": "STRUCTURALLY_VALIDATED_LEARNER_ROUTING_HOLD"
+    },
+    {
+      "owner_question_label": "Q28",
+      "exact_question_ref": "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
+      "candidate_refs": [],
+      "demand_evidence_status": "VALID_DIAGNOSTIC_DEMAND_EVIDENCE",
+      "learner_eligibility_status": "NOT_ESTABLISHED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "Untaught calculus operation; learner eligibility not established.",
+      "unresolved_defects": [],
+      "artifact_id": "ART-DEMAND-Q28",
+      "core_role": "DEMAND_ANALYSIS",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "canonical_primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "prerequisite_refs": [],
+      "misconception_addressed": "Use instantaneous velocity direction, not position direction; obtaining v_x and v_y from x(t), y(t) requires differentiation.",
+      "representation_ref": null,
+      "reveal_state": "DIAGNOSTIC_ONLY",
+      "solution_reasoning_refs": [],
+      "verification_ref": "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
+      "provenance_class": "SOURCE_DERIVED",
+      "transformation_from_upstream_canonical_truth": "Demand mapped to canonical boundary; question does not author academic truth.",
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_HOLDS"
+    },
+    {
+      "owner_question_label": "Q15",
+      "exact_question_ref": null,
+      "candidate_refs": [
+        "PYQ-PHY-JEEADV-2018-P2-Q08",
+        "PYQ-PHY-JEEADV-2023-P1-Q01"
+      ],
+      "demand_evidence_status": "VALID_DIAGNOSTIC_DEMAND_EVIDENCE_WITH_IDENTITY_AMBIGUITY",
+      "learner_eligibility_status": "EXCLUDED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "IDENTITY_HOLD; both candidates learner-excluded.",
+      "unresolved_defects": [
+        "Exact owner-label identity unresolved."
+      ],
+      "artifact_id": "ART-DEMAND-Q15",
+      "core_role": "DEMAND_ANALYSIS",
+      "canonical_academic_source_ref": null,
+      "canonical_primary_capability_ref": null,
+      "secondary_capability_refs": [],
+      "canonical_microtopic": null,
+      "prerequisite_refs": [],
+      "misconception_addressed": "Cannot assign one question-specific bottleneck until identity resolves; both candidates add impact/energy machinery.",
+      "representation_ref": null,
+      "reveal_state": "DIAGNOSTIC_ONLY",
+      "solution_reasoning_refs": [],
+      "verification_ref": [
+        "PYQ-PHY-JEEADV-2018-P2-Q08",
+        "PYQ-PHY-JEEADV-2023-P1-Q01"
+      ],
+      "provenance_class": "SOURCE_DERIVED",
+      "transformation_from_upstream_canonical_truth": "Demand mapped to canonical boundary; question does not author academic truth.",
+      "validation_state": "HOLD"
+    },
+    {
+      "owner_question_label": "Q21",
+      "exact_question_ref": "PYQ-PHY-JEEADV-2022-P1-Q08",
+      "candidate_refs": [],
+      "demand_evidence_status": "VALID_DIAGNOSTIC_DEMAND_EVIDENCE",
+      "learner_eligibility_status": "EXCLUDED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "Source learner-excluded/Core2-held; may only inform authored transfer after capability/prior-exposure closure.",
+      "unresolved_defects": [],
+      "artifact_id": "ART-DEMAND-Q21",
+      "core_role": "DEMAND_ANALYSIS",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#MIC-PHY-KIN-PROJECTILE-MODEL",
+      "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "prerequisite_refs": [],
+      "misconception_addressed": "Separate the apex event from the model change, then stop using the unchanged gravity-only specialization.",
+      "representation_ref": null,
+      "reveal_state": "DIAGNOSTIC_ONLY",
+      "solution_reasoning_refs": [],
+      "verification_ref": "PYQ-PHY-JEEADV-2022-P1-Q08",
+      "provenance_class": "SOURCE_DERIVED",
+      "transformation_from_upstream_canonical_truth": "Demand mapped to canonical boundary; question does not author academic truth.",
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_HOLDS"
+    },
+    {
+      "owner_question_label": "Q26",
+      "exact_question_ref": "PYQ-PHY-JEEADV-2026-P1-Q06",
+      "candidate_refs": [],
+      "demand_evidence_status": "VALID_DIAGNOSTIC_DEMAND_EVIDENCE",
+      "learner_eligibility_status": "EXCLUDED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "Untaught trajectory-equation capability; learner-excluded.",
+      "unresolved_defects": [],
+      "artifact_id": "ART-DEMAND-Q26",
+      "core_role": "DEMAND_ANALYSIS",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#MIC-PHY-KIN-PROJECTILE-MODEL",
+      "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "prerequisite_refs": [],
+      "misconception_addressed": "Translate specified-point constraint into a trajectory relation.",
+      "representation_ref": null,
+      "reveal_state": "DIAGNOSTIC_ONLY",
+      "solution_reasoning_refs": [],
+      "verification_ref": "PYQ-PHY-JEEADV-2026-P1-Q06",
+      "provenance_class": "SOURCE_DERIVED",
+      "transformation_from_upstream_canonical_truth": "Demand mapped to canonical boundary; question does not author academic truth.",
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_HOLDS"
+    },
+    {
+      "owner_question_label": "Q23",
+      "exact_question_ref": "PYQ-PHY-JEEADV-2025-P2-Q15",
+      "candidate_refs": [],
+      "demand_evidence_status": "VALID_DIAGNOSTIC_DEMAND_EVIDENCE",
+      "learner_eligibility_status": "EXCLUDED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "prior_exposure_refs": [],
+      "protected_move_ref": null,
+      "hold_fail_reason": "Untaught scientific/mathematical model; not legitimate Core2B transfer.",
+      "unresolved_defects": [],
+      "artifact_id": "ART-DEMAND-Q23",
+      "core_role": "DEMAND_ANALYSIS",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json#MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "canonical_primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "CAP-NLM-SECOND-LAW"
+      ],
+      "canonical_microtopic": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "prerequisite_refs": [],
+      "misconception_addressed": "Reject constant acceleration and solve velocity-dependent drag dynamics.",
+      "representation_ref": null,
+      "reveal_state": "DIAGNOSTIC_ONLY",
+      "solution_reasoning_refs": [],
+      "verification_ref": "PYQ-PHY-JEEADV-2025-P2-Q15",
+      "provenance_class": "SOURCE_DERIVED",
+      "transformation_from_upstream_canonical_truth": "Demand mapped to canonical boundary; question does not author academic truth.",
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_HOLDS"
+    }
+  ],
+  "visual_records": [
+    {
+      "canonical_representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "purpose": "Keep independently evolving x and y descriptions attached to one physical object, one declared frame and one shared clock, so only simultaneous component values are recombined into a plane state.",
+      "actual_present_elements": [
+        "canonical scene instance present for declared Core binding",
+        "interactive resource artifact present"
+      ],
+      "representation_correspondence": [
+        {
+          "element": "x-component history",
+          "symbol": "v_x",
+          "in_words": "The horizontal velocity component at the shared physical time."
+        },
+        {
+          "element": "y-component history",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component at the same shared physical time."
+        },
+        {
+          "element": "shared time marker",
+          "symbol": "t",
+          "in_words": "The one elapsed time used by both component descriptions."
+        }
+      ],
+      "reveal_stage_refs": [
+        "VIS-KIN-2D-SHARED-V0",
+        "VIS-KIN-2D-SHARED-V1",
+        "VIS-KIN-2D-SHARED-V2",
+        "VIS-KIN-2D-SHARED-V3"
+      ],
+      "accessibility_description": [
+        "The shared time is stated numerically or textually; synchronization must not be conveyed by colour alone.",
+        "Each component history is labelled with axis and signed quantity.",
+        "An invalid mixed-time state is identified in text as non-simultaneous."
+      ],
+      "provenance": "CANONICAL_DERIVED representation + AUTHORED canonical resource",
+      "learner_artifact_locator": "public/physics/motion-2d/explorers/shared-clock/index.html",
+      "resource_status": "CANDIDATE",
+      "runtime_audit_status": "PARTIAL",
+      "semantic_review_status": "VISUAL_HOLD",
+      "semantic_review_reason": "Runtime integrity exists, but academic/graphical semantic audit remains PARTIAL/PENDING."
+    },
+    {
+      "canonical_representation_ref": "REP-KIN-2D-EVENT-CLOCK",
+      "purpose": "Make event selection explicit: one component condition identifies the requested event time, and that same time is then reused on every component before reconstructing the requested state.",
+      "actual_present_elements": [
+        "interactive resource artifact present",
+        "no representation.scene_instances[] binding present"
+      ],
+      "representation_correspondence": [
+        {
+          "element": "solved event-time marker",
+          "symbol": "t",
+          "in_words": "The single elapsed time at which both component descriptions are evaluated for the selected event."
+        },
+        {
+          "element": "x-component evaluation",
+          "symbol": "Delta x",
+          "in_words": "The horizontal displacement evaluated at the shared event time."
+        },
+        {
+          "element": "y-component evaluation",
+          "symbol": "Delta y",
+          "in_words": "The vertical displacement evaluated at the same shared event time."
+        }
+      ],
+      "reveal_stage_refs": [
+        "VIS-KIN-2D-EVENT-V0",
+        "VIS-KIN-2D-EVENT-V1",
+        "VIS-KIN-2D-EVENT-V2",
+        "VIS-KIN-2D-EVENT-V3"
+      ],
+      "accessibility_description": [
+        "The event condition and solved time are stated in text as well as marked graphically.",
+        "Cross-axis reuse of the event time is announced explicitly.",
+        "Component evaluations are labelled with the same event-time value."
+      ],
+      "provenance": "CANONICAL_DERIVED representation + AUTHORED canonical resource",
+      "learner_artifact_locator": "public/physics/motion-2d/explorers/event-clock/index.html",
+      "resource_status": "CANDIDATE",
+      "runtime_audit_status": "PARTIAL",
+      "semantic_review_status": "VISUAL_HOLD",
+      "semantic_review_reason": "Runtime integrity exists, but academic/graphical semantic audit remains PARTIAL/PENDING."
+    },
+    {
+      "canonical_representation_ref": "REP-KIN-2D-PROJECTILE-MODEL",
+      "purpose": "Make the ideal projectile specialization conditional on the interactions that remain after release: gravity-only free flight licenses a_x=0 and a_y=-g; retained thrust, significant drag or contact requires a more general model.",
+      "actual_present_elements": [
+        "interactive resource artifact present",
+        "no representation.scene_instances[] binding present"
+      ],
+      "representation_correspondence": [
+        {
+          "element": "gravity-only status",
+          "symbol": "g",
+          "in_words": "The retained gravitational acceleration magnitude in the ideal projectile specialization."
+        },
+        {
+          "element": "horizontal acceleration readout",
+          "symbol": "v_x",
+          "in_words": "The horizontal component whose constancy is a consequence of zero horizontal acceleration in the ideal specialization."
+        },
+        {
+          "element": "vertical acceleration readout",
+          "symbol": "v_y",
+          "in_words": "The vertical velocity component that changes under the retained gravitational acceleration."
+        }
+      ],
+      "reveal_stage_refs": [
+        "VIS-KIN-2D-PROJ-V0",
+        "VIS-KIN-2D-PROJ-V1",
+        "VIS-KIN-2D-PROJ-V2",
+        "VIS-KIN-2D-PROJ-V3"
+      ],
+      "accessibility_description": [
+        "Active post-release interactions are named in text; arrows or colours are not the only cue.",
+        "The acceleration components and model status are readable as text or symbols.",
+        "Invalid-model status states the violated assumption explicitly."
+      ],
+      "provenance": "CANONICAL_DERIVED representation + AUTHORED canonical resource",
+      "learner_artifact_locator": "public/physics/motion-2d/explorers/projectile-model/index.html",
+      "resource_status": "CANDIDATE",
+      "runtime_audit_status": "PARTIAL",
+      "semantic_review_status": "VISUAL_HOLD",
+      "semantic_review_reason": "Runtime integrity exists, but academic/graphical semantic audit remains PARTIAL/PENDING."
+    }
+  ]
+}
