@@ -149,6 +149,40 @@ def audit(path: Path | None = None) -> dict[str, Any]:
             "findings": [_finding("CORE_TEMPLATE_LOAD_FAILED", detail=str(exc))],
         }
 
+    quality = contract.get("learner_product_quality_gate")
+    if not isinstance(quality, dict):
+        findings.append(_finding("CORE_TEMPLATE_QUALITY_GATE_MISSING"))
+        quality = {}
+    if quality.get("separate_from_route_validity") is not True:
+        findings.append(_finding("CORE_TEMPLATE_QUALITY_ROUTE_COLLAPSE"))
+    expected_quality_checks = {
+        "PHYSICAL_SEMANTIC_ACCURACY",
+        "VISUAL_LEGIBILITY",
+        "MATH_RENDERING",
+        "WORKED_FADED_INDEPENDENT_PROGRESSION",
+        "MISCONCEPTION_DIAGNOSIS_REPAIR",
+        "TARGET_MOVE_CONNECTION",
+        "STATIC_PRINT_CLOSURE",
+    }
+    if set(quality.get("required_checks") or []) != expected_quality_checks:
+        findings.append(_finding("CORE_TEMPLATE_QUALITY_CHECKS_DRIFT"))
+    if set(quality.get("acceptance_states") or []) != {"PASS", "HOLD", "FAIL"}:
+        findings.append(_finding("CORE_TEMPLATE_QUALITY_STATES_DRIFT"))
+    expected_connection = {"target_ref", "move_ref", "observable_lesson_change"}
+    if set(quality.get("target_move_connection_requires") or []) != expected_connection:
+        findings.append(_finding("CORE_TEMPLATE_TARGET_MOVE_CONNECTION_DRIFT"))
+    quality_invariants = quality.get("invariants") or {}
+    for key in (
+        "route_pass_does_not_imply_product_pass",
+        "required_visual_must_render_in_learner_artifact",
+        "required_math_must_be_legible",
+        "static_print_must_preserve_closure",
+        "lesson_target_link_must_name_move",
+        "reviewer_metadata_must_not_dominate_learner_surface",
+    ):
+        if quality_invariants.get(key) is not True:
+            findings.append(_finding(f"CORE_TEMPLATE_QUALITY_INVARIANT_NOT_TRUE:{key}"))
+
     roles = contract.get("roles")
     if not isinstance(roles, dict):
         return {
