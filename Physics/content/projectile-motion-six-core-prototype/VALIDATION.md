@@ -43,6 +43,7 @@
 - No linear-drag, changed-gravity, bounce/restitution, trajectory-equation or calculus content is taught inside Core1A.
 - Core2B safe pre-attempt support is filtered so it cannot target the protected move.
 - Missing representation scene bindings are surfaced as `VISUAL_HOLD`.
+- `visual-audit.json` records, for every canonical representation, purpose, required semantic elements, actual bound elements, correspondence, reveal stage, accessibility, provenance and semantic-review status.
 
 ## Outcome
 
