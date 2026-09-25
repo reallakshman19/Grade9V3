@@ -5,8 +5,8 @@ window.GRADE9V3_PROMPT_COMPOSER = {
   "repository_basis": "architecture-manifest@sha256:16a4682f88f97987e1979fa95e680ca9333ba3fc2ebeac95d7b8c8352afba6e9",
   "template": {
     "template_id": "CORE-AGENT-PROMPT",
-    "version": "1.1.0",
-    "description": "Stable clause map for traceable Core-agent authoring prompts, including target-demand decomposition and route construction. Role meaning remains owned by Shared/roles/*.md.",
+    "version": "1.2.0",
+    "description": "Stable clause map for traceable Core-agent authoring prompts, including target-demand routing and an independent learner-product quality gate. Role meaning remains owned by Shared/roles/*.md.",
     "role_contract_refs": {
       "CORE1": "Shared/roles/CORE1.md",
       "CORE2": "Shared/roles/CORE2.md",
@@ -47,6 +47,10 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       {
         "id": "TARGET_DEMAND_ROUTING",
         "title": "Target demand decomposition and learner route"
+      },
+      {
+        "id": "LEARNER_PRODUCT_QUALITY",
+        "title": "Independent learner-product quality gate"
       },
       {
         "id": "TOPIC_BOUNDARY",
@@ -4161,7 +4165,7 @@ window.GRADE9V3_PROMPT_COMPOSER = {
     }
   },
   "target_routing_contract": {
-    "version": "1.0",
+    "version": "1.1",
     "is_core_role": false,
     "target_authority_states": [
       "OWNER_FIXED",
@@ -4188,6 +4192,12 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       "IDENTITY_HOLD",
       "UNMAPPED"
     ],
+    "identity_confidence_states": [
+      "HIGH",
+      "MEDIUM",
+      "LOW",
+      "NOT_ESTABLISHED"
+    ],
     "capability_closure_states": [
       "ESTABLISHED_CURRENT_SCOPE",
       "ESTABLISHED_CANONICAL_PREREQUISITE",
@@ -4195,10 +4205,26 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       "UNRESOLVED_GAP",
       "IDENTITY_BLOCKED"
     ],
-    "aggregate_route_states": [
-      "REACHABLE",
-      "REACHABLE_WITH_PREREQUISITES",
-      "REQUIRES_EXTENSION_ADMISSION",
+    "move_coverage_states": [
+      "UNTAUGHT",
+      "TAUGHT_NO_EVIDENCE",
+      "SUPPORTED_EVIDENCE",
+      "INDEPENDENT_EVIDENCE"
+    ],
+    "target_coverage_states": [
+      "INCOMPLETE",
+      "SUPPORTED_ONLY",
+      "INDEPENDENT_EVIDENCE_COMPLETE"
+    ],
+    "target_authorization_states": [
+      "READY",
+      "ACADEMIC_REVIEW_HOLD",
+      "INSTRUCTIONAL_USE_HOLD",
+      "IDENTITY_HOLD"
+    ],
+    "target_preparation_states": [
+      "PREPARED",
+      "PARTIALLY_PREPARED",
       "BLOCKED"
     ],
     "bridge_candidate_required_fields": [
@@ -4206,15 +4232,19 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       "target_refs",
       "teaching_goal",
       "prerequisite_refs",
+      "mathematical_prerequisite_refs",
       "required_new_capabilities",
+      "grade_scope_decision",
       "construction",
       "representation_requirements",
       "worked_anchor",
+      "worked_solution_check",
       "misconceptions",
       "independent_check",
       "exit_task",
+      "independent_transfer_ref",
       "authority_state",
-      "review_state"
+      "academic_review"
     ],
     "route_node_kinds": [
       "CORE1",
@@ -4229,18 +4259,24 @@ window.GRADE9V3_PROMPT_COMPOSER = {
     "invariants": {
       "every_fixed_target_requires_route_or_terminal_block": true,
       "whole_question_hold_cannot_hide_partial_capability_closure": true,
+      "every_move_requires_coverage_ledger": true,
       "generic_practice_does_not_close_target": true,
       "target_authority_is_independent_of_direct_source_use": true,
       "direct_source_use_is_independent_of_instructional_demand_use": true,
       "instructional_demand_use_is_independent_of_assessment_claim": true,
       "identity_is_independent_of_source_custody": true,
+      "semantic_identity_requires_documented_candidate_review": true,
       "owner_waiver_is_not_mastery_evidence": true,
       "owner_waiver_cannot_bypass_capability_gap": true,
+      "owner_waiver_cannot_bypass_academic_review": true,
       "core1_family_scope_remains_canonical": true,
-      "demand_influence_must_be_traceable": true,
+      "demand_influence_must_name_move_and_observable_change": true,
       "core2a_target_use_requires_capability_closure": true,
       "core2b_target_use_requires_capability_closure_and_prior_exposure": true,
-      "extension_candidate_is_not_canonical_until_admitted": true
+      "extension_candidate_is_not_canonical_until_admitted": true,
+      "blocked_target_cannot_pass_preparation_acceptance": true,
+      "prepared_requires_independent_evidence_and_authorization": true,
+      "learner_product_quality_is_separate_from_route_validity": true
     }
   },
   "target_routing_contract_ref": "Shared/roles/TARGET-DEMAND-ROUTING-CONTRACT.md",
@@ -4262,7 +4298,7 @@ window.GRADE9V3_PROMPT_COMPOSER = {
     ],
     "properties": {
       "schema_version": {
-        "const": "1.0.0"
+        "const": "1.1.0"
       },
       "route_bundle_id": {
         "type": "string",
@@ -4326,7 +4362,9 @@ window.GRADE9V3_PROMPT_COMPOSER = {
             "authority",
             "source_custody_state",
             "demand_moves",
-            "aggregate_route_state",
+            "coverage_state",
+            "authorization_state",
+            "preparation_state",
             "target_route",
             "terminal_block"
           ],
@@ -4350,7 +4388,13 @@ window.GRADE9V3_PROMPT_COMPOSER = {
                 "state",
                 "exact_ref",
                 "candidate_refs",
-                "resolution_basis"
+                "candidate_set_provenance",
+                "demand_fingerprint",
+                "discriminating_features",
+                "rejected_candidates",
+                "resolution_decision",
+                "resolution_reviewer",
+                "identity_confidence"
               ],
               "properties": {
                 "state": {
@@ -4375,10 +4419,102 @@ window.GRADE9V3_PROMPT_COMPOSER = {
                   },
                   "uniqueItems": true
                 },
-                "resolution_basis": {
+                "candidate_set_provenance": {
                   "type": [
                     "string",
                     "null"
+                  ]
+                },
+                "demand_fingerprint": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "setup",
+                    "requested_output",
+                    "special_condition",
+                    "answer_type",
+                    "distinctive_transformation"
+                  ],
+                  "properties": {
+                    "setup": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "requested_output": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "special_condition": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "answer_type": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    },
+                    "distinctive_transformation": {
+                      "type": [
+                        "string",
+                        "null"
+                      ]
+                    }
+                  }
+                },
+                "discriminating_features": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "uniqueItems": true
+                },
+                "rejected_candidates": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "ref",
+                      "reason"
+                    ],
+                    "properties": {
+                      "ref": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "reason": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    }
+                  }
+                },
+                "resolution_decision": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "resolution_reviewer": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "identity_confidence": {
+                  "enum": [
+                    "HIGH",
+                    "MEDIUM",
+                    "LOW",
+                    "NOT_ESTABLISHED"
                   ]
                 }
               }
@@ -4441,7 +4577,8 @@ window.GRADE9V3_PROMPT_COMPOSER = {
                   "provenance_class",
                   "required_capability_refs",
                   "unresolved_capability_descriptions",
-                  "closure"
+                  "closure",
+                  "coverage"
                 ],
                 "properties": {
                   "move_id": {
@@ -4521,15 +4658,82 @@ window.GRADE9V3_PROMPT_COMPOSER = {
                         ]
                       }
                     }
+                  },
+                  "coverage": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "entry_task_ref",
+                      "teaching_refs",
+                      "supported_attempt_refs",
+                      "independent_evidence_refs",
+                      "target_use_ref",
+                      "coverage_state"
+                    ],
+                    "properties": {
+                      "entry_task_ref": {
+                        "type": [
+                          "string",
+                          "null"
+                        ]
+                      },
+                      "teaching_refs": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "uniqueItems": true
+                      },
+                      "supported_attempt_refs": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "uniqueItems": true
+                      },
+                      "independent_evidence_refs": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "uniqueItems": true
+                      },
+                      "target_use_ref": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "coverage_state": {
+                        "enum": [
+                          "UNTAUGHT",
+                          "TAUGHT_NO_EVIDENCE",
+                          "SUPPORTED_EVIDENCE",
+                          "INDEPENDENT_EVIDENCE"
+                        ]
+                      }
+                    }
                   }
                 }
               }
             },
-            "aggregate_route_state": {
+            "coverage_state": {
               "enum": [
-                "REACHABLE",
-                "REACHABLE_WITH_PREREQUISITES",
-                "REQUIRES_EXTENSION_ADMISSION",
+                "INCOMPLETE",
+                "SUPPORTED_ONLY",
+                "INDEPENDENT_EVIDENCE_COMPLETE"
+              ]
+            },
+            "authorization_state": {
+              "enum": [
+                "READY",
+                "ACADEMIC_REVIEW_HOLD",
+                "INSTRUCTIONAL_USE_HOLD",
+                "IDENTITY_HOLD"
+              ]
+            },
+            "preparation_state": {
+              "enum": [
+                "PREPARED",
+                "PARTIALLY_PREPARED",
                 "BLOCKED"
               ]
             },
@@ -4615,15 +4819,19 @@ window.GRADE9V3_PROMPT_COMPOSER = {
             "target_refs",
             "teaching_goal",
             "prerequisite_refs",
+            "mathematical_prerequisite_refs",
             "required_new_capabilities",
+            "grade_scope_decision",
             "construction",
             "representation_requirements",
             "worked_anchor",
+            "worked_solution_check",
             "misconceptions",
             "independent_check",
             "exit_task",
+            "independent_transfer_ref",
             "authority_state",
-            "review_state"
+            "academic_review"
           ],
           "properties": {
             "bridge_id": {
@@ -4649,6 +4857,13 @@ window.GRADE9V3_PROMPT_COMPOSER = {
               },
               "uniqueItems": true
             },
+            "mathematical_prerequisite_refs": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "uniqueItems": true
+            },
             "required_new_capabilities": {
               "type": "array",
               "minItems": 1,
@@ -4656,6 +4871,13 @@ window.GRADE9V3_PROMPT_COMPOSER = {
                 "type": "string"
               },
               "uniqueItems": true
+            },
+            "grade_scope_decision": {
+              "enum": [
+                "WITHIN_GRADE_SCOPE",
+                "BOUNDED_ADVANCED_ROUTE",
+                "OUT_OF_SCOPE_HOLD"
+              ]
             },
             "construction": {
               "type": "array",
@@ -4705,6 +4927,10 @@ window.GRADE9V3_PROMPT_COMPOSER = {
                 }
               }
             },
+            "worked_solution_check": {
+              "type": "string",
+              "minLength": 1
+            },
             "misconceptions": {
               "type": "array",
               "minItems": 1,
@@ -4740,6 +4966,10 @@ window.GRADE9V3_PROMPT_COMPOSER = {
               "type": "string",
               "minLength": 1
             },
+            "independent_transfer_ref": {
+              "type": "string",
+              "minLength": 1
+            },
             "authority_state": {
               "enum": [
                 "CANDIDATE",
@@ -4747,12 +4977,42 @@ window.GRADE9V3_PROMPT_COMPOSER = {
                 "REJECTED"
               ]
             },
-            "review_state": {
-              "enum": [
-                "ACADEMIC_REVIEW_REQUIRED",
-                "REVIEWED",
-                "REJECTED"
-              ]
+            "academic_review": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "reviewer",
+                "decision",
+                "evidence",
+                "limitations"
+              ],
+              "properties": {
+                "reviewer": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "decision": {
+                  "enum": [
+                    "PENDING",
+                    "APPROVED",
+                    "REJECTED"
+                  ]
+                },
+                "evidence": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "limitations": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
             }
           }
         }
@@ -4789,16 +5049,31 @@ window.GRADE9V3_PROMPT_COMPOSER = {
                 "additionalProperties": false,
                 "required": [
                   "target_ref",
-                  "influence"
+                  "move_ref",
+                  "observable_teaching_change",
+                  "affected_blocks"
                 ],
                 "properties": {
                   "target_ref": {
                     "type": "string",
                     "minLength": 1
                   },
-                  "influence": {
+                  "move_ref": {
                     "type": "string",
                     "minLength": 1
+                  },
+                  "observable_teaching_change": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "affected_blocks": {
+                    "type": "array",
+                    "minItems": 1,
+                    "items": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "uniqueItems": true
                   }
                 }
               }
@@ -4811,12 +5086,19 @@ window.GRADE9V3_PROMPT_COMPOSER = {
         "additionalProperties": false,
         "required": [
           "all_fixed_targets_accounted_for",
+          "all_required_moves_have_coverage_ledgers",
           "generic_practice_not_used_as_target_closure",
           "core1_family_scope_unchanged",
-          "owner_waiver_not_treated_as_mastery"
+          "owner_waiver_not_treated_as_mastery",
+          "owner_waiver_not_used_to_bypass_academic_review",
+          "blocked_target_counted_as_prepared",
+          "fixed_target_preparation_acceptance"
         ],
         "properties": {
           "all_fixed_targets_accounted_for": {
+            "const": true
+          },
+          "all_required_moves_have_coverage_ledgers": {
             "const": true
           },
           "generic_practice_not_used_as_target_closure": {
@@ -4827,10 +5109,412 @@ window.GRADE9V3_PROMPT_COMPOSER = {
           },
           "owner_waiver_not_treated_as_mastery": {
             "const": true
+          },
+          "owner_waiver_not_used_to_bypass_academic_review": {
+            "const": true
+          },
+          "blocked_target_counted_as_prepared": {
+            "const": false
+          },
+          "fixed_target_preparation_acceptance": {
+            "enum": [
+              "PASS",
+              "HOLD",
+              "FAIL"
+            ]
           }
         }
       }
     }
   },
-  "target_route_schema_ref": "Shared/library/target-demand-route.schema.json"
+  "target_route_schema_ref": "Shared/library/target-demand-route.schema.json",
+  "learner_product_contract": {
+    "version": "1.1",
+    "roles": {
+      "CORE1": {
+        "learner_job": "Orient to the bucket without replacing detailed teaching.",
+        "ordered_blocks": [
+          {
+            "id": "identity_scope",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "objects_conventions",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "canonical_representation",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "governing_relations",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "compact_anchor",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "hard_transition_map",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "exclusions_extensions",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "orientation_closure",
+            "visibility": "IMMEDIATE"
+          }
+        ],
+        "required_inputs": [
+          "bucket.title",
+          "bucket.conventions[]",
+          "bucket.primary_representation_ref",
+          "bucket.scope.covers",
+          "bucket.scope.excluded[]",
+          "bucket.scope.extension_refs[]",
+          "relation.expression",
+          "relation.meaning",
+          "relation.conditions[]",
+          "microtopic.intrinsic_badge",
+          "microtopic.badge_reason"
+        ],
+        "withheld_pre_attempt": [],
+        "forbidden": [
+          "FULL_INFERENTIAL_CONSTRUCTION",
+          "FULL_MISCONCEPTION_REPAIR_LESSON",
+          "PERSONALISED_PRACTICE_ROUTING"
+        ]
+      },
+      "CORE1A": {
+        "learner_job": "Receive a complete declarative construction of the microtopic's inferential truth.",
+        "ordered_blocks": [
+          {
+            "id": "identity_entry_assumptions",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "convention_declaration",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "inferential_jump",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "completed_construction",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "representation_bridge",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "worked_conceptual_anchor",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "plausible_wrong_path",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "diagnose",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "repair",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "independent_checks",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "exit_task_closure",
+            "visibility": "IMMEDIATE"
+          }
+        ],
+        "required_inputs": [
+          "microtopic.entry_assumptions[]",
+          "microtopic.inferential_jump",
+          "microtopic.teaching_path[]",
+          "microtopic.representation_refs[]",
+          "microtopic.misconceptions[]",
+          "microtopic.exit_task"
+        ],
+        "withheld_pre_attempt": [],
+        "forbidden": [
+          "ATTEMPT_FIRST_AS_PRIMARY_MODE",
+          "RANDOM_BLANK_DELETION",
+          "UNANSWERED_PROMPT"
+        ]
+      },
+      "CORE1B": {
+        "learner_job": "Reconstruct the same inferential truth before seeing the completed route.",
+        "ordered_blocks": [
+          {
+            "id": "identity_concept",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "predict",
+            "visibility": "ATTEMPT_FIRST"
+          },
+          {
+            "id": "attempt",
+            "visibility": "ATTEMPT_FIRST"
+          },
+          {
+            "id": "reconstruct",
+            "visibility": "POST_ATTEMPT"
+          },
+          {
+            "id": "diagnose",
+            "visibility": "POST_ATTEMPT"
+          },
+          {
+            "id": "repair",
+            "visibility": "POST_ATTEMPT"
+          },
+          {
+            "id": "boundary_test",
+            "visibility": "POST_ATTEMPT"
+          },
+          {
+            "id": "model_response_or_rubric",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "rejoin_inferential_jump",
+            "visibility": "ON_REVEAL"
+          }
+        ],
+        "required_inputs": [
+          "microtopic.inferential_jump",
+          "microtopic.elicitation.predict.prompt",
+          "microtopic.elicitation.attempt.produces",
+          "microtopic.elicitation.reconstruct.route[]",
+          "microtopic.misconceptions[]",
+          "microtopic.elicitation.boundary_test"
+        ],
+        "withheld_pre_attempt": [
+          "DEFENSIBLE_ANSWER",
+          "COMPLETED_RECONSTRUCTION",
+          "MODEL_RESPONSE"
+        ],
+        "forbidden": [
+          "CORE1A_WITH_RANDOM_BLANKS",
+          "ANSWER_BEFORE_ATTEMPT",
+          "COVERAGE_REDUCTION_RELATIVE_TO_CORE1A"
+        ]
+      },
+      "CORE2": {
+        "learner_job": "Preserve and expose the authentic assessment demand with source custody intact.",
+        "ordered_blocks": [
+          {
+            "id": "source_identity_provenance",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "source_question",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "source_figure",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "source_hint_ladder",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "source_answer_rubric",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "custody_status",
+            "visibility": "IMMEDIATE"
+          }
+        ],
+        "required_inputs": [
+          "question.source_refs[]",
+          "question.original_identifier",
+          "question.stem",
+          "question.subparts[]",
+          "question.options[]",
+          "question.conditions[]",
+          "question.figure_refs[]",
+          "question.hints[]",
+          "question.answer",
+          "question.origin"
+        ],
+        "withheld_pre_attempt": [
+          "SOURCE_ANSWER",
+          "ANSWER_REVEALING_SOURCE_HINT"
+        ],
+        "forbidden": [
+          "AUTHORED_SCAFFOLD_PRESENTED_AS_SOURCE_HINT",
+          "GENERATED_OFFICIAL_IDENTITY",
+          "RECONSTRUCTED_WORDING_PRESENTED_AS_ORIGINAL"
+        ]
+      },
+      "CORE2A": {
+        "learner_job": "Learn a familiar question-family application route with pedagogical support and complete closure.",
+        "ordered_blocks": [
+          {
+            "id": "family_identity_provenance",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "question",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "initial_representation",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "pedagogical_scaffolds",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "reasoning_route",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "application_crux",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "bound_representation",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "complete_solution",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "independent_check",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "failure_signal_repair",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "exposure_family_closure",
+            "visibility": "IMMEDIATE"
+          }
+        ],
+        "required_inputs": [
+          "question.family_ref",
+          "question.source_refs[]",
+          "question.answer.reasoning_route[]",
+          "question.answer.crux_move_ref",
+          "question.scaffolds[]",
+          "question.figure_refs[]",
+          "question.answer.check",
+          "question.exposure[]"
+        ],
+        "withheld_pre_attempt": [],
+        "forbidden": [
+          "TRANSFER_CLAIM_FROM_NUMBER_CHANGE_ONLY",
+          "SOURCE_HINT_AND_AUTHORED_SCAFFOLD_COLLAPSE",
+          "MASTERY_CLAIM_FROM_SUCCESSFUL_GENERATION"
+        ]
+      },
+      "CORE2B": {
+        "learner_job": "Carry an established capability into a changed demand while protecting the changed learner decision before commitment.",
+        "ordered_blocks": [
+          {
+            "id": "question_prior_exposure",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "safe_initial_representation",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "safe_pre_attempt_support",
+            "visibility": "IMMEDIATE"
+          },
+          {
+            "id": "attempt_commitment",
+            "visibility": "ATTEMPT_FIRST"
+          },
+          {
+            "id": "post_attempt_support",
+            "visibility": "POST_ATTEMPT"
+          },
+          {
+            "id": "full_answer_rubric",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "changed_demand_review",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "repair_route",
+            "visibility": "ON_REVEAL"
+          },
+          {
+            "id": "lineage_continuity_check",
+            "visibility": "ON_REVEAL"
+          }
+        ],
+        "required_inputs": [
+          "question.transfer.dimension",
+          "question.transfer.statement",
+          "question.transfer.builds_on[]",
+          "question.transfer.protected_move_ref",
+          "question.scaffolds[]",
+          "question.answer.rubric[]",
+          "question.repair_ref"
+        ],
+        "withheld_pre_attempt": [
+          "PROTECTED_MOVE",
+          "CHANGED_DECISION",
+          "METHOD_OR_ANSWER_SUPPORT_THAT_COLLAPSES_TRANSFER"
+        ],
+        "forbidden": [
+          "PROTECTED_MOVE_DISCLOSED_PRE_ATTEMPT",
+          "NEW_UNTAUGHT_CAPABILITY_AS_TRANSFER",
+          "TRANSFER_CLAIM_FROM_COVER_STORY_ONLY"
+        ]
+      }
+    },
+    "learner_product_quality_gate": {
+      "separate_from_route_validity": true,
+      "acceptance_states": [
+        "PASS",
+        "HOLD",
+        "FAIL"
+      ],
+      "required_checks": [
+        "PHYSICAL_SEMANTIC_ACCURACY",
+        "VISUAL_LEGIBILITY",
+        "MATH_RENDERING",
+        "WORKED_FADED_INDEPENDENT_PROGRESSION",
+        "MISCONCEPTION_DIAGNOSIS_REPAIR",
+        "TARGET_MOVE_CONNECTION",
+        "STATIC_PRINT_CLOSURE"
+      ],
+      "target_move_connection_requires": [
+        "target_ref",
+        "move_ref",
+        "observable_lesson_change"
+      ],
+      "invariants": {
+        "route_pass_does_not_imply_product_pass": true,
+        "required_visual_must_render_in_learner_artifact": true,
+        "required_math_must_be_legible": true,
+        "static_print_must_preserve_closure": true,
+        "lesson_target_link_must_name_move": true,
+        "reviewer_metadata_must_not_dominate_learner_surface": true
+      }
+    }
+  },
+  "learner_product_contract_ref": "Shared/roles/LEARNER-PRODUCT-TEMPLATES.md"
 };
