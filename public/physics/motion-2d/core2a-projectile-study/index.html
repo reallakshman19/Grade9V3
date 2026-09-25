@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en" data-web-blueprint="BP-CORE2A-SUPPORTED-APPLICATION@1.0.0" data-layout-family="QUESTION_STUDY">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="grade9v3-packaging-mode" content="PUBLIC">
+  <title>Projectile Motion · Core2A sample · Grade9V3</title>
+  <link rel="stylesheet" href="../../../css/site.css">
+  <style>
+    .study-host{width:min(100%,1320px);margin:0 auto;padding:18px 20px 56px;display:grid;gap:16px}
+    .study-intro{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:start;padding:18px;border:1px solid var(--border);border-radius:16px;background:var(--bg-panel)}
+    .study-intro h1{margin:2px 0 7px;font-size:clamp(24px,4vw,36px);line-height:1.12}.study-intro p{margin:0;color:var(--text-muted);max-width:78ch}.study-kicker{font-size:11px!important;font-weight:850;text-transform:uppercase;letter-spacing:.08em;color:var(--phy-accent)!important}.contract-chip{display:grid;gap:3px;max-width:350px;padding:9px 11px;border:1px solid var(--border);border-radius:12px;background:var(--bg-card);font-size:11px;color:var(--text-muted)}.contract-chip strong{color:var(--text);font-size:12px}.demo-warning{padding:10px 12px;border-left:3px solid var(--chip-warn-border);background:var(--chip-warn-bg);color:var(--chip-warn-text);border-radius:8px;font-size:13px}
+    @media(max-width:760px){.study-host{padding:12px 10px 44px}.study-intro{grid-template-columns:1fr;padding:14px}.contract-chip{max-width:none}}
+  </style>
+</head>
+<body>
+  <header class="site-nav">
+    <a href="../../../index.html" class="brand-link">
+      <span class="logo-icon" aria-hidden="true">⚡</span>
+      <span>Grade9V3 Knowledge Portal</span>
+      <span class="brand-badge">Physics</span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html" class="phy-link active">Motion in 2D</a>
+      <a href="../../../question-bank/index.html" data-site-question-bank>Question Bank</a>
+      <button type="button" class="g9-display-trigger-btn" onclick="window.Grade9Display.togglePopover()" title="Adjust Font Size and UI Zoom Scale"><span>🔤 / 🔍 Display</span></button>
+    </nav>
+  </header>
+
+  <main class="study-host">
+    <section class="study-intro" aria-labelledby="page-title">
+      <div>
+        <p class="study-kicker">Core2A supported application · sample study interface</p>
+        <h1 id="page-title">Projectile motion: three decisions, three visual models</h1>
+        <p>Try each repository-owned adapted question, manipulate the matching physical model, request support only when you want it, then open the canonical reasoning route.</p>
+      </div>
+      <div class="contract-chip" aria-label="Resolved interactive page contract">
+        <strong>QUESTION_STUDY · G9-TABLET-SHELL-V1</strong>
+        <span>BP-CORE2A-SUPPORTED-APPLICATION@1.0.0</span>
+        <span>Component mount · 68/32 expanded layout</span>
+      </div>
+    </section>
+    <p class="demo-warning"><strong>Demo status:</strong> these canonical records are CANDIDATE items. This page demonstrates the Core2A study experience; it does not promote them to approved Grade 9 learner assignments.</p>
+    <core2a-projectile-study id="projectile-study" aria-label="Interactive projectile motion Core2A study"></core2a-projectile-study>
+  </main>
+
+  <script src="../../../data/question-bank-data.js"></script>
+  <script src="../../../js/display-controls.js"></script>
+  <script src="../../../js/site-header.js" data-site-root="../../../" data-site-parent="../index.html"></script>
+  <script type="module">
+    import {
+      CORE2A_PROJECTILE_REFS,
+      CORE2A_PROJECTILE_BLUEPRINT,
+    } from "./study-component.mjs";
+
+    const bank = window.GRADE9_QUESTION_BANK;
+    const study = document.getElementById("projectile-study");
+    const expected = document.documentElement.dataset.webBlueprint;
+    if (!bank || !Array.isArray(bank.questions)) throw new Error("CORE2A_PROJECTILE_BANK_PROJECTION_MISSING");
+    if (expected !== CORE2A_PROJECTILE_BLUEPRINT.ref) throw new Error("CORE2A_PROJECTILE_BLUEPRINT_DRIFT");
+    if (document.documentElement.dataset.layoutFamily !== CORE2A_PROJECTILE_BLUEPRINT.layoutFamily) throw new Error("CORE2A_PROJECTILE_LAYOUT_DRIFT");
+
+    const refs = new Set(Object.values(CORE2A_PROJECTILE_REFS));
+    const records = bank.questions.filter((row) => refs.has(row.id));
+    if (records.length !== refs.size) throw new Error("CORE2A_PROJECTILE_CANONICAL_RECORD_MISSING");
+    study.records = records;
+    window.__core2aProjectileStudyReady = true;
+  </script>
+</body>
+</html>
