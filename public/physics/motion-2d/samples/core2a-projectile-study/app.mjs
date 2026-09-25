@@ -576,7 +576,7 @@ function renderQ26(forceAtP = false) {
 function renderQ23() {
   const constants = q23Constants();
   const model = q23FullState(sim.time, 9.8);
-  const sourceEnd = q23Horizontal(2, { sourceApproxAtEvent: true });
+  const sourceEnd = q23Horizontal(2);
   const left = 54, right = 710, top = 34, ground = 288;
   const maxX = 285, maxY = 330;
   const sx = (x) => left + (x / maxX) * (right - left);
