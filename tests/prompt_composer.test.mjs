@@ -13,6 +13,7 @@ const dataSource = fs.readFileSync(new URL('../public/data/prompt-composer-data.
 const appSource = fs.readFileSync(new URL('../public/js/core-prompt-composer.js', import.meta.url), 'utf8');
 const fixturePath = 'tests/fixtures/prompt-composer/projectile-stress-set.json';
 const fixture = JSON.parse(fs.readFileSync(new URL('./fixtures/prompt-composer/projectile-stress-set.json', import.meta.url), 'utf8'));
+const identityFixture = JSON.parse(fs.readFileSync(new URL('./fixtures/prompt-composer/identity-review.json', import.meta.url), 'utf8'));
 
 function runtime() {
   const window = {};
@@ -35,21 +36,19 @@ test('browser digest uses standard SHA-256 vectors', () => {
   );
 });
 
-test('browser composition preserves fixed target authority and routes identity review', () => {
+test('browser composition preserves fixed target authority with resolved Q15', () => {
   const w = runtime();
   const result = w.PROMPT_COMPOSER.composeDocument(fixture, w.GRADE9V3_PROMPT_COMPOSER, w.GRADE9V3);
   assert.equal(result.passed, true);
   assert.equal(result.prompt_brief.scope.status, 'OWNER_CONFIRMED_CANONICAL_RUNG');
   const q15 = result.prompt_brief.question_rows.find(row => row.owner_question_id === 'Q15');
-  assert.equal(q15.identity_status, 'IDENTITY_REVIEW_REQUIRED');
-  assert.equal(q15.mapping_status, 'IDENTITY_REVIEW_REQUIRED');
-  assert.deepEqual(JSON.parse(JSON.stringify(q15.candidate_question_refs)).sort(), [
-    'PYQ-PHY-JEEADV-2018-P2-Q08',
-    'PYQ-PHY-JEEADV-2023-P1-Q01'
-  ]);
-  assert.equal(result.prompt_brief.holds.some(h => h.point === 'QUESTION_IDENTITY_AMBIGUOUS'), false);
+  assert.equal(q15.identity_status, 'EXACT_CONFIRMED');
+  assert.equal(q15.canonical_question_ref, 'PYQ-PHY-JEEADV-2018-P2-Q08');
+  assert.equal(q15.mapping_status, 'CANONICAL_MATCH');
+  assert.match(q15.candidate_set_provenance, /uniquely matches/);
   result.prompt_brief.question_rows.forEach(row => {
     assert.equal(row.target_authority, 'OWNER_FIXED');
+    assert.equal(row.direct_source_use, 'HOLD');
     assert.equal(row.instructional_demand_use, 'ALLOWED');
     assert.equal(row.assessment_claim, 'HOLD');
   });
@@ -59,6 +58,16 @@ test('browser composition preserves fixed target authority and routes identity r
   assert.equal(result.prompt_brief.planner_handoff.state, 'READY_FOR_PLANNER');
 });
 
+test('browser semantic identity review remains a review state, not a permanent hold', () => {
+  const w = runtime();
+  const result = w.PROMPT_COMPOSER.composeDocument(identityFixture, w.GRADE9V3_PROMPT_COMPOSER, w.GRADE9V3);
+  assert.equal(result.passed, true);
+  const row = result.prompt_brief.question_rows[0];
+  assert.equal(row.identity_status, 'IDENTITY_REVIEW_REQUIRED');
+  assert.equal(row.mapping_status, 'IDENTITY_REVIEW_REQUIRED');
+  assert.match(row.candidate_set_provenance, /Owner supplied candidate set/);
+  assert.equal(result.prompt_brief.holds.some(h => h.point === 'QUESTION_IDENTITY_AMBIGUOUS'), false);
+});
 
 test('browser and Python agree on mapping semantics and deterministic prompt digests', () => {
   const w = runtime();
@@ -97,6 +106,13 @@ test('browser prompt emits the blueprint authority graph explicitly', () => {
   assert.match(result.agent_prompt, /target-demand-route\.schema\.json/);
   assert.match(result.agent_prompt, /Generic easier practice cannot close a fixed target/);
   assert.match(result.agent_prompt, /AUTHORABLE_EXTENSION/);
+  assert.match(result.agent_prompt, /Every move needs a coverage ledger/);
+  assert.match(result.agent_prompt, /PREPARED requires independent evidence/);
+  assert.match(result.agent_prompt, /candidate-set provenance/);
+  assert.match(result.agent_prompt, /observable teaching change/);
+  assert.match(result.agent_prompt, /\[LEARNER_PRODUCT_QUALITY\]/);
+  assert.match(result.agent_prompt, /Route validity and learner-product quality are separate claims/);
+  assert.match(result.agent_prompt, /TARGET_MOVE_CONNECTION/);
   assert.match(result.agent_prompt, /Owner routing waiver is ON/);
 });
 
