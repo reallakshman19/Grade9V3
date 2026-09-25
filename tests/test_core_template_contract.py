@@ -35,7 +35,7 @@ class CoreTemplateContractTests(unittest.TestCase):
         report = core_template_contract.audit(REPO / "Shared" / "roles" / "LEARNER-PRODUCT-TEMPLATES.md")
         self.assertTrue(report["passed"], report["findings"])
         self.assertEqual(report["roles_checked"], 6)
-        self.assertEqual(report["contract_version"], "1.0")
+        self.assertEqual(report["contract_version"], "1.1")
 
     def test_core1b_attempt_precedes_reconstruction(self):
         roles = core_template_contract.load_contract(
@@ -81,6 +81,29 @@ class CoreTemplateContractTests(unittest.TestCase):
             for role in core_template_contract.ROLE_ORDER
         ]
         self.assertEqual(len(signatures), len(set(signatures)))
+
+
+    def test_learner_product_quality_gate_is_independent_from_route_validity(self):
+        contract = core_template_contract.load_contract(
+            REPO / "Shared" / "roles" / "LEARNER-PRODUCT-TEMPLATES.md"
+        )
+        quality = contract["learner_product_quality_gate"]
+        self.assertTrue(quality["separate_from_route_validity"])
+        self.assertEqual(set(quality["acceptance_states"]), {"PASS", "HOLD", "FAIL"})
+        self.assertIn("TARGET_MOVE_CONNECTION", quality["required_checks"])
+        self.assertIn("VISUAL_LEGIBILITY", quality["required_checks"])
+        self.assertIn("MATH_RENDERING", quality["required_checks"])
+        self.assertIn("STATIC_PRINT_CLOSURE", quality["required_checks"])
+        self.assertEqual(
+            set(quality["target_move_connection_requires"]),
+            {"target_ref", "move_ref", "observable_lesson_change"},
+        )
+        self.assertTrue(
+            quality["invariants"]["route_pass_does_not_imply_product_pass"]
+        )
+        self.assertTrue(
+            quality["invariants"]["reviewer_metadata_must_not_dominate_learner_surface"]
+        )
 
 
     def test_real_canonical_witnesses_match_role_template_boundaries(self):
