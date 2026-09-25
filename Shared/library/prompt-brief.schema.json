@@ -15,6 +15,7 @@
     "subject",
     "scope",
     "question_rows",
+    "demand_bridge",
     "keyword_fingerprint",
     "learner_entry",
     "requested_cores",
@@ -566,6 +567,160 @@
         "digest": {
           "type": "string",
           "pattern": "^sha256:[a-f0-9]{64}$"
+        }
+      }
+    },
+    "demand_bridge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_version",
+        "is_core_role",
+        "required_for_every_fixed_demand",
+        "allowed_dispositions",
+        "required_output_fields",
+        "core2a_allowed_capability_closure",
+        "core2b_allowed_capability_closure",
+        "core2b_requires_prior_exposure",
+        "rows"
+      ],
+      "properties": {
+        "contract_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "is_core_role": {
+          "const": false
+        },
+        "required_for_every_fixed_demand": {
+          "const": true
+        },
+        "allowed_dispositions": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "WITHIN_CANONICAL_SCOPE",
+              "CANONICAL_PREREQUISITE_ROUTE",
+              "EXTENSION_ADMISSION_CANDIDATE",
+              "UNRESOLVED_CAPABILITY_GAP",
+              "IDENTITY_HOLD"
+            ]
+          }
+        },
+        "required_output_fields": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "core2a_allowed_capability_closure": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "ESTABLISHED",
+              "ROUTED"
+            ]
+          }
+        },
+        "core2b_allowed_capability_closure": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "ESTABLISHED",
+              "ROUTED"
+            ]
+          }
+        },
+        "core2b_requires_prior_exposure": {
+          "const": true
+        },
+        "rows": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "demand_ref",
+              "canonical_question_ref",
+              "candidate_question_refs",
+              "canonical_primary_capability_ref",
+              "demand_evidence_refs",
+              "source_custody",
+              "learner_eligibility_state",
+              "identity_status",
+              "classification_state"
+            ],
+            "properties": {
+              "demand_ref": {
+                "type": "string",
+                "minLength": 1
+              },
+              "canonical_question_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "candidate_question_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              },
+              "canonical_primary_capability_ref": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "demand_evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "uniqueItems": true
+              },
+              "source_custody": {
+                "type": [
+                  "object",
+                  "null"
+                ]
+              },
+              "learner_eligibility_state": {
+                "enum": [
+                  "ELIGIBLE",
+                  "EXCLUDED",
+                  "HOLD",
+                  "NOT_ESTABLISHED"
+                ]
+              },
+              "identity_status": {
+                "enum": [
+                  "EXACT_CONFIRMED",
+                  "IDENTITY_HOLD",
+                  "UNMAPPED"
+                ]
+              },
+              "classification_state": {
+                "enum": [
+                  "READY_FOR_CAPABILITY_ANALYSIS",
+                  "IDENTITY_HOLD",
+                  "UNMAPPED_HOLD"
+                ]
+              }
+            }
+          }
         }
       }
     }
