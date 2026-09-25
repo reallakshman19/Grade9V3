@@ -272,7 +272,8 @@ function renderQ26() {
     svg+=line(p[0],p[1],p[0],p[1]-Math.max(-65,Math.min(65,result.vy*7)),"svg-vector","arrow");
     svg+='<text x="'+(p[0]+76)+'" y="'+(p[1]+4)+'" class="svg-small">vₓ</text><text x="'+(p[0]+8)+'" y="'+(p[1]-Math.max(-65,Math.min(65,result.vy*7)))+'" class="svg-small">vᵧ</text>';
     if(isCommitted() && sim.caseKey==="45"){
-      svg+='<text x="90" y="38" class="svg-label">45° case: v = 5√g / 2 · slope at P &lt; 0</text>';
+      const relation=row.options[0].replace(/^\\(A\\)\\s*/, "");
+      svg+='<text x="90" y="38" class="svg-label">'+svgEsc(relation)+' · slope at P &lt; 0</text>';
     }
   } else {
     const theta=result.theta;
@@ -303,15 +304,16 @@ function renderQ23() {
 
   const W=800,H=410,left=68,right=748,trackY=118,plotTop=215,plotBottom=360;
   const xMax=s.vx0*params.event_time_s;
+  const noDragEnd=q23StateAt(params.event_time_s,params).noDragX;
   const xMap=(x)=>left+(right-left)*(x/xMax);
   const wallX=xMap(q23StateAt(params.event_time_s,params).x);
   let svg='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="Horizontal component under linear drag, with exponentially decreasing horizontal velocity and accumulated position from integration.">'+defs();
   svg+=line(left,trackY,right,trackY,"svg-axis");
   svg+=line(wallX,62,wallX,165,"svg-boundary")+'<text x="'+(wallX-35)+'" y="51" class="svg-label">wall · t = 2 s</text>';
   svg+='<circle cx="'+xMap(s.x)+'" cy="'+trackY+'" r="10" class="svg-projectile"/>';
-  if(sim.compare) svg+='<circle cx="'+xMap(s.noDragX)+'" cy="'+(trackY+38)+'" r="7" fill="#8397ad"/><text x="'+left+'" y="'+(trackY+62)+'" class="svg-small">hypothetical no drag → 270 m at 2 s</text>';
+  if(sim.compare) svg+='<circle cx="'+xMap(s.noDragX)+'" cy="'+(trackY+38)+'" r="7" fill="#8397ad"/><text x="'+left+'" y="'+(trackY+62)+'" class="svg-small">hypothetical no drag → '+formatNumber(noDragEnd,0)+' m at '+params.event_time_s+' s</text>';
   if(sim.vectors) svg+=line(xMap(s.x),trackY,xMap(s.x)+Math.max(18,85*s.vx/s.vx0),trackY,"svg-vector","arrow");
-  svg+='<text x="'+left+'" y="28" class="svg-label">launch decomposition: vₓ₀ = 135 m/s · vᵧ₀ = 270 sin60°</text>';
+  svg+='<text x="'+left+'" y="28" class="svg-label">launch decomposition: vₓ₀ = '+formatNumber(s.vx0,0)+' m/s · vᵧ₀ = '+formatNumber(params.launch_speed_m_s,0)+' sin'+formatNumber(params.launch_angle_deg,0)+'°</text>';
   svg+='<text x="'+left+'" y="52" class="svg-small">horizontal-component view only — no fake vacuum parabola is drawn</text>';
   svg+=line(left,plotBottom,right,plotBottom,"svg-axis")+line(left,plotBottom,left,plotTop,"svg-axis");
   const pts=[];
@@ -381,7 +383,8 @@ function renderSupport(){
   if(state.solutionOpen){
     html+='<div class="reasoning-step"><strong>Repository answer</strong><br>'+esc(row.answer.summary)+'</div>';
     if(activeOwner==="Q23"){
-      html+='<div class="reasoning-list"><div class="reasoning-step">1. vₓ₀ = 270 cos60° = 135 m/s</div><div class="reasoning-step">2. m/c = 2 s</div><div class="reasoning-step">3. vₓ(t) = vₓ₀ exp[−(c/m)t]</div><div class="reasoning-step">4. x(t) = vₓ₀(m/c)[1 − exp(−ct/m)]</div><div class="reasoning-step">5. Evaluate at t = 2 s with source e = 2.7</div><div class="reasoning-step">6. x = 170 m</div></div>';
+      const p=row.visualization, end=q23StateAt(p.event_time_s,p);
+      html+='<div class="reasoning-list"><div class="reasoning-step">1. vₓ₀ = '+formatNumber(p.launch_speed_m_s,0)+' cos'+formatNumber(p.launch_angle_deg,0)+'° = '+formatNumber(end.vx0,0)+' m/s</div><div class="reasoning-step">2. m/c = '+formatNumber(end.tau,0)+' s</div><div class="reasoning-step">3. vₓ(t) = vₓ₀ exp[−(c/m)t]</div><div class="reasoning-step">4. x(t) = vₓ₀(m/c)[1 − exp(−ct/m)]</div><div class="reasoning-step">5. Evaluate at t = '+p.event_time_s+' s with source e = '+p.source_e+'</div><div class="reasoning-step">6. x = '+formatNumber(end.x,0)+' m</div></div>';
     }
     if(!state.checked) html+='<div class="support-actions"><button id="independent-check" class="primary-action" type="button">Check</button></div>';
   }
