@@ -114,6 +114,12 @@ class CoreAuthorityContractTests(unittest.TestCase):
         self.assertTrue(
             self.contract["invariants"]["fixed_demand_cannot_disappear_on_scope_mismatch"]
         )
+        self.assertTrue(
+            self.contract["invariants"]["fixed_demand_progression_must_remain_visible"]
+        )
+        self.assertTrue(
+            self.contract["invariants"]["generic_practice_does_not_close_fixed_demand"]
+        )
 
     def test_bridge_routes_or_holds_without_expanding_core1_family(self):
         bridge = self.contract["demand_bridge"]["dispositions"]
