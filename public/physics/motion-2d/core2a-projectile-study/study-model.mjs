@@ -44,9 +44,11 @@ export function parseQ21(record) {
   return { divisor, descentTimeRatio, rangeRatio };
 }
 
-export function q21State(time, divisor = 0.81) {
+export function q21State(time, divisor) {
+  const gravityDivisor = Number(divisor);
+  requirePublicCondition(Number.isFinite(gravityDivisor) && gravityDivisor > 0, "Q21_GRAVITY_RATIO_INVALID");
   const apexTime = 1;
-  const descentTime = Math.sqrt(divisor);
+  const descentTime = Math.sqrt(gravityDivisor);
   const endTime = apexTime + descentTime;
   const t = clamp(Number(time) || 0, 0, endTime);
   let x;
@@ -66,7 +68,7 @@ export function q21State(time, divisor = 0.81) {
     x = 0.5 + 0.5 * tau;
     y = Math.max(0, 1 - (tau / descentTime) ** 2);
     vy = -2 * tau / (descentTime ** 2);
-    accelerationFactor = 1 / divisor;
+    accelerationFactor = 1 / gravityDivisor;
     stage = t >= endTime ? "LANDED" : "DESCENT";
   }
   return { t, x, y, vx, vy, accelerationFactor, stage, apexTime, descentTime, endTime, rangeRatio: 0.5 + 0.5 * descentTime };
@@ -87,11 +89,14 @@ export function parseQ26(record) {
   return { point, degrees, atanRatio: { numerator: Number(ratio[1]), denominator: Number(ratio[2]) } };
 }
 
-export function solvePointPassage(thetaRadians, g = 10, point = { x: 5, y: 1 }) {
+export function solvePointPassage(thetaRadians, g, point) {
   const theta = Number(thetaRadians);
   const visualG = Number(g);
+  requirePublicCondition(Number.isFinite(visualG) && visualG > 0, "Q26_VISUAL_G_INVALID");
+  requirePublicCondition(point && typeof point === "object", "Q26_POINT_REQUIRED");
   const x = Number(point.x);
   const y = Number(point.y);
+  requirePublicCondition(Number.isFinite(x) && Number.isFinite(y), "Q26_POINT_INVALID");
   const tan = Math.tan(theta);
   const cos = Math.cos(theta);
   const clearance = x * tan - y;
