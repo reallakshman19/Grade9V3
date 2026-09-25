@@ -17,7 +17,7 @@
     "WEB": 9,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:e0ec292140273a986d44a8a7bc1a9463728772591ab521247fc5f76b816a379c",
+  "digest": "sha256:24ca19c13870099c8201d86881843bc4aacf359983ba0e0f97049580a70586b7",
   "components": [
     {
       "path": "public/core-learning/data.js",
@@ -1115,8 +1115,8 @@
       "path": "tests/fixtures/prompt-composer/identity-review.json",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 1257,
-      "sha256": "dd9118206243d89f0498b825a6f5a9aff944353cf7a387fb38dc8665e730e393"
+      "bytes": 1869,
+      "sha256": "71b01d21765ffc249c1c28439a5f4e859fede1adcb9b9a7425165d08c39a998c"
     },
     {
       "path": "tests/fixtures/prompt-composer/math-linear-equation.json",
