@@ -30,6 +30,12 @@ REQUIRED_INVARIANTS = (
     "learner_estimate_cannot_change_core1_family_intrinsic_scope",
     "prompt_and_planning_outputs_are_not_academic_authority",
     "unresolved_authority_dependency_must_hold",
+    "every_fixed_demand_requires_bridge_disposition",
+    "fixed_demand_cannot_disappear_on_scope_mismatch",
+    "bridge_does_not_create_core_role",
+    "bridge_does_not_admit_extension_to_core1_family",
+    "core2a_requires_established_capability_closure",
+    "core2b_requires_established_capability_closure_and_prior_exposure",
 )
 
 EXPECTED_ROLE_RULES = {
@@ -180,6 +186,62 @@ def audit(path: Path | None = None) -> dict[str, Any]:
         findings.append("CORE_AUTHORITY_DEMAND_EVIDENCE_SEMANTICS_DRIFT")
     if distinctions.get("learner_eligibility") != "INDEPENDENT_REVIEW_STATE":
         findings.append("CORE_AUTHORITY_LEARNER_ELIGIBILITY_SEMANTICS_DRIFT")
+
+    bridge = contract.get("demand_bridge")
+    if not isinstance(bridge, dict):
+        findings.append("CORE_AUTHORITY_DEMAND_BRIDGE_MISSING")
+        bridge = {}
+    if bridge.get("is_core_role") is not False:
+        findings.append("CORE_AUTHORITY_DEMAND_BRIDGE_BECAME_CORE")
+    if bridge.get("required_for_every_fixed_demand") is not True:
+        findings.append("CORE_AUTHORITY_DEMAND_BRIDGE_NOT_REQUIRED")
+
+    dispositions = bridge.get("dispositions")
+    if not isinstance(dispositions, dict):
+        findings.append("CORE_AUTHORITY_DEMAND_BRIDGE_DISPOSITIONS_MISSING")
+        dispositions = {}
+    expected_dispositions = {
+        "WITHIN_CANONICAL_SCOPE": "ESTABLISHED",
+        "CANONICAL_PREREQUISITE_ROUTE": "ROUTED",
+        "EXTENSION_ADMISSION_CANDIDATE": "NOT_YET_ADMITTED",
+        "UNRESOLVED_CAPABILITY_GAP": "UNRESOLVED",
+        "IDENTITY_HOLD": "UNRESOLVED",
+    }
+    for name, closure in expected_dispositions.items():
+        row = dispositions.get(name)
+        if not isinstance(row, dict):
+            findings.append(f"CORE_AUTHORITY_DEMAND_BRIDGE_DISPOSITION_MISSING:{name}")
+            continue
+        if row.get("capability_closure") != closure:
+            findings.append(f"CORE_AUTHORITY_DEMAND_BRIDGE_CLOSURE_DRIFT:{name}")
+        if name in {"EXTENSION_ADMISSION_CANDIDATE", "UNRESOLVED_CAPABILITY_GAP", "IDENTITY_HOLD"}:
+            if row.get("downstream_application_state") != "HOLD":
+                findings.append(f"CORE_AUTHORITY_DEMAND_BRIDGE_HOLD_DRIFT:{name}")
+
+    required_bridge_fields = {
+        "demand_ref",
+        "canonical_primary_capability_ref",
+        "canonical_capability_refs",
+        "canonical_prerequisite_refs",
+        "unresolved_prerequisite_demands",
+        "disposition",
+        "prerequisite_route",
+        "extension_admission_candidate",
+        "source_custody_state",
+        "learner_eligibility_state",
+        "core2a_eligibility",
+        "core2b_eligibility",
+        "hold_close_when",
+    }
+    if _texts(bridge.get("required_record_fields")) != required_bridge_fields:
+        findings.append("CORE_AUTHORITY_DEMAND_BRIDGE_REQUIRED_FIELDS_DRIFT")
+    allowed_closure = {"ESTABLISHED", "ROUTED"}
+    if _texts(bridge.get("core2a_allowed_capability_closure")) != allowed_closure:
+        findings.append("CORE_AUTHORITY_CORE2A_BRIDGE_CLOSURE_DRIFT")
+    if _texts(bridge.get("core2b_allowed_capability_closure")) != allowed_closure:
+        findings.append("CORE_AUTHORITY_CORE2B_BRIDGE_CLOSURE_DRIFT")
+    if bridge.get("core2b_requires_prior_exposure") is not True:
+        findings.append("CORE_AUTHORITY_CORE2B_BRIDGE_EXPOSURE_DRIFT")
 
     states = _texts(contract.get("allowed_dependency_states"))
     if states != {"PASS", "HOLD", "FAIL"}:
