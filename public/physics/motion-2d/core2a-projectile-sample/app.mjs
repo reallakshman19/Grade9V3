@@ -111,7 +111,7 @@ function render() {
   provenance.textContent = row.provenance_badge + " · " + row.wording_custody.replaceAll("_"," ").toLowerCase();
   title.textContent = row.owner_label + " · " + ({
     Q21:"Gravity changes after the apex",
-    Q26:"Trajectory through P = (5 m, 1 m)",
+    Q26:"Trajectory through P = ("+row.visualization.point[0]+" m, "+row.visualization.point[1]+" m)",
     Q23:"Projectile motion with linear drag",
   }[activeOwner]);
   stem.textContent = row.stem;
@@ -218,7 +218,7 @@ function renderQ21() {
   svg+='<text x="'+(left+10)+'" y="32" class="svg-label">'+(current.stage==="ASCENT"?"ordinary g during ascent":"changed acceleration only after apex")+'</text>';
   svg+='</svg>';
   visualStage.innerHTML=svg;
-  visualStatus.textContent=current.stage==="ASCENT"?"Before the apex: ordinary gravity.":"After the apex: downward acceleration = g/0.81; horizontal velocity is unchanged.";
+  visualStatus.textContent=current.stage==="ASCENT"?"Before the apex: ordinary gravity.":"After the apex: downward acceleration = g/"+divisor+"; horizontal velocity is unchanged.";
   visualCaption.textContent="Normalized view: ordinary range d = 1 and apex height = 1. No source speed or launch angle is invented.";
 }
 
@@ -264,7 +264,7 @@ function renderQ26() {
   svg+=line(left,ground,744,ground,"svg-axis")+line(left,ground,left,38,"svg-axis");
   svg+='<text x="'+(left-20)+'" y="'+(ground+25)+'" class="svg-label">O</text>';
   const p=[left+point[0]*xScale,ground-point[1]*yScale];
-  svg+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="8" class="svg-point"/><text x="'+(p[0]+10)+'" y="'+(p[1]-8)+'" class="svg-label">P (5, 1)</text>';
+  svg+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="8" class="svg-point"/><text x="'+(p[0]+10)+'" y="'+(p[1]-8)+'" class="svg-label">P ('+point[0]+', '+point[1]+')</text>';
   if(result.finite){
     const xs=[]; const xmax=Math.min(6.35, Math.max(5.4,(2*result.v2*Math.sin(result.theta)*Math.cos(result.theta)/g)));
     for(let i=0;i<=100;i++){const x=xmax*i/100,y=q26YAtX(x,result,g);if(y>=-.05)xs.push([left+x*xScale,ground-y*yScale]);}
