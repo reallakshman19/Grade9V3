@@ -224,10 +224,12 @@ Target coverage states:
 
 Target authorization states:
 
-- `READY`
-- `ACADEMIC_REVIEW_HOLD`
-- `SOURCE_USE_HOLD`
-- `IDENTITY_HOLD`
+- `READY` — academic content and instructional use are authorised for this route;
+- `ACADEMIC_REVIEW_HOLD` — a required bridge/extension is not yet academically approved;
+- `INSTRUCTIONAL_USE_HOLD` — the demand is not authorised for learner instruction;
+- `IDENTITY_HOLD` — source-dependent target identity is unresolved.
+
+Direct source-item custody/use and authentic assessment-surface claims remain separate. A route may become `PREPARED` through clearly labelled authored analogues while `direct_source_use` or `assessment_claim` remains `HOLD`; it must not then claim authentic PYQ exposure.
 
 Target preparation states:
 
@@ -333,7 +335,7 @@ must be validated separately for:
   "target_authorization_states": [
     "READY",
     "ACADEMIC_REVIEW_HOLD",
-    "SOURCE_USE_HOLD",
+    "INSTRUCTIONAL_USE_HOLD",
     "IDENTITY_HOLD"
   ],
   "target_preparation_states": [
