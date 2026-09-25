@@ -17,7 +17,7 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(REPO))
 
 from Shared.contracts import load  # noqa: E402
-from Shared.tools import core_authority_contract  # noqa: E402
+from Shared.tools import core_authority_contract, core_template_contract  # noqa: E402
 
 OUT = REPO / "public/data/prompt-composer-data.js"
 MANIFEST = REPO / "docs/architecture-manifest.json"
@@ -42,6 +42,8 @@ def build(repo: Path = REPO) -> dict:
     template = load(repo / "template/core-prompt-composer/core-agent-prompt.v1.json")
     authority_path = core_authority_contract.discover_contract(repo / "Shared" / "roles")
     authority = core_authority_contract.load_contract(authority_path)
+    learner_template_path = core_template_contract.discover_template_spec(repo / "Shared" / "roles")
+    learner_template = core_template_contract.load_contract(learner_template_path)
     payload = {
         "generated_by": "Shared/tools/build_prompt_composer_data.py",
         "contract_version": "1.0.0",
@@ -49,6 +51,8 @@ def build(repo: Path = REPO) -> dict:
         "template": template,
         "authority_contract": authority,
         "authority_contract_ref": str(authority_path.relative_to(repo)),
+        "learner_product_contract": learner_template,
+        "learner_product_contract_ref": str(learner_template_path.relative_to(repo)),
         "subjects": {},
     }
     for subject in subjects(repo):
