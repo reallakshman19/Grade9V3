@@ -38,7 +38,7 @@ class Core2AProjectileStudyTest(unittest.TestCase):
             self.assertEqual("CANDIDATE", row["status"])
             self.assertEqual("FAM-PHY-KIN-2D-PRACTICE", row["family_ref"])
             self.assertIn("CORE2A", {item["core"] for item in row["exposure"]})
-            self.assertIn(ref, self.source)
+            self.assertIn(ref, self.page)\n            self.assertNotIn(ref, self.source)
 
     def test_core2a_blueprint_resolves_to_required_shell_and_layout(self):
         row = web_blueprint_contract.resolve_blueprint(
@@ -169,7 +169,7 @@ class Core2AProjectileStudyTest(unittest.TestCase):
         self.assertIn("@media(prefers-reduced-motion:reduce)", self.source)
         self.assertIn("reveal = this.state.solutionOpen", self.source)
         self.assertIn("if (!this.state.attempted)", self.source)
-        self.assertIn("Q23-UI-6", self.source)
+        self.assertIn('id: "step-6"', self.source)\n        self.assertNotIn("BP-CORE2A-SUPPORTED-APPLICATION@1.0.0", self.source)\n        self.assertNotIn("G9-TABLET-SHELL-V1", self.source)
         self.assertNotIn("<iframe", self.page.lower())
         self.assertNotIn("https://", self.page)
         self.assertNotIn("http://", self.page)
