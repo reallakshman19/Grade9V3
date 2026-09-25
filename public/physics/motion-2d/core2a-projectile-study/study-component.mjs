@@ -4,6 +4,7 @@ import {
 } from "./study-model.mjs";
 import { STUDY_STYLES } from "./study-styles.mjs";
 import { renderQ21Stage, renderQ26Stage, renderQ23Stage } from "./study-visuals.mjs";
+export { CORE2A_PROJECTILE_REFS, CORE2A_PROJECTILE_BLUEPRINT } from "./study-model.mjs";
 
 function esc(value) {
   return String(value ?? "")
@@ -230,7 +231,7 @@ export class Core2AProjectileStudy extends HTMLElementBase {
   }
 
   _animate(kind) {
-    this._stopAnimation(false);
+    this._stopAnimation();
     this._lastFrame = performance.now();
     const tick = (now) => {
       const dt = Math.min(0.05, (now - this._lastFrame) / 1000);
@@ -271,7 +272,7 @@ export class Core2AProjectileStudy extends HTMLElementBase {
 
   _renderQuestion(record) {
     const options = this.state.owner === "Q26"
-      ? `<fieldset class="options"><legend>Try the source choices — select all that apply</legend>${record.options.map((option, index) => {
+      ? `<fieldset class="options"><legend>Try the choices — select all that apply</legend>${record.options.map((option, index) => {
           const value = String.fromCharCode(65 + index);
           const checked = Array.isArray(this.state.attempt) && this.state.attempt.includes(value);
           const reveal = this.state.solutionOpen;
