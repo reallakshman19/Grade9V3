@@ -5,6 +5,15 @@ function svgPath(points, scaleX, scaleY) {
 }
 function sampled(count, fn) { return Array.from({ length: count + 1 }, (_, index) => fn(index / count)); }
 
+export function renderLockedStage(owner) {
+  const prompt = owner === "Q26"
+    ? "Select at least one A/B/C/D choice to begin, then investigate the source angles."
+    : owner === "Q23"
+      ? "Enter a wall-distance prediction to begin, then run the drag model."
+      : "Enter a prediction for n to begin, then run the two-stage model.";
+  return `<section class="stage locked-stage" aria-labelledby="visual-title"><div class="stage-head"><div><div class="section-kicker">Visualize</div><h3 id="visual-title">Try first</h3></div><div class="stage-status"><b>INITIAL</b><span>decisive visual cues are protected</span></div></div><div class="locked-visual"><span aria-hidden="true">↗</span><p>${prompt}</p></div><p class="visual-note">The interactive representation unlocks as soon as you start a genuine answer. The final answer remains hidden until later.</p></section>`;
+}
+
 export function renderQ21Stage(host, record) {
 const p = parseQ21(record);
 const current = q21State(host.state.q21.time, p.divisor);
@@ -65,6 +74,7 @@ return `<section class="stage" aria-labelledby="visual-title"><div class="stage-
     ${result.valid ? `<line class="velocity" x1="${px}" y1="${py}" x2="${px + result.vx * vScale * 5}" y2="${py - result.vy * vScale * 5}"/><line class="component" x1="${px}" y1="${py}" x2="${px + result.vx * vScale * 5}" y2="${py}"/><line class="component vertical" x1="${px + result.vx * vScale * 5}" y1="${py}" x2="${px + result.vx * vScale * 5}" y2="${py - result.vy * vScale * 5}"/><text x="${px+36}" y="${py+22}">vₓ</text><text x="${px + result.vx*vScale*5 + 8}" y="${py - result.vy*vScale*2.5}">vᵧ</text>` : ""}
   </svg>
   <div class="equation-strip"><span>Trajectory model</span><code>y = x tanθ − gx²/(2v² cos²θ)</code><span>Then inspect the direction at P.</span></div>
+  ${host.state.attempted && result.valid ? `<div class="equation-strip committed-readout"><span>At P after commitment</span><code>${selectedDegrees === 45 ? "v = 5√g / 2" : `v ≈ ${round(result.v,2)} m/s for visualization g`}</code><span>${result.vy < 0 ? "vᵧ < 0 · descending · apex before P" : "vᵧ > 0 · rising · apex after P"}</span></div>` : ""}
   <p class="visual-note">Visualization value only: g = 10 m/s². The canonical source keeps g symbolic; symbolic reasoning remains authoritative.</p></section>`;
 }
 
