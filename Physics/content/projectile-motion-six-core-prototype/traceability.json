@@ -31,7 +31,8 @@
       "learner_eligibility_status": "NOT_APPLICABLE",
       "provenance_class": "CANONICAL_DERIVED",
       "transformation_from_upstream_canonical_truth": "Compact orientation only; no new academic truth.",
-      "validation_state": "STRUCTURALLY_VALIDATED"
+      "validation_state": "STRUCTURALLY_VALIDATED",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -61,7 +62,8 @@
       "learner_eligibility_status": "NOT_APPLICABLE",
       "provenance_class": "CANONICAL_DERIVED",
       "transformation_from_upstream_canonical_truth": "Compact orientation only; no new academic truth.",
-      "validation_state": "STRUCTURALLY_VALIDATED"
+      "validation_state": "STRUCTURALLY_VALIDATED",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -91,7 +93,8 @@
       "learner_eligibility_status": "NOT_APPLICABLE",
       "provenance_class": "CANONICAL_DERIVED",
       "transformation_from_upstream_canonical_truth": "Compact orientation only; no new academic truth.",
-      "validation_state": "STRUCTURALLY_VALIDATED"
+      "validation_state": "STRUCTURALLY_VALIDATED",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": "Q28",
@@ -117,14 +120,15 @@
       ],
       "artifact_id": "TRACE-C2-Q28",
       "core_role": "CORE2",
-      "canonical_academic_source_ref": "Physics/library/exam-bank/competitive-exam-question-bank.v2.json",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json",
       "canonical_primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
       "canonical_microtopic": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
       "demand_evidence_status": "VALID_DEMAND_EVIDENCE",
       "learner_eligibility_status": "NOT_ESTABLISHED",
       "provenance_class": "SOURCE_DERIVED",
       "transformation_from_upstream_canonical_truth": "No academic derivation; custody-only trace. Source bank wording is not rendered as original verbatim content.",
-      "validation_state": "HOLD"
+      "validation_state": "HOLD",
+      "source_custody_source_ref": "Physics/library/exam-bank/competitive-exam-question-bank.v2.json"
     },
     {
       "owner_question_label": "Q15",
@@ -152,14 +156,15 @@
       ],
       "artifact_id": "TRACE-C2-Q15",
       "core_role": "CORE2",
-      "canonical_academic_source_ref": "Physics/library/exam-bank/competitive-exam-question-bank.v2.json",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json",
       "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
       "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
       "demand_evidence_status": "VALID_DIAGNOSTIC_DEMAND_EVIDENCE",
       "learner_eligibility_status": "EXCLUDED",
       "provenance_class": "SOURCE_DERIVED",
       "transformation_from_upstream_canonical_truth": "No academic derivation; custody-only trace. Source bank wording is not rendered as original verbatim content.",
-      "validation_state": "HOLD"
+      "validation_state": "HOLD",
+      "source_custody_source_ref": "Physics/library/exam-bank/competitive-exam-question-bank.v2.json"
     },
     {
       "owner_question_label": "Q21",
@@ -185,14 +190,15 @@
       ],
       "artifact_id": "TRACE-C2-Q21",
       "core_role": "CORE2",
-      "canonical_academic_source_ref": "Physics/library/exam-bank/competitive-exam-question-bank.v2.json",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json",
       "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
       "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
       "demand_evidence_status": "VALID_DEMAND_EVIDENCE",
       "learner_eligibility_status": "EXCLUDED",
       "provenance_class": "SOURCE_DERIVED",
       "transformation_from_upstream_canonical_truth": "No academic derivation; custody-only trace. Source bank wording is not rendered as original verbatim content.",
-      "validation_state": "HOLD"
+      "validation_state": "HOLD",
+      "source_custody_source_ref": "Physics/library/exam-bank/competitive-exam-question-bank.v2.json"
     },
     {
       "owner_question_label": "Q26",
@@ -218,14 +224,15 @@
       ],
       "artifact_id": "TRACE-C2-Q26",
       "core_role": "CORE2",
-      "canonical_academic_source_ref": "Physics/library/exam-bank/competitive-exam-question-bank.v2.json",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json",
       "canonical_primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
       "canonical_microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
       "demand_evidence_status": "VALID_DEMAND_EVIDENCE",
       "learner_eligibility_status": "EXCLUDED",
       "provenance_class": "SOURCE_DERIVED",
       "transformation_from_upstream_canonical_truth": "No academic derivation; custody-only trace. Source bank wording is not rendered as original verbatim content.",
-      "validation_state": "HOLD"
+      "validation_state": "HOLD",
+      "source_custody_source_ref": "Physics/library/exam-bank/competitive-exam-question-bank.v2.json"
     },
     {
       "owner_question_label": "Q23",
@@ -252,14 +259,15 @@
       ],
       "artifact_id": "TRACE-C2-Q23",
       "core_role": "CORE2",
-      "canonical_academic_source_ref": "Physics/library/exam-bank/competitive-exam-question-bank.v2.json",
+      "canonical_academic_source_ref": "Physics/library/phy-kin-2d-motion.v1.json",
       "canonical_primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
       "canonical_microtopic": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
       "demand_evidence_status": "VALID_DEMAND_EVIDENCE",
       "learner_eligibility_status": "EXCLUDED",
       "provenance_class": "SOURCE_DERIVED",
       "transformation_from_upstream_canonical_truth": "No academic derivation; custody-only trace. Source bank wording is not rendered as original verbatim content.",
-      "validation_state": "HOLD"
+      "validation_state": "HOLD",
+      "source_custody_source_ref": "Physics/library/exam-bank/competitive-exam-question-bank.v2.json"
     },
     {
       "owner_question_label": null,
@@ -294,7 +302,8 @@
       "learner_eligibility_status": "NOT_APPLICABLE",
       "provenance_class": "CANONICAL_DERIVED",
       "transformation_from_upstream_canonical_truth": "Declarative expansion of the canonical inferential jump and teaching path.",
-      "validation_state": "STRUCTURALLY_VALIDATED"
+      "validation_state": "STRUCTURALLY_VALIDATED",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -329,7 +338,8 @@
       "learner_eligibility_status": "NOT_APPLICABLE",
       "provenance_class": "CANONICAL_DERIVED",
       "transformation_from_upstream_canonical_truth": "Self-tutor elicitation of the same canonical inferential jump as Core1A.",
-      "validation_state": "STRUCTURALLY_VALIDATED"
+      "validation_state": "STRUCTURALLY_VALIDATED",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -364,7 +374,8 @@
       "learner_eligibility_status": "NOT_APPLICABLE",
       "provenance_class": "CANONICAL_DERIVED",
       "transformation_from_upstream_canonical_truth": "Declarative expansion of the canonical inferential jump and teaching path.",
-      "validation_state": "STRUCTURALLY_VALIDATED"
+      "validation_state": "STRUCTURALLY_VALIDATED",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -399,7 +410,8 @@
       "learner_eligibility_status": "NOT_APPLICABLE",
       "provenance_class": "CANONICAL_DERIVED",
       "transformation_from_upstream_canonical_truth": "Self-tutor elicitation of the same canonical inferential jump as Core1A.",
-      "validation_state": "STRUCTURALLY_VALIDATED"
+      "validation_state": "STRUCTURALLY_VALIDATED",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -434,7 +446,8 @@
       "learner_eligibility_status": "NOT_APPLICABLE",
       "provenance_class": "CANONICAL_DERIVED",
       "transformation_from_upstream_canonical_truth": "Declarative expansion of the canonical inferential jump and teaching path.",
-      "validation_state": "STRUCTURALLY_VALIDATED"
+      "validation_state": "STRUCTURALLY_VALIDATED",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -469,7 +482,8 @@
       "learner_eligibility_status": "NOT_APPLICABLE",
       "provenance_class": "CANONICAL_DERIVED",
       "transformation_from_upstream_canonical_truth": "Self-tutor elicitation of the same canonical inferential jump as Core1A.",
-      "validation_state": "STRUCTURALLY_VALIDATED"
+      "validation_state": "STRUCTURALLY_VALIDATED",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -506,7 +520,8 @@
       "learner_eligibility_status": "HOLD",
       "provenance_class": "AUTHORED_PRACTICE",
       "transformation_from_upstream_canonical_truth": "Familiar application within canonical capability; repair K2D1-4.",
-      "validation_state": "STRUCTURALLY_VALIDATED_WITH_LEARNER_HOLD"
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_LEARNER_HOLD",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -547,7 +562,8 @@
       "learner_eligibility_status": "HOLD",
       "provenance_class": "AUTHORED_PRACTICE",
       "transformation_from_upstream_canonical_truth": "Familiar application within canonical capability; repair K2D2-2.",
-      "validation_state": "STRUCTURALLY_VALIDATED_WITH_LEARNER_HOLD"
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_LEARNER_HOLD",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -588,7 +604,8 @@
       "learner_eligibility_status": "HOLD",
       "provenance_class": "AUTHORED_PRACTICE",
       "transformation_from_upstream_canonical_truth": "Familiar application within canonical capability; repair K2D3-4.",
-      "validation_state": "STRUCTURALLY_VALIDATED_WITH_LEARNER_HOLD"
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_LEARNER_HOLD",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -629,7 +646,8 @@
       "learner_eligibility_status": "HOLD",
       "provenance_class": "AUTHORED_PRACTICE",
       "transformation_from_upstream_canonical_truth": "Familiar application within canonical capability; repair K2D3-6.",
-      "validation_state": "STRUCTURALLY_VALIDATED_WITH_LEARNER_HOLD"
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_LEARNER_HOLD",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -670,7 +688,8 @@
       "learner_eligibility_status": "HOLD",
       "provenance_class": "AUTHORED_PRACTICE",
       "transformation_from_upstream_canonical_truth": "Familiar application within canonical capability; repair K2D3-5.",
-      "validation_state": "STRUCTURALLY_VALIDATED_WITH_LEARNER_HOLD"
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_LEARNER_HOLD",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -708,7 +727,8 @@
       "learner_eligibility_status": "HOLD",
       "provenance_class": "AUTHORED_PRACTICE",
       "transformation_from_upstream_canonical_truth": "Changed demand dimension representation_translation within already-taught capability; repair K2D1-2.",
-      "validation_state": "STRUCTURALLY_VALIDATED_WITH_EXPOSURE_HOLD"
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_EXPOSURE_HOLD",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -750,7 +770,8 @@
       "learner_eligibility_status": "HOLD",
       "provenance_class": "AUTHORED_PRACTICE",
       "transformation_from_upstream_canonical_truth": "Changed demand dimension model_choice within already-taught capability; repair K2D2-1.",
-      "validation_state": "STRUCTURALLY_VALIDATED_WITH_EXPOSURE_HOLD"
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_EXPOSURE_HOLD",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -792,7 +813,8 @@
       "learner_eligibility_status": "HOLD",
       "provenance_class": "AUTHORED_PRACTICE",
       "transformation_from_upstream_canonical_truth": "Changed demand dimension reasoning_steps within already-taught capability; repair K2D3-6.",
-      "validation_state": "STRUCTURALLY_VALIDATED_WITH_EXPOSURE_HOLD"
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_EXPOSURE_HOLD",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -834,7 +856,8 @@
       "learner_eligibility_status": "HOLD",
       "provenance_class": "AUTHORED_PRACTICE",
       "transformation_from_upstream_canonical_truth": "Changed demand dimension model_choice within already-taught capability; repair K2D3-1.",
-      "validation_state": "STRUCTURALLY_VALIDATED_WITH_EXPOSURE_HOLD"
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_EXPOSURE_HOLD",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -876,7 +899,8 @@
       "learner_eligibility_status": "HOLD",
       "provenance_class": "AUTHORED_PRACTICE",
       "transformation_from_upstream_canonical_truth": "Changed demand dimension reasoning_steps within already-taught capability; repair K2D3-7.",
-      "validation_state": "STRUCTURALLY_VALIDATED_WITH_EXPOSURE_HOLD"
+      "validation_state": "STRUCTURALLY_VALIDATED_WITH_EXPOSURE_HOLD",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -906,7 +930,8 @@
       "learner_eligibility_status": "NOT_APPLICABLE",
       "provenance_class": "CANONICAL_DERIVED",
       "transformation_from_upstream_canonical_truth": "Semantic review rendering of required_elements/correspondence; no invented trajectory geometry.",
-      "validation_state": "HOLD"
+      "validation_state": "HOLD",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -936,7 +961,8 @@
       "learner_eligibility_status": "NOT_APPLICABLE",
       "provenance_class": "CANONICAL_DERIVED",
       "transformation_from_upstream_canonical_truth": "Semantic review rendering of required_elements/correspondence; no invented trajectory geometry.",
-      "validation_state": "HOLD"
+      "validation_state": "HOLD",
+      "source_custody_source_ref": null
     },
     {
       "owner_question_label": null,
@@ -966,7 +992,8 @@
       "learner_eligibility_status": "NOT_APPLICABLE",
       "provenance_class": "CANONICAL_DERIVED",
       "transformation_from_upstream_canonical_truth": "Semantic review rendering of required_elements/correspondence; no invented trajectory geometry.",
-      "validation_state": "HOLD"
+      "validation_state": "HOLD",
+      "source_custody_source_ref": null
     }
   ]
 }
