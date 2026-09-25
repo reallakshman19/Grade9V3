@@ -31,46 +31,51 @@ class PromptComposerTests(unittest.TestCase):
         report = study_map.resolve(mapping)
         self.assertTrue(report["passed"], report["findings"])
 
-    def test_projectile_stress_set_preserves_authority_boundaries_and_holds_ambiguous_identity(self):
+    def test_projectile_stress_set_preserves_fixed_target_authority_and_routes_identity_review(self):
         result = prompt_composer.compose(self.load("projectile-stress-set.json"))
-        self.assertFalse(result["passed"])
+        self.assertTrue(result["passed"], result["prompt_brief"]["holds"])
         brief = result["prompt_brief"]
         self.assertEqual(brief["scope"]["matrix_ref"], "MATRIX-PHY-KIN-2D-MOTION")
         self.assertEqual(brief["scope"]["status"], "OWNER_CONFIRMED_CANONICAL_RUNG")
-        self.assertEqual(brief["scope"]["canonical_primary_rungs"], ["R1", "R2", "R3"])
-        self.assertEqual(brief["scope"]["owner_confirmed_rung"]["rung"], "R3")
         q15 = next(row for row in brief["question_rows"] if row["owner_question_id"] == "Q15")
-        self.assertEqual(q15["identity_status"], "IDENTITY_HOLD")
-        self.assertEqual(q15["mapping_status"], "IDENTITY_HOLD")
+        self.assertEqual(q15["identity_status"], "IDENTITY_REVIEW_REQUIRED")
+        self.assertEqual(q15["mapping_status"], "IDENTITY_REVIEW_REQUIRED")
         self.assertEqual(
             set(q15["candidate_question_refs"]),
             {"PYQ-PHY-JEEADV-2018-P2-Q08", "PYQ-PHY-JEEADV-2023-P1-Q01"},
         )
-        self.assertIsNone(q15["primary_capability_ref"])
-        self.assertTrue(any(h["point"] == "QUESTION_IDENTITY_AMBIGUOUS" for h in brief["holds"]))
-        mapped = [row for row in brief["question_rows"] if row["primary_location"]]
-        self.assertEqual(
-            [row["primary_location"]["rung"] for row in mapped],
-            ["R1", "R3", "R3", "R2"],
-        )
+        self.assertFalse(any(h["point"] == "QUESTION_IDENTITY_AMBIGUOUS" for h in brief["holds"]))
         for row in brief["question_rows"]:
-            if row["owner_question_id"] in {"Q15", "Q21", "Q26", "Q23"}:
-                self.assertEqual(row["learner_eligibility"], "EXCLUDED")
+            self.assertEqual(row["target_authority"], "OWNER_FIXED")
+            self.assertEqual(row["instructional_demand_use"], "ALLOWED")
+            self.assertEqual(row["assessment_claim"], "HOLD")
+        self.assertTrue(brief["learner_entry"]["owner_routing_waiver"])
+        self.assertFalse(brief["learner_entry"]["readiness_claim_allowed"])
+        self.assertEqual(brief["planner_handoff"]["state"], "READY_FOR_PLANNER")
+
+    def test_target_route_output_is_required_for_every_fixed_target(self):
+        result = prompt_composer.compose(self.load("projectile-stress-set.json"))
+        route = result["prompt_brief"]["target_route_output"]
+        self.assertTrue(route["required"])
         self.assertEqual(
-            brief["learner_entry"]["owner_estimate"]["knowledge_percentage"], 50
+            route["schema_path"],
+            "Shared/library/target-demand-route.schema.json",
         )
+        self.assertEqual(len(route["seed_rows"]), 5)
         self.assertEqual(
-            brief["execution_order"],
-            ["CORE2", "CORE1", "CORE1A", "CORE1B", "CORE2A", "CORE2B"],
+            {row["owner_question_id"] for row in route["seed_rows"]},
+            {"Q28", "Q15", "Q21", "Q26", "Q23"},
         )
-        self.assertEqual(brief["planner_handoff"]["state"], "COMPOSER_HOLD")
+        q15 = next(row for row in route["seed_rows"] if row["owner_question_id"] == "Q15")
+        self.assertEqual(q15["identity_status"], "IDENTITY_REVIEW_REQUIRED")
+
 
     def test_prompt_contains_clause_ids_role_refs_and_downstream_pdf_intent_without_rendering_pdf(self):
         result = prompt_composer.compose(self.load("projectile-stress-set.json"))
         text = result["agent_prompt"]
         for clause in [
             "GOAL_OUTCOME", "FIXED_SOURCE_QUESTIONS", "LEARNER_PROFILE",
-            "EXECUTION_ORDER", "AUTHORITY_GRAPH", "TOPIC_BOUNDARY", "CORE_OBLIGATIONS",
+            "EXECUTION_ORDER", "AUTHORITY_GRAPH", "TARGET_DEMAND_ROUTING", "TOPIC_BOUNDARY", "CORE_OBLIGATIONS",
             "DIFFICULTY_PROGRESSION", "PROVENANCE_TRACE", "ACCEPTANCE",
             "NON_GOALS", "HOLD_FAIL", "DOWNSTREAM_DELIVERABLE",
         ]:
@@ -82,6 +87,10 @@ class PromptComposerTests(unittest.TestCase):
         self.assertIn("demand evidence and learner eligibility are independent states", text.lower())
         self.assertIn("question.primary_capability_ref", text)
         self.assertIn("extension demands do not become core1/core1a/core1b microtopics", text.lower())
+        self.assertIn("Shared/library/target-demand-route.schema.json", text)
+        self.assertIn("Generic easier practice cannot close a fixed target", text)
+        self.assertIn("AUTHORABLE_EXTENSION", text)
+        self.assertIn("owner routing waiver is ON", text.lower())
         self.assertIn("#273 owns PDF publication", text)
         self.assertFalse(any(path.suffix == ".pdf" for path in (REPO / "public").rglob("*.pdf")))
 
@@ -98,6 +107,11 @@ class PromptComposerTests(unittest.TestCase):
             "A Core2 HOLD does not become academic authority",
             result["agent_prompt"],
         )
+        self.assertEqual(
+            brief["target_routing_contract"]["path"],
+            "Shared/roles/TARGET-DEMAND-ROUTING-CONTRACT.md",
+        )
+        self.assertRegex(brief["target_routing_contract"]["digest"], r"^sha256:[a-f0-9]{64}$")
 
     def test_mixed_subtopic_fails_closed(self):
         result = prompt_composer.compose(self.load("mixed-subtopic.json"))
