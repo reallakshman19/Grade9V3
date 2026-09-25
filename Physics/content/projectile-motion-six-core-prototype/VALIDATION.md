@@ -48,3 +48,20 @@
 ## Outcome
 
 The six-role prototype is a truthful **structural/design candidate with explicit HOLDs**, not a claim of academic review or publication readiness.
+
+
+## Executed branch-level falsifiers
+
+These checks were run against branch `prototype/projectile-motion-six-core` after the learner products were written:
+
+- **Diff isolation:** compare from `dd1fb0ca8374a398ea48aa3253a5d37ed0d62739` shows 13 added files, all under `Physics/content/projectile-motion-six-core-prototype/`; no canonical package, question-bank, role-contract or schema file is modified.
+- **Demand identity/mapping:** all exact/candidate demand refs exist in the current competitive bank and the demand map preserves their `primary_capability_ref` and secondary refs. Q15 has `exact_repository_ref: null` and retains both candidates.
+- **Coverage parity:** Core1A and Core1B each cover exactly the three canonical microtopic IDs: independent components, componentwise constant acceleration, and gravity-only projectile model.
+- **Attempt/reveal ordering:** all three Core1B cycles place PREDICT and ATTEMPT before reconstruction/model material. All five Core2B items place changed-demand metadata, protected move and full answer after ATTEMPT.
+- **Protected transfer:** every Core2B `protected_move_ref` resolves to a canonical `DECIDE` reasoning move; every `builds_on[]` parent is an existing Core2A item; every Core2B primary capability is already canonical in this bucket.
+- **Hint/scaffold separation:** authored Core2A/Core2B trace rows carry empty `source_hint_refs[]`, separate `question_hint_refs[]`, and separate `authored_scaffold_refs[]`.
+- **Visual semantics:** 16 required representation usages were audited. Exactly two have eligible canonical scene bindings (shared-clock / independent-components in Core1A and Core1B); the other 14 are explicit usage-level `VISUAL_HOLD`.
+- **Rendered reveal gate:** the HTML preview does not render a Core1 scene borrowed from another role, renders the eligible shared-clock scene in Core1A, reveals its Core1B use only after a non-blank committed response, and applies the same non-blank gate to Core2B answer reveals.
+- **Forbidden field check:** no generated machine-readable artifact contains a `primary_concept_id` field.
+
+No repository-wide test-suite success is claimed here; this prototype is an isolated content addition and the audit above is the structural/content-contract validation actually executed in this run.
