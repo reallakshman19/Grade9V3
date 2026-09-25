@@ -57,19 +57,43 @@ specifications and canonical library.
 
 ```core-templates
 {
-  "version": "1.0",
+  "version": "1.1",
   "roles": {
     "CORE1": {
       "learner_job": "Orient to the bucket without replacing detailed teaching.",
       "ordered_blocks": [
-        {"id": "identity_scope", "visibility": "IMMEDIATE"},
-        {"id": "objects_conventions", "visibility": "IMMEDIATE"},
-        {"id": "canonical_representation", "visibility": "IMMEDIATE"},
-        {"id": "governing_relations", "visibility": "IMMEDIATE"},
-        {"id": "compact_anchor", "visibility": "IMMEDIATE"},
-        {"id": "hard_transition_map", "visibility": "IMMEDIATE"},
-        {"id": "exclusions_extensions", "visibility": "IMMEDIATE"},
-        {"id": "orientation_closure", "visibility": "IMMEDIATE"}
+        {
+          "id": "identity_scope",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "objects_conventions",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "canonical_representation",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "governing_relations",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "compact_anchor",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "hard_transition_map",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "exclusions_extensions",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "orientation_closure",
+          "visibility": "IMMEDIATE"
+        }
       ],
       "required_inputs": [
         "bucket.title",
@@ -94,17 +118,50 @@ specifications and canonical library.
     "CORE1A": {
       "learner_job": "Receive a complete declarative construction of the microtopic's inferential truth.",
       "ordered_blocks": [
-        {"id": "identity_entry_assumptions", "visibility": "IMMEDIATE"},
-        {"id": "convention_declaration", "visibility": "IMMEDIATE"},
-        {"id": "inferential_jump", "visibility": "IMMEDIATE"},
-        {"id": "completed_construction", "visibility": "IMMEDIATE"},
-        {"id": "representation_bridge", "visibility": "IMMEDIATE"},
-        {"id": "worked_conceptual_anchor", "visibility": "IMMEDIATE"},
-        {"id": "plausible_wrong_path", "visibility": "IMMEDIATE"},
-        {"id": "diagnose", "visibility": "IMMEDIATE"},
-        {"id": "repair", "visibility": "IMMEDIATE"},
-        {"id": "independent_checks", "visibility": "IMMEDIATE"},
-        {"id": "exit_task_closure", "visibility": "IMMEDIATE"}
+        {
+          "id": "identity_entry_assumptions",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "convention_declaration",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "inferential_jump",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "completed_construction",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "representation_bridge",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "worked_conceptual_anchor",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "plausible_wrong_path",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "diagnose",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "repair",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "independent_checks",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "exit_task_closure",
+          "visibility": "IMMEDIATE"
+        }
       ],
       "required_inputs": [
         "microtopic.entry_assumptions[]",
@@ -124,15 +181,42 @@ specifications and canonical library.
     "CORE1B": {
       "learner_job": "Reconstruct the same inferential truth before seeing the completed route.",
       "ordered_blocks": [
-        {"id": "identity_concept", "visibility": "IMMEDIATE"},
-        {"id": "predict", "visibility": "ATTEMPT_FIRST"},
-        {"id": "attempt", "visibility": "ATTEMPT_FIRST"},
-        {"id": "reconstruct", "visibility": "POST_ATTEMPT"},
-        {"id": "diagnose", "visibility": "POST_ATTEMPT"},
-        {"id": "repair", "visibility": "POST_ATTEMPT"},
-        {"id": "boundary_test", "visibility": "POST_ATTEMPT"},
-        {"id": "model_response_or_rubric", "visibility": "ON_REVEAL"},
-        {"id": "rejoin_inferential_jump", "visibility": "ON_REVEAL"}
+        {
+          "id": "identity_concept",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "predict",
+          "visibility": "ATTEMPT_FIRST"
+        },
+        {
+          "id": "attempt",
+          "visibility": "ATTEMPT_FIRST"
+        },
+        {
+          "id": "reconstruct",
+          "visibility": "POST_ATTEMPT"
+        },
+        {
+          "id": "diagnose",
+          "visibility": "POST_ATTEMPT"
+        },
+        {
+          "id": "repair",
+          "visibility": "POST_ATTEMPT"
+        },
+        {
+          "id": "boundary_test",
+          "visibility": "POST_ATTEMPT"
+        },
+        {
+          "id": "model_response_or_rubric",
+          "visibility": "ON_REVEAL"
+        },
+        {
+          "id": "rejoin_inferential_jump",
+          "visibility": "ON_REVEAL"
+        }
       ],
       "required_inputs": [
         "microtopic.inferential_jump",
@@ -156,12 +240,30 @@ specifications and canonical library.
     "CORE2": {
       "learner_job": "Preserve and expose the authentic assessment demand with source custody intact.",
       "ordered_blocks": [
-        {"id": "source_identity_provenance", "visibility": "IMMEDIATE"},
-        {"id": "source_question", "visibility": "IMMEDIATE"},
-        {"id": "source_figure", "visibility": "IMMEDIATE"},
-        {"id": "source_hint_ladder", "visibility": "ON_REVEAL"},
-        {"id": "source_answer_rubric", "visibility": "ON_REVEAL"},
-        {"id": "custody_status", "visibility": "IMMEDIATE"}
+        {
+          "id": "source_identity_provenance",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "source_question",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "source_figure",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "source_hint_ladder",
+          "visibility": "ON_REVEAL"
+        },
+        {
+          "id": "source_answer_rubric",
+          "visibility": "ON_REVEAL"
+        },
+        {
+          "id": "custody_status",
+          "visibility": "IMMEDIATE"
+        }
       ],
       "required_inputs": [
         "question.source_refs[]",
@@ -188,17 +290,50 @@ specifications and canonical library.
     "CORE2A": {
       "learner_job": "Learn a familiar question-family application route with pedagogical support and complete closure.",
       "ordered_blocks": [
-        {"id": "family_identity_provenance", "visibility": "IMMEDIATE"},
-        {"id": "question", "visibility": "IMMEDIATE"},
-        {"id": "initial_representation", "visibility": "IMMEDIATE"},
-        {"id": "pedagogical_scaffolds", "visibility": "ON_REVEAL"},
-        {"id": "reasoning_route", "visibility": "ON_REVEAL"},
-        {"id": "application_crux", "visibility": "ON_REVEAL"},
-        {"id": "bound_representation", "visibility": "ON_REVEAL"},
-        {"id": "complete_solution", "visibility": "ON_REVEAL"},
-        {"id": "independent_check", "visibility": "ON_REVEAL"},
-        {"id": "failure_signal_repair", "visibility": "ON_REVEAL"},
-        {"id": "exposure_family_closure", "visibility": "IMMEDIATE"}
+        {
+          "id": "family_identity_provenance",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "question",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "initial_representation",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "pedagogical_scaffolds",
+          "visibility": "ON_REVEAL"
+        },
+        {
+          "id": "reasoning_route",
+          "visibility": "ON_REVEAL"
+        },
+        {
+          "id": "application_crux",
+          "visibility": "ON_REVEAL"
+        },
+        {
+          "id": "bound_representation",
+          "visibility": "ON_REVEAL"
+        },
+        {
+          "id": "complete_solution",
+          "visibility": "ON_REVEAL"
+        },
+        {
+          "id": "independent_check",
+          "visibility": "ON_REVEAL"
+        },
+        {
+          "id": "failure_signal_repair",
+          "visibility": "ON_REVEAL"
+        },
+        {
+          "id": "exposure_family_closure",
+          "visibility": "IMMEDIATE"
+        }
       ],
       "required_inputs": [
         "question.family_ref",
@@ -220,15 +355,42 @@ specifications and canonical library.
     "CORE2B": {
       "learner_job": "Carry an established capability into a changed demand while protecting the changed learner decision before commitment.",
       "ordered_blocks": [
-        {"id": "question_prior_exposure", "visibility": "IMMEDIATE"},
-        {"id": "safe_initial_representation", "visibility": "IMMEDIATE"},
-        {"id": "safe_pre_attempt_support", "visibility": "IMMEDIATE"},
-        {"id": "attempt_commitment", "visibility": "ATTEMPT_FIRST"},
-        {"id": "post_attempt_support", "visibility": "POST_ATTEMPT"},
-        {"id": "full_answer_rubric", "visibility": "ON_REVEAL"},
-        {"id": "changed_demand_review", "visibility": "ON_REVEAL"},
-        {"id": "repair_route", "visibility": "ON_REVEAL"},
-        {"id": "lineage_continuity_check", "visibility": "ON_REVEAL"}
+        {
+          "id": "question_prior_exposure",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "safe_initial_representation",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "safe_pre_attempt_support",
+          "visibility": "IMMEDIATE"
+        },
+        {
+          "id": "attempt_commitment",
+          "visibility": "ATTEMPT_FIRST"
+        },
+        {
+          "id": "post_attempt_support",
+          "visibility": "POST_ATTEMPT"
+        },
+        {
+          "id": "full_answer_rubric",
+          "visibility": "ON_REVEAL"
+        },
+        {
+          "id": "changed_demand_review",
+          "visibility": "ON_REVEAL"
+        },
+        {
+          "id": "repair_route",
+          "visibility": "ON_REVEAL"
+        },
+        {
+          "id": "lineage_continuity_check",
+          "visibility": "ON_REVEAL"
+        }
       ],
       "required_inputs": [
         "question.transfer.dimension",
@@ -250,9 +412,64 @@ specifications and canonical library.
         "TRANSFER_CLAIM_FROM_COVER_STORY_ONLY"
       ]
     }
+  },
+  "learner_product_quality_gate": {
+    "separate_from_route_validity": true,
+    "acceptance_states": [
+      "PASS",
+      "HOLD",
+      "FAIL"
+    ],
+    "required_checks": [
+      "PHYSICAL_SEMANTIC_ACCURACY",
+      "VISUAL_LEGIBILITY",
+      "MATH_RENDERING",
+      "WORKED_FADED_INDEPENDENT_PROGRESSION",
+      "MISCONCEPTION_DIAGNOSIS_REPAIR",
+      "TARGET_MOVE_CONNECTION",
+      "STATIC_PRINT_CLOSURE"
+    ],
+    "target_move_connection_requires": [
+      "target_ref",
+      "move_ref",
+      "observable_lesson_change"
+    ],
+    "invariants": {
+      "route_pass_does_not_imply_product_pass": true,
+      "required_visual_must_render_in_learner_artifact": true,
+      "required_math_must_be_legible": true,
+      "static_print_must_preserve_closure": true,
+      "lesson_target_link_must_name_move": true,
+      "reviewer_metadata_must_not_dominate_learner_surface": true
+    }
   }
 }
 ```
+## Learner-product quality gate
+
+Academic route validity and learner-product quality are separate claims.
+
+A valid target route proves that the required knowledge path is identified and authorised. It
+does **not** prove that the rendered learner artifact is accurate, legible or instructionally
+usable.
+
+Every publishable learner product must therefore pass an independent quality gate covering:
+
+- physical/semantic accuracy of figures and statements;
+- legibility of diagrams, labels and equations;
+- readable mathematical rendering rather than raw/broken notation;
+- visible worked → faded → independent progression where the role uses application practice;
+- misconception diagnosis and repair where required by the role;
+- an explicit lesson-to-target connection that names the target and DemandMove being prepared;
+- static/print closure so answers, reconstructions and checks do not disappear when interaction
+  is unavailable.
+
+A target ID attached to an otherwise generic learner page does not satisfy the target-move
+connection requirement. The page must contain an observable teaching change attributable to the
+named move.
+
+Reviewer/debug metadata may exist in a reviewer surface, but it must not dominate the learner
+surface.
 
 ## Anti-collapse review
 
