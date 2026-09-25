@@ -4,14 +4,13 @@
 **Learner-release status:** **HOLD** because actual prior exposure and prerequisite closure for this learner are not established. The owner estimate of ~50% is not mastery evidence.  
 **Untaught-model rule:** none of the five fixed advanced anchors is promoted into Core2B; drag, changed gravity, bounce/restitution and advanced trajectory machinery remain upstream gaps/extensions.
 
+The learner-facing ordering below deliberately withholds changed-demand metadata and the protected move identifier until after a nontrivial attempt prompt. The machine-readable trace still records those fields for audit.
+
 ## Q-PHY-KIN-2D-2B-REPRESENTATION-01
 
 **Provenance:** `AUTHORED_PRACTICE`  
 **Primary capability:** `CAP-KIN-2D-INDEPENDENT-COMPONENTS`  
 **Prior-exposure lineage:** `Q-PHY-KIN-2D-2A-SHARED-CLOCK-01`  
-**Changed dimension:** `representation_translation`  
-**Changed demand:** The learner must convert a verbal direction description into signed x/y state without being handed the component representation.  
-**Protected DECIDE move:** `R-KIN-2D-BREP-FRAME`  
 **Learner-release status:** `LEARNER_ELIGIBILITY_HOLD` — lineage is defined in the artifact, but this learner's actual prior exposure/prerequisite closure is not established by a 50% estimate.
 
 ### Question / conditions
@@ -23,7 +22,7 @@ A particle is described verbally: at t=0 it is at the origin, moving east at 6 m
 
 ### Safe pre-attempt support
 
-- First list the raw direction words and magnitudes without plus or minus signs. (supports `R-KIN-2D-BREP-FACTS`; does not name the protected move)
+- First list the raw direction words and magnitudes without plus or minus signs. (supports `R-KIN-2D-BREP-FACTS`)
 
 ### ATTEMPT / learner commitment
 
@@ -31,6 +30,12 @@ Commit to the model/representation/event decision and justify it before revealin
 
 <details>
 <summary>Post-attempt support, full answer and transfer review</summary>
+
+### Changed-demand statement
+
+**Changed dimension:** `representation_translation`  
+**Changed demand:** The learner must convert a verbal direction description into signed x/y state without being handed the component representation.  
+**Protected DECIDE move:** `R-KIN-2D-BREP-FRAME`
 
 ### Post-attempt support
 
@@ -69,7 +74,6 @@ The protected move is `R-KIN-2D-BREP-FRAME`; it is a `DECIDE` move in the canoni
 
 </details>
 
-
 ---
 
 ## Q-PHY-KIN-2D-2B-MODEL-VALIDITY-02
@@ -77,9 +81,6 @@ The protected move is `R-KIN-2D-BREP-FRAME`; it is a `DECIDE` move in the canoni
 **Provenance:** `AUTHORED_PRACTICE`  
 **Primary capability:** `CAP-KIN-2D-CONSTANT-ACCELERATION`  
 **Prior-exposure lineage:** `Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02`  
-**Changed dimension:** `model_choice`  
-**Changed demand:** The learner must decide component-by-component whether the constant-acceleration model is valid instead of being told that it applies.  
-**Protected DECIDE move:** `R-KIN-2D-BMODEL-DECIDE`  
 **Learner-release status:** `LEARNER_ELIGIBILITY_HOLD` — lineage is defined in the artifact, but this learner's actual prior exposure/prerequisite closure is not established by a 50% estimate.
 
 ### Question / conditions
@@ -91,7 +92,7 @@ Over 0<=t<=4 s, a particle has a_x=2 m/s^2 but a_y=3t m/s^2. Decide whether the 
 
 ### Safe pre-attempt support
 
-- Make one row for a_x(t) and one for a_y(t), and write the validity condition each row must satisfy. (supports `R-KIN-2D-BMODEL-REPRESENT`; does not name the protected move)
+- Make one row for a_x(t) and one for a_y(t), and write the validity condition each row must satisfy. (supports `R-KIN-2D-BMODEL-REPRESENT`)
 
 ### ATTEMPT / learner commitment
 
@@ -99,6 +100,12 @@ Commit to the model/representation/event decision and justify it before revealin
 
 <details>
 <summary>Post-attempt support, full answer and transfer review</summary>
+
+### Changed-demand statement
+
+**Changed dimension:** `model_choice`  
+**Changed demand:** The learner must decide component-by-component whether the constant-acceleration model is valid instead of being told that it applies.  
+**Protected DECIDE move:** `R-KIN-2D-BMODEL-DECIDE`
 
 ### Post-attempt support
 
@@ -135,7 +142,6 @@ The protected move is `R-KIN-2D-BMODEL-DECIDE`; it is a `DECIDE` move in the can
 
 </details>
 
-
 ---
 
 ## Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03
@@ -143,9 +149,6 @@ The protected move is `R-KIN-2D-BMODEL-DECIDE`; it is a `DECIDE` move in the can
 **Provenance:** `AUTHORED_PRACTICE`  
 **Primary capability:** `CAP-KIN-PROJECTILE-MODEL`  
 **Prior-exposure lineage:** `Q-PHY-KIN-2D-2A-SAME-HEIGHT-05`  
-**Changed dimension:** `reasoning_steps`  
-**Changed demand:** The learner must replace the familiar same-height condition with an unequal-height event condition and carry the resulting time across axes.  
-**Protected DECIDE move:** `R-KIN-2D-BHEIGHT-EVENT`  
 **Learner-release status:** `LEARNER_ELIGIBILITY_HOLD` — lineage is defined in the artifact, but this learner's actual prior exposure/prerequisite closure is not established by a 50% estimate.
 
 ### Question / conditions
@@ -158,7 +161,7 @@ An ideal projectile begins 15 m above level ground with u_x=10 m/s and u_y=10 m/
 
 ### Safe pre-attempt support
 
-- Sketch only the launch level and ground relative to one vertical origin before writing an event equation. (supports `R-KIN-2D-BHEIGHT-REPRESENT`; does not name the protected move)
+- Sketch only the launch level and ground relative to one vertical origin before writing an event equation. (supports `R-KIN-2D-BHEIGHT-REPRESENT`)
 
 ### ATTEMPT / learner commitment
 
@@ -166,6 +169,12 @@ Commit to the model/representation/event decision and justify it before revealin
 
 <details>
 <summary>Post-attempt support, full answer and transfer review</summary>
+
+### Changed-demand statement
+
+**Changed dimension:** `reasoning_steps`  
+**Changed demand:** The learner must replace the familiar same-height condition with an unequal-height event condition and carry the resulting time across axes.  
+**Protected DECIDE move:** `R-KIN-2D-BHEIGHT-EVENT`
 
 ### Post-attempt support
 
@@ -204,7 +213,6 @@ The protected move is `R-KIN-2D-BHEIGHT-EVENT`; it is a `DECIDE` move in the can
 
 </details>
 
-
 ---
 
 ## Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04
@@ -212,9 +220,6 @@ The protected move is `R-KIN-2D-BHEIGHT-EVENT`; it is a `DECIDE` move in the can
 **Provenance:** `AUTHORED_PRACTICE`  
 **Primary capability:** `CAP-KIN-PROJECTILE-MODEL`  
 **Prior-exposure lineage:** `Q-PHY-KIN-2D-2A-HORIZONTAL-LAUNCH-04`  
-**Changed dimension:** `model_choice`  
-**Changed demand:** The learner must reject the familiar projectile specialization because one of its defining force/model conditions is explicitly broken.  
-**Protected DECIDE move:** `R-KIN-TRANSFER-MODEL`  
 **Learner-release status:** `LEARNER_ELIGIBILITY_HOLD` — lineage is defined in the artifact, but this learner's actual prior exposure/prerequisite closure is not established by a 50% estimate.
 
 ### Question / conditions
@@ -227,7 +232,7 @@ An object is launched and, after release, a small rocket motor continues to prov
 
 ### Safe pre-attempt support
 
-- List the post-release interactions and the acceleration components they imply before you name any motion model. (supports `R-KIN-TRANSFER-INTERACTIONS`; does not name the protected move)
+- List the post-release interactions and the acceleration components they imply before you name any motion model. (supports `R-KIN-TRANSFER-INTERACTIONS`)
 
 ### ATTEMPT / learner commitment
 
@@ -235,6 +240,12 @@ Commit to the model/representation/event decision and justify it before revealin
 
 <details>
 <summary>Post-attempt support, full answer and transfer review</summary>
+
+### Changed-demand statement
+
+**Changed dimension:** `model_choice`  
+**Changed demand:** The learner must reject the familiar projectile specialization because one of its defining force/model conditions is explicitly broken.  
+**Protected DECIDE move:** `R-KIN-TRANSFER-MODEL`
 
 ### Post-attempt support
 
@@ -271,7 +282,6 @@ The protected move is `R-KIN-TRANSFER-MODEL`; it is a `DECIDE` move in the canon
 
 </details>
 
-
 ---
 
 ## Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05
@@ -279,9 +289,6 @@ The protected move is `R-KIN-TRANSFER-MODEL`; it is a `DECIDE` move in the canon
 **Provenance:** `AUTHORED_PRACTICE`  
 **Primary capability:** `CAP-KIN-PROJECTILE-MODEL`  
 **Prior-exposure lineage:** `Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03`  
-**Changed dimension:** `reasoning_steps`  
-**Changed demand:** The learner must compare two equal-height events by component invariants rather than solve a routine time/range calculation.  
-**Protected DECIDE move:** `R-KIN-2D-BSTATE-DECIDE`  
 **Learner-release status:** `LEARNER_ELIGIBILITY_HOLD` — lineage is defined in the artifact, but this learner's actual prior exposure/prerequisite closure is not established by a 50% estimate.
 
 ### Question / conditions
@@ -294,7 +301,7 @@ An ideal projectile passes the same height once on the way up and once on the wa
 
 ### Safe pre-attempt support
 
-- Make a comparison table for v_x, v_y, speed and acceleration; enter only ‘same height’, ‘upward’ and ‘downward’ before choosing a method. (supports `R-KIN-2D-BSTATE-REPRESENT`; does not name the protected move)
+- Make a comparison table for v_x, v_y, speed and acceleration; enter only ‘same height’, ‘upward’ and ‘downward’ before choosing a method. (supports `R-KIN-2D-BSTATE-REPRESENT`)
 
 ### ATTEMPT / learner commitment
 
@@ -302,6 +309,12 @@ Commit to the model/representation/event decision and justify it before revealin
 
 <details>
 <summary>Post-attempt support, full answer and transfer review</summary>
+
+### Changed-demand statement
+
+**Changed dimension:** `reasoning_steps`  
+**Changed demand:** The learner must compare two equal-height events by component invariants rather than solve a routine time/range calculation.  
+**Protected DECIDE move:** `R-KIN-2D-BSTATE-DECIDE`
 
 ### Post-attempt support
 
@@ -340,4 +353,3 @@ The protected move is `R-KIN-2D-BSTATE-DECIDE`; it is a `DECIDE` move in the can
 `K2D3-7`
 
 </details>
-
