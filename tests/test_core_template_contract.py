@@ -35,7 +35,7 @@ class CoreTemplateContractTests(unittest.TestCase):
         report = core_template_contract.audit(REPO / "Shared" / "roles" / "LEARNER-PRODUCT-TEMPLATES.md")
         self.assertTrue(report["passed"], report["findings"])
         self.assertEqual(report["roles_checked"], 6)
-        self.assertEqual(report["contract_version"], "1.0")
+        self.assertEqual(report["contract_version"], "1.1")
 
     def test_core1b_attempt_precedes_reconstruction(self):
         roles = core_template_contract.load_contract(
@@ -81,6 +81,27 @@ class CoreTemplateContractTests(unittest.TestCase):
             for role in core_template_contract.ROLE_ORDER
         ]
         self.assertEqual(len(signatures), len(set(signatures)))
+
+
+    def test_delivery_contract_prevents_summary_only_and_parallel_renderer_shortcuts(self):
+        contract = core_template_contract.load_contract(
+            REPO / "Shared" / "roles" / "LEARNER-PRODUCT-TEMPLATES.md"
+        )
+        delivery = contract["delivery_invariants"]
+        self.assertTrue(delivery["required_role_blocks_must_exist_in_learner_artifact"])
+        self.assertTrue(
+            delivery["summary_pointer_to_external_file_does_not_satisfy_required_block"]
+        )
+        self.assertTrue(delivery["static_delivery_must_be_semantically_complete"])
+        self.assertTrue(delivery["interactive_reveal_requires_static_closure_equivalent"])
+        self.assertTrue(delivery["required_visual_must_render_in_learner_artifact"])
+        self.assertTrue(
+            delivery["math_must_render_as_readable_math_not_broken_control_sequences"]
+        )
+        self.assertTrue(delivery["shared_learner_projection_runtime_is_default_delivery_path"])
+        self.assertTrue(
+            delivery["topic_local_parallel_renderer_requires_proven_shared_stack_gap"]
+        )
 
 
     def test_real_canonical_witnesses_match_role_template_boundaries(self):
