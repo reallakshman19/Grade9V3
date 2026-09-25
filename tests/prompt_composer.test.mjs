@@ -76,6 +76,10 @@ test('browser and Python agree on mapping semantics and deterministic prompt dig
     JSON.parse(JSON.stringify(browser.prompt_brief.trace_rows.map(r => [r.question_ids,r.primary_capability_ref,r.matrix_ref,r.rung,r.status]))),
     python.prompt_brief.trace_rows.map(r => [r.question_ids,r.primary_capability_ref,r.matrix_ref,r.rung,r.status])
   );
+  assert.deepEqual(
+    JSON.parse(JSON.stringify(browser.prompt_brief.demand_bridge)),
+    python.prompt_brief.demand_bridge
+  );
 });
 
 test('browser prompt emits the blueprint authority graph explicitly', () => {
@@ -87,6 +91,24 @@ test('browser prompt emits the blueprint authority graph explicitly', () => {
   assert.match(result.agent_prompt, /Demand evidence and learner eligibility are independent states/);
   assert.match(result.agent_prompt, /question\.primary_capability_ref/);
   assert.doesNotMatch(result.agent_prompt, /primary_concept_id/);
+});
+
+test('browser prompt projects the demand-bridge blueprint for every fixed demand', () => {
+  const w = runtime();
+  const result = w.PROMPT_COMPOSER.composeDocument(fixture, w.GRADE9V3_PROMPT_COMPOSER, w.GRADE9V3);
+  const bridge = result.prompt_brief.demand_bridge;
+  assert.equal(bridge.is_core_role, false);
+  assert.equal(bridge.required_for_every_fixed_demand, true);
+  assert.equal(bridge.rows.length, 5);
+  const q15 = bridge.rows.find(row => row.demand_ref === 'Q15');
+  assert.equal(q15.classification_state, 'IDENTITY_HOLD');
+  const q28 = bridge.rows.find(row => row.demand_ref === 'Q28');
+  assert.equal(q28.classification_state, 'READY_FOR_CAPABILITY_ANALYSIS');
+  assert.match(result.agent_prompt, /\[DEMAND_BRIDGE\]/);
+  assert.match(result.agent_prompt, /EXTENSION_ADMISSION_CANDIDATE/);
+  assert.match(result.agent_prompt, /UNRESOLVED_CAPABILITY_GAP/);
+  assert.match(result.agent_prompt, /Unrelated easier practice may support prerequisites but does not close the fixed target demand/);
+  assert.match(result.agent_prompt, /Core2A\/Core2B may consume a target demand only after capability closure is ESTABLISHED or ROUTED/);
 });
 
 test('pasted hostile markup stays plain parsed data and exact 0 is not blank', () => {
