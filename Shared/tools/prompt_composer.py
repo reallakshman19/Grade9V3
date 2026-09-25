@@ -26,7 +26,11 @@ AUTHORING_SCHEMA = "Shared/library/authoring-request.schema.json"
 TEMPLATE_PATH = REPO / "template/core-prompt-composer/core-agent-prompt.v1.json"
 ALL_CORES = ("CORE1", "CORE2", "CORE1A", "CORE1B", "CORE2A", "CORE2B")
 DEFAULT_EXECUTION_ORDER = ("CORE2", "CORE1", "CORE1A", "CORE1B", "CORE2A", "CORE2B")
-HOLD_STATUSES = {"AGENT_PROPOSAL_PENDING_REVIEW", "IDENTITY_HOLD", "MIXED_SUBTOPIC_HOLD", "UNMAPPED_HOLD"}\nTARGET_AUTHORITY = {"OWNER_FIXED", "SELECTED", "OPTIONAL"}\nDIRECT_SOURCE_USE = {"ALLOWED", "EXCLUDED", "HOLD"}\nINSTRUCTIONAL_DEMAND_USE = {"ALLOWED", "HOLD"}\nASSESSMENT_CLAIM = {"ALLOWED", "HOLD"}
+HOLD_STATUSES = {"AGENT_PROPOSAL_PENDING_REVIEW", "IDENTITY_HOLD", "MIXED_SUBTOPIC_HOLD", "UNMAPPED_HOLD"}
+TARGET_AUTHORITY = {"OWNER_FIXED", "SELECTED", "OPTIONAL"}
+DIRECT_SOURCE_USE = {"ALLOWED", "EXCLUDED", "HOLD"}
+INSTRUCTIONAL_DEMAND_USE = {"ALLOWED", "HOLD"}
+ASSESSMENT_CLAIM = {"ALLOWED", "HOLD"}
 LEARNER_ELIGIBILITY = {"ELIGIBLE", "EXCLUDED", "HOLD", "NOT_ESTABLISHED"}
 
 
@@ -646,7 +650,7 @@ def compose(doc: dict, repo: Path = REPO, repository_basis: str | None = None) -
     template = load(repo / "template/core-prompt-composer/core-agent-prompt.v1.json")
     authority_path = core_authority_contract.discover_contract(repo / "Shared" / "roles")
     authority = core_authority_contract.load_contract(authority_path)
-    routing_path = repo / "Shared" / "roles" / "TARGET-DEMAND-ROUTING-CONTRACT.md"
+    routing_path = target_demand_routing_contract.discover_contract(repo / "Shared" / "roles")
     routing = target_demand_routing_contract.load_contract(routing_path)
     route_schema_path = repo / "Shared" / "library" / "target-demand-route.schema.json"
     route_schema = load(route_schema_path)
