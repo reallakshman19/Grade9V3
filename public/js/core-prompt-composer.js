@@ -318,6 +318,17 @@
       +'\nRequired bridge output fields: '+bridge.required_output_fields.join(', ')
       +'\nSeed rows from canonical mapping/identity state:\n'+bridgeSeedLines
       +'\nDo not drop a fixed demand because it is outside the current packet. Do not silently expand Core1/Core1A/Core1B. If canonical prerequisite truth exists elsewhere, route to it explicitly. If not, create an EXTENSION_ADMISSION_CANDIDATE or keep UNRESOLVED_CAPABILITY_GAP with a concrete close condition. Unrelated easier practice may support prerequisites but does not close the fixed target demand. Core2A/Core2B may consume a target demand only after capability closure is ESTABLISHED or ROUTED; Core2B additionally requires prior exposure.';
+    const learnerTemplate=brief.__learner_product_contract;
+    const deliveryLines=Object.entries(learnerTemplate.delivery_invariants||{}).map(([name,value])=>'- '+name+'='+String(value));
+    const roleAnatomyLines=brief.requested_cores.map(core=>{
+      const role=(learnerTemplate.roles||{})[core]||{};
+      const ordered=(role.ordered_blocks||[]).map(block=>block.id+'['+block.visibility+']').join(' → ');
+      return '- '+core+': '+ordered;
+    });
+    const deliveryText='Contract: '+brief.learner_product_contract.path+' (version '+brief.learner_product_contract.version+').\n'
+      +deliveryLines.join('\n')
+      +'\nRequired role anatomy:\n'+roleAnatomyLines.join('\n')
+      +'\nThe actual learner artifact must contain the required blocks; a summary page that points elsewhere for the full teaching/solution does not satisfy the role. Interactive reveal must have a semantically complete static/print closure route. Required canonical visuals must actually render in the learner artifact. Math must render as readable mathematics. Use the shared learner projection/runtime by default; a topic-local parallel renderer requires a proven shared-stack gap.';
     const diff=(brief.validation.difficulty_bands||[]).join(' → ')||'Use the canonical/intrinsic difficulty information available in the referenced records; do not infer it from learner percentage.';
     const kws=fp.map(item=>'- '+item.phrase+' ('+item.kind+'; evidence: '+item.evidence_refs.join(', ')+')').join('\n');
     const trace=brief.trace_rows.map(row=>'- '+row.trace_id+': '+row.question_ids.join(', ')+' → '+(row.primary_capability_ref||'UNMAPPED')+' → '+(row.matrix_ref||'UNMAPPED')+'/'+(row.rung||'UNMAPPED')+'; status='+row.status).join('\n');
@@ -329,6 +340,7 @@
       EXECUTION_ORDER:brief.execution_order.join(' → ')+'\nTreat this as production control only. It does not override readiness, HOLD decisions, or the authority graph.',
       AUTHORITY_GRAPH:authorityText,
       DEMAND_BRIDGE:bridgeText,
+      LEARNER_PRODUCT_CONTRACT:deliveryText,
       TOPIC_BOUNDARY:boundary,
       CORE_OBLIGATIONS:coreLines,
       DIFFICULTY_PROGRESSION:diff+'\nPreserve intrinsic Core1A/Core1B depth regardless of the learner estimate.',
@@ -360,7 +372,7 @@
     const fp=fingerprint(rows,scoped.scope,subjectData), bridge=demandBridge(rows,data.authority_contract), trace=traceRows(rows,fp);
     const brief={
       prompt_brief_id:briefId,template:{id:data.template.template_id,version:data.template.version,path:'template/core-prompt-composer/core-agent-prompt.v1.json'},
-      repository_basis:doc.repository_basis||data.repository_basis,authority_contract:{version:data.authority_contract.version,path:data.authority_contract_ref,digest:digest(data.authority_contract)},input_digest:inputDigest,prompt_digest:'sha256:'+'0'.repeat(64),subject,
+      repository_basis:doc.repository_basis||data.repository_basis,authority_contract:{version:data.authority_contract.version,path:data.authority_contract_ref,digest:digest(data.authority_contract)},learner_product_contract:{version:data.learner_product_contract.version,path:data.learner_product_contract_ref,digest:digest(data.learner_product_contract)},input_digest:inputDigest,prompt_digest:'sha256:'+'0'.repeat(64),subject,
       scope:scoped.scope,question_rows:rows,demand_bridge:bridge,keyword_fingerprint:fp,learner_entry:doc.learner||null,requested_cores:requested,execution_order:order,
       source_authoring_policy:{question_identity_rule:'Exact canonical_question_ref may adopt stored mapping metadata without promoting record lifecycle status.',source_basis_rule:'authoring-request source_basis accepts source locator/receipt basis only; canonical question IDs remain in this brief/worksheet map.',source_receipt_rule:'The composer never creates or upgrades source receipts and never claims source-product readiness.',supplemental_question_policy:doc.supplemental_question_policy||null},
       scope_boundaries:['Canonical subject/question records remain authority.','Existing six Core role contracts remain authority; Demand Bridge / Admission is planning control, not a seventh Core.','Learner percentage is a routing coordinate only and cannot shrink CORE1A/CORE1B intrinsic depth.','plan_request.py remains authoritative for readiness, prerequisite bridges, source receipts and product holds.','Reusable question-set selection and strict exam mode remain outside this composer.','PDF publication remains downstream under issue #273.'],
@@ -368,6 +380,7 @@
       trace_rows:trace,holds,planner_handoff:{state:holds.length?'COMPOSER_HOLD':'READY_FOR_PLANNER',authoring_request_schema:'Shared/library/authoring-request.schema.json',planner_command:'python3 Shared/tools/plan_request.py --plan <authoring-request.json>',run_builder:'tools/run-builder/index.html',note:'Composer PASS means only that the prompt bundle is structurally/mapping-ready for the existing planner; it does not mean any Core product is ready.'}
     };
     Object.defineProperty(brief,'__authority_contract',{value:data.authority_contract,enumerable:false});
+    Object.defineProperty(brief,'__learner_product_contract',{value:data.learner_product_contract,enumerable:false});
     const prompt=renderPrompt(brief,data.template);brief.prompt_digest=digest(prompt);
     const worksheet={worksheet_id:doc.worksheet_id||('WS-'+digest(doc).slice(7,19).toUpperCase()),subject,source_note:'Owner-supplied question set mapped by Core Prompt Composer; mapping is planning demand, not curriculum or source authority.',questions:rows.filter(r=>r.primary_capability_ref&&r.mapping_basis!=='UNMAPPED').map(r=>{const q={question_id:r.owner_question_id,primary_capability_ref:r.primary_capability_ref,secondary_capability_refs:r.secondary_capability_refs,mapping_basis:r.mapping_basis};if(r.mapping_basis==='CANONICAL_QUESTION'&&r.canonical_question_ref)q.canonical_question_ref=r.canonical_question_ref;if(r.summary)q.note=r.summary;return q;})};
     const request={request_id:doc.request_id||('REQ-'+briefId.slice(3)),subject,requested_cores:requested};
