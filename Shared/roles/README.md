@@ -60,6 +60,14 @@ Its central rules are:
 The machine-readable fenced block is validated by
 `Shared/tools/core_authority_contract.py`.
 
+## Target-demand routing
+
+[Target Demand Routing Contract](TARGET-DEMAND-ROUTING-CONTRACT.md) governs how fixed assessment targets are decomposed into required moves, mapped to canonical prerequisite closure, and connected to learner preparation without changing the six Core roles or canonical curriculum.
+
+It separates target authority, source custody, direct source-item use, instructional demand use and assessment-surface claims; supports explicit owner routing waiver without manufacturing mastery; and requires a machine-readable target route for every fixed demand.
+
+Completed routes conform to `Shared/library/target-demand-route.schema.json` and are validated by `Shared/tools/target_demand_routing_contract.py`.
+
 ## Learner-facing production templates
 
 The role files define **what each Core means**. [Core learner-product templates](LEARNER-PRODUCT-TEMPLATES.md)
