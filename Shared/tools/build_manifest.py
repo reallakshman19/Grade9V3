@@ -22,7 +22,7 @@ REPO = Path(__file__).resolve().parents[2]
 if __package__ in (None, ""):
     sys.path.insert(0, str(REPO))
 
-from Shared.tools import build_core_learning_data, build_core_learning_host, build_core_learning_runtime, build_web_data  # noqa: E402
+from Shared.tools import build_core_learning_data, build_core_learning_host, build_core_learning_runtime, build_prompt_examples, build_web_data  # noqa: E402
 
 MANIFEST = REPO / "docs" / "architecture-manifest.json"
 
@@ -98,6 +98,7 @@ def generated_files() -> dict[str, bytes]:
     generated.update(build_core_learning_data.rendered_file())
     generated.update(build_core_learning_host.render())
     generated.update(build_core_learning_runtime.render())
+    generated.update(build_prompt_examples.rendered_file())
     return generated
 
 
@@ -188,6 +189,7 @@ def main() -> int:
     build_core_learning_data.write()
     build_core_learning_host.write()
     build_core_learning_runtime.write()
+    build_prompt_examples.write()
     MANIFEST.parent.mkdir(parents=True, exist_ok=True)
     MANIFEST.write_text(json.dumps(current, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     print(f"wrote {MANIFEST.relative_to(REPO)}: {current['component_count']} components, "
