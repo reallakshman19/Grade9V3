@@ -17,7 +17,7 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(REPO))
 
 from Shared.contracts import load  # noqa: E402
-from Shared.tools import core_authority_contract  # noqa: E402
+from Shared.tools import core_authority_contract, target_demand_routing_contract  # noqa: E402
 
 OUT = REPO / "public/data/prompt-composer-data.js"
 MANIFEST = REPO / "docs/architecture-manifest.json"
@@ -42,6 +42,9 @@ def build(repo: Path = REPO) -> dict:
     template = load(repo / "template/core-prompt-composer/core-agent-prompt.v1.json")
     authority_path = core_authority_contract.discover_contract(repo / "Shared" / "roles")
     authority = core_authority_contract.load_contract(authority_path)
+    routing_path = repo / "Shared/roles/TARGET-DEMAND-ROUTING-CONTRACT.md"
+    routing = target_demand_routing_contract.load_contract(routing_path)
+    route_schema = load(repo / "Shared/library/target-demand-route.schema.json")
     payload = {
         "generated_by": "Shared/tools/build_prompt_composer_data.py",
         "contract_version": "1.0.0",
@@ -49,6 +52,10 @@ def build(repo: Path = REPO) -> dict:
         "template": template,
         "authority_contract": authority,
         "authority_contract_ref": str(authority_path.relative_to(repo)),
+        "target_routing_contract": routing,
+        "target_routing_contract_ref": str(routing_path.relative_to(repo)),
+        "target_route_schema": route_schema,
+        "target_route_schema_ref": "Shared/library/target-demand-route.schema.json",
         "subjects": {},
     }
     for subject in subjects(repo):
