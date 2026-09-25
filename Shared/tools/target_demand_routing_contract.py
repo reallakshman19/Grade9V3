@@ -11,7 +11,6 @@ from typing import Any
 
 REPO = Path(__file__).resolve().parents[2]
 ROLE_DIR = REPO / "Shared" / "roles"
-CONTRACT_PATH = ROLE_DIR / "TARGET-DEMAND-ROUTING-CONTRACT.md"
 SCHEMA_PATH = REPO / "Shared" / "library" / "target-demand-route.schema.json"
 BLOCK = re.compile(r"^```target-demand-routing\s*$\n(.*?)^```\s*$", re.MULTILINE | re.DOTALL)
 
@@ -41,7 +40,22 @@ EXPECTED_CLOSURES = {
 }
 
 
-def load_contract(path: Path = CONTRACT_PATH) -> dict[str, Any]:
+def discover_contract(role_dir: Path = ROLE_DIR) -> Path:
+    matches = []
+    for path in sorted(role_dir.glob("*.md")):
+        try:
+            text = path.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        if BLOCK.search(text):
+            matches.append(path)
+    if len(matches) != 1:
+        raise ValueError(f"TARGET_DEMAND_ROUTING_DISCOVERY_FAILED:{len(matches)}")
+    return matches[0]
+
+
+def load_contract(path: Path | None = None) -> dict[str, Any]:
+    path = path or discover_contract()
     text = path.read_text(encoding="utf-8")
     match = BLOCK.search(text)
     if not match:
@@ -52,7 +66,7 @@ def load_contract(path: Path = CONTRACT_PATH) -> dict[str, Any]:
     return value
 
 
-def audit_contract(path: Path = CONTRACT_PATH) -> dict[str, Any]:
+def audit_contract(path: Path | None = None) -> dict[str, Any]:
     findings: list[str] = []
     try:
         contract = load_contract(path)
