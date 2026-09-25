@@ -446,7 +446,11 @@
           "finding",
           "candidate_question_refs",
           "demand_evidence_refs",
-          "learner_eligibility"
+          "learner_eligibility",
+          "target_authority",
+          "direct_source_use",
+          "instructional_demand_use",
+          "assessment_claim"
         ],
         "properties": {
           "trace_id": {
@@ -536,6 +540,32 @@
               "EXCLUDED",
               "HOLD",
               "NOT_ESTABLISHED"
+            ]
+          },
+          "target_authority": {
+            "enum": [
+              "OWNER_FIXED",
+              "SELECTED",
+              "OPTIONAL"
+            ]
+          },
+          "direct_source_use": {
+            "enum": [
+              "ALLOWED",
+              "EXCLUDED",
+              "HOLD"
+            ]
+          },
+          "instructional_demand_use": {
+            "enum": [
+              "ALLOWED",
+              "HOLD"
+            ]
+          },
+          "assessment_claim": {
+            "enum": [
+              "ALLOWED",
+              "HOLD"
             ]
           }
         }
