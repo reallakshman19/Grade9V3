@@ -1,0 +1,3364 @@
+{
+  "schema_version": "1.0.0",
+  "package_id": "PKG-PHY-KIN-2D-PROJECTILE-EXTENSIONS",
+  "version": "0.1.0",
+  "status": "CANDIDATE",
+  "subject": "Physics",
+  "scope_summary": "Explicit CANDIDATE extension teaching and authored practice for the five fixed projectile-demand anchors. This package extends but does not modify the canonical Motion-in-2D R1–R3 package.",
+  "curriculum_mappings": [],
+  "resources": [
+    {
+      "id": "SRC-PROJ-EXT-OPENSTAX-VELOCITY",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "OpenStax University Physics: Displacement and Velocity Vectors",
+      "origin": "WEB",
+      "locator": "https://openstax.org/books/university-physics-volume-1/pages/4-1-displacement-and-velocity-vectors",
+      "edition": "web",
+      "section": "Instantaneous velocity as derivative of position",
+      "last_checked": "2026-09-26",
+      "access_status": "SECTION_INSPECTED",
+      "rights_status": "Linked research source; claims are paraphrased and source text is not republished.",
+      "snapshot_ref": null,
+      "snapshot_digest": null,
+      "role": [
+        "REFERENCE"
+      ],
+      "supports_claims": [
+        "CAP-KIN-2D-VEL-FROM-POSITION",
+        "REL-KIN-2D-VEL-DERIVATIVE"
+      ],
+      "entry_capabilities": [],
+      "depth": [
+        "ADVANCED"
+      ],
+      "selection_reason": "Supports the explicit projectile-demand extension without changing the canonical Motion-in-2D R1–R3 spine.",
+      "fallback": []
+    },
+    {
+      "id": "SRC-PROJ-EXT-OPENSTAX-PROJECTILE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "OpenStax University Physics: Projectile Motion",
+      "origin": "WEB",
+      "locator": "https://openstax.org/books/university-physics-volume-1/pages/4-3-projectile-motion",
+      "edition": "web",
+      "section": "Projectile components, apex conditions and trajectory equation",
+      "last_checked": "2026-09-26",
+      "access_status": "SECTION_INSPECTED",
+      "rights_status": "Linked research source; claims are paraphrased and source text is not republished.",
+      "snapshot_ref": null,
+      "snapshot_digest": null,
+      "role": [
+        "REFERENCE"
+      ],
+      "supports_claims": [
+        "CAP-PROJ-PIECEWISE-G",
+        "CAP-PROJ-TRAJECTORY-POINT",
+        "REL-PROJ-PIECEWISE-G",
+        "REL-PROJ-TRAJECTORY"
+      ],
+      "entry_capabilities": [],
+      "depth": [
+        "ADVANCED"
+      ],
+      "selection_reason": "Supports the explicit projectile-demand extension without changing the canonical Motion-in-2D R1–R3 spine.",
+      "fallback": []
+    },
+    {
+      "id": "SRC-PROJ-EXT-OPENSTAX-ENERGY",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "OpenStax College Physics: Kinetic Energy and Work-Energy Theorem",
+      "origin": "WEB",
+      "locator": "https://openstax.org/books/college-physics/pages/7-2-kinetic-energy-and-the-work-energy-theorem",
+      "edition": "web",
+      "section": "Kinetic energy KE=1/2 mv^2",
+      "last_checked": "2026-09-26",
+      "access_status": "SECTION_INSPECTED",
+      "rights_status": "Linked research source; claims are paraphrased and source text is not republished.",
+      "snapshot_ref": null,
+      "snapshot_digest": null,
+      "role": [
+        "REFERENCE"
+      ],
+      "supports_claims": [
+        "CAP-PROJ-BOUNCE-ENERGY",
+        "REL-PROJ-BOUNCE-ENERGY"
+      ],
+      "entry_capabilities": [],
+      "depth": [
+        "ADVANCED"
+      ],
+      "selection_reason": "Supports the explicit projectile-demand extension without changing the canonical Motion-in-2D R1–R3 spine.",
+      "fallback": []
+    },
+    {
+      "id": "SRC-PROJ-EXT-LIBRETEXTS-RESTITUTION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "Physics LibreTexts: Bouncing Balls",
+      "origin": "WEB",
+      "locator": "https://phys.libretexts.org/Bookshelves/Classical_Mechanics/Classical_Mechanics_%28Tatum%29/05%3A_Collisions/5.02%3A_Bouncing_Balls",
+      "edition": "web",
+      "section": "Coefficient of restitution and rebound-height scaling",
+      "last_checked": "2026-09-26",
+      "access_status": "SECTION_INSPECTED",
+      "rights_status": "Linked research source; claims are paraphrased and source text is not republished.",
+      "snapshot_ref": null,
+      "snapshot_digest": null,
+      "role": [
+        "REFERENCE"
+      ],
+      "supports_claims": [
+        "CAP-PROJ-BOUNCE-ENERGY",
+        "REL-PROJ-BOUNCE-ENERGY"
+      ],
+      "entry_capabilities": [],
+      "depth": [
+        "ADVANCED"
+      ],
+      "selection_reason": "Supports the explicit projectile-demand extension without changing the canonical Motion-in-2D R1–R3 spine.",
+      "fallback": []
+    },
+    {
+      "id": "SRC-PROJ-EXT-OPENSTAX-DRAG",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "OpenStax University Physics: Drag Force and Terminal Speed",
+      "origin": "WEB",
+      "locator": "https://openstax.org/books/university-physics-volume-1/pages/6-4-drag-force-and-terminal-speed",
+      "edition": "web",
+      "section": "Linear drag regime and exponential response",
+      "last_checked": "2026-09-26",
+      "access_status": "SECTION_INSPECTED",
+      "rights_status": "Linked research source; claims are paraphrased and source text is not republished.",
+      "snapshot_ref": null,
+      "snapshot_digest": null,
+      "role": [
+        "REFERENCE"
+      ],
+      "supports_claims": [
+        "CAP-KIN-2D-LINEAR-DRAG",
+        "REL-KIN-2D-LINEAR-DRAG-X"
+      ],
+      "entry_capabilities": [],
+      "depth": [
+        "ADVANCED"
+      ],
+      "selection_reason": "Supports the explicit projectile-demand extension without changing the canonical Motion-in-2D R1–R3 spine.",
+      "fallback": []
+    },
+    {
+      "id": "SRC-PROJ-EXT-AUTHORED",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "Grade9V3 projectile-demand authored teaching and practice",
+      "origin": "AUTHORED",
+      "locator": "Physics/library/phy-kin-2d-projectile-extensions.v1.json",
+      "edition": "web",
+      "section": "Authored extension teaching, practice twins and transfer tasks",
+      "last_checked": "2026-09-26",
+      "access_status": "SECTION_INSPECTED",
+      "rights_status": "Author-created Grade9V3 pedagogical material.",
+      "snapshot_ref": null,
+      "snapshot_digest": null,
+      "role": [
+        "AUTHOR_CREATED"
+      ],
+      "supports_claims": [
+        "CAP-KIN-2D-VEL-FROM-POSITION",
+        "CAP-PROJ-BOUNCE-ENERGY",
+        "CAP-PROJ-PIECEWISE-G",
+        "CAP-PROJ-TRAJECTORY-POINT",
+        "CAP-KIN-2D-LINEAR-DRAG"
+      ],
+      "entry_capabilities": [],
+      "depth": [
+        "ADVANCED"
+      ],
+      "selection_reason": "Supports the explicit projectile-demand extension without changing the canonical Motion-in-2D R1–R3 spine.",
+      "fallback": []
+    }
+  ],
+  "buckets": [
+    {
+      "id": "BUCKET-PHY-KIN-2D-PROJECTILE-EXTENSIONS",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "Projectile motion — admitted demand extensions",
+      "topic": "Motion in 2 D",
+      "intrinsic_badge": "HARD",
+      "badge_reason": "These demands require explicit model/representation changes beyond the canonical Grade9V3 first slice.",
+      "depth_overlay": "ADVANCED",
+      "curriculum_mappings": [],
+      "prerequisite_refs": [
+        "BUCKET-PHY-KIN-2D-MOTION"
+      ],
+      "scope": {
+        "covers": "Five labelled extensions required by the fixed projectile stress demand: velocity from position functions, rebound energy, piecewise gravity, trajectory-through-point reasoning and linear drag.",
+        "excluded": [
+          "No change to the three canonical Motion-in-2D microtopics.",
+          "No unresearched force law or collision model.",
+          "No source-question wording presented as authored teaching."
+        ],
+        "extension_refs": [
+          "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+          "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+          "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+          "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+          "MIC-PHY-KIN-2D-LINEAR-DRAG"
+        ]
+      },
+      "primary_representation_ref": "REP-KIN-2D-TANGENT-VELOCITY"
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "CAP-KIN-2D-VEL-FROM-POSITION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-VELOCITY"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:classification": "EXTENSION",
+        "grade9v3:extends_bucket_ref": "BUCKET-PHY-KIN-2D-MOTION"
+      },
+      "action": "Differentiate component position functions to obtain instantaneous velocity and its direction.",
+      "success_criterion": "Uses v_x=dx/dt and v_y=dy/dt at one common time, then obtains direction from the signed velocity components.",
+      "prerequisite_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "curriculum_mappings": [],
+      "external_provider": null,
+      "acceptance_status": "CANDIDATE"
+    },
+    {
+      "id": "CAP-PROJ-BOUNCE-ENERGY",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-ENERGY",
+        "SRC-PROJ-EXT-LIBRETEXTS-RESTITUTION"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:classification": "EXTENSION",
+        "grade9v3:extends_bucket_ref": "BUCKET-PHY-KIN-2D-MOTION"
+      },
+      "action": "Translate collision energy retention into post-impact speed before applying a new projectile launch direction.",
+      "success_criterion": "Converts a kinetic-energy fraction into a speed-squared fraction, resolves the post-bounce vertical component, and computes the next maximum height.",
+      "prerequisite_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "curriculum_mappings": [],
+      "external_provider": null,
+      "acceptance_status": "CANDIDATE"
+    },
+    {
+      "id": "CAP-PROJ-PIECEWISE-G",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-PROJECTILE"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:classification": "EXTENSION",
+        "grade9v3:extends_bucket_ref": "BUCKET-PHY-KIN-2D-MOTION"
+      },
+      "action": "Carry the apex state across a boundary where the constant downward acceleration changes, then solve the new stage.",
+      "success_criterion": "Preserves position and horizontal velocity at the boundary and changes only the post-boundary vertical acceleration law.",
+      "prerequisite_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "curriculum_mappings": [],
+      "external_provider": null,
+      "acceptance_status": "CANDIDATE"
+    },
+    {
+      "id": "CAP-PROJ-TRAJECTORY-POINT",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-PROJECTILE"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:classification": "EXTENSION",
+        "grade9v3:extends_bucket_ref": "BUCKET-PHY-KIN-2D-MOTION"
+      },
+      "action": "Use the projectile trajectory equation to impose passage through a specified point and locate the apex relative to it.",
+      "success_criterion": "Substitutes the point into the trajectory relation and uses vertical velocity or trajectory slope to decide whether the apex is before or after the point.",
+      "prerequisite_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "curriculum_mappings": [],
+      "external_provider": null,
+      "acceptance_status": "CANDIDATE"
+    },
+    {
+      "id": "CAP-KIN-2D-LINEAR-DRAG",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-DRAG"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:classification": "EXTENSION",
+        "grade9v3:extends_bucket_ref": "BUCKET-PHY-KIN-2D-MOTION"
+      },
+      "action": "Replace constant-horizontal-velocity projectile reasoning with the linear-drag horizontal differential equation when F=-cv.",
+      "success_criterion": "Solves m dv_x/dt=-c v_x and integrates the exponential horizontal velocity to obtain displacement.",
+      "prerequisite_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "curriculum_mappings": [],
+      "external_provider": null,
+      "acceptance_status": "CANDIDATE"
+    }
+  ],
+  "microtopics": [
+    {
+      "id": "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-VELOCITY"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:classification": "EXTENSION",
+        "grade9v3:extends_microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS"
+      },
+      "title": "EXTENSION — instantaneous velocity direction from x(t) and y(t)",
+      "bucket_id": "BUCKET-PHY-KIN-2D-PROJECTILE-EXTENSIONS",
+      "primary_capability_ref": "CAP-KIN-2D-VEL-FROM-POSITION",
+      "intrinsic_badge": "HARD",
+      "badge_reason": "The hard decision is distinguishing position direction from the tangent/velocity direction and differentiating both component functions at the same instant.",
+      "entry_assumptions": [
+        "Can interpret x(t) and y(t) as one particle with one shared time.",
+        "Has introductory meaning of derivative as instantaneous rate of change."
+      ],
+      "inferential_jump": "The direction of motion at an instant comes from the tangent velocity (dx/dt, dy/dt), not from the position vector (x,y).",
+      "teaching_path": [
+        {
+          "id": "K2DX1-1",
+          "role": "DECLARE",
+          "action": "Identify that the requested direction is the direction of instantaneous velocity, not the direction from the origin to the particle.",
+          "why_valid": "Velocity is the instantaneous rate of change of position; position direction answers a different question.",
+          "inputs": [],
+          "output": "target vector is v(t)",
+          "source_ref": "SRC-PROJ-EXT-OPENSTAX-VELOCITY"
+        },
+        {
+          "id": "K2DX1-2",
+          "role": "TRANSFORM",
+          "action": "Differentiate x(t) and y(t) separately to obtain v_x(t) and v_y(t).",
+          "why_valid": "Cartesian component derivatives give the components of the velocity vector.",
+          "inputs": [
+            "x(t)",
+            "y(t)"
+          ],
+          "output": "v_x=dx/dt and v_y=dy/dt",
+          "source_ref": "SRC-PROJ-EXT-OPENSTAX-VELOCITY"
+        },
+        {
+          "id": "K2DX1-3",
+          "role": "TRANSFORM",
+          "action": "Evaluate both velocity components at the same requested time and use their signed ratio to determine the direction.",
+          "why_valid": "The two components form one simultaneous velocity vector only at the same instant.",
+          "inputs": [
+            "v_x(t)",
+            "v_y(t)"
+          ],
+          "output": "tan(theta)=v_y/v_x with quadrant checked"
+        },
+        {
+          "id": "K2DX1-4",
+          "role": "VERIFY",
+          "action": "Compare the velocity arrow with the local tangent to the trajectory and reject any answer based only on y/x.",
+          "why_valid": "Instantaneous velocity is tangent to the path while the position vector generally is not.",
+          "inputs": [],
+          "output": "direction passes the tangent check"
+        }
+      ],
+      "relation_refs": [
+        "REL-KIN-2D-VEL-DERIVATIVE"
+      ],
+      "representation_refs": [
+        "REP-KIN-2D-TANGENT-VELOCITY"
+      ],
+      "question_family_refs": [
+        "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND"
+      ],
+      "misconceptions": [
+        {
+          "wrong_idea": "Use y/x at the requested time to get the direction of motion.",
+          "diagnostic_prompt": "Does y/x describe the tangent direction or only the direction of the position vector from the origin?",
+          "repair": "Differentiate first; use v_y/v_x for the velocity direction."
+        }
+      ],
+      "exit_task": {
+        "prompt": "If x=5t and y=12t-t^2, state the operations needed to find the velocity direction at t=2 s.",
+        "source_ref": "SRC-PROJ-EXT-OPENSTAX-VELOCITY",
+        "answer": {
+          "kind": "MODEL_RESPONSE",
+          "summary": "Differentiate to get v_x=5 and v_y=12-2t, evaluate both at t=2, then use the signed component ratio and quadrant.",
+          "reasoning": [
+            "Use derivatives, not x and y themselves.",
+            "Evaluate both at one time.",
+            "Use the velocity components for direction."
+          ],
+          "check": "The resulting velocity arrow must be tangent to the path.",
+          "acceptable_alternatives": [],
+          "subpart_answers": [],
+          "verification_status": "CHECKED_BY_AUTHOR"
+        },
+        "oracle": {
+          "no_numeric_claim": "Author-checked extension closure."
+        }
+      },
+      "research_contribution": "OpenStax explicitly defines instantaneous velocity as the derivative of the position vector and gives the component derivative relations.",
+      "prerequisite_refs": [
+        "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "lineage": [
+        {
+          "kind": "EXTENDS",
+          "ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS"
+        }
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "At t=2 s, should a direction question use y/x or (dy/dt)/(dx/dt)?",
+          "defensible_answer": "Use (dy/dt)/(dx/dt) because the question asks for instantaneous velocity direction."
+        },
+        "attempt": {
+          "produces": "A velocity-component calculation at one instant, with a tangent check.",
+          "closure": "MODEL_RESPONSE",
+          "model_response": "Name velocity as the target, differentiate both position components, evaluate at the same t, then obtain the angle from the signed velocity components."
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "What vector's direction is requested?",
+              "why_this_ask": "Prevents position/velocity confusion.",
+              "from_step_ref": "K2DX1-1"
+            },
+            {
+              "ask": "How do x(t) and y(t) become velocity components?",
+              "why_this_ask": "Recovers the derivative bridge.",
+              "from_step_ref": "K2DX1-2"
+            },
+            {
+              "ask": "Which time must both components use?",
+              "why_this_ask": "Preserves the shared clock.",
+              "from_step_ref": "K2DX1-3"
+            }
+          ],
+          "differs_from_teaching_path": "The teaching reveals the completed extension; reconstruction requires the learner to choose the model or representation before seeing the route."
+        },
+        "boundary_test": {
+          "prompt": "If x and y are both nonzero but v_y=0, is the velocity horizontal?",
+          "answer": "Yes. Position direction may be slanted while the instantaneous velocity is horizontal.",
+          "confirms": "Position direction and velocity direction are distinct."
+        }
+      }
+    },
+    {
+      "id": "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-ENERGY",
+        "SRC-PROJ-EXT-LIBRETEXTS-RESTITUTION"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:classification": "EXTENSION",
+        "grade9v3:extends_microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL"
+      },
+      "title": "EXTENSION — projectile rebound after an energy-changing impact",
+      "bucket_id": "BUCKET-PHY-KIN-2D-PROJECTILE-EXTENSIONS",
+      "primary_capability_ref": "CAP-PROJ-BOUNCE-ENERGY",
+      "intrinsic_badge": "HARD",
+      "badge_reason": "The main trap is converting an energy fraction directly into a speed fraction instead of remembering K is proportional to v squared.",
+      "entry_assumptions": [
+        "Can use the gravity-only projectile maximum-height relation after launch.",
+        "Can resolve a speed into components."
+      ],
+      "inferential_jump": "A stated kinetic-energy retention fraction acts on v^2; after the collision creates a new launch state, only that new vertical component controls the next rise height.",
+      "teaching_path": [
+        {
+          "id": "K2DX2-1",
+          "role": "DECLARE",
+          "action": "Treat impact as an event boundary: pre-impact projectile flight ends and a new post-impact launch state begins.",
+          "why_valid": "An impulsive collision changes velocity over a short event and the next free-flight segment starts from the post-impact state.",
+          "inputs": [],
+          "output": "post-impact launch state"
+        },
+        {
+          "id": "K2DX2-2",
+          "role": "TRANSFORM",
+          "action": "Convert K_after=f K_before into v_after^2=f v_before^2 for unchanged mass.",
+          "why_valid": "K=1/2 mv^2, so an energy fraction multiplies speed squared.",
+          "inputs": [
+            "energy retention fraction f"
+          ],
+          "output": "v_after^2=f v_before^2",
+          "source_ref": "SRC-PROJ-EXT-OPENSTAX-ENERGY"
+        },
+        {
+          "id": "K2DX2-3",
+          "role": "TRANSFORM",
+          "action": "Resolve the post-bounce speed using its stated direction and use the upward component in H=v_y^2/(2g).",
+          "why_valid": "Maximum rise after the bounce depends on the post-bounce vertical kinetic state under gravity-only flight.",
+          "inputs": [
+            "v_after",
+            "rebound direction"
+          ],
+          "output": "H_after=(v_after sin alpha)^2/(2g)"
+        },
+        {
+          "id": "K2DX2-4",
+          "role": "VERIFY",
+          "action": "Check that losing energy cannot create a rebound height inconsistent with the retained-energy fraction and vertical-component fraction.",
+          "why_valid": "Energy and component fractions provide an independent bound on the height.",
+          "inputs": [],
+          "output": "height scaling is physically bounded"
+        }
+      ],
+      "relation_refs": [
+        "REL-PROJ-BOUNCE-ENERGY"
+      ],
+      "representation_refs": [
+        "REP-PROJ-BOUNCE-ENERGY"
+      ],
+      "question_family_refs": [
+        "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND"
+      ],
+      "misconceptions": [
+        {
+          "wrong_idea": "If half the kinetic energy remains, the speed becomes half.",
+          "diagnostic_prompt": "If K is proportional to v squared, what speed-squared fraction corresponds to a 50% energy retention?",
+          "repair": "The speed squared becomes one half; the speed becomes 1/sqrt(2) of its previous value."
+        }
+      ],
+      "exit_task": {
+        "prompt": "A ball keeps 64% of its kinetic energy and rebounds at an angle alpha. State the chain needed to find its new maximum height.",
+        "source_ref": "SRC-PROJ-EXT-OPENSTAX-ENERGY",
+        "answer": {
+          "kind": "MODEL_RESPONSE",
+          "summary": "Use v_after^2=0.64 v_before^2, take v_y=v_after sin alpha, then H=v_y^2/(2g).",
+          "reasoning": [
+            "Translate energy fraction to speed squared.",
+            "Resolve the new launch direction.",
+            "Use the vertical component for height."
+          ],
+          "check": "The result scales with 0.64 sin^2(alpha) relative to a same-speed vertical-height reference.",
+          "acceptable_alternatives": [],
+          "subpart_answers": [],
+          "verification_status": "CHECKED_BY_AUTHOR"
+        },
+        "oracle": {
+          "no_numeric_claim": "Author-checked extension closure."
+        }
+      },
+      "research_contribution": "OpenStax supplies K=1/2 mv^2; LibreTexts documents restitution/rebound-height scaling, while the source demand supplies the energy-loss event.",
+      "prerequisite_refs": [
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "lineage": [
+        {
+          "kind": "EXTENDS",
+          "ref": "MIC-PHY-KIN-PROJECTILE-MODEL"
+        }
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "If a collision leaves 50% of kinetic energy, does the post-collision speed become 50%?",
+          "defensible_answer": "No. Its speed squared becomes 50%, so speed scales by the square root."
+        },
+        "attempt": {
+          "produces": "An event-boundary diagram and an energy-to-speed-squared conversion before any projectile-height calculation.",
+          "closure": "MODEL_RESPONSE",
+          "model_response": "Close the first flight at impact, convert the retained energy to post-bounce speed squared, resolve the new vertical component, then use the standard height relation."
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "What state begins the second flight?",
+              "why_this_ask": "Separates the collision event from free flight.",
+              "from_step_ref": "K2DX2-1"
+            },
+            {
+              "ask": "What quantity is proportional to kinetic energy for fixed mass?",
+              "why_this_ask": "Prevents the half-energy/half-speed error.",
+              "from_step_ref": "K2DX2-2"
+            },
+            {
+              "ask": "Which post-bounce component controls height?",
+              "why_this_ask": "Reconnects to the canonical projectile model.",
+              "from_step_ref": "K2DX2-3"
+            }
+          ],
+          "differs_from_teaching_path": "The teaching reveals the completed extension; reconstruction requires the learner to choose the model or representation before seeing the route."
+        },
+        "boundary_test": {
+          "prompt": "If the ball rebounds horizontally, can it gain height immediately after the collision under gravity alone?",
+          "answer": "No. Its post-bounce vertical component is zero, so the next rise height is zero.",
+          "confirms": "The post-impact vertical component, not total speed, sets maximum rise."
+        }
+      }
+    },
+    {
+      "id": "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-PROJECTILE"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:classification": "EXTENSION",
+        "grade9v3:extends_microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL"
+      },
+      "title": "EXTENSION — projectile motion when gravity changes after the apex",
+      "bucket_id": "BUCKET-PHY-KIN-2D-PROJECTILE-EXTENSIONS",
+      "primary_capability_ref": "CAP-PROJ-PIECEWISE-G",
+      "intrinsic_badge": "HARD",
+      "badge_reason": "The learner must preserve the apex state and change only the post-boundary acceleration law rather than recompute the whole flight under the new gravity.",
+      "entry_assumptions": [
+        "Can identify the apex by v_y=0.",
+        "Can solve vertical constant-acceleration motion from a known state."
+      ],
+      "inferential_jump": "A change in constant gravity creates two kinematic stages joined by one boundary state; position and velocity at the apex are inherited by the second stage while acceleration changes.",
+      "teaching_path": [
+        {
+          "id": "K2DX3-1",
+          "role": "DECLARE",
+          "action": "Split the trajectory at the apex boundary and label stage 1 with g_1 and stage 2 with g_2.",
+          "why_valid": "The model assumption changes at one event, so one constant-acceleration equation cannot span both regions.",
+          "inputs": [],
+          "output": "two-stage event model",
+          "source_ref": "SRC-PROJ-EXT-OPENSTAX-PROJECTILE"
+        },
+        {
+          "id": "K2DX3-2",
+          "role": "TRANSFORM",
+          "action": "Use the ordinary projectile model only up to the apex to determine the apex position and horizontal velocity.",
+          "why_valid": "Before the boundary, gravity is g_1 and horizontal acceleration is zero.",
+          "inputs": [],
+          "output": "apex state (x_A,H,v_x,0)"
+        },
+        {
+          "id": "K2DX3-3",
+          "role": "TRANSFORM",
+          "action": "Start stage 2 from the apex with v_y=0 and downward acceleration g_2; compute the descent time from H=(1/2)g_2 t_2^2.",
+          "why_valid": "The second stage is constant-acceleration motion with its own acceleration but inherited initial state.",
+          "inputs": [
+            "apex height H",
+            "g_2"
+          ],
+          "output": "t_2=sqrt(2H/g_2)"
+        },
+        {
+          "id": "K2DX3-4",
+          "role": "VERIFY",
+          "action": "Check that increasing post-apex gravity shortens only the descent portion and therefore shortens only the post-apex horizontal distance.",
+          "why_valid": "v_x remains unchanged at the boundary while the fall time changes.",
+          "inputs": [],
+          "output": "range ratio lies between apex fraction and ordinary full range for stronger gravity"
+        }
+      ],
+      "relation_refs": [
+        "REL-PROJ-PIECEWISE-G"
+      ],
+      "representation_refs": [
+        "REP-PROJ-PIECEWISE-G"
+      ],
+      "question_family_refs": [
+        "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND"
+      ],
+      "misconceptions": [
+        {
+          "wrong_idea": "Once gravity changes at the apex, recompute the entire trajectory using the new gravity.",
+          "diagnostic_prompt": "Did the projectile experience g_2 before it reached the apex?",
+          "repair": "No. Preserve the stage-1 apex state, then apply g_2 only to stage 2."
+        }
+      ],
+      "exit_task": {
+        "prompt": "If post-apex gravity is four times larger, how does the descent time from the same apex height compare with the ordinary descent time?",
+        "source_ref": "SRC-PROJ-EXT-OPENSTAX-PROJECTILE",
+        "answer": {
+          "kind": "MODEL_RESPONSE",
+          "summary": "It is half as long because t is proportional to 1/sqrt(g) for a fall from rest through the same height.",
+          "reasoning": [
+            "The apex height is already fixed by stage 1.",
+            "Stage 2 starts with v_y=0.",
+            "t=sqrt(2H/g_2)."
+          ],
+          "check": "Stronger gravity must reduce, not increase, the descent time.",
+          "acceptable_alternatives": [],
+          "subpart_answers": [],
+          "verification_status": "CHECKED_BY_AUTHOR"
+        },
+        "oracle": {
+          "no_numeric_claim": "Author-checked extension closure."
+        }
+      },
+      "research_contribution": "OpenStax establishes the standard constant-gravity projectile component model; the extension applies the same constant-acceleration relation piecewise after an explicit model boundary.",
+      "prerequisite_refs": [
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "lineage": [
+        {
+          "kind": "EXTENDS",
+          "ref": "MIC-PHY-KIN-PROJECTILE-MODEL"
+        }
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "When gravity changes only after the apex, which parts of the state must be carried across unchanged?",
+          "defensible_answer": "The apex position and velocity are continuous; the acceleration law changes after the boundary."
+        },
+        "attempt": {
+          "produces": "A two-stage event line with the apex state written once and reused.",
+          "closure": "MODEL_RESPONSE",
+          "model_response": "Solve stage 1 to the apex, copy the apex state, replace only the post-apex acceleration, then solve stage 2."
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "Where does the model change?",
+              "why_this_ask": "Defines the event boundary.",
+              "from_step_ref": "K2DX3-1"
+            },
+            {
+              "ask": "What state is continuous across that boundary?",
+              "why_this_ask": "Prevents recomputing stage 1.",
+              "from_step_ref": "K2DX3-2"
+            },
+            {
+              "ask": "Which equation determines the new descent time?",
+              "why_this_ask": "Reconnects to constant acceleration.",
+              "from_step_ref": "K2DX3-3"
+            }
+          ],
+          "differs_from_teaching_path": "The teaching reveals the completed extension; reconstruction requires the learner to choose the model or representation before seeing the route."
+        },
+        "boundary_test": {
+          "prompt": "If g_2 equals g_1, should the two-stage result reduce to the ordinary projectile result?",
+          "answer": "Yes.",
+          "confirms": "The extension contains the standard model as a limiting case."
+        }
+      }
+    },
+    {
+      "id": "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-PROJECTILE"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:classification": "EXTENSION",
+        "grade9v3:extends_microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL"
+      },
+      "title": "EXTENSION — trajectory equation through a specified point",
+      "bucket_id": "BUCKET-PHY-KIN-2D-PROJECTILE-EXTENSIONS",
+      "primary_capability_ref": "CAP-PROJ-TRAJECTORY-POINT",
+      "intrinsic_badge": "HARD",
+      "badge_reason": "The learner must eliminate time without losing the physical event interpretation, then use the sign of vertical velocity or local slope to locate the apex.",
+      "entry_assumptions": [
+        "Can write x(t) and y(t) for a gravity-only projectile.",
+        "Can resolve an initial speed into horizontal and vertical components."
+      ],
+      "inferential_jump": "Eliminating the common time creates a path equation y(x), but passing through a point and locating the apex are separate decisions.",
+      "teaching_path": [
+        {
+          "id": "K2DX4-1",
+          "role": "DECLARE",
+          "action": "Confirm the gravity-only projectile assumptions before eliminating time.",
+          "why_valid": "The trajectory equation is a consequence of the standard projectile model, not a universal curve.",
+          "inputs": [],
+          "output": "projectile model licensed",
+          "source_ref": "SRC-PROJ-EXT-OPENSTAX-PROJECTILE"
+        },
+        {
+          "id": "K2DX4-2",
+          "role": "TRANSFORM",
+          "action": "Use x=u cos(theta)t to eliminate t from y=u sin(theta)t-(1/2)gt^2.",
+          "why_valid": "Both component equations describe the same event time, so eliminating that common t is valid.",
+          "inputs": [
+            "x(t)",
+            "y(t)"
+          ],
+          "output": "y=x tan(theta)-g x^2/[2u^2 cos^2(theta)]",
+          "source_ref": "SRC-PROJ-EXT-OPENSTAX-PROJECTILE"
+        },
+        {
+          "id": "K2DX4-3",
+          "role": "TRANSFORM",
+          "action": "Substitute the specified point coordinates to constrain u and theta.",
+          "why_valid": "A point lies on the trajectory only if its coordinates satisfy the path equation.",
+          "inputs": [
+            "P=(x_P,y_P)"
+          ],
+          "output": "point constraint on launch parameters"
+        },
+        {
+          "id": "K2DX4-4",
+          "role": "VERIFY",
+          "action": "Use v_y at the point or the local trajectory slope to decide whether the projectile is rising or falling there.",
+          "why_valid": "Passing through P does not by itself reveal whether P occurs before or after the apex.",
+          "inputs": [],
+          "output": "apex-relative position classified"
+        }
+      ],
+      "relation_refs": [
+        "REL-PROJ-TRAJECTORY"
+      ],
+      "representation_refs": [
+        "REP-PROJ-TRAJECTORY-POINT"
+      ],
+      "question_family_refs": [
+        "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND"
+      ],
+      "misconceptions": [
+        {
+          "wrong_idea": "If a point satisfies the trajectory equation, the apex must be after that point.",
+          "diagnostic_prompt": "Can a projectile pass through the same height on both its rising and falling branches?",
+          "repair": "Yes. Use v_y or slope at the point to determine the branch."
+        }
+      ],
+      "exit_task": {
+        "prompt": "What two checks are needed when asked whether a projectile passes through P and has already crossed its apex there?",
+        "source_ref": "SRC-PROJ-EXT-OPENSTAX-PROJECTILE",
+        "answer": {
+          "kind": "MODEL_RESPONSE",
+          "summary": "First impose P in the trajectory equation; then use v_y or local slope at P to determine whether the path is descending.",
+          "reasoning": [
+            "Point membership and branch are separate.",
+            "Use the trajectory equation for membership.",
+            "Use velocity/slope for apex position."
+          ],
+          "check": "A negative local slope or v_y indicates the apex is already behind the projectile.",
+          "acceptable_alternatives": [],
+          "subpart_answers": [],
+          "verification_status": "CHECKED_BY_AUTHOR"
+        },
+        "oracle": {
+          "no_numeric_claim": "Author-checked extension closure."
+        }
+      },
+      "research_contribution": "OpenStax derives the projectile trajectory equation by eliminating time from the component equations.",
+      "prerequisite_refs": [
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "lineage": [
+        {
+          "kind": "EXTENDS",
+          "ref": "MIC-PHY-KIN-PROJECTILE-MODEL"
+        }
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "Does substituting a point into y(x) alone tell you whether the projectile is rising or falling there?",
+          "defensible_answer": "No. It shows the point is on the path; a velocity or slope sign is still needed."
+        },
+        "attempt": {
+          "produces": "A point constraint plus an independent branch/apex check.",
+          "closure": "MODEL_RESPONSE",
+          "model_response": "License the projectile model, eliminate the common time, substitute the point, then inspect v_y or slope to locate the apex relative to the point."
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "What assumptions license y(x)?",
+              "why_this_ask": "Keeps model choice ahead of algebra.",
+              "from_step_ref": "K2DX4-1"
+            },
+            {
+              "ask": "Which common variable is eliminated?",
+              "why_this_ask": "Connects y(x) back to x(t), y(t).",
+              "from_step_ref": "K2DX4-2"
+            },
+            {
+              "ask": "How do you determine the branch at P?",
+              "why_this_ask": "Separates point membership from apex position.",
+              "from_step_ref": "K2DX4-3"
+            }
+          ],
+          "differs_from_teaching_path": "The teaching reveals the completed extension; reconstruction requires the learner to choose the model or representation before seeing the route."
+        },
+        "boundary_test": {
+          "prompt": "If tan(theta)=y_P/x_P exactly, can a finite-speed gravity-only projectile launched from the origin pass through P above the straight launch ray?",
+          "answer": "No. Gravity lowers the path below the straight-line term for any finite speed.",
+          "confirms": "The gravity term imposes a physical reachability constraint."
+        }
+      }
+    },
+    {
+      "id": "MIC-PHY-KIN-2D-LINEAR-DRAG",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-DRAG"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:classification": "EXTENSION",
+        "grade9v3:extends_microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL"
+      },
+      "title": "EXTENSION — projectile motion with linear drag",
+      "bucket_id": "BUCKET-PHY-KIN-2D-PROJECTILE-EXTENSIONS",
+      "primary_capability_ref": "CAP-KIN-2D-LINEAR-DRAG",
+      "intrinsic_badge": "HARD",
+      "badge_reason": "The key model decision is recognizing that velocity-dependent drag makes acceleration non-constant, so the ordinary constant-acceleration projectile formulas no longer apply.",
+      "entry_assumptions": [
+        "Can apply Newton's second law to one component.",
+        "Understands an exponential decay law at a qualitative level or can follow its supplied solution."
+      ],
+      "inferential_jump": "With F_drag=-cv, horizontal acceleration is proportional to -v_x rather than zero; solving the differential equation gives exponential velocity decay and displacement must be integrated from that velocity.",
+      "teaching_path": [
+        {
+          "id": "K2DX5-1",
+          "role": "DECLARE",
+          "action": "Reject the standard a_x=0 projectile specialization when linear drag F=-cv is retained.",
+          "why_valid": "Drag has a horizontal component whenever v_x is nonzero, so horizontal acceleration is not zero.",
+          "inputs": [],
+          "output": "modified horizontal model selected",
+          "source_ref": "SRC-PROJ-EXT-OPENSTAX-DRAG"
+        },
+        {
+          "id": "K2DX5-2",
+          "role": "TRANSFORM",
+          "action": "Write Newton's second law in x: m dv_x/dt=-c v_x.",
+          "why_valid": "Linear drag opposes the instantaneous velocity and is proportional to its component.",
+          "inputs": [
+            "m",
+            "c",
+            "v_x"
+          ],
+          "output": "dv_x/dt=-(c/m)v_x"
+        },
+        {
+          "id": "K2DX5-3",
+          "role": "TRANSFORM",
+          "action": "Use the exponential solution v_x(t)=v_x0 exp(-ct/m) and integrate it over time.",
+          "why_valid": "The first-order decay equation has an exponential solution; displacement is the time integral of velocity.",
+          "inputs": [
+            "v_x0",
+            "c/m"
+          ],
+          "output": "x-x_0=(m/c)v_x0[1-exp(-ct/m)]",
+          "source_ref": "SRC-PROJ-EXT-OPENSTAX-DRAG"
+        },
+        {
+          "id": "K2DX5-4",
+          "role": "VERIFY",
+          "action": "Check that c→0 recovers x-x_0≈v_x0 t and that drag distance is smaller than the no-drag distance for c>0.",
+          "why_valid": "The limiting model and inequality provide independent checks.",
+          "inputs": [],
+          "output": "solution recovers no-drag limit and reduced range"
+        }
+      ],
+      "relation_refs": [
+        "REL-KIN-2D-LINEAR-DRAG-X"
+      ],
+      "representation_refs": [
+        "REP-KIN-2D-LINEAR-DRAG"
+      ],
+      "question_family_refs": [
+        "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND"
+      ],
+      "misconceptions": [
+        {
+          "wrong_idea": "Use x=v_x0 t because projectile horizontal velocity is always constant.",
+          "diagnostic_prompt": "If the drag force has an x component -c v_x, can a_x still be zero?",
+          "repair": "No. Solve the velocity-dependent equation first, then integrate v_x(t)."
+        }
+      ],
+      "exit_task": {
+        "prompt": "For m dv_x/dt=-c v_x, state v_x(t), the horizontal displacement from 0 to t, and one limiting check.",
+        "source_ref": "SRC-PROJ-EXT-OPENSTAX-DRAG",
+        "answer": {
+          "kind": "MODEL_RESPONSE",
+          "summary": "v_x=v_x0 e^{-ct/m}; Δx=(m/c)v_x0(1-e^{-ct/m}); as c approaches zero, Δx approaches v_x0 t.",
+          "reasoning": [
+            "Solve the linear decay equation.",
+            "Integrate velocity.",
+            "Check the zero-drag limit."
+          ],
+          "check": "For positive c and t, the distance is less than v_x0 t.",
+          "acceptable_alternatives": [],
+          "subpart_answers": [],
+          "verification_status": "CHECKED_BY_AUTHOR"
+        },
+        "oracle": {
+          "no_numeric_claim": "Author-checked extension closure."
+        }
+      },
+      "research_contribution": "OpenStax describes the linear-drag regime and solves the corresponding exponential velocity response; the source demand applies the same law to the horizontal projectile component.",
+      "prerequisite_refs": [
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "lineage": [
+        {
+          "kind": "EXTENDS",
+          "ref": "MIC-PHY-KIN-PROJECTILE-MODEL"
+        }
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "If drag is proportional to velocity, may you still use the ordinary constant-horizontal-velocity projectile shortcut?",
+          "defensible_answer": "No. Drag makes a_x depend on v_x, so horizontal velocity decays."
+        },
+        "attempt": {
+          "produces": "A model-choice statement, horizontal ODE, exponential velocity law and integrated displacement.",
+          "closure": "MODEL_RESPONSE",
+          "model_response": "Write Newton II for the horizontal component, solve the exponential decay, integrate to displacement, and verify against the no-drag limit."
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "Which standard projectile assumption fails?",
+              "why_this_ask": "Makes model choice explicit.",
+              "from_step_ref": "K2DX5-1"
+            },
+            {
+              "ask": "What equation replaces a_x=0?",
+              "why_this_ask": "Links force to changing velocity.",
+              "from_step_ref": "K2DX5-2"
+            },
+            {
+              "ask": "How does velocity become displacement?",
+              "why_this_ask": "Prevents multiplying final velocity by time.",
+              "from_step_ref": "K2DX5-3"
+            }
+          ],
+          "differs_from_teaching_path": "The teaching reveals the completed extension; reconstruction requires the learner to choose the model or representation before seeing the route."
+        },
+        "boundary_test": {
+          "prompt": "If c is extremely small, what should the drag result resemble?",
+          "answer": "The ordinary no-drag horizontal motion x≈v_x0 t.",
+          "confirms": "The modified model joins smoothly to the canonical model."
+        }
+      }
+    }
+  ],
+  "relations": [
+    {
+      "id": "REL-KIN-2D-VEL-DERIVATIVE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-VELOCITY"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "expression": "v_x=dx/dt; v_y=dy/dt; tan(theta)=v_y/v_x (with quadrant check)",
+      "meaning": "Instantaneous velocity is the derivative of the position vector; its components set the tangent direction.",
+      "symbols": [],
+      "conditions": [
+        "x(t) and y(t) describe the same particle in one fixed frame.",
+        "The functions are differentiable at the requested instant."
+      ],
+      "derivation": [
+        {
+          "id": "K2DX1-2",
+          "role": "TRANSFORM",
+          "action": "Differentiate x(t) and y(t) separately to obtain v_x(t) and v_y(t).",
+          "why_valid": "Cartesian component derivatives give the components of the velocity vector.",
+          "inputs": [
+            "x(t)",
+            "y(t)"
+          ],
+          "output": "v_x=dx/dt and v_y=dy/dt",
+          "source_ref": "SRC-PROJ-EXT-OPENSTAX-VELOCITY"
+        },
+        {
+          "id": "K2DX1-3",
+          "role": "TRANSFORM",
+          "action": "Evaluate both velocity components at the same requested time and use their signed ratio to determine the direction.",
+          "why_valid": "The two components form one simultaneous velocity vector only at the same instant.",
+          "inputs": [
+            "v_x(t)",
+            "v_y(t)"
+          ],
+          "output": "tan(theta)=v_y/v_x with quadrant checked"
+        }
+      ],
+      "limits": [
+        "Do not replace v_y/v_x by y/x unless the geometry separately proves they coincide."
+      ],
+      "checks": [
+        "Velocity direction must be tangent to the path.",
+        "Both component values must use the same time."
+      ],
+      "gate_relation_ref": "GATE-NONE"
+    },
+    {
+      "id": "REL-PROJ-BOUNCE-ENERGY",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-ENERGY",
+        "SRC-PROJ-EXT-LIBRETEXTS-RESTITUTION"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "expression": "K_after=f K_before => v_after^2=f v_before^2; H=(v_after sin alpha)^2/(2g)",
+      "meaning": "An energy fraction changes speed squared; the post-impact vertical speed controls the new maximum rise.",
+      "symbols": [],
+      "conditions": [
+        "Mass is unchanged across the energy comparison.",
+        "After the bounce, gravity-only free flight applies until the next apex."
+      ],
+      "derivation": [
+        {
+          "id": "K2DX2-2",
+          "role": "TRANSFORM",
+          "action": "Convert K_after=f K_before into v_after^2=f v_before^2 for unchanged mass.",
+          "why_valid": "K=1/2 mv^2, so an energy fraction multiplies speed squared.",
+          "inputs": [
+            "energy retention fraction f"
+          ],
+          "output": "v_after^2=f v_before^2",
+          "source_ref": "SRC-PROJ-EXT-OPENSTAX-ENERGY"
+        },
+        {
+          "id": "K2DX2-3",
+          "role": "TRANSFORM",
+          "action": "Resolve the post-bounce speed using its stated direction and use the upward component in H=v_y^2/(2g).",
+          "why_valid": "Maximum rise after the bounce depends on the post-bounce vertical kinetic state under gravity-only flight.",
+          "inputs": [
+            "v_after",
+            "rebound direction"
+          ],
+          "output": "H_after=(v_after sin alpha)^2/(2g)"
+        }
+      ],
+      "limits": [
+        "The collision itself is not modeled by constant-acceleration projectile equations."
+      ],
+      "checks": [
+        "For 0<=f<=1, retained speed squared cannot exceed the pre-impact value.",
+        "If alpha=0, the new rise height is zero."
+      ],
+      "gate_relation_ref": "GATE-NONE"
+    },
+    {
+      "id": "REL-PROJ-PIECEWISE-G",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-PROJECTILE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "expression": "Stage 2 from apex: H=(1/2)g_2 t_2^2; x_2=v_x,A t_2",
+      "meaning": "When gravity changes at an event boundary, carry the boundary state into a new constant-acceleration stage.",
+      "symbols": [],
+      "conditions": [
+        "g_1 is constant before the boundary and g_2 is constant after it.",
+        "Horizontal acceleration remains zero in both regions."
+      ],
+      "derivation": [
+        {
+          "id": "K2DX3-1",
+          "role": "DECLARE",
+          "action": "Split the trajectory at the apex boundary and label stage 1 with g_1 and stage 2 with g_2.",
+          "why_valid": "The model assumption changes at one event, so one constant-acceleration equation cannot span both regions.",
+          "inputs": [],
+          "output": "two-stage event model",
+          "source_ref": "SRC-PROJ-EXT-OPENSTAX-PROJECTILE"
+        },
+        {
+          "id": "K2DX3-2",
+          "role": "TRANSFORM",
+          "action": "Use the ordinary projectile model only up to the apex to determine the apex position and horizontal velocity.",
+          "why_valid": "Before the boundary, gravity is g_1 and horizontal acceleration is zero.",
+          "inputs": [],
+          "output": "apex state (x_A,H,v_x,0)"
+        },
+        {
+          "id": "K2DX3-3",
+          "role": "TRANSFORM",
+          "action": "Start stage 2 from the apex with v_y=0 and downward acceleration g_2; compute the descent time from H=(1/2)g_2 t_2^2.",
+          "why_valid": "The second stage is constant-acceleration motion with its own acceleration but inherited initial state.",
+          "inputs": [
+            "apex height H",
+            "g_2"
+          ],
+          "output": "t_2=sqrt(2H/g_2)"
+        }
+      ],
+      "limits": [
+        "Do not apply g_2 retroactively to the ascent."
+      ],
+      "checks": [
+        "If g_2=g_1, recover the ordinary symmetric projectile result.",
+        "Larger g_2 gives shorter descent time from the same height."
+      ],
+      "gate_relation_ref": "GATE-NONE"
+    },
+    {
+      "id": "REL-PROJ-TRAJECTORY",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-PROJECTILE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "expression": "y=x tan(theta)-g x^2/[2u^2 cos^2(theta)]",
+      "meaning": "Eliminating common time from the ideal projectile component equations gives the trajectory equation.",
+      "symbols": [],
+      "conditions": [
+        "Gravity is uniform and downward.",
+        "Air resistance is neglected.",
+        "cos(theta) is nonzero for the chosen x-axis form."
+      ],
+      "derivation": [
+        {
+          "id": "K2DX4-1",
+          "role": "DECLARE",
+          "action": "Confirm the gravity-only projectile assumptions before eliminating time.",
+          "why_valid": "The trajectory equation is a consequence of the standard projectile model, not a universal curve.",
+          "inputs": [],
+          "output": "projectile model licensed",
+          "source_ref": "SRC-PROJ-EXT-OPENSTAX-PROJECTILE"
+        },
+        {
+          "id": "K2DX4-2",
+          "role": "TRANSFORM",
+          "action": "Use x=u cos(theta)t to eliminate t from y=u sin(theta)t-(1/2)gt^2.",
+          "why_valid": "Both component equations describe the same event time, so eliminating that common t is valid.",
+          "inputs": [
+            "x(t)",
+            "y(t)"
+          ],
+          "output": "y=x tan(theta)-g x^2/[2u^2 cos^2(theta)]",
+          "source_ref": "SRC-PROJ-EXT-OPENSTAX-PROJECTILE"
+        },
+        {
+          "id": "K2DX4-3",
+          "role": "TRANSFORM",
+          "action": "Substitute the specified point coordinates to constrain u and theta.",
+          "why_valid": "A point lies on the trajectory only if its coordinates satisfy the path equation.",
+          "inputs": [
+            "P=(x_P,y_P)"
+          ],
+          "output": "point constraint on launch parameters"
+        }
+      ],
+      "limits": [
+        "Point membership alone does not identify rising versus falling branch."
+      ],
+      "checks": [
+        "At x=0 the equation gives y=0 for launch from origin.",
+        "The gravity term lowers the path below the straight-line ray x tan(theta)."
+      ],
+      "gate_relation_ref": "GATE-NONE"
+    },
+    {
+      "id": "REL-KIN-2D-LINEAR-DRAG-X",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-DRAG"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "expression": "m dv_x/dt=-c v_x => v_x=v_x0 e^(-ct/m); Δx=(m/c)v_x0[1-e^(-ct/m)]",
+      "meaning": "Linear drag creates exponential horizontal speed decay and a finite-time displacement obtained by integrating velocity.",
+      "symbols": [],
+      "conditions": [
+        "c>0 is constant.",
+        "Drag is linear in instantaneous velocity."
+      ],
+      "derivation": [
+        {
+          "id": "K2DX5-2",
+          "role": "TRANSFORM",
+          "action": "Write Newton's second law in x: m dv_x/dt=-c v_x.",
+          "why_valid": "Linear drag opposes the instantaneous velocity and is proportional to its component.",
+          "inputs": [
+            "m",
+            "c",
+            "v_x"
+          ],
+          "output": "dv_x/dt=-(c/m)v_x"
+        },
+        {
+          "id": "K2DX5-3",
+          "role": "TRANSFORM",
+          "action": "Use the exponential solution v_x(t)=v_x0 exp(-ct/m) and integrate it over time.",
+          "why_valid": "The first-order decay equation has an exponential solution; displacement is the time integral of velocity.",
+          "inputs": [
+            "v_x0",
+            "c/m"
+          ],
+          "output": "x-x_0=(m/c)v_x0[1-exp(-ct/m)]",
+          "source_ref": "SRC-PROJ-EXT-OPENSTAX-DRAG"
+        }
+      ],
+      "limits": [
+        "Not the same model as quadratic high-speed drag.",
+        "Ordinary constant-acceleration projectile shortcuts are invalid while drag is retained."
+      ],
+      "checks": [
+        "As c approaches zero, Δx approaches v_x0 t.",
+        "For c>0, Δx<v_x0 t for t>0."
+      ],
+      "gate_relation_ref": "GATE-NONE"
+    }
+  ],
+  "representations": [
+    {
+      "id": "REP-KIN-2D-TANGENT-VELOCITY",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-VELOCITY"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "kind": "VECTOR",
+      "purpose": "Distinguish the position vector from the tangent velocity vector at the same point.",
+      "required_elements": [
+        "trajectory point",
+        "position ray",
+        "tangent velocity arrow",
+        "component velocity triangle"
+      ],
+      "relation_refs": [
+        "REL-KIN-2D-VEL-DERIVATIVE"
+      ],
+      "read_order": [
+        "trajectory point",
+        "position ray",
+        "tangent velocity arrow",
+        "component velocity triangle"
+      ],
+      "instance_constraints": [
+        "All labels use the declared frame and event boundary.",
+        "The representation must not reveal a protected Core2B decision before attempt."
+      ],
+      "accessibility": [
+        "Every arrow, stage and boundary is named in text; colour is not required to distinguish meaning."
+      ],
+      "misleading_alternatives": [
+        "A decorative path with no binding to the governing relation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-KIN-2D-TANGENT-VELOCITY-01",
+          "cores": [
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+          "datum_refs": [],
+          "scene": {
+            "kind": "TANGENT_VELOCITY",
+            "frame": "Declared x-y frame with labelled model state.",
+            "caption": "Distinguish the position vector from the tangent velocity vector at the same point."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "trajectory point",
+          "symbol": "state",
+          "in_words": "trajectory point"
+        },
+        {
+          "element": "position ray",
+          "symbol": "",
+          "in_words": "position ray"
+        },
+        {
+          "element": "tangent velocity arrow",
+          "symbol": "",
+          "in_words": "tangent velocity arrow"
+        },
+        {
+          "element": "component velocity triangle",
+          "symbol": "",
+          "in_words": "component velocity triangle"
+        }
+      ],
+      "reveal_stages": [
+        {
+          "id": "VIS-REP-KIN-2D-TANGENT-VELOCITY-V0",
+          "label": "Prompt state",
+          "purpose": "Show givens without the completed decision.",
+          "visible_elements": [
+            "trajectory point",
+            "position ray"
+          ]
+        },
+        {
+          "id": "VIS-REP-KIN-2D-TANGENT-VELOCITY-V1",
+          "label": "Completed extension",
+          "purpose": "Reveal the full bound representation after attempt.",
+          "visible_elements": [
+            "trajectory point",
+            "position ray",
+            "tangent velocity arrow",
+            "component velocity triangle"
+          ]
+        }
+      ],
+      "support_stage_map": [
+        {
+          "support_level": "low",
+          "visual_stage_ref": "VIS-REP-KIN-2D-TANGENT-VELOCITY-V0"
+        },
+        {
+          "support_level": "medium",
+          "visual_stage_ref": "VIS-REP-KIN-2D-TANGENT-VELOCITY-V0"
+        },
+        {
+          "support_level": "high",
+          "visual_stage_ref": "VIS-REP-KIN-2D-TANGENT-VELOCITY-V0"
+        }
+      ]
+    },
+    {
+      "id": "REP-PROJ-BOUNCE-ENERGY",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "kind": "EVENT_SEQUENCE",
+      "purpose": "Show impact as a boundary between the incoming flight and a new post-bounce launch state.",
+      "required_elements": [
+        "incoming trajectory",
+        "impact event",
+        "energy-retention tag",
+        "post-bounce velocity components",
+        "new apex"
+      ],
+      "relation_refs": [
+        "REL-PROJ-BOUNCE-ENERGY"
+      ],
+      "read_order": [
+        "incoming trajectory",
+        "impact event",
+        "energy-retention tag",
+        "post-bounce velocity components",
+        "new apex"
+      ],
+      "instance_constraints": [
+        "All labels use the declared frame and event boundary.",
+        "The representation must not reveal a protected Core2B decision before attempt."
+      ],
+      "accessibility": [
+        "Every arrow, stage and boundary is named in text; colour is not required to distinguish meaning."
+      ],
+      "misleading_alternatives": [
+        "A decorative path with no binding to the governing relation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-PROJ-BOUNCE-ENERGY-01",
+          "cores": [
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+          "datum_refs": [],
+          "scene": {
+            "kind": "BOUNCE_ENERGY",
+            "frame": "Declared x-y frame with labelled model state.",
+            "caption": "Show impact as a boundary between the incoming flight and a new post-bounce launch state."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "incoming trajectory",
+          "symbol": "state",
+          "in_words": "incoming trajectory"
+        },
+        {
+          "element": "impact event",
+          "symbol": "",
+          "in_words": "impact event"
+        },
+        {
+          "element": "energy-retention tag",
+          "symbol": "",
+          "in_words": "energy-retention tag"
+        },
+        {
+          "element": "post-bounce velocity components",
+          "symbol": "",
+          "in_words": "post-bounce velocity components"
+        },
+        {
+          "element": "new apex",
+          "symbol": "",
+          "in_words": "new apex"
+        }
+      ],
+      "reveal_stages": [
+        {
+          "id": "VIS-REP-PROJ-BOUNCE-ENERGY-V0",
+          "label": "Prompt state",
+          "purpose": "Show givens without the completed decision.",
+          "visible_elements": [
+            "incoming trajectory",
+            "impact event",
+            "energy-retention tag"
+          ]
+        },
+        {
+          "id": "VIS-REP-PROJ-BOUNCE-ENERGY-V1",
+          "label": "Completed extension",
+          "purpose": "Reveal the full bound representation after attempt.",
+          "visible_elements": [
+            "incoming trajectory",
+            "impact event",
+            "energy-retention tag",
+            "post-bounce velocity components",
+            "new apex"
+          ]
+        }
+      ],
+      "support_stage_map": [
+        {
+          "support_level": "low",
+          "visual_stage_ref": "VIS-REP-PROJ-BOUNCE-ENERGY-V0"
+        },
+        {
+          "support_level": "medium",
+          "visual_stage_ref": "VIS-REP-PROJ-BOUNCE-ENERGY-V0"
+        },
+        {
+          "support_level": "high",
+          "visual_stage_ref": "VIS-REP-PROJ-BOUNCE-ENERGY-V0"
+        }
+      ]
+    },
+    {
+      "id": "REP-PROJ-PIECEWISE-G",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "kind": "EVENT_SEQUENCE",
+      "purpose": "Show the apex as a boundary between g1 and g2 regions while preserving the apex state.",
+      "required_elements": [
+        "stage 1 arc",
+        "apex boundary",
+        "apex state",
+        "stage 2 arc",
+        "g1 and g2 labels"
+      ],
+      "relation_refs": [
+        "REL-PROJ-PIECEWISE-G"
+      ],
+      "read_order": [
+        "stage 1 arc",
+        "apex boundary",
+        "apex state",
+        "stage 2 arc",
+        "g1 and g2 labels"
+      ],
+      "instance_constraints": [
+        "All labels use the declared frame and event boundary.",
+        "The representation must not reveal a protected Core2B decision before attempt."
+      ],
+      "accessibility": [
+        "Every arrow, stage and boundary is named in text; colour is not required to distinguish meaning."
+      ],
+      "misleading_alternatives": [
+        "A decorative path with no binding to the governing relation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-PROJ-PIECEWISE-G-01",
+          "cores": [
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+          "datum_refs": [],
+          "scene": {
+            "kind": "PIECEWISE_GRAVITY",
+            "frame": "Declared x-y frame with labelled model state.",
+            "caption": "Show the apex as a boundary between g1 and g2 regions while preserving the apex state."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "stage 1 arc",
+          "symbol": "state",
+          "in_words": "stage 1 arc"
+        },
+        {
+          "element": "apex boundary",
+          "symbol": "",
+          "in_words": "apex boundary"
+        },
+        {
+          "element": "apex state",
+          "symbol": "",
+          "in_words": "apex state"
+        },
+        {
+          "element": "stage 2 arc",
+          "symbol": "",
+          "in_words": "stage 2 arc"
+        },
+        {
+          "element": "g1 and g2 labels",
+          "symbol": "",
+          "in_words": "g1 and g2 labels"
+        }
+      ],
+      "reveal_stages": [
+        {
+          "id": "VIS-REP-PROJ-PIECEWISE-G-V0",
+          "label": "Prompt state",
+          "purpose": "Show givens without the completed decision.",
+          "visible_elements": [
+            "stage 1 arc",
+            "apex boundary",
+            "apex state"
+          ]
+        },
+        {
+          "id": "VIS-REP-PROJ-PIECEWISE-G-V1",
+          "label": "Completed extension",
+          "purpose": "Reveal the full bound representation after attempt.",
+          "visible_elements": [
+            "stage 1 arc",
+            "apex boundary",
+            "apex state",
+            "stage 2 arc",
+            "g1 and g2 labels"
+          ]
+        }
+      ],
+      "support_stage_map": [
+        {
+          "support_level": "low",
+          "visual_stage_ref": "VIS-REP-PROJ-PIECEWISE-G-V0"
+        },
+        {
+          "support_level": "medium",
+          "visual_stage_ref": "VIS-REP-PROJ-PIECEWISE-G-V0"
+        },
+        {
+          "support_level": "high",
+          "visual_stage_ref": "VIS-REP-PROJ-PIECEWISE-G-V0"
+        }
+      ]
+    },
+    {
+      "id": "REP-PROJ-TRAJECTORY-POINT",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-OPENSTAX-PROJECTILE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "kind": "GRAPH",
+      "purpose": "Bind a specified point to the projectile path and mark the local tangent used to locate the apex.",
+      "required_elements": [
+        "coordinate axes",
+        "projectile parabola",
+        "specified point P",
+        "local tangent",
+        "apex"
+      ],
+      "relation_refs": [
+        "REL-PROJ-TRAJECTORY"
+      ],
+      "read_order": [
+        "coordinate axes",
+        "projectile parabola",
+        "specified point P",
+        "local tangent",
+        "apex"
+      ],
+      "instance_constraints": [
+        "All labels use the declared frame and event boundary.",
+        "The representation must not reveal a protected Core2B decision before attempt."
+      ],
+      "accessibility": [
+        "Every arrow, stage and boundary is named in text; colour is not required to distinguish meaning."
+      ],
+      "misleading_alternatives": [
+        "A decorative path with no binding to the governing relation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-PROJ-TRAJECTORY-POINT-01",
+          "cores": [
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+          "datum_refs": [],
+          "scene": {
+            "kind": "TRAJECTORY_POINT",
+            "frame": "Declared x-y frame with labelled model state.",
+            "caption": "Bind a specified point to the projectile path and mark the local tangent used to locate the apex."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "coordinate axes",
+          "symbol": "state",
+          "in_words": "coordinate axes"
+        },
+        {
+          "element": "projectile parabola",
+          "symbol": "",
+          "in_words": "projectile parabola"
+        },
+        {
+          "element": "specified point P",
+          "symbol": "",
+          "in_words": "specified point P"
+        },
+        {
+          "element": "local tangent",
+          "symbol": "",
+          "in_words": "local tangent"
+        },
+        {
+          "element": "apex",
+          "symbol": "",
+          "in_words": "apex"
+        }
+      ],
+      "reveal_stages": [
+        {
+          "id": "VIS-REP-PROJ-TRAJECTORY-POINT-V0",
+          "label": "Prompt state",
+          "purpose": "Show givens without the completed decision.",
+          "visible_elements": [
+            "coordinate axes",
+            "projectile parabola",
+            "specified point P"
+          ]
+        },
+        {
+          "id": "VIS-REP-PROJ-TRAJECTORY-POINT-V1",
+          "label": "Completed extension",
+          "purpose": "Reveal the full bound representation after attempt.",
+          "visible_elements": [
+            "coordinate axes",
+            "projectile parabola",
+            "specified point P",
+            "local tangent",
+            "apex"
+          ]
+        }
+      ],
+      "support_stage_map": [
+        {
+          "support_level": "low",
+          "visual_stage_ref": "VIS-REP-PROJ-TRAJECTORY-POINT-V0"
+        },
+        {
+          "support_level": "medium",
+          "visual_stage_ref": "VIS-REP-PROJ-TRAJECTORY-POINT-V0"
+        },
+        {
+          "support_level": "high",
+          "visual_stage_ref": "VIS-REP-PROJ-TRAJECTORY-POINT-V0"
+        }
+      ]
+    },
+    {
+      "id": "REP-KIN-2D-LINEAR-DRAG",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "kind": "GRAPH",
+      "purpose": "Contrast constant horizontal velocity with exponential horizontal velocity decay under linear drag.",
+      "required_elements": [
+        "time axis",
+        "v_x curve",
+        "initial v_x0",
+        "time constant m/c",
+        "integrated displacement area"
+      ],
+      "relation_refs": [
+        "REL-KIN-2D-LINEAR-DRAG-X"
+      ],
+      "read_order": [
+        "time axis",
+        "v_x curve",
+        "initial v_x0",
+        "time constant m/c",
+        "integrated displacement area"
+      ],
+      "instance_constraints": [
+        "All labels use the declared frame and event boundary.",
+        "The representation must not reveal a protected Core2B decision before attempt."
+      ],
+      "accessibility": [
+        "Every arrow, stage and boundary is named in text; colour is not required to distinguish meaning."
+      ],
+      "misleading_alternatives": [
+        "A decorative path with no binding to the governing relation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-KIN-2D-LINEAR-DRAG-01",
+          "cores": [
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-PHY-KIN-2D-LINEAR-DRAG",
+          "datum_refs": [],
+          "scene": {
+            "kind": "LINEAR_DRAG",
+            "frame": "Declared x-y frame with labelled model state.",
+            "caption": "Contrast constant horizontal velocity with exponential horizontal velocity decay under linear drag."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "time axis",
+          "symbol": "state",
+          "in_words": "time axis"
+        },
+        {
+          "element": "v_x curve",
+          "symbol": "",
+          "in_words": "v_x curve"
+        },
+        {
+          "element": "initial v_x0",
+          "symbol": "",
+          "in_words": "initial v_x0"
+        },
+        {
+          "element": "time constant m/c",
+          "symbol": "",
+          "in_words": "time constant m/c"
+        },
+        {
+          "element": "integrated displacement area",
+          "symbol": "",
+          "in_words": "integrated displacement area"
+        }
+      ],
+      "reveal_stages": [
+        {
+          "id": "VIS-REP-KIN-2D-LINEAR-DRAG-V0",
+          "label": "Prompt state",
+          "purpose": "Show givens without the completed decision.",
+          "visible_elements": [
+            "time axis",
+            "v_x curve",
+            "initial v_x0"
+          ]
+        },
+        {
+          "id": "VIS-REP-KIN-2D-LINEAR-DRAG-V1",
+          "label": "Completed extension",
+          "purpose": "Reveal the full bound representation after attempt.",
+          "visible_elements": [
+            "time axis",
+            "v_x curve",
+            "initial v_x0",
+            "time constant m/c",
+            "integrated displacement area"
+          ]
+        }
+      ],
+      "support_stage_map": [
+        {
+          "support_level": "low",
+          "visual_stage_ref": "VIS-REP-KIN-2D-LINEAR-DRAG-V0"
+        },
+        {
+          "support_level": "medium",
+          "visual_stage_ref": "VIS-REP-KIN-2D-LINEAR-DRAG-V0"
+        },
+        {
+          "support_level": "high",
+          "visual_stage_ref": "VIS-REP-KIN-2D-LINEAR-DRAG-V0"
+        }
+      ]
+    }
+  ],
+  "question_families": [
+    {
+      "id": "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "Projectile modified-dynamics and representation-demand extensions",
+      "capability_refs": [
+        "CAP-KIN-2D-VEL-FROM-POSITION",
+        "CAP-PROJ-BOUNCE-ENERGY",
+        "CAP-PROJ-PIECEWISE-G",
+        "CAP-PROJ-TRAJECTORY-POINT",
+        "CAP-KIN-2D-LINEAR-DRAG"
+      ],
+      "solution_structure": [
+        "Start from the canonical component/projectile model.",
+        "Identify the explicit demand change and the event/model boundary.",
+        "Select the admitted extension relation before algebra.",
+        "Preserve one frame and one clock across component work.",
+        "Check the result against a canonical limit or physical bound."
+      ],
+      "demand_dimensions": {
+        "model_choice": "Decide when the standard projectile model must be replaced or applied piecewise.",
+        "representation_translation": "Translate position laws, component ratios, point constraints or decay observations into the taught extension representation.",
+        "reasoning_steps": "Preserve event state across impact/apex boundaries and sequence the new relation before canonical consequences.",
+        "novelty": "Change the demand structure while using only extensions explicitly taught in this product."
+      },
+      "safe_variations": [
+        "Change numerical values without changing the model.",
+        "Change the way a taught state is represented while keeping the same extension.",
+        "Change the requested consequence after the model/event decision."
+      ],
+      "transfer_boundaries": [
+        "No Core2B item may introduce a force law, collision rule, trajectory relation or calculus operation not taught in the extension microtopics.",
+        "Protected DECIDE moves are not scaffolded before attempt."
+      ],
+      "common_wrong_routes": [
+        "Use position direction for velocity direction.",
+        "Convert energy fraction directly to speed fraction.",
+        "Apply changed gravity to the whole flight.",
+        "Use point membership as branch information.",
+        "Use constant horizontal velocity while drag is retained."
+      ],
+      "item_refs": [
+        "Q-PHY-KIN-2D-EXT-2A-VELOCITY-DIRECTION",
+        "Q-PHY-KIN-2D-EXT-2A-BOUNCE",
+        "Q-PHY-KIN-2D-EXT-2A-PIECEWISE-G",
+        "Q-PHY-KIN-2D-EXT-2A-POINT",
+        "Q-PHY-KIN-2D-EXT-2A-DRAG",
+        "Q-PHY-KIN-2D-EXT-2B-VELOCITY-DIRECTION",
+        "Q-PHY-KIN-2D-EXT-2B-BOUNCE",
+        "Q-PHY-KIN-2D-EXT-2B-PIECEWISE-G",
+        "Q-PHY-KIN-2D-EXT-2B-POINT",
+        "Q-PHY-KIN-2D-EXT-2B-DRAG"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-PHY-KIN-2D-EXT-2A-VELOCITY-DIRECTION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PRACTICE",
+        "grade9v3:owner_demand_ref": "Q28"
+      },
+      "origin": "AUTHORED",
+      "origin_ref": "SRC-PROJ-EXT-AUTHORED",
+      "original_identifier": "AUTHOR-PHY-KIN-2D-EXT-2A-VELOCITY-DIRECTION",
+      "stem": "A particle has x(t)=10t and y(t)=18t-2t^2 in metres. Find the direction of its instantaneous velocity at t=2 s.",
+      "subparts": [],
+      "options": [],
+      "conditions": [
+        "x and y use the same time and fixed frame."
+      ],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "The velocity components at 2 s are (10,10) m/s, so the direction is 45° above +x.",
+        "reasoning": [
+          "Differentiate: v_x=10 and v_y=18-4t.",
+          "At t=2, v_y=10.",
+          "Use tan(theta)=10/10 and check the first quadrant."
+        ],
+        "check": "The position ratio y/x is not used; the tangent/velocity check gives 45°.",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "CHECKED_BY_AUTHOR",
+        "reasoning_route": [
+          {
+            "id": "R-EXT-2A-VEL-REP",
+            "kind": "REPRESENT",
+            "action": "Identify velocity direction as the target and write v_x=dx/dt, v_y=dy/dt.",
+            "why_valid": "Instantaneous velocity is the derivative of position.",
+            "inputs": [
+              "x(t)",
+              "y(t)"
+            ],
+            "output": "component derivative model",
+            "representation_ref": "REP-KIN-2D-TANGENT-VELOCITY"
+          },
+          {
+            "id": "R-EXT-2A-VEL-TRANS",
+            "kind": "TRANSFORM",
+            "action": "Differentiate and evaluate both components at t=2 s.",
+            "why_valid": "Both belong to the same instant.",
+            "inputs": [
+              "t=2"
+            ],
+            "output": "v=(10,10) m/s"
+          },
+          {
+            "id": "R-EXT-2A-VEL-CONNECT",
+            "kind": "CONNECT",
+            "action": "Use the signed velocity-component ratio to obtain the direction.",
+            "why_valid": "A vector direction follows from its components.",
+            "inputs": [
+              "v_x=10",
+              "v_y=10"
+            ],
+            "output": "theta=45°"
+          },
+          {
+            "id": "R-EXT-2A-VEL-CHECK",
+            "kind": "VERIFY",
+            "action": "Confirm the arrow is tangent to the trajectory.",
+            "why_valid": "Velocity must be tangent.",
+            "inputs": [],
+            "output": "checked direction"
+          }
+        ],
+        "crux_move_ref": "R-EXT-2A-VEL-REP",
+        "rubric": [
+          {
+            "criterion": "Selects the model or representation before calculating.",
+            "evidence_of": "The governing decision is explicit and justified."
+          },
+          {
+            "criterion": "Carries the reasoning to a checked result.",
+            "evidence_of": "The solution closes without tutor input."
+          }
+        ]
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VEL-FROM-POSITION",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "family_ref": "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND",
+      "adaptation": {
+        "parent_ref": "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
+        "changed_fields": [
+          "stem",
+          "conditions",
+          "answer"
+        ],
+        "reason": "Truthfully authored practice preserves the demand while removing source identity."
+      },
+      "exposure": [
+        {
+          "core": "CORE2A",
+          "role": "AUTHORED_PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [
+        {
+          "text": "Name the model and the event before choosing equations.",
+          "reveals": "CONCEPT"
+        }
+      ],
+      "repair_ref": "K2DX1-2",
+      "scaffolds": [
+        {
+          "text": "Write the representation or event boundary explicitly before substituting values.",
+          "support_kind": "REPRESENT",
+          "reveals": "CONCEPT",
+          "supports_move_ref": "R-EXT-2A-VEL-REP"
+        }
+      ]
+    },
+    {
+      "id": "Q-PHY-KIN-2D-EXT-2A-BOUNCE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PRACTICE",
+        "grade9v3:owner_demand_ref": "Q15"
+      },
+      "origin": "AUTHORED",
+      "origin_ref": "SRC-PROJ-EXT-AUTHORED",
+      "original_identifier": "AUTHOR-PHY-KIN-2D-EXT-2A-BOUNCE",
+      "stem": "A projectile launched at 45° reaches 80 m maximum height. On returning to the ground it retains 60% of its kinetic energy and rebounds at 30° above horizontal. Find its new maximum height.",
+      "subparts": [],
+      "options": [],
+      "conditions": [
+        "Ground is level.",
+        "The rebound creates a new gravity-only launch."
+      ],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "The new maximum height is 24 m.",
+        "reasoning": [
+          "Original u^2=4gH=320g for a 45° launch.",
+          "After impact v^2=0.60u^2=192g.",
+          "Post-bounce v_y^2=192g×sin^2 30°=48g, so H'=48g/(2g)=24 m."
+        ],
+        "check": "The result is below the original height and scales with retained energy and sin²30°.",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "CHECKED_BY_AUTHOR",
+        "reasoning_route": [
+          {
+            "id": "R-EXT-2A-BOUNCE-REP",
+            "kind": "REPRESENT",
+            "action": "Mark impact as a new launch event and separate pre/post states.",
+            "why_valid": "The collision changes velocity discontinuously.",
+            "inputs": [],
+            "output": "post-bounce state",
+            "representation_ref": "REP-PROJ-BOUNCE-ENERGY"
+          },
+          {
+            "id": "R-EXT-2A-BOUNCE-ENERGY",
+            "kind": "DECIDE",
+            "action": "Convert retained kinetic energy into retained speed squared before resolving the new angle.",
+            "why_valid": "K is proportional to v squared for fixed mass.",
+            "inputs": [
+              "60% KE retained"
+            ],
+            "output": "v_after²=0.60 v_before²"
+          },
+          {
+            "id": "R-EXT-2A-BOUNCE-CALC",
+            "kind": "TRANSFORM",
+            "action": "Resolve post-bounce vertical speed and compute rise height.",
+            "why_valid": "Gravity-only height uses v_y²/(2g).",
+            "inputs": [],
+            "output": "H'=24 m"
+          },
+          {
+            "id": "R-EXT-2A-BOUNCE-CHECK",
+            "kind": "VERIFY",
+            "action": "Check energy/component scaling bounds.",
+            "why_valid": "Loss and smaller vertical fraction must reduce height.",
+            "inputs": [],
+            "output": "bound satisfied"
+          }
+        ],
+        "crux_move_ref": "R-EXT-2A-BOUNCE-ENERGY",
+        "rubric": [
+          {
+            "criterion": "Selects the model or representation before calculating.",
+            "evidence_of": "The governing decision is explicit and justified."
+          },
+          {
+            "criterion": "Carries the reasoning to a checked result.",
+            "evidence_of": "The solution closes without tutor input."
+          }
+        ]
+      },
+      "primary_capability_ref": "CAP-PROJ-BOUNCE-ENERGY",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "family_ref": "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND",
+      "adaptation": {
+        "parent_ref": "PYQ-PHY-JEEADV-2018-P2-Q08",
+        "changed_fields": [
+          "stem",
+          "conditions",
+          "answer"
+        ],
+        "reason": "Truthfully authored practice preserves the demand while removing source identity."
+      },
+      "exposure": [
+        {
+          "core": "CORE2A",
+          "role": "AUTHORED_PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [
+        {
+          "text": "Name the model and the event before choosing equations.",
+          "reveals": "CONCEPT"
+        }
+      ],
+      "repair_ref": "K2DX2-2",
+      "scaffolds": [
+        {
+          "text": "Write the representation or event boundary explicitly before substituting values.",
+          "support_kind": "REPRESENT",
+          "reveals": "CONCEPT",
+          "supports_move_ref": "R-EXT-2A-BOUNCE-REP"
+        }
+      ]
+    },
+    {
+      "id": "Q-PHY-KIN-2D-EXT-2A-PIECEWISE-G",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PRACTICE",
+        "grade9v3:owner_demand_ref": "Q21"
+      },
+      "origin": "AUTHORED",
+      "origin_ref": "SRC-PROJ-EXT-AUTHORED",
+      "original_identifier": "AUTHOR-PHY-KIN-2D-EXT-2A-PIECEWISE-G",
+      "stem": "An ordinary projectile would have range R. At the apex it enters a region where downward gravity becomes 4g while horizontal velocity is unchanged. Express the new range as a fraction of R.",
+      "subparts": [],
+      "options": [],
+      "conditions": [
+        "The gravity change occurs exactly at the apex.",
+        "Launch and landing heights are equal."
+      ],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "The new range is 3R/4.",
+        "reasoning": [
+          "The apex is at R/2 in the ordinary flight.",
+          "From the same apex height, multiplying gravity by 4 halves the descent time.",
+          "The post-apex horizontal distance becomes R/4, giving R/2+R/4=3R/4."
+        ],
+        "check": "The result lies between R/2 and R because stronger gravity changes only the descent segment.",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "CHECKED_BY_AUTHOR",
+        "reasoning_route": [
+          {
+            "id": "R-EXT-2A-G-REP",
+            "kind": "REPRESENT",
+            "action": "Split the event at the apex and carry the apex state into stage 2.",
+            "why_valid": "The model changes only there.",
+            "inputs": [],
+            "output": "two-stage state",
+            "representation_ref": "REP-PROJ-PIECEWISE-G"
+          },
+          {
+            "id": "R-EXT-2A-G-DECIDE",
+            "kind": "DECIDE",
+            "action": "Apply 4g only to the post-apex descent.",
+            "why_valid": "The first stage already occurred under g.",
+            "inputs": [],
+            "output": "t_descent halves"
+          },
+          {
+            "id": "R-EXT-2A-G-CALC",
+            "kind": "TRANSFORM",
+            "action": "Convert the time ratio into horizontal distance and add stage distances.",
+            "why_valid": "Horizontal speed is continuous.",
+            "inputs": [],
+            "output": "R'=3R/4"
+          },
+          {
+            "id": "R-EXT-2A-G-CHECK",
+            "kind": "VERIFY",
+            "action": "Bound the result between R/2 and R.",
+            "why_valid": "Only post-apex range shrinks.",
+            "inputs": [],
+            "output": "bound satisfied"
+          }
+        ],
+        "crux_move_ref": "R-EXT-2A-G-DECIDE",
+        "rubric": [
+          {
+            "criterion": "Selects the model or representation before calculating.",
+            "evidence_of": "The governing decision is explicit and justified."
+          },
+          {
+            "criterion": "Carries the reasoning to a checked result.",
+            "evidence_of": "The solution closes without tutor input."
+          }
+        ]
+      },
+      "primary_capability_ref": "CAP-PROJ-PIECEWISE-G",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "family_ref": "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND",
+      "adaptation": {
+        "parent_ref": "PYQ-PHY-JEEADV-2022-P1-Q08",
+        "changed_fields": [
+          "stem",
+          "conditions",
+          "answer"
+        ],
+        "reason": "Truthfully authored practice preserves the demand while removing source identity."
+      },
+      "exposure": [
+        {
+          "core": "CORE2A",
+          "role": "AUTHORED_PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [
+        {
+          "text": "Name the model and the event before choosing equations.",
+          "reveals": "CONCEPT"
+        }
+      ],
+      "repair_ref": "K2DX3-1",
+      "scaffolds": [
+        {
+          "text": "Write the representation or event boundary explicitly before substituting values.",
+          "support_kind": "REPRESENT",
+          "reveals": "CONCEPT",
+          "supports_move_ref": "R-EXT-2A-G-REP"
+        }
+      ]
+    },
+    {
+      "id": "Q-PHY-KIN-2D-EXT-2A-POINT",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PRACTICE",
+        "grade9v3:owner_demand_ref": "Q26"
+      },
+      "origin": "AUTHORED",
+      "origin_ref": "SRC-PROJ-EXT-AUTHORED",
+      "original_identifier": "AUTHOR-PHY-KIN-2D-EXT-2A-POINT",
+      "stem": "A projectile launched at 45° passes through P=(4 m,1 m). Find u²/g and decide whether the projectile is rising or falling at P.",
+      "subparts": [],
+      "options": [],
+      "conditions": [
+        "Uniform gravity acts downward.",
+        "Launch point is the origin."
+      ],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "u²/g=16/3 m and the projectile is already descending at P.",
+        "reasoning": [
+          "Use y=x-gx²/(u²) for theta=45°.",
+          "At P: 1=4-16g/u², so u²/g=16/3? Re-evaluate: for theta=45°, denominator 2u²cos²45=u², so 1=4-16g/u², hence u²/g=16/3 m.",
+          "Slope dy/dx=1-2gx/u²=1-8/(16/3)=-1/2, so it is descending."
+        ],
+        "check": "Substituting u²/g=16/3 back into the path gives y=1 and the negative slope locates P after the apex.",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "CHECKED_BY_AUTHOR",
+        "reasoning_route": [
+          {
+            "id": "R-EXT-2A-POINT-REP",
+            "kind": "REPRESENT",
+            "action": "License the ideal projectile trajectory and mark P on x-y axes.",
+            "why_valid": "The path relation requires the gravity-only model.",
+            "inputs": [],
+            "output": "trajectory with point",
+            "representation_ref": "REP-PROJ-TRAJECTORY-POINT"
+          },
+          {
+            "id": "R-EXT-2A-POINT-CONSTRAINT",
+            "kind": "TRANSFORM",
+            "action": "Substitute P into y=x tanθ-gx²/[2u²cos²θ].",
+            "why_valid": "Point membership imposes a launch-parameter constraint.",
+            "inputs": [],
+            "output": "u²/g=16/3 m"
+          },
+          {
+            "id": "R-EXT-2A-POINT-BRANCH",
+            "kind": "DECIDE",
+            "action": "Use local slope or vertical velocity at P to decide the branch.",
+            "why_valid": "Point membership alone does not identify rising/falling.",
+            "inputs": [],
+            "output": "descending at P"
+          },
+          {
+            "id": "R-EXT-2A-POINT-CHECK",
+            "kind": "VERIFY",
+            "action": "Substitute back and confirm the slope sign.",
+            "why_valid": "Independent substitution closes both decisions.",
+            "inputs": [],
+            "output": "checked"
+          }
+        ],
+        "crux_move_ref": "R-EXT-2A-POINT-BRANCH",
+        "rubric": [
+          {
+            "criterion": "Selects the model or representation before calculating.",
+            "evidence_of": "The governing decision is explicit and justified."
+          },
+          {
+            "criterion": "Carries the reasoning to a checked result.",
+            "evidence_of": "The solution closes without tutor input."
+          }
+        ]
+      },
+      "primary_capability_ref": "CAP-PROJ-TRAJECTORY-POINT",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "family_ref": "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND",
+      "adaptation": {
+        "parent_ref": "PYQ-PHY-JEEADV-2026-P1-Q06",
+        "changed_fields": [
+          "stem",
+          "conditions",
+          "answer"
+        ],
+        "reason": "Truthfully authored practice preserves the demand while removing source identity."
+      },
+      "exposure": [
+        {
+          "core": "CORE2A",
+          "role": "AUTHORED_PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [
+        {
+          "text": "Name the model and the event before choosing equations.",
+          "reveals": "CONCEPT"
+        }
+      ],
+      "repair_ref": "K2DX4-3",
+      "scaffolds": [
+        {
+          "text": "Write the representation or event boundary explicitly before substituting values.",
+          "support_kind": "REPRESENT",
+          "reveals": "CONCEPT",
+          "supports_move_ref": "R-EXT-2A-POINT-REP"
+        }
+      ]
+    },
+    {
+      "id": "Q-PHY-KIN-2D-EXT-2A-DRAG",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PRACTICE",
+        "grade9v3:owner_demand_ref": "Q23"
+      },
+      "origin": "AUTHORED",
+      "origin_ref": "SRC-PROJ-EXT-AUTHORED",
+      "original_identifier": "AUTHOR-PHY-KIN-2D-EXT-2A-DRAG",
+      "stem": "A projectile has horizontal launch component 120 m/s. In a medium with linear drag, m/c=2 s. Find its horizontal displacement after 2 s using e≈2.718.",
+      "subparts": [],
+      "options": [],
+      "conditions": [
+        "Horizontal drag obeys F_x=-cv_x.",
+        "Use the supplied time constant."
+      ],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "The displacement is about 152 m.",
+        "reasoning": [
+          "Use v_x=v_x0 e^{-t/τ} with τ=m/c=2 s.",
+          "Integrate: Δx=v_x0 τ(1-e^{-t/τ}).",
+          "At t=2 s, Δx=120×2×(1-e^{-1})≈151.7 m."
+        ],
+        "check": "The distance is less than the no-drag value 240 m and approaches it as c→0.",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "CHECKED_BY_AUTHOR",
+        "reasoning_route": [
+          {
+            "id": "R-EXT-2A-DRAG-REP",
+            "kind": "REPRESENT",
+            "action": "Reject constant horizontal velocity and write the linear-drag horizontal law.",
+            "why_valid": "Drag acts against v_x.",
+            "inputs": [],
+            "output": "m dv_x/dt=-cv_x",
+            "representation_ref": "REP-KIN-2D-LINEAR-DRAG"
+          },
+          {
+            "id": "R-EXT-2A-DRAG-SOLVE",
+            "kind": "DECIDE",
+            "action": "Use exponential velocity decay rather than a constant-acceleration formula.",
+            "why_valid": "Acceleration depends on velocity.",
+            "inputs": [],
+            "output": "v_x=v_x0 e^{-t/τ}"
+          },
+          {
+            "id": "R-EXT-2A-DRAG-INTEGRATE",
+            "kind": "TRANSFORM",
+            "action": "Integrate v_x over 0 to 2 s.",
+            "why_valid": "Displacement is the integral of velocity.",
+            "inputs": [],
+            "output": "Δx≈151.7 m"
+          },
+          {
+            "id": "R-EXT-2A-DRAG-CHECK",
+            "kind": "VERIFY",
+            "action": "Compare with v_x0 t.",
+            "why_valid": "Drag must reduce distance.",
+            "inputs": [],
+            "output": "151.7<240"
+          }
+        ],
+        "crux_move_ref": "R-EXT-2A-DRAG-SOLVE",
+        "rubric": [
+          {
+            "criterion": "Selects the model or representation before calculating.",
+            "evidence_of": "The governing decision is explicit and justified."
+          },
+          {
+            "criterion": "Carries the reasoning to a checked result.",
+            "evidence_of": "The solution closes without tutor input."
+          }
+        ]
+      },
+      "primary_capability_ref": "CAP-KIN-2D-LINEAR-DRAG",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "family_ref": "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND",
+      "adaptation": {
+        "parent_ref": "PYQ-PHY-JEEADV-2025-P2-Q15",
+        "changed_fields": [
+          "stem",
+          "conditions",
+          "answer"
+        ],
+        "reason": "Truthfully authored practice preserves the demand while removing source identity."
+      },
+      "exposure": [
+        {
+          "core": "CORE2A",
+          "role": "AUTHORED_PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [
+        {
+          "text": "Name the model and the event before choosing equations.",
+          "reveals": "CONCEPT"
+        }
+      ],
+      "repair_ref": "K2DX5-1",
+      "scaffolds": [
+        {
+          "text": "Write the representation or event boundary explicitly before substituting values.",
+          "support_kind": "REPRESENT",
+          "reveals": "CONCEPT",
+          "supports_move_ref": "R-EXT-2A-DRAG-REP"
+        }
+      ]
+    },
+    {
+      "id": "Q-PHY-KIN-2D-EXT-2B-VELOCITY-DIRECTION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PEDAGOGICAL",
+        "grade9v3:owner_demand_ref": null
+      },
+      "origin": "AUTHORED",
+      "origin_ref": "SRC-PROJ-EXT-AUTHORED",
+      "original_identifier": "AUTHOR-PHY-KIN-2D-EXT-2B-VELOCITY-DIRECTION",
+      "stem": "A particle follows x=2t²+3t and y=12t-t². At t=1 s, decide the direction of motion. Neither velocity component is constant.",
+      "subparts": [],
+      "options": [],
+      "conditions": [
+        "Use one common time."
+      ],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "At t=1 s, v_x=7 and v_y=10 m/s, so theta=tan^-1(10/7) above +x.",
+        "reasoning": [
+          "First decide that both position laws must be differentiated.",
+          "Evaluate both derivatives at t=1 s.",
+          "Use the signed component ratio."
+        ],
+        "check": "A position-vector angle would be a different quantity.",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "CHECKED_BY_AUTHOR",
+        "reasoning_route": [
+          {
+            "id": "R-EXT-2B-VEL-FACTS",
+            "kind": "REPRESENT",
+            "action": "List x(t), y(t) and the requested instant without selecting a direction formula.",
+            "why_valid": "This keeps the decision open.",
+            "inputs": [],
+            "output": "raw parametric state",
+            "representation_ref": "REP-KIN-2D-TANGENT-VELOCITY"
+          },
+          {
+            "id": "R-EXT-2B-VEL-DECIDE",
+            "kind": "DECIDE",
+            "action": "Choose derivative components, not position ratios, to represent instantaneous direction.",
+            "why_valid": "The demand asks for velocity direction.",
+            "inputs": [],
+            "output": "v_x=dx/dt, v_y=dy/dt"
+          },
+          {
+            "id": "R-EXT-2B-VEL-CALC",
+            "kind": "TRANSFORM",
+            "action": "Evaluate v=(7,10) and obtain the angle.",
+            "why_valid": "Both components use t=1.",
+            "inputs": [],
+            "output": "tanθ=10/7"
+          },
+          {
+            "id": "R-EXT-2B-VEL-CHECK",
+            "kind": "VERIFY",
+            "action": "Check tangent consistency.",
+            "why_valid": "Velocity is tangent.",
+            "inputs": [],
+            "output": "checked"
+          }
+        ],
+        "crux_move_ref": "R-EXT-2B-VEL-DECIDE",
+        "rubric": [
+          {
+            "criterion": "Selects the model or representation before calculating.",
+            "evidence_of": "The governing decision is explicit and justified."
+          },
+          {
+            "criterion": "Carries the reasoning to a checked result.",
+            "evidence_of": "The solution closes without tutor input."
+          }
+        ]
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VEL-FROM-POSITION",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "family_ref": "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND",
+      "adaptation": {
+        "parent_ref": "Q-PHY-KIN-2D-EXT-2A-VELOCITY-DIRECTION",
+        "changed_fields": [
+          "stem",
+          "conditions",
+          "answer"
+        ],
+        "reason": "Truthfully authored practice preserves the demand while removing source identity."
+      },
+      "exposure": [
+        {
+          "core": "CORE2B",
+          "role": "NEW_TRANSFER",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [
+        {
+          "text": "List the given facts without choosing the protected model/representation yet.",
+          "reveals": "CONCEPT"
+        }
+      ],
+      "repair_ref": "K2DX1-1",
+      "scaffolds": [],
+      "transfer": {
+        "dimension": "representation_translation",
+        "statement": "Both component position laws now vary with time; the learner must independently choose differentiation as the representation before any angle calculation.",
+        "builds_on": [
+          "Q-PHY-KIN-2D-EXT-2A-VELOCITY-DIRECTION"
+        ],
+        "protected_move_ref": "R-EXT-2B-VEL-DECIDE"
+      }
+    },
+    {
+      "id": "Q-PHY-KIN-2D-EXT-2B-BOUNCE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PEDAGOGICAL",
+        "grade9v3:owner_demand_ref": null
+      },
+      "origin": "AUTHORED",
+      "origin_ref": "SRC-PROJ-EXT-AUTHORED",
+      "original_identifier": "AUTHOR-PHY-KIN-2D-EXT-2B-BOUNCE",
+      "stem": "A projectile returns to level ground with speed U. After impact it retains 36% of its kinetic energy, and its rebound velocity has vertical:horizontal component ratio 3:4. Find its next maximum height in terms of U and g.",
+      "subparts": [],
+      "options": [],
+      "conditions": [
+        "Mass is unchanged.",
+        "Post-bounce free flight is gravity-only."
+      ],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "H=81U²/(1250g).",
+        "reasoning": [
+          "Protected choice: 36% KE means v_after²=0.36U², not v_after=0.36U.",
+          "A 3:4 component ratio gives v_y=(3/5)v_after, so v_y²=(9/25)(0.36U²)=81U²/625.",
+          "H=v_y²/(2g)=81U²/(1250g)."
+        ],
+        "check": "The result uses both the energy fraction and component-ratio squared, so it is much less than U²/(2g).",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "CHECKED_BY_AUTHOR",
+        "reasoning_route": [
+          {
+            "id": "R-EXT-2B-BOUNCE-FACTS",
+            "kind": "REPRESENT",
+            "action": "List retained energy and the 3:4 direction information separately.",
+            "why_valid": "This does not hand over how energy maps to speed.",
+            "inputs": [],
+            "output": "raw post-impact facts",
+            "representation_ref": "REP-PROJ-BOUNCE-ENERGY"
+          },
+          {
+            "id": "R-EXT-2B-BOUNCE-DECIDE",
+            "kind": "DECIDE",
+            "action": "Convert the energy fraction to a speed-squared fraction before using the component ratio.",
+            "why_valid": "K is proportional to v².",
+            "inputs": [],
+            "output": "v_after²=0.36U²"
+          },
+          {
+            "id": "R-EXT-2B-BOUNCE-CALC",
+            "kind": "TRANSFORM",
+            "action": "Use the 3:4 ratio to get v_y² and then height.",
+            "why_valid": "A 3-4-5 ratio sets the vertical speed fraction.",
+            "inputs": [],
+            "output": "H=81U²/(1250g)"
+          },
+          {
+            "id": "R-EXT-2B-BOUNCE-CHECK",
+            "kind": "VERIFY",
+            "action": "Check scaling against retained energy.",
+            "why_valid": "Height cannot exceed retained-energy vertical bound.",
+            "inputs": [],
+            "output": "checked"
+          }
+        ],
+        "crux_move_ref": "R-EXT-2B-BOUNCE-DECIDE",
+        "rubric": [
+          {
+            "criterion": "Selects the model or representation before calculating.",
+            "evidence_of": "The governing decision is explicit and justified."
+          },
+          {
+            "criterion": "Carries the reasoning to a checked result.",
+            "evidence_of": "The solution closes without tutor input."
+          }
+        ]
+      },
+      "primary_capability_ref": "CAP-PROJ-BOUNCE-ENERGY",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "family_ref": "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND",
+      "adaptation": {
+        "parent_ref": "Q-PHY-KIN-2D-EXT-2A-BOUNCE",
+        "changed_fields": [
+          "stem",
+          "conditions",
+          "answer"
+        ],
+        "reason": "Truthfully authored practice preserves the demand while removing source identity."
+      },
+      "exposure": [
+        {
+          "core": "CORE2B",
+          "role": "NEW_TRANSFER",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [
+        {
+          "text": "List the given facts without choosing the protected model/representation yet.",
+          "reveals": "CONCEPT"
+        }
+      ],
+      "repair_ref": "K2DX2-2",
+      "scaffolds": [],
+      "transfer": {
+        "dimension": "representation_translation",
+        "statement": "The rebound direction is supplied as a component ratio rather than an angle; the learner must still protect the energy-to-speed-squared decision before translating the new representation.",
+        "builds_on": [
+          "Q-PHY-KIN-2D-EXT-2A-BOUNCE"
+        ],
+        "protected_move_ref": "R-EXT-2B-BOUNCE-DECIDE"
+      }
+    },
+    {
+      "id": "Q-PHY-KIN-2D-EXT-2B-PIECEWISE-G",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PEDAGOGICAL",
+        "grade9v3:owner_demand_ref": null
+      },
+      "origin": "AUTHORED",
+      "origin_ref": "SRC-PROJ-EXT-AUTHORED",
+      "original_identifier": "AUTHOR-PHY-KIN-2D-EXT-2B-PIECEWISE-G",
+      "stem": "A projectile reaches its apex at horizontal position L and height H with horizontal speed V. Immediately after the apex, downward gravity changes to g/4. Decide the additional horizontal distance before it reaches the launch level.",
+      "subparts": [],
+      "options": [],
+      "conditions": [
+        "The apex state L,H,V is already known.",
+        "Only post-apex gravity changes."
+      ],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "Additional distance = 2V sqrt(2H/g).",
+        "reasoning": [
+          "Protected choice: start a new stage from the apex rather than rebuild the ascent.",
+          "With g_2=g/4 and v_y=0, H=(1/2)(g/4)t², so t=2sqrt(2H/g).",
+          "Multiply by unchanged horizontal speed V."
+        ],
+        "check": "Weaker gravity lengthens the descent relative to ordinary g.",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "CHECKED_BY_AUTHOR",
+        "reasoning_route": [
+          {
+            "id": "R-EXT-2B-G-FACTS",
+            "kind": "REPRESENT",
+            "action": "Record the given apex state and the post-apex gravity.",
+            "why_valid": "The ascent result is already supplied.",
+            "inputs": [],
+            "output": "boundary state",
+            "representation_ref": "REP-PROJ-PIECEWISE-G"
+          },
+          {
+            "id": "R-EXT-2B-G-DECIDE",
+            "kind": "DECIDE",
+            "action": "Use the supplied apex as the initial state of a new constant-acceleration stage.",
+            "why_valid": "The model changes only after that event.",
+            "inputs": [],
+            "output": "stage-2 initial state"
+          },
+          {
+            "id": "R-EXT-2B-G-CALC",
+            "kind": "TRANSFORM",
+            "action": "Solve fall time under g/4 and multiply by V.",
+            "why_valid": "Horizontal speed remains unchanged.",
+            "inputs": [],
+            "output": "2V sqrt(2H/g)"
+          },
+          {
+            "id": "R-EXT-2B-G-CHECK",
+            "kind": "VERIFY",
+            "action": "Compare with the ordinary-g descent.",
+            "why_valid": "Weaker gravity must increase distance.",
+            "inputs": [],
+            "output": "checked"
+          }
+        ],
+        "crux_move_ref": "R-EXT-2B-G-DECIDE",
+        "rubric": [
+          {
+            "criterion": "Selects the model or representation before calculating.",
+            "evidence_of": "The governing decision is explicit and justified."
+          },
+          {
+            "criterion": "Carries the reasoning to a checked result.",
+            "evidence_of": "The solution closes without tutor input."
+          }
+        ]
+      },
+      "primary_capability_ref": "CAP-PROJ-PIECEWISE-G",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "family_ref": "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND",
+      "adaptation": {
+        "parent_ref": "Q-PHY-KIN-2D-EXT-2A-PIECEWISE-G",
+        "changed_fields": [
+          "stem",
+          "conditions",
+          "answer"
+        ],
+        "reason": "Truthfully authored practice preserves the demand while removing source identity."
+      },
+      "exposure": [
+        {
+          "core": "CORE2B",
+          "role": "NEW_TRANSFER",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [
+        {
+          "text": "List the given facts without choosing the protected model/representation yet.",
+          "reveals": "CONCEPT"
+        }
+      ],
+      "repair_ref": "K2DX3-1",
+      "scaffolds": [],
+      "transfer": {
+        "dimension": "reasoning_steps",
+        "statement": "The apex state is supplied directly and the target is only the second-stage displacement; the learner must decide to start from the boundary rather than reuse whole-flight symmetry.",
+        "builds_on": [
+          "Q-PHY-KIN-2D-EXT-2A-PIECEWISE-G"
+        ],
+        "protected_move_ref": "R-EXT-2B-G-DECIDE"
+      }
+    },
+    {
+      "id": "Q-PHY-KIN-2D-EXT-2B-POINT",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PEDAGOGICAL",
+        "grade9v3:owner_demand_ref": null
+      },
+      "origin": "AUTHORED",
+      "origin_ref": "SRC-PROJ-EXT-AUTHORED",
+      "original_identifier": "AUTHOR-PHY-KIN-2D-EXT-2B-POINT",
+      "stem": "From the origin, can a finite-speed gravity-only projectile launched exactly along the straight line joining the origin to P=(5 m,1 m) pass through P? Justify without solving for a numerical speed.",
+      "subparts": [],
+      "options": [],
+      "conditions": [
+        "Uniform gravity acts downward.",
+        "The launch angle satisfies tan(theta)=1/5."
+      ],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "No finite speed can make it pass through P.",
+        "reasoning": [
+          "Protected choice: compare the trajectory equation with the straight launch ray.",
+          "At x=5, x tanθ=1 m, exactly the required y before gravity is included.",
+          "The subtractive gravity term is positive for every finite speed, so the actual y is below 1 m."
+        ],
+        "check": "In the infinite-speed limit the gravity term tends to zero, showing why no finite speed reaches the exact point on that ray.",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "CHECKED_BY_AUTHOR",
+        "reasoning_route": [
+          {
+            "id": "R-EXT-2B-POINT-FACTS",
+            "kind": "REPRESENT",
+            "action": "Plot the straight launch ray through P and the gravity-only trajectory form without deciding reachability.",
+            "why_valid": "This exposes the changed representation but not the key comparison.",
+            "inputs": [],
+            "output": "ray and path terms",
+            "representation_ref": "REP-PROJ-TRAJECTORY-POINT"
+          },
+          {
+            "id": "R-EXT-2B-POINT-DECIDE",
+            "kind": "DECIDE",
+            "action": "Compare P with the straight-line term before attempting to solve for u.",
+            "why_valid": "The gravity term always lowers the finite-speed path.",
+            "inputs": [],
+            "output": "reachability test"
+          },
+          {
+            "id": "R-EXT-2B-POINT-PROVE",
+            "kind": "CONNECT",
+            "action": "Show the required y already equals x tanθ, leaving no room for the negative gravity term.",
+            "why_valid": "For finite u the term is strictly negative.",
+            "inputs": [],
+            "output": "not reachable"
+          },
+          {
+            "id": "R-EXT-2B-POINT-CHECK",
+            "kind": "VERIFY",
+            "action": "Inspect u→∞ as a limit.",
+            "why_valid": "The path approaches but never equals the ray at finite u.",
+            "inputs": [],
+            "output": "checked"
+          }
+        ],
+        "crux_move_ref": "R-EXT-2B-POINT-DECIDE",
+        "rubric": [
+          {
+            "criterion": "Selects the model or representation before calculating.",
+            "evidence_of": "The governing decision is explicit and justified."
+          },
+          {
+            "criterion": "Carries the reasoning to a checked result.",
+            "evidence_of": "The solution closes without tutor input."
+          }
+        ]
+      },
+      "primary_capability_ref": "CAP-PROJ-TRAJECTORY-POINT",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "family_ref": "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND",
+      "adaptation": {
+        "parent_ref": "Q-PHY-KIN-2D-EXT-2A-POINT",
+        "changed_fields": [
+          "stem",
+          "conditions",
+          "answer"
+        ],
+        "reason": "Truthfully authored practice preserves the demand while removing source identity."
+      },
+      "exposure": [
+        {
+          "core": "CORE2B",
+          "role": "NEW_TRANSFER",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [
+        {
+          "text": "List the given facts without choosing the protected model/representation yet.",
+          "reveals": "CONCEPT"
+        }
+      ],
+      "repair_ref": "K2DX4-2",
+      "scaffolds": [],
+      "transfer": {
+        "dimension": "model_choice",
+        "statement": "Instead of solving for speed after point substitution, the learner must recognize a reachability boundary from the sign of the gravity term.",
+        "builds_on": [
+          "Q-PHY-KIN-2D-EXT-2A-POINT"
+        ],
+        "protected_move_ref": "R-EXT-2B-POINT-DECIDE"
+      }
+    },
+    {
+      "id": "Q-PHY-KIN-2D-EXT-2B-DRAG",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PEDAGOGICAL",
+        "grade9v3:owner_demand_ref": null
+      },
+      "origin": "AUTHORED",
+      "origin_ref": "SRC-PROJ-EXT-AUTHORED",
+      "original_identifier": "AUTHOR-PHY-KIN-2D-EXT-2B-DRAG",
+      "stem": "A projectile's measured horizontal velocity halves every τ seconds in a medium. Decide whether x=v_x0 t is valid and write a horizontal displacement expression in terms of v_x0, τ and t consistent with linear drag.",
+      "subparts": [],
+      "options": [],
+      "conditions": [
+        "The decay is exponential and caused by linear drag."
+      ],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "x=(v_x0 τ/ln2)[1-2^{-t/τ}], so x=v_x0 t is not valid except as a short-time/zero-drag limit.",
+        "reasoning": [
+          "Protected choice: infer exponential decay v_x=v_x0 2^{-t/τ}=v_x0 exp[-(ln2)t/τ].",
+          "Integrate that velocity from 0 to t.",
+          "The integral gives v_x0 τ/ln2 times (1-2^{-t/τ})."
+        ],
+        "check": "At small t the expression expands to approximately v_x0 t.",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "CHECKED_BY_AUTHOR",
+        "reasoning_route": [
+          {
+            "id": "R-EXT-2B-DRAG-FACTS",
+            "kind": "REPRESENT",
+            "action": "Record the empirical half-life statement without assuming constant horizontal velocity.",
+            "why_valid": "A halving law is incompatible with v_x constant.",
+            "inputs": [],
+            "output": "velocity-decay evidence",
+            "representation_ref": "REP-KIN-2D-LINEAR-DRAG"
+          },
+          {
+            "id": "R-EXT-2B-DRAG-DECIDE",
+            "kind": "DECIDE",
+            "action": "Translate the halving statement into an exponential velocity law before computing distance.",
+            "why_valid": "Linear drag produces exponential velocity decay.",
+            "inputs": [],
+            "output": "v_x=v_x0 2^{-t/τ}"
+          },
+          {
+            "id": "R-EXT-2B-DRAG-INTEGRATE",
+            "kind": "TRANSFORM",
+            "action": "Integrate the exponential law.",
+            "why_valid": "Displacement is the time integral of velocity.",
+            "inputs": [],
+            "output": "x=(v_x0 τ/ln2)(1-2^{-t/τ})"
+          },
+          {
+            "id": "R-EXT-2B-DRAG-CHECK",
+            "kind": "VERIFY",
+            "action": "Take the short-time limit.",
+            "why_valid": "It approaches v_x0 t.",
+            "inputs": [],
+            "output": "checked"
+          }
+        ],
+        "crux_move_ref": "R-EXT-2B-DRAG-DECIDE",
+        "rubric": [
+          {
+            "criterion": "Selects the model or representation before calculating.",
+            "evidence_of": "The governing decision is explicit and justified."
+          },
+          {
+            "criterion": "Carries the reasoning to a checked result.",
+            "evidence_of": "The solution closes without tutor input."
+          }
+        ]
+      },
+      "primary_capability_ref": "CAP-KIN-2D-LINEAR-DRAG",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "family_ref": "FAM-PHY-KIN-2D-PROJECTILE-EXTENSION-DEMAND",
+      "adaptation": {
+        "parent_ref": "Q-PHY-KIN-2D-EXT-2A-DRAG",
+        "changed_fields": [
+          "stem",
+          "conditions",
+          "answer"
+        ],
+        "reason": "Truthfully authored practice preserves the demand while removing source identity."
+      },
+      "exposure": [
+        {
+          "core": "CORE2B",
+          "role": "NEW_TRANSFER",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [
+        {
+          "text": "List the given facts without choosing the protected model/representation yet.",
+          "reveals": "CONCEPT"
+        }
+      ],
+      "repair_ref": "K2DX5-1",
+      "scaffolds": [],
+      "transfer": {
+        "dimension": "representation_translation",
+        "statement": "The drag parameter is given through a velocity half-life rather than c/m; the learner must recognize and translate the exponential representation before integrating.",
+        "builds_on": [
+          "Q-PHY-KIN-2D-EXT-2A-DRAG"
+        ],
+        "protected_move_ref": "R-EXT-2B-DRAG-DECIDE"
+      }
+    }
+  ],
+  "teaching_routes": [
+    {
+      "id": "ROUTE-KIN-2D-PROJ-EXT-CORE1A",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "Projectile-demand extension CORE1A route",
+      "cores": [
+        "CORE1A"
+      ],
+      "microtopic_refs": [
+        "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+        "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+        "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+        "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+        "MIC-PHY-KIN-2D-LINEAR-DRAG"
+      ],
+      "entry_needs": [
+        "Complete the canonical Motion-in-2D R1–R3 sequence before these labelled extensions."
+      ],
+      "learner_actions": [
+        "Study each admitted extension after the canonical projectile model.",
+        "Use the representation and check attached to each extension."
+      ],
+      "help_plan": [
+        "Name the canonical state being extended.",
+        "Keep source demand distinct from authored support.",
+        "Use immediate repair to the listed extension teaching step."
+      ],
+      "reveal_plan": "Reveal the complete extension construction, worked anchor, wrong path, repair and closure.",
+      "source_preferences": [
+        {
+          "resource_ref": "SRC-PROJ-EXT-OPENSTAX-VELOCITY",
+          "purpose": "Extension physics reference",
+          "reason": "Supports the explicit extension relation without making assessment demand into teaching authority."
+        },
+        {
+          "resource_ref": "SRC-PROJ-EXT-OPENSTAX-PROJECTILE",
+          "purpose": "Extension physics reference",
+          "reason": "Supports the explicit extension relation without making assessment demand into teaching authority."
+        },
+        {
+          "resource_ref": "SRC-PROJ-EXT-OPENSTAX-ENERGY",
+          "purpose": "Extension physics reference",
+          "reason": "Supports the explicit extension relation without making assessment demand into teaching authority."
+        },
+        {
+          "resource_ref": "SRC-PROJ-EXT-LIBRETEXTS-RESTITUTION",
+          "purpose": "Extension physics reference",
+          "reason": "Supports the explicit extension relation without making assessment demand into teaching authority."
+        },
+        {
+          "resource_ref": "SRC-PROJ-EXT-OPENSTAX-DRAG",
+          "purpose": "Extension physics reference",
+          "reason": "Supports the explicit extension relation without making assessment demand into teaching authority."
+        }
+      ],
+      "when_not_suitable": [
+        "Do not use this route before the canonical Motion-in-2D R1–R3 concepts are taught."
+      ],
+      "practice_profile_ref": null
+    },
+    {
+      "id": "ROUTE-KIN-2D-PROJ-EXT-CORE1B",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "Projectile-demand extension CORE1B route",
+      "cores": [
+        "CORE1B"
+      ],
+      "microtopic_refs": [
+        "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+        "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+        "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+        "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+        "MIC-PHY-KIN-2D-LINEAR-DRAG"
+      ],
+      "entry_needs": [
+        "Complete the canonical Motion-in-2D R1–R3 sequence before these labelled extensions."
+      ],
+      "learner_actions": [
+        "Predict the model/representation first, attempt it, then reveal reconstruction and boundary check."
+      ],
+      "help_plan": [
+        "Name the canonical state being extended.",
+        "Keep source demand distinct from authored support.",
+        "Use immediate repair to the listed extension teaching step."
+      ],
+      "reveal_plan": "Require a learner decision before revealing reconstruction, diagnosis, repair and model response.",
+      "source_preferences": [
+        {
+          "resource_ref": "SRC-PROJ-EXT-OPENSTAX-VELOCITY",
+          "purpose": "Extension physics reference",
+          "reason": "Supports the explicit extension relation without making assessment demand into teaching authority."
+        },
+        {
+          "resource_ref": "SRC-PROJ-EXT-OPENSTAX-PROJECTILE",
+          "purpose": "Extension physics reference",
+          "reason": "Supports the explicit extension relation without making assessment demand into teaching authority."
+        },
+        {
+          "resource_ref": "SRC-PROJ-EXT-OPENSTAX-ENERGY",
+          "purpose": "Extension physics reference",
+          "reason": "Supports the explicit extension relation without making assessment demand into teaching authority."
+        },
+        {
+          "resource_ref": "SRC-PROJ-EXT-LIBRETEXTS-RESTITUTION",
+          "purpose": "Extension physics reference",
+          "reason": "Supports the explicit extension relation without making assessment demand into teaching authority."
+        },
+        {
+          "resource_ref": "SRC-PROJ-EXT-OPENSTAX-DRAG",
+          "purpose": "Extension physics reference",
+          "reason": "Supports the explicit extension relation without making assessment demand into teaching authority."
+        }
+      ],
+      "when_not_suitable": [
+        "Do not use this route before the canonical Motion-in-2D R1–R3 concepts are taught."
+      ],
+      "practice_profile_ref": null
+    }
+  ],
+  "practice_profiles": [],
+  "evidence": [],
+  "known_issues": [],
+  "extensions": {
+    "grade9v3:classification": "EXTENSION",
+    "grade9v3:canonical_bucket_ref": "BUCKET-PHY-KIN-2D-MOTION",
+    "grade9v3:canonical_microtopic_order": [
+      "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "MIC-PHY-KIN-PROJECTILE-MODEL"
+    ],
+    "grade9v3:owner_demand_labels": [
+      "Q28",
+      "Q15",
+      "Q21",
+      "Q26",
+      "Q23"
+    ]
+  },
+  "data": []
+}
