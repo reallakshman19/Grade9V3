@@ -76,7 +76,20 @@
       "Motion in 1D — relative motion only": 3
     },
     "grade9v3:source_resource_policy": "Question source_refs/origin_ref resolve against resources[]; exact source wording remains external.",
-    "grade9v3:accepted_question_count": 31
+    "grade9v3:accepted_question_count": 31,
+    "grade9v3:projectile_stress": {
+      "owner_demand_labels": [
+        "Q28",
+        "Q15",
+        "Q21",
+        "Q26",
+        "Q23"
+      ],
+      "q15_selected_ref": "PYQ-PHY-JEEADV-2018-P2-Q08",
+      "q15_nonselected_ref": "PYQ-PHY-JEEADV-2023-P1-Q01",
+      "extension_package_ref": "PKG-PHY-KIN-2D-PROJECTILE-EXTENSIONS",
+      "trace_ref": "Physics/content/motion-2d-projectile-demand/trace.v1.json"
+    }
   },
   "questions": [
     {
@@ -1453,6 +1466,22 @@
             "dimension": null,
             "classification": "SAME_FAMILY_VARIATION"
           }
+        },
+        "grade9v3:projectile_stress": {
+          "owner_label": "Q15",
+          "demand": "Maximum projectile height after an energy-losing bounce",
+          "demand_evidence_status": "SOURCE_VERIFIED",
+          "learner_eligibility": "EXCLUDED",
+          "classification": [
+            "CANONICAL_CONSEQUENCE",
+            "EXTENSION"
+          ],
+          "extension_microtopic_refs": [
+            "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY"
+          ],
+          "authored_practice_ref": "Q-PHY-KIN-2D-EXT-2A-BOUNCE",
+          "selection_status": "SELECTED",
+          "identity_discriminator": "Official 2018 Paper 2 Physics Q8 states a 45-degree projectile with H=120 m, loss of half the kinetic energy at the first ground bounce, rebound at 30 degrees, and asks the new maximum height; this matches the owner demand."
         }
       },
       "origin": "ADAPTED",
@@ -3104,6 +3133,21 @@
             "dimension": null,
             "classification": "SAME_FAMILY_VARIATION"
           }
+        },
+        "grade9v3:projectile_stress": {
+          "owner_label": "Q21",
+          "demand": "Gravity changes after the apex",
+          "demand_evidence_status": "SOURCE_VERIFIED",
+          "learner_eligibility": "EXCLUDED",
+          "classification": [
+            "CANONICAL_CONSEQUENCE",
+            "EXTENSION"
+          ],
+          "extension_microtopic_refs": [
+            "MIC-PHY-KIN-PROJ-PIECEWISE-G"
+          ],
+          "authored_practice_ref": "Q-PHY-KIN-2D-EXT-2A-PIECEWISE-G",
+          "selection_status": "SELECTED"
         }
       },
       "origin": "ADAPTED",
@@ -3269,6 +3313,21 @@
             "dimension": "reasoning_steps",
             "classification": "REAL_TRANSFER_CANDIDATE"
           }
+        },
+        "grade9v3:projectile_stress": {
+          "owner_label": "Q15",
+          "demand": "Candidate evidence for the bounce identity",
+          "demand_evidence_status": "SOURCE_VERIFIED",
+          "learner_eligibility": "EXCLUDED",
+          "classification": [
+            "CANONICAL_CONSEQUENCE",
+            "EXTENSION"
+          ],
+          "extension_microtopic_refs": [
+            "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY"
+          ],
+          "selection_status": "NOT_SELECTED",
+          "identity_discriminator": "Official 2023 Paper 1 Physics Q1 is a building/slide projectile with coefficient of restitution 1/sqrt(3), multiple statements and rebound height h1; it is a different demand from the owner label."
         }
       },
       "origin": "ADAPTED",
@@ -3440,6 +3499,20 @@
             "dimension": "model_choice",
             "classification": "REAL_TRANSFER_CANDIDATE"
           }
+        },
+        "grade9v3:projectile_stress": {
+          "owner_label": "Q23",
+          "demand": "Projectile motion with linear drag",
+          "demand_evidence_status": "SOURCE_VERIFIED",
+          "learner_eligibility": "EXCLUDED",
+          "classification": [
+            "EXTENSION"
+          ],
+          "extension_microtopic_refs": [
+            "MIC-PHY-KIN-2D-LINEAR-DRAG"
+          ],
+          "authored_practice_ref": "Q-PHY-KIN-2D-EXT-2A-DRAG",
+          "selection_status": "SELECTED"
         }
       },
       "origin": "ADAPTED",
@@ -4450,6 +4523,21 @@
             "dimension": "reasoning_steps",
             "classification": "REAL_TRANSFER_CANDIDATE"
           }
+        },
+        "grade9v3:projectile_stress": {
+          "owner_label": "Q26",
+          "demand": "Trajectory through a specified point",
+          "demand_evidence_status": "SOURCE_VERIFIED",
+          "learner_eligibility": "EXCLUDED",
+          "classification": [
+            "CANONICAL_CONSEQUENCE",
+            "EXTENSION"
+          ],
+          "extension_microtopic_refs": [
+            "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT"
+          ],
+          "authored_practice_ref": "Q-PHY-KIN-2D-EXT-2A-POINT",
+          "selection_status": "SELECTED"
         }
       },
       "origin": "ADAPTED",
@@ -4951,6 +5039,21 @@
             "dimension": null,
             "classification": "SAME_FAMILY_VARIATION"
           }
+        },
+        "grade9v3:projectile_stress": {
+          "owner_label": "Q28",
+          "demand": "Velocity direction from x(t) and y(t)",
+          "demand_evidence_status": "SOURCE_VERIFIED",
+          "learner_eligibility": "DEFAULT_ELIGIBLE",
+          "classification": [
+            "CANONICAL",
+            "EXTENSION"
+          ],
+          "extension_microtopic_refs": [
+            "MIC-PHY-KIN-2D-VEL-FROM-POSITION"
+          ],
+          "authored_practice_ref": "Q-PHY-KIN-2D-EXT-2A-VELOCITY-DIRECTION",
+          "selection_status": "SELECTED"
         }
       },
       "origin": "ADAPTED",
