@@ -1,0 +1,166 @@
+{
+  "matrix_id": "MATRIX-PHY-KIN-2D-PROJECTILE-EXTENSIONS",
+  "subject": "Physics",
+  "bucket_id": "BUCKET-PHY-KIN-2D-PROJECTILE-EXTENSIONS",
+  "topic": "Motion in 2 D",
+  "subtopic": "Projectile demand extensions",
+  "axis_note": "E1–E5 are explicit extension coordinates placed after the canonical Motion-in-2D R1–R3 ladder; they do not alter, merge or reorder R1–R3.",
+  "rungs": [
+    {
+      "rung": "E1",
+      "ladder_position": 1,
+      "provenance": "SYNTHESIS",
+      "microtopic_ref": "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+      "ceiling": [
+        "Do not introduce any model or calculus operation beyond the explicitly admitted extension relation for this rung."
+      ],
+      "must_contain": [
+        "Differentiate position components only after deciding that the requested direction is velocity, not position."
+      ],
+      "controlled_variation": [
+        {
+          "phase": 1,
+          "vary": "position-function coefficients",
+          "hold": "one common evaluation time",
+          "notice": "the tangent velocity is built from component derivatives, not the position ratio"
+        }
+      ],
+      "default_entry_eligible": false
+    },
+    {
+      "rung": "E2",
+      "ladder_position": 2,
+      "provenance": "SYNTHESIS",
+      "microtopic_ref": "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+      "ceiling": [
+        "Do not introduce any model or calculus operation beyond the explicitly admitted extension relation for this rung."
+      ],
+      "must_contain": [
+        "Treat impact as a new launch event and convert retained kinetic energy into retained speed squared."
+      ],
+      "controlled_variation": [
+        {
+          "phase": 1,
+          "vary": "energy-retention fraction and rebound representation",
+          "hold": "one post-impact projectile model",
+          "notice": "height follows the post-impact vertical component, not the pre-impact path"
+        }
+      ],
+      "default_entry_eligible": false
+    },
+    {
+      "rung": "E3",
+      "ladder_position": 3,
+      "provenance": "SYNTHESIS",
+      "microtopic_ref": "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+      "ceiling": [
+        "Do not introduce any model or calculus operation beyond the explicitly admitted extension relation for this rung."
+      ],
+      "must_contain": [
+        "Carry the apex state into a second constant-acceleration stage when gravity changes after the boundary."
+      ],
+      "controlled_variation": [
+        {
+          "phase": 1,
+          "vary": "post-apex gravity ratio",
+          "hold": "the already-computed apex state",
+          "notice": "only the second-stage descent time and distance change"
+        }
+      ],
+      "default_entry_eligible": false
+    },
+    {
+      "rung": "E4",
+      "ladder_position": 4,
+      "provenance": "SYNTHESIS",
+      "microtopic_ref": "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+      "ceiling": [
+        "Do not introduce any model or calculus operation beyond the explicitly admitted extension relation for this rung."
+      ],
+      "must_contain": [
+        "Eliminate the shared time to obtain y(x), then keep point membership separate from branch/apex classification."
+      ],
+      "controlled_variation": [
+        {
+          "phase": 1,
+          "vary": "specified point and launch representation",
+          "hold": "gravity-only model and one common path",
+          "notice": "the point constraint and rising/falling decision are distinct"
+        }
+      ],
+      "default_entry_eligible": false
+    },
+    {
+      "rung": "E5",
+      "ladder_position": 5,
+      "provenance": "SYNTHESIS",
+      "microtopic_ref": "MIC-PHY-KIN-2D-LINEAR-DRAG",
+      "ceiling": [
+        "Do not introduce any model or calculus operation beyond the explicitly admitted extension relation for this rung."
+      ],
+      "must_contain": [
+        "Reject the a_x=0 shortcut when F=-cv and use exponential horizontal velocity decay before integrating displacement."
+      ],
+      "controlled_variation": [
+        {
+          "phase": 1,
+          "vary": "drag time constant or c/m",
+          "hold": "the linear drag law",
+          "notice": "horizontal velocity decays and the no-drag law is recovered only as a limit"
+        }
+      ],
+      "default_entry_eligible": false
+    }
+  ],
+  "family": {
+    "invariant_demand": "Start from the canonical R1–R3 projectile state, identify one explicit demand change, then choose the admitted extension representation or model before calculation.",
+    "difficult_move": "Keep canonical consequences separate from the new model/representation decision so advanced demand does not silently become canonical teaching.",
+    "independent_check": "Every extension answer must reduce to the canonical model in an appropriate limit or satisfy an independent physical bound.",
+    "support_ladder": [
+      {
+        "level": "high",
+        "handed_over": "The extension name and a partially labelled representation, but not the protected Core2B decision."
+      },
+      {
+        "level": "medium",
+        "handed_over": "The relevant canonical state and event boundary only."
+      },
+      {
+        "level": "low",
+        "handed_over": "The givens and the request only."
+      }
+    ]
+  },
+  "transfer": [
+    {
+      "dimension": "representation_translation",
+      "changed_demand": "Both x(t) and y(t) vary, so velocity direction must be reconstructed from two derivatives.",
+      "information_not_handed_over": "That derivative components, not position ratios, define the requested direction.",
+      "repair_to": "E1"
+    },
+    {
+      "dimension": "representation_translation",
+      "changed_demand": "Bounce direction is supplied as a component ratio rather than an angle.",
+      "information_not_handed_over": "The energy fraction must first become a speed-squared fraction.",
+      "repair_to": "E2"
+    },
+    {
+      "dimension": "reasoning_steps",
+      "changed_demand": "The apex state is given directly and only the second-stage displacement is requested.",
+      "information_not_handed_over": "That the new stage must begin from the supplied apex state rather than use whole-flight symmetry.",
+      "repair_to": "E3"
+    },
+    {
+      "dimension": "model_choice",
+      "changed_demand": "Reachability is decided from the sign of the trajectory gravity term rather than by solving for a numerical speed.",
+      "information_not_handed_over": "The comparison between the straight launch ray and the finite-speed trajectory.",
+      "repair_to": "E4"
+    },
+    {
+      "dimension": "representation_translation",
+      "changed_demand": "Linear drag is specified through a velocity half-life rather than c/m.",
+      "information_not_handed_over": "The exponential velocity representation and its integration to displacement.",
+      "repair_to": "E5"
+    }
+  ]
+}
