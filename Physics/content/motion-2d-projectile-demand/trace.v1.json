@@ -7,7 +7,7 @@
   "q15_identity": {
     "selected_ref": "PYQ-PHY-JEEADV-2018-P2-Q08",
     "comparison_ref": "PYQ-PHY-JEEADV-2023-P1-Q01",
-    "discriminator": "The 2023 item is a building/slide projectile with a stated coefficient of restitution and multiple statements; it does not match the owner demand of a 45-degree projectile losing half its kinetic energy at the first ground bounce and leaving at 30 degrees."
+    "discriminator": "This is a different demand: the 2023 item is a building/slide projectile with a stated coefficient of restitution and multiple statements; it does not match the owner demand of a 45-degree projectile losing half its kinetic energy at the first ground bounce and leaving at 30 degrees."
   },
   "artifacts": [
     {
