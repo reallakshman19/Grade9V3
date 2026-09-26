@@ -256,6 +256,10 @@ def reconstruction_section(m: dict, visual_specs: dict, extension: bool) -> str:
         for x in m.get("misconceptions", [])
     )
     visual = "".join(visual_svg(visual_specs[r]) for r in m.get("representation_refs", []) if r in visual_specs)
+    route_html = "".join(
+        f'<li>{esc(x["ask"])}<br><span class="prov">{esc(x["why_this_ask"])}</span></li>'
+        for x in e["reconstruct"]["route"]
+    )
     ext_class = " extension" if extension else ""
     ext_badge = '<div class="eyebrow">EXTENSION</div>' if extension else '<div class="eyebrow">Canonical</div>'
     return (
@@ -265,7 +269,7 @@ def reconstruction_section(m: dict, visual_specs: dict, extension: bool) -> str:
         f'<textarea aria-label="attempt for {esc(m["title"])}"></textarea></section>'
         f'<details data-stage="RECONSTRUCT"><summary>RECONSTRUCT · open after your attempt</summary>'
         f'<p><strong>Defensible prediction:</strong> {esc(e["predict"]["defensible_answer"])}</p>'
-        f'<ol class="steps">{"".join(f"<li>{esc(x["ask"])}<br><span class=\"prov\">{esc(x["why_this_ask"])}</span></li>" for x in e["reconstruct"]["route"])}</ol>'
+        f'<ol class="steps">{route_html}</ol>'
         f'<h3>DIAGNOSE → REPAIR</h3><ul>{wrong}</ul>'
         f'<h3>Model response / rubric</h3><p>{esc(model)}</p>'
         f'<h3>Rejoin the inferential jump</h3><p>{esc(m["inferential_jump"])}</p>{visual}</details>'
@@ -289,12 +293,16 @@ def scaffold_html(q: dict) -> str:
 def application_question(q: dict) -> str:
     answer = q["answer"]
     repair = q.get("repair_ref", "")
+    route_html = "".join(
+        f'<li><strong>{esc(m["kind"])}</strong> — {esc(m["action"])}<br>Why valid: {esc(m["why_valid"])}</li>'
+        for m in answer.get("reasoning_route", [])
+    )
     return (
         f'<article class="question" id="{esc(q["id"])}" data-role="supported-application"><div class="eyebrow">AUTHORED_PRACTICE</div>'
         f'<h2>{esc(q["stem"])}</h2><h3>Conditions</h3>{list_html(q.get("conditions", []))}'
         f'{scaffold_html(q)}<section class="attempt" data-stage="ATTEMPT"><h3>Your independent attempt</h3><textarea aria-label="application attempt"></textarea></section>'
         f'<details data-role="answer"><summary>Reasoning route and full solution</summary>'
-        f'<ol class="steps">{"".join(f"<li><strong>{esc(m["kind"])}</strong> — {esc(m["action"])}<br>Why valid: {esc(m["why_valid"])}</li>" for m in answer.get("reasoning_route", []))}</ol>'
+        f'<ol class="steps">{route_html}</ol>'
         f'<p><strong>Crux move:</strong> <code>{esc(answer.get("crux_move_ref",""))}</code></p>'
         f'<p><strong>Answer:</strong> {esc(answer["summary"])}</p>{list_html(answer.get("reasoning", []), True, "steps")}'
         f'<p class="check"><strong>Independent check:</strong> {esc(answer["check"])}</p>'
