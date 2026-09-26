@@ -67,13 +67,49 @@
     "python3 Shared/tools/build_pages_site.py --check",
     "python3 -m unittest discover -s tests -p \"test_*.py\""
   ],
-  "note": "Direct product invariants and source identity are recorded here. The repository validation commands remain the authoritative executable gate when a runner starts; no human academic/publication review is claimed.",
+  "note": "Product/source/schema invariants are directly checked and support STRUCTURALLY_VALIDATED and SOURCE_VERIFIED. Hosted CI has not executed its command bodies because jobs terminate before workflow steps begin; no human academic/publication review is claimed.",
   "product_ref": "PRODUCT-PHY-KIN-2D-PROJECTILE-DEMAND",
   "generated_product_ref": "public/physics/motion-in-2d/projectile-demand/",
   "trace_ref": "Physics/content/motion-2d-projectile-demand/trace.v1.json",
   "ci_observation": {
-    "head_sha": "66cfb251d0969b23ef57dab6dfd4f37a72d4f3b5",
+    "head_sha": "8621c5421d3f7ab5fd12b4ca0218df6fb2411885",
     "state": "JOBS_TERMINATED_BEFORE_STEPS",
-    "detail": "GitHub Actions check runs completed as failure within seconds with zero recorded workflow steps; this report does not treat that runner condition as a learner-product state or as evidence that repository validation commands executed."
+    "detail": "GitHub Actions check runs completed as failure within seconds with zero recorded workflow steps and two run annotations each. Therefore the repository command suite is not represented as executed by hosted CI in this report."
+  },
+  "direct_invariant_audit": {
+    "status": "PASS",
+    "method": "Connector-side deterministic assertions over committed product, canonical package, extension package, source bank, trace, and generated learner pages.",
+    "checks": [
+      "canonical_exact_three",
+      "extension_package_schema",
+      "extension_matrix_schema",
+      "extensions_five_candidate_and_labelled",
+      "five_demands_accounted",
+      "q15_identity_discriminated",
+      "source_primary_capability_refs_preserved",
+      "demand_evidence_separate_from_learner_eligibility",
+      "core1a_core1b_identical_eight_concept_coverage",
+      "core2a_reasoning_crux_check_repair_complete",
+      "core2b_protected_decide_prior_exposure_no_scaffolds",
+      "three_item_diagnostic_default_median_50_full_support",
+      "trace_37_rows_required_fields",
+      "no_primary_concept_id",
+      "no_escape_tokens_product_trace",
+      "six_core_blueprint_identity",
+      "core1b_attempt_before_reconstruction",
+      "core2b_commit_before_changed_demand_and_protected_move",
+      "five_extension_visuals_rendered_with_accessible_descriptions"
+    ],
+    "result": "19/19 PASS"
+  },
+  "schema_validation": {
+    "package_schema": "PASS — Shared/library/package.schema.json",
+    "matrix_schema": "PASS — Shared/library/matrix.schema.json",
+    "correction_applied": "Extension package schema_version aligned to required 0.1.0."
+  },
+  "review_labels": {
+    "human_academic_review": "OWNER_REVIEW",
+    "academic_review_claimed": false,
+    "publication_ready_claimed": false
   }
 }
