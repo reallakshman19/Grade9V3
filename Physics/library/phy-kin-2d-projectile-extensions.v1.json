@@ -2398,9 +2398,9 @@
         "kind": "MODEL_RESPONSE",
         "summary": "u²/g=16/3 m and the projectile is already descending at P.",
         "reasoning": [
-          "Use y=x-gx²/(u²) for theta=45°.",
-          "At P: 1=4-16g/u², so u²/g=16/3? Re-evaluate: for theta=45°, denominator 2u²cos²45=u², so 1=4-16g/u², hence u²/g=16/3 m.",
-          "Slope dy/dx=1-2gx/u²=1-8/(16/3)=-1/2, so it is descending."
+          "For theta=45 degrees, the trajectory relation becomes y=x-gx^2/u^2.",
+          "At P=(4,1), 1=4-16g/u^2, so 16g/u^2=3 and therefore u^2/g=16/3 m.",
+          "The local slope is dy/dx=1-2gx/u^2=1-8/(16/3)=-1/2, so the projectile is descending at P."
         ],
         "check": "Substituting u²/g=16/3 back into the path gives y=1 and the negative slope locates P after the apex.",
         "acceptable_alternatives": [],
