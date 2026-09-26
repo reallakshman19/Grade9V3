@@ -27,11 +27,11 @@
       "owner_label": "Q28",
       "resolved_ref": "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
       "primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
-      "extension_microtopic_ref": "MIC-PHY-KIN-2D-PARAMETRIC-VELOCITY",
+      "extension_microtopic_ref": "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
       "classification": "EXTENSION",
       "learner_eligibility": "DEFAULT_ELIGIBLE",
-      "core2a_ref": "Q-PROJ-STRESS-2A-PARAMETRIC",
-      "core2b_ref": "Q-PROJ-STRESS-2B-PARAMETRIC",
+      "core2a_ref": "Q-PHY-KIN-2D-EXT-2A-VELOCITY-DIRECTION",
+      "core2b_ref": "Q-PHY-KIN-2D-EXT-2B-VELOCITY-DIRECTION",
       "duty": "AUTHOR_EXTENSION_TEACHING"
     },
     {
@@ -42,22 +42,22 @@
         "PYQ-PHY-JEEADV-2023-P1-Q01"
       ],
       "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
-      "extension_microtopic_ref": "MIC-PHY-KIN-PROJ-ENERGY-BOUNCE",
+      "extension_microtopic_ref": "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
       "classification": "EXTENSION",
       "learner_eligibility": "EXCLUDED",
-      "core2a_ref": "Q-PROJ-STRESS-2A-ENERGY",
-      "core2b_ref": "Q-PROJ-STRESS-2B-ENERGY",
+      "core2a_ref": "Q-PHY-KIN-2D-EXT-2A-BOUNCE",
+      "core2b_ref": "Q-PHY-KIN-2D-EXT-2B-BOUNCE",
       "duty": "RESEARCH_SOURCE_IDENTITY+AUTHOR_EXTENSION_TEACHING+AUTHOR_PRACTICE"
     },
     {
       "owner_label": "Q21",
       "resolved_ref": "PYQ-PHY-JEEADV-2022-P1-Q08",
       "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
-      "extension_microtopic_ref": "MIC-PHY-KIN-PROJ-SWITCHED-GRAVITY",
+      "extension_microtopic_ref": "MIC-PHY-KIN-PROJ-PIECEWISE-G",
       "classification": "EXTENSION",
       "learner_eligibility": "EXCLUDED",
-      "core2a_ref": "Q-PROJ-STRESS-2A-SWITCHED-G",
-      "core2b_ref": "Q-PROJ-STRESS-2B-SWITCHED-G",
+      "core2a_ref": "Q-PHY-KIN-2D-EXT-2A-PIECEWISE-G",
+      "core2b_ref": "Q-PHY-KIN-2D-EXT-2B-PIECEWISE-G",
       "duty": "AUTHOR_EXTENSION_TEACHING+AUTHOR_PRACTICE"
     },
     {
@@ -67,19 +67,19 @@
       "extension_microtopic_ref": "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
       "classification": "EXTENSION",
       "learner_eligibility": "EXCLUDED",
-      "core2a_ref": "Q-PROJ-STRESS-2A-TRAJECTORY",
-      "core2b_ref": "Q-PROJ-STRESS-2B-TRAJECTORY",
+      "core2a_ref": "Q-PHY-KIN-2D-EXT-2A-POINT",
+      "core2b_ref": "Q-PHY-KIN-2D-EXT-2B-POINT",
       "duty": "AUTHOR_EXTENSION_TEACHING+AUTHOR_PRACTICE"
     },
     {
       "owner_label": "Q23",
       "resolved_ref": "PYQ-PHY-JEEADV-2025-P2-Q15",
       "primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
-      "extension_microtopic_ref": "MIC-PHY-KIN-PROJ-LINEAR-DRAG",
+      "extension_microtopic_ref": "MIC-PHY-KIN-2D-LINEAR-DRAG",
       "classification": "EXTENSION",
       "learner_eligibility": "EXCLUDED",
-      "core2a_ref": "Q-PROJ-STRESS-2A-DRAG",
-      "core2b_ref": "Q-PROJ-STRESS-2B-DRAG",
+      "core2a_ref": "Q-PHY-KIN-2D-EXT-2A-DRAG",
+      "core2b_ref": "Q-PHY-KIN-2D-EXT-2B-DRAG",
       "duty": "AUTHOR_EXTENSION_TEACHING+AUTHOR_PRACTICE"
     }
   ],
