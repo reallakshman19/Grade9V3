@@ -1,0 +1,71 @@
+name: motion2d-projectile-product
+
+on:
+  pull_request:
+    paths:
+      - "Physics/library/phy-kin-2d-projectile-extensions.v1.json"
+      - "Physics/library/exam-bank/competitive-exam-question-bank.v2.json"
+      - "Physics/matrices/phy-kin-2d-projectile-extensions.rungs.json"
+      - "Physics/content/motion-2d-projectile-demand/**"
+      - "Physics/tools/build_motion2d_projectile_product.py"
+      - "tests/test_motion2d_projectile_stress_product.py"
+      - ".github/workflows/motion2d-projectile-product.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-validate-sync:
+    if: ${{ github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install schema validator
+        run: python3 -m pip install --quiet jsonschema
+
+      - name: Build six-Core projectile product
+        run: python3 Physics/tools/build_motion2d_projectile_product.py
+
+      - name: Regenerate repository projections
+        run: |
+          python3 Shared/tools/build_core_learning_data.py
+          python3 Shared/tools/build_question_bank_web.py
+          python3 Shared/tools/build_web_data.py
+          python3 Shared/tools/build_manifest.py
+          python3 Shared/tools/build_pages_site.py
+
+      - name: Validate research-first product and repository contracts
+        run: |
+          python3 Physics/tools/build_motion2d_projectile_product.py --check
+          python3 Shared/tools/build_question_bank_web.py --check
+          python3 Shared/tools/escape_state_guard.py
+          python3 Shared/tools/core_template_contract.py
+          python3 Shared/tools/core_template_contract.py --enforce
+          python3 Shared/tools/core_authority_contract.py
+          python3 Shared/tools/core_authority_contract.py --enforce
+          python3 Shared/tools/topic_independence_guard.py
+          python3 Shared/tools/build_manifest.py --check
+          python3 Shared/tools/build_pages_site.py --check
+          python3 -m unittest discover -s tests -p "test_*.py"
+
+      - name: Commit deterministic generated artifacts
+        if: ${{ github.event_name == 'pull_request' }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Generated artifacts are already current."
+            exit 0
+          fi
+          git commit -m "[projectile-generated] Refresh six-Core learner product"
+          git push origin HEAD:${{ github.head_ref }}
