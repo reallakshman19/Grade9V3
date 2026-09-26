@@ -27,7 +27,7 @@ class ProjectileStressDelivery(unittest.TestCase):
         transfer=[q for q in qs if q["exposure"][0]["core"]=="CORE2B"]
         self.assertEqual(len(transfer),5)
         self.assertTrue(all(q["transfer"]["protected_move_ref"]==q["answer"]["crux_move_ref"] for q in transfer))
-        self.assertTrue(all(q["origin"]=="AUTHORED" for q in qs))
+        self.assertTrue(all(q["origin"]=="AUTHORED" for q in qs))\n        by_id={q["id"] for q in qs}\n        for demand in self.trace["demands"]:\n            self.assertIn(demand["extension_microtopic_ref"],{m["id"] for m in self.pack["microtopics"]})\n            self.assertIn(demand["core2a_ref"],by_id)\n            self.assertIn(demand["core2b_ref"],by_id)
     def test_six_pages_exist_and_no_escape_state_language(self):
         forbidden=re.compile(r"\b(?:HOLD|HELD|FAILED|INCOMPLETE|BLOCKED|WAITING|PENDING|WITHHELD|NOT_ESTABLISHED|UNAVAILABLE|DEFERRED)\b")
         for core in ("core1","core2","core1a","core1b","core2a","core2b"):
