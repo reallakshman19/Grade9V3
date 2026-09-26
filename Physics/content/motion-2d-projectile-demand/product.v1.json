@@ -86,7 +86,7 @@
       "other_candidate_refs": [
         {
           "ref": "PYQ-PHY-JEEADV-2023-P1-Q01",
-          "reason_not_selected": "The 2023 item is a building/slide projectile with a stated coefficient of restitution and multiple statements; it does not match the owner demand of a 45-degree projectile losing half its kinetic energy at the first ground bounce and leaving at 30 degrees."
+          "reason_not_selected": "This is a different demand: the 2023 item is a building/slide projectile with a stated coefficient of restitution and multiple statements; it does not match the owner demand of a 45-degree projectile losing half its kinetic energy at the first ground bounce and leaving at 30 degrees."
         }
       ],
       "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
