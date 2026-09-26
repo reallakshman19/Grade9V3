@@ -1,0 +1,1575 @@
+{
+  "schema_version": "motion2d-projectile-trace/v1",
+  "product_id": "PRODUCT-PHY-KIN-2D-PROJECTILE-DEMAND",
+  "starting_main_sha": "8de0add7381b60ba5db47cd185ded2b88b3a0a7e",
+  "canonical_package_ref": "PKG-PHY-KIN-2D-MOTION",
+  "extension_package_ref": "PKG-PHY-KIN-2D-PROJECTILE-EXTENSIONS",
+  "q15_identity": {
+    "selected_ref": "PYQ-PHY-JEEADV-2018-P2-Q08",
+    "comparison_ref": "PYQ-PHY-JEEADV-2023-P1-Q01",
+    "discriminator": "The 2023 item is a building/slide projectile with a stated coefficient of restitution and multiple statements; it does not match the owner demand of a 45-degree projectile losing half its kinetic energy at the first ground bounce and leaving at 30 degrees."
+  },
+  "artifacts": [
+    {
+      "artifact_id": "PAGE-CORE1",
+      "Core": "CORE1",
+      "canonical_source_ref": "PKG-PHY-KIN-2D-MOTION",
+      "owner_label": null,
+      "exact_ref": "core1.html",
+      "other_candidates": [],
+      "primary_capability_ref": null,
+      "secondary_capability_refs": [],
+      "microtopic": null,
+      "demand_evidence_status": "PRODUCT_PROJECTION",
+      "learner_eligibility_status": "LEARNER_PRODUCT",
+      "prerequisites": [],
+      "misconception": null,
+      "representation_ref": null,
+      "reveal_state": "ROLE_DEFINED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [],
+      "verification_ref": "Physics/tools/build_motion2d_projectile_product.py --check",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_canonical_truth": "Compact semantic orientation from canonical truth, followed by an explicitly labelled extension map.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "PAGE-CORE2",
+      "Core": "CORE2",
+      "canonical_source_ref": "PKG-PHY-KIN-2D-MOTION",
+      "owner_label": null,
+      "exact_ref": "core2.html",
+      "other_candidates": [],
+      "primary_capability_ref": null,
+      "secondary_capability_refs": [],
+      "microtopic": null,
+      "demand_evidence_status": "PRODUCT_PROJECTION",
+      "learner_eligibility_status": "LEARNER_PRODUCT",
+      "prerequisites": [],
+      "misconception": null,
+      "representation_ref": null,
+      "reveal_state": "ROLE_DEFINED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [],
+      "verification_ref": "Physics/tools/build_motion2d_projectile_product.py --check",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_canonical_truth": "Source custody for all five selected demand records plus the non-selected Q15 candidate.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "PAGE-CORE1A",
+      "Core": "CORE1A",
+      "canonical_source_ref": "PKG-PHY-KIN-2D-MOTION",
+      "owner_label": null,
+      "exact_ref": "core1a.html",
+      "other_candidates": [],
+      "primary_capability_ref": null,
+      "secondary_capability_refs": [],
+      "microtopic": null,
+      "demand_evidence_status": "PRODUCT_PROJECTION",
+      "learner_eligibility_status": "LEARNER_PRODUCT",
+      "prerequisites": [],
+      "misconception": null,
+      "representation_ref": null,
+      "reveal_state": "ROLE_DEFINED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [],
+      "verification_ref": "Physics/tools/build_motion2d_projectile_product.py --check",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_canonical_truth": "Detailed declarative teaching: canonical R1–R3 first, then the five labelled extensions.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "PAGE-CORE1B",
+      "Core": "CORE1B",
+      "canonical_source_ref": "PKG-PHY-KIN-2D-MOTION",
+      "owner_label": null,
+      "exact_ref": "core1b.html",
+      "other_candidates": [],
+      "primary_capability_ref": null,
+      "secondary_capability_refs": [],
+      "microtopic": null,
+      "demand_evidence_status": "PRODUCT_PROJECTION",
+      "learner_eligibility_status": "LEARNER_PRODUCT",
+      "prerequisites": [],
+      "misconception": null,
+      "representation_ref": null,
+      "reveal_state": "ATTEMPT_FIRST",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [],
+      "verification_ref": "Physics/tools/build_motion2d_projectile_product.py --check",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_canonical_truth": "Self-tutor reconstruction over exactly the same eight concepts as Core1A, with attempt before reveal.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "PAGE-CORE2A",
+      "Core": "CORE2A",
+      "canonical_source_ref": "PKG-PHY-KIN-2D-MOTION",
+      "owner_label": null,
+      "exact_ref": "core2a.html",
+      "other_candidates": [],
+      "primary_capability_ref": null,
+      "secondary_capability_refs": [],
+      "microtopic": null,
+      "demand_evidence_status": "PRODUCT_PROJECTION",
+      "learner_eligibility_status": "LEARNER_PRODUCT",
+      "prerequisites": [],
+      "misconception": null,
+      "representation_ref": null,
+      "reveal_state": "ROLE_DEFINED",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [],
+      "verification_ref": "Physics/tools/build_motion2d_projectile_product.py --check",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_canonical_truth": "Supported familiar application using truthfully authored learner-eligible twins.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "PAGE-CORE2B",
+      "Core": "CORE2B",
+      "canonical_source_ref": "PKG-PHY-KIN-2D-MOTION",
+      "owner_label": null,
+      "exact_ref": "core2b.html",
+      "other_candidates": [],
+      "primary_capability_ref": null,
+      "secondary_capability_refs": [],
+      "microtopic": null,
+      "demand_evidence_status": "PRODUCT_PROJECTION",
+      "learner_eligibility_status": "LEARNER_PRODUCT",
+      "prerequisites": [],
+      "misconception": null,
+      "representation_ref": null,
+      "reveal_state": "ATTEMPT_FIRST",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [],
+      "verification_ref": "Physics/tools/build_motion2d_projectile_product.py --check",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_canonical_truth": "Changed-demand transfer using only previously taught extensions and protected DECIDE moves.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1A-MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "Core": "CORE1A",
+      "canonical_source_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "demand_evidence_status": "CANONICAL_DERIVED",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "CAP-VECTOR-SIGNED-COMPONENT"
+      ],
+      "misconception": "Independent x and y motions may use different elapsed times.",
+      "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "reveal_state": "IMMEDIATE",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2D1-1",
+        "K2D1-2",
+        "K2D1-3",
+        "K2D1-4"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_canonical_truth": "Direct projection of canonical microtopic truth.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1B-MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "Core": "CORE1B",
+      "canonical_source_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "demand_evidence_status": "CANONICAL_DERIVED",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "CAP-VECTOR-SIGNED-COMPONENT"
+      ],
+      "misconception": "Independent x and y motions may use different elapsed times.",
+      "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "reveal_state": "ATTEMPT_FIRST",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2D1-1",
+        "K2D1-2",
+        "K2D1-3",
+        "K2D1-4"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_canonical_truth": "Direct projection of canonical microtopic truth.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1A-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "Core": "CORE1A",
+      "canonical_source_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "demand_evidence_status": "CANONICAL_DERIVED",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "CAP-KIN-CONSTANT-ACCELERATION"
+      ],
+      "misconception": "The magnitude of acceleration should be inserted unchanged into both x and y equations.",
+      "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "reveal_state": "IMMEDIATE",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2D2-1",
+        "K2D2-2",
+        "K2D2-3"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_canonical_truth": "Direct projection of canonical microtopic truth.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1B-MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "Core": "CORE1B",
+      "canonical_source_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "demand_evidence_status": "CANONICAL_DERIVED",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "CAP-KIN-CONSTANT-ACCELERATION"
+      ],
+      "misconception": "The magnitude of acceleration should be inserted unchanged into both x and y equations.",
+      "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "reveal_state": "ATTEMPT_FIRST",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2D2-1",
+        "K2D2-2",
+        "K2D2-3"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_canonical_truth": "Direct projection of canonical microtopic truth.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1A-MIC-PHY-KIN-PROJECTILE-MODEL",
+      "Core": "CORE1A",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "demand_evidence_status": "CANONICAL_DERIVED",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "CAP-KIN-2D-CONSTANT-ACCELERATION"
+      ],
+      "misconception": "A projectile needs a horizontal force to keep moving horizontally.",
+      "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "reveal_state": "IMMEDIATE",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2D3-1",
+        "K2D3-2",
+        "K2D3-3",
+        "K2D3-4",
+        "K2D3-5",
+        "K2D3-6",
+        "K2D3-7"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_canonical_truth": "Direct projection of canonical microtopic truth.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1B-MIC-PHY-KIN-PROJECTILE-MODEL",
+      "Core": "CORE1B",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "demand_evidence_status": "CANONICAL_DERIVED",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "CAP-KIN-2D-CONSTANT-ACCELERATION"
+      ],
+      "misconception": "A projectile needs a horizontal force to keep moving horizontally.",
+      "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "reveal_state": "ATTEMPT_FIRST",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2D3-1",
+        "K2D3-2",
+        "K2D3-3",
+        "K2D3-4",
+        "K2D3-5",
+        "K2D3-6",
+        "K2D3-7"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "CANONICAL_DERIVED",
+      "transformation_from_canonical_truth": "Direct projection of canonical microtopic truth.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1A-MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+      "Core": "CORE1A",
+      "canonical_source_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-2D-VEL-FROM-POSITION",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+      "demand_evidence_status": "RESEARCH_SUPPORTED_EXTENSION",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "misconception": "Use y/x at the requested time to get the direction of motion.",
+      "representation_ref": "REP-KIN-2D-TANGENT-VELOCITY",
+      "reveal_state": "IMMEDIATE",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2DX1-1",
+        "K2DX1-2",
+        "K2DX1-3",
+        "K2DX1-4"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Explicit admitted extension after canonical R1–R3.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1B-MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+      "Core": "CORE1B",
+      "canonical_source_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-2D-VEL-FROM-POSITION",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+      "demand_evidence_status": "RESEARCH_SUPPORTED_EXTENSION",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "misconception": "Use y/x at the requested time to get the direction of motion.",
+      "representation_ref": "REP-KIN-2D-TANGENT-VELOCITY",
+      "reveal_state": "ATTEMPT_FIRST",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2DX1-1",
+        "K2DX1-2",
+        "K2DX1-3",
+        "K2DX1-4"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Explicit admitted extension after canonical R1–R3.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1A-MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+      "Core": "CORE1A",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-PROJ-BOUNCE-ENERGY",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+      "demand_evidence_status": "RESEARCH_SUPPORTED_EXTENSION",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "misconception": "If half the kinetic energy remains, the speed becomes half.",
+      "representation_ref": "REP-PROJ-BOUNCE-ENERGY",
+      "reveal_state": "IMMEDIATE",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2DX2-1",
+        "K2DX2-2",
+        "K2DX2-3",
+        "K2DX2-4"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Explicit admitted extension after canonical R1–R3.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1B-MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+      "Core": "CORE1B",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-PROJ-BOUNCE-ENERGY",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+      "demand_evidence_status": "RESEARCH_SUPPORTED_EXTENSION",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "misconception": "If half the kinetic energy remains, the speed becomes half.",
+      "representation_ref": "REP-PROJ-BOUNCE-ENERGY",
+      "reveal_state": "ATTEMPT_FIRST",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2DX2-1",
+        "K2DX2-2",
+        "K2DX2-3",
+        "K2DX2-4"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Explicit admitted extension after canonical R1–R3.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1A-MIC-PHY-KIN-PROJ-PIECEWISE-G",
+      "Core": "CORE1A",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-PROJ-PIECEWISE-G",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+      "demand_evidence_status": "RESEARCH_SUPPORTED_EXTENSION",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "misconception": "Once gravity changes at the apex, recompute the entire trajectory using the new gravity.",
+      "representation_ref": "REP-PROJ-PIECEWISE-G",
+      "reveal_state": "IMMEDIATE",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2DX3-1",
+        "K2DX3-2",
+        "K2DX3-3",
+        "K2DX3-4"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Explicit admitted extension after canonical R1–R3.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1B-MIC-PHY-KIN-PROJ-PIECEWISE-G",
+      "Core": "CORE1B",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-PROJ-PIECEWISE-G",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+      "demand_evidence_status": "RESEARCH_SUPPORTED_EXTENSION",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "misconception": "Once gravity changes at the apex, recompute the entire trajectory using the new gravity.",
+      "representation_ref": "REP-PROJ-PIECEWISE-G",
+      "reveal_state": "ATTEMPT_FIRST",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2DX3-1",
+        "K2DX3-2",
+        "K2DX3-3",
+        "K2DX3-4"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Explicit admitted extension after canonical R1–R3.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1A-MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+      "Core": "CORE1A",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-PROJ-TRAJECTORY-POINT",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+      "demand_evidence_status": "RESEARCH_SUPPORTED_EXTENSION",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "misconception": "If a point satisfies the trajectory equation, the apex must be after that point.",
+      "representation_ref": "REP-PROJ-TRAJECTORY-POINT",
+      "reveal_state": "IMMEDIATE",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2DX4-1",
+        "K2DX4-2",
+        "K2DX4-3",
+        "K2DX4-4"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Explicit admitted extension after canonical R1–R3.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1B-MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+      "Core": "CORE1B",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-PROJ-TRAJECTORY-POINT",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+      "demand_evidence_status": "RESEARCH_SUPPORTED_EXTENSION",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "misconception": "If a point satisfies the trajectory equation, the apex must be after that point.",
+      "representation_ref": "REP-PROJ-TRAJECTORY-POINT",
+      "reveal_state": "ATTEMPT_FIRST",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2DX4-1",
+        "K2DX4-2",
+        "K2DX4-3",
+        "K2DX4-4"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Explicit admitted extension after canonical R1–R3.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1A-MIC-PHY-KIN-2D-LINEAR-DRAG",
+      "Core": "CORE1A",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-2D-LINEAR-DRAG",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-2D-LINEAR-DRAG",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-2D-LINEAR-DRAG",
+      "demand_evidence_status": "RESEARCH_SUPPORTED_EXTENSION",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "misconception": "Use x=v_x0 t because projectile horizontal velocity is always constant.",
+      "representation_ref": "REP-KIN-2D-LINEAR-DRAG",
+      "reveal_state": "IMMEDIATE",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2DX5-1",
+        "K2DX5-2",
+        "K2DX5-3",
+        "K2DX5-4"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Explicit admitted extension after canonical R1–R3.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE1B-MIC-PHY-KIN-2D-LINEAR-DRAG",
+      "Core": "CORE1B",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": null,
+      "exact_ref": "MIC-PHY-KIN-2D-LINEAR-DRAG",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-2D-LINEAR-DRAG",
+      "secondary_capability_refs": [],
+      "microtopic": "MIC-PHY-KIN-2D-LINEAR-DRAG",
+      "demand_evidence_status": "RESEARCH_SUPPORTED_EXTENSION",
+      "learner_eligibility_status": "TEACHING_ARTIFACT",
+      "prerequisites": [
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "misconception": "Use x=v_x0 t because projectile horizontal velocity is always constant.",
+      "representation_ref": "REP-KIN-2D-LINEAR-DRAG",
+      "reveal_state": "ATTEMPT_FIRST",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "K2DX5-1",
+        "K2DX5-2",
+        "K2DX5-3",
+        "K2DX5-4"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Explicit admitted extension after canonical R1–R3.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_ASSET"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2-PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
+      "Core": "CORE2",
+      "canonical_source_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "owner_label": "Q28",
+      "exact_ref": "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "microtopic": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "demand_evidence_status": "SOURCE_VERIFIED",
+      "learner_eligibility_status": "DEFAULT_ELIGIBLE",
+      "prerequisites": [
+        "Signed x/y components and introductory derivative-as-rate meaning."
+      ],
+      "misconception": "Using y/x at t=2 s instead of differentiating to obtain the instantaneous velocity direction.",
+      "representation_ref": null,
+      "reveal_state": "SOURCE_CUSTODY",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29-MOVE-1",
+        "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29-MOVE-2",
+        "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29-MOVE-3"
+      ],
+      "verification_ref": "INDEPENDENTLY_CHECKED",
+      "provenance_class": "PYQ_ADAPTED",
+      "transformation_from_canonical_truth": "Demand evidence only; source custody does not author Core1-family truth.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "RESEARCH_CANONICAL_MAPPING",
+        "ACQUIRE_SOURCE",
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_PRACTICE",
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2A-Q-PHY-KIN-2D-EXT-2A-VELOCITY-DIRECTION",
+      "Core": "CORE2A",
+      "canonical_source_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "owner_label": "Q28",
+      "exact_ref": "Q-PHY-KIN-2D-EXT-2A-VELOCITY-DIRECTION",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-2D-VEL-FROM-POSITION",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "microtopic": "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+      "demand_evidence_status": "AUTHORED_PRACTICE_LINKED_TO_VERIFIED_DEMAND",
+      "learner_eligibility_status": "ELIGIBLE_AUTHORED_PRACTICE",
+      "prerequisites": [
+        "Signed x/y components and introductory derivative-as-rate meaning."
+      ],
+      "misconception": null,
+      "representation_ref": "REP-KIN-2D-TANGENT-VELOCITY",
+      "reveal_state": "SUPPORTED_ATTEMPT",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "Q-PHY-KIN-2D-EXT-2A-VELOCITY-DIRECTION#scaffold-1"
+      ],
+      "reasoning_refs": [
+        "R-EXT-2A-VEL-REP",
+        "R-EXT-2A-VEL-TRANS",
+        "R-EXT-2A-VEL-CONNECT",
+        "R-EXT-2A-VEL-CHECK"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_canonical_truth": "Authored learner-eligible demand twin.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_PRACTICE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2B-Q-PHY-KIN-2D-EXT-2B-VELOCITY-DIRECTION",
+      "Core": "CORE2B",
+      "canonical_source_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "owner_label": "Q28",
+      "exact_ref": "Q-PHY-KIN-2D-EXT-2B-VELOCITY-DIRECTION",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-2D-VEL-FROM-POSITION",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "microtopic": "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+      "demand_evidence_status": "AUTHORED_PRACTICE_LINKED_TO_VERIFIED_DEMAND",
+      "learner_eligibility_status": "ELIGIBLE_AUTHORED_PRACTICE",
+      "prerequisites": [
+        "Signed x/y components and introductory derivative-as-rate meaning."
+      ],
+      "misconception": null,
+      "representation_ref": "REP-KIN-2D-TANGENT-VELOCITY",
+      "reveal_state": "POST_ATTEMPT",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "R-EXT-2B-VEL-FACTS",
+        "R-EXT-2B-VEL-DECIDE",
+        "R-EXT-2B-VEL-CALC",
+        "R-EXT-2B-VEL-CHECK"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Genuinely changed demand using already-taught extension.",
+      "prior_exposure_refs": [
+        "core1a.html#MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+        "core1b.html#MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+        "core2a.html#Q-PHY-KIN-2D-EXT-2A-VELOCITY-DIRECTION"
+      ],
+      "protected_move": "R-EXT-2B-VEL-DECIDE",
+      "duties_performed": [
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2-PYQ-PHY-JEEADV-2018-P2-Q08",
+      "Core": "CORE2",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": "Q15",
+      "exact_ref": "PYQ-PHY-JEEADV-2018-P2-Q08",
+      "other_candidates": [
+        {
+          "ref": "PYQ-PHY-JEEADV-2023-P1-Q01",
+          "reason_not_selected": "The 2023 item is a building/slide projectile with a stated coefficient of restitution and multiple statements; it does not match the owner demand of a 45-degree projectile losing half its kinetic energy at the first ground bounce and leaving at 30 degrees."
+        }
+      ],
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "demand_evidence_status": "SOURCE_VERIFIED",
+      "learner_eligibility_status": "EXCLUDED",
+      "prerequisites": [
+        "Standard projectile height relation and velocity components."
+      ],
+      "misconception": "Halving the speed instead of halving speed squared when kinetic energy halves.",
+      "representation_ref": null,
+      "reveal_state": "SOURCE_CUSTODY",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "PYQ-PHY-JEEADV-2018-P2-Q08-MOVE-1",
+        "PYQ-PHY-JEEADV-2018-P2-Q08-MOVE-2",
+        "PYQ-PHY-JEEADV-2018-P2-Q08-MOVE-3"
+      ],
+      "verification_ref": "INDEPENDENTLY_CHECKED",
+      "provenance_class": "PYQ_ADAPTED",
+      "transformation_from_canonical_truth": "Demand evidence only; source custody does not author Core1-family truth.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "RESEARCH_SOURCE_IDENTITY",
+        "RESEARCH_CANONICAL_MAPPING",
+        "ACQUIRE_SOURCE",
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_PRACTICE",
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2A-Q-PHY-KIN-2D-EXT-2A-BOUNCE",
+      "Core": "CORE2A",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": "Q15",
+      "exact_ref": "Q-PHY-KIN-2D-EXT-2A-BOUNCE",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-PROJ-BOUNCE-ENERGY",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "microtopic": "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+      "demand_evidence_status": "AUTHORED_PRACTICE_LINKED_TO_VERIFIED_DEMAND",
+      "learner_eligibility_status": "ELIGIBLE_AUTHORED_PRACTICE",
+      "prerequisites": [
+        "Standard projectile height relation and velocity components."
+      ],
+      "misconception": null,
+      "representation_ref": "REP-PROJ-BOUNCE-ENERGY",
+      "reveal_state": "SUPPORTED_ATTEMPT",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "Q-PHY-KIN-2D-EXT-2A-BOUNCE#scaffold-1"
+      ],
+      "reasoning_refs": [
+        "R-EXT-2A-BOUNCE-REP",
+        "R-EXT-2A-BOUNCE-ENERGY",
+        "R-EXT-2A-BOUNCE-CALC",
+        "R-EXT-2A-BOUNCE-CHECK"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_canonical_truth": "Authored learner-eligible demand twin.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_PRACTICE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2B-Q-PHY-KIN-2D-EXT-2B-BOUNCE",
+      "Core": "CORE2B",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": "Q15",
+      "exact_ref": "Q-PHY-KIN-2D-EXT-2B-BOUNCE",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-PROJ-BOUNCE-ENERGY",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "microtopic": "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+      "demand_evidence_status": "AUTHORED_PRACTICE_LINKED_TO_VERIFIED_DEMAND",
+      "learner_eligibility_status": "ELIGIBLE_AUTHORED_PRACTICE",
+      "prerequisites": [
+        "Standard projectile height relation and velocity components."
+      ],
+      "misconception": null,
+      "representation_ref": "REP-PROJ-BOUNCE-ENERGY",
+      "reveal_state": "POST_ATTEMPT",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "R-EXT-2B-BOUNCE-FACTS",
+        "R-EXT-2B-BOUNCE-DECIDE",
+        "R-EXT-2B-BOUNCE-CALC",
+        "R-EXT-2B-BOUNCE-CHECK"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Genuinely changed demand using already-taught extension.",
+      "prior_exposure_refs": [
+        "core1a.html#MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+        "core1b.html#MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+        "core2a.html#Q-PHY-KIN-2D-EXT-2A-BOUNCE"
+      ],
+      "protected_move": "R-EXT-2B-BOUNCE-DECIDE",
+      "duties_performed": [
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2-PYQ-PHY-JEEADV-2022-P1-Q08",
+      "Core": "CORE2",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": "Q21",
+      "exact_ref": "PYQ-PHY-JEEADV-2022-P1-Q08",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "demand_evidence_status": "SOURCE_VERIFIED",
+      "learner_eligibility_status": "EXCLUDED",
+      "prerequisites": [
+        "Apex condition v_y=0 and constant-acceleration fall from a known height."
+      ],
+      "misconception": "Recomputing the whole flight with the modified gravity instead of changing only the descent.",
+      "representation_ref": null,
+      "reveal_state": "SOURCE_CUSTODY",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "PYQ-PHY-JEEADV-2022-P1-Q08-MOVE-1",
+        "PYQ-PHY-JEEADV-2022-P1-Q08-MOVE-2",
+        "PYQ-PHY-JEEADV-2022-P1-Q08-MOVE-3"
+      ],
+      "verification_ref": "INDEPENDENTLY_CHECKED",
+      "provenance_class": "PYQ_ADAPTED",
+      "transformation_from_canonical_truth": "Demand evidence only; source custody does not author Core1-family truth.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "ACQUIRE_SOURCE",
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_PRACTICE",
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2A-Q-PHY-KIN-2D-EXT-2A-PIECEWISE-G",
+      "Core": "CORE2A",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": "Q21",
+      "exact_ref": "Q-PHY-KIN-2D-EXT-2A-PIECEWISE-G",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-PROJ-PIECEWISE-G",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "microtopic": "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+      "demand_evidence_status": "AUTHORED_PRACTICE_LINKED_TO_VERIFIED_DEMAND",
+      "learner_eligibility_status": "ELIGIBLE_AUTHORED_PRACTICE",
+      "prerequisites": [
+        "Apex condition v_y=0 and constant-acceleration fall from a known height."
+      ],
+      "misconception": null,
+      "representation_ref": "REP-PROJ-PIECEWISE-G",
+      "reveal_state": "SUPPORTED_ATTEMPT",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "Q-PHY-KIN-2D-EXT-2A-PIECEWISE-G#scaffold-1"
+      ],
+      "reasoning_refs": [
+        "R-EXT-2A-G-REP",
+        "R-EXT-2A-G-DECIDE",
+        "R-EXT-2A-G-CALC",
+        "R-EXT-2A-G-CHECK"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_canonical_truth": "Authored learner-eligible demand twin.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_PRACTICE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2B-Q-PHY-KIN-2D-EXT-2B-PIECEWISE-G",
+      "Core": "CORE2B",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": "Q21",
+      "exact_ref": "Q-PHY-KIN-2D-EXT-2B-PIECEWISE-G",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-PROJ-PIECEWISE-G",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "microtopic": "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+      "demand_evidence_status": "AUTHORED_PRACTICE_LINKED_TO_VERIFIED_DEMAND",
+      "learner_eligibility_status": "ELIGIBLE_AUTHORED_PRACTICE",
+      "prerequisites": [
+        "Apex condition v_y=0 and constant-acceleration fall from a known height."
+      ],
+      "misconception": null,
+      "representation_ref": "REP-PROJ-PIECEWISE-G",
+      "reveal_state": "POST_ATTEMPT",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "R-EXT-2B-G-FACTS",
+        "R-EXT-2B-G-DECIDE",
+        "R-EXT-2B-G-CALC",
+        "R-EXT-2B-G-CHECK"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Genuinely changed demand using already-taught extension.",
+      "prior_exposure_refs": [
+        "core1a.html#MIC-PHY-KIN-PROJ-PIECEWISE-G",
+        "core1b.html#MIC-PHY-KIN-PROJ-PIECEWISE-G",
+        "core2a.html#Q-PHY-KIN-2D-EXT-2A-PIECEWISE-G"
+      ],
+      "protected_move": "R-EXT-2B-G-DECIDE",
+      "duties_performed": [
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2-PYQ-PHY-JEEADV-2026-P1-Q06",
+      "Core": "CORE2",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": "Q26",
+      "exact_ref": "PYQ-PHY-JEEADV-2026-P1-Q06",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "microtopic": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "demand_evidence_status": "SOURCE_VERIFIED",
+      "learner_eligibility_status": "EXCLUDED",
+      "prerequisites": [
+        "Standard projectile component equations and algebraic elimination of a common variable."
+      ],
+      "misconception": "Checking only whether the point lies on the trajectory and not whether the apex occurs before or after it.",
+      "representation_ref": null,
+      "reveal_state": "SOURCE_CUSTODY",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "PYQ-PHY-JEEADV-2026-P1-Q06-MOVE-1",
+        "PYQ-PHY-JEEADV-2026-P1-Q06-MOVE-2",
+        "PYQ-PHY-JEEADV-2026-P1-Q06-MOVE-3"
+      ],
+      "verification_ref": "INDEPENDENTLY_CHECKED",
+      "provenance_class": "PYQ_ADAPTED",
+      "transformation_from_canonical_truth": "Demand evidence only; source custody does not author Core1-family truth.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "ACQUIRE_SOURCE",
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_PRACTICE",
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2A-Q-PHY-KIN-2D-EXT-2A-POINT",
+      "Core": "CORE2A",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": "Q26",
+      "exact_ref": "Q-PHY-KIN-2D-EXT-2A-POINT",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-PROJ-TRAJECTORY-POINT",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "microtopic": "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+      "demand_evidence_status": "AUTHORED_PRACTICE_LINKED_TO_VERIFIED_DEMAND",
+      "learner_eligibility_status": "ELIGIBLE_AUTHORED_PRACTICE",
+      "prerequisites": [
+        "Standard projectile component equations and algebraic elimination of a common variable."
+      ],
+      "misconception": null,
+      "representation_ref": "REP-PROJ-TRAJECTORY-POINT",
+      "reveal_state": "SUPPORTED_ATTEMPT",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "Q-PHY-KIN-2D-EXT-2A-POINT#scaffold-1"
+      ],
+      "reasoning_refs": [
+        "R-EXT-2A-POINT-REP",
+        "R-EXT-2A-POINT-CONSTRAINT",
+        "R-EXT-2A-POINT-BRANCH",
+        "R-EXT-2A-POINT-CHECK"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_canonical_truth": "Authored learner-eligible demand twin.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_PRACTICE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2B-Q-PHY-KIN-2D-EXT-2B-POINT",
+      "Core": "CORE2B",
+      "canonical_source_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "owner_label": "Q26",
+      "exact_ref": "Q-PHY-KIN-2D-EXT-2B-POINT",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-PROJ-TRAJECTORY-POINT",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "microtopic": "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+      "demand_evidence_status": "AUTHORED_PRACTICE_LINKED_TO_VERIFIED_DEMAND",
+      "learner_eligibility_status": "ELIGIBLE_AUTHORED_PRACTICE",
+      "prerequisites": [
+        "Standard projectile component equations and algebraic elimination of a common variable."
+      ],
+      "misconception": null,
+      "representation_ref": "REP-PROJ-TRAJECTORY-POINT",
+      "reveal_state": "POST_ATTEMPT",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "R-EXT-2B-POINT-FACTS",
+        "R-EXT-2B-POINT-DECIDE",
+        "R-EXT-2B-POINT-PROVE",
+        "R-EXT-2B-POINT-CHECK"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Genuinely changed demand using already-taught extension.",
+      "prior_exposure_refs": [
+        "core1a.html#MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+        "core1b.html#MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+        "core2a.html#Q-PHY-KIN-2D-EXT-2A-POINT"
+      ],
+      "protected_move": "R-EXT-2B-POINT-DECIDE",
+      "duties_performed": [
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2-PYQ-PHY-JEEADV-2025-P2-Q15",
+      "Core": "CORE2",
+      "canonical_source_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "owner_label": "Q23",
+      "exact_ref": "PYQ-PHY-JEEADV-2025-P2-Q15",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "CAP-NLM-SECOND-LAW"
+      ],
+      "microtopic": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "demand_evidence_status": "SOURCE_VERIFIED",
+      "learner_eligibility_status": "EXCLUDED",
+      "prerequisites": [
+        "Newton's second law in one component and exponential decay supplied or previously bridged."
+      ],
+      "misconception": "Using constant-acceleration projectile formulas despite velocity-dependent drag.",
+      "representation_ref": null,
+      "reveal_state": "SOURCE_CUSTODY",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "PYQ-PHY-JEEADV-2025-P2-Q15-MOVE-1",
+        "PYQ-PHY-JEEADV-2025-P2-Q15-MOVE-2",
+        "PYQ-PHY-JEEADV-2025-P2-Q15-MOVE-3"
+      ],
+      "verification_ref": "INDEPENDENTLY_CHECKED",
+      "provenance_class": "PYQ_ADAPTED",
+      "transformation_from_canonical_truth": "Demand evidence only; source custody does not author Core1-family truth.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "ACQUIRE_SOURCE",
+        "AUTHOR_EXTENSION_TEACHING",
+        "TEACH_PREREQUISITE_BRIDGE",
+        "AUTHOR_PRACTICE",
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2A-Q-PHY-KIN-2D-EXT-2A-DRAG",
+      "Core": "CORE2A",
+      "canonical_source_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "owner_label": "Q23",
+      "exact_ref": "Q-PHY-KIN-2D-EXT-2A-DRAG",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-2D-LINEAR-DRAG",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "microtopic": "MIC-PHY-KIN-2D-LINEAR-DRAG",
+      "demand_evidence_status": "AUTHORED_PRACTICE_LINKED_TO_VERIFIED_DEMAND",
+      "learner_eligibility_status": "ELIGIBLE_AUTHORED_PRACTICE",
+      "prerequisites": [
+        "Newton's second law in one component and exponential decay supplied or previously bridged."
+      ],
+      "misconception": null,
+      "representation_ref": "REP-KIN-2D-LINEAR-DRAG",
+      "reveal_state": "SUPPORTED_ATTEMPT",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [
+        "Q-PHY-KIN-2D-EXT-2A-DRAG#scaffold-1"
+      ],
+      "reasoning_refs": [
+        "R-EXT-2A-DRAG-REP",
+        "R-EXT-2A-DRAG-SOLVE",
+        "R-EXT-2A-DRAG-INTEGRATE",
+        "R-EXT-2A-DRAG-CHECK"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PRACTICE",
+      "transformation_from_canonical_truth": "Authored learner-eligible demand twin.",
+      "prior_exposure_refs": [],
+      "protected_move": null,
+      "duties_performed": [
+        "AUTHOR_PRACTICE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    },
+    {
+      "artifact_id": "CORE2B-Q-PHY-KIN-2D-EXT-2B-DRAG",
+      "Core": "CORE2B",
+      "canonical_source_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "owner_label": "Q23",
+      "exact_ref": "Q-PHY-KIN-2D-EXT-2B-DRAG",
+      "other_candidates": [],
+      "primary_capability_ref": "CAP-KIN-2D-LINEAR-DRAG",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "microtopic": "MIC-PHY-KIN-2D-LINEAR-DRAG",
+      "demand_evidence_status": "AUTHORED_PRACTICE_LINKED_TO_VERIFIED_DEMAND",
+      "learner_eligibility_status": "ELIGIBLE_AUTHORED_PRACTICE",
+      "prerequisites": [
+        "Newton's second law in one component and exponential decay supplied or previously bridged."
+      ],
+      "misconception": null,
+      "representation_ref": "REP-KIN-2D-LINEAR-DRAG",
+      "reveal_state": "POST_ATTEMPT",
+      "source_hint_refs": [],
+      "authored_scaffold_refs": [],
+      "reasoning_refs": [
+        "R-EXT-2B-DRAG-FACTS",
+        "R-EXT-2B-DRAG-DECIDE",
+        "R-EXT-2B-DRAG-INTEGRATE",
+        "R-EXT-2B-DRAG-CHECK"
+      ],
+      "verification_ref": "CHECKED_BY_AUTHOR",
+      "provenance_class": "AUTHORED_PEDAGOGICAL",
+      "transformation_from_canonical_truth": "Genuinely changed demand using already-taught extension.",
+      "prior_exposure_refs": [
+        "core1a.html#MIC-PHY-KIN-2D-LINEAR-DRAG",
+        "core1b.html#MIC-PHY-KIN-2D-LINEAR-DRAG",
+        "core2a.html#Q-PHY-KIN-2D-EXT-2A-DRAG"
+      ],
+      "protected_move": "R-EXT-2B-DRAG-DECIDE",
+      "duties_performed": [
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ],
+      "review_labels": {
+        "structural": "STRUCTURALLY_VALIDATED",
+        "source": "SOURCE_VERIFIED",
+        "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+        "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+      }
+    }
+  ]
+}
