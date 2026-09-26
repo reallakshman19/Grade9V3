@@ -25,7 +25,8 @@
       "snapshot_ref": null,
       "snapshot_digest": null,
       "role": [
-        "REFERENCE"
+        "SCIENTIFIC_CHECK",
+        "EXPLANATION"
       ],
       "supports_claims": [
         "CAP-KIN-2D-VEL-FROM-POSITION",
@@ -56,7 +57,8 @@
       "snapshot_ref": null,
       "snapshot_digest": null,
       "role": [
-        "REFERENCE"
+        "SCIENTIFIC_CHECK",
+        "EXPLANATION"
       ],
       "supports_claims": [
         "CAP-PROJ-PIECEWISE-G",
@@ -89,7 +91,8 @@
       "snapshot_ref": null,
       "snapshot_digest": null,
       "role": [
-        "REFERENCE"
+        "SCIENTIFIC_CHECK",
+        "EXPLANATION"
       ],
       "supports_claims": [
         "CAP-PROJ-BOUNCE-ENERGY",
@@ -120,7 +123,8 @@
       "snapshot_ref": null,
       "snapshot_digest": null,
       "role": [
-        "REFERENCE"
+        "SCIENTIFIC_CHECK",
+        "EXPLANATION"
       ],
       "supports_claims": [
         "CAP-PROJ-BOUNCE-ENERGY",
@@ -151,7 +155,8 @@
       "snapshot_ref": null,
       "snapshot_digest": null,
       "role": [
-        "REFERENCE"
+        "SCIENTIFIC_CHECK",
+        "EXPLANATION"
       ],
       "supports_claims": [
         "CAP-KIN-2D-LINEAR-DRAG",
@@ -450,12 +455,7 @@
       "prerequisite_refs": [
         "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS"
       ],
-      "lineage": [
-        {
-          "kind": "EXTENDS",
-          "ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS"
-        }
-      ],
+      "lineage": [],
       "elicitation": {
         "predict": {
           "prompt": "At t=2 s, should a direction question use y/x or (dy/dt)/(dx/dt)?",
@@ -596,12 +596,7 @@
       "prerequisite_refs": [
         "MIC-PHY-KIN-PROJECTILE-MODEL"
       ],
-      "lineage": [
-        {
-          "kind": "EXTENDS",
-          "ref": "MIC-PHY-KIN-PROJECTILE-MODEL"
-        }
-      ],
+      "lineage": [],
       "elicitation": {
         "predict": {
           "prompt": "If a collision leaves 50% of kinetic energy, does the post-collision speed become 50%?",
@@ -739,12 +734,7 @@
       "prerequisite_refs": [
         "MIC-PHY-KIN-PROJECTILE-MODEL"
       ],
-      "lineage": [
-        {
-          "kind": "EXTENDS",
-          "ref": "MIC-PHY-KIN-PROJECTILE-MODEL"
-        }
-      ],
+      "lineage": [],
       "elicitation": {
         "predict": {
           "prompt": "When gravity changes only after the apex, which parts of the state must be carried across unchanged?",
@@ -885,12 +875,7 @@
       "prerequisite_refs": [
         "MIC-PHY-KIN-PROJECTILE-MODEL"
       ],
-      "lineage": [
-        {
-          "kind": "EXTENDS",
-          "ref": "MIC-PHY-KIN-PROJECTILE-MODEL"
-        }
-      ],
+      "lineage": [],
       "elicitation": {
         "predict": {
           "prompt": "Does substituting a point into y(x) alone tell you whether the projectile is rising or falling there?",
@@ -1033,12 +1018,7 @@
       "prerequisite_refs": [
         "MIC-PHY-KIN-PROJECTILE-MODEL"
       ],
-      "lineage": [
-        {
-          "kind": "EXTENDS",
-          "ref": "MIC-PHY-KIN-PROJECTILE-MODEL"
-        }
-      ],
+      "lineage": [],
       "elicitation": {
         "predict": {
           "prompt": "If drag is proportional to velocity, may you still use the ordinary constant-horizontal-velocity projectile shortcut?",
@@ -1089,7 +1069,33 @@
       "extensions": {},
       "expression": "v_x=dx/dt; v_y=dy/dt; tan(theta)=v_y/v_x (with quadrant check)",
       "meaning": "Instantaneous velocity is the derivative of the position vector; its components set the tangent direction.",
-      "symbols": [],
+      "symbols": [
+        {
+          "symbol": "x",
+          "meaning": "Position x component",
+          "unit_or_domain": "m"
+        },
+        {
+          "symbol": "y",
+          "meaning": "Position y component",
+          "unit_or_domain": "m"
+        },
+        {
+          "symbol": "v_x",
+          "meaning": "Instantaneous x velocity",
+          "unit_or_domain": "m/s"
+        },
+        {
+          "symbol": "v_y",
+          "meaning": "Instantaneous y velocity",
+          "unit_or_domain": "m/s"
+        },
+        {
+          "symbol": "t",
+          "meaning": "Common time",
+          "unit_or_domain": "s"
+        }
+      ],
       "conditions": [
         "x(t) and y(t) describe the same particle in one fixed frame.",
         "The functions are differentiable at the requested instant."
@@ -1126,7 +1132,7 @@
         "Velocity direction must be tangent to the path.",
         "Both component values must use the same time."
       ],
-      "gate_relation_ref": "GATE-NONE"
+      "gate_relation_ref": "REL-KIN-2D-VEL-DERIVATIVE"
     },
     {
       "id": "REL-PROJ-BOUNCE-ENERGY",
@@ -1140,7 +1146,38 @@
       "extensions": {},
       "expression": "K_after=f K_before => v_after^2=f v_before^2; H=(v_after sin alpha)^2/(2g)",
       "meaning": "An energy fraction changes speed squared; the post-impact vertical speed controls the new maximum rise.",
-      "symbols": [],
+      "symbols": [
+        {
+          "symbol": "f",
+          "meaning": "Retained kinetic-energy fraction",
+          "unit_or_domain": "dimensionless"
+        },
+        {
+          "symbol": "v_before",
+          "meaning": "Speed immediately before impact",
+          "unit_or_domain": "m/s"
+        },
+        {
+          "symbol": "v_after",
+          "meaning": "Speed immediately after impact",
+          "unit_or_domain": "m/s"
+        },
+        {
+          "symbol": "alpha",
+          "meaning": "Post-bounce launch angle",
+          "unit_or_domain": "angle"
+        },
+        {
+          "symbol": "H",
+          "meaning": "Post-bounce maximum rise",
+          "unit_or_domain": "m"
+        },
+        {
+          "symbol": "g",
+          "meaning": "Gravitational acceleration magnitude",
+          "unit_or_domain": "m/s^2"
+        }
+      ],
       "conditions": [
         "Mass is unchanged across the energy comparison.",
         "After the bounce, gravity-only free flight applies until the next apex."
@@ -1176,7 +1213,7 @@
         "For 0<=f<=1, retained speed squared cannot exceed the pre-impact value.",
         "If alpha=0, the new rise height is zero."
       ],
-      "gate_relation_ref": "GATE-NONE"
+      "gate_relation_ref": "REL-PROJ-BOUNCE-ENERGY"
     },
     {
       "id": "REL-PROJ-PIECEWISE-G",
@@ -1189,7 +1226,33 @@
       "extensions": {},
       "expression": "Stage 2 from apex: H=(1/2)g_2 t_2^2; x_2=v_x,A t_2",
       "meaning": "When gravity changes at an event boundary, carry the boundary state into a new constant-acceleration stage.",
-      "symbols": [],
+      "symbols": [
+        {
+          "symbol": "H",
+          "meaning": "Apex height above landing level",
+          "unit_or_domain": "m"
+        },
+        {
+          "symbol": "g_2",
+          "meaning": "Post-boundary gravitational acceleration magnitude",
+          "unit_or_domain": "m/s^2"
+        },
+        {
+          "symbol": "t_2",
+          "meaning": "Post-apex descent time",
+          "unit_or_domain": "s"
+        },
+        {
+          "symbol": "v_x,A",
+          "meaning": "Horizontal velocity at the apex",
+          "unit_or_domain": "m/s"
+        },
+        {
+          "symbol": "x_2",
+          "meaning": "Post-apex horizontal displacement",
+          "unit_or_domain": "m"
+        }
+      ],
       "conditions": [
         "g_1 is constant before the boundary and g_2 is constant after it.",
         "Horizontal acceleration remains zero in both regions."
@@ -1231,7 +1294,7 @@
         "If g_2=g_1, recover the ordinary symmetric projectile result.",
         "Larger g_2 gives shorter descent time from the same height."
       ],
-      "gate_relation_ref": "GATE-NONE"
+      "gate_relation_ref": "REL-PROJ-PIECEWISE-G"
     },
     {
       "id": "REL-PROJ-TRAJECTORY",
@@ -1244,7 +1307,33 @@
       "extensions": {},
       "expression": "y=x tan(theta)-g x^2/[2u^2 cos^2(theta)]",
       "meaning": "Eliminating common time from the ideal projectile component equations gives the trajectory equation.",
-      "symbols": [],
+      "symbols": [
+        {
+          "symbol": "x",
+          "meaning": "Horizontal coordinate",
+          "unit_or_domain": "m"
+        },
+        {
+          "symbol": "y",
+          "meaning": "Vertical coordinate",
+          "unit_or_domain": "m"
+        },
+        {
+          "symbol": "u",
+          "meaning": "Launch speed",
+          "unit_or_domain": "m/s"
+        },
+        {
+          "symbol": "theta",
+          "meaning": "Launch angle",
+          "unit_or_domain": "angle"
+        },
+        {
+          "symbol": "g",
+          "meaning": "Gravitational acceleration magnitude",
+          "unit_or_domain": "m/s^2"
+        }
+      ],
       "conditions": [
         "Gravity is uniform and downward.",
         "Air resistance is neglected.",
@@ -1290,7 +1379,7 @@
         "At x=0 the equation gives y=0 for launch from origin.",
         "The gravity term lowers the path below the straight-line ray x tan(theta)."
       ],
-      "gate_relation_ref": "GATE-NONE"
+      "gate_relation_ref": "REL-PROJ-TRAJECTORY"
     },
     {
       "id": "REL-KIN-2D-LINEAR-DRAG-X",
@@ -1303,7 +1392,33 @@
       "extensions": {},
       "expression": "m dv_x/dt=-c v_x => v_x=v_x0 e^(-ct/m); Δx=(m/c)v_x0[1-e^(-ct/m)]",
       "meaning": "Linear drag creates exponential horizontal speed decay and a finite-time displacement obtained by integrating velocity.",
-      "symbols": [],
+      "symbols": [
+        {
+          "symbol": "m",
+          "meaning": "Mass",
+          "unit_or_domain": "kg"
+        },
+        {
+          "symbol": "c",
+          "meaning": "Linear drag coefficient",
+          "unit_or_domain": "kg/s"
+        },
+        {
+          "symbol": "v_x",
+          "meaning": "Horizontal velocity",
+          "unit_or_domain": "m/s"
+        },
+        {
+          "symbol": "v_x0",
+          "meaning": "Initial horizontal velocity",
+          "unit_or_domain": "m/s"
+        },
+        {
+          "symbol": "t",
+          "meaning": "Elapsed time",
+          "unit_or_domain": "s"
+        }
+      ],
       "conditions": [
         "c>0 is constant.",
         "Drag is linear in instantaneous velocity."
@@ -1342,7 +1457,7 @@
         "As c approaches zero, Δx approaches v_x0 t.",
         "For c>0, Δx<v_x0 t for t>0."
       ],
-      "gate_relation_ref": "GATE-NONE"
+      "gate_relation_ref": "REL-KIN-2D-LINEAR-DRAG-X"
     }
   ],
   "representations": [
@@ -1391,7 +1506,9 @@
             "CORE1B"
           ],
           "microtopic_ref": "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
-          "datum_refs": [],
+          "datum_refs": [
+            "DAT-PROJ-EXT-REFERENCE-T1"
+          ],
           "scene": {
             "kind": "TANGENT_VELOCITY",
             "frame": "Declared x-y frame with labelled model state.",
@@ -1402,23 +1519,23 @@
       "correspondence": [
         {
           "element": "trajectory point",
-          "symbol": "state",
-          "in_words": "trajectory point"
+          "symbol": "(x,y)",
+          "in_words": "trajectory point as used by the bound extension relation"
         },
         {
           "element": "position ray",
-          "symbol": "",
-          "in_words": "position ray"
+          "symbol": "r",
+          "in_words": "position ray as used by the bound extension relation"
         },
         {
           "element": "tangent velocity arrow",
-          "symbol": "",
-          "in_words": "tangent velocity arrow"
+          "symbol": "v",
+          "in_words": "tangent velocity arrow as used by the bound extension relation"
         },
         {
           "element": "component velocity triangle",
-          "symbol": "",
-          "in_words": "component velocity triangle"
+          "symbol": "(v_x,v_y)",
+          "in_words": "component velocity triangle as used by the bound extension relation"
         }
       ],
       "reveal_stages": [
@@ -1505,7 +1622,9 @@
             "CORE1B"
           ],
           "microtopic_ref": "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
-          "datum_refs": [],
+          "datum_refs": [
+            "DAT-PROJ-EXT-BOUNCE-FRACTION"
+          ],
           "scene": {
             "kind": "BOUNCE_ENERGY",
             "frame": "Declared x-y frame with labelled model state.",
@@ -1516,28 +1635,28 @@
       "correspondence": [
         {
           "element": "incoming trajectory",
-          "symbol": "state",
-          "in_words": "incoming trajectory"
+          "symbol": "v_before",
+          "in_words": "incoming trajectory as used by the bound extension relation"
         },
         {
           "element": "impact event",
-          "symbol": "",
-          "in_words": "impact event"
+          "symbol": "impact",
+          "in_words": "impact event as used by the bound extension relation"
         },
         {
           "element": "energy-retention tag",
-          "symbol": "",
-          "in_words": "energy-retention tag"
+          "symbol": "f",
+          "in_words": "energy-retention tag as used by the bound extension relation"
         },
         {
           "element": "post-bounce velocity components",
-          "symbol": "",
-          "in_words": "post-bounce velocity components"
+          "symbol": "(v_x,v_y)",
+          "in_words": "post-bounce velocity components as used by the bound extension relation"
         },
         {
           "element": "new apex",
-          "symbol": "",
-          "in_words": "new apex"
+          "symbol": "H",
+          "in_words": "new apex as used by the bound extension relation"
         }
       ],
       "reveal_stages": [
@@ -1626,7 +1745,9 @@
             "CORE1B"
           ],
           "microtopic_ref": "MIC-PHY-KIN-PROJ-PIECEWISE-G",
-          "datum_refs": [],
+          "datum_refs": [
+            "DAT-PROJ-EXT-G-RATIO"
+          ],
           "scene": {
             "kind": "PIECEWISE_GRAVITY",
             "frame": "Declared x-y frame with labelled model state.",
@@ -1637,28 +1758,28 @@
       "correspondence": [
         {
           "element": "stage 1 arc",
-          "symbol": "state",
-          "in_words": "stage 1 arc"
+          "symbol": "g_1",
+          "in_words": "stage 1 arc as used by the bound extension relation"
         },
         {
           "element": "apex boundary",
-          "symbol": "",
-          "in_words": "apex boundary"
+          "symbol": "t_A",
+          "in_words": "apex boundary as used by the bound extension relation"
         },
         {
           "element": "apex state",
-          "symbol": "",
-          "in_words": "apex state"
+          "symbol": "(x_A,H,v_x,0)",
+          "in_words": "apex state as used by the bound extension relation"
         },
         {
           "element": "stage 2 arc",
-          "symbol": "",
-          "in_words": "stage 2 arc"
+          "symbol": "g_2",
+          "in_words": "stage 2 arc as used by the bound extension relation"
         },
         {
           "element": "g1 and g2 labels",
-          "symbol": "",
-          "in_words": "g1 and g2 labels"
+          "symbol": "(g_1,g_2)",
+          "in_words": "g1 and g2 labels as used by the bound extension relation"
         }
       ],
       "reveal_stages": [
@@ -1747,7 +1868,9 @@
             "CORE1B"
           ],
           "microtopic_ref": "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
-          "datum_refs": [],
+          "datum_refs": [
+            "DAT-PROJ-EXT-POINT-X"
+          ],
           "scene": {
             "kind": "TRAJECTORY_POINT",
             "frame": "Declared x-y frame with labelled model state.",
@@ -1758,28 +1881,28 @@
       "correspondence": [
         {
           "element": "coordinate axes",
-          "symbol": "state",
-          "in_words": "coordinate axes"
+          "symbol": "(x,y)",
+          "in_words": "coordinate axes as used by the bound extension relation"
         },
         {
           "element": "projectile parabola",
-          "symbol": "",
-          "in_words": "projectile parabola"
+          "symbol": "y(x)",
+          "in_words": "projectile parabola as used by the bound extension relation"
         },
         {
           "element": "specified point P",
-          "symbol": "",
-          "in_words": "specified point P"
+          "symbol": "P",
+          "in_words": "specified point P as used by the bound extension relation"
         },
         {
           "element": "local tangent",
-          "symbol": "",
-          "in_words": "local tangent"
+          "symbol": "dy/dx",
+          "in_words": "local tangent as used by the bound extension relation"
         },
         {
           "element": "apex",
-          "symbol": "",
-          "in_words": "apex"
+          "symbol": "v_y=0",
+          "in_words": "apex as used by the bound extension relation"
         }
       ],
       "reveal_stages": [
@@ -1868,7 +1991,9 @@
             "CORE1B"
           ],
           "microtopic_ref": "MIC-PHY-KIN-2D-LINEAR-DRAG",
-          "datum_refs": [],
+          "datum_refs": [
+            "DAT-PROJ-EXT-DRAG-TAU"
+          ],
           "scene": {
             "kind": "LINEAR_DRAG",
             "frame": "Declared x-y frame with labelled model state.",
@@ -1879,28 +2004,28 @@
       "correspondence": [
         {
           "element": "time axis",
-          "symbol": "state",
-          "in_words": "time axis"
+          "symbol": "t",
+          "in_words": "time axis as used by the bound extension relation"
         },
         {
           "element": "v_x curve",
-          "symbol": "",
-          "in_words": "v_x curve"
+          "symbol": "v_x(t)",
+          "in_words": "v_x curve as used by the bound extension relation"
         },
         {
           "element": "initial v_x0",
-          "symbol": "",
-          "in_words": "initial v_x0"
+          "symbol": "v_x0",
+          "in_words": "initial v_x0 as used by the bound extension relation"
         },
         {
           "element": "time constant m/c",
-          "symbol": "",
-          "in_words": "time constant m/c"
+          "symbol": "m/c",
+          "in_words": "time constant m/c as used by the bound extension relation"
         },
         {
           "element": "integrated displacement area",
-          "symbol": "",
-          "in_words": "integrated displacement area"
+          "symbol": "Delta x",
+          "in_words": "integrated displacement area as used by the bound extension relation"
         }
       ],
       "reveal_stages": [
@@ -2050,7 +2175,8 @@
               "y(t)"
             ],
             "output": "component derivative model",
-            "representation_ref": "REP-KIN-2D-TANGENT-VELOCITY"
+            "representation_ref": "REP-KIN-2D-TANGENT-VELOCITY",
+            "visual_stage_ref": "VIS-REP-KIN-2D-TANGENT-VELOCITY-V0"
           },
           {
             "id": "R-EXT-2A-VEL-TRANS",
@@ -2115,12 +2241,7 @@
           "artifact_ref": null
         }
       ],
-      "hints": [
-        {
-          "text": "Name the model and the event before choosing equations.",
-          "reveals": "CONCEPT"
-        }
-      ],
+      "hints": [],
       "repair_ref": "K2DX1-2",
       "scaffolds": [
         {
@@ -2174,7 +2295,8 @@
             "why_valid": "The collision changes velocity discontinuously.",
             "inputs": [],
             "output": "post-bounce state",
-            "representation_ref": "REP-PROJ-BOUNCE-ENERGY"
+            "representation_ref": "REP-PROJ-BOUNCE-ENERGY",
+            "visual_stage_ref": "VIS-REP-PROJ-BOUNCE-ENERGY-V0"
           },
           {
             "id": "R-EXT-2A-BOUNCE-ENERGY",
@@ -2236,12 +2358,7 @@
           "artifact_ref": null
         }
       ],
-      "hints": [
-        {
-          "text": "Name the model and the event before choosing equations.",
-          "reveals": "CONCEPT"
-        }
-      ],
+      "hints": [],
       "repair_ref": "K2DX2-2",
       "scaffolds": [
         {
@@ -2295,7 +2412,8 @@
             "why_valid": "The model changes only there.",
             "inputs": [],
             "output": "two-stage state",
-            "representation_ref": "REP-PROJ-PIECEWISE-G"
+            "representation_ref": "REP-PROJ-PIECEWISE-G",
+            "visual_stage_ref": "VIS-REP-PROJ-PIECEWISE-G-V0"
           },
           {
             "id": "R-EXT-2A-G-DECIDE",
@@ -2355,12 +2473,7 @@
           "artifact_ref": null
         }
       ],
-      "hints": [
-        {
-          "text": "Name the model and the event before choosing equations.",
-          "reveals": "CONCEPT"
-        }
-      ],
+      "hints": [],
       "repair_ref": "K2DX3-1",
       "scaffolds": [
         {
@@ -2414,7 +2527,8 @@
             "why_valid": "The path relation requires the gravity-only model.",
             "inputs": [],
             "output": "trajectory with point",
-            "representation_ref": "REP-PROJ-TRAJECTORY-POINT"
+            "representation_ref": "REP-PROJ-TRAJECTORY-POINT",
+            "visual_stage_ref": "VIS-REP-PROJ-TRAJECTORY-POINT-V0"
           },
           {
             "id": "R-EXT-2A-POINT-CONSTRAINT",
@@ -2474,12 +2588,7 @@
           "artifact_ref": null
         }
       ],
-      "hints": [
-        {
-          "text": "Name the model and the event before choosing equations.",
-          "reveals": "CONCEPT"
-        }
-      ],
+      "hints": [],
       "repair_ref": "K2DX4-3",
       "scaffolds": [
         {
@@ -2533,7 +2642,8 @@
             "why_valid": "Drag acts against v_x.",
             "inputs": [],
             "output": "m dv_x/dt=-cv_x",
-            "representation_ref": "REP-KIN-2D-LINEAR-DRAG"
+            "representation_ref": "REP-KIN-2D-LINEAR-DRAG",
+            "visual_stage_ref": "VIS-REP-KIN-2D-LINEAR-DRAG-V0"
           },
           {
             "id": "R-EXT-2A-DRAG-SOLVE",
@@ -2594,12 +2704,7 @@
           "artifact_ref": null
         }
       ],
-      "hints": [
-        {
-          "text": "Name the model and the event before choosing equations.",
-          "reveals": "CONCEPT"
-        }
-      ],
+      "hints": [],
       "repair_ref": "K2DX5-1",
       "scaffolds": [
         {
@@ -2652,7 +2757,8 @@
             "why_valid": "This keeps the decision open.",
             "inputs": [],
             "output": "raw parametric state",
-            "representation_ref": "REP-KIN-2D-TANGENT-VELOCITY"
+            "representation_ref": "REP-KIN-2D-TANGENT-VELOCITY",
+            "visual_stage_ref": "VIS-REP-KIN-2D-TANGENT-VELOCITY-V0"
           },
           {
             "id": "R-EXT-2B-VEL-DECIDE",
@@ -2712,12 +2818,7 @@
           "artifact_ref": null
         }
       ],
-      "hints": [
-        {
-          "text": "List the given facts without choosing the protected model/representation yet.",
-          "reveals": "CONCEPT"
-        }
-      ],
+      "hints": [],
       "repair_ref": "K2DX1-1",
       "scaffolds": [],
       "transfer": {
@@ -2772,7 +2873,8 @@
             "why_valid": "This does not hand over how energy maps to speed.",
             "inputs": [],
             "output": "raw post-impact facts",
-            "representation_ref": "REP-PROJ-BOUNCE-ENERGY"
+            "representation_ref": "REP-PROJ-BOUNCE-ENERGY",
+            "visual_stage_ref": "VIS-REP-PROJ-BOUNCE-ENERGY-V0"
           },
           {
             "id": "R-EXT-2B-BOUNCE-DECIDE",
@@ -2832,12 +2934,7 @@
           "artifact_ref": null
         }
       ],
-      "hints": [
-        {
-          "text": "List the given facts without choosing the protected model/representation yet.",
-          "reveals": "CONCEPT"
-        }
-      ],
+      "hints": [],
       "repair_ref": "K2DX2-2",
       "scaffolds": [],
       "transfer": {
@@ -2892,7 +2989,8 @@
             "why_valid": "The ascent result is already supplied.",
             "inputs": [],
             "output": "boundary state",
-            "representation_ref": "REP-PROJ-PIECEWISE-G"
+            "representation_ref": "REP-PROJ-PIECEWISE-G",
+            "visual_stage_ref": "VIS-REP-PROJ-PIECEWISE-G-V0"
           },
           {
             "id": "R-EXT-2B-G-DECIDE",
@@ -2952,12 +3050,7 @@
           "artifact_ref": null
         }
       ],
-      "hints": [
-        {
-          "text": "List the given facts without choosing the protected model/representation yet.",
-          "reveals": "CONCEPT"
-        }
-      ],
+      "hints": [],
       "repair_ref": "K2DX3-1",
       "scaffolds": [],
       "transfer": {
@@ -3012,7 +3105,8 @@
             "why_valid": "This exposes the changed representation but not the key comparison.",
             "inputs": [],
             "output": "ray and path terms",
-            "representation_ref": "REP-PROJ-TRAJECTORY-POINT"
+            "representation_ref": "REP-PROJ-TRAJECTORY-POINT",
+            "visual_stage_ref": "VIS-REP-PROJ-TRAJECTORY-POINT-V0"
           },
           {
             "id": "R-EXT-2B-POINT-DECIDE",
@@ -3072,12 +3166,7 @@
           "artifact_ref": null
         }
       ],
-      "hints": [
-        {
-          "text": "List the given facts without choosing the protected model/representation yet.",
-          "reveals": "CONCEPT"
-        }
-      ],
+      "hints": [],
       "repair_ref": "K2DX4-2",
       "scaffolds": [],
       "transfer": {
@@ -3131,7 +3220,8 @@
             "why_valid": "A halving law is incompatible with v_x constant.",
             "inputs": [],
             "output": "velocity-decay evidence",
-            "representation_ref": "REP-KIN-2D-LINEAR-DRAG"
+            "representation_ref": "REP-KIN-2D-LINEAR-DRAG",
+            "visual_stage_ref": "VIS-REP-KIN-2D-LINEAR-DRAG-V0"
           },
           {
             "id": "R-EXT-2B-DRAG-DECIDE",
@@ -3192,12 +3282,7 @@
           "artifact_ref": null
         }
       ],
-      "hints": [
-        {
-          "text": "List the given facts without choosing the protected model/representation yet.",
-          "reveals": "CONCEPT"
-        }
-      ],
+      "hints": [],
       "repair_ref": "K2DX5-1",
       "scaffolds": [],
       "transfer": {
@@ -3360,5 +3445,101 @@
       "Q23"
     ]
   },
-  "data": []
+  "data": [
+    {
+      "id": "DAT-PROJ-EXT-REFERENCE-T1",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PEDAGOGICAL"
+      },
+      "kind": "DATUM",
+      "value": 1,
+      "unit": "s",
+      "symbol": "t_ref",
+      "meaning": "Reference instant used to bind the tangent-velocity scene.",
+      "locator": "Author-created scene-binding datum for the projectile extension learner product.",
+      "relation_ref": "REL-KIN-2D-VEL-DERIVATIVE"
+    },
+    {
+      "id": "DAT-PROJ-EXT-BOUNCE-FRACTION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PEDAGOGICAL"
+      },
+      "kind": "DATUM",
+      "value": 0.5,
+      "unit": "1",
+      "symbol": "f_ref",
+      "meaning": "Reference retained-energy fraction used to bind the bounce scene.",
+      "locator": "Author-created scene-binding datum for the projectile extension learner product.",
+      "relation_ref": "REL-PROJ-BOUNCE-ENERGY"
+    },
+    {
+      "id": "DAT-PROJ-EXT-G-RATIO",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PEDAGOGICAL"
+      },
+      "kind": "DATUM",
+      "value": 4,
+      "unit": "1",
+      "symbol": "g_ratio",
+      "meaning": "Reference post-apex gravity ratio used to bind the piecewise-gravity scene.",
+      "locator": "Author-created scene-binding datum for the projectile extension learner product.",
+      "relation_ref": "REL-PROJ-PIECEWISE-G"
+    },
+    {
+      "id": "DAT-PROJ-EXT-POINT-X",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PEDAGOGICAL"
+      },
+      "kind": "DATUM",
+      "value": 4,
+      "unit": "m",
+      "symbol": "x_P_ref",
+      "meaning": "Reference horizontal coordinate used to bind the specified-point scene.",
+      "locator": "Author-created scene-binding datum for the projectile extension learner product.",
+      "relation_ref": "REL-PROJ-TRAJECTORY"
+    },
+    {
+      "id": "DAT-PROJ-EXT-DRAG-TAU",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-PROJ-EXT-AUTHORED"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "AUTHORED_PEDAGOGICAL"
+      },
+      "kind": "DATUM",
+      "value": 2,
+      "unit": "s",
+      "symbol": "tau_ref",
+      "meaning": "Reference linear-drag time scale used to bind the decay scene.",
+      "locator": "Author-created scene-binding datum for the projectile extension learner product.",
+      "relation_ref": "REL-KIN-2D-LINEAR-DRAG-X"
+    }
+  ]
 }
