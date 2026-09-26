@@ -1,1 +1,0 @@
-document.addEventListener("click",e=>{const b=e.target.closest("[data-reveal]");if(!b)return;const box=document.getElementById(b.getAttribute("data-reveal"));if(box){box.hidden=false;b.disabled=true;b.textContent="Attempt committed";}});

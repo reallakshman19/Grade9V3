@@ -1,5 +1,5 @@
 {
-  "schema_version": "projectile-stress-validation/v1",
+  "schema_version": "projectile-demand-validation/v1",
   "repository_basis": "main@8de0add7381b60ba5db47cd185ded2b88b3a0a7e",
   "claimed_status": [
     "STRUCTURALLY_VALIDATED",
@@ -67,5 +67,13 @@
     "python3 Shared/tools/build_pages_site.py --check",
     "python3 -m unittest discover -s tests -p \"test_*.py\""
   ],
-  "note": "Repository CI re-runs the executable command suite on the PR branch."
+  "note": "Direct product invariants and source identity are recorded here. The repository validation commands remain the authoritative executable gate when a runner starts; no human academic/publication review is claimed.",
+  "product_ref": "PRODUCT-PHY-KIN-2D-PROJECTILE-DEMAND",
+  "generated_product_ref": "public/physics/motion-in-2d/projectile-demand/",
+  "trace_ref": "Physics/content/motion-2d-projectile-demand/trace.v1.json",
+  "ci_observation": {
+    "head_sha": "66cfb251d0969b23ef57dab6dfd4f37a72d4f3b5",
+    "state": "JOBS_TERMINATED_BEFORE_STEPS",
+    "detail": "GitHub Actions check runs completed as failure within seconds with zero recorded workflow steps; this report does not treat that runner condition as a learner-product state or as evidence that repository validation commands executed."
+  }
 }

@@ -1,5 +1,5 @@
 {
-  "schema_version": "projectile-stress-duty-register/v1",
+  "schema_version": "projectile-demand-duty-register/v1",
   "duties": [
     {
       "id": "D1",
@@ -20,7 +20,7 @@
       "kind": "ACQUIRE_SOURCE",
       "output": "Five fixed source records plus retained Q15 alternative in Core2 custody view",
       "status": "COMPLETED",
-      "artifact_ref": "public/physics/motion-2d/projectile-stress/core2.html"
+      "artifact_ref": "public/physics/motion-in-2d/projectile-demand/core2.html"
     },
     {
       "id": "D4",
@@ -34,21 +34,22 @@
       "kind": "APPLY_DEFAULT_LEARNER",
       "output": "50% default median, full support, three-item diagnostic",
       "status": "COMPLETED",
-      "artifact_ref": "public/physics/motion-2d/projectile-stress/core2a.html"
+      "artifact_ref": "public/physics/motion-in-2d/projectile-demand/core2a.html"
     },
     {
       "id": "D6",
       "kind": "SEQUENCE_PRIOR_EXPOSURE",
       "output": "Every Core2B item cites a Core2A parent and extension microtopic",
       "status": "COMPLETED",
-      "artifact_ref": "trace.json#demands"
+      "artifact_ref": "trace.v1.json"
     },
     {
       "id": "D7",
       "kind": "RECORD_REVIEW_STATUS",
       "output": "Machine validation claims only structural/source verification; human review remains OWNER_REVIEW label",
       "status": "COMPLETED",
-      "artifact_ref": "validation-report.json"
+      "artifact_ref": "validation-report.v1.json"
     }
-  ]
+  ],
+  "product_ref": "PRODUCT-PHY-KIN-2D-PROJECTILE-DEMAND"
 }
