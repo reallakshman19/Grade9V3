@@ -1,0 +1,495 @@
+{
+  "schema_version": "motion2d-projectile-six-core/v1",
+  "product_id": "PRODUCT-PHY-KIN-2D-PROJECTILE-DEMAND",
+  "title": "Motion in 2D — Projectile Motion: Standard Model and Modified-Dynamics Demand",
+  "subject": "Physics",
+  "grade": "9",
+  "starting_main_sha": "8de0add7381b60ba5db47cd185ded2b88b3a0a7e",
+  "canonical_package_ref": "PKG-PHY-KIN-2D-MOTION",
+  "extension_package_ref": "PKG-PHY-KIN-2D-PROJECTILE-EXTENSIONS",
+  "canonical_microtopic_order": [
+    "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+    "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+    "MIC-PHY-KIN-PROJECTILE-MODEL"
+  ],
+  "extension_microtopic_order": [
+    "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+    "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+    "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+    "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+    "MIC-PHY-KIN-2D-LINEAR-DRAG"
+  ],
+  "learner_defaults": {
+    "knowledge_estimate_percent": 50,
+    "support": "FULL",
+    "basis": "DEFAULT_MEDIAN",
+    "interpretation": "Routing coordinate only; it does not change Core1A/Core1B coverage or establish mastery."
+  },
+  "diagnostic": [
+    {
+      "id": "DIAG-KIN-2D-01",
+      "prompt": "At one instant, x-motion gives t=2 s. May the y equation use t=3 s for the same particle state?",
+      "answer": "No. Independent components use separate axis equations but one shared physical time.",
+      "routes_to": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS"
+    },
+    {
+      "id": "DIAG-KIN-2D-02",
+      "prompt": "A projectile is at its apex. Which quantity is zero: total velocity, horizontal velocity, or vertical velocity?",
+      "answer": "Only the vertical velocity component is zero in the standard no-drag projectile model.",
+      "routes_to": "MIC-PHY-KIN-PROJECTILE-MODEL"
+    },
+    {
+      "id": "DIAG-KIN-2D-03",
+      "prompt": "If a force proportional to velocity acts during flight, may the ordinary constant-acceleration projectile equations be used unchanged?",
+      "answer": "No. First decide the modified force model; velocity-dependent drag makes acceleration non-constant.",
+      "routes_to": "MIC-PHY-KIN-2D-LINEAR-DRAG"
+    }
+  ],
+  "demands": [
+    {
+      "owner_label": "Q28",
+      "resolved_ref": "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
+      "other_candidate_refs": [],
+      "primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+      "secondary_capability_refs": [
+        "CAP-KIN-PROJECTILE-MODEL"
+      ],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "rung": "R1",
+      "extension_microtopic_refs": [
+        "MIC-PHY-KIN-2D-VEL-FROM-POSITION"
+      ],
+      "source_custody_provenance_class": "PYQ_ADAPTED_SOURCE_VERIFIED",
+      "demand_evidence_status": "SOURCE_VERIFIED",
+      "learner_eligibility_status": "DEFAULT_ELIGIBLE",
+      "classification": [
+        "CANONICAL",
+        "EXTENSION"
+      ],
+      "bottleneck_decision": "Use instantaneous velocity components from derivatives, not the position-vector direction.",
+      "assumed_prerequisite": "Signed x/y components and introductory derivative-as-rate meaning.",
+      "canonical_part": "One object, independent x/y components, one shared clock, velocity direction from signed components.",
+      "extension_part": "Differentiate x(t) and y(t) to obtain the simultaneous velocity components.",
+      "core2a_ref": "Q-PHY-KIN-2D-EXT-2A-VELOCITY-DIRECTION",
+      "core2b_ref": "Q-PHY-KIN-2D-EXT-2B-VELOCITY-DIRECTION",
+      "duties_performed": [
+        "RESEARCH_CANONICAL_MAPPING",
+        "ACQUIRE_SOURCE",
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_PRACTICE",
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ]
+    },
+    {
+      "owner_label": "Q15",
+      "resolved_ref": "PYQ-PHY-JEEADV-2018-P2-Q08",
+      "other_candidate_refs": [
+        {
+          "ref": "PYQ-PHY-JEEADV-2023-P1-Q01",
+          "reason_not_selected": "The 2023 item is a building/slide projectile with a stated coefficient of restitution and multiple statements; it does not match the owner demand of a 45-degree projectile losing half its kinetic energy at the first ground bounce and leaving at 30 degrees."
+        }
+      ],
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "rung": "R3",
+      "extension_microtopic_refs": [
+        "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY"
+      ],
+      "source_custody_provenance_class": "PYQ_ADAPTED_SOURCE_VERIFIED",
+      "demand_evidence_status": "SOURCE_VERIFIED",
+      "learner_eligibility_status": "EXCLUDED",
+      "classification": [
+        "CANONICAL_CONSEQUENCE",
+        "EXTENSION"
+      ],
+      "bottleneck_decision": "Convert the retained kinetic-energy fraction into a speed-squared fraction before resolving the rebound direction.",
+      "assumed_prerequisite": "Standard projectile height relation and velocity components.",
+      "canonical_part": "After impact creates a new launch state, the rise to the new apex is gravity-only projectile motion.",
+      "extension_part": "Impact energy loss determines the post-impact speed before the canonical projectile model can restart.",
+      "core2a_ref": "Q-PHY-KIN-2D-EXT-2A-BOUNCE",
+      "core2b_ref": "Q-PHY-KIN-2D-EXT-2B-BOUNCE",
+      "duties_performed": [
+        "RESEARCH_SOURCE_IDENTITY",
+        "RESEARCH_CANONICAL_MAPPING",
+        "ACQUIRE_SOURCE",
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_PRACTICE",
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ]
+    },
+    {
+      "owner_label": "Q21",
+      "resolved_ref": "PYQ-PHY-JEEADV-2022-P1-Q08",
+      "other_candidate_refs": [],
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "rung": "R3",
+      "extension_microtopic_refs": [
+        "MIC-PHY-KIN-PROJ-PIECEWISE-G"
+      ],
+      "source_custody_provenance_class": "PYQ_ADAPTED_SOURCE_VERIFIED",
+      "demand_evidence_status": "SOURCE_VERIFIED",
+      "learner_eligibility_status": "EXCLUDED",
+      "classification": [
+        "CANONICAL_CONSEQUENCE",
+        "EXTENSION"
+      ],
+      "bottleneck_decision": "Preserve the apex state and apply the changed gravity only to the post-apex stage.",
+      "assumed_prerequisite": "Apex condition v_y=0 and constant-acceleration fall from a known height.",
+      "canonical_part": "Each constant-g segment still uses componentwise constant acceleration and one shared clock.",
+      "extension_part": "The acceleration law changes at a boundary, so the trajectory is piecewise rather than one standard projectile.",
+      "core2a_ref": "Q-PHY-KIN-2D-EXT-2A-PIECEWISE-G",
+      "core2b_ref": "Q-PHY-KIN-2D-EXT-2B-PIECEWISE-G",
+      "duties_performed": [
+        "ACQUIRE_SOURCE",
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_PRACTICE",
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ]
+    },
+    {
+      "owner_label": "Q26",
+      "resolved_ref": "PYQ-PHY-JEEADV-2026-P1-Q06",
+      "other_candidate_refs": [],
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS"
+      ],
+      "microtopic_ref": "MIC-PHY-KIN-PROJECTILE-MODEL",
+      "rung": "R3",
+      "extension_microtopic_refs": [
+        "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT"
+      ],
+      "source_custody_provenance_class": "PYQ_ADAPTED_SOURCE_VERIFIED",
+      "demand_evidence_status": "SOURCE_VERIFIED",
+      "learner_eligibility_status": "EXCLUDED",
+      "classification": [
+        "CANONICAL_CONSEQUENCE",
+        "EXTENSION"
+      ],
+      "bottleneck_decision": "Use the trajectory relation for point membership, then separately decide whether the point is before or after the apex.",
+      "assumed_prerequisite": "Standard projectile component equations and algebraic elimination of a common variable.",
+      "canonical_part": "The path follows from the gravity-only component equations sharing one time.",
+      "extension_part": "Eliminate time to obtain y(x), impose the point, and use velocity/slope for branch classification.",
+      "core2a_ref": "Q-PHY-KIN-2D-EXT-2A-POINT",
+      "core2b_ref": "Q-PHY-KIN-2D-EXT-2B-POINT",
+      "duties_performed": [
+        "ACQUIRE_SOURCE",
+        "AUTHOR_EXTENSION_TEACHING",
+        "AUTHOR_PRACTICE",
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ]
+    },
+    {
+      "owner_label": "Q23",
+      "resolved_ref": "PYQ-PHY-JEEADV-2025-P2-Q15",
+      "other_candidate_refs": [],
+      "primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+      "secondary_capability_refs": [
+        "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+        "CAP-NLM-SECOND-LAW"
+      ],
+      "microtopic_ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "rung": "R2",
+      "extension_microtopic_refs": [
+        "MIC-PHY-KIN-2D-LINEAR-DRAG"
+      ],
+      "source_custody_provenance_class": "PYQ_ADAPTED_SOURCE_VERIFIED",
+      "demand_evidence_status": "SOURCE_VERIFIED",
+      "learner_eligibility_status": "EXCLUDED",
+      "classification": [
+        "EXTENSION"
+      ],
+      "bottleneck_decision": "Reject constant horizontal velocity because linear drag makes a_x depend on v_x, then integrate exponential v_x(t).",
+      "assumed_prerequisite": "Newton's second law in one component and exponential decay supplied or previously bridged.",
+      "canonical_part": "The x/y component split and one common clock remain valid.",
+      "extension_part": "The acceleration is velocity-dependent, so the canonical constant-acceleration law is no longer valid on the dragged axis.",
+      "core2a_ref": "Q-PHY-KIN-2D-EXT-2A-DRAG",
+      "core2b_ref": "Q-PHY-KIN-2D-EXT-2B-DRAG",
+      "duties_performed": [
+        "ACQUIRE_SOURCE",
+        "AUTHOR_EXTENSION_TEACHING",
+        "TEACH_PREREQUISITE_BRIDGE",
+        "AUTHOR_PRACTICE",
+        "SEQUENCE_PRIOR_EXPOSURE"
+      ]
+    }
+  ],
+  "cores": {
+    "CORE1": {
+      "blueprint_ref": "BP-CORE1-ORIENTATION",
+      "purpose": "Compact semantic orientation from canonical truth, followed by an explicitly labelled extension map.",
+      "canonical_microtopic_refs": [
+        "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+        "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+        "MIC-PHY-KIN-PROJECTILE-MODEL"
+      ],
+      "extension_microtopic_refs": [
+        "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+        "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+        "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+        "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+        "MIC-PHY-KIN-2D-LINEAR-DRAG"
+      ]
+    },
+    "CORE2": {
+      "blueprint_ref": "BP-CORE2-SOURCE-QUESTION",
+      "purpose": "Source custody for all five selected demand records plus the non-selected Q15 candidate.",
+      "question_refs": [
+        "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
+        "PYQ-PHY-JEEADV-2018-P2-Q08",
+        "PYQ-PHY-JEEADV-2022-P1-Q08",
+        "PYQ-PHY-JEEADV-2026-P1-Q06",
+        "PYQ-PHY-JEEADV-2025-P2-Q15",
+        "PYQ-PHY-JEEADV-2023-P1-Q01"
+      ],
+      "wording_policy": "Repository exam-bank records are faithful non-verbatim restatements; exact official wording remains at the linked paper locator. The page must never label an adapted stem SOURCE_VERBATIM."
+    },
+    "CORE1A": {
+      "blueprint_ref": "BP-CORE1A-CONSTRUCTION",
+      "purpose": "Detailed declarative teaching: canonical R1–R3 first, then the five labelled extensions.",
+      "microtopic_refs": [
+        "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+        "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+        "MIC-PHY-KIN-PROJECTILE-MODEL",
+        "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+        "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+        "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+        "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+        "MIC-PHY-KIN-2D-LINEAR-DRAG"
+      ]
+    },
+    "CORE1B": {
+      "blueprint_ref": "BP-CORE1B-RECONSTRUCTION",
+      "purpose": "Self-tutor reconstruction over exactly the same eight concepts as Core1A, with attempt before reveal.",
+      "microtopic_refs": [
+        "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+        "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+        "MIC-PHY-KIN-PROJECTILE-MODEL",
+        "MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+        "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+        "MIC-PHY-KIN-PROJ-PIECEWISE-G",
+        "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+        "MIC-PHY-KIN-2D-LINEAR-DRAG"
+      ]
+    },
+    "CORE2A": {
+      "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION",
+      "purpose": "Supported familiar application using truthfully authored learner-eligible twins.",
+      "question_refs": [
+        "Q-PHY-KIN-2D-EXT-2A-VELOCITY-DIRECTION",
+        "Q-PHY-KIN-2D-EXT-2A-BOUNCE",
+        "Q-PHY-KIN-2D-EXT-2A-PIECEWISE-G",
+        "Q-PHY-KIN-2D-EXT-2A-POINT",
+        "Q-PHY-KIN-2D-EXT-2A-DRAG"
+      ]
+    },
+    "CORE2B": {
+      "blueprint_ref": "BP-CORE2B-TRANSFER",
+      "purpose": "Changed-demand transfer using only previously taught extensions and protected DECIDE moves.",
+      "question_refs": [
+        "Q-PHY-KIN-2D-EXT-2B-VELOCITY-DIRECTION",
+        "Q-PHY-KIN-2D-EXT-2B-BOUNCE",
+        "Q-PHY-KIN-2D-EXT-2B-PIECEWISE-G",
+        "Q-PHY-KIN-2D-EXT-2B-POINT",
+        "Q-PHY-KIN-2D-EXT-2B-DRAG"
+      ],
+      "prior_exposure_map": {
+        "Q-PHY-KIN-2D-EXT-2B-VELOCITY-DIRECTION": [
+          "core1a.html#MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+          "core1b.html#MIC-PHY-KIN-2D-VEL-FROM-POSITION",
+          "core2a.html#Q-PHY-KIN-2D-EXT-2A-VELOCITY-DIRECTION"
+        ],
+        "Q-PHY-KIN-2D-EXT-2B-BOUNCE": [
+          "core1a.html#MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+          "core1b.html#MIC-PHY-KIN-PROJ-BOUNCE-ENERGY",
+          "core2a.html#Q-PHY-KIN-2D-EXT-2A-BOUNCE"
+        ],
+        "Q-PHY-KIN-2D-EXT-2B-PIECEWISE-G": [
+          "core1a.html#MIC-PHY-KIN-PROJ-PIECEWISE-G",
+          "core1b.html#MIC-PHY-KIN-PROJ-PIECEWISE-G",
+          "core2a.html#Q-PHY-KIN-2D-EXT-2A-PIECEWISE-G"
+        ],
+        "Q-PHY-KIN-2D-EXT-2B-POINT": [
+          "core1a.html#MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+          "core1b.html#MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+          "core2a.html#Q-PHY-KIN-2D-EXT-2A-POINT"
+        ],
+        "Q-PHY-KIN-2D-EXT-2B-DRAG": [
+          "core1a.html#MIC-PHY-KIN-2D-LINEAR-DRAG",
+          "core1b.html#MIC-PHY-KIN-2D-LINEAR-DRAG",
+          "core2a.html#Q-PHY-KIN-2D-EXT-2A-DRAG"
+        ]
+      }
+    }
+  },
+  "worked_anchors": {
+    "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS": {
+      "problem": "A particle has v_x=6 m/s and v_y=-8 m/s at t=3 s. What makes these components one physical state?",
+      "route": [
+        "Use one declared x-y frame.",
+        "Keep the same t=3 s for both components.",
+        "Recombine only simultaneous components."
+      ],
+      "result": "The state is v=(6,-8) m/s at one shared instant.",
+      "provenance": "AUTHORED_PEDAGOGICAL"
+    },
+    "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION": {
+      "problem": "With u=(4,6) m/s and a=(0,-2) m/s², find v after 2 s.",
+      "route": [
+        "Apply v_x=u_x+a_x t.",
+        "Apply v_y=u_y+a_y t.",
+        "Recombine the simultaneous components."
+      ],
+      "result": "v=(4,2) m/s.",
+      "provenance": "AUTHORED_PEDAGOGICAL"
+    },
+    "MIC-PHY-KIN-PROJECTILE-MODEL": {
+      "problem": "A ball is released into free flight with u_x=8 m/s and u_y=6 m/s. State the acceleration model.",
+      "route": [
+        "Check retained forces after release.",
+        "Neglect drag as stated.",
+        "Use a_x=0 and a_y=-g."
+      ],
+      "result": "The gravity-only projectile model is licensed.",
+      "provenance": "AUTHORED_PEDAGOGICAL"
+    },
+    "MIC-PHY-KIN-2D-VEL-FROM-POSITION": {
+      "problem": "For x=4t and y=10t-t², find v at t=2 s.",
+      "route": [
+        "Differentiate both component positions.",
+        "Evaluate at the same time."
+      ],
+      "result": "v=(4,6) m/s.",
+      "provenance": "AUTHORED_PEDAGOGICAL"
+    },
+    "MIC-PHY-KIN-PROJ-BOUNCE-ENERGY": {
+      "problem": "A rebound retains 49% of kinetic energy. What fraction of the pre-impact speed remains?",
+      "route": [
+        "Use K proportional to v².",
+        "Take the positive square root of 0.49."
+      ],
+      "result": "70% of the speed remains.",
+      "provenance": "AUTHORED_PEDAGOGICAL"
+    },
+    "MIC-PHY-KIN-PROJ-PIECEWISE-G": {
+      "problem": "From the same apex height, gravity doubles after the apex. How does descent time change?",
+      "route": [
+        "Preserve the apex height and v_y=0.",
+        "Use t=sqrt(2H/g₂)."
+      ],
+      "result": "The descent time becomes 1/sqrt(2) of the ordinary value.",
+      "provenance": "AUTHORED_PEDAGOGICAL"
+    },
+    "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT": {
+      "problem": "For theta=45°, what extra test tells whether a known point on the path is after the apex?",
+      "route": [
+        "Use the path equation for membership.",
+        "Check v_y or dy/dx at the point."
+      ],
+      "result": "A negative vertical velocity or slope places the point after the apex.",
+      "provenance": "AUTHORED_PEDAGOGICAL"
+    },
+    "MIC-PHY-KIN-2D-LINEAR-DRAG": {
+      "problem": "If m/c=3 s, what fraction of initial horizontal speed remains after 3 s?",
+      "route": [
+        "Use v_x/v_x0=e^{-t/(m/c)}.",
+        "Set t=m/c."
+      ],
+      "result": "e^{-1}, about 0.368, remains.",
+      "provenance": "AUTHORED_PEDAGOGICAL"
+    }
+  },
+  "canonical_explorers": [
+    {
+      "representation_ref": "REP-KIN-2D-SHARED-CLOCK",
+      "locator": "../explorers/shared-clock/index.html",
+      "label": "Shared Clock Explorer"
+    },
+    {
+      "representation_ref": "REP-KIN-2D-EVENT-CLOCK",
+      "locator": "../explorers/event-clock/index.html",
+      "label": "Event Clock Explorer"
+    },
+    {
+      "representation_ref": "REP-KIN-2D-PROJECTILE-MODEL",
+      "locator": "../explorers/projectile-model/index.html",
+      "label": "Projectile Model Gate Explorer"
+    }
+  ],
+  "visual_specs": [
+    {
+      "representation_ref": "REP-KIN-2D-TANGENT-VELOCITY",
+      "purpose": "Separate the position ray from the tangent velocity direction.",
+      "alt": "A curved trajectory with a point P, a ray from the origin to P, and a distinct tangent velocity arrow at P.",
+      "elements": [
+        "trajectory",
+        "point P",
+        "position ray r",
+        "tangent v",
+        "v_x and v_y components"
+      ]
+    },
+    {
+      "representation_ref": "REP-PROJ-BOUNCE-ENERGY",
+      "purpose": "Show impact as a boundary and the new launch state after energy loss.",
+      "alt": "Incoming projectile arc reaches the ground, an impact boundary is marked with retained kinetic-energy fraction f, then a new rebound velocity points upward toward a lower apex.",
+      "elements": [
+        "incoming arc",
+        "impact event",
+        "K_after=f K_before",
+        "rebound vector",
+        "new apex"
+      ]
+    },
+    {
+      "representation_ref": "REP-PROJ-PIECEWISE-G",
+      "purpose": "Show the apex boundary between two constant-gravity stages.",
+      "alt": "Projectile rises under g1 to an apex boundary and descends under g2, with the apex position and velocity carried across.",
+      "elements": [
+        "stage 1",
+        "g1",
+        "apex state",
+        "stage 2",
+        "g2"
+      ]
+    },
+    {
+      "representation_ref": "REP-PROJ-TRAJECTORY-POINT",
+      "purpose": "Bind a specified point to the path and show a local tangent for branch classification.",
+      "alt": "Coordinate axes with a parabolic projectile path, marked point P, apex, and local tangent at P.",
+      "elements": [
+        "axes",
+        "parabola",
+        "P",
+        "apex",
+        "local tangent"
+      ]
+    },
+    {
+      "representation_ref": "REP-KIN-2D-LINEAR-DRAG",
+      "purpose": "Contrast constant horizontal speed with exponential decay under linear drag.",
+      "alt": "Graph of horizontal velocity against time starting at v_x0 and decaying exponentially, with time constant m/c marked.",
+      "elements": [
+        "time axis",
+        "v_x axis",
+        "v_x0",
+        "exponential decay",
+        "m/c"
+      ]
+    }
+  ],
+  "review_labels": {
+    "structural": "STRUCTURALLY_VALIDATED",
+    "source": "SOURCE_VERIFIED",
+    "academic": "HUMAN_REVIEW_NOT_CLAIMED",
+    "publication": "PUBLICATION_REVIEW_NOT_CLAIMED"
+  },
+  "provenance_policy": "Source stems remain PYQ_ADAPTED_SOURCE_VERIFIED from the competitive exam bank; all new teaching, scaffolds, worked examples and transfer variants are labelled AUTHORED_PEDAGOGICAL or AUTHORED_PRACTICE."
+}
