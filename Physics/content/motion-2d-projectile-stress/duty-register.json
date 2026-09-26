@@ -1,0 +1,54 @@
+{
+  "schema_version": "projectile-stress-duty-register/v1",
+  "duties": [
+    {
+      "id": "D1",
+      "kind": "RESEARCH_SOURCE_IDENTITY",
+      "output": "Q15 source comparison and discriminator",
+      "status": "COMPLETED",
+      "artifact_ref": "trace.json#q15_resolution"
+    },
+    {
+      "id": "D2",
+      "kind": "AUTHOR_EXTENSION_TEACHING",
+      "output": "Five CANDIDATE extension microtopics plus Core1A/Core1B teaching",
+      "status": "COMPLETED",
+      "artifact_ref": "Physics/library/phy-kin-2d-projectile-extensions.v1.json"
+    },
+    {
+      "id": "D3",
+      "kind": "ACQUIRE_SOURCE",
+      "output": "Five fixed source records plus retained Q15 alternative in Core2 custody view",
+      "status": "COMPLETED",
+      "artifact_ref": "public/physics/motion-2d/projectile-stress/core2.html"
+    },
+    {
+      "id": "D4",
+      "kind": "AUTHOR_PRACTICE",
+      "output": "Five eligible Core2A twins and five Core2B transfer tasks",
+      "status": "COMPLETED",
+      "artifact_ref": "Physics/library/phy-kin-2d-projectile-extensions.v1.json"
+    },
+    {
+      "id": "D5",
+      "kind": "APPLY_DEFAULT_LEARNER",
+      "output": "50% default median, full support, three-item diagnostic",
+      "status": "COMPLETED",
+      "artifact_ref": "public/physics/motion-2d/projectile-stress/core2a.html"
+    },
+    {
+      "id": "D6",
+      "kind": "SEQUENCE_PRIOR_EXPOSURE",
+      "output": "Every Core2B item cites a Core2A parent and extension microtopic",
+      "status": "COMPLETED",
+      "artifact_ref": "trace.json#demands"
+    },
+    {
+      "id": "D7",
+      "kind": "RECORD_REVIEW_STATUS",
+      "output": "Machine validation claims only structural/source verification; human review remains OWNER_REVIEW label",
+      "status": "COMPLETED",
+      "artifact_ref": "validation-report.json"
+    }
+  ]
+}
