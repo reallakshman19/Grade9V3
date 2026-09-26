@@ -1,0 +1,107 @@
+{
+  "schema_version": "projectile-stress-trace/v1",
+  "repository_basis": "main@8de0add7381b60ba5db47cd185ded2b88b3a0a7e",
+  "canonical_bucket": "BUCKET-PHY-KIN-2D-MOTION",
+  "canonical_matrix": "MATRIX-PHY-KIN-2D-MOTION",
+  "extension_bucket": "BUCKET-PHY-KIN-2D-PROJECTILE-EXTENSIONS",
+  "extension_matrix": "MATRIX-PHY-KIN-2D-PROJECTILE-EXTENSIONS",
+  "learner_start": {
+    "knowledge_percentage": 50,
+    "basis": "DEFAULT_MEDIAN",
+    "support": "full",
+    "diagnostic_min_items": 3
+  },
+  "q15_resolution": {
+    "owner_label": "Q15",
+    "resolved_ref": "PYQ-PHY-JEEADV-2018-P2-Q08",
+    "candidates_considered": [
+      "PYQ-PHY-JEEADV-2018-P2-Q08",
+      "PYQ-PHY-JEEADV-2023-P1-Q01"
+    ],
+    "discriminator": "The 2018 Paper 2 Q8 source explicitly gives a 45-degree projectile, 120 m first maximum height, half kinetic-energy loss at the first ground bounce, a 30-degree post-bounce velocity, and asks for the new maximum height. The 2023 Paper 1 Q1 source is a different building/slide/restitution multi-statement problem.",
+    "selected_source": "https://jeeadv.ac.in/past_qps/2018_2.pdf",
+    "nonselected_source": "https://jeeadv.ac.in/past_qps/2023_1_English.pdf"
+  },
+  "demands": [
+    {
+      "owner_label": "Q28",
+      "resolved_ref": "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29",
+      "primary_capability_ref": "CAP-KIN-2D-INDEPENDENT-COMPONENTS",
+      "extension_microtopic_ref": "MIC-PHY-KIN-2D-PARAMETRIC-VELOCITY",
+      "classification": "EXTENSION",
+      "learner_eligibility": "DEFAULT_ELIGIBLE",
+      "core2a_ref": "Q-PROJ-STRESS-2A-PARAMETRIC",
+      "core2b_ref": "Q-PROJ-STRESS-2B-PARAMETRIC",
+      "duty": "AUTHOR_EXTENSION_TEACHING"
+    },
+    {
+      "owner_label": "Q15",
+      "resolved_ref": "PYQ-PHY-JEEADV-2018-P2-Q08",
+      "candidate_refs": [
+        "PYQ-PHY-JEEADV-2018-P2-Q08",
+        "PYQ-PHY-JEEADV-2023-P1-Q01"
+      ],
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "extension_microtopic_ref": "MIC-PHY-KIN-PROJ-ENERGY-BOUNCE",
+      "classification": "EXTENSION",
+      "learner_eligibility": "EXCLUDED",
+      "core2a_ref": "Q-PROJ-STRESS-2A-ENERGY",
+      "core2b_ref": "Q-PROJ-STRESS-2B-ENERGY",
+      "duty": "RESEARCH_SOURCE_IDENTITY+AUTHOR_EXTENSION_TEACHING+AUTHOR_PRACTICE"
+    },
+    {
+      "owner_label": "Q21",
+      "resolved_ref": "PYQ-PHY-JEEADV-2022-P1-Q08",
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "extension_microtopic_ref": "MIC-PHY-KIN-PROJ-SWITCHED-GRAVITY",
+      "classification": "EXTENSION",
+      "learner_eligibility": "EXCLUDED",
+      "core2a_ref": "Q-PROJ-STRESS-2A-SWITCHED-G",
+      "core2b_ref": "Q-PROJ-STRESS-2B-SWITCHED-G",
+      "duty": "AUTHOR_EXTENSION_TEACHING+AUTHOR_PRACTICE"
+    },
+    {
+      "owner_label": "Q26",
+      "resolved_ref": "PYQ-PHY-JEEADV-2026-P1-Q06",
+      "primary_capability_ref": "CAP-KIN-PROJECTILE-MODEL",
+      "extension_microtopic_ref": "MIC-PHY-KIN-PROJ-TRAJECTORY-POINT",
+      "classification": "EXTENSION",
+      "learner_eligibility": "EXCLUDED",
+      "core2a_ref": "Q-PROJ-STRESS-2A-TRAJECTORY",
+      "core2b_ref": "Q-PROJ-STRESS-2B-TRAJECTORY",
+      "duty": "AUTHOR_EXTENSION_TEACHING+AUTHOR_PRACTICE"
+    },
+    {
+      "owner_label": "Q23",
+      "resolved_ref": "PYQ-PHY-JEEADV-2025-P2-Q15",
+      "primary_capability_ref": "CAP-KIN-2D-CONSTANT-ACCELERATION",
+      "extension_microtopic_ref": "MIC-PHY-KIN-PROJ-LINEAR-DRAG",
+      "classification": "EXTENSION",
+      "learner_eligibility": "EXCLUDED",
+      "core2a_ref": "Q-PROJ-STRESS-2A-DRAG",
+      "core2b_ref": "Q-PROJ-STRESS-2B-DRAG",
+      "duty": "AUTHOR_EXTENSION_TEACHING+AUTHOR_PRACTICE"
+    }
+  ],
+  "provenance_classes": [
+    "SOURCE_VERBATIM",
+    "SOURCE_DERIVED",
+    "OWNER_SUPPLIED",
+    "CANONICAL_DERIVED",
+    "AUTHORED_PEDAGOGICAL",
+    "AUTHORED_PRACTICE"
+  ],
+  "product_locations": {
+    "CORE1": "public/physics/motion-2d/projectile-stress/core1.html",
+    "CORE2": "public/physics/motion-2d/projectile-stress/core2.html",
+    "CORE1A": "public/physics/motion-2d/projectile-stress/core1a.html",
+    "CORE1B": "public/physics/motion-2d/projectile-stress/core1b.html",
+    "CORE2A": "public/physics/motion-2d/projectile-stress/core2a.html",
+    "CORE2B": "public/physics/motion-2d/projectile-stress/core2b.html"
+  },
+  "review": {
+    "structural_status": "STRUCTURALLY_VALIDATED",
+    "source_status": "SOURCE_VERIFIED",
+    "human_review_label": "OWNER_REVIEW"
+  }
+}
