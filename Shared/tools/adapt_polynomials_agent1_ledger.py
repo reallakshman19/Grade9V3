@@ -35,7 +35,7 @@ ROW_READBACK_STATES = {
 }
 
 CLINIC_QUESTION_IDS = {
-    "Q-MAT-09-POL-P05-HOTS-01",
+    "Q-MAT-09-POL-P05-NUM-04",
     "Q-MAT-09-POL-P06-HOTS-14",
     "Q-MAT-09-POL-P09-ARC-21",
 }
@@ -50,7 +50,7 @@ SECTION_TITLES = {
 }
 
 MCQ_TYPES = {"TRUE_FALSE", "SINGLE_CHOICE", "ASSERTION_REASON", "HOTS", "ARCHIVE_CORNER"}
-SHORT_TYPES = {"FILL_IN_THE_BLANKS", "FREE_RESPONSE_VSA"}
+SHORT_TYPES = {"FILL_IN_THE_BLANKS", "FREE_RESPONSE_VSA", "NUMERICAL_TYPE"}
 FIGURE_STATES = {"ABSENT", "SOURCE_EMBED", "SOURCE_DERIVED_REDRAW"}
 
 
@@ -158,8 +158,10 @@ def admission_failures(data: dict[str, Any]) -> list[str]:
     count = ledger.get("question_count")
     if count != len(rows):
         failures.append("ledger.question_count does not equal len(ledger.rows)")
-    if ledger.get("coverage_status") != "COMPLETE_PAGES_1_TO_11":
-        failures.append("ledger coverage is not COMPLETE_PAGES_1_TO_11")
+    if ledger.get("coverage_status") != "SOURCE_READBACK_COMPLETE_PAGES_1_TO_11":
+        failures.append("ledger coverage is not SOURCE_READBACK_COMPLETE_PAGES_1_TO_11")
+    if ledger.get("selection_scope") not in {"CURATED_SOURCE_SPINE", "FULL_CORPUS"}:
+        failures.append("ledger.selection_scope must be CURATED_SOURCE_SPINE or FULL_CORPUS")
 
     coverage = ledger.get("coverage_receipt")
     if not isinstance(coverage, dict):
@@ -215,10 +217,10 @@ def admission_failures(data: dict[str, Any]) -> list[str]:
             failures.append(f"{where} does not have verified direct registered-source readback")
 
         comparison = str(row.get("independent_comparison_status", "")).upper()
-        if not comparison:
-            failures.append(f"{where}.independent_comparison_status is missing")
-        elif "CONFLICT" in comparison or "REVIEW" in comparison:
-            failures.append(f"{where} has unresolved independent comparison status {comparison}")
+        if comparison not in {"MATCH", "SOURCE_KEY_CONFLICT_RECONCILED"}:
+            failures.append(f"{where}.independent_comparison_status is unresolved: {comparison or 'MISSING'}")
+        if comparison == "SOURCE_KEY_CONFLICT_RECONCILED" and row.get("authored_answer") in (None, ""):
+            failures.append(f"{where} reconciles a source-key conflict but has no authored_answer")
 
         if row.get("source_answer_status") not in {"PRESENT", "MISSING"}:
             failures.append(f"{where}.source_answer_status must be PRESENT or MISSING")
@@ -263,9 +265,9 @@ def adapt(data: dict[str, Any], *, provider_head: str | None = None) -> dict[str
         answer: dict[str, Any] = {}
         if answer_status == "PRESENT":
             answer["source_summary"] = str(row["source_answer"])
-        else:
-            if row.get("authored_answer") not in (None, ""):
-                answer["authored_summary"] = str(row["authored_answer"])
+        if row.get("authored_answer") not in (None, ""):
+            answer["authored_summary"] = str(row["authored_answer"])
+            answer["authored_answer_label"] = str(row.get("authored_answer_label", "AUTHORED MATHEMATICAL CHECK"))
 
         questions.append({
             "id": str(row["id"]),
@@ -285,8 +287,8 @@ def adapt(data: dict[str, Any], *, provider_head: str | None = None) -> dict[str
                 "components": {
                     "stem": "PRESERVED",
                     "options": "PRESERVED" if options else "NOT_PRESENT_IN_SOURCE",
-                    "subparts": "NOT_PRESENT_IN_SOURCE",
-                    "conditions": "NOT_PRESENT_IN_SOURCE",
+                    "subparts": "PRESERVED" if row.get("subparts") else "NOT_PRESENT_IN_SOURCE",
+                    "conditions": "PRESERVED" if row.get("conditions") else "NOT_PRESENT_IN_SOURCE",
                     "figures": figure_custody,
                     "hints": "NOT_PRESENT_IN_SOURCE",
                     "answer": answer_component,
@@ -294,6 +296,8 @@ def adapt(data: dict[str, Any], *, provider_head: str | None = None) -> dict[str
             },
             "stem": str(row["stem"]),
             "options": options or None,
+            "subparts": [str(x) for x in (row.get("subparts") or [])],
+            "conditions": [str(x) for x in (row.get("conditions") or [])],
             "response": {
                 "type": _response_type(row),
                 "prompt": "Choose one answer" if _response_type(row) == "MCQ_SINGLE" else "Your attempt",
