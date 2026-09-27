@@ -72,7 +72,7 @@ class SurfaceContract(unittest.TestCase):
 
     def test_exact_selected_clinic_ids_and_no_routine_archive_q11(self):
         expected = {
-            "Q-MAT-09-POL-P05-HOTS-01",
+            "Q-MAT-09-POL-P05-NUM-04",
             "Q-MAT-09-POL-P06-HOTS-14",
             "Q-MAT-09-POL-P09-ARC-21",
         }
