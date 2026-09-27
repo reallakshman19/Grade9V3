@@ -87,6 +87,13 @@ class PolynomialsAgent1AdapterTests(unittest.TestCase):
         data["issue"]["disposition"] = "PRESERVE"
         self.assertEqual(adapter.admission_failures(data), [])
 
+    def test_direct_registered_source_schema_is_admitted(self):
+        data = ready_ledger()
+        data["schema"] = "polynomials-registered-source/v1"
+        data["status"] = "DIRECT_SOURCE_COMPLETE"
+        data["issue"]["disposition"] = "PRESERVE"
+        self.assertEqual(adapter.admission_failures(data), [])
+
     def test_magic_117_row_minimum_is_not_an_admission_gate(self):
         data = ready_ledger(row_count=4)
         self.assertEqual(adapter.admission_failures(data), [])
