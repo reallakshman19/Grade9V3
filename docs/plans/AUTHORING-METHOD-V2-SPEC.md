@@ -1,705 +1,664 @@
-# SPEC-AM2 — Authoring Method v2: guide the work, don't gate it
+# SPEC-AM2 — One model for authoring learner products
 
 | Field | Value |
 |---|---|
+| Revision | r2 (supersedes r1 of this file) |
 | Status | DRAFT for owner review |
 | Date | 2026-09-27 |
 | Baseline | `main@1d044c18` (after PR #300) |
-| Replaces | the publish-gate semantics of `build_products.py`; `definition_of_complete` in `Shared/workflows/research-first.v1.json`; the agent templates in `template/library-agents/` and `docs/library-agents/`; the product ratchet |
-| Amends | #320 (reconciliation in §10), #319 |
-| Keeps | `render_core.py` (the one renderer), the blueprint registry, the research tooling (`evidence_check`, `library_board`, `promote_verified`), the quality contract and calibration corpus (demoted to a linter), and exact-render digests |
+| Amends | #319, #320 (every section dispositioned in §9) |
+| Why r2 | r1 bolted a method onto the old research-first pipeline without unifying them. That left two of several things: staging and library packages, board stages and protocol phases, verification records and review records, evidence cards and a separate corpus file. r2 defines one model and derives every change from it. Every point raised so far has a disposition, and each one not implemented has a justification (§9). |
 
-Requirement IDs used below:
-- `A*`: platform (code, true by construction);
-- `B*`: method (protocol, exemplars, notes);
-- `C*`: judgement (review, owner);
-- `T*`: tooling;
-- `W*`: work packages.
-
-"MUST" applies only to code behaviour and data formats. Nothing in this spec stops an agent from delivering or asks it to refuse work.
+Conventions:
+- **MUST** applies only to code behaviour and data formats.
+- Nothing in this spec makes an agent refuse, stop or wait. The single decision point is the owner accepting a rendered product (§4.5).
 
 ---
 
-## 1. Problem statement (evidence)
+## 0. The model on one page
 
-**E1. Gates passed what reviewers failed.**
-- Both Physics pilots reached quality-gate `PASS` with 0 gaps (`products/status.v1.json`).
-- Four consecutive independent reviews still found S1 defects:
+```
+   SOURCE ────────────► UNIT ─────────────► PRODUCT ─────────► REVIEW ─────────► DECISION
+   what the books say   what we teach        what the learner   an independent    the owner accepts
+   (acquisitions,       (one package +       sees (render_core  reader's          an exact render;
+    evidence cards,      one unit folder:     pages, identified  judgement of      that publishes it
+    item inventories,    design note,         by a digest)       that digest
+    cross-reads)         worklog)
+   writer: source       writer: unit         writer: code       writer:           writer: owner
+   readers (2)          author               (render_core)      reviewer
+```
 
-| Round | Reviewer | Evidence | Laws of Motion S1 | Motion in a Plane S1 |
+- **One of everything:**
+  - one source of truth per fact (its evidence card);
+  - one package per unit;
+  - one renderer;
+  - one lifecycle per unit;
+  - one decision-maker for publication.
+- **Three kinds of guarantee:**
+  - **Construction:** the renderer makes a class of defect impossible (answers before the attempt, a second shell).
+  - **Craft:** the method, the golden exemplars and the anti-pattern cards show how to do excellent work.
+  - **Judgement:** an independent reviewer coaches; the owner decides.
+- **Descriptive state, never permission.** Tools report what exists and what they notice. Only the owner's acceptance changes what is published.
+- **Extend, don't duplicate.** Every new element in this spec extends an existing file or tool, or it retires one (§7).
+
+## 1. Evidence
+
+| # | Observation (pilot, PR #295 → #300) | Consequence for the model |
+|---|---|---|
+| E1 | Both Physics pilots reached quality-gate PASS with 0 gaps; 4 consecutive independent reviews still found S1s (commits `c2dd7dc4`, `1a047ec0`, `9bf92e03`/`d1f64d03`/`66a5c5dc`, `cb84133a`/`1d012787`) | A field-presence gate does not measure quality → judgement decides (§4.4–4.5) |
+| E2 | Fields the gate counted were present but wrong: `transfer.novelty` false (FRICTION-STATE-01, STRING-MODEL-03, Math LE-03); `family_exposure.closure` stale on 5 items (round 4) | Novelty and closures are reasoned once per unit in the design note's task arc (§5.3), not filled per record |
+| E3 | 10 of the 11 S1s in rounds 2–4 came from how pages were built (CSS-hidden stages, asset title/desc, purpose-as-caption, `produces` before the attempt); each disappeared when the renderer changed | Learner-state safety lives in the renderer (§4.3) |
+| E4 | Author, illustrator, verifier and reviewer worked on one unit in separate sessions; round-4 S2s were mostly text describing a task another session had rewritten | One owner per unit, end to end (§3.3) |
+| E5 | $100.87 spent on the two pilot products, not yet accepted; ≈ $14 lost to usage limits before a push; 4 fix rounds | Owner calibration at the prototype (P4); push after every phase |
+| E6 | Every contract rule added in Phase 6 encoded a finding a reviewer had already made | Rules are a linter that describes; they don't predict or decide (§5.5) |
+| E7 | Math staging package (7,046 lines, verified) and the library `linear-equations` package (3 microtopics) describe the same unit and drifted apart; promotion refused the verified content for depth duties | One package per unit, no staging copy (§4.2) |
+| E8 | `core2()` renders neither the source's `hints` nor its `figure_refs`; the CORE2 blueprint's `support` slot is unused (RCA-ARCH-007) | Core2 projection is completed in the renderer (§4.3.5) |
+
+## 2. Principles and the rule each one produces
+
+| Principle | Rule it produces |
+|---|---|
+| P1 One of everything | Retire staging packages, `promote_verified` gating, board work orders, the separate product-verifier role and parallel templates (§7) |
+| P2 Safety by construction | Withheld content is absent from the live page; attempts are typed; keys vs verified results are displayed; each output mode has a declared protection (§4.3) |
+| P3 Quality by craft | House rules, protocol, design note, goldens, techniques, anti-patterns (§5) |
+| P4 Acceptance by judgement | Review v2 coaches; the owner accepts an exact digest (§4.4, §4.5) |
+| P5 Descriptive state | `unit_status.py` derives each unit's state from its artifacts; nothing refuses (§3.2, §5.5) |
+| P6 Extend, don't duplicate | Inventories link existing evidence cards; cross-reads extend existing verification records; staleness reuses `inputs_digest` (§4.1) |
+
+## 3. Objects, lifecycle, roles
+
+### 3.1 Objects
+
+| Object | Files (existing unless marked new) | Identity | Writer | Read by |
 |---|---|---|---|---|
-| 1 | agent-verifier-2 | `c2dd7dc4` | yes (figures reused, Core1B task = `produces`) | yes |
-| 2 | agent-verifier-3 | `1a047ec0` | 2 | 2 |
-| 3 | agent-verifier-5 | `9bf92e03`, `d1f64d03` | 2 | 1 |
-| 4 | agent-verifier-6 | `cb84133a` | 2 | 2 |
+| Source | `<Subject>/research/acquisitions/*.json`, `scans/*.scan.json`, `evidence/<NODE>.cards.json`, `source-allowlist.json`, **new** `inventories/<INV>.json`, `verification/*.verification.json` (extended) | acquisition sha256; card id; inventory digest | source readers (A writes, B cross-reads) | unit author, reviewer |
+| Unit | `<Subject>/library/<slug>.v1.json` (the only package) + **new** `<Subject>/units/<slug>/` | package path; unit slug | unit author | render_core, reviewer, owner |
+| Product | `products/<subject>/<slug>.manifest.json` → `publication/products/<subject>/<slug>/` | render digest (hash of the rendered pages) | render_core (code) | reviewer, owner |
+| Review | `products/verification/<slug>.review.json` (v2) | review file @ commit; `render_digest` inside | reviewer | unit author, owner |
+| Decision | **new** `products/acceptance/<slug>.json`; `<Subject>/units/<slug>/OWNER-NOTES.md` | acceptance file @ commit | owner | publication tool |
 
-**E2. Agents optimised for the fields the gate counted, not for quality.**
-- `transfer.novelty` was present on every Core2B item. It was false for Q-PHY-NLM-2B-FRICTION-STATE-01 (round 2) and Q-PHY-NLM-2B-STRING-MODEL-03 (round 4), and for MAT-09-LINEAR-EQUATIONS-03 (verifier).
-- `family_exposure.closure` was present everywhere, yet stale on 5 items in round 4.
+### 3.2 Unit lifecycle (descriptive)
 
-**E3. Most S1s were structural and belonged in the renderer.**
-- 10 of the 11 S1s in rounds 2–4 came from how pages were built:
-  - later figure stages hidden with CSS;
-  - asset `<title>`/`<desc>`;
-  - the design `purpose` printed as a caption;
-  - `produces` shown before the attempt.
-- Each became impossible once the renderer changed. None needed a gate.
+`Shared/tools/unit_status.py` (a new report, derived from `library_board.py`) computes each unit's state from artifacts. Every state is a fact about files, not a permission. Work may happen in any order; the table shows the usual order.
 
-**E4. Handoffs broke coherence.**
-- Author, illustrator, verifier and reviewer worked on the same unit in separate sessions.
-- The round-4 S2s were almost all "text describes the previous version of a task someone else rewrote".
+| State | True when |
+|---|---|
+| PLANNED | `units/<slug>/UNIT.md` exists |
+| SOURCED | every source the unit cites is registered, and every card it cites is cross-read, or listed as open in UNIT.md |
+| DESIGNED | `DESIGN-NOTE.md` has sections 1–8 non-empty |
+| PROTOTYPED | `SELF-CRITIQUE.md` exists and the package renders |
+| BUILT | every microtopic listed in UNIT.md renders with no renderer gap |
+| REVIEWED | a review exists whose `render_digest` equals the current build |
+| ACCEPTED | `products/acceptance/<slug>.json` names the current digest |
+| PUBLISHED | `public/products/<subject>/<slug>/` holds that digest |
 
-**E5. Cost.**
-- $100.87 on the two pilot products.
-- $182.21 recorded in total, of which about $14 was lost to usage-limit interruptions before a push.
-- Four fix rounds, and still not owner-accepted.
+- A changed build makes REVIEWED and ACCEPTED read "for an earlier render (<digest>)". That is information, not a block.
 
-**E6. Every contract rule added during Phase 6 came after a reviewer found the defect.**
-- ALL-FIGURE-SPECIFIC, ALL-PRE-ATTEMPT-MARKUP-WITHHELD and the Core1B task duty were each written after the fact.
-- The gate encoded past reviews. It never found a new defect.
+### 3.3 Roles
 
-**Conclusion:**
-- Quality came from craft and judgement: a clear idea of the teaching move, good examples, and an independent reader.
-- Safety came from the renderer's construction.
-- Validation layers added cost and gave agents a target to satisfy instead of a learner to serve.
+The five agent roles (researcher, author, illustrator, verifier, product verifier) become three.
 
-## 2. Goals and non-goals
-
-**Goals**
-- G1. Agents produce their best unit by following a method and studying annotated exemplars. They do not chase validators.
-- G2. No content blocker anywhere. An agent always delivers, and declares its known weaknesses.
-- G3. Learner-safety properties (no answer before the attempt, one shell) hold because the renderer is built that way.
-- G4. One owner per unit, end to end (content and figures). One independent reviewer. The owner accepts.
-- G5. Owner taste enters at the first prototype, not after review rounds.
-- G6. Reuse everything already built. Nothing is rewritten for its own sake.
-
-**Non-goals**
-- No new gates, ratchets or content CI.
-- Code keeps its unit tests: they protect code, not content.
-- No server-side secrecy: standalone HTML stays standalone.
-- No change to the research evidence tooling beyond the promotion rule (§7.3).
-
-## 3. Architecture
-
-```
-┌──────────────────────── C. JUDGEMENT ─────────────────────────┐
-│ independent review (coach) ──► owner acceptance ──► publish    │
-└───────────────▲──────────────────────────────────────────────┘
-                │ design note, worklog, self-check notes
-┌──────────────── B. METHOD ───────────────────────────────────┐
-│ house rules · protocol P0–P7 · design note · golden exemplars │
-│ anti-pattern cards · roles (source reader / unit author /     │
-│ reviewer) · worklog                                           │
-└───────────────▲──────────────────────────────────────────────┘
-                │ records (package JSON) + SVG assets
-┌──────────────── A. PLATFORM (by construction) ───────────────┐
-│ render_core: deferred payloads · typed attempts ·             │
-│ printed-key/verified display · per-mode protection ·          │
-│ exact-render digest                                           │
-└──────────────────────────────────────────────────────────────┘
-        T. advisory tools: self_check.py (linter report), device audit
-```
-
-## 4. Layer A — platform, true by construction
-
-These are renderer features with code unit tests. They do not judge content. They make certain defects impossible to produce.
-
-### A1. One renderer, one shell (exists; unchanged)
-- `Shared/tools/render_core.py` is the only producer of learner pages.
-- `renderer_inventory.py` stays as a code unit test.
-- A new learner surface (Clinic, Explorer) is added by extending `render_core` and registering a blueprint in `Shared/web/interactive-page-blueprints.v1.json` (W8).
-
-### A2. Deferred materialisation of post-attempt content (new)
-
-**Today:** `reveal()` (line 199) emits `<details data-requires-attempt>…body…</details>`. The body is live DOM: it is in the accessibility tree and in `textContent`, and search finds it. Hint rungs 2..n are `<li hidden>`, also live. This is RCA-UX-005.
-
-**Requirement A2.1.** Gated bodies are emitted inside a `<template>`. A template's contents are not rendered, not focusable, not in the accessibility tree and not in `textContent`.
-
-```html
-<details data-g9-reveal data-requires-attempt data-g9-payload-ref="{unit}-{k}">
-  <summary>{summary}</summary>
-  <div data-g9-payload-slot></div>
-</details>
-<template data-g9-payload="{unit}-{k}">{body}</template>
-```
-
-- `{unit}` is the article's `data-g9-unit`.
-- `{k}` is a per-article counter.
-- Ungated `reveal(..., gated=False)` is unchanged.
-
-**Requirement A2.2.** Hint rungs: rung 1 is emitted live. Rungs 2..n are each emitted as `<template data-g9-rung-payload="{unit}-{n}">`. The "Next hint" button materialises exactly one rung.
-
-**Requirement A2.3.** The JS commit handler materialises the article's payloads:
-
-```js
-function materialise(article){
-  q('details[data-g9-payload-ref]', article).forEach(d => {
-    const slot = q('[data-g9-payload-slot]', d)[0];
-    if (slot.childElementCount) return;                       // idempotent
-    const t = q('template[data-g9-payload="'+d.dataset.g9PayloadRef+'"]', article)[0];
-    slot.replaceChildren(t.content.cloneNode(true));
-    q('figure[data-g9-figure]', slot).forEach(initFigure);   // stage stepper for new figures
-  });
-}
-```
-
-- The figure stage-stepper setup (currently inline in `JS`) is refactored into `initFigure(f)`. It is called at load and after each materialisation.
-
-**Requirement A2.4.** `window.g9MaterialiseAll()` materialises every payload on the page. The only caller is the print tool, when it produces the key PDF (A5).
-
-**Requirement A2.5.** The observer is updated:
-- `quality_observe.py` (`render-core-html` extractor) reads `<template data-g9-payload>` content as the body of the `details` that references it, with `gated: true`;
-- blocks inside payloads count as blocks of the unit.
-
-The linter keeps working. The observation schema is unchanged apart from reveal parsing.
-
-**Requirement A2.6.** Without JS, gated content is not visible. The page shows `<noscript>` text: "Answers open after you attempt; this page needs JavaScript." That is acceptable because the product is an interactive tablet page, and the PDF covers print.
-
-**Tests (code), in `tests/test_render_core.py`:**
-- **A2-T1:** no text from a gated block appears outside a `<template>` in the raw HTML. Parse with `html.parser`; answer summaries of the fixture product are the probe strings.
-- **A2-T2 (Chromium, skip without node):**
-  - before commit, `page.accessibility.snapshot()` and `document.body.innerText` contain none of the probes;
-  - after clicking commit with a valid attempt, they contain all the probes;
-  - figures inside payloads step through their stages.
-- **A2-T3:** search input with a probe string hides the article before the attempt. The text is not searchable.
-- **A2-T4:** rung n+1 is absent from the DOM until "Next hint" is clicked n times.
-
-### A3. Typed attempt controls (new; replaces `trim().length<3`)
-
-**Requirement A3.1. Schema.** In `Shared/library/package.schema.json`, `$defs.question.properties.response` and `$defs.microtopic.properties.elicitation.attempt.task.response` get the same shape:
-
-```json
-"response": {
-  "type": "object", "additionalProperties": false, "required": ["type"],
-  "properties": {
-    "type": {"enum": ["single_choice", "multiple_choice", "true_false", "numeric",
-                      "short_text", "free_response", "multipart", "match"]},
-    "parts": {"type": "array", "items": {"type": "object", "required": ["id", "type"],
-              "properties": {"id": {"type": "string"}, "label": {"type": "string"},
-                             "type": {"enum": ["numeric", "short_text", "free_response", "single_choice"]}}}},
-    "match_left": {"type": "array", "items": {"type": "string"}},
-    "match_right": {"type": "array", "items": {"type": "string"}},
-    "paper_ok": {"type": "boolean", "default": true}
-  }
-}
-```
-
-**Requirement A3.2. Derivation when `response` is absent.** Existing packages keep working. The first rule that applies wins:
-1. `options` non-empty and `answer.kind == "EXACT"` → `single_choice`;
-2. `subparts` non-empty → `multipart`, each part `free_response`;
-3. `answer.numeric` present → `numeric`;
-4. otherwise → `free_response`.
-
-Multiple-correct, true/false, match and numeric source questions set `response.type` explicitly; the derivation is only a default.
-
-**Requirement A3.3. Controls.** `attempt_box(label)` becomes `attempt_box(label, response, qid)`.
-
-| type | control | commitment rule (JS) |
-|---|---|---|
-| single_choice | `<fieldset>` of radios, `name="{qid}"`, labels = source options verbatim | exactly one checked |
-| multiple_choice | checkboxes | ≥ 1 checked |
-| true_false | two radios "True" / "False" | one checked |
-| numeric | `<input inputmode="decimal">` plus a unit label | value matches `^[-+]?(\d+(\.\d*)?\|\.\d+)([eE][-+]?\d+)?(\s*/\s*\d+)?$` after trim |
-| short_text | `<input type="text">` | non-empty after trim |
-| free_response | `<textarea>` plus a checkbox "I worked this on paper" (if `paper_ok`) | non-empty after trim, OR paper box checked |
-| multipart | one `<fieldset>` per part, each part's own control | every part committed, OR the paper box checked |
-| match | one `<select>` per left item (options = right items) | every select has a value |
-
-- A commit that fails its rule focuses the first empty control and shows one line: "Make your choice first" or "Write your attempt, or tick 'worked on paper'".
-
-**Requirement A3.4. Threat model**, stated in the house rules (B1) and the renderer docstring:
-- The commitment check assumes an honest self-learner. It is not marking and not anti-cheating.
-- Reviewers do not raise "can be bypassed" findings against it.
-
-**Requirement A3.5.** Controls are at least 48 CSS px tall on touch profiles, via `.g9-attempt :is(input,select,label){min-height:48px}`.
-
-**Tests:**
-- **A3-T1:** schema accepts every type.
-- **A3-T2:** the derivation table is followed.
-- **A3-T3 (Chromium):** for each type, an uncommitted click does not unlock, and a valid commit does. Paper acknowledgement unlocks `free_response`.
-
-### A4. Printed source key vs verified result (new)
-
-**Requirement A4.1. Schema.** Additions to `$defs.answer`:
-
-```json
-"source_key": {"type": "object", "additionalProperties": false, "required": ["state"],
-  "properties": {"state": {"enum": ["PRESENT", "ABSENT", "AMBIGUOUS"]},
-                 "value": {"type": "string"},
-                 "location": {"type": "string", "description": "acquisition id + page, e.g. ACQ-…#p10"}}},
-"key_relation": {"enum": ["MATCHES_KEY", "CONFLICTS_WITH_KEY", "NO_KEY"]},
-"key_conflict_explanation": {"type": "string"}
-```
-
-- `answer.summary` / `answer.numeric` remain the verified result.
-- `source_key` is the printed book key, copied verbatim and never edited.
-
-**Requirement A4.2. Render.** When `key_relation == "CONFLICTS_WITH_KEY"`, the Core2 solution payload shows a block `key_conflict`:
-
-| Printed book key | Mathematically verified result | Why they differ |
-|---|---|---|
-| `source_key.value` | `answer.summary` | `key_conflict_explanation` |
-
-- When `NO_KEY`, it shows "The source prints no key for this question; the result below was derived and independently checked."
-
-**Test A4-T1:** the three rows render inside the payload (A2), never before the attempt.
-
-### A5. Protection model per output mode (new; declared in code and in the house rules)
-
-| Mode | Where | Protection | How |
+| Role | Writes | Replaces | Why merged |
 |---|---|---|---|
-| `PAGES`, `SINGLE_FILE`, `EMBED` | web, standalone HTML | pedagogical withholding | A2 templates. The bytes are present but inert. |
-| PDF (learner) | `tools/print/print-product.mjs` default | byte withholding | printed without materialising, so payloads are never rendered |
-| PDF (key) | `print-product.mjs --key` | none (teacher/answer copy) | calls `window.g9MaterialiseAll()` and opens every stage |
+| Source reader | acquisitions, cards, inventories, cross-reads | researcher (facts), scanner, node verifier | Source truth is one discipline; a second reader of the same kind gives independence |
+| Unit author | the unit's package records, SVG assets, unit folder | author, illustrator, researcher (pedagogy) | E4: coherence needs one owner. The author may use a helper session for figures and stays accountable. |
+| Reviewer | review files | product verifier | One independent judgement of the thing the learner sees |
+| Owner (human) | OWNER-NOTES.md, acceptance | — | Taste and the publication decision |
 
-- `print-product.mjs` changes as follows.
-  - **Today** it opens every reveal and prints the complete page.
-  - **Default:** writes `<page>.pdf` without opening anything. Payloads stay unmaterialised, and the print CSS already hides `.g9-attempt`.
-  - **`--key`:** writes `<page>.key.pdf`.
-  - The receipt records the mode.
-- Constant `PROTECTION = {"PAGES": "pedagogical", "SINGLE_FILE": "pedagogical", "EMBED": "pedagogical"}` in `render_core.py`, cited by the house rules.
+## 4. Object specifications
 
-### A6. Exact-render digest (exists; unchanged)
-- `build()` hashes the rendered pages (commit `98d2695f`).
-- The digest identifies what was reviewed and what the owner accepted (C2).
+### 4.1 Source
 
-### A7. 12.7-inch device profile (advisory measurement)
-- `tools/site-audit/core-page-audit.mjs` gains `--profile tablet-12.7` with viewports 1366×854, 1440×900, 854×1366 and 900×1440. The existing 10-inch set becomes `--profile tablet-10` (the default).
-- Measured facts (horizontal overflow px, controls < 48 px, hover-only handlers, external requests) are written to JSON and shown in the self-check report (T1). They are not a verdict.
+#### 4.1.1 Unchanged
+- Acquisitions, scan manifests, allowlists, `evidence_check.py` (quote-on-page proof), `scan_ingest.py`, and the card kinds in `evidence-cards.schema.json`.
 
-## 5. Layer B — method
+#### 4.1.2 Item inventory (new) — `<Subject>/research/inventories/<INV>.json`
 
-All method files live under `docs/method/`. They replace `template/library-agents/*.md` and `docs/library-agents/*.md`, which move to `docs/method/archive/` with a header line "superseded by SPEC-AM2".
+This is for sources made of items (question banks, exam papers, exercise sets). It gives the denominator; cards remain the evidence.
 
-### B1. House rules — `docs/method/HOUSE-RULES.md` (one page, exactly these rules)
+- **Schema:** `Shared/library/source-inventory.schema.json`.
 
-1. **One renderer.** Learner pages come only from `render_core.py`. To add a surface, extend it and register a blueprint. Never build a page by hand; the next build overwrites it.
-2. **Facts carry a source.** Definitions, values, exam questions and printed keys cite a registered source (`<Subject>/research/…`). Never invent a source, and never silently change a printed key. When the key is wrong, record `source_key`, the verified result and why they differ (A4).
-3. **Answers live in answer fields.** Put result-bearing text only in `answer.*`, `hint_ladder` rungs 2..n, `boundary_test.answer`, `attempt.produces`, `model_response`, `failure_signal` and `repair`. The renderer withholds exactly those (A2). Stems, conditions, captions, representation titles and stage labels are shown before the attempt: they describe the situation, never the result.
-4. **One owner per unit.** Work only in your unit's files. To change another unit, write in its `WORKLOG.md`.
-5. **Push after every phase.** Sessions end without warning, and unpushed work is lost.
-6. **Declare weakness.** Every hand-off lists what you know is weak (design note §8, worklog). Declared weakness is expected. Hidden weakness is the only failure.
-7. **Research widely for teaching; cite narrowly for facts.** Use the web and any source for pedagogy, misconceptions and representations, and log it (design note §7). Facts follow rule 2.
-
-The file also states the attempt threat model (A3.4) and the protection table (A5).
-
-### B2. Protocol — `docs/method/PROTOCOL.md`
-
-**Unit.** One syllabus unit (≈ one library package, or one microtopic family), with its own folder:
-
-```
-units/<subject>/<unit-slug>/
-  UNIT.md            scope, owner, sources, target package path, status line
-  DESIGN-NOTE.md     B3 (the unit's design record)
-  WORKLOG.md         B6 (append-only session log)
-  SELF-CRITIQUE.md   B4.5 (prototype vs goldens)
-  source/            corpus.json + readback logs (P1, only when the unit ingests a source corpus)
-  owner-notes.md     owner calibration comments (P4)
+```json
+{
+  "schema": "source-inventory/v1",
+  "inventory_id": "INV-MAT-09-M2-POLY",
+  "subject": "Mathematics",
+  "members": [{"acquisition_ref": "ACQ-1DD05CE5AA04B532EC68", "sha256": "1dd05ce5…", "pages": "1-11"}],
+  "declared_scope": "SPECIMEN",
+  "completeness_unit": "numbered source question",
+  "items": [{
+    "item_id": "M2-Q017",
+    "locator": {"acquisition_ref": "ACQ-1DD05…", "page": 3, "label": "Q17"},
+    "format": "MULTIPLE_CORRECT",
+    "question_card": "EV-MAT-09-POLY-Q017",
+    "key": {"state": "PRESENT", "card": "EV-MAT-09-POLY-K017"}
+  }],
+  "counts": {"items": 162, "key_present": 159, "key_absent": 3, "key_ambiguous": 0},
+  "digest": "sha256 of canonical items[]",
+  "supersedes": null
+}
 ```
 
-The package itself stays in `<Subject>/library/<slug>.v1.json` (staging: `<Subject>/research/packages/`).
+- `declared_scope` is one of `FULL_SOURCE`, `CHAPTER`, `SPECIMEN` or `PAGE_RANGE`.
+- `format` is one of `SINGLE_CORRECT`, `MULTIPLE_CORRECT`, `TRUE_FALSE`, `MATCH`, `ASSERTION_REASON`, `COMPREHENSION`, `NUMERIC`, `SHORT`, `LONG`, `HOTS`, `FILL_BLANK`, `OTHER`.
+- The key `state` is one of `PRESENT`, `ABSENT` or `AMBIGUOUS`.
 
-**Phases.** Each phase has a purpose, the actor, what it produces, and a "ready to move on when" judgement. None of these is a checkpoint that blocks anything.
+**Rules:**
+- **(format)** `members[].acquisition_ref` MUST name a registered acquisition, and `sha256` MUST equal that acquisition's. This is #320 §24. `evidence_check.py` reports a mismatch as a finding; it does not refuse.
+- **(format)** `counts` MUST equal the tallies computed from `items[]`. The tool recomputes them and reports any difference.
+- **(method)** An inventory is complete when the source reader believes every item in `declared_scope` is listed. The cross-read (§4.1.3) is what makes that belief checkable.
+- **(link)** A package question derived from an item cites it as `extensions["grade9v3:inventory_item"] = "INV-…#M2-Q017"`, and cites its cards in `extensions["grade9v3:citations"]` (existing key).
 
-| Phase | Actor | Does | Produces | Ready to move on when |
-|---|---|---|---|---|
-| P0 Intake | unit author | reads the syllabus node, the house rules and the goldens INDEX; creates the unit folder | `UNIT.md`, first `WORKLOG.md` entry | the scope is stated in 3 lines and the target learners are named |
-| P1 Source | source reader (plus a second reader) | registers sources; inventories every source item; two independent readings; resolves differences | `source/corpus.json` (B7), `source/readback-*.md` | every inventoried item has a readback state; open ambiguities are listed |
-| P2 Research & design | unit author | researches how the idea is best taught (web, texts, misconception literature); picks representations; plans the task arc | `DESIGN-NOTE.md` §1–§8 | the author can state the one decision each Core practises and why each transfer is new |
-| P3 Prototype | unit author | builds one microtopic through all six Cores, including figures; renders with `build_products.py build --only <pkg>`; compares against the goldens | rendered prototype; `SELF-CRITIQUE.md` | the self-critique names at least 3 improvements made and any remaining gaps |
-| P4 Owner calibration | owner | looks at the prototype and design note; comments | `owner-notes.md` | owner says "continue" (first unit per subject only, or when the author asks) |
-| P5 Full build | unit author | all microtopics; runs `self_check.py` (T1) and triages its notes in the worklog | full package + SVGs; `SELF-CHECK.md` triage | the author would put their name on it |
-| P6 Review | independent reviewer | reviews the exact render (C1); the author responds and revises (suggested ≤ 2 rounds) | `products/verification/<name>.review.json` v2 | the reviewer's `overall.recommendation` is `accept` or `accept_with_notes`, or 2 rounds are done |
-| P7 Acceptance | owner | reads the review; accepts a render digest | `products/acceptance/<name>.json`; published copy | — |
+#### 4.1.3 Cross-read — extends `research-verification.schema.json`
 
-**Budget guidance** (not a stop): about $15 per unit across P1–P6. Log spend in the worklog. If it reaches $25, write a note and continue.
+- The existing `questions[]` (`card_ref`, `independent_solution`, `independent_answer`, `official_answer`, `agrees`, `numeric_check`) already separate the printed key from verified mathematics.
+- Add `readback[]` for inventory items and cards:
 
-### B3. Design note — `docs/method/templates/DESIGN-NOTE.md`
+```json
+"readback": [{"ref": "INV-MAT-09-M2-POLY#M2-Q017", "reader": "agent-src-2",
+              "state": "AGREED", "correction": null, "note": ""}]
+```
 
-YAML front matter, parsed by `self_check.py` for display only:
+- `state` is one of `AGREED`, `CORRECTED` or `AMBIGUOUS`.
+- **Method** (`docs/method/roles/SOURCE-READER.md`):
+  - Reader A inventories and transcribes.
+  - Reader B, a different session id, re-reads every item against the scan page. For stems, options, expressions and keys, reader B transcribes blind first, then compares.
+  - Disagreements go to `CORRECTED`, with the corrected text in the cards and the correction recorded.
+  - Work in batches of ≤ 25 items, pushing after each batch.
+- **Staleness:** reuse `library_board.inputs_digest()`. It already stales a verification when its cards change; extend its inputs to the inventory items the verification references. No new staleness mechanism.
+- **Derived key relation:** used by the renderer (§4.3.4). An item with a PRESENT key and `agrees: true` → `MATCHES_KEY`; `agrees: false` → `CONFLICTS_WITH_KEY`; no key → `NO_KEY`.
+- **Cost:** in the pilot, verifying 65 cards across 4 nodes cost $2.30, about $0.035 per card. Item readback is heavier: transcription plus comparison, estimated at 3–5× a card check, so ≈ $0.10–0.20 per item per reader. For a 162-item specimen with two readers that is ≈ $35–65. The first 25-item batch is measured, and the estimate in `UNIT.md` is updated from it.
+
+### 4.2 Unit
+
+#### 4.2.1 One package per unit
+- The unit's records live only in `<Subject>/library/<slug>.v1.json`.
+- `<Subject>/research/packages/` (staging) is retired. Records carry their own provenance:
+  - `status` (CANDIDATE, VERIFIED) — existing field;
+  - `extensions["grade9v3:citations"]` — existing;
+  - `grade9v3:inventory_item` — new.
+- **Fact status is derived, not stored.** A record's facts are *verified* when every cited card has a cross-read or verification by a session other than the record's author, and it is not stale. `unit_status.py` reports counts per unit; `accept_product.py` shows them to the owner (§4.5).
+- **Migration:** fold `Mathematics/research/packages/MAT-09-LINEAR-EQUATIONS.package.json` into `Mathematics/library/linear-equations.v1.json` once, using `promote_verified.merge()` in a migration script (§8, M3).
+
+#### 4.2.2 Package title (new field)
+- `package.schema.json` gains top-level `"title": {"type": "string", "minLength": 3}`.
+- The product title comes from `package.title`, then from the first bucket title. The manifest override is removed.
+- The migration sets `title` for all 21 packages, taken from their current manifest titles.
+
+#### 4.2.3 Unit folder (new) — `<Subject>/units/<slug>/`
+
+```
+UNIT.md            front matter + scope: owner_agent, spine_nodes[], sources[], inventories[], budget, status notes
+DESIGN-NOTE.md     §5.3
+WORKLOG.md         §5.4 (append-only by convention; git makes it immutable)
+SELF-CRITIQUE.md   prototype vs goldens (§5.2 P3)
+OWNER-NOTES.md     owner calibration (P4) and acceptance notes
+```
+
+- `UNIT.md` front matter:
 
 ```yaml
 unit: phy-nlm-first-law
-subject: Physics
+package: Physics/library/phy-nlm-first-law.v1.json
 owner_agent: agent-author-3
-grade_profile:
-  base_grade: 11
-  assumed_prerequisites: [CAP-PHY-VEC-COMPONENTS]
-  enrichment: [{method: "pseudo-force in non-inertial frame", bridge: "MIC-PHY-NLM-FRAME-CHOICE Core1A unit 2"}]
-source_scope: {corpus_id: null, packages: [Physics/library/phy-nlm-first-law.v1.json]}
-coverage_mode: CURATED_SELECTION        # or FULL_CORPUS
-clinic_admission: []                    # 0..6 item ids, each justified in §6
+spine_nodes: [PHY-11-LAWS-OF-MOTION-01, PHY-11-LAWS-OF-MOTION-02]
+inventories: []
+grade_profile: {base_grade: 11, assumed_prerequisites: [CAP-PHY-VEC-COMPONENTS],
+                enrichment: [{method: "pseudo-force", bridge: "MIC-PHY-NLM-FRAME-CHOICE"}]}
+coverage: {mode: CURATED_SELECTION, inventory: null}
+budget_usd: 15
 ```
 
-Body sections, with one paragraph or table each:
-1. **The idea.** The inferential jump in one sentence, and what a learner can do afterwards that they could not before.
-2. **Wrong routes.** The 3–6 most likely wrong routes, each with evidence (a research log ref or a source question that exposes it).
-3. **Representations.** For each: what it shows, why it beats the alternatives, and which stages are safe before the attempt.
-4. **Task arc.** One row per item across Cores.
+- **Syllabus link:** a unit declares the spine nodes it covers. `unit_status.py` reports spine coverage per subject, replacing the board's per-node stage machine.
 
-   | Core | Item | Decision practised | New compared with earlier items | Earlier items it builds on |
-   |---|---|---|---|---|
+### 4.3 Product — learner-state semantics in `render_core.py`
 
-   This table replaces per-item `transfer.novelty` field-filling (E2). Novelty is reasoned once, across the whole arc. Each Core2B record then gets a one-line `transfer.novelty.why_new` copied from its row.
-5. **Transfer plan.** What stays invariant, what changes, and the family closure text for each Core2A family. Closures are written after the Core2B tasks are final.
-6. **Clinic/Explorer admission** (when those surfaces exist, W8). Admission is by threshold; 0 is a valid answer.
-7. **Research log.** One row per source: link or reference, what was taken, and whether it is fact (must be a registered source) or pedagogy (any source).
-8. **Known weaknesses.** An honest list.
+Each item below is a code change with code tests.
 
-### B4. Golden exemplars — `golden/`
+#### 4.3.1 Withheld content is absent from the live page
+- **Current:** `reveal()` emits `<details data-requires-attempt>body</details>`; hint rungs 2..n are `<li hidden>`. Both are live DOM, in the accessibility tree and in `textContent` (RCA-UX-005).
+- **Change:**
+  1. A gated body is emitted as `<details data-g9-reveal data-requires-attempt data-g9-payload-ref="{unit}-{k}"><summary>…</summary><div data-g9-payload-slot></div></details><template data-g9-payload="{unit}-{k}">{body}</template>`.
+  2. Hint rung 1 is live; rungs 2..n are each `<template data-g9-rung-payload="{unit}-{n}">`.
+  3. JS `materialise(article)` clones each payload into its slot when the attempt commits. It is idempotent. It then calls `initFigure()` on new figures; the stage stepper is refactored out of the load handler into `initFigure(f)`.
+  4. `window.g9MaterialiseAll()` exists for the key PDF only.
+  5. `<noscript>` note: "Answers open after you attempt; this page needs JavaScript."
+  6. `quality_observe.py` (render-core-html) reads each template's content as the body of the `details` that references it, with `gated: true`.
+- **Tests** (`tests/test_render_core.py`):
+  - R-1: no gated text outside `<template>` in the raw HTML.
+  - R-2 (Chromium): before the commit, neither the accessibility snapshot nor `innerText` contains the gated text; after it, both do; figures inside payloads step through their stages.
+  - R-3: search does not surface gated text.
+  - R-4: rung n+1 is absent until "Next hint" is clicked n times.
 
-```
-golden/
-  INDEX.md                         Core role × technique → exemplar paths
-  TECHNIQUES.md                    technique vocabulary (B4.2)
-  units/<G-ID>/
-    GOLDEN.md                      status, provenance, what it exemplifies
-    manifest.json                  product manifest selecting the exemplar records
-    records.json                   package excerpt (only the exemplar records)
-    assets/*.svg
-    ANNOTATIONS.md                 per block: technique, why it works, pitfall
-    DESIGN-NOTE.md                 the design note behind it (B3)
-  anti/AP-NNN.md                   anti-pattern cards (B4.3)
-```
+#### 4.3.2 Typed attempts (replaces `trim().length<3`)
+- **Schema:** `question.response` and `elicitation.attempt.task.response` take the form `{type, parts[], match_left[], match_right[], paper_ok}`.
+  - `type` is one of `single_choice`, `multiple_choice`, `true_false`, `numeric`, `short_text`, `free_response`, `multipart` or `match`.
+  - `format` from the inventory maps to `type`: MULTIPLE_CORRECT → multiple_choice, TRUE_FALSE → true_false, and so on (the table lives in `render_core.RESPONSE_FROM_FORMAT`).
+- **Derivation when absent:**
+  1. `options` and `answer.kind == EXACT` → single_choice;
+  2. `subparts` → multipart;
+  3. `answer.numeric` → numeric;
+  4. otherwise → free_response.
+- **Controls and commitment rules:**
 
-- **Rendering.** `python3 Shared/tools/build_golden.py` renders each `units/*/manifest.json` through `render_core` into `golden/units/<G-ID>/rendered/` (git-ignored), so exemplars always show in the current shell.
-- **Code test G-T1:** every golden renders without an exception. It does not judge content.
-
-#### B4.1 Golden units v1
-
-Every unit starts `CANDIDATE`. Only the owner sets `OWNER_BLESSED` in `GOLDEN.md`.
-
-| ID | Source | Exemplifies |
+| type | control | commits when |
 |---|---|---|
-| G-MATH-LINEAR-CONSTRAINT | `tests/test_quality_gate.py::complete_fixture` (MIC-MATH-CONSTRAINT, Q-MATH-LINEAR-01, the 2B fixture, `number-line-7-3.svg`) | staged number line with pre-attempt-safe stages; failure signal naming a real wrong route (2.33 ≠ 7/3); independent check by substitution; transfer with bracket-reversed undo order |
-| G-PHY-NLM-FBD | `phy-nlm-first-law` MIC-PHY-NLM-FBD-BODY-OWNERSHIP, Core1 → Core2B, as fixed through round 4 | one body per diagram; construction units one decision each; Core1B task with new givens; agent → target naming |
-| G-PHY-KIN-SHARED-CLOCK | `phy-kin-2d-motion` MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS | compact anchor with its own figure (`REP-KIN-2D-ANCHOR-POSITION-2-3`); same-instant pairing; mixed-instant wrong route |
-| G-CORE2-R2 | question-bank reference R2, pinned `08446b53` (benchmarks/quality-calibration) | Core2 grammar: attempt-first stem, trap, aligned figure, progressive hints, derivation, independent check |
+| single_choice | radios with the source options verbatim | one is checked |
+| multiple_choice | checkboxes | at least one is checked |
+| true_false | two radios | one is checked |
+| numeric | `inputmode=decimal` input + unit | it parses as a number, decimal, fraction or scientific |
+| short_text | text input | non-empty |
+| free_response | textarea + "I worked this on paper" | non-empty, or the box is ticked |
+| multipart | one fieldset per part | every part commits, or the paper box is ticked |
+| match | one select per left item | every select has a value |
 
-- The two Physics goldens are taken after the remaining round-4 findings are fixed, and are blessed by the owner at P7.
+- **Threat model** (in the docstring and the house rules): this is a commitment check for an honest self-learner. It is not marking, and not anti-cheating.
+- **Touch size:** controls are ≥ 48 CSS px tall.
+- **Tests:** schema; derivation; R-5 (Chromium, per type) an uncommitted click does not unlock and a valid commit does.
 
-#### B4.2 Technique vocabulary — `golden/TECHNIQUES.md`
+#### 4.3.3 Output modes and their protection
 
-Each entry gives a name, a one-line definition, where it lives in the records, the golden example, and the anti-pattern it prevents.
+| Mode | Protection | Mechanism |
+|---|---|---|
+| PAGES, SINGLE_FILE, EMBED | pedagogical withholding: the bytes are present but inert | §4.3.1 |
+| Learner PDF (`print-product.mjs` default) | byte withholding | printed without materialising |
+| Key PDF (`print-product.mjs --key`) | none | `g9MaterialiseAll()` + every figure stage |
 
-`T01` attempt-first stem · `T02` single-decision construction unit · `T03` staged representation (safe stages before the attempt) · `T04` item-specific figure · `T05` diagnostic hint rung (orient → represent → first relation) · `T06` failure signal naming the tempting route · `T07` independent check by a different route · `T08` family closure written from the final transfer · `T09` transfer invariant plus a changed demand · `T10` boundary test · `T11` compact anchor with its own figure · `T12` reconstruction task with new givens · `T13` printed-key vs verified display · `T14` prerequisite bridge · `T15` source-faithful options and labels.
+- The print tool currently opens every reveal. It changes to the table above, and its receipt records the mode.
+- `render_core.PROTECTION` declares the table.
+- **Test R-6:** the learner PDF text contains no gated text; the key PDF contains all of it.
 
-#### B4.3 Anti-pattern cards — `golden/anti/AP-NNN.md`
+#### 4.3.4 Printed key vs verified result
+- **Schema:** `answer.source_key = {state, value, card}` (verbatim printed key) and `answer.key_relation` (derived at render time from §4.1.3 when citations allow; otherwise authored). Also `answer.key_conflict_explanation`.
+- **Render:** for CONFLICTS_WITH_KEY, the solution payload shows three rows: *Printed book key* / *Mathematically verified result* / *Why they differ*. For NO_KEY, one line.
+- **Test R-7:** the three rows appear only inside the payload.
+
+#### 4.3.5 Complete Core2 projection
+- `core2()` renders `figure_refs` as a pre-attempt source figure, using the first stage when staged.
+- Source `hints` go into the CORE2 blueprint's `support` slot as a progressive ladder: rung 1 live, the rest deferred.
+- `options` go into the typed control (§4.3.2) instead of being concatenated into the stem.
+- A missing figure asset is a renderer gap, as it is for every other Core.
+- **Test R-8:** a fixture with `hints` and `figure_refs` renders both, in their slots.
+
+#### 4.3.6 Shell for the 12.7″ tablet and the audit profile
+- Shell CSS tokens (`--g9-content-max`, type scale, spacing, 48 px targets) are set for 1366×854, 1440×900, 854×1366 and 900×1440.
+- The owner's `tablet-12-7.css` work (branch `research/physics-library`) is the design input. It is absorbed into `render_core.CSS`, not hand-edited into pages (M5).
+- `tools/site-audit/core-page-audit.mjs --profile tablet-12.7` measures overflow, undersized controls, hover-only handlers and external requests. The result is shown in the self-check report (§5.5).
+
+#### 4.3.7 Unchanged
+- One renderer (`renderer_inventory` stays as a code test).
+- The render digest is a hash of the rendered pages.
+- Withheld figure stages, caption and title handling (#300).
+- Lineage links and the learner-facing footer.
+
+### 4.4 Review — `products/verification/<slug>.review.json`, v2
+
+- **Schema:** `Shared/quality/product-review.schema.json`, used to parse and display.
+
+```json
+{"schema": "product-review/v2", "product": "phy-nlm-first-law",
+ "reviewer": "agent-reviewer-7", "reviewer_session": "session_…", "reviewed_at": "2026-09-28",
+ "render_digest": "9e0c919bdf6a382d",
+ "read_first": ["Physics/units/phy-nlm-first-law/DESIGN-NOTE.md", "…/SELF-CRITIQUE.md"],
+ "strengths": [{"record": "…", "technique": "T05", "note": "…", "golden_candidate": true}],
+ "findings": [{"id": "F-01", "severity": "S1", "kind": "content", "record": "…", "page": "core2a.html",
+               "learner_impact": "…", "detail": "…", "suggested_fix": "…", "anti_pattern": "AP-007"}],
+ "previous_findings": [{"id": "…", "status": "FIXED"}],
+ "overall": {"teaches_at_reference_depth": "partly", "recommendation": "accept_with_notes", "summary": "…"}}
+```
+
+- `kind` is one of `content`, `figure`, `renderer` or `source`.
+- `previous_findings[].status` is one of `FIXED`, `OPEN` or `WONT_FIX`.
+- `overall.teaches_at_reference_depth` is `yes`, `partly` or `no`.
+- `overall.recommendation` is `accept`, `accept_with_notes` or `revise`.
+
+**Rules:**
+- Severity (Audit-1 scale) orders the work: S0 wrong or unsafe fact, S1 misleads or gives the answer away, S2 weakens the teaching, S3 polish. It never blocks.
+- Independence: the reviewer is a session that authored none of the unit's records. The acceptance tool prints the reviewer beside the package's `authored_by` values, so the owner sees it (§4.5).
+- The review guide (`docs/method/REVIEW-GUIDE.md`):
+  1. Read the design note and self-critique first.
+  2. Attempt each audited item as a learner before opening its answer.
+  3. Derive every numeric claim independently.
+  4. Compare with the goldens.
+  5. Every finding carries a `suggested_fix`.
+  6. Record at least 3 strengths.
+  7. Group one defect class into one finding that lists its records.
+  8. Don't report attempt-check bypass (§4.3.2).
+- A reviewer may draft a new anti-pattern card in `anti_pattern_proposal` (§5.2.3).
+
+### 4.5 Decision
+
+- **Owner calibration (P4):** comments go in `units/<slug>/OWNER-NOTES.md`. This is the first unit per subject, or whenever an author asks.
+- **Acceptance:** `Shared/tools/accept_product.py <slug> [--note …] [--accept-open F-03,…]`.
+  1. Reads the current build's `render-receipt.json`.
+  2. Prints, for the owner:
+     - the review's digest (current or earlier) and its recommendation;
+     - open S0/S1 findings;
+     - fact status (records with unverified citations);
+     - the reviewer vs the authors.
+  3. Writes `products/acceptance/<slug>.json`: `{schema: "product-acceptance/v1", product, render_digest, accepted_by: "owner", accepted_at, review_ref, review_digest, accepted_open_findings[], unverified_fact_records, note}`.
+  4. Copies that exact build to `public/products/<subject>/<slug>/`, without PDFs.
+  5. Runs `build_pages_site.py` so `docs/` mirrors it.
+- **Acceptance is the owner's decision.** The tool accepts any digest. When open S0/S1 findings or unverified facts exist, it asks for one confirmation ("accept anyway? y/N"). That is an acknowledgement, not a validator.
+- `build_products.py build` renders to `publication/` and writes STATUS. It never writes to or deletes from `public/products`.
+
+## 5. Knowledge assets (the method)
+
+Everything lives under `docs/method/` and `golden/`. It replaces `template/library-agents/` and `docs/library-agents/`, which move to `docs/method/archive/`.
+
+### 5.1 House rules — `docs/method/HOUSE-RULES.md` (one page)
+
+1. Learner pages come only from `render_core.py`. Extend it and register a blueprint for a new surface. A hand-edited page is overwritten by the next build.
+2. Facts carry a source: a card for definitions, values, relations and conditions; an inventory item for source questions and keys. Never invent a source or edit a printed key. When a key is wrong, record the key, the verified result and why they differ.
+3. Answers live in answer fields: `answer.*`, hint rungs 2..n, `attempt.produces`, `model_response`, `boundary_test.answer`, `failure_signal`, `repair`. The renderer withholds exactly those. Stems, conditions, captions, figure titles and stage labels describe the situation, never the result.
+4. One owner per unit. Work in your unit's package and folder; to change another unit, write in its WORKLOG.
+5. Push after every phase. Sessions end without warning.
+6. Declare weakness in the design note §8 and the worklog. Declared weakness is expected; hidden weakness is the failure.
+7. Research widely for teaching (any source, logged in the design note §7). Cite narrowly for facts (rule 2).
+8. If you change code, run the code tests before pushing (`python3 -m unittest discover -s tests`). Content changes don't need them.
+
+The file also states the attempt threat model (§4.3.2) and the protection table (§4.3.3).
+
+### 5.2 Protocol, exemplars, anti-patterns
+
+#### 5.2.1 Protocol — `docs/method/PROTOCOL.md`
+
+| Phase | Actor | Does | Produces | Move on when (judgement) | Guide spend |
+|---|---|---|---|---|---|
+| P0 Intake | unit author | reads the house rules and `golden/INDEX.md`; scopes the unit | `UNIT.md`, first WORKLOG entry | scope fits in 3 lines; learners named | — |
+| P1 Source | source reader A → B | registers; inventories; cards; blind cross-read in batches of ≤ 25 | inventory, cards, verification with `readback[]` | every item cross-read or listed open in UNIT.md | per §4.1.3 |
+| P2 Research & design | unit author | researches how the idea is best taught; chooses representations; plans the task arc | `DESIGN-NOTE.md` | each Core's decision and each transfer's novelty can be stated | $2–4 |
+| P3 Prototype | unit author | builds one microtopic through all six Cores, figures included, and one item of each response type present; renders; compares with the goldens | rendered prototype, `SELF-CRITIQUE.md` | ≥ 3 improvements made after comparison; gaps named | $3–5 |
+| P4 Calibration | owner | looks and comments | `OWNER-NOTES.md` | owner says continue (first unit per subject) | — |
+| P5 Build | unit author | all microtopics; `self_check.py`; triage in WORKLOG | package + SVGs | the author would sign it | $5–8 |
+| P6 Review | reviewer | reviews the exact render; the author revises; up to 2 rounds suggested | review v2 | recommendation is accept or accept_with_notes, or 2 rounds done | $3–6 per round |
+| P7 Acceptance | owner | `accept_product.py` | acceptance + publication | — | — |
+
+- Guide total: about $15 per unit excluding P1. Past $25, note it in WORKLOG and continue.
+- Launch prompts are `docs/method/prompts/{source-reader,unit-author,reviewer}.prompt.md`, each ≤ 40 lines with `{{UNIT}}`, `{{SUBJECT}}`, `{{BRANCH}}` and `{{AGENT_ID}}`.
+- One branch per unit: `unit/<subject>/<slug>`, one PR per unit. The owner accepts from the merged build.
+
+#### 5.2.2 Golden exemplars — `golden/`
+
+```
+golden/INDEX.md                Core role × technique → exemplar
+golden/TECHNIQUES.md           T01–T15: definition, where in the records, exemplar, anti-pattern it prevents
+golden/units/<G-ID>/           GOLDEN.md (status CANDIDATE | OWNER_BLESSED, provenance), manifest.json,
+                               records.json (the excerpt), assets/*.svg, ANNOTATIONS.md, DESIGN-NOTE.md
+golden/anti/AP-NNN.md          anti-pattern cards
+```
+
+- **Rendering:** `Shared/tools/build_golden.py` renders each golden through `render_core` into `golden/units/<G-ID>/rendered/` (git-ignored). Code test: every golden renders.
+- **Techniques:**
+  - T01 attempt-first stem;
+  - T02 single-decision construction unit;
+  - T03 staged representation;
+  - T04 item-specific figure;
+  - T05 climbing hint rung (orient → represent → first relation);
+  - T06 failure signal naming the route;
+  - T07 independent check by another route;
+  - T08 closure written from the final transfer;
+  - T09 invariant plus a changed demand;
+  - T10 boundary test;
+  - T11 compact anchor with its own figure;
+  - T12 reconstruction with new givens;
+  - T13 key vs verified;
+  - T14 prerequisite bridge;
+  - T15 source-faithful options.
+- **Exemplars v1** (all CANDIDATE until the owner blesses them):
+  - G-MATH-LINEAR-CONSTRAINT: the test fixture in `tests/test_quality_gate.py::complete_fixture`;
+  - G-CORE2-R2: the question-bank reference pinned at `08446b53`;
+  - G-PHY-NLM-FBD and G-PHY-KIN-SHARED-CLOCK: after the trial unit (§10 WP7) is accepted.
+- **Use:** P2 reads INDEX; P3 writes SELF-CRITIQUE (technique → golden → mine → gap → change); the reviewer reads both. "Adapt the technique, not the surface."
+
+#### 5.2.3 Anti-pattern cards — `golden/anti/`
 
 Each card has:
-- the title;
-- where it was seen (review file @ commit, and record id);
+- where it was seen (commit and record);
 - what the learner experiences;
-- the mechanism (why agents produce it);
-- how to avoid it (technique id);
+- the mechanism;
+- how to avoid it (technique);
 - a before/after excerpt;
-- whether A2–A5 now make it impossible (`structural: yes/no`).
+- whether it is now structurally impossible.
 
-| ID | Anti-pattern | Seen (commit, record) | Structural now? |
+| AP | Pattern | Seen | Structurally impossible now? |
 |---|---|---|---|
-| AP-001 | Design `purpose` printed as the caption names the result | `d1f64d03` Q-PHY-NLM-INCLINE-2A-FBD-COMPONENTS-05; `66a5c5dc` Q-PHY-KIN-2D-2A-PROJECTILE-APEX-03 | yes (PR #300 captions) |
-| AP-002 | Figure `<title>`/`<desc>`/tooltip states the answer | `1a047ec0` Q-PHY-NLM-2B-FRICTION-ZERO-03, Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04 | yes |
-| AP-003 | Later figure stages only CSS-hidden | `1a047ec0` Q-PHY-NLM-2A-COV-05 | yes |
-| AP-004 | Success criteria (`produces`) describe the answer before the attempt | `cb84133a` MIC-PHY-NLM-FBD-BODY-OWNERSHIP, MIC-PHY-NLM-THIRD-LAW; `1d012787` MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS | yes |
-| AP-005 | One scene reused for different situations | `c2dd7dc4` (cliff scene for level-ground items; one horse-and-cart FBD for 11 units) | no: T04 |
-| AP-006 | Figure still depicts the previous version of a rewritten task | `9bf92e03` Q-PHY-NLM-2B-FRICTION-STATE-01 | no: T04, B3 §4 |
-| AP-007 | Family closure describes an older transfer task | `cb84133a` Q-PHY-NLM-2A-IDEAL-STRING-03; `1d012787` Q-PHY-KIN-2D-2A-CONSTANT-ACCEL-02 | no: T08 |
-| AP-008 | False novelty: the transfer decision was already shown answered | `1a047ec0` FRICTION-STATE-01; `cb84133a` STRING-MODEL-03; Math LE-03 verification | no: B3 §4 |
-| AP-009 | A hint rung repeats the previous one | `9bf92e03` Q-PHY-NLM-2A-COV-04; `1d012787` Q-PHY-KIN-2D-2A-SAME-HEIGHT-05 | no: T05 |
-| AP-010 | A hint or scaffold hands over the protected move before the last rung | `1a047ec0` Q-PHY-NLM-INCLINE-2A-STATIC-02; Math LE-01..04 verification | no: T05 |
-| AP-011 | Physically impossible setup (block "rests" on a smooth incline) | `9bf92e03` Q-PHY-NLM-INCLINE-2A-FBD-COMPONENTS-05 | no |
-| AP-012 | Independent check false in its own terms or in an edge case | `9bf92e03` Q-PHY-NLM-2A-COV-03; Math LE-04 (x = y) | no: T07 |
-| AP-013 | Internal code reaches the learner (NLM3-3, product id in footer) | `9bf92e03`; `cb84133a` | partly (the footer is structural) |
-| AP-014 | Core1B task restates the Core1A anchor, or prompts belong to another task | `c2dd7dc4`; `66a5c5dc` MIC-PHY-KIN-2D-CONSTANT-ACCELERATION | no: T12 |
+| 001 | design purpose as caption names the result | `d1f64d03` INCLINE-2A-FBD-COMPONENTS-05; `66a5c5dc` PROJECTILE-APEX-03 | yes (#300) |
+| 002 | figure title/desc states the answer | `1a047ec0` FRICTION-ZERO-03, PROJECTILE-VALIDITY-04 | yes (#300) |
+| 003 | later stages CSS-hidden | `1a047ec0` COV-05 | yes (#300) |
+| 004 | `produces` describes the answer before the attempt | `cb84133a` FBD-BODY-OWNERSHIP, THIRD-LAW; `1d012787` INDEPENDENT-COMPONENTS | yes (#300) |
+| 005 | answers live in hidden DOM | RCA-UX-005 | yes (§4.3.1) |
+| 006 | one scene reused for different situations | `c2dd7dc4` | no → T04 |
+| 007 | figure depicts the previous version of the task | `9bf92e03` FRICTION-STATE-01 | no → T04, task arc |
+| 008 | closure describes an older transfer | `cb84133a` IDEAL-STRING-03; `1d012787` CONSTANT-ACCEL-02 | no → T08 |
+| 009 | false novelty | `1a047ec0` FRICTION-STATE-01; `cb84133a` STRING-MODEL-03; Math LE-03 | no → task arc |
+| 010 | repeated hint rung | `9bf92e03` COV-04; `1d012787` SAME-HEIGHT-05 | no → T05 |
+| 011 | hint or scaffold hands over the protected move | `1a047ec0` INCLINE-2A-STATIC-02; Math LE-01..04 | no → T05 |
+| 012 | physically impossible setup | `9bf92e03` FBD-COMPONENTS-05 | no |
+| 013 | independent check false in its own terms or at an edge case | `9bf92e03` COV-03; Math LE-04 | no → T07 |
+| 014 | internal code in learner text | `9bf92e03` NLM3-3; `cb84133a` footer | partly (footer fixed) |
+| 015 | Core1B task restates Core1A, or prompts from another task | `c2dd7dc4`; `66a5c5dc` CONSTANT-ACCELERATION | no → T12 |
 
-#### B4.4 How exemplars are used (in the protocol, not enforced)
-- **P2:** the author reads `INDEX.md` for the Cores and techniques relevant to the unit.
-- **P3:** the author writes `SELF-CRITIQUE.md`:
+### 5.3 Design note — `docs/method/templates/DESIGN-NOTE.md`
 
-  | Technique | Golden example | My version (record id) | Gap and what I changed |
-  |---|---|---|---|
+Sections:
+1. **The idea:** the inferential jump, and what the learner can do afterwards.
+2. **Wrong routes:** 3–6, each with evidence.
+3. **Representations:** what each shows, why, and its safe pre-attempt stages.
+4. **Task arc.** Replaces per-record novelty and closure filling (E2). Columns: Core | item | decision practised | new vs earlier | builds on. Each Core2B record's `transfer.novelty.why_new` and each family `closure` is written from this table *after* the Core2B tasks are final.
+5. **Transfer plan:** invariant and changed demand.
+6. **Clinic/Explorer admission:** threshold-based, 0–6 (when those surfaces exist, §9).
+7. **Research log:** source, what was taken, fact or pedagogy.
+8. **Known weaknesses.**
 
-- The reviewer reads the design note and self-critique first (C1).
-- Instruction to authors: "adapt the technique, not the surface". Goldens are not templates to copy.
+### 5.4 Worklog — `units/<slug>/WORKLOG.md`
 
-#### B4.5 Evolution
-- An owner-accepted unit can be nominated as golden by the reviewer (in `strengths[]`, C1) or by the owner.
-- A new anti-pattern card is added when a review finds a defect class not yet catalogued. The reviewer drafts the card in its review (`anti_pattern_proposal`).
+One entry per session: date · agent · session · phase · did · decisions (with why) · open/weak · next · spend. Git history makes the log immutable (#320 §18).
 
-### B5. Roles — `docs/method/roles/`
+### 5.5 Advisory tools
 
-The five agent roles become three.
-- **SOURCE-READER.md**
-  - **Replaces:** researcher (for facts) and scanner.
-  - **Owns:** source registration, corpus inventory and readback.
-  - **Pairs with:** a second source reader, for independent readback.
-- **UNIT-AUTHOR.md**
-  - **Replaces:** author, illustrator, and researcher for pedagogy.
-  - **Owns:** the unit end to end: design note, records, figures, prototype, full build, and responses to review.
-  - **May delegate** figure drawing to a helper session, but the author stays accountable for coherence (E4).
-- **REVIEWER.md**
-  - **Replaces:** verifier (for products) and product verifier.
-  - **Reviews** independently (C1).
-  - **Also** does node-level fact verification in the research pipeline, which is kept as is (§7.3).
-
-Each role file covers purpose; what you own; what you produce (paths); the method (links to protocol phases); how to use the goldens; what excellent looks like (golden links); and how to declare uncertainty. It contains no "never/must" lists beyond the house rules.
-
-- **Launch prompts:** `docs/method/prompts/<role>.prompt.md`, each ≤ 40 lines with `{{UNIT}}`, `{{SUBJECT}}`, `{{BRANCH}}` and `{{AGENT_ID}}` placeholders. The prompt says: read the house rules, the protocol and your role file; run phases X–Y; push after each phase.
-
-### B6. Worklog — `units/<subject>/<unit>/WORKLOG.md`
-
-Append-only by convention. Git history makes it immutable, which answers #320 §18 without any GitHub tooling. One entry per session:
-
-```markdown
-## 2026-09-28 · agent-author-3 · session_… · P3 Prototype
-- Did: …
-- Decisions: … (why)
-- Open / weak: …
-- Next: …
-- Spend: $4.10 (session total)
-```
-
-### B7. Source corpus format — `units/<…>/source/corpus.json` (P1)
-
-A data format taken from #320 §3/§24. It records coverage; it is not a promotion gate.
-
-```json
-{
-  "schema": "source-corpus/v1",
-  "corpus_id": "CORPUS-MAT-09-POLY-M2A",
-  "members": [{"acquisition_id": "ACQ-1DD05CE5AA04B532EC68", "sha256": "1dd05ce5…", "pages": "1-11"}],
-  "declared_scope": "SPECIMEN",
-  "completeness_unit": "numbered source question",
-  "items": [
-    {"item_id": "M2A-Q017", "location": "ACQ-1DD05…#p3", "format": "MULTIPLE_CORRECT",
-     "readback": {"reader_a": "agent-src-1", "reader_b": "agent-src-2", "state": "AGREED"},
-     "printed_key": {"state": "PRESENT", "value": "(a),(c)", "location": "ACQ-1DD05…#p10"}}
-  ],
-  "counts": {"items": 162, "readback_agreed": 162, "key_present": 159, "key_absent": 3, "key_ambiguous": 0},
-  "corpus_digest": "sha256 of items[] canonical JSON",
-  "supersedes_digest": null
-}
-```
-
-- **Readback method** (SOURCE-READER.md):
-  - two readers transcribe independently, in shards of ≤ 25 items, pushing after each shard;
-  - `diff_readback.py` lists disagreements;
-  - a third look resolves each one, logged in `readback-resolution.md`.
-- **Downstream links:** package questions cite `extensions["grade9v3:corpus_item"] = "<corpus_id>#<item_id>"`. `self_check.py` notes, without failing, when a cited corpus digest has been superseded.
-
-## 6. Layer C — judgement
-
-### C1. Review v2 — `products/verification/<name>.review.json`
-
-- The schema is `Shared/quality/product-review.schema.json` (new). It is used to parse and display, never to block.
-- The v2 record:
-
-```json
-{
-  "schema": "product-review/v2",
-  "product": "phy-nlm-first-law",
-  "reviewer": "agent-reviewer-7", "reviewer_session": "session_…",
-  "reviewed_at": "2026-09-28",
-  "render_digest": "9e0c919bdf6a382d",
-  "read_first": ["units/physics/phy-nlm-first-law/DESIGN-NOTE.md", "…/SELF-CRITIQUE.md"],
-  "strengths": [{"record": "…", "technique": "T05", "note": "…", "golden_candidate": false}],
-  "findings": [{
-    "id": "F-01", "severity": "S1", "kind": "content|figure|renderer|source",
-    "record": "…", "page": "core2a.html",
-    "learner_impact": "what the learner experiences",
-    "detail": "…", "suggested_fix": "concrete wording or value",
-    "anti_pattern": "AP-007", "anti_pattern_proposal": null
-  }],
-  "previous_findings": [{"id": "…", "status": "FIXED|OPEN|WONT_FIX", "note": "…"}],
-  "overall": {"teaches_at_reference_depth": "yes|partly|no",
-              "recommendation": "accept|accept_with_notes|revise", "summary": "…"}
-}
-```
-
-- **Severity (Audit-1 scale) orders the work:**
-  - S0: wrong or unsafe fact;
-  - S1: misleads, or gives the answer away before the attempt;
-  - S2: weakens the teaching;
-  - S3: polish.
-
-  It does not block. The owner decides at P7.
-- **Reviewer guide** — `docs/method/REVIEW-GUIDE.md`:
-  1. Attempt every audited item as a learner before opening its answer.
-  2. Derive every numeric claim independently.
-  3. Compare against the goldens and the design note's task arc.
-  4. Give every finding a `suggested_fix`.
-  5. Record at least 3 strengths.
-  6. Don't raise findings about A3 bypassability (A3.4).
-  7. Prefer one finding per defect class, with the list of affected records, over many duplicates.
-- **Independence:** the review runs in a session that authored none of the unit's records (`reviewer` ∉ the `authored_by` values in the package). This is declared by the launcher and visible in the file. It is not machine-enforced.
-
-### C2. Owner acceptance and publication
-
-- New tool `Shared/tools/accept_product.py <name> [--note "…"] [--accept-open F-03,F-07]`:
-  1. reads `publication/products/<subject>/<name>/render-receipt.json` (the current build);
-  2. writes `products/acceptance/<name>.json`:
-     ```json
-     {"schema": "product-acceptance/v1", "product": "phy-nlm-first-law", "render_digest": "9e0c919bdf6a382d",
-      "accepted_by": "owner", "accepted_at": "2026-09-29", "review_ref": "products/verification/phy-nlm-first-law.review.json",
-      "review_digest": "9e0c919bdf6a382d", "accepted_open_findings": ["F-03"], "note": "…"}
-     ```
-  3. copies that build to `public/products/<subject>/<name>/` (not the PDFs);
-  4. runs `build_pages_site.py` so `docs/` mirrors it.
-- Owner acceptance is the only way a product is published. This is a decision, not a validator: it accepts any digest, with any open findings, when the owner chooses.
-- `build_products.py build` renders to `publication/` and writes STATUS. It never writes to or deletes from `public/products`.
-- STATUS shows, per product:
-  - gaps (advisory);
-  - the review's recommendation and whether its digest is current;
-  - acceptance: current, superseded (the current build differs from the accepted digest), or none.
-
-## 7. Tooling changes (T)
-
-### T1. `Shared/tools/self_check.py` (new; advisory)
-
-```
-self_check.py --product <name>      # render, contract linter, depth prompts, device audit (if node)
-self_check.py --unit <subject>/<unit>   # plus design-note front matter, corpus counts, staleness notes
-```
-
-- Writes `publication/products/<subject>/<name>/SELF-CHECK.md` with these sections: *Linter notes* (contract rules that fired, grouped by rule, with record ids), *Fields not supplied* (depth prompts), *Device measurements* (A7), and *Staleness notes* (superseded corpus digests; the review digest ≠ current).
-- The wording is "notes", never "failures".
-- Always exits 0 unless the tool itself crashes.
-
-### T2. Quality contract and gate → linter
-- `learner-quality.v1.json`, `quality_contract.py`, `quality_observe.py` and `quality_gate.py` keep their code and calibration.
-- `quality_gate.gate()` keeps its report format. The `verdict` field is documented as advisory, and no caller uses it to publish.
-- The `quality_gate.py` CLI exits 0 by default. Pass `--strict` for the old exit code, used only by its own tests.
-
-### T3. Depth duties → prompts
-- `package_depth.DUTIES` is kept (same data), and it feeds the "Fields not supplied" section of T1.
-- `library_board.py --depth` changes its heading from "duties" to "prompts".
-- `promote_verified.plan()` no longer refuses for depth duties. It refuses only nodes that are not `VERIFIED`: the library holds independently checked facts, and that is house rule 2, not a quality gate. Depth prompts are listed in the promotion receipt for the unit author.
-
-### T4. Remove
-- The product ratchet: `build_products.py ratchet`, `products/ratchet.v1.json` and `tests/test_products_ratchet.py::Ratchet`.
-- `review_clearance()` in `build_products.py`: replaced by acceptance (C2). The review is still read for display.
-- `definition_of_complete` in `Shared/workflows/research-first.v1.json`: replaced by `"method": "docs/method/PROTOCOL.md"`.
-- CI:
-  - `.github/workflows/learner-quality.yml` becomes `code-tests.yml`. It runs the code unit tests only (render_core, quality_contract self-tests, package_migrate, renderer_inventory, research tooling), with no `calibrate`, gate or ratchet steps.
-  - It is informational while the Actions budget is exhausted.
-
-## 8. File-level change list
-
-| Path | Change |
-|---|---|
-| `Shared/tools/render_core.py` | A2 (`reveal`, rungs, JS `materialise`/`initFigure`/`g9MaterialiseAll`, `<noscript>`); A3 (`attempt_box`, derivation, JS commit rules, CSS); A4 (`key_conflict` block); A5 `PROTECTION` |
-| `Shared/library/package.schema.json` | `question.response`; `elicitation.attempt.task.response`; `answer.source_key`, `answer.key_relation`, `answer.key_conflict_explanation` |
-| `Shared/tools/quality_observe.py` | read `<template data-g9-payload>` as gated reveal bodies (A2.5) |
-| `tools/print/print-product.mjs` | learner PDF by default, `--key` PDF (A5) |
-| `tools/site-audit/core-page-audit.mjs` | `--profile tablet-10\|tablet-12.7` (A7) |
-| `Shared/tools/build_products.py` | stop publishing; remove `review_clearance` and ratchet; STATUS shows review and acceptance |
-| `Shared/tools/accept_product.py` | new (C2) |
-| `Shared/tools/self_check.py` | new (T1) |
-| `Shared/tools/build_golden.py` | new (B4) |
-| `Shared/tools/diff_readback.py` | new (B7) |
-| `Shared/tools/quality_gate.py` | exit 0 by default, `--strict` (T2) |
-| `Shared/tools/promote_verified.py` | drop the depth-duty refusal (T3) |
-| `Shared/tools/library_board.py` | "prompts" wording (T3) |
-| `Shared/quality/product-review.schema.json` | new (C1) |
-| `Shared/workflows/research-first.v1.json` | `definition_of_complete` → `method` (T4) |
-| `products/ratchet.v1.json` | delete (T4) |
-| `products/acceptance/` | new directory (C2) |
-| `.github/workflows/learner-quality.yml` | → `code-tests.yml` (T4) |
-| `docs/method/**` | new (B1–B7) |
-| `golden/**` | new (B4) |
-| `units/**` | new; created per unit at P0 |
-| `template/library-agents/`, `docs/library-agents/` | → `docs/method/archive/` |
-| `tests/test_render_core.py` | A2-T1..T4, A3-T1..T3, A4-T1 |
-| `tests/test_quality_gate.py` | keep the rule tests; drop publish-verdict assumptions |
-| `tests/test_products_ratchet.py` | → `tests/test_publication.py` (acceptance copies the exact build; a build never touches `public/`) |
-| `tests/test_golden.py` | G-T1 |
-
-## 9. Work packages
-
-Effort: S ≤ ½ day, M ≈ 1 day, L ≈ 2–3 days of session work. Every code package keeps the full code suite green, with only the known browser-runtime failures.
-
-| WP | Scope | Depends on | Effort | Done when |
-|---|---|---|---|---|
-| W1 | **Unblock:** T2–T4 and C2 (`accept_product.py`, `build_products` stops publishing, ratchet removed, promotion refuses only unverified, CI → code tests) | — | M | `test_publication.py` passes; `build_products.py build` leaves `public/` untouched; `accept_product.py` publishes exactly the accepted digest |
-| W2 | **Method docs:** B1, B2, B3 template, B5 roles and prompts, B6, the REVIEW-GUIDE, and archiving the old templates | — | M | owner reads and approves the house rules and protocol |
-| W3 | **Deferred materialisation:** A2 + A5 + observer A2.5 + print modes | — | M | A2-T1..T4 pass; learner PDF has no answer text; key PDF has all |
-| W4 | **Typed attempts:** A3 (schema, derivation, controls, JS, CSS) | W3 (same JS module) | M | A3-T1..T3 pass; both pilots render with derived types, and no package edits are needed |
-| W5 | **Key vs verified:** A4 | W3 | S | A4-T1 passes |
-| W6 | **Goldens v1:** B4 (INDEX, TECHNIQUES, AP-001..014 with real excerpts, G-MATH-LINEAR-CONSTRAINT and G-CORE2-R2 as CANDIDATE; `build_golden.py`, G-T1) | W3, W4 (so goldens show the new shell) | L | the owner can open `golden/INDEX.md` and every exemplar renders |
-| W7 | **Self-check + device profile:** T1, A7, `product-review.schema.json`, `diff_readback.py` | W1 | M | `self_check.py --product phy-nlm-first-law` writes SELF-CHECK.md and exits 0 |
-| W8 | **Clinic/Explorer surfaces** in `render_core` + blueprints (#320 §12) | W3, W4 | L | scheduled after the method is trialled; owner prioritises |
-| W9 | **Trial run of the method:** take `phy-nlm-first-law` through P5–P7 on the round-4 findings, then nominate G-PHY-NLM-FBD and G-PHY-KIN-SHARED-CLOCK | W1–W7 | content work (the offloaded team, or one unit-author session) | owner accepts, or rejects with notes; retrospective written |
-
-**Order:** W1 ∥ W2 → W3 → W4 ∥ W5 → W7 → W6 → W9. W8 comes later.
-
-## 10. Reconciliation with #320
-
-Dispositions:
-- **A:** code, by construction.
-- **B:** method (protocol, format, exemplar).
-- **C:** judgement (review, owner).
-- **D:** deferred.
-
-| #320 § | Topic | Disposition | Where |
-|---|---|---|---|
-| 1 | 100% independent readback | B | P1 two readers + `diff_readback.py`; coverage counts recorded in `corpus.json` |
-| 2 | Source ownership / independent verification | B | roles: source reader + second reader; reviewer independence (C1) |
-| 3 | Machine-typed scope | B | `corpus.json` fields (B7) |
-| 4 | Immutable corpus versioning | B | `corpus_digest` / `supersedes_digest` in git; T1 staleness notes |
-| 5 | Source vs math truth | A | A4 schema + render |
-| 6 | Pedagogy candidate → prototype → promote | B, C | P2 → P3 → P4 owner calibration |
-| 7 | Coverage mode | B | design-note front matter `coverage_mode` + §4 task arc |
-| 8 | Behaviour-class prototype | B | P3 guidance: the prototype exercises each `response.type` present in the unit |
-| 9 | Typed Core2 controls, figure/hint projection | A | A3; blueprint slots exist |
-| 10 | Pedagogical vs byte withholding | A | A2, A5 table |
-| 11 | Type-aware commitment | A | A3, threat model A3.4 |
-| 12 | Clinic / Explorer | D | W8 |
-| 13 | Grade / enrichment profile | B | design-note `grade_profile` |
-| 14 | Key-conflict learner component | A | A4.2 |
-| 15 | Shared audit, 12.7″ profile | A (advisory measurement) | A7 |
-| 16 | Global protected-content audit | A | A2 by construction + A2-T1..T4 code tests |
-| 17 | Producer readiness / maturity states | C | DRAFT → REVIEWED → ACCEPTED → PUBLISHED (C2); CI is not in the chain |
-| 18 | Append-only evidence | B | WORKLOG in git (B6); review and acceptance files in git |
-| 19 | Path ownership, one integration head | B | house rule 4; unit folders |
-| 20 | Execution flow | B | PROTOCOL P0–P7 |
-| 21 | Implementation sequence | — | §9 here |
-| 22 | Quantitative metrics | C | §11 here (measured, not gates) |
-| 23 | Non-goals | kept | §2 |
-| 24 | Corpus-member registration | B | `members[]` cite acquisition id + sha256 + pages (B7) |
-| 25 | Clinic threshold 0..6 | B | design note §6 |
-| 26 | Platform-invariant declaration | B | the house rules are the declaration; plans cite them |
-
-## 11. Success measures (tracked in a retrospective after the first 3 units; never gates)
-
-| Measure | Pilot baseline | Target |
+| Tool | Status | Output |
 |---|---|---|
-| Review rounds to owner acceptance | ≥ 4 (not yet accepted) | ≤ 2 |
-| Renderer-caused S1s at first review | 10 of 11 (rounds 2–4) | 0 |
-| Content S1s at first review | ≥ 2 per product | ≤ 1 |
-| Findings with a suggested fix | not required | 100% |
-| Spend per accepted unit | ≈ $50 per pilot product (so far) | ≤ $15–25 |
-| Work lost to interruptions | ≈ $14 | $0 (push per phase) |
-| Owner touch-points per unit | 0 before review 4 | P4 + P7 |
+| `self_check.py --unit <subject>/<slug>` (new) | runs render, `quality_gate` (linter), `package_depth` (fields not supplied), `evidence_check` on the unit's citations, device profile, inventory counts, staleness | `publication/products/<subject>/<slug>/SELF-CHECK.md`, sections "Linter notes", "Fields not supplied", "Sources", "Device", "Staleness". Always exits 0. |
+| `unit_status.py` (new, from `library_board.py`) | lifecycle state per unit (§3.2), spine coverage per subject, cost per unit | `units/STATUS.md` |
+| `quality_gate.py` | CLI exits 0 by default; `--strict` only for its own tests | report unchanged |
+| `package_depth.py` | same data, now "fields not supplied" | used by self_check |
+| `learner-quality.v1.json` + calibration corpus | kept as the linter's rule set and its code tests | — |
 
-## 12. Risks and mitigations
+## 6. What changes for each participant
+
+| Participant | Before (PR #300) | After (SPEC-AM2) |
+|---|---|---|
+| Unit author | fills fields to clear duties; waits on the gate; others draw figures | owns the unit; designs first; prototypes; compares with goldens; declares weaknesses |
+| Source reader | harvests cards node by node; a verifier stage | inventories item sources with denominators; blind cross-read by a second reader |
+| Reviewer | findings with severity that block publication | coaching review: strengths, suggested fixes, recommendation |
+| Owner | sees products after review rounds; answers questions about gates | comments at the prototype; accepts an exact render; publication follows |
+| Code | a gate decides publication | builds pages that can't leak; reports what it notices |
+
+## 7. Disposition of existing machinery
+
+| Item | Disposition | Justification |
+|---|---|---|
+| `render_core.py`, blueprint registry, `renderer_inventory.py` | KEEP + CHANGE (§4.3) | the asset the RCA calls "real"; safety belongs here (E3) |
+| render digest | KEEP | identifies what was reviewed and accepted |
+| `evidence_check.py`, `scan_ingest.py`, acquisitions, cards, allowlists | KEEP + extend (inventory checks) | quote-on-page proof is sound; nothing duplicates it |
+| verification records | KEEP + extend (`readback[]`) | `agrees`/`numeric_check` already separate key from maths |
+| `library_board.py` | ABSORB into `unit_status.py` | node stages and work orders duplicate the unit lifecycle; `inputs_digest` is reused |
+| `promote_verified.py` | RETIRE (keep `merge()` for migration M3) | staging is retired (E7); fact status is derived per record |
+| `<Subject>/research/packages/` | RETIRE after M3 | a second copy of the same unit drifts (E7) |
+| `build_products.py` publish logic, `review_clearance()` | CHANGE → render + STATUS only; publication via `accept_product.py` | one decision-maker (P1, P4) |
+| ratchet (`ratchet.v1.json`, `ratchet` command, its tests) | RETIRE | counted fields, not quality (E1, E2) |
+| `quality_gate.py`, `quality_contract.py`, `quality_observe.py`, contract, calibration | KEEP as linter (advisory) | a useful map of the audited grammar; harmful only as a decider |
+| `package_depth.py` duties | KEEP as "fields not supplied" | the same data, stripped of its gating role |
+| `Shared/workflows/research-first.v1.json` | CHANGE: remove `depth_duties` and `definition_of_complete`, add `"method": "docs/method/PROTOCOL.md"`; keep the keys that `research_first_policy`, `raw_intake` and `escape_state_guard` read | the other keys are used by live code |
+| `template/library-agents/`, `docs/library-agents/` | ARCHIVE | replaced by §5 |
+| `.github/workflows/learner-quality.yml` | CHANGE → `code-tests.yml`: code unit tests only, informational | content CI removed (§9 R3) |
+| cost ledgers | KEEP, keyed by unit | spend awareness |
+| products/verification v1 reviews | KEEP as history; new reviews use v2 | evidence for the anti-pattern cards |
+
+## 8. Migration from `main`
+
+| Step | Action | Justification |
+|---|---|---|
+| M1 | Add `title` to all 21 packages from the current manifest titles; the manifest `title` override is removed | §4.2.2 |
+| M2 | Create `<Subject>/units/<slug>/UNIT.md` for the 21 existing packages with status notes (no design notes invented) | every package gets a home; history is not rewritten |
+| M3 | Fold `Mathematics/research/packages/MAT-09-LINEAR-EQUATIONS.package.json` into `Mathematics/library/linear-equations.v1.json` with `promote_verified.merge()`; keep ids; stamp provenance | E7 |
+| M4 | Move `docs/stress-tests/` (from #317) to `evidence/stress-tests/`, which is not published | internal audit ledgers are not learner pages; fixes the `main` nav-audit failure (§9 X1) |
+| M5 | Reconcile `research/physics-library` (§9 X2) | the owner's work is kept; generated pages are regenerated |
+| M6 | Move the old agent templates to `docs/method/archive/` | §7 |
+| M7 | Existing reviews stay v1; the next review is v2 | no rewriting of evidence |
+
+## 9. Point register — every point raised, and its disposition
+
+Legend:
+- **IMPL:** implemented, with the section.
+- **DIFF:** implemented differently; the justification says why.
+- **NOT:** not implemented; the justification says why.
+- **DEFER:** deferred; the justification gives the trigger.
+
+### 9.1 What already worked on main (my #320 review)
+
+| # | Point | Disp. | Where / justification |
+|---|---|---|---|
+| K1 | exact-render review binding | IMPL | §4.3.7 kept; acceptance binds the digest (§4.5) |
+| K2 | pre-attempt figure-markup rule | IMPL | kept (#300); generalised by §4.3.1 |
+| K3 | 3-character attempt rule | IMPL | replaced by typed attempts (§4.3.2) |
+
+### 9.2 My ten points on #320
+
+| # | Point | Disp. | Where / justification |
+|---|---|---|---|
+| R1 | answers live in hidden DOM (RCA-UX-005) | IMPL | §4.3.1 |
+| R2 | protection model per output mode | IMPL | §4.3.3 |
+| R3 | controls depend on CI that does not run | DIFF | Nothing in the model depends on CI: publication is the owner's acceptance, and content is judged by review. Code tests run locally before code pushes (house rule 8). CI becomes informational code tests. Branch protection is not implemented, because it would make a code gate the publication path, which this model removes. |
+| R4 | say how each control is enforced; §18 and §19 in the repo | IMPL | §9.4 labels every #320 control as construction, method or judgement. §18 → worklog and review/acceptance files in git (§5.4). §19 → unit ownership (§3.3); see §9.4 for why there's no CI check. |
+| R5 | review schema; reviewer independence; one agent doing readback and review | IMPL + DIFF | Schema v2 (§4.4). Source readback belongs to source readers and product review to the reviewer (§3.3). Independence is displayed at acceptance (§4.5), not machine-refused: sessions are launched by one orchestrator that records ids, and the owner sees reviewer vs authors when deciding. Refusing would need an identity system to catch a risk the owner already sees. |
+| R6 | extend existing mechanisms | IMPL | readback extends verification (§4.1.3); key relation from `agrees`/`numeric_check` (§4.3.4); staleness via `inputs_digest` (§4.1.3); `renderer_inventory` kept (§4.3.7) |
+| R7 | where the corpus sits vs cards and questions | IMPL | inventory = denominator, cards = evidence, questions cite both (§4.1.2) |
+| R8 | cost and throughput of 100% readback | IMPL | estimate + batch rule (§4.1.3); measured on the first batch |
+| R9 | state the attempt threat model | IMPL | §4.3.2, house rules |
+| R10 | 12.7″ profile | IMPL | §4.3.6 |
+
+### 9.3 Items in #299 section B
+
+| # | Item | Disp. | Where / justification |
+|---|---|---|---|
+| B1 | answer-leak gate rule | NOT | Placement leaks are impossible by construction (§4.3.1, house rule 3). A text-matching rule over stems and captions misfires: givens routinely share numbers with answers, so it would teach agents to paraphrase around it (E2). Content leaks are judged by the reviewer, with AP-011 as the teaching card. |
+| B2 | required Core1/Core1B figures | DIFF | The fields exist (#300) and are taught (T04, T11, AP-006/007). Making them required recreates field-filling (E2). |
+| B3 | review schema + independence | IMPL | §4.4, §4.5 |
+| B4 | package title field | IMPL | §4.2.2, M1 |
+| B5 | tablet restyle into the renderer | IMPL | §4.3.6, M5 |
+| B6 | attempt rule | IMPL | §4.3.2 |
+| B7 | content intake for the offloaded team | IMPL | unit folders, one branch and one PR per unit, prompts (§5.2.1). No separate content branch: a branch per unit isolates better, and a shared content branch is what mixed content with UI commits last time. |
+
+### 9.4 Issue #320, §1–§26
+
+"How" says how the control holds: **C** construction, **M** method, **J** judgement.
+
+| § | Control | Disp. | How | Where / justification |
+|---|---|---|---|---|
+| 1 | 100% independent readback | DIFF | M | Every item is cross-read (§4.1.3), and coverage shows in `unit_status`. It is not a promotion blocker: the owner sees fact status at acceptance (§4.5). A blocker would reintroduce the refuse-to-deliver loop. |
+| 2 | independent source verification ownership | IMPL | M | reader A / reader B (§3.3, §4.1.3) |
+| 3 | machine-typed scope | IMPL | C (format) | inventory fields (§4.1.2) |
+| 4 | immutable corpus versions + stale dependants | IMPL | C | inventory `digest`/`supersedes`; `inputs_digest` staleness (§4.1.3) |
+| 5 | source truth vs mathematical truth | IMPL | C | `source_key`, `key_relation` (§4.3.4) |
+| 6 | pedagogy candidate → prototype → promote | IMPL | M + J | P2 → P3 → P4 (§5.2.1) |
+| 7 | coverage mode + matrix | IMPL | M | `UNIT.md` coverage; `unit_status` shows inventory formats vs selected items |
+| 8 | behaviour-class prototype | DIFF | M | P3 prototypes one item of each response type present. Not a scale-out blocker, for the reason in §1. |
+| 9 | typed Core2 controls; figure/hint projection | IMPL | C | §4.3.2, §4.3.5 |
+| 10 | pedagogical vs byte withholding | IMPL | C | §4.3.1, §4.3.3 |
+| 11 | type-aware commitment | IMPL | C | §4.3.2 |
+| 12 | Clinic / Explorer surfaces | DEFER | — | No such surface exists in `render_core`. Building one is new renderer surfaces plus blueprints plus a pedagogy design, and it should follow proof that the method works on the six existing Cores. Trigger: after the WP7 trial, when the owner prioritises it. Extension point: a new blueprint + a `render_core` role, same withholding and attempts. |
+| 13 | grade / enrichment profile | IMPL | M | `UNIT.md` `grade_profile` |
+| 14 | key-conflict learner component | IMPL | C | §4.3.4 |
+| 15 | shared audit, 12.7″ profile | DIFF | C (measure) | Measured and shown (§4.3.6, §5.5). Not an acceptance gate, because the owner decides with the numbers in view. |
+| 16 | protected-content audit across all surfaces | DIFF | C | By construction, with code tests R-1..R-4 and R-6. No content-text audit, for the reason in B1. |
+| 17 | producer readiness / maturity states | DIFF | J | Descriptive lifecycle (§3.2). CI is not in the chain (R3). |
+| 18 | append-only evidence | DIFF | C (git) | Worklog, reviews and acceptances in git. NOT GitHub-comment tooling: GitHub comments are not the evidence store in this model, so nothing needs protecting there. |
+| 19 | path ownership; one integration head | DIFF | M | One owner per unit and one branch per unit. NOT a CI path check: it would block legitimate cross-unit fixes, which are coordinated through WORKLOG, and git history already shows who changed what. |
+| 20 | revised execution flow | IMPL | M | §5.2.1 |
+| 21 | implementation sequence | IMPL | — | replaced by §10 |
+| 22 | quantitative metrics | DIFF | J | §11, measured in a retrospective, not gated |
+| 23 | non-goals | IMPL | — | kept |
+| 24 | corpus-member registration | IMPL | C (format) | §4.1.2 member rule |
+| 25 | Clinic threshold 0–6 | DEFER | M | the field is in the design note §6; applies when §12 lands |
+| 26 | platform-invariant declaration | IMPL | M | the house rules are the declaration; plans cite them |
+
+### 9.5 Items currently red
+
+| # | Item | Disp. | Where / justification |
+|---|---|---|---|
+| X1 | `main` nav audit: #317's `docs/stress-tests/*` pages (20 findings) | IMPL | M4 |
+| X2 | 5 failing tests on `research/physics-library` | IMPL | M5, class by class: **keep** scans, acquisitions, cards, allowlist entries and m2 evidence (the owner's source work); **absorb** `tablet-12-7.css` into the shell (§4.3.6); **discard** hand-edited `public/products` and `docs/products` pages (regenerated from records); **vendor** the `cdn.jsdelivr.net` script like KaTeX; **normalise** CRLF; **classify** `public/js/raw-intake.js` in the renderer inventory (it is an intake tool, not a learner renderer); **regenerate** composer data |
+
+### 9.6 Earlier open owner decisions
+
+| # | Decision | Disp. | Justification |
+|---|---|---|---|
+| O1 | scope of the prerequisite rule | DIFF | becomes `grade_profile` in `UNIT.md` and a self-check note; no rule to scope |
+| O2 | severities / thresholds | DIFF | severities stay as the review priority scale; thresholds are moot without gates |
+| O3 | Core1A textbook reference (R1) | DIFF | the goldens replace the need; if the owner has a textbook unit worth emulating, it becomes a golden |
+| O4 | cost ceiling | IMPL | $15 per unit guide, note at $25 (§5.2.1) |
+
+### 9.7 Content findings from review round 4 (#299 section A)
+
+| Item | Disp. | Justification |
+|---|---|---|
+| the remaining S2/S3 content findings on both pilots | IMPL via WP7 | content work under the new protocol; it is the trial unit |
+
+## 10. Work packages
+
+Effort: S ≤ ½ day, M ≈ 1 day, L ≈ 2–3 days of session work. Each code WP keeps the code test suite green, apart from the known browser-runtime failures.
+
+| WP | Objective | Changes | Tests / done when | Depends | Effort |
+|---|---|---|---|---|---|
+| WP1 Decision & publication | one decision-maker | `accept_product.py`; `build_products.py` stops publishing and loses `review_clearance`/ratchet; `quality_gate` exits 0 by default; `product-review.schema.json` v2; `research-first.v1.json` change; CI → code tests; M4 | `tests/test_publication.py`: a build never touches `public/`; acceptance publishes exactly the accepted digest; its prompt appears with open S0/S1 | — | M |
+| WP2 Method | agents know how to do excellent work | `docs/method/` (house rules, protocol, 3 role guides, 3 prompts, 3 templates, review guide); M6 | owner approves the house rules and protocol | — | M |
+| WP3 Learner-state semantics | safety by construction | §4.3.1–4.3.5 in `render_core`, `quality_observe`, `print-product.mjs`, schema (`response`, `source_key`, `key_relation`) | R-1..R-8 pass; both pilots and linear-equations render without package edits | — | L |
+| WP4 Source & unit model | one package per unit, denominators, cross-read | `source-inventory.schema.json`; `readback[]`; inventory checks in `evidence_check`; `unit_status.py`; package `title`; M1, M2, M3; retire `promote_verified` gating and staging | tests: inventory count/member reports; readback staleness via `inputs_digest`; `unit_status` states on fixture units; M3 result renders | WP1 | L |
+| WP5 Shell & branch reconciliation | 12.7″ tablet shell; clean research branch | §4.3.6 tokens + audit profile; M5 class-by-class | device profile report on both pilots; research branch merges with the code suite green | WP3 | M |
+| WP6 Goldens | a picture of excellence | `golden/` (INDEX, TECHNIQUES, AP-001..015, G-MATH-LINEAR-CONSTRAINT, G-CORE2-R2); `build_golden.py`; `self_check.py` | every golden renders; owner opens INDEX | WP3, WP5 | L |
+| WP7 Trial unit | prove the method | `phy-nlm-first-law` through P5–P7 on the round-4 findings, under the protocol; retrospective → amend §5 | owner accepts or rejects with notes; retrospective written; G-PHY-* nominated | WP1–WP6 | content session(s) |
+| WP8 Clinic/Explorer | new surfaces | §9.4 row 12 | — | WP7 + owner | L (deferred) |
+
+- **Order:** WP1 ∥ WP2 → WP3 → WP4 → WP5 → WP6 → WP7. WP8 comes later.
+- **Why:** WP1 and WP2 first because they remove blockers and give the method without touching the renderer. WP3 before the goldens because the goldens must show the final learner behaviour. WP4 after WP1 because acceptance reads fact status.
+
+## 11. Measures (a retrospective after the first 3 units; never gates)
+
+| Measure | Pilot | Target |
+|---|---|---|
+| review rounds to acceptance | ≥ 4, not accepted | ≤ 2 |
+| renderer-caused S1s at first review | 10 of 11 | 0 |
+| content S1s at first review | ≥ 2 per product | ≤ 1 |
+| findings with a suggested fix | not required | 100% |
+| spend per accepted unit (excluding P1) | ≈ $50 per product so far | ≤ $15–25 |
+| work lost to interruptions | ≈ $14 | $0 |
+| owner touch-points per unit | 0 before round 4 | P4 + P7 |
+
+## 12. Risks
 
 | Risk | Mitigation |
 |---|---|
-| Quality drops without blockers | Publication still needs owner acceptance of an exact digest (C2); the review is richer (strengths, suggested fixes); P4 puts owner taste in early |
-| Goldens become copy templates and every unit looks the same | Annotations teach techniques; ≥ 2 exemplars per technique over time; "adapt the technique, not the surface" (B4.4) |
-| Goldens rot as the renderer changes | `build_golden.py` re-renders from records; G-T1 catches exceptions |
-| Agents skip the method | The reviewer reads the design note and self-critique first and names missing ones; the owner sees them at P4 and P7 |
-| Web research brings in wrong facts | House rule 2 separates facts (registered sources, verified) from pedagogy (any source, logged) |
-| Advisory notes get ignored | The author triages SELF-CHECK in the worklog (P5); the reviewer sees the triage |
-| Deferred payloads break in some embedding context | EMBED mode keeps the same template mechanism; A2-T2 runs in Chromium; `<noscript>` notice |
+| Quality slips without blockers | Publication needs the owner's acceptance of an exact digest; reviews coach; the owner sees the prototype early |
+| Goldens make every unit look the same | Annotations teach techniques; "adapt the technique, not the surface"; several exemplars per technique over time |
+| Goldens rot | re-rendered from records by `build_golden.py`; a code test renders them |
+| Agents skip the method | the reviewer reads the design note and self-critique first; the owner sees them at P4 and P7; `unit_status` shows missing artifacts |
+| Web research brings wrong facts | house rule 2 separates facts (cards, cross-read) from pedagogy (any source, logged) |
+| Folding the Math staging loses content | M3 uses the tested `merge()`, keeps ids, and is reviewed as its own commit |
+| Readback costs more than estimated | measured on the first batch; the owner sees the estimate in `UNIT.md` |
 
-## 13. Decisions for the owner
+## 13. Owner decisions
 
-- **D1.** Publication is by owner acceptance of an exact digest, open findings allowed at the owner's discretion (C2). *Recommended: yes.*
-- **D2.** Suggested review rounds before the owner decides: 2. *Recommended: yes.*
-- **D3.** Two PDFs per product: learner (no answers) and key (all answers). *Recommended: yes.*
-- **D4.** Unit working folders in `units/<subject>/<unit>/`, with packages kept where they are. *Recommended: yes.*
-- **D5.** CI becomes code-tests only and informational. *Recommended: yes.*
-- **D6.** Five roles merge into three (source reader, unit author, reviewer). *Recommended: yes.*
-- **D7.** The first golden units after W9: G-PHY-NLM-FBD and G-PHY-KIN-SHARED-CLOCK. *Owner to bless.*
-- **D8.** Start with W1 + W2, which unblock the work and set the method, before any renderer change. *Recommended: yes.*
+| # | Decision | Recommendation |
+|---|---|---|
+| D1 | publication by owner acceptance of an exact digest, open findings allowed with confirmation | yes |
+| D2 | two review rounds suggested before the owner decides | yes |
+| D3 | two PDFs: learner and key | yes |
+| D4 | one package per unit; staging retired; unit folders at `<Subject>/units/<slug>/` | yes |
+| D5 | three roles (source reader, unit author, reviewer) | yes |
+| D6 | CI = code tests, informational | yes |
+| D7 | `docs/stress-tests/` moves to unpublished `evidence/stress-tests/` (M4) | yes |
+| D8 | research-branch reconciliation classes in §9.5 X2 | yes |
+| D9 | Clinic/Explorer deferred until after the trial unit | yes |
+| D10 | blind cross-read of math-bearing fields (vs compare-only) for source readback | yes (≈ $35–65 per 162 items) |
