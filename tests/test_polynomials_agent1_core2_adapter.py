@@ -124,7 +124,7 @@ class PolynomialsAgent1AdapterTests(unittest.TestCase):
                 "issue_or_pr_attachment_exposing_source_bytes": True,
             },
         }
-        self.assertTrue(any("not provider-reproducible" in x for x in adapter.admission_failures(data)))
+        self.assertTrue(any("not independently reproducible" in x for x in adapter.admission_failures(data)))
 
     def test_conflicted_row_is_rejected(self):
         data = ready_ledger()
