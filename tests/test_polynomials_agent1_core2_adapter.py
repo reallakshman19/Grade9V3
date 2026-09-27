@@ -175,6 +175,28 @@ class PolynomialsAgent1AdapterTests(unittest.TestCase):
         self.assertEqual(out["questions"][0]["figure"]["state"], "SOURCE_DERIVED_REDRAW")
         self.assertEqual(out["questions"][0]["custody"]["components"]["figures"], "EXTERNAL_REFERENCE_VERIFIED")
 
+    def test_selective_enrichment_maps_only_three_source_safe_clinics(self):
+        data = ready_ledger(row_count=4)
+        ids = sorted(adapter.CLINIC_QUESTION_IDS)
+        for row, qid in zip(data["ledger"]["rows"][:3], ids):
+            row["id"] = qid
+        data["ledger"]["rows"][3]["id"] = "Q-MAT-09-POL-P08-ARC-11"
+        out = adapter.adapt(data)
+
+        by_id = {q["id"]: q for q in out["questions"]}
+        for qid in ids:
+            self.assertEqual(
+                by_id[qid]["enrichment"]["clinic_href"],
+                f"question-clinics.html#{qid}",
+            )
+        self.assertEqual(by_id["Q-MAT-09-POL-P08-ARC-11"]["enrichment"], {})
+        self.assertNotIn("Q-MAT-09-POL-P03-SC-08", adapter.CLINIC_QUESTION_IDS)
+
+    def test_product_exposes_one_concept_explorer_route(self):
+        out = adapter.adapt(ready_ledger())
+        self.assertEqual(out["product"]["explorer_href"], "concept-explorer.html")
+        self.assertFalse(any("explorer_href" in q.get("enrichment", {}) for q in out["questions"]))
+
     def test_missing_source_answer_requires_authored_closure_without_fabricating_source(self):
         data = ready_ledger()
         row = data["ledger"]["rows"][0]
