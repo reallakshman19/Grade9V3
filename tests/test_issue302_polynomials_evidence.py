@@ -156,7 +156,7 @@ class Issue302PolynomialsEvidenceTests(unittest.TestCase):
         )
         self.assertEqual(
             repo["source_pr_current_head"],
-            "d6a5753ca2d360e2f27162c167b6155d1d06519e",
+            "1edcf4780aad72e3e32d0028f0edf492fd962533",
         )
         self.assertTrue(repo["polynomials_evidence_blobs_unchanged_through_current_head"])
 
