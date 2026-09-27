@@ -34,6 +34,14 @@ ROW_READBACK_STATES = {
     "AVAILABLE_PROVIDER_REPRODUCIBLE",
 }
 
+CLINIC_QUESTION_IDS = {
+    "Q-MAT-09-POL-P05-HOTS-01",
+    "Q-MAT-09-POL-P06-HOTS-14",
+    "Q-MAT-09-POL-P09-ARC-21",
+}
+CLINIC_HREF = "question-clinics.html"
+EXPLORER_HREF = "concept-explorer.html"
+
 SECTION_TITLES = {
     "ASSESSMENT_CORNER": "Assessment Corner",
     "HOTS": "Higher Order Thinking Skills",
@@ -292,6 +300,10 @@ def adapt(data: dict[str, Any], *, provider_head: str | None = None) -> dict[str
             },
             "answer": answer,
             "figure": figure,
+            "enrichment": (
+                {"clinic_href": f"{CLINIC_HREF}#{row['id']}"}
+                if str(row["id"]) in CLINIC_QUESTION_IDS else {}
+            ),
         })
 
     return {
@@ -302,6 +314,7 @@ def adapt(data: dict[str, Any], *, provider_head: str | None = None) -> dict[str
             "subject": "Mathematics",
             "home_href": "../index.html",
             "intro": "Attempt each source question before opening its source answer. Source and authored content remain explicitly separated.",
+            "explorer_href": EXPLORER_HREF,
             "source_basis": {
                 "acquisition_id": source["acquisition_id"],
                 "resource_ref": source["resource_ref"],
