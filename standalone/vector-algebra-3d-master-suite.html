@@ -1687,6 +1687,7 @@ window.JEE_QUESTIONS_DATA = [
     function setupOrbit(canvas, onOrbit) {
       if (!canvas || canvas.dataset.orbitBound === '1') return;
       canvas.dataset.orbitBound = '1';
+      canvas.style.touchAction = 'none';
 
       canvas.addEventListener('pointerdown', (e) => {
         activeOrbitCanvas = canvas;
@@ -1694,6 +1695,7 @@ window.JEE_QUESTIONS_DATA = [
         activePointerId = e.pointerId;
         lastMouseX = e.clientX;
         lastMouseY = e.clientY;
+        canvas.dataset.g9PointerActive = '1';
         if (canvas.setPointerCapture) canvas.setPointerCapture(e.pointerId);
         e.preventDefault();
       });
@@ -1713,9 +1715,14 @@ window.JEE_QUESTIONS_DATA = [
       const finishOrbit = (e) => {
         if (activeOrbitCanvas !== canvas) return;
         if (e.pointerId !== undefined && activePointerId !== null && e.pointerId !== activePointerId) return;
+        const pointerId = activePointerId;
         activeOrbitCanvas = null;
         activeOrbitCallback = null;
         activePointerId = null;
+        delete canvas.dataset.g9PointerActive;
+        if (pointerId !== null) {
+          try { canvas.releasePointerCapture?.(pointerId); } catch (_) {}
+        }
       };
       canvas.addEventListener('pointerup', finishOrbit);
       canvas.addEventListener('pointercancel', finishOrbit);
@@ -1724,24 +1731,18 @@ window.JEE_QUESTIONS_DATA = [
 
     // 3D Point to 2D Screen projection
     function project3D(x, y, z, cx, cy, scale) {
-      // Rotation around Z (Azimuth)
       const cosA = Math.cos(viewAzimuth), sinA = Math.sin(viewAzimuth);
       const x1 = x * cosA - y * sinA;
       const y1 = x * sinA + y * cosA;
       const z1 = z;
 
-      // Rotation around X (Elevation)
       const cosE = Math.cos(viewElevation), sinE = Math.sin(viewElevation);
       const y2 = y1 * cosE - z1 * sinE;
       const z2 = y1 * sinE + z1 * cosE;
       const x2 = x1;
 
-      // Perspective projection
-      const cameraDist = 25;
-      const factor = cameraDist / (cameraDist + y2);
-      const px = cx + x2 * scale * factor;
-      const py = cy - z2 * scale * factor; // flip Y for screen coordinates
-      return { px, py, depth: y2 };
+      // Orthographic orbit: rotating changes orientation, never apparent zoom.
+      return { px: cx + x2 * scale, py: cy - z2 * scale, depth: y2 };
     }
 
     function clampNumber(value, min, max) {
@@ -1786,24 +1787,42 @@ window.JEE_QUESTIONS_DATA = [
         const initialHeight = Number.parseFloat(canvas.getAttribute('height'));
         canvas.dataset.logicalHeight = String(Number.isFinite(initialHeight) && initialHeight > 0 ? initialHeight : 340);
       }
-
       const logicalHeight = Number.parseFloat(canvas.dataset.logicalHeight) || 340;
-      const styles = parent ? getComputedStyle(parent) : null;
-      const padX = styles
-        ? (Number.parseFloat(styles.paddingLeft) || 0) + (Number.parseFloat(styles.paddingRight) || 0)
-        : 0;
-      const parentWidth = parent ? parent.clientWidth : canvas.clientWidth;
-      const logicalWidth = Math.max(1, Math.floor(parentWidth - padX));
-      const dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
 
-      canvas.dataset.logicalWidth = String(logicalWidth);
-      canvas.style.width = '100%';
-      canvas.style.height = logicalHeight + 'px';
+      if (canvas.dataset.g9StableCss !== '1') {
+        canvas.style.width = '100%';
+        canvas.style.maxWidth = '100%';
+        canvas.style.height = logicalHeight + 'px';
+        canvas.style.boxSizing = 'border-box';
+        canvas.style.display = 'block';
+        canvas.dataset.g9StableCss = '1';
+      }
+
+      const orbitLocked = canvas.dataset.g9PointerActive === '1';
+      const currentDpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
+      let logicalWidth = Number.parseFloat(canvas.dataset.logicalWidth);
+      let dpr = Number.parseFloat(canvas.dataset.canvasDpr);
+
+      if (!orbitLocked || !Number.isFinite(logicalWidth) || logicalWidth <= 0) {
+        const rect = canvas.getBoundingClientRect();
+        const parentRect = parent ? parent.getBoundingClientRect() : null;
+        const measured = Math.floor(rect.width || (parentRect ? parentRect.width : 0));
+        logicalWidth = measured > 1 ? measured : (Number.isFinite(logicalWidth) && logicalWidth > 0 ? logicalWidth : 600);
+        dpr = currentDpr;
+        canvas.dataset.logicalWidth = String(logicalWidth);
+        canvas.dataset.canvasDpr = String(dpr);
+      } else if (!Number.isFinite(dpr) || dpr <= 0) {
+        dpr = currentDpr;
+      }
 
       const pixelWidth = Math.max(1, Math.round(logicalWidth * dpr));
       const pixelHeight = Math.max(1, Math.round(logicalHeight * dpr));
-      if (canvas.width !== pixelWidth) canvas.width = pixelWidth;
-      if (canvas.height !== pixelHeight) canvas.height = pixelHeight;
+
+      // A pointer orbit is a pure scene redraw: never mutate CSS or bitmap size mid-gesture.
+      if (!orbitLocked) {
+        if (canvas.width !== pixelWidth) canvas.width = pixelWidth;
+        if (canvas.height !== pixelHeight) canvas.height = pixelHeight;
+      }
 
       const ctx = canvas.getContext('2d');
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -1816,24 +1835,13 @@ window.JEE_QUESTIONS_DATA = [
       const safePoints = (points || []).filter(p =>
         Array.isArray(p) && p.length >= 3 && p.every(Number.isFinite)
       );
-      const offsets = safePoints.map(p => project3D(p[0], p[1], p[2], 0, 0, 1));
-      const minX = Math.min(0, ...offsets.map(p => p.px));
-      const maxX = Math.max(0, ...offsets.map(p => p.px));
-      const minY = Math.min(0, ...offsets.map(p => p.py));
-      const maxY = Math.max(0, ...offsets.map(p => p.py));
 
-      const leftRoom = Math.max(1, cx - padding);
-      const rightRoom = Math.max(1, width - padding - cx);
-      const topRoom = Math.max(1, cy - padding);
-      const bottomRoom = Math.max(1, height - padding - cy);
-      const candidates = [maxScale];
+      // Fit from the 3D radius, which is invariant under orbit rotation.
+      const radius = Math.max(1, ...safePoints.map(p => Math.hypot(p[0], p[1], p[2])));
+      const horizontalRoom = Math.max(1, Math.min(cx - padding, width - padding - cx));
+      const verticalRoom = Math.max(1, Math.min(cy - padding, height - padding - cy));
+      const scale = Math.max(0.1, Math.min(maxScale, horizontalRoom / radius, verticalRoom / radius));
 
-      if (maxX > 1e-9) candidates.push(rightRoom / maxX);
-      if (minX < -1e-9) candidates.push(leftRoom / -minX);
-      if (maxY > 1e-9) candidates.push(bottomRoom / maxY);
-      if (minY < -1e-9) candidates.push(topRoom / -minY);
-
-      const scale = Math.max(0.1, Math.min(...candidates.filter(Number.isFinite)));
       return {
         cx, cy, scale,
         project: v => project3D(v[0], v[1], v[2], cx, cy, scale)
