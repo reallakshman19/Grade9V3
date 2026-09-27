@@ -158,23 +158,21 @@ class PolynomialsAgent1AdapterTests(unittest.TestCase):
         self.assertEqual(out["questions"][0]["figure"]["state"], "SOURCE_DERIVED_REDRAW")
         self.assertEqual(out["questions"][0]["custody"]["components"]["figures"], "EXTERNAL_REFERENCE_VERIFIED")
 
-    def test_source_answer_missing_preserves_absence_without_fabrication(self):
+    def test_missing_source_answer_requires_authored_closure_without_fabricating_source(self):
         data = ready_ledger()
         row = data["ledger"]["rows"][0]
         row["source_answer_status"] = "MISSING"
         row["source_answer"] = None
-        out = adapter.adapt(data)
-        q = out["questions"][0]
-        self.assertNotIn("source_summary", q["answer"])
-        self.assertNotIn("authored_summary", q["answer"])
-        self.assertEqual(q["custody"]["components"]["answer"], "NOT_PRESENT_IN_SOURCE")
 
         with self.assertRaises(adapter.AdmissionError):
             adapter.adapt(data)
 
         row["authored_answer"] = "Independently verified authored answer."
         out = adapter.adapt(data)
-        self.assertEqual(out["questions"][0]["answer"]["authored_summary"], "Independently verified authored answer.")
+        q = out["questions"][0]
+        self.assertNotIn("source_summary", q["answer"])
+        self.assertEqual(q["answer"]["authored_summary"], "Independently verified authored answer.")
+        self.assertEqual(q["custody"]["components"]["answer"], "NOT_PRESENT_IN_SOURCE")
 
 
 if __name__ == "__main__":
