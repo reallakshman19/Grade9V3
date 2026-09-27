@@ -87,6 +87,17 @@ class PolynomialsAgent1AdapterTests(unittest.TestCase):
         }
         self.assertTrue(any("not provider-reproducible" in x for x in adapter.admission_failures(data)))
 
+    def test_producer_available_booleans_are_not_provider_reproducibility(self):
+        data = ready_ledger()
+        data["source_access"] = {
+            "status": "AVAILABLE",
+            "provider_checks": {
+                "m2_pages_json_present_in_pr_tree": True,
+                "issue_or_pr_attachment_exposing_source_bytes": True,
+            },
+        }
+        self.assertTrue(any("not provider-reproducible" in x for x in adapter.admission_failures(data)))
+
     def test_conflicted_row_is_rejected(self):
         data = ready_ledger()
         data["ledger"]["rows"][0]["independent_comparison_status"] = "CONFLICT_MATH_VS_PUBLISHED_KEY"
