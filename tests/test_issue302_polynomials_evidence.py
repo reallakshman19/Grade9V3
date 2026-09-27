@@ -123,6 +123,43 @@ class Issue302PolynomialsEvidenceTests(unittest.TestCase):
         self.assertFalse(self.data["validation"]["explorer_decision_complete"])
         self.assertFalse(self.data["validation"]["clinic_ranking_complete"])
 
+    def test_master_key_inventory_is_explicit_and_reconciled(self):
+        inv = self.data["answer_key_inventory"]
+        rec = inv["reconciliation"]
+        self.assertEqual(inv["total_keyed_entries"], 117)
+        self.assertEqual(rec["linked_machine_rows"], 24)
+        self.assertEqual(rec["matching_machine_rows"], 16)
+        self.assertEqual(rec["conflicting_machine_rows"], 8)
+        self.assertEqual(rec["unlinked_key_entries"], 93)
+        conflict_rows = {item["row_id"] for item in rec["conflicts"]}
+        self.assertEqual(
+            conflict_rows,
+            {
+                "Q-MAT-09-POL-P01-FIB-03",
+                "Q-MAT-09-POL-P01-FIB-04",
+                "Q-MAT-09-POL-P01-FIB-05",
+                "Q-MAT-09-POL-P01-FIB-06",
+                "Q-MAT-09-POL-P01-TF-03",
+                "Q-MAT-09-POL-P01-TF-04",
+                "Q-MAT-09-POL-P03-SC-08",
+                "Q-MAT-09-POL-P05-HOTS-05",
+            },
+        )
+        self.assertIn("FIND-KEYMAP-001", self.findings)
+        self.assertFalse(self.data["validation"]["answer_custody_complete"])
+
+    def test_pr306_movement_did_not_change_polynomials_evidence_basis(self):
+        repo = self.data["repository_basis"]
+        self.assertEqual(
+            repo["polynomials_evidence_commit"],
+            "7bf9ca0ae01f8555c4df0b1ff7c74180d5693766",
+        )
+        self.assertEqual(
+            repo["source_pr_current_head"],
+            "d6a5753ca2d360e2f27162c167b6155d1d06519e",
+        )
+        self.assertTrue(repo["polynomials_evidence_blobs_unchanged_through_current_head"])
+
     def test_markdown_is_visibly_blocked_from_downstream_authority(self):
         self.assertTrue(self.markdown.startswith("> [!CAUTION]"))
         self.assertIn("PARTIAL / CONTRADICTORY", self.markdown)
