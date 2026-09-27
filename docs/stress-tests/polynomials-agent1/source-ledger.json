@@ -1,0 +1,250 @@
+{
+  "schema": "polynomials-agent1-evidence/v1",
+  "status": "PARTIAL_EVIDENCE_SOURCE_ACCESS_UNAVAILABLE",
+  "issue": {
+    "programme_parent": 301,
+    "owned_child": 302,
+    "disposition": "PRESERVE",
+    "plan_comment_id": 5851779726,
+    "source_access_evidence_comment_id": 5851789928
+  },
+  "protocol_basis": {
+    "relay": "V3.1",
+    "common_main": "049ebc556fb37a641709af9b786cea7cfedc6716",
+    "two_pass_revision": "TPG-2P-2026-09-25-R1"
+  },
+  "repository_basis": {
+    "repository": "reallaksh19/Grade9V3",
+    "base_main": "dac87384cd52426b3b9e81801a09a3aed0bd1c0b",
+    "source_pr": 306,
+    "source_pr_head": "9444c65c9488a580e0679ddd9adc85930a199d9a",
+    "execution_branch": "issue-302-polynomials-source-difficulty"
+  },
+  "source_basis": {
+    "acquisition_id": "ACQ-1DD05CE5AA04B532EC68",
+    "bucket_id": "MAT-09-POLYNOMIALS",
+    "resource_ref": "SRC-BOOK-MATH-CH2-CH3",
+    "registered_source": "m2.pdf",
+    "source_kind": "FILE",
+    "media_type": "application/pdf",
+    "byte_length": 18424888,
+    "source_sha256": "1dd05ce5aa04b532ec68c4054f55af1677ecb210be00b8f3085d6f29215a230c",
+    "snapshot_ref": ".source-cache/1dd05ce5aa04b532ec68c4054f55af1677ecb210be00b8f3085d6f29215a230c.pdf",
+    "scan_manifest": "Mathematics/research/scans/ACQ-1DD05CE5AA04B532EC68.scan.json",
+    "scan_manifest_schema": "scan-manifest/v1",
+    "page_count": 49,
+    "in_scope_pdf_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "ocr": {
+      "engine": "RapidOCR 1.2.3",
+      "language": "eng",
+      "text_sha256": "27b876ac329b338764aece96007b07ec3cace255475c830b4b41883555e84621"
+    },
+    "page_map": null,
+    "low_text_pages": [],
+    "rights": "COPYRIGHTED_OWNED_COPY",
+    "tier": "B",
+    "may_support": [
+      "DEFINITION",
+      "RELATION",
+      "CONDITION",
+      "WORKED_EXAMPLE",
+      "MISCONCEPTION",
+      "QUESTION",
+      "ANSWER_KEY",
+      "DIAGRAM"
+    ]
+  },
+  "source_precedence": [
+    "registered scan/source bytes for ACQ-1DD05CE5AA04B532EC68 when accessible",
+    "source-custody/evidence records traceable to that acquisition",
+    "independently verified mathematical derivation/research",
+    "standalone/mathematics-polynomials-and-coordinates-suite.html as prior art only"
+  ],
+  "prior_art": {
+    "path": "standalone/mathematics-polynomials-and-coordinates-suite.html",
+    "source_authority": false,
+    "allowed_use": [
+      "hypothesis generation",
+      "prior interpretation review",
+      "omission/discrepancy checklist"
+    ],
+    "forbidden_as_authority_for": [
+      "source stems",
+      "source options",
+      "source answers",
+      "source hints",
+      "source reasoning",
+      "source numbering",
+      "source provenance"
+    ]
+  },
+  "source_access": {
+    "status": "NOT_AVAILABLE_TO_EXECUTOR",
+    "provider_checks": {
+      "source_cache_present_in_pr_tree": false,
+      "m2_pdf_present_in_pr_tree": false,
+      "m2_pages_json_present_in_pr_tree": false,
+      "polynomials_evidence_card_corpus_present": false,
+      "issue_or_pr_attachment_exposing_source_bytes": false
+    },
+    "consequence": "Do not populate source-question rows from prior art or mathematical plausibility.",
+    "next_valid_input": "registered-source readback of the first 11 PDF pages or owner-provided source attachment/bytes bound to the same acquisition digest"
+  },
+  "ledger": {
+    "question_count": null,
+    "coverage_status": "NOT_MEASURED_SOURCE_TEXT_UNAVAILABLE",
+    "rows": [],
+    "stable_identity_rule": "Use source page + readable source label/type; if source label is absent or unreadable, use a deterministic page-local sequence id without inventing a printed question number.",
+    "printed_page_rule": "UNKNOWN while scan manifest page_map is null."
+  },
+  "answer_custody": {
+    "source_answer_states": [
+      "PRESENT",
+      "MISSING",
+      "AMBIGUOUS"
+    ],
+    "independent_comparison_states": [
+      "MATCH",
+      "CONFLICT",
+      "NOT_CHECKED"
+    ],
+    "invariant": "A source final answer is not source reasoning; independent derivation must remain explicitly authored/verification analysis."
+  },
+  "uncertainty": {
+    "fidelity_states": [
+      "VERIFIED",
+      "PARTIAL",
+      "AMBIGUOUS",
+      "UNREADABLE"
+    ],
+    "numeric_and_equation_rule": "Require an independent second reading from the page image by a different reader before promotion of numeric/equation-sensitive scan evidence.",
+    "unresolved_rule": "Do not guess. A material unresolved reading blocks final mathematical classification and Explorer/Clinic selection for that item."
+  },
+  "hardness_taxonomy": {
+    "conceptual": {
+      "id": "C",
+      "levels": {
+        "C0": "direct recall/substitution",
+        "C1": "one familiar principle",
+        "C2": "multiple concepts or an implicit invariant must be connected",
+        "C3": "decisive non-obvious structural insight"
+      }
+    },
+    "representation": {
+      "id": "R",
+      "levels": {
+        "R0": "no representation decision",
+        "R1": "routine translation",
+        "R2": "material representation shift",
+        "R3": "choosing/building the right representation is itself decisive"
+      }
+    },
+    "method_choice": {
+      "id": "M",
+      "levels": {
+        "M0": "method explicitly supplied",
+        "M1": "standard route immediately apparent",
+        "M2": "multiple plausible routes or a significant trap",
+        "M3": "discovering/selecting the route is the central difficulty"
+      }
+    },
+    "algebraic_length": {
+      "id": "A",
+      "levels": {
+        "A0": "negligible manipulation",
+        "A1": "short routine algebra",
+        "A2": "sustained multi-step manipulation",
+        "A3": "unusually long bookkeeping, branching, or constraint propagation"
+      },
+      "invariant": "A3 alone does not make a question mathematically Hard."
+    },
+    "source_scan": {
+      "id": "S",
+      "levels": {
+        "S0": "clear and independently confirmed",
+        "S1": "minor OCR noise, harmless/resolved",
+        "S2": "material ambiguity resolved through independent readback",
+        "S3": "unresolved/illegible"
+      },
+      "invariant": "S never contributes to mathematical hardness. S3 blocks final selection judgement."
+    },
+    "overall_labels": {
+      "EASY": "C/R/M all <=1 with a direct standard route; no hidden dependent reasoning chain.",
+      "MEDIUM": "At least one genuine level-2 mathematical demand, but no decisive C3/R3/M3 bottleneck; unusually long standard algebra may remain Medium.",
+      "HARD": "C3, R3, or M3; or multiple interacting C2/R2/M2 demands forming a dependent reasoning chain."
+    },
+    "psychometric_claim": false
+  },
+  "explorer_admission": {
+    "maximum_default": 1,
+    "current_recommendation": null,
+    "current_status": "NOT_EVALUATED_SOURCE_TEXT_UNAVAILABLE",
+    "tests": [
+      "manipulation varies a mathematically meaningful object or parameter",
+      "interaction reveals an invariant, dependency, boundary, structural special case, or representation relationship",
+      "static examples would communicate materially less well",
+      "the structure explains a real in-scope reasoning bottleneck",
+      "the learner can follow predict → manipulate → observe → explain → formalise → apply"
+    ],
+    "candidate_hypothesis_from_parent": "Remainder–Factor Structure Lab",
+    "candidate_is_mandated": false
+  },
+  "clinic_ranking": {
+    "target_range": "3–6 only if 3–6 genuinely qualify",
+    "current_candidates": [],
+    "current_status": "NOT_EVALUATED_SOURCE_TEXT_UNAVAILABLE",
+    "priority_order": [
+      "method-choice bottleneck",
+      "representation bottleneck",
+      "conceptual structural bottleneck",
+      "plausible wrong route and diagnostic value",
+      "prerequisite burden",
+      "independent-check value",
+      "algebraic length as secondary evidence only"
+    ],
+    "exclusions": [
+      "unresolved S3 source fidelity",
+      "mathematically unsettled source readings",
+      "routine questions that are merely long"
+    ]
+  },
+  "classification_witnesses": {
+    "easy": null,
+    "medium": null,
+    "hard": null,
+    "status": "NOT_EVALUATED_SOURCE_TEXT_UNAVAILABLE"
+  },
+  "validation": {
+    "source_identity_locked": true,
+    "source_text_fidelity_validated": false,
+    "ledger_complete": false,
+    "answer_custody_complete": false,
+    "independent_mathematics_complete": false,
+    "family_prerequisite_map_complete": false,
+    "hardness_complete": false,
+    "explorer_decision_complete": false,
+    "clinic_ranking_complete": false,
+    "html_projection_present": true,
+    "copyrighted_scan_bytes_committed": false,
+    "ocr_corpus_committed": false,
+    "page_images_committed": false
+  },
+  "handoff": {
+    "issue_303": "Consume stable source ids/order/fidelity/answer custody/reproduction status only after source rows exist.",
+    "issue_304": "Consume family/prerequisite/hardness evidence, Explorer comparison, and Clinic ranking only after source-specific analysis completes.",
+    "issue_305": "Recheck immutable source basis, ambiguities, answer custody, and Agent-1 mathematical results independently.",
+    "issue_301": "Current consequence: source identity is pinned; substantive first-11-page analysis is pending legitimate source readback."
+  }
+}
