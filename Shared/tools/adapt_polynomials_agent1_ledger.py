@@ -175,6 +175,8 @@ def admission_failures(data: dict[str, Any]) -> list[str]:
             failures.append(f"{where}.source_answer_status must be PRESENT or MISSING")
         if row.get("source_answer_status") == "PRESENT" and row.get("source_answer") in (None, ""):
             failures.append(f"{where} claims a source answer but source_answer is empty")
+        if row.get("source_answer_status") == "MISSING" and row.get("authored_answer") in (None, ""):
+            failures.append(f"{where} has no source answer and no independently authored answer")
         if not isinstance(row.get("figure"), dict):
             failures.append(f"{where}.figure is missing; source-figure absence may not be inferred")
         elif row["figure"].get("state") not in FIGURE_STATES:
@@ -212,7 +214,7 @@ def adapt(data: dict[str, Any], *, provider_head: str | None = None) -> dict[str
         if answer_status == "PRESENT":
             answer["source_summary"] = str(row["source_answer"])
         else:
-            answer["authored_summary"] = "No source answer is present in the admitted custody record."
+            answer["authored_summary"] = str(row["authored_answer"])
 
         questions.append({
             "id": str(row["id"]),
