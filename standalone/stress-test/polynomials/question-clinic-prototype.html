@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Question Clinic interaction prototype — Issue #304</title>
+  <style>
+:root {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --ink: #182230;
+  --muted: #596579;
+  --line: #d7dde6;
+  --accent: #1865f2;
+  --accent-soft: #eaf1ff;
+  --good: #087b4e;
+  --warn: #8a4f00;
+  --bad: #a4282d;
+  --focus: #6c47d9;
+  --radius: 14px;
+  --shadow: 0 2px 10px rgba(24, 34, 48, 0.07);
+}
+* { box-sizing: border-box; }
+html { font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: var(--bg); color: var(--ink); }
+body { margin: 0; min-width: 0; }
+a { color: var(--accent); }
+button, input, textarea, select { font: inherit; }
+button, .action-link, input[type="text"], input[type="number"], textarea, select { min-height: 48px; }
+button, .action-link {
+  min-width: 48px; border: 1px solid #9eabc0; border-radius: 10px; background: var(--surface); color: var(--ink);
+  padding: 10px 15px; cursor: pointer; touch-action: manipulation; display: inline-flex; align-items: center; justify-content: center;
+  gap: 8px; text-decoration: none; font-weight: 700;
+}
+button:hover, .action-link:hover { border-color: var(--accent); }
+button.primary, .action-link.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+button:disabled { opacity: 0.55; cursor: not-allowed; }
+button:focus-visible, a:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, summary:focus-visible {
+  outline: 4px solid color-mix(in srgb, var(--focus) 42%, transparent); outline-offset: 3px;
+}
+.shell {
+  position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,0.97); border-bottom: 1px solid var(--line);
+  padding: 10px clamp(12px, 3vw, 28px); display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+}
+.shell-nav { display: flex; gap: 10px; flex-wrap: wrap; }
+.shell .action-link { padding: 8px 12px; }
+main { max-width: 1380px; margin: 0 auto; padding: clamp(18px, 3vw, 34px); min-width: 0; }
+.hero, .panel { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); }
+.hero { padding: clamp(20px, 3vw, 34px); margin-bottom: 20px; }
+.panel { padding: clamp(16px, 2.2vw, 24px); min-width: 0; }
+.hero h1 { margin: 0 0 10px; font-size: clamp(1.75rem, 3.5vw, 2.8rem); line-height: 1.08; }
+.hero p { max-width: 78ch; margin: 8px 0; }
+.eyebrow { font-size: 0.82rem; letter-spacing: .08em; text-transform: uppercase; font-weight: 800; color: var(--accent); }
+.badge { display: inline-flex; align-items: center; padding: 5px 9px; border-radius: 999px; background: #f0f3f7; border: 1px solid var(--line); font-size: .86rem; font-weight: 700; }
+.badge.warn { background: #fff5e7; border-color: #e9c899; color: #6b3f00; }
+.badge.good { background: #eaf8f1; border-color: #a8d9c2; color: #075f3e; }
+.muted { color: var(--muted); }
+.stage-grid { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(280px, .85fr); gap: 20px; align-items: start; }
+.controls-grid { display: grid; grid-template-columns: repeat(4, minmax(90px, 1fr)); gap: 12px; }
+.field { display: grid; gap: 6px; min-width: 0; }
+.field label { font-weight: 700; font-size: .92rem; }
+.field input, .field select, textarea { width: 100%; border: 1px solid #9eabc0; border-radius: 9px; background: #fff; color: var(--ink); padding: 10px 12px; }
+.field-help { font-size: .82rem; color: var(--muted); }
+.button-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.preset-row { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 10px; }
+.predict-card { border: 2px solid #b8c5d8; border-radius: 12px; padding: 16px; background: #fbfcfe; }
+.predict-options { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin: 12px 0; }
+.choice-btn[aria-pressed="true"] { border-color: var(--accent); background: var(--accent-soft); color: #0e4bb7; }
+.math-line, .equation { font-family: "STIX Two Math", "Cambria Math", "Times New Roman", serif; font-size: clamp(1.05rem, 2vw, 1.32rem); overflow-wrap: anywhere; }
+.observation { margin-top: 16px; padding: 16px; border-left: 5px solid var(--accent); background: #f7faff; border-radius: 10px; }
+.observation.good { border-left-color: var(--good); background: #eef9f4; }
+.observation.warn { border-left-color: var(--warn); background: #fff8ed; }
+.metric-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin-top: 12px; }
+.metric { border: 1px solid var(--line); border-radius: 10px; padding: 12px; min-width: 0; }
+.metric strong { display:block; font-size: .82rem; color:var(--muted); margin-bottom:4px; }
+.metric span { overflow-wrap:anywhere; }
+.flow { margin: 0; padding-left: 1.2rem; display:grid; gap:9px; }
+.note { border: 1px solid #d8c8f5; background: #f7f2ff; padding: 13px 15px; border-radius: 10px; }
+.warning { border: 1px solid #e5c391; background: #fff7e9; padding: 13px 15px; border-radius: 10px; }
+.clinic-list { display:grid; gap:18px; }
+.clinic-card { background:#fff; border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
+.clinic-head { padding:18px 20px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; gap:12px; align-items:flex-start; flex-wrap:wrap; }
+.clinic-body { padding:20px; display:grid; gap:16px; }
+.attempt-box { display:grid; gap:10px; }
+.support-stack { display:grid; gap:10px; }
+.support-item { border:1px solid #bed0ef; background:#f8fbff; border-radius:10px; padding:14px; }
+.wrong-route { border-color:#e9be9a; background:#fff8f1; }
+.solution { border-color:#a9d5bd; background:#f0faf5; }
+.status { min-height: 1.5em; font-weight:700; }
+.status.error { color:var(--bad); }
+.status.ok { color:var(--good); }
+hr { border:0; border-top:1px solid var(--line); margin:18px 0; }
+code { overflow-wrap:anywhere; }
+@media (max-width: 960px) {
+  .stage-grid { grid-template-columns: 1fr; }
+  .controls-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .preset-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 620px) {
+  .controls-grid, .predict-options, .metric-grid { grid-template-columns: 1fr; }
+  .shell { position: static; }
+  main { padding: 14px; }
+}
+@media print {
+  .shell, button, textarea, input, select, .prototype-warning { display:none !important; }
+  body { background:#fff; }
+  .hero, .panel, .clinic-card { box-shadow:none; border-color:#bbb; }
+}
+</style>
+</head>
+<body>
+  <nav class="shell" aria-label="Stress-test navigation">
+    <strong>Polynomials selective enrichment</strong>
+    <div class="shell-nav">
+      <a class="action-link" href="../../../public/core-learning/index.html">Back to Core2</a>
+      <a class="action-link" href="../../../public/index.html">Stress-test / app home</a>
+    </div>
+  </nav>
+  <main>
+    <header class="hero">
+      <div class="eyebrow">Question Clinic · interaction contract prototype</div>
+      <h1>Protected decisions, progressive support, precise wrong routes</h1>
+      <p>This page validates the Clinic interaction model while source question identities are still being established by #302. Every item below is <strong>authored validation material, not a scan source question</strong>.</p>
+      <p class="warning prototype-warning"><strong>Do not promote these stems into Core2.</strong> Final Clinics must be rebound to exact source identities from acquisition <code>ACQ-1DD05CE5AA04B532EC68</code>.</p>
+    </header>
+    <section class="clinic-list" id="clinic-list" aria-label="Authored Clinic validation fixtures"></section>
+  </main>
+  <script>
+  (() => {
+    'use strict';
+    const fixtures = [
+      {
+        id:'fixture-nonmonic',
+        title:'Fixture A — non-monic linear divisor',
+        why:'The divisor zero gives the remainder immediately, but a synthetic-division quotient for x − 1/2 is not yet the quotient for 2x − 1.',
+        question:'Divide P(x) = 3x³ − 5x² + 7x − 2 by 2x − 1. Give the exact quotient and remainder.',
+        checkpoint:'What must you account for after noticing that 2x − 1 = 2(x − 1/2)?',
+        decision:'The zero x = 1/2 is enough to determine the remainder, but the quotient must be scaled for the leading coefficient 2 in the actual divisor.',
+        hints:[
+          'Find the exact zero of 2x − 1. Use x = 1/2, not a decimal approximation.',
+          'Exact substitution gives P(1/2) = 5/8, so the remainder is 5/8.',
+          'Synthetic division by x − 1/2 gives 3x² − 7/2 x + 21/4. Since 2x − 1 = 2(x − 1/2), divide that synthetic quotient by 2.'
+        ],
+        wrong:'Tempting route: report 3x² − 7/2 x + 21/4 as the quotient for 2x − 1. That quotient belongs to x − 1/2; multiplying it by 2x − 1 doubles the quotient term and breaks P = DQ + R.',
+        solution:'Q(x) = 3/2 x² − 7/4 x + 21/8 and R = 5/8. Independent check: (2x − 1)Q(x) + 5/8 expands exactly to 3x³ − 5x² + 7x − 2.'
+      },
+      {
+        id:'fixture-quadratic-remainder',
+        title:'Fixture B — quadratic divisor, linear remainder',
+        why:'The hard move is representing the unknown remainder correctly before writing equations.',
+        question:'A polynomial P satisfies P(1) = 5 and P(−2) = −4. Find the remainder when P is divided by (x − 1)(x + 2).',
+        checkpoint:'Before calculating anything, what is the most general possible form of the remainder?',
+        decision:'The divisor has degree 2, so the remainder has degree less than 2: write R(x) = mx + n.',
+        hints:[
+          'At x = 1 and x = −2 the divisor becomes zero, so P and R have the same values there.',
+          'Use R(1)=m+n=5 and R(−2)=−2m+n=−4.',
+          'Subtract the equations to get 3m=9, then recover n.'
+        ],
+        wrong:'Tempting route: assume the remainder is a single number because linear-divisor examples had constant remainders. The degree bound is relative to the divisor: degree 2 permits a linear remainder.',
+        solution:'m = 3 and n = 2, so the exact remainder is R(x) = 3x + 2. Check: R(1)=5 and R(−2)=−4.'
+      },
+      {
+        id:'fixture-zero-sum',
+        title:'Fixture C — hidden condition in a cubic identity',
+        why:'The arithmetic is long only if the structural condition is missed; the first decision is whether a known identity applies.',
+        question:'Evaluate (−12)³ + 7³ + 5³ without directly calculating the three cubes.',
+        checkpoint:'What condition should you test before expanding or cubing?',
+        decision:'Check the sum of the three bases: −12 + 7 + 5 = 0.',
+        hints:[
+          'When a+b+c=0, the three-variable cube identity collapses strongly.',
+          'Use a³+b³+c³ = 3abc under the zero-sum condition.',
+          'Compute 3·(−12)·7·5 exactly.'
+        ],
+        wrong:'Directly calculating all three cubes is mathematically valid, but it ignores the structural condition and creates unnecessary arithmetic. The repair is to test the zero-sum condition first.',
+        solution:'3·(−12)·7·5 = −1260. Independent arithmetic check: −1728 + 343 + 125 = −1260.'
+      }
+    ];
+    const root=document.getElementById('clinic-list');
+    function el(tag, attrs={}, text='') {
+      const node=document.createElement(tag);
+      Object.entries(attrs).forEach(([k,v]) => {
+        if (k==='class') node.className=v;
+        else if (k==='dataset') Object.assign(node.dataset,v);
+        else node.setAttribute(k,v);
+      });
+      if (text) node.textContent=text;
+      return node;
+    }
+    function makeClinic(item) {
+      const article=el('article',{class:'clinic-card',id:item.id});
+      const head=el('div',{class:'clinic-head'});
+      const titleWrap=el('div');
+      titleWrap.append(el('div',{class:'eyebrow'},'AUTHORED VALIDATION FIXTURE — NOT SOURCE'), el('h2',{},item.title));
+      head.append(titleWrap, el('span',{class:'badge warn'},'source-lock pending'));
+      const body=el('div',{class:'clinic-body'});
+      const why=el('div',{class:'note'}); why.innerHTML=`<strong>Why this pattern is hard:</strong> ${item.why}`;
+      const q=el('p',{class:'math-line'}); q.textContent=item.question;
+      const checkpoint=el('section',{class:'predict-card'});
+      checkpoint.append(el('h3',{},'Protected first decision'), el('p',{},item.checkpoint));
+      const area=el('textarea',{'aria-label':`Your first decision for ${item.title}`,rows:'4',placeholder:'Write the decision you would make before asking for support.'});
+      const commit=el('button',{class:'primary',type:'button'},'Commit first decision');
+      const status=el('div',{class:'status',role:'status','aria-live':'polite'});
+      checkpoint.append(area,commit,status);
+      const post=el('section',{'aria-label':'Post-attempt Clinic support'});
+      body.append(why,q,checkpoint,post);
+      article.append(head,body);
+      commit.addEventListener('click', () => {
+        if (area.value.trim().length < 3) {
+          status.textContent='Write a genuine first decision before support unlocks.';
+          status.className='status error'; area.focus(); return;
+        }
+        status.textContent='Decision committed. Support is now available one step at a time.';
+        status.className='status ok';
+        commit.disabled=true; area.readOnly=true;
+        renderPostAttempt(post,item);
+      });
+      return article;
+    }
+    function renderPostAttempt(host,item) {
+      if (host.childElementCount) return;
+      const decision=el('div',{class:'support-item'});
+      decision.innerHTML=`<strong>Decision checkpoint:</strong> ${item.decision}`;
+      const stack=el('div',{class:'support-stack'});
+      const next=el('button',{type:'button'},'Show next support step');
+      let hintIndex=0;
+      const wrongBtn=el('button',{type:'button'},'Inspect one plausible wrong route');
+      const solutionBtn=el('button',{type:'button'},'Reveal complete derivation & check');
+      wrongBtn.disabled=true; solutionBtn.disabled=true;
+      const actions=el('div',{class:'button-row'}); actions.append(next,wrongBtn,solutionBtn);
+      host.append(decision,stack,actions);
+      next.addEventListener('click',()=>{
+        if (hintIndex >= item.hints.length) return;
+        const h=el('div',{class:'support-item'});
+        h.innerHTML=`<strong>Support ${hintIndex+1}</strong><br>${item.hints[hintIndex]}`;
+        stack.append(h); hintIndex++;
+        wrongBtn.disabled=false;
+        if (hintIndex >= item.hints.length) { next.disabled=true; solutionBtn.disabled=false; }
+      });
+      wrongBtn.addEventListener('click',()=>{
+        if (stack.querySelector('[data-wrong-route]')) return;
+        const w=el('div',{class:'support-item wrong-route',dataset:{wrongRoute:'1'}});
+        w.innerHTML=`<strong>Plausible wrong route</strong><br>${item.wrong}`;
+        stack.append(w); wrongBtn.disabled=true;
+      });
+      solutionBtn.addEventListener('click',()=>{
+        if (stack.querySelector('[data-solution]')) return;
+        const s=el('div',{class:'support-item solution',dataset:{solution:'1'}});
+        s.innerHTML=`<strong>Complete derivation and independent check</strong><br>${item.solution}`;
+        stack.append(s); solutionBtn.disabled=true;
+      });
+    }
+    fixtures.forEach(item=>root.append(makeClinic(item)));
+  })();
+  </script>
+</body>
+</html>
