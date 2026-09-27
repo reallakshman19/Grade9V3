@@ -28,14 +28,14 @@ def ready_row(i: int) -> dict:
         "mathematical_family": "Definitions & Degree",
         "hardness": {"C": "C0", "R": "R0", "M": "M0", "A": "A0", "S": "S0", "overall": "EASY"},
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "PROVIDER_REPRODUCIBLE",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
         "independent_comparison_status": "MATCH",
         "figure": {"state": "ABSENT"},
     }
 
 
-def ready_ledger() -> dict:
-    rows = [ready_row(i) for i in range(1, adapter.MIN_DECLARED_KEYED_ITEMS + 1)]
+def ready_ledger(row_count: int = 4) -> dict:
+    rows = [ready_row(i) for i in range(1, row_count + 1)]
     return {
         "schema": adapter.SOURCE_SCHEMA,
         "status": "EVIDENCE_VERIFIED_COMPLETE",
@@ -47,10 +47,20 @@ def ready_ledger() -> dict:
             "source_sha256": adapter.EXPECTED_SOURCE_SHA256,
             "rights": "COPYRIGHTED_OWNED_COPY",
         },
-        "source_access": {"status": "PROVIDER_REPRODUCIBLE"},
+        "source_access": {
+            "status": "OWNER_UPLOADED_REGISTERED_SOURCE",
+            "source_sha256": adapter.EXPECTED_SOURCE_SHA256,
+            "byte_length": adapter.EXPECTED_SOURCE_BYTES,
+            "page_count": adapter.EXPECTED_SOURCE_PAGES,
+        },
         "ledger": {
             "question_count": len(rows),
             "coverage_status": "COMPLETE_PAGES_1_TO_11",
+            "coverage_receipt": {
+                "question_pages": list(range(1, 10)),
+                "answer_pages": [10, 11],
+                "row_count": len(rows),
+            },
             "rows": rows,
         },
         "validation": {
@@ -68,16 +78,24 @@ class PolynomialsAgent1AdapterTests(unittest.TestCase):
         data = json.loads(PUBLISHED.read_text(encoding="utf-8"))
         failures = adapter.admission_failures(data)
         self.assertTrue(failures)
-        self.assertTrue(any("below declared source-key minimum" in x for x in failures))
+        self.assertTrue(any("readback is not independently reproducible" in x for x in failures))
         self.assertTrue(any("figure is missing" in x for x in failures))
 
-    def test_reconciled_partial_status_is_rejected(self):
+    def test_agent1_status_and_disposition_are_not_source_truth_gates(self):
         data = ready_ledger()
         data["status"] = "EVIDENCE_PARTIAL_CONTRADICTORY"
         data["issue"]["disposition"] = "PRESERVE"
-        failures = adapter.admission_failures(data)
-        self.assertIn("evidence status is not EVIDENCE_VERIFIED_COMPLETE", failures)
-        self.assertIn("Agent-1 issue disposition is not SATISFIED", failures)
+        self.assertEqual(adapter.admission_failures(data), [])
+
+    def test_magic_117_row_minimum_is_not_an_admission_gate(self):
+        data = ready_ledger(row_count=4)
+        self.assertEqual(adapter.admission_failures(data), [])
+        self.assertEqual(len(adapter.adapt(data)["questions"]), 4)
+
+    def test_complete_specimen_coverage_is_still_required(self):
+        data = ready_ledger()
+        data["ledger"]["coverage_status"] = "PARTIAL"
+        self.assertIn("ledger coverage is not COMPLETE_PAGES_1_TO_11", adapter.admission_failures(data))
 
     def test_provider_non_reproducible_is_rejected(self):
         data = ready_ledger()
@@ -112,7 +130,7 @@ class PolynomialsAgent1AdapterTests(unittest.TestCase):
         data = ready_ledger()
         out = adapter.adapt(data, provider_head="b" * 40)
         self.assertEqual(out["schema"], adapter.TARGET_SCHEMA)
-        self.assertEqual(len(out["questions"]), adapter.MIN_DECLARED_KEYED_ITEMS)
+        self.assertEqual(len(out["questions"]), 4)
         encoded = json.dumps(out)
         self.assertNotIn("VERIFICATION ANALYSIS MUST NOT LEAK", encoded)
         self.assertEqual(out["product"]["source_basis"]["provider_head"], "b" * 40)
@@ -150,6 +168,9 @@ class PolynomialsAgent1AdapterTests(unittest.TestCase):
         self.assertNotIn("source_summary", q["answer"])
         self.assertNotIn("authored_summary", q["answer"])
         self.assertEqual(q["custody"]["components"]["answer"], "NOT_PRESENT_IN_SOURCE")
+
+        with self.assertRaises(adapter.AdmissionError):
+            adapter.adapt(data)
 
         row["authored_answer"] = "Independently verified authored answer."
         out = adapter.adapt(data)
