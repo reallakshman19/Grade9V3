@@ -316,7 +316,7 @@ def adapt(data: dict[str, Any], *, provider_head: str | None = None) -> dict[str
             "id": "MAT-09-POLYNOMIALS-CORE2",
             "title": "Polynomials · Source Questions",
             "subject": "Mathematics",
-            "home_href": "../index.html",
+            "home_href": "../../../public/index.html",
             "intro": "Attempt each source question before opening its source answer. Source and authored content remain explicitly separated.",
             "explorer_href": EXPLORER_HREF,
             "source_basis": {
