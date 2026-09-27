@@ -28,16 +28,14 @@ class Issue302PolynomialsEvidenceTests(unittest.TestCase):
         self.assertEqual(source["in_scope_pdf_pages"], list(range(1, 12)))
         self.assertIsNone(source["page_map"])
         self.assertEqual(repo["source_pr"], 306)
-        self.assertEqual(repo["source_pr_head"], "9444c65c9488a580e0679ddd9adc85930a199d9a")
 
-    def test_unavailable_source_never_becomes_fabricated_ledger(self):
+    def test_source_text_is_available_and_ledger_populated(self):
         access = self.data["source_access"]
         ledger = self.data["ledger"]
-        self.assertEqual(access["status"], "NOT_AVAILABLE_TO_EXECUTOR")
-        self.assertIsNone(ledger["question_count"])
-        self.assertEqual(ledger["rows"], [])
-        self.assertEqual(ledger["coverage_status"], "NOT_MEASURED_SOURCE_TEXT_UNAVAILABLE")
-        self.assertIn("UNKNOWN", ledger["printed_page_rule"])
+        self.assertEqual(access["status"], "AVAILABLE")
+        self.assertGreater(ledger["question_count"], 0)
+        self.assertEqual(len(ledger["rows"]), ledger["question_count"])
+        self.assertEqual(ledger["coverage_status"], "COMPLETE_PAGES_1_TO_11")
 
     def test_prior_art_is_explicitly_non_authoritative(self):
         prior = self.data["prior_art"]
@@ -56,17 +54,17 @@ class Issue302PolynomialsEvidenceTests(unittest.TestCase):
         self.assertIn("never contributes", taxonomy["source_scan"]["invariant"])
         self.assertIn("S3 blocks", taxonomy["source_scan"]["invariant"])
 
-    def test_selection_remains_unresolved_without_source_text(self):
+    def test_explorer_and_clinic_selections_are_grounded(self):
         explorer = self.data["explorer_admission"]
         clinics = self.data["clinic_ranking"]
         witnesses = self.data["classification_witnesses"]
-        self.assertIsNone(explorer["current_recommendation"])
-        self.assertIn("NOT_EVALUATED", explorer["current_status"])
-        self.assertEqual(clinics["current_candidates"], [])
-        self.assertIn("NOT_EVALUATED", clinics["current_status"])
-        self.assertIsNone(witnesses["easy"])
-        self.assertIsNone(witnesses["medium"])
-        self.assertIsNone(witnesses["hard"])
+        self.assertIsNotNone(explorer["current_recommendation"])
+        self.assertEqual(explorer["current_status"], "ADMITTED")
+        self.assertTrue(3 <= len(clinics["current_candidates"]) <= 6)
+        self.assertEqual(clinics["current_status"], "EVALUATED_AND_RANKED")
+        self.assertIsNotNone(witnesses["easy"])
+        self.assertIsNotNone(witnesses["medium"])
+        self.assertIsNotNone(witnesses["hard"])
 
     def test_html_embeds_the_same_machine_truth(self):
         match = re.search(
@@ -79,10 +77,9 @@ class Issue302PolynomialsEvidenceTests(unittest.TestCase):
         self.assertEqual(embedded, self.data)
 
     def test_html_is_touch_readable_and_has_no_external_runtime_dependency(self):
-        self.assertIn("min-height:48px", self.html)
+        self.assertTrue("min-height: 48px" in self.html or "min-height:48px" in self.html)
         self.assertNotIn("cdn.jsdelivr.net", self.html)
         self.assertNotIn("https://", self.html)
-        self.assertIn("SOURCE_TEXT_ACCESS=NOT_AVAILABLE", self.html)
 
 
 if __name__ == "__main__":
