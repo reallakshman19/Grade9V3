@@ -50,7 +50,7 @@ class Core2SourceSpineTests(unittest.TestCase):
         self.assertIn('data-g9-answer-slot hidden></div>', q3)
         self.assertIn("data-answer-payload", q3)
         self.assertNotIn('<section class="answer-card">', q3)
-        self.assertIn('aria-expanded="false" disabled>Reveal answer', q3)
+        self.assertIn('aria-expanded="false" disabled>Reveal source key / answer', q3)
 
     def test_search_index_excludes_answer_and_authored_support(self):
         q3 = self.article(spine.render(self.data()), "FIX-Q-03")
@@ -100,20 +100,34 @@ class Core2SourceSpineTests(unittest.TestCase):
         self.assertIn('data-family="FAM-GRAPH"', out)
         self.assertIn('<option value="FAM-GRAPH">Representation</option>', out)
 
-    def test_missing_source_answer_is_labelled_and_requires_authored_closure(self):
+    def test_missing_source_answer_is_honest_without_fabricated_closure(self):
         data = self.data()
         q = data["questions"][0]
         q["custody"]["components"]["answer"] = "NOT_PRESENT_IN_SOURCE"
-        q["answer"] = {"authored_summary": "Synthetic independently supplied answer."}
+        q["answer"] = {}
+        spine.validate(data)
         out = spine.render(data)
         payload = self.article(out, "FIX-Q-01")
-        self.assertIn("AUTHORED ANSWER", payload)
         self.assertIn("SOURCE ANSWER NOT PRESENT", spine.JS)
-        broken = self.data()
-        broken["questions"][0]["custody"]["components"]["answer"] = "NOT_PRESENT_IN_SOURCE"
-        broken["questions"][0]["answer"] = {}
-        with self.assertRaisesRegex(spine.SpineError, "authored answer is required"):
-            spine.validate(broken)
+        self.assertNotIn("AUTHORED ANSWER", payload)
+
+    def test_multi_select_attempt_uses_checkboxes_and_does_not_duplicate_options(self):
+        data = self.data()
+        q = data["questions"][0]
+        q["response"]["type"] = "MCQ_MULTI"
+        out = self.article(spine.render(data), "FIX-Q-01")
+        self.assertEqual(out.count('type="checkbox"'), len(q["options"]))
+        self.assertNotIn("<h3>Options</h3>", out)
+        for option in q["options"]:
+            self.assertEqual(out.count(option), 1)
+
+    def test_single_select_does_not_duplicate_options(self):
+        data = self.data()
+        q = data["questions"][0]
+        out = self.article(spine.render(data), "FIX-Q-01")
+        self.assertNotIn("<h3>Options</h3>", out)
+        for option in q["options"]:
+            self.assertEqual(out.count(option), 1)
 
     def test_source_derived_svg_rejects_script_or_remote_content(self):
         data = self.data()
