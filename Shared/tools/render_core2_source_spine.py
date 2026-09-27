@@ -49,6 +49,12 @@ def validate(data: dict) -> None:
     if not re.fullmatch(r"[0-9a-f]{64}", digest):
         raise SpineError("product.source_basis.source_digest must be sha256 hex")
 
+    explorer_href = product.get("explorer_href")
+    if explorer_href:
+        href = str(explorer_href).lower()
+        if href.startswith(("http://", "https://", "//", "javascript:")):
+            raise SpineError("product.explorer_href must be local/offline")
+
     sections = req(data, "sections", "ledger")
     questions = req(data, "questions", "ledger")
     if not isinstance(sections, list) or not sections:
@@ -317,6 +323,11 @@ def render(data: dict) -> str:
         '<div class="question-list">' + "".join(render_question(q) for q in grouped[s["id"]]) + '</div></section>'
         for s in data["sections"] if grouped[s["id"]]
     )
+    product_enrichment = (
+        '<div class="enrichment product-enrichment"><span>Concept enrichment</span>'
+        f'<a class="enrich" href="{esc(product["explorer_href"])}">Concept Explorer</a></div>'
+        if product.get("explorer_href") else ""
+    )
     digest = hashlib.sha256(json.dumps(data, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
     return f'''<!doctype html>
 <html lang="en" data-core="CORE2" data-g9-renderer="{RENDERER}">
@@ -332,6 +343,7 @@ def render(data: dict) -> str:
 <nav class="nav" aria-label="Source sections">{nav}</nav><div class="family"><label for="g9-family">Mathematical family <span class="authored-nav">(authored navigation)</span></label><select id="g9-family" data-g9-family>{family_options}</select></div></aside>
 <main><section class="intro"><div class="prov">CORE2 | SOURCE QUESTION SPINE</div><h1>{esc(product['title'])}</h1>
 <p>{esc(product.get('intro','Attempt the source question before opening its answer. Optional enrichment is separate.'))}</p>
+{product_enrichment}
 <p class="basis">Source custody: {esc(basis['resource_ref'])} | acquisition {esc(basis['acquisition_id'])} | provider head {esc(basis['provider_head'])} | rights {esc(basis['rights'])}</p></section>
 {sections}<div class="empty" data-g9-empty hidden>No source questions match this view.</div></main></div>
 <footer>{esc(product['subject'])} | {esc(product['id'])} | renderer {RENDERER} | ledger {digest[:16]}</footer>
