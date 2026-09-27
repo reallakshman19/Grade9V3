@@ -140,7 +140,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-02",
@@ -165,7 +169,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-03",
@@ -191,7 +199,11 @@
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "master_key_reconciliation": "CONFLICT",
-        "selection_eligible": false
+        "selection_eligible": false,
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-04",
@@ -217,7 +229,11 @@
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "master_key_reconciliation": "CONFLICT",
-        "selection_eligible": false
+        "selection_eligible": false,
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-05",
@@ -243,7 +259,11 @@
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "master_key_reconciliation": "CONFLICT",
-        "selection_eligible": false
+        "selection_eligible": false,
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-06",
@@ -269,7 +289,11 @@
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "master_key_reconciliation": "CONFLICT",
-        "selection_eligible": false
+        "selection_eligible": false,
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-01",
@@ -297,7 +321,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-02",
@@ -325,7 +353,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-03",
@@ -354,7 +386,11 @@
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "master_key_reconciliation": "CONFLICT",
-        "selection_eligible": false
+        "selection_eligible": false,
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-04",
@@ -383,7 +419,11 @@
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "master_key_reconciliation": "CONFLICT",
-        "selection_eligible": false
+        "selection_eligible": false,
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-05",
@@ -411,7 +451,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P01-SC-01",
@@ -443,7 +487,11 @@
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "independent_comparison_status": "CONFLICT_MATH_VS_PUBLISHED_KEY",
         "selection_eligible": false,
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "MATH_CONFLICT_WITH_PUBLISHED_KEY_OR_TRANSCRIPTION",
+          "evidence": "As transcribed with x+y+z=1, the expression simplifies identically to 6xyz (option A), not published answer D."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P02-SC-14",
@@ -475,7 +523,11 @@
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "independent_comparison_status": "CONFLICT_MATH_VS_PUBLISHED_KEY",
         "selection_eligible": false,
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "MATH_CONFLICT_WITH_PUBLISHED_KEY_OR_TRANSCRIPTION",
+          "evidence": "As transcribed, the cubic sum is exactly 2x[x^2+12(y+z)^2] (option C), not published answer D."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P02-SC-25",
@@ -505,7 +557,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P03-SC-08",
@@ -536,7 +592,11 @@
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "master_key_reconciliation": "CONFLICT",
-        "selection_eligible": false
+        "selection_eligible": false,
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P03-SC-18",
@@ -568,7 +628,11 @@
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "independent_comparison_status": "CONFLICT_MATH_VS_PUBLISHED_KEY",
         "selection_eligible": false,
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "MATH_DERIVATION_ERROR_AND_KEY_CONFLICT",
+          "evidence": "For x=1+sqrt(2), x^4+2x^3+3 = 34+22sqrt(2); the published derivation result 1 is false."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P04-AR-01",
@@ -600,7 +664,11 @@
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "independent_comparison_status": "REVIEW_ASSERTION_REASON_LOGIC",
         "selection_eligible": false,
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "ASSERTION_REASON_LOGIC_REVIEW",
+          "evidence": "Assertion and reason are true, but the generic degree/factor-count statement does not explain why these specific three factors divide the polynomial."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P05-HOTS-01",
@@ -630,7 +698,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P05-HOTS-05",
@@ -661,7 +733,11 @@
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "master_key_reconciliation": "CONFLICT",
-        "selection_eligible": false
+        "selection_eligible": false,
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P06-HOTS-14",
@@ -691,7 +767,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P07-VSA-01",
@@ -716,7 +796,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "NO_DIRECT_KEY_ENTRY_BY_CURRENT_TYPE_LABEL"
+        "master_key_reconciliation": "NO_DIRECT_KEY_ENTRY_BY_CURRENT_TYPE_LABEL",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P07-VSA-03",
@@ -741,7 +825,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "NO_DIRECT_KEY_ENTRY_BY_CURRENT_TYPE_LABEL"
+        "master_key_reconciliation": "NO_DIRECT_KEY_ENTRY_BY_CURRENT_TYPE_LABEL",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P07-SA-06",
@@ -766,7 +854,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "NO_DIRECT_KEY_ENTRY_BY_CURRENT_TYPE_LABEL"
+        "master_key_reconciliation": "NO_DIRECT_KEY_ENTRY_BY_CURRENT_TYPE_LABEL",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P08-ARC-03",
@@ -796,7 +888,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P08-ARC-10",
@@ -826,7 +922,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P08-ARC-11",
@@ -856,7 +956,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       },
       {
         "id": "Q-MAT-09-POL-P09-ARC-21",
@@ -886,7 +990,11 @@
         },
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
-        "master_key_reconciliation": "MATCH"
+        "master_key_reconciliation": "MATCH",
+        "current_executor_math_audit": {
+          "status": "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION",
+          "evidence": "Independent review found no mathematical contradiction in the published stem/row answer. This does not independently verify source transcription or source-key custody."
+        }
       }
     ],
     "stable_identity_rule": "Use source page + readable source label/type; if source label is absent or unreadable, use a deterministic page-local sequence id without inventing a printed question number.",
@@ -2646,5 +2754,17 @@
       ]
     },
     "invariant": "A mismatch does not prove whether the question row, type/label, option layout, or key transcription is wrong. Resolve from the registered source."
+  },
+  "independent_math_audit": {
+    "scope": "PUBLISHED_MACHINE_TRANSCRIPTIONS_ONLY",
+    "source_fidelity_claim": false,
+    "rows_checked": 27,
+    "status_counts": {
+      "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION": 23,
+      "MATH_CONFLICT_WITH_PUBLISHED_KEY_OR_TRANSCRIPTION": 2,
+      "MATH_DERIVATION_ERROR_AND_KEY_CONFLICT": 1,
+      "ASSERTION_REASON_LOGIC_REVIEW": 1
+    },
+    "invariant": "A mathematically consistent published row is not thereby source-verified. Source fidelity and answer-key custody remain separate evidence."
   }
 }
