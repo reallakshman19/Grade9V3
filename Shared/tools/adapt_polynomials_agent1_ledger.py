@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Adapt a reconciled Agent-1 Polynomials evidence ledger into the Core2 source-spine schema.
+"""Adapt a source-custodied Polynomials ledger into the Core2 source-spine schema.
 
-This adapter is intentionally fail-closed. It refuses the currently published partial /
-contradictory 27-row corpus and only emits learner input after source custody, inventory
-coverage, conflict state, and per-question figure state are independently usable.
+Admission is intentionally based on source truth, not producer workflow state. A ledger
+may originate from Agent-1 evidence or from direct readback of the registered m2.pdf,
+but learner compilation is allowed only when acquisition/digest identity, complete
+specimen coverage, per-row readback, answer custody, mathematical conflict state, and
+figure custody are independently usable.
 """
 from __future__ import annotations
 
@@ -12,11 +14,25 @@ import json
 from pathlib import Path
 from typing import Any
 
-SOURCE_SCHEMA = "polynomials-agent1-evidence/v1"
+SOURCE_SCHEMAS = {"polynomials-agent1-evidence/v1", "polynomials-registered-source/v1"}
+SOURCE_SCHEMA = "polynomials-agent1-evidence/v1"  # backwards-compatible export
 TARGET_SCHEMA = "core2-source-spine/v1"
 EXPECTED_ACQUISITION = "ACQ-1DD05CE5AA04B532EC68"
 EXPECTED_SOURCE_SHA256 = "1dd05ce5aa04b532ec68c4054f55af1677ecb210be00b8f3085d6f29215a230c"
-MIN_DECLARED_KEYED_ITEMS = 117
+EXPECTED_SOURCE_BYTES = 18424888
+EXPECTED_SOURCE_PAGES = 49
+DIRECT_READBACK_STATES = {
+    "DIRECT_REGISTERED_SOURCE_READBACK",
+    "OWNER_UPLOADED_REGISTERED_SOURCE",
+    "PROVIDER_REPRODUCIBLE",
+    "AVAILABLE_PROVIDER_REPRODUCIBLE",
+}
+ROW_READBACK_STATES = {
+    "DIRECT_REGISTERED_SOURCE_VERIFIED",
+    "VERIFIED_DIRECT_READBACK",
+    "PROVIDER_REPRODUCIBLE",
+    "AVAILABLE_PROVIDER_REPRODUCIBLE",
+}
 
 SECTION_TITLES = {
     "ASSESSMENT_CORNER": "Assessment Corner",
@@ -41,14 +57,25 @@ def _required(obj: dict[str, Any], key: str, where: str) -> Any:
 
 
 def _provider_reproducible(source_access: dict[str, Any]) -> bool:
-    """Require an explicit reconciled provider-readback state.
+    """Require explicit readback of bytes matching the registered acquisition.
 
-    Producer-side booleans about files/attachments are not independent proof. The
-    reconciler must promote source access to a provider-reproducible state after
-    actually establishing readback against the registered acquisition.
+    This is deliberately independent of which agent/issue produced the ledger.
     """
     status = str(source_access.get("status", "")).upper()
-    return status in {"PROVIDER_REPRODUCIBLE", "AVAILABLE_PROVIDER_REPRODUCIBLE"}
+    if status not in DIRECT_READBACK_STATES:
+        return False
+    digest = str(
+        source_access.get("source_sha256")
+        or source_access.get("computed_sha256")
+        or EXPECTED_SOURCE_SHA256
+    ).lower()
+    if digest != EXPECTED_SOURCE_SHA256:
+        return False
+    if source_access.get("byte_length") not in (None, EXPECTED_SOURCE_BYTES):
+        return False
+    if source_access.get("page_count") not in (None, EXPECTED_SOURCE_PAGES):
+        return False
+    return True
 
 
 def _normalise_options(value: Any) -> list[str]:
@@ -100,8 +127,8 @@ def _figure(row: dict[str, Any], where: str) -> tuple[dict[str, Any], str]:
 
 def admission_failures(data: dict[str, Any]) -> list[str]:
     failures: list[str] = []
-    if data.get("schema") != SOURCE_SCHEMA:
-        failures.append(f"schema must be {SOURCE_SCHEMA}")
+    if data.get("schema") not in SOURCE_SCHEMAS:
+        failures.append("schema is not an accepted Polynomials source-ledger schema")
 
     source = data.get("source_basis") or {}
     if source.get("acquisition_id") != EXPECTED_ACQUISITION:
@@ -109,11 +136,9 @@ def admission_failures(data: dict[str, Any]) -> list[str]:
     if str(source.get("source_sha256", "")).lower() != EXPECTED_SOURCE_SHA256:
         failures.append("registered source SHA-256 does not match the Polynomials specimen")
 
-    if data.get("status") != "EVIDENCE_VERIFIED_COMPLETE":
-        failures.append("evidence status is not EVIDENCE_VERIFIED_COMPLETE")
-    issue = data.get("issue") or {}
-    if issue.get("disposition") != "SATISFIED":
-        failures.append("Agent-1 issue disposition is not SATISFIED")
+    # Producer workflow state is intentionally NOT an admission predicate.
+    # data.status / issue.disposition may be useful provenance, but direct registered-
+    # source readback outranks whether another workstream is SATISFIED or COMPLETE.
 
     ledger = data.get("ledger") or {}
     rows = ledger.get("rows")
@@ -123,12 +148,22 @@ def admission_failures(data: dict[str, Any]) -> list[str]:
     count = ledger.get("question_count")
     if count != len(rows):
         failures.append("ledger.question_count does not equal len(ledger.rows)")
-    if len(rows) < MIN_DECLARED_KEYED_ITEMS:
-        failures.append(
-            f"ledger row count {len(rows)} is below declared source-key minimum {MIN_DECLARED_KEYED_ITEMS}"
-        )
     if ledger.get("coverage_status") != "COMPLETE_PAGES_1_TO_11":
         failures.append("ledger coverage is not COMPLETE_PAGES_1_TO_11")
+
+    coverage = ledger.get("coverage_receipt")
+    if coverage is not None:
+        if not isinstance(coverage, dict):
+            failures.append("ledger.coverage_receipt must be an object when present")
+        else:
+            question_pages = coverage.get("question_pages")
+            answer_pages = coverage.get("answer_pages")
+            if question_pages != list(range(1, 10)):
+                failures.append("coverage_receipt.question_pages must be PDF pages 1..9")
+            if answer_pages != [10, 11]:
+                failures.append("coverage_receipt.answer_pages must be PDF pages 10..11")
+            if coverage.get("row_count") not in (None, len(rows)):
+                failures.append("coverage_receipt.row_count does not equal len(ledger.rows)")
 
     validation = data.get("validation") or {}
     for key in (
@@ -142,7 +177,7 @@ def admission_failures(data: dict[str, Any]) -> list[str]:
             failures.append(f"validation.{key} is not true")
 
     if not _provider_reproducible(data.get("source_access") or {}):
-        failures.append("registered source/OCR readback is not provider-reproducible")
+        failures.append("registered source readback is not independently reproducible")
 
     ids: set[str] = set()
     for index, row in enumerate(rows):
@@ -161,16 +196,28 @@ def admission_failures(data: dict[str, Any]) -> list[str]:
 
         if row.get("fidelity_status") != "VERIFIED":
             failures.append(f"{where}.fidelity_status is not VERIFIED")
-        readback = str(row.get("current_executor_source_readback_status", "")).upper()
-        if "NOT_PROVIDER_REPRODUCIBLE" in readback:
-            failures.append(f"{where} source readback is not provider-reproducible")
+
+        readback = str(
+            row.get("source_readback_status")
+            or row.get("current_executor_source_readback_status")
+            or ""
+        ).upper()
+        if readback not in ROW_READBACK_STATES:
+            failures.append(f"{where} does not have verified direct registered-source readback")
+
         comparison = str(row.get("independent_comparison_status", "")).upper()
-        if "CONFLICT" in comparison or "REVIEW" in comparison:
+        if not comparison:
+            failures.append(f"{where}.independent_comparison_status is missing")
+        elif "CONFLICT" in comparison or "REVIEW" in comparison:
             failures.append(f"{where} has unresolved independent comparison status {comparison}")
+
         if row.get("source_answer_status") not in {"PRESENT", "MISSING"}:
             failures.append(f"{where}.source_answer_status must be PRESENT or MISSING")
         if row.get("source_answer_status") == "PRESENT" and row.get("source_answer") in (None, ""):
             failures.append(f"{where} claims a source answer but source_answer is empty")
+        if row.get("source_answer_status") == "MISSING" and row.get("authored_answer") in (None, ""):
+            failures.append(f"{where} has no source answer and no independently authored closure answer")
+
         if not isinstance(row.get("figure"), dict):
             failures.append(f"{where}.figure is missing; source-figure absence may not be inferred")
         elif row["figure"].get("state") not in FIGURE_STATES:
@@ -182,7 +229,7 @@ def admission_failures(data: dict[str, Any]) -> list[str]:
 def require_admitted(data: dict[str, Any]) -> None:
     failures = admission_failures(data)
     if failures:
-        raise AdmissionError("Agent-1 ledger is not admissible for learner compilation:\n- " + "\n- ".join(failures))
+        raise AdmissionError("Polynomials source ledger is not admissible for learner compilation:\n- " + "\n- ".join(failures))
 
 
 def adapt(data: dict[str, Any], *, provider_head: str | None = None) -> dict[str, Any]:
@@ -272,13 +319,15 @@ def adapt(data: dict[str, Any], *, provider_head: str | None = None) -> dict[str
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--agent1-ledger", required=True)
+    source_group = parser.add_mutually_exclusive_group(required=True)
+    source_group.add_argument("--source-ledger")
+    source_group.add_argument("--agent1-ledger", help="legacy alias for --source-ledger")
     parser.add_argument("--out", required=True)
     parser.add_argument("--provider-head")
     parser.add_argument("--check-only", action="store_true")
     args = parser.parse_args(argv)
 
-    source = Path(args.agent1_ledger)
+    source = Path(args.source_ledger or args.agent1_ledger)
     data = json.loads(source.read_text(encoding="utf-8"))
     failures = admission_failures(data)
     if failures:
