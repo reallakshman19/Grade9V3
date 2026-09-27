@@ -1,3 +1,7 @@
+> [!CAUTION]
+> **Independent #302 reconciliation at PR #306 head `7bf9ca0ae01f8555c4df0b1ff7c74180d5693766`: PARTIAL / CONTRADICTORY.**  
+> This document is not currently a complete every-question ledger. The machine ledger contains 27 rows while the master-key transcription below enumerates at least 117 keyed items before free-response questions. Several transcribed stem/option/key combinations also fail independent mathematical checks. Treat the question text and selection recommendations below as producer evidence requiring source readback, not as final downstream authority. See `polynomials-agent1/source-ledger.json` and its `verification_findings`.
+
 # Scanned Assessment Module `m2.pdf`: Question Ledger & Master Answer Key (Pages 1–11)
 
 > **Custody Metadata & Provenance**  
