@@ -652,21 +652,35 @@
       }
       const logicalHeight = Math.max(120, parseInt(canvas.dataset.logicalHeight, 10) || 280);
 
-      const style = window.getComputedStyle(parent);
-      const horizontalPadding = (parseFloat(style.paddingLeft) || 0) + (parseFloat(style.paddingRight) || 0);
-      const measured = Math.floor(parent.clientWidth - horizontalPadding);
-      const width = measured > 50 ? measured : (parseInt(canvas.dataset.logicalWidth || '0', 10) || 600);
-      if (width < 50) return { ctx: null, width: 0, height: 0 };
-      canvas.dataset.logicalWidth = String(width);
+      if (canvas.dataset.g9StableCss !== '1') {
+        canvas.style.width = '100%';
+        canvas.style.maxWidth = '100%';
+        canvas.style.height = logicalHeight + 'px';
+        canvas.style.boxSizing = 'border-box';
+        canvas.style.display = 'block';
+        canvas.dataset.g9StableCss = '1';
+      }
 
-      const dpr = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
-      canvas.style.width = '100%';
-      canvas.style.height = logicalHeight + 'px';
-      canvas.style.boxSizing = 'border-box';
+      const orbitLocked = canvas.dataset.g9PointerActive === '1';
+      const currentDpr = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
+      let width = parseFloat(canvas.dataset.logicalWidth);
+      let dpr = parseFloat(canvas.dataset.canvasDpr);
 
-      const targetW = Math.round(width * dpr);
-      const targetH = Math.round(logicalHeight * dpr);
-      if (canvas.width !== targetW || canvas.height !== targetH) {
+      if (!orbitLocked || !Number.isFinite(width) || width <= 0) {
+        const rect = canvas.getBoundingClientRect();
+        const parentRect = parent.getBoundingClientRect();
+        const measured = Math.floor(rect.width || parentRect.width);
+        width = measured > 1 ? measured : (Number.isFinite(width) && width > 0 ? width : 600);
+        dpr = currentDpr;
+        canvas.dataset.logicalWidth = String(width);
+        canvas.dataset.canvasDpr = String(dpr);
+      } else if (!Number.isFinite(dpr) || dpr <= 0) {
+        dpr = currentDpr;
+      }
+
+      const targetW = Math.max(1, Math.round(width * dpr));
+      const targetH = Math.max(1, Math.round(logicalHeight * dpr));
+      if (!orbitLocked && (canvas.width !== targetW || canvas.height !== targetH)) {
         canvas.width = targetW;
         canvas.height = targetH;
       }
@@ -688,7 +702,9 @@
         pointerId = e.pointerId;
         lastX = e.clientX;
         lastY = e.clientY;
+        canvas.dataset.g9PointerActive = '1';
         canvas.setPointerCapture?.(pointerId);
+        e.preventDefault();
       });
       canvas.addEventListener('pointermove', e => {
         if (pointerId !== e.pointerId) return;
@@ -699,11 +715,14 @@
         lastX = e.clientX;
         lastY = e.clientY;
         redrawFn();
+        e.preventDefault();
       });
       const finish = e => {
         if (pointerId !== null && (e.pointerId === undefined || e.pointerId === pointerId)) {
-          try { canvas.releasePointerCapture?.(pointerId); } catch (_) {}
+          const id = pointerId;
           pointerId = null;
+          delete canvas.dataset.g9PointerActive;
+          try { canvas.releasePointerCapture?.(id); } catch (_) {}
         }
       };
       canvas.addEventListener('pointerup', finish);
