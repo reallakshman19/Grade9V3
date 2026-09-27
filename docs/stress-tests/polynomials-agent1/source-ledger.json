@@ -20,7 +20,7 @@
     "source_pr_head": "7bf9ca0ae01f8555c4df0b1ff7c74180d5693766",
     "execution_branch": "issue-302-polynomials-evidence-reconcile",
     "prior_recorded_source_pr_head": "9444c65c9488a580e0679ddd9adc85930a199d9a",
-    "source_pr_current_head": "d6a5753ca2d360e2f27162c167b6155d1d06519e",
+    "source_pr_current_head": "1edcf4780aad72e3e32d0028f0edf492fd962533",
     "polynomials_evidence_commit": "7bf9ca0ae01f8555c4df0b1ff7c74180d5693766",
     "polynomials_evidence_blobs_unchanged_through_current_head": true
   },
