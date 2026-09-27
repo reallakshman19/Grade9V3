@@ -65,17 +65,15 @@ def _provider_reproducible(source_access: dict[str, Any]) -> bool:
     if status not in DIRECT_READBACK_STATES:
         return False
     digest = str(
-        source_access.get("source_sha256")
-        or source_access.get("computed_sha256")
-        or EXPECTED_SOURCE_SHA256
+        source_access.get("computed_sha256")
+        or source_access.get("source_sha256")
+        or ""
     ).lower()
-    if digest != EXPECTED_SOURCE_SHA256:
-        return False
-    if source_access.get("byte_length") not in (None, EXPECTED_SOURCE_BYTES):
-        return False
-    if source_access.get("page_count") not in (None, EXPECTED_SOURCE_PAGES):
-        return False
-    return True
+    return (
+        digest == EXPECTED_SOURCE_SHA256
+        and source_access.get("byte_length") == EXPECTED_SOURCE_BYTES
+        and source_access.get("page_count") == EXPECTED_SOURCE_PAGES
+    )
 
 
 def _normalise_options(value: Any) -> list[str]:
@@ -135,6 +133,10 @@ def admission_failures(data: dict[str, Any]) -> list[str]:
         failures.append("registered acquisition does not match the Polynomials specimen")
     if str(source.get("source_sha256", "")).lower() != EXPECTED_SOURCE_SHA256:
         failures.append("registered source SHA-256 does not match the Polynomials specimen")
+    if source.get("resource_ref") != "SRC-BOOK-MATH-CH2-CH3":
+        failures.append("registered resource ref does not match the Polynomials specimen")
+    if source.get("rights") in (None, ""):
+        failures.append("source rights/custody classification is missing")
 
     # Producer workflow state is intentionally NOT an admission predicate.
     # data.status / issue.disposition may be useful provenance, but direct registered-
@@ -152,18 +154,17 @@ def admission_failures(data: dict[str, Any]) -> list[str]:
         failures.append("ledger coverage is not COMPLETE_PAGES_1_TO_11")
 
     coverage = ledger.get("coverage_receipt")
-    if coverage is not None:
-        if not isinstance(coverage, dict):
-            failures.append("ledger.coverage_receipt must be an object when present")
-        else:
-            question_pages = coverage.get("question_pages")
-            answer_pages = coverage.get("answer_pages")
-            if question_pages != list(range(1, 10)):
-                failures.append("coverage_receipt.question_pages must be PDF pages 1..9")
-            if answer_pages != [10, 11]:
-                failures.append("coverage_receipt.answer_pages must be PDF pages 10..11")
-            if coverage.get("row_count") not in (None, len(rows)):
-                failures.append("coverage_receipt.row_count does not equal len(ledger.rows)")
+    if not isinstance(coverage, dict):
+        failures.append("ledger.coverage_receipt is required")
+    else:
+        question_pages = coverage.get("question_pages")
+        answer_pages = coverage.get("answer_pages")
+        if question_pages != list(range(1, 10)):
+            failures.append("coverage_receipt.question_pages must be PDF pages 1..9")
+        if answer_pages != [10, 11]:
+            failures.append("coverage_receipt.answer_pages must be PDF pages 10..11")
+        if coverage.get("row_count") != len(rows):
+            failures.append("coverage_receipt.row_count does not equal len(ledger.rows)")
 
     validation = data.get("validation") or {}
     for key in (
