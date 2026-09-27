@@ -1,0 +1,122 @@
+{
+  "schema": "core2-source-spine/v1",
+  "product": {
+    "id": "FIXTURE-CORE2-SOURCE-SPINE",
+    "title": "Fixture question spine - NOT source material",
+    "subject": "Mathematics",
+    "home_href": "../../index.html",
+    "intro": "Synthetic compiler fixture only. No question below is part of the Polynomials source corpus.",
+    "source_basis": {
+      "acquisition_id": "TEST-ACQ-NOT-SOURCE",
+      "resource_ref": "TEST-RESOURCE-NOT-SOURCE",
+      "source_digest": "0000000000000000000000000000000000000000000000000000000000000000",
+      "rights": "TEST_FIXTURE_ONLY",
+      "provider_head": "TEST-HEAD"
+    }
+  },
+  "sections": [
+    {"id": "assessment", "title": "Assessment fixture"},
+    {"id": "archive", "title": "Archive fixture"}
+  ],
+  "questions": [
+    {
+      "id": "FIX-Q-01",
+      "section_id": "assessment",
+      "family_id": "FAM-EVAL",
+      "family_label": "Evaluation",
+      "difficulty": "ROUTINE",
+      "source_identity": {
+        "label": "Synthetic fixture",
+        "locator": "fixture/page-1#q1",
+        "original_identifier": "Fixture Q1"
+      },
+      "custody": {
+        "mode": "EMBEDDED_VERBATIM",
+        "comparison_status": "ORIGINAL_EXACT",
+        "learner_display_authorized": true,
+        "components": {
+          "stem": "PRESERVED", "options": "PRESERVED", "subparts": "NOT_PRESENT_IN_SOURCE",
+          "conditions": "NOT_PRESENT_IN_SOURCE", "figures": "NOT_PRESENT_IN_SOURCE",
+          "hints": "NOT_PRESENT_IN_SOURCE", "answer": "PRESERVED"
+        }
+      },
+      "stem": "For the synthetic expression F(t)=t^2+1, choose F(2).",
+      "options": ["3", "4", "5", "6"],
+      "response": {"type": "MCQ_SINGLE", "prompt": "Choose one answer"},
+      "answer": {"source_summary": "5"},
+      "figure": {"state": "ABSENT"}
+    },
+    {
+      "id": "FIX-Q-02",
+      "section_id": "assessment",
+      "family_id": "FAM-REMAINDER",
+      "family_label": "Remainder structure",
+      "difficulty": "ROUTINE",
+      "source_identity": {
+        "label": "Synthetic fixture",
+        "locator": "fixture/page-1#q2",
+        "original_identifier": "Fixture Q2"
+      },
+      "custody": {
+        "mode": "EXTERNAL_REFERENCE",
+        "comparison_status": "ORIGINAL_EXACT",
+        "learner_display_authorized": true,
+        "components": {
+          "stem": "EXTERNAL_REFERENCE_VERIFIED", "options": "NOT_PRESENT_IN_SOURCE", "subparts": "NOT_PRESENT_IN_SOURCE",
+          "conditions": "NOT_PRESENT_IN_SOURCE", "figures": "NOT_PRESENT_IN_SOURCE",
+          "hints": "PRESERVED", "answer": "EXTERNAL_REFERENCE_VERIFIED"
+        }
+      },
+      "stem": "Synthetic short-response item: state the remainder when G(x)=x+7 is divided by x+7.",
+      "source_hints": ["This hint is deliberately source-labelled in the fixture."],
+      "response": {"type": "SHORT_TEXT", "prompt": "Your answer"},
+      "answer": {"source_summary": "0"},
+      "figure": {"state": "ABSENT"}
+    },
+    {
+      "id": "FIX-Q-03",
+      "section_id": "archive",
+      "family_id": "FAM-GRAPH",
+      "family_label": "Representation",
+      "difficulty": "HARD",
+      "source_identity": {
+        "label": "Synthetic fixture",
+        "locator": "fixture/page-2#q3",
+        "original_identifier": "Fixture Q3"
+      },
+      "custody": {
+        "mode": "EXTERNAL_REFERENCE",
+        "comparison_status": "ORIGINAL_EXACT",
+        "learner_display_authorized": true,
+        "components": {
+          "stem": "EXTERNAL_REFERENCE_VERIFIED", "options": "NOT_PRESENT_IN_SOURCE", "subparts": "PRESERVED",
+          "conditions": "PRESERVED", "figures": "EXTERNAL_REFERENCE_VERIFIED",
+          "hints": "NOT_PRESENT_IN_SOURCE", "answer": "EXTERNAL_REFERENCE_VERIFIED"
+        }
+      },
+      "stem": "Synthetic free-response item: describe what the marked point means before writing any equation.",
+      "subparts": ["Name the feature.", "State one implication."],
+      "conditions": ["Use the diagram only as a representation fixture."],
+      "response": {"type": "FREE_RESPONSE", "prompt": "Write your reasoning, or mark that you worked on paper"},
+      "answer": {
+        "source_summary": "Synthetic source-answer fixture.",
+        "source_reasoning": ["Synthetic source working line used only to exercise the renderer."],
+        "source_rubric": ["Synthetic rubric item."]
+      },
+      "authored_support": {
+        "label": "AUTHORED EXPLANATION / SUPPORT",
+        "explanation": "Synthetic authored support exists only to verify that it stays visibly separate from source-answer content."
+      },
+      "figure": {
+        "state": "SOURCE_DERIVED_REDRAW",
+        "alt": "Synthetic coordinate axes with one marked point",
+        "caption": "Synthetic redraw fixture; not copied from source material.",
+        "svg": "<svg viewBox=\"0 0 360 180\" role=\"img\" aria-label=\"Synthetic coordinate axes with one marked point\"><line x1=\"32\" y1=\"140\" x2=\"330\" y2=\"140\" stroke=\"currentColor\" stroke-width=\"2\"/><line x1=\"70\" y1=\"160\" x2=\"70\" y2=\"20\" stroke=\"currentColor\" stroke-width=\"2\"/><circle cx=\"210\" cy=\"72\" r=\"7\" fill=\"currentColor\"/><text x=\"222\" y=\"70\" font-size=\"18\">A</text></svg>"
+      },
+      "enrichment": {
+        "clinic_href": "../clinics/FIX-Q-03.html",
+        "explorer_href": "../explorer/index.html"
+      }
+    }
+  ]
+}
