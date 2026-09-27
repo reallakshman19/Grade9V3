@@ -119,12 +119,12 @@ try{
     const c=await newPage(browser.port,clinics,900,1440);
     report.behavior.clinicCount=await evalJs(c,"document.querySelectorAll('.clinic').length===3");
     report.behavior.clinicProtectedPreCommit=await evalJs(c,"!document.body.innerText.includes('f(x)=(x−1)(x²−7x+13)')&&!document.body.innerText.includes('Exactly 3 positive integers work')&&!document.querySelector('[data-test=\"decision\"]')");
-    await evalJs(c,"(()=>{const a=document.querySelector('#Q-MAT-09-POL-P05-HOTS-01');a.querySelector('[data-test=\"commit\"]').click();return true})()");
-    report.behavior.clinicBlankRejected=await evalJs(c,"document.querySelector('#Q-MAT-09-POL-P05-HOTS-01 [role=\"status\"]').innerText.includes('genuine first decision')");
-    await evalJs(c,"(()=>{const a=document.querySelector('#Q-MAT-09-POL-P05-HOTS-01'),t=a.querySelector('textarea');t.value='I should factor the polynomial before testing many values.';t.dispatchEvent(new Event('input',{bubbles:true}));a.querySelector('[data-test=\"commit\"]').click();return true})()");
-    report.behavior.clinicDecisionAfterCommit=await evalJs(c,"!!document.querySelector('#Q-MAT-09-POL-P05-HOTS-01 [data-test=\"decision\"]')&&!document.querySelector('#Q-MAT-09-POL-P05-HOTS-01 [data-test=\"solution-text\"]')");
-    await evalJs(c,"(()=>{const a=document.querySelector('#Q-MAT-09-POL-P05-HOTS-01');const b=a.querySelector('[data-test=\"next-hint\"]');b.click();b.click();b.click();a.querySelector('[data-test=\"wrong\"]').click();a.querySelector('[data-test=\"solution\"]').click();return true})()");
-    report.behavior.clinicProgressiveSolution=await evalJs(c,"document.querySelectorAll('#Q-MAT-09-POL-P05-HOTS-01 [data-test=\"hint\"]').length===3&&!!document.querySelector('#Q-MAT-09-POL-P05-HOTS-01 [data-test=\"wrong-route\"]')&&document.querySelector('#Q-MAT-09-POL-P05-HOTS-01 [data-test=\"solution-text\"]').innerText.includes('Exactly 3 positive integers work')");
+    await evalJs(c,"(()=>{const a=document.querySelector('#Q-MAT-09-POL-P05-NUM-04');a.querySelector('[data-test=\"commit\"]').click();return true})()");
+    report.behavior.clinicBlankRejected=await evalJs(c,"document.querySelector('#Q-MAT-09-POL-P05-NUM-04 [role=\"status\"]').innerText.includes('genuine first decision')");
+    await evalJs(c,"(()=>{const a=document.querySelector('#Q-MAT-09-POL-P05-NUM-04'),t=a.querySelector('textarea');t.value='I should factor the polynomial before testing many values.';t.dispatchEvent(new Event('input',{bubbles:true}));a.querySelector('[data-test=\"commit\"]').click();return true})()");
+    report.behavior.clinicDecisionAfterCommit=await evalJs(c,"!!document.querySelector('#Q-MAT-09-POL-P05-NUM-04 [data-test=\"decision\"]')&&!document.querySelector('#Q-MAT-09-POL-P05-NUM-04 [data-test=\"solution-text\"]')");
+    await evalJs(c,"(()=>{const a=document.querySelector('#Q-MAT-09-POL-P05-NUM-04');const b=a.querySelector('[data-test=\"next-hint\"]');b.click();b.click();b.click();a.querySelector('[data-test=\"wrong\"]').click();a.querySelector('[data-test=\"solution\"]').click();return true})()");
+    report.behavior.clinicProgressiveSolution=await evalJs(c,"document.querySelectorAll('#Q-MAT-09-POL-P05-NUM-04 [data-test=\"hint\"]').length===3&&!!document.querySelector('#Q-MAT-09-POL-P05-NUM-04 [data-test=\"wrong-route\"]')&&document.querySelector('#Q-MAT-09-POL-P05-NUM-04 [data-test=\"solution-text\"]').innerText.includes('Exactly 3 positive integers work')");
     c.close();
   }
 
