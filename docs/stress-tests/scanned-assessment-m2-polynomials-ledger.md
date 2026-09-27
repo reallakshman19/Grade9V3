@@ -1,6 +1,8 @@
 > [!CAUTION]
-> **Independent #302 reconciliation at PR #306 head `7bf9ca0ae01f8555c4df0b1ff7c74180d5693766`: PARTIAL / CONTRADICTORY.**  
-> This document is not currently a complete every-question ledger. The machine ledger contains 27 rows while the master-key transcription below enumerates at least 117 keyed items before free-response questions. Several transcribed stem/option/key combinations also fail independent mathematical checks. Treat the question text and selection recommendations below as producer evidence requiring source readback, not as final downstream authority. See `polynomials-agent1/source-ledger.json` and its `verification_findings`.
+> **Independent #302 reconciliation: PARTIAL / CONTRADICTORY.**  
+> Current machine evidence contains **27 question rows**. The producer-transcribed master answer key contains **117 keyed entries before free-response items**; only **24** currently link by section/type/label, with **16 matches, 8 conflicts, and 93 unlinked keyed entries**. The 117 count is a minimum key inventory, not an independently verified final question count.  
+> Independent mathematics on the 27 published transcriptions found **23 rows with no mathematical contradiction identified, 2 direct math/key conflicts, 1 derivation error/key conflict, and 1 assertion-reason logic review**. These checks do **not** independently prove scan transcription fidelity.  
+> Treat the source text, decoded key, family clustering, Explorer recommendation, and Clinic ranking below as **producer evidence requiring registered-source reconciliation**, not final downstream authority. The machine record in `polynomials-agent1/source-ledger.json` carries the exact conflict inventory and verification boundaries.
 
 # Scanned Assessment Module `m2.pdf`: Question Ledger & Master Answer Key (Pages 1–11)
 
