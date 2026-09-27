@@ -103,7 +103,17 @@ class PolynomialsAgent1AdapterTests(unittest.TestCase):
             "status": "PUBLISHED_ROWS_AVAILABLE_SOURCE_BYTES_NOT_PROVIDER_REPRODUCIBLE",
             "current_executor_provider_checks": {"m2_pdf_present_in_pr_tree": False},
         }
-        self.assertTrue(any("not provider-reproducible" in x for x in adapter.admission_failures(data)))
+        self.assertTrue(any("not independently reproducible" in x for x in adapter.admission_failures(data)))
+
+    def test_direct_readback_must_match_exact_registered_bytes(self):
+        data = ready_ledger()
+        data["source_access"]["byte_length"] -= 1
+        self.assertTrue(any("not independently reproducible" in x for x in adapter.admission_failures(data)))
+
+    def test_coverage_receipt_is_required(self):
+        data = ready_ledger()
+        del data["ledger"]["coverage_receipt"]
+        self.assertIn("ledger.coverage_receipt is required", adapter.admission_failures(data))
 
     def test_producer_available_booleans_are_not_provider_reproducibility(self):
         data = ready_ledger()
