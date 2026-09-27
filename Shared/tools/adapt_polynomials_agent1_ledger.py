@@ -41,18 +41,14 @@ def _required(obj: dict[str, Any], key: str, where: str) -> Any:
 
 
 def _provider_reproducible(source_access: dict[str, Any]) -> bool:
+    """Require an explicit reconciled provider-readback state.
+
+    Producer-side booleans about files/attachments are not independent proof. The
+    reconciler must promote source access to a provider-reproducible state after
+    actually establishing readback against the registered acquisition.
+    """
     status = str(source_access.get("status", "")).upper()
-    if status in {"PROVIDER_REPRODUCIBLE", "AVAILABLE_PROVIDER_REPRODUCIBLE"}:
-        return True
-    checks = source_access.get("current_executor_provider_checks") or source_access.get("provider_checks") or {}
-    affirmative = (
-        checks.get("m2_pdf_present_in_pr_tree")
-        or checks.get("m2_pages_json_present_in_pr_tree")
-        or checks.get("issue_or_pr_attachment_exposing_source_bytes")
-        or checks.get("pr306_comment_attachment_exposing_source_bytes")
-        or checks.get("issue302_comment_attachment_exposing_source_bytes")
-    )
-    return bool(affirmative) and "NOT_PROVIDER_REPRODUCIBLE" not in status
+    return status in {"PROVIDER_REPRODUCIBLE", "AVAILABLE_PROVIDER_REPRODUCIBLE"}
 
 
 def _normalise_options(value: Any) -> list[str]:
