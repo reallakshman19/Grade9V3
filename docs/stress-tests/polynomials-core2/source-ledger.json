@@ -1,0 +1,721 @@
+{
+  "schema": "polynomials-registered-source/v1",
+  "status": "DIRECT_SOURCE_SPINE_VERIFIED",
+  "repository_basis": {
+    "source_pr": 315,
+    "source_pr_head": "d6a5753ca2d360e2f27162c167b6155d1d06519e",
+    "reuse_policy": "PR315 row selection reused only after direct registered-PDF reconciliation; incorrect labels/stems/options/keys corrected from source."
+  },
+  "source_basis": {
+    "acquisition_id": "ACQ-1DD05CE5AA04B532EC68",
+    "bucket_id": "MAT-09-POLYNOMIALS",
+    "resource_ref": "SRC-BOOK-MATH-CH2-CH3",
+    "registered_source": "m2.pdf",
+    "source_kind": "FILE",
+    "media_type": "application/pdf",
+    "byte_length": 18424888,
+    "source_sha256": "1dd05ce5aa04b532ec68c4054f55af1677ecb210be00b8f3085d6f29215a230c",
+    "page_count": 49,
+    "in_scope_pdf_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "rights": "COPYRIGHTED_OWNED_COPY"
+  },
+  "source_access": {
+    "status": "OWNER_UPLOADED_REGISTERED_SOURCE",
+    "computed_sha256": "1dd05ce5aa04b532ec68c4054f55af1677ecb210be00b8f3085d6f29215a230c",
+    "byte_length": 18424888,
+    "page_count": 49
+  },
+  "validation": {
+    "source_identity_locked": true,
+    "source_text_fidelity_validated": true,
+    "ledger_complete": true,
+    "answer_custody_complete": true,
+    "independent_mathematics_complete": true
+  },
+  "ledger": {
+    "selection_scope": "CURATED_SOURCE_SPINE",
+    "selection_note": "Curated source-question spine derived from PR #315's structured selection and directly reconciled to PDF pages 1-9 plus answer-key pages 10-11. Ambiguous Assertion/Reason content was dropped; mislabelled rows were corrected.",
+    "question_count": 26,
+    "coverage_status": "SOURCE_READBACK_COMPLETE_PAGES_1_TO_11",
+    "coverage_receipt": {
+      "question_pages": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "answer_pages": [
+        10,
+        11
+      ],
+      "row_count": 26,
+      "source_sha256": "1dd05ce5aa04b532ec68c4054f55af1677ecb210be00b8f3085d6f29215a230c"
+    },
+    "rows": [
+      {
+        "id": "Q-MAT-09-POL-P01-FIB-01",
+        "page": 1,
+        "book_page": "2.22",
+        "section": "ASSESSMENT_CORNER",
+        "type": "FILL_IN_THE_BLANKS",
+        "source_label": "1",
+        "stem": "√2 is a polynomial of degree _____.",
+        "options": null,
+        "source_answer_status": "PRESENT",
+        "source_answer": "Zero",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Polynomial Degree & Classification",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P01-FIB-02",
+        "page": 1,
+        "book_page": "2.22",
+        "section": "ASSESSMENT_CORNER",
+        "type": "FILL_IN_THE_BLANKS",
+        "source_label": "2",
+        "stem": "The remainder obtained when the polynomial p(x) is divided by (b - ax) is _____.",
+        "options": null,
+        "source_answer_status": "PRESENT",
+        "source_answer": "p(b/a)",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Remainder Theorem",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P01-FIB-03",
+        "page": 1,
+        "book_page": "2.22",
+        "section": "ASSESSMENT_CORNER",
+        "type": "FILL_IN_THE_BLANKS",
+        "source_label": "3",
+        "stem": "The coefficient of x² in (3x² - 5)(4 + 4x²) is _____.",
+        "options": null,
+        "source_answer_status": "PRESENT",
+        "source_answer": "-8",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Algebraic Expansion & Coefficients",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P01-FIB-04",
+        "page": 1,
+        "book_page": "2.22",
+        "section": "ASSESSMENT_CORNER",
+        "type": "FILL_IN_THE_BLANKS",
+        "source_label": "4",
+        "stem": "If ax² + 2a²x + b³ is divisible by x + a, then relationship between a and b is _____.",
+        "options": null,
+        "source_answer_status": "PRESENT",
+        "source_answer": "a = b",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Factor Theorem & Parameter Relations",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P01-FIB-05",
+        "page": 1,
+        "book_page": "2.22",
+        "section": "ASSESSMENT_CORNER",
+        "type": "FILL_IN_THE_BLANKS",
+        "source_label": "5",
+        "stem": "If a³ - 3a²b + 3ab² - b³ is divided by (a - b), then the remainder is _____.",
+        "options": null,
+        "source_answer_status": "PRESENT",
+        "source_answer": "0",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Algebraic Identities & Division",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P01-FIB-06",
+        "page": 1,
+        "book_page": "2.22",
+        "section": "ASSESSMENT_CORNER",
+        "type": "FILL_IN_THE_BLANKS",
+        "source_label": "6",
+        "stem": "The remainder when 1 + x + x² + x³ + ... + x²⁰⁰⁶ is divided by x - 1 is _____.",
+        "options": null,
+        "source_answer_status": "PRESENT",
+        "source_answer": "2007",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Remainder Theorem",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P01-TF-01",
+        "page": 1,
+        "book_page": "2.22",
+        "section": "ASSESSMENT_CORNER",
+        "type": "TRUE_FALSE",
+        "source_label": "1",
+        "stem": "If p/q + q/p = 2, the value of (p/q)²³ + (q/p)²³ is 2.",
+        "options": [
+          "True",
+          "False"
+        ],
+        "source_answer_status": "PRESENT",
+        "source_answer": "True",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Reciprocal Algebraic Identities",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P01-TF-02",
+        "page": 1,
+        "book_page": "2.22",
+        "section": "ASSESSMENT_CORNER",
+        "type": "TRUE_FALSE",
+        "source_label": "2",
+        "stem": "If p(x) = 2x³ - 3x² + 5x - 4 is divided by (x - 2), then the remainder is -10.",
+        "options": [
+          "True",
+          "False"
+        ],
+        "source_answer_status": "PRESENT",
+        "source_answer": "False",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Remainder Theorem",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P01-TF-03",
+        "page": 1,
+        "book_page": "2.22",
+        "section": "ASSESSMENT_CORNER",
+        "type": "TRUE_FALSE",
+        "source_label": "3",
+        "stem": "The coefficient of x²y² in the expansion of (x + y)⁴ is 12.",
+        "options": [
+          "True",
+          "False"
+        ],
+        "source_answer_status": "PRESENT",
+        "source_answer": "False",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Binomial Expansion & Coefficients",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P01-TF-04",
+        "page": 1,
+        "book_page": "2.22",
+        "section": "ASSESSMENT_CORNER",
+        "type": "TRUE_FALSE",
+        "source_label": "4",
+        "stem": "If x² - 3x + 1 = 0, then the value of x⁵ + 1/x⁵ is 123.",
+        "options": [
+          "True",
+          "False"
+        ],
+        "source_answer_status": "PRESENT",
+        "source_answer": "True",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Reciprocal Polynomial Relations",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P01-TF-05",
+        "page": 1,
+        "book_page": "2.22",
+        "section": "ASSESSMENT_CORNER",
+        "type": "TRUE_FALSE",
+        "source_label": "5",
+        "stem": "If (x + 2) is a factor of 2x³ - 5x + k, then the value of k is 26.",
+        "options": [
+          "True",
+          "False"
+        ],
+        "source_answer_status": "PRESENT",
+        "source_answer": "False",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Factor Theorem & Parameter Relations",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P01-SC-05",
+        "page": 1,
+        "book_page": "2.22",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "5",
+        "stem": "If x + y + z = 1, then 1 - 3x² - 3y² - 3z² + 2x³ + 2y³ + 2z³ is equal to:",
+        "options": {
+          "A": "6xyz",
+          "B": "3xyz",
+          "C": "2xyz",
+          "D": "xyz"
+        },
+        "source_answer_status": "PRESENT",
+        "source_answer": "A",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Symmetric Polynomial Identities",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P02-SC-14",
+        "page": 2,
+        "book_page": "2.23",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "14",
+        "stem": "The value of (x + 2y + 2z)² + (x - 2y - 2z)² is:",
+        "options": {
+          "A": "2x² + 8y² + 8z²",
+          "B": "2x² + 8y² + 8z² + 8xyz",
+          "C": "2x² + 8y² + 8z² - 8yz",
+          "D": "2x² + 8y² + 8z² + 16yz"
+        },
+        "source_answer_status": "PRESENT",
+        "source_answer": "D",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Algebraic Expansion & Coefficients",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P02-SC-25",
+        "page": 2,
+        "book_page": "2.23",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "25",
+        "stem": "If (x - a) is a factor of x³ - a²x + x + 2, then 'a' is equal to:",
+        "options": {
+          "A": "0",
+          "B": "2",
+          "C": "-2",
+          "D": "1"
+        },
+        "source_answer_status": "PRESENT",
+        "source_answer": "C",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Factor Theorem & Parameter Relations",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P03-SC-08",
+        "page": 3,
+        "book_page": "2.24",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "8",
+        "stem": "Evaluate: (a-b)² / ((b-c)(c-a)) + (b-c)² / ((a-b)(c-a)) + (c-a)² / ((a-b)(b-c)).",
+        "options": {
+          "A": "0",
+          "B": "1",
+          "C": "2",
+          "D": "3"
+        },
+        "source_answer_status": "PRESENT",
+        "source_answer": "C",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "SOURCE_KEY_CONFLICT_RECONCILED",
+        "mathematical_family": "Cyclic Difference Identities",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        },
+        "authored_answer": "D (3)",
+        "authored_answer_label": "AUTHORED MATHEMATICAL CHECK"
+      },
+      {
+        "id": "Q-MAT-09-POL-P03-SC-18",
+        "page": 3,
+        "book_page": "2.24",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "18",
+        "stem": "If x = 1/(1 + √2), then the value of x² + 2x + 3 is:",
+        "options": {
+          "A": "3",
+          "B": "0",
+          "C": "4",
+          "D": "1"
+        },
+        "source_answer_status": "PRESENT",
+        "source_answer": "B",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "SOURCE_KEY_CONFLICT_RECONCILED",
+        "mathematical_family": "Surd Simplification & Minimal Polynomial Relations",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        },
+        "authored_answer": "C (4)",
+        "authored_answer_label": "AUTHORED MATHEMATICAL CHECK"
+      },
+      {
+        "id": "Q-MAT-09-POL-P05-NUM-04",
+        "page": 5,
+        "book_page": "2.26",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "4",
+        "stem": "Find the number of positive integers x for which f(x) = x³ - 8x² + 20x - 13 is a prime number.",
+        "options": null,
+        "source_answer_status": "PRESENT",
+        "source_answer": "3",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Integer Polynomial Divisibility & Number-Theoretic Primes",
+        "hardness": {
+          "overall": "HARD"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P05-NUM-05",
+        "page": 5,
+        "book_page": "2.26",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "5",
+        "stem": "If ax³ + 9x² + 4x - 1 is divided by (x + 2), the remainder is -6; then the value of 'a' is:",
+        "options": null,
+        "source_answer_status": "PRESENT",
+        "source_answer": "33/8",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Remainder Theorem & Parameter Solving",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P06-HOTS-14",
+        "page": 6,
+        "book_page": "2.27",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "14",
+        "stem": "The polynomial p(x) = 2x⁴ - x³ - 7x² + ax + b is divisible by x² - 2x - 3 for certain values of a and b. The value of (a + b) is:",
+        "options": {
+          "A": "-34",
+          "B": "-30",
+          "C": "-26",
+          "D": "-18"
+        },
+        "source_answer_status": "PRESENT",
+        "source_answer": "A",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Factor Theorem & Parameter Solving",
+        "hardness": {
+          "overall": "HARD"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P06-VSA-01",
+        "page": 6,
+        "book_page": "2.27",
+        "section": "FREE_RESPONSE",
+        "type": "FREE_RESPONSE_VSA",
+        "source_label": "1",
+        "stem": "What is the degree of polynomial 2⁵?",
+        "options": null,
+        "source_answer_status": "PRESENT",
+        "source_answer": "0",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Polynomial Degree & Classification",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P06-VSA-03",
+        "page": 6,
+        "book_page": "2.27",
+        "section": "FREE_RESPONSE",
+        "type": "FREE_RESPONSE_VSA",
+        "source_label": "3",
+        "stem": "If p(x) = x² - 2√2x + 1, then find the value of p(2√2).",
+        "options": null,
+        "source_answer_status": "PRESENT",
+        "source_answer": "1",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Polynomial Evaluation",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P07-SA-06",
+        "page": 7,
+        "book_page": "2.28",
+        "section": "FREE_RESPONSE",
+        "type": "FREE_RESPONSE_SA",
+        "source_label": "6",
+        "stem": "Answer both parts.",
+        "options": null,
+        "source_answer_status": "PRESENT",
+        "source_answer": "(i) 7760; (ii) 3(x-y)(y-z)(z-x)",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "SOURCE_KEY_CONFLICT_RECONCILED",
+        "mathematical_family": "Cubic Identities & Factorisation",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        },
+        "authored_answer": "(i) 77760; (ii) 3(x-y)(y-z)(z-x)",
+        "authored_answer_label": "AUTHORED MATHEMATICAL CHECK",
+        "subparts": [
+          "(i) Without actually calculating the cubes, find the value of 48³ - 30³ - 18³.",
+          "(ii) Without finding the cubes, factorise (x - y)³ + (y - z)³ + (z - x)³."
+        ]
+      },
+      {
+        "id": "Q-MAT-09-POL-P08-ARC-03",
+        "page": 8,
+        "book_page": "2.29",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "3",
+        "stem": "The expression (a + b + c)² + (a + b - c)² + (a - b + c)² + (b + c - a)² equals:",
+        "options": {
+          "A": "4(ab + bc + ca)",
+          "B": "2(a² + b² + c² + ab + bc + ca)",
+          "C": "4(a² + b² + c²)",
+          "D": "(a² + b² + c²)"
+        },
+        "source_answer_status": "PRESENT",
+        "source_answer": "C",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Algebraic Expansion & Symmetry",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P08-ARC-10",
+        "page": 8,
+        "book_page": "2.29",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "10",
+        "stem": "Identify the zeros of the given polynomial, p(z) = 4z² - 15πz - 4π².",
+        "options": {
+          "A": "4π, -π/4",
+          "B": "-4π, π/4",
+          "C": "4π, π/4",
+          "D": "-4π, -π/4"
+        },
+        "source_answer_status": "PRESENT",
+        "source_answer": "A",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Polynomial Zeros & Factorisation",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P08-ARC-11",
+        "page": 8,
+        "book_page": "2.29",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "11",
+        "stem": "Identify the remainder when 1 + x + x² + x³ + ... + x²⁰¹² is divided by x - 1.",
+        "options": {
+          "A": "2012",
+          "B": "1",
+          "C": "2013",
+          "D": "0"
+        },
+        "source_answer_status": "PRESENT",
+        "source_answer": "C",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Remainder Theorem",
+        "hardness": {
+          "overall": "ROUTINE"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      },
+      {
+        "id": "Q-MAT-09-POL-P09-ARC-21",
+        "page": 9,
+        "book_page": "2.30",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "21",
+        "stem": "If x² + 4y² + 9z² - 4xy - 12yz + 6xz = 0, then:",
+        "options": {
+          "A": "x = 2y - 3z",
+          "B": "x = y - 3z",
+          "C": "2x = y - 3z",
+          "D": "x = 3y - 2z"
+        },
+        "source_answer_status": "PRESENT",
+        "source_answer": "A",
+        "source_readback_status": "DIRECT_REGISTERED_SOURCE_VERIFIED",
+        "independent_comparison_status": "MATCH",
+        "mathematical_family": "Perfect-Square Recognition",
+        "hardness": {
+          "overall": "HARD"
+        },
+        "fidelity_status": "VERIFIED",
+        "figure": {
+          "state": "ABSENT"
+        }
+      }
+    ]
+  }
+}
