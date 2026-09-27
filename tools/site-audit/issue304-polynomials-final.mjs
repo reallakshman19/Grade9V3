@@ -117,7 +117,7 @@ try{
 
   {
     const c=await newPage(browser.port,clinics,900,1440);
-    report.behavior.clinicCount=await evalJs(c,"document.querySelectorAll('.clinic').length===4");
+    report.behavior.clinicCount=await evalJs(c,"document.querySelectorAll('.clinic').length===3");
     report.behavior.clinicProtectedPreCommit=await evalJs(c,"!document.body.innerText.includes('f(x)=(x−1)(x²−7x+13)')&&!document.body.innerText.includes('Exactly 3 positive integers work')&&!document.querySelector('[data-test=\"decision\"]')");
     await evalJs(c,"(()=>{const a=document.querySelector('#Q-MAT-09-POL-P05-HOTS-01');a.querySelector('[data-test=\"commit\"]').click();return true})()");
     report.behavior.clinicBlankRejected=await evalJs(c,"document.querySelector('#Q-MAT-09-POL-P05-HOTS-01 [role=\"status\"]').innerText.includes('genuine first decision')");
