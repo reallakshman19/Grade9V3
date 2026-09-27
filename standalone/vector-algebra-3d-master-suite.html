@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
-  <!-- Standalone single-file review build. Local question data is inlined; CDN libraries remain remote. -->
+  <!-- Standalone approval build: canvas orbit stability fix. Local question data is inlined; CDN libraries remain remote. -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>IIT-JEE Vector Algebra · 3D Master Suite · Standalone</title>
@@ -1736,11 +1736,10 @@ window.JEE_QUESTIONS_DATA = [
       const z2 = y1 * sinE + z1 * cosE;
       const x2 = x1;
 
-      // Perspective projection
-      const cameraDist = 25;
-      const factor = cameraDist / (cameraDist + y2);
-      const px = cx + x2 * scale * factor;
-      const py = cy - z2 * scale * factor; // flip Y for screen coordinates
+      // Orbit controls orientation only. Keep projection scale independent of depth
+      // so a drag reads as rotation rather than camera zoom.
+      const px = cx + x2 * scale;
+      const py = cy - z2 * scale; // flip Y for screen coordinates
       return { px, py, depth: y2 };
     }
 
@@ -1788,22 +1787,33 @@ window.JEE_QUESTIONS_DATA = [
       }
 
       const logicalHeight = Number.parseFloat(canvas.dataset.logicalHeight) || 340;
-      const styles = parent ? getComputedStyle(parent) : null;
-      const padX = styles
-        ? (Number.parseFloat(styles.paddingLeft) || 0) + (Number.parseFloat(styles.paddingRight) || 0)
-        : 0;
-      const parentWidth = parent ? parent.clientWidth : canvas.clientWidth;
-      const logicalWidth = Math.max(1, Math.floor(parentWidth - padX));
+      const cachedWidth = Number.parseFloat(canvas.dataset.logicalWidth);
+      const orbitLocked = activeOrbitCanvas === canvas && Number.isFinite(cachedWidth) && cachedWidth > 0;
+
+      let logicalWidth = cachedWidth;
+      if (!orbitLocked) {
+        const styles = parent ? getComputedStyle(parent) : null;
+        const padX = styles
+          ? (Number.parseFloat(styles.paddingLeft) || 0) + (Number.parseFloat(styles.paddingRight) || 0)
+          : 0;
+        const parentWidth = parent ? parent.clientWidth : canvas.clientWidth;
+        logicalWidth = Math.max(1, Math.floor(parentWidth - padX));
+        canvas.dataset.logicalWidth = String(logicalWidth);
+      }
+
+      if (!Number.isFinite(logicalWidth) || logicalWidth <= 0) logicalWidth = 1;
+
       const dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
-
-      canvas.dataset.logicalWidth = String(logicalWidth);
-      canvas.style.width = '100%';
-      canvas.style.height = logicalHeight + 'px';
-
       const pixelWidth = Math.max(1, Math.round(logicalWidth * dpr));
       const pixelHeight = Math.max(1, Math.round(logicalHeight * dpr));
-      if (canvas.width !== pixelWidth) canvas.width = pixelWidth;
-      if (canvas.height !== pixelHeight) canvas.height = pixelHeight;
+
+      // Keep the CSS box and bitmap backing store invariant during an orbit drag.
+      // Real container/DPR changes are applied on the next non-drag redraw.
+      if (!orbitLocked) {
+        if (canvas.style.height !== logicalHeight + 'px') canvas.style.height = logicalHeight + 'px';
+        if (canvas.width !== pixelWidth) canvas.width = pixelWidth;
+        if (canvas.height !== pixelHeight) canvas.height = pixelHeight;
+      }
 
       const ctx = canvas.getContext('2d');
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
@@ -1816,24 +1826,14 @@ window.JEE_QUESTIONS_DATA = [
       const safePoints = (points || []).filter(p =>
         Array.isArray(p) && p.length >= 3 && p.every(Number.isFinite)
       );
-      const offsets = safePoints.map(p => project3D(p[0], p[1], p[2], 0, 0, 1));
-      const minX = Math.min(0, ...offsets.map(p => p.px));
-      const maxX = Math.max(0, ...offsets.map(p => p.px));
-      const minY = Math.min(0, ...offsets.map(p => p.py));
-      const maxY = Math.max(0, ...offsets.map(p => p.py));
 
-      const leftRoom = Math.max(1, cx - padding);
-      const rightRoom = Math.max(1, width - padding - cx);
-      const topRoom = Math.max(1, cy - padding);
-      const bottomRoom = Math.max(1, height - padding - cy);
-      const candidates = [maxScale];
+      // Fit from rotation-invariant 3D radius. Fitting projected 2D extents on
+      // every pointermove made orbiting continuously change apparent zoom.
+      const radius = Math.max(1, ...safePoints.map(p => Math.hypot(p[0], p[1], p[2])));
+      const horizontalRoom = Math.max(1, Math.min(cx - padding, width - padding - cx));
+      const verticalRoom = Math.max(1, Math.min(cy - padding, height - padding - cy));
+      const scale = Math.max(0.1, Math.min(maxScale, horizontalRoom / radius, verticalRoom / radius));
 
-      if (maxX > 1e-9) candidates.push(rightRoom / maxX);
-      if (minX < -1e-9) candidates.push(leftRoom / -minX);
-      if (maxY > 1e-9) candidates.push(bottomRoom / maxY);
-      if (minY < -1e-9) candidates.push(topRoom / -minY);
-
-      const scale = Math.max(0.1, Math.min(...candidates.filter(Number.isFinite)));
       return {
         cx, cy, scale,
         project: v => project3D(v[0], v[1], v[2], cx, cy, scale)
