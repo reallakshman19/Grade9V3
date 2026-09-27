@@ -578,32 +578,38 @@
       if (!parent) return { ctx: null, width: 0, height: 0 };
 
       if (!canvas.dataset.logicalHeight) {
-        canvas.dataset.logicalHeight = canvas.getAttribute('height') || '280';
+        const initialHeight = Number.parseFloat(canvas.getAttribute('height'));
+        canvas.dataset.logicalHeight = String(Number.isFinite(initialHeight) && initialHeight > 0 ? initialHeight : 280);
       }
-      const logicalHeight = Math.max(120, parseInt(canvas.dataset.logicalHeight, 10) || 280);
+      const logicalHeight = Math.max(1, Number.parseFloat(canvas.dataset.logicalHeight) || 280);
 
-      const style = window.getComputedStyle(parent);
-      const horizontalPadding = (parseFloat(style.paddingLeft) || 0) + (parseFloat(style.paddingRight) || 0);
-      const measured = Math.floor(parent.clientWidth - horizontalPadding);
-      const width = measured > 50 ? measured : (parseInt(canvas.dataset.logicalWidth || '0', 10) || 600);
-      if (width < 50) return { ctx: null, width: 0, height: 0 };
-      canvas.dataset.logicalWidth = String(width);
-
-      const dpr = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
-      canvas.style.width = '100%';
-      canvas.style.height = logicalHeight + 'px';
-      canvas.style.boxSizing = 'border-box';
-
-      const targetW = Math.round(width * dpr);
-      const targetH = Math.round(logicalHeight * dpr);
-      if (canvas.width !== targetW || canvas.height !== targetH) {
-        canvas.width = targetW;
-        canvas.height = targetH;
+      if (canvas.dataset.g9StableCss !== '1') {
+        canvas.style.width = '100%';
+        canvas.style.maxWidth = '100%';
+        canvas.style.height = logicalHeight + 'px';
+        canvas.style.boxSizing = 'border-box';
+        canvas.style.display = 'block';
+        canvas.dataset.g9StableCss = '1';
       }
+
+      const currentDpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
+      const rect = canvas.getBoundingClientRect();
+      const parentRect = parent.getBoundingClientRect();
+      let logicalWidth = Math.floor(rect.width || parentRect.width);
+      const cachedWidth = Number.parseFloat(canvas.dataset.logicalWidth);
+      if (logicalWidth <= 1) logicalWidth = Number.isFinite(cachedWidth) && cachedWidth > 1 ? cachedWidth : 600;
+
+      canvas.dataset.logicalWidth = String(logicalWidth);
+      canvas.dataset.canvasDpr = String(currentDpr);
+
+      const targetW = Math.max(1, Math.round(logicalWidth * currentDpr));
+      const targetH = Math.max(1, Math.round(logicalHeight * currentDpr));
+      if (canvas.width !== targetW) canvas.width = targetW;
+      if (canvas.height !== targetH) canvas.height = targetH;
 
       const ctx = canvas.getContext('2d');
-      if (ctx) ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      return { ctx, width, height: logicalHeight };
+      if (ctx) ctx.setTransform(currentDpr, 0, 0, currentDpr, 0, 0);
+      return { ctx, width: logicalWidth, height: logicalHeight };
     }
     function setSliderWithEvent(id, val) {
       const el = document.getElementById(id);
