@@ -55,7 +55,8 @@ def ready_ledger(row_count: int = 4) -> dict:
         },
         "ledger": {
             "question_count": len(rows),
-            "coverage_status": "COMPLETE_PAGES_1_TO_11",
+            "selection_scope": "CURATED_SOURCE_SPINE",
+            "coverage_status": "SOURCE_READBACK_COMPLETE_PAGES_1_TO_11",
             "coverage_receipt": {
                 "question_pages": list(range(1, 10)),
                 "answer_pages": [10, 11],
@@ -102,7 +103,7 @@ class PolynomialsAgent1AdapterTests(unittest.TestCase):
     def test_complete_specimen_coverage_is_still_required(self):
         data = ready_ledger()
         data["ledger"]["coverage_status"] = "PARTIAL"
-        self.assertIn("ledger coverage is not COMPLETE_PAGES_1_TO_11", adapter.admission_failures(data))
+        self.assertIn("ledger coverage is not SOURCE_READBACK_COMPLETE_PAGES_1_TO_11", adapter.admission_failures(data))
 
     def test_provider_non_reproducible_is_rejected(self):
         data = ready_ledger()
@@ -133,10 +134,22 @@ class PolynomialsAgent1AdapterTests(unittest.TestCase):
         }
         self.assertTrue(any("not independently reproducible" in x for x in adapter.admission_failures(data)))
 
-    def test_conflicted_row_is_rejected(self):
+    def test_unresolved_conflicted_row_is_rejected(self):
         data = ready_ledger()
         data["ledger"]["rows"][0]["independent_comparison_status"] = "CONFLICT_MATH_VS_PUBLISHED_KEY"
-        self.assertTrue(any("unresolved independent comparison" in x for x in adapter.admission_failures(data)))
+        self.assertTrue(any("independent_comparison_status is unresolved" in x for x in adapter.admission_failures(data)))
+
+    def test_reconciled_source_key_error_preserves_source_and_authored_answers(self):
+        data = ready_ledger()
+        row = data["ledger"]["rows"][0]
+        row["independent_comparison_status"] = "SOURCE_KEY_CONFLICT_RECONCILED"
+        row["source_answer"] = "C"
+        row["authored_answer"] = "D (3)"
+        out = adapter.adapt(data)
+        answer = out["questions"][0]["answer"]
+        self.assertEqual(answer["source_summary"], "C")
+        self.assertEqual(answer["authored_summary"], "D (3)")
+        self.assertEqual(answer["authored_answer_label"], "AUTHORED MATHEMATICAL CHECK")
 
     def test_missing_figure_state_is_rejected(self):
         data = ready_ledger()
@@ -196,6 +209,23 @@ class PolynomialsAgent1AdapterTests(unittest.TestCase):
         out = adapter.adapt(ready_ledger())
         self.assertEqual(out["product"]["explorer_href"], "concept-explorer.html")
         self.assertFalse(any("explorer_href" in q.get("enrichment", {}) for q in out["questions"]))
+
+    def test_subparts_are_preserved_when_present_in_source(self):
+        data = ready_ledger()
+        row = data["ledger"]["rows"][0]
+        row["subparts"] = ["(i) First source part.", "(ii) Second source part."]
+        out = adapter.adapt(data)
+        q = out["questions"][0]
+        self.assertEqual(q["subparts"], row["subparts"])
+        self.assertEqual(q["custody"]["components"]["subparts"], "PRESERVED")
+
+    def test_numerical_type_uses_short_text_attempt(self):
+        data = ready_ledger()
+        row = data["ledger"]["rows"][0]
+        row["type"] = "NUMERICAL_TYPE"
+        row["options"] = None
+        out = adapter.adapt(data)
+        self.assertEqual(out["questions"][0]["response"]["type"], "SHORT_TEXT")
 
     def test_missing_source_answer_requires_authored_closure_without_fabricating_source(self):
         data = ready_ledger()
