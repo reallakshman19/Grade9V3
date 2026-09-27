@@ -1,0 +1,55 @@
+{
+  "schema": "polynomials-core2-render-audit/v1",
+  "pr": 312,
+  "head": "fdaea55a42f17e84dbc97d7543ca0c80a2f89cf5",
+  "source": {
+    "acquisition_id": "ACQ-1DD05CE5AA04B532EC68",
+    "resource_ref": "SRC-BOOK-MATH-CH2-CH3",
+    "sha256": "1dd05ce5aa04b532ec68c4054f55af1677ecb210be00b8f3085d6f29215a230c",
+    "pdf_pages": 49,
+    "source_spine_question_count": 26,
+    "source_ledger_blob": "5d7980997efe1f02f0e019fdced32ed6d7b9dde7"
+  },
+  "output": {
+    "path": "standalone/stress-test/polynomials/core2.html",
+    "git_blob": "ff14bff265f684832932fc942b8410f63432daee",
+    "sha256": "17670e695006380da5c8d061c7d63b23c5358fafadd9d269e5f1b0d63b136d52"
+  },
+  "viewports": [
+    {
+      "name": "1366x854",
+      "horizontal_overflow_px": 0,
+      "primary_targets_under_48": 0
+    },
+    {
+      "name": "1440x900",
+      "horizontal_overflow_px": 0,
+      "primary_targets_under_48": 0
+    },
+    {
+      "name": "854x1366",
+      "horizontal_overflow_px": 0,
+      "primary_targets_under_48": 0
+    },
+    {
+      "name": "900x1440",
+      "horizontal_overflow_px": 0,
+      "primary_targets_under_48": 0
+    }
+  ],
+  "behavior": {
+    "answers_locked_initially": true,
+    "answer_slots_empty_initially": true,
+    "numerical_type_short_text": true,
+    "numerical_attempt_unlocks_reveal": true,
+    "source_key_conflict_separated_from_authored_check": true,
+    "product_explorer_link": "concept-explorer.html",
+    "clinic_links": [
+      "question-clinics.html#Q-MAT-09-POL-P05-NUM-04",
+      "question-clinics.html#Q-MAT-09-POL-P06-HOTS-14",
+      "question-clinics.html#Q-MAT-09-POL-P09-ARC-21"
+    ],
+    "home_link": "../../../public/index.html"
+  },
+  "failures": []
+}
