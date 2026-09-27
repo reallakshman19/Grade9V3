@@ -19,7 +19,10 @@
     "source_pr": 306,
     "source_pr_head": "7bf9ca0ae01f8555c4df0b1ff7c74180d5693766",
     "execution_branch": "issue-302-polynomials-evidence-reconcile",
-    "prior_recorded_source_pr_head": "9444c65c9488a580e0679ddd9adc85930a199d9a"
+    "prior_recorded_source_pr_head": "9444c65c9488a580e0679ddd9adc85930a199d9a",
+    "source_pr_current_head": "d6a5753ca2d360e2f27162c167b6155d1d06519e",
+    "polynomials_evidence_commit": "7bf9ca0ae01f8555c4df0b1ff7c74180d5693766",
+    "polynomials_evidence_blobs_unchanged_through_current_head": true
   },
   "source_basis": {
     "acquisition_id": "ACQ-1DD05CE5AA04B532EC68",
@@ -136,7 +139,8 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-02",
@@ -160,7 +164,8 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-03",
@@ -184,7 +189,9 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "CONFLICT",
+        "selection_eligible": false
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-04",
@@ -208,7 +215,9 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "CONFLICT",
+        "selection_eligible": false
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-05",
@@ -232,7 +241,9 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "CONFLICT",
+        "selection_eligible": false
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-06",
@@ -256,7 +267,9 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "CONFLICT",
+        "selection_eligible": false
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-01",
@@ -283,7 +296,8 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-02",
@@ -310,7 +324,8 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-03",
@@ -337,7 +352,9 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "CONFLICT",
+        "selection_eligible": false
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-04",
@@ -364,7 +381,9 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "CONFLICT",
+        "selection_eligible": false
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-05",
@@ -391,7 +410,8 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P01-SC-01",
@@ -422,7 +442,8 @@
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "independent_comparison_status": "CONFLICT_MATH_VS_PUBLISHED_KEY",
-        "selection_eligible": false
+        "selection_eligible": false,
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P02-SC-14",
@@ -453,7 +474,8 @@
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "independent_comparison_status": "CONFLICT_MATH_VS_PUBLISHED_KEY",
-        "selection_eligible": false
+        "selection_eligible": false,
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P02-SC-25",
@@ -482,7 +504,8 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P03-SC-08",
@@ -511,7 +534,9 @@
           "overall": "MEDIUM"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "CONFLICT",
+        "selection_eligible": false
       },
       {
         "id": "Q-MAT-09-POL-P03-SC-18",
@@ -542,7 +567,8 @@
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "independent_comparison_status": "CONFLICT_MATH_VS_PUBLISHED_KEY",
-        "selection_eligible": false
+        "selection_eligible": false,
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P04-AR-01",
@@ -573,7 +599,8 @@
         "fidelity_status": "VERIFIED",
         "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
         "independent_comparison_status": "REVIEW_ASSERTION_REASON_LOGIC",
-        "selection_eligible": false
+        "selection_eligible": false,
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P05-HOTS-01",
@@ -602,7 +629,8 @@
           "overall": "HARD"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P05-HOTS-05",
@@ -631,7 +659,9 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "CONFLICT",
+        "selection_eligible": false
       },
       {
         "id": "Q-MAT-09-POL-P06-HOTS-14",
@@ -660,7 +690,8 @@
           "overall": "MEDIUM"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P07-VSA-01",
@@ -684,7 +715,8 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "NO_DIRECT_KEY_ENTRY_BY_CURRENT_TYPE_LABEL"
       },
       {
         "id": "Q-MAT-09-POL-P07-VSA-03",
@@ -708,7 +740,8 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "NO_DIRECT_KEY_ENTRY_BY_CURRENT_TYPE_LABEL"
       },
       {
         "id": "Q-MAT-09-POL-P07-SA-06",
@@ -732,7 +765,8 @@
           "overall": "MEDIUM"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "NO_DIRECT_KEY_ENTRY_BY_CURRENT_TYPE_LABEL"
       },
       {
         "id": "Q-MAT-09-POL-P08-ARC-03",
@@ -761,7 +795,8 @@
           "overall": "MEDIUM"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P08-ARC-10",
@@ -790,7 +825,8 @@
           "overall": "EASY"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P08-ARC-11",
@@ -819,7 +855,8 @@
           "overall": "MEDIUM"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "MATCH"
       },
       {
         "id": "Q-MAT-09-POL-P09-ARC-21",
@@ -848,7 +885,8 @@
           "overall": "MEDIUM"
         },
         "fidelity_status": "VERIFIED",
-        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "master_key_reconciliation": "MATCH"
       }
     ],
     "stable_identity_rule": "Use source page + readable source label/type; if source label is absent or unreadable, use a deterministic page-local sequence id without inventing a printed question number.",
@@ -866,7 +904,10 @@
       "archive_corner": 25,
       "minimum_keyed_items_excluding_free_response": 117
     },
-    "coverage_note": "The published master-key transcription names at least 117 keyed items before free-response items, while the machine ledger contains 27 rows. Therefore the every-question acceptance criterion is not met."
+    "coverage_note": "The published master-key transcription names at least 117 keyed items before free-response items, while the machine ledger contains 27 rows. Therefore the every-question acceptance criterion is not met.",
+    "minimum_declared_keyed_item_count": 117,
+    "machine_rows_with_direct_master_key_link": 24,
+    "machine_rows_without_direct_master_key_link": 3
   },
   "answer_custody": {
     "source_answer_states": [
@@ -1154,6 +1195,1456 @@
       "category": "PROJECTION_CONTRADICTION",
       "evidence": "scanned-assessment-m2-polynomials-ledger.md disagrees with source-ledger.json for multiple fill-in items, including #3, #5 and #6; the narrative/master-key and machine row do not describe the same question/answer in those cases.",
       "consequence": "Markdown and machine JSON are not currently interchangeable projections of one source truth."
+    },
+    {
+      "id": "FIND-KEYMAP-001",
+      "severity": "BLOCKER",
+      "category": "ANSWER_KEY_CUSTODY",
+      "evidence": "The producer master-key transcription contains 117 keyed entries. 24 current machine rows link by section/type/label; 8 of those linked rows disagree with the master-key transcription.",
+      "consequence": "Answer custody is not complete. Each conflict requires registered-source readback; unlinked keys require source-question rows or an explicit explanation of source structure."
+    },
+    {
+      "id": "FIND-KEY-FILLINTH-03",
+      "severity": "BLOCKER",
+      "category": "MASTER_KEY_VS_ROW_CONFLICT",
+      "question_id": "Q-MAT-09-POL-P01-FIB-03",
+      "evidence": "Producer master key says 8; linked machine row says -8.",
+      "consequence": "Do not decide which value is authoritative without registered-source readback. The row remains selection-ineligible if the conflict is material."
+    },
+    {
+      "id": "FIND-KEY-FILLINTH-04",
+      "severity": "BLOCKER",
+      "category": "MASTER_KEY_VS_ROW_CONFLICT",
+      "question_id": "Q-MAT-09-POL-P01-FIB-04",
+      "evidence": "Producer master key says a=b; linked machine row says b = a^3.",
+      "consequence": "Do not decide which value is authoritative without registered-source readback. The row remains selection-ineligible if the conflict is material."
+    },
+    {
+      "id": "FIND-KEY-FILLINTH-05",
+      "severity": "BLOCKER",
+      "category": "MASTER_KEY_VS_ROW_CONFLICT",
+      "question_id": "Q-MAT-09-POL-P01-FIB-05",
+      "evidence": "Producer master key says 0; linked machine row says (a - b)^2.",
+      "consequence": "Do not decide which value is authoritative without registered-source readback. The row remains selection-ineligible if the conflict is material."
+    },
+    {
+      "id": "FIND-KEY-FILLINTH-06",
+      "severity": "BLOCKER",
+      "category": "MASTER_KEY_VS_ROW_CONFLICT",
+      "question_id": "Q-MAT-09-POL-P01-FIB-06",
+      "evidence": "Producer master key says 2007; linked machine row says 194.",
+      "consequence": "Do not decide which value is authoritative without registered-source readback. The row remains selection-ineligible if the conflict is material."
+    },
+    {
+      "id": "FIND-KEY-TRUEFALS-03",
+      "severity": "BLOCKER",
+      "category": "MASTER_KEY_VS_ROW_CONFLICT",
+      "question_id": "Q-MAT-09-POL-P01-TF-03",
+      "evidence": "Producer master key says False; linked machine row says True.",
+      "consequence": "Do not decide which value is authoritative without registered-source readback. The row remains selection-ineligible if the conflict is material."
+    },
+    {
+      "id": "FIND-KEY-TRUEFALS-04",
+      "severity": "BLOCKER",
+      "category": "MASTER_KEY_VS_ROW_CONFLICT",
+      "question_id": "Q-MAT-09-POL-P01-TF-04",
+      "evidence": "Producer master key says True; linked machine row says False.",
+      "consequence": "Do not decide which value is authoritative without registered-source readback. The row remains selection-ineligible if the conflict is material."
+    },
+    {
+      "id": "FIND-KEY-SINGLECH-08",
+      "severity": "BLOCKER",
+      "category": "MASTER_KEY_VS_ROW_CONFLICT",
+      "question_id": "Q-MAT-09-POL-P03-SC-08",
+      "evidence": "Producer master key says C; linked machine row says A.",
+      "consequence": "Do not decide which value is authoritative without registered-source readback. The row remains selection-ineligible if the conflict is material."
+    },
+    {
+      "id": "FIND-KEY-HOTS-05",
+      "severity": "BLOCKER",
+      "category": "MASTER_KEY_VS_ROW_CONFLICT",
+      "question_id": "Q-MAT-09-POL-P05-HOTS-05",
+      "evidence": "Producer master key says D; linked machine row says A.",
+      "consequence": "Do not decide which value is authoritative without registered-source readback. The row remains selection-ineligible if the conflict is material."
     }
-  ]
+  ],
+  "answer_key_inventory": {
+    "status": "PRODUCER_TRANSCRIPTION_RECONCILED_NOT_SOURCE_VERIFIED",
+    "basis": "Master Decoded Answer Key tables in docs/stress-tests/scanned-assessment-m2-polynomials-ledger.md as published at Polynomials evidence commit 7bf9ca0a.",
+    "total_keyed_entries": 117,
+    "key_pages_claimed": [
+      10,
+      11
+    ],
+    "entries": [
+      {
+        "id": "KEY-ASSESS-FIB-01",
+        "section": "ASSESSMENT_CORNER",
+        "type": "FILL_IN_THE_BLANKS",
+        "source_label": "1",
+        "transcribed_official_key": "Zero",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P01-FIB-01",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-FIB-02",
+        "section": "ASSESSMENT_CORNER",
+        "type": "FILL_IN_THE_BLANKS",
+        "source_label": "2",
+        "transcribed_official_key": "p(b/a)",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P01-FIB-02",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-FIB-03",
+        "section": "ASSESSMENT_CORNER",
+        "type": "FILL_IN_THE_BLANKS",
+        "source_label": "3",
+        "transcribed_official_key": "8",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P01-FIB-03",
+        "linked_row_comparison": "CONFLICTS_WITH_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-FIB-04",
+        "section": "ASSESSMENT_CORNER",
+        "type": "FILL_IN_THE_BLANKS",
+        "source_label": "4",
+        "transcribed_official_key": "a=b",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P01-FIB-04",
+        "linked_row_comparison": "CONFLICTS_WITH_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-FIB-05",
+        "section": "ASSESSMENT_CORNER",
+        "type": "FILL_IN_THE_BLANKS",
+        "source_label": "5",
+        "transcribed_official_key": "0",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P01-FIB-05",
+        "linked_row_comparison": "CONFLICTS_WITH_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-FIB-06",
+        "section": "ASSESSMENT_CORNER",
+        "type": "FILL_IN_THE_BLANKS",
+        "source_label": "6",
+        "transcribed_official_key": "2007",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P01-FIB-06",
+        "linked_row_comparison": "CONFLICTS_WITH_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-TF-01",
+        "section": "ASSESSMENT_CORNER",
+        "type": "TRUE_FALSE",
+        "source_label": "1",
+        "transcribed_official_key": "True",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P01-TF-01",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-TF-02",
+        "section": "ASSESSMENT_CORNER",
+        "type": "TRUE_FALSE",
+        "source_label": "2",
+        "transcribed_official_key": "False",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P01-TF-02",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-TF-03",
+        "section": "ASSESSMENT_CORNER",
+        "type": "TRUE_FALSE",
+        "source_label": "3",
+        "transcribed_official_key": "False",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P01-TF-03",
+        "linked_row_comparison": "CONFLICTS_WITH_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-TF-04",
+        "section": "ASSESSMENT_CORNER",
+        "type": "TRUE_FALSE",
+        "source_label": "4",
+        "transcribed_official_key": "True",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P01-TF-04",
+        "linked_row_comparison": "CONFLICTS_WITH_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-TF-05",
+        "section": "ASSESSMENT_CORNER",
+        "type": "TRUE_FALSE",
+        "source_label": "5",
+        "transcribed_official_key": "False",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P01-TF-05",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-01",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "1",
+        "transcribed_official_key": "D",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P01-SC-01",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-02",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "2",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-03",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "3",
+        "transcribed_official_key": "D",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-04",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "4",
+        "transcribed_official_key": "D",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-05",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "5",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-06",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "6",
+        "transcribed_official_key": "D",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-07",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "7",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-08",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "8",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P03-SC-08",
+        "linked_row_comparison": "CONFLICTS_WITH_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-09",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "9",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-10",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "10",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-11",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "11",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-12",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "12",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-13",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "13",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-14",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "14",
+        "transcribed_official_key": "D",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P02-SC-14",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-15",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "15",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-16",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "16",
+        "transcribed_official_key": "D",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-17",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "17",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-18",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "18",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P03-SC-18",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-19",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "19",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-20",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "20",
+        "transcribed_official_key": "D",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-21",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "21",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-22",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "22",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-23",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "23",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-24",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "24",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-SC-25",
+        "section": "ASSESSMENT_CORNER",
+        "type": "SINGLE_CHOICE",
+        "source_label": "25",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P02-SC-25",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MC-01",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MULTIPLE_CHOICE",
+        "source_label": "1",
+        "transcribed_official_key": "BD",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MC-02",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MULTIPLE_CHOICE",
+        "source_label": "2",
+        "transcribed_official_key": "BC",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MC-03",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MULTIPLE_CHOICE",
+        "source_label": "3",
+        "transcribed_official_key": "BD",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MC-04",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MULTIPLE_CHOICE",
+        "source_label": "4",
+        "transcribed_official_key": "AC",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MC-05",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MULTIPLE_CHOICE",
+        "source_label": "5",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MC-06",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MULTIPLE_CHOICE",
+        "source_label": "6",
+        "transcribed_official_key": "AC",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MC-07",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MULTIPLE_CHOICE",
+        "source_label": "7",
+        "transcribed_official_key": "ABCD",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MC-08",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MULTIPLE_CHOICE",
+        "source_label": "8",
+        "transcribed_official_key": "AC",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MC-09",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MULTIPLE_CHOICE",
+        "source_label": "9",
+        "transcribed_official_key": "AC",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MC-10",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MULTIPLE_CHOICE",
+        "source_label": "10",
+        "transcribed_official_key": "AB",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MATCH-01",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MATCH_COLUMNS",
+        "source_label": "1",
+        "transcribed_official_key": "(i)-(B,C), (ii)-(C), (iii)-(A), (iv)-(B)",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MATCH-02",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MATCH_COLUMNS",
+        "source_label": "2",
+        "transcribed_official_key": "(i)-(A,B,C), (ii)-(A,B), (iii)-(A,D), (iv)-(A,C)",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MATCH-03",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MATCH_COLUMNS",
+        "source_label": "3",
+        "transcribed_official_key": "(i)-(B,D), (ii)-(B,C), (iii)-(A,C), (iv)-(A)",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MATCH-04",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MATCH_COLUMNS",
+        "source_label": "4",
+        "transcribed_official_key": "(i)-(D), (ii)-(A), (iii)-(C), (iv)-(B)",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-MATCH-05",
+        "section": "ASSESSMENT_CORNER",
+        "type": "MATCH_COLUMNS",
+        "source_label": "5",
+        "transcribed_official_key": "(i)-(C), (ii)-(A), (iii)-(B), (iv)-(D)",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-AR-01",
+        "section": "ASSESSMENT_CORNER",
+        "type": "ASSERTION_REASON",
+        "source_label": "1",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P04-AR-01",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-AR-02",
+        "section": "ASSESSMENT_CORNER",
+        "type": "ASSERTION_REASON",
+        "source_label": "2",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-AR-03",
+        "section": "ASSESSMENT_CORNER",
+        "type": "ASSERTION_REASON",
+        "source_label": "3",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-COMP-01",
+        "section": "ASSESSMENT_CORNER",
+        "type": "COMPREHENSION",
+        "source_label": "1",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-COMP-02",
+        "section": "ASSESSMENT_CORNER",
+        "type": "COMPREHENSION",
+        "source_label": "2",
+        "transcribed_official_key": "D",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-COMP-03",
+        "section": "ASSESSMENT_CORNER",
+        "type": "COMPREHENSION",
+        "source_label": "3",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-01",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "1",
+        "transcribed_official_key": "108",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-02",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "2",
+        "transcribed_official_key": "63",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-03",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "3",
+        "transcribed_official_key": "8",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-04",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "4",
+        "transcribed_official_key": "3",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-05",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "5",
+        "transcribed_official_key": "33/8",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-06",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "6",
+        "transcribed_official_key": "20",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-07",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "7",
+        "transcribed_official_key": "3842",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-08",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "8",
+        "transcribed_official_key": "1",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-09",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "9",
+        "transcribed_official_key": "2",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-10",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "10",
+        "transcribed_official_key": "13",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-11",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "11",
+        "transcribed_official_key": "1",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-12",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "12",
+        "transcribed_official_key": "10",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-13",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "13",
+        "transcribed_official_key": "0",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-14",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "14",
+        "transcribed_official_key": "-8",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ASSESS-NUM-15",
+        "section": "ASSESSMENT_CORNER",
+        "type": "NUMERICAL_TYPE",
+        "source_label": "15",
+        "transcribed_official_key": "-3",
+        "key_pdf_page_claim": 10,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-01",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "1",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P05-HOTS-01",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-02",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "2",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-03",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "3",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-04",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "4",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-05",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "5",
+        "transcribed_official_key": "D",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P05-HOTS-05",
+        "linked_row_comparison": "CONFLICTS_WITH_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-06",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "6",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-07",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "7",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-08",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "8",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-09",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "9",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-10",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "10",
+        "transcribed_official_key": "D",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-11",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "11",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-12",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "12",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-13",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "13",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-14",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "14",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P06-HOTS-14",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-15",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "15",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-16",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "16",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-17",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "17",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-18",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "18",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-19",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "19",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-HOTS-HOTS-20",
+        "section": "HOTS",
+        "type": "HOTS",
+        "source_label": "20",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-01",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "1",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-02",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "2",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-03",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "3",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P08-ARC-03",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-04",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "4",
+        "transcribed_official_key": "D",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-05",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "5",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-06",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "6",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-07",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "7",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-08",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "8",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-09",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "9",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-10",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "10",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P08-ARC-10",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-11",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "11",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P08-ARC-11",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-12",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "12",
+        "transcribed_official_key": "D",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-13",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "13",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-14",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "14",
+        "transcribed_official_key": "D",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-15",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "15",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-16",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "16",
+        "transcribed_official_key": "D",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-17",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "17",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-18",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "18",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-19",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "19",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-20",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "20",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-21",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "21",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": "Q-MAT-09-POL-P09-ARC-21",
+        "linked_row_comparison": "MATCHES_PUBLISHED_MACHINE_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-22",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "22",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-23",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "23",
+        "transcribed_official_key": "C",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-24",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "24",
+        "transcribed_official_key": "A",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      },
+      {
+        "id": "KEY-ARCH-ARC-25",
+        "section": "ARCHIVE_CORNER",
+        "type": "ARCHIVE_CORNER",
+        "source_label": "25",
+        "transcribed_official_key": "B",
+        "key_pdf_page_claim": 11,
+        "provenance_status": "PRODUCER_MASTER_KEY_TRANSCRIPTION_UNVERIFIED_BY_CURRENT_EXECUTOR",
+        "linked_question_row_id": null,
+        "linked_row_comparison": "NO_ROW"
+      }
+    ],
+    "reconciliation": {
+      "linked_machine_rows": 24,
+      "matching_machine_rows": 16,
+      "conflicting_machine_rows": 8,
+      "unlinked_key_entries": 93,
+      "conflicts": [
+        {
+          "key_id": "KEY-ASSESS-FIB-03",
+          "section": "ASSESSMENT_CORNER",
+          "type": "FILL_IN_THE_BLANKS",
+          "source_label": "3",
+          "master_key": "8",
+          "row_id": "Q-MAT-09-POL-P01-FIB-03",
+          "row_source_answer": "-8"
+        },
+        {
+          "key_id": "KEY-ASSESS-FIB-04",
+          "section": "ASSESSMENT_CORNER",
+          "type": "FILL_IN_THE_BLANKS",
+          "source_label": "4",
+          "master_key": "a=b",
+          "row_id": "Q-MAT-09-POL-P01-FIB-04",
+          "row_source_answer": "b = a^3"
+        },
+        {
+          "key_id": "KEY-ASSESS-FIB-05",
+          "section": "ASSESSMENT_CORNER",
+          "type": "FILL_IN_THE_BLANKS",
+          "source_label": "5",
+          "master_key": "0",
+          "row_id": "Q-MAT-09-POL-P01-FIB-05",
+          "row_source_answer": "(a - b)^2"
+        },
+        {
+          "key_id": "KEY-ASSESS-FIB-06",
+          "section": "ASSESSMENT_CORNER",
+          "type": "FILL_IN_THE_BLANKS",
+          "source_label": "6",
+          "master_key": "2007",
+          "row_id": "Q-MAT-09-POL-P01-FIB-06",
+          "row_source_answer": "194"
+        },
+        {
+          "key_id": "KEY-ASSESS-TF-03",
+          "section": "ASSESSMENT_CORNER",
+          "type": "TRUE_FALSE",
+          "source_label": "3",
+          "master_key": "False",
+          "row_id": "Q-MAT-09-POL-P01-TF-03",
+          "row_source_answer": "True"
+        },
+        {
+          "key_id": "KEY-ASSESS-TF-04",
+          "section": "ASSESSMENT_CORNER",
+          "type": "TRUE_FALSE",
+          "source_label": "4",
+          "master_key": "True",
+          "row_id": "Q-MAT-09-POL-P01-TF-04",
+          "row_source_answer": "False"
+        },
+        {
+          "key_id": "KEY-ASSESS-SC-08",
+          "section": "ASSESSMENT_CORNER",
+          "type": "SINGLE_CHOICE",
+          "source_label": "8",
+          "master_key": "C",
+          "row_id": "Q-MAT-09-POL-P03-SC-08",
+          "row_source_answer": "A"
+        },
+        {
+          "key_id": "KEY-HOTS-HOTS-05",
+          "section": "HOTS",
+          "type": "HOTS",
+          "source_label": "5",
+          "master_key": "D",
+          "row_id": "Q-MAT-09-POL-P05-HOTS-05",
+          "row_source_answer": "A"
+        }
+      ]
+    },
+    "invariant": "A mismatch does not prove whether the question row, type/label, option layout, or key transcription is wrong. Resolve from the registered source."
+  }
 }
