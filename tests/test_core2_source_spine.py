@@ -129,6 +129,21 @@ class Core2SourceSpineTests(unittest.TestCase):
         for option in q["options"]:
             self.assertEqual(out.count(option), 1)
 
+    def test_product_level_explorer_renders_once(self):
+        data = self.data()
+        data["product"]["explorer_href"] = "concept-explorer.html"
+        out = spine.render(data)
+        self.assertEqual(out.count(">Concept Explorer</a>"), 2)
+        # One product-level link plus the fixture's existing question-specific link.
+        self.assertIn('class="enrichment product-enrichment"', out)
+        self.assertIn('href="concept-explorer.html"', out)
+
+    def test_product_level_explorer_must_be_local_offline(self):
+        data = self.data()
+        data["product"]["explorer_href"] = "https://example.com/explorer"
+        with self.assertRaisesRegex(spine.SpineError, "local/offline"):
+            spine.validate(data)
+
     def test_source_derived_svg_rejects_script_or_remote_content(self):
         data = self.data()
         data["questions"][2]["figure"]["svg"] = '<svg><script>alert(1)</script></svg>'
