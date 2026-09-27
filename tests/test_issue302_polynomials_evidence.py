@@ -160,6 +160,22 @@ class Issue302PolynomialsEvidenceTests(unittest.TestCase):
         )
         self.assertTrue(repo["polynomials_evidence_blobs_unchanged_through_current_head"])
 
+    def test_independent_math_audit_is_separate_from_source_fidelity(self):
+        audit = self.data["independent_math_audit"]
+        self.assertEqual(audit["scope"], "PUBLISHED_MACHINE_TRANSCRIPTIONS_ONLY")
+        self.assertFalse(audit["source_fidelity_claim"])
+        self.assertEqual(audit["rows_checked"], 27)
+        self.assertEqual(
+            audit["status_counts"],
+            {
+                "NO_MATH_CONTRADICTION_FOUND_IN_PUBLISHED_TRANSCRIPTION": 23,
+                "MATH_CONFLICT_WITH_PUBLISHED_KEY_OR_TRANSCRIPTION": 2,
+                "MATH_DERIVATION_ERROR_AND_KEY_CONFLICT": 1,
+                "ASSERTION_REASON_LOGIC_REVIEW": 1,
+            },
+        )
+        self.assertFalse(self.data["validation"]["independent_mathematics_complete"])
+
     def test_markdown_is_visibly_blocked_from_downstream_authority(self):
         self.assertTrue(self.markdown.startswith("> [!CAUTION]"))
         self.assertIn("PARTIAL / CONTRADICTORY", self.markdown)
