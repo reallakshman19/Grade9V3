@@ -2116,24 +2116,32 @@
   function setupCanvas(canvas) {
     if (!canvas) return null;
     const parent = canvas.parentElement;
-    const dpr = window.devicePixelRatio || 1;
-    const rect = parent ? parent.getBoundingClientRect() : canvas.getBoundingClientRect();
-    const cssW = Math.max(1, Math.floor(rect.width));
-    const cssH = Math.max(1, Math.floor(rect.height));
+    if (!parent) return null;
 
-    const targetW = Math.round(cssW * dpr);
-    const targetH = Math.round(cssH * dpr);
+    const dpr = Math.max(1, Math.min(window.devicePixelRatio || 1, 2));
+    const cssW = Math.max(1, Math.floor(parent.clientWidth));
+    const cssH = Math.max(1, Math.floor(parent.clientHeight));
 
-    if (canvas.width !== targetW || canvas.height !== targetH) {
-      canvas.width = targetW;
-      canvas.height = targetH;
+    if (canvas.dataset.g9StableCss !== '1') {
+      canvas.style.width = '100%';
+      canvas.style.height = '100%';
+      canvas.style.maxWidth = '100%';
+      canvas.style.display = 'block';
+      canvas.style.boxSizing = 'border-box';
+      canvas.dataset.g9StableCss = '1';
     }
-    canvas.style.width = cssW + 'px';
-    canvas.style.height = cssH + 'px';
+
+    const targetW = Math.max(1, Math.round(cssW * dpr));
+    const targetH = Math.max(1, Math.round(cssH * dpr));
+    if (canvas.width !== targetW) canvas.width = targetW;
+    if (canvas.height !== targetH) canvas.height = targetH;
+
+    canvas.dataset.logicalWidth = String(cssW);
+    canvas.dataset.logicalHeight = String(cssH);
+    canvas.dataset.canvasDpr = String(dpr);
 
     const ctx = canvas.getContext('2d');
-    ctx.resetTransform && ctx.resetTransform();
-    ctx.scale(dpr, dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     return ctx;
   }
 
