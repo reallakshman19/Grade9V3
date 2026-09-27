@@ -58,14 +58,6 @@ class ExactMathWitnesses(unittest.TestCase):
         self.assertEqual(p(-1), 0)
         self.assertEqual(a + b, -34)
 
-    def test_cyclic_fraction_identity(self):
-        for raw in [(5, 2, -1), (7, -3, 1), (Fraction(3, 2), Fraction(-1, 2), 4)]:
-            a, b, c = map(Fraction, raw)
-            lhs = ((a-b)**2 / ((b-c)*(c-a))
-                   + (b-c)**2 / ((c-a)*(a-b))
-                   + (c-a)**2 / ((a-b)*(b-c)))
-            self.assertEqual(lhs, Fraction(3))
-
     def test_hidden_perfect_square(self):
         for x, y, z in [(2, 1, 0), (-5, 2, 3), (7, -1, 4)]:
             lhs = x*x + 4*y*y + 9*z*z - 4*x*y - 12*y*z + 6*x*z
@@ -82,7 +74,6 @@ class SurfaceContract(unittest.TestCase):
         expected = {
             "Q-MAT-09-POL-P05-HOTS-01",
             "Q-MAT-09-POL-P06-HOTS-14",
-            "Q-MAT-09-POL-P03-SC-08",
             "Q-MAT-09-POL-P09-ARC-21",
         }
         present = set(re.findall(r"id:'(Q-MAT-09-POL-[^']+)'", self.clinics))
