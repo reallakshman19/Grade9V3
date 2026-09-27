@@ -1897,49 +1897,63 @@ function renderGraph(p) {
 // -------------------------------------------------------------
 let isDraggingGraph = false;
 
-function handleGraphInteraction(e) {
+function graphPointFromEvent(e) {
   const rect = graphCanvas.getBoundingClientRect();
-  const mouseX = e.clientX - rect.left;
-  const mouseY = e.clientY - rect.top;
+  const cssX = e.clientX - rect.left;
+  const cssY = e.clientY - rect.top;
+  const scaleX = rect.width ? graphCanvas.width / rect.width : 1;
+  const scaleY = rect.height ? graphCanvas.height / rect.height : 1;
+  return { canvasX: cssX * scaleX, canvasY: cssY * scaleY, cssX, cssY };
+}
+
+function handleGraphInteraction(e) {
+  const point = graphPointFromEvent(e);
 
   const padLeft = 52;
   const padRight = 50;
   const plotW = graphCanvas.width - padLeft - padRight;
   const maxRatio = 5.0;
 
-  const clampedX = Math.max(padLeft, Math.min(graphCanvas.width - padRight, mouseX));
+  const clampedX = Math.max(padLeft, Math.min(graphCanvas.width - padRight, point.canvasX));
   const newRatio = ((clampedX - padLeft) / plotW) * maxRatio;
 
-  // Set m2 = newRatio * m1
   const newM2 = Math.min(15.0, Math.max(0.5, newRatio * m1));
   sliderM2.value = newM2.toFixed(1);
   syncSliders();
 
-  // Tooltip
   const pPhys = getPhysics();
   graphTooltip.style.display = 'block';
-  graphTooltip.style.left = (mouseX + 14) + 'px';
-  graphTooltip.style.top = (mouseY - 26) + 'px';
+  graphTooltip.style.left = (point.cssX + 14) + 'px';
+  graphTooltip.style.top = (point.cssY - 26) + 'px';
   graphTooltip.innerHTML = `<strong>Ratio α = ${newRatio.toFixed(2)}</strong><br>Tension T = ${pPhys.T.toFixed(1)} N<br>Accel a = ${Math.abs(pPhys.a).toFixed(2)} m/s²`;
 }
 
-graphCanvas.addEventListener('mousedown', (e) => {
+graphCanvas.style.touchAction = 'none';
+
+graphCanvas.addEventListener('pointerdown', (e) => {
   isDraggingGraph = true;
+  graphCanvas.setPointerCapture?.(e.pointerId);
   handleGraphInteraction(e);
+  e.preventDefault();
 });
 
-window.addEventListener('mousemove', (e) => {
-  if (isDraggingGraph) {
-    handleGraphInteraction(e);
+graphCanvas.addEventListener('pointermove', (e) => {
+  if (!isDraggingGraph) return;
+  handleGraphInteraction(e);
+  e.preventDefault();
+});
+
+function endGraphDrag(e) {
+  if (graphCanvas.hasPointerCapture?.(e.pointerId)) {
+    graphCanvas.releasePointerCapture(e.pointerId);
   }
-});
-
-window.addEventListener('mouseup', () => {
   isDraggingGraph = false;
   graphTooltip.style.display = 'none';
-});
+}
 
-graphCanvas.addEventListener('mouseleave', () => {
+graphCanvas.addEventListener('pointerup', endGraphDrag);
+graphCanvas.addEventListener('pointercancel', endGraphDrag);
+graphCanvas.addEventListener('pointerleave', () => {
   if (!isDraggingGraph) graphTooltip.style.display = 'none';
 });
 
