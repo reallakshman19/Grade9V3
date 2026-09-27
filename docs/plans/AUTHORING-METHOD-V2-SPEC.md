@@ -2,7 +2,7 @@
 
 | Field | Value |
 |---|---|
-| Revision | r2 (supersedes r1 of this file) |
+| Revision | r2.1 (r2 plus the step-back check, §0.1 and §5.6; supersedes r1) |
 | Status | DRAFT for owner review |
 | Date | 2026-09-27 |
 | Baseline | `main@1d044c18` (after PR #300) |
@@ -40,6 +40,33 @@ Conventions:
   - **Judgement:** an independent reviewer coaches; the owner decides.
 - **Descriptive state, never permission.** Tools report what exists and what they notice. Only the owner's acceptance changes what is published.
 - **Extend, don't duplicate.** Every new element in this spec extends an existing file or tool, or it retires one (§7).
+
+## 0.1 The broader problem this spec addresses
+
+The recurring defects are symptoms. The problem is how to reliably get **reference-grade learner products from AI agents at scale** (correct, pedagogically deep, learner-safe), and the obstacle is an operating model that answered each failure by adding another gate.
+
+**What keeps happening**
+- Agents produce work that *looks* finished: it passes checks, fills fields, and is labelled COMPLETE or PASS.
+- Independent review then shows it isn't: unverified or mistranscribed source truth, answers visible before the attempt, false novelty, stale closures, private renderers, stale reviews. It happened in the scanned-Maths stress test (#301–#305) and in both Physics pilots.
+- The response each time was another rule, gate, validator, role or handoff. The quality contract reached 44 rules, alongside duties, a ratchet and content CI, and #320 proposed 26 more controls.
+
+**Why that makes it worse**
+- **Goodhart:** agents optimise for passing the check, not for the learner. A gate at "PASS, 0 gaps" still met four failing reviews.
+- **Blockers become excuses:** "blocked", "duty open" and "waiting on gate" replace delivering the best possible work.
+- **Repo files crowd out thinking:** evidence files and templates were treated as a substitute for the agent's own research and judgement.
+- **Fragmentation:** one unit split across several agents loses coherence (text describing tasks another agent rewrote).
+- **Cost without convergence:** four fix/review rounds, ≈ $100 on two units, still not accepted.
+
+**What is wanted instead**
+- **Capable agents working like skilled authors:** they research widely, design before building, own a unit end to end, and are honest about what is weak.
+- **Guidance, not restraint:** a clear protocol for execution, and golden examples of excellence beside annotated failures.
+- **Only a few non-negotiables, built into the platform:** one renderer and one source of truth, answers that cannot leak before the attempt, facts that always carry a source.
+- **Judgement at the end:** an independent reviewer who coaches rather than blocks; the owner calibrates early and makes the final call on an exact build.
+- **Scalable and reusable:** library content is offloaded, so the method, examples and platform must let other agents or teams produce good units across subjects and grades. The repo is the reference and evidence base, not the answer key.
+
+**Success:** a unit goes from source to an owner-accepted product in one or two review rounds, with no structural leaks, at predictable cost. No layer of the process exists mainly to police the agent.
+
+Every phase of work, content and code alike, ends by stepping back and checking against this section (§5.6).
 
 ## 1. Evidence
 
@@ -316,7 +343,7 @@ Each item below is a code change with code tests.
 - Severity (Audit-1 scale) orders the work: S0 wrong or unsafe fact, S1 misleads or gives the answer away, S2 weakens the teaching, S3 polish. It never blocks.
 - Independence: the reviewer is a session that authored none of the unit's records. The acceptance tool prints the reviewer beside the package's `authored_by` values, so the owner sees it (§4.5).
 - The review guide (`docs/method/REVIEW-GUIDE.md`):
-  1. Read the design note and self-critique first.
+  1. Read the design note, the self-critique and the latest step-back records (§5.6) first.
   2. Attempt each audited item as a learner before opening its answer.
   3. Derive every numeric claim independently.
   4. Compare with the goldens.
@@ -356,6 +383,7 @@ Everything lives under `docs/method/` and `golden/`. It replaces `template/libra
 6. Declare weakness in the design note §8 and the worklog. Declared weakness is expected; hidden weakness is the failure.
 7. Research widely for teaching (any source, logged in the design note §7). Cite narrowly for facts (rule 2).
 8. If you change code, run the code tests before pushing (`python3 -m unittest discover -s tests`). Content changes don't need them.
+9. At the end of every phase, step back and run the step-back check (§5.6). Record it; act on any answer that points the wrong way before moving on, or record why not.
 
 The file also states the attempt threat model (§4.3.2) and the protection table (§4.3.3).
 
@@ -374,6 +402,7 @@ The file also states the attempt threat model (§4.3.2) and the protection table
 | P6 Review | reviewer | reviews the exact render; the author revises; up to 2 rounds suggested | review v2 | recommendation is accept or accept_with_notes, or 2 rounds done | $3–6 per round |
 | P7 Acceptance | owner | `accept_product.py` | acceptance + publication | — | — |
 
+- Every phase ends with the step-back check (§5.6), recorded in WORKLOG.
 - Guide total: about $15 per unit excluding P1. Past $25, note it in WORKLOG and continue.
 - Launch prompts are `docs/method/prompts/{source-reader,unit-author,reviewer}.prompt.md`, each ≤ 40 lines with `{{UNIT}}`, `{{SUBJECT}}`, `{{BRANCH}}` and `{{AGENT_ID}}`.
 - One branch per unit: `unit/<subject>/<slug>`, one PR per unit. The owner accepts from the merged build.
@@ -464,6 +493,44 @@ One entry per session: date · agent · session · phase · did · decisions (wi
 | `quality_gate.py` | CLI exits 0 by default; `--strict` only for its own tests | report unchanged |
 | `package_depth.py` | same data, now "fields not supplied" | used by self_check |
 | `learner-quality.v1.json` + calibration corpus | kept as the linter's rule set and its code tests | — |
+
+### 5.6 Step-back check — at the end of every phase
+
+At the end of **every** phase, pause and check the phase's output against the broader problem (§0.1):
+- every protocol phase P0–P7 (content);
+- every coding slice: each work package, PR or STEP-* (§10).
+
+It takes minutes. It is a reflection, not a gate: no tool reads it, and nothing is refused because of it. Answer each question in one line with evidence. For any answer that points the wrong way, fix it in the same phase, or record a PLAN_UPDATE / WORKLOG entry saying why not.
+
+| # | Step back and check | Wrong-way signal → what to do |
+|---|---|---|
+| SBC-1 | **Learner.** What does the learner now see, do or understand differently because of this phase? | "Nothing": say why the phase is still worth it, or drop it |
+| SBC-2 | **No new gate.** Did I add anything that refuses, blocks, fails on content, or gives an agent a field or count to satisfy? | Remove it, or turn it into guidance or an advisory note |
+| SBC-3 | **Thinking, not filling.** Did I research and reason, or did I fill a template, copy a file or satisfy a rule? | Do the missing research; log it (design note §7 or the PR) |
+| SBC-4 | **One of everything.** Did I create a second renderer, package copy, ledger, status system, role or path? | Fold it into the existing one |
+| SBC-5 | **Construction over policing.** Am I checking after the fact for a defect class the platform could make impossible? | Move it into the renderer or data format; delete the check |
+| SBC-6 | **Coherence.** Does anything now describe an older version of something else (text vs task, figure vs item, doc vs code, spec vs implementation)? | Update it in this phase |
+| SBC-7 | **Honest state.** Are PASS/FAIL/NOT_RUN truthful, weaknesses declared, and nothing called done that isn't? | Correct the claim |
+| SBC-8 | **Convergence and cost.** Is this moving toward acceptance in ≤ 2 review rounds at predictable cost? Is the work pushed and the spend logged? | Push now; note the cost; re-plan if it is drifting |
+| SBC-9 | **Reusable by others.** Could the offloaded library team, or another subject, use this without me explaining it? | Add the missing example or explanation |
+
+Record it in WORKLOG (content phases) or in the PR description and `TASK_EVIDENCE` (coding slices):
+
+```text
+STEP-BACK CHECK — <phase or STEP-id> @ <commit>
+SBC-1 Learner:            …
+SBC-2 No new gate:        …
+SBC-3 Thinking:           …
+SBC-4 One of everything:  …
+SBC-5 Construction:       …
+SBC-6 Coherence:          …
+SBC-7 Honest state:       …
+SBC-8 Convergence/cost:   …
+SBC-9 Reusable:           …
+Acted on: <what changed because of this check> | none
+```
+
+The reviewer reads the latest step-back records with the design note (§4.4). The owner sees them at P4 and P7.
 
 ## 6. What changes for each participant
 
@@ -606,6 +673,12 @@ Legend:
 |---|---|---|
 | the remaining S2/S3 content findings on both pilots | IMPL via WP7 | content work under the new protocol; it is the trial unit |
 
+### 9.8 Owner requests after r2
+
+| # | Request | Disp. | Where |
+|---|---|---|---|
+| S1 | Add the broader-problem points as a step-back check at every phase of coding (2026-09-27) | IMPL | §0.1 (the points), §5.6 (the check), house rule 9, the protocol (§5.2.1), §10 (coding slices), the review guide (§4.4) |
+
 ## 10. Work packages
 
 Effort: S ≤ ½ day, M ≈ 1 day, L ≈ 2–3 days of session work. Each code WP keeps the code test suite green, apart from the known browser-runtime failures.
@@ -621,6 +694,7 @@ Effort: S ≤ ½ day, M ≈ 1 day, L ≈ 2–3 days of session work. Each code W
 | WP7 Trial unit | prove the method | `phy-nlm-first-law` through P5–P7 on the round-4 findings, under the protocol; retrospective → amend §5 | owner accepts or rejects with notes; retrospective written; G-PHY-* nominated | WP1–WP6 | content session(s) |
 | WP8 Clinic/Explorer | new surfaces | §9.4 row 12 | — | WP7 + owner | L (deferred) |
 
+- **Every coding slice** (each WP, PR or STEP-*) ends with the step-back check (§5.6), recorded in the PR description and `TASK_EVIDENCE`.
 - **Order:** WP1 ∥ WP2 → WP3 → WP4 → WP5 → WP6 → WP7. WP8 comes later.
 - **Why:** WP1 and WP2 first because they remove blockers and give the method without touching the renderer. WP3 before the goldens because the goldens must show the final learner behaviour. WP4 after WP1 because acceptance reads fact status.
 
