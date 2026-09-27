@@ -140,20 +140,20 @@ class PolynomialsAgent1AdapterTests(unittest.TestCase):
         self.assertEqual(out["questions"][0]["figure"]["state"], "SOURCE_DERIVED_REDRAW")
         self.assertEqual(out["questions"][0]["custody"]["components"]["figures"], "EXTERNAL_REFERENCE_VERIFIED")
 
-    def test_source_answer_missing_requires_real_authored_closure(self):
+    def test_source_answer_missing_preserves_absence_without_fabrication(self):
         data = ready_ledger()
         row = data["ledger"]["rows"][0]
         row["source_answer_status"] = "MISSING"
         row["source_answer"] = None
-        failures = adapter.admission_failures(data)
-        self.assertTrue(any("no independently authored answer" in x for x in failures))
-
-        row["authored_answer"] = "Independently verified authored answer."
         out = adapter.adapt(data)
         q = out["questions"][0]
         self.assertNotIn("source_summary", q["answer"])
+        self.assertNotIn("authored_summary", q["answer"])
         self.assertEqual(q["custody"]["components"]["answer"], "NOT_PRESENT_IN_SOURCE")
-        self.assertEqual(q["answer"]["authored_summary"], "Independently verified authored answer.")
+
+        row["authored_answer"] = "Independently verified authored answer."
+        out = adapter.adapt(data)
+        self.assertEqual(out["questions"][0]["answer"]["authored_summary"], "Independently verified authored answer.")
 
 
 if __name__ == "__main__":
