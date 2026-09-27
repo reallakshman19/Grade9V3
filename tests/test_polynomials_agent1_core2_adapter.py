@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MODULE = ROOT / "Shared" / "tools" / "adapt_polynomials_agent1_ledger.py"
 PUBLISHED = ROOT / "docs" / "stress-tests" / "polynomials-agent1" / "source-ledger.json"
+DIRECT = ROOT / "docs" / "stress-tests" / "polynomials-core2" / "source-ledger.json"
 spec = importlib.util.spec_from_file_location("polynomials_adapter", MODULE)
 adapter = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(adapter)
@@ -81,6 +82,49 @@ class PolynomialsAgent1AdapterTests(unittest.TestCase):
         self.assertTrue(failures)
         self.assertTrue(any("readback is not independently reproducible" in x for x in failures))
         self.assertTrue(any("figure is missing" in x for x in failures))
+
+    def test_direct_pdf_reconciled_ledger_is_admitted_and_adapts(self):
+        data = json.loads(DIRECT.read_text(encoding="utf-8"))
+        self.assertEqual(adapter.admission_failures(data), [])
+        out = adapter.adapt(data, provider_head="direct-pdf-verified")
+        self.assertEqual(len(out["questions"]), 26)
+        by_id = {q["id"]: q for q in out["questions"]}
+
+        self.assertEqual(
+            by_id["Q-MAT-09-POL-P05-NUM-04"]["enrichment"]["clinic_href"],
+            "question-clinics.html#Q-MAT-09-POL-P05-NUM-04",
+        )
+        self.assertEqual(
+            by_id["Q-MAT-09-POL-P06-HOTS-14"]["enrichment"]["clinic_href"],
+            "question-clinics.html#Q-MAT-09-POL-P06-HOTS-14",
+        )
+        self.assertEqual(
+            by_id["Q-MAT-09-POL-P09-ARC-21"]["enrichment"]["clinic_href"],
+            "question-clinics.html#Q-MAT-09-POL-P09-ARC-21",
+        )
+        self.assertEqual(by_id["Q-MAT-09-POL-P08-ARC-11"]["enrichment"], {})
+
+        self.assertEqual(
+            by_id["Q-MAT-09-POL-P03-SC-08"]["answer"]["source_summary"], "C"
+        )
+        self.assertEqual(
+            by_id["Q-MAT-09-POL-P03-SC-08"]["answer"]["authored_summary"], "D (3)"
+        )
+        self.assertEqual(
+            by_id["Q-MAT-09-POL-P03-SC-18"]["answer"]["source_summary"], "B"
+        )
+        self.assertEqual(
+            by_id["Q-MAT-09-POL-P03-SC-18"]["answer"]["authored_summary"], "C (4)"
+        )
+        self.assertEqual(
+            by_id["Q-MAT-09-POL-P07-SA-06"]["answer"]["source_summary"],
+            "(i) 7760; (ii) 3(x-y)(y-z)(z-x)",
+        )
+        self.assertEqual(
+            by_id["Q-MAT-09-POL-P07-SA-06"]["answer"]["authored_summary"],
+            "(i) 77760; (ii) 3(x-y)(y-z)(z-x)",
+        )
+        self.assertEqual(len(by_id["Q-MAT-09-POL-P07-SA-06"]["subparts"]), 2)
 
     def test_agent1_status_and_disposition_are_not_source_truth_gates(self):
         data = ready_ledger()
