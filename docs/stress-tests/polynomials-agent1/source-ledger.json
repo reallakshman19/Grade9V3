@@ -1,10 +1,10 @@
 {
   "schema": "polynomials-agent1-evidence/v1",
-  "status": "EVIDENCE_VERIFIED_COMPLETE",
+  "status": "EVIDENCE_PARTIAL_CONTRADICTORY",
   "issue": {
     "programme_parent": 301,
     "owned_child": 302,
-    "disposition": "SATISFIED",
+    "disposition": "PRESERVE",
     "plan_comment_id": 5851779726,
     "source_access_evidence_comment_id": 5851789928
   },
@@ -17,8 +17,9 @@
     "repository": "reallaksh19/Grade9V3",
     "base_main": "dac87384cd52426b3b9e81801a09a3aed0bd1c0b",
     "source_pr": 306,
-    "source_pr_head": "9444c65c9488a580e0679ddd9adc85930a199d9a",
-    "execution_branch": "research/physics-library"
+    "source_pr_head": "7bf9ca0ae01f8555c4df0b1ff7c74180d5693766",
+    "execution_branch": "issue-302-polynomials-evidence-reconcile",
+    "prior_recorded_source_pr_head": "9444c65c9488a580e0679ddd9adc85930a199d9a"
   },
   "source_basis": {
     "acquisition_id": "ACQ-1DD05CE5AA04B532EC68",
@@ -91,20 +92,27 @@
     ]
   },
   "source_access": {
-    "status": "AVAILABLE",
-    "provider_checks": {
+    "status": "PUBLISHED_ROWS_AVAILABLE_SOURCE_BYTES_NOT_PROVIDER_REPRODUCIBLE",
+    "producer_claim": {
+      "prior_status": "AVAILABLE",
+      "basis": "The 7bf9ca0a producer commit states that rows were populated from the registered local OCR stream.",
+      "ocr_text_sha256": "27b876ac329b338764aece96007b07ec3cace255475c830b4b41883555e84621"
+    },
+    "current_executor_provider_checks": {
       "source_cache_present_in_pr_tree": false,
       "m2_pdf_present_in_pr_tree": false,
-      "m2_pages_json_present_in_pr_tree": true,
-      "polynomials_evidence_card_corpus_present": true,
-      "issue_or_pr_attachment_exposing_source_bytes": true
+      "m2_pages_json_present_in_pr_tree": false,
+      "polynomials_evidence_card_corpus_present": false,
+      "pr306_comment_attachment_exposing_source_bytes": false,
+      "issue301_comment_attachment_exposing_source_bytes": false,
+      "issue302_comment_attachment_exposing_source_bytes": false
     },
-    "consequence": "Source text verified from registered scan digest and local OCR text stream (RapidOCR 1.2.3, text SHA-256 27b876ac329b338764aece96007b07ec3cace255475c830b4b41883555e84621). Source-question rows populated directly without fabrication.",
-    "next_valid_input": "Downstream Core2 compilation (#303) and Concept Explorer / Clinic authoring (#304) may consume this authoritative ledger."
+    "consequence": "Published question rows can be audited for internal consistency and mathematics, but current provider state does not independently expose the registered scan/OCR bytes needed to prove transcription fidelity.",
+    "next_valid_input": "A provider-readable copy/readback of the registered scan/OCR, or a complete row inventory whose source fidelity can be independently checked against that acquisition."
   },
   "ledger": {
     "question_count": 27,
-    "coverage_status": "COMPLETE_PAGES_1_TO_11",
+    "coverage_status": "PARTIAL_27_ROWS_VS_DECLARED_SOURCE_KEY_INVENTORY",
     "rows": [
       {
         "id": "Q-MAT-09-POL-P01-FIB-01",
@@ -127,7 +135,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-02",
@@ -150,7 +159,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-03",
@@ -173,7 +183,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-04",
@@ -196,7 +207,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-05",
@@ -219,7 +231,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P01-FIB-06",
@@ -242,7 +255,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-01",
@@ -268,7 +282,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-02",
@@ -294,7 +309,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-03",
@@ -320,7 +336,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-04",
@@ -346,7 +363,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P01-TF-05",
@@ -372,7 +390,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P01-SC-01",
@@ -400,7 +419,10 @@
           "S": "S0",
           "overall": "MEDIUM"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "independent_comparison_status": "CONFLICT_MATH_VS_PUBLISHED_KEY",
+        "selection_eligible": false
       },
       {
         "id": "Q-MAT-09-POL-P02-SC-14",
@@ -428,7 +450,10 @@
           "S": "S1",
           "overall": "MEDIUM"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "independent_comparison_status": "CONFLICT_MATH_VS_PUBLISHED_KEY",
+        "selection_eligible": false
       },
       {
         "id": "Q-MAT-09-POL-P02-SC-25",
@@ -456,7 +481,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P03-SC-08",
@@ -484,7 +510,8 @@
           "S": "S0",
           "overall": "MEDIUM"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P03-SC-18",
@@ -512,7 +539,10 @@
           "S": "S0",
           "overall": "MEDIUM"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "independent_comparison_status": "CONFLICT_MATH_VS_PUBLISHED_KEY",
+        "selection_eligible": false
       },
       {
         "id": "Q-MAT-09-POL-P04-AR-01",
@@ -540,7 +570,10 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE",
+        "independent_comparison_status": "REVIEW_ASSERTION_REASON_LOGIC",
+        "selection_eligible": false
       },
       {
         "id": "Q-MAT-09-POL-P05-HOTS-01",
@@ -568,7 +601,8 @@
           "S": "S0",
           "overall": "HARD"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P05-HOTS-05",
@@ -596,7 +630,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P06-HOTS-14",
@@ -624,7 +659,8 @@
           "S": "S0",
           "overall": "MEDIUM"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P07-VSA-01",
@@ -647,7 +683,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P07-VSA-03",
@@ -670,7 +707,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P07-SA-06",
@@ -693,7 +731,8 @@
           "S": "S0",
           "overall": "MEDIUM"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P08-ARC-03",
@@ -721,7 +760,8 @@
           "S": "S0",
           "overall": "MEDIUM"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P08-ARC-10",
@@ -749,7 +789,8 @@
           "S": "S0",
           "overall": "EASY"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P08-ARC-11",
@@ -777,7 +818,8 @@
           "S": "S0",
           "overall": "MEDIUM"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       },
       {
         "id": "Q-MAT-09-POL-P09-ARC-21",
@@ -805,11 +847,26 @@
           "S": "S0",
           "overall": "MEDIUM"
         },
-        "fidelity_status": "VERIFIED"
+        "fidelity_status": "VERIFIED",
+        "current_executor_source_readback_status": "NOT_PROVIDER_REPRODUCIBLE"
       }
     ],
     "stable_identity_rule": "Use source page + readable source label/type; if source label is absent or unreadable, use a deterministic page-local sequence id without inventing a printed question number.",
-    "printed_page_rule": "Book pages 2.22 through 2.32 map to PDF pages 1 through 11."
+    "printed_page_rule": "Book pages 2.22 through 2.32 map to PDF pages 1 through 11.",
+    "declared_key_inventory": {
+      "fill_in_blanks": 6,
+      "true_false": 5,
+      "single_choice": 25,
+      "multiple_choice": 10,
+      "match_columns": 5,
+      "assertion_reason": 3,
+      "comprehension": 3,
+      "numerical_type": 15,
+      "hots": 20,
+      "archive_corner": 25,
+      "minimum_keyed_items_excluding_free_response": 117
+    },
+    "coverage_note": "The published master-key transcription names at least 117 keyed items before free-response items, while the machine ledger contains 27 rows. Therefore the every-question acceptance criterion is not met."
   },
   "answer_custody": {
     "source_answer_states": [
@@ -891,8 +948,8 @@
   },
   "explorer_admission": {
     "maximum_default": 1,
-    "current_recommendation": "Dynamic Polynomial Remainder Theorem & Root Synthetic Divisor Explorer",
-    "current_status": "ADMITTED",
+    "current_recommendation": null,
+    "current_status": "PROVISIONAL_BLOCKED_BY_INCOMPLETE_LEDGER_AND_VERIFICATION_CONFLICTS",
     "admission_tests_passed": [
       "manipulation varies a mathematically meaningful object or parameter",
       "interaction reveals an invariant, dependency, boundary, structural special case, or representation relationship",
@@ -900,11 +957,28 @@
       "the structure explains a real in-scope reasoning bottleneck",
       "the learner can follow predict -> manipulate -> observe -> explain -> formalise -> apply"
     ],
-    "rationale": "Dynamically adjusting the linear divisor root r = b/a on a number line updates P(x) = (ax - b)Q(x) + R in real time, visually revealing why the algebraic remainder is strictly the vertical coordinate P(b/a)."
+    "rationale": "Dynamically adjusting the linear divisor root r = b/a on a number line updates P(x) = (ax - b)Q(x) + R in real time, visually revealing why the algebraic remainder is strictly the vertical coordinate P(b/a).",
+    "provisional_recommendation": "Dynamic Polynomial Remainder Theorem & Root Synthetic Divisor Explorer"
   },
   "clinic_ranking": {
     "target_range": "3–6 only if 3–6 genuinely qualify",
-    "current_candidates": [
+    "current_candidates": [],
+    "current_status": "PROVISIONAL_BLOCKED_BY_INCOMPLETE_LEDGER_AND_VERIFICATION_CONFLICTS",
+    "priority_order": [
+      "method-choice bottleneck",
+      "representation bottleneck",
+      "conceptual structural bottleneck",
+      "plausible wrong route and diagnostic value",
+      "prerequisite burden",
+      "independent-check value",
+      "algebraic length as secondary evidence only"
+    ],
+    "exclusions": [
+      "unresolved S3 source fidelity",
+      "mathematically unsettled source readings",
+      "routine questions that are merely long"
+    ],
+    "provisional_candidates": [
       {
         "rank": 1,
         "question_id": "Q-MAT-09-POL-P05-HOTS-01",
@@ -965,21 +1039,6 @@
           "overall": "MEDIUM"
         }
       }
-    ],
-    "current_status": "EVALUATED_AND_RANKED",
-    "priority_order": [
-      "method-choice bottleneck",
-      "representation bottleneck",
-      "conceptual structural bottleneck",
-      "plausible wrong route and diagnostic value",
-      "prerequisite burden",
-      "independent-check value",
-      "algebraic length as secondary evidence only"
-    ],
-    "exclusions": [
-      "unresolved S3 source fidelity",
-      "mathematically unsettled source readings",
-      "routine questions that are merely long"
     ]
   },
   "classification_witnesses": {
@@ -1019,27 +1078,82 @@
         "overall": "HARD"
       }
     },
-    "status": "VERIFIED"
+    "status": "PROVISIONAL_CORPUS_INCOMPLETE"
   },
   "validation": {
     "source_identity_locked": true,
-    "source_text_fidelity_validated": true,
-    "ledger_complete": true,
-    "answer_custody_complete": true,
-    "independent_mathematics_complete": true,
-    "family_prerequisite_map_complete": true,
-    "hardness_complete": true,
-    "explorer_decision_complete": true,
-    "clinic_ranking_complete": true,
-    "html_projection_present": true,
+    "source_text_fidelity_validated": false,
+    "ledger_complete": false,
+    "answer_custody_complete": false,
+    "independent_mathematics_complete": false,
+    "family_prerequisite_map_complete": false,
+    "hardness_complete": false,
+    "explorer_decision_complete": false,
+    "clinic_ranking_complete": false,
+    "html_projection_present": false,
     "copyrighted_scan_bytes_committed": false,
     "ocr_corpus_committed": false,
     "page_images_committed": false
   },
   "handoff": {
-    "issue_303": "Consume stable source ids/order/fidelity/answer custody/reproduction status from this verified ledger.",
-    "issue_304": "Consume family/prerequisite/hardness evidence, Explorer comparison, and Clinic ranking from this verified ledger.",
-    "issue_305": "Recheck immutable source basis, ambiguities, answer custody, and mathematical results against this verified ledger.",
-    "issue_301": "Scanned Maths source-custody evidence base complete and satisfied."
-  }
+    "issue_303": "Do not consume this as a complete source corpus. The acquisition identity is stable, but the 27 rows are partial and several answer/key rows have unresolved conflicts.",
+    "issue_304": "Treat the published Explorer and Clinic choices as provisional hypotheses only until full source coverage and conflicts are resolved.",
+    "issue_305": "Independently re-read the registered source for completeness and the listed conflict rows before accepting producer claims.",
+    "issue_301": "#302 remains open/PRESERVE: source evidence is now published but incomplete and internally contradictory."
+  },
+  "verification_findings": [
+    {
+      "id": "FIND-COMPLETENESS-001",
+      "severity": "BLOCKER",
+      "category": "LEDGER_COMPLETENESS",
+      "evidence": "source-ledger.json has 27 rows, while the same publication's master-key transcription enumerates at least 117 keyed items before free response.",
+      "consequence": "coverage_status cannot be COMPLETE_PAGES_1_TO_11 and downstream agents must not treat the 27 rows as the complete source corpus."
+    },
+    {
+      "id": "FIND-PROVENANCE-001",
+      "severity": "BLOCKER",
+      "category": "SOURCE_READBACK",
+      "evidence": "Current PR #306 tree contains no .source-cache, m2.pdf, m2.pages.json, or Polynomials evidence-card corpus; PR #306 and #301 have no comments/attachments, and #302 comments expose no source bytes.",
+      "consequence": "The producer's local source readback cannot be independently reproduced by this executor from provider-visible evidence."
+    },
+    {
+      "id": "FIND-MATH-001",
+      "severity": "BLOCKER",
+      "category": "ANSWER_CUSTODY_CONFLICT",
+      "question_id": "Q-MAT-09-POL-P01-SC-01",
+      "evidence": "For x+y+z=1, 1-3(x^2+y^2+z^2)+2(x^3+y^3+z^3)=6xyz, which is option A as transcribed; the published source_answer is D.",
+      "consequence": "Either the stem/options transcription or source key is wrong; this row is not independently verified."
+    },
+    {
+      "id": "FIND-MATH-002",
+      "severity": "BLOCKER",
+      "category": "ANSWER_CUSTODY_CONFLICT",
+      "question_id": "Q-MAT-09-POL-P02-SC-14",
+      "evidence": "(x+2y+2z)^3+(x-2y-2z)^3=2x[x^2+12(y+z)^2], exactly transcribed option C; the published source_answer is D.",
+      "consequence": "The stated 'printed option layout discrepancy' requires source-image readback; the row cannot remain unqualified VERIFIED."
+    },
+    {
+      "id": "FIND-MATH-003",
+      "severity": "BLOCKER",
+      "category": "ANSWER_CUSTODY_CONFLICT",
+      "question_id": "Q-MAT-09-POL-P03-SC-18",
+      "evidence": "For x=1+sqrt(2), x^4+2x^3+3=34+22sqrt(2); among the transcribed options this is D/None, while source_answer is B and the published derivation says 1.",
+      "consequence": "The independent derivation is mathematically incorrect as published, and source transcription/key must be re-read."
+    },
+    {
+      "id": "FIND-LOGIC-001",
+      "severity": "REVIEW",
+      "category": "ASSERTION_REASON_CONFLICT",
+      "question_id": "Q-MAT-09-POL-P04-AR-01",
+      "evidence": "The assertion is true and the reason is true, but the generic fact that a cubic has at most three linear factors does not establish that these three specific factors divide the polynomial; conventional assertion-reason logic therefore points to B, not A.",
+      "consequence": "Re-read source wording/key before downstream use."
+    },
+    {
+      "id": "FIND-DOC-001",
+      "severity": "BLOCKER",
+      "category": "PROJECTION_CONTRADICTION",
+      "evidence": "scanned-assessment-m2-polynomials-ledger.md disagrees with source-ledger.json for multiple fill-in items, including #3, #5 and #6; the narrative/master-key and machine row do not describe the same question/answer in those cases.",
+      "consequence": "Markdown and machine JSON are not currently interchangeable projections of one source truth."
+    }
+  ]
 }
