@@ -24,4 +24,4 @@ For RLL-1 / Codex runs:
 11. Never expose or persist `GH_TOKEN`, `GITHUB_TOKEN`, `GH_ENTERPRISE_TOKEN`, or `GITHUB_ENTERPRISE_TOKEN` to Codex.
 12. Native-Windows source-writing execution is prohibited; use WSL2/Linux for `BRANCH_RESUME`. Read-only exact-head evidence may run only after local smoke passes.
 
-Required Common basis: `22d365839e64c19c7ba606e2cf4edc6b9cc2999f`.
+Required Common basis: `1ced68258afeaf50df113b1d38a4ceb9193587e3`.
