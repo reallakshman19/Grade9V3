@@ -2,7 +2,7 @@
 
 This repository contains only a thin consumer adapter. Common Engineering Relay V3.1 owns the worker, schemas, lease/state machine, directive filtering, Codex invocation, Git postflight and evidence publication.
 
-Required Common basis: 22d365839e64c19c7ba606e2cf4edc6b9cc2999f.
+Required Common basis: 1ced68258afeaf50df113b1d38a4ceb9193587e3.
 
 ## Authority
 
