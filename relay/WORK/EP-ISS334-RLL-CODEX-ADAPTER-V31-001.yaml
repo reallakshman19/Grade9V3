@@ -6,13 +6,13 @@ outcome:
 basis:
   predecessor_checkpoint: null
   material_base: "7515c2e5898eeea86ae56b71cdfd8f8175b8ff67"
-  protocol_basis: "reallaksh19/Common@22d365839e64c19c7ba606e2cf4edc6b9cc2999f:skills/engineering-pr-delivery-v3.1"
+  protocol_basis: "reallaksh19/Common@1ced68258afeaf50df113b1d38a4ceb9193587e3:skills/engineering-pr-delivery-v3.1"
   live_protocol_basis:
     protocol: "V3.1"
     common_repository: "reallaksh19/Common"
-    common_sha: "22d365839e64c19c7ba606e2cf4edc6b9cc2999f"
-    two_pass_revision: "TPG-2P-2026-09-25-R1"
-    resolved_at: "2026-09-28T09:50:18Z"
+    common_sha: "1ced68258afeaf50df113b1d38a4ceb9193587e3"
+    two_pass_revision: "TPG-2P-2026-09-28-R3"
+    resolved_at: "2026-09-28T13:14:13Z"
   semantic_dependencies:
     - path: "Issue #334 IMPLEMENTATION_PLAN rev 1 / issuecomment-5867594300"
       reason: "Approved bounded infrastructure approach."
