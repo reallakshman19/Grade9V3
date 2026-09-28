@@ -15,7 +15,7 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-$RequiredCommonBasis = "22d365839e64c19c7ba606e2cf4edc6b9cc2999f"
+$RequiredCommonBasis = "1ced68258afeaf50df113b1d38a4ceb9193587e3"
 $Worker = Join-Path $CommonRoot "skills/engineering-pr-delivery-v3.1/scripts/rll_worker.py"
 
 foreach ($name in @("GH_TOKEN","GITHUB_TOKEN","GH_ENTERPRISE_TOKEN","GITHUB_ENTERPRISE_TOKEN")) {
