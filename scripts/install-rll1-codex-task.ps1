@@ -14,7 +14,7 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = "Stop"
 
-$RequiredCommonBasis = "22d365839e64c19c7ba606e2cf4edc6b9cc2999f"
+$RequiredCommonBasis = "1ced68258afeaf50df113b1d38a4ceb9193587e3"
 $SourceWorker = Join-Path $RepoRoot "scripts/rll1-codex-worker.ps1"
 
 function Require-Command([string]$Name) {
