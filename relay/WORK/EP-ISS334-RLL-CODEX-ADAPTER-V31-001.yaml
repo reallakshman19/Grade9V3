@@ -1,0 +1,71 @@
+schema_version: "relay-v3.1-ep"
+id: "EP-ISS334-RLL-CODEX-ADAPTER-V31-001"
+work_package: "WP-ISS334-RLL-CODEX-ADAPTER"
+outcome:
+  statement: "Bootstrap a thin Grade9V3 CODEX_LOCAL_V1 adapter that delegates RLL-1 transport to Common and can later activate read-only exact-head evidence for issue #332."
+basis:
+  predecessor_checkpoint: null
+  material_base: "7515c2e5898eeea86ae56b71cdfd8f8175b8ff67"
+  protocol_basis: "reallaksh19/Common@22d365839e64c19c7ba606e2cf4edc6b9cc2999f:skills/engineering-pr-delivery-v3.1"
+  live_protocol_basis:
+    protocol: "V3.1"
+    common_repository: "reallaksh19/Common"
+    common_sha: "22d365839e64c19c7ba606e2cf4edc6b9cc2999f"
+    two_pass_revision: "TPG-2P-2026-09-25-R1"
+    resolved_at: "2026-09-28T09:50:18Z"
+  semantic_dependencies:
+    - path: "Issue #334 IMPLEMENTATION_PLAN rev 1 / issuecomment-5867594300"
+      reason: "Approved bounded infrastructure approach."
+    - path: "Issue #332"
+      reason: "Read-only exact-head evidence consumer that remains blocked until adapter smoke."
+    - path: "github:reallaksh19/Grade9V3#331"
+      reason: "Product PR to validate; this EP must not mutate it."
+scope:
+  write:
+    - ".agents/rules/rll-1.md"
+    - "scripts/rll1-codex-worker.ps1"
+    - "scripts/install-rll1-codex-task.ps1"
+    - "docs/RLL1_CODEX_LOCAL_AUTOMATION.md"
+    - "tests/test_rll_codex_adapter.py"
+    - "relay/WORK/EP-ISS334-RLL-CODEX-ADAPTER-V31-001.yaml"
+  read:
+    - ".github/**"
+    - "relay/**"
+  protect:
+    - "Physics/**"
+    - "Chemistry/**"
+    - "Mathematics/**"
+    - "products/**"
+    - "Shared/**"
+    - "public/**"
+    - "standalone/**"
+    - "docs/products/**"
+    - "codex/issue-329-nlm-metadata"
+  prohibit:
+    - "Do not modify PR #331 or any product/runtime source."
+    - "Do not copy Common's RLL worker, lease engine, schemas or state machine into Grade9V3."
+    - "Do not persist GitHub tokens or expose provider credentials to Codex."
+    - "Do not add merge/release/force-push behavior."
+    - "Do not label issue #332 rll-ready before adapter smoke evidence."
+    - "Do not activate source-writing RLL before required smoke gates."
+acceptance:
+  - id: "AC-334-THIN"
+    statement: "The repository adapter delegates execution to Common rll_worker.py --executor codex and contains no duplicated transport engine."
+  - id: "AC-334-SECURITY"
+    statement: "Credential separation, no-GitHub-MCP execution, no dangerous bypass and launcher-owned Git/provider boundaries are explicit."
+  - id: "AC-334-SMOKE"
+    statement: "Installer defaults to smoke-first activation and documents 10-minute scheduled execution with overlap suppression."
+  - id: "AC-334-SCOPE"
+    statement: "Diff is restricted to adapter/docs/test/EP surfaces and does not change product implementation."
+quality_policy:
+  level: "HIGH_RISK"
+  independent_review: "REQUIRED"
+admission_policy:
+  qualification: "NOT_REQUIRED"
+  question_policy: "NONE"
+next:
+  first_action: "Add the thin rule and Codex wrapper, then prove static adapter invariants before installer activation."
+  stop_conditions:
+    - "Stop if a compatible repository-local adapter appears on main."
+    - "Stop if Common changes the Codex worker contract materially."
+    - "Stop before rll-ready or local activation until smoke prerequisites are externally available."
