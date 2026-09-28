@@ -9,7 +9,7 @@ WORKER = REPO / "scripts/rll1-codex-worker.ps1"
 INSTALLER = REPO / "scripts/install-rll1-codex-task.ps1"
 DOCS = REPO / "docs/RLL1_CODEX_LOCAL_AUTOMATION.md"
 EP = REPO / "relay/WORK/EP-ISS334-RLL-CODEX-ADAPTER-V31-001.yaml"
-COMMON_BASIS = "22d365839e64c19c7ba606e2cf4edc6b9cc2999f"
+COMMON_BASIS = "1ced68258afeaf50df113b1d38a4ceb9193587e3"
 
 
 class RllCodexAdapterContract(unittest.TestCase):
