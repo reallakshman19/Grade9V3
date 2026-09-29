@@ -7,9 +7,6 @@ on:
   pull_request:
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   code-tests:
     runs-on: ubuntu-latest
@@ -30,6 +27,8 @@ jobs:
         run: git diff --exit-code -- Mathematics/library/polynomials.v1.json
       - name: Render Polynomials hard-first Core2 HTML
         run: python3 Mathematics/research/tools/build_polynomials_core2_html.py
+      - name: Generated Polynomials Core2 render has no drift
+        run: git diff --exit-code -- public/mathematics/polynomials/core2.html public/mathematics/polynomials/core2.render.json
       - name: Upload Polynomials Core2 render
         uses: actions/upload-artifact@v4
         with:
@@ -37,17 +36,6 @@ jobs:
           path: |
             public/mathematics/polynomials/core2.html
             public/mathematics/polynomials/core2.render.json
-      - name: Commit Polynomials Core2 render
-        run: |
-          git add public/mathematics/polynomials/core2.html public/mathematics/polynomials/core2.render.json
-          if git diff --cached --quiet; then
-            echo "Polynomials Core2 render already current"
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "build(math): materialize Polynomials Core2 learner HTML (#350)"
-          git push origin "HEAD:${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
       - name: Informational platform code tests
         continue-on-error: true
         run: >-
