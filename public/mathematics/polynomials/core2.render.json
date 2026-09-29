@@ -1,0 +1,35 @@
+{
+  "schema": "polynomials-core2-render/v1",
+  "product_id": "PRODUCT-MAT-POLYNOMIALS",
+  "manifest": "products/mathematics/polynomials.manifest.json",
+  "renderer": "render_core/2",
+  "render_digest": "24652c6edd18fe35",
+  "selected_core2": [
+    "Q-MAT-POLY-M2-P06-HIGHER-ORDER-THINKING-SKILLS-HOTS-16",
+    "Q-MAT-POLY-M2-P09-ARCHIVE-CORNER-22",
+    "Q-MAT-POLY-M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-21"
+  ],
+  "core2_gaps": [
+    {
+      "duty": "AUTHOR_LEARNER_METADATA",
+      "record": "Q-MAT-POLY-M2-P06-HIGHER-ORDER-THINKING-SKILLS-HOTS-16",
+      "detail": "METADATA_PROVENANCE_INVALID: Q-MAT-POLY-M2-P06-HIGHER-ORDER-THINKING-SKILLS-HOTS-16:OWNER_SUPPLIED",
+      "core": "CORE2",
+      "product": "PRODUCT-MAT-POLYNOMIALS"
+    },
+    {
+      "duty": "AUTHOR_LEARNER_METADATA",
+      "record": "Q-MAT-POLY-M2-P09-ARCHIVE-CORNER-22",
+      "detail": "METADATA_PROVENANCE_INVALID: Q-MAT-POLY-M2-P09-ARCHIVE-CORNER-22:OWNER_SUPPLIED",
+      "core": "CORE2",
+      "product": "PRODUCT-MAT-POLYNOMIALS"
+    },
+    {
+      "duty": "AUTHOR_LEARNER_METADATA",
+      "record": "Q-MAT-POLY-M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-21",
+      "detail": "METADATA_PROVENANCE_INVALID: Q-MAT-POLY-M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-21:OWNER_SUPPLIED",
+      "core": "CORE2",
+      "product": "PRODUCT-MAT-POLYNOMIALS"
+    }
+  ]
+}
