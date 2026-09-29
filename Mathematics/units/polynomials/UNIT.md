@@ -2,7 +2,13 @@
 unit: polynomials
 package: Mathematics/library/polynomials.v1.json
 owner_agent: chatgpt-gpt5.6-sol
-spine_nodes: []
+spine_nodes:
+  - MAT-09-POLYNOMIALS
+  - MAT-09-POLYNOMIALS-01
+  - MAT-09-POLYNOMIALS-02
+  - MAT-09-POLYNOMIALS-03
+  - MAT-09-ALGEBRAIC-IDENTITIES
+  - MAT-09-ALGEBRAIC-IDENTITIES-01
 inventories: []
 grade_profile:
   base_grade: 9
@@ -34,7 +40,7 @@ Existing records and status notes (do not invent a design note for inherited mat
 - Current bounded source responsibility: #350.
 - Existing m2 acquisition/scan custody is reused; no competing Polynomials source ledger or renderer is introduced.
 - `Mathematics/library/polynomials.v1.json` does not yet exist on the approved base. The path above records the expected one-package-per-unit destination; package authoring follows source/schema reconciliation rather than being fabricated in intake.
-- `Mathematics/research/syllabus-spine.json` currently lacks canonical Polynomials nodes; basic mapping work will add only source-supported nodes.
+- Official-syllabus grounding now exists in `Mathematics/research/evidence/MAT-09-POLYNOMIALS.cards.json` and `Mathematics/research/syllabus-spine.json`. The unit is bound to Polynomials basics, linear-polynomial/application scope, remainder/factor/division competency, and related Algebraic Identities nodes. Per-question mapping waits for the complete source inventory rather than being guessed from legacy question rows.
 
 First prototype and Owner calibration point:
 
@@ -48,7 +54,7 @@ Links to first-stage HTML, learner PDF, Core2 key PDF where applicable, mappings
 
 - First-stage learner artifacts: not yet authored in #350.
 - Source inventory: pending direct m1 registration and complete source readback.
-- Basic syllabus mapping: pending official-syllabus/textbook research.
+- Basic syllabus basis: established from current CBSE Class IX 2026–27 curriculum and NCERT Grade 9 Polynomials chapter; per-question mapping is pending the complete source inventory.
 - Known gap: current execution context does not yet expose the exact m1 source bytes for direct verification/readback.
 
 Remaining Cores and their learning dependencies (see FIRST-STAGE-REVIEW.md; research and drafting can continue):
