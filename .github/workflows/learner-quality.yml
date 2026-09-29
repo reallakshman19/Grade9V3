@@ -7,9 +7,6 @@ on:
   pull_request:
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
   code-tests:
     runs-on: ubuntu-latest
@@ -32,6 +29,8 @@ jobs:
         run: python3 Mathematics/research/tools/build_polynomials_core2_html.py
       - name: Polish Polynomials Core2 browser presentation
         run: python3 Mathematics/research/tools/polynomials_core2_browser_polish.py
+      - name: Generated Polynomials Core2 browser v2 has no drift
+        run: git diff --exit-code -- products/mathematics/polynomials.manifest.json public/mathematics/polynomials/core2.html public/mathematics/polynomials/core2.render.json
       - name: Upload Polynomials Core2 render
         uses: actions/upload-artifact@v4
         with:
@@ -42,17 +41,6 @@ jobs:
             public/mathematics/polynomials/core2.render.json
             public/css/question-bank.css
             public/css/tablet-12-7.css
-      - name: Commit Core2 browser v2 render
-        run: |
-          git add products/mathematics/polynomials.manifest.json public/mathematics/polynomials/core2.html public/mathematics/polynomials/core2.render.json
-          if git diff --cached --quiet; then
-            echo "Polynomials Core2 browser v2 already current"
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "build(math): materialize Polynomials Core2 browser v2 (#350)"
-          git push origin "HEAD:${GITHUB_HEAD_REF:-${GITHUB_REF_NAME}}"
       - name: Informational platform code tests
         continue-on-error: true
         run: >-
