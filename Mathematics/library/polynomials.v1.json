@@ -6008,7 +6008,7 @@
     {
       "id": "Q-MAT-POLY-M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-15",
       "version": "0.1.0",
-      "status": "DISPUTED",
+      "status": "CANDIDATE",
       "source_refs": [
         "SRC-BOOK-MATH-CH2-CH3-M2-SCAN"
       ],
@@ -6034,13 +6034,13 @@
           "source_item_locator": "INV-MAT-09-POLYNOMIALS-M1P33-50-M2P1-11#M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-15",
           "source_digest": "1dd05ce5aa04b532ec68c4054f55af1677ecb210be00b8f3085d6f29215a230c",
           "custody_mode": "EXTERNAL_REFERENCE",
-          "comparison_status": "UNRESOLVED",
-          "demand_signature": "f67008ab6b35b30dfd679917979770e83005ca392a3f4c3ff5ee7b800c51c78f",
+          "comparison_status": "ORIGINAL_EXACT",
+          "demand_signature": "2d235f2cda0feec451effe64353ab5d7a0054efccfdc824a2daac29e25c23ea4",
           "components": {
             "original_identifier": "PRESERVED",
-            "stem": "UNRESOLVED",
+            "stem": "PRESERVED",
             "subparts": "NOT_PRESENT_IN_SOURCE",
-            "options": "UNRESOLVED",
+            "options": "PRESERVED",
             "conditions": "NOT_PRESENT_IN_SOURCE",
             "figures": "NOT_PRESENT_IN_SOURCE",
             "captions": "NOT_PRESENT_IN_SOURCE",
@@ -6049,8 +6049,7 @@
           },
           "notes": [
             "Question stem/options are projected from the committed Reader-A evidence card.",
-            "Printed key, when present, is preserved separately in answer.source_key; verification_status is authoritative for whether the mathematics was independently re-derived.",
-            "Reader-A evidence still contains an explicit unresolved readback marker."
+            "Printed key, when present, is preserved separately in answer.source_key; verification_status is authoritative for whether the mathematics was independently re-derived."
           ]
         }
       },
@@ -6063,7 +6062,7 @@
         "2ab(3a² + b²)",
         "ab(3a² + b²)",
         "2b(3a² + b²)",
-        "3a² + b^[source exponent unclear]"
+        "3a² + b²"
       ],
       "conditions": [],
       "figure_refs": [],
@@ -16236,7 +16235,6 @@
       "id": "KI-POLY-SOURCE-READBACK",
       "affected_refs": [
         "Q-MAT-POLY-M2-P01-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-9",
-        "Q-MAT-POLY-M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-15",
         "Q-MAT-POLY-M2-P05-HIGHER-ORDER-THINKING-SKILLS-HOTS-6",
         "Q-MAT-POLY-M2-P05-HIGHER-ORDER-THINKING-SKILLS-HOTS-7"
       ],
@@ -16285,8 +16283,8 @@
       "Q-MAT-POLY-M2-P09-ARCHIVE-CORNER-22"
     ],
     "grade9v3:reader_b_state": "NOT_RUN_INDEPENDENTLY",
-    "grade9v3:resolved_source_custody_count": 168,
-    "grade9v3:unresolved_source_custody_count": 4
+    "grade9v3:resolved_source_custody_count": 169,
+    "grade9v3:unresolved_source_custody_count": 3
   },
   "data": []
 }
