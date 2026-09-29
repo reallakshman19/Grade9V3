@@ -43,14 +43,6 @@
       "reason": "Generated GitHub Pages mirror of the declarative Question Bank browser projection; generator and runtime remain scanned."
     },
     {
-      "path": "evidence/stress-tests/polynomials-six-core/audit_inventory.py",
-      "reason": "Test fixture script targeting specific Mathematics adapters and governed sources."
-    },
-    {
-      "path": "evidence/stress-tests/polynomials-six-core/prototype/build_records.py",
-      "reason": "Stress test prototype script generating mock Mathematics packages directly, using literal identifiers to mimic valid governed structures."
-    },
-    {
       "path": "Shared/tools/library_board.py",
       "reason": "References workflow role documents."
     },
@@ -81,6 +73,14 @@
     {
       "path": "public/data/research-first-workflow.js",
       "reason": "Generated workflow diagram containing literal nodes."
+    },
+    {
+      "path": "evidence/stress-tests/polynomials-six-core/audit_inventory.py",
+      "reason": "Test fixture script targeting specific Mathematics adapters and governed sources."
+    },
+    {
+      "path": "evidence/stress-tests/polynomials-six-core/prototype/build_records.py",
+      "reason": "Stress test prototype script generating mock Mathematics packages directly, using literal identifiers to mimic valid governed structures."
     }
   ]
 }
