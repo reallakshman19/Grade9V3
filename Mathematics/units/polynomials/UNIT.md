@@ -32,7 +32,8 @@ Sources and open source uncertainties:
 - `m2.pdf` is directly re-fetched from the Owner-connected Google Drive file `130kNsU70ulu2xvIUkV_OkYg9uipWadwB` and matches registered acquisition `ACQ-1DD05CE5AA04B532EC68`, SHA-256 `1dd05ce5aa04b532ec68c4054f55af1677ecb210be00b8f3085d6f29215a230c`, 49 pages, 18,424,888 bytes. Requested scope here is PDF pages 1–11.
 - Both PDFs are scan-only in the fetched bytes (no extractable text layer). Source readback therefore uses rendered page images; OCR may assist transcription but never outranks the rendered source.
 - The chapter boundary begins on m1 PDF page 32; page 32 is intentionally outside this Owner-selected specimen and is recorded as an omitted boundary page, not silently included.
-- The historical 27-row m2 stress-test ledger is discrepancy evidence only. Direct inspection of the requested m2 range shows the Assessment/Archive corpus is much larger, so that ledger is not accepted as a complete question inventory.
+- Direct page readback establishes a 212-item numbered denominator for the requested specimen: 50 items in m1:33–50 and 162 items in m2:1–11. This is a denominator, not a claim that every item is already a canonical Core2 question.
+- The historical 27-row m2 stress-test ledger is discrepancy evidence only and is not accepted as a complete question inventory.
 - Printed answers and independently verified mathematical results remain separate facts. OCR/transcription ambiguity remains explicit.
 
 Existing records and status notes (do not invent a design note for inherited material):
@@ -54,7 +55,7 @@ Core2 first. The Owner supplied a question-bank source specimen, but the bank mu
 Links to first-stage HTML, learner PDF, Core2 key PDF where applicable, mappings and known gaps:
 
 - First-stage learner artifacts: not yet authored in #350.
-- Source inventory: direct source bytes are now available; complete item transcription/readback is in progress.
+- Source inventory: exact source bytes and the 212-item denominator are established; complete item transcription/readback is in progress.
 - Basic syllabus basis: established from current CBSE Class IX 2026–27 curriculum and NCERT Grade 9 Polynomials chapter; per-question mapping is pending the complete source inventory.
 - Known gap: m1's hashed OCR scan manifest and Reader-B cross-read are not yet complete. This does not permit guessed source text.
 
