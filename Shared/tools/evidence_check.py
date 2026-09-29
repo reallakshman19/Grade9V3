@@ -439,8 +439,11 @@ def inventory_findings(subject: str, cards: dict[str, dict], repo: Path = REPO) 
             if (item.get("locator") or {}).get("acquisition_ref") not in members:
                 findings.append(_finding("INVENTORY_MEMBER_NOT_LISTED", ref, "item locator is outside members[]"))
             question_card = cards.get(item.get("question_card"))
-            if not question_card or question_card.get("kind") != "QUESTION":
-                findings.append(_finding("INVENTORY_QUESTION_CARD", ref, "question_card must name an existing QUESTION card"))
+            expected_card_kind = "WORKED_EXAMPLE" if item.get("source_role") == "WORKED_EXAMPLE" else "QUESTION"
+            if not question_card or question_card.get("kind") != expected_card_kind:
+                findings.append(_finding(
+                    "INVENTORY_QUESTION_CARD", ref,
+                    f"question_card must name an existing {expected_card_kind} card"))
             key = item.get("key") or {}
             if key.get("state") == "PRESENT" and not key.get("card"):
                 findings.append(_finding("INVENTORY_KEY_CARD", ref, "PRESENT key needs an ANSWER_KEY card"))
