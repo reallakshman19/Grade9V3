@@ -28,19 +28,20 @@ Grade 9 Mathematics — Polynomials. Build a source-faithful question bank and b
 
 Sources and open source uncertainties:
 
-- `m2.pdf` is registered as `ACQ-1DD05CE5AA04B532EC68`, SHA-256 `1dd05ce5aa04b532ec68c4054f55af1677ecb210be00b8f3085d6f29215a230c`, 49 pages. Requested scope here is PDF pages 1–11.
-- Independent RCA previously read the owner-provided `m1.pdf` as 50 pages, SHA-256 `0b3450c353ff299851528edd4469bc01413920135b0fd041fe89286a00086afa`. Requested scope here is PDF pages 33–50. Current source bytes still need direct re-verification and repository registration.
-- The chapter boundary is known to begin on m1 PDF page 32; page 32 is intentionally outside this Owner-selected specimen and is recorded as an omitted boundary page, not silently included.
-- The historical 27-row m2 stress-test ledger is discrepancy evidence only. Later reconciliation found a larger keyed denominator, so it is not accepted as a complete question inventory.
+- `m1.pdf` is now directly fetched from the Owner-connected Google Drive file `1WMARSwWpgIj4cxztZork9PA2tZjxvAk5` and registered as `ACQ-0B3450C353FF29985152`, SHA-256 `0b3450c353ff299851528edd4469bc01413920135b0fd041fe89286a00086afa`, 50 pages, 14,261,223 bytes. Requested scope here is PDF pages 33–50.
+- `m2.pdf` is directly re-fetched from the Owner-connected Google Drive file `130kNsU70ulu2xvIUkV_OkYg9uipWadwB` and matches registered acquisition `ACQ-1DD05CE5AA04B532EC68`, SHA-256 `1dd05ce5aa04b532ec68c4054f55af1677ecb210be00b8f3085d6f29215a230c`, 49 pages, 18,424,888 bytes. Requested scope here is PDF pages 1–11.
+- Both PDFs are scan-only in the fetched bytes (no extractable text layer). Source readback therefore uses rendered page images; OCR may assist transcription but never outranks the rendered source.
+- The chapter boundary begins on m1 PDF page 32; page 32 is intentionally outside this Owner-selected specimen and is recorded as an omitted boundary page, not silently included.
+- The historical 27-row m2 stress-test ledger is discrepancy evidence only. Direct inspection of the requested m2 range shows the Assessment/Archive corpus is much larger, so that ledger is not accepted as a complete question inventory.
 - Printed answers and independently verified mathematical results remain separate facts. OCR/transcription ambiguity remains explicit.
 
 Existing records and status notes (do not invent a design note for inherited material):
 
 - Parent programme: GitHub #301; governing continuation architecture: #319.
 - Current bounded source responsibility: #350.
-- Existing m2 acquisition/scan custody is reused; no competing Polynomials source ledger or renderer is introduced.
+- Existing m2 acquisition/scan custody is reused; m1 acquisition custody is now registered under the same local source identity. A hashed m1 OCR scan manifest is still to be produced; raw OCR text remains private and out of Git.
 - `Mathematics/library/polynomials.v1.json` does not yet exist on the approved base. The path above records the expected one-package-per-unit destination; package authoring follows source/schema reconciliation rather than being fabricated in intake.
-- Official-syllabus grounding now exists in `Mathematics/research/evidence/MAT-09-POLYNOMIALS.cards.json` and `Mathematics/research/syllabus-spine.json`. The unit is bound to Polynomials basics, linear-polynomial/application scope, remainder/factor/division competency, and related Algebraic Identities nodes. Per-question mapping waits for the complete source inventory rather than being guessed from legacy question rows.
+- Official-syllabus grounding exists in `Mathematics/research/evidence/MAT-09-POLYNOMIALS.cards.json` and `Mathematics/research/syllabus-spine.json`. The unit is bound to Polynomials basics, linear-polynomial/application scope, remainder/factor/division competency, and related Algebraic Identities nodes. Per-question mapping waits for the complete source inventory rather than being guessed from legacy question rows.
 
 First prototype and Owner calibration point:
 
@@ -53,9 +54,9 @@ Core2 first. The Owner supplied a question-bank source specimen, but the bank mu
 Links to first-stage HTML, learner PDF, Core2 key PDF where applicable, mappings and known gaps:
 
 - First-stage learner artifacts: not yet authored in #350.
-- Source inventory: pending direct m1 registration and complete source readback.
+- Source inventory: direct source bytes are now available; complete item transcription/readback is in progress.
 - Basic syllabus basis: established from current CBSE Class IX 2026–27 curriculum and NCERT Grade 9 Polynomials chapter; per-question mapping is pending the complete source inventory.
-- Known gap: current execution context does not yet expose the exact m1 source bytes for direct verification/readback.
+- Known gap: m1's hashed OCR scan manifest and Reader-B cross-read are not yet complete. This does not permit guessed source text.
 
 Remaining Cores and their learning dependencies (see FIRST-STAGE-REVIEW.md; research and drafting can continue):
 
