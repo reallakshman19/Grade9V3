@@ -17,6 +17,8 @@ jobs:
           python-version: "3.11"
       - name: Install schema test dependency
         run: pip install --quiet jsonschema
+      - name: Source inventory role regression
+        run: python3 -m unittest tests.test_source_inventory_roles
       - name: Informational platform code tests
         continue-on-error: true
         run: >-
