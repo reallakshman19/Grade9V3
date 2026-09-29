@@ -204,7 +204,15 @@
       "previous",
       "next",
       "back_to_browse"
-    ]
+    ],
+    "source_provenance_label": "Owner-supplied exact scan",
+    "visible_card_metadata": [
+      "source_member",
+      "family",
+      "scope",
+      "disputed_state"
+    ],
+    "study_mode_hides_redundant_study_action": true
   },
   "core2_gaps": [
     {
