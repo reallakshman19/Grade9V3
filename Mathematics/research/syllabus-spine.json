@@ -62,6 +62,78 @@
       "source_hint": "CBSE Class IX Mathematics curriculum 2026-27 'Linear Equations in Two Variables'; NCERT Exemplar Class 9 ch. 4 (https://ncert.nic.in/pdf/publication/exemplarproblem/classIX/mathematics/ieep204.pdf); NCERT Ganita Manjari Grade 9 ch. 2 (iemh102.pdf) §2.5-2.6",
       "canonical_refs": [],
       "owner_frozen": false
+    },
+    {
+      "id": "MAT-09-POLYNOMIALS",
+      "level": "CHAPTER",
+      "title": "Introduction to Polynomials",
+      "grade": 9,
+      "parent": null,
+      "track": "CBSE",
+      "jee_tier": "UNKNOWN",
+      "source_hint": "CBSE Class IX Mathematics curriculum 2026-27, Unit II Algebra; NCERT Ganita Manjari Grade 9 Part I ch. 2 (https://ncert.nic.in/textbook/pdf/iemh102.pdf)",
+      "canonical_refs": ["EV-MAT-09-POL-00-001", "EV-MAT-09-POL-00-002"],
+      "owner_frozen": false
+    },
+    {
+      "id": "MAT-09-POLYNOMIALS-01",
+      "level": "MICROTOPIC",
+      "title": "Algebraic expressions and one-variable polynomials: terms, coefficients and degree",
+      "grade": 9,
+      "parent": "MAT-09-POLYNOMIALS",
+      "track": "CBSE",
+      "jee_tier": "UNKNOWN",
+      "source_hint": "CBSE Class IX Mathematics curriculum 2026-27 'Introduction to Polynomials'; NCERT Ganita Manjari Grade 9 Part I ch. 2 §2.1",
+      "canonical_refs": ["EV-MAT-09-POL-00-002", "EV-MAT-09-POL-00-004"],
+      "owner_frozen": false
+    },
+    {
+      "id": "MAT-09-POLYNOMIALS-02",
+      "level": "MICROTOPIC",
+      "title": "Linear polynomials: evaluation, linear patterns, growth/decay and linear relationships",
+      "grade": 9,
+      "parent": "MAT-09-POLYNOMIALS",
+      "track": "CBSE",
+      "jee_tier": "UNKNOWN",
+      "source_hint": "CBSE Class IX Mathematics curriculum 2026-27 'Introduction to Polynomials'; NCERT Ganita Manjari Grade 9 Part I ch. 2",
+      "canonical_refs": ["EV-MAT-09-POL-00-002"],
+      "owner_frozen": false
+    },
+    {
+      "id": "MAT-09-POLYNOMIALS-03",
+      "level": "MICROTOPIC",
+      "title": "Remainder theorem, factor theorem and polynomial division algorithm",
+      "grade": 9,
+      "parent": "MAT-09-POLYNOMIALS",
+      "track": "CBSE",
+      "jee_tier": "UNKNOWN",
+      "source_hint": "CBSE Class IX Mathematics curriculum 2026-27 competency C-3.1",
+      "canonical_refs": ["EV-MAT-09-POL-00-003"],
+      "owner_frozen": false
+    },
+    {
+      "id": "MAT-09-ALGEBRAIC-IDENTITIES",
+      "level": "CHAPTER",
+      "title": "Exploring Algebraic Identities",
+      "grade": 9,
+      "parent": null,
+      "track": "CBSE",
+      "jee_tier": "UNKNOWN",
+      "source_hint": "CBSE Class IX Mathematics curriculum 2026-27, Unit II Algebra: Exploring Algebraic Identities",
+      "canonical_refs": ["EV-MAT-09-POL-00-001"],
+      "owner_frozen": false
+    },
+    {
+      "id": "MAT-09-ALGEBRAIC-IDENTITIES-01",
+      "level": "MICROTOPIC",
+      "title": "Algebraic identities, factorisation using identities and simplification of rational expressions",
+      "grade": 9,
+      "parent": "MAT-09-ALGEBRAIC-IDENTITIES",
+      "track": "CBSE",
+      "jee_tier": "UNKNOWN",
+      "source_hint": "CBSE Class IX Mathematics curriculum 2026-27 'Exploring Algebraic Identities'",
+      "canonical_refs": ["EV-MAT-09-POL-00-001"],
+      "owner_frozen": false
     }
   ]
 }
