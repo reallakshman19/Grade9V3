@@ -7,6 +7,9 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   code-tests:
     runs-on: ubuntu-latest
@@ -19,6 +22,20 @@ jobs:
         run: pip install --quiet jsonschema
       - name: Source inventory role regression
         run: python3 -m unittest tests.test_source_inventory_roles
+      - name: Build and validate #350 Polynomials source package
+        run: python3 Mathematics/research/tools/build_polynomials_source_package.py
+      - name: Commit validated #350 source package
+        if: github.event_name == 'push'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Mathematics/library/polynomials.v1.json
+          if git diff --cached --quiet; then
+            echo "package already committed"
+            exit 0
+          fi
+          git commit -m "research(math): project canonical Polynomials source package (#350)"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
       - name: Informational platform code tests
         continue-on-error: true
         run: >-
