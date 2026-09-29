@@ -21,6 +21,8 @@ jobs:
         run: python3 -m unittest tests.test_source_inventory_roles
       - name: Build and validate #350 Polynomials source package
         run: python3 Mathematics/research/tools/build_polynomials_source_package.py
+      - name: Generated Polynomials package has no drift
+        run: git diff --exit-code -- Mathematics/library/polynomials.v1.json
       - name: Informational platform code tests
         continue-on-error: true
         run: >-
