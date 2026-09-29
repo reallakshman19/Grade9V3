@@ -1,0 +1,59 @@
+{
+  "schema": "evidence-cards/v1",
+  "subject": "Mathematics",
+  "node_ref": "MAT-09-POLYNOMIALS",
+  "cards": [
+    {
+      "card_id": "EV-MAT-09-POL-00-001",
+      "kind": "SYLLABUS_SCOPE",
+      "claim": "The CBSE Class IX Mathematics course structure for 2026-27 lists Introduction to Polynomials as a chapter in Unit II Algebra.",
+      "quote": "Introduction to Polynomials Sequences and Progressions Exploring Algebraic Identities Linear Equations in Two Variables",
+      "acquisition_ref": "ACQ-932EA66D6FBFCEFCE818",
+      "locator": {
+        "page": 4,
+        "section": "Course Structure Class IX, Unit II Algebra"
+      },
+      "harvested_by": "chatgpt-gpt5.6-sol",
+      "harvested_at": "2026-09-29"
+    },
+    {
+      "card_id": "EV-MAT-09-POL-00-002",
+      "kind": "SYLLABUS_SCOPE",
+      "claim": "The CBSE Class IX 2026-27 Introduction to Polynomials chapter explicitly includes algebraic expressions, polynomial definition and degree, and linear-polynomial applications.",
+      "quote": "Algebraic expressions Definition of a polynomial. Degree of a polynomial Introduction to linear polynomials and applications",
+      "acquisition_ref": "ACQ-932EA66D6FBFCEFCE818",
+      "locator": {
+        "page": 5,
+        "section": "Unit II Algebra, Introduction to Polynomials"
+      },
+      "harvested_by": "chatgpt-gpt5.6-sol",
+      "harvested_at": "2026-09-29"
+    },
+    {
+      "card_id": "EV-MAT-09-POL-00-003",
+      "kind": "SYLLABUS_SCOPE",
+      "claim": "CBSE Class IX Mathematics competency C-3.1 includes the remainder theorem, factor theorem and division algorithm.",
+      "quote": "States and proves remainder theorem, factor theorem, and division algorithm.",
+      "acquisition_ref": "ACQ-932EA66D6FBFCEFCE818",
+      "locator": {
+        "page": 2,
+        "section": "Curricular Goals and Competencies, CG-3 / C-3.1"
+      },
+      "harvested_by": "chatgpt-gpt5.6-sol",
+      "harvested_at": "2026-09-29"
+    },
+    {
+      "card_id": "EV-MAT-09-POL-00-004",
+      "kind": "DEFINITION",
+      "claim": "The current NCERT Grade 9 chapter defines one-variable polynomials as algebraic expressions involving one variable and its powers.",
+      "quote": "Such algebraic expressions involving one variable and its powers are called one-variable polynomials, univariate polynomials, or when the context is clear, simply polynomials.",
+      "acquisition_ref": "ACQ-DBC30792858FA1858D24",
+      "locator": {
+        "page": 3,
+        "section": "2.1 Introduction"
+      },
+      "harvested_by": "chatgpt-gpt5.6-sol",
+      "harvested_at": "2026-09-29"
+    }
+  ]
+}
