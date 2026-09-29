@@ -5,7 +5,8 @@ A manifest holds selection only, never content. render_core.py reads the content
 library records the manifest names. The derivation is mechanical:
 - Core1, Core1A and Core1B: every microtopic of the package, in package order.
 - Core2A and Core2B: the package questions exposed to that Core.
-- Core2: exam-bank items whose capability or concept bucket belongs to the package.
+- Core2: package-owned source questions explicitly exposed to CORE2, plus exam-bank items
+  whose capability or concept bucket belongs to the package.
 
 Usage:
     product_manifest.py derive --package Physics/library/phy-kin-2d-motion.v1.json \
@@ -41,12 +42,20 @@ def _unique_index(records: list[dict], authority: str, collection: str) -> dict[
     return out
 
 
+def _exposed_to(row: dict, core: str) -> bool:
+    return any((exposure or {}).get("core") == core for exposure in row.get("exposure", []))
+
+
 def validate_selection(manifest: dict, packages: list[dict], bank_questions: list[dict]) -> dict[str, list[dict]]:
     """Resolve every selected id exactly once in the authority owned by its Core role.
 
     This is deliberately stricter than renderer list filtering. A malformed selection is an
     integrity error, not an authoring-depth gap: strict and draft renders must both refuse a
     manifest that silently drops, duplicates, or crosses the package/source-bank boundary.
+
+    Core2 normally consumes the exam bank, but a package may itself own a source question
+    corpus. Such a question is eligible for Core2 only when its canonical exposure explicitly
+    names CORE2. Package-authored Core2A/Core2B questions remain foreign to Core2.
     """
     selection = manifest.get("selection")
     if not isinstance(selection, dict):
@@ -68,7 +77,18 @@ def validate_selection(manifest: dict, packages: list[dict], bank_questions: lis
         "PACKAGE",
         "questions",
     )
+    package_core2 = {
+        record_id: row for record_id, row in package_questions.items()
+        if _exposed_to(row, "CORE2")
+    }
     bank_index = _unique_index(bank_questions, "BANK", "questions")
+
+    overlap = set(package_core2) & set(bank_index)
+    if overlap:
+        record_id = sorted(overlap)[0]
+        raise ProductSelectionError(
+            f"PRODUCT_SELECTION_AUTHORITY_DUPLICATE_ID: PACKAGE_OR_BANK:core2:{record_id}"
+        )
 
     resolved: dict[str, list[dict]] = {}
     for key in SELECTION_KEYS:
@@ -93,8 +113,12 @@ def validate_selection(manifest: dict, packages: list[dict], bank_questions: lis
             foreign: dict[str, dict] = {}
             expected_authority = "PACKAGE"
         elif key == "core2":
-            expected = bank_index
-            foreign = package_questions
+            expected = dict(bank_index)
+            expected.update(package_core2)
+            foreign = {
+                record_id: row for record_id, row in package_questions.items()
+                if record_id not in package_core2
+            }
             expected_authority = "BANK"
         else:
             expected = package_questions
@@ -125,14 +149,16 @@ def derive(package_ref: str, bank_refs: list[str], product_id: str, home: str,
     buckets = {b["id"] for b in pkg.get("buckets", [])}
 
     def exposed(core):
-        return [q["id"] for q in pkg.get("questions", []) if any(e["core"] == core for e in q.get("exposure", []))]
+        return [q["id"] for q in pkg.get("questions", []) if _exposed_to(q, core)]
 
-    core2 = []
+    core2 = exposed("CORE2")
+    seen = set(core2)
     for ref in bank_refs:
         for q in json.loads((REPO / ref).read_text(encoding="utf-8")).get("questions", []):
             bucket = ((q.get("extensions") or {}).get("grade9v3:analysis") or {}).get("concept_bucket")
-            if q.get("primary_capability_ref") in caps or bucket in buckets:
+            if (q.get("primary_capability_ref") in caps or bucket in buckets) and q["id"] not in seen:
                 core2.append(q["id"])
+                seen.add(q["id"])
     return {
         "schema": "product-manifest/v1",
         "product_id": product_id,
