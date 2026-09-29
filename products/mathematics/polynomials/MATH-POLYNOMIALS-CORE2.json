@@ -1,0 +1,65 @@
+{
+  "version": "2.0.0",
+  "topic": "Polynomials",
+  "subject": "Mathematics",
+  "id": "MATH-POLYNOMIALS-CORE2",
+  "role": "CORE2",
+  "questions": [
+    {
+      "id": "Q-MATH-POLY-HOTS-14",
+      "stem": "If p(x) = 2x^4 - x^3 - 7x^2 + ax + b is divisible by x^2 - 2x - 3, find the value of a + b.",
+      "source_ref": "HOTS Q14",
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "-34",
+        "reasoning": [
+          "Divisor factors: x^2 - 2x - 3 = (x - 3)(x + 1).",
+          "Conditions: p(3) = 0 and p(-1) = 0.",
+          "p(-1) = 2(1) - (-1) - 7(1) - a + b = 2 + 1 - 7 - a + b = -4 - a + b = 0 => b - a = 4.",
+          "p(3) = 2(81) - 27 - 7(9) + 3a + b = 162 - 27 - 63 + 3a + b = 72 + 3a + b = 0 => 3a + b = -72.",
+          "Solving gives a = -19, b = -15 => a + b = -34."
+        ]
+      }
+    },
+    {
+      "id": "Q-MATH-POLY-SA-6",
+      "stem": "Without calculating cubes, evaluate 48^3 - 30^3 - 18^3.",
+      "source_ref": "SA Q6",
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "77760",
+        "reasoning": [
+          "Let a = 48, b = -30, c = -18. Then a + b + c = 48 - 48 = 0.",
+          "Therefore, 48^3 + (-30)^3 + (-18)^3 = 3(48)(-30)(-18) = 3 * 48 * 540 = 77,760."
+        ]
+      }
+    },
+    {
+      "id": "Q-MATH-POLY-ARCHIVE-11",
+      "stem": "Identify the remainder when 1 + x + x^2 + ... + x^{2012} is divided by (x - 1).",
+      "source_ref": "Archive Q11",
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "2013",
+        "reasoning": [
+          "Remainder is P(1) = 1 + 1 + 1 + ... + 1 (2013 terms).",
+          "Result: 2013."
+        ]
+      }
+    },
+    {
+      "id": "Q-MATH-POLY-SA-11",
+      "stem": "If az^3 + 4z^2 + 3z - 4 and z^3 - 4z + a leave the same remainder when divided by (z - 3), find a.",
+      "source_ref": "SA Q11",
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "-1",
+        "reasoning": [
+          "R1 = 27a + 36 + 9 - 4 = 27a + 41.",
+          "R2 = 27 - 12 + a = 15 + a.",
+          "27a + 41 = 15 + a => 26a = -26 => a = -1."
+        ]
+      }
+    }
+  ]
+}
