@@ -1,0 +1,3164 @@
+{
+  "schema": "source-inventory/v1",
+  "inventory_id": "INV-MAT-09-POLYNOMIALS-M1P33-50-M2P1-11",
+  "subject": "Mathematics",
+  "members": [
+    {
+      "acquisition_ref": "ACQ-0B3450C353FF29985152",
+      "sha256": "0b3450c353ff299851528edd4469bc01413920135b0fd041fe89286a00086afa",
+      "pages": "33-50"
+    },
+    {
+      "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+      "sha256": "1dd05ce5aa04b532ec68c4054f55af1677ecb210be00b8f3085d6f29215a230c",
+      "pages": "1-11"
+    }
+  ],
+  "declared_scope": "PAGE_RANGE",
+  "completeness_unit": "every numbered source item in m1 PDF pages 33-50 and m2 PDF pages 1-11",
+  "items": [
+    {
+      "item_id": "M1-P35-ILLUSTRATION-2-1-2-1",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 35,
+        "label": "Illustration 2.1"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-01-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P35-ILLUSTRATION-2-2-2-2",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 35,
+        "label": "Illustration 2.2"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-02-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P36-ILLUSTRATION-2-3-2-3",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 36,
+        "label": "Illustration 2.3"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-03-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P36-ILLUSTRATION-2-4-2-4",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 36,
+        "label": "Illustration 2.4"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-04-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P36-ILLUSTRATION-2-5-2-5",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 36,
+        "label": "Illustration 2.5"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-05-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P36-ILLUSTRATION-2-6-2-6",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 36,
+        "label": "Illustration 2.6"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-06-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P37-ILLUSTRATION-2-7-2-7",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 37,
+        "label": "Illustration 2.7"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-07-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P37-ILLUSTRATION-2-8-2-8",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 37,
+        "label": "Illustration 2.8"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-08-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P37-ILLUSTRATION-2-9-2-9",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 37,
+        "label": "Illustration 2.9"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-09-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P37-ILLUSTRATION-2-10-2-10",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 37,
+        "label": "Illustration 2.10"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-10-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P38-EXAMPLE-2-11-2-11",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 38,
+        "label": "Example 2.11"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-EX-02-11-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P38-ILLUSTRATION-2-12-2-12",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 38,
+        "label": "Illustration 2.12"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-12-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P39-CHECK-POINT-1-1",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 39,
+        "label": "Check Point 1"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M1-B01-CP1-01-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M1-CP1-01-K"
+      }
+    },
+    {
+      "item_id": "M1-P39-CHECK-POINT-1-2",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 39,
+        "label": "Check Point 1 2"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M1-B01-CP1-02-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M1-CP1-02-K"
+      }
+    },
+    {
+      "item_id": "M1-P39-CHECK-POINT-1-3",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 39,
+        "label": "Check Point 1 3"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M1-B01-CP1-03-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M1-CP1-03-K"
+      }
+    },
+    {
+      "item_id": "M1-P39-CHECK-POINT-1-4",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 39,
+        "label": "Check Point 1 4"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M1-B01-CP1-04-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M1-CP1-04-K"
+      }
+    },
+    {
+      "item_id": "M1-P39-CHECK-POINT-1-5",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 39,
+        "label": "Check Point 1 5"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M1-B01-CP1-05-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M1-CP1-05-K"
+      }
+    },
+    {
+      "item_id": "M1-P40-ILLUSTRATION-2-13-2-13",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 40,
+        "label": "Illustration 2.13"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-13-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P40-ILLUSTRATION-2-14-2-14",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 40,
+        "label": "Illustration 2.14"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-14-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P41-ILLUSTRATION-2-15-2-15",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 41,
+        "label": "Illustration 2.15"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-15-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P41-ILLUSTRATION-2-16-2-16",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 41,
+        "label": "Illustration 2.16"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-16-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P41-ILLUSTRATION-2-17-2-17",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 41,
+        "label": "Illustration 2.17"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-17-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P42-EXAMPLE-2-18-2-18",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 42,
+        "label": "Example 2.18"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-EX-02-18-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P42-ILLUSTRATION-2-19-2-19",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 42,
+        "label": "Illustration 2.19"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-19-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P42-ILLUSTRATION-2-20-2-20",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 42,
+        "label": "Illustration 2.20"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B01-ILL-02-20-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P43-ILLUSTRATION-2-21-2-21",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 43,
+        "label": "Illustration 2.21"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-ILL-02-21-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P43-ILLUSTRATION-2-22-2-22",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 43,
+        "label": "Illustration 2.22"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-ILL-02-22-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P43-ILLUSTRATION-2-23-2-23",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 43,
+        "label": "Illustration 2.23"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-ILL-02-23-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P44-ILLUSTRATION-2-24-2-24",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 44,
+        "label": "Illustration 2.24"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-ILL-02-24-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P44-ILLUSTRATION-2-25-2-25",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 44,
+        "label": "Illustration 2.25"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-ILL-02-25-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P44-ILLUSTRATION-2-26-2-26",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 44,
+        "label": "Illustration 2.26"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-ILL-02-26-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P44-CHECK-POINT-2-6",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 44,
+        "label": "Check Point 2 6"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M1-B02-CP2-06-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M1-CP2-06-K"
+      }
+    },
+    {
+      "item_id": "M1-P44-CHECK-POINT-2-7",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 44,
+        "label": "Check Point 2 7"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M1-B02-CP2-07-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M1-CP2-07-K"
+      }
+    },
+    {
+      "item_id": "M1-P44-CHECK-POINT-2-8",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 44,
+        "label": "Check Point 2 8"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M1-B02-CP2-08-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M1-CP2-08-K"
+      }
+    },
+    {
+      "item_id": "M1-P44-CHECK-POINT-2-9",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 44,
+        "label": "Check Point 2 9"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M1-B02-CP2-09-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M1-CP2-09-K"
+      }
+    },
+    {
+      "item_id": "M1-P44-CHECK-POINT-2-10",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 44,
+        "label": "Check Point 2 10"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M1-B02-CP2-10-Q",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P45-ILLUSTRATION-2-27-2-27",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 45,
+        "label": "Illustration 2.27"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-ILL-02-27-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P46-ILLUSTRATION-2-28-2-28",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 46,
+        "label": "Illustration 2.28"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-ILL-02-28-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P46-ILLUSTRATION-2-29-2-29",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 46,
+        "label": "Illustration 2.29"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-ILL-02-29-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P46-ILLUSTRATION-2-30-2-30",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 46,
+        "label": "Illustration 2.30"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-ILL-02-30-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P48-EXEMPLIFICATION-1",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 48,
+        "label": "Exemplification 1"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-EXEMPL-01-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P48-EXEMPLIFICATION-2",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 48,
+        "label": "Exemplification 2"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-EXEMPL-02-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P48-EXEMPLIFICATION-3",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 48,
+        "label": "Exemplification 3"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-EXEMPL-03-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P49-EXEMPLIFICATION-4",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 49,
+        "label": "Exemplification 4"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-EXEMPL-04-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P49-EXEMPLIFICATION-5",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 49,
+        "label": "Exemplification 5"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-EXEMPL-05-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P49-EXEMPLIFICATION-6",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 49,
+        "label": "Exemplification 6"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-EXEMPL-06-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P49-EXEMPLIFICATION-7",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 49,
+        "label": "Exemplification 7"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-EXEMPL-07-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P49-EXEMPLIFICATION-8",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 49,
+        "label": "Exemplification 8"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-EXEMPL-08-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P50-EXEMPLIFICATION-9",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 50,
+        "label": "Exemplification 9"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-EXEMPL-09-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M1-P50-EXEMPLIFICATION-10",
+      "locator": {
+        "acquisition_ref": "ACQ-0B3450C353FF29985152",
+        "page": 50,
+        "label": "Exemplification 10"
+      },
+      "format": "OTHER",
+      "source_role": "WORKED_EXAMPLE",
+      "question_card": "EV-MAT-09-POL-M1-B02-EXEMPL-10-W",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-FILL-IN-THE-BLANKS-1",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Fill in the Blanks 1"
+      },
+      "format": "FILL_BLANK",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-FIB-01-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-FIB-01-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-FILL-IN-THE-BLANKS-2",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Fill in the Blanks 2"
+      },
+      "format": "FILL_BLANK",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-FIB-02-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-FIB-02-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-FILL-IN-THE-BLANKS-3",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Fill in the Blanks 3"
+      },
+      "format": "FILL_BLANK",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-FIB-03-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-FIB-03-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-FILL-IN-THE-BLANKS-4",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Fill in the Blanks 4"
+      },
+      "format": "FILL_BLANK",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-FIB-04-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-FIB-04-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-FILL-IN-THE-BLANKS-5",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Fill in the Blanks 5"
+      },
+      "format": "FILL_BLANK",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-FIB-05-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-FIB-05-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-FILL-IN-THE-BLANKS-6",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Fill in the Blanks 6"
+      },
+      "format": "FILL_BLANK",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-FIB-06-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-FIB-06-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-TRUE-FALSE-1",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - True/False 1"
+      },
+      "format": "TRUE_FALSE",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-TF-01-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-TF-01-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-TRUE-FALSE-2",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - True/False 2"
+      },
+      "format": "TRUE_FALSE",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-TF-02-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-TF-02-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-TRUE-FALSE-3",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - True/False 3"
+      },
+      "format": "TRUE_FALSE",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-TF-03-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-TF-03-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-TRUE-FALSE-4",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - True/False 4"
+      },
+      "format": "TRUE_FALSE",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-TF-04-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-TF-04-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-TRUE-FALSE-5",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - True/False 5"
+      },
+      "format": "TRUE_FALSE",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-TF-05-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-TF-05-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-1",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Single Correct Type Questions 1"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-SC-01-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-SC-01-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-2",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Single Correct Type Questions 2"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-SC-02-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-SC-02-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-3",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Single Correct Type Questions 3"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-SC-03-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-SC-03-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-4",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Single Correct Type Questions 4"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-SC-04-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-SC-04-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-5",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Single Correct Type Questions 5"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-SC-05-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-SC-05-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-6",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Single Correct Type Questions 6"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-SC-06-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-SC-06-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-7",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Single Correct Type Questions 7"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-SC-07-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-SC-07-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-8",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Single Correct Type Questions 8"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-SC-08-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-SC-08-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-9",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Single Correct Type Questions 9"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-SC-09-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-SC-09-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-10",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Single Correct Type Questions 10"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-SC-10-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-SC-10-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-11",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Single Correct Type Questions 11"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-SC-11-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-SC-11-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-12",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Single Correct Type Questions 12"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-SC-12-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-SC-12-K"
+      }
+    },
+    {
+      "item_id": "M2-P01-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-13",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 1,
+        "label": "Assessment Corner - Single Correct Type Questions 13"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-SC-13-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-SC-13-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-14",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Single Correct Type Questions 14"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B01-SC-14-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B01-SC-14-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-15",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Single Correct Type Questions 15"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-SC-15-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-SC-15-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-16",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Single Correct Type Questions 16"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-SC-16-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-SC-16-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-17",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Single Correct Type Questions 17"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-SC-17-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-SC-17-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-18",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Single Correct Type Questions 18"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-SC-18-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-SC-18-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-19",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Single Correct Type Questions 19"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-SC-19-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-SC-19-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-20",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Single Correct Type Questions 20"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-SC-20-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-SC-20-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-21",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Single Correct Type Questions 21"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-SC-21-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-SC-21-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-22",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Single Correct Type Questions 22"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-SC-22-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-SC-22-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-23",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Single Correct Type Questions 23"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-SC-23-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-SC-23-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-24",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Single Correct Type Questions 24"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-SC-24-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-SC-24-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-SINGLE-CORRECT-TYPE-QUESTIONS-25",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Single Correct Type Questions 25"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-SC-25-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-SC-25-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-1",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Multiple Correct Type Questions 1"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-MC-01-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-MC-01-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-2",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Multiple Correct Type Questions 2"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-MC-02-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-MC-02-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-3",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Multiple Correct Type Questions 3"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-MC-03-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-MC-03-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-4",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Multiple Correct Type Questions 4"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-MC-04-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-MC-04-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-5",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Multiple Correct Type Questions 5"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-MC-05-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-MC-05-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-6",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Multiple Correct Type Questions 6"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-MC-06-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-MC-06-K"
+      }
+    },
+    {
+      "item_id": "M2-P02-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-7",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 2,
+        "label": "Assessment Corner - Multiple Correct Type Questions 7"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-MC-07-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-MC-07-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-8",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 8"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-MC-08-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-MC-08-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-9",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 9"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-MC-09-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-MC-09-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-10",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 10"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-MC-10-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-MC-10-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-11",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 11"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-MC-11-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-MC-11-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-12",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 12"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-MC-12-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-MC-12-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-13",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 13"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-MC-13-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-MC-13-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-14",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 14"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B02-MC-14-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B02-MC-14-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-15",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 15"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MC-15-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MC-15-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-16",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 16"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MC-16-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MC-16-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-17",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 17"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MC-17-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MC-17-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-18",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 18"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MC-18-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MC-18-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-19",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 19"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MC-19-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MC-19-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-20",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 20"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MC-20-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MC-20-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-21",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 21"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MC-21-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MC-21-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-22",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 22"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MC-22-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MC-22-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-23",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 23"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MC-23-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MC-23-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-24",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 24"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MC-24-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MC-24-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-25",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Multiple Correct Type Questions 25"
+      },
+      "format": "MULTIPLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MC-25-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MC-25-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MATCH-TYPE-QUESTIONS-1",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Match Type Questions 1"
+      },
+      "format": "MATCH",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MATCH-01-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MATCH-01-K"
+      }
+    },
+    {
+      "item_id": "M2-P03-ASSESSMENT-CORNER-MATCH-TYPE-QUESTIONS-2",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 3,
+        "label": "Assessment Corner - Match Type Questions 2"
+      },
+      "format": "MATCH",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MATCH-02-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MATCH-02-K"
+      }
+    },
+    {
+      "item_id": "M2-P04-ASSESSMENT-CORNER-MATCH-TYPE-QUESTIONS-3",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 4,
+        "label": "Assessment Corner - Match Type Questions 3"
+      },
+      "format": "MATCH",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MATCH-03-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MATCH-03-K"
+      }
+    },
+    {
+      "item_id": "M2-P04-ASSESSMENT-CORNER-MATCH-TYPE-QUESTIONS-4",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 4,
+        "label": "Assessment Corner - Match Type Questions 4"
+      },
+      "format": "MATCH",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MATCH-04-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MATCH-04-K"
+      }
+    },
+    {
+      "item_id": "M2-P04-ASSESSMENT-CORNER-MATCH-TYPE-QUESTIONS-5",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 4,
+        "label": "Assessment Corner - Match Type Questions 5"
+      },
+      "format": "MATCH",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-MATCH-05-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-MATCH-05-K"
+      }
+    },
+    {
+      "item_id": "M2-P04-ASSESSMENT-CORNER-ASSERTION-AND-REASON-TYPE-QUESTIONS-1",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 4,
+        "label": "Assessment Corner - Assertion and Reason Type Questions 1"
+      },
+      "format": "ASSERTION_REASON",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-AR-01-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-AR-01-K"
+      }
+    },
+    {
+      "item_id": "M2-P04-ASSESSMENT-CORNER-ASSERTION-AND-REASON-TYPE-QUESTIONS-2",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 4,
+        "label": "Assessment Corner - Assertion and Reason Type Questions 2"
+      },
+      "format": "ASSERTION_REASON",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-AR-02-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-AR-02-K"
+      }
+    },
+    {
+      "item_id": "M2-P04-ASSESSMENT-CORNER-ASSERTION-AND-REASON-TYPE-QUESTIONS-3",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 4,
+        "label": "Assessment Corner - Assertion and Reason Type Questions 3"
+      },
+      "format": "ASSERTION_REASON",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-AR-03-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-AR-03-K"
+      }
+    },
+    {
+      "item_id": "M2-P04-ASSESSMENT-CORNER-COMPREHENSION-TYPE-QUESTIONS-1",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 4,
+        "label": "Assessment Corner - Comprehension Type Questions 1"
+      },
+      "format": "COMPREHENSION",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-COMP-01-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-COMP-01-K"
+      }
+    },
+    {
+      "item_id": "M2-P04-ASSESSMENT-CORNER-COMPREHENSION-TYPE-QUESTIONS-2",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 4,
+        "label": "Assessment Corner - Comprehension Type Questions 2"
+      },
+      "format": "COMPREHENSION",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-COMP-02-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-COMP-02-K"
+      }
+    },
+    {
+      "item_id": "M2-P04-ASSESSMENT-CORNER-COMPREHENSION-TYPE-QUESTIONS-3",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 4,
+        "label": "Assessment Corner - Comprehension Type Questions 3"
+      },
+      "format": "COMPREHENSION",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-COMP-03-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-COMP-03-K"
+      }
+    },
+    {
+      "item_id": "M2-P04-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-1",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 4,
+        "label": "Assessment Corner - Numerical Type Questions 1"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-NUM-01-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-NUM-01-K"
+      }
+    },
+    {
+      "item_id": "M2-P04-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-2",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 4,
+        "label": "Assessment Corner - Numerical Type Questions 2"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-NUM-02-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-NUM-02-K"
+      }
+    },
+    {
+      "item_id": "M2-P04-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-3",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 4,
+        "label": "Assessment Corner - Numerical Type Questions 3"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B03-NUM-03-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B03-NUM-03-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-4",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Assessment Corner - Numerical Type Questions 4"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-NUM-04-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-NUM-04-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-5",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Assessment Corner - Numerical Type Questions 5"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-NUM-05-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-NUM-05-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-6",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Assessment Corner - Numerical Type Questions 6"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-NUM-06-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-NUM-06-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-7",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Assessment Corner - Numerical Type Questions 7"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-NUM-07-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-NUM-07-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-8",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Assessment Corner - Numerical Type Questions 8"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-NUM-08-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-NUM-08-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-9",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Assessment Corner - Numerical Type Questions 9"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-NUM-09-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-NUM-09-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-10",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Assessment Corner - Numerical Type Questions 10"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-NUM-10-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-NUM-10-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-11",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Assessment Corner - Numerical Type Questions 11"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-NUM-11-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-NUM-11-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-12",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Assessment Corner - Numerical Type Questions 12"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-NUM-12-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-NUM-12-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-13",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Assessment Corner - Numerical Type Questions 13"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-NUM-13-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-NUM-13-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-14",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Assessment Corner - Numerical Type Questions 14"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-NUM-14-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-NUM-14-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-ASSESSMENT-CORNER-NUMERICAL-TYPE-QUESTIONS-15",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Assessment Corner - Numerical Type Questions 15"
+      },
+      "format": "NUMERIC",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-NUM-15-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-NUM-15-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-HIGHER-ORDER-THINKING-SKILLS-HOTS-1",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Higher Order Thinking Skills (HOTS) 1"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-HOTS-01-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-HOTS-01-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-HIGHER-ORDER-THINKING-SKILLS-HOTS-2",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Higher Order Thinking Skills (HOTS) 2"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-HOTS-02-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-HOTS-02-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-HIGHER-ORDER-THINKING-SKILLS-HOTS-3",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Higher Order Thinking Skills (HOTS) 3"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-HOTS-03-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-HOTS-03-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-HIGHER-ORDER-THINKING-SKILLS-HOTS-4",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Higher Order Thinking Skills (HOTS) 4"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-HOTS-04-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-HOTS-04-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-HIGHER-ORDER-THINKING-SKILLS-HOTS-5",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Higher Order Thinking Skills (HOTS) 5"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-HOTS-05-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-HOTS-05-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-HIGHER-ORDER-THINKING-SKILLS-HOTS-6",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Higher Order Thinking Skills (HOTS) 6"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-HOTS-06-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-HOTS-06-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-HIGHER-ORDER-THINKING-SKILLS-HOTS-7",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Higher Order Thinking Skills (HOTS) 7"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-HOTS-07-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-HOTS-07-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-HIGHER-ORDER-THINKING-SKILLS-HOTS-8",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Higher Order Thinking Skills (HOTS) 8"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-HOTS-08-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-HOTS-08-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-HIGHER-ORDER-THINKING-SKILLS-HOTS-9",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Higher Order Thinking Skills (HOTS) 9"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-HOTS-09-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-HOTS-09-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-HIGHER-ORDER-THINKING-SKILLS-HOTS-10",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Higher Order Thinking Skills (HOTS) 10"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-HOTS-10-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-HOTS-10-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-HIGHER-ORDER-THINKING-SKILLS-HOTS-11",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Higher Order Thinking Skills (HOTS) 11"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-HOTS-11-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-HOTS-11-K"
+      }
+    },
+    {
+      "item_id": "M2-P05-HIGHER-ORDER-THINKING-SKILLS-HOTS-12",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 5,
+        "label": "Higher Order Thinking Skills (HOTS) 12"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-HOTS-12-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-HOTS-12-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-HIGHER-ORDER-THINKING-SKILLS-HOTS-13",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Higher Order Thinking Skills (HOTS) 13"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B04-HOTS-13-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B04-HOTS-13-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-HIGHER-ORDER-THINKING-SKILLS-HOTS-14",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Higher Order Thinking Skills (HOTS) 14"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-HOTS-14-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-HOTS-14-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-HIGHER-ORDER-THINKING-SKILLS-HOTS-15",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Higher Order Thinking Skills (HOTS) 15"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-HOTS-15-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-HOTS-15-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-HIGHER-ORDER-THINKING-SKILLS-HOTS-16",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Higher Order Thinking Skills (HOTS) 16"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-HOTS-16-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-HOTS-16-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-HIGHER-ORDER-THINKING-SKILLS-HOTS-17",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Higher Order Thinking Skills (HOTS) 17"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-HOTS-17-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-HOTS-17-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-HIGHER-ORDER-THINKING-SKILLS-HOTS-18",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Higher Order Thinking Skills (HOTS) 18"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-HOTS-18-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-HOTS-18-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-HIGHER-ORDER-THINKING-SKILLS-HOTS-19",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Higher Order Thinking Skills (HOTS) 19"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-HOTS-19-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-HOTS-19-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-HIGHER-ORDER-THINKING-SKILLS-HOTS-20",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Higher Order Thinking Skills (HOTS) 20"
+      },
+      "format": "HOTS",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-HOTS-20-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-HOTS-20-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-FREE-RESPONSE-TYPE-VERY-SHORT-ANSWER-TYPE-QUESTIONS-1",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Free Response Type - Very Short Answer Type Questions 1"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-VSA-01-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-VSA-01-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-FREE-RESPONSE-TYPE-VERY-SHORT-ANSWER-TYPE-QUESTIONS-2",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Free Response Type - Very Short Answer Type Questions 2"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-VSA-02-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-VSA-02-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-FREE-RESPONSE-TYPE-VERY-SHORT-ANSWER-TYPE-QUESTIONS-3",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Free Response Type - Very Short Answer Type Questions 3"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-VSA-03-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-VSA-03-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-FREE-RESPONSE-TYPE-VERY-SHORT-ANSWER-TYPE-QUESTIONS-4",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Free Response Type - Very Short Answer Type Questions 4"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-VSA-04-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-VSA-04-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-FREE-RESPONSE-TYPE-VERY-SHORT-ANSWER-TYPE-QUESTIONS-5",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Free Response Type - Very Short Answer Type Questions 5"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-VSA-05-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-VSA-05-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-FREE-RESPONSE-TYPE-VERY-SHORT-ANSWER-TYPE-QUESTIONS-6",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Free Response Type - Very Short Answer Type Questions 6"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-VSA-06-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-VSA-06-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-FREE-RESPONSE-TYPE-VERY-SHORT-ANSWER-TYPE-QUESTIONS-7",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Free Response Type - Very Short Answer Type Questions 7"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-VSA-07-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-VSA-07-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-FREE-RESPONSE-TYPE-VERY-SHORT-ANSWER-TYPE-QUESTIONS-8",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Free Response Type - Very Short Answer Type Questions 8"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-VSA-08-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-VSA-08-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-FREE-RESPONSE-TYPE-VERY-SHORT-ANSWER-TYPE-QUESTIONS-9",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Free Response Type - Very Short Answer Type Questions 9"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-VSA-09-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-VSA-09-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-FREE-RESPONSE-TYPE-VERY-SHORT-ANSWER-TYPE-QUESTIONS-10",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Free Response Type - Very Short Answer Type Questions 10"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-VSA-10-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-VSA-10-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-FREE-RESPONSE-TYPE-SHORT-ANSWER-TYPE-QUESTIONS-1",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Free Response Type - Short Answer Type Questions 1"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-SA-01-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-SA-01-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-FREE-RESPONSE-TYPE-SHORT-ANSWER-TYPE-QUESTIONS-2",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Free Response Type - Short Answer Type Questions 2"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-SA-02-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-SA-02-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-FREE-RESPONSE-TYPE-SHORT-ANSWER-TYPE-QUESTIONS-3",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Free Response Type - Short Answer Type Questions 3"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-SA-03-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-SA-03-K"
+      }
+    },
+    {
+      "item_id": "M2-P06-FREE-RESPONSE-TYPE-SHORT-ANSWER-TYPE-QUESTIONS-4",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 6,
+        "label": "Free Response Type - Short Answer Type Questions 4"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-SA-04-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-SA-04-K"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-SHORT-ANSWER-TYPE-QUESTIONS-5",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Short Answer Type Questions 5"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-SA-05-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-SA-05-K"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-SHORT-ANSWER-TYPE-QUESTIONS-6",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Short Answer Type Questions 6"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-SA-06-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-SA-06-K"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-SHORT-ANSWER-TYPE-QUESTIONS-7",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Short Answer Type Questions 7"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-SA-07-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-SA-07-K"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-SHORT-ANSWER-TYPE-QUESTIONS-8",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Short Answer Type Questions 8"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B05-SA-08-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B05-SA-08-K"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-SHORT-ANSWER-TYPE-QUESTIONS-9",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Short Answer Type Questions 9"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-SA-09-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-SA-09-K"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-SHORT-ANSWER-TYPE-QUESTIONS-10",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Short Answer Type Questions 10"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-SA-10-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-SA-10-K"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-SHORT-ANSWER-TYPE-QUESTIONS-11",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Short Answer Type Questions 11"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-SA-11-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-SA-11-K"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-SHORT-ANSWER-TYPE-QUESTIONS-12",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Short Answer Type Questions 12"
+      },
+      "format": "SHORT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-SA-12-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-SA-12-K"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-LONG-ANSWER-TYPE-QUESTIONS-1",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Long Answer Type Questions 1"
+      },
+      "format": "LONG",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-LA-01-Q",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-LONG-ANSWER-TYPE-QUESTIONS-2",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Long Answer Type Questions 2"
+      },
+      "format": "LONG",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-LA-02-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-LA-02-K"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-LONG-ANSWER-TYPE-QUESTIONS-3",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Long Answer Type Questions 3"
+      },
+      "format": "LONG",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-LA-03-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-LA-03-K"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-LONG-ANSWER-TYPE-QUESTIONS-4",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Long Answer Type Questions 4"
+      },
+      "format": "LONG",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-LA-04-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-LA-04-K"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-LONG-ANSWER-TYPE-QUESTIONS-5",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Long Answer Type Questions 5"
+      },
+      "format": "LONG",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-LA-05-Q",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-LONG-ANSWER-TYPE-QUESTIONS-6",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Long Answer Type Questions 6"
+      },
+      "format": "LONG",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-LA-06-Q",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-LONG-ANSWER-TYPE-QUESTIONS-7",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Long Answer Type Questions 7"
+      },
+      "format": "LONG",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-LA-07-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-LA-07-K"
+      }
+    },
+    {
+      "item_id": "M2-P07-FREE-RESPONSE-TYPE-LONG-ANSWER-TYPE-QUESTIONS-8",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 7,
+        "label": "Free Response Type - Long Answer Type Questions 8"
+      },
+      "format": "LONG",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-LA-08-Q",
+      "key": {
+        "state": "ABSENT"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-1",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 1"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-ARCH-01-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-ARCH-01-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-2",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 2"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-ARCH-02-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-ARCH-02-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-3",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 3"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-ARCH-03-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-ARCH-03-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-4",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 4"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-ARCH-04-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-ARCH-04-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-5",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 5"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-ARCH-05-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-ARCH-05-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-6",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 6"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-ARCH-06-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-ARCH-06-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-7",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 7"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-ARCH-07-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-ARCH-07-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-8",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 8"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-ARCH-08-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-ARCH-08-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-9",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 9"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-ARCH-09-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-ARCH-09-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-10",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 10"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-ARCH-10-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-ARCH-10-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-11",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 11"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-ARCH-11-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-ARCH-11-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-12",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 12"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-ARCH-12-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-ARCH-12-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-13",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 13"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B06-ARCH-13-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B06-ARCH-13-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-14",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 14"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B07-ARCH-14-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B07-ARCH-14-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-15",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 15"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B07-ARCH-15-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B07-ARCH-15-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-16",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 16"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B07-ARCH-16-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B07-ARCH-16-K"
+      }
+    },
+    {
+      "item_id": "M2-P08-ARCHIVE-CORNER-17",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 8,
+        "label": "Archive Corner 17"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B07-ARCH-17-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B07-ARCH-17-K"
+      }
+    },
+    {
+      "item_id": "M2-P09-ARCHIVE-CORNER-18",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 9,
+        "label": "Archive Corner 18"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B07-ARCH-18-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B07-ARCH-18-K"
+      }
+    },
+    {
+      "item_id": "M2-P09-ARCHIVE-CORNER-19",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 9,
+        "label": "Archive Corner 19"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B07-ARCH-19-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B07-ARCH-19-K"
+      }
+    },
+    {
+      "item_id": "M2-P09-ARCHIVE-CORNER-20",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 9,
+        "label": "Archive Corner 20"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B07-ARCH-20-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B07-ARCH-20-K"
+      }
+    },
+    {
+      "item_id": "M2-P09-ARCHIVE-CORNER-21",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 9,
+        "label": "Archive Corner 21"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B07-ARCH-21-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B07-ARCH-21-K"
+      }
+    },
+    {
+      "item_id": "M2-P09-ARCHIVE-CORNER-22",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 9,
+        "label": "Archive Corner 22"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B07-ARCH-22-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B07-ARCH-22-K"
+      }
+    },
+    {
+      "item_id": "M2-P09-ARCHIVE-CORNER-23",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 9,
+        "label": "Archive Corner 23"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B07-ARCH-23-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B07-ARCH-23-K"
+      }
+    },
+    {
+      "item_id": "M2-P09-ARCHIVE-CORNER-24",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 9,
+        "label": "Archive Corner 24"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B07-ARCH-24-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B07-ARCH-24-K"
+      }
+    },
+    {
+      "item_id": "M2-P09-ARCHIVE-CORNER-25",
+      "locator": {
+        "acquisition_ref": "ACQ-1DD05CE5AA04B532EC68",
+        "page": 9,
+        "label": "Archive Corner 25"
+      },
+      "format": "SINGLE_CORRECT",
+      "source_role": "QUESTION",
+      "question_card": "EV-MAT-09-POL-M2-B07-ARCH-25-Q",
+      "key": {
+        "state": "PRESENT",
+        "card": "EV-MAT-09-POL-M2-B07-ARCH-25-K"
+      }
+    }
+  ],
+  "counts": {
+    "items": 212,
+    "key_present": 167,
+    "key_absent": 45,
+    "key_ambiguous": 0
+  },
+  "digest": "sha256:7f6592b14a11f4cf83d3e8a92a25c559fa86c21f44e5ef6b230798e0ba64c9d9",
+  "supersedes": null
+}
