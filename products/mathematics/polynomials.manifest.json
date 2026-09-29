@@ -1,0 +1,21 @@
+{
+  "schema": "product-manifest/v1",
+  "product_id": "PRODUCT-MAT-POLYNOMIALS",
+  "subject": "Mathematics",
+  "home_href": "../../../index.html",
+  "question_bank_href": "../../../question-bank/index.html",
+  "package_refs": [
+    "Mathematics/library/polynomials.v1.json"
+  ],
+  "bank_refs": [],
+  "selection": {
+    "microtopics": [],
+    "core2": [
+      "Q-MAT-POLY-M2-P06-HIGHER-ORDER-THINKING-SKILLS-HOTS-16",
+      "Q-MAT-POLY-M2-P09-ARCHIVE-CORNER-22",
+      "Q-MAT-POLY-M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-21"
+    ],
+    "core2a": [],
+    "core2b": []
+  }
+}
