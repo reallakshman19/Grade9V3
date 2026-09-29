@@ -41,6 +41,46 @@
     {
       "path": "docs/data/question-bank-data.js",
       "reason": "Generated GitHub Pages mirror of the declarative Question Bank browser projection; generator and runtime remain scanned."
+    },
+    {
+      "path": "evidence/stress-tests/polynomials-six-core/audit_inventory.py",
+      "reason": "Test fixture script targeting specific Mathematics adapters and governed sources."
+    },
+    {
+      "path": "evidence/stress-tests/polynomials-six-core/prototype/build_records.py",
+      "reason": "Stress test prototype script generating mock Mathematics packages directly, using literal identifiers to mimic valid governed structures."
+    },
+    {
+      "path": "Shared/tools/library_board.py",
+      "reason": "References workflow role documents."
+    },
+    {
+      "path": "Shared/tools/migrate_math_linear.py",
+      "reason": "One-off migration script mapping specific Mathematics files."
+    },
+    {
+      "path": "Shared/tools/package_depth.py",
+      "reason": "Validates depth using specific core structure identifiers."
+    },
+    {
+      "path": "Shared/tools/quality_observe.py",
+      "reason": "Quality gate script referencing subjects directly for observation."
+    },
+    {
+      "path": "Shared/tools/self_check.py",
+      "reason": "Check script referencing its own documentation files."
+    },
+    {
+      "path": "Shared/tools/unit_status.py",
+      "reason": "Status script referencing process documentation."
+    },
+    {
+      "path": "docs/data/research-first-workflow.js",
+      "reason": "Generated workflow diagram containing literal nodes."
+    },
+    {
+      "path": "public/data/research-first-workflow.js",
+      "reason": "Generated workflow diagram containing literal nodes."
     }
   ]
 }
