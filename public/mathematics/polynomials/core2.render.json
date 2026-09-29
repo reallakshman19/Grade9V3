@@ -184,6 +184,28 @@
     "Q-MAT-POLY-M2-P09-ARCHIVE-CORNER-22",
     "Q-MAT-POLY-M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-21"
   ],
+  "browser_ui": {
+    "benchmark": "public/question-bank/index.html",
+    "design_system": "public/css/question-bank.css",
+    "default_mode": "browse",
+    "page_size": 20,
+    "modes": [
+      "browse",
+      "study"
+    ],
+    "filters": [
+      "search",
+      "family",
+      "scope",
+      "source",
+      "record_state"
+    ],
+    "focused_navigation": [
+      "previous",
+      "next",
+      "back_to_browse"
+    ]
+  },
   "core2_gaps": [
     {
       "duty": "AUTHOR_LEARNER_METADATA",
