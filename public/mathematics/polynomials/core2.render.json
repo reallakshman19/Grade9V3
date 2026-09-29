@@ -205,6 +205,9 @@
       "next",
       "back_to_browse"
     ],
+    "architecture": "compact_cards_plus_hidden_study_templates",
+    "browse_card_structure": "question-bank compactCard analogue",
+    "study_workspace": "two-column Core2 article",
     "source_provenance_label": "Owner-supplied exact scan",
     "visible_card_metadata": [
       "source_member",
@@ -212,7 +215,7 @@
       "scope",
       "disputed_state"
     ],
-    "study_mode_hides_redundant_study_action": true
+    "family_collection_cards": 4
   },
   "core2_gaps": [
     {
