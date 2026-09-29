@@ -12,7 +12,7 @@ The unit has several distinct inferential jumps that should not be collapsed int
 - choose and preserve an algebraic identity when expressions are transformed, especially through signs and symmetric forms;
 - distinguish a mathematically valid consequence from an answer-key claim or an under-specified source question.
 
-The #350 specimen is now anchored by `INV-MAT-09-POLYNOMIALS-M1P33-50-M2P1-11` with 212 source items: 172 questions and 40 worked examples. Source order stays intact. Difficulty-first affects authoring/review priority only.
+The #350 specimen is anchored by `INV-MAT-09-POLYNOMIALS-M1P33-50-M2P1-11` with 212 source items: 172 questions and 40 worked examples. Source order stays intact. Difficulty-first affects authoring/review priority only.
 
 ## 2. Basic syllabus mapping policy
 
@@ -25,9 +25,9 @@ Use the existing syllabus spine; do not create another topic taxonomy.
 | `CORE_SYLLABUS` | `MAT-09-POLYNOMIALS-03` | remainder theorem, factor theorem, polynomial division, divisor–quotient–remainder reconstruction |
 | `RELATED` | `MAT-09-ALGEBRAIC-IDENTITIES-01` | algebraic identities, factorisation using identities, identity-led simplification |
 | `EXTENSION` | closest node above + explicit extension note | source demand materially exceeds the current Grade-9 spine (competition-style symmetric/rational constructions, unstated complex-domain reasoning, etc.) |
-| `UNRESOLVED` | no forced microtopic | source text/domain or decisive demand is not yet trustworthy enough to map |
+| `UNRESOLVED` | no forced microtopic | source text/domain or decisive demand is not trustworthy enough to map confidently |
 
-A question can use several algebraic moves; mapping follows the **decisive learning demand**, not every incidental operation. Reader-B corrections may change individual mappings. Until reconciliation, these are authoring classifications, not accepted package truth.
+A question can use several algebraic moves; mapping follows the **decisive learning demand**, not every incidental operation. The candidate package now contains item-level mapping for all 172 QUESTION records; the 40 WORKED_EXAMPLE items remain source inventory/evidence rather than being miscast as assessment questions. Independent review may still require corrections, so package mappings remain candidate records rather than immutable source truth.
 
 ## 3. Difficulty-first triage contract for this unit
 
@@ -39,7 +39,7 @@ Canonical concept difficulty and canonical question `D1–D4` are **not invented
 | `INV-MAT-09-POLYNOMIALS-M1P33-50-M2P1-11#M2-P09-ARCHIVE-CORNER-22` | `CORE_SYLLABUS` → `MAT-09-POLYNOMIALS-03` | concept: `UNSET`; question: `UNSET` | Learner must reverse the division algorithm: divisor × quotient + remainder → dividend. The printed key is also wrong, so source/key authority must stay separate. | Know division algorithm; wrong route: choose the printed key or add the remainder before multiplying. | Reconstruct the dividend structurally and only then compare with options. | `HIGH` | A compact “rebuild the dividend” representation can expose the invariant `dividend = divisor × quotient + remainder` without leaking the final option before commitment. | `LP-H3` |
 | `INV-MAT-09-POLYNOMIALS-M1P33-50-M2P1-11#M2-P03-ASSESSMENT-CORNER-MULTIPLE-CORRECT-TYPE-QUESTIONS-21` | `RELATED` → `MAT-09-ALGEBRAIC-IDENTITIES-01` | concept: `UNSET`; question: `UNSET` | From `x-y=5, xy=24`, `(x+y)^2` is fixed but the sign of `x+y` is not. Collapsing `sqrt(121)` to `11` makes the source look single-valued; mathematically the target can be `±539`. | Difference/sum identities; wrong route: take only the positive square root. | Preserve both branches until the requested symmetric expression is evaluated. | `HIGH` | A two-branch view showing both admissible `(x,y)` pairs makes the underdetermination visible and teaches why squaring can lose sign information. | `LP-H4` |
 | `INV-MAT-09-POLYNOMIALS-M1P33-50-M2P1-11#M2-P07-FREE-RESPONSE-TYPE-LONG-ANSWER-TYPE-QUESTIONS-7` | `RELATED` → `MAT-09-ALGEBRAIC-IDENTITIES-01` | concept: `UNSET`; question: `UNSET` | Difference of two cubes with mirrored signs is trap-sensitive; the source key drops the overall minus sign. | Cubic identities / expansion; wrong route: treat the subtraction as if both expansions had the same sign. | Factor or expand while preserving the outer subtraction; perform a sign sanity-check with a simple substitution. | `MEDIUM` | Side-by-side expansion could help, but a static worked decomposition may be sufficient. Do not build interaction unless it demonstrably beats the static explanation. | `LP-H4` |
-| `INV-MAT-09-POLYNOMIALS-M1P33-50-M2P1-11#M2-P06-HIGHER-ORDER-THINKING-SKILLS-HOTS-15` | `EXTENSION` / domain-sensitive, closest related node `MAT-09-ALGEBRAIC-IDENTITIES-01` | concept: `UNSET`; question: `UNSET` | The algebraic implication from `x/y + y/x = -1` leads to `r²+r+1=0`; over the usual real Grade-9 domain there is no solution, while over a complex extension one obtains the cube-root relation. The source does not state the domain. | Rational manipulation; wrong route: silently assume a domain and present `0` as unqualified. | Make the domain assumption explicit before accepting a derived result. | `MEDIUM` | A domain/boundary comparison could be useful later, but source-domain reconciliation comes first. | `LP-H4` |
+| `INV-MAT-09-POLYNOMIALS-M1P33-50-M2P1-11#M2-P06-HIGHER-ORDER-THINKING-SKILLS-HOTS-15` | `EXTENSION` / domain-sensitive, closest related node `MAT-09-ALGEBRAIC-IDENTITIES-01` | concept: `UNSET`; question: `UNSET` | The algebraic implication from `x/y + y/x = -1` leads to `x²+xy+y²=0`. The algebraic consequence for `x³-y³` is 0, while over the usual real Grade-9 domain the stated relation has no nonzero real solutions; the source does not state a domain. | Rational manipulation; wrong route: silently treat the source as a standard real-domain item without noticing the existence issue. | Keep the algebraic consequence and the source-domain limitation visible as separate facts. | `MEDIUM` | A domain/boundary comparison could be useful later, but it is not required for this source-producer PR. | `LP-H4` |
 
 ### Source-defect items that are **not** promoted to Hard learning targets
 
@@ -65,18 +65,18 @@ Current provisional interactive targets are deliberately fewer than “every Har
 2. **Reverse division algorithm (Archive 22)** — `HIGH`: compose divisor × quotient + remainder and compare only after commitment.
 3. **Lost-sign branch (MC 21)** — `HIGH`: show the two admissible branches created by `s²=121`; make underdetermination visible.
 
-Long Answer 7 is `MEDIUM` interaction value; prefer a strong static decomposition unless an interaction proves additional learning value. HOTS 15 stays deferred until domain/source reconciliation.
+Long Answer 7 is `MEDIUM` interaction value; prefer a strong static decomposition unless an interaction proves additional learning value. HOTS 15 remains domain-sensitive and should carry that caveat into downstream authoring.
 
 These are authoring judgements only. They are not learner-facing badges, search metadata, or publication requirements.
 
 ## 6. Task arc
 
-| Core | Item | Decision practiced | New versus earlier | Canonical records / source basis | Actual or planned prior exposure | Open dependency and useful next work |
+| Core | Item | Decision practiced | New versus earlier | Canonical records / source basis | Actual or planned prior exposure | Current PR state / useful downstream note |
 |---|---|---|---|---|---|---|
-| Core2 | HOTS 16 | translate two evaluated remainders into the stated relation | multi-stage remainder modelling | inventory item + source question/key cards | theorem/evaluation examples from m1 | Reader-B exact-source reconciliation before final package projection |
-| Core2 | Archive 22 | reverse `dividend = divisor × quotient + remainder` | reconstruction rather than forward division | inventory item; H1 verified key conflict | division/remainder examples | preserve printed B separately from verified A |
-| Core2 | MC 21 | preserve both sign branches before evaluating a symmetric expression | exception/underdetermination sensitivity | inventory item; H2 source readback | identity/symmetric-expression work | Reader-B confirm exact source transcription; final result must expose source defect |
-| Core2 | Long Answer 7 | preserve outer subtraction through cubic identity work | sign-sensitive identity transformation | inventory item; H1 key conflict | identity examples | static-first explanation; interaction only if justified |
+| Core2 | HOTS 16 | translate two evaluated remainders into the stated relation | multi-stage remainder modelling | committed inventory + question/key cards + candidate ORIGINAL package record | theorem/evaluation examples from m1 | source readback reconciled in this PR; independent Reader-B remains `NOT_RUN` |
+| Core2 | Archive 22 | reverse `dividend = divisor × quotient + remainder` | reconstruction rather than forward division | committed inventory + candidate ORIGINAL package record | division/remainder examples | printed B is preserved separately from checked A |
+| Core2 | MC 21 | preserve both sign branches before evaluating a symmetric expression | exception/underdetermination sensitivity | committed inventory + candidate ORIGINAL package record | identity/symmetric-expression work | source transcription reconciled; package records the source defect explicitly |
+| Core2 | Long Answer 7 | preserve outer subtraction through cubic identity work | sign-sensitive identity transformation | committed inventory + candidate ORIGINAL package record | identity examples | checked sign conflict is retained; static-first explanation remains preferred |
 
 First-stage route remains Core2 because a usable source-question corpus exists. This note does not authorize learner artifact publication.
 
@@ -86,16 +86,19 @@ Invariant: preserve source demand and mathematical structure while changing repr
 
 ## 8. Research / evidence log
 
-- Exact source corpus: `INV-MAT-09-POLYNOMIALS-M1P33-50-M2P1-11`.
+- Exact source corpus: `INV-MAT-09-POLYNOMIALS-M1P33-50-M2P1-11`, committed at 212/212 items.
+- Candidate package: `Mathematics/library/polynomials.v1.json`, containing 172 `origin=ORIGINAL` question records with typed source custody.
 - Syllabus basis: `MAT-09-POLYNOMIALS-01`, `-02`, `-03`, and related `MAT-09-ALGEBRAIC-IDENTITIES-01`, backed by the existing CBSE/NCERT evidence cards.
-- H1 independent mathematics: HOTS 15/16, Long Answer 7, Archive 22; see #350 task evidence.
-- H2 direct source-risk readback: MC 18–24, HOTS 6/7, Short Answer 6(i); see #350 task evidence.
-- #352 provides scheduling/interaction semantics only; it does not replace source custody or #329 metadata.
+- Full candidate question mapping totals: 73 Algebraic Identities, 56 remainder/factor/division, 40 polynomial structure/degree, 3 evaluation/linear relations; scope totals 99 `CORE_SYLLABUS`, 70 `EXTENSION`, 3 `RELATED`.
+- Direct mathematics/source checks captured in the package include HOTS 15/16, Long Answer 7, Archive 22, MC 21/22 and Short Answer 6(i).
+- Direct source-risk corrections for MC 18–24 and HOTS 15/16 have been reconciled into committed evidence cards and regenerated package output.
+- Difficulty-first semantics remain scheduling/interaction guidance only; they do not replace source custody or canonical difficulty metadata.
 
 ## 9. Known weaknesses / next work
 
-- Blind Reader-B remains `NOT_RUN`; no same-agent check will be relabelled as independent evidence.
-- H2 source-card corrections identified in issue evidence still need to be reconciled into the committed evidence cards before final ORIGINAL projection.
-- Per-item mapping for all 212 items is not yet accepted; the table above establishes mapping semantics and priority witnesses, not a fabricated full mapping.
+- Blind Reader-B remains `NOT_RUN`; no same-agent check is relabelled as independent evidence.
+- Three question records remain explicitly source-custody-held rather than guessed: m2 Single Correct Q9, HOTS Q6 and HOTS Q7.
+- Most printed keys remain `NOT_RUN` for independent mathematical derivation; checked/conflicting items are explicit and source keys remain separate.
+- Candidate per-question mapping is committed for all 172 QUESTION records. The 40 WORKED_EXAMPLE items remain inventory/evidence and therefore do not require fabricated assessment-question mappings.
 - Canonical question difficulty (`D1–D4`) and concept difficulty remain unset where #329-backed metadata is absent.
-- Final `ORIGINAL` package records and typed source-custody proofs remain downstream of reconciliation.
+- The `ORIGINAL` package projection and typed source-custody proofs are committed in this PR; downstream publication must still honor CANDIDATE/DISPUTED/held states rather than silently promoting them.
