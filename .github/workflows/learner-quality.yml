@@ -37,6 +37,8 @@ jobs:
             products/mathematics/polynomials.manifest.json
             public/mathematics/polynomials/core2.html
             public/mathematics/polynomials/core2.render.json
+            public/css/question-bank.css
+            public/css/tablet-12-7.css
       - name: Informational platform code tests
         continue-on-error: true
         run: >-
