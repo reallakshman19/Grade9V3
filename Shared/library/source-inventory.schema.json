@@ -37,6 +37,7 @@
             }},
           "format": {"enum": ["SINGLE_CORRECT", "MULTIPLE_CORRECT", "TRUE_FALSE", "MATCH", "ASSERTION_REASON",
                                "COMPREHENSION", "NUMERIC", "SHORT", "LONG", "HOTS", "FILL_BLANK", "OTHER"]},
+          "source_role": {"enum": ["QUESTION", "WORKED_EXAMPLE"]},
           "question_card": {"type": "string", "minLength": 1},
           "key": {"type": "object", "additionalProperties": false, "required": ["state"],
             "properties": {
