@@ -22,10 +22,12 @@ jobs:
       - name: Build #350 combined source inventory candidate
         shell: python
         run: |
-          import hashlib
           import json
           import re
+          import sys
           from pathlib import Path
+
+          sys.path.insert(0, str(Path.cwd()))
           from Shared.tools import evidence_check
 
           evidence_dir = Path("Mathematics/research/evidence")
