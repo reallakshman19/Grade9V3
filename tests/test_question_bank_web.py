@@ -51,6 +51,22 @@ class QuestionBankWebTest(unittest.TestCase):
         self.assertIn("../js/site-header.js", text)
         self.assertIn("Question browser", text)
 
+    def test_question_bank_has_study_dialog_modal(self):
+        html = (ROOT / "public/question-bank/index.html").read_text(encoding="utf-8")
+        self.assertIn('id="qbStudyDialog"', html)
+        self.assertIn('class="qb-study-dialog"', html)
+        self.assertIn('id="qbDialogClose"', html)
+
+        css = (ROOT / "public/css/question-bank.css").read_text(encoding="utf-8")
+        self.assertIn('.qb-study-dialog', css)
+        self.assertIn('.qb-answer-target', css)
+        self.assertIn('scroll-margin-top', css)
+
+        js = (ROOT / "public/js/question-bank.js").read_text(encoding="utf-8")
+        self.assertIn('openStudyModal', js)
+        self.assertIn('closeStudyModal', js)
+        self.assertIn('showModal', js)
+
     def test_destinations_include_governed_master_suites(self):
         destinations = self.data["destinations"]
         paths = {d["path"] for d in destinations}

@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chapter 2 — Polynomials | Questions</title>
+  <!-- Local KaTeX Typography (Offline Guaranteed) -->
+  <link rel="stylesheet" href="../../public/vendor/katex/0.16.8/katex.min.css">
+  <script src="../../public/vendor/katex/0.16.8/katex.min.js"></script>
+  <script src="../../public/vendor/katex/0.16.8/contrib/auto-render.min.js"></script>
+  <script>
+    function renderAllMath() {
+      if (window.renderMathInElement) {
+        try {
+          window.renderMathInElement(document.body, {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '\\[', right: '\\]', display: true },
+              { left: '$', right: '$', display: false },
+              { left: '\\(', right: '\\)', display: false }
+            ],
+            throwOnError: false
+          });
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+    }
+    document.addEventListener('DOMContentLoaded', renderAllMath);
+    window.addEventListener('load', renderAllMath);
+  </script>
+  <style>
+    :root {
+      --bg: #f7f8fc;
+      --card: #ffffff;
+      --accent: #1a56db;
+      --accent2: #7e3af2;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --muted: #64748b;
+      --cp-bg: #eff6ff;
+      --cp-border: #93c5fd;
+      --ex-bg: #fdf4ff;
+      --ex-border: #d8b4fe;
+      --tag-bg: #dbeafe;
+      --tag-text: #1e40af;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 24px 16px 64px;
+    }
+    .page-header {
+      max-width: 860px;
+      margin: 0 auto 32px;
+      padding: 28px 32px;
+      background: var(--card);
+      border-radius: 14px;
+      border-left: 6px solid var(--accent);
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
+    }
+    .page-header h1 { font-size: 1.65rem; color: var(--accent); margin-bottom: 4px; }
+    .page-header p { color: var(--muted); font-size: .95rem; }
+
+    .section-title {
+      max-width: 860px;
+      margin: 36px auto 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .section-title .pill {
+      padding: 2px 12px;
+      border-radius: 20px;
+      font-size: .78rem;
+      font-weight: 600;
+    }
+    .pill-cp  { background: var(--cp-bg);  color: #1d4ed8; }
+    .pill-ex  { background: var(--ex-bg);  color: #6b21a8; }
+
+    .question-list { max-width: 860px; margin: 0 auto; display: flex; flex-direction: column; gap: 14px; }
+
+    .q-card {
+      background: var(--card);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.04);
+      transition: box-shadow .15s;
+    }
+    .q-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.09); }
+    .q-card.cp  { border-left: 5px solid var(--cp-border); }
+    .q-card.ex  { border-left: 5px solid var(--ex-border); }
+
+    .q-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 22px;
+    }
+    .q-num {
+      min-width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: .9rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .cp .q-num  { background: var(--cp-bg);  color: #1d4ed8; }
+    .ex .q-num  { background: var(--ex-bg);  color: #6b21a8; }
+
+    .q-body { flex: 1; }
+    .q-stem { font-size: 1rem; margin-bottom: 8px; }
+    .q-stem strong { color: var(--accent); }
+
+    .parts { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 24px; margin-top: 8px; }
+    .parts li { font-size: .96rem; min-width: 120px; }
+    .parts li span { color: var(--muted); font-size: .85rem; margin-right: 2px; }
+
+    .q-meta {
+      padding: 8px 22px 14px 72px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      display: inline-block;
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: .75rem;
+      font-weight: 600;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+    }
+    .tag.teal   { background: #ccfbf1; color: #0f766e; }
+    .tag.purple { background: #f3e8ff; color: #7e22ce; }
+    .tag.red    { background: #fee2e2; color: #b91c1c; }
+    .tag.amber  { background: #fef3c7; color: #92400e; }
+
+    .divider {
+      max-width: 860px;
+      margin: 24px auto 0;
+      border: none;
+      border-top: 2px dashed var(--border);
+    }
+
+    @media(max-width: 600px) {
+      .parts { flex-direction: column; }
+      .q-meta { padding-left: 22px; }
+    }
+  
+    /* Standardized Accessible Study Modal Dialog */
+    .qb-study-dialog {
+      border: 1px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 0;
+      max-width: 1080px;
+      width: 95vw;
+      max-height: 90vh;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      background: #ffffff;
+      overflow: hidden;
+    }
+    .qb-study-dialog::backdrop {
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+    }
+    .qb-dialog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 20px;
+      background: #0f172a;
+      color: white;
+    }
+    .qb-dialog-title {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+    .qb-dialog-close {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.4rem;
+      cursor: pointer;
+      min-width: 48px;
+      min-height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 6px;
+    }
+    .qb-dialog-close:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+    }
+    .qb-dialog-body {
+      padding: 20px;
+      overflow-y: auto;
+      max-height: calc(90vh - 65px);
+    }
+    .btn-study-q {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      color: #1d4ed8;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.78rem;
+      margin-left: 8px;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-study-q:hover {
+      background: #2563eb;
+      color: white;
+      border-color: #2563eb;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Top Navigation Bar -->
+  <nav class="top-nav" style="background:#0f172a; color:white; padding:10px 20px; display:flex; justify-content:space-between; align-items:center; position:sticky; top:0; z-index:100; box-shadow:0 2px 8px rgba(0,0,0,0.15); flex-wrap:wrap; gap:8px;">
+    <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+      <a href="../../docs/index.html" style="color:#cbd5e1; border:1px solid #334155; padding:5px 12px; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600;">← Learning Portal</a>
+      <a href="../../docs/mathematics/index.html" style="color:#cbd5e1; border:1px solid #334155; padding:5px 12px; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600;">📐 Mathematics Hub</a>
+      <a href="../../docs/question-bank/index.html" style="color:#cbd5e1; border:1px solid #334155; padding:5px 12px; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600;">📚 Question Bank</a>
+      <span style="font-weight:800; font-size:0.95rem; color:#f8fafc;">Mathematics · Chapter 2 Questions</span>
+    </div>
+    <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+      <a href="ch2-polynomials-m1-m2-complete-bank.html" style="background:#2563eb; color:white; padding:5px 12px; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600;">📖 Complete Bank (173 Qs) →</a>
+      <a href="../../products/mathematics/polynomials/rendered/core2.html" style="color:#93c5fd; border:1px solid #334155; padding:5px 12px; border-radius:6px; text-decoration:none; font-size:0.88rem; font-weight:600;">🎯 Core 2 Study Clinic →</a>
+    </div>
+  </nav>
+
+
+<div class="page-header">
+  <h1>Chapter 2 — Polynomials</h1>
+  <p>Questions extracted from m1.pdf and m2.pdf &nbsp;·&nbsp; Check Point 1, Check Point 2, and Exemplification</p>
+  <div style="margin-top: 16px; padding: 14px 18px; background: #eff6ff; border: 1.5px solid #bfdbfe; border-radius: 10px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+    <div>
+      <div style="font-weight: 700; color: #1e3a8a; font-size: 0.96rem;">Complete Master Question Bank (172 Questions)</div>
+      <div style="font-size: 0.88rem; color: #475569; margin-top: 2px;">This page shows a 20-item excerpt. The complete authentic repository contains <strong>172 questions</strong> (102 Core + 70 Extension / Olympiad) with full official solutions.</div>
+    </div>
+    <a href="ch2-polynomials-m1-m2-complete-bank.html" style="padding: 9px 18px; background: #2563eb; color: #ffffff; border-radius: 8px; font-weight: 700; font-size: 0.88rem; text-decoration: none; white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;">Open Complete Bank (172 Qs) →</a>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════ CHECK POINT 1 ═══════════════════════════════════════ -->
+<div class="section-title">
+  <h2>Check Point 1</h2>
+  <span class="pill pill-cp">5 questions</span>
+</div>
+
+<div class="question-list">
+
+  <!-- Q1 -->
+  <div class="q-card cp">
+    <div class="q-header">
+      <div class="q-num">1</div>
+      <div class="q-body">
+        <p class="q-stem">Classify the following polynomials based on the <strong>number of terms</strong>.</p>
+        <ul class="parts">
+          <li><span>(a)</span> \(x + 3\)</li>
+          <li><span>(b)</span> \(x^2 + x + 2\)</li>
+          <li><span>(c)</span> \(x^4 + 1\)</li>
+          <li><span>(d)</span> \(8x^3\)</li>
+          <li><span>(e)</span> \(7x^2 + 8x + 3\)</li>
+          <li><span>(f)</span> \(\dfrac{x^3}{12}\)</li>
+          <li><span>(g)</span> \(x^4 + \dfrac{x^2}{2}\)</li>
+          <li><span>(h)</span> \(x^2 + x + 3\)</li>
+        </ul>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Monomial / Binomial / Trinomial</span>
+      <span class="tag teal">Classification</span>
+    </div>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card cp">
+    <div class="q-header">
+      <div class="q-num">2</div>
+      <div class="q-body">
+        <p class="q-stem">Classify the following polynomials based on their <strong>degree</strong>.</p>
+        <ul class="parts">
+          <li><span>(a)</span> \(3x^2 + 4x\)</li>
+          <li><span>(b)</span> \(2x^3 + \dfrac{x}{2} + 3\)</li>
+          <li><span>(c)</span> \(7x + 2\)</li>
+          <li><span>(d)</span> \(5x^2\)</li>
+          <li><span>(e)</span> \(x^3 + \sqrt{2}\,x^2 + 1\)</li>
+          <li><span>(f)</span> \(x^3 - 1\)</li>
+          <li><span>(g)</span> \(8x + 3\)</li>
+        </ul>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Degree: Linear / Quadratic / Cubic</span>
+      <span class="tag teal">Classification</span>
+    </div>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card cp">
+    <div class="q-header">
+      <div class="q-num">3</div>
+      <div class="q-body">
+        <p class="q-stem">Find the <strong>zeroes</strong> of the following polynomials.</p>
+        <ul class="parts">
+          <li><span>(a)</span> \(7x - 14\)</li>
+          <li><span>(b)</span> \(8x + 1\)</li>
+          <li><span>(c)</span> \(x^2 - 5x - 6\)</li>
+          <li><span>(d)</span> \(2x^2 + 3x + 1\)</li>
+        </ul>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Roots / Zeroes</span>
+      <span class="tag teal">Computation</span>
+    </div>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card cp">
+    <div class="q-header">
+      <div class="q-num">4</div>
+      <div class="q-body">
+        <p class="q-stem">Divide \(6x^2 + 13x + 16\) by \(2x + 3\) and find the <strong>quotient and remainder</strong>.</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Division Algorithm</span>
+      <span class="tag amber">Moderate</span>
+    </div>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card cp">
+    <div class="q-header">
+      <div class="q-num">5</div>
+      <div class="q-body">
+        <p class="q-stem">The polynomial \(5x^2 + 7x + 3\) is divided by \((x - 2)\). Find the remainder by using the <strong>Remainder Theorem</strong>.</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Remainder Theorem</span>
+      <span class="tag teal">Direct Application</span>
+    </div>
+  </div>
+
+</div><!-- /question-list -->
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════ CHECK POINT 2 ═══════════════════════════════════════ -->
+<div class="section-title">
+  <h2>Check Point 2</h2>
+  <span class="pill pill-cp">5 questions</span>
+</div>
+
+<div class="question-list">
+
+  <!-- Q6 -->
+  <div class="q-card cp">
+    <div class="q-header">
+      <div class="q-num">6</div>
+      <div class="q-body">
+        <p class="q-stem">Expand \((2x + 3y - 2z)^2\).</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Algebraic Identities</span>
+      <span class="tag teal">Expansion</span>
+      <span class="tag">\((a+b+c)^2\)</span>
+    </div>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card cp">
+    <div class="q-header">
+      <div class="q-num">7</div>
+      <div class="q-body">
+        <p class="q-stem">If \(a + b = 7\) and \(ab = 12\), find the value of \(a^3 + b^3\).</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Value Form</span>
+      <span class="tag teal">Indirect Evaluation</span>
+    </div>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-card cp">
+    <div class="q-header">
+      <div class="q-num">8</div>
+      <div class="q-body">
+        <p class="q-stem">If \(a + \dfrac{1}{a} = 5\), then \(a^2 + \dfrac{1}{a^2}\) is:</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Value Form</span>
+      <span class="tag teal">Reciprocal Expression</span>
+    </div>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-card cp">
+    <div class="q-header">
+      <div class="q-num">9</div>
+      <div class="q-body">
+        <p class="q-stem">If \(a + \dfrac{1}{a} = 4\), then \(a^3 + \dfrac{1}{a^3}\) is equal to:</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Value Form</span>
+      <span class="tag teal">Reciprocal Expression</span>
+    </div>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-card cp">
+    <div class="q-header">
+      <div class="q-num">10</div>
+      <div class="q-body">
+        <p class="q-stem">If \(p - q = 9\), prove that \(p^3 - q^3 - 27pq = 729\).</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Algebraic Identity</span>
+      <span class="tag purple">Proof</span>
+      <span class="tag">\((a-b)^3\) identity</span>
+    </div>
+  </div>
+
+</div>
+
+<hr class="divider">
+
+<!-- ═══════════════════════════════════════ EXEMPLIFICATION ═══════════════════════════════════════ -->
+<div class="section-title">
+  <h2>Exemplification</h2>
+  <span class="pill pill-ex">10 questions</span>
+</div>
+
+<div class="question-list">
+
+  <!-- E1 -->
+  <div class="q-card ex">
+    <div class="q-header">
+      <div class="q-num">1</div>
+      <div class="q-body">
+        <p class="q-stem">What must be added to \(3x^3 + x^2 - 22x + 9\) so that the result is <strong>exactly divisible</strong> by \(3x^2 + 7x - 6\)?</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Division Algorithm</span>
+      <span class="tag red">Hard</span>
+      <span class="tag purple">Reverse Application</span>
+    </div>
+  </div>
+
+  <!-- E2 -->
+  <div class="q-card ex">
+    <div class="q-header">
+      <div class="q-num">2</div>
+      <div class="q-body">
+        <p class="q-stem">If \(x = 2\) and \(x = 0\) are two roots of the polynomial \(f(x) = 2x^3 - 5x^2 + ax + b\). Find the values of \(a\) and \(b\).</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Factor Theorem</span>
+      <span class="tag amber">Moderate–Hard</span>
+      <span class="tag">System of equations</span>
+    </div>
+  </div>
+
+  <!-- E3 -->
+  <div class="q-card ex">
+    <div class="q-header">
+      <div class="q-num">3</div>
+      <div class="q-body">
+        <p class="q-stem">If \(f(x) = x^4 - 2x^3 + 3x^2 - ax + b\) is a polynomial such that when it is divided by \((x-1)\) and \((x+1)\), the remainders are <strong>5 and 19</strong> respectively. Determine the remainder when \(f(x)\) is divided by \((x-2)\).</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Remainder Theorem</span>
+      <span class="tag red">Hard</span>
+      <span class="tag">Multi-step</span>
+    </div>
+  </div>
+
+  <!-- E4 -->
+  <div class="q-card ex">
+    <div class="q-header">
+      <div class="q-num">4</div>
+      <div class="q-body">
+        <p class="q-stem">Find the value of \((a-b)^3 + (b-c)^3 + (c-a)^3\).</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Special Identity</span>
+      <span class="tag teal">If \(a+b+c=0\)</span>
+      <span class="tag purple">Elegant Result</span>
+    </div>
+  </div>
+
+  <!-- E5 -->
+  <div class="q-card ex">
+    <div class="q-header">
+      <div class="q-num">5</div>
+      <div class="q-body">
+        <p class="q-stem">If \(a + b + c = 0\), prove that \(a^3 + b^3 + c^3 = 3abc\).</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Special Case Identity</span>
+      <span class="tag purple">Proof</span>
+    </div>
+  </div>
+
+  <!-- E6 -->
+  <div class="q-card ex">
+    <div class="q-header">
+      <div class="q-num">6</div>
+      <div class="q-body">
+        <p class="q-stem">Evaluate:</p>
+        <ul class="parts">
+          <li><span>(i)</span> \((1005)^3\)</li>
+          <li><span>(ii)</span> \((997)^3\)</li>
+        </ul>
+        <p style="font-size:.88rem;color:var(--muted);margin-top:8px;">Hint: use \((a \pm b)^3\) with \(a = 1000\).</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Cubic Identity</span>
+      <span class="tag teal">Numerical Evaluation</span>
+    </div>
+  </div>
+
+  <!-- E7 -->
+  <div class="q-card ex">
+    <div class="q-header">
+      <div class="q-num">7</div>
+      <div class="q-body">
+        <p class="q-stem">Evaluate \((1000 + 5)^3 + 3(1000)(5)\).</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Cubic Expansion</span>
+      <span class="tag teal">Numerical</span>
+    </div>
+  </div>
+
+  <!-- E8 -->
+  <div class="q-card ex">
+    <div class="q-header">
+      <div class="q-num">8</div>
+      <div class="q-body">
+        <p class="q-stem">Factorize \(x^3 - 1000\,000\,000 - 27 - 9000x\).</p>
+        <p style="font-size:.88rem;color:var(--muted);margin-top:6px;">
+          i.e., \(x^3 - 9000x - 27 - 10^9\) &nbsp;(use the identity \(a^3+b^3+c^3-3abc\)).
+        </p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Factorization</span>
+      <span class="tag red">Hard</span>
+      <span class="tag">\(a^3+b^3+c^3-3abc\)</span>
+    </div>
+  </div>
+
+  <!-- E9 -->
+  <div class="q-card ex">
+    <div class="q-header">
+      <div class="q-num">9</div>
+      <div class="q-body">
+        <p class="q-stem">Prove that:</p>
+        <p style="margin-top:8px;">
+          \[\frac{0.87\times 0.87\times 0.87\;+\;0.13\times 0.13\times 0.13}{0.87\times 0.87\;-\;0.87\times 0.13\;+\;0.13\times 0.13} = 1\]
+        </p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Sum of Cubes</span>
+      <span class="tag purple">Proof</span>
+      <span class="tag">\(a^3+b^3=(a+b)(a^2-ab+b^2)\)</span>
+    </div>
+  </div>
+
+  <!-- E10 -->
+  <div class="q-card ex">
+    <div class="q-header">
+      <div class="q-num">10</div>
+      <div class="q-body">
+        <p class="q-stem">If \(p = 2 - a\), find the value of \(a^3 + 6ap + p^3 - 8\).</p>
+      </div>
+    
+      <button type="button" class="btn-study-q" onclick="openStudyModalForCard(this.closest('.q-card'))">Study question 🎯</button>
+    </div>
+    <div class="q-meta">
+      <span class="tag">Substitution</span>
+      <span class="tag amber">Moderate</span>
+      <span class="tag">Cubic simplification</span>
+    </div>
+  </div>
+
+</div><!-- /question-list -->
+
+  <!-- Standardized Accessible Study Modal Dialog -->
+  <dialog id="qbStudyDialog" class="qb-study-dialog" aria-modal="true" aria-labelledby="qbDialogTitle">
+    <div class="qb-dialog-header">
+      <div id="qbDialogTitle" class="qb-dialog-title">Question Study Workspace</div>
+      <button type="button" class="qb-dialog-close" id="qbDialogClose" aria-label="Close study popup">✕</button>
+    </div>
+    <div id="qbDialogBody" class="qb-dialog-body"></div>
+  </dialog>
+
+  <script>
+    // Study Modal Handlers
+    function getStudyDialog() { return document.getElementById('qbStudyDialog'); }
+    function getDialogBody() { return document.getElementById('qbDialogBody'); }
+    function getDialogTitle() { return document.getElementById('qbDialogTitle'); }
+
+    function openStudyModalForCard(card) {
+      const studyDialog = getStudyDialog();
+      const dialogBody = getDialogBody();
+      const dialogTitle = getDialogTitle();
+      if (!studyDialog || !dialogBody) return;
+      const qid = card.querySelector('.q-id, .q-num')?.textContent.trim() || 'Question Workspace';
+      const sectionName = card.closest('.question-list')?.previousElementSibling?.querySelector('h2')?.textContent.trim() || 'Question';
+      if (dialogTitle) dialogTitle.textContent = `${sectionName} · Q${qid} · Interactive Study Workspace`;
+      
+      dialogBody.replaceChildren();
+      const clone = card.cloneNode(true);
+      clone.style.display = 'block';
+      clone.style.border = 'none';
+      clone.style.boxShadow = 'none';
+      clone.style.padding = '0';
+      
+      // Remove study button from modal view to avoid duplicate nesting
+      clone.querySelector('.btn-study-q')?.remove();
+      
+      dialogBody.append(clone);
+      
+      if (window.renderAllMath) window.renderAllMath();
+      try { studyDialog.showModal(); } catch(e) { studyDialog.setAttribute('open', ''); }
+    }
+
+    function closeStudyModal() {
+      const studyDialog = getStudyDialog();
+      if (!studyDialog) return;
+      try { studyDialog.close(); } catch(e) { studyDialog.removeAttribute('open'); }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const dialogClose = document.getElementById('qbDialogClose');
+      const studyDialog = getStudyDialog();
+      if (dialogClose) dialogClose.addEventListener('click', closeStudyModal);
+      if (studyDialog) {
+        studyDialog.addEventListener('click', e => { if (e.target === studyDialog) closeStudyModal(); });
+        studyDialog.addEventListener('cancel', () => closeStudyModal());
+      }
+    });
+  </script>
+</body>
+</html>

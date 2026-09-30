@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Polynomials — Core 2: Canonical Question Clinic & Algebraic Proofs</title>
+  
+  <!-- Local KaTeX Typography (Offline Guaranteed) -->
+  <link rel="stylesheet" href="../../../../public/vendor/katex/0.16.8/katex.min.css">
+  <script src="../../../../public/vendor/katex/0.16.8/katex.min.js"></script>
+  <script src="../../../../public/vendor/katex/0.16.8/contrib/auto-render.min.js"></script>
+  <script>
+    function renderAllMath() {
+      if (window.renderMathInElement) {
+        try {
+          window.renderMathInElement(document.body, {
+            delimiters: [
+              { left: '$$', right: '$$', display: true },
+              { left: '\[', right: '\]', display: true },
+              { left: '$', right: '$', display: false },
+              { left: '\(', right: '\)', display: false }
+            ],
+            throwOnError: false
+          });
+        } catch (e) {
+          console.warn(e);
+        }
+      }
+    }
+    document.addEventListener('DOMContentLoaded', renderAllMath);
+    window.addEventListener('load', renderAllMath);
+  </script>
+  <style>
+    :root {
+      --primary: #0f172a;
+      --primary-accent: #2563eb;
+      --secondary: #4338ca;
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --correct: #065f46;
+      --correct-bg: #ecfdf5;
+      --incorrect: #991b1b;
+      --incorrect-bg: #fef2f2;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding-bottom: 96px;
+    }
+    .top-nav {
+      background: #0f172a;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .top-nav a {
+      text-decoration: none;
+      font-size: 0.88rem;
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-weight: 600;
+      min-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      transition: all 0.15s ease;
+    }
+    .nav-btn-dash { color: #cbd5e1; border: 1px solid #334155; }
+    .nav-btn-dash:hover { background: #1e293b; color: white; }
+    .nav-btn-core2 { color: #93c5fd; border: 1px solid #334155; }
+    .nav-btn-core2:hover { background: #1e293b; color: white; }
+    .nav-btn-bank { background: #2563eb; color: white; }
+    .nav-btn-bank:hover { background: #1d4ed8; }
+    
+    header.hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #312e81 100%);
+      color: white;
+      padding: 40px 20px;
+      text-align: center;
+      border-bottom: 3px solid #3b82f6;
+    }
+    header.hero h1 { font-size: 2.2rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.01em; }
+    header.hero p { font-size: 1.05rem; opacity: 0.95; max-width: 820px; margin: 0 auto 14px; }
+    .badge-bar { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; }
+    .hero-badge {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* 12.7" Tablet Optimized Container (1280px edge-to-edge) */
+    .container { max-width: 1280px; margin: 0 auto; padding: 28px 20px; }
+
+    /* Diagnostic Framework Banner */
+    .diagnostic-panel {
+      background: white;
+      border: 1px solid #cbd5e1;
+      border-left: 5px solid #2563eb;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 32px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .diagnostic-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #1e3a8a;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .framework-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+      margin-top: 14px;
+    }
+    .framework-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .framework-box h4 {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #1e40af;
+      margin-bottom: 4px;
+    }
+    .framework-box p { font-size: 0.86rem; color: #334155; line-height: 1.5; }
+
+    /* Section Heading */
+    .section-heading {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* Problem Card with 12.7" Side-by-Side Dual Column Architecture */
+    .q-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+      transition: border-color 0.15s ease;
+    }
+    .q-card:hover { border-color: #93c5fd; }
+    
+    @media (min-width: 960px) {
+      .q-card-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+        gap: 24px;
+        align-items: start;
+      }
+    }
+
+    .q-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .q-pill {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.78rem;
+    }
+    .q-pill.hard {
+      background: #fef2f2;
+      color: #b91c1c;
+      border-color: #fecaca;
+    }
+    .q-stem {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #0f172a;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+
+    /* Interactive Options */
+    .q-options {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+    .opt-btn {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: #f8fafc;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.15s ease;
+    }
+    .opt-btn:hover { background: #f1f5f9; border-color: #cbd5e1; }
+    .opt-btn.selected-correct {
+      background: #ecfdf5 !important;
+      border-color: #10b981 !important;
+      color: #065f46 !important;
+    }
+    .opt-btn.selected-incorrect {
+      background: #fef2f2 !important;
+      border-color: #ef4444 !important;
+      color: #991b1b !important;
+    }
+    .opt-badge {
+      font-weight: 800;
+      font-size: 0.85rem;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 6px;
+      min-width: 28px;
+      text-align: center;
+    }
+
+    /* Free response input */
+    .fr-box {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+    .fr-input {
+      padding: 8px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      min-width: 220px;
+    }
+    .fr-input:focus { border-color: #2563eb; }
+    .fr-submit {
+      padding: 8px 16px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .fr-submit:hover { background: #1d4ed8; }
+
+    /* Right Column: Visual Diagram Area */
+    .diagram-pane {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 240px;
+    }
+    .diagram-pane svg {
+      max-width: 100%;
+      height: auto;
+    }
+    .diagram-caption {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 8px;
+      text-align: center;
+      font-style: italic;
+    }
+
+    /* Progressive Hint Ladder */
+    details.hint-ladder {
+      background: #fffbeb;
+      border: 1px solid #fef3c7;
+      border-radius: 8px;
+      padding: 10px 14px;
+      margin: 14px 0;
+    }
+    details.hint-ladder summary {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #92400e;
+      cursor: pointer;
+      outline: none;
+    }
+    .hint-step {
+      background: white;
+      border: 1px solid #fde68a;
+      border-left: 4px solid #d97706;
+      border-radius: 6px;
+      padding: 8px 12px;
+      font-size: 0.86rem;
+      color: #78350f;
+      margin-top: 8px;
+    }
+    .hint-step-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      background: #fef3c7;
+      color: #92400e;
+      padding: 1px 6px;
+      border-radius: 3px;
+      margin-right: 6px;
+    }
+
+    /* Structured Reasoning Routes */
+    .reasoning-box {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed #bbf7d0;
+    }
+    .reasoning-step {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 6px 10px;
+      font-size: 0.83rem;
+      margin-top: 6px;
+    }
+    .reasoning-kind {
+      font-size: 0.7rem;
+      font-weight: 800;
+      background: #e0e7ff;
+      color: #4338ca;
+      padding: 1px 5px;
+      border-radius: 3px;
+      margin-right: 5px;
+    }
+
+    /* Feedback message */
+    .feedback-banner {
+      display: none;
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      margin-top: 12px;
+    }
+    .feedback-banner.show-correct {
+      display: block;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      color: #065f46;
+    }
+    .feedback-banner.show-incorrect {
+      display: block;
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #991b1b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav class="top-nav">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <a href="../../../index.html" class="nav-btn-dash">← Learning Portal</a>
+      <span style="font-weight:700; font-size:0.95rem; color:#f8fafc;">Mathematics · Chapter 2: Polynomials</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:8px;">
+      <a href="index.html" class="nav-btn-core2">Unit Dashboard</a>
+      <a href="../../Mathematics/assets/ch2-polynomials-m1-m2-complete-bank.html" class="nav-btn-bank">Master Question Bank (172 Qs) →</a>
+    </div>
+  </nav>
+
+  <!-- Hero Banner -->
+  <header class="hero">
+    <div class="badge-bar" style="margin-bottom:12px;">
+      <span class="hero-badge">📐 Class 9 CBSE / Foundation</span>
+      <span class="hero-badge">⚡ Core 2 Study Mode</span>
+      <span class="hero-badge">🎯 Canonical Clinical Suite (12 Items)</span>
+      <span class="hero-badge">💡 Progressive 3-Rung Hints</span>
+      <span class="hero-badge">🧭 Formal Reasoning Routes</span>
+    </div>
+    <h1>Polynomials: Canonical Question Clinic</h1>
+    <p>Comprehensive interactive mastery suite bridging foundational algebraic structure, Remainder & Factor Theorems, cubic expansions, and Olympiad symmetric reductions.</p>
+  </header>
+
+  <div class="container">
+
+    <!-- Diagnostic Pedagogical Architecture -->
+    <section class="diagnostic-panel">
+      <div class="diagnostic-title">
+        <span>🔍</span> Diagnostic Learning Arc: 4 Fundamental Inferential Cruxes
+      </div>
+      <p style="font-size:0.92rem; color:#475569;">
+        Mastery in polynomials requires navigating beyond superficial substitution. This clinical suite trains the 4 pivotal conceptual jumps defined in the unit syllabus:
+      </p>
+      <div class="framework-grid">
+        <div class="framework-box">
+          <h4>1. Structural Recognition</h4>
+          <p>Distinguish variable exponents from constant exponents; identify degree after full simplification and term cancellation.</p>
+        </div>
+        <div class="framework-box">
+          <h4>2. Divisibility & Reconstruction</h4>
+          <p>Treat remainders as evaluatable quantities; reconstruct dividends directly via Division Algorithm without blind long division.</p>
+        </div>
+        <div class="framework-box">
+          <h4>3. Symmetrical Branching</h4>
+          <p>Preserve dual square-root branches ($\pm$) in symmetric identity transformations; avoid premature sign collapse.</p>
+        </div>
+        <div class="framework-box">
+          <h4>4. Sign-Sensitive Expansion</h4>
+          <p>Track distributive subtractions across mirrored cubic expansions and Sophie Germain completions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Question Cards Section -->
+    <div class="section-heading">
+      <span>12 Canonical Diagnostic Problems</span>
+      <span style="font-size:0.9rem; font-weight:600; color:var(--text-muted);">12.7" Tablet Responsive Split-View</span>
+    </div>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         CARD 1: SRC-POLY-M2-FIB-01 (D1)
+    ───────────────────────────────────────────────────────────── -->
+    <div class="q-card" id="card-1">
+      <div class="q-card-grid">
+        <div class="problem-pane">
+          <div class="q-meta">
+            <span class="q-pill">Q1 · Constant Polynomial Degree</span>
+            <span>SRC-POLY-M2-FIB-01 · D1 (Direct Recognition)</span>
+          </div>
+          <div class="q-stem">
+            $\sqrt{2}$ is a polynomial of degree _____.
+          </div>
+          <div class="fr-box">
+            <input type="text" class="fr-input" id="input-1" placeholder="Enter non-negative integer...">
+            <button type="button" class="fr-submit" onclick="checkFR(1, '0', ['zero'])">Submit Answer</button>
+          </div>
+          
+          <details class="hint-ladder">
+            <summary>💡 Progressive 3-Rung Hint Ladder (Click to Expand)</summary>
+            <div class="hint-step"><span class="hint-step-tag">Rung 1 (ORIENT)</span>A non-zero real constant number can be rewritten with an indeterminate $x$ raised to a power that equals 1.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 2 (FIRST_RELATION)</span>Express $\sqrt{2}$ in variable form: $\sqrt{2} = \sqrt{2} \cdot x^n$. For $x 
+eq 0$, what non-negative integer satisfies $x^n = 1$?</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 3 (CRUX_MOVE)</span>Since $x^0 = 1$, we have $\sqrt{2} = \sqrt{2}x^0$. The highest variable power is 0. Therefore the degree is 0.</div>
+          </details>
+
+          <div class="feedback-banner" id="feedback-1"></div>
+
+          <div class="reasoning-box">
+            <div style="font-weight:700; font-size:0.85rem; color:#166534; margin-bottom:4px;">🧭 Formal Reasoning Route:</div>
+            <div class="reasoning-step"><span class="reasoning-kind">REPRESENTATION_CONVERSION</span><strong>Express constant in algebraic form: $\sqrt{2} = \sqrt{2} \cdot x^0$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: For any real indeterminate $x 
+eq 0$, $x^0 = 1$.</em></div>
+            <div class="reasoning-step"><span class="reasoning-kind">DEGREE_AXIOM_APPLICATION</span><strong>By standard definition (NCERT §2.1), degree of any non-zero constant polynomial is 0</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Highest power of variable with non-zero coefficient is 0. Note zero polynomial 0 has undefined degree.</em></div>
+          </div>
+        </div>
+
+        <div class="diagram-pane">
+          <svg viewBox="0 0 340 180" width="100%" height="160">
+            <rect x="10" y="10" width="320" height="160" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="170" y="32" font-size="12" font-weight="700" text-anchor="middle" fill="#1e3a8a">Polynomial Degree Classification Spectrum</text>
+            
+            <line x1="30" y1="90" x2="310" y2="90" stroke="#94a3b8" stroke-width="2"/>
+            
+            <!-- Nodes -->
+            <circle cx="50" cy="90" r="14" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+            <text x="50" y="94" font-size="10" font-weight="800" text-anchor="middle" fill="#1d4ed8">0</text>
+            <text x="50" y="122" font-size="9" font-weight="700" text-anchor="middle" fill="#0f172a">Constant</text>
+            <text x="50" y="136" font-size="8" text-anchor="middle" fill="#2563eb">√2 = √2·x⁰</text>
+
+            <circle cx="120" cy="90" r="14" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+            <text x="120" y="94" font-size="10" font-weight="700" text-anchor="middle" fill="#334155">1</text>
+            <text x="120" y="122" font-size="9" text-anchor="middle" fill="#64748b">Linear (ax+b)</text>
+
+            <circle cx="190" cy="90" r="14" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+            <text x="190" y="94" font-size="10" font-weight="700" text-anchor="middle" fill="#334155">2</text>
+            <text x="190" y="122" font-size="9" text-anchor="middle" fill="#64748b">Quadratic</text>
+
+            <circle cx="260" cy="90" r="14" fill="#f8fafc" stroke="#64748b" stroke-width="1.5"/>
+            <text x="260" y="94" font-size="10" font-weight="700" text-anchor="middle" fill="#334155">3</text>
+            <text x="260" y="122" font-size="9" text-anchor="middle" fill="#64748b">Cubic</text>
+            
+            <rect x="35" y="44" width="60" height="18" rx="4" fill="#dbeafe" stroke="#93c5fd"/>
+            <text x="65" y="56" font-size="8.5" font-weight="700" text-anchor="middle" fill="#1e40af">TARGET: √2</text>
+          </svg>
+          <div class="diagram-caption">Constant √2 has degree 0. The zero polynomial 0 has no defined degree.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         CARD 2: SRC-POLY-M2-FIB-03 (D2)
+    ───────────────────────────────────────────────────────────── -->
+    <div class="q-card" id="card-2">
+      <div class="q-card-grid">
+        <div class="problem-pane">
+          <div class="q-meta">
+            <span class="q-pill">Q2 · Targeted Cross-Term Expansion</span>
+            <span>SRC-POLY-M2-FIB-03 · D2 (Connected Reasoning)</span>
+          </div>
+          <div class="q-stem">
+            The coefficient of $x^2$ in the product $(3x^2 - 5)(4 + 4x^2)$ is _____.
+          </div>
+          <div class="fr-box">
+            <input type="text" class="fr-input" id="input-2" placeholder="Enter integer coefficient...">
+            <button type="button" class="fr-submit" onclick="checkFR(2, '-8', ['- 8'])">Submit Answer</button>
+          </div>
+
+          <details class="hint-ladder">
+            <summary>💡 Progressive 3-Rung Hint Ladder (Click to Expand)</summary>
+            <div class="hint-step"><span class="hint-step-tag">Rung 1 (ORIENT)</span>Do not expand all 4 terms. Only combine terms from the first bracket and second bracket that multiply to produce $x^2$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 2 (FIRST_RELATION)</span>$(3x^2) 	imes 4 = 12x^2$ and $(-5) 	imes (4x^2) = -20x^2$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 3 (CRUX_MOVE)</span>Sum the two coefficients: $12 + (-20) = -8$. The coefficient of $x^2$ is $-8$.</div>
+          </details>
+
+          <div class="feedback-banner" id="feedback-2"></div>
+
+          <div class="reasoning-box">
+            <div style="font-weight:700; font-size:0.85rem; color:#166534; margin-bottom:4px;">🧭 Formal Reasoning Route:</div>
+            <div class="reasoning-step"><span class="reasoning-kind">TARGETED_CROSS_PRODUCT</span><strong>Identify terms yielding exponent 2: $(3x^2)(4) + (-5)(4x^2) = 12x^2 - 20x^2$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Exponents add: $2+0=2$ and $0+2=2$. Terms like $(3x^2)(4x^2)=12x^4$ do not affect $x^2$.</em></div>
+            <div class="reasoning-step"><span class="reasoning-kind">LIKE_TERM_COMBINATION</span><strong>$12 - 20 = -8$, therefore the coefficient is $-8$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Combining like coefficients over the distributive property.</em></div>
+          </div>
+        </div>
+
+        <div class="diagram-pane">
+          <svg viewBox="0 0 340 180" width="100%" height="160">
+            <rect x="20" y="15" width="300" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="170" y="34" font-size="11" font-weight="700" text-anchor="middle" fill="#1e3a8a">2×2 Cross-Term Multiplication Matrix</text>
+            
+            <!-- Matrix table -->
+            <rect x="80" y="50" width="100" height="40" fill="#f8fafc" stroke="#cbd5e1"/>
+            <rect x="180" y="50" width="100" height="40" fill="#fef2f2" stroke="#f87171" stroke-width="2"/>
+            <rect x="80" y="90" width="100" height="40" fill="#eff6ff" stroke="#60a5fa" stroke-width="2"/>
+            <rect x="180" y="90" width="100" height="40" fill="#f8fafc" stroke="#cbd5e1"/>
+
+            <!-- Labels -->
+            <text x="50" y="75" font-size="10" font-weight="700" text-anchor="middle" fill="#475569">3x²</text>
+            <text x="50" y="115" font-size="10" font-weight="700" text-anchor="middle" fill="#475569">-5</text>
+            <text x="130" y="44" font-size="10" font-weight="700" text-anchor="middle" fill="#475569">4x²</text>
+            <text x="230" y="44" font-size="10" font-weight="700" text-anchor="middle" fill="#475569">4</text>
+
+            <text x="130" y="74" font-size="9" text-anchor="middle" fill="#64748b">12x⁴</text>
+            <text x="230" y="74" font-size="10" font-weight="800" text-anchor="middle" fill="#b91c1c">+12x² ★</text>
+            <text x="130" y="114" font-size="10" font-weight="800" text-anchor="middle" fill="#1d4ed8">-20x² ★</text>
+            <text x="230" y="114" font-size="9" text-anchor="middle" fill="#64748b">-20</text>
+
+            <text x="170" y="152" font-size="10" font-weight="700" text-anchor="middle" fill="#15803d">Target: 12x² - 20x² = -8x² (Coeff = -8)</text>
+          </svg>
+          <div class="diagram-caption">Only the anti-diagonal produces $x^2$ powers: $12 - 20 = -8$.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         CARD 3: SRC-POLY-M2-SC-10 (D1)
+    ───────────────────────────────────────────────────────────── -->
+    <div class="q-card" id="card-3">
+      <div class="q-card-grid">
+        <div class="problem-pane">
+          <div class="q-meta">
+            <span class="q-pill">Q3 · Degree Classification</span>
+            <span>SRC-POLY-M2-SC-10 · D1 (Direct Recognition)</span>
+          </div>
+          <div class="q-stem">
+            Which of the following is a cubic polynomial?
+          </div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="checkMCQ(3, 'A', this)"><span class="opt-badge">A</span> $x^3 + 3x^2 - 4x + 3$</button>
+            <button class="opt-btn" onclick="checkMCQ(3, 'B', this)"><span class="opt-badge">B</span> $x^2 + 4x - 7$</button>
+            <button class="opt-btn" onclick="checkMCQ(3, 'C', this)"><span class="opt-badge">C</span> $3x^2 + 4$</button>
+            <button class="opt-btn" onclick="checkMCQ(3, 'D', this)"><span class="opt-badge">D</span> $3(x^2 + x + 1)$</button>
+          </div>
+
+          <details class="hint-ladder">
+            <summary>💡 Progressive 3-Rung Hint Ladder (Click to Expand)</summary>
+            <div class="hint-step"><span class="hint-step-tag">Rung 1 (ORIENT)</span>A cubic polynomial is defined as a polynomial of degree 3.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 2 (FIRST_RELATION)</span>Examine the highest non-zero power of $x$ across all 4 choices.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 3 (CRUX_MOVE)</span>Only choice (A) has an $x^3$ term (degree 3). B, C, and D are quadratic polynomials (degree 2).</div>
+          </details>
+
+          <div class="feedback-banner" id="feedback-3"></div>
+
+          <div class="reasoning-box">
+            <div style="font-weight:700; font-size:0.85rem; color:#166534; margin-bottom:4px;">🧭 Formal Reasoning Route:</div>
+            <div class="reasoning-step"><span class="reasoning-kind">DEGREE_DEFINITION</span><strong>A cubic polynomial has degree 3: $\max \{k : c_k 
+eq 0\} = 3$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Standard nomenclature: 1=linear, 2=quadratic, 3=cubic, 4=quartic.</em></div>
+            <div class="reasoning-step"><span class="reasoning-kind">CANDIDATE_DISCRIMINATION</span><strong>(A) has leading term $1 \cdot x^3$; (B), (C), (D) have highest term $x^2$. Thus Option A is unique.</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: (D) expands to $3x^2 + 3x + 3$, which remains quadratic.</em></div>
+          </div>
+        </div>
+
+        <div class="diagram-pane">
+          <svg viewBox="0 0 340 180" width="100%" height="160">
+            <rect x="20" y="15" width="300" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="170" y="34" font-size="11" font-weight="700" text-anchor="middle" fill="#1e3a8a">Option Degree Comparison Bars</text>
+            
+            <!-- Option A -->
+            <text x="35" y="60" font-size="10" font-weight="700" fill="#1e40af">(A)</text>
+            <rect x="60" y="48" width="200" height="16" rx="4" fill="#3b82f6"/>
+            <text x="270" y="61" font-size="10" font-weight="800" fill="#1e40af">Degree 3 ★</text>
+
+            <!-- Option B -->
+            <text x="35" y="88" font-size="10" font-weight="700" fill="#475569">(B)</text>
+            <rect x="60" y="76" width="133" height="16" rx="4" fill="#cbd5e1"/>
+            <text x="205" y="89" font-size="9" fill="#475569">Degree 2</text>
+
+            <!-- Option C -->
+            <text x="35" y="116" font-size="10" font-weight="700" fill="#475569">(C)</text>
+            <rect x="60" y="104" width="133" height="16" rx="4" fill="#cbd5e1"/>
+            <text x="205" y="117" font-size="9" fill="#475569">Degree 2</text>
+
+            <!-- Option D -->
+            <text x="35" y="144" font-size="10" font-weight="700" fill="#475569">(D)</text>
+            <rect x="60" y="132" width="133" height="16" rx="4" fill="#cbd5e1"/>
+            <text x="205" y="145" font-size="9" fill="#475569">Degree 2</text>
+          </svg>
+          <div class="diagram-caption">Option (A) is the sole polynomial with degree 3.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         CARD 4: SRC-POLY-M2-AR-03 (D2)
+    ───────────────────────────────────────────────────────────── -->
+    <div class="q-card" id="card-4">
+      <div class="q-card-grid">
+        <div class="problem-pane">
+          <div class="q-meta">
+            <span class="q-pill">Q4 · Assertion & Reason</span>
+            <span>SRC-POLY-M2-AR-03 · D2 (Connected Reasoning)</span>
+          </div>
+          <div class="q-stem">
+            <strong>Assertion (A):</strong> $3\sqrt{y} + 4$ is not a polynomial.<br>
+            <strong>Reason (R):</strong> In a polynomial, the exponent of each variable must be a non-negative integer (whole number).
+          </div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="checkMCQ(4, 'A', this)"><span class="opt-badge">A</span> Both (A) and (R) are true and (R) is the correct explanation of (A).</button>
+            <button class="opt-btn" onclick="checkMCQ(4, 'B', this)"><span class="opt-badge">B</span> Both (A) and (R) are true but (R) is NOT the correct explanation of (A).</button>
+            <button class="opt-btn" onclick="checkMCQ(4, 'C', this)"><span class="opt-badge">C</span> (A) is true but (R) is false.</button>
+            <button class="opt-btn" onclick="checkMCQ(4, 'D', this)"><span class="opt-badge">D</span> (A) is false but (R) is true.</button>
+          </div>
+
+          <details class="hint-ladder">
+            <summary>💡 Progressive 3-Rung Hint Ladder (Click to Expand)</summary>
+            <div class="hint-step"><span class="hint-step-tag">Rung 1 (ORIENT)</span>Rewrite $\sqrt{y}$ in exponent form: $\sqrt{y} = y^{1/2}$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 2 (FIRST_RELATION)</span>Check whether $1/2$ is a whole number (non-negative integer). Is $1/2 \in \{0, 1, 2, \dots\}$?</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 3 (CRUX_MOVE)</span>$1/2$ is fractional, violating the definition of a polynomial. Reason R gives the exact rule why Assertion A holds. Option A is correct.</div>
+          </details>
+
+          <div class="feedback-banner" id="feedback-4"></div>
+
+          <div class="reasoning-box">
+            <div style="font-weight:700; font-size:0.85rem; color:#166534; margin-bottom:4px;">🧭 Formal Reasoning Route:</div>
+            <div class="reasoning-step"><span class="reasoning-kind">EXPONENT_DOMAIN_CHECK</span><strong>$\sqrt{y} = y^{1/2}$ has exponent $1/2 
+otin \mathbb{N}_0$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Exponents must be non-negative integers. Fractional exponents produce algebraic irrationalities.</em></div>
+            <div class="reasoning-step"><span class="reasoning-kind">CAUSAL_SUFFICIENCY_CHECK</span><strong>Reason R states the exact formal condition that invalidates Assertion A, establishing causal correctness</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: A is true because of R.</em></div>
+          </div>
+        </div>
+
+        <div class="diagram-pane">
+          <svg viewBox="0 0 340 180" width="100%" height="160">
+            <rect x="20" y="15" width="300" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="170" y="34" font-size="11" font-weight="700" text-anchor="middle" fill="#1e3a8a">Polynomial Exponent Admissibility Gate</text>
+            
+            <!-- Allowed -->
+            <rect x="40" y="55" width="115" height="75" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+            <text x="97" y="74" font-size="10" font-weight="700" text-anchor="middle" fill="#065f46">Admissible (W)</text>
+            <text x="97" y="94" font-size="9" text-anchor="middle" fill="#047857">0, 1, 2, 3, 4, ...</text>
+            <text x="97" y="112" font-size="8.5" text-anchor="middle" fill="#065f46">Non-negative integers</text>
+
+            <!-- Forbidden -->
+            <rect x="185" y="55" width="115" height="75" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+            <text x="242" y="74" font-size="10" font-weight="700" text-anchor="middle" fill="#991b1b">Inadmissible</text>
+            <text x="242" y="94" font-size="9" text-anchor="middle" fill="#b91c1c">1/2, -1, √3, 0.4</text>
+            <text x="242" y="112" font-size="8.5" font-weight="700" text-anchor="middle" fill="#dc2626">√y = y¹/² rejected ✖</text>
+
+            <text x="170" y="152" font-size="9.5" font-weight="700" text-anchor="middle" fill="#1e3a8a">R explains A: Exponent 1/2 is not in W</text>
+          </svg>
+          <div class="diagram-caption">Variable exponents must be whole numbers: $1/2 
+otin \{0, 1, 2, \dots\}$.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         CARD 5: SRC-POLY-M2-VSA-01 (D2)
+    ───────────────────────────────────────────────────────────── -->
+    <div class="q-card" id="card-5">
+      <div class="q-card-grid">
+        <div class="problem-pane">
+          <div class="q-meta">
+            <span class="q-pill">Q5 · Constant Exponent Trap</span>
+            <span>SRC-POLY-M2-VSA-01 · D2 (Connected Reasoning)</span>
+          </div>
+          <div class="q-stem">
+            What is the degree of the polynomial $2^5$?
+          </div>
+          <div class="fr-box">
+            <input type="text" class="fr-input" id="input-5" placeholder="Enter degree as integer...">
+            <button type="button" class="fr-submit" onclick="checkFR(5, '0', ['zero'])">Submit Answer</button>
+          </div>
+
+          <details class="hint-ladder">
+            <summary>💡 Progressive 3-Rung Hint Ladder (Click to Expand)</summary>
+            <div class="hint-step"><span class="hint-step-tag">Rung 1 (ORIENT)</span>Is 5 the power of a variable $x$, or is it the power of the constant number 2?</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 2 (FIRST_RELATION)</span>$2^5 = 32$. The polynomial is simply the constant number 32.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 3 (CRUX_MOVE)</span>Write $32 = 32x^0$. The degree is determined solely by the power on the variable ($x$), not on the coefficient. The degree is 0.</div>
+          </details>
+
+          <div class="feedback-banner" id="feedback-5"></div>
+
+          <div class="reasoning-box">
+            <div style="font-weight:700; font-size:0.85rem; color:#166534; margin-bottom:4px;">🧭 Formal Reasoning Route:</div>
+            <div class="reasoning-step"><span class="reasoning-kind">BASE_NUMERICAL_COLLAPSE</span><strong>$2^5 = 32 \in \mathbb{R} \setminus \{0\}$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Exponent is an internal property of numerical representation, not a polynomial indeterminate.</em></div>
+            <div class="reasoning-step"><span class="reasoning-kind">INDETERMINATE_POWER_INSPECTION</span><strong>$32 = 32x^0 \implies \deg(2^5) = 0$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: By definition, degree is the highest exponent of the variable with non-zero coefficient.</em></div>
+          </div>
+        </div>
+
+        <div class="diagram-pane">
+          <svg viewBox="0 0 340 180" width="100%" height="160">
+            <rect x="20" y="15" width="300" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="170" y="34" font-size="11" font-weight="700" text-anchor="middle" fill="#1e3a8a">Constant Exponent vs Indeterminate Exponent</text>
+            
+            <circle cx="100" cy="85" r="32" fill="#fef2f2" stroke="#ef4444" stroke-width="1.5"/>
+            <text x="100" y="80" font-size="16" font-weight="800" text-anchor="middle" fill="#b91c1c">2⁵</text>
+            <text x="100" y="100" font-size="9" text-anchor="middle" fill="#7f1d1d">= 32</text>
+            <text x="100" y="132" font-size="9" font-weight="700" text-anchor="middle" fill="#991b1b">Numerical Base</text>
+
+            <text x="170" y="85" font-size="18" font-weight="800" text-anchor="middle" fill="#64748b">=</text>
+
+            <circle cx="240" cy="85" r="32" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+            <text x="240" y="80" font-size="16" font-weight="800" text-anchor="middle" fill="#1d4ed8">32x⁰</text>
+            <text x="240" y="100" font-size="9" font-weight="700" text-anchor="middle" fill="#1e40af">Degree = 0</text>
+            <text x="240" y="132" font-size="9" font-weight="700" text-anchor="middle" fill="#2563eb">Indeterminate x</text>
+
+            <text x="170" y="154" font-size="9" font-weight="700" text-anchor="middle" fill="#4338ca">Trap: 5 is not the degree; the degree is 0.</text>
+          </svg>
+          <div class="diagram-caption">The exponent 5 belongs to the constant base 2, not to variable $x$.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         CARD 6: SRC-POLY-M2-NUM-14 (D1)
+    ───────────────────────────────────────────────────────────── -->
+    <div class="q-card" id="card-6">
+      <div class="q-card-grid">
+        <div class="problem-pane">
+          <div class="q-meta">
+            <span class="q-pill">Q6 · Binomial Square Expansion</span>
+            <span>SRC-POLY-M2-NUM-14 · D1 (Direct Application)</span>
+          </div>
+          <div class="q-stem">
+            Find the coefficient of $x$ in the expansion of $(x - 4)^2$.
+          </div>
+          <div class="fr-box">
+            <input type="text" class="fr-input" id="input-6" placeholder="Enter integer coefficient...">
+            <button type="button" class="fr-submit" onclick="checkFR(6, '-8', ['- 8'])">Submit Answer</button>
+          </div>
+
+          <details class="hint-ladder">
+            <summary>💡 Progressive 3-Rung Hint Ladder (Click to Expand)</summary>
+            <div class="hint-step"><span class="hint-step-tag">Rung 1 (ORIENT)</span>Use the identity $(a - b)^2 = a^2 - 2ab + b^2$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 2 (FIRST_RELATION)</span>With $a = x$ and $b = 4$, the middle term is $-2(x)(4) = -8x$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 3 (CRUX_MOVE)</span>The coefficient of $x$ is $-8$. Remember to keep the minus sign!</div>
+          </details>
+
+          <div class="feedback-banner" id="feedback-6"></div>
+
+          <div class="reasoning-box">
+            <div style="font-weight:700; font-size:0.85rem; color:#166534; margin-bottom:4px;">🧭 Formal Reasoning Route:</div>
+            <div class="reasoning-step"><span class="reasoning-kind">IDENTITY_SUBSTITUTION</span><strong>$(x - 4)^2 = x^2 - 2(4)x + 4^2 = x^2 - 8x + 16$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Exact algebraic identity for difference of two terms.</em></div>
+            <div class="reasoning-step"><span class="reasoning-kind">LINEAR_COEFFICIENT_EXTRACTION</span><strong>Term is $-8x \implies 	ext{coefficient} = -8$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Coefficient includes the sign preceding the numeral.</em></div>
+          </div>
+        </div>
+
+        <div class="diagram-pane">
+          <svg viewBox="0 0 340 180" width="100%" height="160">
+            <rect x="20" y="15" width="300" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="170" y="34" font-size="11" font-weight="700" text-anchor="middle" fill="#1e3a8a">Geometric Area Model: (x - 4)²</text>
+            
+            <rect x="70" y="48" width="70" height="70" fill="#eff6ff" stroke="#3b82f6"/>
+            <text x="105" y="87" font-size="11" font-weight="700" text-anchor="middle" fill="#1e40af">x²</text>
+            
+            <rect x="140" y="48" width="45" height="70" fill="#fef2f2" stroke="#ef4444"/>
+            <text x="162" y="87" font-size="10" font-weight="700" text-anchor="middle" fill="#b91c1c">-4x</text>
+
+            <rect x="70" y="118" width="70" height="30" fill="#fef2f2" stroke="#ef4444"/>
+            <text x="105" y="137" font-size="10" font-weight="700" text-anchor="middle" fill="#b91c1c">-4x</text>
+
+            <rect x="140" y="118" width="45" height="30" fill="#ecfdf5" stroke="#10b981"/>
+            <text x="162" y="137" font-size="10" font-weight="700" text-anchor="middle" fill="#047857">+16</text>
+
+            <text x="250" y="85" font-size="10" font-weight="700" fill="#475569">Middle Terms:</text>
+            <text x="250" y="103" font-size="12" font-weight="800" fill="#b91c1c">-4x + (-4x)</text>
+            <text x="250" y="125" font-size="13" font-weight="800" fill="#1e40af">= -8x</text>
+          </svg>
+          <div class="diagram-caption">Geometric area decomposition: two rectangular slices give $-4x - 4x = -8x$.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         CARD 7: SRC-POLY-M2-ARC-13 (D2)
+    ───────────────────────────────────────────────────────────── -->
+    <div class="q-card" id="card-7">
+      <div class="q-card-grid">
+        <div class="problem-pane">
+          <div class="q-meta">
+            <span class="q-pill">Q7 · Coefficient Cancellation Check</span>
+            <span>SRC-POLY-M2-ARC-13 · D2 (Connected Reasoning)</span>
+          </div>
+          <div class="q-stem">
+            The degree of the polynomial $3x^2 + 12 - (\sqrt{3} + \sqrt{2})x^2 + 7x$ is:
+          </div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="checkMCQ(7, 'A', this)"><span class="opt-badge">A</span> 0</button>
+            <button class="opt-btn" onclick="checkMCQ(7, 'B', this)"><span class="opt-badge">B</span> 1</button>
+            <button class="opt-btn" onclick="checkMCQ(7, 'C', this)"><span class="opt-badge">C</span> 2</button>
+            <button class="opt-btn" onclick="checkMCQ(7, 'D', this)"><span class="opt-badge">D</span> 3</button>
+          </div>
+
+          <details class="hint-ladder">
+            <summary>💡 Progressive 3-Rung Hint Ladder (Click to Expand)</summary>
+            <div class="hint-step"><span class="hint-step-tag">Rung 1 (ORIENT)</span>Group the $x^2$ terms: $[3 - (\sqrt{3} + \sqrt{2})]x^2 + 7x + 12$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 2 (FIRST_RELATION)</span>Does $3 - (\sqrt{3} + \sqrt{2})$ equal zero? Note $\sqrt{3} pprox 1.732$ and $\sqrt{2} pprox 1.414$, so $\sqrt{3} + \sqrt{2} pprox 3.146 
+eq 3$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 3 (CRUX_MOVE)</span>Because the coefficient is non-zero, the $x^2$ term survives. The highest surviving exponent is 2. The degree is 2 (Option C).</div>
+          </details>
+
+          <div class="feedback-banner" id="feedback-7"></div>
+
+          <div class="reasoning-box">
+            <div style="font-weight:700; font-size:0.85rem; color:#166534; margin-bottom:4px;">🧭 Formal Reasoning Route:</div>
+            <div class="reasoning-step"><span class="reasoning-kind">LIKE_TERM_CANONICALIZATION</span><strong>Combine $x^2$ terms: $[3 - (\sqrt{3} + \sqrt{2})]x^2 + 7x + 12$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Terms with matching variable powers combine by distributivity.</em></div>
+            <div class="reasoning-step"><span class="reasoning-kind">IRRATIONAL_SUM_EVALUATION</span><strong>$\sqrt{3} + \sqrt{2} pprox 3.146 \implies 3 - (\sqrt{3} + \sqrt{2}) 
+eq 0$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: If $3 = \sqrt{3}+\sqrt{2}$, then squaring gives $9 = 5 + 2\sqrt{6} \implies \sqrt{6} = 2$, contradiction ($6 
+eq 4$). Coefficient is strictly non-zero.</em></div>
+          </div>
+        </div>
+
+        <div class="diagram-pane">
+          <svg viewBox="0 0 340 180" width="100%" height="160">
+            <rect x="20" y="15" width="300" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="170" y="34" font-size="11" font-weight="700" text-anchor="middle" fill="#1e3a8a">Coefficient Cancellation Balance</text>
+            
+            <!-- Fulcrum -->
+            <polygon points="170,115 160,135 180,135" fill="#475569"/>
+            <!-- Beam tilted slightly -->
+            <line x1="60" y1="105" x2="280" y2="125" stroke="#1e293b" stroke-width="3"/>
+
+            <!-- Left pan (3) -->
+            <rect x="40" y="80" width="50" height="24" rx="4" fill="#eff6ff" stroke="#3b82f6"/>
+            <text x="65" y="96" font-size="11" font-weight="800" text-anchor="middle" fill="#1e40af">3.00</text>
+
+            <!-- Right pan (√3 + √2) -->
+            <rect x="250" y="102" width="60" height="24" rx="4" fill="#fef2f2" stroke="#ef4444"/>
+            <text x="280" y="118" font-size="11" font-weight="800" text-anchor="middle" fill="#b91c1c">3.146</text>
+
+            <text x="170" y="65" font-size="11" font-weight="700" text-anchor="middle" fill="#b91c1c">3 - (√3 + √2) ≠ 0</text>
+            <text x="170" y="155" font-size="10" font-weight="700" text-anchor="middle" fill="#15803d">x² survives! Degree = 2 (Option C)</text>
+          </svg>
+          <div class="diagram-caption">The coefficient of $x^2$ is non-zero, so the degree remains 2.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         CARD 8: SRC-POLY-M2-HOTS-16 (D3)
+    ───────────────────────────────────────────────────────────── -->
+    <div class="q-card" id="card-8">
+      <div class="q-card-grid">
+        <div class="problem-pane">
+          <div class="q-meta">
+            <span class="q-pill hard">Q8 · Dual Remainder Theorem</span>
+            <span>SRC-POLY-M2-HOTS-16 · D3 (LP-H3 Target)</span>
+          </div>
+          <div class="q-stem">
+            The polynomials $P_1(x) = ax^3 + 3x^2 - 3$ and $P_2(x) = 2x^3 - 5x + a$ when divided by $(x - 4)$ leave remainders $R_1$ and $R_2$ respectively. Find the value of $a$ if $2R_1 - R_2 = 0$.
+          </div>
+          <div class="fr-box">
+            <input type="text" class="fr-input" id="input-8" placeholder="Enter fraction or decimal (e.g. 18/127)...">
+            <button type="button" class="fr-submit" onclick="checkFR(8, '18/127', ['18 / 127', '0.1417'])">Submit Answer</button>
+          </div>
+
+          <details class="hint-ladder">
+            <summary>💡 Progressive 3-Rung Hint Ladder (Click to Expand)</summary>
+            <div class="hint-step"><span class="hint-step-tag">Rung 1 (ORIENT)</span>By the Remainder Theorem, $R_1 = P_1(4)$ and $R_2 = P_2(4)$. Evaluate both remainders as linear expressions in $a$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 2 (FIRST_RELATION)</span>$R_1 = a(4^3) + 3(4^2) - 3 = 64a + 48 - 3 = 64a + 45$.<br>$R_2 = 2(4^3) - 5(4) + a = 128 - 20 + a = 108 + a$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 3 (CRUX_MOVE)</span>Impose $2R_1 - R_2 = 0 \implies 2(64a + 45) - (108 + a) = 0 \implies 128a + 90 - 108 - a = 0 \implies 127a = 18 \implies a = 18/127$.</div>
+          </details>
+
+          <div class="feedback-banner" id="feedback-8"></div>
+
+          <div class="reasoning-box">
+            <div style="font-weight:700; font-size:0.85rem; color:#166534; margin-bottom:4px;">🧭 Formal Reasoning Route:</div>
+            <div class="reasoning-step"><span class="reasoning-kind">REMAINDER_THEOREM_DUAL_EVALUATION</span><strong>$R_1 = P_1(4) = 64a + 45$ and $R_2 = P_2(4) = a + 108$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Remainder when dividing $P(x)$ by $x-c$ is identically $P(c)$.</em></div>
+            <div class="reasoning-step"><span class="reasoning-kind">LINEAR_RELATION_SYNTHESIS</span><strong>$2(64a + 45) - (a + 108) = 127a - 18 = 0 \implies a = rac{18}{127}$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Directly satisfies the coupled remainder constraint.</em></div>
+          </div>
+        </div>
+
+        <div class="diagram-pane">
+          <svg viewBox="0 0 340 180" width="100%" height="160">
+            <rect x="20" y="15" width="300" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="170" y="34" font-size="11" font-weight="700" text-anchor="middle" fill="#1e3a8a">Coupled Dual Remainder Flow</text>
+            
+            <!-- Box 1 -->
+            <rect x="35" y="50" width="110" height="45" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+            <text x="90" y="68" font-size="9.5" font-weight="700" text-anchor="middle" fill="#1e40af">P₁(x) ÷ (x - 4)</text>
+            <text x="90" y="84" font-size="9" text-anchor="middle" fill="#2563eb">R₁ = 64a + 45</text>
+
+            <!-- Box 2 -->
+            <rect x="195" y="50" width="110" height="45" rx="6" fill="#fdf4ff" stroke="#a855f7"/>
+            <text x="250" y="68" font-size="9.5" font-weight="700" text-anchor="middle" fill="#6b21a8">P₂(x) ÷ (x - 4)</text>
+            <text x="250" y="84" font-size="9" text-anchor="middle" fill="#7e22ce">R₂ = a + 108</text>
+
+            <!-- Arrows pointing down to constraint -->
+            <line x1="90" y1="95" x2="140" y2="120" stroke="#2563eb" stroke-width="1.5"/>
+            <line x1="250" y1="95" x2="200" y2="120" stroke="#7e22ce" stroke-width="1.5"/>
+
+            <!-- Constraint Box -->
+            <rect x="100" y="115" width="140" height="35" rx="6" fill="#fef3c7" stroke="#f59e0b" stroke-width="1.5"/>
+            <text x="170" y="130" font-size="10" font-weight="800" text-anchor="middle" fill="#92400e">2R₁ - R₂ = 0</text>
+            <text x="170" y="144" font-size="9.5" font-weight="800" text-anchor="middle" fill="#b45309">127a = 18 → a = 18/127</text>
+          </svg>
+          <div class="diagram-caption">Dual remainder constraint model: solve for $a$ without trial and error.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         CARD 9: SRC-POLY-M2-ARC-22 (D3)
+    ───────────────────────────────────────────────────────────── -->
+    <div class="q-card" id="card-9">
+      <div class="q-card-grid">
+        <div class="problem-pane">
+          <div class="q-meta">
+            <span class="q-pill hard">Q9 · Reverse Division Reconstruction</span>
+            <span>SRC-POLY-M2-ARC-22 · D3 (LP-H3 Target)</span>
+          </div>
+          <div class="q-stem">
+            When polynomial $p(x)$ is divided by $(x^2 - 1)$, the quotient is $(x + 2)$ and remainder is $(2x + 1)$. Reconstruct the dividend polynomial $p(x)$:
+          </div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="checkMCQ(9, 'A', this)"><span class="opt-badge">A</span> $x^3 + 2x^2 + x - 1$</button>
+            <button class="opt-btn" onclick="checkMCQ(9, 'B', this)"><span class="opt-badge">B</span> $x^3 + 2x^2 - x + 1$</button>
+            <button class="opt-btn" onclick="checkMCQ(9, 'C', this)"><span class="opt-badge">C</span> $x^3 - 2x^2 + x - 1$</button>
+            <button class="opt-btn" onclick="checkMCQ(9, 'D', this)"><span class="opt-badge">D</span> $x^3 + 2x^2 + 3x + 1$</button>
+          </div>
+
+          <details class="hint-ladder">
+            <summary>💡 Progressive 3-Rung Hint Ladder (Click to Expand)</summary>
+            <div class="hint-step"><span class="hint-step-tag">Rung 1 (ORIENT)</span>Apply the Division Algorithm directly: $	ext{Dividend} = 	ext{Divisor} 	imes 	ext{Quotient} + 	ext{Remainder}$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 2 (FIRST_RELATION)</span>Multiply divisor by quotient: $(x^2 - 1)(x + 2) = x^3 + 2x^2 - x - 2$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 3 (CRUX_MOVE)</span>Add the remainder $(2x + 1)$: $(x^3 + 2x^2 - x - 2) + (2x + 1) = x^3 + 2x^2 + (-x + 2x) + (-2 + 1) = x^3 + 2x^2 + x - 1$. Matches Option A.</div>
+          </details>
+
+          <div class="feedback-banner" id="feedback-9"></div>
+
+          <div class="reasoning-box">
+            <div style="font-weight:700; font-size:0.85rem; color:#166534; margin-bottom:4px;">🧭 Formal Reasoning Route:</div>
+            <div class="reasoning-step"><span class="reasoning-kind">DIVISION_ALGORITHM_RECONSTRUCTION</span><strong>$p(x) = (x^2 - 1)(x + 2) + (2x + 1)$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Fundamental theorem of polynomial arithmetic: $p(x) = d(x)q(x) + r(x)$ with $\deg(r) < \deg(d)$.</em></div>
+            <div class="reasoning-step"><span class="reasoning-kind">ALGEBRAIC_CLOSURE</span><strong>$x^3 + 2x^2 - x - 2 + 2x + 1 = x^3 + 2x^2 + x - 1$ (Option A)</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Exact distributive synthesis avoids long division. (Note: Printed book key had typographical error; Option A is verified correct).</em></div>
+          </div>
+        </div>
+
+        <div class="diagram-pane">
+          <svg viewBox="0 0 340 180" width="100%" height="160">
+            <rect x="20" y="15" width="300" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="170" y="34" font-size="11" font-weight="700" text-anchor="middle" fill="#1e3a8a">Polynomial Division Invariant Architecture</text>
+            
+            <rect x="35" y="55" width="120" height="40" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+            <text x="95" y="72" font-size="9" font-weight="700" text-anchor="middle" fill="#475569">Divisor × Quotient</text>
+            <text x="95" y="87" font-size="9" text-anchor="middle" fill="#2563eb">(x² - 1)(x + 2)</text>
+
+            <text x="170" y="80" font-size="16" font-weight="800" text-anchor="middle" fill="#64748b">+</text>
+
+            <rect x="185" y="55" width="120" height="40" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+            <text x="245" y="72" font-size="9" font-weight="700" text-anchor="middle" fill="#92400e">Remainder</text>
+            <text x="245" y="87" font-size="9" text-anchor="middle" fill="#b45309">2x + 1</text>
+
+            <line x1="170" y1="100" x2="170" y2="120" stroke="#1e293b" stroke-width="1.5"/>
+
+            <rect x="45" y="120" width="250" height="35" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+            <text x="170" y="142" font-size="11" font-weight="800" text-anchor="middle" fill="#065f46">Dividend p(x) = x³ + 2x² + x - 1 (A)</text>
+          </svg>
+          <div class="diagram-caption">Reverse division algorithm: reconstruct $p(x) = d(x)q(x) + r(x)$.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         CARD 10: SRC-POLY-M2-MC-21 (D3)
+    ───────────────────────────────────────────────────────────── -->
+    <div class="q-card" id="card-10">
+      <div class="q-card-grid">
+        <div class="problem-pane">
+          <div class="q-meta">
+            <span class="q-pill hard">Q10 · Symmetrical Branching & Sign Loss</span>
+            <span>SRC-POLY-M2-MC-21 · D3 (LP-H4 Target)</span>
+          </div>
+          <div class="q-stem">
+            If $x - y = 5$ and $xy = 24$, which of the following is/are correct?<br>
+            (I) $(x + y)^2 = 121$<br>
+            (II) $x + y = \pm 11$<br>
+            (III) $x^3 - y^3 = 485$
+          </div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="checkMCQ(10, 'D', this)"><span class="opt-badge">A</span> (I) and (II) only</button>
+            <button class="opt-btn" onclick="checkMCQ(10, 'B', this)"><span class="opt-badge">B</span> (II) and (III) only</button>
+            <button class="opt-btn" onclick="checkMCQ(10, 'C', this)"><span class="opt-badge">C</span> (I) and (III) only</button>
+            <button class="opt-btn" onclick="checkMCQ(10, 'D', this)"><span class="opt-badge">D</span> All (I), (II), and (III) are correct</button>
+          </div>
+
+          <details class="hint-ladder">
+            <summary>💡 Progressive 3-Rung Hint Ladder (Click to Expand)</summary>
+            <div class="hint-step"><span class="hint-step-tag">Rung 1 (ORIENT)</span>Use the connecting identity: $(x + y)^2 = (x - y)^2 + 4xy$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 2 (FIRST_RELATION)</span>$(x + y)^2 = 5^2 + 4(24) = 25 + 96 = 121$. Taking square roots gives two branches: $x + y = \pm 11$. (Do not drop the negative branch!)</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 3 (CRUX_MOVE)</span>For $x^3 - y^3$, apply $(x - y)^3 + 3xy(x - y) = 5^3 + 3(24)(5) = 125 + 360 = 485$. All three statements are mathematically correct (Option D).</div>
+          </details>
+
+          <div class="feedback-banner" id="feedback-10"></div>
+
+          <div class="reasoning-box">
+            <div style="font-weight:700; font-size:0.85rem; color:#166534; margin-bottom:4px;">🧭 Formal Reasoning Route:</div>
+            <div class="reasoning-step"><span class="reasoning-kind">SYMMETRIC_SUM_IDENTITY</span><strong>$(x+y)^2 = (x-y)^2 + 4xy = 25 + 96 = 121 \implies x+y = \pm 11$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Squaring loses sign; extracting principal and negative roots produces two valid real branches.</em></div>
+            <div class="reasoning-step"><span class="reasoning-kind">CUBIC_DIFFERENCE_EVALUATION</span><strong>$x^3 - y^3 = (x-y)[(x-y)^2 + 3xy] = 5[25 + 72] = 5 	imes 97 = 485$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Purely determined by $(x-y)$ and $xy$; single-valued at 485.</em></div>
+          </div>
+        </div>
+
+        <div class="diagram-pane">
+          <svg viewBox="0 0 340 180" width="100%" height="160">
+            <rect x="20" y="15" width="300" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="170" y="34" font-size="11" font-weight="700" text-anchor="middle" fill="#1e3a8a">Dual-Branch Sign Bifurcation Flow</text>
+            
+            <rect x="105" y="48" width="130" height="30" rx="6" fill="#f8fafc" stroke="#cbd5e1"/>
+            <text x="170" y="67" font-size="10" font-weight="700" text-anchor="middle" fill="#1e3a8a">(x + y)² = 121</text>
+
+            <!-- Bifurcation arrows -->
+            <path d="M 140 78 L 90 108" fill="none" stroke="#2563eb" stroke-width="1.5"/>
+            <path d="M 200 78 L 250 108" fill="none" stroke="#dc2626" stroke-width="1.5"/>
+
+            <!-- Left branch -->
+            <rect x="45" y="108" width="90" height="32" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+            <text x="90" y="128" font-size="10" font-weight="800" text-anchor="middle" fill="#1e40af">x + y = +11</text>
+
+            <!-- Right branch -->
+            <rect x="205" y="108" width="90" height="32" rx="6" fill="#fef2f2" stroke="#ef4444"/>
+            <text x="250" y="128" font-size="10" font-weight="800" text-anchor="middle" fill="#b91c1c">x + y = -11</text>
+
+            <text x="170" y="155" font-size="9" font-weight="700" text-anchor="middle" fill="#047857">Crux: Both branches are valid in real domain</text>
+          </svg>
+          <div class="diagram-caption">Dual-branch sign preservation: $(x+y)^2 = 121 \implies x+y = \pm 11$.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         CARD 11: SRC-POLY-M2-LA-07 (D3)
+    ───────────────────────────────────────────────────────────── -->
+    <div class="q-card" id="card-11">
+      <div class="q-card-grid">
+        <div class="problem-pane">
+          <div class="q-meta">
+            <span class="q-pill hard">Q11 · Sign Preservation in Cubic Subtraction</span>
+            <span>SRC-POLY-M2-LA-07 · D3 (LP-H4 Target)</span>
+          </div>
+          <div class="q-stem">
+            Simplify $(2x - 5y)^3 - (2x + 5y)^3$ completely:
+          </div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="checkMCQ(11, 'B', this)"><span class="opt-badge">A</span> $120x^2y + 250y^3$</button>
+            <button class="opt-btn" onclick="checkMCQ(11, 'B', this)"><span class="opt-badge">B</span> $-120x^2y - 250y^3$</button>
+            <button class="opt-btn" onclick="checkMCQ(11, 'C', this)"><span class="opt-badge">C</span> $16x^3 - 250y^3$</button>
+            <button class="opt-btn" onclick="checkMCQ(11, 'D', this)"><span class="opt-badge">D</span> $-120x^2y + 250y^3$</button>
+          </div>
+
+          <details class="hint-ladder">
+            <summary>💡 Progressive 3-Rung Hint Ladder (Click to Expand)</summary>
+            <div class="hint-step"><span class="hint-step-tag">Rung 1 (ORIENT)</span>Notice the form $(A - B)^3 - (A + B)^3$. Expand both using the binomial theorem or cubic identities.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 2 (FIRST_RELATION)</span>$(A - B)^3 = A^3 - 3A^2B + 3AB^2 - B^3$.<br>$(A + B)^3 = A^3 + 3A^2B + 3AB^2 + B^3$.<br>Subtracting the second from the first gives $-6A^2B - 2B^3$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 3 (CRUX_MOVE)</span>Substitute $A = 2x, B = 5y$: $-6(2x)^2(5y) - 2(5y)^3 = -6(4x^2)(5y) - 2(125y^3) = -120x^2y - 250y^3$. Watch the overall negative sign (Option B).</div>
+          </details>
+
+          <div class="feedback-banner" id="feedback-11"></div>
+
+          <div class="reasoning-box">
+            <div style="font-weight:700; font-size:0.85rem; color:#166534; margin-bottom:4px;">🧭 Formal Reasoning Route:</div>
+            <div class="reasoning-step"><span class="reasoning-kind">MIRRORED_CUBIC_EXPANSION</span><strong>$(A-B)^3 - (A+B)^3 = -2(3A^2B + B^3) = -6A^2B - 2B^3$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Terms with even powers of $B$ cancel: $A^3 - A^3 = 0$ and $3AB^2 - 3AB^2 = 0$.</em></div>
+            <div class="reasoning-step"><span class="reasoning-kind">OUTER_SIGN_PRESERVATION</span><strong>$-6(4x^2)(5y) - 2(125y^3) = -120x^2y - 250y^3$ (Option B)</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Preserves overall negation; book printed key incorrectly omitted the minus sign.</em></div>
+          </div>
+        </div>
+
+        <div class="diagram-pane">
+          <svg viewBox="0 0 340 180" width="100%" height="160">
+            <rect x="20" y="15" width="300" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="170" y="34" font-size="11" font-weight="700" text-anchor="middle" fill="#1e3a8a">Cubic Terms Parity & Cancellation</text>
+            
+            <text x="45" y="60" font-size="9.5" font-weight="700" fill="#475569">(A-B)³:</text>
+            <text x="95" y="60" font-size="9" fill="#16a34a">+A³</text>
+            <text x="145" y="60" font-size="9" fill="#dc2626">-3A²B</text>
+            <text x="205" y="60" font-size="9" fill="#16a34a">+3AB²</text>
+            <text x="265" y="60" font-size="9" fill="#dc2626">-B³</text>
+
+            <text x="45" y="85" font-size="9.5" font-weight="700" fill="#475569">-(A+B)³:</text>
+            <text x="95" y="85" font-size="9" fill="#dc2626">-A³</text>
+            <text x="145" y="85" font-size="9" fill="#dc2626">-3A²B</text>
+            <text x="205" y="85" font-size="9" fill="#dc2626">-3AB²</text>
+            <text x="265" y="85" font-size="9" fill="#dc2626">-B³</text>
+
+            <line x1="40" y1="98" x2="300" y2="98" stroke="#94a3b8" stroke-width="1.5"/>
+
+            <text x="45" y="118" font-size="10" font-weight="800" fill="#1e40af">Net Result:</text>
+            <text x="100" y="118" font-size="9.5" font-weight="700" fill="#64748b">0</text>
+            <text x="145" y="118" font-size="10" font-weight="800" fill="#b91c1c">-6A²B</text>
+            <text x="210" y="118" font-size="9.5" font-weight="700" fill="#64748b">0</text>
+            <text x="265" y="118" font-size="10" font-weight="800" fill="#b91c1c">-2B³</text>
+
+            <text x="170" y="148" font-size="10.5" font-weight="800" text-anchor="middle" fill="#b91c1c">Result: -120x²y - 250y³ (Option B)</text>
+          </svg>
+          <div class="diagram-caption">Even powers of $B$ cancel; odd powers double with a strict negative sign.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ─────────────────────────────────────────────────────────────
+         CARD 12: SRC-POLY-M2-HOTS-01 (D4)
+    ───────────────────────────────────────────────────────────── -->
+    <div class="q-card" id="card-12">
+      <div class="q-card-grid">
+        <div class="problem-pane">
+          <div class="q-meta">
+            <span class="q-pill hard">Q12 · Sophie Germain Square Completion</span>
+            <span>SRC-POLY-M2-HOTS-01 · D4 (Olympiad Reduction)</span>
+          </div>
+          <div class="q-stem">
+            Factorize completely: $x^4 + x^2 + 1$.
+          </div>
+          <div class="q-options">
+            <button class="opt-btn" onclick="checkMCQ(12, 'A', this)"><span class="opt-badge">A</span> $(x^2 - x + 1)(x^2 + x + 1)$</button>
+            <button class="opt-btn" onclick="checkMCQ(12, 'B', this)"><span class="opt-badge">B</span> $(x^2 - 1)(x^2 + 1)$</button>
+            <button class="opt-btn" onclick="checkMCQ(12, 'C', this)"><span class="opt-badge">C</span> $(x^2 + x - 1)(x^2 - x - 1)$</button>
+            <button class="opt-btn" onclick="checkMCQ(12, 'D', this)"><span class="opt-badge">D</span> $(x^2 + 1)^2$</button>
+          </div>
+
+          <details class="hint-ladder">
+            <summary>💡 Progressive 3-Rung Hint Ladder (Click to Expand)</summary>
+            <div class="hint-step"><span class="hint-step-tag">Rung 1 (ORIENT)</span>Notice that $(x^2 + 1)^2 = x^4 + 2x^2 + 1$. Our expression has $x^2$ instead of $2x^2$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 2 (FIRST_RELATION)</span>Add and subtract $x^2$: $x^4 + x^2 + 1 = (x^4 + 2x^2 + 1) - x^2 = (x^2 + 1)^2 - x^2$.</div>
+            <div class="hint-step"><span class="hint-step-tag">Rung 3 (CRUX_MOVE)</span>Apply difference of squares $A^2 - B^2 = (A - B)(A + B)$ with $A = x^2 + 1$ and $B = x$: $(x^2 + 1 - x)(x^2 + 1 + x) = (x^2 - x + 1)(x^2 + x + 1)$. Matches Option A.</div>
+          </details>
+
+          <div class="feedback-banner" id="feedback-12"></div>
+
+          <div class="reasoning-box">
+            <div style="font-weight:700; font-size:0.85rem; color:#166534; margin-bottom:4px;">🧭 Formal Reasoning Route:</div>
+            <div class="reasoning-step"><span class="reasoning-kind">ALGEBRAIC_SQUARE_COMPLETION</span><strong>$x^4 + x^2 + 1 = (x^4 + 2x^2 + 1) - x^2 = (x^2 + 1)^2 - x^2$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Adding and subtracting identical non-zero quantity preserves algebraic value.</em></div>
+            <div class="reasoning-step"><span class="reasoning-kind">DIFFERENCE_OF_SQUARES_FACTORIZATION</span><strong>$(x^2 + 1)^2 - (x)^2 = (x^2 - x + 1)(x^2 + x + 1)$</strong><br><em style="font-size:0.78rem; color:#475569;">Why Valid: Irreducible quadratic factors over real numbers $\mathbb{R}$.</em></div>
+          </div>
+        </div>
+
+        <div class="diagram-pane">
+          <svg viewBox="0 0 340 180" width="100%" height="160">
+            <rect x="20" y="15" width="300" height="150" rx="8" fill="#ffffff" stroke="#cbd5e1" stroke-width="1.5"/>
+            <text x="170" y="34" font-size="11" font-weight="700" text-anchor="middle" fill="#1e3a8a">Sophie Germain Completion Model</text>
+            
+            <rect x="40" y="55" width="120" height="50" rx="6" fill="#eff6ff" stroke="#3b82f6"/>
+            <text x="100" y="76" font-size="10" font-weight="800" text-anchor="middle" fill="#1e40af">Square: (x² + 1)²</text>
+            <text x="100" y="94" font-size="9" text-anchor="middle" fill="#2563eb">x⁴ + 2x² + 1</text>
+
+            <text x="175" y="83" font-size="18" font-weight="800" text-anchor="middle" fill="#ef4444">-</text>
+
+            <rect x="195" y="55" width="105" height="50" rx="6" fill="#fef2f2" stroke="#ef4444"/>
+            <text x="247" y="76" font-size="10" font-weight="800" text-anchor="middle" fill="#b91c1c">Excess: x²</text>
+            <text x="247" y="94" font-size="9" text-anchor="middle" fill="#dc2626">(x)²</text>
+
+            <path d="M 170 115 L 170 128" stroke="#1e293b" stroke-width="1.5"/>
+
+            <rect x="35" y="128" width="270" height="28" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1.5"/>
+            <text x="170" y="146" font-size="10.5" font-weight="800" text-anchor="middle" fill="#065f46">(x² - x + 1)(x² + x + 1) ★ Option A</text>
+          </svg>
+          <div class="diagram-caption">Complete the square $(x^2+1)^2$, then subtract $(x)^2$ to factorize.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+
+  <script>
+    // Clinical Answer Checker Logic
+    const officialAnswers = {
+      3: 'A',
+      4: 'A',
+      7: 'C',
+      9: 'A',
+      10: 'D',
+      11: 'B',
+      12: 'A'
+    };
+
+    function checkMCQ(qNum, selectedOpt, btn) {
+      const card = document.getElementById(`card-${qNum}`);
+      const banner = document.getElementById(`feedback-${qNum}`);
+      const isCorrect = (selectedOpt === officialAnswers[qNum]);
+
+      // Reset sibling buttons
+      card.querySelectorAll('.opt-btn').forEach(b => {
+        b.classList.remove('selected-correct', 'selected-incorrect');
+      });
+
+      if (isCorrect) {
+        btn.classList.add('selected-correct');
+        banner.className = 'feedback-banner show-correct';
+        banner.innerHTML = `<strong>✅ Correct!</strong> Option (${selectedOpt}) is mathematically verified. Check the reasoning route below.`;
+      } else {
+        btn.classList.add('selected-incorrect');
+        banner.className = 'feedback-banner show-incorrect';
+        banner.innerHTML = `<strong>❌ Incorrect.</strong> Review the Progressive Hint Ladder above to discover the crux move.`;
+      }
+    }
+
+    function checkFR(qNum, targetAns, altList) {
+      const input = document.getElementById(`input-${qNum}`);
+      const banner = document.getElementById(`feedback-${qNum}`);
+      const userVal = (input.value || '').trim().toLowerCase();
+
+      const validList = [targetAns.toLowerCase(), ...altList.map(a => a.toLowerCase())];
+      const isCorrect = validList.some(v => userVal === v);
+
+      if (isCorrect) {
+        banner.className = 'feedback-banner show-correct';
+        banner.innerHTML = `<strong>✅ Correct!</strong> Value "${input.value.trim()}" satisfies the structural constraint.`;
+      } else {
+        banner.className = 'feedback-banner show-incorrect';
+        banner.innerHTML = `<strong>❌ Incorrect.</strong> Expand Hint Rung 2 or 3 to inspect the formal relation.`;
+      }
+    }
+  </script>
+</body>
+</html>
