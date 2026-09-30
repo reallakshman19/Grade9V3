@@ -502,6 +502,16 @@ def resolve(
     findings.extend(route_findings)
 
     refs = target["resolved_refs"]
+    from Shared.tools import interaction_delivery
+    local_delivery = None
+    try:
+        local_delivery = interaction_delivery.resolve(subject, target.get("exact_ref"), repo=repo)
+    except (ValueError, OSError) as exc:
+        findings.append(_finding("WEB_LOCAL_INTERACTION_UNRESOLVED", str(exc)))
+    if local_delivery:
+        activity = local_delivery["runtime"]["activity_ref"]
+        _add_unique(refs["activity_refs"], [activity])
+        entry.setdefault("visual_targets", {})[activity] = local_delivery["visual_target"]
     core_payload = build_core_learning_data.build()
     resolved_segments = []
     core_findings = []
@@ -588,7 +598,9 @@ def resolve(
     core_buildable = (not has_core) or core_ready
     explore_buildable = (not has_explore) or activity_usable or static_ready
     canonical_refs_valid = all(
-        (records.get(ref) or {}).get("_collection") == collection
+        ((records.get(ref) or {}).get("_collection") == collection or
+         (key == "activity_refs" and local_delivery is not None and
+          ref == local_delivery["runtime"]["activity_ref"]))
         for key, collection in (
             ("microtopic_refs", "microtopics"),
             ("capability_refs", "capabilities"),

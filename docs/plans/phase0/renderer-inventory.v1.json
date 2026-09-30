@@ -253,6 +253,15 @@
       "location": "main",
       "reason": "Verification snapshots, re-verified by republish.py",
       "phase3_action": "Regenerated when publications move to render_core"
+    },
+    {
+      "path": "Mathematics/interactions/linear-pairs.mjs",
+      "kind": "JS_RENDER",
+      "classification": "ENGINE_KEEP",
+      "renders": "Governed LOCAL coordinate interaction mounted by the existing portable host",
+      "location": "main",
+      "reason": "Subject-owned LOCAL adapter; no SHARED maturity claim or alternate Core renderer",
+      "phase3_action": "none"
     }
   ]
 }

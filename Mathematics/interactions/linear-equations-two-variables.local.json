@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0.0",
+  "authority": "LOCAL_INTERACTION_IMPLEMENTATION_SOURCE",
+  "subject": "Mathematics",
+  "microtopic_ref": "MIC-MAT-LEQ-04-TWO-VARIABLES-LINE-OF-SOLUTIONS",
+  "academic_basis": {
+    "canonical_input_digest": "sha256:cb041b1981283e1147cc3e898886b8dd64c3aaccbc93a83c090cb3eaec73af50"
+  },
+  "implementation_key": "solution-pair-residual-line",
+  "title": "Two-variable solution-pair residual explorer",
+  "mechanic_refs": [
+    "accepted-pair-accumulation",
+    "coordinate-point-drag",
+    "typed-pair-prediction",
+    "residual-feedback"
+  ],
+  "accessibility_refs": [
+    "keyboard arrow movement and numeric pair entry",
+    "visible live residual and accepted-pair table"
+  ],
+  "scene": {
+    "sceneVersion": "1.0.0",
+    "grids": [
+      {
+        "id": "candidate-pairs",
+        "label": "Candidate ordered pairs",
+        "rows": [
+          "candidate"
+        ],
+        "columns": [
+          "one",
+          "two",
+          "three",
+          "four"
+        ]
+      },
+      {
+        "id": "equation-check",
+        "label": "Equation and accepted solution line",
+        "rows": [
+          "equation",
+          "accepted"
+        ],
+        "columns": [
+          "main"
+        ]
+      }
+    ],
+    "entities": [
+      {
+        "id": "equation-source",
+        "label": "3x + 4y = 12",
+        "provenance": {
+          "kind": "SOURCE",
+          "sourceEntityRefs": []
+        }
+      }
+    ],
+    "projections": [
+      {
+        "id": "equation-projection",
+        "entityRef": "equation-source",
+        "label": "3x + 4y = 12",
+        "representation": "equation under test",
+        "placement": {
+          "grid": "equation-check",
+          "row": "equation",
+          "column": "main"
+        }
+      }
+    ],
+    "targets": [
+      {
+        "id": "solution-line-target",
+        "label": "Accepted solution pairs",
+        "operation": "test-solution-pair",
+        "placement": {
+          "grid": "equation-check",
+          "row": "accepted",
+          "column": "main"
+        }
+      }
+    ],
+    "canonicalTransformations": [
+      {
+        "id": "enter-arbitrary-pair",
+        "sourceEntityRefs": [
+          "equation-source"
+        ],
+        "targetRef": "solution-line-target"
+      }
+    ]
+  },
+  "adapter_rules": [
+    {
+      "id": "require-pair-input",
+      "transformationRef": "enter-arbitrary-pair",
+      "sourceEntityRef": "equation-source",
+      "targetRef": "solution-line-target",
+      "operation": "test-solution-pair",
+      "outcome": "REJECT",
+      "reason": "Use the registered coordinate interaction to enter an arbitrary pair."
+    }
+  ],
+  "runtime_module": {
+    "id": "mathematics-linear-pairs-v1",
+    "ref": "Mathematics/interactions/linear-pairs.mjs",
+    "digest": "sha256:4248b0c48f9d15d23906c68b04a3b097de62918bef303dd3662ab544dc1f50bc",
+    "model": {
+      "a": 3,
+      "b": 4,
+      "c": -12,
+      "min": -2,
+      "max": 6
+    }
+  }
+}

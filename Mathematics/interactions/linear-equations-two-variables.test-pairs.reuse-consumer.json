@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0.0",
+  "authority": "INTERACTION_REUSE_CONSUMER_SOURCE",
+  "subject": "Mathematics",
+  "implementation_source_ref": "Mathematics/interactions/linear-equations-two-variables.local.json",
+  "consumer_ref": "Q-MAT-LEQ-04-1A-TEST-PAIRS",
+  "slice_ref": "pair-testing-question",
+  "mode": "R1",
+  "relation": "CONSUMES",
+  "consumer_basis_digest": "sha256:5d6cc7746ac8d3f8a5b60231cbba029723169f6b134856d021bd7b17351506fc"
+}

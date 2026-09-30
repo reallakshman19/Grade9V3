@@ -264,6 +264,15 @@ def _offline_html(package_rows: list[dict]) -> str:
     runtime = (ROOT / "Shared/workbench/runtime.mjs").read_text(encoding="utf-8")
     component = _strip_import((ROOT / "Shared/workbench/semantic-workbench.mjs").read_text(encoding="utf-8"), "./runtime.mjs")
     portable = _strip_import((ROOT / "Shared/portable/portable-host.mjs").read_text(encoding="utf-8"), "../workbench/runtime.mjs")
+    modules = {p["localRuntime"]["ref"]: p["localRuntime"] for p in package_rows if p.get("localRuntime")}
+    for ref, registration in modules.items():
+        import hashlib
+        module_path = (ROOT / ref).resolve()
+        if not module_path.is_relative_to(ROOT.resolve()) or not module_path.is_file():
+            raise PortablePackageError("LOCAL_RUNTIME_MODULE_MISSING", ref)
+        if "sha256:" + hashlib.sha256(module_path.read_bytes()).hexdigest() != registration["digest"]:
+            raise PortablePackageError("LOCAL_RUNTIME_MODULE_STALE", ref)
+        portable += "\n" + _strip_import(module_path.read_text(encoding="utf-8"), "./portable-host.mjs")
     payload = json.dumps(package_rows, ensure_ascii=True, separators=(",", ":")).replace("</", "<\\/")
     return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Portable Workbench Offline Host</title><style>:root{{--workbench-border:#64748b;--workbench-focus:#1d4ed8;--workbench-surface:#f8fafc}}body{{font:16px/1.45 system-ui,sans-serif;margin:0;padding:1rem}}main{{max-width:70rem;margin:auto}}</style></head><body><main><h1>Portable Workbench Offline Host</h1><p id="package-label"></p><semantic-workbench id="portable-workbench"></semantic-workbench><pre id="diagnostic" hidden></pre></main><script type="module">
 {runtime}

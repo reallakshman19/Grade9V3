@@ -218,8 +218,22 @@ export function createDeclarativeAdapter(packageInput) {
 export function mountPortableWorkbench(element, packageInput) {
   requirePortable(element && typeof element === "object", "PORTABLE_HOST_ELEMENT_REQUIRED");
   const pkg = validatePortablePackage(packageInput);
+  if (pkg.localRuntime) {
+    const mount = localRuntimeMounts.get(pkg.localRuntime.id);
+    requirePortable(Boolean(mount), "PORTABLE_LOCAL_RUNTIME_NOT_REGISTERED", pkg.localRuntime.id);
+    mount(element, portableClone(pkg.localRuntime.model));
+    return pkg;
+  }
   element.scene = portableClone(pkg.scene);
   element.adapter = createDeclarativeAdapter(pkg);
   element.injections = portableClone(pkg.injections);
   return pkg;
+}
+
+// Code modules are registered by the existing package builder; package data carries no script.
+const localRuntimeMounts = new Map();
+export function registerLocalRuntime(id, mount) {
+  requirePortable(typeof id === "string" && typeof mount === "function", "PORTABLE_LOCAL_RUNTIME_INVALID");
+  requirePortable(!localRuntimeMounts.has(id), "PORTABLE_LOCAL_RUNTIME_DUPLICATE", id);
+  localRuntimeMounts.set(id, mount);
 }

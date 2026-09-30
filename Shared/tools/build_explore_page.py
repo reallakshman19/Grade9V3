@@ -55,6 +55,7 @@ def compile_page_package(plan: dict, repo: Path = REPO) -> dict:
     subject = plan["subject"]
     packaging_mode = plan["packaging_mode"]
     records = _records(subject, repo)
+    target_record = records.get((plan.get("target") or {}).get("exact_ref")) or {}
     refs = (plan.get("target") or {}).get("resolved_refs") or {}
     representation_refs = list(refs.get("representation_refs") or [])
     activity_refs = list(refs.get("activity_refs") or [])
@@ -66,6 +67,12 @@ def compile_page_package(plan: dict, repo: Path = REPO) -> dict:
     selected_activity = None
     mount_mode = None
     portable_package = None
+    from Shared.tools import interaction_delivery
+    local = interaction_delivery.resolve(subject, (plan.get("target") or {}).get("exact_ref"), repo=repo)
+    if local:
+        selected_activity = local["visual_target"]
+        mount_mode = "PORTABLE_SCENE"
+        portable_package = local["package"]
 
     for ref in activity_refs:
         target = visual_targets.get(ref) or {}
@@ -116,6 +123,8 @@ def compile_page_package(plan: dict, repo: Path = REPO) -> dict:
         "schema_version": "1.0.0",
         "subject": subject,
         "request_id": plan.get("request_id"),
+        "learner_context": {"title": target_record.get("title") or "Explore this question",
+                            "prompt": target_record.get("stem") or ""},
         "profile": profile,
         "mount_mode": mount_mode,
         "representation_ref": representation.get("id") if representation else None,
@@ -123,6 +132,9 @@ def compile_page_package(plan: dict, repo: Path = REPO) -> dict:
         "activity_ref": selected_activity.get("resource_ref") if selected_activity else None,
         "activity": selected_activity,
         "portable_package": portable_package,
+        "local_binding": ({"runtime": local["runtime"], "binding_digest": local["binding_digest"],
+                           "consumer_binding": local.get("consumer_binding"),
+                           "academic_basis": local["interaction_brief"]} if local else None),
         "resolution_plan": plan,
     }
 
@@ -204,6 +216,15 @@ window.__explorePageReady=true;
         files["portable-package.json"] = (
             json.dumps(portable, indent=2, ensure_ascii=False) + "\n"
         ).encode("utf-8")
+        if portable.get("localRuntime"):
+            registration = portable["localRuntime"]
+            import hashlib
+            module = (REPO / registration["ref"]).read_bytes()
+            _require("sha256:" + hashlib.sha256(module).hexdigest() == registration["digest"],
+                     "LOCAL_RUNTIME_MODULE_STALE")
+            files["local-runtime.mjs"] = module
+            stage = stage.replace('import "./semantic-workbench.mjs";',
+                                  'import "./semantic-workbench.mjs";\nimport "./local-runtime.mjs";')
     elif mount == "LEGACY_IFRAME":
         locator = html.escape(str(package["activity"]["locator"]), quote=True)
         stage = f"""<p class="meta">Existing ACTIVITY reused through the explicitly migration-only locator path.</p>
@@ -211,10 +232,8 @@ window.__explorePageReady=true;
     else:
         stage = _static_representation(package.get("representation"))
 
-    support = f"""<h2>Resolved delivery</h2>
-<dl><dt>Mode</dt><dd>EXPLORE</dd><dt>Mount</dt><dd>{html.escape(mount)}</dd>
-<dt>Representation</dt><dd>{html.escape(str(package.get("representation_ref") or "not required"))}</dd>
-<dt>Activity</dt><dd>{html.escape(str(package.get("activity_ref") or "not required"))}</dd></dl>"""
+    context = package.get("learner_context") or {}
+    support = f'<h2>{html.escape(context.get("title", "Explore"))}</h2><p>{html.escape(context.get("prompt", ""))}</p>'
     page = f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="grade9v3-packaging-mode" content="{html.escape(packaging_mode)}"><title>Grade9V3 Explore</title>
 <style>body{{font:16px/1.45 system-ui,sans-serif;margin:0}}{_shell_style()}</style></head><body>
@@ -232,6 +251,9 @@ def render_single_file(package: dict) -> bytes:
     _require(mount != "LEGACY_IFRAME", "EXPLORE_SINGLE_FILE_LEGACY_IFRAME_UNSUPPORTED")
     if mount == "PORTABLE_SCENE":
         base = build_portable_workbench._offline_html([package["portable_package"]])
+        context = package.get("learner_context") or {}
+        base = base.replace("Portable Workbench Offline Host", html.escape(context.get("title", "Explore")))
+        base = base.replace('<p id="package-label">', '<p>' + html.escape(context.get("prompt", "")) + '</p><p id="package-label">', 1)
         base = base.replace(
             "<body><main>",
             "<body>" + _shell("SINGLE_FILE", package["profile"]["shell_ref"]) + "<main>",
