@@ -18,13 +18,15 @@ try {
       const x=host.locator('[data-x]'),y=host.locator('[data-y]');
       await host.locator('[data-test]').click();
       assert.match(await host.locator('[data-feedback]').innerText(),/finite/);
-      for(const pair of [[0,3],[4,0],[2,1.5],[1,2.25]]) {
+      const question=(await page.locator('main').innerText()).includes('x + 2y = 4');
+      assert.match(await host.locator('[data-equation]').innerText(),question?/1x \+ 2y \+ \(-4\)/:/3x \+ 4y \+ \(-12\)/);
+      for(const pair of question?[[0,2],[4,0],[2,1],[1,1.5]]:[[0,3],[4,0],[2,1.5],[1,2.25]]) {
         await x.fill(String(pair[0])); await x.dispatchEvent('input'); await y.fill(String(pair[1]));
         await host.locator('[data-test]').click();
       }
       assert.equal(await host.locator('tbody tr').count(),4,'arbitrary between-point accepted, not predefined cards');
       await x.fill('1'); await x.dispatchEvent('input'); await y.fill('1'); await host.locator('[data-test]').click();
-      assert.match(await host.locator('[data-feedback]').innerText(),/residual -5/);
+      assert.match(await host.locator('[data-feedback]').innerText(),question?/residual -1/:/residual -5/);
       assert.equal(await host.locator('tbody tr').count(),4);
       const before=await host.locator('[data-residual]').innerText();
       await host.locator('svg').focus(); await page.keyboard.press('ArrowRight');
@@ -35,6 +37,7 @@ try {
       assert.notEqual(await host.locator('[data-residual]').innerText(),before);
       assert.deepEqual(errors,[]);
       assert.ok(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+      assert.ok(await page.locator('.site-nav button,.site-nav a,.site-nav input,.site-nav summary').evaluateAll(nodes=>nodes.every(n=>{const b=n.getBoundingClientRect();return b.width>=48&&b.height>=48})), '48px shell targets');
       if(process.env.RECORD_INTERACTION_EVIDENCE==='1') {
         await page.screenshot({path:filename+`.${viewport.width}.png`,fullPage:true});
         fs.writeFileSync(filename+`.${viewport.width}.aria.txt`,await host.ariaSnapshot());

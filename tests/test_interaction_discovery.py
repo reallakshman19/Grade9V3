@@ -42,7 +42,7 @@ class InteractionDiscoveryTests(unittest.TestCase):
         self.assertEqual(row["maturity_status"], "OBSERVED")
         self.assertEqual(row["subject_refs"], ["Mathematics"])
         self.assertIn("residual-feedback", row["mechanic_refs"])
-        self.assertEqual(row["package_refs"], [self.local["runtime"]["package_ref"]])
+        self.assertEqual(set(row["package_refs"]), {self.local["runtime"]["package_ref"], self.consumer["runtime"]["package_ref"]})
         self.assertEqual(
             row["source_paths"],
             ["Mathematics/interactions/linear-equations-two-variables.local.json"],
@@ -60,14 +60,15 @@ class InteractionDiscoveryTests(unittest.TestCase):
         )
 
     def test_real_consumer_keeps_same_runtime_identity(self):
-        self.assertEqual(self.consumer["runtime"], self.local["runtime"])
+        self.assertEqual(self.consumer["runtime"]["activity_ref"], self.local["runtime"]["activity_ref"])
+        self.assertNotEqual(self.consumer["runtime"]["package_ref"], self.local["runtime"]["package_ref"])
         self.assertEqual(
             self.consumer["reuse_evidence"]["runtime_binding_ref"],
-            self.local["runtime"]["binding_ref"],
+            self.consumer["runtime"]["binding_ref"],
         )
         decision = self.consumer["reuse_evidence"]["decisions"][0]
         self.assertEqual(decision["implementation_ref"], self.implementation_ref)
-        self.assertEqual(decision["evidence_ref"], self.local["runtime"]["package_ref"])
+        self.assertEqual(decision["evidence_ref"], self.consumer["runtime"]["package_ref"])
 
     def test_exact_mechanic_search_finds_precedent_without_ranking(self):
         index = interaction_discovery.build()

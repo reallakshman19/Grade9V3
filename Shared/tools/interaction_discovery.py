@@ -153,9 +153,9 @@ def build_from_records(
             "representation_refs": sorted(local["package"].get("representationRefs", [])) if local else [],
             "mechanic_refs": sorted(set(analysis["mechanic_refs"])),
             "runtime_binding_refs": sorted({row["runtime_binding_ref"] for row in matching}),
-            "package_refs": (
-                [local["runtime"]["package_ref"]] if local else []
-            ),
+            "package_refs": sorted(set(([local["runtime"]["package_ref"]] if local else []) + [
+                d["evidence_ref"] for row in matching for d in row.get("decisions", [])
+                if d.get("evidence_ref", "").startswith(("local-package-", "consumer-package-"))])),
             "example_artifact_refs": sorted({
                 decision["evidence_ref"]
                 for row in matching

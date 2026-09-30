@@ -33,6 +33,9 @@ def resolve(subject, target, *, repo=REPO):
         consumer = interaction_reuse_binding.compile_source(path, repo=repo)
         local = interaction_local_runtime.compile_source(Path(consumer["implementation_source_ref"]), repo=repo)
         local["consumer_binding"] = consumer
+        local["runtime"] = consumer["runtime"]
+        local["package"] = consumer["package"]
+        local["binding_digest"] = consumer["binding_digest"]
         candidates.append(local)
     if len(candidates) > 1:
         raise ValueError("LOCAL_DELIVERY_TARGET_AMBIGUOUS: " + str(target))

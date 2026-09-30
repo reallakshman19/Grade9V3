@@ -105,7 +105,7 @@
   "runtime_module": {
     "id": "mathematics-linear-pairs-v1",
     "ref": "Mathematics/interactions/linear-pairs.mjs",
-    "digest": "sha256:4248b0c48f9d15d23906c68b04a3b097de62918bef303dd3662ab544dc1f50bc",
+    "digest": "sha256:5eca1b998438b8517a332d16442fe951d7dd77d47b1752096d95388fcc5b0d4d",
     "model": {
       "a": 3,
       "b": 4,

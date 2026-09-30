@@ -152,7 +152,7 @@ def _shell(packaging_mode: str, shell_ref: str) -> str:
 def _shell_style() -> str:
     return """.site-nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:.5rem;min-height:3.5rem;padding:.4rem .75rem;border-bottom:1px solid #bbb;background:#fff;flex-wrap:wrap}
 .site-nav a,.site-nav button,.site-nav input,.site-nav summary{font:inherit;min-height:3rem;box-sizing:border-box}
-.site-nav a,.site-nav button,.site-nav summary{display:inline-flex;align-items:center;padding:.4rem .7rem;border:1px solid #999;border-radius:.5rem;text-decoration:none;color:inherit;background:#fff}
+.site-nav a,.site-nav button,.site-nav summary{display:inline-flex;align-items:center;min-width:3rem;padding:.4rem .7rem;border:1px solid #999;border-radius:.5rem;text-decoration:none;color:inherit;background:#fff}
 .site-nav input{padding:.4rem .6rem}.site-nav form{display:flex;gap:.5rem}.site-nav #subject-context{margin-inline:auto}
 .explore-shell{display:grid;grid-template-columns:minmax(0,72fr) minmax(16rem,28fr);gap:1rem;max-width:80rem;margin:auto;padding:1rem}
 .explore-stage,.explore-support{border:1px solid currentColor;border-radius:.75rem;padding:1rem;min-width:0}
@@ -251,6 +251,7 @@ def render_single_file(package: dict) -> bytes:
     _require(mount != "LEGACY_IFRAME", "EXPLORE_SINGLE_FILE_LEGACY_IFRAME_UNSUPPORTED")
     if mount == "PORTABLE_SCENE":
         base = build_portable_workbench._offline_html([package["portable_package"]])
+        base = base.replace('</head>', '<style>' + _shell_style() + '</style></head>', 1)
         context = package.get("learner_context") or {}
         base = base.replace("Portable Workbench Offline Host", html.escape(context.get("title", "Explore")))
         base = base.replace('<p id="package-label">', '<p>' + html.escape(context.get("prompt", "")) + '</p><p id="package-label">', 1)

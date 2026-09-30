@@ -35,7 +35,8 @@ class InteractionDelivery(unittest.TestCase):
             self.assertEqual(before['runtime']['activity_ref'],after['runtime']['activity_ref'])
             self.assertNotEqual(before['runtime']['package_ref'],after['runtime']['package_ref'])
             self.assertEqual(after['package']['localRuntime']['model']['max'],8)
-        self.assertEqual(revised[0]['package'],revised[1]['package'])
+        self.assertEqual(revised[0]['package']['localRuntime']['digest'],revised[1]['package']['localRuntime']['digest'])
+        self.assertEqual(revised[1]['package']['localRuntime']['model']['b'],2)
 
     def test_two_real_consumers_mount_the_same_runtime_in_chromium(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -49,7 +50,7 @@ class InteractionDelivery(unittest.TestCase):
                 package=build_explore_page.compile_page_package(plan)
                 packages.append(package['portable_package']['id'])
                 file=Path(tmp)/(target+'.html'); build_explore_page.write_mode(package,'SINGLE_FILE',file); files.append(str(file))
-            self.assertEqual(packages[0],packages[1])
+            self.assertNotEqual(packages[0],packages[1])
             result=subprocess.run(['node','tests/interaction_delivery_browser.mjs',*files],cwd=ROOT,
                                   capture_output=True,text=True,encoding='utf-8',timeout=60)
             self.assertEqual(result.returncode,0,result.stdout+result.stderr)

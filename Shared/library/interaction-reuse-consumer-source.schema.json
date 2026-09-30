@@ -57,6 +57,10 @@
     "consumer_basis_digest": {
       "type": "string",
       "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "model_parameters": {
+      "type": "object",
+      "description": "Explicit consumer parameters, reviewed against consumer_basis_digest; implementation code is reused unchanged."
     }
   }
 }

@@ -8,6 +8,7 @@ Shared architecture, or turn reuse metadata into execution permission.
 from __future__ import annotations
 
 import argparse
+import copy
 import hashlib
 import json
 from pathlib import Path
@@ -23,6 +24,7 @@ if __package__ in (None, ""):
     sys.path.insert(0, str(REPO))
 
 from Shared.contracts import canonical, load
+from Shared.portable.package import validate_package
 from Shared.library.resolve import build_index, load_packages
 from Shared.tools import interaction_brief, interaction_local_runtime, interaction_reuse
 
@@ -131,17 +133,36 @@ def compile_source(source_path: Path, *, repo: Path = REPO) -> dict[str, Any]:
             ",".join(sorted(declared_representation_refs)),
         )
 
+    consumer_digest = _digest({consumer_ref: consumer})
+    _require(source.get("consumer_basis_digest") == consumer_digest,
+             "INTERACTION_REUSE_CONSUMER_ACADEMIC_BASIS_STALE", consumer_ref)
+    runtime = copy.deepcopy(local["runtime"])
+    package = copy.deepcopy(local["package"])
+    parameters = source.get("model_parameters") or {}
+    if parameters:
+        _require(bool(package.get("localRuntime")), "INTERACTION_REUSE_MODEL_WITHOUT_LOCAL_RUNTIME")
+        package["localRuntime"]["model"].update(parameters)
+    # Reuse means identical implementation code. A consumer's academic data and
+    # question binding must still have their own immutable package identity.
+    token = _digest([local["binding_digest"], consumer_digest, parameters]).split(":", 1)[1][:16]
+    runtime["package_ref"] = "consumer-package-" + token
+    runtime["binding_ref"] = "consumer-binding-" + token
+    package["id"] = runtime["package_ref"]
+    package["runtimeBinding"] = copy.deepcopy(runtime)
+    package["questionBindings"] = [{"questionRef": consumer_ref, "canonicalDigest": consumer_digest}]
+    package = validate_package(package)
+
     evidence = interaction_reuse.build_evidence(
         interaction_ref=consumer_ref,
         subject_ref=source["subject"],
-        runtime_binding_ref=local["runtime"]["binding_ref"],
+        runtime_binding_ref=runtime["binding_ref"],
         mechanic_refs=list(local["reuse_evidence"]["mechanic_refs"]),
         decisions=[{
             "slice_ref": source["slice_ref"],
             "mode": source["mode"],
             "relation": source["relation"],
             "implementation_ref": local["runtime"]["activity_ref"],
-            "evidence_ref": local["runtime"]["package_ref"],
+            "evidence_ref": runtime["package_ref"],
         }],
         repo=repo,
     )
@@ -160,9 +181,6 @@ def compile_source(source_path: Path, *, repo: Path = REPO) -> dict[str, Any]:
         "INTERACTION_REUSE_CONSUMER_UNEXPECTED_SHARED_CLAIM",
     )
 
-    consumer_digest = _digest({consumer_ref: consumer})
-    _require(source.get("consumer_basis_digest") == consumer_digest,
-             "INTERACTION_REUSE_CONSUMER_ACADEMIC_BASIS_STALE", consumer_ref)
     body = {
         "source": source,
         "local_binding_digest": local["binding_digest"],
@@ -181,13 +199,14 @@ def compile_source(source_path: Path, *, repo: Path = REPO) -> dict[str, Any]:
         "consumer_primary_capability_ref": primary_capability_ref,
         "consumer_family_ref": consumer_family_ref,
         "consumer_canonical_digest": consumer_digest,
-        "runtime": local["runtime"],
+        "runtime": runtime,
+        "package": package,
         "reuse_evidence": evidence,
         "reuse_analysis": analysis,
         "binding_digest": binding_digest,
         "claim_note": (
-            "The consumer points to the existing activity/package/binding unchanged. "
-            "REUSED therefore comes from literal implementation lineage, not similarity. "
+            "The consumer uses the same stable activity and exact implementation module with explicit, "
+            "academic-digest-bound parameters in its own immutable package. "
             "This remains same-subject reuse and does not prove a SHARED subject-neutral capability."
         ),
     }

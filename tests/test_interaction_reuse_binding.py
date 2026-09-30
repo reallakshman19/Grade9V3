@@ -13,7 +13,7 @@ CONSUMER_SOURCE = REPO / "Mathematics/interactions/linear-equations-two-variable
 
 
 class InteractionReuseBindingTests(unittest.TestCase):
-    def test_real_canonical_question_consumes_same_runtime_package_unchanged(self):
+    def test_real_question_reuses_code_with_its_own_equation_and_binding(self):
         local = interaction_local_runtime.compile_source(LOCAL_SOURCE)
         reused = interaction_reuse_binding.compile_source(CONSUMER_SOURCE)
 
@@ -23,16 +23,19 @@ class InteractionReuseBindingTests(unittest.TestCase):
             reused["consumer_primary_capability_ref"],
             "CAP-MAT-LEQ-04-TWO-VARIABLE-SOLUTIONS",
         )
-        self.assertEqual(reused["runtime"], local["runtime"])
+        self.assertEqual(reused["runtime"]["activity_ref"], local["runtime"]["activity_ref"])
+        self.assertNotEqual(reused["runtime"]["package_ref"], local["runtime"]["package_ref"])
+        self.assertEqual(reused["package"]["localRuntime"]["digest"], local["package"]["localRuntime"]["digest"])
+        self.assertEqual(reused["package"]["localRuntime"]["model"]["b"], 2)
         self.assertEqual(
             reused["reuse_evidence"]["runtime_binding_ref"],
-            local["runtime"]["binding_ref"],
+            reused["runtime"]["binding_ref"],
         )
         decision = reused["reuse_evidence"]["decisions"][0]
         self.assertEqual(decision["mode"], "R1")
         self.assertEqual(decision["relation"], "CONSUMES")
         self.assertEqual(decision["implementation_ref"], local["runtime"]["activity_ref"])
-        self.assertEqual(decision["evidence_ref"], local["runtime"]["package_ref"])
+        self.assertEqual(decision["evidence_ref"], reused["runtime"]["package_ref"])
         self.assertEqual(reused["reuse_analysis"]["maturity"], "REUSED")
         self.assertEqual(
             reused["reuse_analysis"]["consumer_interaction_refs"],
