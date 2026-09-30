@@ -1,0 +1,99 @@
+{
+  "schema_version": "1.0.0",
+  "authority": "DERIVED_INTERACTION_DISCOVERY_ONLY",
+  "execution_policy": {
+    "advisory_only": true,
+    "research_may_continue": true,
+    "unindexed_build_allowed": true,
+    "promotion_not_required": true,
+    "similarity_is_not_reuse_evidence": true
+  },
+  "implementations": [
+    {
+      "implementation_ref": "local-activity-23c062c7fd84ae8a",
+      "maturity": "REUSED",
+      "maturity_status": "OBSERVED",
+      "subject_refs": [
+        "Mathematics"
+      ],
+      "interaction_refs": [
+        "IBR-03C4D7F509CCE568F128",
+        "Q-MAT-LEQ-04-1A-TEST-PAIRS"
+      ],
+      "canonical_target_refs": [
+        "MIC-MAT-LEQ-04-TWO-VARIABLES-LINE-OF-SOLUTIONS",
+        "Q-MAT-LEQ-04-1A-TEST-PAIRS"
+      ],
+      "representation_refs": [
+        "REP-MAT-LEQ-04-SOLUTION-LINE"
+      ],
+      "mechanic_refs": [
+        "accepted-pair-accumulation",
+        "coordinate-point-drag",
+        "residual-feedback",
+        "typed-pair-prediction"
+      ],
+      "runtime_binding_refs": [
+        "consumer-binding-51a9eaade6a8b8f4",
+        "local-binding-23c062c7fd84ae8a-19e2f6dfaedc71f1"
+      ],
+      "package_refs": [
+        "consumer-package-51a9eaade6a8b8f4",
+        "local-package-23c062c7fd84ae8a-19e2f6dfaedc71f1"
+      ],
+      "example_artifact_refs": [
+        "consumer-package-51a9eaade6a8b8f4",
+        "local-package-23c062c7fd84ae8a-19e2f6dfaedc71f1"
+      ],
+      "source_paths": [
+        "Mathematics/interactions/linear-equations-two-variables.local.json"
+      ],
+      "creator_interaction_refs": [
+        "IBR-03C4D7F509CCE568F128"
+      ],
+      "consumer_interaction_refs": [
+        "Q-MAT-LEQ-04-1A-TEST-PAIRS"
+      ],
+      "consumer_subject_refs": [
+        "Mathematics"
+      ],
+      "shared_owner_refs": [],
+      "subject_neutral_shared_claim_proven": false,
+      "reconstruction_debt": [],
+      "lineage_edges": [
+        {
+          "interaction_ref": "Q-MAT-LEQ-04-1A-TEST-PAIRS",
+          "subject_ref": "Mathematics",
+          "runtime_binding_ref": "consumer-binding-51a9eaade6a8b8f4",
+          "slice_ref": "pair-testing-question",
+          "mode": "R1",
+          "relation": "CONSUMES",
+          "implementation_ref": "local-activity-23c062c7fd84ae8a",
+          "evidence_ref": "consumer-package-51a9eaade6a8b8f4"
+        },
+        {
+          "interaction_ref": "IBR-03C4D7F509CCE568F128",
+          "subject_ref": "Mathematics",
+          "runtime_binding_ref": "local-binding-23c062c7fd84ae8a-19e2f6dfaedc71f1",
+          "slice_ref": "whole-interaction",
+          "mode": "R4",
+          "relation": "CREATES",
+          "implementation_ref": "local-activity-23c062c7fd84ae8a",
+          "evidence_ref": "local-package-23c062c7fd84ae8a-19e2f6dfaedc71f1"
+        }
+      ]
+    }
+  ],
+  "duplication_opportunities": [],
+  "source_inventory": {
+    "local_source_paths": [
+      "Mathematics/interactions/linear-equations-two-variables.local.json"
+    ],
+    "explicit_reuse_evidence_paths": [],
+    "reuse_consumer_source_paths": [
+      "Mathematics/interactions/linear-equations-two-variables.test-pairs.reuse-consumer.json"
+    ]
+  },
+  "index_digest": "sha256:86dd96a4bb732c560ad6745afeb9b4b41ed52e5039b7918d683e7041baaf4b04",
+  "findings": []
+}

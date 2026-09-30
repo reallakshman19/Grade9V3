@@ -1,0 +1,613 @@
+{
+  "code_head": "fe768a370f00067f144eb9598f48ca82000e8bd4",
+  "receipts": [
+    {
+      "file": "concept.html",
+      "target": "MIC-MAT-LEQ-04-TWO-VARIABLES-LINE-OF-SOLUTIONS",
+      "test_mutation": null,
+      "runtime": {
+        "binding_ref": "local-binding-23c062c7fd84ae8a-19e2f6dfaedc71f1",
+        "activity_ref": "local-activity-23c062c7fd84ae8a",
+        "scene_ref": "local-scene-23c062c7fd84ae8a-19e2f6dfaedc71f1",
+        "adapter_ref": "local-adapter-23c062c7fd84ae8a-19e2f6dfaedc71f1",
+        "adapter_implementation_ref": "declarative-transfer-v1",
+        "package_ref": "local-package-23c062c7fd84ae8a-19e2f6dfaedc71f1",
+        "maturity": "LOCAL"
+      },
+      "model": {
+        "a": 3,
+        "b": 4,
+        "c": -12,
+        "min": -2,
+        "max": 6
+      },
+      "module_digest": "sha256:5eca1b998438b8517a332d16442fe951d7dd77d47b1752096d95388fcc5b0d4d",
+      "academic_basis": null,
+      "consumer_binding": null,
+      "artifact_sha256": "c2909f3551ff8719875a3967be3f14083772a23ed43046606fa7d421b2095b7a"
+    },
+    {
+      "file": "question.html",
+      "target": "Q-MAT-LEQ-04-1A-TEST-PAIRS",
+      "test_mutation": null,
+      "runtime": {
+        "binding_ref": "consumer-binding-51a9eaade6a8b8f4",
+        "activity_ref": "local-activity-23c062c7fd84ae8a",
+        "scene_ref": "local-scene-23c062c7fd84ae8a-19e2f6dfaedc71f1",
+        "adapter_ref": "local-adapter-23c062c7fd84ae8a-19e2f6dfaedc71f1",
+        "adapter_implementation_ref": "declarative-transfer-v1",
+        "package_ref": "consumer-package-51a9eaade6a8b8f4",
+        "maturity": "LOCAL"
+      },
+      "model": {
+        "a": 1,
+        "b": 2,
+        "c": -4,
+        "min": -2,
+        "max": 6
+      },
+      "module_digest": "sha256:5eca1b998438b8517a332d16442fe951d7dd77d47b1752096d95388fcc5b0d4d",
+      "academic_basis": null,
+      "consumer_binding": {
+        "schema_version": "1.0.0",
+        "authority": "DERIVED_INTERACTION_REUSE_BINDING_ONLY",
+        "status": "CURRENT",
+        "source_path": "Mathematics/interactions/linear-equations-two-variables.test-pairs.reuse-consumer.json",
+        "subject": "Mathematics",
+        "implementation_source_ref": "Mathematics/interactions/linear-equations-two-variables.local.json",
+        "consumer_ref": "Q-MAT-LEQ-04-1A-TEST-PAIRS",
+        "consumer_primary_capability_ref": "CAP-MAT-LEQ-04-TWO-VARIABLE-SOLUTIONS",
+        "consumer_family_ref": "FAM-MAT-LEQ-04-TWO-VARIABLES",
+        "consumer_canonical_digest": "sha256:5d6cc7746ac8d3f8a5b60231cbba029723169f6b134856d021bd7b17351506fc",
+        "runtime": {
+          "binding_ref": "consumer-binding-51a9eaade6a8b8f4",
+          "activity_ref": "local-activity-23c062c7fd84ae8a",
+          "scene_ref": "local-scene-23c062c7fd84ae8a-19e2f6dfaedc71f1",
+          "adapter_ref": "local-adapter-23c062c7fd84ae8a-19e2f6dfaedc71f1",
+          "adapter_implementation_ref": "declarative-transfer-v1",
+          "package_ref": "consumer-package-51a9eaade6a8b8f4",
+          "maturity": "LOCAL"
+        },
+        "package": {
+          "schemaVersion": "portable-workbench-package",
+          "packageVersion": "1.0.0",
+          "componentApiVersion": "0.1.0",
+          "transformationIrVersion": "0.1.0",
+          "adapterApiVersion": "0.2.0",
+          "scenePackageVersion": "1.0.0",
+          "id": "consumer-package-51a9eaade6a8b8f4",
+          "title": "Two-variable solution-pair residual explorer",
+          "sourceRefs": [
+            "CAP-MAT-LEQ-04-TWO-VARIABLE-SOLUTIONS",
+            "MIC-MAT-LEQ-04-TWO-VARIABLES-LINE-OF-SOLUTIONS",
+            "REP-MAT-LEQ-04-SOLUTION-LINE"
+          ],
+          "sceneRefs": [
+            "local-scene-23c062c7fd84ae8a-19e2f6dfaedc71f1"
+          ],
+          "representationRefs": [
+            "REP-MAT-LEQ-04-SOLUTION-LINE"
+          ],
+          "assetRefs": [],
+          "accessibilityRefs": [
+            "keyboard arrow movement and numeric pair entry",
+            "visible live residual and accepted-pair table"
+          ],
+          "questionBindings": [
+            {
+              "questionRef": "Q-MAT-LEQ-04-1A-TEST-PAIRS",
+              "canonicalDigest": "sha256:5d6cc7746ac8d3f8a5b60231cbba029723169f6b134856d021bd7b17351506fc"
+            }
+          ],
+          "provenance": {
+            "authority": "NON_CANONICAL_COMPILED_PROOF",
+            "sourceKind": "LOCAL_INTERACTION_IMPLEMENTATION",
+            "sourceRefs": [
+              "CAP-MAT-LEQ-04-TWO-VARIABLE-SOLUTIONS",
+              "MIC-MAT-LEQ-04-TWO-VARIABLES-LINE-OF-SOLUTIONS",
+              "REP-MAT-LEQ-04-SOLUTION-LINE"
+            ],
+            "localInteraction": {
+              "authority": "DERIVED_LOCAL_INTERACTION_RUNTIME_ONLY",
+              "briefRef": "IBR-03C4D7F509CCE568F128",
+              "canonicalInputDigest": "sha256:cb041b1981283e1147cc3e898886b8dd64c3aaccbc93a83c090cb3eaec73af50",
+              "sourceAcademicBasisDigest": "sha256:cb041b1981283e1147cc3e898886b8dd64c3aaccbc93a83c090cb3eaec73af50",
+              "sourceDigest": "sha256:033bab288884d19a38b98c03b9a36a613af4b2792e0ae2b7d35d70a49d0f3027"
+            }
+          },
+          "scene": {
+            "sceneVersion": "1.0.0",
+            "grids": [
+              {
+                "id": "candidate-pairs",
+                "label": "Candidate ordered pairs",
+                "rows": [
+                  "candidate"
+                ],
+                "columns": [
+                  "one",
+                  "two",
+                  "three",
+                  "four"
+                ]
+              },
+              {
+                "id": "equation-check",
+                "label": "Equation and accepted solution line",
+                "rows": [
+                  "equation",
+                  "accepted"
+                ],
+                "columns": [
+                  "main"
+                ]
+              }
+            ],
+            "entities": [
+              {
+                "id": "equation-source",
+                "label": "3x + 4y = 12",
+                "provenance": {
+                  "kind": "SOURCE",
+                  "sourceEntityRefs": []
+                }
+              }
+            ],
+            "projections": [
+              {
+                "id": "equation-projection",
+                "entityRef": "equation-source",
+                "label": "3x + 4y = 12",
+                "representation": "equation under test",
+                "placement": {
+                  "grid": "equation-check",
+                  "row": "equation",
+                  "column": "main"
+                }
+              }
+            ],
+            "targets": [
+              {
+                "id": "solution-line-target",
+                "label": "Accepted solution pairs",
+                "operation": "test-solution-pair",
+                "placement": {
+                  "grid": "equation-check",
+                  "row": "accepted",
+                  "column": "main"
+                }
+              }
+            ],
+            "canonicalTransformations": [
+              {
+                "id": "enter-arbitrary-pair",
+                "sourceEntityRefs": [
+                  "equation-source"
+                ],
+                "targetRef": "solution-line-target"
+              }
+            ],
+            "apiVersion": "0.1.0",
+            "id": "local-scene-23c062c7fd84ae8a-19e2f6dfaedc71f1"
+          },
+          "adapter": {
+            "id": "declarative-transfer-v1",
+            "apiVersion": "0.2.0",
+            "rules": [
+              {
+                "id": "require-pair-input",
+                "transformationRef": "enter-arbitrary-pair",
+                "sourceEntityRef": "equation-source",
+                "targetRef": "solution-line-target",
+                "operation": "test-solution-pair",
+                "outcome": "REJECT",
+                "reason": "Use the registered coordinate interaction to enter an arbitrary pair."
+              }
+            ]
+          },
+          "injections": [],
+          "runtimeBinding": {
+            "binding_ref": "consumer-binding-51a9eaade6a8b8f4",
+            "activity_ref": "local-activity-23c062c7fd84ae8a",
+            "scene_ref": "local-scene-23c062c7fd84ae8a-19e2f6dfaedc71f1",
+            "adapter_ref": "local-adapter-23c062c7fd84ae8a-19e2f6dfaedc71f1",
+            "adapter_implementation_ref": "declarative-transfer-v1",
+            "package_ref": "consumer-package-51a9eaade6a8b8f4",
+            "maturity": "LOCAL"
+          },
+          "localRuntime": {
+            "id": "mathematics-linear-pairs-v1",
+            "ref": "Mathematics/interactions/linear-pairs.mjs",
+            "digest": "sha256:5eca1b998438b8517a332d16442fe951d7dd77d47b1752096d95388fcc5b0d4d",
+            "model": {
+              "a": 1,
+              "b": 2,
+              "c": -4,
+              "min": -2,
+              "max": 6
+            }
+          }
+        },
+        "reuse_evidence": {
+          "evidence_id": "IRE-49F29D0275E131FA59AB",
+          "schema_version": "1.0.0",
+          "authority": "DERIVED_INTERACTION_REUSE_EVIDENCE_ONLY",
+          "interaction_ref": "Q-MAT-LEQ-04-1A-TEST-PAIRS",
+          "subject_ref": "Mathematics",
+          "runtime_binding_ref": "consumer-binding-51a9eaade6a8b8f4",
+          "mechanic_refs": [
+            "accepted-pair-accumulation",
+            "coordinate-point-drag",
+            "residual-feedback",
+            "typed-pair-prediction"
+          ],
+          "decisions": [
+            {
+              "slice_ref": "pair-testing-question",
+              "mode": "R1",
+              "relation": "CONSUMES",
+              "implementation_ref": "local-activity-23c062c7fd84ae8a",
+              "evidence_ref": "consumer-package-51a9eaade6a8b8f4"
+            }
+          ],
+          "shared_binding": null
+        },
+        "reuse_analysis": {
+          "implementation_ref": "local-activity-23c062c7fd84ae8a",
+          "maturity": "REUSED",
+          "maturity_status": "OBSERVED",
+          "creator_interaction_refs": [
+            "IBR-03C4D7F509CCE568F128"
+          ],
+          "consumer_interaction_refs": [
+            "Q-MAT-LEQ-04-1A-TEST-PAIRS"
+          ],
+          "consumer_subject_refs": [
+            "Mathematics"
+          ],
+          "shared_owner_refs": [],
+          "subject_neutral_shared_claim_proven": false,
+          "lineage_edges": [
+            {
+              "interaction_ref": "IBR-03C4D7F509CCE568F128",
+              "subject_ref": "Mathematics",
+              "runtime_binding_ref": "local-binding-23c062c7fd84ae8a-19e2f6dfaedc71f1",
+              "slice_ref": "whole-interaction",
+              "mode": "R4",
+              "relation": "CREATES",
+              "implementation_ref": "local-activity-23c062c7fd84ae8a",
+              "evidence_ref": "local-package-23c062c7fd84ae8a-19e2f6dfaedc71f1"
+            },
+            {
+              "interaction_ref": "Q-MAT-LEQ-04-1A-TEST-PAIRS",
+              "subject_ref": "Mathematics",
+              "runtime_binding_ref": "consumer-binding-51a9eaade6a8b8f4",
+              "slice_ref": "pair-testing-question",
+              "mode": "R1",
+              "relation": "CONSUMES",
+              "implementation_ref": "local-activity-23c062c7fd84ae8a",
+              "evidence_ref": "consumer-package-51a9eaade6a8b8f4"
+            }
+          ],
+          "mechanic_refs": [
+            "accepted-pair-accumulation",
+            "coordinate-point-drag",
+            "residual-feedback",
+            "typed-pair-prediction"
+          ],
+          "reconstruction_debt": [],
+          "claim_note": "LOCAL itself requires evidence that one concrete implementation exists. REUSED is derived from concrete consume/compose/extend/derive lineage. A shared owner plus at least two concrete consumers across at least two subject refs is required for a subject-neutral SHARED claim."
+        },
+        "binding_digest": "sha256:6b30ed53ad862271119c80eaa4c9fbfcbf22b479ab8d774344e31be70ab7599a",
+        "claim_note": "The consumer uses the same stable activity and exact implementation module with explicit, academic-digest-bound parameters in its own immutable package. This remains same-subject reuse and does not prove a SHARED subject-neutral capability."
+      },
+      "artifact_sha256": "850fcd74290835e80875ee696426197d297c8305f7966a462f582bce98151a03"
+    },
+    {
+      "file": "upgrade-concept.html",
+      "target": "MIC-MAT-LEQ-04-TWO-VARIABLES-LINE-OF-SOLUTIONS",
+      "test_mutation": {
+        "max": 8
+      },
+      "runtime": {
+        "binding_ref": "local-binding-23c062c7fd84ae8a-c72661c07ae9172a",
+        "activity_ref": "local-activity-23c062c7fd84ae8a",
+        "scene_ref": "local-scene-23c062c7fd84ae8a-c72661c07ae9172a",
+        "adapter_ref": "local-adapter-23c062c7fd84ae8a-c72661c07ae9172a",
+        "adapter_implementation_ref": "declarative-transfer-v1",
+        "package_ref": "local-package-23c062c7fd84ae8a-c72661c07ae9172a",
+        "maturity": "LOCAL"
+      },
+      "model": {
+        "a": 3,
+        "b": 4,
+        "c": -12,
+        "min": -2,
+        "max": 8
+      },
+      "module_digest": "sha256:5eca1b998438b8517a332d16442fe951d7dd77d47b1752096d95388fcc5b0d4d",
+      "academic_basis": null,
+      "consumer_binding": null,
+      "artifact_sha256": "4ddd4a37798f4d5e045eabdb2c6f986835b08d7fb892d698e54dc8db0bdf10cd"
+    },
+    {
+      "file": "upgrade-question.html",
+      "target": "Q-MAT-LEQ-04-1A-TEST-PAIRS",
+      "test_mutation": {
+        "max": 8
+      },
+      "runtime": {
+        "binding_ref": "consumer-binding-19e5606f5190ab63",
+        "activity_ref": "local-activity-23c062c7fd84ae8a",
+        "scene_ref": "local-scene-23c062c7fd84ae8a-c72661c07ae9172a",
+        "adapter_ref": "local-adapter-23c062c7fd84ae8a-c72661c07ae9172a",
+        "adapter_implementation_ref": "declarative-transfer-v1",
+        "package_ref": "consumer-package-19e5606f5190ab63",
+        "maturity": "LOCAL"
+      },
+      "model": {
+        "a": 1,
+        "b": 2,
+        "c": -4,
+        "min": -2,
+        "max": 8
+      },
+      "module_digest": "sha256:5eca1b998438b8517a332d16442fe951d7dd77d47b1752096d95388fcc5b0d4d",
+      "academic_basis": null,
+      "consumer_binding": {
+        "schema_version": "1.0.0",
+        "authority": "DERIVED_INTERACTION_REUSE_BINDING_ONLY",
+        "status": "CURRENT",
+        "source_path": "Mathematics/interactions/linear-equations-two-variables.test-pairs.reuse-consumer.json",
+        "subject": "Mathematics",
+        "implementation_source_ref": "Mathematics/interactions/linear-equations-two-variables.local.json",
+        "consumer_ref": "Q-MAT-LEQ-04-1A-TEST-PAIRS",
+        "consumer_primary_capability_ref": "CAP-MAT-LEQ-04-TWO-VARIABLE-SOLUTIONS",
+        "consumer_family_ref": "FAM-MAT-LEQ-04-TWO-VARIABLES",
+        "consumer_canonical_digest": "sha256:5d6cc7746ac8d3f8a5b60231cbba029723169f6b134856d021bd7b17351506fc",
+        "runtime": {
+          "binding_ref": "consumer-binding-19e5606f5190ab63",
+          "activity_ref": "local-activity-23c062c7fd84ae8a",
+          "scene_ref": "local-scene-23c062c7fd84ae8a-c72661c07ae9172a",
+          "adapter_ref": "local-adapter-23c062c7fd84ae8a-c72661c07ae9172a",
+          "adapter_implementation_ref": "declarative-transfer-v1",
+          "package_ref": "consumer-package-19e5606f5190ab63",
+          "maturity": "LOCAL"
+        },
+        "package": {
+          "schemaVersion": "portable-workbench-package",
+          "packageVersion": "1.0.0",
+          "componentApiVersion": "0.1.0",
+          "transformationIrVersion": "0.1.0",
+          "adapterApiVersion": "0.2.0",
+          "scenePackageVersion": "1.0.0",
+          "id": "consumer-package-19e5606f5190ab63",
+          "title": "Two-variable solution-pair residual explorer",
+          "sourceRefs": [
+            "CAP-MAT-LEQ-04-TWO-VARIABLE-SOLUTIONS",
+            "MIC-MAT-LEQ-04-TWO-VARIABLES-LINE-OF-SOLUTIONS",
+            "REP-MAT-LEQ-04-SOLUTION-LINE"
+          ],
+          "sceneRefs": [
+            "local-scene-23c062c7fd84ae8a-c72661c07ae9172a"
+          ],
+          "representationRefs": [
+            "REP-MAT-LEQ-04-SOLUTION-LINE"
+          ],
+          "assetRefs": [],
+          "accessibilityRefs": [
+            "keyboard arrow movement and numeric pair entry",
+            "visible live residual and accepted-pair table"
+          ],
+          "questionBindings": [
+            {
+              "questionRef": "Q-MAT-LEQ-04-1A-TEST-PAIRS",
+              "canonicalDigest": "sha256:5d6cc7746ac8d3f8a5b60231cbba029723169f6b134856d021bd7b17351506fc"
+            }
+          ],
+          "provenance": {
+            "authority": "NON_CANONICAL_COMPILED_PROOF",
+            "sourceKind": "LOCAL_INTERACTION_IMPLEMENTATION",
+            "sourceRefs": [
+              "CAP-MAT-LEQ-04-TWO-VARIABLE-SOLUTIONS",
+              "MIC-MAT-LEQ-04-TWO-VARIABLES-LINE-OF-SOLUTIONS",
+              "REP-MAT-LEQ-04-SOLUTION-LINE"
+            ],
+            "localInteraction": {
+              "authority": "DERIVED_LOCAL_INTERACTION_RUNTIME_ONLY",
+              "briefRef": "IBR-03C4D7F509CCE568F128",
+              "canonicalInputDigest": "sha256:cb041b1981283e1147cc3e898886b8dd64c3aaccbc93a83c090cb3eaec73af50",
+              "sourceAcademicBasisDigest": "sha256:cb041b1981283e1147cc3e898886b8dd64c3aaccbc93a83c090cb3eaec73af50",
+              "sourceDigest": "sha256:552b51397964270042d69f18efa5cae35c814282082032d80ccbe03f6eb19a36"
+            }
+          },
+          "scene": {
+            "sceneVersion": "1.0.0",
+            "grids": [
+              {
+                "id": "candidate-pairs",
+                "label": "Candidate ordered pairs",
+                "rows": [
+                  "candidate"
+                ],
+                "columns": [
+                  "one",
+                  "two",
+                  "three",
+                  "four"
+                ]
+              },
+              {
+                "id": "equation-check",
+                "label": "Equation and accepted solution line",
+                "rows": [
+                  "equation",
+                  "accepted"
+                ],
+                "columns": [
+                  "main"
+                ]
+              }
+            ],
+            "entities": [
+              {
+                "id": "equation-source",
+                "label": "3x + 4y = 12",
+                "provenance": {
+                  "kind": "SOURCE",
+                  "sourceEntityRefs": []
+                }
+              }
+            ],
+            "projections": [
+              {
+                "id": "equation-projection",
+                "entityRef": "equation-source",
+                "label": "3x + 4y = 12",
+                "representation": "equation under test",
+                "placement": {
+                  "grid": "equation-check",
+                  "row": "equation",
+                  "column": "main"
+                }
+              }
+            ],
+            "targets": [
+              {
+                "id": "solution-line-target",
+                "label": "Accepted solution pairs",
+                "operation": "test-solution-pair",
+                "placement": {
+                  "grid": "equation-check",
+                  "row": "accepted",
+                  "column": "main"
+                }
+              }
+            ],
+            "canonicalTransformations": [
+              {
+                "id": "enter-arbitrary-pair",
+                "sourceEntityRefs": [
+                  "equation-source"
+                ],
+                "targetRef": "solution-line-target"
+              }
+            ],
+            "apiVersion": "0.1.0",
+            "id": "local-scene-23c062c7fd84ae8a-c72661c07ae9172a"
+          },
+          "adapter": {
+            "id": "declarative-transfer-v1",
+            "apiVersion": "0.2.0",
+            "rules": [
+              {
+                "id": "require-pair-input",
+                "transformationRef": "enter-arbitrary-pair",
+                "sourceEntityRef": "equation-source",
+                "targetRef": "solution-line-target",
+                "operation": "test-solution-pair",
+                "outcome": "REJECT",
+                "reason": "Use the registered coordinate interaction to enter an arbitrary pair."
+              }
+            ]
+          },
+          "injections": [],
+          "runtimeBinding": {
+            "binding_ref": "consumer-binding-19e5606f5190ab63",
+            "activity_ref": "local-activity-23c062c7fd84ae8a",
+            "scene_ref": "local-scene-23c062c7fd84ae8a-c72661c07ae9172a",
+            "adapter_ref": "local-adapter-23c062c7fd84ae8a-c72661c07ae9172a",
+            "adapter_implementation_ref": "declarative-transfer-v1",
+            "package_ref": "consumer-package-19e5606f5190ab63",
+            "maturity": "LOCAL"
+          },
+          "localRuntime": {
+            "id": "mathematics-linear-pairs-v1",
+            "ref": "Mathematics/interactions/linear-pairs.mjs",
+            "digest": "sha256:5eca1b998438b8517a332d16442fe951d7dd77d47b1752096d95388fcc5b0d4d",
+            "model": {
+              "a": 1,
+              "b": 2,
+              "c": -4,
+              "min": -2,
+              "max": 8
+            }
+          }
+        },
+        "reuse_evidence": {
+          "evidence_id": "IRE-C420C33128A128875BD2",
+          "schema_version": "1.0.0",
+          "authority": "DERIVED_INTERACTION_REUSE_EVIDENCE_ONLY",
+          "interaction_ref": "Q-MAT-LEQ-04-1A-TEST-PAIRS",
+          "subject_ref": "Mathematics",
+          "runtime_binding_ref": "consumer-binding-19e5606f5190ab63",
+          "mechanic_refs": [
+            "accepted-pair-accumulation",
+            "coordinate-point-drag",
+            "residual-feedback",
+            "typed-pair-prediction"
+          ],
+          "decisions": [
+            {
+              "slice_ref": "pair-testing-question",
+              "mode": "R1",
+              "relation": "CONSUMES",
+              "implementation_ref": "local-activity-23c062c7fd84ae8a",
+              "evidence_ref": "consumer-package-19e5606f5190ab63"
+            }
+          ],
+          "shared_binding": null
+        },
+        "reuse_analysis": {
+          "implementation_ref": "local-activity-23c062c7fd84ae8a",
+          "maturity": "REUSED",
+          "maturity_status": "OBSERVED",
+          "creator_interaction_refs": [
+            "IBR-03C4D7F509CCE568F128"
+          ],
+          "consumer_interaction_refs": [
+            "Q-MAT-LEQ-04-1A-TEST-PAIRS"
+          ],
+          "consumer_subject_refs": [
+            "Mathematics"
+          ],
+          "shared_owner_refs": [],
+          "subject_neutral_shared_claim_proven": false,
+          "lineage_edges": [
+            {
+              "interaction_ref": "IBR-03C4D7F509CCE568F128",
+              "subject_ref": "Mathematics",
+              "runtime_binding_ref": "local-binding-23c062c7fd84ae8a-c72661c07ae9172a",
+              "slice_ref": "whole-interaction",
+              "mode": "R4",
+              "relation": "CREATES",
+              "implementation_ref": "local-activity-23c062c7fd84ae8a",
+              "evidence_ref": "local-package-23c062c7fd84ae8a-c72661c07ae9172a"
+            },
+            {
+              "interaction_ref": "Q-MAT-LEQ-04-1A-TEST-PAIRS",
+              "subject_ref": "Mathematics",
+              "runtime_binding_ref": "consumer-binding-19e5606f5190ab63",
+              "slice_ref": "pair-testing-question",
+              "mode": "R1",
+              "relation": "CONSUMES",
+              "implementation_ref": "local-activity-23c062c7fd84ae8a",
+              "evidence_ref": "consumer-package-19e5606f5190ab63"
+            }
+          ],
+          "mechanic_refs": [
+            "accepted-pair-accumulation",
+            "coordinate-point-drag",
+            "residual-feedback",
+            "typed-pair-prediction"
+          ],
+          "reconstruction_debt": [],
+          "claim_note": "LOCAL itself requires evidence that one concrete implementation exists. REUSED is derived from concrete consume/compose/extend/derive lineage. A shared owner plus at least two concrete consumers across at least two subject refs is required for a subject-neutral SHARED claim."
+        },
+        "binding_digest": "sha256:58e803ba1f07d7d625701ad2cc3217e33dc3073e666a8fdfaf617dcce202f558",
+        "claim_note": "The consumer uses the same stable activity and exact implementation module with explicit, academic-digest-bound parameters in its own immutable package. This remains same-subject reuse and does not prove a SHARED subject-neutral capability."
+      },
+      "artifact_sha256": "330b8d016d7051438dbb78060c43c46cc328f3a5c6506c953c564a275d1b9422"
+    }
+  ]
+}
