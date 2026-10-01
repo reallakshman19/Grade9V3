@@ -3,12 +3,13 @@
 - Initial audit_basis_head: `896bf786c9615d45b3b6639d44e52dc252b96a08`
 - Final governed candidate/integration basis head: `35bc0d0f78ccd971028b646c96bf38c97e160616`
 - Standalone lineage/content basis head: `ad3c58a50ccc76c65ad26d1fff963b1173027108`
+- Evidence-only handoff commits: later PR-head movement after `35bc0d0f...` changes review metadata/evidence only; the governed semantic/render basis remains `35bc0d0f78ccd971028b646c96bf38c97e160616`.
 - Authority main head: `00ca6dc70c727e25de7e85becc49cda2ea293f47`
 - Authority basis digest: `sha256:8ac72c0fafbd7576efacec20138b1fed4f7c1cfb933bec4fee776ef6b49cef1e`
 - Search/build basis: `sha256:ae5e7da1d354cd9c4befe27a791290c5e6f584e170a29f648c9f76736fd1cb40`
 - Browser evidence: workflow `36873849274`, artifact `sha256:d5c4dcbd5638cadf9390a939a4c039e29b3e9dea715c36fa2e748267d65edea2`
-- Publication state: **four governed Core1A Owner-extension candidates are READY_FOR_INDEPENDENT_REVIEW but not Owner-accepted/published; three Core2 candidates remain conversion-held for source custody/solution reconstruction.**no candidate is described as PUBLISHABLE_UNDER_LPAP.**
-- Independent review status: **NOT_RUN_IN_THIS_SESSION.** This session authored candidate repairs, so it cannot truthfully claim the independent `product-review/v2` role defined by `docs/method/roles/REVIEWER.md`. The same-session draft review records were removed; the matrices below remain LPAP audit evidence.
+- Publication state: **four governed Core1A Owner-extension candidates are READY_FOR_INDEPENDENT_REVIEW but not Owner-accepted/published; three Core2 candidates remain conversion-held for source custody/solution reconstruction.**
+- Independent review status: **READY_FOR_SEPARATE_REVIEW_SESSION.** This conversion session authored the governed Core1A records and therefore cannot truthfully claim the independent `product-review/v2` role defined by `docs/method/roles/REVIEWER.md`. Exact governed render digests are pinned in the reviewer handoff.
 
 ## Governed conversion status — supersedes the earlier standalone-only Core1A readiness statements
 
