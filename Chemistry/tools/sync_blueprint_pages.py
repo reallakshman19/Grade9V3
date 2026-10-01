@@ -68,7 +68,7 @@ def validate(slug: str, text: str) -> None:
     missing = [marker for marker in required if marker not in text]
     if missing:
         raise SystemExit(f"{slug}: generated page missing blueprint markers: {missing}")
-    if len(re.findall(r'<g\\b[^>]*data-g9-stage-id="', text)) != 9:
+    if len(re.findall(r'<g\b[^>]*data-g9-stage-id="', text)) != 9:
         raise SystemExit(f"{slug}: expected 9 authored visual stages (3 per unit)")
     roles = re.findall(r'<li data-g9-triad-role="(CHECK|APPLY|CONNECT)"', text)
     if roles.count("CHECK") != 3 or roles.count("APPLY") != 3 or roles.count("CONNECT") != 3:
