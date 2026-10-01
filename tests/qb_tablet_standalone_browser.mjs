@@ -189,7 +189,8 @@ try {
   const feedback=await q.locator('.answer-feedback').innerText();
   if(!feedback.includes('Attempt recorded')||/correct|matches|incorrect/i.test(feedback)) fail('QB_NO_AUTOGRADING',feedback);
   const beforeOpen=await q.innerText();
-  if(beforeOpen.includes('Option (B):')) fail('QB_SOLUTION_POLICY','solution materialized before learner opened disclosure');
+  if(beforeOpen.includes('Option (B):')) fail('QB_SOLUTION_POLICY','solution visible before learner opened disclosure');
+  if((await q.locator('[data-g9-payload-slot]').innerText()).trim()!=='') fail('QB_SOLUTION_POLICY','commit pre-materialized solution payload');
   await details.locator('summary').click();
   const solutionText=await details.innerText();
   if(!solutionText.includes('Option (B):')||!solutionText.includes('massless midpoint')) fail('QB_SOLUTION_MATERIALIZATION',solutionText.slice(0,240));

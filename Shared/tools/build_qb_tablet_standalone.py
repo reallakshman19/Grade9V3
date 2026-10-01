@@ -744,6 +744,9 @@ JS = r"""
         card?.querySelector('.answer-choice,.answer-input,.practice-textarea,.paper-check')?.focus();
       }
     });
+    details.addEventListener('toggle',()=>{
+      if(details.open&&!details.hasAttribute('data-locked'))materializeSolution(details);
+    });
     if(card&&safeGet('g9_qb_attempted_'+card.id)==='1'){
       card.dataset.attempted='1';
       details.removeAttribute('data-locked');
@@ -758,7 +761,6 @@ JS = r"""
     const details=card.querySelector('details[data-requires-attempt]');
     card.dataset.attempted='1';
     details.removeAttribute('data-locked');
-    materializeSolution(details);
     safeSet('g9_qb_attempted_'+card.id,'1');
     btn.dataset.committed='true'; btn.disabled=true;
     card.querySelector('.answer-feedback').textContent='Attempt recorded. You can now open Answer and working.';
