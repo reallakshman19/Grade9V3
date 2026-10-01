@@ -1182,6 +1182,41 @@ LPAP-v1 recognizes two valid ways to satisfy that requirement:
 
 #374 specifies this boundary but does not implement the generic resource acceptance adapter.
 
+### 16.4 Default normalization for standalone Core candidates
+
+A standalone HTML/ZIP candidate that declares an existing Core role SHOULD first be treated as
+**candidate implementation evidence for that Core**, not as a new publication class.
+
+The default conversion route is:
+
+```text
+standalone candidate
+→ canonical subject/library records
+→ existing Core/product manifest
+→ render_core.py
+→ exact governed render
+→ independent exact-render review
+→ Owner acceptance through accept_product.py
+```
+
+Do not ask the Owner to choose a new generic publisher merely because the intake artifact arrived
+as standalone HTML.
+
+If the candidate contains a calculator, explorer, simulation, or other optional interaction:
+
+- preserve the Core's complete static academic construction in canonical records;
+- normalize worthwhile interaction into an existing governed `ACTIVITY` resource referenced by
+  `representation.interactive_resource_refs[]`;
+- use only mount/link modes actually supported by the current versioned web blueprint;
+- keep the activity's resource identity separate from the Core product identity;
+- if the activity cannot yet be normalized or packaged safely, defer that interaction without
+  blocking an otherwise complete static Core product.
+
+A generic resource acceptance adapter should be considered only when the **primary learner job**
+cannot reasonably be represented by an existing governed Core/product/explorer route. It MUST NOT
+be introduced simply to preserve the candidate's standalone shell, page-local calculator code, or
+file layout.
+
 ## 17. Integration resolver
 
 Only after academic/product review should the candidate be mapped into learner navigation.
@@ -1529,6 +1564,21 @@ Independent semantic review remains necessary for:
 - whether an interaction teaches the intended inference.
 
 No automated label such as `PASS` may imply human/independent academic review unless that review actually occurred and is recorded.
+
+### 22.1 Conversion evidence versus independent review
+
+An agent/session that authors or repairs candidate academic records, product records, source
+bindings, proofs, solutions, or learner-facing Core content is an **authoring/conversion session**
+for those exact records. Its deep audit, recomputation, browser evidence, and correction history
+remain valid LPAP sidecar/self-check evidence, but that same session MUST NOT represent its own
+`product-review/v2` as independent review.
+
+After the final governed render digest exists, allocate a separate reviewer session that authored
+none of the reviewed unit/product records. That reviewer should inspect the exact digest under the
+existing reviewer method and may then write `product-review/v2`.
+
+This separation does not create a new publication gate: review findings remain evidence for the
+Owner, and the existing Owner acceptance method retains publication authority.
 
 ## 23. Owner review packet
 
