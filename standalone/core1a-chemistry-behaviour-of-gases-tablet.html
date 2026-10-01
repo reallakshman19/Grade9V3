@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GRADE 9 CHEMISTRY - Behaviour of Gases Master Suite | 12.7" Tablet Standalone Edition</title>
   <meta name="description" content="Complete 12.7-inch tablet study suite for Behaviour of Gases & States of Matter. Covers Particle Model, Gas Laws, PV=nRT, Evaporation, Phase Transitions, Van der Waals Real Gases, and 27 NCERT Question Helper instances.">
   <style>
@@ -160,7 +160,7 @@ header.app-header {
 }
 
 .subject-badge {
-  font-size: 12px;
+  font-size: 13.5px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   padding: 4px 10px;
@@ -324,7 +324,7 @@ main.layout-container {
   display: inline-block;
   padding: 3px 10px;
   border-radius: 999px;
-  font-size: 12.5px;
+  font-size: 13.5px;
   font-weight: 600;
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -356,7 +356,7 @@ main.layout-container {
   color: var(--purple);
   padding: 4px 10px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 13.5px;
   font-weight: 700;
 }
 
@@ -429,7 +429,7 @@ details.solution-detail summary {
 
 .calc-input-group label {
   display: block;
-  font-size: 13px;
+  font-size: 13.5px;
   font-weight: 600;
   color: var(--text-secondary);
   margin-bottom: 4px;
@@ -438,7 +438,7 @@ details.solution-detail summary {
 .calc-input-group input, 
 .calc-input-group select {
   width: 100%;
-  min-height: 42px;
+  min-height: 48px;
   padding: 8px 12px;
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -495,9 +495,14 @@ table.data-table tr:last-child td {
 table.data-table tr:hover td {
   background: rgba(255,255,255,0.02);
 }
-  </style>
+  
+/* LPAP audit repair: preserve zoom, reduced motion, and explicit draft state. */
+.lpap-audit-hold { margin:0; padding:12px 20px; border-bottom:2px solid var(--warning,#f59e0b); background:rgba(245,158,11,.12); color:var(--text-primary,#111827); font-size:14px; line-height:1.5; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto !important; } *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
+</style>
 </head>
 <body>
+  <div class="lpap-audit-hold" role="status"><strong>Draft audit hold:</strong> curriculum/source binding to a governed Grade9V3 Core1A product is unresolved. This standalone candidate is audit evidence, not an accepted learner publication.</div>
 
   <!-- App Header -->
   <header class="app-header">
@@ -546,11 +551,11 @@ table.data-table tr:hover td {
           <div class="callout-box">
             <strong>Key Postulates of Kinetic Molecular Theory (KMT):</strong>
             <ul style="margin-left: 20px; margin-top: 8px; color: var(--text-secondary);">
-              <li>Gas molecules are point masses whose actual volume is negligible compared to the total volume occupied ($V_{	ext{particles}} \ll V_{	ext{gas}}$).</li>
+              <li>Gas molecules are point masses whose actual volume is negligible compared to the total volume occupied ($V_{\text{particles}} \ll V_{\text{gas}}$).</li>
               <li>There are no intermolecular forces of attraction or repulsion between ideal gas molecules.</li>
               <li>Molecules undergo continuous, random straight-line motion until colliding elastically with one another or the container walls.</li>
-              <li>Pressure exerted by a gas is the net momentum transferred per second per unit area of container wall: $P = rac{1}{3}rac{m N \overline{v^2}}{V}$.</li>
-              <li>Average kinetic energy of particles is directly proportional to absolute thermodynamic temperature $T$: $\overline{KE} = rac{3}{2} k_B T = rac{3}{2} rac{R}{N_A} T$.</li>
+              <li>Pressure exerted by a gas is the net momentum transferred per second per unit area of container wall: $P = \frac{1}{3}\frac{m N \overline{v^2}}{V}$.</li>
+              <li>Average kinetic energy of particles is directly proportional to absolute thermodynamic temperature $T$: $\overline{KE} = \frac{3}{2} k_B T = \frac{3}{2} \frac{R}{N_A} T$.</li>
             </ul>
           </div>
 
@@ -586,7 +591,7 @@ table.data-table tr:hover td {
                 </tr>
                 <tr>
                   <td><strong>Compressibility</strong></td>
-                  <td>Negligible ($dV/dP pprox 0$)</td>
+                  <td>Negligible ($dV/dP \approx 0$)</td>
                   <td>Very low</td>
                   <td>Extremely high (large empty space)</td>
                 </tr>
@@ -600,7 +605,7 @@ table.data-table tr:hover td {
             </table>
           </div>
 
-          <h3>Molecular Speed Distributions ($v_{	ext{mp}}, v_{	ext{avg}}, v_{	ext{rms}}$)</h3>
+          <h3>Molecular Speed Distributions ($v_{\text{mp}}, v_{\text{avg}}, v_{\text{rms}}$)</h3>
           <p>
             At any given temperature $T$, molecules exhibit a Maxwell-Boltzmann velocity distribution. Three characteristic speeds describe this population:
           </p>
@@ -621,31 +626,31 @@ table.data-table tr:hover td {
             Four macroscopic variables completely specify the physical state of a fixed sample of gas: Pressure ($P$), Volume ($V$), Temperature ($T$), and Amount of substance ($n$).
           </p>
 
-          <h3>1. Boyle's Law (Isothermal: $T = 	ext{const}, n = 	ext{const}$)</h3>
+          <h3>1. Boyle's Law (Isothermal: $T = \text{const}, n = \text{const}$)</h3>
           <p>
             At constant temperature, the volume of a given mass of gas is inversely proportional to its pressure.
           </p>
           <div class="formula-box">
-            P ∝ 1/V &nbsp;⇒&nbsp; P · V = 	ext{constant} &nbsp;⇒&nbsp; P₁ V₁ = P₂ V₂
+            P ∝ 1/V &nbsp;⇒&nbsp; P · V = \text{constant} &nbsp;⇒&nbsp; P₁ V₁ = P₂ V₂
           </div>
 
-          <h3>2. Charles's Law (Isobaric: $P = 	ext{const}, n = 	ext{const}$)</h3>
+          <h3>2. Charles's Law (Isobaric: $P = \text{const}, n = \text{const}$)</h3>
           <p>
             At constant pressure, the volume of a given mass of gas is directly proportional to its absolute temperature in Kelvin.
           </p>
           <div class="formula-box">
-            V ∝ T &nbsp;⇒&nbsp; V / T = 	ext{constant} &nbsp;⇒&nbsp; V₁ / T₁ = V₂ / T₂
+            V ∝ T &nbsp;⇒&nbsp; V / T = \text{constant} &nbsp;⇒&nbsp; V₁ / T₁ = V₂ / T₂
           </div>
 
-          <h3>3. Gay-Lussac's Law (Isochoric: $V = 	ext{const}, n = 	ext{const}$)</h3>
+          <h3>3. Gay-Lussac's Law (Isochoric: $V = \text{const}, n = \text{const}$)</h3>
           <p>
             At constant volume, the pressure of a given mass of gas is directly proportional to its absolute temperature.
           </p>
           <div class="formula-box">
-            P ∝ T &nbsp;⇒&nbsp; P / T = 	ext{constant} &nbsp;⇒&nbsp; P₁ / T₁ = P₂ / T₂
+            P ∝ T &nbsp;⇒&nbsp; P / T = \text{constant} &nbsp;⇒&nbsp; P₁ / T₁ = P₂ / T₂
           </div>
 
-          <h3>4. Avogadro's Hypothesis ($P, T = 	ext{const}$)</h3>
+          <h3>4. Avogadro's Hypothesis ($P, T = \text{const}$)</h3>
           <p>
             Equal volumes of all gases under identical conditions of temperature and pressure contain an equal number of molecules ($V \propto n$).
           </p>
@@ -661,10 +666,10 @@ table.data-table tr:hover td {
           <div class="callout-box">
             <strong>Universal Gas Constant ($R$):</strong>
             <ul style="margin-left: 20px; margin-top: 6px;">
-              <li>$R = 8.314 	ext{ J}\cdot	ext{K}^{-1}\cdot	ext{mol}^{-1} = 8.314 	ext{ Pa}\cdot	ext{m}^3\cdot	ext{K}^{-1}\cdot	ext{mol}^{-1}$</li>
-              <li>$R = 0.0821 	ext{ L}\cdot	ext{atm}\cdot	ext{K}^{-1}\cdot	ext{mol}^{-1}$</li>
-              <li>$R = 0.08314 	ext{ L}\cdot	ext{bar}\cdot	ext{K}^{-1}\cdot	ext{mol}^{-1}$</li>
-              <li>$R pprox 2 	ext{ cal}\cdot	ext{K}^{-1}\cdot	ext{mol}^{-1}$</li>
+              <li>$R = 8.314 \text{ J}\cdot\text{K}^{-1}\cdot\text{mol}^{-1} = 8.314 \text{ Pa}\cdot\text{m}^3\cdot\text{K}^{-1}\cdot\text{mol}^{-1}$</li>
+              <li>$R = 0.0821 \text{ L}\cdot\text{atm}\cdot\text{K}^{-1}\cdot\text{mol}^{-1}$</li>
+              <li>$R = 0.08314 \text{ L}\cdot\text{bar}\cdot\text{K}^{-1}\cdot\text{mol}^{-1}$</li>
+              <li>$R \approx 2 \text{ cal}\cdot\text{K}^{-1}\cdot\text{mol}^{-1}$</li>
             </ul>
           </div>
 
@@ -711,7 +716,7 @@ table.data-table tr:hover td {
                 <strong style="color: var(--accent);">Boiling</strong>
                 <ul style="margin-left: 18px; margin-top: 4px; font-size: 14.5px;">
                   <li>Bulk phenomenon occurring at a FIXED temperature (boiling point).</li>
-                  <li>Vapour pressure of liquid equals external atmospheric pressure ($P_{	ext{vap}} = P_{	ext{ext}}$).</li>
+                  <li>Vapour pressure of liquid equals external atmospheric pressure ($P_{\text{vap}} = P_{\text{ext}}$).</li>
                   <li>Bubbles form inside the entire liquid volume.</li>
                   <li>Temperature remains strictly constant during boiling.</li>
                 </ul>
@@ -765,7 +770,7 @@ table.data-table tr:hover td {
           <div class="callout-box warning">
             <strong>Why Steam at 100°C Burns Far More Severely Than Boiling Water at 100°C:</strong>
             <p style="margin-top: 4px; font-size: 14.5px;">
-              Both steam and boiling water are at 100°C ($373	ext{ K}$). However, 1 kg of steam contains an extra $2.26 	imes 10^6	ext{ J}$ of stored latent heat of vaporization. Upon contacting skin, steam first condenses into water at 100°C, releasing this colossal latent heat directly onto tissues, before cooling further as liquid water!
+              Both steam and boiling water are at 100°C ($373\text{ K}$). However, 1 kg of steam contains an extra $2.26 \times 10^6\text{ J}$ of stored latent heat of vaporization. Upon contacting skin, steam first condenses into water at 100°C, releasing this colossal latent heat directly onto tissues, before cooling further as liquid water!
             </p>
           </div>
         </div>
@@ -801,13 +806,13 @@ table.data-table tr:hover td {
                 <tr>
                   <td><strong>a</strong> (Pressure correction)</td>
                   <td>Magnitude of intermolecular attractive forces between gas molecules.</td>
-                  <td>$	ext{atm}\cdot	ext{L}^2\cdot	ext{mol}^{-2}$ &nbsp;or&nbsp; $	ext{Pa}\cdot	ext{m}^6\cdot	ext{mol}^{-2}$</td>
-                  <td>Higher '$a$' indicates stronger intermolecular attraction $ightarrow$ gas liquefies much more easily ($	ext{NH}_3 > 	ext{CO}_2 > 	ext{O}_2 > 	ext{H}_2$).</td>
+                  <td>$\text{atm}\cdot\text{L}^2\cdot\text{mol}^{-2}$ &nbsp;or&nbsp; $\text{Pa}\cdot\text{m}^6\cdot\text{mol}^{-2}$</td>
+                  <td>Higher '$a$' indicates stronger intermolecular attraction $\rightarrow$ gas liquefies much more easily ($\text{NH}_3 > \text{CO}_2 > \text{O}_2 > \text{H}_2$).</td>
                 </tr>
                 <tr>
                   <td><strong>b</strong> (Volume correction / Co-volume)</td>
-                  <td>Effective incompressible volume excluded by molecules: $b = 4 	imes N_A 	imes v_{	ext{molecule}}$.</td>
-                  <td>$	ext{L}\cdot	ext{mol}^{-1}$ &nbsp;or&nbsp; $	ext{m}^3\cdot	ext{mol}^{-1}$</td>
+                  <td>Effective incompressible volume excluded by molecules: $b = 4 \times N_A \times v_{\text{molecule}}$.</td>
+                  <td>$\text{L}\cdot\text{mol}^{-1}$ &nbsp;or&nbsp; $\text{m}^3\cdot\text{mol}^{-1}$</td>
                   <td>Higher '$b$' indicates larger molecular size.</td>
                 </tr>
               </tbody>
@@ -818,9 +823,9 @@ table.data-table tr:hover td {
           <div class="formula-box">
             Z = (P · V_m) / (R · T) = V_real / V_ideal<br><br>
             • Ideal Gas: Z = 1 at all T and P.<br>
-            • Low Pressure (P → 0): Attractive forces dominate ⇒ Z = 1 - a / (R T V_m) < 1.<br>
-            • High Pressure: Repulsive / excluded volume forces dominate ⇒ Z = 1 + P b / (R T) > 1.<br>
-            • Hydrogen & Helium (H₂, He): Negligible attraction ($a pprox 0$) ⇒ Z = 1 + P b / (RT) > 1 at all ordinary pressures!
+            • As P → 0, every real gas approaches Z → 1. At finite low pressure, attractions can produce Z &lt; 1 when they dominate.<br>
+            • At sufficiently high pressure, excluded-volume/repulsive effects dominate and Z can exceed 1.<br>
+            • H₂ and He have weak attractions and often show positive deviation near room temperature; the sign and magnitude of Z still depend on temperature and pressure.
           </div>
 
           <h3>Critical State &amp; Liquefaction Constants</h3>
@@ -838,7 +843,7 @@ table.data-table tr:hover td {
         <div class="content-card">
           <h2><span>📖</span> NCERT Question Helper &amp; Transfer Bank (27 Problems)</h2>
           <p>
-            Complete NCERT exercise and exemplar items with visual thinking aids, reasoning routes, and verified worked solutions.
+            Draft candidate source-question set. Source custody and answer alignment are unresolved; worked answers are withheld pending source reconstruction.
           </p>
         </div>
 
@@ -850,10 +855,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 1 - Unit 1 Q1: What rises when temperature rises? Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              01. Unit 1 Q1 - What rises when temperature rises?
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -865,10 +868,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 2 - Unit 1 Q3: Why gases and liquids are fluids Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              02. Unit 1 Q2 - Conditions for liquefying a gas<br>1 Heating increases particle kinetic energy. 1 Lowering temperature reduces particle kinetic energy.<br>2 Faster random motion increases diffusion. 2 Increasing pressure forces particles closer together.<br>3 More energetic surface particles escape more readily, so evaporation increases. 3 With particles slower and closer, attractive forces can pull them into the liquid<br>state.<br>4 A gas tends to occupy more space on heating, so expansion increases.<br>Answer: Low temperature and high pressure.<br>Answer: Diffusion, evaporation and expansion of gases increase with temperature.<br>NCERT source - Unit 1 Q2<br>NCERT source - Unit 1 Q1<br>Core (2) | solutions 37
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -880,10 +881,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 3 - Unit 1 Q5: Strength of attraction across states Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              03. Unit 1 Q3 - Why gases and liquids are fluids
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -895,10 +894,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 1 - Unit 1 Q2: Conditions for liquefying a gas Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              04. Unit 1 Q4 - Why an earthen pot cools water<br>1 Liquids and gases do not have a rigid particle arrangement. 1 Water seeps to the outer surface through fine pores.<br>2 Their particles can move past one another. 2 Some surface molecules evaporate.<br>3 Therefore they can flow and take the shape of the container. 3 Evaporation requires energy, taken from the water/pot/surroundings.<br>Answer: Gases and liquids behave as fluids. 4 The remaining water loses energy and becomes cooler.<br>NCERT source - Unit 1 Q3 Answer: Evaporation through the pores causes cooling.<br>NCERT source - Unit 1 Q4<br>Core (2) | solutions 38
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -910,10 +907,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 2 - Unit 1 Q6: Celsius to kelvin Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              05. Unit 1 Q5 - Strength of attraction across states
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -925,10 +920,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 3 - Unit 1 Q8: Boiling points on kelvin scale Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              06. Unit 1 Q6 - Celsius to kelvin<br>1 Gas particles have the weakest effective attraction in this comparison. 1 Use the conversion K = °C + 273.<br>2 Liquid particles are closer and attract more strongly. 2 25°C -> 298 K.<br>3 Solid particles are held most strongly in fixed positions. 3 38°C -> 311 K.<br>Answer: Oxygen < water < sugar. 4 66°C -> 339 K.<br>NCERT source - Unit 1 Q5 Answer: 298 K, 311 K and 339 K.<br>NCERT source - Unit 1 Q6<br>Core (2) | solutions 39
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -940,10 +933,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 4 - Unit 1 Q10: When gas particles get farther apart Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              07. Unit 1 Q7 - Naming state changes
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -955,10 +946,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 5 - Sample I Q1: Sample-paper kelvin conversion Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              08. Unit 1 Q8 - Boiling points on kelvin scale<br>1 Identify the starting state and final state. 1 35 + 273 = 308 K.<br>2 Check whether the liquid state is skipped. 2 56 + 273 = 329 K.<br>3 NCERT uses sublimation terminology for the direct solid-vapour transition in 3 118 + 273 = 391 K.<br>this item.<br>Answer: 308 K, 329 K and 391 K.<br>Answer: NCERT marks the vapour-to-solid direct change statement as correct and<br>uses “sublimation” terminology. NCERT source - Unit 1 Q8<br>NCERT source - Unit 1 Q7<br>Core (2) | solutions 40
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -970,10 +959,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 6 - Sample II Q1: Sample-paper gas liquefaction Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              09. Unit 1 Q9 - A condition that increases evaporation
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -985,10 +972,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 1 - Unit 1 Q4: Why an earthen pot cools water Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              10. Unit 1 Q10 - When gas particles get farther apart<br>1 Higher temperature raises average particle kinetic energy. 1 If some gas leaks out, fewer molecules remain in the same container.<br>2 More surface particles can overcome attraction and escape into the gas phase. 2 If container volume increases, the same gas spreads through a larger volume.<br>3 Therefore evaporation becomes faster. 3 Both changes increase average separation.<br>Answer: Increasing the temperature of water increases evaporation. Answer: Gas leakage and increasing the container volume.<br>NCERT source - Unit 1 Q9 NCERT source - Unit 1 Q10<br>Core (2) | solutions 41
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1000,10 +985,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 2 - Unit 1 Q9: A condition that increases evaporation Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              11. Unit 1 Q12 - Heating an ice-water mixture: graph reasoning
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1015,10 +998,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 3 - Unit 1 Q21: Which vessel evaporates fastest? Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              12. Unit 1 Q13 - Gas-state and evaporation vocabulary<br>1 Ice and water coexist at 0°C. 1 Evaporation causes cooling.<br>2 Heat supplied during melting is used for the phase change, so temperature 2 Attraction is stronger in solids than gases.<br>stays constant.<br>3 Liquids are less ordered than solids; gases have no ordered arrangement.<br>3 After all ice melts, further heating raises the water temperature.<br>4 NCERT uses sublimation for direct solid-gas change.<br>Answer: The correct source option is (d): temperature stays at 0°C during melting,<br>then rises. 5 Liquid-to-gas below boiling point is evaporation.<br>NCERT source - Unit 1 Q12 Answer: Cooling; stronger; liquid/gaseous; sublimation/liquid; evaporation.<br>NCERT source - Unit 1 Q13<br>Core (2) | solutions 42
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1030,10 +1011,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 4 - Unit 1 Q24: Why cotton feels better in summer Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              13. Unit 1 Q14 - SI units for gas-relevant quantities
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1045,10 +1024,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 5 - Unit 1 Q25: How to dry a wet shirt faster Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              14. Unit 1 Q15 - Pairing non-SI and SI units<br>1 Pressure is measured in pascal. 1 Identify the measured quantity for each non-SI unit.<br>2 Temperature is measured in kelvin. 2 Pair it with the SI unit of the same quantity.<br>3 Density is kg per cubic metre. Answer: °C-K; cm-m; g cm^-3-kg m^-3; bar-Pa; mg-kg.<br>4 Mass is kilogram. NCERT source - Unit 1 Q15<br>5 Volume is cubic metre.<br>Answer: Pressure-pascal; temperature-kelvin; density-kg m^-3; mass-kilogram;<br>volume-cubic metre.<br>NCERT source - Unit 1 Q14<br>Core (2) | solutions 43
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1060,10 +1037,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 6 - Unit 1 Q26: Evaporation cooling, humidity and sponge</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              15. Unit 1 Q18 - Why ice cools but steam burns
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1075,10 +1050,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 1 - Unit 1 Q12: Heating an ice-water mixture: graph</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              16. Unit 1 Q19 - Steam vs boiling water at the same<br>temperature<br>1 Ice is at lower energy and draws heat from the body as it warms/melts.<br>1 At normal pressure water boils at about 100°C.<br>2 Steam carries high energy.<br>2 Steam formed at the boiling point can also be about 100°C.<br>3 When steam condenses on skin it releases latent heat in addition to cooling,<br>transferring much more energy. 3 The phase change required latent heat, so steam has more energy than the<br>same mass of liquid water at that temperature.<br>Answer: Ice absorbs heat; steam releases a large amount of energy on<br>condensation and can cause severe burns. 4 When steam condenses, that energy is released.<br>NCERT source - Unit 1 Q18 Answer: Steam and boiling water can both be at 100°C; steam causes stronger<br>heating because it carries latent heat and releases it on condensation.<br>NCERT source - Unit 1 Q19<br>Core (2) | solutions 44
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1090,10 +1063,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 2 - Unit 1 Q18: Why ice cools but steam burns Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              17. Unit 1 Q21 - Which vessel evaporates fastest?
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1105,10 +1076,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 3 - Unit 1 Q19: Steam vs boiling water at the same</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              18. Unit 1 Q22 - Direct vapour-solid change and latent heat<br>1 A larger exposed surface lets more molecules escape at once. 1 Trace the direct gas/solid transition for part (a).<br>2 Moving air removes water vapour from above the surface. 2 For part (b), state the amount (1 kg), the transition (solid to liquid), and the<br>condition (at melting point, atmospheric pressure).<br>3 Vessel C combines both effects, so evaporation is fastest.<br>Answer: NCERT uses “sublimation” for the direct vapour-to-solid change; latent<br>Answer: Vessel C, because it has large exposed surface area and moving air from heat of fusion is the heat needed to melt 1 kg of solid at its melting point at<br>the fan. atmospheric pressure without a temperature rise.<br>NCERT source - Unit 1 Q21 NCERT source - Unit 1 Q22<br>Core (2) | solutions 45
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1120,10 +1089,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 4 - Unit 1 Q27: Why temperature stays constant while</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              19. Unit 1 Q23 - Separating naphthalene and ammonium
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1135,10 +1102,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 5 - Sample I Q17: Sample-paper phase-change graph Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              20. Unit 1 Q24 - Why cotton feels better in summer<br>chloride<br>1 Cotton absorbs sweat better than nylon.<br>1 Add water and stir the mixture.<br>2 The absorbed water spreads over the fibres and evaporates.<br>2 Ammonium chloride dissolves while naphthalene remains insoluble.<br>3 Evaporation takes heat from the body/surroundings, producing cooling.<br>3 Filter: naphthalene stays as residue; ammonium chloride solution passes as<br>Answer: The person wearing cotton is more comfortable because cotton absorbs<br>filtrate.<br>sweat and supports evaporative cooling.<br>4 Evaporate water from the filtrate to recover ammonium chloride.<br>NCERT source - Unit 1 Q24<br>Answer: Add water, dissolve ammonium chloride, filter off naphthalene, then<br>evaporate the filtrate to recover ammonium chloride.<br>NCERT source - Unit 1 Q23<br>Core (2) | solutions 46
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1150,10 +1115,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 1 - Unit 1 Q7: Naming state changes Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              21. Unit 1 Q25 - How to dry a wet shirt faster
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1165,10 +1128,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 2 - Unit 1 Q13: Gas-state and evaporation vocabulary Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              22. Unit 1 Q26 - Evaporation cooling, humidity and sponge<br>compression<br>1 Spread the shirt to increase exposed surface area.<br>1 Evaporation: higher-energy surface molecules escape and energy is taken<br>2 Place it in warmth/sunlight to raise temperature. from surroundings, so cooling occurs.<br>3 Use moving air/fan to remove moist air from the surface. 2 Humidity: air already rich in water vapour accepts additional vapour less<br>readily, so evaporation slows.<br>4 If possible, use a less humid environment.<br>3 Sponge: its solid framework has pores containing air; pressing expels/<br>Answer: Spread the shirt, warm it/sun-dry it, and increase airflow; dry air also compresses that trapped air, making the sponge appear compressible.<br>helps.<br>Answer: All three statements are explained respectively by energy removal during<br>NCERT source - Unit 1 Q25 evaporation, reduced evaporation in humid air, and compression/escape of trapped<br>air in sponge pores.<br>NCERT source - Unit 1 Q26<br>Core (2) | solutions 47
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1180,10 +1141,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 3 - Unit 1 Q22: Direct vapour-solid change and latent heat Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              23. Unit 1 Q27 - Why temperature stays constant while boiling
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1195,10 +1154,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 4 - Unit 1 Q23: Separating naphthalene and ammonium</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              24. Sample I Q1 - Sample-paper kelvin conversion<br>1 Before boiling, added heat increases particle kinetic energy and temperature. 1 Apply K = °C + 273 to each temperature.<br>2 At the boiling point, added energy is used to separate particles and form 2 The resulting sequence is 298 K, 311 K, 339 K.<br>vapour.<br>Answer: 298 K, 311 K and 339 K.<br>3 Because that energy goes into the phase change rather than increasing<br>average kinetic energy, temperature stays constant until boiling is complete. NCERT source - Sample I Q1<br>Answer: The supplied heat is used as latent heat to overcome attractions and<br>change state, so temperature remains constant until the phase change is complete.<br>NCERT source - Unit 1 Q27<br>Core (2) | solutions 48
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1210,10 +1167,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 5 - Sample I Q2: Sample-paper direct state change Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              25. Sample I Q2 - Sample-paper direct state change
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1225,10 +1180,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 1 - Unit 1 Q14: SI units for gas-relevant quantities Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              26. Sample I Q17 - Sample-paper phase-change graph<br>1 Identify the direction: vapour to solid. 1 Ice-water equilibrium begins at 0°C.<br>2 The liquid state is skipped. 2 Heating first melts ice at constant temperature.<br>3 That is the direct solid-vapour transition terminology used by the source. 3 After all ice melts, liquid-water temperature increases.<br>Answer: The source marks the direct vapour-to-solid statement as correct and Answer: The correct graph is the one that stays at 0°C during melting and then<br>labels it sublimation. rises.<br>NCERT source - Sample I Q2 NCERT source - Sample I Q17<br>Core (2) | solutions 49
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1240,10 +1193,8 @@ table.data-table tr:hover td {
           <div class="q-title">Question 2 - Unit 1 Q15: Pairing non-SI and SI units Try it on paper before using the helper.</div>
           <p class="q-prompt">Analyze the physical scenario using particle dynamics and state transitions.</p>
           <details class="solution-detail">
-            <summary>👁️ Reveal Worked Solution &amp; Answer Check</summary>
-            <div class="solution-content">
-              27. Sample II Q1 - Sample-paper gas liquefaction<br>1 Lower temperature slows the particles.<br>2 Higher pressure pushes particles closer.<br>3 Together they favour conversion of gas to liquid.<br>Answer: Low temperature and high pressure.<br>NCERT source - Sample II Q1<br>Core (2) | solutions 50
-            </div>
+            <summary>Source-custody hold</summary>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
     
@@ -1295,12 +1246,7 @@ table.data-table tr:hover td {
           </p>
           <details class="solution-detail">
             <summary>👁️ Reveal Conceptual Derivation</summary>
-            <div class="solution-content">
-              <strong>Step 1:</strong> Particles of food aroma disperse into atmospheric air via diffusion.<br>
-              <strong>Step 2:</strong> Rate of diffusion depends on molecular speed: r ∝ v_rms = √(3RT/M).<br>
-              <strong>Step 3:</strong> At high temperature (hot food), kinetic energy is elevated, increasing root-mean-square velocity and vapor pressure.<br>
-              <strong>Step 4:</strong> Hot aromatic vapor molecules diffuse into air exponentially faster than cold food volatiles.
-            </div>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
 
@@ -1315,12 +1261,7 @@ table.data-table tr:hover td {
           </p>
           <details class="solution-detail">
             <summary>👁️ Reveal Mathematical Solution</summary>
-            <div class="solution-content">
-              <strong>Formula:</strong> P · M = d · R · T &nbsp;⇒&nbsp; M = (d · R · T) / P<br>
-              <strong>Substitution:</strong> M = (1.96 g/L × 0.0821 L·atm·K⁻¹·mol⁻¹ × 273.15 K) / 1.00 atm<br>
-              <strong>Calculation:</strong> M = 1.96 × 22.414 = 43.93 ≈ 44.0 g/mol.<br>
-              <strong>Identity:</strong> Carbon Dioxide (CO₂, M = 12 + 32 = 44 g/mol) or Propane (C₃H₈, M = 36 + 8 = 44 g/mol).
-            </div>
+            <div class="solution-content"><strong>LPAP source-custody hold:</strong> the candidate answer was not retained because the audit found shifted/merged source material. Reconstruct the exact source item, solve it independently, and bind its provenance before restoring a worked answer.</div>
           </details>
         </div>
       </div>
@@ -1397,8 +1338,8 @@ table.data-table tr:hover td {
         </p>
         <textarea id="scratchpadNotes" class="tablet-safe-input" placeholder="Jot down formulas, unit notes, or calculation steps..."></textarea>
         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
-          <span id="saveStatus" style="font-size: 12.5px; color: var(--success);">✓ Auto-saved locally</span>
-          <button class="btn" style="min-height: 40px; padding: 6px 14px; font-size: 13px; background: var(--bg-surface); border: 1px solid var(--border);" onclick="clearScratchpad()">Clear</button>
+          <span id="saveStatus" style="font-size: 13.5px; color: var(--success);">✓ Auto-saved locally</span>
+          <button class="btn" style="min-height: 48px; padding: 6px 14px; font-size: 13.5px; background: var(--bg-surface); border: 1px solid var(--border);" onclick="clearScratchpad()">Clear</button>
         </div>
       </div>
 
@@ -1450,12 +1391,11 @@ table.data-table tr:hover td {
     // Gas Calculator
     function runGasCalc() {
       const target = document.getElementById('calcTarget').value;
-      const P = parseFloat(document.getElementById('inputP').value) || 1.0;
-      const V = parseFloat(document.getElementById('inputV').value) || 22.4;
-      const n = parseFloat(document.getElementById('inputN').value) || 1.0;
-      const T = parseFloat(document.getElementById('inputT').value) || 273.15;
-      const R = 0.0821;
+      const fields = { P: parseFloat(document.getElementById('inputP').value), V: parseFloat(document.getElementById('inputV').value), n: parseFloat(document.getElementById('inputN').value), T: parseFloat(document.getElementById('inputT').value) };
+      const R = 0.082057366;
       const out = document.getElementById('calcOutput');
+      for (const [name, value] of Object.entries(fields)) { if (name !== target && (!Number.isFinite(value) || value <= 0)) { out.textContent = 'Enter finite positive values for every known gas-law quantity.'; return; } }
+      const {P, V, n, T} = fields;
 
       // Adjust input visibility
       document.getElementById('groupP').style.display = target === 'P' ? 'none' : 'block';
