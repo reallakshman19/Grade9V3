@@ -64,7 +64,7 @@ it is never permission for an agent to invent a page architecture.
 
 ```core-templates
 {
-  "version": "1.3",
+  "version": "1.4",
   "roles": {
     "CORE1": {
       "learner_job": "Orient to the bucket without replacing detailed teaching.",
@@ -197,7 +197,7 @@ it is never permission for an agent to invent a page architecture.
         "RANDOM_BLANK_DELETION",
         "UNANSWERED_PROMPT"
       ],
-      "web_blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.2.0"
+      "web_blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.3.0"
     },
     "CORE1B": {
       "learner_job": "Reconstruct the same inferential truth before seeing the completed route.",
