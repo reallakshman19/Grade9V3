@@ -9,22 +9,82 @@
     "manual_review_required": true
   },
   "summary": {
-    "bucket_count": 21,
-    "core1_orientable_buckets": 21,
-    "microtopic_count": 91,
-    "cross_progression_coherent_microtopics": 90,
-    "cross_progression_gap_microtopics": 1,
-    "unrouted_microtopics": 1,
+    "bucket_count": 26,
+    "core1_orientable_buckets": 26,
+    "microtopic_count": 107,
+    "cross_progression_coherent_microtopics": 102,
+    "cross_progression_gap_microtopics": 5,
+    "unrouted_microtopics": 5,
     "phase1_local_debt_buckets": 3,
-    "phase2_local_debt_microtopics": 89,
+    "phase2_local_debt_microtopics": 92,
     "phase3_local_debt_microtopics": 0,
     "route_reference_findings": 0,
     "cross_finding_counts": {
-      "CROSS_CORE_ROUTING_UNRESOLVED": 1
+      "CROSS_CORE_ROUTING_UNRESOLVED": 5
     }
   },
   "route_findings": [],
   "buckets": [
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-BOND",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "microtopic_count": 3,
+      "routed_study_microtopics": 3,
+      "cross_progression_gap_count": 0,
+      "phase1_orientation_debt": []
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-GAS",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "microtopic_count": 3,
+      "routed_study_microtopics": 3,
+      "cross_progression_gap_count": 0,
+      "phase1_orientation_debt": []
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-MOLE",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "microtopic_count": 3,
+      "routed_study_microtopics": 3,
+      "cross_progression_gap_count": 0,
+      "phase1_orientation_debt": []
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-REDOX",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "microtopic_count": 3,
+      "routed_study_microtopics": 3,
+      "cross_progression_gap_count": 0,
+      "phase1_orientation_debt": []
+    },
     {
       "subject": "Mathematics",
       "bucket_ref": "BUCKET-LINEAR-EQUATION",
@@ -40,10 +100,25 @@
       "phase1_orientation_debt": []
     },
     {
+      "subject": "Mathematics",
+      "bucket_ref": "BUCKET-MAT-09-LEQ",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS"
+      ],
+      "microtopic_count": 4,
+      "routed_study_microtopics": 0,
+      "cross_progression_gap_count": 4,
+      "phase1_orientation_debt": []
+    },
+    {
       "subject": "Physics",
       "bucket_ref": "BUCKET-PHY-ELEC-CURRENT-OHM",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "HARD_TRANSITION_POINTERS"
       ],
       "microtopic_count": 2,
@@ -187,6 +262,7 @@
       "bucket_ref": "BUCKET-PHY-OSC-SHM-WAVES",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "HARD_TRANSITION_POINTERS"
       ],
       "microtopic_count": 2,
@@ -306,9 +382,9 @@
         "HARD_TRANSITION_POINTERS",
         "PRIMARY_REPRESENTATION"
       ],
-      "microtopic_count": 5,
+      "microtopic_count": 4,
       "routed_study_microtopics": 4,
-      "cross_progression_gap_count": 1,
+      "cross_progression_gap_count": 0,
       "phase1_orientation_debt": []
     },
     {
@@ -322,13 +398,469 @@
         "HARD_TRANSITION_POINTERS",
         "PRIMARY_REPRESENTATION"
       ],
-      "microtopic_count": 3,
+      "microtopic_count": 4,
       "routed_study_microtopics": 3,
-      "cross_progression_gap_count": 0,
+      "cross_progression_gap_count": 1,
       "phase1_orientation_debt": []
     }
   ],
   "microtopics": [
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-BOND",
+      "microtopic_ref": "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
+      "inferential_jump": "Trigonal-bipyramidal geometry is a structural claim, whereas sp3d is simplified model language; molecular polarity then depends on vector addition in that geometry rather than a count of polar bonds.",
+      "intrinsic_badge": "HARD",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "core1a_route_refs": [
+        "ROUTE-CHEM-BOND-CORE1A"
+      ],
+      "core1b_route_refs": [
+        "ROUTE-CHEM-BOND-CORE1B"
+      ],
+      "routing_state": "A_AND_B",
+      "canonical_representation_refs": [
+        "REP-CHEM-BOND-GEOMETRY-DIPOLE"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [],
+      "cross_progression_codes": [],
+      "cross_progression_coherent": true,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-BOND",
+      "microtopic_ref": "MIC-CHEM-BOND-LEWIS-VSEPR",
+      "inferential_jump": "Lewis structures conserve a declared valence-electron inventory, while VSEPR uses electron domains to predict geometry; neither bookkeeping convention should be promoted beyond its model scope.",
+      "intrinsic_badge": "MEDIUM",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "core1a_route_refs": [
+        "ROUTE-CHEM-BOND-CORE1A"
+      ],
+      "core1b_route_refs": [
+        "ROUTE-CHEM-BOND-CORE1B"
+      ],
+      "routing_state": "A_AND_B",
+      "canonical_representation_refs": [
+        "REP-CHEM-BOND-LEWIS-VSEPR"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [],
+      "cross_progression_codes": [],
+      "cross_progression_coherent": true,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-BOND",
+      "microtopic_ref": "MIC-CHEM-BOND-MO-HBOND",
+      "inferential_jump": "MO bond order and magnetism are separate consequences of the same orbital occupancy, while hydrogen bonding is a different intermolecular structural interaction requiring appropriate donor and acceptor sites.",
+      "intrinsic_badge": "HARD",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "core1a_route_refs": [
+        "ROUTE-CHEM-BOND-CORE1A"
+      ],
+      "core1b_route_refs": [
+        "ROUTE-CHEM-BOND-CORE1B"
+      ],
+      "routing_state": "A_AND_B",
+      "canonical_representation_refs": [
+        "REP-CHEM-BOND-MO-HBOND"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [],
+      "cross_progression_codes": [],
+      "cross_progression_coherent": true,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-GAS",
+      "microtopic_ref": "MIC-CHEM-GAS-IDEAL-LAWS",
+      "inferential_jump": "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation.",
+      "intrinsic_badge": "MEDIUM",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "core1a_route_refs": [
+        "ROUTE-CHEM-GAS-CORE1A"
+      ],
+      "core1b_route_refs": [
+        "ROUTE-CHEM-GAS-CORE1B"
+      ],
+      "routing_state": "A_AND_B",
+      "canonical_representation_refs": [
+        "REP-CHEM-GAS-IDEAL-LAWS"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [],
+      "cross_progression_codes": [],
+      "cross_progression_coherent": true,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-GAS",
+      "microtopic_ref": "MIC-CHEM-GAS-KINETIC-PHASE",
+      "inferential_jump": "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions.",
+      "intrinsic_badge": "MEDIUM",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "core1a_route_refs": [
+        "ROUTE-CHEM-GAS-CORE1A"
+      ],
+      "core1b_route_refs": [
+        "ROUTE-CHEM-GAS-CORE1B"
+      ],
+      "routing_state": "A_AND_B",
+      "canonical_representation_refs": [
+        "REP-CHEM-GAS-KINETIC-PHASE"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [],
+      "cross_progression_codes": [],
+      "cross_progression_coherent": true,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-GAS",
+      "microtopic_ref": "MIC-CHEM-GAS-REAL-CRITICAL",
+      "inferential_jump": "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism.",
+      "intrinsic_badge": "HARD",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "core1a_route_refs": [
+        "ROUTE-CHEM-GAS-CORE1A"
+      ],
+      "core1b_route_refs": [
+        "ROUTE-CHEM-GAS-CORE1B"
+      ],
+      "routing_state": "A_AND_B",
+      "canonical_representation_refs": [
+        "REP-CHEM-GAS-REAL-CRITICAL"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [],
+      "cross_progression_codes": [],
+      "cross_progression_coherent": true,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-MOLE",
+      "microtopic_ref": "MIC-CHEM-MOLE-CONCENTRATION",
+      "inferential_jump": "Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged.",
+      "intrinsic_badge": "HARD",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "core1a_route_refs": [
+        "ROUTE-CHEM-MOLE-CORE1A"
+      ],
+      "core1b_route_refs": [
+        "ROUTE-CHEM-MOLE-CORE1B"
+      ],
+      "routing_state": "A_AND_B",
+      "canonical_representation_refs": [
+        "REP-CHEM-MOLE-CONCENTRATION"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [],
+      "cross_progression_codes": [],
+      "cross_progression_coherent": true,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-MOLE",
+      "microtopic_ref": "MIC-CHEM-MOLE-FORMULA-STOICH",
+      "inferential_jump": "Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.",
+      "intrinsic_badge": "HARD",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "core1a_route_refs": [
+        "ROUTE-CHEM-MOLE-CORE1A"
+      ],
+      "core1b_route_refs": [
+        "ROUTE-CHEM-MOLE-CORE1B"
+      ],
+      "routing_state": "A_AND_B",
+      "canonical_representation_refs": [
+        "REP-CHEM-MOLE-FORMULA-STOICH"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [],
+      "cross_progression_codes": [],
+      "cross_progression_coherent": true,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-MOLE",
+      "microtopic_ref": "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
+      "inferential_jump": "Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro's constant and molar mass.",
+      "intrinsic_badge": "MEDIUM",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "core1a_route_refs": [
+        "ROUTE-CHEM-MOLE-CORE1A"
+      ],
+      "core1b_route_refs": [
+        "ROUTE-CHEM-MOLE-CORE1B"
+      ],
+      "routing_state": "A_AND_B",
+      "canonical_representation_refs": [
+        "REP-CHEM-MOLE-FOUNDATIONS-MOLE"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [],
+      "cross_progression_codes": [],
+      "cross_progression_coherent": true,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-REDOX",
+      "microtopic_ref": "MIC-CHEM-REDOX-BALANCE-NFACTOR",
+      "inferential_jump": "Half-reaction balancing is a conservation algorithm, while n-factor compresses the electron change for one specified redox transformation; neither is valid without the reaction context.",
+      "intrinsic_badge": "HARD",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "core1a_route_refs": [
+        "ROUTE-CHEM-REDOX-CORE1A"
+      ],
+      "core1b_route_refs": [
+        "ROUTE-CHEM-REDOX-CORE1B"
+      ],
+      "routing_state": "A_AND_B",
+      "canonical_representation_refs": [
+        "REP-CHEM-REDOX-BALANCE-NFACTOR"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [],
+      "cross_progression_codes": [],
+      "cross_progression_coherent": true,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-REDOX",
+      "microtopic_ref": "MIC-CHEM-REDOX-CLASSIFICATION",
+      "inferential_jump": "A reaction is redox only when oxidation-number bookkeeping shows coupled increase and decrease; reaction labels such as decomposition or displacement do not replace that test.",
+      "intrinsic_badge": "HARD",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "core1a_route_refs": [
+        "ROUTE-CHEM-REDOX-CORE1A"
+      ],
+      "core1b_route_refs": [
+        "ROUTE-CHEM-REDOX-CORE1B"
+      ],
+      "routing_state": "A_AND_B",
+      "canonical_representation_refs": [
+        "REP-CHEM-REDOX-CLASSIFICATION"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [],
+      "cross_progression_codes": [],
+      "cross_progression_coherent": true,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-REDOX",
+      "microtopic_ref": "MIC-CHEM-REDOX-OXIDATION-AGENTS",
+      "inferential_jump": "Oxidation number is a formal assignment whose increase corresponds to oxidation and decrease to reduction; an oxidising agent is itself reduced while a reducing agent is itself oxidised.",
+      "intrinsic_badge": "MEDIUM",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "core1a_route_refs": [
+        "ROUTE-CHEM-REDOX-CORE1A"
+      ],
+      "core1b_route_refs": [
+        "ROUTE-CHEM-REDOX-CORE1B"
+      ],
+      "routing_state": "A_AND_B",
+      "canonical_representation_refs": [
+        "REP-CHEM-REDOX-OXIDATION-AGENTS"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [],
+      "cross_progression_codes": [],
+      "cross_progression_coherent": true,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
     {
       "subject": "Mathematics",
       "bucket_ref": "BUCKET-LINEAR-EQUATION",
@@ -445,6 +977,180 @@
       ]
     },
     {
+      "subject": "Mathematics",
+      "bucket_ref": "BUCKET-MAT-09-LEQ",
+      "microtopic_ref": "MIC-MAT-LEQ-01-SOLUTION-BY-SUBSTITUTION",
+      "inferential_jump": "An equation claims that its LHS and RHS are equal, and that claim is true only for certain values of the variable; so whether a number is a solution is settled by evaluating both sides at it and comparing, which is also how any proposed solution is checked.",
+      "intrinsic_badge": "EASY",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS"
+      ],
+      "core1a_route_refs": [],
+      "core1b_route_refs": [],
+      "routing_state": "UNROUTED",
+      "canonical_representation_refs": [
+        "REP-MAT-LEQ-01-SIDE-BY-SIDE-TABLE"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [
+        "REPRESENTATION_SCENE_BINDING_MISSING"
+      ],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [
+        {
+          "code": "CROSS_CORE_ROUTING_UNRESOLVED",
+          "detail": "The canonical concept is claimed by neither Core1A nor Core1B teaching routes.",
+          "ref": "MIC-MAT-LEQ-01-SOLUTION-BY-SUBSTITUTION"
+        }
+      ],
+      "cross_progression_codes": [
+        "CROSS_CORE_ROUTING_UNRESOLVED"
+      ],
+      "cross_progression_coherent": false,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Mathematics",
+      "bucket_ref": "BUCKET-MAT-09-LEQ",
+      "microtopic_ref": "MIC-MAT-LEQ-02-VARIABLE-ON-BOTH-SIDES",
+      "inferential_jump": "Applying the same operation to both sides keeps the equation balanced, so its solution is unchanged (for multiplying or dividing, only by a non-zero number). Subtracting a variable term from both sides is transposing it with its sign changed, so variable terms can be gathered on one side exactly as numbers are.",
+      "intrinsic_badge": "MEDIUM",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS"
+      ],
+      "core1a_route_refs": [],
+      "core1b_route_refs": [],
+      "routing_state": "UNROUTED",
+      "canonical_representation_refs": [
+        "REP-MAT-LEQ-02-BALANCE"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [
+        "REPRESENTATION_SCENE_BINDING_MISSING"
+      ],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [
+        {
+          "code": "CROSS_CORE_ROUTING_UNRESOLVED",
+          "detail": "The canonical concept is claimed by neither Core1A nor Core1B teaching routes.",
+          "ref": "MIC-MAT-LEQ-02-VARIABLE-ON-BOTH-SIDES"
+        }
+      ],
+      "cross_progression_codes": [
+        "CROSS_CORE_ROUTING_UNRESOLVED"
+      ],
+      "cross_progression_coherent": false,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Mathematics",
+      "bucket_ref": "BUCKET-MAT-09-LEQ",
+      "microtopic_ref": "MIC-MAT-LEQ-03-REDUCE-TO-SIMPLER-FORM",
+      "inferential_jump": "Brackets and denominators do not change what an equation says; opening brackets and combining like terms rewrites each side as an equal expression, and multiplying both whole sides by the LCM of the denominators is a balanced step, so the simpler equation has the same solution. If the variable cancels, the leftover statement decides: false means no solution, true means every number.",
+      "intrinsic_badge": "MEDIUM",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS"
+      ],
+      "core1a_route_refs": [],
+      "core1b_route_refs": [],
+      "routing_state": "UNROUTED",
+      "canonical_representation_refs": [
+        "REP-MAT-LEQ-01-SIDE-BY-SIDE-TABLE",
+        "REP-MAT-LEQ-02-BALANCE",
+        "REP-MAT-LEQ-03-BRACKET-AREA-MODEL"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [
+        "REPRESENTATION_SCENE_BINDING_MISSING"
+      ],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [
+        {
+          "code": "CROSS_CORE_ROUTING_UNRESOLVED",
+          "detail": "The canonical concept is claimed by neither Core1A nor Core1B teaching routes.",
+          "ref": "MIC-MAT-LEQ-03-REDUCE-TO-SIMPLER-FORM"
+        }
+      ],
+      "cross_progression_codes": [
+        "CROSS_CORE_ROUTING_UNRESOLVED"
+      ],
+      "cross_progression_coherent": false,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Mathematics",
+      "bucket_ref": "BUCKET-MAT-09-LEQ",
+      "microtopic_ref": "MIC-MAT-LEQ-04-TWO-VARIABLES-LINE-OF-SOLUTIONS",
+      "inferential_jump": "In ax + by + c = 0 with a and b non-zero, a solution is a pair of values, one for each variable; any value chosen for one variable fixes a value for the other, so there are infinitely many solutions, and plotted they form a straight line on which every point is a solution.",
+      "intrinsic_badge": "HARD",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS"
+      ],
+      "core1a_route_refs": [],
+      "core1b_route_refs": [],
+      "routing_state": "UNROUTED",
+      "canonical_representation_refs": [
+        "REP-MAT-LEQ-04-SOLUTION-LINE"
+      ],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [
+        "REPRESENTATION_SCENE_BINDING_MISSING"
+      ],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [
+        {
+          "code": "CROSS_CORE_ROUTING_UNRESOLVED",
+          "detail": "The canonical concept is claimed by neither Core1A nor Core1B teaching routes.",
+          "ref": "MIC-MAT-LEQ-04-TWO-VARIABLES-LINE-OF-SOLUTIONS"
+        }
+      ],
+      "cross_progression_codes": [
+        "CROSS_CORE_ROUTING_UNRESOLVED"
+      ],
+      "cross_progression_coherent": false,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
       "subject": "Physics",
       "bucket_ref": "BUCKET-PHY-ELEC-CURRENT-OHM",
       "microtopic_ref": "MIC-ELEC-CURRENT-CONSERVATION",
@@ -453,6 +1159,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "HARD_TRANSITION_POINTERS"
       ],
       "core1a_route_refs": [
@@ -489,6 +1196,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "HARD_TRANSITION_POINTERS"
       ],
       "core1a_route_refs": [
@@ -1168,8 +1876,7 @@
         "PRIMARY_REPRESENTATION_CORE1_SCENE_MISSING"
       ],
       "phase2_construction_debt": [
-        "REPRESENTATION_SCENE_BINDING_MISSING",
-        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
+        "REPRESENTATION_SCENE_BINDING_MISSING"
       ],
       "phase3_reconstruction_debt": [],
       "cross_progression_findings": [],
@@ -1210,9 +1917,7 @@
       "phase1_orientation_debt": [
         "PRIMARY_REPRESENTATION_CORE1_SCENE_MISSING"
       ],
-      "phase2_construction_debt": [
-        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
-      ],
+      "phase2_construction_debt": [],
       "phase3_reconstruction_debt": [],
       "cross_progression_findings": [],
       "cross_progression_codes": [],
@@ -1255,8 +1960,7 @@
         "PRIMARY_REPRESENTATION_CORE1_SCENE_MISSING"
       ],
       "phase2_construction_debt": [
-        "REPRESENTATION_SCENE_BINDING_MISSING",
-        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
+        "REPRESENTATION_SCENE_BINDING_MISSING"
       ],
       "phase3_reconstruction_debt": [],
       "cross_progression_findings": [],
@@ -1402,8 +2106,7 @@
       "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
       "phase1_orientation_debt": [],
       "phase2_construction_debt": [
-        "REPRESENTATION_BRIDGE_MISSING",
-        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
+        "REPRESENTATION_BRIDGE_MISSING"
       ],
       "phase3_reconstruction_debt": [],
       "cross_progression_findings": [],
@@ -1604,8 +2307,7 @@
       "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
       "phase1_orientation_debt": [],
       "phase2_construction_debt": [
-        "REPRESENTATION_SCENE_BINDING_MISSING",
-        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
+        "REPRESENTATION_SCENE_BINDING_MISSING"
       ],
       "phase3_reconstruction_debt": [],
       "cross_progression_findings": [],
@@ -1643,8 +2345,7 @@
       "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
       "phase1_orientation_debt": [],
       "phase2_construction_debt": [
-        "REPRESENTATION_BRIDGE_MISSING",
-        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
+        "REPRESENTATION_BRIDGE_MISSING"
       ],
       "phase3_reconstruction_debt": [],
       "cross_progression_findings": [],
@@ -1760,8 +2461,7 @@
       "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
       "phase1_orientation_debt": [],
       "phase2_construction_debt": [
-        "REPRESENTATION_BRIDGE_MISSING",
-        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
+        "REPRESENTATION_BRIDGE_MISSING"
       ],
       "phase3_reconstruction_debt": [],
       "cross_progression_findings": [],
@@ -2329,6 +3029,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "HARD_TRANSITION_POINTERS"
       ],
       "core1a_route_refs": [
@@ -2365,6 +3066,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "HARD_TRANSITION_POINTERS"
       ],
       "core1a_route_refs": [
@@ -3594,50 +4296,6 @@
     {
       "subject": "Physics",
       "bucket_ref": "BUCKET-RELATIVE-MOTION",
-      "microtopic_ref": "MIC-FRAME-QUALIFICATION-BOUNDARY",
-      "inferential_jump": "Recognise that the simple subtraction relation assumes both frames are nonrotating and non-relativistic; naming when it needs qualification is itself the (bounded) research task, not deriving the replacement mathematics.",
-      "intrinsic_badge": "HARD",
-      "depth_authority": "CANONICAL_MICROTOPIC",
-      "core1_orientation_available": true,
-      "core1_orientation_surfaces": [
-        "GOVERNING_RELATIONS",
-        "DECLARED_CONVENTIONS",
-        "DECLARED_SCOPE",
-        "HARD_TRANSITION_POINTERS",
-        "PRIMARY_REPRESENTATION"
-      ],
-      "core1a_route_refs": [],
-      "core1b_route_refs": [],
-      "routing_state": "UNROUTED",
-      "canonical_representation_refs": [],
-      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
-      "phase1_orientation_debt": [],
-      "phase2_construction_debt": [
-        "REPRESENTATION_BRIDGE_MISSING",
-        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
-      ],
-      "phase3_reconstruction_debt": [],
-      "cross_progression_findings": [
-        {
-          "code": "CROSS_CORE_ROUTING_UNRESOLVED",
-          "detail": "The canonical concept is claimed by neither Core1A nor Core1B teaching routes.",
-          "ref": "MIC-FRAME-QUALIFICATION-BOUNDARY"
-        }
-      ],
-      "cross_progression_codes": [
-        "CROSS_CORE_ROUTING_UNRESOLVED"
-      ],
-      "cross_progression_coherent": false,
-      "manual_review_obligations": [
-        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
-        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
-        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
-        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
-      ]
-    },
-    {
-      "subject": "Physics",
-      "bucket_ref": "BUCKET-RELATIVE-MOTION",
       "microtopic_ref": "MIC-GEOMETRIC-CHECK",
       "inferential_jump": "Reconcile the algebraic result with reversal of the observer vector in a geometric construction.",
       "intrinsic_badge": "HARD",
@@ -3746,6 +4404,50 @@
       "cross_progression_findings": [],
       "cross_progression_codes": [],
       "cross_progression_coherent": true,
+      "manual_review_obligations": [
+        "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
+        "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
+        "CORE1B_GENUINELY_RECONSTRUCTS_SAME_INFERENCE",
+        "REPRESENTATION_MEANING_REMAINS_CANONICAL_ACROSS_PRODUCTS"
+      ]
+    },
+    {
+      "subject": "Physics",
+      "bucket_ref": "BUCKET-VECTOR-REPRESENTATION",
+      "microtopic_ref": "MIC-FRAME-QUALIFICATION-BOUNDARY",
+      "inferential_jump": "Recognise that the simple subtraction relation assumes both frames are nonrotating and non-relativistic; naming when it needs qualification is itself the (bounded) research task, not deriving the replacement mathematics.",
+      "intrinsic_badge": "HARD",
+      "depth_authority": "CANONICAL_MICROTOPIC",
+      "core1_orientation_available": true,
+      "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
+        "DECLARED_CONVENTIONS",
+        "DECLARED_SCOPE",
+        "HARD_TRANSITION_POINTERS",
+        "PRIMARY_REPRESENTATION"
+      ],
+      "core1a_route_refs": [],
+      "core1b_route_refs": [],
+      "routing_state": "UNROUTED",
+      "canonical_representation_refs": [],
+      "representation_authority": "SHARED_CANONICAL_MICROTOPIC_REFS",
+      "phase1_orientation_debt": [],
+      "phase2_construction_debt": [
+        "REPRESENTATION_BRIDGE_MISSING",
+        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
+      ],
+      "phase3_reconstruction_debt": [],
+      "cross_progression_findings": [
+        {
+          "code": "CROSS_CORE_ROUTING_UNRESOLVED",
+          "detail": "The canonical concept is claimed by neither Core1A nor Core1B teaching routes.",
+          "ref": "MIC-FRAME-QUALIFICATION-BOUNDARY"
+        }
+      ],
+      "cross_progression_codes": [
+        "CROSS_CORE_ROUTING_UNRESOLVED"
+      ],
+      "cross_progression_coherent": false,
       "manual_review_obligations": [
         "CORE1_ORIENTS_WITHOUT_PRETENDING_TO_TEACH",
         "CORE1A_GENUINELY_CONSTRUCTS_CANONICAL_INFERENCE",
@@ -3876,4 +4578,4 @@
       ]
     }
   ]
-}
+}\n

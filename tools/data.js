@@ -131,7 +131,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must keep electron-count bookkeeping distinct from physical charge and distinguish electron-domain geometry from molecular shape.",
               "entry_assumptions": [
-                "For Lewis structures, formal charge and VSEPR geometry, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can count valence electrons for simple main-group species and can distinguish a bonded atom position from a lone-pair electron domain."
               ],
               "inferential_jump": "Lewis structures conserve a declared valence-electron inventory, while VSEPR uses electron domains to predict geometry; neither bookkeeping convention should be promoted beyond its model scope.",
               "teaching_path": [
@@ -183,7 +183,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Lewis structures, formal charge and VSEPR geometry exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is judged by correctly separating formal-charge bookkeeping from physical electron density; it does not claim a numerical charge measurement."
                 }
               },
               "prerequisites": []
@@ -195,7 +195,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must distinguish observed geometry from simplified hybridisation language and then perform vector rather than scalar polarity reasoning.",
               "entry_assumptions": [
-                "For PCl5 geometry, model shorthand and molecular dipoles, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can recognise a trigonal-bipyramidal arrangement and can add simple vectors qualitatively by symmetry."
               ],
               "inferential_jump": "Trigonal-bipyramidal geometry is a structural claim, whereas sp3d is simplified model language; molecular polarity then depends on vector addition in that geometry rather than a count of polar bonds.",
               "teaching_path": [
@@ -247,7 +247,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The PCl5 geometry, model shorthand and molecular dipoles exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit has no numeric dipole calculation; it is correct if the learner uses geometric vector cancellation rather than counting polar bonds."
                 }
               },
               "prerequisites": []
@@ -259,7 +259,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must make two distinct readouts from MO occupancy and separately identify structural requirements for hydrogen bonding.",
               "entry_assumptions": [
-                "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can fill a supplied molecular-orbital ordering with electrons and can identify common hydrogen-bond donor and acceptor sites."
               ],
               "inferential_jump": "MO bond order and magnetism are separate consequences of the same orbital occupancy, while hydrogen bonding is a different intermolecular structural interaction requiring appropriate donor and acceptor sites.",
               "teaching_path": [
@@ -311,7 +311,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Molecular-orbital occupancy, magnetism and hydrogen bonding exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is a structural-comparison explanation; no universal boiling-temperature or magnetic number is asserted."
                 }
               },
               "prerequisites": []
@@ -425,7 +425,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must connect distributed molecular motion to macroscopic temperature and distinguish surface evaporation from pressure-dependent boiling.",
               "entry_assumptions": [
-                "For Particle model, speed distributions and phase change, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can distinguish temperature from the speed of one molecule and can describe pressure as an external condition on a liquid surface."
               ],
               "inferential_jump": "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions.",
               "teaching_path": [
@@ -477,7 +477,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Particle model, speed distributions and phase change exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit asks for a causal account of evaporative cooling; success is judged by retaining a distribution of molecular energies and preferential surface escape, not by a calculated number."
                 }
               },
               "prerequisites": []
@@ -489,7 +489,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "Correct use depends on controlled variables and on separating pressure bookkeeping from effusion-rate comparisons.",
               "entry_assumptions": [
-                "For Gas-law constraints, mixtures and transport, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can identify pressure, volume, amount and absolute temperature as distinct state variables and can read direct and inverse proportionality statements."
               ],
               "inferential_jump": "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation.",
               "teaching_path": [
@@ -541,7 +541,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Gas-law constraints, mixtures and transport exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is conceptual: it is correct only if it distinguishes effusion rate from partial pressure and identifies the state variables that determine ideal partial pressure."
                 }
               },
               "prerequisites": []
@@ -553,7 +553,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must treat van der Waals terms as state-model corrections and distinguish critical behaviour from ordinary boiling.",
               "entry_assumptions": [
-                "For Real-gas deviations and critical behaviour, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can use the ideal-gas equation as a reference model and can distinguish a thermodynamic state relation from a microscopic mechanism."
               ],
               "inferential_jump": "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism.",
               "teaching_path": [
@@ -605,7 +605,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Real-gas deviations and critical behaviour exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is qualitative and is closed only by stating the distinct roles of the coexistence curve, pressure-dependent boiling and the critical endpoint."
                 }
               },
               "prerequisites": []
@@ -719,7 +719,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must separate empirical conservation/ratio laws from explanatory particle models and keep amount distinct from mass.",
               "entry_assumptions": [
-                "For Combination laws, mole, Avogadro constant and molar mass, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can distinguish an empirical mass observation from a particle-model explanation and can perform unit-carrying mass-to-amount conversions."
               ],
               "inferential_jump": "Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro's constant and molar mass.",
               "teaching_path": [
@@ -771,7 +771,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Combination laws, mole, Avogadro constant and molar mass exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is a meaning check on amount of substance; no new numerical particle count is asserted without a named entity."
                 }
               },
               "prerequisites": []
@@ -783,7 +783,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must convert mass composition to mole ratios, distinguish empirical from molecular scale, and compare reactant inventories through balanced-equation coefficients.",
               "entry_assumptions": [
-                "For Empirical formula, stoichiometry and limiting reagent, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can divide mass by molar or atomic mass to obtain amount and can read balanced-equation coefficients as mole ratios."
               ],
               "inferential_jump": "Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.",
               "teaching_path": [
@@ -843,7 +843,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Empirical formula, stoichiometry and limiting reagent exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is a stoichiometric-ratio explanation; it asserts no new yield value and is checked by reaction extent and inventory conservation."
                 }
               },
               "prerequisites": []
@@ -855,7 +855,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must choose the correct denominator and qualify temperature invariance by sample closure and unchanged composition.",
               "entry_assumptions": [
-                "For Molarity, molality and mole fraction, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can identify numerator and denominator in a ratio and can distinguish solution volume from solvent mass and total mole amount."
               ],
               "inferential_jump": "Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged.",
               "teaching_path": [
@@ -908,7 +908,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Molarity, molality and mole fraction exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is definition-based: it requires the closure and composition qualification and identifies which denominator can change; it does not assert a universal numeric temperature coefficient."
                 }
               },
               "prerequisites": []
@@ -1022,7 +1022,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must coordinate formal oxidation-state bookkeeping with electron transfer and avoid the common agent-name inversion.",
               "entry_assumptions": [
-                "For Oxidation number, oxidation/reduction and agents, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can assign simple oxidation numbers using standard priority rules and can track the same element from reactants to products."
               ],
               "inferential_jump": "Oxidation number is a formal assignment whose increase corresponds to oxidation and decrease to reduction; an oxidising agent is itself reduced while a reducing agent is itself oxidised.",
               "teaching_path": [
@@ -1074,7 +1074,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Oxidation number, oxidation/reduction and agents exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is a bookkeeping explanation; it is closed by reconciling oxidation-state changes and agent roles, not by a measured atomic charge."
                 }
               },
               "prerequisites": []
@@ -1086,7 +1086,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must distinguish chemical change from redox and identify split/convergent oxidation-state patterns.",
               "entry_assumptions": [
-                "For Redox classification, displacement and disproportionation patterns, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can compare oxidation numbers for the same element on both sides of a reaction and can read reactant-to-product direction explicitly."
               ],
               "inferential_jump": "A reaction is redox only when oxidation-number bookkeeping shows coupled increase and decrease; reaction labels such as decomposition or displacement do not replace that test.",
               "teaching_path": [
@@ -1138,7 +1138,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Redox classification, displacement and disproportionation patterns exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is classificatory rather than numerical; the required evidence is an actual oxidation-number change, not the reaction's surface label."
                 }
               },
               "prerequisites": []
@@ -1150,7 +1150,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must conserve atoms and charge in a declared medium and derive electron-change counts from the specified reaction rather than memorising them as universal properties.",
               "entry_assumptions": [
-                "For Half-reaction balancing and reaction-dependent n-factor, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can conserve atom counts and algebraic charge in an ionic equation and can interpret electrons as transfer bookkeeping."
               ],
               "inferential_jump": "Half-reaction balancing is a conservation algorithm, while n-factor compresses the electron change for one specified redox transformation; neither is valid without the reaction context.",
               "teaching_path": [
@@ -1202,7 +1202,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Half-reaction balancing and reaction-dependent n-factor exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit has no standalone numeric n-factor claim; correctness depends on atom and charge conservation plus explicit reaction context."
                 }
               },
               "prerequisites": []
@@ -1295,22 +1295,22 @@ window.GRADE9V3 = {
         {
           "package_id": "LIB-CHEM-BEHAVIOUR-OF-GASES",
           "status": "CANDIDATE",
-          "admitted": false
+          "admitted": true
         },
         {
           "package_id": "LIB-CHEM-CHEMICAL-BONDING",
           "status": "CANDIDATE",
-          "admitted": false
+          "admitted": true
         },
         {
           "package_id": "LIB-CHEM-REDOX-REACTIONS",
           "status": "CANDIDATE",
-          "admitted": false
+          "admitted": true
         },
         {
           "package_id": "LIB-CHEM-SOME-BASIC-CONCEPTS",
           "status": "CANDIDATE",
-          "admitted": false
+          "admitted": true
         }
       ],
       "library_available": true,

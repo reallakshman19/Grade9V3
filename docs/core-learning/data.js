@@ -529,7 +529,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "HARD",
           "inferential_jump": "Trigonal-bipyramidal geometry is a structural claim, whereas sp3d is simplified model language; molecular polarity then depends on vector addition in that geometry rather than a count of polar bonds.",
           "entry_assumptions": [
-            "For PCl5 geometry, model shorthand and molecular dipoles, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can recognise a trigonal-bipyramidal arrangement and can add simple vectors qualitatively by symmetry."
           ],
           "teaching_path": [
             {
@@ -633,7 +633,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The PCl5 geometry, model shorthand and molecular dipoles exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit has no numeric dipole calculation; it is correct if the learner uses geometric vector cancellation rather than counting polar bonds."
             }
           },
           "worked_anchors": [
@@ -739,7 +739,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "HARD",
           "inferential_jump": "Trigonal-bipyramidal geometry is a structural claim, whereas sp3d is simplified model language; molecular polarity then depends on vector addition in that geometry rather than a count of polar bonds.",
           "entry_assumptions": [
-            "For PCl5 geometry, model shorthand and molecular dipoles, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can recognise a trigonal-bipyramidal arrangement and can add simple vectors qualitatively by symmetry."
           ],
           "teaching_path": [
             {
@@ -773,16 +773,16 @@ window.GRADE9V3_CORE = {
               "defensible_answer": "For PCl5 geometry, model shorthand and molecular dipoles, the defensible route is: Separate geometry evidence from hybridisation shorthand and perform a vector-symmetry check before asserting molecular polarity."
             },
             "attempt": {
-              "produces": "A short PCl5 geometry, model shorthand and molecular dipoles explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "produces": "A geometry-and-polarity argument that distinguishes axial from equatorial PCl5 positions, qualifies sp3d language, and decides net dipole by vector symmetry.",
               "closure": "CRITERIA",
               "rubric": [
                 {
-                  "criterion": "The PCl5 geometry, model shorthand and molecular dipoles response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-                  "evidence_of": "The learner can separate the PCl5 geometry, model shorthand and molecular dipoles governing distinction from the tempting shortcut."
+                  "criterion": "The response separates an observed geometric claim from a hybridisation shorthand and treats molecular dipole as a vector sum.",
+                  "evidence_of": "It can compare axial and equatorial angle environments and explain how polar bond vectors can cancel in a symmetric molecule."
                 }
               ],
               "task": {
-                "prompt": "Explain the PCl5 geometry, model shorthand and molecular dipoles decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "prompt": "Describe why axial and equatorial P-Cl directions are not equivalent in trigonal-bipyramidal geometry. Then explain how a molecule with polar bonds can still have zero net dipole, without using sp3d as proof of orbital mechanism.",
                 "givens": [
                   "Trigonal-bipyramidal geometry is a structural claim, whereas sp3d is simplified model language; molecular polarity then depends on vector addition in that geometry rather than a count of polar bonds."
                 ],
@@ -793,22 +793,22 @@ window.GRADE9V3_CORE = {
             "reconstruct": {
               "route": [
                 {
-                  "ask": "In PCl5 geometry, model shorthand and molecular dipoles, what must be decided before the move \"Place five electron domains in a trigonal-bipyramidal arrangement with three equatorial and two axial directions.\" is justified?",
-                  "why_this_ask": "This makes the learner supply the entry decision for PCl5 geometry, model shorthand and molecular dipoles instead of receiving the expert sequence first.",
+                  "ask": "Which angular relationships make axial and equatorial directions inequivalent in a trigonal-bipyramidal arrangement?",
+                  "why_this_ask": "Beginning with axial/equatorial inequivalence forces the geometry to do explanatory work before any hybridisation vocabulary is introduced.",
                   "from_step_ref": "BOND-GEOMETRY-DIPOLE-T1"
                 },
                 {
-                  "ask": "For PCl5 geometry, model shorthand and molecular dipoles, how would you test the conclusion reached by \"Add bond dipoles as vectors in the molecular geometry.\" without simply repeating the model answer?",
-                  "why_this_ask": "This closes PCl5 geometry, model shorthand and molecular dipoles through a learner-owned check rather than through recall of the declarative route.",
+                  "ask": "After drawing the bond-dipole directions, what symmetry test decides whether the molecular dipole can cancel to zero?",
+                  "why_this_ask": "The last question tests whether the learner can carry geometry into a vector-sum polarity decision instead of reverting to a count of polar bonds.",
                   "from_step_ref": "BOND-GEOMETRY-DIPOLE-T3"
                 }
               ],
-              "differs_from_teaching_path": "For PCl5 geometry, model shorthand and molecular dipoles, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+              "differs_from_teaching_path": "The expert route presents the geometry, qualifies the hybridisation label, then sums dipoles; the reconstruction starts from the claim that sp3d proves five equivalent d-containing bonds and makes the learner use angle sets and vector symmetry to dismantle it."
             },
             "boundary_test": {
               "prompt": "How can a molecule contain polar bonds yet have zero net dipole moment?",
               "answer": "Its bond-dipole vectors can cancel exactly by molecular symmetry.",
-              "confirms": "For PCl5 geometry, model shorthand and molecular dipoles, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+              "confirms": "It confirms that the learner can use geometry as evidence while keeping hybridisation terminology and dipole-vector reasoning in separate conceptual roles."
             }
           },
           "misconceptions": [
@@ -886,7 +886,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The PCl5 geometry, model shorthand and molecular dipoles exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit has no numeric dipole calculation; it is correct if the learner uses geometric vector cancellation rather than counting polar bonds."
             }
           },
           "worked_anchors": []
@@ -978,7 +978,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "MEDIUM",
           "inferential_jump": "Lewis structures conserve a declared valence-electron inventory, while VSEPR uses electron domains to predict geometry; neither bookkeeping convention should be promoted beyond its model scope.",
           "entry_assumptions": [
-            "For Lewis structures, formal charge and VSEPR geometry, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can count valence electrons for simple main-group species and can distinguish a bonded atom position from a lone-pair electron domain."
           ],
           "teaching_path": [
             {
@@ -1071,7 +1071,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Lewis structures, formal charge and VSEPR geometry exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is judged by correctly separating formal-charge bookkeeping from physical electron density; it does not claim a numerical charge measurement."
             }
           },
           "worked_anchors": [
@@ -1177,7 +1177,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "MEDIUM",
           "inferential_jump": "Lewis structures conserve a declared valence-electron inventory, while VSEPR uses electron domains to predict geometry; neither bookkeeping convention should be promoted beyond its model scope.",
           "entry_assumptions": [
-            "For Lewis structures, formal charge and VSEPR geometry, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can count valence electrons for simple main-group species and can distinguish a bonded atom position from a lone-pair electron domain."
           ],
           "teaching_path": [
             {
@@ -1211,16 +1211,16 @@ window.GRADE9V3_CORE = {
               "defensible_answer": "For Lewis structures, formal charge and VSEPR geometry, the defensible route is: Treat formal charge as Lewis bookkeeping, then count electron domains and bonded-atom positions separately for VSEPR."
             },
             "attempt": {
-              "produces": "A short Lewis structures, formal charge and VSEPR geometry explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "produces": "A Lewis-and-VSEPR audit: conserve the electron inventory, identify formal-charge bookkeeping, count electron domains, then name molecular shape from bonded-atom positions.",
               "closure": "CRITERIA",
               "rubric": [
                 {
-                  "criterion": "The Lewis structures, formal charge and VSEPR geometry response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-                  "evidence_of": "The learner can separate the Lewis structures, formal charge and VSEPR geometry governing distinction from the tempting shortcut."
+                  "criterion": "The response distinguishes bookkeeping charge from physical charge and gives separate counts for electron domains and bonded atoms.",
+                  "evidence_of": "It can explain why four domains with one lone pair are tetrahedral in electron-domain geometry but trigonal pyramidal in molecular shape."
                 }
               ],
               "task": {
-                "prompt": "Explain the Lewis structures, formal charge and VSEPR geometry decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "prompt": "For a central atom with four electron domains, one a lone pair, explain the two geometry names you need. Then explain why a formal charge on a Lewis contributor is not automatically a measured partial charge.",
                 "givens": [
                   "Lewis structures conserve a declared valence-electron inventory, while VSEPR uses electron domains to predict geometry; neither bookkeeping convention should be promoted beyond its model scope."
                 ],
@@ -1231,22 +1231,22 @@ window.GRADE9V3_CORE = {
             "reconstruct": {
               "route": [
                 {
-                  "ask": "In Lewis structures, formal charge and VSEPR geometry, what must be decided before the move \"Count the total valence-electron inventory before placing bonds and lone pairs.\" is justified?",
-                  "why_this_ask": "This makes the learner supply the entry decision for Lewis structures, formal charge and VSEPR geometry instead of receiving the expert sequence first.",
+                  "ask": "What does formal charge tell you about a chosen Lewis electron partition, and what physical charge claim does it not establish?",
+                  "why_this_ask": "The first question reveals whether the learner understands that formal charge belongs to a chosen Lewis partition; without that boundary, later geometry reasoning rests on a false physical interpretation.",
                   "from_step_ref": "BOND-LEWIS-VSEPR-T1"
                 },
                 {
-                  "ask": "For Lewis structures, formal charge and VSEPR geometry, how would you test the conclusion reached by \"Count VSEPR electron domains before naming molecular shape.\" without simply repeating the model answer?",
-                  "why_this_ask": "This closes Lewis structures, formal charge and VSEPR geometry through a learner-owned check rather than through recall of the declarative route.",
+                  "ask": "With four electron domains but only three bonded atoms, which geometry name uses all domains and which one uses only atom positions?",
+                  "why_this_ask": "The closing geometry test checks that a lone pair remains an electron domain even though it disappears from the molecular-shape name.",
                   "from_step_ref": "BOND-LEWIS-VSEPR-T3"
                 }
               ],
-              "differs_from_teaching_path": "For Lewis structures, formal charge and VSEPR geometry, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+              "differs_from_teaching_path": "The declarative route counts electrons before domains; the reconstruction begins with the misleading claim that formal charge equals real charge, repairs that model boundary, and then makes the learner separate domain count from shape naming."
             },
             "boundary_test": {
               "prompt": "Why can formal charge guide selection among Lewis contributors without proving the physical charge on each atom?",
               "answer": "Formal charge is defined by a bookkeeping partition of electrons in a chosen Lewis structure, whereas physical electron density is a separate electronic-structure property.",
-              "confirms": "For Lewis structures, formal charge and VSEPR geometry, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+              "confirms": "It confirms that the learner can move between Lewis and VSEPR models without treating either model's bookkeeping labels as direct physical measurements."
             }
           },
           "misconceptions": [
@@ -1313,7 +1313,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Lewis structures, formal charge and VSEPR geometry exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is judged by correctly separating formal-charge bookkeeping from physical electron density; it does not claim a numerical charge measurement."
             }
           },
           "worked_anchors": []
@@ -1405,7 +1405,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "HARD",
           "inferential_jump": "MO bond order and magnetism are separate consequences of the same orbital occupancy, while hydrogen bonding is a different intermolecular structural interaction requiring appropriate donor and acceptor sites.",
           "entry_assumptions": [
-            "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can fill a supplied molecular-orbital ordering with electrons and can identify common hydrogen-bond donor and acceptor sites."
           ],
           "teaching_path": [
             {
@@ -1497,7 +1497,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Molecular-orbital occupancy, magnetism and hydrogen bonding exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is a structural-comparison explanation; no universal boiling-temperature or magnetic number is asserted."
             }
           },
           "worked_anchors": [
@@ -1604,7 +1604,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "HARD",
           "inferential_jump": "MO bond order and magnetism are separate consequences of the same orbital occupancy, while hydrogen bonding is a different intermolecular structural interaction requiring appropriate donor and acceptor sites.",
           "entry_assumptions": [
-            "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can fill a supplied molecular-orbital ordering with electrons and can identify common hydrogen-bond donor and acceptor sites."
           ],
           "teaching_path": [
             {
@@ -1638,16 +1638,16 @@ window.GRADE9V3_CORE = {
               "defensible_answer": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the defensible route is: Run the bond-order and paired/unpaired checks separately, then require an explicit donor/acceptor structure before invoking hydrogen bonding."
             },
             "attempt": {
-              "produces": "A short Molecular-orbital occupancy, magnetism and hydrogen bonding explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "produces": "Two independent MO readouts—bond order and paired-or-unpaired occupancy—followed by a donor-and-acceptor test before invoking hydrogen bonding in a property comparison.",
               "closure": "CRITERIA",
               "rubric": [
                 {
-                  "criterion": "The Molecular-orbital occupancy, magnetism and hydrogen bonding response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-                  "evidence_of": "The learner can separate the Molecular-orbital occupancy, magnetism and hydrogen bonding governing distinction from the tempting shortcut."
+                  "criterion": "The response does not infer magnetism from bond order and does not infer hydrogen bonding from the presence of H alone.",
+                  "evidence_of": "It explicitly inspects unpaired electrons for magnetism and names a plausible donor-acceptor pair before using hydrogen bonding to explain a bulk trend."
                 }
               ],
               "task": {
-                "prompt": "Explain the Molecular-orbital occupancy, magnetism and hydrogen bonding decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "prompt": "After filling an MO diagram, list the separate checks for bond order and magnetism. Then decide what structural evidence must be present before hydrogen bonding is used to explain a boiling-point trend.",
                 "givens": [
                   "MO bond order and magnetism are separate consequences of the same orbital occupancy, while hydrogen bonding is a different intermolecular structural interaction requiring appropriate donor and acceptor sites."
                 ],
@@ -1658,22 +1658,22 @@ window.GRADE9V3_CORE = {
             "reconstruct": {
               "route": [
                 {
-                  "ask": "In Molecular-orbital occupancy, magnetism and hydrogen bonding, what must be decided before the move \"Fill the stated molecular-orbital ordering with the correct electron count for the species.\" is justified?",
-                  "why_this_ask": "This makes the learner supply the entry decision for Molecular-orbital occupancy, magnetism and hydrogen bonding instead of receiving the expert sequence first.",
+                  "ask": "After the molecular orbitals are occupied, which count gives bond order and which different observation determines magnetic behaviour?",
+                  "why_this_ask": "The first ask forces the learner to identify which occupancy feature answers which MO question, preventing one scalar bond-order result from standing in for magnetic evidence.",
                   "from_step_ref": "BOND-MO-HBOND-T1"
                 },
                 {
-                  "ask": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, how would you test the conclusion reached by \"Identify hydrogen-bond donor and acceptor environments before using hydrogen bonding to explain a bulk property.\" without simply repeating the model answer?",
-                  "why_this_ask": "This closes Molecular-orbital occupancy, magnetism and hydrogen bonding through a learner-owned check rather than through recall of the declarative route.",
+                  "ask": "Before invoking hydrogen bonding to explain a bulk property, which donor and acceptor features must you be able to point to in the structures?",
+                  "why_this_ask": "The final ask switches evidence type deliberately: donor-and-acceptor structure, not MO bond order, is the prerequisite for the intermolecular claim.",
                   "from_step_ref": "BOND-MO-HBOND-T3"
                 }
               ],
-              "differs_from_teaching_path": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+              "differs_from_teaching_path": "The declarative route treats MO occupancy first and hydrogen bonding second; the reconstruction begins by exposing two overgeneralizations—high bond order means diamagnetic and contains H means hydrogen bonds—then requires separate evidence tests for each."
             },
             "boundary_test": {
               "prompt": "Why should hydrogen bonding be used as a comparative intermolecular explanation rather than a universal property predictor?",
               "answer": "Because it requires specific donor/acceptor structure and bulk properties also depend on other intermolecular and molecular features.",
-              "confirms": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+              "confirms": "It confirms that the learner can keep intramolecular MO occupancy claims separate from intermolecular hydrogen-bonding claims."
             }
           },
           "misconceptions": [
@@ -1739,7 +1739,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Molecular-orbital occupancy, magnetism and hydrogen bonding exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is a structural-comparison explanation; no universal boiling-temperature or magnetic number is asserted."
             }
           },
           "worked_anchors": []
@@ -1831,7 +1831,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "MEDIUM",
           "inferential_jump": "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation.",
           "entry_assumptions": [
-            "For Gas-law constraints, mixtures and transport, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can identify pressure, volume, amount and absolute temperature as distinct state variables and can read direct and inverse proportionality statements."
           ],
           "teaching_path": [
             {
@@ -1923,7 +1923,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Gas-law constraints, mixtures and transport exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is conceptual: it is correct only if it distinguishes effusion rate from partial pressure and identifies the state variables that determine ideal partial pressure."
             }
           },
           "worked_anchors": [
@@ -2030,7 +2030,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "MEDIUM",
           "inferential_jump": "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation.",
           "entry_assumptions": [
-            "For Gas-law constraints, mixtures and transport, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can identify pressure, volume, amount and absolute temperature as distinct state variables and can read direct and inverse proportionality statements."
           ],
           "teaching_path": [
             {
@@ -2064,16 +2064,16 @@ window.GRADE9V3_CORE = {
               "defensible_answer": "For Gas-law constraints, mixtures and transport, the defensible route is: Write the constraints first and use the combined or ideal-gas model when more than one state variable changes."
             },
             "attempt": {
-              "produces": "A short Gas-law constraints, mixtures and transport explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "produces": "A variable-control table naming what is fixed in the chosen gas-law step, followed by one sentence separating Dalton partial pressure from Graham effusion rate.",
               "closure": "CRITERIA",
               "rubric": [
                 {
-                  "criterion": "The Gas-law constraints, mixtures and transport response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-                  "evidence_of": "The learner can separate the Gas-law constraints, mixtures and transport governing distinction from the tempting shortcut."
+                  "criterion": "The response selects a relation only after naming fixed variables and never transfers Graham's molar-mass dependence into Dalton's pressure sum.",
+                  "evidence_of": "It can explain why a change in both temperature and volume requires more than Boyle's law and why a lighter gas is not assigned extra partial pressure solely for being light."
                 }
               ],
               "task": {
-                "prompt": "Explain the Gas-law constraints, mixtures and transport decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "prompt": "For a gas sample whose temperature and volume both change, explain why Boyle's law alone is insufficient. Then compare a Dalton-law pressure question with a Graham-law effusion question and state which observable each law predicts.",
                 "givens": [
                   "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation."
                 ],
@@ -2084,22 +2084,22 @@ window.GRADE9V3_CORE = {
             "reconstruct": {
               "route": [
                 {
-                  "ask": "In Gas-law constraints, mixtures and transport, what must be decided before the move \"Name pressure, volume, absolute temperature and amount, then state which variables are fixed.\" is justified?",
-                  "why_this_ask": "This makes the learner supply the entry decision for Gas-law constraints, mixtures and transport instead of receiving the expert sequence first.",
+                  "ask": "If temperature and volume both change, which fixed-variable condition needed for Boyle's law has been lost?",
+                  "why_this_ask": "This question tests the precondition of the law before algebra can hide that the constant-temperature condition was violated.",
                   "from_step_ref": "GAS-IDEAL-LAWS-T1"
                 },
                 {
-                  "ask": "For Gas-law constraints, mixtures and transport, how would you test the conclusion reached by \"Separate Dalton partial-pressure bookkeeping from Graham effusion-rate comparison.\" without simply repeating the model answer?",
-                  "why_this_ask": "This closes Gas-law constraints, mixtures and transport through a learner-owned check rather than through recall of the declarative route.",
+                  "ask": "When two gases are compared, how do you decide whether molar mass belongs in the reasoning or whether you should add partial pressures instead?",
+                  "why_this_ask": "The closing comparison checks law selection by observable: Dalton answers mixture pressure, whereas Graham answers an effusion-rate ratio.",
                   "from_step_ref": "GAS-IDEAL-LAWS-T3"
                 }
               ],
-              "differs_from_teaching_path": "For Gas-law constraints, mixtures and transport, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+              "differs_from_teaching_path": "The declarative route catalogues the state variables before applying laws; the reconstruction starts with an invalid Boyle-law shortcut, makes the learner identify the missing controls, and then asks them to sort pressure and rate observables."
             },
             "boundary_test": {
               "prompt": "Why does Graham's law not justify assigning a larger partial pressure to a lighter gas solely because it has lower molar mass?",
               "answer": "Because Graham's law concerns effusion rate, while ideal partial pressure is determined by the component amount, temperature and volume.",
-              "confirms": "For Gas-law constraints, mixtures and transport, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+              "confirms": "It confirms that the learner chooses equations by controlled variables and observable, not by matching a familiar keyword."
             }
           },
           "misconceptions": [
@@ -2165,7 +2165,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Gas-law constraints, mixtures and transport exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is conceptual: it is correct only if it distinguishes effusion rate from partial pressure and identifies the state variables that determine ideal partial pressure."
             }
           },
           "worked_anchors": []
@@ -2257,7 +2257,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "MEDIUM",
           "inferential_jump": "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions.",
           "entry_assumptions": [
-            "For Particle model, speed distributions and phase change, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can distinguish temperature from the speed of one molecule and can describe pressure as an external condition on a liquid surface."
           ],
           "teaching_path": [
             {
@@ -2350,7 +2350,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Particle model, speed distributions and phase change exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit asks for a causal account of evaporative cooling; success is judged by retaining a distribution of molecular energies and preferential surface escape, not by a calculated number."
             }
           },
           "worked_anchors": [
@@ -2456,7 +2456,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "MEDIUM",
           "inferential_jump": "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions.",
           "entry_assumptions": [
-            "For Particle model, speed distributions and phase change, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can distinguish temperature from the speed of one molecule and can describe pressure as an external condition on a liquid surface."
           ],
           "teaching_path": [
             {
@@ -2490,16 +2490,16 @@ window.GRADE9V3_CORE = {
               "defensible_answer": "For Particle model, speed distributions and phase change, the defensible route is: Keep a distribution of molecular energies, and attach external pressure to any boiling-temperature statement."
             },
             "attempt": {
-              "produces": "A short Particle model, speed distributions and phase change explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "produces": "A two-part explanation: distinguish an ensemble speed distribution from a single molecular speed, then use vapour-pressure/external-pressure equality to distinguish boiling from evaporation.",
               "closure": "CRITERIA",
               "rubric": [
                 {
-                  "criterion": "The Particle model, speed distributions and phase change response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-                  "evidence_of": "The learner can separate the Particle model, speed distributions and phase change governing distinction from the tempting shortcut."
+                  "criterion": "The response keeps molecular-speed distribution and phase-equilibrium pressure as separate ideas and connects each to the correct phenomenon.",
+                  "evidence_of": "It never assigns one speed to all molecules and never states a universal boiling temperature independent of external pressure."
                 }
               ],
               "task": {
-                "prompt": "Explain the Particle model, speed distributions and phase change decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "prompt": "A student says all molecules move faster together, so once they reach one special speed the liquid boils. Diagnose both errors and replace them with a distribution-based evaporation account plus a pressure-based boiling condition.",
                 "givens": [
                   "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions."
                 ],
@@ -2510,22 +2510,22 @@ window.GRADE9V3_CORE = {
             "reconstruct": {
               "route": [
                 {
-                  "ask": "In Particle model, speed distributions and phase change, what must be decided before the move \"Separate the microscopic particle model from the macroscopic observation.\" is justified?",
-                  "why_this_ask": "This makes the learner supply the entry decision for Particle model, speed distributions and phase change instead of receiving the expert sequence first.",
+                  "ask": "Why does a temperature statement about a gas or liquid require an ensemble description rather than one common molecular speed?",
+                  "why_this_ask": "The first decision exposes whether the learner treats temperature as one molecular speed; without that repair, later talk of boiling can conceal the same microscopic misconception.",
                   "from_step_ref": "GAS-KINETIC-PHASE-T1"
                 },
                 {
-                  "ask": "For Particle model, speed distributions and phase change, how would you test the conclusion reached by \"Track energy through a phase change for a pure substance at fixed pressure in phase equilibrium.\" without simply repeating the model answer?",
-                  "why_this_ask": "This closes Particle model, speed distributions and phase change through a learner-owned check rather than through recall of the declarative route.",
+                  "ask": "What independent condition tells you that bulk boiling, rather than surface evaporation, has begun?",
+                  "why_this_ask": "The final question tests whether the learner can use vapour-pressure equality with external pressure as a criterion instead of merely repeating the phrase phase change.",
                   "from_step_ref": "GAS-KINETIC-PHASE-T3"
                 }
               ],
-              "differs_from_teaching_path": "For Particle model, speed distributions and phase change, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+              "differs_from_teaching_path": "The declarative route starts from model statements and then contrasts evaporation with boiling; the reconstruction begins with the one-speed/one-boiling-temperature claim, forces the learner to separate its two errors, and only then rebuilds the correct conditions."
             },
             "boundary_test": {
               "prompt": "Why can evaporation cool a liquid without implying that every molecule had the same initial speed?",
               "answer": "Because the sample has a distribution of molecular energies and higher-energy surface molecules can preferentially escape.",
-              "confirms": "For Particle model, speed distributions and phase change, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+              "confirms": "It shows that the learner can transfer the distribution-and-pressure distinction to evaporation without collapsing surface escape into bulk boiling."
             }
           },
           "misconceptions": [
@@ -2592,7 +2592,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Particle model, speed distributions and phase change exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit asks for a causal account of evaporative cooling; success is judged by retaining a distribution of molecular energies and preferential surface escape, not by a calculated number."
             }
           },
           "worked_anchors": []
@@ -2684,7 +2684,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "HARD",
           "inferential_jump": "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism.",
           "entry_assumptions": [
-            "For Real-gas deviations and critical behaviour, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can use the ideal-gas equation as a reference model and can distinguish a thermodynamic state relation from a microscopic mechanism."
           ],
           "teaching_path": [
             {
@@ -2776,7 +2776,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Real-gas deviations and critical behaviour exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is qualitative and is closed only by stating the distinct roles of the coexistence curve, pressure-dependent boiling and the critical endpoint."
             }
           },
           "worked_anchors": [
@@ -2882,7 +2882,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "HARD",
           "inferential_jump": "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism.",
           "entry_assumptions": [
-            "For Real-gas deviations and critical behaviour, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can use the ideal-gas equation as a reference model and can distinguish a thermodynamic state relation from a microscopic mechanism."
           ],
           "teaching_path": [
             {
@@ -2916,16 +2916,16 @@ window.GRADE9V3_CORE = {
               "defensible_answer": "For Real-gas deviations and critical behaviour, the defensible route is: Treat the correction parameters as state-model terms and interpret deviations only with the stated thermodynamic conditions."
             },
             "attempt": {
-              "produces": "A short Real-gas deviations and critical behaviour explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "produces": "A model-scope explanation that says what Z compares, names the ideal assumptions that fail at high density, and distinguishes critical temperature from an ordinary boiling temperature.",
               "closure": "CRITERIA",
               "rubric": [
                 {
-                  "criterion": "The Real-gas deviations and critical behaviour response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-                  "evidence_of": "The learner can separate the Real-gas deviations and critical behaviour governing distinction from the tempting shortcut."
+                  "criterion": "The response treats Z and van der Waals terms as state-model diagnostics and uses the critical point only for the end of liquid-vapour coexistence.",
+                  "evidence_of": "It avoids a universal sign-of-deviation claim and does not present equation-of-state parameters as a literal molecular mechanism."
                 }
               ],
               "task": {
-                "prompt": "Explain the Real-gas deviations and critical behaviour decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "prompt": "Explain why real-gas effects become harder to neglect at high pressure. Then state why boiling point and critical temperature cannot be used as interchangeable liquefaction limits.",
                 "givens": [
                   "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism."
                 ],
@@ -2936,22 +2936,22 @@ window.GRADE9V3_CORE = {
             "reconstruct": {
               "route": [
                 {
-                  "ask": "In Real-gas deviations and critical behaviour, what must be decided before the move \"Use compressibility factor as a comparison with the ideal reference at the same state.\" is justified?",
-                  "why_this_ask": "This makes the learner supply the entry decision for Real-gas deviations and critical behaviour instead of receiving the expert sequence first.",
+                  "ask": "What does a measured value of the compressibility factor compare, and what microscopic story does it not uniquely determine?",
+                  "why_this_ask": "The mechanism misconception has to be confronted first because otherwise every later correction term is read as a literal story about molecular collisions.",
                   "from_step_ref": "GAS-REAL-CRITICAL-T1"
                 },
                 {
-                  "ask": "For Real-gas deviations and critical behaviour, how would you test the conclusion reached by \"Distinguish a critical point from an ordinary boiling point.\" without simply repeating the model answer?",
-                  "why_this_ask": "This closes Real-gas deviations and critical behaviour through a learner-owned check rather than through recall of the declarative route.",
+                  "ask": "How does the critical temperature differ from a boiling temperature when you describe the liquid-vapour phase boundary?",
+                  "why_this_ask": "The final check separates two temperature concepts by their phase-boundary meaning, preventing a correct-looking liquefaction statement built on the wrong criterion.",
                   "from_step_ref": "GAS-REAL-CRITICAL-T3"
                 }
               ],
-              "differs_from_teaching_path": "For Real-gas deviations and critical behaviour, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+              "differs_from_teaching_path": "The expert route introduces Z, correction terms and the critical point in that order; the reconstruction begins by challenging the claim that the equation reveals a collision mechanism, then asks what state information Z can support and where the liquid-vapour boundary ends."
             },
             "boundary_test": {
               "prompt": "Why must a liquefaction statement distinguish critical temperature from boiling temperature?",
               "answer": "Boiling temperature is pressure-dependent phase equilibrium below the critical point, while the critical temperature marks whether a distinct liquid-vapour boundary can exist.",
-              "confirms": "For Real-gas deviations and critical behaviour, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+              "confirms": "It confirms that the learner can keep state-model comparison, microscopic interpretation and phase-boundary terminology in their proper scopes."
             }
           },
           "misconceptions": [
@@ -3017,7 +3017,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Real-gas deviations and critical behaviour exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is qualitative and is closed only by stating the distinct roles of the coexistence curve, pressure-dependent boiling and the critical endpoint."
             }
           },
           "worked_anchors": []
@@ -3109,7 +3109,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "HARD",
           "inferential_jump": "Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged.",
           "entry_assumptions": [
-            "For Molarity, molality and mole fraction, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can identify numerator and denominator in a ratio and can distinguish solution volume from solvent mass and total mole amount."
           ],
           "teaching_path": [
             {
@@ -3202,7 +3202,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Molarity, molality and mole fraction exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is definition-based: it requires the closure and composition qualification and identifies which denominator can change; it does not assert a universal numeric temperature coefficient."
             }
           },
           "worked_anchors": [
@@ -3309,7 +3309,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "HARD",
           "inferential_jump": "Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged.",
           "entry_assumptions": [
-            "For Molarity, molality and mole fraction, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can identify numerator and denominator in a ratio and can distinguish solution volume from solvent mass and total mole amount."
           ],
           "teaching_path": [
             {
@@ -3343,16 +3343,16 @@ window.GRADE9V3_CORE = {
               "defensible_answer": "For Molarity, molality and mole fraction, the defensible route is: Follow the definition and state the closure/composition assumptions before making a temperature-dependence claim."
             },
             "attempt": {
-              "produces": "A short Molarity, molality and mole fraction explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "produces": "A denominator-first comparison of molarity, molality and mole fraction, followed by a temperature-change argument that states whether the sample is closed and composition is unchanged.",
               "closure": "CRITERIA",
               "rubric": [
                 {
-                  "criterion": "The Molarity, molality and mole fraction response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-                  "evidence_of": "The learner can separate the Molarity, molality and mole fraction governing distinction from the tempting shortcut."
+                  "criterion": "The response names each denominator correctly and makes temperature dependence follow from what actually changes in that denominator.",
+                  "evidence_of": "It can explain why molarity may change on warming while molality and mole fraction remain unchanged only under no-loss and no-reaction conditions."
                 }
               ],
               "task": {
-                "prompt": "Explain the Molarity, molality and mole fraction decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "prompt": "For a sealed solution that warms and expands without reaction or material loss, compare what happens to molarity, molality and mole fraction. Identify the relevant denominator in each case.",
                 "givens": [
                   "Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged."
                 ],
@@ -3363,22 +3363,22 @@ window.GRADE9V3_CORE = {
             "reconstruct": {
               "route": [
                 {
-                  "ask": "In Molarity, molality and mole fraction, what must be decided before the move \"Write the denominator first: solution volume for molarity, solvent mass for molality, total moles for mole fraction.\" is justified?",
-                  "why_this_ask": "This makes the learner supply the entry decision for Molarity, molality and mole fraction instead of receiving the expert sequence first.",
+                  "ask": "Which denominator belongs to molarity, which belongs to molality, and which belongs to mole fraction?",
+                  "why_this_ask": "Starting from the denominator forces the learner to distinguish solution volume from solvent mass and total moles before temperature enters the reasoning.",
                   "from_step_ref": "MOLE-CONCENTRATION-T1"
                 },
                 {
-                  "ask": "For Molarity, molality and mole fraction, how would you test the conclusion reached by \"Identify exactly which numerator or denominator changes in the scenario.\" without simply repeating the model answer?",
-                  "why_this_ask": "This closes Molarity, molality and mole fraction through a learner-owned check rather than through recall of the declarative route.",
+                  "ask": "In a sealed unchanged sample that warms and expands, which of those denominators can change directly and which remain composition quantities?",
+                  "why_this_ask": "The closing sealed-sample check tests the qualification directly: volume may change while composition-defining masses and mole counts do not.",
                   "from_step_ref": "MOLE-CONCENTRATION-T3"
                 }
               ],
-              "differs_from_teaching_path": "For Molarity, molality and mole fraction, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+              "differs_from_teaching_path": "The declarative route lists the three definitions before discussing temperature; the reconstruction begins with the claim that all concentrations change when samples expand and makes the learner audit each denominator under a sealed-sample condition."
             },
             "boundary_test": {
               "prompt": "Under what qualification can molality and mole fraction be described as unchanged by temperature?",
               "answer": "For a closed sample whose composition and relevant masses/mole amounts do not change; temperature alone does not alter those mass- or mole-ratio denominators.",
-              "confirms": "For Molarity, molality and mole fraction, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+              "confirms": "It confirms that the learner can derive concentration behaviour from definitions and explicit sample assumptions rather than from a blanket rule about temperature."
             }
           },
           "misconceptions": [
@@ -3445,7 +3445,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Molarity, molality and mole fraction exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is definition-based: it requires the closure and composition qualification and identifies which denominator can change; it does not assert a universal numeric temperature coefficient."
             }
           },
           "worked_anchors": []
@@ -3537,7 +3537,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "HARD",
           "inferential_jump": "Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.",
           "entry_assumptions": [
-            "For Empirical formula, stoichiometry and limiting reagent, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can divide mass by molar or atomic mass to obtain amount and can read balanced-equation coefficients as mole ratios."
           ],
           "teaching_path": [
             {
@@ -3637,7 +3637,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Empirical formula, stoichiometry and limiting reagent exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is a stoichiometric-ratio explanation; it asserts no new yield value and is checked by reaction extent and inventory conservation."
             }
           },
           "worked_anchors": [
@@ -3744,7 +3744,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "HARD",
           "inferential_jump": "Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.",
           "entry_assumptions": [
-            "For Empirical formula, stoichiometry and limiting reagent, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can divide mass by molar or atomic mass to obtain amount and can read balanced-equation coefficients as mole ratios."
           ],
           "teaching_path": [
             {
@@ -3786,16 +3786,16 @@ window.GRADE9V3_CORE = {
               "defensible_answer": "For Empirical formula, stoichiometry and limiting reagent, the defensible route is: Convert mass to moles before both formula-ratio and limiting-reagent comparisons."
             },
             "attempt": {
-              "produces": "A short Empirical formula, stoichiometry and limiting reagent explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "produces": "A mole-ratio workflow that converts composition to empirical subscripts, distinguishes empirical from molecular scale, and identifies limiting reagent by moles divided by stoichiometric coefficient.",
               "closure": "CRITERIA",
               "rubric": [
                 {
-                  "criterion": "The Empirical formula, stoichiometry and limiting reagent response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-                  "evidence_of": "The learner can separate the Empirical formula, stoichiometry and limiting reagent governing distinction from the tempting shortcut."
+                  "criterion": "The response converts mass data to amount before comparing ratios and checks that predicted consumption never exceeds the supplied inventory.",
+                  "evidence_of": "It can explain why the smaller gram amount need not be limiting and why a molecular formula needs molar-mass information beyond the empirical ratio."
                 }
               ],
               "task": {
-                "prompt": "Explain the Empirical formula, stoichiometry and limiting reagent decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "prompt": "Explain why raw mass percentages cannot be used directly as formula subscripts. Then state the comparison that identifies the limiting reagent and how you would verify the result against available inventories.",
                 "givens": [
                   "Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made."
                 ],
@@ -3806,22 +3806,22 @@ window.GRADE9V3_CORE = {
             "reconstruct": {
               "route": [
                 {
-                  "ask": "In Empirical formula, stoichiometry and limiting reagent, what must be decided before the move \"Convert each elemental mass or percentage to moles before inferring an empirical ratio.\" is justified?",
-                  "why_this_ask": "This makes the learner supply the entry decision for Empirical formula, stoichiometry and limiting reagent instead of receiving the expert sequence first.",
+                  "ask": "Why must mass or percentage composition be converted to moles before you infer empirical-formula subscripts?",
+                  "why_this_ask": "The empirical-formula question exposes atomic-mass weighting before the learner encounters a second mass comparison in stoichiometry.",
                   "from_step_ref": "MOLE-FORMULA-STOICH-T1"
                 },
                 {
-                  "ask": "For Empirical formula, stoichiometry and limiting reagent, how would you test the conclusion reached by \"Compare each available mole amount relative to its stoichiometric coefficient.\" without simply repeating the model answer?",
-                  "why_this_ask": "This closes Empirical formula, stoichiometry and limiting reagent through a learner-owned check rather than through recall of the declarative route.",
+                  "ask": "Which normalized amount should be compared across reactants to identify the limiting reagent, and how can the resulting reaction extent be checked?",
+                  "why_this_ask": "The final inventory check makes the limiting-reagent decision falsifiable by conservation rather than a one-line coefficient trick.",
                   "from_step_ref": "MOLE-FORMULA-STOICH-T4"
                 }
               ],
-              "differs_from_teaching_path": "For Empirical formula, stoichiometry and limiting reagent, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+              "differs_from_teaching_path": "The expert route builds empirical formula before limiting-reagent reasoning; the reconstruction begins with two mass-based shortcuts and makes the learner discover that both fail for the same reason: chemical ratios count entities or amount, not grams."
             },
             "boundary_test": {
               "prompt": "Why can an excess reagent remain after a reaction even though the balanced equation has fixed coefficients?",
               "answer": "The coefficients fix the proportions that react, not the initial proportions supplied; material beyond the limiting ratio can remain.",
-              "confirms": "For Empirical formula, stoichiometry and limiting reagent, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+              "confirms": "It confirms that the learner uses moles as the common ratio language for both composition and reaction extent."
             }
           },
           "misconceptions": [
@@ -3887,7 +3887,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Empirical formula, stoichiometry and limiting reagent exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is a stoichiometric-ratio explanation; it asserts no new yield value and is checked by reaction extent and inventory conservation."
             }
           },
           "worked_anchors": []
@@ -3979,7 +3979,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "MEDIUM",
           "inferential_jump": "Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro's constant and molar mass.",
           "entry_assumptions": [
-            "For Combination laws, mole, Avogadro constant and molar mass, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can distinguish an empirical mass observation from a particle-model explanation and can perform unit-carrying mass-to-amount conversions."
           ],
           "teaching_path": [
             {
@@ -4072,7 +4072,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Combination laws, mole, Avogadro constant and molar mass exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is a meaning check on amount of substance; no new numerical particle count is asserted without a named entity."
             }
           },
           "worked_anchors": [
@@ -4179,7 +4179,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "MEDIUM",
           "inferential_jump": "Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro's constant and molar mass.",
           "entry_assumptions": [
-            "For Combination laws, mole, Avogadro constant and molar mass, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can distinguish an empirical mass observation from a particle-model explanation and can perform unit-carrying mass-to-amount conversions."
           ],
           "teaching_path": [
             {
@@ -4213,16 +4213,16 @@ window.GRADE9V3_CORE = {
               "defensible_answer": "For Combination laws, mole, Avogadro constant and molar mass, the defensible route is: Keep amount and mass separate, and attach an entity label to every particle-count statement."
             },
             "attempt": {
-              "produces": "A short Combination laws, mole, Avogadro constant and molar mass explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "produces": "A three-column bridge linking mass, moles and a named entity, plus one sentence separating empirical combination laws from the particle model used to explain them.",
               "closure": "CRITERIA",
               "rubric": [
                 {
-                  "criterion": "The Combination laws, mole, Avogadro constant and molar mass response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-                  "evidence_of": "The learner can separate the Combination laws, mole, Avogadro constant and molar mass governing distinction from the tempting shortcut."
+                  "criterion": "The response never equates one mole with one universal mass and never leaves the counted entity implicit.",
+                  "evidence_of": "It can say what is the same and what differs between one mole of helium atoms and one mole of water molecules, with units attached."
                 }
               ],
               "task": {
-                "prompt": "Explain the Combination laws, mole, Avogadro constant and molar mass decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "prompt": "Explain what one mole fixes and what it does not fix by comparing helium atoms with water molecules. Then state how an empirical mass-combination law differs from an atomic model used to explain it.",
                 "givens": [
                   "Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro's constant and molar mass."
                 ],
@@ -4233,22 +4233,22 @@ window.GRADE9V3_CORE = {
             "reconstruct": {
               "route": [
                 {
-                  "ask": "In Combination laws, mole, Avogadro constant and molar mass, what must be decided before the move \"Separate an empirical combination law from a particle model used to explain it.\" is justified?",
-                  "why_this_ask": "This makes the learner supply the entry decision for Combination laws, mole, Avogadro constant and molar mass instead of receiving the expert sequence first.",
+                  "ask": "What is guaranteed to be equal for one mole of helium atoms and one mole of water molecules, and what is not guaranteed to be equal?",
+                  "why_this_ask": "The comparison between two different substances reveals immediately whether the learner confuses equal amount of substance with equal mass.",
                   "from_step_ref": "MOLE-FOUNDATIONS-MOLE-T1"
                 },
                 {
-                  "ask": "For Combination laws, mole, Avogadro constant and molar mass, how would you test the conclusion reached by \"Use the path mass ↔ moles ↔ entities with units visible.\" without simply repeating the model answer?",
-                  "why_this_ask": "This closes Combination laws, mole, Avogadro constant and molar mass through a learner-owned check rather than through recall of the declarative route.",
+                  "ask": "When a fixed mass ratio is observed for a compound, which part is empirical evidence and which part belongs to the particle model used to explain it?",
+                  "why_this_ask": "Returning to empirical law versus model checks that the learner has not turned a useful particle explanation into the observation itself.",
                   "from_step_ref": "MOLE-FOUNDATIONS-MOLE-T3"
                 }
               ],
-              "differs_from_teaching_path": "For Combination laws, mole, Avogadro constant and molar mass, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+              "differs_from_teaching_path": "The declarative route separates empirical law from model before introducing mole conversions; the reconstruction starts from one-mole-always-has-the-same-mass and makes the learner repair that statement by naming the entity and molar mass."
             },
             "boundary_test": {
               "prompt": "Why is '0.5 mol' incomplete as a particle-count statement until the substance and entity are named?",
               "answer": "Because an amount alone does not identify which chemical entities are being counted.",
-              "confirms": "For Combination laws, mole, Avogadro constant and molar mass, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+              "confirms": "It confirms that the learner can keep observation, amount of substance, entity identity and mass in distinct but connected roles."
             }
           },
           "misconceptions": [
@@ -4315,7 +4315,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Combination laws, mole, Avogadro constant and molar mass exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is a meaning check on amount of substance; no new numerical particle count is asserted without a named entity."
             }
           },
           "worked_anchors": []
@@ -4407,7 +4407,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "HARD",
           "inferential_jump": "Half-reaction balancing is a conservation algorithm, while n-factor compresses the electron change for one specified redox transformation; neither is valid without the reaction context.",
           "entry_assumptions": [
-            "For Half-reaction balancing and reaction-dependent n-factor, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can conserve atom counts and algebraic charge in an ionic equation and can interpret electrons as transfer bookkeeping."
           ],
           "teaching_path": [
             {
@@ -4499,7 +4499,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Half-reaction balancing and reaction-dependent n-factor exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit has no standalone numeric n-factor claim; correctness depends on atom and charge conservation plus explicit reaction context."
             }
           },
           "worked_anchors": [
@@ -4606,7 +4606,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "HARD",
           "inferential_jump": "Half-reaction balancing is a conservation algorithm, while n-factor compresses the electron change for one specified redox transformation; neither is valid without the reaction context.",
           "entry_assumptions": [
-            "For Half-reaction balancing and reaction-dependent n-factor, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can conserve atom counts and algebraic charge in an ionic equation and can interpret electrons as transfer bookkeeping."
           ],
           "teaching_path": [
             {
@@ -4640,16 +4640,16 @@ window.GRADE9V3_CORE = {
               "defensible_answer": "For Half-reaction balancing and reaction-dependent n-factor, the defensible route is: Keep separate atom and charge ledgers, and derive n-factor from the actual balanced transformation each time."
             },
             "attempt": {
-              "produces": "A short Half-reaction balancing and reaction-dependent n-factor explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "produces": "A balancing checklist with separate atom and charge ledgers, the declared medium, electron cancellation, and a reaction-specific derivation of n-factor.",
               "closure": "CRITERIA",
               "rubric": [
                 {
-                  "criterion": "The Half-reaction balancing and reaction-dependent n-factor response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-                  "evidence_of": "The learner can separate the Half-reaction balancing and reaction-dependent n-factor governing distinction from the tempting shortcut."
+                  "criterion": "The response verifies both matter and charge conservation and refuses to assign n-factor without specifying the transformation.",
+                  "evidence_of": "It can explain why H+, OH- or H2O choices depend on medium and why the same reagent may have different n-factors in different redox reactions."
                 }
               ],
               "task": {
-                "prompt": "Explain the Half-reaction balancing and reaction-dependent n-factor decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "prompt": "State the final checks for an ionic half-reaction balance in a declared medium. Then explain why a reagent's n-factor must be derived from the specified product or oxidation-state change rather than memorised once.",
                 "givens": [
                   "Half-reaction balancing is a conservation algorithm, while n-factor compresses the electron change for one specified redox transformation; neither is valid without the reaction context."
                 ],
@@ -4660,22 +4660,22 @@ window.GRADE9V3_CORE = {
             "reconstruct": {
               "route": [
                 {
-                  "ask": "In Half-reaction balancing and reaction-dependent n-factor, what must be decided before the move \"State acidic or basic aqueous medium before choosing balancing species.\" is justified?",
-                  "why_this_ask": "This makes the learner supply the entry decision for Half-reaction balancing and reaction-dependent n-factor instead of receiving the expert sequence first.",
+                  "ask": "After the atoms have been balanced, what separate charge ledger must still agree on the two sides of an ionic redox equation?",
+                  "why_this_ask": "Separating the atom ledger from the charge ledger exposes equations that look balanced by inspection but cannot represent a valid ionic redox process.",
                   "from_step_ref": "REDOX-BALANCE-NFACTOR-T1"
                 },
                 {
-                  "ask": "For Half-reaction balancing and reaction-dependent n-factor, how would you test the conclusion reached by \"Derive n-factor from the electron change and stoichiometric role in the specified balanced reaction.\" without simply repeating the model answer?",
-                  "why_this_ask": "This closes Half-reaction balancing and reaction-dependent n-factor through a learner-owned check rather than through recall of the declarative route.",
+                  "ask": "What information about the actual redox transformation is required before an n-factor can be assigned to the reagent?",
+                  "why_this_ask": "The final question makes the learner derive electron change from a stated transformation, which is the only safe basis for an n-factor claim.",
                   "from_step_ref": "REDOX-BALANCE-NFACTOR-T3"
                 }
               ],
-              "differs_from_teaching_path": "For Half-reaction balancing and reaction-dependent n-factor, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+              "differs_from_teaching_path": "The expert route balances the half-reactions before discussing n-factor; the reconstruction starts from two shortcuts—atoms balanced means done and n-factor is fixed—and makes the learner use charge conservation and product-dependent electron change to repair both."
             },
             "boundary_test": {
               "prompt": "Why can a redox reagent have different n-factors in different reactions?",
               "answer": "Because n-factor is the reaction-specific number of electrons transferred per formula amount, and that electron change can differ with the product and oxidation-state pathway.",
-              "confirms": "For Half-reaction balancing and reaction-dependent n-factor, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+              "confirms": "It confirms that the learner treats balancing and equivalent bookkeeping as reaction-conditioned conservation procedures."
             }
           },
           "misconceptions": [
@@ -4741,7 +4741,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Half-reaction balancing and reaction-dependent n-factor exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit has no standalone numeric n-factor claim; correctness depends on atom and charge conservation plus explicit reaction context."
             }
           },
           "worked_anchors": []
@@ -4833,7 +4833,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "HARD",
           "inferential_jump": "A reaction is redox only when oxidation-number bookkeeping shows coupled increase and decrease; reaction labels such as decomposition or displacement do not replace that test.",
           "entry_assumptions": [
-            "For Redox classification, displacement and disproportionation patterns, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can compare oxidation numbers for the same element on both sides of a reaction and can read reactant-to-product direction explicitly."
           ],
           "teaching_path": [
             {
@@ -4925,7 +4925,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Redox classification, displacement and disproportionation patterns exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is classificatory rather than numerical; the required evidence is an actual oxidation-number change, not the reaction's surface label."
             }
           },
           "worked_anchors": [
@@ -5031,7 +5031,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "HARD",
           "inferential_jump": "A reaction is redox only when oxidation-number bookkeeping shows coupled increase and decrease; reaction labels such as decomposition or displacement do not replace that test.",
           "entry_assumptions": [
-            "For Redox classification, displacement and disproportionation patterns, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can compare oxidation numbers for the same element on both sides of a reaction and can read reactant-to-product direction explicitly."
           ],
           "teaching_path": [
             {
@@ -5065,16 +5065,16 @@ window.GRADE9V3_CORE = {
               "defensible_answer": "For Redox classification, displacement and disproportionation patterns, the defensible route is: Run the oxidation-number change check first, then draw the directed state map before naming a special redox pattern."
             },
             "attempt": {
-              "produces": "A short Redox classification, displacement and disproportionation patterns explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "produces": "A before-and-after oxidation-state map that first decides redox versus non-redox and then, if relevant, classifies split or convergent states.",
               "closure": "CRITERIA",
               "rubric": [
                 {
-                  "criterion": "The Redox classification, displacement and disproportionation patterns response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-                  "evidence_of": "The learner can separate the Redox classification, displacement and disproportionation patterns governing distinction from the tempting shortcut."
+                  "criterion": "The response uses oxidation-number changes as the redox test and uses arrow direction, not the mere presence of three states, to identify disproportionation or comproportionation.",
+                  "evidence_of": "It can classify an ion-exchange reaction with unchanged oxidation numbers as non-redox and distinguish one-to-two from two-to-one oxidation-state mappings."
                 }
               ],
               "task": {
-                "prompt": "Explain the Redox classification, displacement and disproportionation patterns decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "prompt": "Consider a reaction that forms new substances but leaves every oxidation number unchanged; classify it. Then describe the oxidation-state arrow pattern that distinguishes disproportionation from comproportionation.",
                 "givens": [
                   "A reaction is redox only when oxidation-number bookkeeping shows coupled increase and decrease; reaction labels such as decomposition or displacement do not replace that test."
                 ],
@@ -5085,22 +5085,22 @@ window.GRADE9V3_CORE = {
             "reconstruct": {
               "route": [
                 {
-                  "ask": "In Redox classification, displacement and disproportionation patterns, what must be decided before the move \"Recognise the chemical reaction without yet calling it redox.\" is justified?",
-                  "why_this_ask": "This makes the learner supply the entry decision for Redox classification, displacement and disproportionation patterns instead of receiving the expert sequence first.",
+                  "ask": "Can a genuine chemical reaction occur with no oxidation-number changes, and what would that imply about its redox classification?",
+                  "why_this_ask": "A non-redox reaction with genuine chemical change is the strongest way to break the shortcut that new substances are sufficient redox evidence.",
                   "from_step_ref": "REDOX-CLASSIFICATION-T1"
                 },
                 {
-                  "ask": "For Redox classification, displacement and disproportionation patterns, how would you test the conclusion reached by \"For the same element, map one initial state splitting upward and downward as disproportionation, and two starting states converging as comproportionation.\" without simply repeating the model answer?",
-                  "why_this_ask": "This closes Redox classification, displacement and disproportionation patterns through a learner-owned check rather than through recall of the declarative route.",
+                  "ask": "For the same element, how do the reactant-to-product arrows differ between disproportionation and comproportionation?",
+                  "why_this_ask": "The second ask requires arrows between oxidation states, preventing classification of a three-state picture without reactant/product direction.",
                   "from_step_ref": "REDOX-CLASSIFICATION-T3"
                 }
               ],
-              "differs_from_teaching_path": "For Redox classification, displacement and disproportionation patterns, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+              "differs_from_teaching_path": "The declarative route separates chemical change from redox before special patterns; the reconstruction starts with every-reaction-is-redox and forces the learner to find a counterexample before drawing split and convergent state maps."
             },
             "boundary_test": {
               "prompt": "Why is decomposition alone insufficient to call a reaction redox?",
               "answer": "Decomposition describes a reaction pattern, whereas redox requires actual oxidation-number changes.",
-              "confirms": "For Redox classification, displacement and disproportionation patterns, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+              "confirms": "It confirms that the learner can resist reaction-name shortcuts and base redox classification on directed oxidation-state evidence."
             }
           },
           "misconceptions": [
@@ -5166,7 +5166,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Redox classification, displacement and disproportionation patterns exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is classificatory rather than numerical; the required evidence is an actual oxidation-number change, not the reaction's surface label."
             }
           },
           "worked_anchors": []
@@ -5258,7 +5258,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "MEDIUM",
           "inferential_jump": "Oxidation number is a formal assignment whose increase corresponds to oxidation and decrease to reduction; an oxidising agent is itself reduced while a reducing agent is itself oxidised.",
           "entry_assumptions": [
-            "For Oxidation number, oxidation/reduction and agents, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can assign simple oxidation numbers using standard priority rules and can track the same element from reactants to products."
           ],
           "teaching_path": [
             {
@@ -5351,7 +5351,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Oxidation number, oxidation/reduction and agents exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is a bookkeeping explanation; it is closed by reconciling oxidation-state changes and agent roles, not by a measured atomic charge."
             }
           },
           "worked_anchors": [
@@ -5458,7 +5458,7 @@ window.GRADE9V3_CORE = {
           "intrinsic_badge": "MEDIUM",
           "inferential_jump": "Oxidation number is a formal assignment whose increase corresponds to oxidation and decrease to reduction; an oxidising agent is itself reduced while a reducing agent is itself oxidised.",
           "entry_assumptions": [
-            "For Oxidation number, oxidation/reduction and agents, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+            "Can assign simple oxidation numbers using standard priority rules and can track the same element from reactants to products."
           ],
           "teaching_path": [
             {
@@ -5492,16 +5492,16 @@ window.GRADE9V3_CORE = {
               "defensible_answer": "For Oxidation number, oxidation/reduction and agents, the defensible route is: Label oxidation state as formal bookkeeping; write self-change first, then assign the opposite process as the agent name."
             },
             "attempt": {
-              "produces": "A short Oxidation number, oxidation/reduction and agents explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "produces": "An oxidation-state ledger that reconciles total charge, identifies which species is oxidised or reduced, and only then names the oxidising and reducing agents.",
               "closure": "CRITERIA",
               "rubric": [
                 {
-                  "criterion": "The Oxidation number, oxidation/reduction and agents response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-                  "evidence_of": "The learner can separate the Oxidation number, oxidation/reduction and agents governing distinction from the tempting shortcut."
+                  "criterion": "The response treats oxidation state as formal assignment and derives agent names from the effect on the reaction partner.",
+                  "evidence_of": "It can explain why the electron acceptor is reduced yet is called the oxidising agent, with the oxidation-number direction consistent throughout."
                 }
               ],
               "task": {
-                "prompt": "Explain the Oxidation number, oxidation/reduction and agents decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "prompt": "Species A accepts electrons from B. Track the oxidation or reduction of A and B, name both agents, and explain why the oxidation numbers used in the argument are formal bookkeeping rather than literal atomic charges.",
                 "givens": [
                   "Oxidation number is a formal assignment whose increase corresponds to oxidation and decrease to reduction; an oxidising agent is itself reduced while a reducing agent is itself oxidised."
                 ],
@@ -5512,22 +5512,22 @@ window.GRADE9V3_CORE = {
             "reconstruct": {
               "route": [
                 {
-                  "ask": "In Oxidation number, oxidation/reduction and agents, what must be decided before the move \"Apply oxidation-number priority rules and require the algebraic sum to equal the species charge.\" is justified?",
-                  "why_this_ask": "This makes the learner supply the entry decision for Oxidation number, oxidation/reduction and agents instead of receiving the expert sequence first.",
+                  "ask": "If species A accepts electrons from B, what happens to A and B before you attach either agent name?",
+                  "why_this_ask": "The initial electron-transfer question creates an unambiguous self-change before any agent label is allowed, removing the linguistic trap from the first step.",
                   "from_step_ref": "REDOX-OXIDATION-AGENTS-T1"
                 },
                 {
-                  "ask": "For Oxidation number, oxidation/reduction and agents, how would you test the conclusion reached by \"Name the species being reduced as the oxidising agent and the species being oxidised as the reducing agent.\" without simply repeating the model answer?",
-                  "why_this_ask": "This closes Oxidation number, oxidation/reduction and agents through a learner-owned check rather than through recall of the declarative route.",
+                  "ask": "How can you check that the oxidation-number assignments used in the agent argument are internally consistent with each species' total charge?",
+                  "why_this_ask": "The charge-sum check forces the learner back to formal oxidation-state bookkeeping, so the agent conclusion is supported by a consistent ledger rather than a memorised slogan.",
                   "from_step_ref": "REDOX-OXIDATION-AGENTS-T3"
                 }
               ],
-              "differs_from_teaching_path": "For Oxidation number, oxidation/reduction and agents, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+              "differs_from_teaching_path": "The expert route assigns oxidation numbers before naming agents; the reconstruction starts with the common reversal that the oxidised species is the oxidising agent and makes the learner build a two-column self-change versus effect-on-partner ledger."
             },
             "boundary_test": {
               "prompt": "Why is an oxidation number useful even though it is not generally a measured atomic charge?",
               "answer": "Its formal assignment rules consistently expose electron-accounting changes between reactants and products.",
-              "confirms": "For Oxidation number, oxidation/reduction and agents, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+              "confirms": "It confirms that the learner can hold self-change, electron direction and agent naming together without reversing any of them."
             }
           },
           "misconceptions": [
@@ -5594,7 +5594,7 @@ window.GRADE9V3_CORE = {
               "verification_status": "CHECKED_BY_AUTHOR"
             },
             "oracle": {
-              "no_numeric_claim": "The Oxidation number, oxidation/reduction and agents exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+              "no_numeric_claim": "The exit is a bookkeeping explanation; it is closed by reconciling oxidation-state changes and agent roles, not by a measured atomic charge."
             }
           },
           "worked_anchors": []

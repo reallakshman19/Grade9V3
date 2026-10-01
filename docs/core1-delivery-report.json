@@ -10,19 +10,19 @@
     "local_phase_debt_is_not_delivery_debt": true
   },
   "summary": {
-    "projection_count": 233,
+    "projection_count": 261,
     "projection_counts_by_core": {
-      "CORE1": 22,
-      "CORE1A": 90,
-      "CORE1B": 90,
+      "CORE1": 26,
+      "CORE1A": 102,
+      "CORE1B": 102,
       "CORE2A": 20,
       "CORE2B": 11
     },
-    "expected_core1_buckets": 22,
-    "expected_routed_study_microtopics": 90,
+    "expected_core1_buckets": 26,
+    "expected_routed_study_microtopics": 102,
     "delivery_findings": 0,
     "finding_counts": {},
     "upstream_cross_progression_gap_microtopics": 5
   },
   "findings": []
-}
+}\n
