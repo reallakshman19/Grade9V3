@@ -679,7 +679,9 @@
       "misleading_alternatives": [
         "For Particle model, speed distributions and phase change, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
       ],
-      "rendered_asset_refs": [],
+      "rendered_asset_refs": [
+        "Chemistry/assets/representations/rep-chem-gas-kinetic-phase.svg"
+      ],
       "scene_instances": [
         {
           "id": "SCENE-CHEM-GAS-KINETIC-PHASE",
@@ -747,7 +749,9 @@
       "misleading_alternatives": [
         "For Gas-law constraints, mixtures and transport, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
       ],
-      "rendered_asset_refs": [],
+      "rendered_asset_refs": [
+        "Chemistry/assets/representations/rep-chem-gas-ideal-laws.svg"
+      ],
       "scene_instances": [
         {
           "id": "SCENE-CHEM-GAS-IDEAL-LAWS",
@@ -814,7 +818,9 @@
       "misleading_alternatives": [
         "For Real-gas deviations and critical behaviour, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
       ],
-      "rendered_asset_refs": [],
+      "rendered_asset_refs": [
+        "Chemistry/assets/representations/rep-chem-gas-real-critical.svg"
+      ],
       "scene_instances": [
         {
           "id": "SCENE-CHEM-GAS-REAL-CRITICAL",
