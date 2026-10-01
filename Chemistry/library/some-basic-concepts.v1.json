@@ -241,9 +241,7 @@
           "output": "Unit cancellation checks the conversion direction."
         }
       ],
-      "relation_refs": [
-        "REL-CHEM-MOLE-FOUNDATIONS-MOLE"
-      ],
+      "relation_refs": [],
       "representation_refs": [
         "REP-CHEM-MOLE-FOUNDATIONS-MOLE"
       ],
@@ -416,9 +414,7 @@
           "output": "H₂ is limiting; 3.0 mol H₂ and 1.5 mol O₂ are consumed, 3.0 mol H₂O forms, and 0.5 mol O₂ remains."
         }
       ],
-      "relation_refs": [
-        "REL-CHEM-MOLE-FORMULA-STOICH"
-      ],
+      "relation_refs": [],
       "representation_refs": [
         "REP-CHEM-MOLE-FORMULA-STOICH"
       ],
@@ -584,9 +580,7 @@
           "output": "Definition-level bookkeeping closes the reasoning."
         }
       ],
-      "relation_refs": [
-        "REL-CHEM-MOLE-CONCENTRATION"
-      ],
+      "relation_refs": [],
       "representation_refs": [
         "REP-CHEM-MOLE-CONCENTRATION"
       ],
@@ -756,10 +750,10 @@
         {
           "id": "REL-CHEM-MOLE-FOUNDATIONS-MOLE-D1",
           "role": "DECLARE",
-          "action": "Write the relation only after the quantities and model conditions have been named.",
-          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "action": "Convert sample mass to amount with molar mass, then convert amount to a named entity count with Avogadro constant.",
+          "why_valid": "For 18.0 g H₂O at M = 18.0 g mol⁻¹, n = m/M = 1.00 mol and N = nNA = NA water molecules.",
           "inputs": [],
-          "output": "n = m/M; N = nNA"
+          "output": "18.0 g H₂O → 1.00 mol H₂O → NA molecules"
         }
       ],
       "limits": [
@@ -809,10 +803,10 @@
         {
           "id": "REL-CHEM-MOLE-FORMULA-STOICH-D1",
           "role": "DECLARE",
-          "action": "Write the relation only after the quantities and model conditions have been named.",
-          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "action": "Divide each available reactant amount by its stoichiometric coefficient and choose the smallest supported reaction extent.",
+          "why_valid": "For 2H₂ + O₂ → 2H₂O with 3.0 mol H₂ and 2.0 mol O₂, 3.0/2 = 1.5 is smaller than 2.0/1 = 2.0, so H₂ is limiting.",
           "inputs": [],
-          "output": "supported extent ξi = ni/νi; limiting extent = min(ni/νi)"
+          "output": "ξH₂ = 3.0/2 = 1.5 < ξO₂ = 2.0/1 = 2.0"
         }
       ],
       "limits": [
@@ -877,8 +871,8 @@
         {
           "id": "REL-CHEM-MOLE-CONCENTRATION-D1",
           "role": "DECLARE",
-          "action": "Write the relation only after the quantities and model conditions have been named.",
-          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "action": "Write each concentration with its own denominator before predicting the effect of a temperature-driven volume change.",
+          "why_valid": "For a closed unchanged sample, c = nsolute/Vsolution can change if Vsolution changes, while b = nsolute/msolvent and xi = ni/Σnj keep fixed mass or mole denominators.",
           "inputs": [],
           "output": "c = nsolute/Vsolution; b = nsolute/msolvent; xi = ni/Σnj"
         }
@@ -961,7 +955,7 @@
       "correspondence": [
         {
           "element": "equation body",
-          "symbol": "N = nNₐ",
+          "symbol": "N",
           "in_words": "For Combination laws, mole, Avogadro constant and molar mass, the displayed symbols mean: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge."
         }
       ],
@@ -1058,7 +1052,7 @@
       "correspondence": [
         {
           "element": "equation body",
-          "symbol": "extent ∝ nᵢ/νᵢ",
+          "symbol": "ξi",
           "in_words": "For Empirical formula, stoichiometry and limiting reagent, the displayed symbols mean: Available amount divided by the balanced-equation stoichiometric coefficient reveals which reactant inventory supports the smallest reaction extent."
         }
       ],
@@ -1155,7 +1149,7 @@
       "correspondence": [
         {
           "element": "equation body",
-          "symbol": "c = n/V",
+          "symbol": "c",
           "in_words": "For Molarity, molality and mole fraction, the displayed symbols mean: Molarity uses solution volume as its denominator; molality and mole fraction use different denominators and therefore different temperature sensitivities."
         }
       ],
@@ -1423,7 +1417,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Author-created Core1A worked anchor revised for blueprint-v2: it executes the unit construction on a concrete species or numerical case."
+        "basis": "D2 because the learner must compare coefficient-normalized reactant inventories, identify the limiting extent, then compute product and leftover amounts."
       }
     },
     {
