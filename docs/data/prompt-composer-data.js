@@ -289,9 +289,9 @@ window.GRADE9V3_PROMPT_COMPOSER = {
     },
     "CORE2": {
       "core": "CORE2",
-      "blueprint_ref": "BP-CORE2-SOURCE-QUESTION@1.2.0",
+      "blueprint_ref": "BP-CORE2-SOURCE-QUESTION@1.1.0",
       "blueprint_id": "BP-CORE2-SOURCE-QUESTION",
-      "blueprint_version": "1.2.0",
+      "blueprint_version": "1.1.0",
       "shell_ref": "G9-TABLET-SHELL-V1",
       "layout_family": "QUESTION_READER",
       "required_slots": [
@@ -343,30 +343,13 @@ window.GRADE9V3_PROMPT_COMPOSER = {
         "ANSWER_REVEALED_BY_PRE_SOLUTION_SUPPORT",
         "GENERIC_FILLER_SUPPORT_TO_MEET_RUNG_COUNT",
         "CORE2_COLLAPSED_INTO_QUESTION_CLINIC"
-      ],
-      "presentation_profile": {
-        "id": "CORE2_TABLET_QBANK_R2_V1",
-        "benchmark_ref": "docs/question-bank/pass1/canonical_question_bank_10inch_tablet.html@08446b534bef5a6cb364f0c355881d7d5cbda0b7#sha256:4e264fc62da5846e316ca49d69bbc62cb44cbf6dcfe5173c57f941fde64b47c0",
-        "default_theme": "LIGHT",
-        "anatomy": [
-          "QUESTION_CARD_HEADER",
-          "ATTEMPT_FIRST_STEM",
-          "CONDITIONS_PANEL",
-          "QUESTION_ALIGNED_VISUAL",
-          "PROVENANCE_SUPPORT_LANES",
-          "LEARNER_OPENABLE_SOLUTION",
-          "STRUCTURED_DERIVATION",
-          "INDEPENDENT_CHECK"
-        ],
-        "question_layout": "QUESTION_VISUAL_42_58_WITH_SUPPORT_RAIL",
-        "support_model": "PROVENANCE_PROGRESSIVE"
-      }
+      ]
     },
     "CORE1A": {
       "core": "CORE1A",
-      "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.3.0",
+      "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
       "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-      "blueprint_version": "1.3.0",
+      "blueprint_version": "1.1.0",
       "shell_ref": "G9-TABLET-SHELL-V1",
       "layout_family": "READING_CONSTRUCTION",
       "required_slots": [
@@ -377,8 +360,7 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       "slot_order": [
         "identity",
         "construction",
-        "repair_closure",
-        "activity"
+        "repair_closure"
       ],
       "interaction_policy": {
         "attempt_before_reveal": "FROM_PROJECTION",
@@ -388,6 +370,7 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       "representation_policy": {
         "preferred_mount_modes": [
           "PORTABLE_SCENE",
+          "COMPONENT",
           "STATIC_FIGURE"
         ],
         "legacy_iframe": "MIGRATION_ONLY"
@@ -413,28 +396,8 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       "forbidden": [
         "PAGE_LOCAL_ACADEMIC_TRUTH",
         "HOVER_ONLY_ESSENTIAL_INFORMATION",
-        "ATTEMPT_FIRST_AS_PRIMARY_MODE",
-        "UNREGISTERED_PAGE_LOCAL_INTERACTION",
-        "INTERACTION_REQUIRED_FOR_STATIC_ACADEMIC_CLOSURE"
-      ],
-      "presentation_profile": {
-        "id": "CORE1A_TABLET_BENCHMARK_V1",
-        "benchmark_ref": "benchmarks/core1a-motion-in-a-plane-tablet.html@450de73fb024ec51257b18de92f9c3faa82fe7c2",
-        "default_theme": "DARK",
-        "anatomy": [
-          "CHAPTER_HERO",
-          "CONCEPT_CARD",
-          "INFERENTIAL_JUMP_BANNER",
-          "STEP_CARDS",
-          "EQUATION_VALIDITY_CARD",
-          "WORKED_ANCHOR_CARD",
-          "STAGED_VISUAL_RAIL",
-          "MISCONCEPTION_REPAIR_RAIL",
-          "ACTIVE_RECALL_CLOSURE"
-        ],
-        "construction_step_format": "ACTION_WHY_OUTPUT",
-        "support_rail": "VISUAL_MISCONCEPTION_CHECKS"
-      }
+        "ATTEMPT_FIRST_AS_PRIMARY_MODE"
+      ]
     },
     "CORE1B": {
       "core": "CORE1B",
