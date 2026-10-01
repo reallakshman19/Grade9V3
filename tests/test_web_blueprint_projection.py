@@ -16,7 +16,7 @@ class WebBlueprintProjectionTests(unittest.TestCase):
         expected = {
             "CORE1": "BP-CORE1-ORIENTATION@1.0.0",
             "CORE2": "BP-CORE2-SOURCE-QUESTION@1.1.0",
-            "CORE1A": "BP-CORE1A-CONSTRUCTION@1.2.0",
+            "CORE1A": "BP-CORE1A-CONSTRUCTION@1.3.0",
             "CORE1B": "BP-CORE1B-RECONSTRUCTION@1.0.0",
             "CORE2A": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
             "CORE2B": "BP-CORE2B-TRANSFER@1.0.0",
