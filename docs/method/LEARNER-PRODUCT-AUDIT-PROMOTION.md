@@ -4,6 +4,26 @@ Status: **PROPOSED**
 Date: 2026-10-01  
 Scope: learner-facing Core products and interactive learning webpages entering Grade9V3 from an existing draft PR, an uploaded artifact, or a TEST-page intake.
 
+Protocol machine identity:
+
+- `protocol_id: LPAP`
+- `protocol_revision: 1`
+- `protocol_spec: LPAP-v1`
+- `protocol_digest`: SHA-256 of the exact normative specification bytes used by an audit run.
+
+Stable profile identities for this revision are:
+
+- `LPAP.COMMON@1`
+- `LPAP.CORE2@1`
+- `LPAP.CORE1A@1`
+- `LPAP.INTERACTIVE@1`
+- `LPAP.CORE1@1`
+- `LPAP.CORE1B@1`
+- `LPAP.CORE2A@1`
+- `LPAP.CORE2B@1`
+
+Content/runtime modules and automated rules MUST likewise use stable machine IDs with explicit revisions, for example `LPAP.C2.HINT.PROVENANCE@1`. A future semantic change to a rule MUST change its revision or digest rather than silently reusing evidence produced under different logic.
+
 ## 1. Purpose
 
 LPAP-v1 defines how a candidate learner product is independently audited, reconciled with repository authority, corrected, integrated into learner navigation, and presented for Owner acceptance.
@@ -52,19 +72,24 @@ This separation is mandatory. A mathematically correct page can still violate it
 
 ## 4. Canonical intake invariant
 
-Regardless of origin, every promotion candidate MUST normalize to:
+Regardless of origin, every promotion effort MUST normalize to one **promotion set** on one draft PR.
+
+A promotion set MAY contain one or more auditable learner products. Each product keeps its own logical identity, complete artifact/bundle digest, role profile, findings and product-level result. The PR also carries one aggregate audit packet so a legitimate multi-product unit does not fragment into unnecessary PRs.
 
 ```text
-one candidate
+one promotion set
 → one draft PR
 → one exact head SHA
-→ one declared candidate scope
+→ N declared product candidates
+→ per-product exact artifact/bundle identity
 → one deduplication/lineage reconciliation
-→ one audit plan
-→ one audit packet
-→ one corrected candidate
-→ one Owner decision on an exact rendered/output digest
+→ one composed audit plan
+→ per-product evidence + one aggregate audit packet
+→ corrections on the same PR
+→ one Owner decision that names every exact accepted product/render/bundle digest
 ```
+
+In LPAP, **candidate** means one product candidate inside a promotion set unless the text explicitly says promotion set. This remains compatible with the repository's one-unit/one-PR method.
 
 Uploads and TEST-page submissions are intake adapters only. They MUST NOT create separate downstream audit protocols.
 
@@ -118,9 +143,61 @@ Every audit packet MUST bind to:
 
 - candidate PR number or intake identity;
 - exact candidate head SHA;
-- exact artifact digest(s);
-- audit-profile version;
-- canonical-basis digest or equivalent source-state identity where applicable.
+- exact per-product artifact or bundle digest;
+- exact raw-upload digest when an upload/ZIP supplied the bytes;
+- selected profile IDs and rule revisions/digests;
+- `protocol_digest`;
+- canonical/source-basis digest or equivalent source-state identity where applicable.
+
+### 5.1 Multi-file and interactive bundle identity
+
+For an HTML directory, ZIP, interactive webpage, or any product whose behavior depends on multiple files, publication identity MUST cover the entire deployable closure, not only the entry HTML.
+
+Construct a deterministic bundle manifest from every deployable local file. Each entry MUST contain at least:
+
+- normalized POSIX relative path;
+- byte length;
+- SHA-256 of the exact bytes.
+
+Entries MUST be sorted deterministically by normalized path. The `bundle_digest` is SHA-256 over a canonical serialization of that complete manifest.
+
+The bundle builder MUST reject or explicitly resolve:
+
+- absolute paths;
+- `..` traversal;
+- duplicate normalized paths;
+- unsafe or escaping symlinks;
+- case-colliding paths where the deployment target could collapse them.
+
+The original ZIP/upload bytes, when present, retain their own `raw_upload_sha256`; unpacking/repackaging does not erase upload provenance.
+
+Remote assets are not silently part of a local bundle. An external runtime dependency MUST either be pinned by an independently verifiable immutable identity and declared in the audit basis, vendored into the deployable closure, or recorded as an unresolved runtime/publication dependency.
+
+A normalized/semantic digest is never publication identity. Owner acceptance of a multi-file product MUST name the complete `bundle_digest` or a governed render digest that transitively and verifiably binds the complete deployable closure.
+
+### 5.2 Authority conflict semantics
+
+LPAP MUST preserve disagreement between authoritative evidence rather than silently choosing whichever source matches the candidate.
+
+For each material claim, distinguish applicable evidence such as:
+
+- canonical repository academic records;
+- source-custody/original-source evidence;
+- admitted extension records;
+- Owner-supplied benchmark/reference material;
+- Core role/specification contracts;
+- candidate artifact content.
+
+When material authorities disagree, create an explicit `AUTHORITY_CONFLICT` or `SOURCE_CONFLICT` finding that records:
+
+- the affected claim/item;
+- each disagreeing authority and exact basis;
+- the practical learner/product consequence;
+- the reconciliation needed or Owner/repository decision required.
+
+The affected claim MUST NOT be described as `PASS` while the disagreement remains unresolved.
+
+This is evidence preservation, not a new permission gate: the Owner may still accept an exact product with acknowledged findings under the existing acceptance method.
 
 When the PR head changes, evidence tied to the old head remains historical evidence and MUST NOT silently apply to the new bytes.
 
@@ -130,13 +207,32 @@ Expensive evidence MAY be reused only when its complete reuse key still matches.
 
 Deduplication happens before substantive promotion review.
 
-The protocol MUST distinguish:
+LPAP uses two separate dimensions and MUST NOT replace a stronger existing subsystem vocabulary.
 
-- **DUPLICATE** — the same learner/source object; reuse one identity;
-- **VARIANT / ADAPTATION** — a different object derived from another; preserve separate identity and lineage;
-- **RELATED** — shares capability, family, concept, or source context but is not the same object;
-- **NEW** — no existing canonical identity applies;
-- **UNRESOLVED** — evidence is insufficient to classify safely.
+### Identity relation
+
+Where the Question Bank dedup engine applies, preserve its existing relation exactly:
+
+- `DUPLICATE`
+- `SOURCE_COLLISION`
+- `VARIANT`
+- `NEAR_DUPLICATE`
+- `DISTINCT`
+
+LPAP may additionally use `RELATED` for a non-QB relationship such as shared capability/family/concept when identity is known to be distinct.
+
+`SOURCE_COLLISION` and `NEAR_DUPLICATE` MUST NOT be collapsed into a generic unresolved/related state.
+
+### Promotion action
+
+Separately record what promotion should do with that identity evidence:
+
+- `REUSE_CANONICAL`
+- `ADMIT_VARIANT`
+- `ADMIT_NEW`
+- `HOLD_UNRESOLVED`
+
+`HOLD_UNRESOLVED` means only that identity is not safe to mutate/admit automatically; it is not a publication veto and does not create a general work-stop state.
 
 String similarity alone MUST NOT collapse records.
 
@@ -154,13 +250,11 @@ Exact digest matches can establish byte identity, but byte difference alone does
 
 ### 6.3 Normalized-content comparison
 
-HTML, SVG, or text MAY also receive a normalized digest after removal of irrelevant variance such as:
+HTML, SVG, or text MAY also receive a normalized digest for duplicate-candidate evidence, but normalization MUST be media-type and semantics aware.
 
-- generated timestamps;
-- formatting-only whitespace;
-- known volatile generated identifiers.
+Only transformations whose semantic irrelevance is explicitly defined and tested for that media type may be used. Generic whitespace removal or generated-ID removal is unsafe for some HTML, SVG, scripts, styles, data files, and accessibility relationships and MUST NOT be assumed harmless.
 
-Both raw provenance digest and normalized digest MUST be retained. The normalized digest MUST NOT replace source custody.
+Both raw provenance digest and normalized digest MUST be retained. A normalized digest is only deduplication/reconciliation evidence; it MUST NOT replace source custody, raw byte identity, bundle identity, executable identity, or Owner publication identity.
 
 ### 6.4 Academic identity comparison
 
@@ -194,27 +288,35 @@ Exact renders remain separately identifiable by digest.
 
 A repeated defect mechanism SHOULD be grouped into one finding listing affected records.
 
-A stable finding key SHOULD be based on:
+A stable finding identity MUST bind a stable rule ID/revision, not a prose heading. Conceptually:
 
 ```text
-audit rule
+rule_id@revision
 + canonical item/ref
 + affected field/surface
 + defect mechanism
++ context identity where the rule is role-sensitive
 ```
 
-Across renders, the same finding becomes `OPEN`, `FIXED`, `WONT_FIX`, or `REGRESSED`; it SHOULD NOT be recreated as an unrelated finding.
+Example rule ID: `LPAP.C2.HINT.PROVENANCE@1`.
+
+Finding disposition across renders is recorded through the existing review history model where possible. LPAP MUST NOT invent a conflicting per-finding status field inside `product-review/v2`.
 
 ### 6.7 Audit-run reuse
 
-An audit run may be reused only when all applicable evidence keys match, for example:
+An audit run or individual evidence item may be reused only when every relevant key matches, including:
 
 ```text
-candidate artifact digest
+candidate artifact/bundle digest
 + exact head SHA or immutable content basis
-+ audit-profile version
++ protocol_digest
++ selected profile_id@revision
++ applicable rule_id@revision or rule digest
 + canonical/source basis digest
++ context identity for role-sensitive evidence
 ```
+
+Any semantic change to the governing rule/profile invalidates reuse unless a compatibility mapping is explicitly defined.
 
 ### 6.8 Intrinsic versus contextual evidence
 
@@ -230,15 +332,19 @@ Example: the same SVG may be appropriate in Core1A but reveal the deciding const
 
 Before deep audit, produce a reconciliation table:
 
-| Incoming item | Existing match | Classification | Basis | Action |
+| Incoming item | Existing match | Identity relation | Basis | Promotion action |
 |---|---|---|---|---|
-| item/ref | canonical ref or NONE | DUPLICATE / VARIANT / RELATED / NEW / UNRESOLVED | evidence | reuse / link lineage / create candidate / investigate |
+| item/ref | canonical ref or NONE | DUPLICATE / SOURCE_COLLISION / VARIANT / NEAR_DUPLICATE / RELATED / DISTINCT | evidence | REUSE_CANONICAL / ADMIT_VARIANT / ADMIT_NEW / HOLD_UNRESOLVED |
 
 LPAP MUST NOT create a second curriculum database, question catalog, source ledger, or product registry merely to track promotion.
 
 ## 7. Audit-plan selector
 
 Each candidate MUST receive a deterministic audit plan.
+
+The declared/established learner-product role selects the base role profile. Detected features, source claims, cross-Core claims, and runtime behavior may only **add or escalate** audit modules; they MUST NOT de-escalate or remove the base role audit.
+
+If role identity is missing or ambiguous, record an identity/scope finding and run at least the Common Kernel plus every content/runtime module detected from the artifact. Do not silently choose the lightest profile.
 
 The selector uses:
 
@@ -922,24 +1028,34 @@ Includes:
 - browser/runtime evidence;
 - explicit denominator reconciliation.
 
-## 15. Audit ledger
+## 15. Audit ledger and review-schema compatibility
 
-Every audit packet SHOULD contain findings with:
+LPAP-v1 does not redefine `product-review/v2`.
+
+The existing independent review remains the authoritative coaching review for a governed exact render:
+
+- finding severity is only `S0`, `S1`, `S2`, or `S3`;
+- `PASS` is an audit evidence/result state, never a severity;
+- current `previous_findings.status` remains `FIXED`, `OPEN`, or `WONT_FIX`;
+- LPAP MUST NOT write `REGRESSED` or `PASS` into fields whose current schema does not permit them.
+
+LPAP may produce an **audit packet sidecar** that references one or more `product-review/v2` documents and contains additional machine evidence not represented by that schema, such as:
 
 | Field | Meaning |
 |---|---|
 | product | logical learner product |
-| area | audit dimension/module |
+| area / rule_id | audit dimension and stable rule identity |
 | item/ref | exact record, section, question, SVG, control, or route |
 | authority | canonical/source basis |
-| observation | evidence-based finding |
-| learner impact | consequence for learner |
-| severity | S0/S1/S2/S3 or PASS |
-| correction | recommended/implemented repair |
-| status | OPEN/FIXED/WONT_FIX/REGRESSED/PASS |
-| reviewed digest | exact artifact/render basis |
+| observation | evidence-based result |
+| learner impact | consequence for learner where a defect exists |
+| evidence_result | PASS / FINDING / NOT_APPLICABLE / NOT_RUN |
+| review_finding_id | linked `product-review/v2` finding when applicable |
+| reviewed digest | exact artifact/render/bundle basis |
 
-Use existing product-review conventions where possible rather than creating a competing review schema.
+A regression is represented by reopening/creating the applicable current-render finding while preserving prior finding history, unless a future review-schema version explicitly adds a regression state.
+
+If future automation needs first-class LPAP fields inside the review schema, that requires a separately reviewed schema version; #374 does not change `product-review/v2`.
 
 ## 16. Promotion audit sequence
 
@@ -958,12 +1074,36 @@ INTAKE
 → INTEGRATION / NAVIGATION RESOLUTION
 → PRODUCTION DRY-RUN
 → OWNER REVIEW
-→ EXACT-DIGEST ACCEPTANCE
-→ MAIN MERGE / EXISTING PUBLICATION PATH
+→ OWNER EXACT-DIGEST DECISION
+→ TRUSTED ACCEPTANCE/PUBLICATION PROJECTION ON THE CANDIDATE BRANCH
+→ COMMIT + REVERIFY THE EXACT ACCEPTED PROJECTION
+→ MERGE TO MAIN
+→ TRUSTED DEFAULT-BRANCH PAGES DEPLOYMENT
 → POST-PUBLICATION VERIFICATION
 ```
 
 The sequence is evidence flow, not a new numerical quality gate.
+
+### 16.1 Current publication interface versus generic resources
+
+For governed Core products, current repository reality is normative: `Shared/tools/accept_product.py` is the publication entry point. During Owner acceptance it verifies the exact governed render, records the decision, copies the exact accepted pages into `public/`, and rebuilds/checks the Pages mirror. Those publication-projection changes are then committed/reverified on the candidate branch before merge; deployment from `main` follows separately.
+
+LPAP MUST NOT describe merge as occurring before that current acceptance/publication projection.
+
+A generic interactive webpage/ZIP that is not representable by the governed Core manifest/render path may still reach `AUDIT_COMPLETE`, but it MUST NOT be labelled `PUBLISHABLE_UNDER_LPAP` until it enters a repository-governed acceptance interface that can bind the Owner's decision to the complete deployable `bundle_digest` and publish exactly those bytes.
+
+LPAP-v1 recognizes two valid ways to satisfy that requirement:
+
+1. adapt the product into an existing governed representation accepted by the current publisher; or
+2. introduce, in a separate reviewed implementation/schema PR, a resource acceptance adapter that:
+   - records product/resource identity and complete bundle digest;
+   - records the Owner's exact decision/reference;
+   - copies only the accepted bundle into the authoritative `public/` destination;
+   - regenerates/checks `docs/`;
+   - preserves source/resource/search lineage;
+   - does not create a second curriculum or publication authority.
+
+#374 specifies this boundary but does not implement the generic resource acceptance adapter.
 
 ## 17. Integration resolver
 
@@ -1124,7 +1264,7 @@ Generated `docs/` MUST NOT be hand-edited.
 
 The implementation SHOULD use one inexpensive PR discovery workflow and one reusable audit workflow.
 
-### 20.1 PR events
+### 21.1 PR events
 
 Candidate discovery SHOULD run on relevant `pull_request` events including:
 
@@ -1137,7 +1277,7 @@ Candidate discovery SHOULD run on relevant `pull_request` events including:
 
 A changed head automatically invalidates exact-version evidence for promotion and causes the current candidate to be re-evaluated.
 
-### 20.2 Candidate activation
+### 21.2 Candidate activation
 
 The expensive LPAP audit SHOULD run when at least one explicit candidate signal is present, such as:
 
@@ -1147,13 +1287,13 @@ The expensive LPAP audit SHOULD run when at least one explicit candidate signal 
 
 Detection alone MUST NOT publish.
 
-### 20.3 Workflow reuse
+### 21.3 Workflow reuse
 
 The heavy audit SHOULD be implemented as a reusable workflow or equivalent shared runner rather than copied into Core-specific workflows.
 
 Product-specific existing workflows MAY feed evidence into the LPAP packet.
 
-### 20.4 Security separation
+### 21.4 Security separation
 
 Candidate PR code is untrusted.
 
@@ -1164,6 +1304,15 @@ PR audit jobs SHOULD:
 - avoid production deploy credentials;
 - avoid mutation of `main`;
 - avoid privileged execution of untrusted PR code.
+
+Deep interactive/browser auditing necessarily executes candidate JavaScript. That execution MUST occur in a secret-free, credential-free isolated environment with:
+
+- no privileged repository token exposed to the page/process;
+- no trusted browser profile, cookies, saved sessions, or personal credentials;
+- no mounted sensitive local files or host credentials;
+- no access to cloud metadata endpoints or sensitive internal/local network services;
+- external network denied by default, or explicitly allowlisted and recorded when network behavior itself is under audit;
+- disposable browser/runtime state.
 
 A privileged workflow MUST NOT check out and execute untrusted candidate code merely to gain write permissions.
 
@@ -1222,18 +1371,22 @@ The Owner accepts or rejects the exact version.
 
 ## 24. Publication
 
-For governed Core products, use the existing acceptance/publication path.
+For governed Core products, use the existing `Shared/tools/accept_product.py` acceptance/publication path exactly as described in §16.1.
 
 LPAP MUST NOT introduce a second publisher.
 
-If an imported candidate cannot be represented by the existing governed product/resource architecture, integration work SHOULD first adapt it into the appropriate existing representation rather than bypassing authority.
+If an imported candidate cannot be represented by an existing governed acceptance interface, it may be audited and integrated in draft form but is not yet `PUBLISHABLE_UNDER_LPAP`. It must first be adapted to an existing governed representation or wait for the separately reviewed generic resource acceptance adapter described in §16.1.
 
-After acceptance:
+For the current governed Core path, after the Owner decision:
 
+- run the trusted acceptance/publication projection on the candidate branch for the exact accepted render;
+- commit the acceptance record plus exact `public/` and generated `docs/` changes;
+- reverify that committed projection still matches the accepted digest;
 - merge the approved PR;
-- regenerate Pages through the existing builder;
 - deploy from trusted/default-branch state;
 - verify resulting learner routes.
+
+Do not hand-edit generated Pages output.
 
 ## 25. Post-publication verification
 
