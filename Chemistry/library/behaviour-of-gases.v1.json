@@ -212,7 +212,7 @@
       "intrinsic_badge": "MEDIUM",
       "badge_reason": "The learner must connect distributed molecular motion to macroscopic temperature and distinguish surface evaporation from pressure-dependent boiling.",
       "entry_assumptions": [
-        "For Particle model, speed distributions and phase change, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+        "Can distinguish temperature from the speed of one molecule and can describe pressure as an external condition on a liquid surface."
       ],
       "inferential_jump": "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions.",
       "teaching_path": [
@@ -271,10 +271,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "The Particle model, speed distributions and phase change exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+          "no_numeric_claim": "The exit asks for a causal account of evaporative cooling; success is judged by retaining a distribution of molecular energies and preferential surface escape, not by a calculated number."
         }
       },
-      "research_contribution": "For Particle model, speed distributions and phase change, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
+      "research_contribution": "The conversion explicitly preserves two repaired boundaries from the standalone audit: thermal samples have speed distributions, and boiling is a pressure-dependent bulk condition rather than a synonym for evaporation.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -305,16 +305,16 @@
           "defensible_answer": "For Particle model, speed distributions and phase change, the defensible route is: Keep a distribution of molecular energies, and attach external pressure to any boiling-temperature statement."
         },
         "attempt": {
-          "produces": "A short Particle model, speed distributions and phase change explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "produces": "A two-part explanation: distinguish an ensemble speed distribution from a single molecular speed, then use vapour-pressure/external-pressure equality to distinguish boiling from evaporation.",
           "closure": "CRITERIA",
           "rubric": [
             {
-              "criterion": "The Particle model, speed distributions and phase change response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-              "evidence_of": "The learner can separate the Particle model, speed distributions and phase change governing distinction from the tempting shortcut."
+              "criterion": "The response keeps molecular-speed distribution and phase-equilibrium pressure as separate ideas and connects each to the correct phenomenon.",
+              "evidence_of": "It never assigns one speed to all molecules and never states a universal boiling temperature independent of external pressure."
             }
           ],
           "task": {
-            "prompt": "Explain the Particle model, speed distributions and phase change decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "prompt": "A student says all molecules move faster together, so once they reach one special speed the liquid boils. Diagnose both errors and replace them with a distribution-based evaporation account plus a pressure-based boiling condition.",
             "givens": [
               "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions."
             ],
@@ -325,22 +325,22 @@
         "reconstruct": {
           "route": [
             {
-              "ask": "In Particle model, speed distributions and phase change, what must be decided before the move \"Separate the microscopic particle model from the macroscopic observation.\" is justified?",
-              "why_this_ask": "This makes the learner supply the entry decision for Particle model, speed distributions and phase change instead of receiving the expert sequence first.",
+              "ask": "Why does a temperature statement about a gas or liquid require an ensemble description rather than one common molecular speed?",
+              "why_this_ask": "The first decision exposes whether the learner treats temperature as one molecular speed; without that repair, later talk of boiling can conceal the same microscopic misconception.",
               "from_step_ref": "GAS-KINETIC-PHASE-T1"
             },
             {
-              "ask": "For Particle model, speed distributions and phase change, how would you test the conclusion reached by \"Track energy through a phase change for a pure substance at fixed pressure in phase equilibrium.\" without simply repeating the model answer?",
-              "why_this_ask": "This closes Particle model, speed distributions and phase change through a learner-owned check rather than through recall of the declarative route.",
+              "ask": "What independent condition tells you that bulk boiling, rather than surface evaporation, has begun?",
+              "why_this_ask": "The final question tests whether the learner can use vapour-pressure equality with external pressure as a criterion instead of merely repeating the phrase phase change.",
               "from_step_ref": "GAS-KINETIC-PHASE-T3"
             }
           ],
-          "differs_from_teaching_path": "For Particle model, speed distributions and phase change, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+          "differs_from_teaching_path": "The declarative route starts from model statements and then contrasts evaporation with boiling; the reconstruction begins with the one-speed/one-boiling-temperature claim, forces the learner to separate its two errors, and only then rebuilds the correct conditions."
         },
         "boundary_test": {
           "prompt": "Why can evaporation cool a liquid without implying that every molecule had the same initial speed?",
           "answer": "Because the sample has a distribution of molecular energies and higher-energy surface molecules can preferentially escape.",
-          "confirms": "For Particle model, speed distributions and phase change, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+          "confirms": "It shows that the learner can transfer the distribution-and-pressure distinction to evaporation without collapsing surface escape into bulk boiling."
         }
       }
     },
@@ -361,7 +361,7 @@
       "intrinsic_badge": "MEDIUM",
       "badge_reason": "Correct use depends on controlled variables and on separating pressure bookkeeping from effusion-rate comparisons.",
       "entry_assumptions": [
-        "For Gas-law constraints, mixtures and transport, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+        "Can identify pressure, volume, amount and absolute temperature as distinct state variables and can read direct and inverse proportionality statements."
       ],
       "inferential_jump": "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation.",
       "teaching_path": [
@@ -420,10 +420,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "The Gas-law constraints, mixtures and transport exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+          "no_numeric_claim": "The exit is conceptual: it is correct only if it distinguishes effusion rate from partial pressure and identifies the state variables that determine ideal partial pressure."
         }
       },
-      "research_contribution": "For Gas-law constraints, mixtures and transport, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
+      "research_contribution": "The conversion preserves the audit repair that every simple gas law is conditional on fixed variables, and it keeps Dalton pressure bookkeeping separate from Graham effusion-rate dependence on molar mass.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -454,16 +454,16 @@
           "defensible_answer": "For Gas-law constraints, mixtures and transport, the defensible route is: Write the constraints first and use the combined or ideal-gas model when more than one state variable changes."
         },
         "attempt": {
-          "produces": "A short Gas-law constraints, mixtures and transport explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "produces": "A variable-control table naming what is fixed in the chosen gas-law step, followed by one sentence separating Dalton partial pressure from Graham effusion rate.",
           "closure": "CRITERIA",
           "rubric": [
             {
-              "criterion": "The Gas-law constraints, mixtures and transport response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-              "evidence_of": "The learner can separate the Gas-law constraints, mixtures and transport governing distinction from the tempting shortcut."
+              "criterion": "The response selects a relation only after naming fixed variables and never transfers Graham's molar-mass dependence into Dalton's pressure sum.",
+              "evidence_of": "It can explain why a change in both temperature and volume requires more than Boyle's law and why a lighter gas is not assigned extra partial pressure solely for being light."
             }
           ],
           "task": {
-            "prompt": "Explain the Gas-law constraints, mixtures and transport decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "prompt": "For a gas sample whose temperature and volume both change, explain why Boyle's law alone is insufficient. Then compare a Dalton-law pressure question with a Graham-law effusion question and state which observable each law predicts.",
             "givens": [
               "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation."
             ],
@@ -474,22 +474,22 @@
         "reconstruct": {
           "route": [
             {
-              "ask": "In Gas-law constraints, mixtures and transport, what must be decided before the move \"Name pressure, volume, absolute temperature and amount, then state which variables are fixed.\" is justified?",
-              "why_this_ask": "This makes the learner supply the entry decision for Gas-law constraints, mixtures and transport instead of receiving the expert sequence first.",
+              "ask": "If temperature and volume both change, which fixed-variable condition needed for Boyle's law has been lost?",
+              "why_this_ask": "This question tests the precondition of the law before algebra can hide that the constant-temperature condition was violated.",
               "from_step_ref": "GAS-IDEAL-LAWS-T1"
             },
             {
-              "ask": "For Gas-law constraints, mixtures and transport, how would you test the conclusion reached by \"Separate Dalton partial-pressure bookkeeping from Graham effusion-rate comparison.\" without simply repeating the model answer?",
-              "why_this_ask": "This closes Gas-law constraints, mixtures and transport through a learner-owned check rather than through recall of the declarative route.",
+              "ask": "When two gases are compared, how do you decide whether molar mass belongs in the reasoning or whether you should add partial pressures instead?",
+              "why_this_ask": "The closing comparison checks law selection by observable: Dalton answers mixture pressure, whereas Graham answers an effusion-rate ratio.",
               "from_step_ref": "GAS-IDEAL-LAWS-T3"
             }
           ],
-          "differs_from_teaching_path": "For Gas-law constraints, mixtures and transport, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+          "differs_from_teaching_path": "The declarative route catalogues the state variables before applying laws; the reconstruction starts with an invalid Boyle-law shortcut, makes the learner identify the missing controls, and then asks them to sort pressure and rate observables."
         },
         "boundary_test": {
           "prompt": "Why does Graham's law not justify assigning a larger partial pressure to a lighter gas solely because it has lower molar mass?",
           "answer": "Because Graham's law concerns effusion rate, while ideal partial pressure is determined by the component amount, temperature and volume.",
-          "confirms": "For Gas-law constraints, mixtures and transport, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+          "confirms": "It confirms that the learner chooses equations by controlled variables and observable, not by matching a familiar keyword."
         }
       }
     },
@@ -510,7 +510,7 @@
       "intrinsic_badge": "HARD",
       "badge_reason": "The learner must treat van der Waals terms as state-model corrections and distinguish critical behaviour from ordinary boiling.",
       "entry_assumptions": [
-        "For Real-gas deviations and critical behaviour, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+        "Can use the ideal-gas equation as a reference model and can distinguish a thermodynamic state relation from a microscopic mechanism."
       ],
       "inferential_jump": "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism.",
       "teaching_path": [
@@ -569,10 +569,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "The Real-gas deviations and critical behaviour exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+          "no_numeric_claim": "The exit is qualitative and is closed only by stating the distinct roles of the coexistence curve, pressure-dependent boiling and the critical endpoint."
         }
       },
-      "research_contribution": "For Real-gas deviations and critical behaviour, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
+      "research_contribution": "The conversion retains the audit correction that van der Waals terms are model corrections rather than literal collision mechanisms, and it distinguishes critical temperature from a pressure-dependent boiling temperature.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -603,16 +603,16 @@
           "defensible_answer": "For Real-gas deviations and critical behaviour, the defensible route is: Treat the correction parameters as state-model terms and interpret deviations only with the stated thermodynamic conditions."
         },
         "attempt": {
-          "produces": "A short Real-gas deviations and critical behaviour explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "produces": "A model-scope explanation that says what Z compares, names the ideal assumptions that fail at high density, and distinguishes critical temperature from an ordinary boiling temperature.",
           "closure": "CRITERIA",
           "rubric": [
             {
-              "criterion": "The Real-gas deviations and critical behaviour response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-              "evidence_of": "The learner can separate the Real-gas deviations and critical behaviour governing distinction from the tempting shortcut."
+              "criterion": "The response treats Z and van der Waals terms as state-model diagnostics and uses the critical point only for the end of liquid-vapour coexistence.",
+              "evidence_of": "It avoids a universal sign-of-deviation claim and does not present equation-of-state parameters as a literal molecular mechanism."
             }
           ],
           "task": {
-            "prompt": "Explain the Real-gas deviations and critical behaviour decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "prompt": "Explain why real-gas effects become harder to neglect at high pressure. Then state why boiling point and critical temperature cannot be used as interchangeable liquefaction limits.",
             "givens": [
               "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism."
             ],
@@ -623,22 +623,22 @@
         "reconstruct": {
           "route": [
             {
-              "ask": "In Real-gas deviations and critical behaviour, what must be decided before the move \"Use compressibility factor as a comparison with the ideal reference at the same state.\" is justified?",
-              "why_this_ask": "This makes the learner supply the entry decision for Real-gas deviations and critical behaviour instead of receiving the expert sequence first.",
+              "ask": "What does a measured value of the compressibility factor compare, and what microscopic story does it not uniquely determine?",
+              "why_this_ask": "The mechanism misconception has to be confronted first because otherwise every later correction term is read as a literal story about molecular collisions.",
               "from_step_ref": "GAS-REAL-CRITICAL-T1"
             },
             {
-              "ask": "For Real-gas deviations and critical behaviour, how would you test the conclusion reached by \"Distinguish a critical point from an ordinary boiling point.\" without simply repeating the model answer?",
-              "why_this_ask": "This closes Real-gas deviations and critical behaviour through a learner-owned check rather than through recall of the declarative route.",
+              "ask": "How does the critical temperature differ from a boiling temperature when you describe the liquid-vapour phase boundary?",
+              "why_this_ask": "The final check separates two temperature concepts by their phase-boundary meaning, preventing a correct-looking liquefaction statement built on the wrong criterion.",
               "from_step_ref": "GAS-REAL-CRITICAL-T3"
             }
           ],
-          "differs_from_teaching_path": "For Real-gas deviations and critical behaviour, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+          "differs_from_teaching_path": "The expert route introduces Z, correction terms and the critical point in that order; the reconstruction begins by challenging the claim that the equation reveals a collision mechanism, then asks what state information Z can support and where the liquid-vapour boundary ends."
         },
         "boundary_test": {
           "prompt": "Why must a liquefaction statement distinguish critical temperature from boiling temperature?",
           "answer": "Boiling temperature is pressure-dependent phase equilibrium below the critical point, while the critical temperature marks whether a distinct liquid-vapour boundary can exist.",
-          "confirms": "For Real-gas deviations and critical behaviour, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+          "confirms": "It confirms that the learner can keep state-model comparison, microscopic interpretation and phase-boundary terminology in their proper scopes."
         }
       }
     }
@@ -666,7 +666,7 @@
       "read_order": [
         "Read the Particle model, speed distributions and phase change symbolic relation as one complete statement.",
         "Translate its symbols into the Particle model, speed distributions and phase change verbal claim before applying it.",
-        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+        "Check that the temperature and energy symbols describe an ensemble average and do not erase the underlying spread of molecular speeds."
       ],
       "instance_constraints": [
         "The Particle model, speed distributions and phase change equation is source-bound to an authored EQUATION datum.",
@@ -736,7 +736,7 @@
       "read_order": [
         "Read the Gas-law constraints, mixtures and transport symbolic relation as one complete statement.",
         "Translate its symbols into the Gas-law constraints, mixtures and transport verbal claim before applying it.",
-        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+        "Verify the symbol set against the stated controls: P, V, n and absolute T belong to a state equation, while an effusion-rate comparison is a separate model."
       ],
       "instance_constraints": [
         "The Gas-law constraints, mixtures and transport equation is source-bound to an authored EQUATION datum.",
@@ -805,7 +805,7 @@
       "read_order": [
         "Read the Real-gas deviations and critical behaviour symbolic relation as one complete statement.",
         "Translate its symbols into the Real-gas deviations and critical behaviour verbal claim before applying it.",
-        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+        "Read Z as a dimensionless comparison with the ideal reference at the same state; do not infer a unique microscopic mechanism from the equation."
       ],
       "instance_constraints": [
         "The Real-gas deviations and critical behaviour equation is source-bound to an authored EQUATION datum.",
