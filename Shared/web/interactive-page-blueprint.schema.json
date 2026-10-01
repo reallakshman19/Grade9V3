@@ -305,9 +305,7 @@
             "id",
             "benchmark_ref",
             "default_theme",
-            "anatomy",
-            "construction_step_format",
-            "support_rail"
+            "anatomy"
           ],
           "properties": {
             "id": {
@@ -338,7 +336,15 @@
                   "WORKED_ANCHOR_CARD",
                   "STAGED_VISUAL_RAIL",
                   "MISCONCEPTION_REPAIR_RAIL",
-                  "ACTIVE_RECALL_CLOSURE"
+                  "ACTIVE_RECALL_CLOSURE",
+                  "QUESTION_CARD_HEADER",
+                  "ATTEMPT_FIRST_STEM",
+                  "CONDITIONS_PANEL",
+                  "QUESTION_ALIGNED_VISUAL",
+                  "PROVENANCE_SUPPORT_LANES",
+                  "LEARNER_OPENABLE_SOLUTION",
+                  "STRUCTURED_DERIVATION",
+                  "INDEPENDENT_CHECK"
                 ]
               }
             },
@@ -347,6 +353,18 @@
             },
             "support_rail": {
               "const": "VISUAL_MISCONCEPTION_CHECKS"
+            },
+            "question_layout": {
+              "enum": [
+                "STAGE_SUPPORT_68_32",
+                "QUESTION_VISUAL_42_58_WITH_SUPPORT_RAIL"
+              ]
+            },
+            "support_model": {
+              "enum": [
+                "PROVENANCE_PROGRESSIVE",
+                "VISUAL_MISCONCEPTION_CHECKS"
+              ]
             }
           }
         },
