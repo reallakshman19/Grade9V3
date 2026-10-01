@@ -1,0 +1,24 @@
+{
+  "schema": "product-manifest/v1",
+  "product_id": "PRODUCT-CHEM-CHEMICAL-BONDING",
+  "subject": "Chemistry",
+  "home_href": "../../../index.html",
+  "question_bank_href": "../../../question-bank/index.html",
+  "package_refs": [
+    "Chemistry/library/chemical-bonding.v1.json"
+  ],
+  "bank_refs": [],
+  "output_roles": [
+    "CORE1A"
+  ],
+  "selection": {
+    "microtopics": [
+      "MIC-CHEM-BOND-LEWIS-VSEPR",
+      "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
+      "MIC-CHEM-BOND-MO-HBOND"
+    ],
+    "core2": [],
+    "core2a": [],
+    "core2b": []
+  }
+}
