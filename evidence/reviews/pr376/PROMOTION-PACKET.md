@@ -1,13 +1,33 @@
 # PR #376 - LPAP Owner Promotion Packet
 
 - Initial audit_basis_head: `896bf786c9615d45b3b6639d44e52dc252b96a08`
-- Final candidate/integration basis head: `ad3c58a50ccc76c65ad26d1fff963b1173027108`
+- Final governed candidate/integration basis head: `35bc0d0f78ccd971028b646c96bf38c97e160616`
+- Standalone lineage/content basis head: `ad3c58a50ccc76c65ad26d1fff963b1173027108`
 - Authority main head: `00ca6dc70c727e25de7e85becc49cda2ea293f47`
 - Authority basis digest: `sha256:8ac72c0fafbd7576efacec20138b1fed4f7c1cfb933bec4fee776ef6b49cef1e`
 - Search/build basis: `sha256:ae5e7da1d354cd9c4befe27a791290c5e6f584e170a29f648c9f76736fd1cb40`
-- Browser evidence: workflow `36844760999`, artifact `sha256:85b031aa12313227a9d9560b4ef5a0132569e07c97a9e54a6e1e6a9bc188d890`
-- Publication state: **AUDIT_COMPLETE; no candidate is described as PUBLISHABLE_UNDER_LPAP.**
+- Browser evidence: workflow `36873849274`, artifact `sha256:d5c4dcbd5638cadf9390a939a4c039e29b3e9dea715c36fa2e748267d65edea2`
+- Publication state: **four governed Core1A Owner-extension candidates are READY_FOR_INDEPENDENT_REVIEW but not Owner-accepted/published; three Core2 candidates remain conversion-held for source custody/solution reconstruction.**no candidate is described as PUBLISHABLE_UNDER_LPAP.**
 - Independent review status: **NOT_RUN_IN_THIS_SESSION.** This session authored candidate repairs, so it cannot truthfully claim the independent `product-review/v2` role defined by `docs/method/roles/REVIEWER.md`. The same-session draft review records were removed; the matrices below remain LPAP audit evidence.
+
+## Governed conversion status — supersedes the earlier standalone-only Core1A readiness statements
+
+The four Core1A standalones have now been converted into governed Chemistry records and Core1A manifests. They are explicit `OWNER_EXTENSION` products, not claimed prescribed Grade-9 curriculum. Source-labelled NCERT/ExamSIDE/JEE practice from the original standalone banks is excluded from the governed question sets; included questions are author-created.
+
+The governed review workflow `36873849274` rendered all four candidates in strict `SINGLE_FILE` mode with `draft=false` and `gaps=[]`. Exact review artifact: `11168167961` / `sha256:54059c0a3637afff364668471294d7456f2a30c9d499865d79fc70ebd839b4c3`.
+
+| Product | Render digest | Semantic digest | Exact HTML SHA-256 | State |
+|---|---|---|---|---|
+| PR376-C1A-CHEM-GASES | `b1b5ca199632711f` | `9b742da7cfea576f` | `d3f8ca577e5def5a7f62c7a4f87766eab8bd4484c0d20af269770c1672750602` | READY_FOR_INDEPENDENT_REVIEW |
+| PR376-C1A-CHEM-BONDING | `da7454dfd5439f6e` | `4276eda90909714e` | `20c740d83aced11a458a68100aedca21e3e049999da7ee52eb541589d4cb10d6` | READY_FOR_INDEPENDENT_REVIEW |
+| PR376-C1A-CHEM-REDOX | `2d3bc4ba8c63f322` | `771f5f383daa8ca6` | `38927d078871bfc0f02ed5319188e770677bbd0d9c8a23c6aa90f028e7c5cf05` | READY_FOR_INDEPENDENT_REVIEW |
+| PR376-C1A-CHEM-MOLE | `9d808bfb3a17049e` | `312bfca9aa38f836` | `6ae51c7f77240d025a4d4c3662222ea17e0f8129648b3b0702517a273b24b509` | READY_FOR_INDEPENDENT_REVIEW |
+
+Reviewer handoff: `evidence/reviews/pr376/INDEPENDENT-REVIEW-HANDOFF.md`. Machine digest map: `evidence/reviews/pr376/governed-review-handoff.json`.
+
+The three Core2 standalones are **not** in this exact-digest reviewer batch. They have no governed render yet because source custody/denominator and trustworthy solution reconstruction remain unresolved.
+
+The lower standalone matrices are retained as historical intake/audit evidence. For the four Core1A products, this governed-conversion section and the current sidecar supersede the earlier statements that no governed Core1A representation/acceptance path existed.
 
 ## Promotion-set inventory
 
