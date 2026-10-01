@@ -72,6 +72,23 @@ jobs:
             /tmp/g9-core2-v2-site/products/physics/phy-kin-2d-motion \
             --profile tablet-12.7 \
             --json /tmp/core-page-audit.json
+      - name: Physics tablet standalone local HTTP audit
+        # Evidence-only reuse of the existing shared Chromium audit. No --enforce:
+        # measured findings remain review evidence and never become a publication gate.
+        run: |
+          rm -rf /tmp/g9-physics-tablet-standalone
+          mkdir -p /tmp/g9-physics-tablet-standalone
+          cp standalone/core1a-motion-in-a-plane-tablet.html /tmp/g9-physics-tablet-standalone/
+          cp standalone/core1a-motion-1d-straight-line-tablet.html /tmp/g9-physics-tablet-standalone/
+          cp standalone/core1a-vector-add-sub-tablet.html /tmp/g9-physics-tablet-standalone/
+          cp standalone/core1a-physics-nlm-tablet.html /tmp/g9-physics-tablet-standalone/
+          cp standalone/motion-1d-practice-companion-tablet.html \
+            /tmp/g9-physics-tablet-standalone/core-related-motion-1d-practice-companion-tablet.html
+          node tools/site-audit/core-page-audit.mjs \
+            /tmp/g9-physics-tablet-standalone \
+            --profile core1a-spec \
+            --http-root /tmp/g9-physics-tablet-standalone \
+            --json /tmp/physics-tablet-standalone-audit.json
       - name: Core2 v2 local HTTP interaction audit
         run: |
           python3 -m http.server 8765 --directory /tmp/g9-core2-v2-site >/tmp/g9-core2-v2-http.log 2>&1 &
