@@ -241,9 +241,7 @@
           "output": "Separating self-change from agent role prevents reversal."
         }
       ],
-      "relation_refs": [
-        "REL-CHEM-REDOX-OXIDATION-AGENTS"
-      ],
+      "relation_refs": [],
       "representation_refs": [
         "REP-CHEM-REDOX-OXIDATION-AGENTS"
       ],
@@ -408,9 +406,7 @@
           "output": "Counting how many states appear is not enough."
         }
       ],
-      "relation_refs": [
-        "REL-CHEM-REDOX-CLASSIFICATION"
-      ],
+      "relation_refs": [],
       "representation_refs": [
         "REP-CHEM-REDOX-CLASSIFICATION"
       ],
@@ -575,9 +571,7 @@
           "output": "Atoms balance and the total charge is +17 on both sides; the five-electron change is specific to this permanganate reaction in acid."
         }
       ],
-      "relation_refs": [
-        "REL-CHEM-REDOX-BALANCE-NFACTOR"
-      ],
+      "relation_refs": [],
       "representation_refs": [
         "REP-CHEM-REDOX-BALANCE-NFACTOR"
       ],
@@ -731,10 +725,10 @@
         {
           "id": "REL-CHEM-REDOX-OXIDATION-AGENTS-D1",
           "role": "DECLARE",
-          "action": "Write the relation only after the quantities and model conditions have been named.",
-          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "action": "Assign oxidation numbers so their atom-count-weighted sum matches the species charge before comparing reactant and product states.",
+          "why_valid": "For a neutral species Σni(ONi) = 0, and for an ion the same sum equals the ionic charge; this closes the formal oxidation-state ledger.",
           "inputs": [],
-          "output": "Σ ni(ONi) = species charge"
+          "output": "Σni(ONi) = species charge"
         }
       ],
       "limits": [
@@ -774,10 +768,10 @@
         {
           "id": "REL-CHEM-REDOX-CLASSIFICATION-D1",
           "role": "DECLARE",
-          "action": "Write the relation only after the quantities and model conditions have been named.",
-          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "action": "Track at least one element across the reaction and compare its oxidation number before and after.",
+          "why_valid": "A redox classification requires coupled directions: at least one tracked oxidation number increases while another decreases.",
           "inputs": [],
-          "output": "redox ⇔ at least one ON increases and at least one ON decreases"
+          "output": "redox ⇔ ON↑ and ON↓ are both present"
         }
       ],
       "limits": [
@@ -817,10 +811,10 @@
         {
           "id": "REL-CHEM-REDOX-BALANCE-NFACTOR-D1",
           "role": "DECLARE",
-          "action": "Write the relation only after the quantities and model conditions have been named.",
-          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "action": "Balance oxidation and reduction half-reactions, scale them to the same electron count, then add and cancel electrons.",
+          "why_valid": "For acidic MnO₄⁻/Fe²⁺, 5 e⁻ gained by permanganate equals 5 e⁻ lost by five Fe²⁺ ions, and the summed equation conserves atoms and charge.",
           "inputs": [],
-          "output": "total e− lost = total e− gained"
+          "output": "5e⁻ gained = 5e⁻ lost"
         }
       ],
       "limits": [
@@ -901,7 +895,7 @@
       "correspondence": [
         {
           "element": "equation body",
-          "symbol": "ON ↑ = oxidation; ON ↓ = reduction",
+          "symbol": "ONi",
           "in_words": "For Oxidation number, oxidation/reduction and agents, the displayed symbols mean: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner."
         }
       ],
@@ -998,7 +992,7 @@
       "correspondence": [
         {
           "element": "equation body",
-          "symbol": "redox ⇒ coupled ON increase + decrease",
+          "symbol": "ON",
           "in_words": "For Redox classification, displacement and disproportionation patterns, the displayed symbols mean: Calling a reaction redox requires coupled oxidation-number changes; a reaction-type label by itself is insufficient."
         }
       ],
@@ -1095,7 +1089,7 @@
       "correspondence": [
         {
           "element": "equation body",
-          "symbol": "atomsL = atomsR; chargeL = chargeR",
+          "symbol": "e−",
           "in_words": "For Half-reaction balancing and reaction-dependent n-factor, the displayed symbols mean: A balanced ionic redox equation conserves every element and total charge; reaction-specific electron transfer then determines n-factor."
         }
       ],
@@ -1422,7 +1416,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Author-created Core1A worked anchor revised for blueprint-v2: it executes the unit construction on a concrete species or numerical case."
+        "basis": "D2 because the learner must construct two half-reactions, scale a five-electron transfer, combine them, and independently close atom and charge ledgers."
       }
     }
   ],
