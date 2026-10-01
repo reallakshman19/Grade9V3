@@ -1,0 +1,47 @@
+name: chemistry-tablet-standalone-browser
+
+on:
+  pull_request:
+    paths:
+      - "standalone/core1a-chemistry-*-tablet.html"
+      - "standalone/core2-chemistry-*-tablet.html"
+      - "tests/test_chemistry_tablet_standalone.py"
+      - "tests/chemistry_tablet_standalone_browser.mjs"
+      - ".github/workflows/chemistry-tablet-standalone-browser.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Static standalone audit
+        run: python3 -m unittest tests.test_chemistry_tablet_standalone
+      - name: Install isolated browser harness
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Serve repository locally
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/chemistry-http.log 2>&1 &
+          echo $! > /tmp/chemistry-http.pid
+      - name: Rendered three-viewport audit
+        run: node tests/chemistry_tablet_standalone_browser.mjs http://127.0.0.1:8765 /tmp/chemistry-tablet-browser.json
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chemistry-tablet-browser-evidence
+          path: |
+            /tmp/chemistry-tablet-browser.json
+            /tmp/chemistry-http.log
+          if-no-files-found: error
