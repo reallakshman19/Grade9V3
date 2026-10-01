@@ -18,7 +18,7 @@
     "WEB_CONTRACT": 3,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:6cd7faf9bd31721b95161962282b9070c0ce0749809204afebcbd00a6813f780",
+  "digest": "sha256:523aa601507a35e42604a1e1d728fc595286b00d99931c5f1c581780a661bb5a",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -1718,8 +1718,8 @@
       "path": "tests/qb_tablet_standalone_browser.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 19287,
-      "sha256": "93808de22087100290ae936dbdcef03b27df57812ca09abfd874f24793c5cfef"
+      "bytes": 19225,
+      "sha256": "5648247093a0e8bf2efe1bb70c20992b6a54b49e18cf41106c756d834123e62d"
     },
     {
       "path": "tests/question_bank_bootstrap.test.mjs",

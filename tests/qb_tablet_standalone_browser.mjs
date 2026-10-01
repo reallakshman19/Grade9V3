@@ -179,7 +179,6 @@ try {
   if(await q.locator('[data-g9-ladder]>li').count()!==3) fail('QB_HINT_PROGRESSION','expected 3 live rungs');
 
   const details=q.locator('details[data-requires-attempt]');
-  if(!(await details.getAttribute('data-locked'))!==false) {}
   if(!(await details.evaluate(el=>el.hasAttribute('data-locked')))) fail('QB_ATTEMPT_GATE','solution should start locked');
   await q.locator('input.answer-choice[value="B"]').check();
   const commit=q.locator('.commit-attempt-btn');
