@@ -117,25 +117,43 @@ def question_type(q):
     return analysis(q).get("learner_question_type", "free_response")
 
 
-def option_payload(option: str, index: int) -> str:
-    letter = chr(65 + index)
-    return re.sub(rf'^\({letter}\)\s*', "", str(option), count=1)
+def option_parts(option: str, index: int):
+    text = str(option)
+    match = re.match(r'^\(([^)]+)\)\s*(.*)$', text)
+    if match and match.group(1) in {"A", "B", "C", "D", "1", "2", "3", "4"}:
+        return match.group(1), match.group(2)
+    return chr(65 + index), text
+
+
+def _answer_norm(value: str) -> str:
+    return re.sub(r'\s+', ' ', str(value)).strip().rstrip('.').casefold()
 
 
 def correct_letters(q):
     qtype = question_type(q)
     summary = q.get("answer", {}).get("summary", "")
+    options = q.get("options") or []
+    if not options:
+        return []
     if qtype in MCQ_SINGLE:
-        m = re.search(r'^Option\s*\(([A-Z])\)', summary)
-        if not m:
-            raise ValueError(f"{q['id']}: single-answer summary does not identify an option")
-        return [m.group(1)]
+        m = re.search(r'^Option\s*\(([^)]+)\)', summary)
+        if m:
+            return [m.group(1)]
+        target = _answer_norm(summary)
+        matches = [
+            option_parts(option, idx)[0]
+            for idx, option in enumerate(options)
+            if _answer_norm(option_parts(option, idx)[1]) == target
+        ]
+        if len(matches) != 1:
+            raise ValueError(f"{q['id']}: answer text resolved to {len(matches)} option payloads")
+        return matches
     if qtype in MCQ_MULTI:
         prefix = summary.split(".", 1)[0]
-        letters = re.findall(r'\(([A-Z])\)', prefix)
-        if not letters:
+        labels = re.findall(r'\(([^)]+)\)', prefix)
+        if not labels:
             raise ValueError(f"{q['id']}: multi-answer summary does not identify options")
-        return letters
+        return labels
     return []
 
 
@@ -148,13 +166,13 @@ def render_options(q):
     name = f"answer-{q['id']}"
     rows = []
     for idx, option in enumerate(options):
-        letter = chr(65 + idx)
+        label, payload = option_parts(option, idx)
         rows.append(
             f'<label class="q-option-control">'
-            f'<input class="answer-choice" type="{input_type}" name="{esc(name)}" value="{letter}" '
+            f'<input class="answer-choice" type="{input_type}" name="{esc(name)}" value="{esc(label)}" '
             f'data-key="{esc(q["id"])}">'
-            f'<span class="option-letter">{letter}</span>'
-            f'<span class="option-text">{esc(option_payload(option, idx))}</span>'
+            f'<span class="option-letter">{esc(label)}</span>'
+            f'<span class="option-text">{esc(payload)}</span>'
             f'</label>'
         )
     return '<fieldset class="q-options" aria-label="Answer choices">' + "".join(rows) + "</fieldset>"
