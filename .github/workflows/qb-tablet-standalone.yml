@@ -14,6 +14,8 @@ on:
       - 'tests/test_qb_tablet_standalone.py'
       - 'tests/qb_tablet_standalone_browser.mjs'
       - '.github/workflows/qb-tablet-standalone.yml'
+      - 'evidence/reviews/pr377/**'
+      - 'evidence/reviews/pr377/**'
   pull_request:
     paths:
       - 'standalone/core2-canonical-question-bank-tablet.html'
