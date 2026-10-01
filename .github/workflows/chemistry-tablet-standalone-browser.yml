@@ -1,10 +1,9 @@
-name: chemistry-tablet-standalone-browser
+name: chemistry-blueprint-v2-browser
 
 on:
   pull_request:
     paths:
       - "standalone/core1a-chemistry-*-tablet.html"
-      - "standalone/core2-chemistry-*-tablet.html"
       - "tests/test_chemistry_tablet_standalone.py"
       - "tests/chemistry_tablet_standalone_browser.mjs"
       - "Chemistry/library/behaviour-of-gases.v1.json"
@@ -12,6 +11,8 @@ on:
       - "Chemistry/library/redox-reactions.v1.json"
       - "Chemistry/library/some-basic-concepts.v1.json"
       - "Chemistry/adapter/**"
+      - "Chemistry/assets/representations/*.svg"
+      - "Chemistry/tools/sync_blueprint_pages.py"
       - "products/chemistry/*.manifest.json"
       - ".github/workflows/chemistry-tablet-standalone-browser.yml"
   workflow_dispatch:
@@ -32,19 +33,10 @@ jobs:
           node-version: "22"
       - name: Static standalone audit
         run: python3 -m unittest tests.test_chemistry_tablet_standalone
-      - name: Held Core2 source-fragment guard
-        run: |
-          set -euo pipefail
-          for page in standalone/core2-chemistry-*-tablet.html; do
-            if grep -n "NCERT Try the question" "$page"; then
-              echo "corrupted imported pseudo-stem escaped the Core2 hold: $page" >&2
-              exit 1
-            fi
-            grep -q "Candidate source item — reconstruction required" "$page"
-            grep -q "Source reconstruction required:" "$page"
-          done
       - name: Install governed renderer dependencies
         run: python3 -m pip install jsonschema
+      - name: Verify committed blueprint-v2 standalone pages
+        run: python3 Chemistry/tools/sync_blueprint_pages.py --check
       - name: Inspect governed Core1A render gaps
         run: |
           for slug in behaviour-of-gases chemical-bonding redox-reactions some-basic-concepts; do
