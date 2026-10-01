@@ -679,7 +679,9 @@
       "misleading_alternatives": [
         "For Lewis structures, formal charge and VSEPR geometry, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
       ],
-      "rendered_asset_refs": [],
+      "rendered_asset_refs": [
+        "Chemistry/assets/representations/rep-chem-bond-lewis-vsepr.svg"
+      ],
       "scene_instances": [
         {
           "id": "SCENE-CHEM-BOND-LEWIS-VSEPR",
@@ -748,7 +750,9 @@
       "misleading_alternatives": [
         "For PCl5 geometry, model shorthand and molecular dipoles, do not infer a collision path, time sequence or literal orbital hybrid composition from the static layout."
       ],
-      "rendered_asset_refs": [],
+      "rendered_asset_refs": [
+        "Chemistry/assets/representations/rep-chem-bond-geometry-dipole.svg"
+      ],
       "scene_instances": [
         {
           "id": "SCENE-CHEM-BOND-GEOMETRY-DIPOLE",
@@ -827,7 +831,9 @@
       "misleading_alternatives": [
         "For Molecular-orbital occupancy, magnetism and hydrogen bonding, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
       ],
-      "rendered_asset_refs": [],
+      "rendered_asset_refs": [
+        "Chemistry/assets/representations/rep-chem-bond-mo-hbond.svg"
+      ],
       "scene_instances": [
         {
           "id": "SCENE-CHEM-BOND-MO-HBOND",
