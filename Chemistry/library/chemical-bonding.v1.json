@@ -804,7 +804,7 @@
         "Resolve or cancel the vectors by geometry instead of counting polar bonds."
       ],
       "gate_relation_ref": null,
-      "mathml": "<math display=\"block\"><mrow><msub><mi>μ</mi><mtext>net</mtext></msub><mo>=</mo><mo>∑</mo><msub><mover><mi>μ</mi><mo>→</mo></mover><mtext>bond</mtext></msub></mrow></math>"
+      "mathml": "<math display=\"block\"><mrow><mtext>μnet = Σ μ⃗bond</mtext></mrow></math>"
     },
     {
       "id": "REL-CHEM-BOND-MO-HBOND",
@@ -1684,7 +1684,7 @@
         "grade9v3:authored_by": "pr376-blueprint-v2-depth-revision"
       },
       "kind": "EQUATION",
-      "value": "<math display=\"block\"><mrow><msub><mi>μ</mi><mtext>net</mtext></msub><mo>=</mo><mo>∑</mo><msub><mover><mi>μ</mi><mo>→</mo></mover><mtext>bond</mtext></msub></mrow></math>",
+      "value": "<math display=\"block\"><mrow><mtext>μnet = Σ μ⃗bond</mtext></mrow></math>",
       "symbol": "μnet = Σ μ⃗bond",
       "meaning": "Dipole-vector relation: the molecular dipole is the vector sum of the bond-dipole contributions in the declared molecular geometry.",
       "locator": "Author-created governed equation atom for the PR #376 blueprint-v2 construction.",
