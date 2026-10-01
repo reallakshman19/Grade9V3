@@ -93,11 +93,33 @@ jobs:
           import json
           from pathlib import Path
           from Shared.tools import build_manifest, build_question_bank_platform
+          from Shared.library import (
+              core1_orientation,
+              core1a_construction,
+              core1b_reconstruction,
+              core1_progression,
+              core1_delivery,
+          )
 
           root = Path("/tmp/chemistry-generated-preview")
           root.mkdir(parents=True, exist_ok=True)
 
           generated = build_manifest.generated_files()
+          generated["docs/core1-orientation-report.json"] = (
+              json.dumps(core1_orientation.audit(Path(".")), indent=2) + "\n"
+          ).encode("utf-8")
+          generated["docs/core1a-construction-report.json"] = (
+              json.dumps(core1a_construction.audit(Path(".")), indent=2) + "\n"
+          ).encode("utf-8")
+          generated["docs/core1b-reconstruction-report.json"] = (
+              json.dumps(core1b_reconstruction.audit(Path(".")), indent=2) + "\n"
+          ).encode("utf-8")
+          generated["docs/core1-progression-report.json"] = (
+              json.dumps(core1_progression.audit(Path(".")), indent=2) + "\n"
+          ).encode("utf-8")
+          generated["docs/core1-delivery-report.json"] = (
+              json.dumps(core1_delivery.audit(Path(".")), indent=2) + "\n"
+          ).encode("utf-8")
           generated["docs/architecture-manifest.json"] = (
               json.dumps(build_manifest.collect(generated), indent=2, ensure_ascii=False) + "\n"
           ).encode("utf-8")
