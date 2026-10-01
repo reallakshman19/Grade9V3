@@ -58,7 +58,7 @@ class ChemistryBlueprintV2Test(unittest.TestCase):
                 self.assertEqual(3, text.count('data-g9-component="STAGED_VISUAL"'))
                 self.assertEqual(3, text.count('data-g9-component="QUICK_CHECK"'))
                 self.assertEqual(3, text.count('data-g9-component="WORKED_EXAMPLE"'))
-                self.assertEqual(9, len(re.findall(r'<g\\b[^>]*data-g9-stage-id="', text)))
+                self.assertEqual(9, len(re.findall(r'<g\b[^>]*data-g9-stage-id="', text)))
                 roles = re.findall(r'<li data-g9-triad-role="(CHECK|APPLY|CONNECT)"', text)
                 self.assertEqual(3, roles.count("CHECK"))
                 self.assertEqual(3, roles.count("APPLY"))
