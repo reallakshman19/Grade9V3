@@ -158,6 +158,7 @@ try {
   if (!feedback.includes('matches the verified answer')) fail('QB_OPTION_CHECK', feedback);
   const solutionText = await q.locator('.solution-slot').innerText();
   if (!solutionText.includes('Verified answer:') || !solutionText.includes('massless midpoint')) fail('QB_SOLUTION_MATERIALIZATION', solutionText.slice(0, 200));
+  await q.screenshot({ path: 'artifacts/qb-tablet/attempt-hint-solution.png' });
 
   const scratch = q.locator('.practice-textarea');
   await scratch.fill('persisted scratchpad witness');
