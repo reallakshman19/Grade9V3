@@ -82,5 +82,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: qb-tablet-standalone-browser-audit
-          path: artifacts/qb-tablet/browser-audit.json
+          path: artifacts/qb-tablet/
           if-no-files-found: error
