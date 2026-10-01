@@ -1,6 +1,7 @@
 """Contracts for the generated 12.7-inch standalone Canonical Question Bank."""
 from __future__ import annotations
 
+import html
 import importlib.util
 import re
 import unittest
@@ -73,6 +74,39 @@ class QbTabletStandaloneTest(unittest.TestCase):
         self.assertEqual(self.actual.count('class="hint-pill"'), 195)
         self.assertEqual(self.actual.count('class="hint-slot"'), 195)
         self.assertEqual(self.actual.count('<template id='), 272)  # 195 hints + 77 solutions
+
+    def test_every_question_projects_its_full_canonical_learner_payload(self):
+        article_chunks = self.actual.split('<article class="question-card')[1:]
+        articles = {}
+        for chunk in article_chunks:
+            article = '<article class="question-card' + chunk.split('</article>', 1)[0] + '</article>'
+            match = re.search(r'\\bid="([^"]+)"', article)
+            self.assertIsNotNone(match)
+            articles[match.group(1)] = article
+        self.assertEqual(set(articles), {q["id"] for q in self.questions})
+
+        reasoning_steps = 0
+        for q in self.questions:
+            article = articles[q["id"]]
+            def present(value):
+                self.assertIn(html.escape(str(value), quote=True), article)
+
+            present(q["stem"])
+            for condition in q.get("conditions") or []:
+                present(condition)
+            for option_index, option in enumerate(q.get("options") or []):
+                present(builder.option_payload(option, option_index))
+            for scaffold in q.get("scaffolds") or []:
+                present(scaffold["text"])
+            present(q["answer"]["summary"])
+            route = q["answer"].get("reasoning_route") or []
+            reasoning_steps += len(route)
+            for step in route:
+                present(step["action"])
+            present(q["extensions"]["grade9v3:analysis"]["stable_crux_move"])
+            present(q["extensions"]["grade9v3:analysis"]["common_wrong_route"])
+
+        self.assertGreater(reasoning_steps, 150)
 
     def test_selected_benchmark_representations_are_explicitly_authored_not_source_figures(self):
         self.assertEqual(self.actual.count('class="representation-box"'), 7)
