@@ -50,7 +50,7 @@ class QbTabletStandaloneTest(unittest.TestCase):
                 for q in self.questions
                 if f'id="{q["id"]}"' in self.actual and f'id="{q["id"]}"' in self.actual
                 and re.search(
-                    rf'id="{re.escape(q["id"])}"[\s\S]*?data-selected="true"',
+                    rf'<article[^>]*id="{re.escape(q["id"])}"[^>]*data-selected="true"',
                     self.actual,
                 )
             },
