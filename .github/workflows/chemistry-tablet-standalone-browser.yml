@@ -86,6 +86,49 @@ jobs:
           name: chemistry-governed-core1a-review
           path: /tmp/chemistry-governed-review
           if-no-files-found: error
+      - name: Generate governed integration previews
+        run: |
+          rm -rf /tmp/chemistry-generated-preview
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from Shared.tools import build_manifest, build_question_bank_platform
+
+          root = Path("/tmp/chemistry-generated-preview")
+          root.mkdir(parents=True, exist_ok=True)
+
+          generated = build_manifest.generated_files()
+          generated["docs/architecture-manifest.json"] = (
+              json.dumps(build_manifest.collect(generated), indent=2, ensure_ascii=False) + "\n"
+          ).encode("utf-8")
+
+          platform = build_question_bank_platform.build()
+          for relative, content in build_question_bank_platform.artifact_payloads(platform).items():
+              generated[relative.as_posix()] = content
+
+          for relative, content in generated.items():
+              target = root / relative
+              target.parent.mkdir(parents=True, exist_ok=True)
+              target.write_bytes(content)
+
+          manifest = {
+              "schema": "chemistry-generated-preview/v1",
+              "files": [
+                  {"path": path, "bytes": len(content)}
+                  for path, content in sorted(generated.items())
+              ],
+          }
+          (root / "PREVIEW-MANIFEST.json").write_text(
+              json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
+          )
+          PY
+      - name: Upload governed integration previews
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chemistry-governed-integration-preview
+          path: /tmp/chemistry-generated-preview
+          if-no-files-found: error
       - name: Install isolated browser harness
         run: |
           npm install --no-save playwright@1.56.1
