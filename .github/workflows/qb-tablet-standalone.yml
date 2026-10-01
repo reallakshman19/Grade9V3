@@ -1,0 +1,83 @@
+name: qb-tablet-standalone
+
+on:
+  push:
+    branches:
+      - feat/question-bank-tablet-standalone
+    paths:
+      - 'standalone/core2-canonical-question-bank-tablet.html'
+      - 'Shared/tools/build_qb_tablet_standalone.py'
+      - 'Physics/library/exam-bank/competitive-exam-question-bank.v2.json'
+      - 'Chemistry/library/exam-bank/competitive-exam-question-bank.v2.json'
+      - 'Shared/tools/question-bank-views.v1.json'
+      - 'benchmarks/selected_question_bank_TABLET_STUDY.html'
+      - 'tests/test_qb_tablet_standalone.py'
+      - 'tests/qb_tablet_standalone_browser.mjs'
+      - '.github/workflows/qb-tablet-standalone.yml'
+  pull_request:
+    paths:
+      - 'standalone/core2-canonical-question-bank-tablet.html'
+      - 'Shared/tools/build_qb_tablet_standalone.py'
+      - 'Physics/library/exam-bank/competitive-exam-question-bank.v2.json'
+      - 'Chemistry/library/exam-bank/competitive-exam-question-bank.v2.json'
+      - 'Shared/tools/question-bank-views.v1.json'
+      - 'benchmarks/selected_question_bank_TABLET_STUDY.html'
+      - 'tests/test_qb_tablet_standalone.py'
+      - 'tests/qb_tablet_standalone_browser.mjs'
+      - '.github/workflows/qb-tablet-standalone.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'push' && github.ref_name || github.event.pull_request.head.sha }}
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pinned browser harness
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Synchronize generated standalone on owning branch push
+        if: github.event_name == 'push' && github.ref == 'refs/heads/feat/question-bank-tablet-standalone'
+        run: python Shared/tools/build_qb_tablet_standalone.py --write
+
+      - name: Check deterministic projection on PR
+        if: github.event_name == 'pull_request'
+        run: python Shared/tools/build_qb_tablet_standalone.py --check
+
+      - name: Run static projection contracts
+        run: python -m unittest tests.test_qb_tablet_standalone -v
+
+      - name: Run exact-browser tablet audit
+        run: |
+          mkdir -p artifacts/qb-tablet
+          node tests/qb_tablet_standalone_browser.mjs artifacts/qb-tablet/browser-audit.json
+
+      - name: Commit synchronized generated standalone
+        if: github.event_name == 'push' && github.ref == 'refs/heads/feat/question-bank-tablet-standalone'
+        run: |
+          git add -- standalone/core2-canonical-question-bank-tablet.html
+          if git diff --cached --quiet; then
+            echo 'Standalone already synchronized.'
+          else
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git commit -m 'feat(qb): synchronize generated tablet standalone'
+            git push origin HEAD:${GITHUB_REF_NAME}
+          fi
+
+      - name: Upload browser audit evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: qb-tablet-standalone-browser-audit
+          path: artifacts/qb-tablet/browser-audit.json
+          if-no-files-found: error
