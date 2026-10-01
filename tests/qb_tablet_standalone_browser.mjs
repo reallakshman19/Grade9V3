@@ -122,7 +122,7 @@ try {
   for (const [key, expected] of Object.entries(expectedCounts)) {
     if (counts[key] !== expected) fail('QB_RUNTIME_DENOMINATOR', `${key}: expected ${expected}, got ${counts[key]}`);
   }
-  const markupMath = (candidateBytes.toString('utf8').match(/<math\\b/g) || []).length;
+  const markupMath = candidateBytes.toString('utf8').split('<math').length - 1;
   observations.runtime.math_markup_count = markupMath;
   if (markupMath < 100) fail('QB_DECLARED_MATH_MARKUP_TOO_THIN', `expected >100 MathML nodes in exact HTML, got ${markupMath}`);
   if (counts.mathTotal !== markupMath) {
