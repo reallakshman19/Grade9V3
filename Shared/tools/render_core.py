@@ -256,7 +256,7 @@ def _core1a_activity_companion(ctx: Ctx, microtopic: dict) -> str:
             if not target.is_file():
                 continue
             seen.add(activity_ref)
-            href = "../../../" + "/".join(local.parts[1:])
+            href = _asset_root(ctx) + "/".join(local.parts[1:])
             cards.append(
                 f'<li data-g9-activity-ref="{esc(activity_ref)}" '
                 f'data-g9-representation-ref="{esc(representation_ref)}">'
