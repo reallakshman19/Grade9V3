@@ -114,7 +114,7 @@ try {
     fail('QB_RUNTIME_DENOMINATOR', JSON.stringify(counts));
   }
 
-  const visibleCount = async () => page.locator('.question-card:not([hidden])').count();
+  const visibleCount = async () => page.locator('.question-card:visible').count();
   for (const [filterName, expected] of [['physics', 31], ['chemistry', 46], ['selected', 7], ['d3d4', 30]]) {
     await page.locator(`.tab-btn[data-filter="${filterName}"]`).click();
     const actual = await visibleCount();
@@ -182,8 +182,11 @@ try {
   }
 
   await page.locator('.tab-btn[data-filter="selected"]').click();
-  const selectedWithSvg = await page.locator('.question-card:not([hidden]) .representation-box svg').count();
+  const selectedWithSvg = await page.locator('.question-card:visible .representation-box svg').count();
   if (selectedWithSvg !== 7) fail('QB_SELECTED_BENCHMARK_REPRESENTATION', `expected 7 SVGs, got ${selectedWithSvg}`);
+  const selectedPageHeight = await page.evaluate(() => document.documentElement.scrollHeight);
+  observations.runtime.selected_page_height = selectedPageHeight;
+  if (selectedPageHeight >= 20000) fail('QB_SELECTED_FILTER_RENDER_HEIGHT', `selected view remained unexpectedly tall: ${selectedPageHeight}px`);
   await page.screenshot({ path: 'artifacts/qb-tablet/selected-d3d4.png', fullPage: true });
 
   observations.runtime.findings = findings;
