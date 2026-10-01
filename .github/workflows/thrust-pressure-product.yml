@@ -41,7 +41,10 @@ jobs:
           npx playwright install --with-deps chromium
 
       - name: Validate canonical package schema and references
-        run: python3 -m Shared.library.resolve --schema Physics/library/phy-thrust-pressure.v1.json
+        run: >-
+          python3 -m Shared.library.resolve --schema
+          Physics/library/phy-thrust-pressure.v1.json
+          Physics/library/phy-nlm-first-law.v1.json
 
       - name: Render exact governed Core1A and Core2 pages
         run: |
