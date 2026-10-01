@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GRADE 9 PHYSICS - Motion in a Straight Line | 12.7" Tablet Standalone Edition</title>
   <meta name="description" content="Complete 166-page Student Core textbook for Motion in a Straight Line with 41 modules and companion practice bank. Optimized for 12.7-inch tablets.">
   <style>
@@ -509,7 +509,15 @@ footer {
   margin-top: auto;
 }
 
-  </style>
+  
+textarea.tablet-safe-input {
+  min-height: 120px;
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+</style>
 </head>
 <body>
   <div class="app-container">
@@ -527,7 +535,7 @@ footer {
           <h1 class="course-title">Motion in a Straight Line: Complete 41-Module Consolidated Textbook</h1>
           <p class="course-subtitle">Concept → Representation → Equation → Guided Practice → Independent Transfer across all 12 units of 1D kinematics.</p>
         </div>
-        <button id="theme-toggle-btn" class="theme-toggle-btn">☀️ Light Mode</button>
+        <button id="themeToggle" class="theme-toggle-btn">☀️ Light Mode</button>
       </div>
 
       <!-- Live Search Bar -->
@@ -5935,6 +5943,17 @@ function initHintPills() {
   });
 }
 
-  </script>
+  
+  // Theme toggle static runtime wiring for tablet
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('g9_theme', next);
+    });
+  }
+</script>
 </body>
 </html>

@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CORE (2) v2 - Motion in a Plane | 12.7" Tablet Standalone Edition</title>
   <meta name="description" content="Complete 122-page Core (2) v2 workbook with 59 projectile and 2D kinematics challenges, 3-stage hint ladders, and 5-step worked solutions. Optimized for 12.7-inch tablets.">
   <style>
@@ -294,7 +294,7 @@ small, .badge, .meta-text, .tag, .diff-badge, .unit-badge {
 }
 
 .jump-select {
-  min-height: 42px;
+  min-height: 48px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--tab12-radius-sm);
@@ -801,7 +801,15 @@ footer {
   margin-top: auto;
 }
 
-  </style>
+  
+textarea.tablet-safe-input {
+  min-height: 120px;
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+</style>
 </head>
 <body>
   <div class="app-container">
@@ -819,7 +827,7 @@ footer {
           <h1 class="course-title">Motion in a Plane: 59 Practice Challenges &amp; Worked Reasoning Ladders</h1>
           <p class="course-subtitle">Prompt / Reveal progressive hint ladders, 5-step reasoning solutions (Understand → Represent → Connect → Calculate → Interpret), and quick answer checks.</p>
         </div>
-        <button id="theme-toggle-btn" class="theme-toggle-btn">☀️ Light Mode</button>
+        <button id="themeToggle" class="theme-toggle-btn">☀️ Light Mode</button>
       </div>
 
       <!-- Live Search Bar -->
@@ -11516,6 +11524,17 @@ function initWorkspaceAttempts() {
   });
 }
 
-  </script>
+  
+  // Theme toggle static runtime wiring for tablet
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('g9_theme', next);
+    });
+  }
+</script>
 </body>
 </html>

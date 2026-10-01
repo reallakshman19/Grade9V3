@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CORE (1A) SBA-06 &amp; SBA-07 | 12.7" Tablet Standalone Edition</title>
   <meta name="description" content="Complete 42-page Core 1A Subtopic Bucket deep-dives: SBA-06 Trajectory Equation and SBA-07 Launch from Height. Optimized for 12.7-inch tablets.">
   <style>
@@ -528,7 +528,15 @@ footer {
   margin-top: auto;
 }
 
-  </style>
+  
+textarea.tablet-safe-input {
+  min-height: 120px;
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+</style>
 </head>
 <body>
   <div class="app-container">
@@ -545,7 +553,7 @@ footer {
           <h1 class="course-title">Subtopic Buckets 06 &amp; 07: Trajectory Equation &amp; Launch from Height</h1>
           <p class="course-subtitle">Lossless professional learner editions: path without time y(x), vector shortcuts, horizontal cliff launches, signed tower kinematics, and decision synthesis.</p>
         </div>
-        <button id="theme-toggle-btn" class="theme-toggle-btn">☀️ Light Mode</button>
+        <button id="themeToggle" class="theme-toggle-btn">☀️ Light Mode</button>
       </div>
 
       <!-- Live Search Bar -->
@@ -1095,6 +1103,17 @@ function initWorkspaces() {
   });
 }
 
-  </script>
+  
+  // Theme toggle static runtime wiring for tablet
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('g9_theme', next);
+    });
+  }
+</script>
 </body>
 </html>

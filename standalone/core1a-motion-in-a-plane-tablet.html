@@ -2,7 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CORE (1A) - Motion in a Plane | 12.7" Tablet Standalone Edition</title>
   <meta name="description" content="Complete 35-page Core 1A textbook on Motion in a Plane, Projectiles, Frames, River Crossing, Rain, and Circular Motion. Optimized for 12.7-inch tablets.">
   <style>
@@ -296,7 +296,7 @@ small, .badge, .meta-text, .tag, .diff-badge, .unit-badge {
   color: var(--text-secondary);
   font-size: 14px;
   padding: 6px 14px;
-  min-height: 42px;
+  min-height: 48px;
 }
 
 .pill-btn.active {
@@ -700,7 +700,7 @@ small, .badge, .meta-text, .tag, .diff-badge, .unit-badge {
   flex: 1;
   padding: 6px 10px;
   font-size: 13.5px;
-  min-height: 42px;
+  min-height: 48px;
   background: var(--bg-surface);
   border: 1px solid var(--border);
   color: var(--text-secondary);
@@ -1020,7 +1020,15 @@ footer {
   margin-top: auto;
 }
 
-  </style>
+  
+textarea.tablet-safe-input {
+  min-height: 120px;
+  width: 100%;
+  padding: 12px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+</style>
 </head>
 <body>
   <div class="app-container">
@@ -1037,7 +1045,7 @@ footer {
           <h1 class="course-title">Motion in a Plane: Projectiles, Frames, River Crossing, Rain &amp; Circular Motion</h1>
           <p class="course-subtitle">Deconstruct 2D kinematics, master reference frames, river drifts, rain vectors, and circular turning without ungrounded memorisation.</p>
         </div>
-        <button id="theme-toggle-btn" class="theme-toggle-btn">☀️ Light Mode</button>
+        <button id="themeToggle" class="theme-toggle-btn">☀️ Light Mode</button>
       </div>
 
       <!-- Live Search Bar -->
@@ -6925,6 +6933,17 @@ function initStageSteppers() {
   });
 }
 
-  </script>
+  
+  // Theme toggle static runtime wiring for tablet
+  const themeBtn = document.getElementById('themeToggle');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', () => {
+      const cur = document.documentElement.getAttribute('data-theme') || 'dark';
+      const next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      localStorage.setItem('g9_theme', next);
+    });
+  }
+</script>
 </body>
 </html>
