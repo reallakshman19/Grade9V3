@@ -230,7 +230,7 @@
           "action": "Track the same element from reactant to product and classify increases as oxidation and decreases as reduction.",
           "why_valid": "A direction can only be named after matching the element across both sides.",
           "inputs": [],
-          "output": "Electron-loss/gain and oxidation-number change are two views of the same bookkeeping."
+          "output": "Zn: 0 → +2 = oxidation; Cu: +2 → 0 = reduction."
         },
         {
           "id": "REDOX-OXIDATION-AGENTS-T3",
@@ -238,7 +238,7 @@
           "action": "Name the species being reduced as the oxidising agent and the species being oxidised as the reducing agent.",
           "why_valid": "Agent names describe the process caused in the partner, not the self-change.",
           "inputs": [],
-          "output": "Separating self-change from agent role prevents reversal."
+          "output": "Zn 0 → +2 ⇒ Zn is the reducing agent; Cu²⁺ +2 → 0 ⇒ Cu²⁺ is the oxidising agent."
         }
       ],
       "relation_refs": [
@@ -405,7 +405,7 @@
           "action": "For the same element, map one initial state splitting upward and downward as disproportionation, and two starting states converging as comproportionation.",
           "why_valid": "The classification depends on the directed oxidation-state map.",
           "inputs": [],
-          "output": "Counting how many states appear is not enough."
+          "output": "Cl in Cl₂: 0 → −1 and 0 → +1 ⇒ disproportionation; the directed oxidation-state split, not the number of states, establishes the pattern."
         }
       ],
       "relation_refs": [
