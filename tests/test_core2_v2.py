@@ -9,7 +9,7 @@ import unittest
 
 from jsonschema import Draft202012Validator
 
-from Shared.tools import core2_v2, core_template_contract, render_core
+from Shared.tools import core2_v2, render_core
 
 
 REPO = Path(__file__).resolve().parents[1]
@@ -363,8 +363,12 @@ class Core2V2SchemaContract(unittest.TestCase):
 
 
 class Core2V2BlueprintContract(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.registry = json.loads((REPO / "Shared/web/interactive-page-blueprints.v1.json").read_text(encoding="utf-8"))
+
     def _blueprint(self, role: str) -> dict:
-        return core_template_contract.resolve_web_blueprint_for_core(role)
+        return next(bp for bp in self.registry["blueprints"] if role in bp["core_roles"])
 
     def test_both_sides_admit_derived_navigation_blocks(self):
         core1a = self._blueprint("CORE1A")
