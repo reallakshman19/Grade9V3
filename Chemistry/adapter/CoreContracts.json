@@ -124,7 +124,7 @@
     },
     {
       "id": "SYMBOLIC_EQUATION",
-      "status": "PROPOSED",
+      "status": "IMPLEMENTED",
       "requires": [
         "subscripts versus coefficients distinguished",
         "charges",
