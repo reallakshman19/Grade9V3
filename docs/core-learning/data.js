@@ -26,7 +26,7 @@ window.GRADE9V3_CORE = {
             {
               "id": "CORE1-SCOPE",
               "kind": "TEXT",
-              "text": "This bucket covers Governed Core1A declarative teaching converted from PR #376.\nDeliberately excluded: BOND-Q01 canonical duplicate.\nDeliberately excluded: BOND-Q02..Q04 unresolved source collisions.\nDeliberately excluded: Any claim of prescribed Grade-9 curriculum authority."
+              "text": "This bucket covers Build Lewis and VSEPR representations, use geometry for dipole-vector reasoning, and read bond order and magnetism from stated molecular-orbital occupancy.\nDeliberately excluded: Ab initio quantum-mechanical derivations of bonding.\nDeliberately excluded: Solid-state structures when the page explicitly uses an isolated-molecule model.\nDeliberately excluded: Question-bank practice sets beyond the worked anchors used for concept construction."
             },
             {
               "id": "CORE1-QUANTITIES",
@@ -153,7 +153,7 @@ window.GRADE9V3_CORE = {
             {
               "id": "CORE1-SCOPE",
               "kind": "TEXT",
-              "text": "This bucket covers Governed Core1A declarative teaching converted from PR #376.\nDeliberately excluded: Unresolved NCERT/ExamSIDE/JEE question identities.\nDeliberately excluded: Any claim that this Owner extension is prescribed CBSE Grade 9 content.\nDeliberately excluded: Core2 source-question custody until reconstruction is complete."
+              "text": "This bucket covers Build and apply particle, gas-law and real-gas models while stating the conditions under which each model is valid.\nDeliberately excluded: Detailed statistical-mechanical derivations of molecular speed distributions.\nDeliberately excluded: Full thermodynamic phase-diagram analysis beyond the critical-point boundary used here.\nDeliberately excluded: Question-bank practice sets; this concept book focuses on construction and worked anchors."
             },
             {
               "id": "CORE1-QUANTITIES",
@@ -280,7 +280,7 @@ window.GRADE9V3_CORE = {
             {
               "id": "CORE1-SCOPE",
               "kind": "TEXT",
-              "text": "This bucket covers Governed Core1A declarative teaching converted from PR #376.\nDeliberately excluded: Unresolved NCERT question identities and retained-card denominator claims.\nDeliberately excluded: Any claim of prescribed Grade-9 curriculum authority.\nDeliberately excluded: Core2 source-question admission."
+              "text": "This bucket covers Convert between mass, amount and named entities; build empirical ratios; use balanced coefficients for reaction inventory; and reason from concentration denominators.\nDeliberately excluded: Reaction kinetics, equilibrium and real-yield modelling.\nDeliberately excluded: Analytical-chemistry procedures beyond the concentration definitions used here.\nDeliberately excluded: Question-bank practice sets beyond the worked anchors used for concept construction."
             },
             {
               "id": "CORE1-QUANTITIES",
@@ -407,7 +407,7 @@ window.GRADE9V3_CORE = {
             {
               "id": "CORE1-SCOPE",
               "kind": "TEXT",
-              "text": "This bucket covers Governed Core1A declarative teaching converted from PR #376.\nDeliberately excluded: Unresolved NCERT/JEE question identities and denominator claims.\nDeliberately excluded: Any claim of prescribed Grade-9 curriculum authority.\nDeliberately excluded: Core2 source-question admission."
+              "text": "This bucket covers Track oxidation-state change, identify oxidising and reducing roles, classify redox patterns, and balance a stated ionic reaction with atom and charge checks.\nDeliberately excluded: Electrode-potential calculations and electrochemical-cell design.\nDeliberately excluded: Industrial redox process engineering beyond the reaction bookkeeping used here.\nDeliberately excluded: Question-bank practice sets beyond the worked anchors used for concept construction."
             },
             {
               "id": "CORE1-QUANTITIES",

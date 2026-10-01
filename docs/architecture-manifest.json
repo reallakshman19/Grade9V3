@@ -19,7 +19,7 @@
     "WEB_CONTRACT": 7,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:277695bf44c934b0be34ce95387b5b2517d0a6cb039cced5bb8cbf8d713339bc",
+  "digest": "sha256:428dbad4e7763ea9f5f4d5637218c89632f76aae082c2e2be6468d71959a12a0",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -1446,8 +1446,8 @@
       "path": "public/core-learning/data.js",
       "role": "WEB",
       "role_description": "Static Core learner host and generated projection data",
-      "bytes": 2772299,
-      "sha256": "76d6158b03f3fc7145b7e32513327aa78f75b1e4f2bb82ea0955f2f41352c46a"
+      "bytes": 2772953,
+      "sha256": "e783e5b02d0bedb1d4a1aa228e9d9eeb9fd551b7fb9349e23c05c9b957faadfd"
     },
     {
       "path": "public/core-learning/index.html",
