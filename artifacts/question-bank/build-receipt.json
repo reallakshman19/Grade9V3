@@ -43,10 +43,10 @@
         "resource_count": 1
       }
     ],
-    "subtopic_titles": "sha256:a7152068e8761d050acaee384739a3fea2cd69d78fda048a07b7e1c6d45566fa",
+    "subtopic_titles": "sha256:9984302e90569a9c6630f5751b875261905ab5bf21d929eceb3bf9aa1f6cc04b",
     "worker_contract_version": "1.0.0"
   },
-  "build_id": "sha256:ae5e7da1d354cd9c4befe27a791290c5e6f584e170a29f648c9f76736fd1cb40",
+  "build_id": "sha256:10533ab8907f41e4244453c7b58687381703f03e740c6e339afad2fa6e0bc0a3",
   "counts": {
     "dedup_evidence": 7,
     "detail_shards": 2,
@@ -58,8 +58,8 @@
   "outputs": {
     "catalog": "sha256:180600bfaada1bfbbb0f699617a5b99151014b6146e503371becfcfe8cf85e52",
     "dedup": "sha256:a36fd62e37e5ed6bc8039ecf270e063c81e87271daec8e8e6a9dcfcc2f9a30c1",
-    "detail_shards": "sha256:5f6d0ab422070564bfe8add63456a88908b89b8c029bd4b921db47715a417073",
-    "lineage": "sha256:ce943a4399c8e7b0ab47cf43a15ca84a1384090fea824c27d6443d3706fd844c",
+    "detail_shards": "sha256:0e9ccc42d95edaeea5fd62458c830e151cc55de2fe8c59faac4baf870ac7b3b5",
+    "lineage": "sha256:0bff1c4320369c6f9482b61c1a7ad5b7be3f6cc6151556a01e6033edcc0a0c19",
     "resources": "sha256:f5ae7480a812ad6137611789d6ef4d1916f9aa866ba1b284a009c529926cfa1f",
     "search": "sha256:6122981427c29942a373c79ae4bc1c531ecb0b5611f7e4b113ed5ed949a804a5",
     "summaries": "sha256:e7c7df88d39859a53c951a63e7c0616309561d076b12f668cd5f9866e19c24b1"
@@ -68,7 +68,7 @@
   "workers": [
     {
       "contract_version": "1.0.0",
-      "input_digest": "sha256:d4a3a2ff3a3d32ef8c825fe4a97b732073f70846fe96201c4483efd1c6231f1a",
+      "input_digest": "sha256:79869d695d8fedb0daf0718cc35807a183e70877077a7c2935ee59d2f4c517ae",
       "output_digest": "sha256:180600bfaada1bfbbb0f699617a5b99151014b6146e503371becfcfe8cf85e52",
       "worker_id": "catalog"
     },
@@ -81,7 +81,7 @@
     {
       "contract_version": "1.0.0",
       "input_digest": "sha256:06b25078f8c982378ee32e39bbae879fdb41162c8954819e37c6f3adc442db23",
-      "output_digest": "sha256:5f6d0ab422070564bfe8add63456a88908b89b8c029bd4b921db47715a417073",
+      "output_digest": "sha256:0e9ccc42d95edaeea5fd62458c830e151cc55de2fe8c59faac4baf870ac7b3b5",
       "worker_id": "details"
     },
     {

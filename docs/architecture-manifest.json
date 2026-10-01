@@ -18,7 +18,7 @@
     "WEB_CONTRACT": 3,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:e6261435d5f7a1e9df5c945714db2522444e2213d85fa8eda2e3ea9f5367fed8",
+  "digest": "sha256:f05f47083cebf77b530daf8a70cf92a5da13af94546e00d57b39742fd3702af5",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -73,8 +73,8 @@
       "path": "Shared/library/compile_inputs.py",
       "role": "LIBRARY",
       "role_description": "Topic library: intake, resolution, promotion, compilation",
-      "bytes": 46765,
-      "sha256": "991889d32a3724326a67db313d42d4223c65192a3121fd350eb530b28a0bce51"
+      "bytes": 47150,
+      "sha256": "0865d3f8a2cda03f5389b3981e02b70d5c94df4bc06253fd8426129ac6065c6b"
     },
     {
       "path": "Shared/library/core1_delivery.py",
@@ -1361,8 +1361,8 @@
       "path": "public/core-learning/data.js",
       "role": "WEB",
       "role_description": "Static Core learner host and generated projection data",
-      "bytes": 2428755,
-      "sha256": "5caa8ca6059a014e2b956e2e1bd5d49301b44ed0877e77a14e2f30cb408d64a3"
+      "bytes": 2725129,
+      "sha256": "281ca712b504eb7b29b7b6d11f9b46cf192e8bb059e5fa99992459893afb2dc5"
     },
     {
       "path": "public/core-learning/index.html",
@@ -2341,8 +2341,8 @@
       "path": "tests/test_library.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 83851,
-      "sha256": "db8666193033240507c0fce77c2de4e4d81d207bc85d7412551c584c620b2403"
+      "bytes": 85284,
+      "sha256": "f57c2d3fea34fe101871eb1f693132d666372268d46a92c854f9c98d2cf77854"
     },
     {
       "path": "tests/test_m2_all_chapters_evidence.py",
@@ -2803,8 +2803,8 @@
       "path": "tools/data.js",
       "role": "WEB",
       "role_description": "Browsable surfaces over generated data",
-      "bytes": 2330067,
-      "sha256": "b1f73617aacda55df3edab55497d3f8eb5f167441d35be86d8c2560e62f7140e"
+      "bytes": 2399574,
+      "sha256": "30eb6ce4f9fe74ec9ac3f6e044eb556c7475b3c500d794dadb8c02e49d5f8da3"
     },
     {
       "path": "tools/index.html",

@@ -8,6 +8,5671 @@ window.GRADE9V3_CORE = {
   },
   "core_projections": [
     {
+      "id": "chemistry:bucket-chem-bond:core1",
+      "subject": "Chemistry",
+      "source_ref": "BUCKET-CHEM-BOND",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1",
+        "orientation": {
+          "bucket_ref": "BUCKET-CHEM-BOND",
+          "title": "Chemical Bonding and Molecular Structure",
+          "blocks": [
+            {
+              "id": "CORE1-CONVENTIONS",
+              "kind": "TEXT",
+              "text": "Read these before anything that uses them.\nName the model in use: Lewis bookkeeping, VSEPR geometry, dipole-vector addition or molecular-orbital occupancy.\nFormal charge is bookkeeping within a chosen Lewis representation, not a measured isolated atomic charge.\nIf sp3d is used for PCl5, label it as simplified course shorthand rather than proof of literal d-orbital hybrid participation."
+            },
+            {
+              "id": "CORE1-SCOPE",
+              "kind": "TEXT",
+              "text": "This bucket covers Governed Core1A declarative teaching converted from PR #376.\nDeliberately excluded: BOND-Q01 canonical duplicate.\nDeliberately excluded: BOND-Q02..Q04 unresolved source collisions.\nDeliberately excluded: Any claim of prescribed Grade-9 curriculum authority."
+            },
+            {
+              "id": "CORE1-QUANTITIES",
+              "kind": "TEXT",
+              "text": "The quantities this bucket works with.\nP: PCl5 geometry: authored schematic count for phosphorus centre. (1 count)\nCl: PCl5 geometry: authored schematic count for chlorine positions. (5 count)"
+            },
+            {
+              "id": "CORE1-SCENE-CHEM-BOND-LEWIS-VSEPR",
+              "kind": "FIGURE",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "FC = V − N − B/2",
+                  "in_words": "For Lewis structures, formal charge and VSEPR geometry, the displayed symbols mean: Formal charge is computed from valence, nonbonding and bonding-electron bookkeeping for a chosen Lewis representation."
+                }
+              ],
+              "scene": {
+                "kind": "SYMBOLIC_EQUATION",
+                "frame": "Author-created symbolic model for Lewis structures, formal charge and VSEPR geometry.",
+                "caption": "Lewis bookkeeping: Formal charge is computed from valence, nonbonding and bonding-electron bookkeeping for a chosen Lewis representation.",
+                "equation_atom": "EQ-CHEM-BOND-LEWIS-VSEPR",
+                "annotation": "Formal charge is representation bookkeeping, not a direct measured partial charge.",
+                "coefficient_note": "In Lewis bookkeeping, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                "charge_note": "In Lewis bookkeeping, no ionic charge is implied unless a charge is explicitly shown.",
+                "phase_note": "In Lewis bookkeeping, no phase label is implied unless a phase is explicitly shown.",
+                "arrow_note": "In Lewis bookkeeping, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+              }
+            },
+            {
+              "id": "CORE1-DEMAND",
+              "kind": "TEXT",
+              "text": "Where the hard work is.\nLewis structures, formal charge and VSEPR geometry. (MEDIUM) The learner must keep electron-count bookkeeping distinct from physical charge and distinguish electron-domain geometry from molecular shape.\nPCl5 geometry, model shorthand and molecular dipoles. (HARD) The learner must distinguish observed geometry from simplified hybridisation language and then perform vector rather than scalar polarity reasoning.\nMolecular-orbital occupancy, magnetism and hydrogen bonding. (HARD) The learner must make two distinct readouts from MO occupancy and separately identify structural requirements for hydrogen bonding."
+            }
+          ]
+        },
+        "concept": null,
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_id": "BP-CORE1-ORIENTATION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_ORIENTATION",
+            "required_slots": [
+              "identity",
+              "orientation"
+            ],
+            "slot_order": [
+              "identity",
+              "orientation"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "SINGLE_PANE",
+              "expanded": "SINGLE_PANE",
+              "primary_fraction": 1,
+              "support_fraction": 0
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "FULL_INFERENTIAL_CONSTRUCTION"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-BOND-LEWIS-VSEPR",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:bucket-chem-gas:core1",
+      "subject": "Chemistry",
+      "source_ref": "BUCKET-CHEM-GAS",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1",
+        "orientation": {
+          "bucket_ref": "BUCKET-CHEM-GAS",
+          "title": "Behaviour of Gases and States of Matter",
+          "blocks": [
+            {
+              "id": "CORE1-CONVENTIONS",
+              "kind": "TEXT",
+              "text": "Read these before anything that uses them.\nState which variables are fixed before applying a gas-law proportionality.\nTreat ideal-gas and kinetic-theory statements as models with stated conditions, not universal molecular mechanisms.\nFor phase change, state pressure and substance assumptions before naming a boiling temperature."
+            },
+            {
+              "id": "CORE1-SCOPE",
+              "kind": "TEXT",
+              "text": "This bucket covers Governed Core1A declarative teaching converted from PR #376.\nDeliberately excluded: Unresolved NCERT/ExamSIDE/JEE question identities.\nDeliberately excluded: Any claim that this Owner extension is prescribed CBSE Grade 9 content.\nDeliberately excluded: Core2 source-question custody until reconstruction is complete."
+            },
+            {
+              "id": "CORE1-QUANTITIES",
+              "kind": "TEXT",
+              "text": "The quantities this bucket works with.\nP: PCl5 geometry: authored schematic count for phosphorus centre. (1 count)\nCl: PCl5 geometry: authored schematic count for chlorine positions. (5 count)"
+            },
+            {
+              "id": "CORE1-SCENE-CHEM-GAS-KINETIC-PHASE",
+              "kind": "FIGURE",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "T ↑ ⇒ mean Eₖ ↑",
+                  "in_words": "For Particle model, speed distributions and phase change, the displayed symbols mean: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains."
+                }
+              ],
+              "scene": {
+                "kind": "SYMBOLIC_EQUATION",
+                "frame": "Author-created symbolic model for Particle model, speed distributions and phase change.",
+                "caption": "Gas particle model: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains.",
+                "equation_atom": "EQ-CHEM-GAS-KINETIC-PHASE",
+                "annotation": "The mean changes; the molecular speed distribution does not collapse to one speed.",
+                "coefficient_note": "In Gas particle model, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                "charge_note": "In Gas particle model, no ionic charge is implied unless a charge is explicitly shown.",
+                "phase_note": "In Gas particle model, no phase label is implied unless a phase is explicitly shown.",
+                "arrow_note": "In Gas particle model, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+              }
+            },
+            {
+              "id": "CORE1-DEMAND",
+              "kind": "TEXT",
+              "text": "Where the hard work is.\nParticle model, speed distributions and phase change. (MEDIUM) The learner must connect distributed molecular motion to macroscopic temperature and distinguish surface evaporation from pressure-dependent boiling.\nGas-law constraints, mixtures and transport. (MEDIUM) Correct use depends on controlled variables and on separating pressure bookkeeping from effusion-rate comparisons.\nReal-gas deviations and critical behaviour. (HARD) The learner must treat van der Waals terms as state-model corrections and distinguish critical behaviour from ordinary boiling."
+            }
+          ]
+        },
+        "concept": null,
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_id": "BP-CORE1-ORIENTATION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_ORIENTATION",
+            "required_slots": [
+              "identity",
+              "orientation"
+            ],
+            "slot_order": [
+              "identity",
+              "orientation"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "SINGLE_PANE",
+              "expanded": "SINGLE_PANE",
+              "primary_fraction": 1,
+              "support_fraction": 0
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "FULL_INFERENTIAL_CONSTRUCTION"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-GAS-KINETIC-PHASE",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:bucket-chem-mole:core1",
+      "subject": "Chemistry",
+      "source_ref": "BUCKET-CHEM-MOLE",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1",
+        "orientation": {
+          "bucket_ref": "BUCKET-CHEM-MOLE",
+          "title": "Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry",
+          "blocks": [
+            {
+              "id": "CORE1-CONVENTIONS",
+              "kind": "TEXT",
+              "text": "Read these before anything that uses them.\nName the counted entity—atoms, molecules, ions or formula units—whenever using the mole.\nCarry units through mass–amount–particle conversions.\nFor concentration, distinguish solution-volume, solvent-mass and mole-ratio denominators and state whether sample composition is unchanged."
+            },
+            {
+              "id": "CORE1-SCOPE",
+              "kind": "TEXT",
+              "text": "This bucket covers Governed Core1A declarative teaching converted from PR #376.\nDeliberately excluded: Unresolved NCERT question identities and retained-card denominator claims.\nDeliberately excluded: Any claim of prescribed Grade-9 curriculum authority.\nDeliberately excluded: Core2 source-question admission."
+            },
+            {
+              "id": "CORE1-QUANTITIES",
+              "kind": "TEXT",
+              "text": "The quantities this bucket works with.\nP: PCl5 geometry: authored schematic count for phosphorus centre. (1 count)\nCl: PCl5 geometry: authored schematic count for chlorine positions. (5 count)"
+            },
+            {
+              "id": "CORE1-SCENE-CHEM-MOLE-FOUNDATIONS-MOLE",
+              "kind": "FIGURE",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "N = nNₐ",
+                  "in_words": "For Combination laws, mole, Avogadro constant and molar mass, the displayed symbols mean: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge."
+                }
+              ],
+              "scene": {
+                "kind": "SYMBOLIC_EQUATION",
+                "frame": "Author-created symbolic model for Combination laws, mole, Avogadro constant and molar mass.",
+                "caption": "Mole-to-entity bridge: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge.",
+                "equation_atom": "EQ-CHEM-MOLE-FOUNDATIONS-MOLE",
+                "annotation": "Always name the counted entity when converting moles to particle number.",
+                "coefficient_note": "In Mole-to-entity bridge, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                "charge_note": "In Mole-to-entity bridge, no ionic charge is implied unless a charge is explicitly shown.",
+                "phase_note": "In Mole-to-entity bridge, no phase label is implied unless a phase is explicitly shown.",
+                "arrow_note": "In Mole-to-entity bridge, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+              }
+            },
+            {
+              "id": "CORE1-DEMAND",
+              "kind": "TEXT",
+              "text": "Where the hard work is.\nCombination laws, mole, Avogadro constant and molar mass. (MEDIUM) The learner must separate empirical conservation/ratio laws from explanatory particle models and keep amount distinct from mass.\nEmpirical formula, stoichiometry and limiting reagent. (HARD) The learner must convert mass composition to mole ratios, distinguish empirical from molecular scale, and compare reactant inventories through balanced-equation coefficients.\nMolarity, molality and mole fraction. (HARD) The learner must choose the correct denominator and qualify temperature invariance by sample closure and unchanged composition."
+            }
+          ]
+        },
+        "concept": null,
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_id": "BP-CORE1-ORIENTATION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_ORIENTATION",
+            "required_slots": [
+              "identity",
+              "orientation"
+            ],
+            "slot_order": [
+              "identity",
+              "orientation"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "SINGLE_PANE",
+              "expanded": "SINGLE_PANE",
+              "primary_fraction": 1,
+              "support_fraction": 0
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "FULL_INFERENTIAL_CONSTRUCTION"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-MOLE-FOUNDATIONS-MOLE",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:bucket-chem-redox:core1",
+      "subject": "Chemistry",
+      "source_ref": "BUCKET-CHEM-REDOX",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1",
+        "orientation": {
+          "bucket_ref": "BUCKET-CHEM-REDOX",
+          "title": "Redox Reactions",
+          "blocks": [
+            {
+              "id": "CORE1-CONVENTIONS",
+              "kind": "TEXT",
+              "text": "Read these before anything that uses them.\nTreat oxidation number as formal electron bookkeeping unless a separate physical-charge claim is supported.\nIdentify oxidation and reduction before naming oxidising and reducing agents.\nState acidic or basic aqueous medium before introducing H+, OH- or H2O during half-reaction balancing."
+            },
+            {
+              "id": "CORE1-SCOPE",
+              "kind": "TEXT",
+              "text": "This bucket covers Governed Core1A declarative teaching converted from PR #376.\nDeliberately excluded: Unresolved NCERT/JEE question identities and denominator claims.\nDeliberately excluded: Any claim of prescribed Grade-9 curriculum authority.\nDeliberately excluded: Core2 source-question admission."
+            },
+            {
+              "id": "CORE1-QUANTITIES",
+              "kind": "TEXT",
+              "text": "The quantities this bucket works with.\nP: PCl5 geometry: authored schematic count for phosphorus centre. (1 count)\nCl: PCl5 geometry: authored schematic count for chlorine positions. (5 count)"
+            },
+            {
+              "id": "CORE1-SCENE-CHEM-REDOX-OXIDATION-AGENTS",
+              "kind": "FIGURE",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "ON ↑ = oxidation; ON ↓ = reduction",
+                  "in_words": "For Oxidation number, oxidation/reduction and agents, the displayed symbols mean: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner."
+                }
+              ],
+              "scene": {
+                "kind": "SYMBOLIC_EQUATION",
+                "frame": "Author-created symbolic model for Oxidation number, oxidation/reduction and agents.",
+                "caption": "Oxidation-state direction: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner.",
+                "equation_atom": "EQ-CHEM-REDOX-OXIDATION-AGENTS",
+                "annotation": "Oxidation number is formal electron bookkeeping, not generally a measured atomic charge.",
+                "coefficient_note": "In Oxidation-state direction, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                "charge_note": "In Oxidation-state direction, no ionic charge is implied unless a charge is explicitly shown.",
+                "phase_note": "In Oxidation-state direction, no phase label is implied unless a phase is explicitly shown.",
+                "arrow_note": "In Oxidation-state direction, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+              }
+            },
+            {
+              "id": "CORE1-DEMAND",
+              "kind": "TEXT",
+              "text": "Where the hard work is.\nOxidation number, oxidation/reduction and agents. (MEDIUM) The learner must coordinate formal oxidation-state bookkeeping with electron transfer and avoid the common agent-name inversion.\nRedox classification, displacement and disproportionation patterns. (HARD) The learner must distinguish chemical change from redox and identify split/convergent oxidation-state patterns.\nHalf-reaction balancing and reaction-dependent n-factor. (HARD) The learner must conserve atoms and charge in a declared medium and derive electron-change counts from the specified reaction rather than memorising them as universal properties."
+            }
+          ]
+        },
+        "concept": null,
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_id": "BP-CORE1-ORIENTATION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_ORIENTATION",
+            "required_slots": [
+              "identity",
+              "orientation"
+            ],
+            "slot_order": [
+              "identity",
+              "orientation"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "SINGLE_PANE",
+              "expanded": "SINGLE_PANE",
+              "primary_fraction": 1,
+              "support_fraction": 0
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "FULL_INFERENTIAL_CONSTRUCTION"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-REDOX-OXIDATION-AGENTS",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-bond-geometry-dipole:core1a",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1A",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
+          "title": "PCl5 geometry, model shorthand and molecular dipoles",
+          "intrinsic_badge": "HARD",
+          "inferential_jump": "Trigonal-bipyramidal geometry is a structural claim, whereas sp3d is simplified model language; molecular polarity then depends on vector addition in that geometry rather than a count of polar bonds.",
+          "entry_assumptions": [
+            "For PCl5 geometry, model shorthand and molecular dipoles, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "BOND-GEOMETRY-DIPOLE-T1",
+              "role": "DECLARE",
+              "action": "Place five electron domains in a trigonal-bipyramidal arrangement with three equatorial and two axial directions.",
+              "why_valid": "Axial and equatorial positions have different angular environments.",
+              "inputs": [],
+              "output": "The geometry contains two distinct position classes."
+            },
+            {
+              "id": "BOND-GEOMETRY-DIPOLE-T2",
+              "role": "DECLARE",
+              "action": "Qualify traditional sp3d terminology as model shorthand if it is used.",
+              "why_valid": "Modern bonding descriptions do not require literal d-orbital hybridisation to explain PCl5 geometry.",
+              "inputs": [],
+              "output": "A course label must not be presented as experimental proof of orbital composition."
+            },
+            {
+              "id": "BOND-GEOMETRY-DIPOLE-T3",
+              "role": "TRANSFORM",
+              "action": "Add bond dipoles as vectors in the molecular geometry.",
+              "why_valid": "Equal polar bonds can cancel by symmetry, so scalar bond counting cannot establish a net molecular dipole.",
+              "inputs": [],
+              "output": "Geometry is indispensable to molecular-polarity prediction."
+            }
+          ],
+          "elicitation": null,
+          "misconceptions": [
+            {
+              "wrong_idea": "The label sp3d proves literal d-orbital bonding, and any molecule with polar bonds must have a nonzero net dipole.",
+              "diagnostic_prompt": "Does a hybridisation label itself measure orbital composition, and can equal bond-dipole vectors cancel in a symmetric arrangement?",
+              "repair": "Separate geometry evidence from hybridisation shorthand and perform a vector-symmetry check before asserting molecular polarity."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-BOND-GEOMETRY-DIPOLE"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-BOND-GEOMETRY-DIPOLE",
+              "correspondence": [
+                {
+                  "element": "particle groups",
+                  "symbol": "PCl₅: 3 equatorial + 2 axial",
+                  "in_words": "For PCl5 geometry, model shorthand and molecular dipoles, the labelled circles are the picture-side representation of this statement: A trigonal-bipyramidal PCl5 geometry contains distinct equatorial and axial directions; the picture does not prove literal d-orbital hybridisation."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-BOND-GEOMETRY-DIPOLE",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
+                  "datum_refs": [
+                    "DAT-CHEM-BOND-GEOMETRY-DIPOLE-COUNT-1",
+                    "DAT-CHEM-BOND-GEOMETRY-DIPOLE-COUNT-2"
+                  ],
+                  "scene": {
+                    "kind": "PARTICLE_DIAGRAM",
+                    "frame": "Author-created static particle-level schematic for PCl5 geometry, model shorthand and molecular dipoles.",
+                    "caption": "PCl5 geometry: A trigonal-bipyramidal PCl5 geometry contains distinct equatorial and axial directions; the picture does not prove literal d-orbital hybridisation.",
+                    "representation_level": "molecular/particle model",
+                    "mechanism_note": "For PCl5 geometry, model shorthand and molecular dipoles, this is a static explanatory schematic, not a reaction or collision mechanism.",
+                    "annotation": "Three equatorial directions and two axial directions are shown schematically.",
+                    "groups": [
+                      {
+                        "label": "phosphorus centre",
+                        "symbol": "P",
+                        "count_atom": "DAT-CHEM-BOND-GEOMETRY-DIPOLE-COUNT-1"
+                      },
+                      {
+                        "label": "chlorine positions",
+                        "symbol": "Cl",
+                        "count_atom": "DAT-CHEM-BOND-GEOMETRY-DIPOLE-COUNT-2"
+                      }
+                    ],
+                    "layout": "CENTRAL_SHELL",
+                    "geometry": "TRIGONAL_BIPYRAMIDAL"
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "How can a molecule contain polar bonds yet have zero net dipole moment?",
+            "source_ref": "SRC-CHEM-PR376-BOND-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Its bond-dipole vectors can cancel exactly by molecular symmetry.",
+              "reasoning": [
+                "Each bond can contribute a nonzero vector.",
+                "The molecular dipole is the vector sum of all contributions."
+              ],
+              "check": "Draw or reason through the vector directions instead of counting polar bonds.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The PCl5 geometry, model shorthand and molecular dipoles exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": [
+            {
+              "question_ref": "Q-CHEM-BOND-GEOMETRY-DIPOLE-1A",
+              "stem": "Why are axial and equatorial bond directions in trigonal-bipyramidal PCl5 not geometrically equivalent?",
+              "figure_refs": [],
+              "answer": {
+                "summary": "Equatorial directions are 120° apart in one plane, while each axial direction is perpendicular to that plane and has three 90° relationships to equatorial directions.",
+                "reasoning": [
+                  "The five positions split into a three-position equatorial set and a two-position axial set.",
+                  "Their angle environments therefore differ."
+                ],
+                "check": "List the nearest angular relationships around an axial position and an equatorial position."
+              }
+            }
+          ]
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_id": "BP-CORE1A-CONSTRUCTION",
+            "blueprint_version": "1.1.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_CONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "slot_order": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ATTEMPT_FIRST_AS_PRIMARY_MODE"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": true,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-BOND-GEOMETRY-DIPOLE",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-bond-geometry-dipole:core1b",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1B",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
+          "title": "PCl5 geometry, model shorthand and molecular dipoles",
+          "intrinsic_badge": "HARD",
+          "inferential_jump": "Trigonal-bipyramidal geometry is a structural claim, whereas sp3d is simplified model language; molecular polarity then depends on vector addition in that geometry rather than a count of polar bonds.",
+          "entry_assumptions": [
+            "For PCl5 geometry, model shorthand and molecular dipoles, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "BOND-GEOMETRY-DIPOLE-T1",
+              "role": "DECLARE",
+              "action": "Place five electron domains in a trigonal-bipyramidal arrangement with three equatorial and two axial directions.",
+              "why_valid": "Axial and equatorial positions have different angular environments.",
+              "inputs": [],
+              "output": "The geometry contains two distinct position classes."
+            },
+            {
+              "id": "BOND-GEOMETRY-DIPOLE-T2",
+              "role": "DECLARE",
+              "action": "Qualify traditional sp3d terminology as model shorthand if it is used.",
+              "why_valid": "Modern bonding descriptions do not require literal d-orbital hybridisation to explain PCl5 geometry.",
+              "inputs": [],
+              "output": "A course label must not be presented as experimental proof of orbital composition."
+            },
+            {
+              "id": "BOND-GEOMETRY-DIPOLE-T3",
+              "role": "TRANSFORM",
+              "action": "Add bond dipoles as vectors in the molecular geometry.",
+              "why_valid": "Equal polar bonds can cancel by symmetry, so scalar bond counting cannot establish a net molecular dipole.",
+              "inputs": [],
+              "output": "Geometry is indispensable to molecular-polarity prediction."
+            }
+          ],
+          "elicitation": {
+            "predict": {
+              "prompt": "For PCl5 geometry, model shorthand and molecular dipoles, decide before the completed route is revealed: Does a hybridisation label itself measure orbital composition, and can equal bond-dipole vectors cancel in a symmetric arrangement?",
+              "defensible_answer": "For PCl5 geometry, model shorthand and molecular dipoles, the defensible route is: Separate geometry evidence from hybridisation shorthand and perform a vector-symmetry check before asserting molecular polarity."
+            },
+            "attempt": {
+              "produces": "A short PCl5 geometry, model shorthand and molecular dipoles explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "closure": "CRITERIA",
+              "rubric": [
+                {
+                  "criterion": "The PCl5 geometry, model shorthand and molecular dipoles response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+                  "evidence_of": "The learner can separate the PCl5 geometry, model shorthand and molecular dipoles governing distinction from the tempting shortcut."
+                }
+              ],
+              "task": {
+                "prompt": "Explain the PCl5 geometry, model shorthand and molecular dipoles decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "givens": [
+                  "Trigonal-bipyramidal geometry is a structural claim, whereas sp3d is simplified model language; molecular polarity then depends on vector addition in that geometry rather than a count of polar bonds."
+                ],
+                "representation_ref": "REP-CHEM-BOND-GEOMETRY-DIPOLE",
+                "stage_refs": []
+              }
+            },
+            "reconstruct": {
+              "route": [
+                {
+                  "ask": "In PCl5 geometry, model shorthand and molecular dipoles, what must be decided before the move \"Place five electron domains in a trigonal-bipyramidal arrangement with three equatorial and two axial directions.\" is justified?",
+                  "why_this_ask": "This makes the learner supply the entry decision for PCl5 geometry, model shorthand and molecular dipoles instead of receiving the expert sequence first.",
+                  "from_step_ref": "BOND-GEOMETRY-DIPOLE-T1"
+                },
+                {
+                  "ask": "For PCl5 geometry, model shorthand and molecular dipoles, how would you test the conclusion reached by \"Add bond dipoles as vectors in the molecular geometry.\" without simply repeating the model answer?",
+                  "why_this_ask": "This closes PCl5 geometry, model shorthand and molecular dipoles through a learner-owned check rather than through recall of the declarative route.",
+                  "from_step_ref": "BOND-GEOMETRY-DIPOLE-T3"
+                }
+              ],
+              "differs_from_teaching_path": "For PCl5 geometry, model shorthand and molecular dipoles, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+            },
+            "boundary_test": {
+              "prompt": "How can a molecule contain polar bonds yet have zero net dipole moment?",
+              "answer": "Its bond-dipole vectors can cancel exactly by molecular symmetry.",
+              "confirms": "For PCl5 geometry, model shorthand and molecular dipoles, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+            }
+          },
+          "misconceptions": [
+            {
+              "wrong_idea": "The label sp3d proves literal d-orbital bonding, and any molecule with polar bonds must have a nonzero net dipole.",
+              "diagnostic_prompt": "Does a hybridisation label itself measure orbital composition, and can equal bond-dipole vectors cancel in a symmetric arrangement?",
+              "repair": "Separate geometry evidence from hybridisation shorthand and perform a vector-symmetry check before asserting molecular polarity."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-BOND-GEOMETRY-DIPOLE"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-BOND-GEOMETRY-DIPOLE",
+              "correspondence": [
+                {
+                  "element": "particle groups",
+                  "symbol": "PCl₅: 3 equatorial + 2 axial",
+                  "in_words": "For PCl5 geometry, model shorthand and molecular dipoles, the labelled circles are the picture-side representation of this statement: A trigonal-bipyramidal PCl5 geometry contains distinct equatorial and axial directions; the picture does not prove literal d-orbital hybridisation."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-BOND-GEOMETRY-DIPOLE",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
+                  "datum_refs": [
+                    "DAT-CHEM-BOND-GEOMETRY-DIPOLE-COUNT-1",
+                    "DAT-CHEM-BOND-GEOMETRY-DIPOLE-COUNT-2"
+                  ],
+                  "scene": {
+                    "kind": "PARTICLE_DIAGRAM",
+                    "frame": "Author-created static particle-level schematic for PCl5 geometry, model shorthand and molecular dipoles.",
+                    "caption": "PCl5 geometry: A trigonal-bipyramidal PCl5 geometry contains distinct equatorial and axial directions; the picture does not prove literal d-orbital hybridisation.",
+                    "representation_level": "molecular/particle model",
+                    "mechanism_note": "For PCl5 geometry, model shorthand and molecular dipoles, this is a static explanatory schematic, not a reaction or collision mechanism.",
+                    "annotation": "Three equatorial directions and two axial directions are shown schematically.",
+                    "groups": [
+                      {
+                        "label": "phosphorus centre",
+                        "symbol": "P",
+                        "count_atom": "DAT-CHEM-BOND-GEOMETRY-DIPOLE-COUNT-1"
+                      },
+                      {
+                        "label": "chlorine positions",
+                        "symbol": "Cl",
+                        "count_atom": "DAT-CHEM-BOND-GEOMETRY-DIPOLE-COUNT-2"
+                      }
+                    ],
+                    "layout": "CENTRAL_SHELL",
+                    "geometry": "TRIGONAL_BIPYRAMIDAL"
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "How can a molecule contain polar bonds yet have zero net dipole moment?",
+            "source_ref": "SRC-CHEM-PR376-BOND-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Its bond-dipole vectors can cancel exactly by molecular symmetry.",
+              "reasoning": [
+                "Each bond can contribute a nonzero vector.",
+                "The molecular dipole is the vector sum of all contributions."
+              ],
+              "check": "Draw or reason through the vector directions instead of counting polar bonds.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The PCl5 geometry, model shorthand and molecular dipoles exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": []
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "GUIDED_RECONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "slot_order": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": true,
+              "solution_policy": "POST_ATTEMPT"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ANSWER_BEFORE_ATTEMPT"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": true,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-BOND-GEOMETRY-DIPOLE",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-bond-lewis-vsepr:core1a",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-BOND-LEWIS-VSEPR",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1A",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-BOND-LEWIS-VSEPR",
+          "title": "Lewis structures, formal charge and VSEPR geometry",
+          "intrinsic_badge": "MEDIUM",
+          "inferential_jump": "Lewis structures conserve a declared valence-electron inventory, while VSEPR uses electron domains to predict geometry; neither bookkeeping convention should be promoted beyond its model scope.",
+          "entry_assumptions": [
+            "For Lewis structures, formal charge and VSEPR geometry, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "BOND-LEWIS-VSEPR-T1",
+              "role": "DECLARE",
+              "action": "Count the total valence-electron inventory before placing bonds and lone pairs.",
+              "why_valid": "A Lewis structure that creates or loses electrons relative to the species charge is internally inconsistent.",
+              "inputs": [],
+              "output": "Every candidate Lewis structure must preserve the electron count."
+            },
+            {
+              "id": "BOND-LEWIS-VSEPR-T2",
+              "role": "TRANSFORM",
+              "action": "Compute formal charges only after the Lewis arrangement is explicit.",
+              "why_valid": "Formal charge follows a defined partition of bonding electrons and is a diagnostic of the representation.",
+              "inputs": [],
+              "output": "Formal charge helps compare contributors but is not a direct measured partial charge."
+            },
+            {
+              "id": "BOND-LEWIS-VSEPR-T3",
+              "role": "TRANSFORM",
+              "action": "Count VSEPR electron domains before naming molecular shape.",
+              "why_valid": "Lone pairs occupy domains and influence geometry even though they are omitted from the atom-position shape name.",
+              "inputs": [],
+              "output": "Electron-domain geometry and molecular shape can differ."
+            }
+          ],
+          "elicitation": null,
+          "misconceptions": [
+            {
+              "wrong_idea": "A formal charge is the atom's measured charge, and a tetrahedral electron-domain geometry always means a tetrahedral molecular shape.",
+              "diagnostic_prompt": "Can resonance contributors assign different formal charges to the same atom, and what happens to the shape name when one of four domains is a lone pair?",
+              "repair": "Treat formal charge as Lewis bookkeeping, then count electron domains and bonded-atom positions separately for VSEPR."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-BOND-LEWIS-VSEPR"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-BOND-LEWIS-VSEPR",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "FC = V − N − B/2",
+                  "in_words": "For Lewis structures, formal charge and VSEPR geometry, the displayed symbols mean: Formal charge is computed from valence, nonbonding and bonding-electron bookkeeping for a chosen Lewis representation."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-BOND-LEWIS-VSEPR",
+                  "cores": [
+                    "CORE1",
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-BOND-LEWIS-VSEPR",
+                  "datum_refs": [
+                    "EQ-CHEM-BOND-LEWIS-VSEPR"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Lewis structures, formal charge and VSEPR geometry.",
+                    "caption": "Lewis bookkeeping: Formal charge is computed from valence, nonbonding and bonding-electron bookkeeping for a chosen Lewis representation.",
+                    "equation_atom": "EQ-CHEM-BOND-LEWIS-VSEPR",
+                    "annotation": "Formal charge is representation bookkeeping, not a direct measured partial charge.",
+                    "coefficient_note": "In Lewis bookkeeping, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Lewis bookkeeping, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Lewis bookkeeping, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Lewis bookkeeping, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why can formal charge guide selection among Lewis contributors without proving the physical charge on each atom?",
+            "source_ref": "SRC-CHEM-PR376-BOND-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Formal charge is defined by a bookkeeping partition of electrons in a chosen Lewis structure, whereas physical electron density is a separate electronic-structure property.",
+              "reasoning": [
+                "The formal-charge rule is representation-dependent.",
+                "Measured or calculated charge distribution need not equal that formal partition."
+              ],
+              "check": "State which conclusion comes from bookkeeping and which would require physical electronic-structure evidence.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Lewis structures, formal charge and VSEPR geometry exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": [
+            {
+              "question_ref": "Q-CHEM-BOND-LEWIS-VSEPR-1A",
+              "stem": "A central atom has four electron domains, one of which is a lone pair. What distinction must be made before naming the geometry?",
+              "figure_refs": [],
+              "answer": {
+                "summary": "The electron-domain geometry is tetrahedral, while a three-bond/one-lone-pair molecular shape is trigonal pyramidal.",
+                "reasoning": [
+                  "Four domains adopt the tetrahedral electron-domain arrangement in the basic VSEPR model.",
+                  "Molecular-shape naming uses the positions of bonded atoms, not the lone-pair position."
+                ],
+                "check": "Count domains and bonded atoms in separate columns."
+              }
+            }
+          ]
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_id": "BP-CORE1A-CONSTRUCTION",
+            "blueprint_version": "1.1.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_CONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "slot_order": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ATTEMPT_FIRST_AS_PRIMARY_MODE"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": true,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-BOND-LEWIS-VSEPR",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-bond-lewis-vsepr:core1b",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-BOND-LEWIS-VSEPR",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1B",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-BOND-LEWIS-VSEPR",
+          "title": "Lewis structures, formal charge and VSEPR geometry",
+          "intrinsic_badge": "MEDIUM",
+          "inferential_jump": "Lewis structures conserve a declared valence-electron inventory, while VSEPR uses electron domains to predict geometry; neither bookkeeping convention should be promoted beyond its model scope.",
+          "entry_assumptions": [
+            "For Lewis structures, formal charge and VSEPR geometry, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "BOND-LEWIS-VSEPR-T1",
+              "role": "DECLARE",
+              "action": "Count the total valence-electron inventory before placing bonds and lone pairs.",
+              "why_valid": "A Lewis structure that creates or loses electrons relative to the species charge is internally inconsistent.",
+              "inputs": [],
+              "output": "Every candidate Lewis structure must preserve the electron count."
+            },
+            {
+              "id": "BOND-LEWIS-VSEPR-T2",
+              "role": "TRANSFORM",
+              "action": "Compute formal charges only after the Lewis arrangement is explicit.",
+              "why_valid": "Formal charge follows a defined partition of bonding electrons and is a diagnostic of the representation.",
+              "inputs": [],
+              "output": "Formal charge helps compare contributors but is not a direct measured partial charge."
+            },
+            {
+              "id": "BOND-LEWIS-VSEPR-T3",
+              "role": "TRANSFORM",
+              "action": "Count VSEPR electron domains before naming molecular shape.",
+              "why_valid": "Lone pairs occupy domains and influence geometry even though they are omitted from the atom-position shape name.",
+              "inputs": [],
+              "output": "Electron-domain geometry and molecular shape can differ."
+            }
+          ],
+          "elicitation": {
+            "predict": {
+              "prompt": "For Lewis structures, formal charge and VSEPR geometry, decide before the completed route is revealed: Can resonance contributors assign different formal charges to the same atom, and what happens to the shape name when one of four domains is a lone pair?",
+              "defensible_answer": "For Lewis structures, formal charge and VSEPR geometry, the defensible route is: Treat formal charge as Lewis bookkeeping, then count electron domains and bonded-atom positions separately for VSEPR."
+            },
+            "attempt": {
+              "produces": "A short Lewis structures, formal charge and VSEPR geometry explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "closure": "CRITERIA",
+              "rubric": [
+                {
+                  "criterion": "The Lewis structures, formal charge and VSEPR geometry response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+                  "evidence_of": "The learner can separate the Lewis structures, formal charge and VSEPR geometry governing distinction from the tempting shortcut."
+                }
+              ],
+              "task": {
+                "prompt": "Explain the Lewis structures, formal charge and VSEPR geometry decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "givens": [
+                  "Lewis structures conserve a declared valence-electron inventory, while VSEPR uses electron domains to predict geometry; neither bookkeeping convention should be promoted beyond its model scope."
+                ],
+                "representation_ref": "REP-CHEM-BOND-LEWIS-VSEPR",
+                "stage_refs": []
+              }
+            },
+            "reconstruct": {
+              "route": [
+                {
+                  "ask": "In Lewis structures, formal charge and VSEPR geometry, what must be decided before the move \"Count the total valence-electron inventory before placing bonds and lone pairs.\" is justified?",
+                  "why_this_ask": "This makes the learner supply the entry decision for Lewis structures, formal charge and VSEPR geometry instead of receiving the expert sequence first.",
+                  "from_step_ref": "BOND-LEWIS-VSEPR-T1"
+                },
+                {
+                  "ask": "For Lewis structures, formal charge and VSEPR geometry, how would you test the conclusion reached by \"Count VSEPR electron domains before naming molecular shape.\" without simply repeating the model answer?",
+                  "why_this_ask": "This closes Lewis structures, formal charge and VSEPR geometry through a learner-owned check rather than through recall of the declarative route.",
+                  "from_step_ref": "BOND-LEWIS-VSEPR-T3"
+                }
+              ],
+              "differs_from_teaching_path": "For Lewis structures, formal charge and VSEPR geometry, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+            },
+            "boundary_test": {
+              "prompt": "Why can formal charge guide selection among Lewis contributors without proving the physical charge on each atom?",
+              "answer": "Formal charge is defined by a bookkeeping partition of electrons in a chosen Lewis structure, whereas physical electron density is a separate electronic-structure property.",
+              "confirms": "For Lewis structures, formal charge and VSEPR geometry, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+            }
+          },
+          "misconceptions": [
+            {
+              "wrong_idea": "A formal charge is the atom's measured charge, and a tetrahedral electron-domain geometry always means a tetrahedral molecular shape.",
+              "diagnostic_prompt": "Can resonance contributors assign different formal charges to the same atom, and what happens to the shape name when one of four domains is a lone pair?",
+              "repair": "Treat formal charge as Lewis bookkeeping, then count electron domains and bonded-atom positions separately for VSEPR."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-BOND-LEWIS-VSEPR"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-BOND-LEWIS-VSEPR",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "FC = V − N − B/2",
+                  "in_words": "For Lewis structures, formal charge and VSEPR geometry, the displayed symbols mean: Formal charge is computed from valence, nonbonding and bonding-electron bookkeeping for a chosen Lewis representation."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-BOND-LEWIS-VSEPR",
+                  "cores": [
+                    "CORE1",
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-BOND-LEWIS-VSEPR",
+                  "datum_refs": [
+                    "EQ-CHEM-BOND-LEWIS-VSEPR"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Lewis structures, formal charge and VSEPR geometry.",
+                    "caption": "Lewis bookkeeping: Formal charge is computed from valence, nonbonding and bonding-electron bookkeeping for a chosen Lewis representation.",
+                    "equation_atom": "EQ-CHEM-BOND-LEWIS-VSEPR",
+                    "annotation": "Formal charge is representation bookkeeping, not a direct measured partial charge.",
+                    "coefficient_note": "In Lewis bookkeeping, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Lewis bookkeeping, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Lewis bookkeeping, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Lewis bookkeeping, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why can formal charge guide selection among Lewis contributors without proving the physical charge on each atom?",
+            "source_ref": "SRC-CHEM-PR376-BOND-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Formal charge is defined by a bookkeeping partition of electrons in a chosen Lewis structure, whereas physical electron density is a separate electronic-structure property.",
+              "reasoning": [
+                "The formal-charge rule is representation-dependent.",
+                "Measured or calculated charge distribution need not equal that formal partition."
+              ],
+              "check": "State which conclusion comes from bookkeeping and which would require physical electronic-structure evidence.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Lewis structures, formal charge and VSEPR geometry exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": []
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "GUIDED_RECONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "slot_order": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": true,
+              "solution_policy": "POST_ATTEMPT"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ANSWER_BEFORE_ATTEMPT"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": true,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-BOND-LEWIS-VSEPR",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-bond-mo-hbond:core1a",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-BOND-MO-HBOND",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1A",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-BOND-MO-HBOND",
+          "title": "Molecular-orbital occupancy, magnetism and hydrogen bonding",
+          "intrinsic_badge": "HARD",
+          "inferential_jump": "MO bond order and magnetism are separate consequences of the same orbital occupancy, while hydrogen bonding is a different intermolecular structural interaction requiring appropriate donor and acceptor sites.",
+          "entry_assumptions": [
+            "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "BOND-MO-HBOND-T1",
+              "role": "DECLARE",
+              "action": "Fill the stated molecular-orbital ordering with the correct electron count for the species.",
+              "why_valid": "Charge changes the electron inventory before either bond order or magnetism is read.",
+              "inputs": [],
+              "output": "Occupancy is the common evidence base."
+            },
+            {
+              "id": "BOND-MO-HBOND-T2",
+              "role": "TRANSFORM",
+              "action": "Compute bond order from bonding-minus-antibonding occupancy and inspect unpaired electrons separately for magnetic behaviour.",
+              "why_valid": "Bond order and paramagnetism answer different questions even though both use the same configuration.",
+              "inputs": [],
+              "output": "Do not infer one from the other."
+            },
+            {
+              "id": "BOND-MO-HBOND-T3",
+              "role": "DECLARE",
+              "action": "Identify hydrogen-bond donor and acceptor environments before using hydrogen bonding to explain a bulk property.",
+              "why_valid": "Merely containing hydrogen is not sufficient for the strong introductory hydrogen-bond interaction.",
+              "inputs": [],
+              "output": "Bulk-property explanations should treat hydrogen bonding as one structural contribution among relevant intermolecular effects."
+            }
+          ],
+          "elicitation": null,
+          "misconceptions": [
+            {
+              "wrong_idea": "Higher MO bond order guarantees diamagnetism, and every hydrogen-containing compound forms strong hydrogen bonds.",
+              "diagnostic_prompt": "Can an MO configuration have positive bond order and an unpaired electron, and does a generic C-H bond meet the same donor condition as an O-H group in the usual introductory model?",
+              "repair": "Run the bond-order and paired/unpaired checks separately, then require an explicit donor/acceptor structure before invoking hydrogen bonding."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-BOND-MO-HBOND"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-BOND-MO-HBOND",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "BO = (Nᵦ − Nₐᵦ)/2",
+                  "in_words": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the displayed symbols mean: Molecular-orbital bond order comes from bonding versus antibonding occupancy, while unpaired occupancy must be checked separately for magnetism."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-BOND-MO-HBOND",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-BOND-MO-HBOND",
+                  "datum_refs": [
+                    "EQ-CHEM-BOND-MO-HBOND"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Molecular-orbital occupancy, magnetism and hydrogen bonding.",
+                    "caption": "MO occupancy: Molecular-orbital bond order comes from bonding versus antibonding occupancy, while unpaired occupancy must be checked separately for magnetism.",
+                    "equation_atom": "EQ-CHEM-BOND-MO-HBOND",
+                    "annotation": "Bond order and magnetic behaviour are separate readouts from the same MO occupancy.",
+                    "coefficient_note": "In MO occupancy, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In MO occupancy, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In MO occupancy, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In MO occupancy, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why should hydrogen bonding be used as a comparative intermolecular explanation rather than a universal property predictor?",
+            "source_ref": "SRC-CHEM-PR376-BOND-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Because it requires specific donor/acceptor structure and bulk properties also depend on other intermolecular and molecular features.",
+              "reasoning": [
+                "Hydrogen bonding is conditional on molecular structure.",
+                "Size, shape and other interactions can also affect the observed property."
+              ],
+              "check": "Name the donor, acceptor and comparison before attributing a bulk trend to hydrogen bonding.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Molecular-orbital occupancy, magnetism and hydrogen bonding exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": [
+            {
+              "question_ref": "Q-CHEM-BOND-MO-HBOND-1A",
+              "stem": "After filling an MO diagram, what two separate checks are needed to discuss bonding and magnetism?",
+              "figure_refs": [],
+              "answer": {
+                "summary": "Count bonding versus antibonding electrons for bond order, and independently inspect occupied orbitals for unpaired electrons to determine paramagnetism.",
+                "reasoning": [
+                  "Bond order uses an occupancy difference.",
+                  "Magnetic behaviour depends on whether electrons are paired.",
+                  "One result cannot be substituted for the other."
+                ],
+                "check": "Write the bond-order count and a separate paired/unpaired inventory."
+              }
+            }
+          ]
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_id": "BP-CORE1A-CONSTRUCTION",
+            "blueprint_version": "1.1.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_CONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "slot_order": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ATTEMPT_FIRST_AS_PRIMARY_MODE"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": true,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-BOND-MO-HBOND",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-bond-mo-hbond:core1b",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-BOND-MO-HBOND",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1B",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-BOND-MO-HBOND",
+          "title": "Molecular-orbital occupancy, magnetism and hydrogen bonding",
+          "intrinsic_badge": "HARD",
+          "inferential_jump": "MO bond order and magnetism are separate consequences of the same orbital occupancy, while hydrogen bonding is a different intermolecular structural interaction requiring appropriate donor and acceptor sites.",
+          "entry_assumptions": [
+            "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "BOND-MO-HBOND-T1",
+              "role": "DECLARE",
+              "action": "Fill the stated molecular-orbital ordering with the correct electron count for the species.",
+              "why_valid": "Charge changes the electron inventory before either bond order or magnetism is read.",
+              "inputs": [],
+              "output": "Occupancy is the common evidence base."
+            },
+            {
+              "id": "BOND-MO-HBOND-T2",
+              "role": "TRANSFORM",
+              "action": "Compute bond order from bonding-minus-antibonding occupancy and inspect unpaired electrons separately for magnetic behaviour.",
+              "why_valid": "Bond order and paramagnetism answer different questions even though both use the same configuration.",
+              "inputs": [],
+              "output": "Do not infer one from the other."
+            },
+            {
+              "id": "BOND-MO-HBOND-T3",
+              "role": "DECLARE",
+              "action": "Identify hydrogen-bond donor and acceptor environments before using hydrogen bonding to explain a bulk property.",
+              "why_valid": "Merely containing hydrogen is not sufficient for the strong introductory hydrogen-bond interaction.",
+              "inputs": [],
+              "output": "Bulk-property explanations should treat hydrogen bonding as one structural contribution among relevant intermolecular effects."
+            }
+          ],
+          "elicitation": {
+            "predict": {
+              "prompt": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, decide before the completed route is revealed: Can an MO configuration have positive bond order and an unpaired electron, and does a generic C-H bond meet the same donor condition as an O-H group in the usual introductory model?",
+              "defensible_answer": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the defensible route is: Run the bond-order and paired/unpaired checks separately, then require an explicit donor/acceptor structure before invoking hydrogen bonding."
+            },
+            "attempt": {
+              "produces": "A short Molecular-orbital occupancy, magnetism and hydrogen bonding explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "closure": "CRITERIA",
+              "rubric": [
+                {
+                  "criterion": "The Molecular-orbital occupancy, magnetism and hydrogen bonding response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+                  "evidence_of": "The learner can separate the Molecular-orbital occupancy, magnetism and hydrogen bonding governing distinction from the tempting shortcut."
+                }
+              ],
+              "task": {
+                "prompt": "Explain the Molecular-orbital occupancy, magnetism and hydrogen bonding decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "givens": [
+                  "MO bond order and magnetism are separate consequences of the same orbital occupancy, while hydrogen bonding is a different intermolecular structural interaction requiring appropriate donor and acceptor sites."
+                ],
+                "representation_ref": "REP-CHEM-BOND-MO-HBOND",
+                "stage_refs": []
+              }
+            },
+            "reconstruct": {
+              "route": [
+                {
+                  "ask": "In Molecular-orbital occupancy, magnetism and hydrogen bonding, what must be decided before the move \"Fill the stated molecular-orbital ordering with the correct electron count for the species.\" is justified?",
+                  "why_this_ask": "This makes the learner supply the entry decision for Molecular-orbital occupancy, magnetism and hydrogen bonding instead of receiving the expert sequence first.",
+                  "from_step_ref": "BOND-MO-HBOND-T1"
+                },
+                {
+                  "ask": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, how would you test the conclusion reached by \"Identify hydrogen-bond donor and acceptor environments before using hydrogen bonding to explain a bulk property.\" without simply repeating the model answer?",
+                  "why_this_ask": "This closes Molecular-orbital occupancy, magnetism and hydrogen bonding through a learner-owned check rather than through recall of the declarative route.",
+                  "from_step_ref": "BOND-MO-HBOND-T3"
+                }
+              ],
+              "differs_from_teaching_path": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+            },
+            "boundary_test": {
+              "prompt": "Why should hydrogen bonding be used as a comparative intermolecular explanation rather than a universal property predictor?",
+              "answer": "Because it requires specific donor/acceptor structure and bulk properties also depend on other intermolecular and molecular features.",
+              "confirms": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+            }
+          },
+          "misconceptions": [
+            {
+              "wrong_idea": "Higher MO bond order guarantees diamagnetism, and every hydrogen-containing compound forms strong hydrogen bonds.",
+              "diagnostic_prompt": "Can an MO configuration have positive bond order and an unpaired electron, and does a generic C-H bond meet the same donor condition as an O-H group in the usual introductory model?",
+              "repair": "Run the bond-order and paired/unpaired checks separately, then require an explicit donor/acceptor structure before invoking hydrogen bonding."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-BOND-MO-HBOND"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-BOND-MO-HBOND",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "BO = (Nᵦ − Nₐᵦ)/2",
+                  "in_words": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the displayed symbols mean: Molecular-orbital bond order comes from bonding versus antibonding occupancy, while unpaired occupancy must be checked separately for magnetism."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-BOND-MO-HBOND",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-BOND-MO-HBOND",
+                  "datum_refs": [
+                    "EQ-CHEM-BOND-MO-HBOND"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Molecular-orbital occupancy, magnetism and hydrogen bonding.",
+                    "caption": "MO occupancy: Molecular-orbital bond order comes from bonding versus antibonding occupancy, while unpaired occupancy must be checked separately for magnetism.",
+                    "equation_atom": "EQ-CHEM-BOND-MO-HBOND",
+                    "annotation": "Bond order and magnetic behaviour are separate readouts from the same MO occupancy.",
+                    "coefficient_note": "In MO occupancy, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In MO occupancy, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In MO occupancy, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In MO occupancy, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why should hydrogen bonding be used as a comparative intermolecular explanation rather than a universal property predictor?",
+            "source_ref": "SRC-CHEM-PR376-BOND-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Because it requires specific donor/acceptor structure and bulk properties also depend on other intermolecular and molecular features.",
+              "reasoning": [
+                "Hydrogen bonding is conditional on molecular structure.",
+                "Size, shape and other interactions can also affect the observed property."
+              ],
+              "check": "Name the donor, acceptor and comparison before attributing a bulk trend to hydrogen bonding.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Molecular-orbital occupancy, magnetism and hydrogen bonding exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": []
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "GUIDED_RECONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "slot_order": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": true,
+              "solution_policy": "POST_ATTEMPT"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ANSWER_BEFORE_ATTEMPT"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": true,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-BOND-MO-HBOND",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-gas-ideal-laws:core1a",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-GAS-IDEAL-LAWS",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1A",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-GAS-IDEAL-LAWS",
+          "title": "Gas-law constraints, mixtures and transport",
+          "intrinsic_badge": "MEDIUM",
+          "inferential_jump": "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation.",
+          "entry_assumptions": [
+            "For Gas-law constraints, mixtures and transport, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "GAS-IDEAL-LAWS-T1",
+              "role": "DECLARE",
+              "action": "Name pressure, volume, absolute temperature and amount, then state which variables are fixed.",
+              "why_valid": "A proportionality is valid only on the constrained path for which it was derived.",
+              "inputs": [],
+              "output": "Constraints come before substitution."
+            },
+            {
+              "id": "GAS-IDEAL-LAWS-T2",
+              "role": "TRANSFORM",
+              "action": "Use the ideal-gas equation as a common model for state-variable changes.",
+              "why_valid": "For a fixed amount of ideal gas, changing one state variable generally requires compensating changes in others.",
+              "inputs": [],
+              "output": "The familiar simple gas laws are conditional cases of the same equation-of-state model."
+            },
+            {
+              "id": "GAS-IDEAL-LAWS-T3",
+              "role": "DECLARE",
+              "action": "Separate Dalton partial-pressure bookkeeping from Graham effusion-rate comparison.",
+              "why_valid": "Dalton adds component partial pressures in an ideal mixture; Graham compares transport rates under its effusion assumptions.",
+              "inputs": [],
+              "output": "Molar mass belongs in the rate comparison, not in the ideal partial-pressure sum."
+            }
+          ],
+          "elicitation": null,
+          "misconceptions": [
+            {
+              "wrong_idea": "Any familiar gas-law proportion can be used when several supposedly fixed variables are also changing.",
+              "diagnostic_prompt": "If temperature and volume both change, can a fixed-temperature Boyle-law relation alone determine the final pressure?",
+              "repair": "Write the constraints first and use the combined or ideal-gas model when more than one state variable changes."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-GAS-IDEAL-LAWS"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-GAS-IDEAL-LAWS",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "PV = nRT",
+                  "in_words": "For Gas-law constraints, mixtures and transport, the displayed symbols mean: Pressure, volume, amount and absolute temperature are linked by the ideal-gas model; a simple gas law fixes a subset of them."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-GAS-IDEAL-LAWS",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-GAS-IDEAL-LAWS",
+                  "datum_refs": [
+                    "EQ-CHEM-GAS-IDEAL-LAWS"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Gas-law constraints, mixtures and transport.",
+                    "caption": "Ideal-gas state model: Pressure, volume, amount and absolute temperature are linked by the ideal-gas model; a simple gas law fixes a subset of them.",
+                    "equation_atom": "EQ-CHEM-GAS-IDEAL-LAWS",
+                    "annotation": "Choose a proportionality only after naming which state variables are fixed.",
+                    "coefficient_note": "In Ideal-gas state model, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Ideal-gas state model, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Ideal-gas state model, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Ideal-gas state model, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why does Graham's law not justify assigning a larger partial pressure to a lighter gas solely because it has lower molar mass?",
+            "source_ref": "SRC-CHEM-PR376-GAS-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Because Graham's law concerns effusion rate, while ideal partial pressure is determined by the component amount, temperature and volume.",
+              "reasoning": [
+                "The laws describe different observables.",
+                "Molar mass enters the transport-rate relation rather than the Dalton pressure sum."
+              ],
+              "check": "Name the observable—state pressure or transport rate—before selecting the law.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Gas-law constraints, mixtures and transport exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": [
+            {
+              "question_ref": "Q-CHEM-GAS-IDEAL-LAWS-1A",
+              "stem": "A fixed amount of ideal gas is compressed to half its volume at constant temperature. What happens to its pressure?",
+              "figure_refs": [],
+              "answer": {
+                "summary": "Its pressure doubles in the ideal-gas model.",
+                "reasoning": [
+                  "Amount and temperature are fixed.",
+                  "Under this isothermal constraint pressure is inversely proportional to volume.",
+                  "Halving the volume therefore doubles the pressure."
+                ],
+                "check": "Verify that pressure times volume is unchanged between the two states."
+              }
+            }
+          ]
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_id": "BP-CORE1A-CONSTRUCTION",
+            "blueprint_version": "1.1.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_CONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "slot_order": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ATTEMPT_FIRST_AS_PRIMARY_MODE"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": true,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-GAS-IDEAL-LAWS",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-gas-ideal-laws:core1b",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-GAS-IDEAL-LAWS",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1B",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-GAS-IDEAL-LAWS",
+          "title": "Gas-law constraints, mixtures and transport",
+          "intrinsic_badge": "MEDIUM",
+          "inferential_jump": "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation.",
+          "entry_assumptions": [
+            "For Gas-law constraints, mixtures and transport, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "GAS-IDEAL-LAWS-T1",
+              "role": "DECLARE",
+              "action": "Name pressure, volume, absolute temperature and amount, then state which variables are fixed.",
+              "why_valid": "A proportionality is valid only on the constrained path for which it was derived.",
+              "inputs": [],
+              "output": "Constraints come before substitution."
+            },
+            {
+              "id": "GAS-IDEAL-LAWS-T2",
+              "role": "TRANSFORM",
+              "action": "Use the ideal-gas equation as a common model for state-variable changes.",
+              "why_valid": "For a fixed amount of ideal gas, changing one state variable generally requires compensating changes in others.",
+              "inputs": [],
+              "output": "The familiar simple gas laws are conditional cases of the same equation-of-state model."
+            },
+            {
+              "id": "GAS-IDEAL-LAWS-T3",
+              "role": "DECLARE",
+              "action": "Separate Dalton partial-pressure bookkeeping from Graham effusion-rate comparison.",
+              "why_valid": "Dalton adds component partial pressures in an ideal mixture; Graham compares transport rates under its effusion assumptions.",
+              "inputs": [],
+              "output": "Molar mass belongs in the rate comparison, not in the ideal partial-pressure sum."
+            }
+          ],
+          "elicitation": {
+            "predict": {
+              "prompt": "For Gas-law constraints, mixtures and transport, decide before the completed route is revealed: If temperature and volume both change, can a fixed-temperature Boyle-law relation alone determine the final pressure?",
+              "defensible_answer": "For Gas-law constraints, mixtures and transport, the defensible route is: Write the constraints first and use the combined or ideal-gas model when more than one state variable changes."
+            },
+            "attempt": {
+              "produces": "A short Gas-law constraints, mixtures and transport explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "closure": "CRITERIA",
+              "rubric": [
+                {
+                  "criterion": "The Gas-law constraints, mixtures and transport response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+                  "evidence_of": "The learner can separate the Gas-law constraints, mixtures and transport governing distinction from the tempting shortcut."
+                }
+              ],
+              "task": {
+                "prompt": "Explain the Gas-law constraints, mixtures and transport decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "givens": [
+                  "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation."
+                ],
+                "representation_ref": "REP-CHEM-GAS-IDEAL-LAWS",
+                "stage_refs": []
+              }
+            },
+            "reconstruct": {
+              "route": [
+                {
+                  "ask": "In Gas-law constraints, mixtures and transport, what must be decided before the move \"Name pressure, volume, absolute temperature and amount, then state which variables are fixed.\" is justified?",
+                  "why_this_ask": "This makes the learner supply the entry decision for Gas-law constraints, mixtures and transport instead of receiving the expert sequence first.",
+                  "from_step_ref": "GAS-IDEAL-LAWS-T1"
+                },
+                {
+                  "ask": "For Gas-law constraints, mixtures and transport, how would you test the conclusion reached by \"Separate Dalton partial-pressure bookkeeping from Graham effusion-rate comparison.\" without simply repeating the model answer?",
+                  "why_this_ask": "This closes Gas-law constraints, mixtures and transport through a learner-owned check rather than through recall of the declarative route.",
+                  "from_step_ref": "GAS-IDEAL-LAWS-T3"
+                }
+              ],
+              "differs_from_teaching_path": "For Gas-law constraints, mixtures and transport, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+            },
+            "boundary_test": {
+              "prompt": "Why does Graham's law not justify assigning a larger partial pressure to a lighter gas solely because it has lower molar mass?",
+              "answer": "Because Graham's law concerns effusion rate, while ideal partial pressure is determined by the component amount, temperature and volume.",
+              "confirms": "For Gas-law constraints, mixtures and transport, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+            }
+          },
+          "misconceptions": [
+            {
+              "wrong_idea": "Any familiar gas-law proportion can be used when several supposedly fixed variables are also changing.",
+              "diagnostic_prompt": "If temperature and volume both change, can a fixed-temperature Boyle-law relation alone determine the final pressure?",
+              "repair": "Write the constraints first and use the combined or ideal-gas model when more than one state variable changes."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-GAS-IDEAL-LAWS"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-GAS-IDEAL-LAWS",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "PV = nRT",
+                  "in_words": "For Gas-law constraints, mixtures and transport, the displayed symbols mean: Pressure, volume, amount and absolute temperature are linked by the ideal-gas model; a simple gas law fixes a subset of them."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-GAS-IDEAL-LAWS",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-GAS-IDEAL-LAWS",
+                  "datum_refs": [
+                    "EQ-CHEM-GAS-IDEAL-LAWS"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Gas-law constraints, mixtures and transport.",
+                    "caption": "Ideal-gas state model: Pressure, volume, amount and absolute temperature are linked by the ideal-gas model; a simple gas law fixes a subset of them.",
+                    "equation_atom": "EQ-CHEM-GAS-IDEAL-LAWS",
+                    "annotation": "Choose a proportionality only after naming which state variables are fixed.",
+                    "coefficient_note": "In Ideal-gas state model, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Ideal-gas state model, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Ideal-gas state model, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Ideal-gas state model, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why does Graham's law not justify assigning a larger partial pressure to a lighter gas solely because it has lower molar mass?",
+            "source_ref": "SRC-CHEM-PR376-GAS-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Because Graham's law concerns effusion rate, while ideal partial pressure is determined by the component amount, temperature and volume.",
+              "reasoning": [
+                "The laws describe different observables.",
+                "Molar mass enters the transport-rate relation rather than the Dalton pressure sum."
+              ],
+              "check": "Name the observable—state pressure or transport rate—before selecting the law.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Gas-law constraints, mixtures and transport exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": []
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "GUIDED_RECONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "slot_order": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": true,
+              "solution_policy": "POST_ATTEMPT"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ANSWER_BEFORE_ATTEMPT"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": true,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-GAS-IDEAL-LAWS",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-gas-kinetic-phase:core1a",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-GAS-KINETIC-PHASE",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1A",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-GAS-KINETIC-PHASE",
+          "title": "Particle model, speed distributions and phase change",
+          "intrinsic_badge": "MEDIUM",
+          "inferential_jump": "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions.",
+          "entry_assumptions": [
+            "For Particle model, speed distributions and phase change, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "GAS-KINETIC-PHASE-T1",
+              "role": "DECLARE",
+              "action": "Separate the microscopic particle model from the macroscopic observation.",
+              "why_valid": "Bulk temperature and pressure summarize many-particle behaviour; one molecule is not the thermodynamic state.",
+              "inputs": [],
+              "output": "Use distributions and averages when connecting molecular motion to temperature."
+            },
+            {
+              "id": "GAS-KINETIC-PHASE-T2",
+              "role": "TRANSFORM",
+              "action": "Compare evaporation with boiling before discussing temperature.",
+              "why_valid": "Evaporation can occur at a surface over a range of temperatures; boiling is a bulk transition when vapour pressure matches external pressure.",
+              "inputs": [],
+              "output": "A boiling temperature is pressure-dependent, whereas evaporation need not wait for that condition."
+            },
+            {
+              "id": "GAS-KINETIC-PHASE-T3",
+              "role": "TRANSFORM",
+              "action": "Track energy through a phase change for a pure substance at fixed pressure in phase equilibrium.",
+              "why_valid": "Energy supplied during coexistence can change phase rather than raise temperature.",
+              "inputs": [],
+              "output": "Latent heat is energy associated with the phase transition under the stated conditions."
+            }
+          ],
+          "elicitation": null,
+          "misconceptions": [
+            {
+              "wrong_idea": "All molecules in a thermal sample have the same speed, and a liquid boils at one universal temperature.",
+              "diagnostic_prompt": "What would a molecular speed distribution mean if every molecule had one speed, and why does changing external pressure change the boiling condition?",
+              "repair": "Keep a distribution of molecular energies, and attach external pressure to any boiling-temperature statement."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-GAS-KINETIC-PHASE"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-GAS-KINETIC-PHASE",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "T ↑ ⇒ mean Eₖ ↑",
+                  "in_words": "For Particle model, speed distributions and phase change, the displayed symbols mean: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-GAS-KINETIC-PHASE",
+                  "cores": [
+                    "CORE1",
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-GAS-KINETIC-PHASE",
+                  "datum_refs": [
+                    "EQ-CHEM-GAS-KINETIC-PHASE"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Particle model, speed distributions and phase change.",
+                    "caption": "Gas particle model: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains.",
+                    "equation_atom": "EQ-CHEM-GAS-KINETIC-PHASE",
+                    "annotation": "The mean changes; the molecular speed distribution does not collapse to one speed.",
+                    "coefficient_note": "In Gas particle model, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Gas particle model, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Gas particle model, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Gas particle model, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why can evaporation cool a liquid without implying that every molecule had the same initial speed?",
+            "source_ref": "SRC-CHEM-PR376-GAS-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Because the sample has a distribution of molecular energies and higher-energy surface molecules can preferentially escape.",
+              "reasoning": [
+                "Thermal molecular energies are distributed.",
+                "Removing molecules from the higher-energy tail can lower the average kinetic energy of the remaining liquid."
+              ],
+              "check": "Keep the molecular distribution and the surface-vs-bulk distinction explicit.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Particle model, speed distributions and phase change exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": [
+            {
+              "question_ref": "Q-CHEM-GAS-KINETIC-PHASE-1A",
+              "stem": "Why can water boil at a lower temperature at high altitude than near sea level?",
+              "figure_refs": [],
+              "answer": {
+                "summary": "Lower external pressure lets the vapour-pressure equality required for boiling be reached at a lower temperature.",
+                "reasoning": [
+                  "Boiling occurs when the liquid's vapour pressure matches the external pressure.",
+                  "At high altitude the external pressure is lower, so the equality is reached at a lower temperature."
+                ],
+                "check": "The explanation must use pressure equilibrium rather than a change in water's chemical identity."
+              }
+            }
+          ]
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_id": "BP-CORE1A-CONSTRUCTION",
+            "blueprint_version": "1.1.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_CONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "slot_order": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ATTEMPT_FIRST_AS_PRIMARY_MODE"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": true,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-GAS-KINETIC-PHASE",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-gas-kinetic-phase:core1b",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-GAS-KINETIC-PHASE",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1B",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-GAS-KINETIC-PHASE",
+          "title": "Particle model, speed distributions and phase change",
+          "intrinsic_badge": "MEDIUM",
+          "inferential_jump": "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions.",
+          "entry_assumptions": [
+            "For Particle model, speed distributions and phase change, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "GAS-KINETIC-PHASE-T1",
+              "role": "DECLARE",
+              "action": "Separate the microscopic particle model from the macroscopic observation.",
+              "why_valid": "Bulk temperature and pressure summarize many-particle behaviour; one molecule is not the thermodynamic state.",
+              "inputs": [],
+              "output": "Use distributions and averages when connecting molecular motion to temperature."
+            },
+            {
+              "id": "GAS-KINETIC-PHASE-T2",
+              "role": "TRANSFORM",
+              "action": "Compare evaporation with boiling before discussing temperature.",
+              "why_valid": "Evaporation can occur at a surface over a range of temperatures; boiling is a bulk transition when vapour pressure matches external pressure.",
+              "inputs": [],
+              "output": "A boiling temperature is pressure-dependent, whereas evaporation need not wait for that condition."
+            },
+            {
+              "id": "GAS-KINETIC-PHASE-T3",
+              "role": "TRANSFORM",
+              "action": "Track energy through a phase change for a pure substance at fixed pressure in phase equilibrium.",
+              "why_valid": "Energy supplied during coexistence can change phase rather than raise temperature.",
+              "inputs": [],
+              "output": "Latent heat is energy associated with the phase transition under the stated conditions."
+            }
+          ],
+          "elicitation": {
+            "predict": {
+              "prompt": "For Particle model, speed distributions and phase change, decide before the completed route is revealed: What would a molecular speed distribution mean if every molecule had one speed, and why does changing external pressure change the boiling condition?",
+              "defensible_answer": "For Particle model, speed distributions and phase change, the defensible route is: Keep a distribution of molecular energies, and attach external pressure to any boiling-temperature statement."
+            },
+            "attempt": {
+              "produces": "A short Particle model, speed distributions and phase change explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "closure": "CRITERIA",
+              "rubric": [
+                {
+                  "criterion": "The Particle model, speed distributions and phase change response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+                  "evidence_of": "The learner can separate the Particle model, speed distributions and phase change governing distinction from the tempting shortcut."
+                }
+              ],
+              "task": {
+                "prompt": "Explain the Particle model, speed distributions and phase change decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "givens": [
+                  "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions."
+                ],
+                "representation_ref": "REP-CHEM-GAS-KINETIC-PHASE",
+                "stage_refs": []
+              }
+            },
+            "reconstruct": {
+              "route": [
+                {
+                  "ask": "In Particle model, speed distributions and phase change, what must be decided before the move \"Separate the microscopic particle model from the macroscopic observation.\" is justified?",
+                  "why_this_ask": "This makes the learner supply the entry decision for Particle model, speed distributions and phase change instead of receiving the expert sequence first.",
+                  "from_step_ref": "GAS-KINETIC-PHASE-T1"
+                },
+                {
+                  "ask": "For Particle model, speed distributions and phase change, how would you test the conclusion reached by \"Track energy through a phase change for a pure substance at fixed pressure in phase equilibrium.\" without simply repeating the model answer?",
+                  "why_this_ask": "This closes Particle model, speed distributions and phase change through a learner-owned check rather than through recall of the declarative route.",
+                  "from_step_ref": "GAS-KINETIC-PHASE-T3"
+                }
+              ],
+              "differs_from_teaching_path": "For Particle model, speed distributions and phase change, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+            },
+            "boundary_test": {
+              "prompt": "Why can evaporation cool a liquid without implying that every molecule had the same initial speed?",
+              "answer": "Because the sample has a distribution of molecular energies and higher-energy surface molecules can preferentially escape.",
+              "confirms": "For Particle model, speed distributions and phase change, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+            }
+          },
+          "misconceptions": [
+            {
+              "wrong_idea": "All molecules in a thermal sample have the same speed, and a liquid boils at one universal temperature.",
+              "diagnostic_prompt": "What would a molecular speed distribution mean if every molecule had one speed, and why does changing external pressure change the boiling condition?",
+              "repair": "Keep a distribution of molecular energies, and attach external pressure to any boiling-temperature statement."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-GAS-KINETIC-PHASE"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-GAS-KINETIC-PHASE",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "T ↑ ⇒ mean Eₖ ↑",
+                  "in_words": "For Particle model, speed distributions and phase change, the displayed symbols mean: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-GAS-KINETIC-PHASE",
+                  "cores": [
+                    "CORE1",
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-GAS-KINETIC-PHASE",
+                  "datum_refs": [
+                    "EQ-CHEM-GAS-KINETIC-PHASE"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Particle model, speed distributions and phase change.",
+                    "caption": "Gas particle model: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains.",
+                    "equation_atom": "EQ-CHEM-GAS-KINETIC-PHASE",
+                    "annotation": "The mean changes; the molecular speed distribution does not collapse to one speed.",
+                    "coefficient_note": "In Gas particle model, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Gas particle model, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Gas particle model, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Gas particle model, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why can evaporation cool a liquid without implying that every molecule had the same initial speed?",
+            "source_ref": "SRC-CHEM-PR376-GAS-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Because the sample has a distribution of molecular energies and higher-energy surface molecules can preferentially escape.",
+              "reasoning": [
+                "Thermal molecular energies are distributed.",
+                "Removing molecules from the higher-energy tail can lower the average kinetic energy of the remaining liquid."
+              ],
+              "check": "Keep the molecular distribution and the surface-vs-bulk distinction explicit.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Particle model, speed distributions and phase change exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": []
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "GUIDED_RECONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "slot_order": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": true,
+              "solution_policy": "POST_ATTEMPT"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ANSWER_BEFORE_ATTEMPT"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": true,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-GAS-KINETIC-PHASE",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-gas-real-critical:core1a",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-GAS-REAL-CRITICAL",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1A",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-GAS-REAL-CRITICAL",
+          "title": "Real-gas deviations and critical behaviour",
+          "intrinsic_badge": "HARD",
+          "inferential_jump": "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism.",
+          "entry_assumptions": [
+            "For Real-gas deviations and critical behaviour, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "GAS-REAL-CRITICAL-T1",
+              "role": "DECLARE",
+              "action": "Use compressibility factor as a comparison with the ideal reference at the same state.",
+              "why_valid": "Deviation has meaning relative to a pressure-temperature state and an ideal reference.",
+              "inputs": [],
+              "output": "Z = 1 is the ideal reference; the sign and size of deviation depend on conditions."
+            },
+            {
+              "id": "GAS-REAL-CRITICAL-T2",
+              "role": "TRANSFORM",
+              "action": "Interpret van der Waals attraction and excluded-volume terms as phenomenological corrections.",
+              "why_valid": "Attractions and finite molecular size affect the pressure-volume relation differently and with state-dependent importance.",
+              "inputs": [],
+              "output": "The corrected equation is a thermodynamic model, not a literal collision or bonding mechanism."
+            },
+            {
+              "id": "GAS-REAL-CRITICAL-T3",
+              "role": "DECLARE",
+              "action": "Distinguish a critical point from an ordinary boiling point.",
+              "why_valid": "The critical point terminates liquid-vapour coexistence; above the critical temperature compression alone cannot create a separate liquid phase.",
+              "inputs": [],
+              "output": "Liquefaction claims require the temperature-pressure regime to be stated."
+            }
+          ],
+          "elicitation": null,
+          "misconceptions": [
+            {
+              "wrong_idea": "A van der Waals equation proves the exact molecular collision mechanism and gives one universal direction of deviation.",
+              "diagnostic_prompt": "Does an equation of state uniquely determine how molecules collide, and can attraction and finite-size effects dominate equally at every pressure and temperature?",
+              "repair": "Treat the correction parameters as state-model terms and interpret deviations only with the stated thermodynamic conditions."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-GAS-REAL-CRITICAL"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-GAS-REAL-CRITICAL",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "Z = PV/(nRT)",
+                  "in_words": "For Real-gas deviations and critical behaviour, the displayed symbols mean: Compressibility factor compares a real-gas state with the ideal reference at the same pressure, volume, amount and temperature."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-GAS-REAL-CRITICAL",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-GAS-REAL-CRITICAL",
+                  "datum_refs": [
+                    "EQ-CHEM-GAS-REAL-CRITICAL"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Real-gas deviations and critical behaviour.",
+                    "caption": "Real-gas comparison: Compressibility factor compares a real-gas state with the ideal reference at the same pressure, volume, amount and temperature.",
+                    "equation_atom": "EQ-CHEM-GAS-REAL-CRITICAL",
+                    "annotation": "Interpret Z only for the stated thermodynamic state; it does not specify a collision mechanism.",
+                    "coefficient_note": "In Real-gas comparison, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Real-gas comparison, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Real-gas comparison, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Real-gas comparison, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why must a liquefaction statement distinguish critical temperature from boiling temperature?",
+            "source_ref": "SRC-CHEM-PR376-GAS-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Boiling temperature is pressure-dependent phase equilibrium below the critical point, while the critical temperature marks whether a distinct liquid-vapour boundary can exist.",
+              "reasoning": [
+                "Boiling is a coexistence condition at a specified pressure.",
+                "The critical point terminates that coexistence curve."
+              ],
+              "check": "State which temperature concept is being used and the associated pressure or phase condition.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Real-gas deviations and critical behaviour exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": [
+            {
+              "question_ref": "Q-CHEM-GAS-REAL-CRITICAL-1A",
+              "stem": "Why are real-gas deviations generally more important at high pressure than at sufficiently low pressure?",
+              "figure_refs": [],
+              "answer": {
+                "summary": "At high pressure molecules are closer together, so finite molecular size and intermolecular interactions become less negligible relative to ideal assumptions.",
+                "reasoning": [
+                  "The ideal model neglects molecular volume and intermolecular forces.",
+                  "Closer average separation makes those neglected effects comparatively more important."
+                ],
+                "check": "Identify the neglected ideal assumptions without claiming every gas deviates in the same direction."
+              }
+            }
+          ]
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_id": "BP-CORE1A-CONSTRUCTION",
+            "blueprint_version": "1.1.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_CONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "slot_order": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ATTEMPT_FIRST_AS_PRIMARY_MODE"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": true,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-GAS-REAL-CRITICAL",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-gas-real-critical:core1b",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-GAS-REAL-CRITICAL",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1B",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-GAS-REAL-CRITICAL",
+          "title": "Real-gas deviations and critical behaviour",
+          "intrinsic_badge": "HARD",
+          "inferential_jump": "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism.",
+          "entry_assumptions": [
+            "For Real-gas deviations and critical behaviour, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "GAS-REAL-CRITICAL-T1",
+              "role": "DECLARE",
+              "action": "Use compressibility factor as a comparison with the ideal reference at the same state.",
+              "why_valid": "Deviation has meaning relative to a pressure-temperature state and an ideal reference.",
+              "inputs": [],
+              "output": "Z = 1 is the ideal reference; the sign and size of deviation depend on conditions."
+            },
+            {
+              "id": "GAS-REAL-CRITICAL-T2",
+              "role": "TRANSFORM",
+              "action": "Interpret van der Waals attraction and excluded-volume terms as phenomenological corrections.",
+              "why_valid": "Attractions and finite molecular size affect the pressure-volume relation differently and with state-dependent importance.",
+              "inputs": [],
+              "output": "The corrected equation is a thermodynamic model, not a literal collision or bonding mechanism."
+            },
+            {
+              "id": "GAS-REAL-CRITICAL-T3",
+              "role": "DECLARE",
+              "action": "Distinguish a critical point from an ordinary boiling point.",
+              "why_valid": "The critical point terminates liquid-vapour coexistence; above the critical temperature compression alone cannot create a separate liquid phase.",
+              "inputs": [],
+              "output": "Liquefaction claims require the temperature-pressure regime to be stated."
+            }
+          ],
+          "elicitation": {
+            "predict": {
+              "prompt": "For Real-gas deviations and critical behaviour, decide before the completed route is revealed: Does an equation of state uniquely determine how molecules collide, and can attraction and finite-size effects dominate equally at every pressure and temperature?",
+              "defensible_answer": "For Real-gas deviations and critical behaviour, the defensible route is: Treat the correction parameters as state-model terms and interpret deviations only with the stated thermodynamic conditions."
+            },
+            "attempt": {
+              "produces": "A short Real-gas deviations and critical behaviour explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "closure": "CRITERIA",
+              "rubric": [
+                {
+                  "criterion": "The Real-gas deviations and critical behaviour response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+                  "evidence_of": "The learner can separate the Real-gas deviations and critical behaviour governing distinction from the tempting shortcut."
+                }
+              ],
+              "task": {
+                "prompt": "Explain the Real-gas deviations and critical behaviour decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "givens": [
+                  "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism."
+                ],
+                "representation_ref": "REP-CHEM-GAS-REAL-CRITICAL",
+                "stage_refs": []
+              }
+            },
+            "reconstruct": {
+              "route": [
+                {
+                  "ask": "In Real-gas deviations and critical behaviour, what must be decided before the move \"Use compressibility factor as a comparison with the ideal reference at the same state.\" is justified?",
+                  "why_this_ask": "This makes the learner supply the entry decision for Real-gas deviations and critical behaviour instead of receiving the expert sequence first.",
+                  "from_step_ref": "GAS-REAL-CRITICAL-T1"
+                },
+                {
+                  "ask": "For Real-gas deviations and critical behaviour, how would you test the conclusion reached by \"Distinguish a critical point from an ordinary boiling point.\" without simply repeating the model answer?",
+                  "why_this_ask": "This closes Real-gas deviations and critical behaviour through a learner-owned check rather than through recall of the declarative route.",
+                  "from_step_ref": "GAS-REAL-CRITICAL-T3"
+                }
+              ],
+              "differs_from_teaching_path": "For Real-gas deviations and critical behaviour, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+            },
+            "boundary_test": {
+              "prompt": "Why must a liquefaction statement distinguish critical temperature from boiling temperature?",
+              "answer": "Boiling temperature is pressure-dependent phase equilibrium below the critical point, while the critical temperature marks whether a distinct liquid-vapour boundary can exist.",
+              "confirms": "For Real-gas deviations and critical behaviour, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+            }
+          },
+          "misconceptions": [
+            {
+              "wrong_idea": "A van der Waals equation proves the exact molecular collision mechanism and gives one universal direction of deviation.",
+              "diagnostic_prompt": "Does an equation of state uniquely determine how molecules collide, and can attraction and finite-size effects dominate equally at every pressure and temperature?",
+              "repair": "Treat the correction parameters as state-model terms and interpret deviations only with the stated thermodynamic conditions."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-GAS-REAL-CRITICAL"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-GAS-REAL-CRITICAL",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "Z = PV/(nRT)",
+                  "in_words": "For Real-gas deviations and critical behaviour, the displayed symbols mean: Compressibility factor compares a real-gas state with the ideal reference at the same pressure, volume, amount and temperature."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-GAS-REAL-CRITICAL",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-GAS-REAL-CRITICAL",
+                  "datum_refs": [
+                    "EQ-CHEM-GAS-REAL-CRITICAL"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Real-gas deviations and critical behaviour.",
+                    "caption": "Real-gas comparison: Compressibility factor compares a real-gas state with the ideal reference at the same pressure, volume, amount and temperature.",
+                    "equation_atom": "EQ-CHEM-GAS-REAL-CRITICAL",
+                    "annotation": "Interpret Z only for the stated thermodynamic state; it does not specify a collision mechanism.",
+                    "coefficient_note": "In Real-gas comparison, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Real-gas comparison, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Real-gas comparison, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Real-gas comparison, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why must a liquefaction statement distinguish critical temperature from boiling temperature?",
+            "source_ref": "SRC-CHEM-PR376-GAS-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Boiling temperature is pressure-dependent phase equilibrium below the critical point, while the critical temperature marks whether a distinct liquid-vapour boundary can exist.",
+              "reasoning": [
+                "Boiling is a coexistence condition at a specified pressure.",
+                "The critical point terminates that coexistence curve."
+              ],
+              "check": "State which temperature concept is being used and the associated pressure or phase condition.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Real-gas deviations and critical behaviour exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": []
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "GUIDED_RECONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "slot_order": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": true,
+              "solution_policy": "POST_ATTEMPT"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ANSWER_BEFORE_ATTEMPT"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": true,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-GAS-REAL-CRITICAL",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-mole-concentration:core1a",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-MOLE-CONCENTRATION",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1A",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-MOLE-CONCENTRATION",
+          "title": "Molarity, molality and mole fraction",
+          "intrinsic_badge": "HARD",
+          "inferential_jump": "Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged.",
+          "entry_assumptions": [
+            "For Molarity, molality and mole fraction, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "MOLE-CONCENTRATION-T1",
+              "role": "DECLARE",
+              "action": "Write the denominator first: solution volume for molarity, solvent mass for molality, total moles for mole fraction.",
+              "why_valid": "These concentration measures are not interchangeable because they normalize composition differently.",
+              "inputs": [],
+              "output": "The denominator determines units and temperature sensitivity."
+            },
+            {
+              "id": "MOLE-CONCENTRATION-T2",
+              "role": "TRANSFORM",
+              "action": "For temperature-change reasoning, state whether the sample is closed and composition/amounts remain unchanged.",
+              "why_valid": "Molarity can change if solution volume changes; molality and mole fraction do not change merely from temperature when solvent mass and mole amounts stay unchanged.",
+              "inputs": [],
+              "output": "Invariance claims require the no-loss/no-reaction qualification."
+            },
+            {
+              "id": "MOLE-CONCENTRATION-T3",
+              "role": "VERIFY",
+              "action": "Identify exactly which numerator or denominator changes in the scenario.",
+              "why_valid": "A generic claim that 'temperature changes concentration' hides the definition that controls the result.",
+              "inputs": [],
+              "output": "Definition-level bookkeeping closes the reasoning."
+            }
+          ],
+          "elicitation": null,
+          "misconceptions": [
+            {
+              "wrong_idea": "Every concentration measure must change with temperature because physical samples expand or contract.",
+              "diagnostic_prompt": "In a sealed unchanged sample whose solution volume changes with temperature, which denominators change directly: solution volume, solvent mass or total mole amount?",
+              "repair": "Follow the definition and state the closure/composition assumptions before making a temperature-dependence claim."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-MOLE-CONCENTRATION"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-MOLE-CONCENTRATION",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "c = n/V",
+                  "in_words": "For Molarity, molality and mole fraction, the displayed symbols mean: Molarity uses solution volume as its denominator; molality and mole fraction use different denominators and therefore different temperature sensitivities."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-MOLE-CONCENTRATION",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-MOLE-CONCENTRATION",
+                  "datum_refs": [
+                    "EQ-CHEM-MOLE-CONCENTRATION"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Molarity, molality and mole fraction.",
+                    "caption": "Molarity definition: Molarity uses solution volume as its denominator; molality and mole fraction use different denominators and therefore different temperature sensitivities.",
+                    "equation_atom": "EQ-CHEM-MOLE-CONCENTRATION",
+                    "annotation": "A temperature claim is valid only after the concentration denominator and sample closure are stated.",
+                    "coefficient_note": "In Molarity definition, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Molarity definition, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Molarity definition, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Molarity definition, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Under what qualification can molality and mole fraction be described as unchanged by temperature?",
+            "source_ref": "SRC-CHEM-PR376-MOLE-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "For a closed sample whose composition and relevant masses/mole amounts do not change; temperature alone does not alter those mass- or mole-ratio denominators.",
+              "reasoning": [
+                "Molality uses solute moles per solvent mass.",
+                "Mole fraction uses component moles divided by total moles.",
+                "Loss, reaction or composition change would invalidate the invariance claim."
+              ],
+              "check": "Include the closed, unchanged-composition condition.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Molarity, molality and mole fraction exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": [
+            {
+              "question_ref": "Q-CHEM-MOLE-CONCENTRATION-1A",
+              "stem": "Why can molarity change with temperature even when no solute or solvent is added or removed?",
+              "figure_refs": [],
+              "answer": {
+                "summary": "Because molarity divides solute amount by solution volume, and the volume can change with temperature while the solute amount remains fixed.",
+                "reasoning": [
+                  "A closed unchanged sample can keep the solute mole amount constant.",
+                  "Thermal expansion or contraction can change the solution-volume denominator.",
+                  "The ratio therefore can change without a composition change."
+                ],
+                "check": "Name which numerator or denominator changed rather than attributing the result generically to temperature."
+              }
+            }
+          ]
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_id": "BP-CORE1A-CONSTRUCTION",
+            "blueprint_version": "1.1.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_CONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "slot_order": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ATTEMPT_FIRST_AS_PRIMARY_MODE"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": true,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-MOLE-CONCENTRATION",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-mole-concentration:core1b",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-MOLE-CONCENTRATION",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1B",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-MOLE-CONCENTRATION",
+          "title": "Molarity, molality and mole fraction",
+          "intrinsic_badge": "HARD",
+          "inferential_jump": "Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged.",
+          "entry_assumptions": [
+            "For Molarity, molality and mole fraction, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "MOLE-CONCENTRATION-T1",
+              "role": "DECLARE",
+              "action": "Write the denominator first: solution volume for molarity, solvent mass for molality, total moles for mole fraction.",
+              "why_valid": "These concentration measures are not interchangeable because they normalize composition differently.",
+              "inputs": [],
+              "output": "The denominator determines units and temperature sensitivity."
+            },
+            {
+              "id": "MOLE-CONCENTRATION-T2",
+              "role": "TRANSFORM",
+              "action": "For temperature-change reasoning, state whether the sample is closed and composition/amounts remain unchanged.",
+              "why_valid": "Molarity can change if solution volume changes; molality and mole fraction do not change merely from temperature when solvent mass and mole amounts stay unchanged.",
+              "inputs": [],
+              "output": "Invariance claims require the no-loss/no-reaction qualification."
+            },
+            {
+              "id": "MOLE-CONCENTRATION-T3",
+              "role": "VERIFY",
+              "action": "Identify exactly which numerator or denominator changes in the scenario.",
+              "why_valid": "A generic claim that 'temperature changes concentration' hides the definition that controls the result.",
+              "inputs": [],
+              "output": "Definition-level bookkeeping closes the reasoning."
+            }
+          ],
+          "elicitation": {
+            "predict": {
+              "prompt": "For Molarity, molality and mole fraction, decide before the completed route is revealed: In a sealed unchanged sample whose solution volume changes with temperature, which denominators change directly: solution volume, solvent mass or total mole amount?",
+              "defensible_answer": "For Molarity, molality and mole fraction, the defensible route is: Follow the definition and state the closure/composition assumptions before making a temperature-dependence claim."
+            },
+            "attempt": {
+              "produces": "A short Molarity, molality and mole fraction explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "closure": "CRITERIA",
+              "rubric": [
+                {
+                  "criterion": "The Molarity, molality and mole fraction response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+                  "evidence_of": "The learner can separate the Molarity, molality and mole fraction governing distinction from the tempting shortcut."
+                }
+              ],
+              "task": {
+                "prompt": "Explain the Molarity, molality and mole fraction decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "givens": [
+                  "Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged."
+                ],
+                "representation_ref": "REP-CHEM-MOLE-CONCENTRATION",
+                "stage_refs": []
+              }
+            },
+            "reconstruct": {
+              "route": [
+                {
+                  "ask": "In Molarity, molality and mole fraction, what must be decided before the move \"Write the denominator first: solution volume for molarity, solvent mass for molality, total moles for mole fraction.\" is justified?",
+                  "why_this_ask": "This makes the learner supply the entry decision for Molarity, molality and mole fraction instead of receiving the expert sequence first.",
+                  "from_step_ref": "MOLE-CONCENTRATION-T1"
+                },
+                {
+                  "ask": "For Molarity, molality and mole fraction, how would you test the conclusion reached by \"Identify exactly which numerator or denominator changes in the scenario.\" without simply repeating the model answer?",
+                  "why_this_ask": "This closes Molarity, molality and mole fraction through a learner-owned check rather than through recall of the declarative route.",
+                  "from_step_ref": "MOLE-CONCENTRATION-T3"
+                }
+              ],
+              "differs_from_teaching_path": "For Molarity, molality and mole fraction, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+            },
+            "boundary_test": {
+              "prompt": "Under what qualification can molality and mole fraction be described as unchanged by temperature?",
+              "answer": "For a closed sample whose composition and relevant masses/mole amounts do not change; temperature alone does not alter those mass- or mole-ratio denominators.",
+              "confirms": "For Molarity, molality and mole fraction, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+            }
+          },
+          "misconceptions": [
+            {
+              "wrong_idea": "Every concentration measure must change with temperature because physical samples expand or contract.",
+              "diagnostic_prompt": "In a sealed unchanged sample whose solution volume changes with temperature, which denominators change directly: solution volume, solvent mass or total mole amount?",
+              "repair": "Follow the definition and state the closure/composition assumptions before making a temperature-dependence claim."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-MOLE-CONCENTRATION"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-MOLE-CONCENTRATION",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "c = n/V",
+                  "in_words": "For Molarity, molality and mole fraction, the displayed symbols mean: Molarity uses solution volume as its denominator; molality and mole fraction use different denominators and therefore different temperature sensitivities."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-MOLE-CONCENTRATION",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-MOLE-CONCENTRATION",
+                  "datum_refs": [
+                    "EQ-CHEM-MOLE-CONCENTRATION"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Molarity, molality and mole fraction.",
+                    "caption": "Molarity definition: Molarity uses solution volume as its denominator; molality and mole fraction use different denominators and therefore different temperature sensitivities.",
+                    "equation_atom": "EQ-CHEM-MOLE-CONCENTRATION",
+                    "annotation": "A temperature claim is valid only after the concentration denominator and sample closure are stated.",
+                    "coefficient_note": "In Molarity definition, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Molarity definition, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Molarity definition, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Molarity definition, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Under what qualification can molality and mole fraction be described as unchanged by temperature?",
+            "source_ref": "SRC-CHEM-PR376-MOLE-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "For a closed sample whose composition and relevant masses/mole amounts do not change; temperature alone does not alter those mass- or mole-ratio denominators.",
+              "reasoning": [
+                "Molality uses solute moles per solvent mass.",
+                "Mole fraction uses component moles divided by total moles.",
+                "Loss, reaction or composition change would invalidate the invariance claim."
+              ],
+              "check": "Include the closed, unchanged-composition condition.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Molarity, molality and mole fraction exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": []
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "GUIDED_RECONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "slot_order": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": true,
+              "solution_policy": "POST_ATTEMPT"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ANSWER_BEFORE_ATTEMPT"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": true,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-MOLE-CONCENTRATION",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-mole-formula-stoich:core1a",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-MOLE-FORMULA-STOICH",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1A",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-MOLE-FORMULA-STOICH",
+          "title": "Empirical formula, stoichiometry and limiting reagent",
+          "intrinsic_badge": "HARD",
+          "inferential_jump": "Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.",
+          "entry_assumptions": [
+            "For Empirical formula, stoichiometry and limiting reagent, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "MOLE-FORMULA-STOICH-T1",
+              "role": "TRANSFORM",
+              "action": "Convert each elemental mass or percentage to moles before inferring an empirical ratio.",
+              "why_valid": "Atom counts are proportional to amount, not raw mass.",
+              "inputs": [],
+              "output": "Dividing by atomic mass removes the mass weighting."
+            },
+            {
+              "id": "MOLE-FORMULA-STOICH-T2",
+              "role": "TRANSFORM",
+              "action": "Scale mole ratios to the smallest reliable whole-number set and use molar mass to determine any molecular-formula multiple.",
+              "why_valid": "The empirical formula fixes ratio only; molecular molar mass supplies scale.",
+              "inputs": [],
+              "output": "The molecular multiple should be an integer within data precision."
+            },
+            {
+              "id": "MOLE-FORMULA-STOICH-T3",
+              "role": "DECLARE",
+              "action": "For stoichiometry, start from a balanced equation and convert reactant inventories to moles.",
+              "why_valid": "Reaction coefficients compare amounts of substance.",
+              "inputs": [],
+              "output": "Raw masses of different substances cannot identify the limiting reagent directly."
+            },
+            {
+              "id": "MOLE-FORMULA-STOICH-T4",
+              "role": "TRANSFORM",
+              "action": "Compare each available mole amount relative to its stoichiometric coefficient.",
+              "why_valid": "The reactant supporting the smallest reaction extent is exhausted first in the complete-reaction model.",
+              "inputs": [],
+              "output": "Product and leftovers follow from that limiting extent."
+            }
+          ],
+          "elicitation": null,
+          "misconceptions": [
+            {
+              "wrong_idea": "The largest mass percentage gives the largest formula subscript, and the reactant with the smaller starting mass is always limiting.",
+              "diagnostic_prompt": "Can a light element contribute many atoms but little mass, and can different molar masses make the smaller gram amount contain more moles?",
+              "repair": "Convert mass to moles before both formula-ratio and limiting-reagent comparisons."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-MOLE-FORMULA-STOICH"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-MOLE-FORMULA-STOICH",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "extent ∝ nᵢ/νᵢ",
+                  "in_words": "For Empirical formula, stoichiometry and limiting reagent, the displayed symbols mean: Available amount divided by the balanced-equation stoichiometric coefficient reveals which reactant inventory supports the smallest reaction extent."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-MOLE-FORMULA-STOICH",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-MOLE-FORMULA-STOICH",
+                  "datum_refs": [
+                    "EQ-CHEM-MOLE-FORMULA-STOICH"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Empirical formula, stoichiometry and limiting reagent.",
+                    "caption": "Stoichiometric extent: Available amount divided by the balanced-equation stoichiometric coefficient reveals which reactant inventory supports the smallest reaction extent.",
+                    "equation_atom": "EQ-CHEM-MOLE-FORMULA-STOICH",
+                    "annotation": "Compare mole amount per stoichiometric coefficient, not raw reactant mass.",
+                    "coefficient_note": "In Stoichiometric extent, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Stoichiometric extent, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Stoichiometric extent, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Stoichiometric extent, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why can an excess reagent remain after a reaction even though the balanced equation has fixed coefficients?",
+            "source_ref": "SRC-CHEM-PR376-MOLE-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "The coefficients fix the proportions that react, not the initial proportions supplied; material beyond the limiting ratio can remain.",
+              "reasoning": [
+                "The limiting reagent determines how far the reaction proceeds.",
+                "Other reactants may have inventory left after the stoichiometrically required amount is consumed."
+              ],
+              "check": "Separate initial inventories from reaction coefficients.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Empirical formula, stoichiometry and limiting reagent exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": [
+            {
+              "question_ref": "Q-CHEM-MOLE-FORMULA-STOICH-1A",
+              "stem": "What should be compared across reactants to identify the limiting reagent from a balanced equation?",
+              "figure_refs": [],
+              "answer": {
+                "summary": "Compare the available moles relative to each reactant's stoichiometric coefficient—the reaction extent each inventory can support.",
+                "reasoning": [
+                  "Coefficients specify the required mole ratio.",
+                  "Different substances' masses are not directly comparable.",
+                  "The smallest supported reaction extent identifies the reactant exhausted first."
+                ],
+                "check": "Use the chosen limiting extent to verify that no reactant consumption exceeds its available amount."
+              }
+            }
+          ]
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_id": "BP-CORE1A-CONSTRUCTION",
+            "blueprint_version": "1.1.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_CONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "slot_order": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ATTEMPT_FIRST_AS_PRIMARY_MODE"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": true,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-MOLE-FORMULA-STOICH",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-mole-formula-stoich:core1b",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-MOLE-FORMULA-STOICH",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1B",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-MOLE-FORMULA-STOICH",
+          "title": "Empirical formula, stoichiometry and limiting reagent",
+          "intrinsic_badge": "HARD",
+          "inferential_jump": "Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.",
+          "entry_assumptions": [
+            "For Empirical formula, stoichiometry and limiting reagent, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "MOLE-FORMULA-STOICH-T1",
+              "role": "TRANSFORM",
+              "action": "Convert each elemental mass or percentage to moles before inferring an empirical ratio.",
+              "why_valid": "Atom counts are proportional to amount, not raw mass.",
+              "inputs": [],
+              "output": "Dividing by atomic mass removes the mass weighting."
+            },
+            {
+              "id": "MOLE-FORMULA-STOICH-T2",
+              "role": "TRANSFORM",
+              "action": "Scale mole ratios to the smallest reliable whole-number set and use molar mass to determine any molecular-formula multiple.",
+              "why_valid": "The empirical formula fixes ratio only; molecular molar mass supplies scale.",
+              "inputs": [],
+              "output": "The molecular multiple should be an integer within data precision."
+            },
+            {
+              "id": "MOLE-FORMULA-STOICH-T3",
+              "role": "DECLARE",
+              "action": "For stoichiometry, start from a balanced equation and convert reactant inventories to moles.",
+              "why_valid": "Reaction coefficients compare amounts of substance.",
+              "inputs": [],
+              "output": "Raw masses of different substances cannot identify the limiting reagent directly."
+            },
+            {
+              "id": "MOLE-FORMULA-STOICH-T4",
+              "role": "TRANSFORM",
+              "action": "Compare each available mole amount relative to its stoichiometric coefficient.",
+              "why_valid": "The reactant supporting the smallest reaction extent is exhausted first in the complete-reaction model.",
+              "inputs": [],
+              "output": "Product and leftovers follow from that limiting extent."
+            }
+          ],
+          "elicitation": {
+            "predict": {
+              "prompt": "For Empirical formula, stoichiometry and limiting reagent, decide before the completed route is revealed: Can a light element contribute many atoms but little mass, and can different molar masses make the smaller gram amount contain more moles?",
+              "defensible_answer": "For Empirical formula, stoichiometry and limiting reagent, the defensible route is: Convert mass to moles before both formula-ratio and limiting-reagent comparisons."
+            },
+            "attempt": {
+              "produces": "A short Empirical formula, stoichiometry and limiting reagent explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "closure": "CRITERIA",
+              "rubric": [
+                {
+                  "criterion": "The Empirical formula, stoichiometry and limiting reagent response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+                  "evidence_of": "The learner can separate the Empirical formula, stoichiometry and limiting reagent governing distinction from the tempting shortcut."
+                }
+              ],
+              "task": {
+                "prompt": "Explain the Empirical formula, stoichiometry and limiting reagent decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "givens": [
+                  "Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made."
+                ],
+                "representation_ref": "REP-CHEM-MOLE-FORMULA-STOICH",
+                "stage_refs": []
+              }
+            },
+            "reconstruct": {
+              "route": [
+                {
+                  "ask": "In Empirical formula, stoichiometry and limiting reagent, what must be decided before the move \"Convert each elemental mass or percentage to moles before inferring an empirical ratio.\" is justified?",
+                  "why_this_ask": "This makes the learner supply the entry decision for Empirical formula, stoichiometry and limiting reagent instead of receiving the expert sequence first.",
+                  "from_step_ref": "MOLE-FORMULA-STOICH-T1"
+                },
+                {
+                  "ask": "For Empirical formula, stoichiometry and limiting reagent, how would you test the conclusion reached by \"Compare each available mole amount relative to its stoichiometric coefficient.\" without simply repeating the model answer?",
+                  "why_this_ask": "This closes Empirical formula, stoichiometry and limiting reagent through a learner-owned check rather than through recall of the declarative route.",
+                  "from_step_ref": "MOLE-FORMULA-STOICH-T4"
+                }
+              ],
+              "differs_from_teaching_path": "For Empirical formula, stoichiometry and limiting reagent, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+            },
+            "boundary_test": {
+              "prompt": "Why can an excess reagent remain after a reaction even though the balanced equation has fixed coefficients?",
+              "answer": "The coefficients fix the proportions that react, not the initial proportions supplied; material beyond the limiting ratio can remain.",
+              "confirms": "For Empirical formula, stoichiometry and limiting reagent, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+            }
+          },
+          "misconceptions": [
+            {
+              "wrong_idea": "The largest mass percentage gives the largest formula subscript, and the reactant with the smaller starting mass is always limiting.",
+              "diagnostic_prompt": "Can a light element contribute many atoms but little mass, and can different molar masses make the smaller gram amount contain more moles?",
+              "repair": "Convert mass to moles before both formula-ratio and limiting-reagent comparisons."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-MOLE-FORMULA-STOICH"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-MOLE-FORMULA-STOICH",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "extent ∝ nᵢ/νᵢ",
+                  "in_words": "For Empirical formula, stoichiometry and limiting reagent, the displayed symbols mean: Available amount divided by the balanced-equation stoichiometric coefficient reveals which reactant inventory supports the smallest reaction extent."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-MOLE-FORMULA-STOICH",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-MOLE-FORMULA-STOICH",
+                  "datum_refs": [
+                    "EQ-CHEM-MOLE-FORMULA-STOICH"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Empirical formula, stoichiometry and limiting reagent.",
+                    "caption": "Stoichiometric extent: Available amount divided by the balanced-equation stoichiometric coefficient reveals which reactant inventory supports the smallest reaction extent.",
+                    "equation_atom": "EQ-CHEM-MOLE-FORMULA-STOICH",
+                    "annotation": "Compare mole amount per stoichiometric coefficient, not raw reactant mass.",
+                    "coefficient_note": "In Stoichiometric extent, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Stoichiometric extent, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Stoichiometric extent, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Stoichiometric extent, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why can an excess reagent remain after a reaction even though the balanced equation has fixed coefficients?",
+            "source_ref": "SRC-CHEM-PR376-MOLE-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "The coefficients fix the proportions that react, not the initial proportions supplied; material beyond the limiting ratio can remain.",
+              "reasoning": [
+                "The limiting reagent determines how far the reaction proceeds.",
+                "Other reactants may have inventory left after the stoichiometrically required amount is consumed."
+              ],
+              "check": "Separate initial inventories from reaction coefficients.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Empirical formula, stoichiometry and limiting reagent exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": []
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "GUIDED_RECONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "slot_order": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": true,
+              "solution_policy": "POST_ATTEMPT"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ANSWER_BEFORE_ATTEMPT"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": true,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-MOLE-FORMULA-STOICH",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-mole-foundations-mole:core1a",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1A",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
+          "title": "Combination laws, mole, Avogadro constant and molar mass",
+          "intrinsic_badge": "MEDIUM",
+          "inferential_jump": "Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro's constant and molar mass.",
+          "entry_assumptions": [
+            "For Combination laws, mole, Avogadro constant and molar mass, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "MOLE-FOUNDATIONS-MOLE-T1",
+              "role": "DECLARE",
+              "action": "Separate an empirical combination law from a particle model used to explain it.",
+              "why_valid": "A measured mass relation and an atomic interpretation are different kinds of claim.",
+              "inputs": [],
+              "output": "The model can explain the regularity without becoming identical to the observation."
+            },
+            {
+              "id": "MOLE-FOUNDATIONS-MOLE-T2",
+              "role": "DECLARE",
+              "action": "Name the counted entity and distinguish moles from grams.",
+              "why_valid": "A mole is an amount of specified entities, not one universal mass.",
+              "inputs": [],
+              "output": "The mass of one mole depends on the substance's molar mass."
+            },
+            {
+              "id": "MOLE-FOUNDATIONS-MOLE-T3",
+              "role": "TRANSFORM",
+              "action": "Use the path mass ↔ moles ↔ entities with units visible.",
+              "why_valid": "Molar mass connects grams and moles; Avogadro's constant connects moles and entity count.",
+              "inputs": [],
+              "output": "Unit cancellation checks the conversion direction."
+            }
+          ],
+          "elicitation": null,
+          "misconceptions": [
+            {
+              "wrong_idea": "One mole of every substance has the same mass, and a mole count is meaningful without naming the entity.",
+              "diagnostic_prompt": "Do one mole of helium atoms and one mole of water molecules have the same entity count, the same mass, or both?",
+              "repair": "Keep amount and mass separate, and attach an entity label to every particle-count statement."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-MOLE-FOUNDATIONS-MOLE"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-MOLE-FOUNDATIONS-MOLE",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "N = nNₐ",
+                  "in_words": "For Combination laws, mole, Avogadro constant and molar mass, the displayed symbols mean: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-MOLE-FOUNDATIONS-MOLE",
+                  "cores": [
+                    "CORE1",
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
+                  "datum_refs": [
+                    "EQ-CHEM-MOLE-FOUNDATIONS-MOLE"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Combination laws, mole, Avogadro constant and molar mass.",
+                    "caption": "Mole-to-entity bridge: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge.",
+                    "equation_atom": "EQ-CHEM-MOLE-FOUNDATIONS-MOLE",
+                    "annotation": "Always name the counted entity when converting moles to particle number.",
+                    "coefficient_note": "In Mole-to-entity bridge, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Mole-to-entity bridge, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Mole-to-entity bridge, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Mole-to-entity bridge, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why is '0.5 mol' incomplete as a particle-count statement until the substance and entity are named?",
+            "source_ref": "SRC-CHEM-PR376-MOLE-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Because an amount alone does not identify which chemical entities are being counted.",
+              "reasoning": [
+                "The numerical amount is generic.",
+                "The entity identity supplies the chemical meaning of the count."
+              ],
+              "check": "Attach both substance and entity to the amount statement.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Combination laws, mole, Avogadro constant and molar mass exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": [
+            {
+              "question_ref": "Q-CHEM-MOLE-FOUNDATIONS-MOLE-1A",
+              "stem": "Why must a particle-count answer specify molecules, atoms, ions or formula units?",
+              "figure_refs": [],
+              "answer": {
+                "summary": "Because the mole counts specified entities, and different entity choices correspond to different physical counts.",
+                "reasoning": [
+                  "Avogadro's constant maps moles to a number of entities.",
+                  "The substance and chemical representation determine what those entities are.",
+                  "For an ionic solid, formula units are not the same entity as individual ions."
+                ],
+                "check": "Write the entity name immediately after the numerical particle count."
+              }
+            }
+          ]
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_id": "BP-CORE1A-CONSTRUCTION",
+            "blueprint_version": "1.1.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_CONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "slot_order": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ATTEMPT_FIRST_AS_PRIMARY_MODE"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": true,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-MOLE-FOUNDATIONS-MOLE",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-mole-foundations-mole:core1b",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1B",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
+          "title": "Combination laws, mole, Avogadro constant and molar mass",
+          "intrinsic_badge": "MEDIUM",
+          "inferential_jump": "Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro's constant and molar mass.",
+          "entry_assumptions": [
+            "For Combination laws, mole, Avogadro constant and molar mass, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "MOLE-FOUNDATIONS-MOLE-T1",
+              "role": "DECLARE",
+              "action": "Separate an empirical combination law from a particle model used to explain it.",
+              "why_valid": "A measured mass relation and an atomic interpretation are different kinds of claim.",
+              "inputs": [],
+              "output": "The model can explain the regularity without becoming identical to the observation."
+            },
+            {
+              "id": "MOLE-FOUNDATIONS-MOLE-T2",
+              "role": "DECLARE",
+              "action": "Name the counted entity and distinguish moles from grams.",
+              "why_valid": "A mole is an amount of specified entities, not one universal mass.",
+              "inputs": [],
+              "output": "The mass of one mole depends on the substance's molar mass."
+            },
+            {
+              "id": "MOLE-FOUNDATIONS-MOLE-T3",
+              "role": "TRANSFORM",
+              "action": "Use the path mass ↔ moles ↔ entities with units visible.",
+              "why_valid": "Molar mass connects grams and moles; Avogadro's constant connects moles and entity count.",
+              "inputs": [],
+              "output": "Unit cancellation checks the conversion direction."
+            }
+          ],
+          "elicitation": {
+            "predict": {
+              "prompt": "For Combination laws, mole, Avogadro constant and molar mass, decide before the completed route is revealed: Do one mole of helium atoms and one mole of water molecules have the same entity count, the same mass, or both?",
+              "defensible_answer": "For Combination laws, mole, Avogadro constant and molar mass, the defensible route is: Keep amount and mass separate, and attach an entity label to every particle-count statement."
+            },
+            "attempt": {
+              "produces": "A short Combination laws, mole, Avogadro constant and molar mass explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "closure": "CRITERIA",
+              "rubric": [
+                {
+                  "criterion": "The Combination laws, mole, Avogadro constant and molar mass response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+                  "evidence_of": "The learner can separate the Combination laws, mole, Avogadro constant and molar mass governing distinction from the tempting shortcut."
+                }
+              ],
+              "task": {
+                "prompt": "Explain the Combination laws, mole, Avogadro constant and molar mass decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "givens": [
+                  "Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro's constant and molar mass."
+                ],
+                "representation_ref": "REP-CHEM-MOLE-FOUNDATIONS-MOLE",
+                "stage_refs": []
+              }
+            },
+            "reconstruct": {
+              "route": [
+                {
+                  "ask": "In Combination laws, mole, Avogadro constant and molar mass, what must be decided before the move \"Separate an empirical combination law from a particle model used to explain it.\" is justified?",
+                  "why_this_ask": "This makes the learner supply the entry decision for Combination laws, mole, Avogadro constant and molar mass instead of receiving the expert sequence first.",
+                  "from_step_ref": "MOLE-FOUNDATIONS-MOLE-T1"
+                },
+                {
+                  "ask": "For Combination laws, mole, Avogadro constant and molar mass, how would you test the conclusion reached by \"Use the path mass ↔ moles ↔ entities with units visible.\" without simply repeating the model answer?",
+                  "why_this_ask": "This closes Combination laws, mole, Avogadro constant and molar mass through a learner-owned check rather than through recall of the declarative route.",
+                  "from_step_ref": "MOLE-FOUNDATIONS-MOLE-T3"
+                }
+              ],
+              "differs_from_teaching_path": "For Combination laws, mole, Avogadro constant and molar mass, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+            },
+            "boundary_test": {
+              "prompt": "Why is '0.5 mol' incomplete as a particle-count statement until the substance and entity are named?",
+              "answer": "Because an amount alone does not identify which chemical entities are being counted.",
+              "confirms": "For Combination laws, mole, Avogadro constant and molar mass, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+            }
+          },
+          "misconceptions": [
+            {
+              "wrong_idea": "One mole of every substance has the same mass, and a mole count is meaningful without naming the entity.",
+              "diagnostic_prompt": "Do one mole of helium atoms and one mole of water molecules have the same entity count, the same mass, or both?",
+              "repair": "Keep amount and mass separate, and attach an entity label to every particle-count statement."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-MOLE-FOUNDATIONS-MOLE"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-MOLE-FOUNDATIONS-MOLE",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "N = nNₐ",
+                  "in_words": "For Combination laws, mole, Avogadro constant and molar mass, the displayed symbols mean: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-MOLE-FOUNDATIONS-MOLE",
+                  "cores": [
+                    "CORE1",
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
+                  "datum_refs": [
+                    "EQ-CHEM-MOLE-FOUNDATIONS-MOLE"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Combination laws, mole, Avogadro constant and molar mass.",
+                    "caption": "Mole-to-entity bridge: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge.",
+                    "equation_atom": "EQ-CHEM-MOLE-FOUNDATIONS-MOLE",
+                    "annotation": "Always name the counted entity when converting moles to particle number.",
+                    "coefficient_note": "In Mole-to-entity bridge, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Mole-to-entity bridge, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Mole-to-entity bridge, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Mole-to-entity bridge, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why is '0.5 mol' incomplete as a particle-count statement until the substance and entity are named?",
+            "source_ref": "SRC-CHEM-PR376-MOLE-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Because an amount alone does not identify which chemical entities are being counted.",
+              "reasoning": [
+                "The numerical amount is generic.",
+                "The entity identity supplies the chemical meaning of the count."
+              ],
+              "check": "Attach both substance and entity to the amount statement.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Combination laws, mole, Avogadro constant and molar mass exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": []
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "GUIDED_RECONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "slot_order": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": true,
+              "solution_policy": "POST_ATTEMPT"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ANSWER_BEFORE_ATTEMPT"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": true,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-MOLE-FOUNDATIONS-MOLE",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-redox-balance-nfactor:core1a",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-REDOX-BALANCE-NFACTOR",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1A",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-REDOX-BALANCE-NFACTOR",
+          "title": "Half-reaction balancing and reaction-dependent n-factor",
+          "intrinsic_badge": "HARD",
+          "inferential_jump": "Half-reaction balancing is a conservation algorithm, while n-factor compresses the electron change for one specified redox transformation; neither is valid without the reaction context.",
+          "entry_assumptions": [
+            "For Half-reaction balancing and reaction-dependent n-factor, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "REDOX-BALANCE-NFACTOR-T1",
+              "role": "DECLARE",
+              "action": "State acidic or basic aqueous medium before choosing balancing species.",
+              "why_valid": "The allowed bookkeeping species depend on the declared medium.",
+              "inputs": [],
+              "output": "Medium is part of the problem conditions."
+            },
+            {
+              "id": "REDOX-BALANCE-NFACTOR-T2",
+              "role": "TRANSFORM",
+              "action": "Balance atoms and charge within each half-reaction, then scale so electrons cancel when the halves are added.",
+              "why_valid": "Electrons are transfer bookkeeping and must not remain in the final net reaction.",
+              "inputs": [],
+              "output": "The final equation must conserve every element and total charge."
+            },
+            {
+              "id": "REDOX-BALANCE-NFACTOR-T3",
+              "role": "TRANSFORM",
+              "action": "Derive n-factor from the electron change and stoichiometric role in the specified balanced reaction.",
+              "why_valid": "The same substance can participate in different redox changes and therefore have different reaction-specific n-factors.",
+              "inputs": [],
+              "output": "Equivalent-mass use is tied to that reaction context."
+            }
+          ],
+          "elicitation": null,
+          "misconceptions": [
+            {
+              "wrong_idea": "Matching atom counts is enough even if charge differs, and every reagent has one universal n-factor.",
+              "diagnostic_prompt": "Would an ionic equation with equal atom counts but unequal total charge be balanced, and can the same reagent form products at different oxidation states?",
+              "repair": "Keep separate atom and charge ledgers, and derive n-factor from the actual balanced transformation each time."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-REDOX-BALANCE-NFACTOR"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-REDOX-BALANCE-NFACTOR",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "atomsL = atomsR; chargeL = chargeR",
+                  "in_words": "For Half-reaction balancing and reaction-dependent n-factor, the displayed symbols mean: A balanced ionic redox equation conserves every element and total charge; reaction-specific electron transfer then determines n-factor."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-REDOX-BALANCE-NFACTOR",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-REDOX-BALANCE-NFACTOR",
+                  "datum_refs": [
+                    "EQ-CHEM-REDOX-BALANCE-NFACTOR"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Half-reaction balancing and reaction-dependent n-factor.",
+                    "caption": "Redox conservation: A balanced ionic redox equation conserves every element and total charge; reaction-specific electron transfer then determines n-factor.",
+                    "equation_atom": "EQ-CHEM-REDOX-BALANCE-NFACTOR",
+                    "annotation": "State acidic or basic medium before introducing balancing species.",
+                    "coefficient_note": "In Redox conservation, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Redox conservation, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Redox conservation, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Redox conservation, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why can a redox reagent have different n-factors in different reactions?",
+            "source_ref": "SRC-CHEM-PR376-REDOX-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Because n-factor is the reaction-specific number of electrons transferred per formula amount, and that electron change can differ with the product and oxidation-state pathway.",
+              "reasoning": [
+                "Molar mass is tied to the formula.",
+                "n-factor is tied to the specified electron-transfer role."
+              ],
+              "check": "Write the reaction or oxidation-state change beside every n-factor value.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Half-reaction balancing and reaction-dependent n-factor exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": [
+            {
+              "question_ref": "Q-CHEM-REDOX-BALANCE-NFACTOR-1A",
+              "stem": "What two independent conservation checks close a balanced ionic redox equation?",
+              "figure_refs": [],
+              "answer": {
+                "summary": "Every element count and the total electric charge must match on both sides.",
+                "reasoning": [
+                  "Chemical equations conserve atoms.",
+                  "Ionic redox equations also conserve total charge.",
+                  "Half-reaction electrons must cancel from the net equation."
+                ],
+                "check": "Make an element-count table and a separate algebraic charge sum."
+              }
+            }
+          ]
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_id": "BP-CORE1A-CONSTRUCTION",
+            "blueprint_version": "1.1.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_CONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "slot_order": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ATTEMPT_FIRST_AS_PRIMARY_MODE"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": true,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-REDOX-BALANCE-NFACTOR",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-redox-balance-nfactor:core1b",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-REDOX-BALANCE-NFACTOR",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1B",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-REDOX-BALANCE-NFACTOR",
+          "title": "Half-reaction balancing and reaction-dependent n-factor",
+          "intrinsic_badge": "HARD",
+          "inferential_jump": "Half-reaction balancing is a conservation algorithm, while n-factor compresses the electron change for one specified redox transformation; neither is valid without the reaction context.",
+          "entry_assumptions": [
+            "For Half-reaction balancing and reaction-dependent n-factor, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "REDOX-BALANCE-NFACTOR-T1",
+              "role": "DECLARE",
+              "action": "State acidic or basic aqueous medium before choosing balancing species.",
+              "why_valid": "The allowed bookkeeping species depend on the declared medium.",
+              "inputs": [],
+              "output": "Medium is part of the problem conditions."
+            },
+            {
+              "id": "REDOX-BALANCE-NFACTOR-T2",
+              "role": "TRANSFORM",
+              "action": "Balance atoms and charge within each half-reaction, then scale so electrons cancel when the halves are added.",
+              "why_valid": "Electrons are transfer bookkeeping and must not remain in the final net reaction.",
+              "inputs": [],
+              "output": "The final equation must conserve every element and total charge."
+            },
+            {
+              "id": "REDOX-BALANCE-NFACTOR-T3",
+              "role": "TRANSFORM",
+              "action": "Derive n-factor from the electron change and stoichiometric role in the specified balanced reaction.",
+              "why_valid": "The same substance can participate in different redox changes and therefore have different reaction-specific n-factors.",
+              "inputs": [],
+              "output": "Equivalent-mass use is tied to that reaction context."
+            }
+          ],
+          "elicitation": {
+            "predict": {
+              "prompt": "For Half-reaction balancing and reaction-dependent n-factor, decide before the completed route is revealed: Would an ionic equation with equal atom counts but unequal total charge be balanced, and can the same reagent form products at different oxidation states?",
+              "defensible_answer": "For Half-reaction balancing and reaction-dependent n-factor, the defensible route is: Keep separate atom and charge ledgers, and derive n-factor from the actual balanced transformation each time."
+            },
+            "attempt": {
+              "produces": "A short Half-reaction balancing and reaction-dependent n-factor explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "closure": "CRITERIA",
+              "rubric": [
+                {
+                  "criterion": "The Half-reaction balancing and reaction-dependent n-factor response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+                  "evidence_of": "The learner can separate the Half-reaction balancing and reaction-dependent n-factor governing distinction from the tempting shortcut."
+                }
+              ],
+              "task": {
+                "prompt": "Explain the Half-reaction balancing and reaction-dependent n-factor decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "givens": [
+                  "Half-reaction balancing is a conservation algorithm, while n-factor compresses the electron change for one specified redox transformation; neither is valid without the reaction context."
+                ],
+                "representation_ref": "REP-CHEM-REDOX-BALANCE-NFACTOR",
+                "stage_refs": []
+              }
+            },
+            "reconstruct": {
+              "route": [
+                {
+                  "ask": "In Half-reaction balancing and reaction-dependent n-factor, what must be decided before the move \"State acidic or basic aqueous medium before choosing balancing species.\" is justified?",
+                  "why_this_ask": "This makes the learner supply the entry decision for Half-reaction balancing and reaction-dependent n-factor instead of receiving the expert sequence first.",
+                  "from_step_ref": "REDOX-BALANCE-NFACTOR-T1"
+                },
+                {
+                  "ask": "For Half-reaction balancing and reaction-dependent n-factor, how would you test the conclusion reached by \"Derive n-factor from the electron change and stoichiometric role in the specified balanced reaction.\" without simply repeating the model answer?",
+                  "why_this_ask": "This closes Half-reaction balancing and reaction-dependent n-factor through a learner-owned check rather than through recall of the declarative route.",
+                  "from_step_ref": "REDOX-BALANCE-NFACTOR-T3"
+                }
+              ],
+              "differs_from_teaching_path": "For Half-reaction balancing and reaction-dependent n-factor, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+            },
+            "boundary_test": {
+              "prompt": "Why can a redox reagent have different n-factors in different reactions?",
+              "answer": "Because n-factor is the reaction-specific number of electrons transferred per formula amount, and that electron change can differ with the product and oxidation-state pathway.",
+              "confirms": "For Half-reaction balancing and reaction-dependent n-factor, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+            }
+          },
+          "misconceptions": [
+            {
+              "wrong_idea": "Matching atom counts is enough even if charge differs, and every reagent has one universal n-factor.",
+              "diagnostic_prompt": "Would an ionic equation with equal atom counts but unequal total charge be balanced, and can the same reagent form products at different oxidation states?",
+              "repair": "Keep separate atom and charge ledgers, and derive n-factor from the actual balanced transformation each time."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-REDOX-BALANCE-NFACTOR"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-REDOX-BALANCE-NFACTOR",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "atomsL = atomsR; chargeL = chargeR",
+                  "in_words": "For Half-reaction balancing and reaction-dependent n-factor, the displayed symbols mean: A balanced ionic redox equation conserves every element and total charge; reaction-specific electron transfer then determines n-factor."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-REDOX-BALANCE-NFACTOR",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-REDOX-BALANCE-NFACTOR",
+                  "datum_refs": [
+                    "EQ-CHEM-REDOX-BALANCE-NFACTOR"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Half-reaction balancing and reaction-dependent n-factor.",
+                    "caption": "Redox conservation: A balanced ionic redox equation conserves every element and total charge; reaction-specific electron transfer then determines n-factor.",
+                    "equation_atom": "EQ-CHEM-REDOX-BALANCE-NFACTOR",
+                    "annotation": "State acidic or basic medium before introducing balancing species.",
+                    "coefficient_note": "In Redox conservation, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Redox conservation, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Redox conservation, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Redox conservation, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why can a redox reagent have different n-factors in different reactions?",
+            "source_ref": "SRC-CHEM-PR376-REDOX-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Because n-factor is the reaction-specific number of electrons transferred per formula amount, and that electron change can differ with the product and oxidation-state pathway.",
+              "reasoning": [
+                "Molar mass is tied to the formula.",
+                "n-factor is tied to the specified electron-transfer role."
+              ],
+              "check": "Write the reaction or oxidation-state change beside every n-factor value.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Half-reaction balancing and reaction-dependent n-factor exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": []
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "GUIDED_RECONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "slot_order": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": true,
+              "solution_policy": "POST_ATTEMPT"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ANSWER_BEFORE_ATTEMPT"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": true,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-REDOX-BALANCE-NFACTOR",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-redox-classification:core1a",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-REDOX-CLASSIFICATION",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1A",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-REDOX-CLASSIFICATION",
+          "title": "Redox classification, displacement and disproportionation patterns",
+          "intrinsic_badge": "HARD",
+          "inferential_jump": "A reaction is redox only when oxidation-number bookkeeping shows coupled increase and decrease; reaction labels such as decomposition or displacement do not replace that test.",
+          "entry_assumptions": [
+            "For Redox classification, displacement and disproportionation patterns, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "REDOX-CLASSIFICATION-T1",
+              "role": "DECLARE",
+              "action": "Recognise the chemical reaction without yet calling it redox.",
+              "why_valid": "Formation of new substances is not sufficient evidence of electron-transfer bookkeeping.",
+              "inputs": [],
+              "output": "Chemical-change classification and redox classification are separate questions."
+            },
+            {
+              "id": "REDOX-CLASSIFICATION-T2",
+              "role": "VERIFY",
+              "action": "Compare oxidation numbers on both sides and require at least one increase coupled to a decrease.",
+              "why_valid": "A double displacement can be non-redox, while a displacement can be redox depending on actual state changes.",
+              "inputs": [],
+              "output": "Oxidation-state change is the deciding test."
+            },
+            {
+              "id": "REDOX-CLASSIFICATION-T3",
+              "role": "TRANSFORM",
+              "action": "For the same element, map one initial state splitting upward and downward as disproportionation, and two starting states converging as comproportionation.",
+              "why_valid": "The classification depends on the directed oxidation-state map.",
+              "inputs": [],
+              "output": "Counting how many states appear is not enough."
+            }
+          ],
+          "elicitation": null,
+          "misconceptions": [
+            {
+              "wrong_idea": "Every chemical reaction is redox, and any reaction showing three oxidation states is disproportionation.",
+              "diagnostic_prompt": "Can ions exchange partners with unchanged oxidation numbers, and are the three states arranged as one-to-two or two-to-one across the reaction arrow?",
+              "repair": "Run the oxidation-number change check first, then draw the directed state map before naming a special redox pattern."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-REDOX-CLASSIFICATION"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-REDOX-CLASSIFICATION",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "redox ⇒ coupled ON increase + decrease",
+                  "in_words": "For Redox classification, displacement and disproportionation patterns, the displayed symbols mean: Calling a reaction redox requires coupled oxidation-number changes; a reaction-type label by itself is insufficient."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-REDOX-CLASSIFICATION",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-REDOX-CLASSIFICATION",
+                  "datum_refs": [
+                    "EQ-CHEM-REDOX-CLASSIFICATION"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Redox classification, displacement and disproportionation patterns.",
+                    "caption": "Redox classification: Calling a reaction redox requires coupled oxidation-number changes; a reaction-type label by itself is insufficient.",
+                    "equation_atom": "EQ-CHEM-REDOX-CLASSIFICATION",
+                    "annotation": "Track the same element across reactants and products before naming the redox pattern.",
+                    "coefficient_note": "In Redox classification, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Redox classification, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Redox classification, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Redox classification, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why is decomposition alone insufficient to call a reaction redox?",
+            "source_ref": "SRC-CHEM-PR376-REDOX-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Decomposition describes a reaction pattern, whereas redox requires actual oxidation-number changes.",
+              "reasoning": [
+                "A decomposition can occur without changing oxidation states.",
+                "The redox test is independent electron/oxidation-state bookkeeping."
+              ],
+              "check": "List oxidation states before and after rather than relying on the reaction-type label.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Redox classification, displacement and disproportionation patterns exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": [
+            {
+              "question_ref": "Q-CHEM-REDOX-CLASSIFICATION-1A",
+              "stem": "The same element begins in one oxidation state and appears in two products, one at a higher and one at a lower oxidation state. What pattern is this?",
+              "figure_refs": [],
+              "answer": {
+                "summary": "Disproportionation.",
+                "reasoning": [
+                  "One starting oxidation state is both oxidised and reduced in different product portions.",
+                  "The state map branches upward and downward from the same initial value."
+                ],
+                "check": "Both an increase and a decrease must originate from the same initial oxidation state."
+              }
+            }
+          ]
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_id": "BP-CORE1A-CONSTRUCTION",
+            "blueprint_version": "1.1.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_CONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "slot_order": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ATTEMPT_FIRST_AS_PRIMARY_MODE"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": true,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-REDOX-CLASSIFICATION",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-redox-classification:core1b",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-REDOX-CLASSIFICATION",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1B",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-REDOX-CLASSIFICATION",
+          "title": "Redox classification, displacement and disproportionation patterns",
+          "intrinsic_badge": "HARD",
+          "inferential_jump": "A reaction is redox only when oxidation-number bookkeeping shows coupled increase and decrease; reaction labels such as decomposition or displacement do not replace that test.",
+          "entry_assumptions": [
+            "For Redox classification, displacement and disproportionation patterns, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "REDOX-CLASSIFICATION-T1",
+              "role": "DECLARE",
+              "action": "Recognise the chemical reaction without yet calling it redox.",
+              "why_valid": "Formation of new substances is not sufficient evidence of electron-transfer bookkeeping.",
+              "inputs": [],
+              "output": "Chemical-change classification and redox classification are separate questions."
+            },
+            {
+              "id": "REDOX-CLASSIFICATION-T2",
+              "role": "VERIFY",
+              "action": "Compare oxidation numbers on both sides and require at least one increase coupled to a decrease.",
+              "why_valid": "A double displacement can be non-redox, while a displacement can be redox depending on actual state changes.",
+              "inputs": [],
+              "output": "Oxidation-state change is the deciding test."
+            },
+            {
+              "id": "REDOX-CLASSIFICATION-T3",
+              "role": "TRANSFORM",
+              "action": "For the same element, map one initial state splitting upward and downward as disproportionation, and two starting states converging as comproportionation.",
+              "why_valid": "The classification depends on the directed oxidation-state map.",
+              "inputs": [],
+              "output": "Counting how many states appear is not enough."
+            }
+          ],
+          "elicitation": {
+            "predict": {
+              "prompt": "For Redox classification, displacement and disproportionation patterns, decide before the completed route is revealed: Can ions exchange partners with unchanged oxidation numbers, and are the three states arranged as one-to-two or two-to-one across the reaction arrow?",
+              "defensible_answer": "For Redox classification, displacement and disproportionation patterns, the defensible route is: Run the oxidation-number change check first, then draw the directed state map before naming a special redox pattern."
+            },
+            "attempt": {
+              "produces": "A short Redox classification, displacement and disproportionation patterns explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "closure": "CRITERIA",
+              "rubric": [
+                {
+                  "criterion": "The Redox classification, displacement and disproportionation patterns response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+                  "evidence_of": "The learner can separate the Redox classification, displacement and disproportionation patterns governing distinction from the tempting shortcut."
+                }
+              ],
+              "task": {
+                "prompt": "Explain the Redox classification, displacement and disproportionation patterns decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "givens": [
+                  "A reaction is redox only when oxidation-number bookkeeping shows coupled increase and decrease; reaction labels such as decomposition or displacement do not replace that test."
+                ],
+                "representation_ref": "REP-CHEM-REDOX-CLASSIFICATION",
+                "stage_refs": []
+              }
+            },
+            "reconstruct": {
+              "route": [
+                {
+                  "ask": "In Redox classification, displacement and disproportionation patterns, what must be decided before the move \"Recognise the chemical reaction without yet calling it redox.\" is justified?",
+                  "why_this_ask": "This makes the learner supply the entry decision for Redox classification, displacement and disproportionation patterns instead of receiving the expert sequence first.",
+                  "from_step_ref": "REDOX-CLASSIFICATION-T1"
+                },
+                {
+                  "ask": "For Redox classification, displacement and disproportionation patterns, how would you test the conclusion reached by \"For the same element, map one initial state splitting upward and downward as disproportionation, and two starting states converging as comproportionation.\" without simply repeating the model answer?",
+                  "why_this_ask": "This closes Redox classification, displacement and disproportionation patterns through a learner-owned check rather than through recall of the declarative route.",
+                  "from_step_ref": "REDOX-CLASSIFICATION-T3"
+                }
+              ],
+              "differs_from_teaching_path": "For Redox classification, displacement and disproportionation patterns, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+            },
+            "boundary_test": {
+              "prompt": "Why is decomposition alone insufficient to call a reaction redox?",
+              "answer": "Decomposition describes a reaction pattern, whereas redox requires actual oxidation-number changes.",
+              "confirms": "For Redox classification, displacement and disproportionation patterns, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+            }
+          },
+          "misconceptions": [
+            {
+              "wrong_idea": "Every chemical reaction is redox, and any reaction showing three oxidation states is disproportionation.",
+              "diagnostic_prompt": "Can ions exchange partners with unchanged oxidation numbers, and are the three states arranged as one-to-two or two-to-one across the reaction arrow?",
+              "repair": "Run the oxidation-number change check first, then draw the directed state map before naming a special redox pattern."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-REDOX-CLASSIFICATION"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-REDOX-CLASSIFICATION",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "redox ⇒ coupled ON increase + decrease",
+                  "in_words": "For Redox classification, displacement and disproportionation patterns, the displayed symbols mean: Calling a reaction redox requires coupled oxidation-number changes; a reaction-type label by itself is insufficient."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-REDOX-CLASSIFICATION",
+                  "cores": [
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-REDOX-CLASSIFICATION",
+                  "datum_refs": [
+                    "EQ-CHEM-REDOX-CLASSIFICATION"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Redox classification, displacement and disproportionation patterns.",
+                    "caption": "Redox classification: Calling a reaction redox requires coupled oxidation-number changes; a reaction-type label by itself is insufficient.",
+                    "equation_atom": "EQ-CHEM-REDOX-CLASSIFICATION",
+                    "annotation": "Track the same element across reactants and products before naming the redox pattern.",
+                    "coefficient_note": "In Redox classification, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Redox classification, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Redox classification, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Redox classification, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why is decomposition alone insufficient to call a reaction redox?",
+            "source_ref": "SRC-CHEM-PR376-REDOX-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Decomposition describes a reaction pattern, whereas redox requires actual oxidation-number changes.",
+              "reasoning": [
+                "A decomposition can occur without changing oxidation states.",
+                "The redox test is independent electron/oxidation-state bookkeeping."
+              ],
+              "check": "List oxidation states before and after rather than relying on the reaction-type label.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Redox classification, displacement and disproportionation patterns exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": []
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "GUIDED_RECONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "slot_order": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": true,
+              "solution_policy": "POST_ATTEMPT"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ANSWER_BEFORE_ATTEMPT"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": true,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-REDOX-CLASSIFICATION",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-redox-oxidation-agents:core1a",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-REDOX-OXIDATION-AGENTS",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1A",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-REDOX-OXIDATION-AGENTS",
+          "title": "Oxidation number, oxidation/reduction and agents",
+          "intrinsic_badge": "MEDIUM",
+          "inferential_jump": "Oxidation number is a formal assignment whose increase corresponds to oxidation and decrease to reduction; an oxidising agent is itself reduced while a reducing agent is itself oxidised.",
+          "entry_assumptions": [
+            "For Oxidation number, oxidation/reduction and agents, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "REDOX-OXIDATION-AGENTS-T1",
+              "role": "DECLARE",
+              "action": "Apply oxidation-number priority rules and require the algebraic sum to equal the species charge.",
+              "why_valid": "The assignment is a formal bookkeeping convention constrained by overall charge.",
+              "inputs": [],
+              "output": "Charge reconciliation closes the oxidation-number ledger."
+            },
+            {
+              "id": "REDOX-OXIDATION-AGENTS-T2",
+              "role": "TRANSFORM",
+              "action": "Track the same element from reactant to product and classify increases as oxidation and decreases as reduction.",
+              "why_valid": "A direction can only be named after matching the element across both sides.",
+              "inputs": [],
+              "output": "Electron-loss/gain and oxidation-number change are two views of the same bookkeeping."
+            },
+            {
+              "id": "REDOX-OXIDATION-AGENTS-T3",
+              "role": "TRANSFORM",
+              "action": "Name the species being reduced as the oxidising agent and the species being oxidised as the reducing agent.",
+              "why_valid": "Agent names describe the process caused in the partner, not the self-change.",
+              "inputs": [],
+              "output": "Separating self-change from agent role prevents reversal."
+            }
+          ],
+          "elicitation": null,
+          "misconceptions": [
+            {
+              "wrong_idea": "Oxidation number is a literal measured atomic charge, and the species oxidised is the oxidising agent.",
+              "diagnostic_prompt": "Can resonance/electron sharing make physical charge differ from formal oxidation number, and what happens to the electron acceptor itself?",
+              "repair": "Label oxidation state as formal bookkeeping; write self-change first, then assign the opposite process as the agent name."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-REDOX-OXIDATION-AGENTS"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-REDOX-OXIDATION-AGENTS",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "ON ↑ = oxidation; ON ↓ = reduction",
+                  "in_words": "For Oxidation number, oxidation/reduction and agents, the displayed symbols mean: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-REDOX-OXIDATION-AGENTS",
+                  "cores": [
+                    "CORE1",
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-REDOX-OXIDATION-AGENTS",
+                  "datum_refs": [
+                    "EQ-CHEM-REDOX-OXIDATION-AGENTS"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Oxidation number, oxidation/reduction and agents.",
+                    "caption": "Oxidation-state direction: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner.",
+                    "equation_atom": "EQ-CHEM-REDOX-OXIDATION-AGENTS",
+                    "annotation": "Oxidation number is formal electron bookkeeping, not generally a measured atomic charge.",
+                    "coefficient_note": "In Oxidation-state direction, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Oxidation-state direction, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Oxidation-state direction, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Oxidation-state direction, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why is an oxidation number useful even though it is not generally a measured atomic charge?",
+            "source_ref": "SRC-CHEM-PR376-REDOX-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Its formal assignment rules consistently expose electron-accounting changes between reactants and products.",
+              "reasoning": [
+                "The convention assigns electrons by defined rules.",
+                "Changes in the assignments reveal coupled oxidation and reduction."
+              ],
+              "check": "Use the phrase formal assignment and verify the total-charge sum.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Oxidation number, oxidation/reduction and agents exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": [
+            {
+              "question_ref": "Q-CHEM-REDOX-OXIDATION-AGENTS-1A",
+              "stem": "Species A gains electrons from species B. Which species is the oxidising agent and why?",
+              "figure_refs": [],
+              "answer": {
+                "summary": "Species A is the oxidising agent because A is reduced while causing B to be oxidised.",
+                "reasoning": [
+                  "A gains electrons, so A undergoes reduction.",
+                  "The electrons come from B, so B is oxidised.",
+                  "The species causing oxidation of its partner is the oxidising agent."
+                ],
+                "check": "The oxidising agent must appear on the reduction side of the bookkeeping."
+              }
+            }
+          ]
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_id": "BP-CORE1A-CONSTRUCTION",
+            "blueprint_version": "1.1.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "READING_CONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "slot_order": [
+              "identity",
+              "construction",
+              "repair_closure"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": false,
+              "solution_policy": "FROM_PROJECTION"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ATTEMPT_FIRST_AS_PRIMARY_MODE"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": false,
+          "show_full_construction": true,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-REDOX-OXIDATION-AGENTS",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
+      "id": "chemistry:mic-chem-redox-oxidation-agents:core1b",
+      "subject": "Chemistry",
+      "source_ref": "MIC-CHEM-REDOX-OXIDATION-AGENTS",
+      "projection": {
+        "contract_version": "1.1",
+        "core": "CORE1B",
+        "orientation": null,
+        "concept": {
+          "microtopic_ref": "MIC-CHEM-REDOX-OXIDATION-AGENTS",
+          "title": "Oxidation number, oxidation/reduction and agents",
+          "intrinsic_badge": "MEDIUM",
+          "inferential_jump": "Oxidation number is a formal assignment whose increase corresponds to oxidation and decrease to reduction; an oxidising agent is itself reduced while a reducing agent is itself oxidised.",
+          "entry_assumptions": [
+            "For Oxidation number, oxidation/reduction and agents, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+          ],
+          "teaching_path": [
+            {
+              "id": "REDOX-OXIDATION-AGENTS-T1",
+              "role": "DECLARE",
+              "action": "Apply oxidation-number priority rules and require the algebraic sum to equal the species charge.",
+              "why_valid": "The assignment is a formal bookkeeping convention constrained by overall charge.",
+              "inputs": [],
+              "output": "Charge reconciliation closes the oxidation-number ledger."
+            },
+            {
+              "id": "REDOX-OXIDATION-AGENTS-T2",
+              "role": "TRANSFORM",
+              "action": "Track the same element from reactant to product and classify increases as oxidation and decreases as reduction.",
+              "why_valid": "A direction can only be named after matching the element across both sides.",
+              "inputs": [],
+              "output": "Electron-loss/gain and oxidation-number change are two views of the same bookkeeping."
+            },
+            {
+              "id": "REDOX-OXIDATION-AGENTS-T3",
+              "role": "TRANSFORM",
+              "action": "Name the species being reduced as the oxidising agent and the species being oxidised as the reducing agent.",
+              "why_valid": "Agent names describe the process caused in the partner, not the self-change.",
+              "inputs": [],
+              "output": "Separating self-change from agent role prevents reversal."
+            }
+          ],
+          "elicitation": {
+            "predict": {
+              "prompt": "For Oxidation number, oxidation/reduction and agents, decide before the completed route is revealed: Can resonance/electron sharing make physical charge differ from formal oxidation number, and what happens to the electron acceptor itself?",
+              "defensible_answer": "For Oxidation number, oxidation/reduction and agents, the defensible route is: Label oxidation state as formal bookkeeping; write self-change first, then assign the opposite process as the agent name."
+            },
+            "attempt": {
+              "produces": "A short Oxidation number, oxidation/reduction and agents explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+              "closure": "CRITERIA",
+              "rubric": [
+                {
+                  "criterion": "The Oxidation number, oxidation/reduction and agents response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+                  "evidence_of": "The learner can separate the Oxidation number, oxidation/reduction and agents governing distinction from the tempting shortcut."
+                }
+              ],
+              "task": {
+                "prompt": "Explain the Oxidation number, oxidation/reduction and agents decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+                "givens": [
+                  "Oxidation number is a formal assignment whose increase corresponds to oxidation and decrease to reduction; an oxidising agent is itself reduced while a reducing agent is itself oxidised."
+                ],
+                "representation_ref": "REP-CHEM-REDOX-OXIDATION-AGENTS",
+                "stage_refs": []
+              }
+            },
+            "reconstruct": {
+              "route": [
+                {
+                  "ask": "In Oxidation number, oxidation/reduction and agents, what must be decided before the move \"Apply oxidation-number priority rules and require the algebraic sum to equal the species charge.\" is justified?",
+                  "why_this_ask": "This makes the learner supply the entry decision for Oxidation number, oxidation/reduction and agents instead of receiving the expert sequence first.",
+                  "from_step_ref": "REDOX-OXIDATION-AGENTS-T1"
+                },
+                {
+                  "ask": "For Oxidation number, oxidation/reduction and agents, how would you test the conclusion reached by \"Name the species being reduced as the oxidising agent and the species being oxidised as the reducing agent.\" without simply repeating the model answer?",
+                  "why_this_ask": "This closes Oxidation number, oxidation/reduction and agents through a learner-owned check rather than through recall of the declarative route.",
+                  "from_step_ref": "REDOX-OXIDATION-AGENTS-T3"
+                }
+              ],
+              "differs_from_teaching_path": "For Oxidation number, oxidation/reduction and agents, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+            },
+            "boundary_test": {
+              "prompt": "Why is an oxidation number useful even though it is not generally a measured atomic charge?",
+              "answer": "Its formal assignment rules consistently expose electron-accounting changes between reactants and products.",
+              "confirms": "For Oxidation number, oxidation/reduction and agents, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+            }
+          },
+          "misconceptions": [
+            {
+              "wrong_idea": "Oxidation number is a literal measured atomic charge, and the species oxidised is the oxidising agent.",
+              "diagnostic_prompt": "Can resonance/electron sharing make physical charge differ from formal oxidation number, and what happens to the electron acceptor itself?",
+              "repair": "Label oxidation state as formal bookkeeping; write self-change first, then assign the opposite process as the agent name."
+            }
+          ],
+          "representation_refs": [
+            "REP-CHEM-REDOX-OXIDATION-AGENTS"
+          ],
+          "representations": [
+            {
+              "representation_ref": "REP-CHEM-REDOX-OXIDATION-AGENTS",
+              "correspondence": [
+                {
+                  "element": "equation body",
+                  "symbol": "ON ↑ = oxidation; ON ↓ = reduction",
+                  "in_words": "For Oxidation number, oxidation/reduction and agents, the displayed symbols mean: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner."
+                }
+              ],
+              "scenes": [
+                {
+                  "id": "SCENE-CHEM-REDOX-OXIDATION-AGENTS",
+                  "cores": [
+                    "CORE1",
+                    "CORE1A",
+                    "CORE1B"
+                  ],
+                  "microtopic_ref": "MIC-CHEM-REDOX-OXIDATION-AGENTS",
+                  "datum_refs": [
+                    "EQ-CHEM-REDOX-OXIDATION-AGENTS"
+                  ],
+                  "scene": {
+                    "kind": "SYMBOLIC_EQUATION",
+                    "frame": "Author-created symbolic model for Oxidation number, oxidation/reduction and agents.",
+                    "caption": "Oxidation-state direction: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner.",
+                    "equation_atom": "EQ-CHEM-REDOX-OXIDATION-AGENTS",
+                    "annotation": "Oxidation number is formal electron bookkeeping, not generally a measured atomic charge.",
+                    "coefficient_note": "In Oxidation-state direction, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+                    "charge_note": "In Oxidation-state direction, no ionic charge is implied unless a charge is explicitly shown.",
+                    "phase_note": "In Oxidation-state direction, no phase label is implied unless a phase is explicitly shown.",
+                    "arrow_note": "In Oxidation-state direction, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+                  }
+                }
+              ]
+            }
+          ],
+          "relation_checks": [],
+          "exit_task": {
+            "prompt": "Why is an oxidation number useful even though it is not generally a measured atomic charge?",
+            "source_ref": "SRC-CHEM-PR376-REDOX-AUTHOR",
+            "answer": {
+              "kind": "MODEL_RESPONSE",
+              "summary": "Its formal assignment rules consistently expose electron-accounting changes between reactants and products.",
+              "reasoning": [
+                "The convention assigns electrons by defined rules.",
+                "Changes in the assignments reveal coupled oxidation and reduction."
+              ],
+              "check": "Use the phrase formal assignment and verify the total-charge sum.",
+              "acceptable_alternatives": [],
+              "subpart_answers": [],
+              "verification_status": "CHECKED_BY_AUTHOR"
+            },
+            "oracle": {
+              "no_numeric_claim": "The Oxidation number, oxidation/reduction and agents exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+            }
+          },
+          "worked_anchors": []
+        },
+        "application": null,
+        "delivery": {
+          "web": {
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
+            "blueprint_version": "1.0.0",
+            "shell_ref": "G9-TABLET-SHELL-V1",
+            "layout_family": "GUIDED_RECONSTRUCTION",
+            "required_slots": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "slot_order": [
+              "identity",
+              "attempt",
+              "reconstruction"
+            ],
+            "interaction_policy": {
+              "attempt_before_reveal": "FROM_PROJECTION",
+              "progressive_support": true,
+              "solution_policy": "POST_ATTEMPT"
+            },
+            "representation_policy": {
+              "preferred_mount_modes": [
+                "PORTABLE_SCENE",
+                "COMPONENT",
+                "STATIC_FIGURE"
+              ],
+              "legacy_iframe": "MIGRATION_ONLY"
+            },
+            "responsive_policy": {
+              "compact": "SINGLE_PANE",
+              "medium": "STACKED_SUPPORT",
+              "expanded": "STAGE_SUPPORT",
+              "primary_fraction": 0.68,
+              "support_fraction": 0.32
+            },
+            "touch_policy": {
+              "minimum_target_css_px": 48,
+              "minimum_control_gap_css_px": 8
+            },
+            "packaging_modes": [
+              "PUBLIC",
+              "PAGES",
+              "OFFLINE_DIRECTORY",
+              "SINGLE_FILE",
+              "EMBED"
+            ],
+            "forbidden": [
+              "PAGE_LOCAL_ACADEMIC_TRUTH",
+              "HOVER_ONLY_ESSENTIAL_INFORMATION",
+              "ANSWER_BEFORE_ATTEMPT"
+            ]
+          }
+        },
+        "presentation": {
+          "attempt_before_reveal": true,
+          "show_full_construction": false,
+          "show_solution_initially": false,
+          "initial_visual_ref": "REP-CHEM-REDOX-OXIDATION-AGENTS",
+          "initial_visual_stage_ref": null,
+          "protected_move_refs": [],
+          "pre_attempt_scaffold_limit": 0,
+          "pre_attempt_hint_limit": 0,
+          "post_attempt_hint_limit": 0
+        }
+      },
+      "scene_ref": null,
+      "adapter_ref": null,
+      "injection_refs": [],
+      "explorer_locator": null
+    },
+    {
       "id": "mathematics:bucket-linear-equation:core1",
       "subject": "Mathematics",
       "source_ref": "BUCKET-LINEAR-EQUATION",
@@ -46948,6 +52613,74 @@ window.GRADE9V3_CORE = {
     }
   ],
   "bucket_availability": [
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-BOND",
+      "status": "AVAILABLE",
+      "code": null,
+      "detail": null,
+      "findings": [],
+      "projection_refs": [
+        "chemistry:bucket-chem-bond:core1",
+        "chemistry:mic-chem-bond-geometry-dipole:core1a",
+        "chemistry:mic-chem-bond-geometry-dipole:core1b",
+        "chemistry:mic-chem-bond-lewis-vsepr:core1a",
+        "chemistry:mic-chem-bond-lewis-vsepr:core1b",
+        "chemistry:mic-chem-bond-mo-hbond:core1a",
+        "chemistry:mic-chem-bond-mo-hbond:core1b"
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-GAS",
+      "status": "AVAILABLE",
+      "code": null,
+      "detail": null,
+      "findings": [],
+      "projection_refs": [
+        "chemistry:bucket-chem-gas:core1",
+        "chemistry:mic-chem-gas-ideal-laws:core1a",
+        "chemistry:mic-chem-gas-ideal-laws:core1b",
+        "chemistry:mic-chem-gas-kinetic-phase:core1a",
+        "chemistry:mic-chem-gas-kinetic-phase:core1b",
+        "chemistry:mic-chem-gas-real-critical:core1a",
+        "chemistry:mic-chem-gas-real-critical:core1b"
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-MOLE",
+      "status": "AVAILABLE",
+      "code": null,
+      "detail": null,
+      "findings": [],
+      "projection_refs": [
+        "chemistry:bucket-chem-mole:core1",
+        "chemistry:mic-chem-mole-concentration:core1a",
+        "chemistry:mic-chem-mole-concentration:core1b",
+        "chemistry:mic-chem-mole-formula-stoich:core1a",
+        "chemistry:mic-chem-mole-formula-stoich:core1b",
+        "chemistry:mic-chem-mole-foundations-mole:core1a",
+        "chemistry:mic-chem-mole-foundations-mole:core1b"
+      ]
+    },
+    {
+      "subject": "Chemistry",
+      "bucket_ref": "BUCKET-CHEM-REDOX",
+      "status": "AVAILABLE",
+      "code": null,
+      "detail": null,
+      "findings": [],
+      "projection_refs": [
+        "chemistry:bucket-chem-redox:core1",
+        "chemistry:mic-chem-redox-balance-nfactor:core1a",
+        "chemistry:mic-chem-redox-balance-nfactor:core1b",
+        "chemistry:mic-chem-redox-classification:core1a",
+        "chemistry:mic-chem-redox-classification:core1b",
+        "chemistry:mic-chem-redox-oxidation-agents:core1a",
+        "chemistry:mic-chem-redox-oxidation-agents:core1b"
+      ]
+    },
     {
       "subject": "Mathematics",
       "bucket_ref": "BUCKET-LINEAR-EQUATION",
