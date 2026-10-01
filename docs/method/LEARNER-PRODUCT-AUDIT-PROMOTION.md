@@ -1003,7 +1003,106 @@ The audit/integration packet SHOULD record:
 
 This prevents Home from becoming a flat catalog.
 
-## 19. Publication dry-run
+## 19. Search indexing and discoverability
+
+Promotion MUST update search through canonical producers, never by hand-editing generated search artifacts.
+
+Grade9V3 currently has two learner search projections that must remain coherent:
+
+1. the Question Bank platform search, generated as `public/data/question-bank-search.js`; and
+2. the site-header/global search projection, generated as `public/data/question-bank-data.js`.
+
+The global site header currently reads the older monolithic projection, while the Question Bank page reads the newer generated platform contracts. Until those consumers converge, LPAP promotion MUST verify both.
+
+### 19.1 Core2 questions
+
+A promoted Core2 question becomes searchable only by entering the existing canonical Question Bank projection path:
+
+- canonical exam-bank question; or
+- package-shaped canonical question explicitly opted into Question Bank publication.
+
+LPAP MUST NOT copy question text into a separate search registry.
+
+After canonical integration, the Question Bank generators produce the search documents from the same records.
+
+### 19.2 Core1A, interactive pages, and other learner resources
+
+A learner resource that should be searchable SHOULD be represented through the existing subject resource/discovery authority rather than inserted directly into generated JavaScript.
+
+For ordinary resources, use the applicable `<Subject>/question-bank/resources.v1.json` record with:
+
+- stable resource id;
+- kind;
+- title;
+- deployable path relative to `public/`;
+- useful search keywords;
+- subject/topic metadata as supported.
+
+Governed explorer suites already discovered from existing suite records SHOULD continue to use that discovery path rather than being duplicated in the resource registry unless an explicit topic link or additional governed resource relationship is required.
+
+When a resource belongs to an existing Question Bank topic, use the existing explicit `topic_ref` / `topic_links` mechanism where appropriate. The generator MUST NOT infer a canonical topic association from similar names.
+
+### 19.3 Search deduplication
+
+Search documents are projections, not identities.
+
+LPAP MUST resolve duplicate/variant/new product identity before indexing.
+
+The search layer MUST NOT create a second result merely because the same logical product is reachable through several navigation surfaces.
+
+Where one canonical resource has multiple contextual links, prefer one searchable resource identity whose destination is canonical.
+
+Questions that are variants remain separate search documents only when they remain separate canonical question records.
+
+### 19.4 Regeneration
+
+After promotion integration, regenerate through the existing producers rather than editing outputs:
+
+```text
+python3 Shared/tools/build_question_bank_web.py
+python3 Shared/tools/build_question_bank_platform.py --write
+python3 Shared/tools/build_pages_site.py
+python3 Shared/tools/build_manifest.py
+```
+
+Then run the corresponding `--check` modes supported by those generators.
+
+Generated artifacts such as these MUST NOT be manually authored:
+
+- `public/data/question-bank-data.js`
+- `public/data/question-bank-search.js`
+- `public/data/question-bank-catalog.js`
+- `public/data/question-bank-resources.js`
+- `docs/data/question-bank-*.js`
+
+### 19.5 Search acceptance evidence
+
+The promotion dry-run MUST verify, for each promoted learner product:
+
+- whether it is intended to be searchable;
+- its canonical search identity;
+- the generated search document/resource id;
+- expected search terms;
+- expected destination URL;
+- absence of unintended duplicate results;
+- Question Bank search visibility where applicable;
+- global site-header search visibility where applicable;
+- generated `public/` and `docs/` search projections are current.
+
+At least one deterministic search witness SHOULD be recorded for each newly searchable resource or question family.
+
+Example evidence:
+
+```text
+query: "projectile motion concept book"
+expected canonical result: RESOURCE-PHY-MOTION2D-CORE1A
+expected destination: physics/.../core1a.html
+duplicate result count: 0
+```
+
+Searchability does not imply root-home featuring. A product may be searchable and hierarchically reachable without receiving a root-home card.
+
+## 20. Publication dry-run
 
 Before acceptance, construct the intended production tree without production deployment.
 
@@ -1021,7 +1120,7 @@ Verify:
 
 Generated `docs/` MUST NOT be hand-edited.
 
-## 20. Automatic triggering
+## 21. Automatic triggering
 
 The implementation SHOULD use one inexpensive PR discovery workflow and one reusable audit workflow.
 
@@ -1072,7 +1171,7 @@ Repair automation, when authorized, SHOULD write only to the candidate branch.
 
 Production publication/deployment remains a separate trusted path after Owner acceptance and merge.
 
-## 21. Mechanical versus independent evidence
+## 22. Mechanical versus independent evidence
 
 Automation is appropriate for:
 
@@ -1102,7 +1201,7 @@ Independent semantic review remains necessary for:
 
 No automated label such as `PASS` may imply human/independent academic review unless that review actually occurred and is recorded.
 
-## 22. Owner review packet
+## 23. Owner review packet
 
 Before publication, present the Owner with:
 
@@ -1121,7 +1220,7 @@ Before publication, present the Owner with:
 
 The Owner accepts or rejects the exact version.
 
-## 23. Publication
+## 24. Publication
 
 For governed Core products, use the existing acceptance/publication path.
 
@@ -1136,7 +1235,7 @@ After acceptance:
 - deploy from trusted/default-branch state;
 - verify resulting learner routes.
 
-## 24. Post-publication verification
+## 25. Post-publication verification
 
 After `main` changes, verify:
 
@@ -1148,7 +1247,7 @@ After `main` changes, verify:
 - no broken internal links;
 - accepted render/output identity where applicable.
 
-## 25. Non-goals
+## 26. Non-goals
 
 LPAP-v1 does not:
 
@@ -1163,7 +1262,7 @@ LPAP-v1 does not:
 - collapse duplicate, variant, and related records into one;
 - require root-home featuring for every accepted product.
 
-## 26. Acceptance principle
+## 27. Acceptance principle
 
 A candidate is not ready merely because it:
 
