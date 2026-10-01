@@ -347,9 +347,9 @@ window.GRADE9V3_PROMPT_COMPOSER = {
     },
     "CORE1A": {
       "core": "CORE1A",
-      "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+      "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.2.0",
       "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-      "blueprint_version": "1.1.0",
+      "blueprint_version": "1.2.0",
       "shell_ref": "G9-TABLET-SHELL-V1",
       "layout_family": "READING_CONSTRUCTION",
       "required_slots": [
@@ -360,7 +360,8 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       "slot_order": [
         "identity",
         "construction",
-        "repair_closure"
+        "repair_closure",
+        "activity"
       ],
       "interaction_policy": {
         "attempt_before_reveal": "FROM_PROJECTION",
@@ -396,7 +397,9 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       "forbidden": [
         "PAGE_LOCAL_ACADEMIC_TRUTH",
         "HOVER_ONLY_ESSENTIAL_INFORMATION",
-        "ATTEMPT_FIRST_AS_PRIMARY_MODE"
+        "ATTEMPT_FIRST_AS_PRIMARY_MODE",
+        "UNREGISTERED_PAGE_LOCAL_INTERACTION",
+        "INTERACTION_REQUIRED_FOR_STATIC_ACADEMIC_CLOSURE"
       ]
     },
     "CORE1B": {
