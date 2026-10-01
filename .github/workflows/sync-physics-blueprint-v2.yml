@@ -32,11 +32,11 @@ jobs:
           git worktree add --detach /tmp/g9-main origin/main
           mkdir -p /tmp/g9-sync/{motion2d,motion1d,vectors,nlm}
           cd /tmp/g9-main
-          python3 Shared/tools/render_core.py build --manifest products/physics/phy-kin-2d-motion.manifest.json --out /tmp/g9-sync/motion2d --mode SINGLE_FILE --draft
-          python3 Shared/tools/render_core.py build --manifest products/physics/phy-kin-1d-motion.manifest.json --out /tmp/g9-sync/motion1d --mode SINGLE_FILE --draft
-          python3 Shared/tools/render_core.py build --manifest products/physics/phy-vec-add-sub.manifest.json --out /tmp/g9-sync/vectors --mode SINGLE_FILE --draft
-          python3 Shared/tools/render_core.py build --manifest products/physics/phy-nlm-first-law.manifest.json --out /tmp/g9-sync/nlm --mode SINGLE_FILE --draft
-      - name: Adapt only standalone packaging and verify semantics
+          python3 Shared/tools/render_core.py build --manifest products/physics/phy-kin-2d-motion.manifest.json --out /tmp/g9-sync/motion2d --mode PAGES --draft
+          python3 Shared/tools/render_core.py build --manifest products/physics/phy-kin-1d-motion.manifest.json --out /tmp/g9-sync/motion1d --mode PAGES --draft
+          python3 Shared/tools/render_core.py build --manifest products/physics/phy-vec-add-sub.manifest.json --out /tmp/g9-sync/vectors --mode PAGES --draft
+          python3 Shared/tools/render_core.py build --manifest products/physics/phy-nlm-first-law.manifest.json --out /tmp/g9-sync/nlm --mode PAGES --draft
+      - name: Adapt standalone packaging and verify semantics
         run: |
           python3 - <<'PY'
           from pathlib import Path
@@ -45,6 +45,7 @@ jobs:
           repo = Path.cwd()
           main = Path('/tmp/g9-main')
           authority = subprocess.check_output(['git','-C',str(main),'rev-parse','HEAD'], text=True).strip()
+          tablet_css = (main/'public/css/tablet-12-7.css').read_text(encoding='utf-8')
 
           specs = [
               ('motion2d/core1a.html', 'standalone/core1a-motion-in-a-plane-tablet.html', 'BP-CORE1A-CONSTRUCTION@1.4.0', 3, 'CORE1A'),
@@ -55,32 +56,46 @@ jobs:
           ]
 
           def package(text, dst, role):
-              if 'data-g9-mode="SINGLE_FILE"' not in text:
-                  raise SystemExit(f'{dst}: renderer did not produce SINGLE_FILE packaging')
-              # SINGLE_FILE should already be self-contained. Remove any generated PDF control
-              # because this review snapshot does not ship a sibling PDF.
+              if 'data-g9-mode="PAGES"' not in text:
+                  raise SystemExit(f'{dst}: renderer did not produce PAGES packaging')
+              # Preserve the merged tablet contract while making the review snapshot self-contained.
+              text, css_n = re.subn(
+                  r'<link\b[^>]*href="\.\./\.\./\.\./css/tablet-12-7\.css"[^>]*>',
+                  '<style data-g9-inlined-tablet-css>\n' + tablet_css + '\n</style>',
+                  text,
+                  count=1,
+                  flags=re.I,
+              )
+              if css_n != 1:
+                  raise SystemExit(f'{dst}: shared tablet stylesheet link not found exactly once')
+              # A review snapshot does not ship a sibling generated PDF; do not expose a broken control.
               text = re.sub(r'<a\b[^>]*data-g9-action="pdf"[^>]*>.*?</a>', '', text, count=1, flags=re.S)
               text = text.replace('../../../index.html', '../index.html')
               text = text.replace('../../../question-bank/index.html', '../question-bank/index.html')
-              # Standalone review set only exposes destinations that actually exist in this PR.
+
+              # Expose only destinations that actually exist in this standalone review set.
               if role == 'CORE1A' and 'motion-in-a-plane' in dst:
                   nav = '<nav data-g9-breadcrumb aria-label="Breadcrumb"><a href="../index.html">Home</a><a href="../question-bank/index.html">Question bank</a><span aria-current="page">CORE1A</span><a href="core2-motion-in-a-plane-tablet.html">CORE2</a></nav>'
               elif role == 'CORE2':
                   nav = '<nav data-g9-breadcrumb aria-label="Breadcrumb"><a href="../index.html">Home</a><a href="../question-bank/index.html">Question bank</a><a href="core1a-motion-in-a-plane-tablet.html">CORE1A</a><span aria-current="page">CORE2</span></nav>'
               else:
                   nav = f'<nav data-g9-breadcrumb aria-label="Breadcrumb"><a href="../index.html">Home</a><a href="../question-bank/index.html">Question bank</a><span aria-current="page">{role}</span></nav>'
-              text, n = re.subn(r'<nav\b[^>]*data-g9-breadcrumb[^>]*>.*?</nav>', nav, text, count=1, flags=re.S)
-              if n != 1:
+              text, nav_n = re.subn(r'<nav\b[^>]*data-g9-breadcrumb[^>]*>.*?</nav>', nav, text, count=1, flags=re.S)
+              if nav_n != 1:
                   raise SystemExit(f'{dst}: breadcrumb adaptation failed')
+
               if role == 'CORE1A' and 'motion-in-a-plane' in dst:
                   text = text.replace('href="core2.html#', 'href="core2-motion-in-a-plane-tablet.html#')
               if role == 'CORE2':
                   text = text.replace('href="core1a.html#', 'href="core1a-motion-in-a-plane-tablet.html#')
+
               text = text.replace('<html ', f'<html data-g9-authority-sha="{authority}" data-g9-snapshot="review" ', 1)
-              note = (f'<aside data-g9-snapshot-note style="border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin:0 0 14px;color:var(--muted);font-size:.9rem">'
-                      f'Review snapshot generated by render_core/2 from merged blueprint authority main@{authority}. Academic content is the governed manifest/package/bank projection; only standalone navigation/PDF packaging is adapted.</aside>')
-              text, n = re.subn(r'(<main\b[^>]*>)', r'\1' + note, text, count=1)
-              if n != 1:
+              note = (f'<aside data-g9-snapshot-note class="g9-card" style="margin:0 0 14px">'
+                      f'<strong>Review snapshot.</strong> Generated by render_core/2 from merged blueprint authority '
+                      f'<code>main@{authority}</code>. Academic content is the governed manifest/package/bank projection; '
+                      f'only standalone navigation, PDF-control removal and CSS inlining are adapted.</aside>')
+              text, main_n = re.subn(r'(<main\b[^>]*>)', r'\1' + note, text, count=1)
+              if main_n != 1:
                   raise SystemExit(f'{dst}: main snapshot note insertion failed')
               return text
 
@@ -99,7 +114,7 @@ jobs:
               out.write_text(text, encoding='utf-8')
               print(dst_rel, 'units=', len(units), 'bytes=', out.stat().st_size)
 
-          manifest = json.loads((main/'products/physics/phy-kin-2d-motion.manifest.json').read_text())
+          manifest = json.loads((main/'products/physics/phy-kin-2d-motion.manifest.json').read_text(encoding='utf-8'))
           expected = manifest['selection']['core2']
           core2 = (repo/'standalone/core2-motion-in-a-plane-tablet.html').read_text(encoding='utf-8')
           actual = re.findall(r'<article\b[^>]*data-g9-unit="([^"]+)"[^>]*data-g9-kind="QUESTION"', core2)
