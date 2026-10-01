@@ -32,6 +32,8 @@ jobs:
           node-version: "22"
       - name: Static standalone audit
         run: python3 -m unittest tests.test_chemistry_tablet_standalone
+      - name: Install governed renderer dependencies
+        run: python3 -m pip install jsonschema
       - name: Render governed Core1A review candidates
         run: |
           set -euo pipefail
