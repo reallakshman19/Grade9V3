@@ -212,6 +212,79 @@ try {
   await page.reload({ waitUntil: 'load' });
   if ((await page.locator('html').getAttribute('data-theme')) !== toggledTheme) fail('QB_THEME_PERSISTENCE', 'theme did not persist');
 
+  // Keyboard/focus and virtual-keyboard behavior are part of the tablet contract.
+  // Reduced-motion emulation also proves focus recovery does not force animated scrolling.
+  const keyboardPage = await browser.newPage({
+    viewport: { width: 800, height: 1280 },
+    reducedMotion: 'reduce',
+  });
+  await keyboardPage.addInitScript(() => {
+    window.__qbScrollCalls = [];
+    const original = Element.prototype.scrollIntoView;
+    Element.prototype.scrollIntoView = function(options) {
+      window.__qbScrollCalls.push({
+        id: this.id || '',
+        behavior: options?.behavior || null,
+        block: options?.block || null,
+      });
+      if (original) return original.call(this, options);
+    };
+  });
+  await load(keyboardPage);
+  const keyboardQuestion = keyboardPage.locator('#PYQ-PHY-IITJEE-2007-P1-Q03');
+  const keyboardChoice = keyboardQuestion.locator('input.answer-choice[value="B"]');
+  await keyboardChoice.focus();
+  await keyboardPage.keyboard.press('Space');
+  if (!(await keyboardChoice.isChecked())) {
+    fail('QB_KEYBOARD_OPERABILITY', 'Space did not select the focused answer choice');
+  }
+  const keyboardReveal = keyboardQuestion.locator('.check-solution-btn');
+  if (await keyboardReveal.isDisabled()) {
+    fail('QB_KEYBOARD_OPERABILITY', 'keyboard answer commitment did not enable reveal');
+  }
+  await keyboardReveal.focus();
+  const focusState = await keyboardReveal.evaluate(el => {
+    const cs = getComputedStyle(el);
+    return {
+      focusVisible: el.matches(':focus-visible'),
+      outlineStyle: cs.outlineStyle,
+      outlineWidth: cs.outlineWidth,
+    };
+  });
+  observations.runtime.keyboard_focus = focusState;
+  if (!focusState.focusVisible || focusState.outlineStyle === 'none' || parseFloat(focusState.outlineWidth) < 2) {
+    fail('QB_FOCUS_VISIBILITY', JSON.stringify(focusState));
+  }
+  await keyboardPage.keyboard.press('Enter');
+  if (!(await keyboardQuestion.locator('.solution-slot').innerText()).includes('Verified answer:')) {
+    fail('QB_KEYBOARD_OPERABILITY', 'Enter did not activate the focused solution reveal');
+  }
+
+  const keyboardFree = keyboardPage.locator('#PYQ-PHY-IITJEE-2011-P1-Q41 .answer-input');
+  await keyboardFree.focus();
+  await keyboardPage.waitForTimeout(100);
+  const beforeViewportResize = await keyboardPage.evaluate(() => window.__qbScrollCalls.length);
+  const viewportResizeDispatched = await keyboardPage.evaluate(() => {
+    if (!window.visualViewport) return false;
+    window.visualViewport.dispatchEvent(new Event('resize'));
+    return true;
+  });
+  await keyboardPage.waitForTimeout(100);
+  const scrollCalls = await keyboardPage.evaluate(() => window.__qbScrollCalls);
+  observations.runtime.keyboard_focus.scrollCalls = scrollCalls.slice(-8);
+  observations.runtime.keyboard_focus.visualViewportResizeDispatched = viewportResizeDispatched;
+  if (!scrollCalls.some(call =>
+    call.id === 'PYQ-PHY-IITJEE-2011-P1-Q41-answer' &&
+    call.behavior === 'auto' &&
+    call.block === 'center'
+  )) {
+    fail('QB_REDUCED_MOTION_FOCUS_SCROLL', JSON.stringify(scrollCalls.slice(-8)));
+  }
+  if (viewportResizeDispatched && scrollCalls.length <= beforeViewportResize) {
+    fail('QB_VISUAL_VIEWPORT_FOCUS_RESCROLL', 'focused input was not re-centered after visualViewport resize');
+  }
+  await keyboardPage.close();
+
   const viewportApi = await page.evaluate(() => ({
     hasVisualViewport: !!window.visualViewport,
     viewportMeta: document.querySelector('meta[name=viewport]')?.content || '',

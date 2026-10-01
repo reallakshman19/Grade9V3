@@ -21,6 +21,15 @@
       "phase3_action": "none; every learner page is produced here"
     },
     {
+      "path": "Shared/tools/build_qb_tablet_standalone.py",
+      "kind": "PYTHON_HTML",
+      "classification": "MIGRATE",
+      "renders": "Deterministic single-file projection of the canonical Question Bank and governed Selected D3/D4 view for PR #377",
+      "location": "main",
+      "reason": "LPAP reconciliation of a pre-existing standalone candidate; projection only, not academic authority, with exact canonical-parity tests",
+      "phase3_action": "Fold this single-file Question Bank packaging into the shared Core2/question-study rendering path; do not treat it as a second Question Bank authority"
+    },
+    {
       "path": "Shared/tools/accept_product.py",
       "kind": "PYTHON_HTML",
       "classification": "OUT_OF_SCOPE",

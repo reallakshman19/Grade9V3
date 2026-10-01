@@ -399,6 +399,8 @@ button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.48}.app{width:
 .meta-box,.representation-box{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px;margin-bottom:12px}.meta-title{font-weight:800;color:var(--accent);margin-bottom:6px}.meta-desc,.representation-note{color:var(--muted);font-size:13px}.representation-box svg{display:block;width:100%;height:auto;max-height:340px}.support-column{min-width:0}
 @media(min-width:1100px){.stage-support-columns{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(360px,1fr);gap:26px;align-items:start}.support-column{position:sticky;top:78px}}
 @media(max-width:1099px){.support-column{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}}@media(max-width:620px){.app{padding:10px}.hero{padding:16px}.hero-row,.q-header,.search-row{flex-direction:column}.q-stem{font-size:16px}.question-card{padding:13px}.tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}.tab-btn{flex:0 0 auto}.q-option-control{grid-template-columns:26px 30px 1fr}}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
 @media print{body{background:#fff;color:#000}.toolbar,.theme-toggle,.attempt-actions,.practice-textarea,.answer-input,.hint-pill-row{display:none!important}.app{width:auto;padding:0}.hero,.question-card{box-shadow:none;border:0;border-radius:0}.question-card{break-after:page}.stage-support-columns{display:block}.support-column{position:static}.solution-slot:empty::before{content:"Solution remains withheld because no learner attempt was committed in this interactive session.";font-size:11px;color:#555}}
 """
 
@@ -414,6 +416,8 @@ JS = r"""
   const syncTheme=()=>{themeBtn.textContent=root.dataset.theme==='dark'?'Light mode':'Dark mode'};
   syncTheme(); themeBtn.addEventListener('click',()=>{root.dataset.theme=root.dataset.theme==='dark'?'light':'dark';safeSet('g9_qb_theme',root.dataset.theme);syncTheme()});
 
+  const reduceMotion=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const motionBehavior=reduceMotion?'auto':'smooth';
   const cards=[...document.querySelectorAll('.question-card')];
   const tabs=[...document.querySelectorAll('.tab-btn[data-filter]')];
   const search=document.getElementById('search-input');
@@ -481,7 +485,7 @@ JS = r"""
     const tpl=document.getElementById(card.id+'-solution-template');
     const slot=document.getElementById(card.id+'-solution');
     if(slot.childElementCount===0)slot.append(tpl.content.cloneNode(true));
-    btn.disabled=true; slot.scrollIntoView({block:'nearest',behavior:'smooth'});
+    btn.disabled=true; slot.scrollIntoView({block:'nearest',behavior:motionBehavior});
   }));
 
   document.querySelectorAll('.clear-attempt-btn').forEach(btn=>btn.addEventListener('click',()=>{
@@ -495,7 +499,7 @@ JS = r"""
 
   function keepFocusedVisible(){
     const el=document.activeElement;
-    if(el&&el.matches('.practice-textarea,.answer-input,.search-input'))setTimeout(()=>el.scrollIntoView({block:'center',behavior:'smooth'}),60);
+    if(el&&el.matches('.practice-textarea,.answer-input,.search-input'))setTimeout(()=>el.scrollIntoView({block:'center',behavior:motionBehavior}),60);
   }
   document.addEventListener('focusin',e=>{if(e.target.matches('.practice-textarea,.answer-input,.search-input'))keepFocusedVisible()});
   if(window.visualViewport)window.visualViewport.addEventListener('resize',keepFocusedVisible);

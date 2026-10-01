@@ -155,6 +155,8 @@ class QbTabletStandaloneTest(unittest.TestCase):
         self.assertIn("minmax(360px,1fr)", self.actual)
         self.assertIn("visualViewport", self.actual)
         self.assertIn("scrollIntoView", self.actual)
+        self.assertIn(":focus-visible", self.actual)
+        self.assertIn("prefers-reduced-motion", self.actual)
 
     def test_question_types_drive_real_answer_controls(self):
         single = sum(
