@@ -20,12 +20,17 @@ class Core2V2LearnerJobBoundary(unittest.TestCase):
         core1a = core_template_contract.resolve_web_blueprint_for_core("CORE1A")
         core2 = core_template_contract.resolve_web_blueprint_for_core("CORE2")
 
-        self.assertEqual(core1a["ref"], "BP-CORE1A-CONSTRUCTION@1.1.0")
+        self.assertEqual(core1a["ref"], "BP-CORE1A-CONSTRUCTION@1.2.0")
         self.assertEqual(core2["ref"], "BP-CORE2-SOURCE-QUESTION@1.1.0")
         self.assertIn(
             "practice_navigation",
             next(slot for slot in core1a["slots"] if slot["id"] == "repair_closure")["accepts_blocks"],
         )
+        activity = next(slot for slot in core1a["slots"] if slot["id"] == "activity")
+        self.assertFalse(activity["required"])
+        self.assertIn("governed_activity_companion", activity["accepts_blocks"])
+        self.assertIn("UNREGISTERED_PAGE_LOCAL_INTERACTION", core1a["forbidden"])
+        self.assertIn("INTERACTION_REQUIRED_FOR_STATIC_ACADEMIC_CLOSURE", core1a["forbidden"])
         self.assertIn(
             "concept_navigation",
             next(slot for slot in core2["slots"] if slot["id"] == "support")["accepts_blocks"],
