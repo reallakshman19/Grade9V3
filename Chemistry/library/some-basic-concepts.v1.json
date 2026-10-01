@@ -241,7 +241,9 @@
           "output": "Unit cancellation checks the conversion direction."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-MOLE-FOUNDATIONS-MOLE"
+      ],
       "representation_refs": [
         "REP-CHEM-MOLE-FOUNDATIONS-MOLE"
       ],
@@ -414,7 +416,9 @@
           "output": "H₂ is limiting; 3.0 mol H₂ and 1.5 mol O₂ are consumed, 3.0 mol H₂O forms, and 0.5 mol O₂ remains."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-MOLE-FORMULA-STOICH"
+      ],
       "representation_refs": [
         "REP-CHEM-MOLE-FORMULA-STOICH"
       ],
@@ -580,7 +584,9 @@
           "output": "Definition-level bookkeeping closes the reasoning."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-MOLE-CONCENTRATION"
+      ],
       "representation_refs": [
         "REP-CHEM-MOLE-CONCENTRATION"
       ],
@@ -763,7 +769,8 @@
       "checks": [
         "Carry units and write the entity name beside the final count."
       ],
-      "gate_relation_ref": null
+      "gate_relation_ref": null,
+      "mathml": "<math display=\"block\"><mrow><mi>n</mi><mo>=</mo><mfrac><mi>m</mi><mi>M</mi></mfrac><mo>;</mo><mi>N</mi><mo>=</mo><mi>n</mi><msub><mi>N</mi><mi>A</mi></msub></mrow></math>"
     },
     {
       "id": "REL-CHEM-MOLE-FORMULA-STOICH",
@@ -816,7 +823,8 @@
       "checks": [
         "At the limiting extent, no calculated reactant consumption may exceed its available amount."
       ],
-      "gate_relation_ref": null
+      "gate_relation_ref": null,
+      "mathml": "<math display=\"block\"><mrow><msub><mi>ξ</mi><mi>i</mi></msub><mo>=</mo><mfrac><msub><mi>n</mi><mi>i</mi></msub><msub><mi>ν</mi><mi>i</mi></msub></mfrac><mo>;</mo><msub><mi>ξ</mi><mtext>limiting</mtext></msub><mo>=</mo><mi>min</mi><mo>(</mo><msub><mi>ξ</mi><mi>i</mi></msub><mo>)</mo></mrow></math>"
     },
     {
       "id": "REL-CHEM-MOLE-CONCENTRATION",
@@ -884,7 +892,8 @@
       "checks": [
         "Circle the denominator that changes in the stated scenario."
       ],
-      "gate_relation_ref": null
+      "gate_relation_ref": null,
+      "mathml": "<math display=\"block\"><mrow><mi>c</mi><mo>=</mo><mfrac><msub><mi>n</mi><mtext>solute</mtext></msub><msub><mi>V</mi><mtext>solution</mtext></msub></mfrac><mo>;</mo><mi>b</mi><mo>=</mo><mfrac><msub><mi>n</mi><mtext>solute</mtext></msub><msub><mi>m</mi><mtext>solvent</mtext></msub></mfrac></mrow></math>"
     }
   ],
   "representations": [
@@ -1623,10 +1632,11 @@
         "grade9v3:authored_by": "pr376-conversion-session"
       },
       "kind": "EQUATION",
-      "value": "<math display=\"block\"><mrow><mi>N</mi><mo>=</mo><mi>n</mi><mi>N_A</mi></mrow></math>",
-      "symbol": "N = nNₐ",
-      "meaning": "Mole-to-entity bridge: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge.",
-      "locator": "Author-created governed representation for Mole-to-entity bridge in PR #376."
+      "value": "<math display=\"block\"><mrow><mi>n</mi><mo>=</mo><mfrac><mi>m</mi><mi>M</mi></mfrac><mo>;</mo><mi>N</mi><mo>=</mo><mi>n</mi><msub><mi>N</mi><mi>A</mi></msub></mrow></math>",
+      "symbol": "n = m/M; N = nNA",
+      "meaning": "Mole bridge: molar mass converts sample mass to amount, then Avogadro constant converts amount to the count of named entities.",
+      "locator": "Author-created governed representation for Mole-to-entity bridge in PR #376.",
+      "relation_ref": "REL-CHEM-MOLE-FOUNDATIONS-MOLE"
     },
     {
       "id": "EQ-CHEM-MOLE-FORMULA-STOICH",
@@ -1640,10 +1650,11 @@
         "grade9v3:authored_by": "pr376-conversion-session"
       },
       "kind": "EQUATION",
-      "value": "<math display=\"block\"><mrow><mtext>supported reaction extent</mtext><mo>∝</mo><mi>n_i</mi><mo>/</mo><mi>nu_i</mi></mrow></math>",
-      "symbol": "extent ∝ nᵢ/νᵢ",
-      "meaning": "Stoichiometric extent: Available amount divided by the balanced-equation stoichiometric coefficient reveals which reactant inventory supports the smallest reaction extent.",
-      "locator": "Author-created governed representation for Stoichiometric extent in PR #376."
+      "value": "<math display=\"block\"><mrow><msub><mi>ξ</mi><mi>i</mi></msub><mo>=</mo><mfrac><msub><mi>n</mi><mi>i</mi></msub><msub><mi>ν</mi><mi>i</mi></msub></mfrac><mo>;</mo><msub><mi>ξ</mi><mtext>limiting</mtext></msub><mo>=</mo><mi>min</mi><mo>(</mo><msub><mi>ξ</mi><mi>i</mi></msub><mo>)</mo></mrow></math>",
+      "symbol": "ξi = ni/νi; ξlimiting = min(ξi)",
+      "meaning": "Stoichiometric extent: coefficient-normalized reactant amounts determine the maximum complete-reaction extent and therefore the limiting reactant.",
+      "locator": "Author-created governed representation for Stoichiometric extent in PR #376.",
+      "relation_ref": "REL-CHEM-MOLE-FORMULA-STOICH"
     },
     {
       "id": "EQ-CHEM-MOLE-CONCENTRATION",
@@ -1657,10 +1668,11 @@
         "grade9v3:authored_by": "pr376-conversion-session"
       },
       "kind": "EQUATION",
-      "value": "<math display=\"block\"><mrow><mi>c</mi><mo>=</mo><mi>n</mi><mo>/</mo><mi>V</mi></mrow></math>",
-      "symbol": "c = n/V",
-      "meaning": "Molarity definition: Molarity uses solution volume as its denominator; molality and mole fraction use different denominators and therefore different temperature sensitivities.",
-      "locator": "Author-created governed representation for Molarity definition in PR #376."
+      "value": "<math display=\"block\"><mrow><mi>c</mi><mo>=</mo><mfrac><msub><mi>n</mi><mtext>solute</mtext></msub><msub><mi>V</mi><mtext>solution</mtext></msub></mfrac><mo>;</mo><mi>b</mi><mo>=</mo><mfrac><msub><mi>n</mi><mtext>solute</mtext></msub><msub><mi>m</mi><mtext>solvent</mtext></msub></mfrac></mrow></math>",
+      "symbol": "c = nsolute/Vsolution; b = nsolute/msolvent",
+      "meaning": "Concentration definitions: molarity and molality differ by denominator, while mole fraction uses a total-mole denominator.",
+      "locator": "Author-created governed representation for Molarity definition in PR #376.",
+      "relation_ref": "REL-CHEM-MOLE-CONCENTRATION"
     }
   ]
 }
