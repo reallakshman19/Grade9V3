@@ -132,7 +132,13 @@ def compile_bucket(records: dict, bucket_id: str, *, topic_id: str, title: str,
     atoms, equations = [], {}
     for record in _atoms_for(records, microtopic_ids):
         if record["kind"] == "EQUATION":
-            equations[record["relation_ref"]] = record["id"]
+            # relation_ref is optional in the governed datum schema. An equation may
+            # carry a representation/scene without claiming a governed relation. Keep
+            # it as a source atom, and index it for Core1 relation rendering only when
+            # it actually declares that relation.
+            relation_ref = record.get("relation_ref")
+            if relation_ref:
+                equations[relation_ref] = record["id"]
             atoms.append({"id": record["id"], "value": record["value"], "kind": "EQUATION",
                           "locator": f'{record["meaning"]} -- {record["locator"]}'})
         else:
