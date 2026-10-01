@@ -18,7 +18,7 @@
     "WEB_CONTRACT": 3,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:852bd09fe52e64d93344154f3000a750528c67a0a2e98554d848a518acf6fc7a",
+  "digest": "sha256:cdc9aba067a7dc4e64f2f17b19835553b95c44c614bbc18c470c9a99d2fd3fdc",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -2502,8 +2502,8 @@
       "path": "tests/test_qb_tablet_standalone.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 10849,
-      "sha256": "7ab402a26c879ab99d0d95f06226e951e56927263a923c56d0179e36903c7210"
+      "bytes": 11310,
+      "sha256": "eef9b0d6431504b4248f4a4e753bd10d4ea2328009152e44979adad39473bbd5"
     },
     {
       "path": "tests/test_quality_contract.py",

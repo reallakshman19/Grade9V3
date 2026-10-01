@@ -70,9 +70,9 @@ class QbTabletStandaloneTest(unittest.TestCase):
         self.assertEqual(scaffolds, 195)
         self.assertEqual(self.actual.count('class="question-card g9-stage-support"'), 77)
         self.assertEqual(self.actual.count('class="commit-attempt-btn"'), 77)
-        self.assertEqual(self.actual.count('data-g9-next-rung'), 77)
-        self.assertEqual(self.actual.count('data-g9-rung-payload='), 195)
-        self.assertEqual(self.actual.count('data-g9-payload='), 77)
+        self.assertEqual(len(re.findall(r'<button[^>]+data-g9-next-rung', self.actual)), 77)
+        self.assertEqual(len(re.findall(r'<template[^>]+data-g9-rung-payload=', self.actual)), 195)
+        self.assertEqual(len(re.findall(r'<template[^>]+data-g9-payload=', self.actual)), 77)
         self.assertEqual(self.actual.count("<template"), 272)  # 195 hints + 77 solutions
 
     def test_every_question_projects_its_full_canonical_learner_payload(self):
@@ -108,7 +108,13 @@ class QbTabletStandaloneTest(unittest.TestCase):
             reasoning_steps += len(route)
             for step_index, step in enumerate(route):
                 present(step["action"], f"answer_reasoning:{step_index}")
-            present(q["extensions"]["grade9v3:analysis"]["stable_crux_move"], "stable_crux_move")
+            crux_ref = q["answer"].get("crux_move_ref")
+            if crux_ref:
+                self.assertIn(f'data-g9-solution-move="{crux_ref}"', article)
+                self.assertRegex(
+                    article,
+                    rf'data-g9-solution-move="{re.escape(crux_ref)}"[^>]+data-g9-solution-crux="true"',
+                )
             present(q["extensions"]["grade9v3:analysis"]["common_wrong_route"], "common_wrong_route")
 
         self.assertGreater(reasoning_steps, 150)
@@ -117,7 +123,7 @@ class QbTabletStandaloneTest(unittest.TestCase):
 
     def test_selected_benchmark_representations_are_explicitly_authored_not_source_figures(self):
         self.assertEqual(self.actual.count('g9-c-visual-card representation-box'), 7)
-        self.assertEqual(len(re.findall(r"<svg\b", self.actual, re.I)), 7)
+        self.assertEqual(self.actual.count('class="question-svg"'), 7)
         self.assertEqual(
             self.actual.count("not an original exam-source figure"),
             7,
@@ -135,8 +141,8 @@ class QbTabletStandaloneTest(unittest.TestCase):
             r'<button type="button" class="commit-attempt-btn"[^>]+ disabled>I have attempted this</button>',
         )
         self.assertEqual(self.actual.count("data-requires-attempt data-locked"), 77)
-        self.assertEqual(self.actual.count("data-g9-payload="), 77)
-        self.assertEqual(self.actual.count("data-g9-rung-payload="), 195)
+        self.assertEqual(len(re.findall(r'<template[^>]+data-g9-payload=', self.actual)), 77)
+        self.assertEqual(len(re.findall(r'<template[^>]+data-g9-rung-payload=', self.actual)), 195)
         self.assertNotIn("matches the verified answer", self.actual)
 
     def test_offline_and_accessible_viewport_contract(self):
@@ -185,7 +191,10 @@ class QbTabletStandaloneTest(unittest.TestCase):
             "ANSWER": 77,
             "CHECK": 77,
         }.items():
-            self.assertEqual(self.actual.count(f'data-g9-component="{component}"'), count)
+            self.assertEqual(
+                len(re.findall(rf'<(?:div|section)[^>]+data-g9-component="{re.escape(component)}"', self.actual)),
+                count,
+            )
         self.assertEqual(self.actual.count('data-g9-support-provenance="AUTHORED_CORE2_PROMPT_REVEAL"'), 195)
         self.assertEqual(self.actual.count('class="g9-dcell"'), 77 * 5)
 
