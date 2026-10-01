@@ -12,6 +12,7 @@ PHYSICS_TABLET_FILES = [
     "standalone/core2-motion-in-a-plane-tablet.html",
     "standalone/core1a-sba-06-07-trajectory-and-height-tablet.html",
     "standalone/core1a-motion-1d-straight-line-tablet.html",
+    "standalone/core2-motion-1d-straight-line-tablet.html",
     "standalone/core1a-physics-nlm-tablet.html",
     "standalone/core1a-physics-vectors-tablet.html",
 ]
