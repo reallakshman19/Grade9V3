@@ -56,7 +56,7 @@ ROLE_FILE = {r: r.lower() + ".html" for r in ROLES}
 ROLE_TITLE = {"CORE1": "Orientation map", "CORE1A": "Construction", "CORE1B": "Reconstruction",
               "CORE2": "Source questions", "CORE2A": "Supported practice", "CORE2B": "Transfer"}
 MODES = ("PAGES", "EMBED", "SINGLE_FILE")
-RENDERER_VERSION = "render_core/2"
+RENDERER_VERSION = "render_core/3"
 PROTECTION = {
     "PAGES": "inert-template-until-commitment",
     "EMBED": "inert-template-until-commitment",
@@ -699,7 +699,7 @@ def _core1a_concept_route(microtopics: list[dict]) -> str:
 
 
 def _core1a_bucket_orientation(ctx: Ctx) -> str:
-    """Compose compact bucket orientation only from canonical bucket + selected concept records."""
+    """Compose the calibrated chapter hero only from canonical bucket + selected concept records."""
     selected = ctx.selection_rows.get("microtopics", [])
     if not selected:
         return ""
@@ -720,23 +720,28 @@ def _core1a_bucket_orientation(ctx: Ctx) -> str:
             row.get("statement") for row in bucket.get("conventions", [])
             if isinstance(row, dict) and row.get("statement")
         ]
-        primary = (
-            block("learning_promise", promise, title="Learning promise")
-            + f'<nav class="g9-block" data-g9-block="concept_route" data-g9-concept-route '
-              f'aria-label="Concept Book route"><h4>Concept route</h4>{_core1a_concept_route(microtopics)}</nav>'
-        )
         exclusions = scope.get("excluded") or []
-        companion = (
-            block("foundation_route", _core1a_foundation_route(ctx, bucket), title="Foundation route")
-            + block("model_contract", items(conventions), title="Model contract")
-            + block("scope_boundary", items(exclusions), title="Outside this book")
-        )
         rendered.append(
-            f'<section class="g9-core1a-book" data-g9-bucket-orientation '
+            f'<section class="g9-core1a-book g9-chapter-hero" data-g9-bucket-orientation '
             f'data-g9-bucket-ref="{esc(bucket_ref)}">'
-            f'<p class="g9-prov">Concept Book</p><h2>{esc(bucket.get("title") or bucket.get("topic") or "")}</h2>'
-            f'<div class="g9-bucket-orientation-grid"><div>{primary}</div><aside>{companion}</aside></div>'
-            f'</section>'
+            '<header class="g9-chapter-hero-header">'
+            '<div class="g9-chapter-kicker">Official Core1A Concept Book</div>'
+            f'<h2 class="g9-chapter-title">{esc(bucket.get("title") or bucket.get("topic") or "")}</h2>'
+            '</header>'
+            '<div class="g9-pedagogy-grid">'
+            '<div class="g9-info-tile"><div class="g9-info-title">What this chapter delivers</div>'
+            + promise + "</div>"
+            '<div class="g9-info-tile"><div class="g9-info-title">Model contract</div>'
+            + items(conventions) + "</div>"
+            '<div class="g9-info-tile"><div class="g9-info-title">Outside problem scope</div>'
+            + items(exclusions) + "</div>"
+            '<div class="g9-info-tile"><div class="g9-info-title">Foundation route</div>'
+            + _core1a_foundation_route(ctx, bucket) + "</div>"
+            '</div>'
+            f'<nav class="g9-concept-route" data-g9-block="concept_route" data-g9-concept-route '
+            f'aria-label="Concept Book route"><div class="g9-section-label">Concept route</div>'
+            f'{_core1a_concept_route(microtopics)}</nav>'
+            '</section>'
         )
     return "".join(rendered)
 
@@ -864,6 +869,25 @@ def core1(ctx: Ctx, m: dict) -> str:
     return body
 
 
+def _core1a_step_cards(step_ids: list[str], steps: dict[str, dict]) -> str:
+    """Render canonical construction moves in the calibrated Action → Why → Output anatomy."""
+    cards = []
+    for index, sid in enumerate(step_ids, 1):
+        step = steps.get(sid)
+        if not step:
+            continue
+        cards.append(
+            f'<div class="g9-step-card" data-g9-step="{esc(sid)}">'
+            f'<div class="g9-step-action-row"><span class="g9-step-index">{index}</span>'
+            f'<div class="g9-step-action">{esc(step["action"])}</div></div>'
+            f'<div class="g9-step-details">'
+            f'<div class="g9-step-why"><strong>Why valid:</strong> {esc(step["why_valid"])}</div>'
+            f'<div class="g9-step-output"><strong>Output:</strong> {esc(step["output"])}</div>'
+            f'</div></div>'
+        )
+    return '<div class="g9-steps-deck">' + "".join(cards) + "</div>" if cards else ""
+
+
 def _core1a_worked_anchor(question: dict) -> str:
     """Render WATCH ONE from governed answer structure without inventing missing explanation."""
     answer = question.get("answer") or {}
@@ -876,19 +900,23 @@ def _core1a_worked_anchor(question: dict) -> str:
             f'{para("Result: " + row["output"]) if row.get("output") else ""}</li>'
             for index, row in enumerate(route, 1)
         )
-        working = f'<ol class="g9-watch-steps">{steps}</ol>'
+        working = f'<ol class="g9-worked-steps">{steps}</ol>'
     else:
         working = items(answer.get("reasoning"), True)
+    check = para(answer.get("check"))
     return (
-        para(question.get("stem"))
+        '<div class="g9-worked-card">'
+        '<div class="g9-section-label">Worked conceptual anchor</div>'
+        f'<div class="g9-worked-prompt">{para(question.get("stem"))}</div>'
         + working
-        + block("worked_result", para(answer.get("summary")), title="Result")
-        + block("worked_check", para(answer.get("check")), title="Check")
+        + f'<div class="g9-worked-result">{para(answer.get("summary"))}</div>'
+        + (f'<div class="g9-worked-check"><strong>Check:</strong>{check}</div>' if check else "")
+        + "</div>"
     )
 
 
 def _core1a_relation_matrix(ctx: Ctx, m: dict) -> str:
-    """Preserve governed equation/meaning/validity data as a semantic comparison table."""
+    """Preserve governed equation/meaning/validity data in the calibrated equation card."""
     relations = _relations(ctx, m)
     if not relations:
         return ""
@@ -901,20 +929,17 @@ def _core1a_relation_matrix(ctx: Ctx, m: dict) -> str:
             f'<td>{para(relation.get("meaning"))}</td>'
             f'<td>{validity}</td></tr>'
         )
-    return (
+    table = (
         '<div class="g9-table-scroll" data-g9-equation-matrix>'
         '<table><thead><tr><th scope="col">Equation</th>'
         '<th scope="col">What it tells you</th><th scope="col">When you can use it</th>'
         f'</tr></thead><tbody>{"".join(rows)}</tbody></table></div>'
     )
+    return '<div class="g9-equation-card"><div class="g9-section-label">Equation · meaning · validity</div>' + table + "</div>"
 
 
 def _core1a_path_bridge(ctx: Ctx, m: dict, steps: dict[str, dict]) -> tuple[str, str]:
-    """Render canonical teaching_path when no construction-unit wrapper exists.
-
-    This is a presentation fallback over existing academic records, not a synthetic
-    construction-unit or a new academic taxonomy.
-    """
+    """Render canonical teaching_path when no construction-unit wrapper exists."""
     ordered = [step for step in m.get("teaching_path", []) if step.get("id") in steps]
     if not ordered:
         return "", ""
@@ -922,25 +947,19 @@ def _core1a_path_bridge(ctx: Ctx, m: dict, steps: dict[str, dict]) -> tuple[str,
     derivation = transform_count >= 2 and bool(m.get("relation_refs"))
     attrs = (' data-g9-derivation-bridge="true"' if derivation else ' data-g9-path-construction="true"')
     rep = (m.get("representation_refs") or [None])[0]
-    step_html = "".join(
-        f'<li data-g9-step="{esc(step["id"])}">'
-        f'<strong>{esc(step["action"])}</strong>'
-        f'<br><em>Why valid:</em> {esc(step["why_valid"])}'
-        f'<br><em>Result:</em> {esc(step["output"])}</li>'
-        for step in ordered
-    )
     primary = (
         f'<section class="g9-cu g9-path-bridge"{attrs}>'
         + _core1a_unit_navigation(ctx, m["id"])
-        + block("construction", f"<ol>{step_html}</ol>")
-        + figure(ctx, rep, "TEACHING", "CORE1A", m["id"])
-        + block("equation_matrix", _core1a_relation_matrix(ctx, m), title="Equations and validity")
+        + block("construction", _core1a_step_cards([step["id"] for step in ordered], steps))
+        + block("equation_matrix", _core1a_relation_matrix(ctx, m))
         + "</section>"
     )
     wrong = _misconceptions(m, None)
     support = (
-        f'<section class="g9-cu-support" data-g9-support-for="{esc(m["id"])}">'
-        f'<h3>{esc(m["title"])}</h3>'
+        f'<section class="g9-cu-support g9-support-deck" data-g9-support-for="{esc(m["id"])}">'
+        + '<div class="g9-visual-card"><div class="g9-section-label">Staged visual anchor</div>'
+        + figure(ctx, rep, "TEACHING", "CORE1A", m["id"])
+        + "</div>"
         + block("wrong_path", items(row["wrong_idea"] for row in wrong), title="A tempting wrong path")
         + block("diagnose", items(row["diagnostic_prompt"] for row in wrong), title="Diagnose")
         + block("repair", items(row["repair"] for row in wrong), title="Repair")
@@ -956,17 +975,32 @@ def core1a(ctx: Ctx, m: dict) -> str:
     steps = {s["id"]: s for s in m.get("teaching_path", [])}
     questions = ctx.index("questions")
     exit_task = m.get("exit_task") or {}
+    badge = str(m.get("intrinsic_badge") or "").upper()
+    badge_class = {
+        "HARD": "g9-depth-hard",
+        "MEDIUM": "g9-depth-medium",
+        "EASY": "g9-depth-easy",
+    }.get(badge, "")
 
     identity = slot(
         "identity",
-        f"<h2>{esc(m['title'])}</h2>"
+        '<header class="g9-concept-header">'
+        '<div class="g9-concept-title-group">'
+        '<span class="g9-concept-kicker">Core1A concept</span>'
+        f'<h2 class="g9-concept-title">{esc(m["title"])}</h2></div>'
+        f'<div class="g9-concept-badges"><span class="g9-depth-badge {badge_class}">{esc(badge or "CONCEPT")}</span></div>'
+        '</header>'
         + metadata_strip(ctx, "CORE1A", m)
-        + block("entry_assumptions", items(m.get("entry_assumptions")) + _prereqs(ctx, m), title="You need")
+        + '<div class="g9-info-tile">'
+        + '<div class="g9-info-title">Model contract & entry assumptions</div>'
+        + items(m.get("entry_assumptions")) + _prereqs(ctx, m)
+        + "</div>"
         + block("section_route", _core1a_section_route(m), title="Sections"),
         True,
     )
     closure = (
-        block("exit_task", para(exit_task.get("prompt")), title="Try it with less support")
+        '<div class="g9-active-recall-card">'
+        + block("exit_task", para(exit_task.get("prompt")), title="Try it with less support")
         + attempt_box("Your answer", record=m["id"])
         + reveal(
             "Model answer",
@@ -978,17 +1012,20 @@ def core1a(ctx: Ctx, m: dict) -> str:
             ref=f'CORE1A-{m["id"]}-exit',
         )
         + _core1a_practice_navigation(ctx, m)
+        + "</div>"
+    )
+
+    jump = (
+        '<div class="g9-inferential-banner" data-g9-block="inferential_jump">'
+        '<div class="g9-jump-tag">Inferential leap / pivot</div>'
+        f'<div class="g9-jump-text">{esc(m["inferential_jump"])}</div></div>'
     )
 
     if not units:
         primary, support = _core1a_path_bridge(ctx, m, steps)
         return (
             identity
-            + slot(
-                "construction",
-                block("inferential_jump", para(m["inferential_jump"]), title="The key step") + primary,
-                True,
-            )
+            + slot("construction", jump + primary, True)
             + slot("repair_closure", support + closure, True)
             + _core1a_activity_companion(ctx, m)
         )
@@ -996,12 +1033,7 @@ def core1a(ctx: Ctx, m: dict) -> str:
     paired = ""
     for n, u in enumerate(units):
         decision = "" if u.get("decision_from") == "inferential_jump" else u.get("decision", "")
-        step_html = "".join(
-            f'<li data-g9-step="{esc(sid)}"><strong>{esc(steps[sid]["action"])}</strong>'
-            f'<br><em>Why valid:</em> {esc(steps[sid]["why_valid"])}'
-            f'<br><em>Result:</em> {esc(steps[sid]["output"])}</li>'
-            for sid in u["step_refs"] if sid in steps
-        )
+        step_html = _core1a_step_cards(u["step_refs"], steps)
         anchor_q = questions.get(u.get("worked_anchor_ref") or "")
         if not anchor_q:
             ctx.gap("AUTHOR_WORKED_ANCHOR", u["id"], "no worked anchor", "CORE1A")
@@ -1010,35 +1042,29 @@ def core1a(ctx: Ctx, m: dict) -> str:
         if not checks:
             ctx.gap("AUTHOR_INDEPENDENT_CHECK", u["id"], "no independent check", "CORE1A")
         wrong = _misconceptions(m, u)
-        heading = (
-            f"<h3>{esc(decision)}</h3>"
-            if decision
-            else (f"<h3>Construction step {n + 1} of {len(units)}</h3>" if len(units) > 1 else "")
-        )
+        heading = decision or (f"Construction {n + 1} of {len(units)}" if len(units) > 1 else "Construction")
         relation_matrix = _core1a_relation_matrix(ctx, m) if n == 0 else ""
         primary = (
-            (block("inferential_jump", para(m["inferential_jump"]), title="The key step") if n == 0 else "")
-            + f'<section id="{esc(u["id"])}" class="g9-cu" data-g9-cu="{esc(u["id"])}">{heading}'
+            (jump if n == 0 else "")
+            + f'<section id="{esc(u["id"])}" class="g9-cu" data-g9-cu="{esc(u["id"])}">'
+            + f'<div class="g9-section-label">{esc(heading)}</div>'
             + _core1a_unit_navigation(ctx, u["id"])
-            + block("construction", f"<ol>{step_html}</ol>")
-            + figure(ctx, u.get("representation_ref"), "TEACHING", "CORE1A", u["id"])
-            + block("equation_matrix", relation_matrix, title="Equations and validity")
-            + block("worked_anchor", anchor_html, title="Watch one")
+            + block("construction", step_html)
+            + block("equation_matrix", relation_matrix)
+            + block("worked_anchor", anchor_html)
             + "</section>"
         )
-        support_label = decision or f"Construction {n + 1}"
         support = (
-            f'<section class="g9-cu-support" data-g9-support-for="{esc(u["id"])}">'
-            f"<h3>{esc(support_label)}</h3>"
+            f'<section class="g9-cu-support g9-support-deck" data-g9-support-for="{esc(u["id"])}">'
+            + '<div class="g9-visual-card"><div class="g9-section-label">Staged visual anchor</div>'
+            + figure(ctx, u.get("representation_ref"), "TEACHING", "CORE1A", u["id"])
+            + "</div>"
             + block("wrong_path", items(row["wrong_idea"] for row in wrong), title="A tempting wrong path")
             + block("diagnose", items(row["diagnostic_prompt"] for row in wrong), title="Diagnose")
             + block("repair", items(row["repair"] for row in wrong), title="Repair")
             + block("independent_check", items(checks), title="Check it independently")
             + "</section>"
         )
-        # Alternating blueprint-owned slots are deliberate. In compact/medium DOM order,
-        # each companion follows the construction it supports; in expanded grid layout
-        # the same pair occupies the 68/32 primary/support row without duplicating content.
         paired += slot("construction", primary, True) + slot("repair_closure", support, True)
 
     return identity + paired + slot("repair_closure", closure, True) + _core1a_activity_companion(ctx, m)
@@ -1539,6 +1565,43 @@ figure{margin:14px 0;max-width:100%;overflow-x:auto}figure svg{width:100%;height
 [data-g9-meta-label]{min-width:0;overflow-wrap:anywhere}
 h4{margin:.8em 0 .3em}:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 footer{padding:24px 16px;color:var(--muted)}
+/* Core1A benchmark-calibrated presentation: benchmark 450de73f… */
+html[data-g9-role=CORE1A][data-theme=dark]{--bg:#080d1a;--fg:#f8fafc;--card:#0f172a;--line:#263859;--accent:#38bdf8;--muted:#94a3b8;--g9-card:#152238;--g9-card-subtle:#1a2942;--g9-border-light:#334b75;--g9-success:#34d399;--g9-warning:#f59e0b;--g9-danger:#f87171;--g9-purple:#c084fc}
+body[data-core=CORE1A]{background:var(--bg)}
+.g9-chapter-hero{border:1.5px solid var(--line);border-radius:12px;padding:24px;margin:0 0 24px;background:var(--card);box-shadow:0 4px 16px rgba(0,0,0,.14)}
+.g9-chapter-hero-header{margin-bottom:16px}.g9-chapter-kicker,.g9-section-label,.g9-info-title,.g9-jump-tag{font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.045em}
+.g9-chapter-kicker,.g9-info-title,.g9-jump-tag{color:var(--accent)}.g9-chapter-title{font-size:1.6rem;line-height:1.25;margin:.2rem 0}
+.g9-pedagogy-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:16px}
+.g9-info-tile{background:var(--g9-card,var(--card));border:1px solid var(--line);border-radius:8px;padding:14px 16px;min-width:0}
+.g9-info-tile ul{margin:.45rem 0;padding-left:1.2rem}.g9-concept-route{margin-top:16px}.g9-concept-route ol{display:flex;gap:8px;flex-wrap:wrap;list-style:none;padding:0;margin:.5rem 0}
+.g9-concept-route li{margin:0}.g9-concept-route a{width:auto;min-width:48px;border-radius:999px;padding:8px 14px}
+article.g9-core1a-concept-card{border:1.5px solid var(--line);border-radius:12px;padding:24px;margin:0 0 28px;background:var(--card);box-shadow:0 4px 16px rgba(0,0,0,.15);column-gap:24px;row-gap:16px}
+.g9-concept-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:12px}
+.g9-concept-title-group{min-width:0}.g9-concept-kicker{display:block;color:var(--accent);font-size:.8rem;font-weight:800;text-transform:uppercase;letter-spacing:.045em}.g9-concept-title{font-size:1.3rem;line-height:1.3;margin:.2rem 0}
+.g9-concept-badges{display:flex;gap:8px;flex-wrap:wrap}.g9-depth-badge{display:inline-flex;align-items:center;min-height:32px;padding:4px 10px;border-radius:999px;font-size:.78rem;font-weight:800;border:1px solid var(--line)}
+.g9-depth-hard{color:var(--g9-danger);border-color:var(--g9-danger);background:color-mix(in srgb,var(--g9-danger) 10%,transparent)}
+.g9-depth-medium{color:var(--g9-warning);border-color:var(--g9-warning);background:color-mix(in srgb,var(--g9-warning) 10%,transparent)}
+.g9-depth-easy{color:var(--g9-success);border-color:var(--g9-success);background:color-mix(in srgb,var(--g9-success) 10%,transparent)}
+.g9-inferential-banner{background:color-mix(in srgb,var(--accent) 9%,transparent);border-left:4px solid var(--accent);padding:14px 18px;border-radius:0 8px 8px 0;margin-bottom:18px}
+.g9-jump-text{font-size:.96rem;font-weight:600;line-height:1.45}.g9-section-label{color:var(--muted);margin:0 0 10px}
+.g9-cu{padding:0;border:0}.g9-steps-deck{display:flex;flex-direction:column;gap:10px;margin-bottom:18px}
+.g9-step-card{background:var(--g9-card,var(--card));border:1px solid var(--line);border-radius:8px;padding:14px 16px}.g9-step-action-row{display:flex;align-items:flex-start;gap:10px}
+.g9-step-index{display:flex;align-items:center;justify-content:center;flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--line);font-size:.76rem;font-weight:800}
+.g9-step-action{font-size:.94rem;font-weight:700}.g9-step-details{padding-left:36px;margin-top:5px;display:grid;gap:5px}.g9-step-why{color:var(--muted);font-size:.86rem}.g9-step-output{color:var(--g9-success);font-size:.86rem}
+.g9-equation-card{background:var(--g9-card,var(--card));border:1.5px solid var(--line);border-radius:8px;padding:16px 18px;margin:0 0 20px}.g9-equation-card .g9-table-scroll{margin:0}
+.g9-worked-card{background:var(--g9-card-subtle,var(--card));border:1px solid var(--line);border-radius:8px;padding:18px 20px;margin-bottom:14px}.g9-worked-prompt{font-weight:650;margin-bottom:10px}.g9-worked-prompt p{margin:.2rem 0}
+.g9-worked-steps{display:flex;flex-direction:column;gap:8px;padding-left:1.2rem}.g9-worked-result{background:color-mix(in srgb,var(--g9-success) 10%,transparent);border:1px solid var(--g9-success);border-radius:8px;padding:10px 14px;font-weight:700;color:var(--g9-success)}
+.g9-worked-result p,.g9-worked-check p{margin:.2rem 0}.g9-worked-check{margin-top:10px;color:var(--muted)}
+.g9-support-deck{display:flex;flex-direction:column;gap:14px}.g9-visual-card,[data-g9-block=wrong_path],[data-g9-block=diagnose],[data-g9-block=repair],[data-g9-block=independent_check],.g9-active-recall-card{background:var(--g9-card,var(--card));border:1px solid var(--line);border-radius:8px;padding:14px 16px}
+.g9-visual-card{border-width:1.5px}.g9-visual-card figure{margin:0}.g9-visual-card figure svg{max-width:100%;background:#080d1a;border-radius:8px}.g9-stage-controls{margin-top:8px}
+[data-g9-block=wrong_path]{border-color:var(--g9-danger);background:color-mix(in srgb,var(--g9-danger) 7%,var(--g9-card,var(--card)))}[data-g9-block=wrong_path]>h4{color:var(--g9-danger)}
+[data-g9-block=repair]>h4{color:var(--g9-success)}[data-g9-block=independent_check]>h4{color:var(--accent)}
+.g9-active-recall-card{margin-top:2px}.g9-active-recall-card .g9-attempt{margin-top:10px}
+body[data-core=CORE1A] [data-g9-block=worked_anchor]{border-left:0;padding-left:0}
+body[data-core=CORE1A] [data-g9-block=equation_matrix]>h4,body[data-core=CORE1A] [data-g9-block=construction]>h4{display:none}
+@media (min-width:1100px){article.g9-core1a-concept-card{grid-template-columns:minmax(0,2.15fr) minmax(320px,1fr)}body[data-core=CORE1A] article.g9-core1a-concept-card>.slot-identity{grid-column:1/-1}.g9-core1a-concept-card>.slot-construction{grid-column:1}.g9-core1a-concept-card>.slot-repair_closure{grid-column:2}.g9-core1a-concept-card>.slot-activity{grid-column:1/-1}}
+@media (max-width:1099px){article.g9-core1a-concept-card{display:block!important;padding:20px}.g9-core1a-concept-card>.slot-repair_closure{margin-top:18px;padding-top:18px;border-top:1px dashed var(--line)}.g9-pedagogy-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:700px){.g9-pedagogy-grid{grid-template-columns:1fr}.g9-step-details{padding-left:0}.g9-concept-route ol{display:block}.g9-concept-route li{margin:6px 0}.g9-concept-route a{width:100%}}
 @media print{header[data-g9-shell-header],nav[data-g9-breadcrumb],.g9-attempt,button,[data-g9-display-panel]{display:none!important}
 .g9-attempt:has(.g9-answer-options){display:block!important}
 .g9-attempt>:not(.g9-answer-options),.g9-answer-option input{display:none!important}
@@ -1677,18 +1740,25 @@ def _shared_head_assets(ctx: Ctx, mode: str) -> str:
 def page(ctx: Ctx, role: str, mode: str, digest: str) -> str:
     bp = core_template_contract.resolve_web_blueprint_for_core(role)
     stage_support = bp["responsive_policy"].get("expanded") == "STAGE_SUPPORT"
+    profile = bp.get("presentation_profile") or {}
     articles = ""
-    klass = ' class="g9-stage-support"' if stage_support else ""
+    if role == "CORE1A":
+        klass = ' class="g9-stage-support g9-core1a-concept-card"'
+    else:
+        klass = ' class="g9-stage-support"' if stage_support else ""
     for rec in units_for(ctx, role):
         kind = "CONCEPT" if role in {"CORE1", "CORE1A", "CORE1B"} else "QUESTION"
         search_text = metadata_search_text(ctx, role, rec)
         articles += (f'<article id="{esc(rec["id"])}" data-g9-unit="{esc(rec["id"])}" data-g9-kind="{kind}"'
-                     f' data-g9-role="{esc(role)}" data-g9-search-text="{esc(search_text)}"{klass}>{RENDER[role](ctx, rec)}</article>')
+                     f' data-g9-role="{esc(role)}" data-g9-search-text="{esc(search_text)}" '
+                     f'data-g9-presentation-profile="{esc(profile.get("id", ""))}"{klass}>{RENDER[role](ctx, rec)}</article>')
     header, crumbs = shell(ctx, role, mode)
     m = ctx.manifest
     return ("<!doctype html>\n"
             f'<html lang="en" data-g9-shell data-g9-role="{role}" data-g9-mode="{mode}" '
-            f'data-g9-product="{esc(m["product_id"])}" data-g9-render-digest="{esc(digest)}">'
+            f'data-g9-product="{esc(m["product_id"])}" data-g9-render-digest="{esc(digest)}" '
+            f'data-g9-presentation-profile="{esc(profile.get("id", ""))}" '
+            f'data-theme="{"dark" if role == "CORE1A" and profile.get("default_theme") == "DARK" else "light"}">'
             '<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
             f'<meta name="g9-render" content="{RENDERER_VERSION} {digest}">'
             f'{_shared_head_assets(ctx, mode)}'
