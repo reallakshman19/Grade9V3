@@ -1,0 +1,962 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>GRADE 9 PHYSICS - Motion in 1D Core (2) Challenge Suite | 12.7" Tablet Standalone Edition</title>
+  <meta name="description" content="Complete 12.7-inch tablet study suite for Motion in 1D Core 2: 30 Structured Kinematics Challenges, Position-Time slopes, Velocity-Time areas, Free Fall, and Step-by-Step Derivations.">
+  <style>
+/* ==========================================================================
+   Physics: Motion in 1D Core 2 12.7" Tablet Standalone Stylesheet
+   WCAG 2.5.5 >= 48px touch targets, >= 120px textareas, no micro-fonts (<13.5px)
+   100% Offline Standalone · Dark/Light Mode · Responsive Stage/Support Grid
+   ========================================================================== */
+
+:root {
+  --tab12-container-max: 1400px;
+  --tab12-touch-min: 48px;
+  --tab12-base-font: 16px;
+  --tab12-radius-sm: 8px;
+  --tab12-radius-md: 12px;
+  --tab12-radius-lg: 16px;
+
+  --bg-app: #080d1a;
+  --bg-surface: #0f172a;
+  --bg-card: #152238;
+  --bg-card-subtle: #1a2942;
+  --border: #263859;
+  --border-light: #334b75;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --accent: #38bdf8;
+  --accent-glow: rgba(56, 189, 248, 0.25);
+  --success: #34d399;
+  --warning: #f59e0b;
+  --danger: #f87171;
+  --purple: #c084fc;
+}
+
+[data-theme="light"] {
+  --bg-app: #f1f5f9;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-subtle: #f8fafc;
+  --border: #cbd5e1;
+  --border-light: #e2e8f0;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --accent: #0284c7;
+  --accent-glow: rgba(2, 132, 199, 0.15);
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #dc2626;
+  --purple: #7e22ce;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: var(--tab12-base-font);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-app);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+button, .btn, .tab-btn, summary {
+  min-height: var(--tab12-touch-min);
+  min-width: var(--tab12-touch-min);
+  padding: 10px 18px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--tab12-radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all 0.18s ease;
+  border: 1px solid transparent;
+}
+
+button:focus-visible, .btn:focus-visible, summary:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+textarea.tablet-safe-input {
+  min-height: 120px;
+  width: 100%;
+  padding: 14px;
+  font-family: monospace, inherit;
+  font-size: 14.5px;
+  line-height: 1.5;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+  border: 1.5px solid var(--border);
+  border-radius: var(--tab12-radius-sm);
+  resize: vertical;
+  display: block;
+}
+
+textarea.tablet-safe-input:focus {
+  border-color: var(--accent);
+  background-color: var(--bg-card);
+}
+
+header.app-header {
+  background-color: var(--bg-surface);
+  border-bottom: 1.5px solid var(--border);
+  padding: 14px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.header-inner {
+  max-width: var(--tab12-container-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.header-brand h1 {
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.subject-badge {
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: rgba(56, 189, 248, 0.15);
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  font-weight: 700;
+}
+
+.theme-toggle-btn {
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  border: 1.5px solid var(--border);
+}
+
+nav.tab-nav {
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border);
+  padding: 8px 24px 0 24px;
+  overflow-x: auto;
+}
+
+.tab-nav-inner {
+  max-width: var(--tab12-container-max);
+  margin: 0 auto;
+  display: flex;
+  gap: 8px;
+}
+
+.tab-btn {
+  background: transparent;
+  color: var(--text-secondary);
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: var(--tab12-radius-sm) var(--tab12-radius-sm) 0 0;
+  padding: 12px 18px;
+  white-space: nowrap;
+}
+
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  background: var(--bg-app);
+}
+
+main.layout-container {
+  max-width: var(--tab12-container-max);
+  margin: 20px auto;
+  padding: 0 20px;
+  width: 100%;
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 24px;
+}
+
+@media (max-width: 1040px) {
+  main.layout-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+.stage-area {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content-card {
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--tab12-radius-md);
+  padding: 24px;
+  margin-bottom: 20px;
+}
+
+.content-card h2 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.q-card {
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--tab12-radius-md);
+  padding: 20px;
+  margin-bottom: 18px;
+}
+
+.q-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.q-badge {
+  background: rgba(192, 132, 252, 0.15);
+  border: 1px solid var(--purple);
+  color: var(--purple);
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.tag-pill {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+}
+
+.q-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.q-prompt {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 14px;
+}
+
+details.solution-detail {
+  background: var(--bg-card-subtle);
+  border: 1px solid var(--border-light);
+  border-radius: var(--tab12-radius-sm);
+  overflow: hidden;
+  margin-top: 12px;
+}
+
+details.solution-detail summary {
+  padding: 12px 16px;
+  background: rgba(255,255,255,0.02);
+  color: var(--accent);
+  user-select: none;
+}
+
+.solution-content {
+  padding: 16px;
+  border-top: 1px solid var(--border);
+  font-size: 14.5px;
+  color: var(--text-primary);
+  line-height: 1.6;
+}
+
+.support-rail {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.support-widget {
+  background-color: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--tab12-radius-md);
+  padding: 20px;
+}
+
+.support-widget h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.formula-box {
+  background: var(--bg-card-subtle);
+  border-left: 4px solid var(--accent);
+  padding: 14px 18px;
+  border-radius: 0 var(--tab12-radius-sm) var(--tab12-radius-sm) 0;
+  margin: 12px 0;
+  font-family: monospace;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+  </style>
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="header-brand">
+        <h1>
+          <span>🏎️</span> Motion in 1D Core (2) Challenges
+          <span class="subject-badge">Physics · Core (2)</span>
+        </h1>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">🌓 Mode</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="tab-nav">
+    <div class="tab-nav-inner">
+      <button class="tab-btn active">All Challenges (29)</button>
+    </div>
+  </nav>
+
+  <main class="layout-container">
+    
+    <div class="stage-area">
+
+      <div class="content-card">
+        <h2><span>🎯</span> 1D Kinematics Core (2) Structured Challenges</h2>
+        <p>
+          Master reversal paths, round-trip average velocities, signed v-t areas, multi-phase acceleration profiles, and vertical motion under gravity.
+        </p>
+      </div>
+
+
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 01 · Page 2</span>
+        </div>
+        <div class="q-title">T1 - Reversal path</div>
+        <p class="q-prompt">CHALLENGE Attempt page - answer protected QUESTION A robot moves +7 m, then -11 m, then +2 m along one line. Find its displacement and total</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> The robot changes direction during the trip. Which requested quantity depends only on the start and finish, and which depends on every leg? REVEAL
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 02 · Page 3</span>
+        </div>
+        <div class="q-title">T2 - Round-trip averages</div>
+        <p class="q-prompt">CHALLENGE Attempt page - answer protected QUESTION A vehicle travels 60 km to a station at 40 km/h and returns 60 km at 30 km/h. Find average</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> The vehicle returns to its starting point. What does that immediately tell you about its net displacement? REVEAL
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 03 · Page 4</span>
+        </div>
+        <div class="q-title">T3 - Negative acceleration</div>
+        <p class="q-prompt">CHALLENGE Attempt page - answer protected QUESTION A particle has u=-4 m/s and a=-3 m/s² for 2 s. Find its final velocity and decide whether its</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Both the velocity and acceleration are negative. What does “same sign” imply about the magnitude of the velocity? REVEAL
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 04 · Page 5</span>
+        </div>
+        <div class="q-title">T4 - No-time equation</div>
+        <p class="q-prompt">CHALLENGE Attempt page - answer protected QUESTION A car moves at 5 m/s and accelerates uniformly at 2 m/s² through 24 m. Find its final speed</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Time is neither given nor requested. What does that suggest about the relation you should prefer? REVEAL
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 05 · Page 6</span>
+        </div>
+        <div class="q-title">T5 - Position-time slope</div>
+        <p class="q-prompt">CHALLENGE Attempt page - answer protected QUESTION An x-t graph rises linearly from x=2 m at t=0 to x=14 m at t=4 s, then remains flat for 3 s.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> On an x-t graph, what physical quantity is encoded by the slope rather than by the graph height? REVEAL
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 06 · Page 7</span>
+        </div>
+        <div class="q-title">T6 - Velocity-time signed area</div>
+        <p class="q-prompt">CHALLENGE Attempt page - answer protected QUESTION A particle moves at +4 m/s for 3 s, then at -2 m/s for 4 s. Find total displacement and total</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> The velocity changes sign. What happens to the contribution of the second interval to displacement versus distance? REVEAL
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 07 · Page 8</span>
+        </div>
+        <div class="q-title">T7 - Three-phase motion</div>
+        <p class="q-prompt">CHALLENGE Attempt page - answer protected QUESTION A cart accelerates from 0 to 8 m/s in 4 s, travels at 8 m/s for 5 s, then brakes uniformly to rest</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> The acceleration law changes twice. Should the entire 11 s journey be treated as one constant-acceleration phase? REVEAL
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 08 · Page 9</span>
+        </div>
+        <div class="q-title">T8 - Vertical top state</div>
+        <p class="q-prompt">CHALLENGE Attempt page - answer protected QUESTION A ball is thrown vertically upward at 18 m/s. Take g=9 m/s² and upward as positive. Find the</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> What is special about the velocity at the highest point, and what is still true about gravity there? REVEAL
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 09 · Page 10</span>
+        </div>
+        <div class="q-title">T9 - Free-fall time scaling</div>
+        <p class="q-prompt">CHALLENGE Attempt page - answer protected QUESTION Two stones are dropped from rest for times t and 2t under the same constant g. Compare the</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Both stones start from rest under the same g. How does fall distance depend on time in that model? REVEAL
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 10 · Page 11</span>
+        </div>
+        <div class="q-title">T10 - Same-g relative motion</div>
+        <p class="q-prompt">CHALLENGE Attempt page - answer protected QUESTION Two objects are simultaneously in ideal free fall near Earth and experience the same g. What</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Both objects experience the same gravitational acceleration in the same frame. What happens when identical acceleration vectors are compared? REVEAL
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 11 · Page 12</span>
+        </div>
+        <div class="q-title">T11 - Equal-distance average</div>
+        <p class="q-prompt">CHALLENGE Attempt page - answer protected QUESTION A car covers equal 1 km legs at 20 m/s and 30 m/s. Find its average speed.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> The distances are equal, not the times. Which leg consumes more time and therefore has more influence on the average? REVEAL
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 12 · Page 13</span>
+        </div>
+        <div class="q-title">T12 - Distance during the fifth second</div>
+        <p class="q-prompt">CHALLENGE Attempt page - answer protected QUESTION From rest with constant acceleration, the displacement in the first 4 s is 32 m. Find the</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> “In the first 4 s” is a cumulative displacement, while “during the 5th second” is an interval. What two cumulative states bound that interval? REVEAL
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 13 · Page 14</span>
+        </div>
+        <div class="q-title">T13 - Delayed-start catch-up</div>
+        <p class="q-prompt">CHALLENGE Attempt page - answer protected QUESTION Car A passes a point at 10 m/s. Two seconds later car B starts there from rest with acceleration</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> At the instant B starts, where is A? What physical head start has A already gained? REVEAL A has travelled 10×2=20 m, so B begins 20 m behind A.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 14 · Page 15</span>
+        </div>
+        <div class="q-title">T14 - Graph consistency</div>
+        <p class="q-prompt">CHALLENGE Attempt page - answer protected QUESTION A proposed x-t graph forms a closed loop, so for some time values a vertical line crosses the</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> For one particle in one frame, how many positions can correspond to one instant of time? REVEAL
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 15 · Page 16</span>
+        </div>
+        <div class="q-title">Quick Answer Key</div>
+        <p class="q-prompt">CHECK Results only - use after attempting Displacement = -2 m; distance = 20 m. 2 s. T1 T8</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Use kinematic equations: v = u + at, s = ut + 0.5at², v² - u² = 2as.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 16 · Page 17</span>
+        </div>
+        <div class="q-title">T1 - Solution: Reversal path</div>
+        <p class="q-prompt">Solve kinematic challenge using 1D equations.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Full reasoning ladder - every necessary step shown<br>QUESTION RECAP<br>A robot moves +7 m, then -11 m, then +2 m along one line. Find its displacement and total distance.<br>WHAT DO WE KNOW?<br>legs: +7 m, -11 m, +2 m; same 1D axis.<br>-6 -4 -2 0 2 4 6 8<br>Distance adds leg lengths; displacement compares start and finish.<br>REASONING LADDER
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 17 · Page 18</span>
+        </div>
+        <div class="q-title">T2 - Solution: Round-trip averages</div>
+        <p class="q-prompt">Solve kinematic challenge using 1D equations.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Full reasoning ladder - every necessary step shown<br>QUESTION RECAP<br>A vehicle travels 60 km to a station at 40 km/h and returns 60 km at 30 km/h. Find average speed and<br>average velocity for the complete trip.<br>return<br>WHAT DO WE KNOW?<br>outward<br>out: 60 km at 40 km/h; return: 60 km at 30 km/h.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 18 · Page 19</span>
+        </div>
+        <div class="q-title">T3 - Solution: Negative acceleration</div>
+        <p class="q-prompt">Solve kinematic challenge using 1D equations.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Full reasoning ladder - every necessary step shown<br>QUESTION RECAP<br>A particle has u=-4 m/s and a=-3 m/s² for 2 s. Find its final velocity and decide whether its speed<br>increased or decreased.<br>a = -3 m/s²<br>+x WHAT DO WE KNOW?<br>u = -4 m/s<br>u=-4 m/s; a=-3 m/s²; t=2 s.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 19 · Page 20</span>
+        </div>
+        <div class="q-title">T4 - Solution: No-time equation</div>
+        <p class="q-prompt">Solve kinematic challenge using 1D equations.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Full reasoning ladder - every necessary step shown<br>QUESTION RECAP<br>A car moves at 5 m/s and accelerates uniformly at 2 m/s² through 24 m. Find its final speed without<br>finding time.<br>WHAT DO WE KNOW?<br>u v a t s<br>u=5 m/s; a=2 m/s²; s=24 m; v=?; t unnecessary.<br>5 m/s ? 2 m/s² not needed 24 m
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 20 · Page 21</span>
+        </div>
+        <div class="q-title">T5 - Solution: Position-time slope</div>
+        <p class="q-prompt">Solve kinematic challenge using 1D equations.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Full reasoning ladder - every necessary step shown<br>QUESTION RECAP<br>An x-t graph rises linearly from x=2 m at t=0 to x=14 m at t=4 s, then remains flat for 3 s. Find the<br>velocity in each interval.<br>WHAT DO WE KNOW?<br>x x changes 2→14 m over 0→4 s; then x is constant<br>from 4→7 s.<br>t
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 21 · Page 22</span>
+        </div>
+        <div class="q-title">T6 - Solution: Velocity-time signed area</div>
+        <p class="q-prompt">Solve kinematic challenge using 1D equations.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Full reasoning ladder - every necessary step shown<br>QUESTION RECAP<br>A particle moves at +4 m/s for 3 s, then at -2 m/s for 4 s. Find total displacement and total distance.<br>WHAT DO WE KNOW?<br>v<br>v=+4 m/s for 3 s; v=-2 m/s for 4 s.<br>t<br>Signed area gives displacement; absolute area gives distance.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 22 · Page 23</span>
+        </div>
+        <div class="q-title">T7 - Solution: Three-phase motion</div>
+        <p class="q-prompt">Solve kinematic challenge using 1D equations.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Full reasoning ladder - every necessary step shown<br>QUESTION RECAP<br>A cart accelerates from 0 to 8 m/s in 4 s, travels at 8 m/s for 5 s, then brakes uniformly to rest in 2 s.<br>Find total displacement.<br>WHAT DO WE KNOW?<br>accelerate cruise brake<br>phase 1: 0→8 m/s in 4 s; phase 2: 8 m/s for 5 s;<br>phase 3: 8→0 m/s in 2 s.
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 23 · Page 24</span>
+        </div>
+        <div class="q-title">T8 - Solution: Vertical top state</div>
+        <p class="q-prompt">Solve kinematic challenge using 1D equations.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Full reasoning ladder - every necessary step shown<br>QUESTION RECAP<br>A ball is thrown vertically upward at 18 m/s. Take g=9 m/s² and upward as positive. Find the time to<br>the highest point.<br>WHAT DO WE KNOW?<br>+y<br>top v=0 u=+18 m/s; a=-9 m/s²; top state v=0.<br>falling v<0
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 24 · Page 25</span>
+        </div>
+        <div class="q-title">T9 - Solution: Free-fall time scaling</div>
+        <p class="q-prompt">Solve kinematic challenge using 1D equations.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Full reasoning ladder - every necessary step shown<br>QUESTION RECAP<br>Two stones are dropped from rest for times t and 2t under the same constant g. Compare the<br>distances fallen.<br>WHAT DO WE KNOW?<br>both start from rest; same constant g; times t and<br>2t.<br>From rest utnimdeer t constant g: st ∝im te² 2t
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 25 · Page 26</span>
+        </div>
+        <div class="q-title">T10 - Solution: Same-g relative motion</div>
+        <p class="q-prompt">Solve kinematic challenge using 1D equations.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Full reasoning ladder - every necessary step shown<br>QUESTION RECAP<br>Two objects are simultaneously in ideal free fall near Earth and experience the same g. What is their<br>relative acceleration?<br>WHAT DO WE KNOW?<br>A a =-g; a =-g in the same frame.<br>B A B<br>-g
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 26 · Page 27</span>
+        </div>
+        <div class="q-title">T11 - Solution: Equal-distance average</div>
+        <p class="q-prompt">Solve kinematic challenge using 1D equations.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Full reasoning ladder - every necessary step shown<br>QUESTION RECAP<br>A car covers equal 1 km legs at 20 m/s and 30 m/s. Find its average speed.<br>WHAT DO WE KNOW?<br>Equal distance L<br>equal distances L; speeds 20 and 30 m/s.<br>20 m/s 30 m/s<br>time = L/20 time = L/30
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 27 · Page 28</span>
+        </div>
+        <div class="q-title">T12 - Solution: Distance during the fifth second</div>
+        <p class="q-prompt">Solve kinematic challenge using 1D equations.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Full reasoning ladder - every necessary step shown<br>QUESTION RECAP<br>From rest with constant acceleration, the displacement in the first 4 s is 32 m. Find the displacement<br>during the 5th second.<br>WHAT DO WE KNOW?<br>S u=0; constant a; S(4)=32 m; need S(5)-S(4).<br>5th-second interval<br>4 s 5 s t
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 28 · Page 29</span>
+        </div>
+        <div class="q-title">T13 - Solution: Delayed-start catch-up</div>
+        <p class="q-prompt">Solve kinematic challenge using 1D equations.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Full reasoning ladder - every necessary step shown<br>QUESTION RECAP<br>Car A passes a point at 10 m/s. Two seconds later car B starts there from rest with acceleration 4 m/s².<br>When does B catch A, measured from B start?<br>WHAT DO WE KNOW?<br>A passeAs ixs= 200 m ahead catch<br>A at τ=0: x =20 m, x =0; v =10 m/s; B: u=0, a=4<br>A B A
+          </div>
+        </details>
+      </div>
+    
+      <div class="q-card">
+        <div class="q-header">
+          <span class="q-badge">Kinematics 1D</span>
+          <span class="tag-pill">Challenge 29 · Page 30</span>
+        </div>
+        <div class="q-title">T14 - Solution: Graph consistency</div>
+        <p class="q-prompt">Solve kinematic challenge using 1D equations.</p>
+        <div style="font-size: 13.5px; color: var(--accent); margin-bottom: 8px;">
+          💡 <strong>Hint:</strong> Choose a coordinate origin and sign convention for displacement and acceleration.
+        </div>
+        <details class="solution-detail">
+          <summary>👁️ Reveal Worked Derivation</summary>
+          <div class="solution-content">
+            Full reasoning ladder - every necessary step shown<br>QUESTION RECAP<br>A proposed x-t graph forms a closed loop, so for some time values a vertical line crosses the curve<br>twice. Can it describe one particle in one frame? Explain.<br>WHAT DO WE KNOW?<br>x x-t is a time history; proposed curve is<br>same t, two x values multivalued in x for some t.<br>t
+          </div>
+        </details>
+      </div>
+    
+    </div>
+
+    <aside class="support-rail">
+      
+      <div class="support-widget">
+        <h3><span>⚡</span> 1D Kinematics Formulas</h3>
+        <div class="formula-box">
+          v = u + a · t<br>
+          s = u · t + ½ a · t²<br>
+          v² - u² = 2 a · s<br>
+          s_nth = u + ½ a (2n - 1)<br>
+          v_avg = Total Displacement / Total Time<br>
+          v_avg (const a) = (u + v) / 2
+        </div>
+      </div>
+
+      <div class="support-widget">
+        <h3><span>📝</span> Kinematics Scratchpad</h3>
+        <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 8px;">
+          Virtual keyboard safe (min-height: 120px) with auto-saving:
+        </p>
+        <textarea id="scratchpadNotes" class="tablet-safe-input" placeholder="Draft sign conventions (up=+ / down=-), write suvat tables, or integrate v-t areas..."></textarea>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+          <span id="saveStatus" style="font-size: 12.5px; color: var(--success);">✓ Auto-saved</span>
+          <button class="btn" style="min-height: 48px; padding: 6px 14px; font-size: 13px; background: var(--bg-surface); border: 1px solid var(--border);" onclick="clearNotes()">Clear</button>
+        </div>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <script>
+    const themeBtn = document.getElementById('themeToggle');
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('tablet12_theme') || 'dark';
+    htmlEl.setAttribute('data-theme', savedTheme);
+    themeBtn.addEventListener('click', () => {
+      const current = htmlEl.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      htmlEl.setAttribute('data-theme', next);
+      localStorage.setItem('tablet12_theme', next);
+    });
+
+    const pad = document.getElementById('scratchpadNotes');
+    const status = document.getElementById('saveStatus');
+    pad.value = localStorage.getItem('motion1d_c2_notes') || '';
+    pad.addEventListener('input', () => {
+      localStorage.setItem('motion1d_c2_notes', pad.value);
+      status.textContent = '✓ Saved ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    });
+
+    function clearNotes() {
+      if (confirm('Clear scratchpad notes?')) {
+        pad.value = '';
+        localStorage.removeItem('motion1d_c2_notes');
+        status.textContent = 'Notes cleared';
+      }
+    }
+  </script>
+</body>
+</html>
