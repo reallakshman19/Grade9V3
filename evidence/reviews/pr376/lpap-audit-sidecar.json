@@ -2,12 +2,12 @@
   "kind": "LPAP_V1_AUDIT_SIDECAR",
   "pr_number": 376,
   "initial_audit_basis_head": "896bf786c9615d45b3b6639d44e52dc252b96a08",
-  "final_candidate_and_integration_basis_head": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
+  "final_candidate_and_integration_basis_head": "35bc0d0f78ccd971028b646c96bf38c97e160616",
   "main_authority_head": "00ca6dc70c727e25de7e85becc49cda2ea293f47",
   "authority_basis_digest": "sha256:8ac72c0fafbd7576efacec20138b1fed4f7c1cfb933bec4fee776ef6b49cef1e",
   "protocol_basis_digest": "sha256:dd8436d0bdbc80b176e689131b46ed489737bebd5fbda38b43cf40949acf4559",
   "engineering_delivery_basis": {
-    "common_main": "1ced68258afeaf50df113b1d38a4ceb9193587e3",
+    "common_main": "14d79b8f67bdf312f5ae9e4d05de8222c28fcb3e",
     "two_pass_revision": "TPG-2P-2026-09-28-R3"
   },
   "head_delta_history": [
@@ -38,20 +38,22 @@
     }
   ],
   "browser_runtime_evidence": {
-    "workflow_run": 36844760999,
-    "artifact_id": 11153315298,
-    "artifact_digest": "sha256:85b031aa12313227a9d9560b4ef5a0132569e07c97a9e54a6e1e6a9bc188d890",
-    "result": "PASS_ALL_SEVEN_PRODUCTS_ALL_THREE_VIEWPORTS"
+    "workflow_run": 36873849274,
+    "artifact_id": 11168398068,
+    "artifact_digest": "sha256:d5c4dcbd5638cadf9390a939a4c039e29b3e9dea715c36fa2e748267d65edea2",
+    "result": "PASS_ALL_SEVEN_STANDALONE_PRODUCTS_ALL_THREE_VIEWPORTS; governed Core1A render workflow also passed"
   },
   "build_test_pages": {
-    "chemistry_static_tests": "PASS_11_TESTS",
+    "chemistry_static_tests": "PASS",
+    "chemistry_governed_core1a_render": "PASS_STRICT_ZERO_GAPS",
     "chemistry_browser_runtime": "PASS",
     "learner_platform_code_tests": "PASS",
     "question_bank_legacy_projection": "PASS",
     "question_bank_platform_projection": "PASS",
     "pages_mirror_projection": "PASS",
     "architecture_manifest_projection": "PASS",
-    "v31_relay": "PASS"
+    "v31_relay": "PASS",
+    "broad_guardrails": "FAIL_BROAD_REPOSITORY_DEBT; Chemistry check_subjects reports 4 packages / zero findings and Chemistry depiction reports 12 representations / zero findings; remaining observed failures include Mathematics and broader repository debt"
   },
   "authority_conflicts": [
     {
@@ -155,11 +157,20 @@
       "topic": "Behaviour of Gases / States of Matter",
       "path": "standalone/core1a-chemistry-behaviour-of-gases-tablet.html",
       "candidate_content_basis": {
-        "head": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
-        "blob_sha": "282cbe460601baf8e9ecd6291f1fb2c9da0cce98",
-        "artifact_digest": "sha256:5c1013e66ffa1964e0b58c1452034304f3e06bf40bc3eb252255271a95419454",
-        "bundle_digest": "sha256:5951fa3c1364fb723fdeb399b6b23bcb2e7815e72a0e44592630d5d8f819fa61",
-        "render_digest": "5c1013e66ffa1964"
+        "head": "35bc0d0f78ccd971028b646c96bf38c97e160616",
+        "package_path": "Chemistry/library/behaviour-of-gases.v1.json",
+        "package_blob_sha": "fe498bcf11c6aa116bd18a5f50e7119fcf86eafb",
+        "manifest_path": "products/chemistry/behaviour-of-gases.manifest.json",
+        "manifest_blob_sha": "ad28f378a6a8fe06fb7fbe48852cd16184d65aab",
+        "workflow_run": 36873849274,
+        "review_artifact_id": 11168167961,
+        "review_artifact_digest": "sha256:54059c0a3637afff364668471294d7456f2a30c9d499865d79fc70ebd839b4c3",
+        "mode": "SINGLE_FILE",
+        "draft": false,
+        "gaps": [],
+        "render_digest": "b1b5ca199632711f",
+        "semantic_digest": "9b742da7cfea576f",
+        "product_sha256": "sha256:d3f8ca577e5def5a7f62c7a4f87766eab8bd4484c0d20af269770c1672750602"
       },
       "authority_basis_digest": "sha256:8ac72c0fafbd7576efacec20138b1fed4f7c1cfb933bec4fee776ef6b49cef1e",
       "lineage": {
@@ -184,23 +195,23 @@
       },
       "matrix": {
         "identity_dedup": "RELATED / HOLD_UNRESOLVED",
-        "source_authority": "OPEN FINDING: exact curriculum/source binding unresolved",
+        "source_authority": "OWNER_EXTENSION: governed package makes no prescribed Grade-9 claim; source-labelled standalone bank material is excluded",
         "academic_correctness": "Major content claims audited and corrected; source-linked question truth not promoted beyond custody evidence",
         "mathematical_chemical_correctness": "Major equations/models reviewed with assumptions and limitations made explicit",
         "completeness": "UNRESOLVED canonical denominator; candidate counts are not used as authority",
-        "core_role_fidelity": "OPEN FINDING: claimed Core role is not fully authority-bound",
+        "core_role_fidelity": "STRUCTURALLY READY: governed Core1A render is non-draft with zero gaps; independent reviewer judgment pending",
         "hint_scaffold_quality": "PARTIAL: local practice exists; source-linked scaffolds are not custody-verified",
         "solution_quality": "Local concept anchors reviewed; source-linked answers remain separate from provenance",
-        "svg_diagram_integrity": "NOT_APPLICABLE: no semantic SVG/canvas",
+        "svg_diagram_integrity": "GOVERNED REPRESENTATIONS PRESENT: exact rendered figures/equations pinned in review artifact; independent semantic review pending",
         "interaction_model_integrity": "PASS: isolated browser exercises controls, invalid states, repeats, tabs and persistence",
         "ux_responsive": "PASS: 1280x800, 800x1280, 390x844",
         "accessibility": "PASS in current harness: target size, text floor, textarea, zoom, focus, reduced motion",
         "cross_core_preparation": "NOT_APPLICABLE",
-        "navigation": "NOT_INTEGRATED while authority is unresolved",
-        "search_discoverability": "NOT_INDEXED by design; projections current",
-        "deployability": "Offline single-file runtime passes, but governed publication acceptance is unresolved",
-        "open_findings": "AUTHORITY_BINDING; SOURCE_CUSTODY",
-        "exact_digests": "sha256:5c1013e66ffa1964e0b58c1452034304f3e06bf40bc3eb252255271a95419454 / 5c1013e66ffa1964 / sha256:5951fa3c1364fb723fdeb399b6b23bcb2e7815e72a0e44592630d5d8f819fa61"
+        "navigation": "Governed integration projections are current; publication remains Owner-acceptance gated",
+        "search_discoverability": "Generated integration/search projections are current for the governed candidate; publication identity remains acceptance-gated",
+        "deployability": "Strict governed SINGLE_FILE render succeeds with zero gaps; not Owner-accepted or published",
+        "open_findings": "INDEPENDENT_REVIEW_PENDING; OWNER_DISPOSITION_PENDING",
+        "exact_digests": "render b1b5ca199632711f / semantic 9b742da7cfea576f / html sha256:d3f8ca577e5def5a7f62c7a4f87766eab8bd4484c0d20af269770c1672750602"
       },
       "search": {
         "searchable_intent": false,
@@ -218,18 +229,34 @@
         "search_basis_digest": "sha256:ae5e7da1d354cd9c4befe27a791290c5e6f584e170a29f648c9f76736fd1cb40"
       },
       "production": {
-        "intended_public_path": "NOT_ASSIGNED_HOLD_UNRESOLVED",
-        "generated_docs_path": "NOT_ASSIGNED_HOLD_UNRESOLVED",
-        "related_existing_public_path": "chemistry/gases/explorers/behaviour_of_gases/index.html",
+        "governed_manifest": "products/chemistry/behaviour-of-gases.manifest.json",
+        "governed_package": "Chemistry/library/behaviour-of-gases.v1.json",
+        "exact_review_artifact_id": 11168167961,
         "candidate_stays_at": "standalone/core1a-chemistry-behaviour-of-gases-tablet.html",
-        "publication_status": "AUDIT_COMPLETE_NOT_PUBLISHABLE_UNDER_LPAP"
+        "publication_status": "READY_FOR_INDEPENDENT_REVIEW_NOT_OWNER_ACCEPTED",
+        "acceptance_tool": "Shared/tools/accept_product.py"
       },
       "owner_disposition": null,
       "owner_disposition_allowed": [
         "ACCEPTED",
         "DEFERRED",
         "REJECTED"
-      ]
+      ],
+      "standalone_lineage_basis": {
+        "head": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
+        "blob_sha": "282cbe460601baf8e9ecd6291f1fb2c9da0cce98",
+        "artifact_digest": "sha256:5c1013e66ffa1964e0b58c1452034304f3e06bf40bc3eb252255271a95419454",
+        "bundle_digest": "sha256:5951fa3c1364fb723fdeb399b6b23bcb2e7815e72a0e44592630d5d8f819fa61",
+        "render_digest": "5c1013e66ffa1964"
+      },
+      "governed_conversion": {
+        "status": "READY_FOR_INDEPENDENT_REVIEW",
+        "scope_class": "OWNER_EXTENSION",
+        "prescribed_grade9_claim": false,
+        "question_origin": "AUTHORED",
+        "source_labelled_bank_imported": false,
+        "independent_review_present": false
+      }
     },
     {
       "id": "PR376-C1A-CHEM-BONDING",
@@ -237,11 +264,20 @@
       "topic": "Chemical Bonding & Molecular Structure",
       "path": "standalone/core1a-chemistry-chemical-bonding-tablet.html",
       "candidate_content_basis": {
-        "head": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
-        "blob_sha": "67e41915247188b4729d10d3a2ed413d02139c92",
-        "artifact_digest": "sha256:e48261dcdac2d1f696f2acdb2270ce5bab8370e2273e95d8c057e3ad57a63ade",
-        "bundle_digest": "sha256:195e788b201f8edeebe1c4865ba5c8d11e41bd695019984ed5ed7e4785e5a3c8",
-        "render_digest": "e48261dcdac2d1f6"
+        "head": "35bc0d0f78ccd971028b646c96bf38c97e160616",
+        "package_path": "Chemistry/library/chemical-bonding.v1.json",
+        "package_blob_sha": "20e0fc6e14423092448ff4a4a777e32ac5d284ac",
+        "manifest_path": "products/chemistry/chemical-bonding.manifest.json",
+        "manifest_blob_sha": "af73faa567fdb145b02268e593bdab23e06efa81",
+        "workflow_run": 36873849274,
+        "review_artifact_id": 11168167961,
+        "review_artifact_digest": "sha256:54059c0a3637afff364668471294d7456f2a30c9d499865d79fc70ebd839b4c3",
+        "mode": "SINGLE_FILE",
+        "draft": false,
+        "gaps": [],
+        "render_digest": "da7454dfd5439f6e",
+        "semantic_digest": "4276eda90909714e",
+        "product_sha256": "sha256:20c740d83aced11a458a68100aedca21e3e049999da7ee52eb541589d4cb10d6"
       },
       "authority_basis_digest": "sha256:8ac72c0fafbd7576efacec20138b1fed4f7c1cfb933bec4fee776ef6b49cef1e",
       "lineage": {
@@ -267,23 +303,23 @@
       },
       "matrix": {
         "identity_dedup": "RELATED / HOLD_UNRESOLVED",
-        "source_authority": "OPEN FINDING: exact curriculum/source binding unresolved",
+        "source_authority": "OWNER_EXTENSION: governed package makes no prescribed Grade-9 claim; source-labelled standalone bank material is excluded",
         "academic_correctness": "Major content claims audited and corrected; source-linked question truth not promoted beyond custody evidence",
         "mathematical_chemical_correctness": "Major equations/models reviewed with assumptions and limitations made explicit",
         "completeness": "UNRESOLVED canonical denominator; candidate counts are not used as authority",
-        "core_role_fidelity": "OPEN FINDING: claimed Core role is not fully authority-bound",
+        "core_role_fidelity": "STRUCTURALLY READY: governed Core1A render is non-draft with zero gaps; independent reviewer judgment pending",
         "hint_scaffold_quality": "PARTIAL: local practice exists; source-linked scaffolds are not custody-verified",
         "solution_quality": "Local concept anchors reviewed; source-linked answers remain separate from provenance",
-        "svg_diagram_integrity": "NOT_APPLICABLE: no semantic SVG/canvas",
+        "svg_diagram_integrity": "GOVERNED REPRESENTATIONS PRESENT: exact rendered figures/equations pinned in review artifact; independent semantic review pending",
         "interaction_model_integrity": "PASS: isolated browser exercises controls, invalid states, repeats, tabs and persistence",
         "ux_responsive": "PASS: 1280x800, 800x1280, 390x844",
         "accessibility": "PASS in current harness: target size, text floor, textarea, zoom, focus, reduced motion",
         "cross_core_preparation": "PARTIAL/MAPPING_UNCERTAIN",
-        "navigation": "NOT_INTEGRATED while authority is unresolved",
-        "search_discoverability": "NOT_INDEXED by design; projections current",
-        "deployability": "Offline single-file runtime passes, but governed publication acceptance is unresolved",
-        "open_findings": "AUTHORITY_BINDING; SOURCE_CUSTODY; IDENTITY_COLLISION",
-        "exact_digests": "sha256:e48261dcdac2d1f696f2acdb2270ce5bab8370e2273e95d8c057e3ad57a63ade / e48261dcdac2d1f6 / sha256:195e788b201f8edeebe1c4865ba5c8d11e41bd695019984ed5ed7e4785e5a3c8"
+        "navigation": "Governed integration projections are current; publication remains Owner-acceptance gated",
+        "search_discoverability": "Generated integration/search projections are current for the governed candidate; publication identity remains acceptance-gated",
+        "deployability": "Strict governed SINGLE_FILE render succeeds with zero gaps; not Owner-accepted or published",
+        "open_findings": "INDEPENDENT_REVIEW_PENDING; OWNER_DISPOSITION_PENDING",
+        "exact_digests": "render da7454dfd5439f6e / semantic 4276eda90909714e / html sha256:20c740d83aced11a458a68100aedca21e3e049999da7ee52eb541589d4cb10d6"
       },
       "search": {
         "searchable_intent": false,
@@ -301,18 +337,34 @@
         "search_basis_digest": "sha256:ae5e7da1d354cd9c4befe27a791290c5e6f584e170a29f648c9f76736fd1cb40"
       },
       "production": {
-        "intended_public_path": "NOT_ASSIGNED_HOLD_UNRESOLVED",
-        "generated_docs_path": "NOT_ASSIGNED_HOLD_UNRESOLVED",
-        "related_existing_public_path": "chemistry/bonding/explorers/chemical_bonding/index.html",
+        "governed_manifest": "products/chemistry/chemical-bonding.manifest.json",
+        "governed_package": "Chemistry/library/chemical-bonding.v1.json",
+        "exact_review_artifact_id": 11168167961,
         "candidate_stays_at": "standalone/core1a-chemistry-chemical-bonding-tablet.html",
-        "publication_status": "AUDIT_COMPLETE_NOT_PUBLISHABLE_UNDER_LPAP"
+        "publication_status": "READY_FOR_INDEPENDENT_REVIEW_NOT_OWNER_ACCEPTED",
+        "acceptance_tool": "Shared/tools/accept_product.py"
       },
       "owner_disposition": null,
       "owner_disposition_allowed": [
         "ACCEPTED",
         "DEFERRED",
         "REJECTED"
-      ]
+      ],
+      "standalone_lineage_basis": {
+        "head": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
+        "blob_sha": "67e41915247188b4729d10d3a2ed413d02139c92",
+        "artifact_digest": "sha256:e48261dcdac2d1f696f2acdb2270ce5bab8370e2273e95d8c057e3ad57a63ade",
+        "bundle_digest": "sha256:195e788b201f8edeebe1c4865ba5c8d11e41bd695019984ed5ed7e4785e5a3c8",
+        "render_digest": "e48261dcdac2d1f6"
+      },
+      "governed_conversion": {
+        "status": "READY_FOR_INDEPENDENT_REVIEW",
+        "scope_class": "OWNER_EXTENSION",
+        "prescribed_grade9_claim": false,
+        "question_origin": "AUTHORED",
+        "source_labelled_bank_imported": false,
+        "independent_review_present": false
+      }
     },
     {
       "id": "PR376-C1A-CHEM-REDOX",
@@ -320,11 +372,20 @@
       "topic": "Redox Reactions",
       "path": "standalone/core1a-chemistry-redox-reactions-tablet.html",
       "candidate_content_basis": {
-        "head": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
-        "blob_sha": "9980a8e202035e295a2cf5e08773b57d9da564cc",
-        "artifact_digest": "sha256:95fc2a7e49b1ac629b0571e3085018d28f8c40ce5e0ae43c94274e47340f720c",
-        "bundle_digest": "sha256:f49851888c32e0a0a6d81e136f979b44512d14334c59338d8c1a990f3714b1aa",
-        "render_digest": "95fc2a7e49b1ac62"
+        "head": "35bc0d0f78ccd971028b646c96bf38c97e160616",
+        "package_path": "Chemistry/library/redox-reactions.v1.json",
+        "package_blob_sha": "265749d6fd15239d59d3173c37091e951ecbc32b",
+        "manifest_path": "products/chemistry/redox-reactions.manifest.json",
+        "manifest_blob_sha": "0d87890f60a768f1bb28c7fc2dd1554d800c9326",
+        "workflow_run": 36873849274,
+        "review_artifact_id": 11168167961,
+        "review_artifact_digest": "sha256:54059c0a3637afff364668471294d7456f2a30c9d499865d79fc70ebd839b4c3",
+        "mode": "SINGLE_FILE",
+        "draft": false,
+        "gaps": [],
+        "render_digest": "2d3bc4ba8c63f322",
+        "semantic_digest": "771f5f383daa8ca6",
+        "product_sha256": "sha256:38927d078871bfc0f02ed5319188e770677bbd0d9c8a23c6aa90f028e7c5cf05"
       },
       "authority_basis_digest": "sha256:8ac72c0fafbd7576efacec20138b1fed4f7c1cfb933bec4fee776ef6b49cef1e",
       "lineage": {
@@ -350,23 +411,23 @@
       },
       "matrix": {
         "identity_dedup": "RELATED / HOLD_UNRESOLVED",
-        "source_authority": "OPEN FINDING: exact curriculum/source binding unresolved",
+        "source_authority": "OWNER_EXTENSION: governed package makes no prescribed Grade-9 claim; source-labelled standalone bank material is excluded",
         "academic_correctness": "Major content claims audited and corrected; source-linked question truth not promoted beyond custody evidence",
         "mathematical_chemical_correctness": "Major equations/models reviewed with assumptions and limitations made explicit",
         "completeness": "UNRESOLVED canonical denominator; candidate counts are not used as authority",
-        "core_role_fidelity": "OPEN FINDING: claimed Core role is not fully authority-bound",
+        "core_role_fidelity": "STRUCTURALLY READY: governed Core1A render is non-draft with zero gaps; independent reviewer judgment pending",
         "hint_scaffold_quality": "PARTIAL: local practice exists; source-linked scaffolds are not custody-verified",
         "solution_quality": "Local concept anchors reviewed; source-linked answers remain separate from provenance",
-        "svg_diagram_integrity": "NOT_APPLICABLE: no semantic SVG/canvas",
+        "svg_diagram_integrity": "GOVERNED REPRESENTATIONS PRESENT: exact rendered figures/equations pinned in review artifact; independent semantic review pending",
         "interaction_model_integrity": "PASS: isolated browser exercises controls, invalid states, repeats, tabs and persistence",
         "ux_responsive": "PASS: 1280x800, 800x1280, 390x844",
         "accessibility": "PASS in current harness: target size, text floor, textarea, zoom, focus, reduced motion",
         "cross_core_preparation": "PREPARED/PARTIALLY_PREPARED; canonical mapping unresolved",
-        "navigation": "NOT_INTEGRATED while authority is unresolved",
-        "search_discoverability": "NOT_INDEXED by design; projections current",
-        "deployability": "Offline single-file runtime passes, but governed publication acceptance is unresolved",
-        "open_findings": "AUTHORITY_BINDING; SOURCE_CUSTODY",
-        "exact_digests": "sha256:95fc2a7e49b1ac629b0571e3085018d28f8c40ce5e0ae43c94274e47340f720c / 95fc2a7e49b1ac62 / sha256:f49851888c32e0a0a6d81e136f979b44512d14334c59338d8c1a990f3714b1aa"
+        "navigation": "Governed integration projections are current; publication remains Owner-acceptance gated",
+        "search_discoverability": "Generated integration/search projections are current for the governed candidate; publication identity remains acceptance-gated",
+        "deployability": "Strict governed SINGLE_FILE render succeeds with zero gaps; not Owner-accepted or published",
+        "open_findings": "INDEPENDENT_REVIEW_PENDING; OWNER_DISPOSITION_PENDING",
+        "exact_digests": "render 2d3bc4ba8c63f322 / semantic 771f5f383daa8ca6 / html sha256:38927d078871bfc0f02ed5319188e770677bbd0d9c8a23c6aa90f028e7c5cf05"
       },
       "search": {
         "searchable_intent": false,
@@ -384,18 +445,34 @@
         "search_basis_digest": "sha256:ae5e7da1d354cd9c4befe27a791290c5e6f584e170a29f648c9f76736fd1cb40"
       },
       "production": {
-        "intended_public_path": "NOT_ASSIGNED_HOLD_UNRESOLVED",
-        "generated_docs_path": "NOT_ASSIGNED_HOLD_UNRESOLVED",
-        "related_existing_public_path": "chemistry/redox/explorers/redox_reactions/index.html",
+        "governed_manifest": "products/chemistry/redox-reactions.manifest.json",
+        "governed_package": "Chemistry/library/redox-reactions.v1.json",
+        "exact_review_artifact_id": 11168167961,
         "candidate_stays_at": "standalone/core1a-chemistry-redox-reactions-tablet.html",
-        "publication_status": "AUDIT_COMPLETE_NOT_PUBLISHABLE_UNDER_LPAP"
+        "publication_status": "READY_FOR_INDEPENDENT_REVIEW_NOT_OWNER_ACCEPTED",
+        "acceptance_tool": "Shared/tools/accept_product.py"
       },
       "owner_disposition": null,
       "owner_disposition_allowed": [
         "ACCEPTED",
         "DEFERRED",
         "REJECTED"
-      ]
+      ],
+      "standalone_lineage_basis": {
+        "head": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
+        "blob_sha": "9980a8e202035e295a2cf5e08773b57d9da564cc",
+        "artifact_digest": "sha256:95fc2a7e49b1ac629b0571e3085018d28f8c40ce5e0ae43c94274e47340f720c",
+        "bundle_digest": "sha256:f49851888c32e0a0a6d81e136f979b44512d14334c59338d8c1a990f3714b1aa",
+        "render_digest": "95fc2a7e49b1ac62"
+      },
+      "governed_conversion": {
+        "status": "READY_FOR_INDEPENDENT_REVIEW",
+        "scope_class": "OWNER_EXTENSION",
+        "prescribed_grade9_claim": false,
+        "question_origin": "AUTHORED",
+        "source_labelled_bank_imported": false,
+        "independent_review_present": false
+      }
     },
     {
       "id": "PR376-C1A-CHEM-MOLE",
@@ -403,11 +480,20 @@
       "topic": "Some Basic Concepts / Mole Concept / Stoichiometry",
       "path": "standalone/core1a-chemistry-some-basic-concepts-tablet.html",
       "candidate_content_basis": {
-        "head": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
-        "blob_sha": "d25c01f6944bf36f2c102ab6fd6b70918c56551b",
-        "artifact_digest": "sha256:cc0bc2d8463ca55c1ce5eb47ddccab77f9ce651ada9e9c8fa2864d6c1629fb34",
-        "bundle_digest": "sha256:593ccef78f1d31fccc7325dfbe7463dc1a7942f980d21196151433c24b642a05",
-        "render_digest": "cc0bc2d8463ca55c"
+        "head": "35bc0d0f78ccd971028b646c96bf38c97e160616",
+        "package_path": "Chemistry/library/some-basic-concepts.v1.json",
+        "package_blob_sha": "5332a4ebe22dd0a43f377751f54b21c734de7c05",
+        "manifest_path": "products/chemistry/some-basic-concepts.manifest.json",
+        "manifest_blob_sha": "ca79a443081a61a94b37f42cac29b3471e00910f",
+        "workflow_run": 36873849274,
+        "review_artifact_id": 11168167961,
+        "review_artifact_digest": "sha256:54059c0a3637afff364668471294d7456f2a30c9d499865d79fc70ebd839b4c3",
+        "mode": "SINGLE_FILE",
+        "draft": false,
+        "gaps": [],
+        "render_digest": "9d808bfb3a17049e",
+        "semantic_digest": "312bfca9aa38f836",
+        "product_sha256": "sha256:6ae51c7f77240d025a4d4c3662222ea17e0f8129648b3b0702517a273b24b509"
       },
       "authority_basis_digest": "sha256:8ac72c0fafbd7576efacec20138b1fed4f7c1cfb933bec4fee776ef6b49cef1e",
       "lineage": {
@@ -433,23 +519,23 @@
       },
       "matrix": {
         "identity_dedup": "RELATED / HOLD_UNRESOLVED",
-        "source_authority": "OPEN FINDING: exact curriculum/source binding unresolved",
+        "source_authority": "OWNER_EXTENSION: governed package makes no prescribed Grade-9 claim; source-labelled standalone bank material is excluded",
         "academic_correctness": "Major content claims audited and corrected; source-linked question truth not promoted beyond custody evidence",
         "mathematical_chemical_correctness": "Major equations/models reviewed with assumptions and limitations made explicit",
         "completeness": "UNRESOLVED canonical denominator; candidate counts are not used as authority",
-        "core_role_fidelity": "OPEN FINDING: claimed Core role is not fully authority-bound",
+        "core_role_fidelity": "STRUCTURALLY READY: governed Core1A render is non-draft with zero gaps; independent reviewer judgment pending",
         "hint_scaffold_quality": "PARTIAL: local practice exists; source-linked scaffolds are not custody-verified",
         "solution_quality": "Local concept anchors reviewed; source-linked answers remain separate from provenance",
-        "svg_diagram_integrity": "NOT_APPLICABLE: no semantic SVG/canvas",
+        "svg_diagram_integrity": "GOVERNED REPRESENTATIONS PRESENT: exact rendered figures/equations pinned in review artifact; independent semantic review pending",
         "interaction_model_integrity": "PASS: isolated browser exercises controls, invalid states, repeats, tabs and persistence",
         "ux_responsive": "PASS: 1280x800, 800x1280, 390x844",
         "accessibility": "PASS in current harness: target size, text floor, textarea, zoom, focus, reduced motion",
         "cross_core_preparation": "PARTIAL: quantitative skills prepared, early foundations incomplete",
-        "navigation": "NOT_INTEGRATED while authority is unresolved",
-        "search_discoverability": "NOT_INDEXED by design; projections current",
-        "deployability": "Offline single-file runtime passes, but governed publication acceptance is unresolved",
-        "open_findings": "AUTHORITY_BINDING; SOURCE_CUSTODY",
-        "exact_digests": "sha256:cc0bc2d8463ca55c1ce5eb47ddccab77f9ce651ada9e9c8fa2864d6c1629fb34 / cc0bc2d8463ca55c / sha256:593ccef78f1d31fccc7325dfbe7463dc1a7942f980d21196151433c24b642a05"
+        "navigation": "Governed integration projections are current; publication remains Owner-acceptance gated",
+        "search_discoverability": "Generated integration/search projections are current for the governed candidate; publication identity remains acceptance-gated",
+        "deployability": "Strict governed SINGLE_FILE render succeeds with zero gaps; not Owner-accepted or published",
+        "open_findings": "INDEPENDENT_REVIEW_PENDING; OWNER_DISPOSITION_PENDING",
+        "exact_digests": "render 9d808bfb3a17049e / semantic 312bfca9aa38f836 / html sha256:6ae51c7f77240d025a4d4c3662222ea17e0f8129648b3b0702517a273b24b509"
       },
       "search": {
         "searchable_intent": false,
@@ -467,18 +553,34 @@
         "search_basis_digest": "sha256:ae5e7da1d354cd9c4befe27a791290c5e6f584e170a29f648c9f76736fd1cb40"
       },
       "production": {
-        "intended_public_path": "NOT_ASSIGNED_HOLD_UNRESOLVED",
-        "generated_docs_path": "NOT_ASSIGNED_HOLD_UNRESOLVED",
-        "related_existing_public_path": "chemistry/some-basic-concepts/explorers/mole_concept/index.html",
+        "governed_manifest": "products/chemistry/some-basic-concepts.manifest.json",
+        "governed_package": "Chemistry/library/some-basic-concepts.v1.json",
+        "exact_review_artifact_id": 11168167961,
         "candidate_stays_at": "standalone/core1a-chemistry-some-basic-concepts-tablet.html",
-        "publication_status": "AUDIT_COMPLETE_NOT_PUBLISHABLE_UNDER_LPAP"
+        "publication_status": "READY_FOR_INDEPENDENT_REVIEW_NOT_OWNER_ACCEPTED",
+        "acceptance_tool": "Shared/tools/accept_product.py"
       },
       "owner_disposition": null,
       "owner_disposition_allowed": [
         "ACCEPTED",
         "DEFERRED",
         "REJECTED"
-      ]
+      ],
+      "standalone_lineage_basis": {
+        "head": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
+        "blob_sha": "d25c01f6944bf36f2c102ab6fd6b70918c56551b",
+        "artifact_digest": "sha256:cc0bc2d8463ca55c1ce5eb47ddccab77f9ce651ada9e9c8fa2864d6c1629fb34",
+        "bundle_digest": "sha256:593ccef78f1d31fccc7325dfbe7463dc1a7942f980d21196151433c24b642a05",
+        "render_digest": "cc0bc2d8463ca55c"
+      },
+      "governed_conversion": {
+        "status": "READY_FOR_INDEPENDENT_REVIEW",
+        "scope_class": "OWNER_EXTENSION",
+        "prescribed_grade9_claim": false,
+        "question_origin": "AUTHORED",
+        "source_labelled_bank_imported": false,
+        "independent_review_present": false
+      }
     },
     {
       "id": "PR376-C2-CHEM-BONDING",
@@ -562,7 +664,9 @@
         "ACCEPTED",
         "DEFERRED",
         "REJECTED"
-      ]
+      ],
+      "conversion_status": "HOLD_SOURCE_CUSTODY_AND_SOLUTION_RECONSTRUCTION",
+      "independent_review_eligibility": "NOT_READY_NO_GOVERNED_RENDER"
     },
     {
       "id": "PR376-C2-CHEM-REDOX",
@@ -646,7 +750,9 @@
         "ACCEPTED",
         "DEFERRED",
         "REJECTED"
-      ]
+      ],
+      "conversion_status": "HOLD_SOURCE_CUSTODY_AND_SOLUTION_RECONSTRUCTION",
+      "independent_review_eligibility": "NOT_READY_NO_GOVERNED_RENDER"
     },
     {
       "id": "PR376-C2-CHEM-MOLE",
@@ -730,22 +836,149 @@
         "ACCEPTED",
         "DEFERRED",
         "REJECTED"
-      ]
+      ],
+      "conversion_status": "HOLD_SOURCE_CUSTODY_AND_SOLUTION_RECONSTRUCTION",
+      "independent_review_eligibility": "NOT_READY_NO_GOVERNED_RENDER"
     }
   ],
-  "review_independence_note": "Same-session product-review/v2 drafts were removed because this session authored candidate repairs. The LPAP sidecar and promotion matrices remain audit evidence; they are not represented as an independent product review.",
+  "review_independence_note": "This conversion session authored the governed Core1A records and therefore does not author authoritative product-review/v2 evidence. Four exact governed Core1A renders are pinned for a separate reviewer session; Core2 remains outside that review batch.",
   "owner_decisions_required": [
-    "Choose ACCEPTED, DEFERRED, or REJECTED for each of seven products.",
-    "Decide whether each Core1A candidate is a governed Core product, an extension/resource variant, or out of scope.",
-    "Resolve exact source custody and denominators before any Core2/search admission.",
-    "Resolve Bonding BOND-Q02..Q04 source collisions; BOND-Q01 should reuse canonical identity.",
-    "For generic standalone publication, approve a governed acceptance adapter in a separate reviewed change or adapt content into an existing governed representation.",
-    "Treat this packet as LPAP audit evidence, not an independent product review. Any product-review/v2 relied on as independent evidence must come from a separate reviewer session that authored none of the candidate records."
+    "Do not make Core1A Owner dispositions until the separate reviewer session has produced product-review/v2 evidence for the exact governed render digests.",
+    "After independent review, choose ACCEPTED, DEFERRED, or REJECTED for each of the four governed Core1A Owner-extension products.",
+    "Run Shared/tools/accept_product.py only for explicitly ACCEPTED products and only against the exact reviewed render digest.",
+    "Do not admit the three Core2 products yet; first resolve exact source custody/denominators and reconstruct trustworthy solutions, then create governed renders and independent exact-digest reviews.",
+    "Keep the original Bonding BOND-Q01 canonical reuse and BOND-Q02..Q04 source-collision history out of the authored governed Core1A question set unless custody is independently resolved."
   ],
   "independent_review_status": {
-    "status": "NOT_RUN_IN_THIS_SESSION",
-    "reason": "The current LPAP session authored candidate repairs. docs/method/roles/REVIEWER.md requires an independent reviewer session that authored none of the unit records.",
+    "status": "READY_FOR_SEPARATE_REVIEW_SESSION",
+    "reason": "Four governed Core1A exact renders are pinned. The current conversion session authored their records, so docs/method/roles/REVIEWER.md forbids treating same-session review as independent.",
     "authoritative_product_review_v2_present": false,
-    "next_evidence_action": "If an independent review is used for Owner evidence, run it in a separate reviewer session against the exact candidate render/bundle digests recorded in this sidecar."
+    "review_batch_path": "evidence/reviews/pr376/INDEPENDENT-REVIEW-HANDOFF.md",
+    "machine_handoff_path": "evidence/reviews/pr376/governed-review-handoff.json",
+    "next_evidence_action": "Use a separate reviewer session to produce one product-review/v2 per exact governed Core1A render digest."
+  },
+  "standalone_candidate_content_basis_head": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
+  "governed_conversion_basis_head": "35bc0d0f78ccd971028b646c96bf38c97e160616",
+  "governed_core1a_review_batch": {
+    "schema": "pr376-independent-review-handoff/v1",
+    "pr_number": 376,
+    "audit_basis_head": "35bc0d0f78ccd971028b646c96bf38c97e160616",
+    "conversion_basis_head": "35bc0d0f78ccd971028b646c96bf38c97e160616",
+    "standalone_lineage_basis_head": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
+    "authority_main_head": "00ca6dc70c727e25de7e85becc49cda2ea293f47",
+    "engineering_delivery_common_main": "14d79b8f67bdf312f5ae9e4d05de8222c28fcb3e",
+    "two_pass_revision": "TPG-2P-2026-09-28-R3",
+    "reviewer_role": "docs/method/roles/REVIEWER.md",
+    "review_schema": "Shared/quality/product-review.schema.json",
+    "workflow_run": 36873849274,
+    "review_artifact": {
+      "id": 11168167961,
+      "name": "chemistry-governed-core1a-review",
+      "digest": "sha256:54059c0a3637afff364668471294d7456f2a30c9d499865d79fc70ebd839b4c3",
+      "mode": "SINGLE_FILE",
+      "strict_render": true,
+      "all_draft_false": true,
+      "all_gaps_empty": true
+    },
+    "integration_preview_artifact": {
+      "id": 11168102792,
+      "name": "chemistry-governed-integration-preview",
+      "digest": "sha256:1a7089cd50eea4e9efa999ebddc4bac8ae0cd9642b7355199b46ddbbeec23731"
+    },
+    "browser_evidence_artifact": {
+      "id": 11168398068,
+      "name": "chemistry-tablet-browser-evidence",
+      "digest": "sha256:d5c4dcbd5638cadf9390a939a4c039e29b3e9dea715c36fa2e748267d65edea2"
+    },
+    "products": [
+      {
+        "promotion_id": "PR376-C1A-CHEM-GASES",
+        "product": "behaviour-of-gases",
+        "product_id": "PRODUCT-CHEM-BEHAVIOUR-OF-GASES",
+        "package_path": "Chemistry/library/behaviour-of-gases.v1.json",
+        "package_blob_sha": "fe498bcf11c6aa116bd18a5f50e7119fcf86eafb",
+        "manifest_path": "products/chemistry/behaviour-of-gases.manifest.json",
+        "manifest_blob_sha": "ad28f378a6a8fe06fb7fbe48852cd16184d65aab",
+        "render_digest": "b1b5ca199632711f",
+        "semantic_digest": "9b742da7cfea576f",
+        "product_sha256": "d3f8ca577e5def5a7f62c7a4f87766eab8bd4484c0d20af269770c1672750602"
+      },
+      {
+        "promotion_id": "PR376-C1A-CHEM-BONDING",
+        "product": "chemical-bonding",
+        "product_id": "PRODUCT-CHEM-CHEMICAL-BONDING",
+        "package_path": "Chemistry/library/chemical-bonding.v1.json",
+        "package_blob_sha": "20e0fc6e14423092448ff4a4a777e32ac5d284ac",
+        "manifest_path": "products/chemistry/chemical-bonding.manifest.json",
+        "manifest_blob_sha": "af73faa567fdb145b02268e593bdab23e06efa81",
+        "render_digest": "da7454dfd5439f6e",
+        "semantic_digest": "4276eda90909714e",
+        "product_sha256": "20c740d83aced11a458a68100aedca21e3e049999da7ee52eb541589d4cb10d6"
+      },
+      {
+        "promotion_id": "PR376-C1A-CHEM-REDOX",
+        "product": "redox-reactions",
+        "product_id": "PRODUCT-CHEM-REDOX-REACTIONS",
+        "package_path": "Chemistry/library/redox-reactions.v1.json",
+        "package_blob_sha": "265749d6fd15239d59d3173c37091e951ecbc32b",
+        "manifest_path": "products/chemistry/redox-reactions.manifest.json",
+        "manifest_blob_sha": "0d87890f60a768f1bb28c7fc2dd1554d800c9326",
+        "render_digest": "2d3bc4ba8c63f322",
+        "semantic_digest": "771f5f383daa8ca6",
+        "product_sha256": "38927d078871bfc0f02ed5319188e770677bbd0d9c8a23c6aa90f028e7c5cf05"
+      },
+      {
+        "promotion_id": "PR376-C1A-CHEM-MOLE",
+        "product": "some-basic-concepts",
+        "product_id": "PRODUCT-CHEM-SOME-BASIC-CONCEPTS",
+        "package_path": "Chemistry/library/some-basic-concepts.v1.json",
+        "package_blob_sha": "5332a4ebe22dd0a43f377751f54b21c734de7c05",
+        "manifest_path": "products/chemistry/some-basic-concepts.manifest.json",
+        "manifest_blob_sha": "ca79a443081a61a94b37f42cac29b3471e00910f",
+        "render_digest": "9d808bfb3a17049e",
+        "semantic_digest": "312bfca9aa38f836",
+        "product_sha256": "6ae51c7f77240d025a4d4c3662222ea17e0f8129648b3b0702517a273b24b509"
+      }
+    ],
+    "scope_posture": {
+      "mapping": "OWNER_EXTENSION",
+      "prescribed_grade9_claim": false,
+      "included_question_origin": "AUTHORED",
+      "source_labelled_question_bank_imported": false,
+      "source_bank_policy": "NCERT/ExamSIDE/JEE-labelled standalone practice is excluded from these governed Core1A products until exact custody is reconstructed."
+    },
+    "core2_conversion_holds": [
+      {
+        "promotion_id": "PR376-C2-CHEM-BONDING",
+        "reason": "Exact source custody/denominator and trustworthy solution reconstruction remain unresolved.",
+        "governed_render_present": false
+      },
+      {
+        "promotion_id": "PR376-C2-CHEM-REDOX",
+        "reason": "Exact source custody/denominator and trustworthy solution reconstruction remain unresolved.",
+        "governed_render_present": false
+      },
+      {
+        "promotion_id": "PR376-C2-CHEM-MOLE",
+        "reason": "Exact source custody/denominator and trustworthy solution reconstruction remain unresolved.",
+        "governed_render_present": false
+      }
+    ],
+    "independence": {
+      "status": "READY_FOR_SEPARATE_REVIEW_SESSION",
+      "current_session_may_author_product_review_v2": false,
+      "authoritative_product_review_v2_present": false,
+      "required_output": "One product-review/v2 per exact governed render, produced by a reviewer session that authored none of these records."
+    },
+    "owner_stage": {
+      "status": "NOT_READY_UNTIL_INDEPENDENT_REVIEWS_EXIST",
+      "disposition_allowed": [
+        "ACCEPTED",
+        "DEFERRED",
+        "REJECTED"
+      ],
+      "acceptance_tool": "Shared/tools/accept_product.py",
+      "acceptance_rule": "Run only for products the Owner explicitly accepts, against the exact reviewed render digest."
+    }
   }
 }
