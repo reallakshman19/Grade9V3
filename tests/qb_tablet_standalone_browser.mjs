@@ -163,6 +163,30 @@ try {
   if (!solutionText.includes('Verified answer:') || !solutionText.includes('massless midpoint')) fail('QB_SOLUTION_MATERIALIZATION', solutionText.slice(0, 200));
   await q.screenshot({ path: 'artifacts/qb-tablet/attempt-hint-solution.png' });
 
+  // Multi-correct commitment must compare the complete selected option set.
+  const multi = page.locator('#PYQ-PHY-JEEADV-2014-P1-Q08');
+  const multiReveal = multi.locator('.check-solution-btn');
+  if (!(await multiReveal.isDisabled())) fail('QB_MULTI_ATTEMPT_GATE', 'multi-correct reveal should begin disabled');
+  await multi.locator('input.answer-choice[value="C"]').check();
+  await multi.locator('input.answer-choice[value="D"]').check();
+  if (await multiReveal.isDisabled()) fail('QB_MULTI_ATTEMPT_GATE', 'multi-correct reveal did not enable');
+  await multiReveal.click();
+  const multiFeedback = await multi.locator('.answer-feedback').innerText();
+  if (!multiFeedback.includes('matches the verified answer')) fail('QB_MULTI_OPTION_CHECK', multiFeedback);
+
+  // Numeric/free-response commitment is intentionally commitment-only, not fake auto-grading.
+  const free = page.locator('#PYQ-PHY-IITJEE-2011-P1-Q41');
+  const freeReveal = free.locator('.check-solution-btn');
+  if (!(await freeReveal.isDisabled())) fail('QB_FREE_ATTEMPT_GATE', 'free-response reveal should begin disabled');
+  await free.locator('.answer-input').fill('5');
+  if (await freeReveal.isDisabled()) fail('QB_FREE_ATTEMPT_GATE', 'free-response reveal did not enable');
+  await freeReveal.click();
+  const freeFeedback = await free.locator('.answer-feedback').innerText();
+  if (!freeFeedback.includes('Attempt committed')) fail('QB_FREE_RESPONSE_SEMANTICS', freeFeedback);
+  if (!(await free.locator('.solution-slot').innerText()).includes('Verified answer:')) {
+    fail('QB_FREE_SOLUTION_MATERIALIZATION', 'free-response solution did not materialize after commitment');
+  }
+
   const scratch = q.locator('.practice-textarea');
   await scratch.fill('persisted scratchpad witness');
   await page.reload({ waitUntil: 'load' });
