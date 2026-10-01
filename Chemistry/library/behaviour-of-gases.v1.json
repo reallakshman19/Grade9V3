@@ -241,9 +241,7 @@
           "output": "Latent heat is energy associated with the phase transition under the stated conditions."
         }
       ],
-      "relation_refs": [
-        "REL-CHEM-GAS-KINETIC-PHASE"
-      ],
+      "relation_refs": [],
       "representation_refs": [
         "REP-CHEM-GAS-KINETIC-PHASE"
       ],
@@ -408,9 +406,7 @@
           "output": "Molar mass belongs in the rate comparison, not in the ideal partial-pressure sum."
         }
       ],
-      "relation_refs": [
-        "REL-CHEM-GAS-IDEAL-LAWS"
-      ],
+      "relation_refs": [],
       "representation_refs": [
         "REP-CHEM-GAS-IDEAL-LAWS"
       ],
@@ -575,9 +571,7 @@
           "output": "Liquefaction claims require the temperature-pressure regime to be stated."
         }
       ],
-      "relation_refs": [
-        "REL-CHEM-GAS-REAL-CRITICAL"
-      ],
+      "relation_refs": [],
       "representation_refs": [
         "REP-CHEM-GAS-REAL-CRITICAL"
       ],
@@ -741,10 +735,10 @@
         {
           "id": "REL-CHEM-GAS-KINETIC-PHASE-D1",
           "role": "DECLARE",
-          "action": "Write the relation only after the quantities and model conditions have been named.",
-          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "action": "For an equilibrium ideal monatomic gas, connect temperature to mean translational kinetic energy, then treat boiling with a separate vapour-pressure equality.",
+          "why_valid": "The kinetic relation gives ⟨Eₖ⟩ = 3kBT/2, while the bulk phase boundary is independently identified by Pvap(Tb) = Pext.",
           "inputs": [],
-          "output": "⟨Eₖ⟩ = 3kBT/2; boiling when Pvap(Tb) = Pext"
+          "output": "⟨Eₖ⟩ = 3kBT/2; Pvap(Tb) = Pext"
         }
       ],
       "limits": [
@@ -799,10 +793,10 @@
         {
           "id": "REL-CHEM-GAS-IDEAL-LAWS-D1",
           "role": "DECLARE",
-          "action": "Write the relation only after the quantities and model conditions have been named.",
-          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "action": "Start from the ideal-gas state equation and reduce it only after naming the variables held fixed.",
+          "why_valid": "With n and T fixed, PV = nRT reduces to P1V1 = P2V2, so the inverse P–V relation follows from the same state model.",
           "inputs": [],
-          "output": "PV = nRT"
+          "output": "PV = nRT; fixed n,T ⇒ P1V1 = P2V2"
         }
       ],
       "limits": [
@@ -862,10 +856,10 @@
         {
           "id": "REL-CHEM-GAS-REAL-CRITICAL-D1",
           "role": "DECLARE",
-          "action": "Write the relation only after the quantities and model conditions have been named.",
-          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "action": "Normalize the measured state by the ideal-gas reference before interpreting real-gas deviation.",
+          "why_valid": "Z = PV/(nRT) equals 1 for the ideal reference at the same state, so Z − 1 measures the signed departure of that state from the reference.",
           "inputs": [],
-          "output": "Z = PV/(nRT)"
+          "output": "Z = PV/(nRT); ideal reference ⇒ Z = 1"
         }
       ],
       "limits": [
@@ -946,7 +940,7 @@
       "correspondence": [
         {
           "element": "equation body",
-          "symbol": "T ↑ ⇒ mean Eₖ ↑",
+          "symbol": "T",
           "in_words": "For Particle model, speed distributions and phase change, the displayed symbols mean: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains."
         }
       ],
@@ -1043,7 +1037,7 @@
       "correspondence": [
         {
           "element": "equation body",
-          "symbol": "PV = nRT",
+          "symbol": "P",
           "in_words": "For Gas-law constraints, mixtures and transport, the displayed symbols mean: Pressure, volume, amount and absolute temperature are linked by the ideal-gas model; a simple gas law fixes a subset of them."
         }
       ],
@@ -1140,7 +1134,7 @@
       "correspondence": [
         {
           "element": "equation body",
-          "symbol": "Z = PV/(nRT)",
+          "symbol": "Z",
           "in_words": "For Real-gas deviations and critical behaviour, the displayed symbols mean: Compressibility factor compares a real-gas state with the ideal reference at the same pressure, volume, amount and temperature."
         }
       ],
