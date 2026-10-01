@@ -100,12 +100,33 @@
       "Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03",
       "Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04",
       "Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05"
+    ],
+    "ncert": [
+      "Q-PHY-KIN-2D-NCERT-01",
+      "Q-PHY-KIN-2D-NCERT-02",
+      "Q-PHY-KIN-2D-NCERT-03",
+      "Q-PHY-KIN-2D-NCERT-04",
+      "Q-PHY-KIN-2D-NCERT-05",
+      "Q-PHY-KIN-2D-NCERT-06",
+      "Q-PHY-KIN-2D-NCERT-07",
+      "Q-PHY-KIN-2D-NCERT-08",
+      "Q-PHY-KIN-2D-NCERT-09",
+      "Q-PHY-KIN-2D-NCERT-10",
+      "Q-PHY-KIN-2D-NCERT-11",
+      "Q-PHY-KIN-2D-NCERT-12",
+      "Q-PHY-KIN-2D-NCERT-13",
+      "Q-PHY-KIN-2D-NCERT-14",
+      "Q-PHY-KIN-2D-NCERT-15",
+      "Q-PHY-KIN-2D-NCERT-16",
+      "Q-PHY-KIN-2D-NCERT-17",
+      "Q-PHY-KIN-2D-NCERT-18",
+      "Q-PHY-KIN-2D-NCERT-19"
     ]
   },
   "extensions": {
     "grade9v3:phase2_registration": {
       "date": "2026-10-01",
-      "core2a_count": 59
+      "ncert_count": 19
     }
   }
 }

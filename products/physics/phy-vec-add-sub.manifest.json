@@ -19,12 +19,20 @@
     ],
     "core2": [],
     "core2a": [
-      "Q-PHY-VECOPS-2A-01",
-      "Q-PHY-VEC-DECOMP-2A-FROM-X-01",
-      "Q-PHY-VEC-DECOMP-2A-FROM-Y-02",
-      "Q-PHY-VEC-DECOMP-2A-QUADRANT-II-03",
-      "Q-PHY-VEC-DECOMP-2A-QUADRANT-IV-04",
-      "Q-PHY-VEC-DECOMP-2A-INITIAL-STATE-05"
+      "Q-PHY-VEC-ADD-SRC-01",
+      "Q-PHY-VEC-ADD-SRC-02",
+      "Q-PHY-VEC-ADD-SRC-03",
+      "Q-PHY-VEC-ADD-SRC-04",
+      "Q-PHY-VEC-ADD-SRC-05",
+      "Q-PHY-VEC-ADD-SRC-06",
+      "Q-PHY-VEC-ADD-SRC-07",
+      "Q-PHY-VEC-ADD-SRC-08",
+      "Q-PHY-VEC-ADD-SRC-09",
+      "Q-PHY-VEC-ADD-SRC-10",
+      "Q-PHY-VEC-ADD-SRC-11",
+      "Q-PHY-VEC-ADD-SRC-12",
+      "Q-PHY-VEC-ADD-SRC-13",
+      "Q-PHY-VEC-ADD-SRC-14"
     ],
     "core2b": [
       "Q-PHY-VEC-DECOMP-2B-VERBAL-NW-01",
@@ -33,5 +41,11 @@
       "Q-PHY-VEC-DECOMP-2B-FORCE-CONTEXT-04",
       "Q-PHY-VEC-DECOMP-2B-REVERSED-X-AXIS-05"
     ]
+  },
+  "extensions": {
+    "grade9v3:phase2_registration": {
+      "date": "2026-10-01",
+      "core2a_count": 14
+    }
   }
 }

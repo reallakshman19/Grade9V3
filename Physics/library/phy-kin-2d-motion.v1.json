@@ -14277,6 +14277,1070 @@
         "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
         "closure": null
       }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-01",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-01",
+        "grade9v3:original_label": "M2D-NC-01 Half-circle displacement"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-01",
+      "stem": "A particle travels from one end of a diameter to the opposite end by following a semicircular path of",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "Apply 2D vector kinematics and equations of motion.",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-02",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-02",
+        "grade9v3:original_label": "M2D-NC-02 Constant-speed merry-go-round"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-02",
+      "stem": "A rider moves around a merry-go-round at a constant speed. Which description is correct?",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "Apply 2D vector kinematics and equations of motion.",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-03",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-03",
+        "grade9v3:original_label": "M2D-NC-03 Distance versus displacement"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-03",
+      "stem": "Which motion can make the distance travelled equal to the magnitude of displacement?",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "Apply 2D vector kinematics and equations of motion.",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-04",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-04",
+        "grade9v3:original_label": "M2D-NC-04 String breaks in circular motion"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-04",
+      "stem": "A stone is moving in a horizontal circle on a string. If the string suddenly breaks, what is its",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "Apply 2D vector kinematics and equations of motion.",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-05",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-05",
+        "grade9v3:original_label": "M2D-NC-05 What keeps a planet turning?"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-05",
+      "stem": "What provides the centripetal force needed for a planet to revolve around the Sun, and what",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "Apply 2D vector kinematics and equations of motion.",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-06",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-06",
+        "grade9v3:original_label": "M2D-NC-06 Horizontal throw versus drop"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-06",
+      "stem": "Two stones start simultaneously from the same height. One is dropped; the other is thrown",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "Apply 2D vector kinematics and equations of motion.",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-07",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-07",
+        "grade9v3:original_label": "M2D-NC-07 Moon if Earth gravity vanished"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-07",
+      "stem": "Suppose Earth’s gravitational pull suddenly became zero and no other celestial body affected the",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "Apply 2D vector kinematics and equations of motion.",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-08",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-08",
+        "grade9v3:original_label": "M2D-NC-08 Why Earth does not fall into the Sun"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-08",
+      "stem": "The Sun attracts Earth gravitationally. Why does Earth not simply fall straight into the Sun?",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "Apply 2D vector kinematics and equations of motion.",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-09",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-09",
+        "grade9v3:original_label": "M2D-NC-09 Coin tossed inside a train"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-09",
+      "stem": "A passenger tosses a coin vertically inside a moving train and the coin lands behind the passenger.",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "Apply 2D vector kinematics and equations of motion.",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-10",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-10",
+        "grade9v3:original_label": "Answer key"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-10",
+      "stem": "Use this page only after attempting the questions. The full reasoning pages follow. M2D-NC-01 2r (choice C)",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "Apply 2D vector kinematics and equations of motion.",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-11",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-01",
+        "grade9v3:original_label": "M2D-NC-01 Worked solution"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-11",
+      "stem": "A particle travels from one end of a diameter to the",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "positions give the same displacement. endpoints, not arc length. WATCH OUT: Do not substitute the semicircle arc length πr for displacement. REVIEW THIS IDEA: Core 1 - Curved path: distance is not displacement. Motion in 2D - Revised Core (2) - NCERT subset 12",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-12",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-02",
+        "grade9v3:original_label": "M2D-NC-02 Worked solution"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-12",
+      "stem": "A rider moves around a merry-go-round at a constant",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "direction. WATCH OUT: Constant speed is not the same as constant velocity. REVIEW THIS IDEA: Core 1 - Constant speed can still mean acceleration. Motion in 2D - Revised Core (2) - NCERT subset 13",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-13",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-03",
+        "grade9v3:original_label": "M2D-NC-03 Worked solution"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-13",
+      "stem": "Which motion can make the distance travelled equal to",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "without matching the final separation. WATCH OUT: A “straight road” is not sufficient if the object reverses direction. REVIEW THIS IDEA: Core 1 - When are distance and displacement equal? Motion in 2D - Revised Core (2) - NCERT subset 14",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-14",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-04",
+        "grade9v3:original_label": "M2D-NC-04 Worked solution"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-14",
+      "stem": "A stone is moving in a horizontal circle on a string. If",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "not radial. WATCH OUT: Do not confuse the inward force direction with the velocity direction. REVIEW THIS IDEA: Core 1 - Release from circular motion: follow the tangent. Motion in 2D - Revised Core (2) - NCERT subset 15",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-15",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-05",
+        "grade9v3:original_label": "M2D-NC-05 Worked solution"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-15",
+      "stem": "What keeps a planet turning?",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "quarter. as gravity does. WATCH OUT: Do not add a separate centripetal force on top of gravity. REVIEW THIS IDEA: Core 1 - Gravity can be the centripetal force. Motion in 2D - Revised Core (2) - NCERT subset 16",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-16",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-06",
+        "grade9v3:original_label": "M2D-NC-06 Worked solution"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-16",
+      "stem": "Horizontal throw versus drop?",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "WATCH OUT: Do not combine horizontal speed with vertical falling speed when deciding landing time. REVIEW THIS IDEA: Core 1 - Horizontal launch and drop share the same vertical motion. Motion in 2D - Revised Core (2) - NCERT subset 17",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-17",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-07",
+        "grade9v3:original_label": "M2D-NC-07 Worked solution"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-17",
+      "stem": "Moon if Earth gravity vanished?",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "No. Removing force changes acceleration, not the breaks: remove inward force, preserve tangent velocity. already-existing velocity instantaneously. WATCH OUT: Do not replace “no inward force” with a fictitious outward launch. REVIEW THIS IDEA: Core 1 - If gravity vanished, the Moon would leave along the tangent. Motion in 2D - Revised Core (2) - NCERT subset 18",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-18",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-08",
+        "grade9v3:original_label": "M2D-NC-08 Worked solution"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-18",
+      "stem": "Why Earth does not fall into the Sun?",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "motion would become much more directly inward. limiting case. WATCH OUT: Avoid saying “gravity is cancelled”. The inward gravitational force is exactly what bends the orbit. REVIEW THIS IDEA: Core 1 - Why Earth does not simply fall into the Sun. Motion in 2D - Revised Core (2) - NCERT subset 19",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
+    },
+    {
+      "version": "0.1.0",
+      "status": "DRAFT",
+      "source_refs": [
+        "SRC-NCERT-KIN-2D"
+      ],
+      "evidence_refs": [],
+      "id": "Q-PHY-KIN-2D-NCERT-19",
+      "extensions": {
+        "grade9v3:authored_by": "agent-phase2-registration",
+        "grade9v3:source_html": "core1a-physics-motion-2d-ncert-tablet.html#M2D-NC-09",
+        "grade9v3:original_label": "M2D-NC-09 Worked solution"
+      },
+      "origin": "NCERT",
+      "origin_ref": "SRC-NCERT-KIN-2D",
+      "original_identifier": "CHALLENGE-PHY-KIN-2D-NCERT-19",
+      "stem": "train gains x A passenger tosses a coin vertically inside a moving",
+      "subparts": [],
+      "options": [],
+      "conditions": [],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "instead. WATCH OUT: Keep ground-frame motion separate from the passenger’s accelerating frame. REVIEW THIS IDEA: Core 1 - A tossed coin can reveal train acceleration. Motion in 2D - Revised Core (2) - NCERT subset 20",
+        "reasoning": [],
+        "check": "",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "UNVERIFIED"
+      },
+      "primary_capability_ref": "CAP-KIN-2D-VECTOR-DECOMPOSITION",
+      "secondary_capability_refs": [],
+      "microtopic_ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "PRACTICE",
+          "artifact_ref": null
+        }
+      ],
+      "hints": [],
+      "hint_ladder": [],
+      "representation_roles": {
+        "initial_ref": null,
+        "safe_ref": null,
+        "bound_ref": null,
+        "stage_refs": []
+      },
+      "failure_signal": null,
+      "family_exposure": {
+        "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
+        "closure": null
+      }
     }
   ],
   "teaching_routes": [
@@ -14375,8 +15439,29 @@
   "extensions": {
     "grade9v3:phase2_registration": {
       "date": "2026-10-01",
-      "added_count": 59,
-      "source": "core2-motion-in-a-plane-tablet.html challenge bank"
+      "added": {
+        "ncert": [
+          "Q-PHY-KIN-2D-NCERT-01",
+          "Q-PHY-KIN-2D-NCERT-02",
+          "Q-PHY-KIN-2D-NCERT-03",
+          "Q-PHY-KIN-2D-NCERT-04",
+          "Q-PHY-KIN-2D-NCERT-05",
+          "Q-PHY-KIN-2D-NCERT-06",
+          "Q-PHY-KIN-2D-NCERT-07",
+          "Q-PHY-KIN-2D-NCERT-08",
+          "Q-PHY-KIN-2D-NCERT-09",
+          "Q-PHY-KIN-2D-NCERT-10",
+          "Q-PHY-KIN-2D-NCERT-11",
+          "Q-PHY-KIN-2D-NCERT-12",
+          "Q-PHY-KIN-2D-NCERT-13",
+          "Q-PHY-KIN-2D-NCERT-14",
+          "Q-PHY-KIN-2D-NCERT-15",
+          "Q-PHY-KIN-2D-NCERT-16",
+          "Q-PHY-KIN-2D-NCERT-17",
+          "Q-PHY-KIN-2D-NCERT-18",
+          "Q-PHY-KIN-2D-NCERT-19"
+        ]
+      }
     }
   },
   "data": [

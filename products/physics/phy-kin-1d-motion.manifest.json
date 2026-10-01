@@ -22,18 +22,20 @@
     ],
     "core2": [],
     "core2a": [
-      "Q-PHY-KIN-2A-01",
-      "Q-PHY-KIN-2A-COV-02",
-      "Q-PHY-KIN-2A-COV-03",
-      "Q-PHY-KIN-2A-COV-04",
-      "Q-PHY-KIN-2A-COV-05",
-      "Q-PHY-KIN-PRACTICAL-13",
-      "Q-PHY-KIN-VERT-2A-UPWARD-01",
-      "Q-PHY-KIN-VERT-2A-DROP-02",
-      "Q-PHY-KIN-VERT-2A-RETURN-03",
-      "Q-PHY-KIN-VERT-2A-DOWN-AXIS-04",
-      "Q-PHY-KIN-VERT-2A-APEX-05",
-      "Q-PHY-KIN-CIRC-2A-FORCE-ROLE-01"
+      "Q-PHY-KIN-1D-SRC-01",
+      "Q-PHY-KIN-1D-SRC-02",
+      "Q-PHY-KIN-1D-SRC-03",
+      "Q-PHY-KIN-1D-SRC-04",
+      "Q-PHY-KIN-1D-SRC-05",
+      "Q-PHY-KIN-1D-SRC-06",
+      "Q-PHY-KIN-1D-SRC-07",
+      "Q-PHY-KIN-1D-SRC-08",
+      "Q-PHY-KIN-1D-SRC-09",
+      "Q-PHY-KIN-1D-SRC-10",
+      "Q-PHY-KIN-1D-SRC-11",
+      "Q-PHY-KIN-1D-SRC-12",
+      "Q-PHY-KIN-1D-SRC-13",
+      "Q-PHY-KIN-1D-SRC-14"
     ],
     "core2b": [
       "Q-PHY-KIN-VERT-2B-REVERSED-AXIS-01",
@@ -44,5 +46,11 @@
       "Q-PHY-KIN-CIRC-2B-FLAT-CURVE-02",
       "Q-PHY-KIN-CIRC-2B-VERTICAL-03"
     ]
+  },
+  "extensions": {
+    "grade9v3:phase2_registration": {
+      "date": "2026-10-01",
+      "core2a_count": 14
+    }
   }
 }

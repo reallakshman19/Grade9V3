@@ -1,0 +1,111 @@
+{
+  "schema": "product-manifest/v1",
+  "product_id": "PRODUCT-PHY-KIN-2D-MOTION",
+  "subject": "Physics",
+  "home_href": "../../../index.html",
+  "question_bank_href": "../../../question-bank/index.html",
+  "package_refs": [
+    "Physics/library/phy-kin-2d-motion.v1.json"
+  ],
+  "bank_refs": [
+    "Physics/library/exam-bank/competitive-exam-question-bank.v2.json"
+  ],
+  "selection": {
+    "microtopics": [
+      "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS",
+      "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION",
+      "MIC-PHY-KIN-PROJECTILE-MODEL"
+    ],
+    "core2": [
+      "PYQ-PHY-IITJEE-2011-P2-Q33",
+      "PYQ-PHY-JEEADV-2018-P2-Q08",
+      "PYQ-PHY-JEEADV-2019-P2-Q09",
+      "PYQ-PHY-JEEADV-2021-P1-Q05",
+      "PYQ-PHY-JEEADV-2021-P1-Q06",
+      "PYQ-PHY-JEEADV-2024-P2-Q09",
+      "PYQ-PHY-IITJEE-2012-P1-Q05",
+      "PYQ-PHY-JEEADV-2022-P1-Q08",
+      "PYQ-PHY-JEEADV-2023-P1-Q01",
+      "PYQ-PHY-JEEADV-2025-P2-Q15",
+      "PYQ-PHY-IITJEE-2011-P2-Q26",
+      "PYQ-PHY-JEEADV-2014-P1-Q11",
+      "PYQ-PHY-JEEADV-2026-P1-Q06",
+      "PYQ-PHY-JEEADV-2013-P1-Q07",
+      "PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29"
+    ],
+    "core2a": [
+      "Q-PHY-KIN-2D-SRC-01",
+      "Q-PHY-KIN-2D-SRC-02",
+      "Q-PHY-KIN-2D-SRC-03",
+      "Q-PHY-KIN-2D-SRC-04",
+      "Q-PHY-KIN-2D-SRC-05",
+      "Q-PHY-KIN-2D-SRC-06",
+      "Q-PHY-KIN-2D-SRC-07",
+      "Q-PHY-KIN-2D-SRC-08",
+      "Q-PHY-KIN-2D-SRC-09",
+      "Q-PHY-KIN-2D-SRC-10",
+      "Q-PHY-KIN-2D-SRC-11",
+      "Q-PHY-KIN-2D-SRC-12",
+      "Q-PHY-KIN-2D-SRC-13",
+      "Q-PHY-KIN-2D-SRC-14",
+      "Q-PHY-KIN-2D-SRC-15",
+      "Q-PHY-KIN-2D-SRC-16",
+      "Q-PHY-KIN-2D-SRC-17",
+      "Q-PHY-KIN-2D-SRC-18",
+      "Q-PHY-KIN-2D-SRC-19",
+      "Q-PHY-KIN-2D-SRC-20",
+      "Q-PHY-KIN-2D-SRC-21",
+      "Q-PHY-KIN-2D-SRC-22",
+      "Q-PHY-KIN-2D-SRC-23",
+      "Q-PHY-KIN-2D-SRC-24",
+      "Q-PHY-KIN-2D-SRC-25",
+      "Q-PHY-KIN-2D-SRC-26",
+      "Q-PHY-KIN-2D-SRC-27",
+      "Q-PHY-KIN-2D-SRC-28",
+      "Q-PHY-KIN-2D-SRC-29",
+      "Q-PHY-KIN-2D-SRC-30",
+      "Q-PHY-KIN-2D-SRC-31",
+      "Q-PHY-KIN-2D-SRC-32",
+      "Q-PHY-KIN-2D-SRC-33",
+      "Q-PHY-KIN-2D-SRC-34",
+      "Q-PHY-KIN-2D-SRC-35",
+      "Q-PHY-KIN-2D-SRC-36",
+      "Q-PHY-KIN-2D-SRC-37",
+      "Q-PHY-KIN-2D-SRC-38",
+      "Q-PHY-KIN-2D-SRC-39",
+      "Q-PHY-KIN-2D-SRC-40",
+      "Q-PHY-KIN-2D-SRC-41",
+      "Q-PHY-KIN-2D-SRC-42",
+      "Q-PHY-KIN-2D-SRC-43",
+      "Q-PHY-KIN-2D-SRC-44",
+      "Q-PHY-KIN-2D-SRC-45",
+      "Q-PHY-KIN-2D-SRC-46",
+      "Q-PHY-KIN-2D-SRC-47",
+      "Q-PHY-KIN-2D-SRC-48",
+      "Q-PHY-KIN-2D-SRC-49",
+      "Q-PHY-KIN-2D-SRC-50",
+      "Q-PHY-KIN-2D-SRC-51",
+      "Q-PHY-KIN-2D-SRC-52",
+      "Q-PHY-KIN-2D-SRC-53",
+      "Q-PHY-KIN-2D-SRC-54",
+      "Q-PHY-KIN-2D-SRC-55",
+      "Q-PHY-KIN-2D-SRC-56",
+      "Q-PHY-KIN-2D-SRC-57",
+      "Q-PHY-KIN-2D-SRC-58",
+      "Q-PHY-KIN-2D-SRC-59"
+    ],
+    "core2b": [
+      "Q-PHY-KIN-2D-2B-REPRESENTATION-01",
+      "Q-PHY-KIN-2D-2B-MODEL-VALIDITY-02",
+      "Q-PHY-KIN-2D-2B-UNEQUAL-HEIGHT-03",
+      "Q-PHY-KIN-2D-2B-PROJECTILE-VALIDITY-04",
+      "Q-PHY-KIN-2D-2B-SAME-HEIGHT-VELOCITY-05"
+    ]
+  },
+  "extensions": {
+    "grade9v3:phase2_registration": {
+      "date": "2026-10-01",
+      "core2a_count": 59
+    }
+  }
+}
