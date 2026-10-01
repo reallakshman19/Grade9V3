@@ -11,6 +11,8 @@ import hashlib
 import html
 import json
 import re
+import subprocess
+from functools import lru_cache
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
@@ -18,6 +20,7 @@ PHYSICS = REPO / "Physics/library/exam-bank/competitive-exam-question-bank.v2.js
 CHEMISTRY = REPO / "Chemistry/library/exam-bank/competitive-exam-question-bank.v2.json"
 VIEWS = REPO / "Shared/tools/question-bank-views.v1.json"
 BENCHMARK = REPO / "benchmarks/selected_question_bank_TABLET_STUDY.html"
+KATEX = REPO / "public/vendor/katex/0.16.8/katex.min.js"
 OUT = REPO / "standalone/core2-canonical-question-bank-tablet.html"
 
 MCQ_SINGLE = {"single_correct_mcq", "assertion_reason_mcq", "matrix_match_mcq"}
@@ -32,9 +35,69 @@ def esc(value) -> str:
     return html.escape(str(value if value is not None else ""), quote=True)
 
 
+@lru_cache(maxsize=1024)
+def typed_math(tex: str, display: bool) -> str:
+    """Compile declared TeX to native MathML with the repository's pinned local KaTeX."""
+    script = (
+        'const fs=require("fs");const k=require(process.argv[1]);'
+        'const v=JSON.parse(fs.readFileSync(0,"utf8"));'
+        'process.stdout.write(k.renderToString(v.tex,{displayMode:v.display,output:"mathml",'
+        'throwOnError:true,trust:false,maxExpand:1000}));'
+    )
+    result = subprocess.run(
+        ["node", "-e", script, str(KATEX)],
+        input=json.dumps({"tex": tex, "display": display}),
+        text=True,
+        capture_output=True,
+        encoding="utf-8",
+        timeout=15,
+    )
+    if result.returncode:
+        raise ValueError(f"declared TeX could not be typeset: {tex}")
+    return result.stdout
+
+
+def render_text(q, target: str, value) -> str:
+    """Render only explicitly declared math spans; prose is escaped verbatim."""
+    text = str(value or "")
+    spans = [
+        span
+        for span in (q.get("extensions") or {}).get("grade9v3:math_spans", [])
+        if span["target"] == target
+    ]
+    located = []
+    for span in spans:
+        literal = span["literal"]
+        if literal not in text:
+            if target == "conditions" and any(literal in row for row in q.get("conditions") or []):
+                continue
+            raise ValueError(f"{q['id']}: {target} declared math literal missing: {literal}")
+        located.extend((match.start(), span) for match in re.finditer(re.escape(literal), text))
+    located = [
+        (start, span)
+        for start, span in located
+        if not any(
+            other <= start
+            and other + len(parent["literal"]) >= start + len(span["literal"])
+            and len(parent["literal"]) > len(span["literal"])
+            for other, parent in located
+        )
+    ]
+    parts = []
+    cursor = 0
+    for start, span in sorted(located, key=lambda pair: pair[0]):
+        if start < cursor:
+            raise ValueError(f"{q['id']}: {target} overlapping declared math literals")
+        parts.append(esc(text[cursor:start]))
+        parts.append(typed_math(span["tex"], bool(span["display"])))
+        cursor = start + len(span["literal"])
+    parts.append(esc(text[cursor:]))
+    return "".join(parts)
+
+
 def build_id() -> str:
     h = hashlib.sha256()
-    for path in (PHYSICS, CHEMISTRY, VIEWS, BENCHMARK):
+    for path in (PHYSICS, CHEMISTRY, VIEWS, BENCHMARK, KATEX):
         h.update(path.relative_to(REPO).as_posix().encode())
         h.update(b"\0")
         h.update(path.read_bytes())
@@ -175,7 +238,7 @@ def render_options(q):
             f'<input class="answer-choice" type="{input_type}" name="{esc(name)}" value="{esc(label)}" '
             f'data-key="{esc(q["id"])}">'
             f'<span class="option-letter">{esc(label)}</span>'
-            f'<span class="option-text">{esc(payload)}</span>'
+            f'<span class="option-text">{render_text(q, f"option:{idx}", payload)}</span>'
             f'</label>'
         )
     return '<fieldset class="q-options" aria-label="Answer choices">' + "".join(rows) + "</fieldset>"
@@ -185,7 +248,7 @@ def render_conditions(q):
     conditions = q.get("conditions") or []
     if not conditions:
         return ""
-    return '<ul class="q-conditions">' + "".join(f"<li>{esc(x)}</li>" for x in conditions) + "</ul>"
+    return '<ul class="q-conditions">' + "".join(f"<li>{render_text(q, 'conditions', x)}</li>" for x in conditions) + "</ul>"
 
 
 def render_hints(q):
@@ -201,7 +264,7 @@ def render_hints(q):
         )
         payloads.append(
             f'<template id="{esc(hid)}-template"><div class="hint-box">'
-            f'<strong>{esc(label)}:</strong> {esc(row.get("text", ""))}</div></template>'
+            f'<strong>{esc(label)}:</strong> {render_text(q, f"scaffold:{idx}", row.get("text", ""))}</div></template>'
         )
         slots.append(f'<div id="{esc(hid)}" class="hint-slot" aria-live="polite"></div>')
     if not buttons:
@@ -221,17 +284,17 @@ def render_solution(q):
     check = a.get("check", "")
     reasoning = "".join(
         f'<li><span class="step-kind">{esc(step.get("kind", ""))}</span>'
-        f'<span>{esc(step.get("action", ""))}</span></li>'
-        for step in route
+        f'<span>{render_text(q, f"answer_reasoning:{idx}", step.get("action", ""))}</span></li>'
+        for idx, step in enumerate(route)
     )
     return (
         f'<template id="{esc(q["id"])}-solution-template">'
         f'<section class="solution-body">'
-        f'<p class="verified-answer"><strong>Verified answer:</strong> {esc(a.get("summary", ""))}</p>'
+        f'<p class="verified-answer"><strong>Verified answer:</strong> {render_text(q, "answer_summary", a.get("summary", ""))}</p>'
         f'<ol class="reasoning-route">{reasoning}</ol>'
-        f'<div class="crux-box"><strong>Crux move:</strong> {esc(crux)}</div>'
-        f'<div class="trap-box"><strong>Watch out:</strong> {esc(trap)}</div>'
-        + (f'<div class="check-box"><strong>Independent check:</strong> {esc(check)}</div>' if check else "")
+        f'<div class="crux-box"><strong>Crux move:</strong> {render_text(q, "stable_crux_move", crux)}</div>'
+        f'<div class="trap-box"><strong>Watch out:</strong> {render_text(q, "common_wrong_route", trap)}</div>'
+        + (f'<div class="check-box"><strong>Independent check:</strong> {render_text(q, "answer_check", check)}</div>' if check else "")
         + '</section></template>'
         f'<div id="{esc(q["id"])}-solution" class="solution-slot" aria-live="polite"></div>'
     )
@@ -308,7 +371,7 @@ def render_question(q, selected_refs, svg_map):
       <span class="badge difficulty">{esc(diff)}{f' · {score}/10' if score != '' else ''}</span>
       {'<span class="badge selected">Selected D3/D4</span>' if selected else ''}</div>
     </header>
-    <p class="q-stem">{esc(q.get('stem', ''))}</p>
+    <p class="q-stem">{render_text(q, "stem", q.get('stem', ''))}</p>
     {render_conditions(q)}
     {render_hints(q)}
     {render_attempt(q)}
@@ -320,7 +383,7 @@ def render_question(q, selected_refs, svg_map):
       <strong>Status:</strong> {esc(source_status.replace('_', ' ').title())}</div></div>
     {render_representation(q, svg_map)}
     <div class="meta-box"><div class="meta-title">Common trap</div>
-      <div class="meta-desc">{esc(a.get('common_wrong_route', ''))}</div></div>
+      <div class="meta-desc">{render_text(q, "common_wrong_route", a.get('common_wrong_route', ''))}</div></div>
   </aside>
 </article>"""
 
