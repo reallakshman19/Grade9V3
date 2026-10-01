@@ -1,0 +1,38 @@
+name: chemistry-manifest-sync-once
+
+on:
+  push:
+    branches:
+      - feat/chemistry-tablet-standalone
+    paths:
+      - ".github/chemistry-manifest-sync.trigger"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Regenerate and verify architecture manifest
+        run: |
+          python3 Shared/tools/build_manifest.py
+          python3 Shared/tools/build_manifest.py --check
+      - name: Commit projection
+        run: |
+          set -euo pipefail
+          git config user.name "grade9v3-manifest-sync"
+          git config user.email "actions@users.noreply.github.com"
+          git add docs/architecture-manifest.json public/core-learning standalone/core-learning public/js/core-learning tools/data.js
+          if git diff --cached --quiet; then
+            echo "No generated changes."
+            exit 0
+          fi
+          git commit -m "chore: refresh architecture manifest"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
