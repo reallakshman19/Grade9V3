@@ -92,7 +92,7 @@ jobs:
           python3 - <<'PY'
           import json
           from pathlib import Path
-          from Shared.tools import build_manifest, build_question_bank_platform
+          from Shared.tools import build_manifest, build_pages_site, build_question_bank_platform
           from Shared.library import (
               core1_orientation,
               core1a_construction,
@@ -127,6 +127,9 @@ jobs:
           platform = build_question_bank_platform.build()
           for relative, content in build_question_bank_platform.artifact_payloads(platform).items():
               generated[relative.as_posix()] = content
+
+          for relative, (_source, content) in build_pages_site.desired_files().items():
+              generated[f"docs/{relative}"] = content
 
           for relative, content in generated.items():
               target = root / relative
