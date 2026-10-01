@@ -81,7 +81,21 @@ class ChemistryTabletStandaloneTest(unittest.TestCase):
                 content = read(rel_path)
                 solution_count = content.count('class="solution-content"')
                 self.assertGreater(solution_count, 0)
-                self.assertEqual(solution_count, content.count("LPAP source-custody hold:"))
+                self.assertEqual(solution_count, content.count("Source reconstruction hold:"))
+
+    def test_core2_never_presents_unverified_import_text_as_a_question(self):
+        for rel_path in CORE2_FILES:
+            with self.subTest(file=rel_path):
+                content = read(rel_path)
+                card_count = content.count('<div class="q-title">')
+                self.assertGreater(card_count, 0)
+                self.assertEqual(
+                    card_count,
+                    content.count("Candidate source item — reconstruction required"),
+                )
+                self.assertEqual(card_count, content.count("Source reconstruction required:"))
+                self.assertNotIn("NCERT Try the question", content)
+                self.assertNotIn('<div class="q-title">Question', content)
 
     def test_no_generator_template_tokens_or_corrupt_math_escape_controls(self):
         for rel_path in CHEMISTRY_TABLET_FILES:

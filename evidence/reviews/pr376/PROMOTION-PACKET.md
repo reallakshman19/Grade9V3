@@ -72,6 +72,12 @@ These are pedagogical audit observations, not canonical capability mappings; can
 
 All seven products pass isolated browser evidence at 1280x800, 800x1280 and 390x844. The harness checks normal/invalid/repeated interactive states, tab switching, persistence, focus visibility, reduced motion, zoom overflow, touch targets, text floor, textarea height, external requests, console/page errors and NaN/Infinity. The candidates have no external runtime dependency.
 
+## Held Core2 display hardening
+
+The held Core2 standalones no longer render the corrupted imported stem/hint fragments as if they were learner questions. Each card now exposes only its candidate locator and a reconstruction hold until exact stem/figure custody and an independently verified solution exist. This is a truth-preserving display correction, not source reconstruction and not promotion.
+
+Because the standalone HTML bytes changed after the audit basis, the Core2 exact artifact/render/bundle digests recorded in the historical matrices below refer to the pre-hardening audit artifact. No current Core2 governed render or promotion evidence is claimed.
+
 ## Per-product matrices
 
 ### PR376-C1A-CHEM-GASES
