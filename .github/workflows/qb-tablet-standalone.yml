@@ -46,7 +46,7 @@ jobs:
       - name: Install pinned browser harness
         run: |
           npm install --no-save playwright@1.56.1
-          npx playwright install --with-deps chromium
+          npx playwright install chromium
 
       - name: Synchronize generated standalone on owning branch push
         if: github.event_name == 'push' && github.ref == 'refs/heads/feat/question-bank-tablet-standalone'
