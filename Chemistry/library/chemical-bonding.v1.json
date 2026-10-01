@@ -30,13 +30,13 @@
       },
       "title": "PR #376 author-created Chemical Bonding and Molecular Structure standalone conversion basis",
       "origin": "AUTHORED",
-      "locator": "standalone/core1a-chemistry-chemical-bonding-tablet.html",
-      "edition": "PR #376 exact candidate basis ad3c58a50ccc76c65ad26d1fff963b1173027108",
+      "locator": "evidence/lineage/pr376/core1a-source/core1a-chemistry-chemical-bonding-tablet.html",
+      "edition": "PR #376 exact candidate basis ad3c58a50ccc76c65ad26d1fff963b1173027108; original standalone bytes preserved under evidence/lineage before blueprint-v2 learner-page replacement",
       "section": "Core1A standalone teaching candidate; source-labelled bank excluded from governed conversion",
       "last_checked": "2026-10-01",
       "access_status": "FULL_ITEM_INSPECTED",
       "rights_status": "Author-created Grade9V3 project draft; conversion lineage only, not external source authority.",
-      "snapshot_ref": "standalone/core1a-chemistry-chemical-bonding-tablet.html",
+      "snapshot_ref": "evidence/lineage/pr376/core1a-source/core1a-chemistry-chemical-bonding-tablet.html",
       "snapshot_digest": "sha256:e48261dcdac2d1f696f2acdb2270ce5bab8370e2273e95d8c057e3ad57a63ade",
       "role": [
         "AUTHOR_CREATED"
