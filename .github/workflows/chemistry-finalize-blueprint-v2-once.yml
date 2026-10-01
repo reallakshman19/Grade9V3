@@ -22,6 +22,10 @@ jobs:
           python-version: "3.11"
       - name: Install renderer dependency
         run: python3 -m pip install jsonschema
+      - name: Remove one-shot finalizer from final tree
+        run: |
+          git rm -f .github/workflows/chemistry-finalize-blueprint-v2-once.yml
+          git rm -f .github/chemistry-finalize-blueprint-v2.trigger
       - name: Generate strict blueprint-v2 learner snapshots
         run: python3 Chemistry/tools/sync_blueprint_pages.py
       - name: Check Chemistry Core1 forward-debt baselines
