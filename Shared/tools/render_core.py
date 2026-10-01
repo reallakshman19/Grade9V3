@@ -39,7 +39,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(REPO))
 
-from Shared.tools import core2_v2, learner_metadata, product_manifest  # noqa: E402
+from Shared.tools import core2_v2, core_template_contract, learner_metadata, product_manifest  # noqa: E402
 
 BLUEPRINTS = REPO / "Shared/web/interactive-page-blueprints.v1.json"
 CONTRACT = REPO / "Shared/quality/learner-quality.v1.json"
@@ -50,6 +50,7 @@ CORE2_V2_SOURCE = Path(core2_v2.__file__).resolve()
 LEARNER_METADATA_SOURCE = Path(learner_metadata.__file__).resolve()
 LEARNER_METADATA_VOCABULARY = learner_metadata.VOCABULARY
 PRODUCT_MANIFEST_SOURCE = Path(product_manifest.__file__).resolve()
+CORE_TEMPLATE_SPEC = REPO / "Shared/roles/LEARNER-PRODUCT-TEMPLATES.md"
 ROLES = ["CORE1", "CORE1A", "CORE1B", "CORE2", "CORE2A", "CORE2B"]
 ROLE_FILE = {r: r.lower() + ".html" for r in ROLES}
 ROLE_TITLE = {"CORE1": "Orientation map", "CORE1A": "Construction", "CORE1B": "Reconstruction",
@@ -214,6 +215,66 @@ def figure(ctx: Ctx, rep_id: str | None, stage: str, role: str, record: str, fir
             f'data-g9-representation="{esc(rep_id)}" data-g9-kind="{esc(kind)}" data-reveal-stages="{max(len(shown), 1)}" '
             f'data-g9-stages-total="{max(len(stage_ids), 1)}" data-g9-stages="{esc(" ".join(shown))}"{sequence_attr}>'
             f'{svg}{controls}{caption}</figure>')
+
+
+
+def _core1a_activity_companion(ctx: Ctx, microtopic: dict) -> str:
+    """Link governed local ACTIVITY resources only after static Core1A closure.
+
+    The activity is optional enrichment. Academic truth and publishability remain in the
+    canonical Core1A construction; a missing/unavailable activity therefore creates no
+    renderer gap and never causes page-local candidate JavaScript to become authority.
+    """
+    representation_refs: list[str] = []
+    for ref in microtopic.get("representation_refs") or []:
+        if isinstance(ref, str) and ref and ref not in representation_refs:
+            representation_refs.append(ref)
+    for unit in microtopic.get("construction_units") or []:
+        ref = unit.get("representation_ref") if isinstance(unit, dict) else None
+        if isinstance(ref, str) and ref and ref not in representation_refs:
+            representation_refs.append(ref)
+
+    representations = ctx.index("representations")
+    resources = ctx.index("resources")
+    cards: list[str] = []
+    seen: set[str] = set()
+    for representation_ref in representation_refs:
+        representation = representations.get(representation_ref) or {}
+        for activity_ref in representation.get("interactive_resource_refs") or []:
+            if not isinstance(activity_ref, str) or activity_ref in seen:
+                continue
+            resource = resources.get(activity_ref)
+            if not isinstance(resource, dict) or "ACTIVITY" not in (resource.get("role") or []):
+                continue
+            locator = resource.get("locator")
+            if not isinstance(locator, str) or not locator.strip():
+                continue
+            local = Path(locator.replace("\\", "/"))
+            if local.is_absolute() or not local.parts or local.parts[0] != "public" or ".." in local.parts:
+                continue
+            target = REPO.joinpath(*local.parts)
+            if not target.is_file():
+                continue
+            seen.add(activity_ref)
+            href = "../../../" + "/".join(local.parts[1:])
+            cards.append(
+                f'<li data-g9-activity-ref="{esc(activity_ref)}" '
+                f'data-g9-representation-ref="{esc(representation_ref)}">'
+                f'<a href="{esc(href)}">{esc(resource.get("title") or activity_ref)}</a>'
+                f'<span class="g9-activity-id">{esc(activity_ref)}</span></li>'
+            )
+
+    if not cards:
+        return ""
+    body = (
+        '<p class="g9-availability-note">Optional governed activity after the complete static construction.</p>'
+        '<ul class="g9-activity-list">' + "".join(cards) + "</ul>"
+    )
+    return slot(
+        "activity",
+        block("governed_activity_companion", body, title="Explore the concept"),
+        False,
+    )
 
 
 def _without_stages(svg: str, withheld: set[str]) -> str:
@@ -929,6 +990,7 @@ def core1a(ctx: Ctx, m: dict) -> str:
                 True,
             )
             + slot("repair_closure", support + closure, True)
+            + _core1a_activity_companion(ctx, m)
         )
 
     paired = ""
@@ -979,7 +1041,7 @@ def core1a(ctx: Ctx, m: dict) -> str:
         # the same pair occupies the 68/32 primary/support row without duplicating content.
         paired += slot("construction", primary, True) + slot("repair_closure", support, True)
 
-    return identity + paired + slot("repair_closure", closure, True)
+    return identity + paired + slot("repair_closure", closure, True) + _core1a_activity_companion(ctx, m)
 
 
 def core1b(ctx: Ctx, m: dict) -> str:
@@ -1460,9 +1522,11 @@ article[id],section[id]{scroll-margin-top:96px}
 .g9-availability-note{color:var(--muted);font-size:.9rem}
 .g9-cu-support{padding:0 0 16px;margin:0 0 16px;border-bottom:1px solid var(--line)}
 .g9-cu-support:last-of-type{border-bottom:0}.g9-cu-support>h3{font-size:1rem;line-height:1.35;margin:.3rem 0 .7rem;color:var(--muted)}
+.g9-activity-list{margin:.4rem 0;padding-left:1.2rem}.g9-activity-list li{margin:.45rem 0}.g9-activity-id{display:block;color:var(--muted);font-size:.82rem;overflow-wrap:anywhere}
 @media (min-width:1100px){.g9-bucket-orientation-grid{display:grid;grid-template-columns:.68fr .32fr;gap:20px}
 article[data-g9-unit].g9-stage-support{display:grid;grid-template-columns:.68fr .32fr;gap:20px}
 body[data-core=CORE1A] article.g9-stage-support>.slot-identity{grid-column:1/-1}
+body[data-core=CORE1A] article.g9-stage-support>.slot-activity{grid-column:1/-1}
 article.g9-stage-support>.slot-identity,article.g9-stage-support>.slot-attempt,article.g9-stage-support>.slot-construction,article.g9-stage-support>.slot-reconstruction,article.g9-stage-support>.slot-reasoning,article.g9-stage-support>.slot-post_attempt,article.g9-stage-support>.slot-solution{grid-column:1}
 article.g9-stage-support>.slot-support,article.g9-stage-support>.slot-repair_closure{grid-column:2}}
 textarea{width:100%;min-height:120px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:14px 16px;box-sizing:border-box;background:var(--card);color:var(--fg)}
@@ -1611,7 +1675,7 @@ def _shared_head_assets(ctx: Ctx, mode: str) -> str:
 
 
 def page(ctx: Ctx, role: str, mode: str, digest: str) -> str:
-    bp = next(b for b in ctx.blueprints["blueprints"] if role in b["core_roles"])
+    bp = core_template_contract.resolve_web_blueprint_for_core(role)
     stage_support = bp["responsive_policy"].get("expanded") == "STAGE_SUPPORT"
     articles = ""
     klass = ' class="g9-stage-support"' if stage_support else ""
@@ -1757,6 +1821,7 @@ def context(manifest_path: Path) -> Ctx:
         ("renderer-source", _file_sha256(Path(__file__))),
         ("core2-v2-source", _file_sha256(CORE2_V2_SOURCE)),
         ("product-manifest-source", _file_sha256(PRODUCT_MANIFEST_SOURCE)),
+        ("core-template-spec", _file_sha256(CORE_TEMPLATE_SPEC)),
         ("learner-metadata-source", _file_sha256(LEARNER_METADATA_SOURCE)),
         ("learner-metadata-vocabulary", _file_sha256(LEARNER_METADATA_VOCABULARY)),
         ("package-schema", _file_sha256(PACKAGE_SCHEMA)),
