@@ -347,9 +347,9 @@ window.GRADE9V3_PROMPT_COMPOSER = {
     },
     "CORE1A": {
       "core": "CORE1A",
-      "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.2.0",
+      "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.3.0",
       "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-      "blueprint_version": "1.2.0",
+      "blueprint_version": "1.3.0",
       "shell_ref": "G9-TABLET-SHELL-V1",
       "layout_family": "READING_CONSTRUCTION",
       "required_slots": [
@@ -399,7 +399,25 @@ window.GRADE9V3_PROMPT_COMPOSER = {
         "ATTEMPT_FIRST_AS_PRIMARY_MODE",
         "UNREGISTERED_PAGE_LOCAL_INTERACTION",
         "INTERACTION_REQUIRED_FOR_STATIC_ACADEMIC_CLOSURE"
-      ]
+      ],
+      "presentation_profile": {
+        "id": "CORE1A_TABLET_BENCHMARK_V1",
+        "benchmark_ref": "benchmarks/core1a-motion-in-a-plane-tablet.html@450de73fb024ec51257b18de92f9c3faa82fe7c2",
+        "default_theme": "DARK",
+        "anatomy": [
+          "CHAPTER_HERO",
+          "CONCEPT_CARD",
+          "INFERENTIAL_JUMP_BANNER",
+          "STEP_CARDS",
+          "EQUATION_VALIDITY_CARD",
+          "WORKED_ANCHOR_CARD",
+          "STAGED_VISUAL_RAIL",
+          "MISCONCEPTION_REPAIR_RAIL",
+          "ACTIVE_RECALL_CLOSURE"
+        ],
+        "construction_step_format": "ACTION_WHY_OUTPUT",
+        "support_rail": "VISUAL_MISCONCEPTION_CHECKS"
+      }
     },
     "CORE1B": {
       "core": "CORE1B",
