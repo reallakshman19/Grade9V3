@@ -46,10 +46,18 @@
       "rights_status": "Official NCERT source used for concept scope and definitions; Grade9V3 authors its own teaching construction rather than reproducing long source passages.",
       "snapshot_ref": null,
       "snapshot_digest": null,
-      "role": ["CURRICULUM", "EXPLANATION"],
-      "supports_claims": ["CAP-PHY-THRUST-INTERFACE", "CAP-PHY-PRESSURE-CONTACT-AREA"],
+      "role": [
+        "CURRICULUM",
+        "EXPLANATION"
+      ],
+      "supports_claims": [
+        "CAP-PHY-THRUST-INTERFACE",
+        "CAP-PHY-PRESSURE-CONTACT-AREA"
+      ],
       "entry_capabilities": [],
-      "depth": ["FOUNDATION"],
+      "depth": [
+        "FOUNDATION"
+      ],
       "selection_reason": "Official Grade-9 source establishes the thrust/pressure learner scope without importing broader fluid mechanics.",
       "fallback": []
     },
@@ -59,7 +67,9 @@
       "status": "REVIEWED",
       "source_refs": [],
       "evidence_refs": [],
-      "extensions": {"grade9v3:authority_class": "OFFICIAL_EXAM_ORGANIZER_ARCHIVE"},
+      "extensions": {
+        "grade9v3:authority_class": "OFFICIAL_EXAM_ORGANIZER_ARCHIVE"
+      },
       "title": "HBCSE Indian National Junior Science Olympiad official past-paper archive",
       "origin": "WEB",
       "locator": "https://olympiads.hbcse.tifr.res.in/how-to-prepare/past-papers/",
@@ -70,10 +80,19 @@
       "rights_status": "Official organizer archive; exact source wording stays at the organizer PDFs and the product uses explicit adapted custody where needed.",
       "snapshot_ref": null,
       "snapshot_digest": null,
-      "role": ["QUESTION_BANK"],
-      "supports_claims": ["CAP-PHY-THRUST-INTERFACE", "CAP-PHY-PRESSURE-SCALING", "CAP-PHY-PRESSURE-SURFACE-ORIENTATION", "CAP-PHY-PRESSURE-HYDROSTATIC-BRIDGE"],
+      "role": [
+        "QUESTION_BANK"
+      ],
+      "supports_claims": [
+        "CAP-PHY-THRUST-INTERFACE",
+        "CAP-PHY-PRESSURE-SCALING",
+        "CAP-PHY-PRESSURE-SURFACE-ORIENTATION",
+        "CAP-PHY-PRESSURE-HYDROSTATIC-BRIDGE"
+      ],
       "entry_capabilities": [],
-      "depth": ["ADVANCED"],
+      "depth": [
+        "ADVANCED"
+      ],
       "selection_reason": "Official competitive demand exposes the model-choice and trap-sensitive reasoning that the owner requested.",
       "fallback": []
     },
@@ -81,7 +100,10 @@
       "id": "SRC-AUTHOR-THRUST-PRESSURE",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": ["SRC-NCERT-G9-THRUST-PRESSURE", "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"],
+      "source_refs": [
+        "SRC-NCERT-G9-THRUST-PRESSURE",
+        "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"
+      ],
       "evidence_refs": [],
       "extensions": {},
       "title": "Issue #383 authored Thrust and Pressure construction",
@@ -94,10 +116,16 @@
       "rights_status": "Author-created pedagogical construction; sources establish scope and demand but do not imply source authorship of the construction.",
       "snapshot_ref": null,
       "snapshot_digest": null,
-      "role": ["AUTHOR_CREATED", "EXPLANATION"],
+      "role": [
+        "AUTHOR_CREATED",
+        "EXPLANATION"
+      ],
       "supports_claims": [],
       "entry_capabilities": [],
-      "depth": ["FOUNDATION", "ADVANCED"],
+      "depth": [
+        "FOUNDATION",
+        "ADVANCED"
+      ],
       "selection_reason": "Builds the inferential transitions the official questions demand while keeping the mathematics accessible to Grade 9/10.",
       "fallback": []
     }
@@ -107,21 +135,40 @@
       "id": "BUCKET-PHY-THRUST-PRESSURE",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": ["SRC-NCERT-G9-THRUST-PRESSURE", "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"],
+      "source_refs": [
+        "SRC-NCERT-G9-THRUST-PRESSURE",
+        "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"
+      ],
       "evidence_refs": [],
-      "extensions": {"issue383:scope_class": "BOUNDED_G9_G10_COMPETITIVE_SLICE"},
+      "extensions": {
+        "issue383:scope_class": "BOUNDED_G9_G10_COMPETITIVE_SLICE"
+      },
       "title": "Thrust and Pressure",
       "topic": "Gravitation and contact pressure",
       "intrinsic_badge": "HARD",
       "badge_reason": "The arithmetic is elementary, but competitive problems repeatedly require non-obvious choices: which body and interface is meant, whether N=mg is actually justified, which physical area carries the force, how force and area scale differently, whether pressure or force has direction, and whether a pressure is gauge or absolute.",
       "depth_overlay": "ADVANCED",
       "curriculum_mappings": [],
-      "prerequisite_refs": ["BUCKET-PHY-NLM-FIRST-LAW"],
+      "prerequisite_refs": [
+        "BUCKET-PHY-NLM-FIRST-LAW"
+      ],
       "conventions": [
-        {"id": "CONV-THRUST-BODY-INTERFACE", "statement": "Choose the body and the contact interface before naming thrust, normal force, friction or a total reaction."},
-        {"id": "CONV-THRUST-NORMAL-POSITIVE", "statement": "For a contact interface, choose a surface-normal direction and write all perpendicular force components with that one sign convention."},
-        {"id": "CONV-PRESSURE-ACTUAL-AREA", "statement": "Use the actual physical contact or loaded surface area in average pressure unless a component of the resultant in another direction is explicitly requested."},
-        {"id": "CONV-PRESSURE-ABSOLUTE-GAUGE", "statement": "State whether pressure is absolute or relative to the surface/atmospheric pressure before combining hydrostatics with a gas law."}
+        {
+          "id": "CONV-THRUST-BODY-INTERFACE",
+          "statement": "Choose the body and the contact interface before naming thrust, normal force, friction or a total reaction."
+        },
+        {
+          "id": "CONV-THRUST-NORMAL-POSITIVE",
+          "statement": "For a contact interface, choose a surface-normal direction and write all perpendicular force components with that one sign convention."
+        },
+        {
+          "id": "CONV-PRESSURE-ACTUAL-AREA",
+          "statement": "Use the actual physical contact or loaded surface area in average pressure unless a component of the resultant in another direction is explicitly requested."
+        },
+        {
+          "id": "CONV-PRESSURE-ABSOLUTE-GAUGE",
+          "statement": "State whether pressure is absolute or relative to the surface/atmospheric pressure before combining hydrostatics with a gas law."
+        }
       ],
       "scope": {
         "covers": "Normal thrust at a solid contact; full normal-force balance; average pressure as normal thrust per actual area; pressure scaling for similar bodies; scalar pressure and normal force on arbitrarily oriented planar surfaces; a bounded hydrostatic absolute/gauge pressure bridge needed by the selected INJSO item.",
@@ -137,221 +184,1703 @@
   ],
   "capabilities": [
     {
-      "id": "CAP-PHY-THRUST-INTERFACE", "version": "0.1.0", "status": "CANDIDATE",
-      "source_refs": ["SRC-NCERT-G9-THRUST-PRESSURE", "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"], "evidence_refs": [], "extensions": {},
+      "id": "CAP-PHY-THRUST-INTERFACE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-NCERT-G9-THRUST-PRESSURE",
+        "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
       "action": "Choose a body/interface and distinguish normal thrust from tangential friction and from the vector resultant of the complete contact interaction.",
       "success_criterion": "Given a rough contact, identify the normal component as thrust while correctly combining normal and friction only when the total contact reaction is requested.",
-      "prerequisite_refs": ["CAP-NLM-FBD-BODY-OWNERSHIP"], "curriculum_mappings": [], "external_provider": null, "acceptance_status": "CANDIDATE"
+      "prerequisite_refs": [
+        "CAP-NLM-FBD-BODY-OWNERSHIP"
+      ],
+      "curriculum_mappings": [],
+      "external_provider": null,
+      "acceptance_status": "CANDIDATE"
     },
     {
-      "id": "CAP-PHY-THRUST-NORMAL-BALANCE", "version": "0.1.0", "status": "CANDIDATE",
-      "source_refs": ["SRC-AUTHOR-THRUST-PRESSURE"], "evidence_refs": [], "extensions": {},
+      "id": "CAP-PHY-THRUST-NORMAL-BALANCE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-AUTHOR-THRUST-PRESSURE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
       "action": "Solve the contact normal force from the complete perpendicular Newton-law equation and enforce the non-negative contact constraint.",
       "success_criterion": "State why N=mg is a special case, correctly change N for upward/downward applied components or vertical acceleration, and identify loss of contact when the required N would be negative.",
-      "prerequisite_refs": ["CAP-NLM-FBD-BODY-OWNERSHIP", "CAP-NLM-SECOND-LAW"], "curriculum_mappings": [], "external_provider": null, "acceptance_status": "CANDIDATE"
+      "prerequisite_refs": [
+        "CAP-NLM-FBD-BODY-OWNERSHIP",
+        "CAP-NLM-SECOND-LAW"
+      ],
+      "curriculum_mappings": [],
+      "external_provider": null,
+      "acceptance_status": "CANDIDATE"
     },
     {
-      "id": "CAP-PHY-PRESSURE-CONTACT-AREA", "version": "0.1.0", "status": "CANDIDATE",
-      "source_refs": ["SRC-NCERT-G9-THRUST-PRESSURE"], "evidence_refs": [], "extensions": {},
+      "id": "CAP-PHY-PRESSURE-CONTACT-AREA",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-NCERT-G9-THRUST-PRESSURE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
       "action": "Compute or compare average pressure using the total normal thrust and the actual area over which that thrust is distributed.",
       "success_criterion": "Keep thrust and contact area as independent inputs, convert area units correctly, and predict how pressure changes when only contact area changes.",
-      "prerequisite_refs": ["CAP-PHY-THRUST-NORMAL-BALANCE"], "curriculum_mappings": [], "external_provider": null, "acceptance_status": "CANDIDATE"
+      "prerequisite_refs": [
+        "CAP-PHY-THRUST-NORMAL-BALANCE"
+      ],
+      "curriculum_mappings": [],
+      "external_provider": null,
+      "acceptance_status": "CANDIDATE"
     },
     {
-      "id": "CAP-PHY-PRESSURE-SCALING", "version": "0.1.0", "status": "CANDIDATE",
-      "source_refs": ["SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"], "evidence_refs": [], "extensions": {},
+      "id": "CAP-PHY-PRESSURE-SCALING",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
       "action": "Derive how pressure scales for geometrically similar same-density bodies by separating volume/weight scaling from contact-area scaling.",
       "success_criterion": "For scale factor λ on all lengths, derive weight proportional to λ^3, corresponding face area proportional to λ^2, and pressure proportional to λ rather than guessing from size.",
-      "prerequisite_refs": ["CAP-PHY-PRESSURE-CONTACT-AREA"], "curriculum_mappings": [], "external_provider": null, "acceptance_status": "CANDIDATE"
+      "prerequisite_refs": [
+        "CAP-PHY-PRESSURE-CONTACT-AREA"
+      ],
+      "curriculum_mappings": [],
+      "external_provider": null,
+      "acceptance_status": "CANDIDATE"
     },
     {
-      "id": "CAP-PHY-PRESSURE-SURFACE-ORIENTATION", "version": "0.1.0", "status": "CANDIDATE",
-      "source_refs": ["SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"], "evidence_refs": [], "extensions": {},
+      "id": "CAP-PHY-PRESSURE-SURFACE-ORIENTATION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
       "action": "Separate scalar pressure from the direction of pressure force and use the actual area of a uniformly loaded planar surface regardless of its orientation.",
       "success_criterion": "Draw the resultant normal to a tilted face and calculate its magnitude as pA without inserting a projection cosine merely because the face is tilted.",
-      "prerequisite_refs": ["CAP-PHY-PRESSURE-CONTACT-AREA"], "curriculum_mappings": [], "external_provider": null, "acceptance_status": "CANDIDATE"
+      "prerequisite_refs": [
+        "CAP-PHY-PRESSURE-CONTACT-AREA"
+      ],
+      "curriculum_mappings": [],
+      "external_provider": null,
+      "acceptance_status": "CANDIDATE"
     },
     {
-      "id": "CAP-PHY-PRESSURE-HYDROSTATIC-BRIDGE", "version": "0.1.0", "status": "CANDIDATE",
-      "source_refs": ["SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"], "evidence_refs": [], "extensions": {"issue383:scope_class": "QUESTION_DEMAND_EXTENSION"},
+      "id": "CAP-PHY-PRESSURE-HYDROSTATIC-BRIDGE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "issue383:scope_class": "QUESTION_DEMAND_EXTENSION"
+      },
       "action": "Relate vertical depth to hydrostatic pressure change and distinguish gauge from absolute pressure when another model, such as Boyle's law, needs total pressure.",
       "success_criterion": "Write P_bottom=P_surface+rho g h, identify rho g h as the pressure contribution of the liquid column, and use absolute pressure in a gas-law comparison.",
-      "prerequisite_refs": ["CAP-PHY-PRESSURE-CONTACT-AREA"], "curriculum_mappings": [], "external_provider": null, "acceptance_status": "CANDIDATE"
+      "prerequisite_refs": [
+        "CAP-PHY-PRESSURE-CONTACT-AREA"
+      ],
+      "curriculum_mappings": [],
+      "external_provider": null,
+      "acceptance_status": "CANDIDATE"
     }
   ],
   "microtopics": [
     {
-      "id": "MIC-PHY-THRUST-INTERFACE", "version": "0.1.0", "status": "CANDIDATE",
-      "source_refs": ["SRC-NCERT-G9-THRUST-PRESSURE", "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"], "evidence_refs": [], "extensions": {},
+      "id": "MIC-PHY-THRUST-INTERFACE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-NCERT-G9-THRUST-PRESSURE",
+        "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
       "title": "Thrust belongs to a chosen interface, not to an isolated force arrow",
-      "bucket_id": "BUCKET-PHY-THRUST-PRESSURE", "primary_capability_ref": "CAP-PHY-THRUST-INTERFACE",
-      "intrinsic_badge": "HARD", "badge_reason": "Learners commonly call the normal force, total contact reaction and an applied-force component by the same word even though competitive questions distinguish them.",
-      "entry_assumptions": ["Can choose one body for a free-body diagram and name the external agent producing each force."],
+      "bucket_id": "BUCKET-PHY-THRUST-PRESSURE",
+      "primary_capability_ref": "CAP-PHY-THRUST-INTERFACE",
+      "intrinsic_badge": "HARD",
+      "badge_reason": "Learners commonly call the normal force, total contact reaction and an applied-force component by the same word even though competitive questions distinguish them.",
+      "entry_assumptions": [
+        "Can choose one body for a free-body diagram and name the external agent producing each force."
+      ],
       "inferential_jump": "Thrust at a solid interface is the normal component of the contact interaction on the chosen body. A rough surface may simultaneously exert tangential friction; the vector sum of those components is the total contact reaction, not the thrust alone.",
       "teaching_path": [
-        {"id":"TP-I-1","role":"DECLARE","action":"Circle the body and mark the one interface whose thrust or reaction is being asked for before drawing arrows.","why_valid":"Force ownership is body-specific; without the chosen body and interface, equal-and-opposite partner forces and other contacts can be mixed into one diagram.","inputs":[],"output":"chosen body + named interface","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-I-2","role":"TRANSFORM","action":"Resolve that interface interaction into a component normal to the surface and, when the surface is rough, a tangential friction component.","why_valid":"Normal and tangential directions are perpendicular and describe distinct ways a contact can constrain or oppose relative motion.","inputs":["chosen interface"],"output":"N normal to surface; f tangent to surface","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-I-3","role":"TRANSFORM","action":"Name the normal component N as the thrust magnitude for the interface, but retain both N and f when the problem asks for the total force/reaction exerted by the surface.","why_valid":"Thrust is the perpendicular component; the total contact force is a vector and can contain both perpendicular and tangential components.","inputs":["N","f"],"output":"thrust=N; total contact reaction R=N_vector+f_vector","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-I-4","role":"VERIFY","action":"Place the equal-and-opposite partner contact components on the other body's diagram, not on the chosen body's diagram.","why_valid":"Newton's third-law partner forces act on different bodies, which checks both direction and force ownership.","inputs":["chosen-body contact components"],"output":"body-specific interaction pair checked","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"}
+        {
+          "id": "TP-I-1",
+          "role": "DECLARE",
+          "action": "Circle the body and mark the one interface whose thrust or reaction is being asked for before drawing arrows.",
+          "why_valid": "Force ownership is body-specific; without the chosen body and interface, equal-and-opposite partner forces and other contacts can be mixed into one diagram.",
+          "inputs": [],
+          "output": "chosen body + named interface",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-I-2",
+          "role": "TRANSFORM",
+          "action": "Resolve that interface interaction into a component normal to the surface and, when the surface is rough, a tangential friction component.",
+          "why_valid": "Normal and tangential directions are perpendicular and describe distinct ways a contact can constrain or oppose relative motion.",
+          "inputs": [
+            "chosen interface"
+          ],
+          "output": "N normal to surface; f tangent to surface",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-I-3",
+          "role": "TRANSFORM",
+          "action": "Name the normal component N as the thrust magnitude for the interface, but retain both N and f when the problem asks for the total force/reaction exerted by the surface.",
+          "why_valid": "Thrust is the perpendicular component; the total contact force is a vector and can contain both perpendicular and tangential components.",
+          "inputs": [
+            "N",
+            "f"
+          ],
+          "output": "thrust=N; total contact reaction R=N_vector+f_vector",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-I-4",
+          "role": "VERIFY",
+          "action": "Place the equal-and-opposite partner contact components on the other body's diagram, not on the chosen body's diagram.",
+          "why_valid": "Newton's third-law partner forces act on different bodies, which checks both direction and force ownership.",
+          "inputs": [
+            "chosen-body contact components"
+          ],
+          "output": "body-specific interaction pair checked",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        }
       ],
-      "relation_refs": [], "representation_refs": ["REP-PHY-THRUST-INTERFACE"], "question_family_refs": ["FAM-PHY-THRUST-PRESSURE-COMPETITIVE"],
+      "relation_refs": [],
+      "representation_refs": [
+        "REP-PHY-THRUST-INTERFACE"
+      ],
+      "question_family_refs": [
+        "FAM-PHY-THRUST-PRESSURE-COMPETITIVE"
+      ],
       "misconceptions": [
-        {"wrong_idea":"The reaction of a rough table is always just the vertical normal force.","diagnostic_prompt":"If a sliding box experiences 80 N upward normal force and a nonzero horizontal friction force from the table, is the table's total force on the box exactly 80 N?","repair":"No. 80 N is the normal/thrust component. The total table reaction is the vector resultant of normal and friction."},
-        {"wrong_idea":"Any applied force component perpendicular to the surface is automatically the thrust on that surface.","diagnostic_prompt":"A block is pushed downward while its weight also acts downward. Can the downward push alone equal the table's normal thrust?","repair":"No. Solve the whole perpendicular force balance; the surface response depends on every perpendicular force and any perpendicular acceleration."}
+        {
+          "wrong_idea": "The reaction of a rough table is always just the vertical normal force.",
+          "diagnostic_prompt": "If a sliding box experiences 80 N upward normal force and a nonzero horizontal friction force from the table, is the table's total force on the box exactly 80 N?",
+          "repair": "No. 80 N is the normal/thrust component. The total table reaction is the vector resultant of normal and friction."
+        },
+        {
+          "wrong_idea": "Any applied force component perpendicular to the surface is automatically the thrust on that surface.",
+          "diagnostic_prompt": "A block is pushed downward while its weight also acts downward. Can the downward push alone equal the table's normal thrust?",
+          "repair": "No. Solve the whole perpendicular force balance; the surface response depends on every perpendicular force and any perpendicular acceleration."
+        }
       ],
-      "exit_task":{"prompt":"Explain, for a block sliding on a rough horizontal table, the difference among normal thrust, friction and the total contact reaction from the table.","source_ref":"SRC-AUTHOR-THRUST-PRESSURE","answer":{"kind":"MODEL_RESPONSE","summary":"Normal thrust is the component perpendicular to the interface; friction is tangential; the total table reaction is their vector sum.","reasoning":["Choose the block and table interface.","Resolve the table interaction into perpendicular and tangential components.","Name only the perpendicular component as thrust; combine components only when total reaction is requested."],"check":"If friction tends to zero, the total table reaction must reduce continuously to the normal thrust.","acceptable_alternatives":[],"subpart_answers":[],"verification_status":"CHECKED_BY_AUTHOR"},"oracle":{"no_numeric_claim":"The task asks for a force-role distinction and vector relationship, not a computed numerical value."}},
-      "research_contribution":"INJSO 2016 Q32A is used to make the otherwise-hidden distinction between normal thrust and a full rough-surface reaction explicit at Grade-9/10 mathematical level.",
-      "prerequisite_refs":["CAP-NLM-FBD-BODY-OWNERSHIP"],"lineage":[],
-      "construction_units":[{"id":"CU-TP-INTERFACE","decision":"Decide which part of a contact interaction the word thrust names and when a full resultant is required.","step_refs":["TP-I-1","TP-I-2","TP-I-3","TP-I-4"],"representation_ref":"REP-PHY-THRUST-INTERFACE","reveal_stage_refs":["interface-body","interface-normal","interface-friction","interface-resultant"],"worked_anchor_ref":null,"bank_anchor_ref":"PYQ-PHY-INJSO-2016-Q32A","crux_question_refs":["PYQ-PHY-INJSO-2016-Q32A"],"crux_step_ref":"TP-I-3","misconception_indexes":[0,1],"independent_checks":[{"statement":"On a frictionless table, say which contact component remains and what the total reaction becomes.","check_type":"LIMIT_CASE_ANALYSIS","role":"CHECK"},{"statement":"If N=60 N and f=0, identify thrust and total reaction without calculation beyond the definitions.","check_type":"SUBSTITUTION_BACK_CHECK","role":"APPLY"},{"statement":"Carry the body/interface-first rule into the next unit, where N itself must be solved rather than assumed.","check_type":null,"role":"CONNECT"}]}]
+      "exit_task": {
+        "prompt": "Explain, for a block sliding on a rough horizontal table, the difference among normal thrust, friction and the total contact reaction from the table.",
+        "source_ref": "SRC-AUTHOR-THRUST-PRESSURE",
+        "answer": {
+          "kind": "MODEL_RESPONSE",
+          "summary": "Normal thrust is the component perpendicular to the interface; friction is tangential; the total table reaction is their vector sum.",
+          "reasoning": [
+            "Choose the block and table interface.",
+            "Resolve the table interaction into perpendicular and tangential components.",
+            "Name only the perpendicular component as thrust; combine components only when total reaction is requested."
+          ],
+          "check": "If friction tends to zero, the total table reaction must reduce continuously to the normal thrust.",
+          "acceptable_alternatives": [],
+          "subpart_answers": [],
+          "verification_status": "CHECKED_BY_AUTHOR"
+        },
+        "oracle": {
+          "no_numeric_claim": "The task asks for a force-role distinction and vector relationship, not a computed numerical value."
+        }
+      },
+      "research_contribution": "INJSO 2016 Q32A is used to make the otherwise-hidden distinction between normal thrust and a full rough-surface reaction explicit at Grade-9/10 mathematical level.",
+      "prerequisite_refs": [
+        "CAP-NLM-FBD-BODY-OWNERSHIP"
+      ],
+      "lineage": [],
+      "construction_units": [
+        {
+          "id": "CU-TP-INTERFACE",
+          "decision": "Decide which part of a contact interaction the word thrust names and when a full resultant is required.",
+          "step_refs": [
+            "TP-I-1",
+            "TP-I-2",
+            "TP-I-3",
+            "TP-I-4"
+          ],
+          "representation_ref": "REP-PHY-THRUST-INTERFACE",
+          "reveal_stage_refs": [
+            "interface-body",
+            "interface-normal",
+            "interface-friction",
+            "interface-resultant"
+          ],
+          "worked_anchor_ref": null,
+          "bank_anchor_ref": "PYQ-PHY-INJSO-2016-Q32A",
+          "crux_question_refs": [
+            "PYQ-PHY-INJSO-2016-Q32A"
+          ],
+          "crux_step_ref": "TP-I-3",
+          "misconception_indexes": [
+            0,
+            1
+          ],
+          "independent_checks": [
+            {
+              "statement": "On a frictionless table, say which contact component remains and what the total reaction becomes.",
+              "check_type": "LIMIT_CASE_ANALYSIS",
+              "role": "CHECK"
+            },
+            {
+              "statement": "If N=60 N and f=0, identify thrust and total reaction without calculation beyond the definitions.",
+              "check_type": "SUBSTITUTION_BACK_CHECK",
+              "role": "APPLY"
+            },
+            {
+              "statement": "Carry the body/interface-first rule into the next unit, where N itself must be solved rather than assumed.",
+              "check_type": null,
+              "role": "CONNECT"
+            }
+          ]
+        }
+      ]
     },
     {
-      "id":"MIC-PHY-THRUST-NORMAL-BALANCE","version":"0.1.0","status":"CANDIDATE","source_refs":["SRC-AUTHOR-THRUST-PRESSURE"],"evidence_refs":[],"extensions":{},
-      "title":"N = mg is a result with conditions, not the definition of thrust","bucket_id":"BUCKET-PHY-THRUST-PRESSURE","primary_capability_ref":"CAP-PHY-THRUST-NORMAL-BALANCE","intrinsic_badge":"HARD","badge_reason":"The familiar N=mg shortcut fails as soon as another perpendicular force or vertical acceleration is present, yet its familiarity makes the failure hard to notice.",
-      "entry_assumptions":["Can write one-dimensional Newton's second law for a chosen body with a declared positive direction."],
-      "inferential_jump":"A normal force is a constraint response found from the complete perpendicular equation Sigma F_perp = m a_perp. N=mg appears only for a horizontal contact with no other vertical force and zero vertical acceleration.",
-      "teaching_path":[
-        {"id":"TP-N-1","role":"DECLARE","action":"Choose the axis perpendicular to the contact and assign one positive direction before resolving any force.","why_valid":"Only signed components along one declared axis can be added in a Newton-law equation.","inputs":[],"output":"declared normal axis and sign","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-N-2","role":"TRANSFORM","action":"List every external force component along that axis: normal response, weight component, and any applied push or pull component.","why_valid":"The surface response depends on the net requirement, not on one convenient force in isolation.","inputs":["normal axis"],"output":"complete perpendicular force inventory","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-N-3","role":"TRANSFORM","action":"Apply Sigma F_perp = m a_perp and solve algebraically for N before inserting the pressure relation.","why_valid":"Newton's second law determines the contact force needed to produce the actual perpendicular acceleration while contact is maintained.","inputs":["perpendicular force inventory","a_perp"],"output":"N expressed from full perpendicular balance","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-N-4","role":"VERIFY","action":"Check the contact constraint N >= 0; if the algebra demands N<0, replace the assumed-contact model by loss of contact with N=0.","why_valid":"An ordinary surface can push a body away from itself but cannot pull it through a lost contact unless another attachment is specified.","inputs":["solved N"],"output":"contact-valid N or contact-loss boundary","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"}
+      "id": "MIC-PHY-THRUST-NORMAL-BALANCE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-AUTHOR-THRUST-PRESSURE"
       ],
-      "relation_refs":[],"representation_refs":["REP-PHY-THRUST-NORMAL-BALANCE"],"question_family_refs":["FAM-PHY-THRUST-PRESSURE-COMPETITIVE"],
-      "misconceptions":[{"wrong_idea":"Normal force always equals weight.","diagnostic_prompt":"A block on a horizontal table is pulled upward at an angle while remaining in vertical equilibrium. Must N still equal mg?","repair":"No. The upward component of the pull shares the upward balance, so N is smaller than mg; solve the complete vertical equation."}],
-      "exit_task":{"prompt":"State the exact conditions under which a block on a horizontal table has N=mg, and state what model change occurs if solving the perpendicular equation would require N<0.","source_ref":"SRC-AUTHOR-THRUST-PRESSURE","answer":{"kind":"MODEL_RESPONSE","summary":"N=mg only when weight and normal are the only vertical forces and vertical acceleration is zero. A required negative N means contact has ended, so N becomes zero in the new model.","reasoning":["Write the complete perpendicular force inventory.","Set a_perp=0 only if vertical acceleration is actually zero.","Enforce the one-sided contact constraint N>=0."],"check":"Removing every extra vertical force and setting a_perp=0 must reduce the general balance to N=mg.","acceptable_alternatives":[],"subpart_answers":[],"verification_status":"CHECKED_BY_AUTHOR"},"oracle":{"no_numeric_claim":"The task closes a conditional model statement and contact boundary without a numerical computation."}},
-      "research_contribution":"The construction makes the common shortcut N=mg explicitly conditional so pressure problems inherit a correctly solved thrust rather than a memorized value.","prerequisite_refs":["CAP-NLM-SECOND-LAW"],"lineage":[],
-      "construction_units":[{"id":"CU-TP-NORMAL-BALANCE","decision":"Derive the contact thrust from the whole perpendicular dynamics instead of substituting N=mg by habit.","step_refs":["TP-N-1","TP-N-2","TP-N-3","TP-N-4"],"representation_ref":"REP-PHY-THRUST-NORMAL-BALANCE","reveal_stage_refs":["normal-body","normal-forces","normal-applied","normal-balance"],"worked_anchor_ref":null,"bank_anchor_ref":"PYQ-PHY-INJSO-2016-Q32A","crux_question_refs":[],"crux_step_ref":null,"misconception_indexes":[0],"independent_checks":[{"statement":"Set the applied vertical component to zero and a_perp to zero; the relation must reduce to N=mg.","check_type":"LIMIT_CASE_ANALYSIS","role":"CHECK"},{"statement":"For an upward pull that remains below the contact-loss threshold, decide whether N is greater than, equal to or less than mg before doing algebra.","check_type":"SIGN_AND_DIRECTION","role":"APPLY"},{"statement":"Use the solved N, not mg by default, as the thrust input to the pressure quotient in the next unit.","check_type":null,"role":"CONNECT"}]}]
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "N = mg is a result with conditions, not the definition of thrust",
+      "bucket_id": "BUCKET-PHY-THRUST-PRESSURE",
+      "primary_capability_ref": "CAP-PHY-THRUST-NORMAL-BALANCE",
+      "intrinsic_badge": "HARD",
+      "badge_reason": "The familiar N=mg shortcut fails as soon as another perpendicular force or vertical acceleration is present, yet its familiarity makes the failure hard to notice.",
+      "entry_assumptions": [
+        "Can write one-dimensional Newton's second law for a chosen body with a declared positive direction."
+      ],
+      "inferential_jump": "A normal force is a constraint response found from the complete perpendicular equation Sigma F_perp = m a_perp. N=mg appears only for a horizontal contact with no other vertical force and zero vertical acceleration.",
+      "teaching_path": [
+        {
+          "id": "TP-N-1",
+          "role": "DECLARE",
+          "action": "Choose the axis perpendicular to the contact and assign one positive direction before resolving any force.",
+          "why_valid": "Only signed components along one declared axis can be added in a Newton-law equation.",
+          "inputs": [],
+          "output": "declared normal axis and sign",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-N-2",
+          "role": "TRANSFORM",
+          "action": "List every external force component along that axis: normal response, weight component, and any applied push or pull component.",
+          "why_valid": "The surface response depends on the net requirement, not on one convenient force in isolation.",
+          "inputs": [
+            "normal axis"
+          ],
+          "output": "complete perpendicular force inventory",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-N-3",
+          "role": "TRANSFORM",
+          "action": "Apply Sigma F_perp = m a_perp and solve algebraically for N before inserting the pressure relation.",
+          "why_valid": "Newton's second law determines the contact force needed to produce the actual perpendicular acceleration while contact is maintained.",
+          "inputs": [
+            "perpendicular force inventory",
+            "a_perp"
+          ],
+          "output": "N expressed from full perpendicular balance",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-N-4",
+          "role": "VERIFY",
+          "action": "Check the contact constraint N >= 0; if the algebra demands N<0, replace the assumed-contact model by loss of contact with N=0.",
+          "why_valid": "An ordinary surface can push a body away from itself but cannot pull it through a lost contact unless another attachment is specified.",
+          "inputs": [
+            "solved N"
+          ],
+          "output": "contact-valid N or contact-loss boundary",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        }
+      ],
+      "relation_refs": [],
+      "representation_refs": [
+        "REP-PHY-THRUST-NORMAL-BALANCE"
+      ],
+      "question_family_refs": [
+        "FAM-PHY-THRUST-PRESSURE-COMPETITIVE"
+      ],
+      "misconceptions": [
+        {
+          "wrong_idea": "Normal force always equals weight.",
+          "diagnostic_prompt": "A block on a horizontal table is pulled upward at an angle while remaining in vertical equilibrium. Must N still equal mg?",
+          "repair": "No. The upward component of the pull shares the upward balance, so N is smaller than mg; solve the complete vertical equation."
+        }
+      ],
+      "exit_task": {
+        "prompt": "State the exact conditions under which a block on a horizontal table has N=mg, and state what model change occurs if solving the perpendicular equation would require N<0.",
+        "source_ref": "SRC-AUTHOR-THRUST-PRESSURE",
+        "answer": {
+          "kind": "MODEL_RESPONSE",
+          "summary": "N=mg only when weight and normal are the only vertical forces and vertical acceleration is zero. A required negative N means contact has ended, so N becomes zero in the new model.",
+          "reasoning": [
+            "Write the complete perpendicular force inventory.",
+            "Set a_perp=0 only if vertical acceleration is actually zero.",
+            "Enforce the one-sided contact constraint N>=0."
+          ],
+          "check": "Removing every extra vertical force and setting a_perp=0 must reduce the general balance to N=mg.",
+          "acceptable_alternatives": [],
+          "subpart_answers": [],
+          "verification_status": "CHECKED_BY_AUTHOR"
+        },
+        "oracle": {
+          "no_numeric_claim": "The task closes a conditional model statement and contact boundary without a numerical computation."
+        }
+      },
+      "research_contribution": "The construction makes the common shortcut N=mg explicitly conditional so pressure problems inherit a correctly solved thrust rather than a memorized value.",
+      "prerequisite_refs": [
+        "CAP-NLM-SECOND-LAW"
+      ],
+      "lineage": [],
+      "construction_units": [
+        {
+          "id": "CU-TP-NORMAL-BALANCE",
+          "decision": "Derive the contact thrust from the whole perpendicular dynamics instead of substituting N=mg by habit.",
+          "step_refs": [
+            "TP-N-1",
+            "TP-N-2",
+            "TP-N-3",
+            "TP-N-4"
+          ],
+          "representation_ref": "REP-PHY-THRUST-NORMAL-BALANCE",
+          "reveal_stage_refs": [
+            "normal-body",
+            "normal-forces",
+            "normal-applied",
+            "normal-balance"
+          ],
+          "worked_anchor_ref": null,
+          "bank_anchor_ref": "PYQ-PHY-INJSO-2016-Q32A",
+          "misconception_indexes": [
+            0
+          ],
+          "independent_checks": [
+            {
+              "statement": "Set the applied vertical component to zero and a_perp to zero; the relation must reduce to N=mg.",
+              "check_type": "LIMIT_CASE_ANALYSIS",
+              "role": "CHECK"
+            },
+            {
+              "statement": "For an upward pull that remains below the contact-loss threshold, decide whether N is greater than, equal to or less than mg before doing algebra.",
+              "check_type": "SIGN_AND_DIRECTION",
+              "role": "APPLY"
+            },
+            {
+              "statement": "Use the solved N, not mg by default, as the thrust input to the pressure quotient in the next unit.",
+              "check_type": null,
+              "role": "CONNECT"
+            }
+          ]
+        }
+      ]
     },
     {
-      "id":"MIC-PHY-PRESSURE-CONTACT-AREA","version":"0.1.0","status":"CANDIDATE","source_refs":["SRC-NCERT-G9-THRUST-PRESSURE"],"evidence_refs":[],"extensions":{},
-      "title":"Average pressure depends on total normal thrust and actual loaded area","bucket_id":"BUCKET-PHY-THRUST-PRESSURE","primary_capability_ref":"CAP-PHY-PRESSURE-CONTACT-AREA","intrinsic_badge":"MEDIUM","badge_reason":"The quotient p=F/A is simple, but questions become wrong when the learner substitutes weight for thrust automatically, uses a non-contact face, or converts cm^2 as if it were a length.",
-      "entry_assumptions":["Can solve the normal thrust for the contact and convert squared length units."],
-      "inferential_jump":"Average pressure is not a new force. It describes how a known total normal thrust is distributed over the actual loaded/contact area: p_avg=F_thrust/A_contact.",
-      "teaching_path":[
-        {"id":"TP-A-1","role":"DECLARE","action":"Identify the exact surface patch carrying the normal interaction and label its actual area A_contact.","why_valid":"Only the area over which the chosen force is distributed belongs in this average-pressure quotient.","inputs":[],"output":"actual loaded/contact area selected","source_ref":"SRC-NCERT-G9-THRUST-PRESSURE"},
-        {"id":"TP-A-2","role":"TRANSFORM","action":"Use the already-solved normal thrust F_thrust as the numerator rather than replacing it automatically by weight.","why_valid":"Pressure inherits the real contact force determined by the force balance; weight equals that thrust only in the special balance already established.","inputs":["F_thrust","A_contact"],"output":"pressure inputs identified independently","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-A-3","role":"TRANSFORM","action":"Form p_avg=F_thrust/A_contact in SI units, converting a squared length unit by squaring the length conversion.","why_valid":"A pascal is N/m^2; area contains two length factors, so for example 1 cm^2=10^-4 m^2.","inputs":["F_thrust","A_contact"],"output":"average pressure in Pa","source_ref":"SRC-NCERT-G9-THRUST-PRESSURE"},
-        {"id":"TP-A-4","role":"VERIFY","action":"Before accepting the result, vary only area: the same thrust on a smaller area must give a larger pressure and the units must reduce to N/m^2.","why_valid":"The inverse-area trend and dimensional unit are independent checks on the quotient.","inputs":["p_avg result"],"output":"trend and unit checked","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"}
+      "id": "MIC-PHY-PRESSURE-CONTACT-AREA",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-NCERT-G9-THRUST-PRESSURE"
       ],
-      "relation_refs":[],"representation_refs":["REP-PHY-PRESSURE-CONTACT-AREA"],"question_family_refs":["FAM-PHY-THRUST-PRESSURE-COMPETITIVE"],
-      "misconceptions":[{"wrong_idea":"Pressure is larger whenever the force is larger, regardless of area.","diagnostic_prompt":"Two orientations of the same block have the same normal thrust but different contact areas. Must their pressures be equal?","repair":"No. Hold the same thrust fixed and compare the actual contact areas; pressure is larger on the smaller area."},{"wrong_idea":"1 cm^2 equals 10^-2 m^2 because 1 cm equals 10^-2 m.","diagnostic_prompt":"How many powers of the centimetre-to-metre conversion belong in an area conversion?","repair":"Two. Area has two length factors, so 1 cm^2=(10^-2 m)^2=10^-4 m^2."}],
-      "exit_task":{"prompt":"Explain why turning the same rectangular block from a broad face onto a narrower face can increase average pressure even when its normal thrust is unchanged.","source_ref":"SRC-AUTHOR-THRUST-PRESSURE","answer":{"kind":"MODEL_RESPONSE","summary":"The normal thrust stays the same in the stated balance, while the actual contact area decreases; p_avg=F_thrust/A_contact therefore increases.","reasoning":["Hold the same contact force fixed.","Identify the new smaller loaded area.","Use the inverse-area relation rather than changing force and area together."],"check":"If the two contact areas were equal, the pressures would have to be equal under the same thrust.","acceptable_alternatives":[],"subpart_answers":[],"verification_status":"CHECKED_BY_AUTHOR"},"oracle":{"no_numeric_claim":"The task compares pressures qualitatively under a stated unchanged force."}},
-      "research_contribution":"The construction separates force-model selection from area selection so a learner cannot hide a wrong thrust behind correct division.","prerequisite_refs":["CAP-PHY-THRUST-NORMAL-BALANCE"],"lineage":[],
-      "construction_units":[{"id":"CU-TP-CONTACT-AREA","decision":"Choose the force and actual area independently before forming the pressure quotient.","step_refs":["TP-A-1","TP-A-2","TP-A-3","TP-A-4"],"representation_ref":"REP-PHY-PRESSURE-CONTACT-AREA","reveal_stage_refs":["area-same-block","area-same-thrust","area-contact","area-pressure"],"worked_anchor_ref":null,"bank_anchor_ref":"PYQ-PHY-INJSO-2013-Q58","crux_question_refs":[],"crux_step_ref":null,"misconception_indexes":[0,1],"independent_checks":[{"statement":"With the same thrust, doubling the actual contact area must halve average pressure.","check_type":"LIMIT_CASE_ANALYSIS","role":"CHECK"},{"statement":"Compare a block on a 200 cm^2 face and a 50 cm^2 face without changing its normal thrust; identify which orientation has four times the pressure.","check_type":"SUBSTITUTION_BACK_CHECK","role":"APPLY"},{"statement":"Carry the fact that area has two length factors into the similar-object scaling unit.","check_type":null,"role":"CONNECT"}]}]
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "Average pressure depends on total normal thrust and actual loaded area",
+      "bucket_id": "BUCKET-PHY-THRUST-PRESSURE",
+      "primary_capability_ref": "CAP-PHY-PRESSURE-CONTACT-AREA",
+      "intrinsic_badge": "MEDIUM",
+      "badge_reason": "The quotient p=F/A is simple, but questions become wrong when the learner substitutes weight for thrust automatically, uses a non-contact face, or converts cm^2 as if it were a length.",
+      "entry_assumptions": [
+        "Can solve the normal thrust for the contact and convert squared length units."
+      ],
+      "inferential_jump": "Average pressure is not a new force. It describes how a known total normal thrust is distributed over the actual loaded/contact area: p_avg=F_thrust/A_contact.",
+      "teaching_path": [
+        {
+          "id": "TP-A-1",
+          "role": "DECLARE",
+          "action": "Identify the exact surface patch carrying the normal interaction and label its actual area A_contact.",
+          "why_valid": "Only the area over which the chosen force is distributed belongs in this average-pressure quotient.",
+          "inputs": [],
+          "output": "actual loaded/contact area selected",
+          "source_ref": "SRC-NCERT-G9-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-A-2",
+          "role": "TRANSFORM",
+          "action": "Use the already-solved normal thrust F_thrust as the numerator rather than replacing it automatically by weight.",
+          "why_valid": "Pressure inherits the real contact force determined by the force balance; weight equals that thrust only in the special balance already established.",
+          "inputs": [
+            "F_thrust",
+            "A_contact"
+          ],
+          "output": "pressure inputs identified independently",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-A-3",
+          "role": "TRANSFORM",
+          "action": "Form p_avg=F_thrust/A_contact in SI units, converting a squared length unit by squaring the length conversion.",
+          "why_valid": "A pascal is N/m^2; area contains two length factors, so for example 1 cm^2=10^-4 m^2.",
+          "inputs": [
+            "F_thrust",
+            "A_contact"
+          ],
+          "output": "average pressure in Pa",
+          "source_ref": "SRC-NCERT-G9-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-A-4",
+          "role": "VERIFY",
+          "action": "Before accepting the result, vary only area: the same thrust on a smaller area must give a larger pressure and the units must reduce to N/m^2.",
+          "why_valid": "The inverse-area trend and dimensional unit are independent checks on the quotient.",
+          "inputs": [
+            "p_avg result"
+          ],
+          "output": "trend and unit checked",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        }
+      ],
+      "relation_refs": [],
+      "representation_refs": [
+        "REP-PHY-PRESSURE-CONTACT-AREA"
+      ],
+      "question_family_refs": [
+        "FAM-PHY-THRUST-PRESSURE-COMPETITIVE"
+      ],
+      "misconceptions": [
+        {
+          "wrong_idea": "Pressure is larger whenever the force is larger, regardless of area.",
+          "diagnostic_prompt": "Two orientations of the same block have the same normal thrust but different contact areas. Must their pressures be equal?",
+          "repair": "No. Hold the same thrust fixed and compare the actual contact areas; pressure is larger on the smaller area."
+        },
+        {
+          "wrong_idea": "1 cm^2 equals 10^-2 m^2 because 1 cm equals 10^-2 m.",
+          "diagnostic_prompt": "How many powers of the centimetre-to-metre conversion belong in an area conversion?",
+          "repair": "Two. Area has two length factors, so 1 cm^2=(10^-2 m)^2=10^-4 m^2."
+        }
+      ],
+      "exit_task": {
+        "prompt": "Explain why turning the same rectangular block from a broad face onto a narrower face can increase average pressure even when its normal thrust is unchanged.",
+        "source_ref": "SRC-AUTHOR-THRUST-PRESSURE",
+        "answer": {
+          "kind": "MODEL_RESPONSE",
+          "summary": "The normal thrust stays the same in the stated balance, while the actual contact area decreases; p_avg=F_thrust/A_contact therefore increases.",
+          "reasoning": [
+            "Hold the same contact force fixed.",
+            "Identify the new smaller loaded area.",
+            "Use the inverse-area relation rather than changing force and area together."
+          ],
+          "check": "If the two contact areas were equal, the pressures would have to be equal under the same thrust.",
+          "acceptable_alternatives": [],
+          "subpart_answers": [],
+          "verification_status": "CHECKED_BY_AUTHOR"
+        },
+        "oracle": {
+          "no_numeric_claim": "The task compares pressures qualitatively under a stated unchanged force."
+        }
+      },
+      "research_contribution": "The construction separates force-model selection from area selection so a learner cannot hide a wrong thrust behind correct division.",
+      "prerequisite_refs": [
+        "CAP-PHY-THRUST-NORMAL-BALANCE"
+      ],
+      "lineage": [],
+      "construction_units": [
+        {
+          "id": "CU-TP-CONTACT-AREA",
+          "decision": "Choose the force and actual area independently before forming the pressure quotient.",
+          "step_refs": [
+            "TP-A-1",
+            "TP-A-2",
+            "TP-A-3",
+            "TP-A-4"
+          ],
+          "representation_ref": "REP-PHY-PRESSURE-CONTACT-AREA",
+          "reveal_stage_refs": [
+            "area-same-block",
+            "area-same-thrust",
+            "area-contact",
+            "area-pressure"
+          ],
+          "worked_anchor_ref": null,
+          "bank_anchor_ref": "PYQ-PHY-INJSO-2013-Q58",
+          "misconception_indexes": [
+            0,
+            1
+          ],
+          "independent_checks": [
+            {
+              "statement": "With the same thrust, doubling the actual contact area must halve average pressure.",
+              "check_type": "LIMIT_CASE_ANALYSIS",
+              "role": "CHECK"
+            },
+            {
+              "statement": "Compare a block on a 200 cm^2 face and a 50 cm^2 face without changing its normal thrust; identify which orientation has four times the pressure.",
+              "check_type": "SUBSTITUTION_BACK_CHECK",
+              "role": "APPLY"
+            },
+            {
+              "statement": "Carry the fact that area has two length factors into the similar-object scaling unit.",
+              "check_type": null,
+              "role": "CONNECT"
+            }
+          ]
+        }
+      ]
     },
     {
-      "id":"MIC-PHY-PRESSURE-SCALING","version":"0.1.0","status":"CANDIDATE","source_refs":["SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"],"evidence_refs":[],"extensions":{},
-      "title":"Similar objects make weight and contact area scale with different powers","bucket_id":"BUCKET-PHY-THRUST-PRESSURE","primary_capability_ref":"CAP-PHY-PRESSURE-SCALING","intrinsic_badge":"HARD","badge_reason":"The learner must hold one geometric scale factor in mind while assigning it different exponents to length, area and volume, then combine those scalings without confusing any of them.",
-      "entry_assumptions":["Can use p=F/A after identifying the correct normal thrust and actual contact area.","Can recognise area as a product of two lengths and volume as a product of three lengths."],
-      "inferential_jump":"For similar same-density bodies scaled by a linear factor lambda, weight scales as lambda^3 while a corresponding contact face scales as lambda^2; therefore pressure on that face scales as lambda, not lambda^2 or lambda^3.",
-      "teaching_path":[
-        {"id":"TP-S-1","role":"DECLARE","action":"Represent every corresponding length of the enlarged body as lambda times the original length.","why_valid":"Geometric similarity means one common linear scale factor relates all corresponding lengths.","inputs":[],"output":"single linear scale factor lambda","source_ref":"SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"},
-        {"id":"TP-S-2","role":"TRANSFORM","action":"Scale volume and same-density weight with three length factors: V' / V=lambda^3 and W'/W=lambda^3.","why_valid":"Volume contains three independent length dimensions, and equal density at the same g makes mass and weight proportional to volume.","inputs":["lambda","same density"],"output":"weight ratio lambda^3","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-S-3","role":"TRANSFORM","action":"Scale the corresponding contact face with two length factors: A'/A=lambda^2.","why_valid":"A planar face is a two-dimensional measure; the third body dimension changes volume but not that face area.","inputs":["lambda","corresponding face"],"output":"contact-area ratio lambda^2","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-S-4","role":"VERIFY","action":"Form the ratio p'/p=(lambda^3)/(lambda^2)=lambda and test lambda=1 as a no-change limit.","why_valid":"Only after force and area scalings are independently correct may their quotient be simplified; the lambda=1 limit must recover equal pressure.","inputs":["weight ratio lambda^3","area ratio lambda^2"],"output":"pressure ratio lambda","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"}
+      "id": "MIC-PHY-PRESSURE-SCALING",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"
       ],
-      "relation_refs":[],"representation_refs":["REP-PHY-PRESSURE-SCALING"],"question_family_refs":["FAM-PHY-THRUST-PRESSURE-COMPETITIVE"],
-      "misconceptions":[{"wrong_idea":"If every dimension doubles, every physical quantity in the problem doubles.","diagnostic_prompt":"When all three dimensions double, how many factors of two appear in volume and how many in one face area?","repair":"Track dimensionality: one length gives lambda, an area gives lambda^2, and a volume gives lambda^3 before you form the pressure ratio."}],
-      "exit_task":{"prompt":"For geometrically similar blocks of the same material resting on corresponding faces, explain why pressure scales with the first power of the linear scale factor even though weight scales with its third power.","source_ref":"SRC-AUTHOR-THRUST-PRESSURE","answer":{"kind":"MODEL_RESPONSE","summary":"Weight scales as lambda^3 and contact area as lambda^2, so their ratio pressure scales as lambda.","reasoning":["Same density makes weight proportional to volume.","Volume carries three length factors while face area carries two.","Divide lambda^3 by lambda^2 only after establishing both independently."],"check":"lambda=1 must recover unchanged weight, area and pressure ratios of one.","acceptable_alternatives":[],"subpart_answers":[],"verification_status":"CHECKED_BY_AUTHOR"},"oracle":{"no_numeric_claim":"The answer establishes a symbolic scaling law rather than a computed numerical result."}},
-      "research_contribution":"INJSO 2013 Q58 supplies a genuine competitive demand in which the central difficulty is geometric exponent selection rather than arithmetic.","prerequisite_refs":["CAP-PHY-PRESSURE-CONTACT-AREA"],"lineage":[],
-      "construction_units":[{"id":"CU-TP-SCALING","decision":"Assign the correct dimensional exponent before combining force and area into pressure.","step_refs":["TP-S-1","TP-S-2","TP-S-3","TP-S-4"],"representation_ref":"REP-PHY-PRESSURE-SCALING","reveal_stage_refs":["scale-length","scale-volume","scale-area","scale-pressure"],"worked_anchor_ref":null,"bank_anchor_ref":"PYQ-PHY-INJSO-2013-Q58","crux_question_refs":["PYQ-PHY-INJSO-2013-Q58"],"crux_step_ref":"TP-S-3","misconception_indexes":[0],"independent_checks":[{"statement":"Set lambda=1 and confirm that the pressure ratio becomes one.","check_type":"LIMIT_CASE_ANALYSIS","role":"CHECK"},{"statement":"For lambda=3, state the weight and face-area factors first, then the pressure factor, without calculating either absolute pressure.","check_type":"SUBSTITUTION_BACK_CHECK","role":"APPLY"},{"statement":"The next unit keeps area fixed while rotating its orientation, separating physical area from projected area.","check_type":null,"role":"CONNECT"}]}]
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "Similar objects make weight and contact area scale with different powers",
+      "bucket_id": "BUCKET-PHY-THRUST-PRESSURE",
+      "primary_capability_ref": "CAP-PHY-PRESSURE-SCALING",
+      "intrinsic_badge": "HARD",
+      "badge_reason": "The learner must hold one geometric scale factor in mind while assigning it different exponents to length, area and volume, then combine those scalings without confusing any of them.",
+      "entry_assumptions": [
+        "Can use p=F/A after identifying the correct normal thrust and actual contact area.",
+        "Can recognise area as a product of two lengths and volume as a product of three lengths."
+      ],
+      "inferential_jump": "For similar same-density bodies scaled by a linear factor lambda, weight scales as lambda^3 while a corresponding contact face scales as lambda^2; therefore pressure on that face scales as lambda, not lambda^2 or lambda^3.",
+      "teaching_path": [
+        {
+          "id": "TP-S-1",
+          "role": "DECLARE",
+          "action": "Represent every corresponding length of the enlarged body as lambda times the original length.",
+          "why_valid": "Geometric similarity means one common linear scale factor relates all corresponding lengths.",
+          "inputs": [],
+          "output": "single linear scale factor lambda",
+          "source_ref": "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"
+        },
+        {
+          "id": "TP-S-2",
+          "role": "TRANSFORM",
+          "action": "Scale volume and same-density weight with three length factors: V' / V=lambda^3 and W'/W=lambda^3.",
+          "why_valid": "Volume contains three independent length dimensions, and equal density at the same g makes mass and weight proportional to volume.",
+          "inputs": [
+            "lambda",
+            "same density"
+          ],
+          "output": "weight ratio lambda^3",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-S-3",
+          "role": "TRANSFORM",
+          "action": "Scale the corresponding contact face with two length factors: A'/A=lambda^2.",
+          "why_valid": "A planar face is a two-dimensional measure; the third body dimension changes volume but not that face area.",
+          "inputs": [
+            "lambda",
+            "corresponding face"
+          ],
+          "output": "contact-area ratio lambda^2",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-S-4",
+          "role": "VERIFY",
+          "action": "Form the ratio p'/p=(lambda^3)/(lambda^2)=lambda and test lambda=1 as a no-change limit.",
+          "why_valid": "Only after force and area scalings are independently correct may their quotient be simplified; the lambda=1 limit must recover equal pressure.",
+          "inputs": [
+            "weight ratio lambda^3",
+            "area ratio lambda^2"
+          ],
+          "output": "pressure ratio lambda",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        }
+      ],
+      "relation_refs": [],
+      "representation_refs": [
+        "REP-PHY-PRESSURE-SCALING"
+      ],
+      "question_family_refs": [
+        "FAM-PHY-THRUST-PRESSURE-COMPETITIVE"
+      ],
+      "misconceptions": [
+        {
+          "wrong_idea": "If every dimension doubles, every physical quantity in the problem doubles.",
+          "diagnostic_prompt": "When all three dimensions double, how many factors of two appear in volume and how many in one face area?",
+          "repair": "Track dimensionality: one length gives lambda, an area gives lambda^2, and a volume gives lambda^3 before you form the pressure ratio."
+        }
+      ],
+      "exit_task": {
+        "prompt": "For geometrically similar blocks of the same material resting on corresponding faces, explain why pressure scales with the first power of the linear scale factor even though weight scales with its third power.",
+        "source_ref": "SRC-AUTHOR-THRUST-PRESSURE",
+        "answer": {
+          "kind": "MODEL_RESPONSE",
+          "summary": "Weight scales as lambda^3 and contact area as lambda^2, so their ratio pressure scales as lambda.",
+          "reasoning": [
+            "Same density makes weight proportional to volume.",
+            "Volume carries three length factors while face area carries two.",
+            "Divide lambda^3 by lambda^2 only after establishing both independently."
+          ],
+          "check": "lambda=1 must recover unchanged weight, area and pressure ratios of one.",
+          "acceptable_alternatives": [],
+          "subpart_answers": [],
+          "verification_status": "CHECKED_BY_AUTHOR"
+        },
+        "oracle": {
+          "no_numeric_claim": "The answer establishes a symbolic scaling law rather than a computed numerical result."
+        }
+      },
+      "research_contribution": "INJSO 2013 Q58 supplies a genuine competitive demand in which the central difficulty is geometric exponent selection rather than arithmetic.",
+      "prerequisite_refs": [
+        "CAP-PHY-PRESSURE-CONTACT-AREA"
+      ],
+      "lineage": [],
+      "construction_units": [
+        {
+          "id": "CU-TP-SCALING",
+          "decision": "Assign the correct dimensional exponent before combining force and area into pressure.",
+          "step_refs": [
+            "TP-S-1",
+            "TP-S-2",
+            "TP-S-3",
+            "TP-S-4"
+          ],
+          "representation_ref": "REP-PHY-PRESSURE-SCALING",
+          "reveal_stage_refs": [
+            "scale-length",
+            "scale-volume",
+            "scale-area",
+            "scale-pressure"
+          ],
+          "worked_anchor_ref": null,
+          "bank_anchor_ref": "PYQ-PHY-INJSO-2013-Q58",
+          "crux_question_refs": [
+            "PYQ-PHY-INJSO-2013-Q58"
+          ],
+          "crux_step_ref": "TP-S-3",
+          "misconception_indexes": [
+            0
+          ],
+          "independent_checks": [
+            {
+              "statement": "Set lambda=1 and confirm that the pressure ratio becomes one.",
+              "check_type": "LIMIT_CASE_ANALYSIS",
+              "role": "CHECK"
+            },
+            {
+              "statement": "For lambda=3, state the weight and face-area factors first, then the pressure factor, without calculating either absolute pressure.",
+              "check_type": "SUBSTITUTION_BACK_CHECK",
+              "role": "APPLY"
+            },
+            {
+              "statement": "The next unit keeps area fixed while rotating its orientation, separating physical area from projected area.",
+              "check_type": null,
+              "role": "CONNECT"
+            }
+          ]
+        }
+      ]
     },
     {
-      "id":"MIC-PHY-PRESSURE-SURFACE-ORIENTATION","version":"0.1.0","status":"CANDIDATE","source_refs":["SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"],"evidence_refs":[],"extensions":{},
-      "title":"Pressure is scalar; the surface normal gives the force direction","bucket_id":"BUCKET-PHY-THRUST-PRESSURE","primary_capability_ref":"CAP-PHY-PRESSURE-SURFACE-ORIENTATION","intrinsic_badge":"HARD","badge_reason":"A tilted surface tempts learners to attach a preferred vertical direction to pressure or to insert a projected-area cosine into the magnitude even when uniform pressure acts normally on the actual face.",
-      "entry_assumptions":["Can identify a surface normal and distinguish a scalar magnitude from a vector direction."],
-      "inferential_jump":"Pressure at a point is a scalar. On each small surface element it produces a force normal to that element; for uniform pressure on one flat face, those parallel elemental forces sum to a resultant of magnitude pA normal to the face, independent of the face's tilt relative to the horizontal.",
-      "teaching_path":[
-        {"id":"TP-O-1","role":"DECLARE","action":"Treat p as the same scalar pressure value at every point of the stated uniformly loaded face, without assigning p a vector arrow.","why_valid":"Pressure is a scalar field; direction belongs to the force a surface experiences, not to the pressure value itself.","inputs":[],"output":"uniform scalar p over actual face","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-O-2","role":"TRANSFORM","action":"At several small patches draw each pressure-force element perpendicular to the local face.","why_valid":"Normal traction is the defining mechanical action of static pressure on a surface element.","inputs":["flat face","uniform p"],"output":"parallel normal elemental forces","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-O-3","role":"TRANSFORM","action":"Sum the parallel elemental forces over the actual area to obtain resultant magnitude F=pA in the surface-normal direction.","why_valid":"Every small contribution has magnitude p dA and the same normal direction on one plane, so their magnitudes integrate to p times actual area.","inputs":["p","actual area A"],"output":"resultant F=pA normal to face","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-O-4","role":"VERIFY","action":"Rotate the same rigid face without changing p; verify that its actual area and force magnitude stay fixed while only the normal direction rotates.","why_valid":"Rigid rotation changes orientation, not physical area, and uniform pressure magnitude was held fixed.","inputs":["same p","same A"],"output":"magnitude invariant under tilt; direction rotates","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"}
+      "id": "MIC-PHY-PRESSURE-SURFACE-ORIENTATION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"
       ],
-      "relation_refs":[],"representation_refs":["REP-PHY-PRESSURE-ORIENTATION"],"question_family_refs":["FAM-PHY-THRUST-PRESSURE-COMPETITIVE"],
-      "misconceptions":[{"wrong_idea":"Atmospheric pressure points downward because gravity points downward.","diagnostic_prompt":"At one point in still air, does a vertical wall experience atmospheric pressure force normal to itself or vertically downward?","repair":"Pressure is scalar; the force direction is set by the surface normal."},{"wrong_idea":"A tilted surface has total pressure force p A cos(theta) because only its horizontal projection counts.","diagnostic_prompt":"Does tilting a rigid tabletop change its actual physical area?","repair":"No. Use p times the actual loaded area for total resultant magnitude. A cosine appears only when resolving that resultant into a chosen external direction or when a problem explicitly supplies a projected area."}],
-      "exit_task":{"prompt":"A flat plate under uniform pressure is slowly tilted without changing its area or the pressure field. State what changes and what stays fixed about the pressure resultant.","source_ref":"SRC-AUTHOR-THRUST-PRESSURE","answer":{"kind":"MODEL_RESPONSE","summary":"The resultant direction rotates with the surface normal; its magnitude pA stays fixed because pressure and actual area are unchanged.","reasoning":["Pressure is scalar.","Each elemental force is normal to the face.","Rigid rotation preserves actual area, so the summed magnitude remains pA."],"check":"Returning the plate to its original orientation must recover the original force vector without any change in magnitude history.","acceptable_alternatives":[],"subpart_answers":[],"verification_status":"CHECKED_BY_AUTHOR"},"oracle":{"no_numeric_claim":"The task asks for invariants and direction change under a controlled rotation, not a numerical force."}},
-      "research_contribution":"INJSO 2013 Q62 supplies an unusually clean trap-sensitive test of pressure scalarity and actual-versus-projected area.","prerequisite_refs":["CAP-PHY-PRESSURE-CONTACT-AREA"],"lineage":[],
-      "construction_units":[{"id":"CU-TP-ORIENTATION","decision":"Keep scalar pressure, actual area and vector force direction as separate objects when the surface is tilted.","step_refs":["TP-O-1","TP-O-2","TP-O-3","TP-O-4"],"representation_ref":"REP-PHY-PRESSURE-ORIENTATION","reveal_stage_refs":["orient-face","orient-local","orient-resultant","orient-trap"],"worked_anchor_ref":null,"bank_anchor_ref":"PYQ-PHY-INJSO-2013-Q62","crux_question_refs":["PYQ-PHY-INJSO-2013-Q62"],"crux_step_ref":"TP-O-3","misconception_indexes":[0,1],"independent_checks":[{"statement":"Rotate the same plate through several angles while holding p fixed; total-force magnitude must remain pA.","check_type":"SYMMETRY_EXTREMAL_TEST","role":"CHECK"},{"statement":"For a plate of actual area A at 90 degrees to its original orientation, state the new force direction and whether its magnitude changes.","check_type":"SIGN_AND_DIRECTION","role":"APPLY"},{"statement":"The next unit uses pressure magnitude at different depths, where pressure changes because depth changes rather than because a surface rotates.","check_type":null,"role":"CONNECT"}]}]
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "Pressure is scalar; the surface normal gives the force direction",
+      "bucket_id": "BUCKET-PHY-THRUST-PRESSURE",
+      "primary_capability_ref": "CAP-PHY-PRESSURE-SURFACE-ORIENTATION",
+      "intrinsic_badge": "HARD",
+      "badge_reason": "A tilted surface tempts learners to attach a preferred vertical direction to pressure or to insert a projected-area cosine into the magnitude even when uniform pressure acts normally on the actual face.",
+      "entry_assumptions": [
+        "Can identify a surface normal and distinguish a scalar magnitude from a vector direction."
+      ],
+      "inferential_jump": "Pressure at a point is a scalar. On each small surface element it produces a force normal to that element; for uniform pressure on one flat face, those parallel elemental forces sum to a resultant of magnitude pA normal to the face, independent of the face's tilt relative to the horizontal.",
+      "teaching_path": [
+        {
+          "id": "TP-O-1",
+          "role": "DECLARE",
+          "action": "Treat p as the same scalar pressure value at every point of the stated uniformly loaded face, without assigning p a vector arrow.",
+          "why_valid": "Pressure is a scalar field; direction belongs to the force a surface experiences, not to the pressure value itself.",
+          "inputs": [],
+          "output": "uniform scalar p over actual face",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-O-2",
+          "role": "TRANSFORM",
+          "action": "At several small patches draw each pressure-force element perpendicular to the local face.",
+          "why_valid": "Normal traction is the defining mechanical action of static pressure on a surface element.",
+          "inputs": [
+            "flat face",
+            "uniform p"
+          ],
+          "output": "parallel normal elemental forces",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-O-3",
+          "role": "TRANSFORM",
+          "action": "Sum the parallel elemental forces over the actual area to obtain resultant magnitude F=pA in the surface-normal direction.",
+          "why_valid": "Every small contribution has magnitude p dA and the same normal direction on one plane, so their magnitudes integrate to p times actual area.",
+          "inputs": [
+            "p",
+            "actual area A"
+          ],
+          "output": "resultant F=pA normal to face",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-O-4",
+          "role": "VERIFY",
+          "action": "Rotate the same rigid face without changing p; verify that its actual area and force magnitude stay fixed while only the normal direction rotates.",
+          "why_valid": "Rigid rotation changes orientation, not physical area, and uniform pressure magnitude was held fixed.",
+          "inputs": [
+            "same p",
+            "same A"
+          ],
+          "output": "magnitude invariant under tilt; direction rotates",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        }
+      ],
+      "relation_refs": [],
+      "representation_refs": [
+        "REP-PHY-PRESSURE-ORIENTATION"
+      ],
+      "question_family_refs": [
+        "FAM-PHY-THRUST-PRESSURE-COMPETITIVE"
+      ],
+      "misconceptions": [
+        {
+          "wrong_idea": "Atmospheric pressure points downward because gravity points downward.",
+          "diagnostic_prompt": "At one point in still air, does a vertical wall experience atmospheric pressure force normal to itself or vertically downward?",
+          "repair": "Pressure is scalar; the force direction is set by the surface normal."
+        },
+        {
+          "wrong_idea": "A tilted surface has total pressure force p A cos(theta) because only its horizontal projection counts.",
+          "diagnostic_prompt": "Does tilting a rigid tabletop change its actual physical area?",
+          "repair": "No. Use p times the actual loaded area for total resultant magnitude. A cosine appears only when resolving that resultant into a chosen external direction or when a problem explicitly supplies a projected area."
+        }
+      ],
+      "exit_task": {
+        "prompt": "A flat plate under uniform pressure is slowly tilted without changing its area or the pressure field. State what changes and what stays fixed about the pressure resultant.",
+        "source_ref": "SRC-AUTHOR-THRUST-PRESSURE",
+        "answer": {
+          "kind": "MODEL_RESPONSE",
+          "summary": "The resultant direction rotates with the surface normal; its magnitude pA stays fixed because pressure and actual area are unchanged.",
+          "reasoning": [
+            "Pressure is scalar.",
+            "Each elemental force is normal to the face.",
+            "Rigid rotation preserves actual area, so the summed magnitude remains pA."
+          ],
+          "check": "Returning the plate to its original orientation must recover the original force vector without any change in magnitude history.",
+          "acceptable_alternatives": [],
+          "subpart_answers": [],
+          "verification_status": "CHECKED_BY_AUTHOR"
+        },
+        "oracle": {
+          "no_numeric_claim": "The task asks for invariants and direction change under a controlled rotation, not a numerical force."
+        }
+      },
+      "research_contribution": "INJSO 2013 Q62 supplies an unusually clean trap-sensitive test of pressure scalarity and actual-versus-projected area.",
+      "prerequisite_refs": [
+        "CAP-PHY-PRESSURE-CONTACT-AREA"
+      ],
+      "lineage": [],
+      "construction_units": [
+        {
+          "id": "CU-TP-ORIENTATION",
+          "decision": "Keep scalar pressure, actual area and vector force direction as separate objects when the surface is tilted.",
+          "step_refs": [
+            "TP-O-1",
+            "TP-O-2",
+            "TP-O-3",
+            "TP-O-4"
+          ],
+          "representation_ref": "REP-PHY-PRESSURE-ORIENTATION",
+          "reveal_stage_refs": [
+            "orient-face",
+            "orient-local",
+            "orient-resultant",
+            "orient-trap"
+          ],
+          "worked_anchor_ref": null,
+          "bank_anchor_ref": "PYQ-PHY-INJSO-2013-Q62",
+          "crux_question_refs": [
+            "PYQ-PHY-INJSO-2013-Q62"
+          ],
+          "crux_step_ref": "TP-O-3",
+          "misconception_indexes": [
+            0,
+            1
+          ],
+          "independent_checks": [
+            {
+              "statement": "Rotate the same plate through several angles while holding p fixed; total-force magnitude must remain pA.",
+              "check_type": "SYMMETRY_EXTREMAL_TEST",
+              "role": "CHECK"
+            },
+            {
+              "statement": "For a plate of actual area A at 90 degrees to its original orientation, state the new force direction and whether its magnitude changes.",
+              "check_type": "SIGN_AND_DIRECTION",
+              "role": "APPLY"
+            },
+            {
+              "statement": "The next unit uses pressure magnitude at different depths, where pressure changes because depth changes rather than because a surface rotates.",
+              "check_type": null,
+              "role": "CONNECT"
+            }
+          ]
+        }
+      ]
     },
     {
-      "id":"MIC-PHY-PRESSURE-HYDROSTATIC-BRIDGE","version":"0.1.0","status":"CANDIDATE","source_refs":["SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"],"evidence_refs":[],"extensions":{"issue383:scope_class":"QUESTION_DEMAND_EXTENSION"},
-      "title":"Depth adds gauge pressure; gas laws need absolute pressure","bucket_id":"BUCKET-PHY-THRUST-PRESSURE","primary_capability_ref":"CAP-PHY-PRESSURE-HYDROSTATIC-BRIDGE","intrinsic_badge":"HARD","badge_reason":"The learner must keep two pressure reference levels straight: the liquid-column contribution grows with depth, while a gas law uses the total absolute pressure that includes the surface pressure.",
-      "entry_assumptions":["Can compare pressures and use proportional reasoning.","For the selected competition item, accepts the supplied isothermal PV=constant relation as a stated model rather than as new Grade-9 curriculum."],
-      "inferential_jump":"In a static liquid of uniform density, vertical depth h below a free surface adds gauge pressure rho g h to the surface pressure: P_abs=P_surface+rho g h. A gas law compares absolute pressures, so atmospheric/surface pressure cannot be silently discarded.",
-      "teaching_path":[
-        {"id":"TP-H-1","role":"DECLARE","action":"Mark the free-surface pressure P_surface and the deeper point's vertical depth h in one connected static liquid.","why_valid":"Hydrostatic pressure change depends on vertical depth below the reference surface, not path length or container shape.","inputs":[],"output":"surface reference + vertical depth h","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-H-2","role":"TRANSFORM","action":"Write the liquid-column contribution as Delta P=rho g h and label it gauge pressure relative to the chosen surface.","why_valid":"For uniform density and constant g, each additional depth adds the weight per area of an additional liquid column.","inputs":["rho","g","h"],"output":"P_gauge=rho g h","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-H-3","role":"TRANSFORM","action":"Recover absolute pressure by adding the surface pressure: P_abs=P_surface+rho g h before using a gas-law pressure ratio.","why_valid":"A gas's mechanical pressure is measured from zero pressure, whereas gauge pressure is measured relative to the surface reference.","inputs":["P_surface","rho g h"],"output":"P_abs at depth","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"},
-        {"id":"TP-H-4","role":"VERIFY","action":"Take h to zero and check that P_abs returns to P_surface; for the bubble anchor, back-substitute the final depth to recover the required absolute-pressure ratio.","why_valid":"Both are independent boundary/reversal checks on the pressure reference bookkeeping.","inputs":["P_abs relation"],"output":"reference and ratio checks satisfied","source_ref":"SRC-AUTHOR-THRUST-PRESSURE"}
+      "id": "MIC-PHY-PRESSURE-HYDROSTATIC-BRIDGE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"
       ],
-      "relation_refs":[],"representation_refs":["REP-PHY-PRESSURE-HYDROSTATIC"],"question_family_refs":["FAM-PHY-THRUST-PRESSURE-COMPETITIVE"],
-      "misconceptions":[{"wrong_idea":"At depth h the absolute pressure is always just rho g h.","diagnostic_prompt":"At the liquid surface where h=0, would this idea predict zero absolute pressure even though the atmosphere is present?","repair":"rho g h is the pressure increase relative to the surface. Add the surface pressure to obtain absolute pressure."},{"wrong_idea":"Container shape or slanted path length to the surface sets hydrostatic pressure change.","diagnostic_prompt":"Two points in the same connected liquid have equal vertical depth but different horizontal positions and path shapes. Should their static pressures differ?","repair":"No. Under this model the pressure difference depends on vertical depth rho g Delta h, not path length."}],
-      "exit_task":{"prompt":"Explain why a gas bubble at the bottom of an open lake must use P_atm+rho g h, not rho g h alone, as its pressure in Boyle's law.","source_ref":"SRC-AUTHOR-THRUST-PRESSURE","answer":{"kind":"MODEL_RESPONSE","summary":"rho g h is only the water-column increase above the free-surface pressure; Boyle's law needs the absolute gas pressure, so the atmospheric surface pressure must be added.","reasoning":["Choose the atmospheric free surface as reference.","Treat rho g h as gauge pressure relative to that reference.","Add P_atm before forming a gas-law pressure ratio."],"check":"At h=0 the expression must reduce to P_atm, not zero.","acceptable_alternatives":[],"subpart_answers":[],"verification_status":"CHECKED_BY_AUTHOR"},"oracle":{"no_numeric_claim":"The task checks pressure-reference selection conceptually without asking for a computed depth."}},
-      "research_contribution":"INJSO 2012 Q39 justifies this narrow bridge because its difficulty is exactly the absolute-versus-gauge pressure distinction; the package does not expand into full fluid dynamics.","prerequisite_refs":["CAP-PHY-PRESSURE-CONTACT-AREA"],"lineage":[],
-      "construction_units":[{"id":"CU-TP-HYDROSTATIC","decision":"Choose the pressure reference correctly before coupling hydrostatics to another model.","step_refs":["TP-H-1","TP-H-2","TP-H-3","TP-H-4"],"representation_ref":"REP-PHY-PRESSURE-HYDROSTATIC","reveal_stage_refs":["hydro-column","hydro-surface","hydro-gauge","hydro-ratio"],"worked_anchor_ref":null,"bank_anchor_ref":"PYQ-PHY-INJSO-2012-Q39","crux_question_refs":["PYQ-PHY-INJSO-2012-Q39"],"crux_step_ref":"TP-H-3","misconception_indexes":[0,1],"independent_checks":[{"statement":"Set h=0; absolute pressure must reduce to the free-surface pressure.","check_type":"LIMIT_CASE_ANALYSIS","role":"CHECK"},{"statement":"For two equal-depth points in the same static liquid, predict their pressure relation even if the container shapes above them differ.","check_type":"SYMMETRY_EXTREMAL_TEST","role":"APPLY"},{"statement":"This is the stopping boundary of the slice: continuity and Bernoulli require new flow-model decisions and are not inferred from hydrostatics.","check_type":null,"role":"CONNECT"}]}]
+      "evidence_refs": [],
+      "extensions": {
+        "issue383:scope_class": "QUESTION_DEMAND_EXTENSION"
+      },
+      "title": "Depth adds gauge pressure; gas laws need absolute pressure",
+      "bucket_id": "BUCKET-PHY-THRUST-PRESSURE",
+      "primary_capability_ref": "CAP-PHY-PRESSURE-HYDROSTATIC-BRIDGE",
+      "intrinsic_badge": "HARD",
+      "badge_reason": "The learner must keep two pressure reference levels straight: the liquid-column contribution grows with depth, while a gas law uses the total absolute pressure that includes the surface pressure.",
+      "entry_assumptions": [
+        "Can compare pressures and use proportional reasoning.",
+        "For the selected competition item, accepts the supplied isothermal PV=constant relation as a stated model rather than as new Grade-9 curriculum."
+      ],
+      "inferential_jump": "In a static liquid of uniform density, vertical depth h below a free surface adds gauge pressure rho g h to the surface pressure: P_abs=P_surface+rho g h. A gas law compares absolute pressures, so atmospheric/surface pressure cannot be silently discarded.",
+      "teaching_path": [
+        {
+          "id": "TP-H-1",
+          "role": "DECLARE",
+          "action": "Mark the free-surface pressure P_surface and the deeper point's vertical depth h in one connected static liquid.",
+          "why_valid": "Hydrostatic pressure change depends on vertical depth below the reference surface, not path length or container shape.",
+          "inputs": [],
+          "output": "surface reference + vertical depth h",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-H-2",
+          "role": "TRANSFORM",
+          "action": "Write the liquid-column contribution as Delta P=rho g h and label it gauge pressure relative to the chosen surface.",
+          "why_valid": "For uniform density and constant g, each additional depth adds the weight per area of an additional liquid column.",
+          "inputs": [
+            "rho",
+            "g",
+            "h"
+          ],
+          "output": "P_gauge=rho g h",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-H-3",
+          "role": "TRANSFORM",
+          "action": "Recover absolute pressure by adding the surface pressure: P_abs=P_surface+rho g h before using a gas-law pressure ratio.",
+          "why_valid": "A gas's mechanical pressure is measured from zero pressure, whereas gauge pressure is measured relative to the surface reference.",
+          "inputs": [
+            "P_surface",
+            "rho g h"
+          ],
+          "output": "P_abs at depth",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        },
+        {
+          "id": "TP-H-4",
+          "role": "VERIFY",
+          "action": "Take h to zero and check that P_abs returns to P_surface; for the bubble anchor, back-substitute the final depth to recover the required absolute-pressure ratio.",
+          "why_valid": "Both are independent boundary/reversal checks on the pressure reference bookkeeping.",
+          "inputs": [
+            "P_abs relation"
+          ],
+          "output": "reference and ratio checks satisfied",
+          "source_ref": "SRC-AUTHOR-THRUST-PRESSURE"
+        }
+      ],
+      "relation_refs": [],
+      "representation_refs": [
+        "REP-PHY-PRESSURE-HYDROSTATIC"
+      ],
+      "question_family_refs": [
+        "FAM-PHY-THRUST-PRESSURE-COMPETITIVE"
+      ],
+      "misconceptions": [
+        {
+          "wrong_idea": "At depth h the absolute pressure is always just rho g h.",
+          "diagnostic_prompt": "At the liquid surface where h=0, would this idea predict zero absolute pressure even though the atmosphere is present?",
+          "repair": "rho g h is the pressure increase relative to the surface. Add the surface pressure to obtain absolute pressure."
+        },
+        {
+          "wrong_idea": "Container shape or slanted path length to the surface sets hydrostatic pressure change.",
+          "diagnostic_prompt": "Two points in the same connected liquid have equal vertical depth but different horizontal positions and path shapes. Should their static pressures differ?",
+          "repair": "No. Under this model the pressure difference depends on vertical depth rho g Delta h, not path length."
+        }
+      ],
+      "exit_task": {
+        "prompt": "Explain why a gas bubble at the bottom of an open lake must use P_atm+rho g h, not rho g h alone, as its pressure in Boyle's law.",
+        "source_ref": "SRC-AUTHOR-THRUST-PRESSURE",
+        "answer": {
+          "kind": "MODEL_RESPONSE",
+          "summary": "rho g h is only the water-column increase above the free-surface pressure; Boyle's law needs the absolute gas pressure, so the atmospheric surface pressure must be added.",
+          "reasoning": [
+            "Choose the atmospheric free surface as reference.",
+            "Treat rho g h as gauge pressure relative to that reference.",
+            "Add P_atm before forming a gas-law pressure ratio."
+          ],
+          "check": "At h=0 the expression must reduce to P_atm, not zero.",
+          "acceptable_alternatives": [],
+          "subpart_answers": [],
+          "verification_status": "CHECKED_BY_AUTHOR"
+        },
+        "oracle": {
+          "no_numeric_claim": "The task checks pressure-reference selection conceptually without asking for a computed depth."
+        }
+      },
+      "research_contribution": "INJSO 2012 Q39 justifies this narrow bridge because its difficulty is exactly the absolute-versus-gauge pressure distinction; the package does not expand into full fluid dynamics.",
+      "prerequisite_refs": [
+        "CAP-PHY-PRESSURE-CONTACT-AREA"
+      ],
+      "lineage": [],
+      "construction_units": [
+        {
+          "id": "CU-TP-HYDROSTATIC",
+          "decision": "Choose the pressure reference correctly before coupling hydrostatics to another model.",
+          "step_refs": [
+            "TP-H-1",
+            "TP-H-2",
+            "TP-H-3",
+            "TP-H-4"
+          ],
+          "representation_ref": "REP-PHY-PRESSURE-HYDROSTATIC",
+          "reveal_stage_refs": [
+            "hydro-column",
+            "hydro-surface",
+            "hydro-gauge",
+            "hydro-ratio"
+          ],
+          "worked_anchor_ref": null,
+          "bank_anchor_ref": "PYQ-PHY-INJSO-2012-Q39",
+          "crux_question_refs": [
+            "PYQ-PHY-INJSO-2012-Q39"
+          ],
+          "crux_step_ref": "TP-H-3",
+          "misconception_indexes": [
+            0,
+            1
+          ],
+          "independent_checks": [
+            {
+              "statement": "Set h=0; absolute pressure must reduce to the free-surface pressure.",
+              "check_type": "LIMIT_CASE_ANALYSIS",
+              "role": "CHECK"
+            },
+            {
+              "statement": "For two equal-depth points in the same static liquid, predict their pressure relation even if the container shapes above them differ.",
+              "check_type": "SYMMETRY_EXTREMAL_TEST",
+              "role": "APPLY"
+            },
+            {
+              "statement": "This is the stopping boundary of the slice: continuity and Bernoulli require new flow-model decisions and are not inferred from hydrostatics.",
+              "check_type": null,
+              "role": "CONNECT"
+            }
+          ]
+        }
+      ]
     }
   ],
   "relations": [],
   "representations": [
     {
-      "id":"REP-PHY-THRUST-INTERFACE","version":"0.1.0","status":"CANDIDATE","source_refs":["SRC-AUTHOR-THRUST-PRESSURE"],"evidence_refs":[],"extensions":{},"kind":"FREE_BODY_DIAGRAM",
-      "purpose":"Build the contact interaction from chosen body to normal/friction components and then the full resultant.",
-      "required_elements":["chosen body Q","table interface","normal component N","tangential friction f","resultant Rtable"],"relation_refs":[],"read_order":["chosen body Q","table interface","normal component N","tangential friction f","resultant Rtable"],
-      "instance_constraints":["Every force arrow shown on Q must represent an external force acting on Q.","The normal and friction components are perpendicular."],"accessibility":["Text labels name N, f and Rtable; direction is not communicated by colour alone."],"misleading_alternatives":["Showing Rtable as identical to N while friction is nonzero."],"rendered_asset_refs":["Physics/assets/representations/REP-PHY-THRUST-INTERFACE.svg"],"scene_instances":[],
-      "correspondence":[{"element":"normal component N","symbol":"N","in_words":"the perpendicular thrust from the table on Q"},{"element":"resultant Rtable","symbol":"R_table","in_words":"the vector sum of the table's normal and friction components"}],
-      "interactive_resource_refs":[],"reveal_stages":[
-        {"id":"interface-body","label":"Choose the body","purpose":"Fix body and interface before force ownership.","visible_elements":["chosen body Q","table interface"]},
-        {"id":"interface-normal","label":"Normal interaction","purpose":"Expose the perpendicular contact component.","visible_elements":["chosen body Q","table interface","normal component N"]},
-        {"id":"interface-friction","label":"Tangential contact","purpose":"Add rough-surface friction separately.","visible_elements":["chosen body Q","table interface","normal component N","tangential friction f"]},
-        {"id":"interface-resultant","label":"Total table reaction","purpose":"Combine the two contact components only when total reaction is required.","visible_elements":["chosen body Q","table interface","normal component N","tangential friction f","resultant Rtable"]}
-      ],"support_stage_map":[]
+      "id": "REP-PHY-THRUST-INTERFACE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-AUTHOR-THRUST-PRESSURE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "kind": "FREE_BODY_DIAGRAM",
+      "purpose": "Build the contact interaction from chosen body to normal/friction components and then the full resultant.",
+      "required_elements": [
+        "chosen body Q",
+        "table interface",
+        "normal component N",
+        "tangential friction f",
+        "resultant Rtable"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "chosen body Q",
+        "table interface",
+        "normal component N",
+        "tangential friction f",
+        "resultant Rtable"
+      ],
+      "instance_constraints": [
+        "Every force arrow shown on Q must represent an external force acting on Q.",
+        "The normal and friction components are perpendicular."
+      ],
+      "accessibility": [
+        "Text labels name N, f and Rtable; direction is not communicated by colour alone."
+      ],
+      "misleading_alternatives": [
+        "Showing Rtable as identical to N while friction is nonzero."
+      ],
+      "rendered_asset_refs": [
+        "Physics/assets/representations/REP-PHY-THRUST-INTERFACE.svg"
+      ],
+      "scene_instances": [],
+      "correspondence": [
+        {
+          "element": "normal component N",
+          "symbol": "N",
+          "in_words": "the perpendicular thrust from the table on Q"
+        },
+        {
+          "element": "resultant Rtable",
+          "symbol": "R_table",
+          "in_words": "the vector sum of the table's normal and friction components"
+        }
+      ],
+      "interactive_resource_refs": [],
+      "reveal_stages": [
+        {
+          "id": "interface-body",
+          "label": "Choose the body",
+          "purpose": "Fix body and interface before force ownership.",
+          "visible_elements": [
+            "chosen body Q",
+            "table interface"
+          ]
+        },
+        {
+          "id": "interface-normal",
+          "label": "Normal interaction",
+          "purpose": "Expose the perpendicular contact component.",
+          "visible_elements": [
+            "chosen body Q",
+            "table interface",
+            "normal component N"
+          ]
+        },
+        {
+          "id": "interface-friction",
+          "label": "Tangential contact",
+          "purpose": "Add rough-surface friction separately.",
+          "visible_elements": [
+            "chosen body Q",
+            "table interface",
+            "normal component N",
+            "tangential friction f"
+          ]
+        },
+        {
+          "id": "interface-resultant",
+          "label": "Total table reaction",
+          "purpose": "Combine the two contact components only when total reaction is required.",
+          "visible_elements": [
+            "chosen body Q",
+            "table interface",
+            "normal component N",
+            "tangential friction f",
+            "resultant Rtable"
+          ]
+        }
+      ],
+      "support_stage_map": []
     },
     {
-      "id":"REP-PHY-THRUST-NORMAL-BALANCE","version":"0.1.0","status":"CANDIDATE","source_refs":["SRC-AUTHOR-THRUST-PRESSURE"],"evidence_refs":[],"extensions":{},"kind":"FREE_BODY_DIAGRAM",
-      "purpose":"Show that N is solved from all perpendicular forces and the contact constraint rather than defined as mg.","required_elements":["block m","normal N","weight mg","oblique applied force F","normal component Fperp","vertical balance"],"relation_refs":[],"read_order":["block m","normal N","weight mg","oblique applied force F","normal component Fperp","vertical balance"],
-      "instance_constraints":["The applied normal component points upward in the shown pull case.","The balance states N+Fperp-mg=0 only for vertical equilibrium."],"accessibility":["Arrows carry text labels and the equilibrium condition is written in text."],"misleading_alternatives":["Writing N=mg while a nonzero upward pull component remains."],"rendered_asset_refs":["Physics/assets/representations/REP-PHY-THRUST-NORMAL-BALANCE.svg"],"scene_instances":[],
-      "correspondence":[{"element":"normal N","symbol":"N","in_words":"surface response perpendicular to the table"},{"element":"normal component Fperp","symbol":"F_perp","in_words":"the applied force component sharing the vertical balance"}],"interactive_resource_refs":[],
-      "reveal_stages":[{"id":"normal-body","label":"Choose contact","purpose":"Fix the block/table system.","visible_elements":["block m"]},{"id":"normal-forces","label":"Baseline vertical forces","purpose":"Add weight and normal separately.","visible_elements":["block m","normal N","weight mg"]},{"id":"normal-applied","label":"Resolve the pull","purpose":"Expose the applied force's perpendicular component.","visible_elements":["block m","normal N","weight mg","oblique applied force F","normal component Fperp"]},{"id":"normal-balance","label":"Solve and check contact","purpose":"Write the whole perpendicular balance and N>=0 boundary.","visible_elements":["block m","normal N","weight mg","oblique applied force F","normal component Fperp","vertical balance"]}],"support_stage_map":[]
+      "id": "REP-PHY-THRUST-NORMAL-BALANCE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-AUTHOR-THRUST-PRESSURE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "kind": "FREE_BODY_DIAGRAM",
+      "purpose": "Show that N is solved from all perpendicular forces and the contact constraint rather than defined as mg.",
+      "required_elements": [
+        "block m",
+        "normal N",
+        "weight mg",
+        "oblique applied force F",
+        "normal component Fperp",
+        "vertical balance"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "block m",
+        "normal N",
+        "weight mg",
+        "oblique applied force F",
+        "normal component Fperp",
+        "vertical balance"
+      ],
+      "instance_constraints": [
+        "The applied normal component points upward in the shown pull case.",
+        "The balance states N+Fperp-mg=0 only for vertical equilibrium."
+      ],
+      "accessibility": [
+        "Arrows carry text labels and the equilibrium condition is written in text."
+      ],
+      "misleading_alternatives": [
+        "Writing N=mg while a nonzero upward pull component remains."
+      ],
+      "rendered_asset_refs": [
+        "Physics/assets/representations/REP-PHY-THRUST-NORMAL-BALANCE.svg"
+      ],
+      "scene_instances": [],
+      "correspondence": [
+        {
+          "element": "normal N",
+          "symbol": "N",
+          "in_words": "surface response perpendicular to the table"
+        },
+        {
+          "element": "normal component Fperp",
+          "symbol": "F_perp",
+          "in_words": "the applied force component sharing the vertical balance"
+        }
+      ],
+      "interactive_resource_refs": [],
+      "reveal_stages": [
+        {
+          "id": "normal-body",
+          "label": "Choose contact",
+          "purpose": "Fix the block/table system.",
+          "visible_elements": [
+            "block m"
+          ]
+        },
+        {
+          "id": "normal-forces",
+          "label": "Baseline vertical forces",
+          "purpose": "Add weight and normal separately.",
+          "visible_elements": [
+            "block m",
+            "normal N",
+            "weight mg"
+          ]
+        },
+        {
+          "id": "normal-applied",
+          "label": "Resolve the pull",
+          "purpose": "Expose the applied force's perpendicular component.",
+          "visible_elements": [
+            "block m",
+            "normal N",
+            "weight mg",
+            "oblique applied force F",
+            "normal component Fperp"
+          ]
+        },
+        {
+          "id": "normal-balance",
+          "label": "Solve and check contact",
+          "purpose": "Write the whole perpendicular balance and N>=0 boundary.",
+          "visible_elements": [
+            "block m",
+            "normal N",
+            "weight mg",
+            "oblique applied force F",
+            "normal component Fperp",
+            "vertical balance"
+          ]
+        }
+      ],
+      "support_stage_map": []
     },
     {
-      "id":"REP-PHY-PRESSURE-CONTACT-AREA","version":"0.1.0","status":"CANDIDATE","source_refs":["SRC-AUTHOR-THRUST-PRESSURE"],"evidence_refs":[],"extensions":{},"kind":"APPARATUS_SCHEMATIC",
-      "purpose":"Hold the same block/thrust while exposing broad and narrow actual contact areas before comparing pressure.","required_elements":["same block broad orientation","same block narrow orientation","same normal thrust","large actual contact area","small actual contact area","pressure quotient"],"relation_refs":[],"read_order":["same block broad orientation","same block narrow orientation","same normal thrust","large actual contact area","small actual contact area","pressure quotient"],
-      "instance_constraints":["The two drawings represent the same block and unchanged normal thrust.","Only the face touching the table is highlighted as contact area."],"accessibility":["Broad and narrow faces are labelled in text; no conclusion depends on colour alone."],"misleading_alternatives":["Highlighting total surface area instead of the loaded face."],"rendered_asset_refs":["Physics/assets/representations/REP-PHY-PRESSURE-CONTACT-AREA.svg"],"scene_instances":[],
-      "correspondence":[{"element":"pressure quotient","symbol":"p_avg=F_thrust/A_contact","in_words":"average pressure is total normal thrust divided by actual loaded area"}],"interactive_resource_refs":[],
-      "reveal_stages":[{"id":"area-same-block","label":"Same object","purpose":"Establish that only orientation changes.","visible_elements":["same block broad orientation","same block narrow orientation"]},{"id":"area-same-thrust","label":"Hold thrust fixed","purpose":"Keep force independent from area.","visible_elements":["same block broad orientation","same block narrow orientation","same normal thrust"]},{"id":"area-contact","label":"Mark actual contact","purpose":"Expose the two loaded areas.","visible_elements":["same block broad orientation","same block narrow orientation","same normal thrust","large actual contact area","small actual contact area"]},{"id":"area-pressure","label":"Compare pressure","purpose":"Apply the quotient only after force and area are fixed.","visible_elements":["same block broad orientation","same block narrow orientation","same normal thrust","large actual contact area","small actual contact area","pressure quotient"]}],"support_stage_map":[]
+      "id": "REP-PHY-PRESSURE-CONTACT-AREA",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-AUTHOR-THRUST-PRESSURE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "kind": "APPARATUS_SCHEMATIC",
+      "purpose": "Hold the same block/thrust while exposing broad and narrow actual contact areas before comparing pressure.",
+      "required_elements": [
+        "same block broad orientation",
+        "same block narrow orientation",
+        "same normal thrust",
+        "large actual contact area",
+        "small actual contact area",
+        "pressure quotient"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "same block broad orientation",
+        "same block narrow orientation",
+        "same normal thrust",
+        "large actual contact area",
+        "small actual contact area",
+        "pressure quotient"
+      ],
+      "instance_constraints": [
+        "The two drawings represent the same block and unchanged normal thrust.",
+        "Only the face touching the table is highlighted as contact area."
+      ],
+      "accessibility": [
+        "Broad and narrow faces are labelled in text; no conclusion depends on colour alone."
+      ],
+      "misleading_alternatives": [
+        "Highlighting total surface area instead of the loaded face."
+      ],
+      "rendered_asset_refs": [
+        "Physics/assets/representations/REP-PHY-PRESSURE-CONTACT-AREA.svg"
+      ],
+      "scene_instances": [],
+      "correspondence": [
+        {
+          "element": "pressure quotient",
+          "symbol": "p_avg=F_thrust/A_contact",
+          "in_words": "average pressure is total normal thrust divided by actual loaded area"
+        }
+      ],
+      "interactive_resource_refs": [],
+      "reveal_stages": [
+        {
+          "id": "area-same-block",
+          "label": "Same object",
+          "purpose": "Establish that only orientation changes.",
+          "visible_elements": [
+            "same block broad orientation",
+            "same block narrow orientation"
+          ]
+        },
+        {
+          "id": "area-same-thrust",
+          "label": "Hold thrust fixed",
+          "purpose": "Keep force independent from area.",
+          "visible_elements": [
+            "same block broad orientation",
+            "same block narrow orientation",
+            "same normal thrust"
+          ]
+        },
+        {
+          "id": "area-contact",
+          "label": "Mark actual contact",
+          "purpose": "Expose the two loaded areas.",
+          "visible_elements": [
+            "same block broad orientation",
+            "same block narrow orientation",
+            "same normal thrust",
+            "large actual contact area",
+            "small actual contact area"
+          ]
+        },
+        {
+          "id": "area-pressure",
+          "label": "Compare pressure",
+          "purpose": "Apply the quotient only after force and area are fixed.",
+          "visible_elements": [
+            "same block broad orientation",
+            "same block narrow orientation",
+            "same normal thrust",
+            "large actual contact area",
+            "small actual contact area",
+            "pressure quotient"
+          ]
+        }
+      ],
+      "support_stage_map": []
     },
     {
-      "id":"REP-PHY-PRESSURE-SCALING","version":"0.1.0","status":"CANDIDATE","source_refs":["SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE","SRC-AUTHOR-THRUST-PRESSURE"],"evidence_refs":[],"extensions":{},"kind":"APPARATUS_SCHEMATIC",
-      "purpose":"Separate one linear scale factor into cubic weight scaling, square contact-area scaling and the final pressure scaling.","required_elements":["book A","book B","linear scale lambda","weight ratio lambda cubed","area ratio lambda squared","pressure ratio lambda"],"relation_refs":[],"read_order":["book A","book B","linear scale lambda","weight ratio lambda cubed","area ratio lambda squared","pressure ratio lambda"],
-      "instance_constraints":["Book B is geometrically similar to A.","Weight scaling assumes same material density and location."],"accessibility":["Every exponent and ratio is written in text, not encoded only by object size."],"misleading_alternatives":["Showing area with three scale factors or volume with two."],"rendered_asset_refs":["Physics/assets/representations/REP-PHY-PRESSURE-SCALING.svg"],"scene_instances":[],
-      "correspondence":[{"element":"weight ratio lambda cubed","symbol":"W_B/W_A=lambda^3","in_words":"same-density weight follows three-dimensional volume scaling"},{"element":"area ratio lambda squared","symbol":"A_B/A_A=lambda^2","in_words":"the corresponding contact face uses two length factors"},{"element":"pressure ratio lambda","symbol":"p_B/p_A=lambda","in_words":"the quotient retains one power of the scale factor"}],"interactive_resource_refs":[],
-      "reveal_stages":[{"id":"scale-length","label":"One scale factor","purpose":"Fix lambda on all corresponding lengths.","visible_elements":["book A","book B","linear scale lambda"]},{"id":"scale-volume","label":"Weight scales cubically","purpose":"Build the numerator exponent.","visible_elements":["book A","book B","linear scale lambda","weight ratio lambda cubed"]},{"id":"scale-area","label":"Area scales quadratically","purpose":"Build the denominator exponent separately.","visible_elements":["book A","book B","linear scale lambda","weight ratio lambda cubed","area ratio lambda squared"]},{"id":"scale-pressure","label":"Form the ratio","purpose":"Combine the independently justified scalings.","visible_elements":["book A","book B","linear scale lambda","weight ratio lambda cubed","area ratio lambda squared","pressure ratio lambda"]}],"support_stage_map":[]
+      "id": "REP-PHY-PRESSURE-SCALING",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE",
+        "SRC-AUTHOR-THRUST-PRESSURE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "kind": "APPARATUS_SCHEMATIC",
+      "purpose": "Separate one linear scale factor into cubic weight scaling, square contact-area scaling and the final pressure scaling.",
+      "required_elements": [
+        "book A",
+        "book B",
+        "linear scale lambda",
+        "weight ratio lambda cubed",
+        "area ratio lambda squared",
+        "pressure ratio lambda"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "book A",
+        "book B",
+        "linear scale lambda",
+        "weight ratio lambda cubed",
+        "area ratio lambda squared",
+        "pressure ratio lambda"
+      ],
+      "instance_constraints": [
+        "Book B is geometrically similar to A.",
+        "Weight scaling assumes same material density and location."
+      ],
+      "accessibility": [
+        "Every exponent and ratio is written in text, not encoded only by object size."
+      ],
+      "misleading_alternatives": [
+        "Showing area with three scale factors or volume with two."
+      ],
+      "rendered_asset_refs": [
+        "Physics/assets/representations/REP-PHY-PRESSURE-SCALING.svg"
+      ],
+      "scene_instances": [],
+      "correspondence": [
+        {
+          "element": "weight ratio lambda cubed",
+          "symbol": "W_B/W_A=lambda^3",
+          "in_words": "same-density weight follows three-dimensional volume scaling"
+        },
+        {
+          "element": "area ratio lambda squared",
+          "symbol": "A_B/A_A=lambda^2",
+          "in_words": "the corresponding contact face uses two length factors"
+        },
+        {
+          "element": "pressure ratio lambda",
+          "symbol": "p_B/p_A=lambda",
+          "in_words": "the quotient retains one power of the scale factor"
+        }
+      ],
+      "interactive_resource_refs": [],
+      "reveal_stages": [
+        {
+          "id": "scale-length",
+          "label": "One scale factor",
+          "purpose": "Fix lambda on all corresponding lengths.",
+          "visible_elements": [
+            "book A",
+            "book B",
+            "linear scale lambda"
+          ]
+        },
+        {
+          "id": "scale-volume",
+          "label": "Weight scales cubically",
+          "purpose": "Build the numerator exponent.",
+          "visible_elements": [
+            "book A",
+            "book B",
+            "linear scale lambda",
+            "weight ratio lambda cubed"
+          ]
+        },
+        {
+          "id": "scale-area",
+          "label": "Area scales quadratically",
+          "purpose": "Build the denominator exponent separately.",
+          "visible_elements": [
+            "book A",
+            "book B",
+            "linear scale lambda",
+            "weight ratio lambda cubed",
+            "area ratio lambda squared"
+          ]
+        },
+        {
+          "id": "scale-pressure",
+          "label": "Form the ratio",
+          "purpose": "Combine the independently justified scalings.",
+          "visible_elements": [
+            "book A",
+            "book B",
+            "linear scale lambda",
+            "weight ratio lambda cubed",
+            "area ratio lambda squared",
+            "pressure ratio lambda"
+          ]
+        }
+      ],
+      "support_stage_map": []
     },
     {
-      "id":"REP-PHY-PRESSURE-ORIENTATION","version":"0.1.0","status":"CANDIDATE","source_refs":["SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE","SRC-AUTHOR-THRUST-PRESSURE"],"evidence_refs":[],"extensions":{},"kind":"VECTOR_DIAGRAM",
-      "purpose":"Separate scalar pressure, actual face area and the normal direction of pressure force on a tilted plate.","required_elements":["tilted actual face","uniform scalar pressure","local normal force elements","normal resultant pA","projected-area trap"],"relation_refs":[],"read_order":["tilted actual face","uniform scalar pressure","local normal force elements","normal resultant pA","projected-area trap"],
-      "instance_constraints":["Local force arrows are perpendicular to the face.","The stated A is the physical face area, unchanged by rigid tilt."],"accessibility":["The pA result and rejected cosine route are written in text; arrow direction is supplemented by labels."],"misleading_alternatives":["Drawing atmospheric pressure as one globally downward vector.","Replacing physical area A by A cos(theta) for total resultant magnitude."],"rendered_asset_refs":["Physics/assets/representations/REP-PHY-PRESSURE-ORIENTATION.svg"],"scene_instances":[],
-      "correspondence":[{"element":"uniform scalar pressure","symbol":"p","in_words":"one scalar pressure magnitude on the loaded face"},{"element":"normal resultant pA","symbol":"F=pA","in_words":"the total pressure-force magnitude on the actual planar area"}],"interactive_resource_refs":[],
-      "reveal_stages":[{"id":"orient-face","label":"Actual face","purpose":"Fix physical area and orientation.","visible_elements":["tilted actual face","uniform scalar pressure"]},{"id":"orient-local","label":"Local normal forces","purpose":"Show how scalar pressure acts through surface normals.","visible_elements":["tilted actual face","uniform scalar pressure","local normal force elements"]},{"id":"orient-resultant","label":"Resultant","purpose":"Sum parallel local forces to pA.","visible_elements":["tilted actual face","uniform scalar pressure","local normal force elements","normal resultant pA"]},{"id":"orient-trap","label":"Reject projection trap","purpose":"Protect actual area from an unjustified cosine.","visible_elements":["tilted actual face","uniform scalar pressure","local normal force elements","normal resultant pA","projected-area trap"]}],"support_stage_map":[]
+      "id": "REP-PHY-PRESSURE-ORIENTATION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE",
+        "SRC-AUTHOR-THRUST-PRESSURE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "kind": "VECTOR_DIAGRAM",
+      "purpose": "Separate scalar pressure, actual face area and the normal direction of pressure force on a tilted plate.",
+      "required_elements": [
+        "tilted actual face",
+        "uniform scalar pressure",
+        "local normal force elements",
+        "normal resultant pA",
+        "projected-area trap"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "tilted actual face",
+        "uniform scalar pressure",
+        "local normal force elements",
+        "normal resultant pA",
+        "projected-area trap"
+      ],
+      "instance_constraints": [
+        "Local force arrows are perpendicular to the face.",
+        "The stated A is the physical face area, unchanged by rigid tilt."
+      ],
+      "accessibility": [
+        "The pA result and rejected cosine route are written in text; arrow direction is supplemented by labels."
+      ],
+      "misleading_alternatives": [
+        "Drawing atmospheric pressure as one globally downward vector.",
+        "Replacing physical area A by A cos(theta) for total resultant magnitude."
+      ],
+      "rendered_asset_refs": [
+        "Physics/assets/representations/REP-PHY-PRESSURE-ORIENTATION.svg"
+      ],
+      "scene_instances": [],
+      "correspondence": [
+        {
+          "element": "uniform scalar pressure",
+          "symbol": "p",
+          "in_words": "one scalar pressure magnitude on the loaded face"
+        },
+        {
+          "element": "normal resultant pA",
+          "symbol": "F=pA",
+          "in_words": "the total pressure-force magnitude on the actual planar area"
+        }
+      ],
+      "interactive_resource_refs": [],
+      "reveal_stages": [
+        {
+          "id": "orient-face",
+          "label": "Actual face",
+          "purpose": "Fix physical area and orientation.",
+          "visible_elements": [
+            "tilted actual face",
+            "uniform scalar pressure"
+          ]
+        },
+        {
+          "id": "orient-local",
+          "label": "Local normal forces",
+          "purpose": "Show how scalar pressure acts through surface normals.",
+          "visible_elements": [
+            "tilted actual face",
+            "uniform scalar pressure",
+            "local normal force elements"
+          ]
+        },
+        {
+          "id": "orient-resultant",
+          "label": "Resultant",
+          "purpose": "Sum parallel local forces to pA.",
+          "visible_elements": [
+            "tilted actual face",
+            "uniform scalar pressure",
+            "local normal force elements",
+            "normal resultant pA"
+          ]
+        },
+        {
+          "id": "orient-trap",
+          "label": "Reject projection trap",
+          "purpose": "Protect actual area from an unjustified cosine.",
+          "visible_elements": [
+            "tilted actual face",
+            "uniform scalar pressure",
+            "local normal force elements",
+            "normal resultant pA",
+            "projected-area trap"
+          ]
+        }
+      ],
+      "support_stage_map": []
     },
     {
-      "id":"REP-PHY-PRESSURE-HYDROSTATIC","version":"0.1.0","status":"CANDIDATE","source_refs":["SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE","SRC-AUTHOR-THRUST-PRESSURE"],"evidence_refs":[],"extensions":{},"kind":"APPARATUS_SCHEMATIC",
-      "purpose":"Keep surface pressure, liquid-column gauge contribution and absolute bottom pressure distinct before applying a gas-law pressure ratio.","required_elements":["lake column","surface pressure Patm","vertical depth h","bottom bubble V","surface bubble 10V","absolute bottom pressure"],"relation_refs":[],"read_order":["lake column","surface pressure Patm","vertical depth h","bottom bubble V","surface bubble 10V","absolute bottom pressure"],
-      "instance_constraints":["Depth h is vertical below the free surface.","The bottom absolute pressure contains both surface pressure and liquid-column contribution."],"accessibility":["Bubble volumes and pressure equations are written explicitly; depth is labelled h."],"misleading_alternatives":["Using rho g h alone as absolute bottom pressure in an open lake."],"rendered_asset_refs":["Physics/assets/representations/REP-PHY-PRESSURE-HYDROSTATIC.svg"],"scene_instances":[],
-      "correspondence":[{"element":"absolute bottom pressure","symbol":"P_bottom=P_atm+rho g h","in_words":"total pressure at depth equals surface atmospheric pressure plus the liquid-column increase"}],"interactive_resource_refs":[],
-      "reveal_stages":[{"id":"hydro-column","label":"Choose depth","purpose":"Mark the bottom state and vertical depth.","visible_elements":["lake column","vertical depth h","bottom bubble V"]},{"id":"hydro-surface","label":"Surface reference","purpose":"Add atmospheric pressure and the 10V surface state.","visible_elements":["lake column","surface pressure Patm","vertical depth h","bottom bubble V","surface bubble 10V"]},{"id":"hydro-gauge","label":"Gauge plus surface","purpose":"Build absolute bottom pressure from the reference.","visible_elements":["lake column","surface pressure Patm","vertical depth h","bottom bubble V","surface bubble 10V","absolute bottom pressure"]},{"id":"hydro-ratio","label":"Cross-check gas state","purpose":"Use the absolute-pressure ratio demanded by the anchor.","visible_elements":["lake column","surface pressure Patm","vertical depth h","bottom bubble V","surface bubble 10V","absolute bottom pressure"]}],"support_stage_map":[]
+      "id": "REP-PHY-PRESSURE-HYDROSTATIC",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE",
+        "SRC-AUTHOR-THRUST-PRESSURE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "kind": "APPARATUS_SCHEMATIC",
+      "purpose": "Keep surface pressure, liquid-column gauge contribution and absolute bottom pressure distinct before applying a gas-law pressure ratio.",
+      "required_elements": [
+        "lake column",
+        "surface pressure Patm",
+        "vertical depth h",
+        "bottom bubble V",
+        "surface bubble 10V",
+        "absolute bottom pressure"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "lake column",
+        "surface pressure Patm",
+        "vertical depth h",
+        "bottom bubble V",
+        "surface bubble 10V",
+        "absolute bottom pressure"
+      ],
+      "instance_constraints": [
+        "Depth h is vertical below the free surface.",
+        "The bottom absolute pressure contains both surface pressure and liquid-column contribution."
+      ],
+      "accessibility": [
+        "Bubble volumes and pressure equations are written explicitly; depth is labelled h."
+      ],
+      "misleading_alternatives": [
+        "Using rho g h alone as absolute bottom pressure in an open lake."
+      ],
+      "rendered_asset_refs": [
+        "Physics/assets/representations/REP-PHY-PRESSURE-HYDROSTATIC.svg"
+      ],
+      "scene_instances": [],
+      "correspondence": [
+        {
+          "element": "absolute bottom pressure",
+          "symbol": "P_bottom=P_atm+rho g h",
+          "in_words": "total pressure at depth equals surface atmospheric pressure plus the liquid-column increase"
+        }
+      ],
+      "interactive_resource_refs": [],
+      "reveal_stages": [
+        {
+          "id": "hydro-column",
+          "label": "Choose depth",
+          "purpose": "Mark the bottom state and vertical depth.",
+          "visible_elements": [
+            "lake column",
+            "vertical depth h",
+            "bottom bubble V"
+          ]
+        },
+        {
+          "id": "hydro-surface",
+          "label": "Surface reference",
+          "purpose": "Add atmospheric pressure and the 10V surface state.",
+          "visible_elements": [
+            "lake column",
+            "surface pressure Patm",
+            "vertical depth h",
+            "bottom bubble V",
+            "surface bubble 10V"
+          ]
+        },
+        {
+          "id": "hydro-gauge",
+          "label": "Gauge plus surface",
+          "purpose": "Build absolute bottom pressure from the reference.",
+          "visible_elements": [
+            "lake column",
+            "surface pressure Patm",
+            "vertical depth h",
+            "bottom bubble V",
+            "surface bubble 10V",
+            "absolute bottom pressure"
+          ]
+        },
+        {
+          "id": "hydro-ratio",
+          "label": "Cross-check gas state",
+          "purpose": "Use the absolute-pressure ratio demanded by the anchor.",
+          "visible_elements": [
+            "lake column",
+            "surface pressure Patm",
+            "vertical depth h",
+            "bottom bubble V",
+            "surface bubble 10V",
+            "absolute bottom pressure"
+          ]
+        }
+      ],
+      "support_stage_map": []
     }
   ],
   "question_families": [
     {
-      "id":"FAM-PHY-THRUST-PRESSURE-COMPETITIVE","version":"0.1.0","status":"CANDIDATE","source_refs":["SRC-NCERT-G9-THRUST-PRESSURE","SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"],"evidence_refs":[],"extensions":{},
-      "title":"Thrust and pressure — model before quotient",
-      "capability_refs":["CAP-PHY-THRUST-INTERFACE","CAP-PHY-THRUST-NORMAL-BALANCE","CAP-PHY-PRESSURE-CONTACT-AREA","CAP-PHY-PRESSURE-SCALING","CAP-PHY-PRESSURE-SURFACE-ORIENTATION","CAP-PHY-PRESSURE-HYDROSTATIC-BRIDGE"],
-      "solution_structure":["Choose the body/interface or pressure reference before selecting an equation.","Determine the actual normal thrust or absolute pressure from the governing force/reference model.","Identify the actual loaded area or geometric scale separately from force.","Only then form a pressure quotient/ratio, and finish with a limiting, unit, sign or reconstruction check."],
-      "demand_dimensions":{"model_choice":"Choose the correct body, contact model or pressure reference before calculation.","representation_translation":"Translate between free-body/surface/depth diagrams and force or pressure symbols without changing what each represents.","reasoning_steps":"Chain at least two physical decisions before arithmetic: force/reference model, then area/scaling/pressure relation, then verification.","novelty":"Recognise the same invariant when the cover story changes from blocks to books, tilted surfaces, bubbles or rough contacts."},
-      "safe_variations":["Change masses, areas or linear scale factors without changing the physical decision.","Rotate a rigid planar surface while keeping pressure and actual area fixed.","Change depth calibration while keeping the gauge-versus-absolute distinction explicit."],
-      "transfer_boundaries":["Flowing-fluid continuity/Bernoulli reasoning is outside this family unless separately taught.","Material stress/deformation is not inferred from average pressure alone.","A source problem introducing a gas law may use that stated law as a bounded bridge, but the family does not claim a general thermodynamics curriculum."],
-      "common_wrong_routes":["Substitute mg for normal thrust before checking the force balance.","Use total surface area or projected area instead of the actual loaded/contact face.","Scale area and volume with the same exponent.","Treat pressure as a vector pointing down.","Use gauge pressure where another model requires absolute pressure."],
-      "item_refs":["PYQ-PHY-INJSO-2013-Q58","PYQ-PHY-INJSO-2013-Q62","PYQ-PHY-INJSO-2012-Q39","PYQ-PHY-INJSO-2016-Q32A"]
+      "id": "FAM-PHY-THRUST-PRESSURE-COMPETITIVE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-NCERT-G9-THRUST-PRESSURE",
+        "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"
+      ],
+      "evidence_refs": [],
+      "extensions": {},
+      "title": "Thrust and pressure — model before quotient",
+      "capability_refs": [
+        "CAP-PHY-THRUST-INTERFACE",
+        "CAP-PHY-THRUST-NORMAL-BALANCE",
+        "CAP-PHY-PRESSURE-CONTACT-AREA",
+        "CAP-PHY-PRESSURE-SCALING",
+        "CAP-PHY-PRESSURE-SURFACE-ORIENTATION",
+        "CAP-PHY-PRESSURE-HYDROSTATIC-BRIDGE"
+      ],
+      "solution_structure": [
+        "Choose the body/interface or pressure reference before selecting an equation.",
+        "Determine the actual normal thrust or absolute pressure from the governing force/reference model.",
+        "Identify the actual loaded area or geometric scale separately from force.",
+        "Only then form a pressure quotient/ratio, and finish with a limiting, unit, sign or reconstruction check."
+      ],
+      "demand_dimensions": {
+        "model_choice": "Choose the correct body, contact model or pressure reference before calculation.",
+        "representation_translation": "Translate between free-body/surface/depth diagrams and force or pressure symbols without changing what each represents.",
+        "reasoning_steps": "Chain at least two physical decisions before arithmetic: force/reference model, then area/scaling/pressure relation, then verification.",
+        "novelty": "Recognise the same invariant when the cover story changes from blocks to books, tilted surfaces, bubbles or rough contacts."
+      },
+      "safe_variations": [
+        "Change masses, areas or linear scale factors without changing the physical decision.",
+        "Rotate a rigid planar surface while keeping pressure and actual area fixed.",
+        "Change depth calibration while keeping the gauge-versus-absolute distinction explicit."
+      ],
+      "transfer_boundaries": [
+        "Flowing-fluid continuity/Bernoulli reasoning is outside this family unless separately taught.",
+        "Material stress/deformation is not inferred from average pressure alone.",
+        "A source problem introducing a gas law may use that stated law as a bounded bridge, but the family does not claim a general thermodynamics curriculum."
+      ],
+      "common_wrong_routes": [
+        "Substitute mg for normal thrust before checking the force balance.",
+        "Use total surface area or projected area instead of the actual loaded/contact face.",
+        "Scale area and volume with the same exponent.",
+        "Treat pressure as a vector pointing down.",
+        "Use gauge pressure where another model requires absolute pressure."
+      ],
+      "item_refs": []
     }
   ],
   "questions": [],
@@ -359,6 +1888,8 @@
   "practice_profiles": [],
   "evidence": [],
   "known_issues": [],
-  "extensions": {"issue383:owner_target":"Grade-9 learner aiming at toughest Grade-10/Junior Science competitive reasoning without premature higher-grade mathematics."},
+  "extensions": {
+    "issue383:owner_target": "Grade-9 learner aiming at toughest Grade-10/Junior Science competitive reasoning without premature higher-grade mathematics."
+  },
   "data": []
 }
