@@ -230,7 +230,7 @@
           "action": "Compare evaporation with boiling before discussing temperature.",
           "why_valid": "Evaporation can occur at a surface over a range of temperatures; boiling is a bulk transition when vapour pressure matches external pressure.",
           "inputs": [],
-          "output": "A boiling temperature is pressure-dependent, whereas evaporation need not wait for that condition."
+          "output": "Pext ↓ ⇒ Tb ↓ because Pvap(Tb) = Pext is reached at a lower vapour pressure; surface evaporation can still occur below Tb."
         },
         {
           "id": "GAS-KINETIC-PHASE-T3",
@@ -238,7 +238,7 @@
           "action": "Track energy through a phase change for a pure substance at fixed pressure in phase equilibrium.",
           "why_valid": "Energy supplied during coexistence can change phase rather than raise temperature.",
           "inputs": [],
-          "output": "Latent heat is energy associated with the phase transition under the stated conditions."
+          "output": "At phase coexistence under fixed Pext: energy in > 0 while T = Tb and liquid fraction ↓; the added energy changes phase instead of producing ΔT."
         }
       ],
       "relation_refs": [
@@ -397,7 +397,7 @@
           "action": "Use the ideal-gas equation as a common model for state-variable changes.",
           "why_valid": "For a fixed amount of ideal gas, changing one state variable generally requires compensating changes in others.",
           "inputs": [],
-          "output": "The familiar simple gas laws are conditional cases of the same equation-of-state model."
+          "output": "For fixed n and T: P1V1 = P2V2; if V2 = V1/2, then P2 = 2P1."
         },
         {
           "id": "GAS-IDEAL-LAWS-T3",
@@ -564,7 +564,7 @@
           "action": "Interpret van der Waals attraction and excluded-volume terms as phenomenological corrections.",
           "why_valid": "Attractions and finite molecular size affect the pressure-volume relation differently and with state-dependent importance.",
           "inputs": [],
-          "output": "The corrected equation is a thermodynamic model, not a literal collision or bonding mechanism."
+          "output": "Z ≠ 1 ⇒ the stated P,V,n,T state deviates from the ideal reference; Z alone does not identify one unique microscopic mechanism."
         },
         {
           "id": "GAS-REAL-CRITICAL-T3",
