@@ -26,6 +26,12 @@ jobs:
           node-version: "22"
       - name: Static standalone audit
         run: python3 -m unittest tests.test_chemistry_tablet_standalone
+      - name: Canonical projection dry-run
+        run: |
+          python3 Shared/tools/build_question_bank_web.py --check
+          python3 Shared/tools/build_question_bank_platform.py --check
+          python3 Shared/tools/build_pages_site.py --check
+          python3 Shared/tools/build_manifest.py --check
       - name: Install isolated browser harness
         run: |
           npm install --no-save playwright@1.56.1
