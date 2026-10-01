@@ -1,0 +1,35 @@
+{
+  "schema": "product-manifest/v1",
+  "product_id": "PRODUCT-PHY-THRUST-PRESSURE",
+  "subject": "Physics",
+  "home_href": "../../../index.html",
+  "question_bank_href": "../../../question-bank/index.html",
+  "package_refs": [
+    "Physics/library/phy-thrust-pressure.v1.json"
+  ],
+  "bank_refs": [
+    "Physics/library/exam-bank/thrust-pressure-competitive.v1.json"
+  ],
+  "output_roles": [
+    "CORE1A",
+    "CORE2"
+  ],
+  "selection": {
+    "microtopics": [
+      "MIC-PHY-THRUST-INTERFACE",
+      "MIC-PHY-THRUST-NORMAL-BALANCE",
+      "MIC-PHY-PRESSURE-CONTACT-AREA",
+      "MIC-PHY-PRESSURE-SCALING",
+      "MIC-PHY-PRESSURE-SURFACE-ORIENTATION",
+      "MIC-PHY-PRESSURE-HYDROSTATIC-BRIDGE"
+    ],
+    "core2": [
+      "PYQ-PHY-INJSO-2013-Q58",
+      "PYQ-PHY-INJSO-2013-Q62",
+      "PYQ-PHY-INJSO-2012-Q39",
+      "PYQ-PHY-INJSO-2016-Q32A"
+    ],
+    "core2a": [],
+    "core2b": []
+  }
+}
