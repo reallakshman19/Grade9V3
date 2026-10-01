@@ -12,6 +12,10 @@ STANDALONE_TABLET_FILES = [
     "standalone/core2-motion-in-a-plane-tablet.html",
     "standalone/core1a-sba-06-07-trajectory-and-height-tablet.html",
     "standalone/core1a-motion-1d-straight-line-tablet.html",
+    "standalone/core1a-chemistry-redox-reactions-tablet.html",
+    "standalone/core1a-chemistry-chemical-bonding-tablet.html",
+    "standalone/core1a-chemistry-some-basic-concepts-tablet.html",
+    "standalone/core2-canonical-question-bank-tablet.html",
 ]
 
 
