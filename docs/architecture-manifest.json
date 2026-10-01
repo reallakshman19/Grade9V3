@@ -5,20 +5,20 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 404,
+  "component_count": 406,
   "relation_count": 418,
   "components_by_role": {
     "CONTRACT": 9,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 54,
-    "TEST": 196,
+    "TEST": 198,
     "TOOLING": 108,
     "WEB": 13,
     "WEB_CONTRACT": 3,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:9d99a4c1b05bfb7e048ab9f1ce2ed3806824775fdcfd326f6a59ce0436171541",
+  "digest": "sha256:e6261435d5f7a1e9df5c945714db2522444e2213d85fa8eda2e3ea9f5367fed8",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -1407,6 +1407,13 @@
       "sha256": "ef05eb99f6d0de16229fe5b205ec0607209e0d01349f2e49e85dc2af08f25957"
     },
     {
+      "path": "tests/chemistry_tablet_standalone_browser.mjs",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 10555,
+      "sha256": "5b01778a143203862f649887e45d4500599323498fb64d5ebce9ecee39b30608"
+    },
+    {
       "path": "tests/core2_packet_browser.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
@@ -1846,6 +1853,13 @@
       "role_description": "Executable checks",
       "bytes": 19825,
       "sha256": "84369a80da26a73e78db6e995397bb4e92b866e4291b24b89fa3a32ff7d94789"
+    },
+    {
+      "path": "tests/test_chemistry_tablet_standalone.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 5290,
+      "sha256": "510ebcaa0b8734e9ae04981e36395702e5e97e9774dbcb879817f4822de795aa"
     },
     {
       "path": "tests/test_competitive_exam_bank_contract.py",
