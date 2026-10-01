@@ -2,7 +2,7 @@
 // Requires Playwright 1.56.1 + Chromium.
 import { createRequire } from 'node:module';
 import { spawn } from 'node:child_process';
-import { writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync } from 'node:fs';\nimport { createHash } from 'node:crypto';
 
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
@@ -20,7 +20,18 @@ await new Promise((resolve, reject) => {
 
 const browser = await chromium.launch({ headless: true });
 const findings = [];
-const observations = { schema: 'grade9v3-qb-tablet-browser-audit-v1', viewports: {}, runtime: {} };
+const candidatePath = 'standalone/core2-canonical-question-bank-tablet.html';
+const candidateBytes = readFileSync(candidatePath);
+const observations = {
+  schema: 'grade9v3-qb-tablet-browser-audit-v1',
+  candidate: {
+    path: candidatePath,
+    bytes: candidateBytes.length,
+    sha256: createHash('sha256').update(candidateBytes).digest('hex'),
+  },
+  viewports: {},
+  runtime: {},
+};
 const fail = (point, detail) => findings.push({ point, detail });
 
 async function load(page) {
