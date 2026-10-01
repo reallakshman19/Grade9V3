@@ -30,6 +30,11 @@
       "from": "7fbf2178f93578fae110924ada04418d5fd568cd",
       "to": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
       "classification": "GENERATED_ARCHITECTURE_MANIFEST_ONLY"
+    },
+    {
+      "from": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
+      "to": "c6a98e6c25eb2303691f9cf58eda9fdfcd0dec42",
+      "classification": "AUDIT_EVIDENCE_ONLY_NO_CANDIDATE_BASIS_CHANGE"
     }
   ],
   "browser_runtime_evidence": {
@@ -728,12 +733,19 @@
       ]
     }
   ],
-  "review_independence_note": "The promotion agent performed same-session repairs and exact-version coaching review. No Owner acceptance is granted; if acceptance requires reviewer/session separation, obtain that independent review before acceptance.",
+  "review_independence_note": "Same-session product-review/v2 drafts were removed because this session authored candidate repairs. The LPAP sidecar and promotion matrices remain audit evidence; they are not represented as an independent product review.",
   "owner_decisions_required": [
     "Choose ACCEPTED, DEFERRED, or REJECTED for each of seven products.",
     "Decide whether each Core1A candidate is a governed Core product, an extension/resource variant, or out of scope.",
     "Resolve exact source custody and denominators before any Core2/search admission.",
     "Resolve Bonding BOND-Q02..Q04 source collisions; BOND-Q01 should reuse canonical identity.",
-    "For generic standalone publication, approve a governed acceptance adapter in a separate reviewed change or adapt content into an existing governed representation."
-  ]
+    "For generic standalone publication, approve a governed acceptance adapter in a separate reviewed change or adapt content into an existing governed representation.",
+    "Treat this packet as LPAP audit evidence, not an independent product review. Any product-review/v2 relied on as independent evidence must come from a separate reviewer session that authored none of the candidate records."
+  ],
+  "independent_review_status": {
+    "status": "NOT_RUN_IN_THIS_SESSION",
+    "reason": "The current LPAP session authored candidate repairs. docs/method/roles/REVIEWER.md requires an independent reviewer session that authored none of the unit records.",
+    "authoritative_product_review_v2_present": false,
+    "next_evidence_action": "If an independent review is used for Owner evidence, run it in a separate reviewer session against the exact candidate render/bundle digests recorded in this sidecar."
+  }
 }

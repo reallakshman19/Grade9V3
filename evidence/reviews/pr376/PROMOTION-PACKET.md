@@ -7,6 +7,7 @@
 - Search/build basis: `sha256:ae5e7da1d354cd9c4befe27a791290c5e6f584e170a29f648c9f76736fd1cb40`
 - Browser evidence: workflow `36844760999`, artifact `sha256:85b031aa12313227a9d9560b4ef5a0132569e07c97a9e54a6e1e6a9bc188d890`
 - Publication state: **AUDIT_COMPLETE; no candidate is described as PUBLISHABLE_UNDER_LPAP.**
+- Independent review status: **NOT_RUN_IN_THIS_SESSION.** This session authored candidate repairs, so it cannot truthfully claim the independent `product-review/v2` role defined by `docs/method/roles/REVIEWER.md`. The same-session draft review records were removed; the matrices below remain LPAP audit evidence.
 
 ## Promotion-set inventory
 
@@ -22,9 +23,13 @@
 
 The audit corrected scientific/model overclaims, invalid calculator states, shifted/merged Core2 answer extraction, source-custody presentation, mobile overflow, zoom/reduced-motion behavior, and audit coverage. Unsafe source-linked Core2 solutions are withheld rather than presented as trusted answers.
 
-The remaining blocking facts are authority/source/lineage facts: Chemistry requires exact registry binding for governed curriculum products; the same-topic master suites are currently UNBOUND_EXTENSION/JEE_EXTENSION; exact NCERT/ExamSIDE/JEE custody is not established for these candidate sets; and generic standalone bundles do not have a governed acceptance adapter.
+The remaining unresolved facts are authority/source/lineage facts: Chemistry requires exact registry binding for governed curriculum products; the same-topic master suites are currently UNBOUND_EXTENSION/JEE_EXTENSION; exact NCERT/ExamSIDE/JEE custody is not established for these candidate sets; and generic standalone bundles do not have a governed acceptance adapter.
 
 No new `public/`, navigation, Question Bank, resource, or search identity was created merely because the standalone files render. The existing generated Question Bank legacy projection, Question Bank platform projection, Pages mirror, and architecture manifest all pass on the final candidate/integration basis.
+
+## Review independence
+
+The current session performed both candidate repairs and LPAP auditing. Because `docs/method/roles/REVIEWER.md` requires an independent reviewer session that authored none of the unit records, this packet does **not** claim an authoritative independent `product-review/v2`. Any independent review used for Owner evidence should be produced by a separate reviewer session against the exact candidate digests recorded here. No Owner disposition is implied by the absence of that review.
 
 ## Core1A <-> Core2 join
 
