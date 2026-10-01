@@ -1,0 +1,831 @@
+{
+  "schema_version": "0.2.0",
+  "package_id": "LIB-CHEM-BEHAVIOUR-OF-GASES",
+  "title": "Behaviour of Gases and States of Matter",
+  "version": "0.1.0",
+  "status": "CANDIDATE",
+  "subject": "Chemistry",
+  "scope_summary": "Governed Core1A Owner-extension conversion of PR #376 Behaviour of Gases and States of Matter. Source-labelled practice is excluded until custody is reconstructed.",
+  "curriculum_mappings": [
+    {
+      "board": "CBSE",
+      "grade": 9,
+      "academic_year": "2026-27",
+      "track": "OWNER_EXTENSION",
+      "scope_class": "OWNER_EXTENSION",
+      "source_ref": null,
+      "locator": "Owner extension converted from PR #376; no exact prescribed Grade-9/Core1A curriculum binding is claimed.",
+      "mapping_status": "CANDIDATE"
+    }
+  ],
+  "resources": [
+    {
+      "id": "SRC-CHEM-PR376-GAS-AUTHOR",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "PR #376 author-created Behaviour of Gases and States of Matter standalone conversion basis",
+      "origin": "AUTHORED",
+      "locator": "standalone/core1a-chemistry-behaviour-of-gases-tablet.html",
+      "edition": "PR #376 exact candidate basis ad3c58a50ccc76c65ad26d1fff963b1173027108",
+      "section": "Core1A standalone teaching candidate; source-labelled question-bank sections excluded from governed conversion",
+      "last_checked": "2026-10-01",
+      "access_status": "FULL_ITEM_INSPECTED",
+      "rights_status": "Author-created Grade9V3 project draft; conversion lineage only, not external source authority.",
+      "snapshot_ref": "standalone/core1a-chemistry-behaviour-of-gases-tablet.html",
+      "snapshot_digest": "sha256:5c1013e66ffa1964e0b58c1452034304f3e06bf40bc3eb252255271a95419454",
+      "role": [
+        "AUTHOR_CREATED"
+      ],
+      "supports_claims": [],
+      "entry_capabilities": [],
+      "depth": [
+        "Exact standalone bytes pinned for conversion lineage; governed records are an authored semantic rewrite."
+      ],
+      "selection_reason": "Preserve exact lineage while moving learner teaching into the governed record/renderer path.",
+      "fallback": []
+    }
+  ],
+  "buckets": [
+    {
+      "id": "BUCKET-CHEM-GAS",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Behaviour of Gases and States of Matter",
+      "topic": "Behaviour of Gases / States of Matter",
+      "intrinsic_badge": "HARD",
+      "badge_reason": "The topic contains multiple model boundaries and inferential transitions requiring explicit construction.",
+      "depth_overlay": "ADVANCED",
+      "curriculum_mappings": [
+        {
+          "board": "CBSE",
+          "grade": 9,
+          "academic_year": "2026-27",
+          "track": "OWNER_EXTENSION",
+          "scope_class": "OWNER_EXTENSION",
+          "source_ref": null,
+          "locator": "Owner extension converted from PR #376; no exact prescribed Grade-9/Core1A curriculum binding is claimed.",
+          "mapping_status": "CANDIDATE"
+        }
+      ],
+      "prerequisite_refs": [],
+      "conventions": [
+        {
+          "id": "CONV-GAS-1",
+          "statement": "State which variables are fixed before applying a gas-law proportionality."
+        },
+        {
+          "id": "CONV-GAS-2",
+          "statement": "Treat ideal-gas and kinetic-theory statements as models with stated conditions, not universal molecular mechanisms."
+        },
+        {
+          "id": "CONV-GAS-3",
+          "statement": "For phase change, state pressure and substance assumptions before naming a boiling temperature."
+        }
+      ],
+      "scope": {
+        "covers": "Governed Core1A declarative teaching converted from PR #376.",
+        "excluded": [
+          "Unresolved NCERT/ExamSIDE/JEE question identities.",
+          "Any claim that this Owner extension is prescribed CBSE Grade 9 content.",
+          "Core2 source-question custody until reconstruction is complete."
+        ]
+      }
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "CAP-CHEM-GAS-KINETIC-PHASE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "action": "Explain and apply particle model, speed distributions and phase change with its model limits stated explicitly.",
+      "success_criterion": "Complete the particle model, speed distributions and phase change reasoning, reject the named misconception, and run the independent check.",
+      "prerequisite_refs": [],
+      "curriculum_mappings": [
+        {
+          "board": "CBSE",
+          "grade": 9,
+          "academic_year": "2026-27",
+          "track": "OWNER_EXTENSION",
+          "scope_class": "OWNER_EXTENSION",
+          "source_ref": null,
+          "locator": "Owner extension converted from PR #376; no exact prescribed Grade-9/Core1A curriculum binding is claimed.",
+          "mapping_status": "CANDIDATE"
+        }
+      ],
+      "external_provider": null,
+      "acceptance_status": "CANDIDATE"
+    },
+    {
+      "id": "CAP-CHEM-GAS-IDEAL-LAWS",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "action": "Explain and apply gas-law constraints, mixtures and transport with its model limits stated explicitly.",
+      "success_criterion": "Complete the gas-law constraints, mixtures and transport reasoning, reject the named misconception, and run the independent check.",
+      "prerequisite_refs": [],
+      "curriculum_mappings": [
+        {
+          "board": "CBSE",
+          "grade": 9,
+          "academic_year": "2026-27",
+          "track": "OWNER_EXTENSION",
+          "scope_class": "OWNER_EXTENSION",
+          "source_ref": null,
+          "locator": "Owner extension converted from PR #376; no exact prescribed Grade-9/Core1A curriculum binding is claimed.",
+          "mapping_status": "CANDIDATE"
+        }
+      ],
+      "external_provider": null,
+      "acceptance_status": "CANDIDATE"
+    },
+    {
+      "id": "CAP-CHEM-GAS-REAL-CRITICAL",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "action": "Explain and apply real-gas deviations and critical behaviour with its model limits stated explicitly.",
+      "success_criterion": "Complete the real-gas deviations and critical behaviour reasoning, reject the named misconception, and run the independent check.",
+      "prerequisite_refs": [],
+      "curriculum_mappings": [
+        {
+          "board": "CBSE",
+          "grade": 9,
+          "academic_year": "2026-27",
+          "track": "OWNER_EXTENSION",
+          "scope_class": "OWNER_EXTENSION",
+          "source_ref": null,
+          "locator": "Owner extension converted from PR #376; no exact prescribed Grade-9/Core1A curriculum binding is claimed.",
+          "mapping_status": "CANDIDATE"
+        }
+      ],
+      "external_provider": null,
+      "acceptance_status": "CANDIDATE"
+    }
+  ],
+  "microtopics": [
+    {
+      "id": "MIC-CHEM-GAS-KINETIC-PHASE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Particle model, speed distributions and phase change",
+      "bucket_id": "BUCKET-CHEM-GAS",
+      "primary_capability_ref": "CAP-CHEM-GAS-KINETIC-PHASE",
+      "intrinsic_badge": "MEDIUM",
+      "badge_reason": "The learner must connect distributed molecular motion to macroscopic temperature and distinguish surface evaporation from pressure-dependent boiling.",
+      "entry_assumptions": [
+        "Can read basic chemical symbols and distinguish a named model from an observation."
+      ],
+      "inferential_jump": "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions.",
+      "teaching_path": [
+        {
+          "id": "GAS-KINETIC-PHASE-T1",
+          "role": "DECLARE",
+          "action": "Separate the microscopic particle model from the macroscopic observation.",
+          "why_valid": "Bulk temperature and pressure summarize many-particle behaviour; one molecule is not the thermodynamic state.",
+          "inputs": [],
+          "output": "Use distributions and averages when connecting molecular motion to temperature."
+        },
+        {
+          "id": "GAS-KINETIC-PHASE-T2",
+          "role": "TRANSFORM",
+          "action": "Compare evaporation with boiling before discussing temperature.",
+          "why_valid": "Evaporation can occur at a surface over a range of temperatures; boiling is a bulk transition when vapour pressure matches external pressure.",
+          "inputs": [],
+          "output": "A boiling temperature is pressure-dependent, whereas evaporation need not wait for that condition."
+        },
+        {
+          "id": "GAS-KINETIC-PHASE-T3",
+          "role": "TRANSFORM",
+          "action": "Track energy through a phase change for a pure substance at fixed pressure in phase equilibrium.",
+          "why_valid": "Energy supplied during coexistence can change phase rather than raise temperature.",
+          "inputs": [],
+          "output": "Latent heat is energy associated with the phase transition under the stated conditions."
+        }
+      ],
+      "relation_refs": [],
+      "representation_refs": [],
+      "question_family_refs": [
+        "FAM-CHEM-GAS-KINETIC-PHASE"
+      ],
+      "misconceptions": [
+        {
+          "wrong_idea": "All molecules in a thermal sample have the same speed, and a liquid boils at one universal temperature.",
+          "diagnostic_prompt": "What would a molecular speed distribution mean if every molecule had one speed, and why does changing external pressure change the boiling condition?",
+          "repair": "Keep a distribution of molecular energies, and attach external pressure to any boiling-temperature statement."
+        }
+      ],
+      "exit_task": {
+        "prompt": "Why can evaporation cool a liquid without implying that every molecule had the same initial speed?",
+        "source_ref": "SRC-CHEM-PR376-GAS-AUTHOR",
+        "answer": {
+          "kind": "MODEL_RESPONSE",
+          "summary": "Because the sample has a distribution of molecular energies and higher-energy surface molecules can preferentially escape.",
+          "reasoning": [
+            "Thermal molecular energies are distributed.",
+            "Removing molecules from the higher-energy tail can lower the average kinetic energy of the remaining liquid."
+          ],
+          "check": "Keep the molecular distribution and the surface-vs-bulk distinction explicit.",
+          "acceptable_alternatives": [],
+          "subpart_answers": [],
+          "verification_status": "CHECKED_BY_AUTHOR"
+        },
+        "oracle": {
+          "no_numeric_claim": "This exit task asks for a qualitative model-bound explanation rather than a new computed numerical value."
+        }
+      },
+      "research_contribution": "Carries corrected model boundaries from the PR #376 audit into governed Core1A records. Independent Chemistry review of the exact render is still pending.",
+      "prerequisite_refs": [],
+      "lineage": [],
+      "construction_units": [
+        {
+          "id": "CU-CHEM-GAS-KINETIC-PHASE",
+          "decision": "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions.",
+          "step_refs": [
+            "GAS-KINETIC-PHASE-T1",
+            "GAS-KINETIC-PHASE-T2",
+            "GAS-KINETIC-PHASE-T3"
+          ],
+          "representation_ref": null,
+          "reveal_stage_refs": [],
+          "worked_anchor_ref": "Q-CHEM-GAS-KINETIC-PHASE-1A",
+          "misconception_indexes": [
+            0
+          ],
+          "independent_checks": [
+            {
+              "statement": "Keep the molecular distribution and the surface-vs-bulk distinction explicit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MIC-CHEM-GAS-IDEAL-LAWS",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Gas-law constraints, mixtures and transport",
+      "bucket_id": "BUCKET-CHEM-GAS",
+      "primary_capability_ref": "CAP-CHEM-GAS-IDEAL-LAWS",
+      "intrinsic_badge": "MEDIUM",
+      "badge_reason": "Correct use depends on controlled variables and on separating pressure bookkeeping from effusion-rate comparisons.",
+      "entry_assumptions": [
+        "Can read basic chemical symbols and distinguish a named model from an observation."
+      ],
+      "inferential_jump": "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation.",
+      "teaching_path": [
+        {
+          "id": "GAS-IDEAL-LAWS-T1",
+          "role": "DECLARE",
+          "action": "Name pressure, volume, absolute temperature and amount, then state which variables are fixed.",
+          "why_valid": "A proportionality is valid only on the constrained path for which it was derived.",
+          "inputs": [],
+          "output": "Constraints come before substitution."
+        },
+        {
+          "id": "GAS-IDEAL-LAWS-T2",
+          "role": "TRANSFORM",
+          "action": "Use the ideal-gas equation as a common model for state-variable changes.",
+          "why_valid": "For a fixed amount of ideal gas, changing one state variable generally requires compensating changes in others.",
+          "inputs": [],
+          "output": "The familiar simple gas laws are conditional cases of the same equation-of-state model."
+        },
+        {
+          "id": "GAS-IDEAL-LAWS-T3",
+          "role": "DECLARE",
+          "action": "Separate Dalton partial-pressure bookkeeping from Graham effusion-rate comparison.",
+          "why_valid": "Dalton adds component partial pressures in an ideal mixture; Graham compares transport rates under its effusion assumptions.",
+          "inputs": [],
+          "output": "Molar mass belongs in the rate comparison, not in the ideal partial-pressure sum."
+        }
+      ],
+      "relation_refs": [],
+      "representation_refs": [],
+      "question_family_refs": [
+        "FAM-CHEM-GAS-IDEAL-LAWS"
+      ],
+      "misconceptions": [
+        {
+          "wrong_idea": "Any familiar gas-law proportion can be used when several supposedly fixed variables are also changing.",
+          "diagnostic_prompt": "If temperature and volume both change, can a fixed-temperature Boyle-law relation alone determine the final pressure?",
+          "repair": "Write the constraints first and use the combined or ideal-gas model when more than one state variable changes."
+        }
+      ],
+      "exit_task": {
+        "prompt": "Why does Graham's law not justify assigning a larger partial pressure to a lighter gas solely because it has lower molar mass?",
+        "source_ref": "SRC-CHEM-PR376-GAS-AUTHOR",
+        "answer": {
+          "kind": "MODEL_RESPONSE",
+          "summary": "Because Graham's law concerns effusion rate, while ideal partial pressure is determined by the component amount, temperature and volume.",
+          "reasoning": [
+            "The laws describe different observables.",
+            "Molar mass enters the transport-rate relation rather than the Dalton pressure sum."
+          ],
+          "check": "Name the observable—state pressure or transport rate—before selecting the law.",
+          "acceptable_alternatives": [],
+          "subpart_answers": [],
+          "verification_status": "CHECKED_BY_AUTHOR"
+        },
+        "oracle": {
+          "no_numeric_claim": "This exit task asks for a qualitative model-bound explanation rather than a new computed numerical value."
+        }
+      },
+      "research_contribution": "Carries corrected model boundaries from the PR #376 audit into governed Core1A records. Independent Chemistry review of the exact render is still pending.",
+      "prerequisite_refs": [],
+      "lineage": [],
+      "construction_units": [
+        {
+          "id": "CU-CHEM-GAS-IDEAL-LAWS",
+          "decision": "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation.",
+          "step_refs": [
+            "GAS-IDEAL-LAWS-T1",
+            "GAS-IDEAL-LAWS-T2",
+            "GAS-IDEAL-LAWS-T3"
+          ],
+          "representation_ref": null,
+          "reveal_stage_refs": [],
+          "worked_anchor_ref": "Q-CHEM-GAS-IDEAL-LAWS-1A",
+          "misconception_indexes": [
+            0
+          ],
+          "independent_checks": [
+            {
+              "statement": "Name the observable—state pressure or transport rate—before selecting the law."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "MIC-CHEM-GAS-REAL-CRITICAL",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Real-gas deviations and critical behaviour",
+      "bucket_id": "BUCKET-CHEM-GAS",
+      "primary_capability_ref": "CAP-CHEM-GAS-REAL-CRITICAL",
+      "intrinsic_badge": "HARD",
+      "badge_reason": "The learner must treat van der Waals terms as state-model corrections and distinguish critical behaviour from ordinary boiling.",
+      "entry_assumptions": [
+        "Can read basic chemical symbols and distinguish a named model from an observation."
+      ],
+      "inferential_jump": "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism.",
+      "teaching_path": [
+        {
+          "id": "GAS-REAL-CRITICAL-T1",
+          "role": "DECLARE",
+          "action": "Use compressibility factor as a comparison with the ideal reference at the same state.",
+          "why_valid": "Deviation has meaning relative to a pressure-temperature state and an ideal reference.",
+          "inputs": [],
+          "output": "Z = 1 is the ideal reference; the sign and size of deviation depend on conditions."
+        },
+        {
+          "id": "GAS-REAL-CRITICAL-T2",
+          "role": "TRANSFORM",
+          "action": "Interpret van der Waals attraction and excluded-volume terms as phenomenological corrections.",
+          "why_valid": "Attractions and finite molecular size affect the pressure-volume relation differently and with state-dependent importance.",
+          "inputs": [],
+          "output": "The corrected equation is a thermodynamic model, not a literal collision or bonding mechanism."
+        },
+        {
+          "id": "GAS-REAL-CRITICAL-T3",
+          "role": "DECLARE",
+          "action": "Distinguish a critical point from an ordinary boiling point.",
+          "why_valid": "The critical point terminates liquid-vapour coexistence; above the critical temperature compression alone cannot create a separate liquid phase.",
+          "inputs": [],
+          "output": "Liquefaction claims require the temperature-pressure regime to be stated."
+        }
+      ],
+      "relation_refs": [],
+      "representation_refs": [],
+      "question_family_refs": [
+        "FAM-CHEM-GAS-REAL-CRITICAL"
+      ],
+      "misconceptions": [
+        {
+          "wrong_idea": "A van der Waals equation proves the exact molecular collision mechanism and gives one universal direction of deviation.",
+          "diagnostic_prompt": "Does an equation of state uniquely determine how molecules collide, and can attraction and finite-size effects dominate equally at every pressure and temperature?",
+          "repair": "Treat the correction parameters as state-model terms and interpret deviations only with the stated thermodynamic conditions."
+        }
+      ],
+      "exit_task": {
+        "prompt": "Why must a liquefaction statement distinguish critical temperature from boiling temperature?",
+        "source_ref": "SRC-CHEM-PR376-GAS-AUTHOR",
+        "answer": {
+          "kind": "MODEL_RESPONSE",
+          "summary": "Boiling temperature is pressure-dependent phase equilibrium below the critical point, while the critical temperature marks whether a distinct liquid-vapour boundary can exist.",
+          "reasoning": [
+            "Boiling is a coexistence condition at a specified pressure.",
+            "The critical point terminates that coexistence curve."
+          ],
+          "check": "State which temperature concept is being used and the associated pressure or phase condition.",
+          "acceptable_alternatives": [],
+          "subpart_answers": [],
+          "verification_status": "CHECKED_BY_AUTHOR"
+        },
+        "oracle": {
+          "no_numeric_claim": "This exit task asks for a qualitative model-bound explanation rather than a new computed numerical value."
+        }
+      },
+      "research_contribution": "Carries corrected model boundaries from the PR #376 audit into governed Core1A records. Independent Chemistry review of the exact render is still pending.",
+      "prerequisite_refs": [],
+      "lineage": [],
+      "construction_units": [
+        {
+          "id": "CU-CHEM-GAS-REAL-CRITICAL",
+          "decision": "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism.",
+          "step_refs": [
+            "GAS-REAL-CRITICAL-T1",
+            "GAS-REAL-CRITICAL-T2",
+            "GAS-REAL-CRITICAL-T3"
+          ],
+          "representation_ref": null,
+          "reveal_stage_refs": [],
+          "worked_anchor_ref": "Q-CHEM-GAS-REAL-CRITICAL-1A",
+          "misconception_indexes": [
+            0
+          ],
+          "independent_checks": [
+            {
+              "statement": "State which temperature concept is being used and the associated pressure or phase condition."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "relations": [],
+  "representations": [],
+  "question_families": [
+    {
+      "id": "FAM-CHEM-GAS-KINETIC-PHASE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Particle model, speed distributions and phase change worked-anchor family",
+      "capability_refs": [
+        "CAP-CHEM-GAS-KINETIC-PHASE"
+      ],
+      "solution_structure": [
+        "State the governing distinction or model condition.",
+        "Apply it to the concrete case.",
+        "Run the named independent check."
+      ],
+      "demand_dimensions": {
+        "model_choice": "Use the model explicitly taught in the adjacent Core1A construction.",
+        "representation_translation": "Explain the chemical statement in words and supplied notation.",
+        "reasoning_steps": "State the condition, apply it, then verify.",
+        "novelty": "Worked anchor remains within the just-taught concept rather than claiming transfer."
+      },
+      "safe_variations": [
+        "Change the surface example while preserving the same governing condition."
+      ],
+      "transfer_boundaries": [
+        "Do not convert unresolved source-bank prompts into verified source questions."
+      ],
+      "common_wrong_routes": [
+        "All molecules in a thermal sample have the same speed, and a liquid boils at one universal temperature."
+      ],
+      "item_refs": [
+        "Q-CHEM-GAS-KINETIC-PHASE-1A"
+      ]
+    },
+    {
+      "id": "FAM-CHEM-GAS-IDEAL-LAWS",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Gas-law constraints, mixtures and transport worked-anchor family",
+      "capability_refs": [
+        "CAP-CHEM-GAS-IDEAL-LAWS"
+      ],
+      "solution_structure": [
+        "State the governing distinction or model condition.",
+        "Apply it to the concrete case.",
+        "Run the named independent check."
+      ],
+      "demand_dimensions": {
+        "model_choice": "Use the model explicitly taught in the adjacent Core1A construction.",
+        "representation_translation": "Explain the chemical statement in words and supplied notation.",
+        "reasoning_steps": "State the condition, apply it, then verify.",
+        "novelty": "Worked anchor remains within the just-taught concept rather than claiming transfer."
+      },
+      "safe_variations": [
+        "Change the surface example while preserving the same governing condition."
+      ],
+      "transfer_boundaries": [
+        "Do not convert unresolved source-bank prompts into verified source questions."
+      ],
+      "common_wrong_routes": [
+        "Any familiar gas-law proportion can be used when several supposedly fixed variables are also changing."
+      ],
+      "item_refs": [
+        "Q-CHEM-GAS-IDEAL-LAWS-1A"
+      ]
+    },
+    {
+      "id": "FAM-CHEM-GAS-REAL-CRITICAL",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Real-gas deviations and critical behaviour worked-anchor family",
+      "capability_refs": [
+        "CAP-CHEM-GAS-REAL-CRITICAL"
+      ],
+      "solution_structure": [
+        "State the governing distinction or model condition.",
+        "Apply it to the concrete case.",
+        "Run the named independent check."
+      ],
+      "demand_dimensions": {
+        "model_choice": "Use the model explicitly taught in the adjacent Core1A construction.",
+        "representation_translation": "Explain the chemical statement in words and supplied notation.",
+        "reasoning_steps": "State the condition, apply it, then verify.",
+        "novelty": "Worked anchor remains within the just-taught concept rather than claiming transfer."
+      },
+      "safe_variations": [
+        "Change the surface example while preserving the same governing condition."
+      ],
+      "transfer_boundaries": [
+        "Do not convert unresolved source-bank prompts into verified source questions."
+      ],
+      "common_wrong_routes": [
+        "A van der Waals equation proves the exact molecular collision mechanism and gives one universal direction of deviation."
+      ],
+      "item_refs": [
+        "Q-CHEM-GAS-REAL-CRITICAL-1A"
+      ]
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-CHEM-GAS-KINETIC-PHASE-1A",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "origin": "AUTHORED",
+      "origin_ref": "SRC-CHEM-PR376-GAS-AUTHOR",
+      "original_identifier": "PR376-GAS-KINETIC-PHASE-AUTHORED-ANCHOR",
+      "stem": "Why can water boil at a lower temperature at high altitude than near sea level?",
+      "subparts": [],
+      "options": [],
+      "conditions": [
+        "Use the model assumptions and scope stated in the surrounding Core1A construction."
+      ],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "Lower external pressure lets the vapour-pressure equality required for boiling be reached at a lower temperature.",
+        "reasoning": [
+          "Boiling occurs when the liquid's vapour pressure matches the external pressure.",
+          "At high altitude the external pressure is lower, so the equality is reached at a lower temperature."
+        ],
+        "check": "The explanation must use pressure equilibrium rather than a change in water's chemical identity.",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "CHECKED_BY_AUTHOR"
+      },
+      "primary_capability_ref": "CAP-CHEM-GAS-KINETIC-PHASE",
+      "secondary_capability_refs": [],
+      "family_ref": "FAM-CHEM-GAS-KINETIC-PHASE",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "WORKED_ANCHOR",
+          "artifact_ref": null
+        }
+      ],
+      "learner_question_type": "constructed_response",
+      "difficulty": {
+        "band": "D1",
+        "score": 2,
+        "components": {
+          "concept_model_selection": 1,
+          "representation_translation": 0,
+          "reasoning_chain_length": 1,
+          "algebra_computational_load": 0,
+          "trap_exception_sensitivity": 0
+        },
+        "basis": "Single-concept authored Core1A worked anchor after the construction is visible."
+      }
+    },
+    {
+      "id": "Q-CHEM-GAS-IDEAL-LAWS-1A",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "origin": "AUTHORED",
+      "origin_ref": "SRC-CHEM-PR376-GAS-AUTHOR",
+      "original_identifier": "PR376-GAS-IDEAL-LAWS-AUTHORED-ANCHOR",
+      "stem": "A fixed amount of ideal gas is compressed to half its volume at constant temperature. What happens to its pressure?",
+      "subparts": [],
+      "options": [],
+      "conditions": [
+        "Use the model assumptions and scope stated in the surrounding Core1A construction."
+      ],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "Its pressure doubles in the ideal-gas model.",
+        "reasoning": [
+          "Amount and temperature are fixed.",
+          "Under this isothermal constraint pressure is inversely proportional to volume.",
+          "Halving the volume therefore doubles the pressure."
+        ],
+        "check": "Verify that pressure times volume is unchanged between the two states.",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "CHECKED_BY_AUTHOR"
+      },
+      "primary_capability_ref": "CAP-CHEM-GAS-IDEAL-LAWS",
+      "secondary_capability_refs": [],
+      "family_ref": "FAM-CHEM-GAS-IDEAL-LAWS",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "WORKED_ANCHOR",
+          "artifact_ref": null
+        }
+      ],
+      "learner_question_type": "constructed_response",
+      "difficulty": {
+        "band": "D1",
+        "score": 2,
+        "components": {
+          "concept_model_selection": 1,
+          "representation_translation": 0,
+          "reasoning_chain_length": 1,
+          "algebra_computational_load": 0,
+          "trap_exception_sensitivity": 0
+        },
+        "basis": "Single-concept authored Core1A worked anchor after the construction is visible."
+      }
+    },
+    {
+      "id": "Q-CHEM-GAS-REAL-CRITICAL-1A",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "origin": "AUTHORED",
+      "origin_ref": "SRC-CHEM-PR376-GAS-AUTHOR",
+      "original_identifier": "PR376-GAS-REAL-CRITICAL-AUTHORED-ANCHOR",
+      "stem": "Why are real-gas deviations generally more important at high pressure than at sufficiently low pressure?",
+      "subparts": [],
+      "options": [],
+      "conditions": [
+        "Use the model assumptions and scope stated in the surrounding Core1A construction."
+      ],
+      "figure_refs": [],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "At high pressure molecules are closer together, so finite molecular size and intermolecular interactions become less negligible relative to ideal assumptions.",
+        "reasoning": [
+          "The ideal model neglects molecular volume and intermolecular forces.",
+          "Closer average separation makes those neglected effects comparatively more important."
+        ],
+        "check": "Identify the neglected ideal assumptions without claiming every gas deviates in the same direction.",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "CHECKED_BY_AUTHOR"
+      },
+      "primary_capability_ref": "CAP-CHEM-GAS-REAL-CRITICAL",
+      "secondary_capability_refs": [],
+      "family_ref": "FAM-CHEM-GAS-REAL-CRITICAL",
+      "adaptation": null,
+      "exposure": [
+        {
+          "core": "CORE1A",
+          "role": "WORKED_ANCHOR",
+          "artifact_ref": null
+        }
+      ],
+      "learner_question_type": "constructed_response",
+      "difficulty": {
+        "band": "D1",
+        "score": 2,
+        "components": {
+          "concept_model_selection": 1,
+          "representation_translation": 0,
+          "reasoning_chain_length": 1,
+          "algebra_computational_load": 0,
+          "trap_exception_sensitivity": 0
+        },
+        "basis": "Single-concept authored Core1A worked anchor after the construction is visible."
+      }
+    }
+  ],
+  "teaching_routes": [],
+  "practice_profiles": [],
+  "evidence": [],
+  "known_issues": [
+    {
+      "id": "ISS-CHEM-GAS-INDEPENDENT-REVIEW",
+      "affected_refs": [
+        "MIC-CHEM-GAS-KINETIC-PHASE",
+        "MIC-CHEM-GAS-IDEAL-LAWS",
+        "MIC-CHEM-GAS-REAL-CRITICAL"
+      ],
+      "classification": "SCIENTIFIC_REVIEW_REQUIRED",
+      "description": "These governed records were authored by the same conversion session that repaired the PR #376 standalone candidate; they are not independent-review evidence.",
+      "next_action": "Have a separate reviewer session inspect the exact governed render digest."
+    },
+    {
+      "id": "ISS-CHEM-GAS-OWNER-EXTENSION",
+      "affected_refs": [
+        "BUCKET-CHEM-GAS"
+      ],
+      "classification": "CAPABILITY_LIMIT",
+      "description": "Explicit Grade-9 Owner extension; no exact prescribed CBSE Grade-9/Core1A authority binding is claimed.",
+      "next_action": "Present independent exact-digest review to the Owner for disposition."
+    },
+    {
+      "id": "ISS-CHEM-GAS-SOURCE-CUSTODY-EXCLUDED",
+      "affected_refs": [
+        "FAM-CHEM-GAS-KINETIC-PHASE",
+        "FAM-CHEM-GAS-IDEAL-LAWS",
+        "FAM-CHEM-GAS-REAL-CRITICAL"
+      ],
+      "classification": "SOURCE_CUSTODY_HELD",
+      "description": "The standalone NCERT helper/transfer-bank labels and its 27-problem claim are excluded from the governed package because exact source custody and denominator are unresolved.",
+      "next_action": "Reconstruct exact source items from authorized/original evidence before any source-labelled Core2 admission."
+    }
+  ],
+  "extensions": {
+    "grade9v3:conversion_basis": {
+      "pr": 376,
+      "candidate_content_basis": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
+      "standalone_path": "standalone/core1a-chemistry-behaviour-of-gases-tablet.html",
+      "standalone_sha256": "5c1013e66ffa1964e0b58c1452034304f3e06bf40bc3eb252255271a95419454",
+      "conversion_posture": "GOVERNED_CORE1A_OWNER_EXTENSION_SOURCE_BANK_EXCLUDED"
+    }
+  },
+  "data": []
+}
