@@ -241,9 +241,7 @@
           "output": "Electron-domain geometry and molecular shape can differ."
         }
       ],
-      "relation_refs": [
-        "REL-CHEM-BOND-LEWIS-VSEPR"
-      ],
+      "relation_refs": [],
       "representation_refs": [
         "REP-CHEM-BOND-LEWIS-VSEPR"
       ],
@@ -408,9 +406,7 @@
           "output": "Geometry is indispensable to molecular-polarity prediction."
         }
       ],
-      "relation_refs": [
-        "REL-CHEM-BOND-GEOMETRY-DIPOLE"
-      ],
+      "relation_refs": [],
       "representation_refs": [
         "REP-CHEM-BOND-GEOMETRY-DIPOLE"
       ],
@@ -575,9 +571,7 @@
           "output": "Bulk-property explanations should treat hydrogen bonding as one structural contribution among relevant intermolecular effects."
         }
       ],
-      "relation_refs": [
-        "REL-CHEM-BOND-MO-HBOND"
-      ],
+      "relation_refs": [],
       "representation_refs": [
         "REP-CHEM-BOND-MO-HBOND"
       ],
@@ -741,10 +735,10 @@
         {
           "id": "REL-CHEM-BOND-LEWIS-VSEPR-D1",
           "role": "DECLARE",
-          "action": "Write the relation only after the quantities and model conditions have been named.",
-          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "action": "Compute formal charge from one explicit Lewis electron assignment before using domain count to name geometry.",
+          "why_valid": "For NH₃ nitrogen, V = 5, N = 2 and B = 6, so FC = 5 − 2 − 6/2 = 0; the four electron domains are then counted separately for VSEPR.",
           "inputs": [],
-          "output": "FC = V − N − B/2"
+          "output": "NH₃ N: FC = 5 − 2 − 6/2 = 0"
         }
       ],
       "limits": [
@@ -789,10 +783,10 @@
         {
           "id": "REL-CHEM-BOND-GEOMETRY-DIPOLE-D1",
           "role": "DECLARE",
-          "action": "Write the relation only after the quantities and model conditions have been named.",
-          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "action": "Resolve the bond-dipole vectors in the declared molecular geometry and add them as vectors.",
+          "why_valid": "In ideal isolated trigonal-bipyramidal PCl₅, the two equal axial vectors cancel and the three equal equatorial vectors 120° apart also sum to zero.",
           "inputs": [],
-          "output": "μnet = Σ μ⃗bond"
+          "output": "μnet = Σ μ⃗bond = 0 for ideal isolated PCl₅"
         }
       ],
       "limits": [
@@ -842,10 +836,10 @@
         {
           "id": "REL-CHEM-BOND-MO-HBOND-D1",
           "role": "DECLARE",
-          "action": "Write the relation only after the quantities and model conditions have been named.",
-          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "action": "Count bonding and antibonding molecular-orbital electrons, then inspect unpaired occupancy separately.",
+          "why_valid": "For O₂ in the stated ordering, the occupancy gives BO = (Nb − Nab)/2 = 2 while two singly occupied π* orbitals establish paramagnetism.",
           "inputs": [],
-          "output": "BO = (Nb − Nab)/2"
+          "output": "O₂: BO = (Nb − Nab)/2 = 2; unpaired e− = 2"
         }
       ],
       "limits": [
@@ -926,7 +920,7 @@
       "correspondence": [
         {
           "element": "equation body",
-          "symbol": "FC = V − N − B/2",
+          "symbol": "FC",
           "in_words": "For Lewis structures, formal charge and VSEPR geometry, the displayed symbols mean: Formal charge is computed from valence, nonbonding and bonding-electron bookkeeping for a chosen Lewis representation."
         }
       ],
@@ -1036,7 +1030,7 @@
       "correspondence": [
         {
           "element": "particle groups",
-          "symbol": "PCl₅: 3 equatorial + 2 axial",
+          "symbol": "μnet",
           "in_words": "For PCl5 geometry, model shorthand and molecular dipoles, the labelled circles are the picture-side representation of this statement: A trigonal-bipyramidal PCl5 geometry contains distinct equatorial and axial directions; the picture does not prove literal d-orbital hybridisation."
         }
       ],
@@ -1133,7 +1127,7 @@
       "correspondence": [
         {
           "element": "equation body",
-          "symbol": "BO = (Nᵦ − Nₐᵦ)/2",
+          "symbol": "BO",
           "in_words": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the displayed symbols mean: Molecular-orbital bond order comes from bonding versus antibonding occupancy, while unpaired occupancy must be checked separately for magnetism."
         }
       ],
@@ -1342,7 +1336,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Author-created Core1A worked anchor revised for blueprint-v2: it executes the unit construction on a concrete species or numerical case."
+        "basis": "D2 because the learner must execute electron inventory, Lewis bookkeeping, a formal-charge calculation and a separate VSEPR domain-to-shape classification on NH₃."
       }
     },
     {
@@ -1402,7 +1396,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Author-created Core1A worked anchor revised for blueprint-v2: it executes the unit construction on a concrete species or numerical case."
+        "basis": "D2 because the learner must combine trigonal-bipyramidal geometry with axial/equatorial angle distinctions and vector cancellation in the isolated PCl₅ model."
       }
     },
     {
@@ -1462,7 +1456,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Author-created Core1A worked anchor revised for blueprint-v2: it executes the unit construction on a concrete species or numerical case."
+        "basis": "D2 because the learner must read one MO occupancy twice: numerically for bond order and structurally for unpaired-electron magnetism."
       }
     }
   ],
