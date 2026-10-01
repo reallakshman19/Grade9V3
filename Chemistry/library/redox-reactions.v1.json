@@ -212,7 +212,7 @@
       "intrinsic_badge": "MEDIUM",
       "badge_reason": "The learner must coordinate formal oxidation-state bookkeeping with electron transfer and avoid the common agent-name inversion.",
       "entry_assumptions": [
-        "For Oxidation number, oxidation/reduction and agents, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+        "Can assign simple oxidation numbers using standard priority rules and can track the same element from reactants to products."
       ],
       "inferential_jump": "Oxidation number is a formal assignment whose increase corresponds to oxidation and decrease to reduction; an oxidising agent is itself reduced while a reducing agent is itself oxidised.",
       "teaching_path": [
@@ -271,10 +271,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "The Oxidation number, oxidation/reduction and agents exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+          "no_numeric_claim": "The exit is a bookkeeping explanation; it is closed by reconciling oxidation-state changes and agent roles, not by a measured atomic charge."
         }
       },
-      "research_contribution": "For Oxidation number, oxidation/reduction and agents, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
+      "research_contribution": "The conversion preserves the audit correction that oxidation number is formal bookkeeping, and it explicitly separates a species' self-change from the opposite process named by its agent role.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -305,16 +305,16 @@
           "defensible_answer": "For Oxidation number, oxidation/reduction and agents, the defensible route is: Label oxidation state as formal bookkeeping; write self-change first, then assign the opposite process as the agent name."
         },
         "attempt": {
-          "produces": "A short Oxidation number, oxidation/reduction and agents explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "produces": "An oxidation-state ledger that reconciles total charge, identifies which species is oxidised or reduced, and only then names the oxidising and reducing agents.",
           "closure": "CRITERIA",
           "rubric": [
             {
-              "criterion": "The Oxidation number, oxidation/reduction and agents response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-              "evidence_of": "The learner can separate the Oxidation number, oxidation/reduction and agents governing distinction from the tempting shortcut."
+              "criterion": "The response treats oxidation state as formal assignment and derives agent names from the effect on the reaction partner.",
+              "evidence_of": "It can explain why the electron acceptor is reduced yet is called the oxidising agent, with the oxidation-number direction consistent throughout."
             }
           ],
           "task": {
-            "prompt": "Explain the Oxidation number, oxidation/reduction and agents decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "prompt": "Species A accepts electrons from B. Track the oxidation or reduction of A and B, name both agents, and explain why the oxidation numbers used in the argument are formal bookkeeping rather than literal atomic charges.",
             "givens": [
               "Oxidation number is a formal assignment whose increase corresponds to oxidation and decrease to reduction; an oxidising agent is itself reduced while a reducing agent is itself oxidised."
             ],
@@ -325,22 +325,22 @@
         "reconstruct": {
           "route": [
             {
-              "ask": "In Oxidation number, oxidation/reduction and agents, what must be decided before the move \"Apply oxidation-number priority rules and require the algebraic sum to equal the species charge.\" is justified?",
-              "why_this_ask": "This makes the learner supply the entry decision for Oxidation number, oxidation/reduction and agents instead of receiving the expert sequence first.",
+              "ask": "If species A accepts electrons from B, what happens to A and B before you attach either agent name?",
+              "why_this_ask": "The initial electron-transfer question creates an unambiguous self-change before any agent label is allowed, removing the linguistic trap from the first step.",
               "from_step_ref": "REDOX-OXIDATION-AGENTS-T1"
             },
             {
-              "ask": "For Oxidation number, oxidation/reduction and agents, how would you test the conclusion reached by \"Name the species being reduced as the oxidising agent and the species being oxidised as the reducing agent.\" without simply repeating the model answer?",
-              "why_this_ask": "This closes Oxidation number, oxidation/reduction and agents through a learner-owned check rather than through recall of the declarative route.",
+              "ask": "How can you check that the oxidation-number assignments used in the agent argument are internally consistent with each species' total charge?",
+              "why_this_ask": "The charge-sum check forces the learner back to formal oxidation-state bookkeeping, so the agent conclusion is supported by a consistent ledger rather than a memorised slogan.",
               "from_step_ref": "REDOX-OXIDATION-AGENTS-T3"
             }
           ],
-          "differs_from_teaching_path": "For Oxidation number, oxidation/reduction and agents, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+          "differs_from_teaching_path": "The expert route assigns oxidation numbers before naming agents; the reconstruction starts with the common reversal that the oxidised species is the oxidising agent and makes the learner build a two-column self-change versus effect-on-partner ledger."
         },
         "boundary_test": {
           "prompt": "Why is an oxidation number useful even though it is not generally a measured atomic charge?",
           "answer": "Its formal assignment rules consistently expose electron-accounting changes between reactants and products.",
-          "confirms": "For Oxidation number, oxidation/reduction and agents, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+          "confirms": "It confirms that the learner can hold self-change, electron direction and agent naming together without reversing any of them."
         }
       }
     },
@@ -361,7 +361,7 @@
       "intrinsic_badge": "HARD",
       "badge_reason": "The learner must distinguish chemical change from redox and identify split/convergent oxidation-state patterns.",
       "entry_assumptions": [
-        "For Redox classification, displacement and disproportionation patterns, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+        "Can compare oxidation numbers for the same element on both sides of a reaction and can read reactant-to-product direction explicitly."
       ],
       "inferential_jump": "A reaction is redox only when oxidation-number bookkeeping shows coupled increase and decrease; reaction labels such as decomposition or displacement do not replace that test.",
       "teaching_path": [
@@ -420,10 +420,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "The Redox classification, displacement and disproportionation patterns exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+          "no_numeric_claim": "The exit is classificatory rather than numerical; the required evidence is an actual oxidation-number change, not the reaction's surface label."
         }
       },
-      "research_contribution": "For Redox classification, displacement and disproportionation patterns, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
+      "research_contribution": "The conversion retains the audit distinction between reaction-pattern labels and redox evidence, including directed oxidation-state maps for disproportionation and comproportionation.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -454,16 +454,16 @@
           "defensible_answer": "For Redox classification, displacement and disproportionation patterns, the defensible route is: Run the oxidation-number change check first, then draw the directed state map before naming a special redox pattern."
         },
         "attempt": {
-          "produces": "A short Redox classification, displacement and disproportionation patterns explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "produces": "A before-and-after oxidation-state map that first decides redox versus non-redox and then, if relevant, classifies split or convergent states.",
           "closure": "CRITERIA",
           "rubric": [
             {
-              "criterion": "The Redox classification, displacement and disproportionation patterns response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-              "evidence_of": "The learner can separate the Redox classification, displacement and disproportionation patterns governing distinction from the tempting shortcut."
+              "criterion": "The response uses oxidation-number changes as the redox test and uses arrow direction, not the mere presence of three states, to identify disproportionation or comproportionation.",
+              "evidence_of": "It can classify an ion-exchange reaction with unchanged oxidation numbers as non-redox and distinguish one-to-two from two-to-one oxidation-state mappings."
             }
           ],
           "task": {
-            "prompt": "Explain the Redox classification, displacement and disproportionation patterns decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "prompt": "Consider a reaction that forms new substances but leaves every oxidation number unchanged; classify it. Then describe the oxidation-state arrow pattern that distinguishes disproportionation from comproportionation.",
             "givens": [
               "A reaction is redox only when oxidation-number bookkeeping shows coupled increase and decrease; reaction labels such as decomposition or displacement do not replace that test."
             ],
@@ -474,22 +474,22 @@
         "reconstruct": {
           "route": [
             {
-              "ask": "In Redox classification, displacement and disproportionation patterns, what must be decided before the move \"Recognise the chemical reaction without yet calling it redox.\" is justified?",
-              "why_this_ask": "This makes the learner supply the entry decision for Redox classification, displacement and disproportionation patterns instead of receiving the expert sequence first.",
+              "ask": "Can a genuine chemical reaction occur with no oxidation-number changes, and what would that imply about its redox classification?",
+              "why_this_ask": "A non-redox reaction with genuine chemical change is the strongest way to break the shortcut that new substances are sufficient redox evidence.",
               "from_step_ref": "REDOX-CLASSIFICATION-T1"
             },
             {
-              "ask": "For Redox classification, displacement and disproportionation patterns, how would you test the conclusion reached by \"For the same element, map one initial state splitting upward and downward as disproportionation, and two starting states converging as comproportionation.\" without simply repeating the model answer?",
-              "why_this_ask": "This closes Redox classification, displacement and disproportionation patterns through a learner-owned check rather than through recall of the declarative route.",
+              "ask": "For the same element, how do the reactant-to-product arrows differ between disproportionation and comproportionation?",
+              "why_this_ask": "The second ask requires arrows between oxidation states, preventing classification of a three-state picture without reactant/product direction.",
               "from_step_ref": "REDOX-CLASSIFICATION-T3"
             }
           ],
-          "differs_from_teaching_path": "For Redox classification, displacement and disproportionation patterns, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+          "differs_from_teaching_path": "The declarative route separates chemical change from redox before special patterns; the reconstruction starts with every-reaction-is-redox and forces the learner to find a counterexample before drawing split and convergent state maps."
         },
         "boundary_test": {
           "prompt": "Why is decomposition alone insufficient to call a reaction redox?",
           "answer": "Decomposition describes a reaction pattern, whereas redox requires actual oxidation-number changes.",
-          "confirms": "For Redox classification, displacement and disproportionation patterns, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+          "confirms": "It confirms that the learner can resist reaction-name shortcuts and base redox classification on directed oxidation-state evidence."
         }
       }
     },
@@ -510,7 +510,7 @@
       "intrinsic_badge": "HARD",
       "badge_reason": "The learner must conserve atoms and charge in a declared medium and derive electron-change counts from the specified reaction rather than memorising them as universal properties.",
       "entry_assumptions": [
-        "For Half-reaction balancing and reaction-dependent n-factor, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+        "Can conserve atom counts and algebraic charge in an ionic equation and can interpret electrons as transfer bookkeeping."
       ],
       "inferential_jump": "Half-reaction balancing is a conservation algorithm, while n-factor compresses the electron change for one specified redox transformation; neither is valid without the reaction context.",
       "teaching_path": [
@@ -569,10 +569,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "The Half-reaction balancing and reaction-dependent n-factor exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+          "no_numeric_claim": "The exit has no standalone numeric n-factor claim; correctness depends on atom and charge conservation plus explicit reaction context."
         }
       },
-      "research_contribution": "For Half-reaction balancing and reaction-dependent n-factor, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
+      "research_contribution": "The conversion preserves the audit repair that half-reaction balancing depends on the declared acidic or basic medium and that n-factor is reaction-specific rather than a permanent property of a reagent.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -603,16 +603,16 @@
           "defensible_answer": "For Half-reaction balancing and reaction-dependent n-factor, the defensible route is: Keep separate atom and charge ledgers, and derive n-factor from the actual balanced transformation each time."
         },
         "attempt": {
-          "produces": "A short Half-reaction balancing and reaction-dependent n-factor explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "produces": "A balancing checklist with separate atom and charge ledgers, the declared medium, electron cancellation, and a reaction-specific derivation of n-factor.",
           "closure": "CRITERIA",
           "rubric": [
             {
-              "criterion": "The Half-reaction balancing and reaction-dependent n-factor response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-              "evidence_of": "The learner can separate the Half-reaction balancing and reaction-dependent n-factor governing distinction from the tempting shortcut."
+              "criterion": "The response verifies both matter and charge conservation and refuses to assign n-factor without specifying the transformation.",
+              "evidence_of": "It can explain why H+, OH- or H2O choices depend on medium and why the same reagent may have different n-factors in different redox reactions."
             }
           ],
           "task": {
-            "prompt": "Explain the Half-reaction balancing and reaction-dependent n-factor decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "prompt": "State the final checks for an ionic half-reaction balance in a declared medium. Then explain why a reagent's n-factor must be derived from the specified product or oxidation-state change rather than memorised once.",
             "givens": [
               "Half-reaction balancing is a conservation algorithm, while n-factor compresses the electron change for one specified redox transformation; neither is valid without the reaction context."
             ],
@@ -623,22 +623,22 @@
         "reconstruct": {
           "route": [
             {
-              "ask": "In Half-reaction balancing and reaction-dependent n-factor, what must be decided before the move \"State acidic or basic aqueous medium before choosing balancing species.\" is justified?",
-              "why_this_ask": "This makes the learner supply the entry decision for Half-reaction balancing and reaction-dependent n-factor instead of receiving the expert sequence first.",
+              "ask": "After the atoms have been balanced, what separate charge ledger must still agree on the two sides of an ionic redox equation?",
+              "why_this_ask": "Separating the atom ledger from the charge ledger exposes equations that look balanced by inspection but cannot represent a valid ionic redox process.",
               "from_step_ref": "REDOX-BALANCE-NFACTOR-T1"
             },
             {
-              "ask": "For Half-reaction balancing and reaction-dependent n-factor, how would you test the conclusion reached by \"Derive n-factor from the electron change and stoichiometric role in the specified balanced reaction.\" without simply repeating the model answer?",
-              "why_this_ask": "This closes Half-reaction balancing and reaction-dependent n-factor through a learner-owned check rather than through recall of the declarative route.",
+              "ask": "What information about the actual redox transformation is required before an n-factor can be assigned to the reagent?",
+              "why_this_ask": "The final question makes the learner derive electron change from a stated transformation, which is the only safe basis for an n-factor claim.",
               "from_step_ref": "REDOX-BALANCE-NFACTOR-T3"
             }
           ],
-          "differs_from_teaching_path": "For Half-reaction balancing and reaction-dependent n-factor, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+          "differs_from_teaching_path": "The expert route balances the half-reactions before discussing n-factor; the reconstruction starts from two shortcuts—atoms balanced means done and n-factor is fixed—and makes the learner use charge conservation and product-dependent electron change to repair both."
         },
         "boundary_test": {
           "prompt": "Why can a redox reagent have different n-factors in different reactions?",
           "answer": "Because n-factor is the reaction-specific number of electrons transferred per formula amount, and that electron change can differ with the product and oxidation-state pathway.",
-          "confirms": "For Half-reaction balancing and reaction-dependent n-factor, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+          "confirms": "It confirms that the learner treats balancing and equivalent bookkeeping as reaction-conditioned conservation procedures."
         }
       }
     }
@@ -666,7 +666,7 @@
       "read_order": [
         "Read the Oxidation number, oxidation/reduction and agents symbolic relation as one complete statement.",
         "Translate its symbols into the Oxidation number, oxidation/reduction and agents verbal claim before applying it.",
-        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+        "Reconcile formal oxidation numbers with total species charge, then use the direction of change to identify self-change before naming the opposite agent role."
       ],
       "instance_constraints": [
         "The Oxidation number, oxidation/reduction and agents equation is source-bound to an authored EQUATION datum.",
@@ -736,7 +736,7 @@
       "read_order": [
         "Read the Redox classification, displacement and disproportionation patterns symbolic relation as one complete statement.",
         "Translate its symbols into the Redox classification, displacement and disproportionation patterns verbal claim before applying it.",
-        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+        "Trace the same element across the reaction arrow; use actual oxidation-number increase and decrease to establish redox before naming any special pattern."
       ],
       "instance_constraints": [
         "The Redox classification, displacement and disproportionation patterns equation is source-bound to an authored EQUATION datum.",
@@ -805,7 +805,7 @@
       "read_order": [
         "Read the Half-reaction balancing and reaction-dependent n-factor symbolic relation as one complete statement.",
         "Translate its symbols into the Half-reaction balancing and reaction-dependent n-factor verbal claim before applying it.",
-        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+        "Check every element and net charge after electron cancellation; any n-factor shown must be tied to the same balanced transformation."
       ],
       "instance_constraints": [
         "The Half-reaction balancing and reaction-dependent n-factor equation is source-bound to an authored EQUATION datum.",
