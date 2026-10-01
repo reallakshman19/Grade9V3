@@ -1,0 +1,66 @@
+name: chemistry-finalize-blueprint-v2-once
+
+on:
+  push:
+    branches:
+      - feat/chemistry-tablet-standalone
+    paths:
+      - ".github/chemistry-finalize-blueprint-v2.trigger"
+
+permissions:
+  contents: write
+
+jobs:
+  finalize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install renderer dependency
+        run: python3 -m pip install jsonschema
+      - name: Generate strict blueprint-v2 learner snapshots
+        run: python3 Chemistry/tools/sync_blueprint_pages.py
+      - name: Check Core1 forward-debt baselines
+        run: |
+          python3 -m Shared.library.core1_orientation --check-baseline docs/core1-orientation-baseline.json
+          python3 -m Shared.library.core1a_construction --check-baseline docs/core1a-construction-baseline.json
+          python3 -m Shared.library.core1b_reconstruction --check-baseline docs/core1b-reconstruction-baseline.json
+          python3 -m Shared.library.core1_progression --check-baseline docs/core1-progression-baseline.json
+      - name: Regenerate Core1 reports
+        run: |
+          python3 -m Shared.library.core1_orientation --write-report docs/core1-orientation-report.json
+          python3 -m Shared.library.core1a_construction --write-report docs/core1a-construction-report.json
+          python3 -m Shared.library.core1b_reconstruction --write-report docs/core1b-reconstruction-report.json
+          python3 -m Shared.library.core1_progression --write-report docs/core1-progression-report.json
+          python3 -m Shared.library.core1_delivery --write-report docs/core1-delivery-report.json
+      - name: Regenerate projections
+        run: |
+          python3 Shared/tools/build_question_bank_web.py
+          python3 Shared/tools/build_question_bank_platform.py --write
+          python3 Shared/tools/build_manifest.py
+          python3 Shared/tools/build_pages_site.py
+          python3 Shared/tools/build_manifest.py
+      - name: Verify deterministic state
+        run: |
+          python3 -m unittest tests.test_chemistry_tablet_standalone
+          python3 Chemistry/tools/sync_blueprint_pages.py --check
+          python3 Shared/tools/build_question_bank_web.py --check
+          python3 Shared/tools/build_question_bank_platform.py --check
+          python3 Shared/tools/build_pages_site.py --check
+          python3 Shared/tools/build_manifest.py --check
+      - name: Commit deterministic outputs
+        run: |
+          set -euo pipefail
+          git config user.name "grade9v3-blueprint-finalizer"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No generated changes."
+            exit 0
+          fi
+          git commit -m "chore(chemistry): finalize blueprint-v2 generated outputs"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
