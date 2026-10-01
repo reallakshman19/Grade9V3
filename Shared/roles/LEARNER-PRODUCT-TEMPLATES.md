@@ -64,7 +64,7 @@ it is never permission for an agent to invent a page architecture.
 
 ```core-templates
 {
-  "version": "1.5",
+  "version": "1.2",
   "roles": {
     "CORE1": {
       "learner_job": "Orient to the bucket without replacing detailed teaching.",
@@ -197,7 +197,7 @@ it is never permission for an agent to invent a page architecture.
         "RANDOM_BLANK_DELETION",
         "UNANSWERED_PROMPT"
       ],
-      "web_blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.3.0"
+      "web_blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0"
     },
     "CORE1B": {
       "learner_job": "Reconstruct the same inferential truth before seeing the completed route.",
@@ -328,7 +328,7 @@ it is never permission for an agent to invent a page architecture.
         "GENERATED_OFFICIAL_IDENTITY",
         "RECONSTRUCTED_WORDING_PRESENTED_AS_ORIGINAL"
       ],
-      "web_blueprint_ref": "BP-CORE2-SOURCE-QUESTION@1.2.0"
+      "web_blueprint_ref": "BP-CORE2-SOURCE-QUESTION@1.1.0"
     },
     "CORE2A": {
       "learner_job": "Learn a familiar question-family application route with pedagogical support and complete closure.",
@@ -496,26 +496,3 @@ Representations must consume canonical representation/scene bindings. A page ren
 choose layout, typography and responsive behaviour; it may not independently redraw a
 different academic claim and treat that drawing as equivalent merely because it looks
 similar.
-
-### Optional governed activity companions
-
-Core1A's academic construction MUST remain complete in static delivery. An interactive calculator,
-explorer or manipulative is therefore an optional companion unless a different governed product
-role explicitly owns an interactive-first learner job.
-
-A Core1A companion interaction MUST resolve from canonical representation/resource authority:
-`representation.interactive_resource_refs[]` → a resource carrying the `ACTIVITY` role. The
-activity keeps its own stable resource identity; the Core page may link or mount it through an
-allowed blueprint mount mode, but page-local JavaScript MUST NOT become a second source of
-academic truth.
-
-If the activity is unavailable, not yet normalized into a governed ACTIVITY resource, or cannot
-be packaged safely, the renderer MUST preserve the complete static Core1A construction and may
-omit/defer only the optional activity companion. Missing optional interaction is not permission
-to create a second publisher and is not, by itself, a reason to withhold an otherwise complete
-Core1A product.
-
-Standalone candidate calculators/explorers must therefore be normalized into governed activity
-resources when they add real learning value. If they cannot yet be normalized, retain them as
-candidate evidence while the Core1A product proceeds through canonical records, product manifest,
-`render_core.py`, independent exact-render review and Owner acceptance.
