@@ -31,6 +31,7 @@ class Core2V2LearnerJobBoundary(unittest.TestCase):
         self.assertIn("governed_activity_companion", activity["accepts_blocks"])
         self.assertIn("UNREGISTERED_PAGE_LOCAL_INTERACTION", core1a["forbidden"])
         self.assertIn("INTERACTION_REQUIRED_FOR_STATIC_ACADEMIC_CLOSURE", core1a["forbidden"])
+        self.assertNotIn("COMPONENT", core1a["representation_policy"]["preferred_mount_modes"])
         self.assertIn(
             "concept_navigation",
             next(slot for slot in core2["slots"] if slot["id"] == "support")["accepts_blocks"],
