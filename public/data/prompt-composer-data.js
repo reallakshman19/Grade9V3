@@ -371,7 +371,6 @@ window.GRADE9V3_PROMPT_COMPOSER = {
       "representation_policy": {
         "preferred_mount_modes": [
           "PORTABLE_SCENE",
-          "COMPONENT",
           "STATIC_FIGURE"
         ],
         "legacy_iframe": "MIGRATION_ONLY"
