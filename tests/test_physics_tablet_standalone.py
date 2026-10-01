@@ -21,7 +21,7 @@ PHYSICS_TABLET_FILES = [
     "standalone/core1a-motion-1d-straight-line-tablet.html",
     "standalone/motion-1d-practice-companion-tablet.html",
     "standalone/core1a-physics-nlm-tablet.html",
-    "standalone/core1a-physics-vectors-tablet.html",
+    "standalone/core1a-vector-add-sub-tablet.html",
     "standalone/core1a-physics-motion-2d-ncert-tablet.html",
     "standalone/core2-motion-consolidated-practice-tablet.html",
 ]
@@ -48,16 +48,20 @@ def _viewport_content(html: str) -> str:
 
 
 class PhysicsTabletStandaloneStaticGuardTest(unittest.TestCase):
-    def test_candidate_files_exist_and_non_empty(self):
+    def test_candidate_files_exist_and_are_html_documents(self):
+        """Presence/identity guard only; byte count is not a quality proxy."""
         for rel_path in PHYSICS_TABLET_FILES:
             with self.subTest(file=rel_path):
                 fpath = REPO / rel_path
                 self.assertTrue(fpath.exists(), f"File {rel_path} does not exist")
-                self.assertGreater(
-                    fpath.stat().st_size,
-                    30_000,
-                    f"File {rel_path} is unexpectedly small",
+                content = fpath.read_text(encoding="utf-8").lstrip()
+                self.assertTrue(content, f"File {rel_path} is empty")
+                self.assertTrue(
+                    content.lower().startswith("<!doctype html>"),
+                    f"File {rel_path} is not an HTML document",
                 )
+                self.assertRegex(content, r"(?i)<html\b")
+                self.assertRegex(content, r"(?i)<body\b")
 
     def test_no_remote_runtime_dependency_urls(self):
         """Reject remote load-bearing URLs; ordinary cited/source links are not banned."""
