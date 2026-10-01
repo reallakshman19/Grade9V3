@@ -34,12 +34,57 @@ window.GRADE9V3_CORE = {
               "text": "The quantities this bucket works with.\nP: PCl5 geometry: authored schematic count for phosphorus centre. (1 count)\nCl: PCl5 geometry: authored schematic count for chlorine positions. (5 count)"
             },
             {
+              "id": "CORE1-REL-CHEM-BOND-GEOMETRY-DIPOLE",
+              "kind": "EQUATION",
+              "mathml": "<math display=\"block\"><mrow><mtext>μnet = Σ μ⃗bond</mtext></mrow></math>",
+              "meaning": "Molecular dipole is the vector sum of bond-dipole contributions in the molecular geometry; symmetric vectors can cancel even when individual bonds are polar.",
+              "symbols": [
+                "μnet: net molecular dipole moment",
+                "μ⃗bond: individual bond-dipole vector"
+              ],
+              "conditions": [
+                "Use the molecular geometry and the relevant bond-dipole directions.",
+                "For PCl₅ here, the trigonal-bipyramidal statement is the isolated-molecule/gas-phase model."
+              ]
+            },
+            {
+              "id": "CORE1-REL-CHEM-BOND-LEWIS-VSEPR",
+              "kind": "EQUATION",
+              "mathml": "<math display=\"block\"><mrow><mi>FC</mi><mo>=</mo><mi>V</mi><mo>−</mo><mi>N</mi><mo>−</mo><mfrac><mi>B</mi><mn>2</mn></mfrac></mrow></math>",
+              "meaning": "Formal charge is Lewis electron bookkeeping for a chosen structure; VSEPR then uses electron-domain count, not formal charge, to name electron-domain geometry and molecular shape.",
+              "symbols": [
+                "FC: formal charge on the atom",
+                "V: valence electrons of the free atom",
+                "N: nonbonding electrons assigned to the atom",
+                "B: bonding electrons around the atom"
+              ],
+              "conditions": [
+                "First draw a Lewis structure with the correct total valence-electron inventory.",
+                "Use the same declared Lewis bookkeeping convention for every atom compared."
+              ]
+            },
+            {
+              "id": "CORE1-REL-CHEM-BOND-MO-HBOND",
+              "kind": "EQUATION",
+              "mathml": "<math display=\"block\"><mrow><mi>BO</mi><mo>=</mo><mfrac><mrow><msub><mi>N</mi><mi>b</mi></msub><mo>−</mo><msub><mi>N</mi><mi>ab</mi></msub></mrow><mn>2</mn></mfrac></mrow></math>",
+              "meaning": "MO bond order follows bonding and antibonding occupancy, while magnetic behaviour requires a separate inspection of unpaired electrons.",
+              "symbols": [
+                "BO: molecular-orbital bond order",
+                "Nb: electrons in bonding molecular orbitals",
+                "Nab: electrons in antibonding molecular orbitals"
+              ],
+              "conditions": [
+                "Use a stated molecular-orbital ordering and the correct total electron count for the species.",
+                "Assess pairing after the occupancy is written."
+              ]
+            },
+            {
               "id": "CORE1-SCENE-CHEM-BOND-LEWIS-VSEPR",
               "kind": "FIGURE",
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "FC = V − N − B/2",
+                  "symbol": "FC",
                   "in_words": "For Lewis structures, formal charge and VSEPR geometry, the displayed symbols mean: Formal charge is computed from valence, nonbonding and bonding-electron bookkeeping for a chosen Lewis representation."
                 }
               ],
@@ -161,12 +206,61 @@ window.GRADE9V3_CORE = {
               "text": "The quantities this bucket works with.\nP: PCl5 geometry: authored schematic count for phosphorus centre. (1 count)\nCl: PCl5 geometry: authored schematic count for chlorine positions. (5 count)"
             },
             {
+              "id": "CORE1-REL-CHEM-GAS-IDEAL-LAWS",
+              "kind": "EQUATION",
+              "mathml": "<math display=\"block\"><mrow><mi>P</mi><mi>V</mi><mo>=</mo><mi>n</mi><mi>R</mi><mi>T</mi></mrow></math>",
+              "meaning": "The ideal-gas equation links pressure, volume, amount and absolute temperature; simple gas-law proportionalities are constrained cases of this state model.",
+              "symbols": [
+                "P: gas pressure",
+                "V: gas volume",
+                "n: amount of gas",
+                "T: absolute temperature"
+              ],
+              "conditions": [
+                "Use an ideal-gas model or a regime where ideal behaviour is an adequate approximation.",
+                "State which variables are held fixed before reducing the equation to a simple proportionality."
+              ]
+            },
+            {
+              "id": "CORE1-REL-CHEM-GAS-KINETIC-PHASE",
+              "kind": "EQUATION",
+              "mathml": "<math display=\"block\"><mrow><mtext>⟨Eₖ⟩ = 3kBT/2; Pvap(Tb) = Pext</mtext></mrow></math>",
+              "meaning": "Temperature sets the ensemble mean translational kinetic energy in the ideal-gas model, while bulk boiling begins when vapour pressure reaches the external pressure.",
+              "symbols": [
+                "⟨Eₖ⟩: mean translational kinetic energy per particle",
+                "T: absolute thermodynamic temperature",
+                "Pvap: equilibrium vapour pressure of the liquid",
+                "Pext: external pressure on the liquid"
+              ],
+              "conditions": [
+                "The kinetic-energy relation is for an equilibrium ideal monatomic-gas translational model.",
+                "The boiling criterion refers to a pure liquid at a stated external pressure and does not describe surface evaporation."
+              ]
+            },
+            {
+              "id": "CORE1-REL-CHEM-GAS-REAL-CRITICAL",
+              "kind": "EQUATION",
+              "mathml": "<math display=\"block\"><mrow><mi>Z</mi><mo>=</mo><mfrac><mrow><mi>P</mi><mi>V</mi></mrow><mrow><mi>n</mi><mi>R</mi><mi>T</mi></mrow></mfrac></mrow></math>",
+              "meaning": "The compressibility factor compares a measured real-gas state with the ideal-gas reference at the same P, V, n and T.",
+              "symbols": [
+                "Z: compressibility factor",
+                "P: gas pressure",
+                "V: gas volume",
+                "n: amount of gas",
+                "T: absolute temperature"
+              ],
+              "conditions": [
+                "Compare states using consistent P, V, n and T values.",
+                "Interpret the sign and magnitude of deviation only for the stated thermodynamic state."
+              ]
+            },
+            {
               "id": "CORE1-SCENE-CHEM-GAS-KINETIC-PHASE",
               "kind": "FIGURE",
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "T ↑ ⇒ mean Eₖ ↑",
+                  "symbol": "T",
                   "in_words": "For Particle model, speed distributions and phase change, the displayed symbols mean: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains."
                 }
               ],
@@ -288,12 +382,62 @@ window.GRADE9V3_CORE = {
               "text": "The quantities this bucket works with.\nP: PCl5 geometry: authored schematic count for phosphorus centre. (1 count)\nCl: PCl5 geometry: authored schematic count for chlorine positions. (5 count)"
             },
             {
+              "id": "CORE1-REL-CHEM-MOLE-CONCENTRATION",
+              "kind": "EQUATION",
+              "mathml": "<math display=\"block\"><mrow><mi>c</mi><mo>=</mo><mfrac><msub><mi>n</mi><mtext>solute</mtext></msub><msub><mi>V</mi><mtext>solution</mtext></msub></mfrac><mo>;</mo><mi>b</mi><mo>=</mo><mfrac><msub><mi>n</mi><mtext>solute</mtext></msub><msub><mi>m</mi><mtext>solvent</mtext></msub></mfrac></mrow></math>",
+              "meaning": "Molarity, molality and mole fraction use different denominators, so their units and temperature sensitivity follow different bookkeeping.",
+              "symbols": [
+                "c: molarity",
+                "b: molality",
+                "xi: mole fraction of component i",
+                "n: amount of substance",
+                "Vsolution: solution volume",
+                "msolvent: solvent mass"
+              ],
+              "conditions": [
+                "State whether the sample is closed and whether composition changes.",
+                "Use solution volume for molarity, solvent mass for molality and total mole amount for mole fraction."
+              ]
+            },
+            {
+              "id": "CORE1-REL-CHEM-MOLE-FORMULA-STOICH",
+              "kind": "EQUATION",
+              "mathml": "<math display=\"block\"><mrow><msub><mi>ξ</mi><mi>i</mi></msub><mo>=</mo><mfrac><msub><mi>n</mi><mi>i</mi></msub><msub><mi>ν</mi><mi>i</mi></msub></mfrac><mo>;</mo><msub><mi>ξ</mi><mtext>limiting</mtext></msub><mo>=</mo><mi>min</mi><mo>(</mo><msub><mi>ξ</mi><mi>i</mi></msub><mo>)</mo></mrow></math>",
+              "meaning": "A balanced equation compares amounts through stoichiometric coefficients; the reactant supporting the smallest reaction extent is limiting in the complete-reaction model.",
+              "symbols": [
+                "ni: available amount of reactant i",
+                "νi: stoichiometric coefficient of reactant i",
+                "ξi: reaction extent supported by reactant i"
+              ],
+              "conditions": [
+                "Convert each starting inventory to moles first.",
+                "Use a balanced equation and the complete-reaction stoichiometric model."
+              ]
+            },
+            {
+              "id": "CORE1-REL-CHEM-MOLE-FOUNDATIONS-MOLE",
+              "kind": "EQUATION",
+              "mathml": "<math display=\"block\"><mrow><mi>n</mi><mo>=</mo><mfrac><mi>m</mi><mi>M</mi></mfrac><mo>;</mo><mi>N</mi><mo>=</mo><mi>n</mi><msub><mi>N</mi><mi>A</mi></msub></mrow></math>",
+              "meaning": "Molar mass converts measurable mass to amount of substance, and Avogadro constant converts that amount to a count of explicitly named entities.",
+              "symbols": [
+                "n: amount of substance",
+                "m: sample mass",
+                "M: molar mass of the named substance",
+                "N: number of named entities",
+                "NA: Avogadro constant"
+              ],
+              "conditions": [
+                "Name the substance and the entity being counted.",
+                "Use a molar mass that corresponds to that same chemical entity/formula unit."
+              ]
+            },
+            {
               "id": "CORE1-SCENE-CHEM-MOLE-FOUNDATIONS-MOLE",
               "kind": "FIGURE",
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "N = nNₐ",
+                  "symbol": "N",
                   "in_words": "For Combination laws, mole, Avogadro constant and molar mass, the displayed symbols mean: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge."
                 }
               ],
@@ -415,12 +559,52 @@ window.GRADE9V3_CORE = {
               "text": "The quantities this bucket works with.\nP: PCl5 geometry: authored schematic count for phosphorus centre. (1 count)\nCl: PCl5 geometry: authored schematic count for chlorine positions. (5 count)"
             },
             {
+              "id": "CORE1-REL-CHEM-REDOX-BALANCE-NFACTOR",
+              "kind": "EQUATION",
+              "mathml": "<math display=\"block\"><mrow><mtext>total e− lost</mtext><mo>=</mo><mtext>total e− gained</mtext></mrow></math>",
+              "meaning": "Half-reaction balancing equalises electron transfer before the halves are added; the final ionic equation must also conserve each element and total charge.",
+              "symbols": [
+                "e−: electrons transferred in the half-reaction bookkeeping"
+              ],
+              "conditions": [
+                "Write separate oxidation and reduction half-reactions in the stated medium.",
+                "Balance atoms and charge within each half before scaling electron counts to cancel."
+              ]
+            },
+            {
+              "id": "CORE1-REL-CHEM-REDOX-CLASSIFICATION",
+              "kind": "EQUATION",
+              "mathml": "<math display=\"block\"><mrow><mtext>redox</mtext><mo>⇔</mo><mtext>ON increase and ON decrease are both present</mtext></mrow></math>",
+              "meaning": "A reaction is redox when oxidation-number changes are coupled; labels such as decomposition or displacement do not establish redox by themselves.",
+              "symbols": [
+                "ON: oxidation number of a tracked element"
+              ],
+              "conditions": [
+                "Track the same element from reactant to product species.",
+                "Use actual before/after oxidation numbers rather than a reaction-name shortcut."
+              ]
+            },
+            {
+              "id": "CORE1-REL-CHEM-REDOX-OXIDATION-AGENTS",
+              "kind": "EQUATION",
+              "mathml": "<math display=\"block\"><mrow><mo>∑</mo><msub><mi>n</mi><mi>i</mi></msub><mo>(</mo><msub><mi>ON</mi><mi>i</mi></msub><mo>)</mo><mo>=</mo><mtext>species charge</mtext></mrow></math>",
+              "meaning": "Oxidation numbers are formal assignments constrained by the total species charge; an increase tracks oxidation and a decrease tracks reduction.",
+              "symbols": [
+                "ni: number of atoms of element i",
+                "ONi: formal oxidation number of element i"
+              ],
+              "conditions": [
+                "Apply the oxidation-number priority rules consistently.",
+                "The algebraic weighted sum must equal the charge of the whole species."
+              ]
+            },
+            {
               "id": "CORE1-SCENE-CHEM-REDOX-OXIDATION-AGENTS",
               "kind": "FIGURE",
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "ON ↑ = oxidation; ON ↓ = reduction",
+                  "symbol": "ONi",
                   "in_words": "For Oxidation number, oxidation/reduction and agents, the displayed symbols mean: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner."
                 }
               ],
@@ -554,7 +738,7 @@ window.GRADE9V3_CORE = {
               "action": "Add bond dipoles as vectors in the molecular geometry.",
               "why_valid": "Equal polar bonds can cancel by symmetry, so scalar bond counting cannot establish a net molecular dipole.",
               "inputs": [],
-              "output": "Geometry is indispensable to molecular-polarity prediction."
+              "output": "Ideal isolated PCl₅: the 2 equal axial bond-dipole vectors cancel and the 3 equal 120° equatorial vectors cancel ⇒ μnet = 0."
             }
           ],
           "elicitation": null,
@@ -574,7 +758,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "particle groups",
-                  "symbol": "PCl₅: 3 equatorial + 2 axial",
+                  "symbol": "μnet",
                   "in_words": "For PCl5 geometry, model shorthand and molecular dipoles, the labelled circles are the picture-side representation of this statement: A trigonal-bipyramidal PCl5 geometry contains distinct equatorial and axial directions; the picture does not prove literal d-orbital hybridisation."
                 }
               ],
@@ -781,7 +965,7 @@ window.GRADE9V3_CORE = {
               "action": "Add bond dipoles as vectors in the molecular geometry.",
               "why_valid": "Equal polar bonds can cancel by symmetry, so scalar bond counting cannot establish a net molecular dipole.",
               "inputs": [],
-              "output": "Geometry is indispensable to molecular-polarity prediction."
+              "output": "Ideal isolated PCl₅: the 2 equal axial bond-dipole vectors cancel and the 3 equal 120° equatorial vectors cancel ⇒ μnet = 0."
             }
           ],
           "elicitation": {
@@ -844,7 +1028,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "particle groups",
-                  "symbol": "PCl₅: 3 equatorial + 2 axial",
+                  "symbol": "μnet",
                   "in_words": "For PCl5 geometry, model shorthand and molecular dipoles, the labelled circles are the picture-side representation of this statement: A trigonal-bipyramidal PCl5 geometry contains distinct equatorial and axial directions; the picture does not prove literal d-orbital hybridisation."
                 }
               ],
@@ -1014,7 +1198,7 @@ window.GRADE9V3_CORE = {
               "action": "Compute formal charges only after the Lewis arrangement is explicit.",
               "why_valid": "Formal charge follows a defined partition of bonding electrons and is a diagnostic of the representation.",
               "inputs": [],
-              "output": "Formal charge helps compare contributors but is not a direct measured partial charge."
+              "output": "For NH₃ nitrogen: FC = 5 − 2 − 6/2 = 0; this is Lewis bookkeeping, not a measured partial atomic charge."
             },
             {
               "id": "BOND-LEWIS-VSEPR-T3",
@@ -1022,7 +1206,7 @@ window.GRADE9V3_CORE = {
               "action": "Count VSEPR electron domains before naming molecular shape.",
               "why_valid": "Lone pairs occupy domains and influence geometry even though they are omitted from the atom-position shape name.",
               "inputs": [],
-              "output": "Electron-domain geometry and molecular shape can differ."
+              "output": "NH₃: 4 electron domains ⇒ tetrahedral electron-domain geometry; 3 bonded atoms + 1 lone pair ⇒ trigonal-pyramidal molecular shape."
             }
           ],
           "elicitation": null,
@@ -1042,7 +1226,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "FC = V − N − B/2",
+                  "symbol": "FC",
                   "in_words": "For Lewis structures, formal charge and VSEPR geometry, the displayed symbols mean: Formal charge is computed from valence, nonbonding and bonding-electron bookkeeping for a chosen Lewis representation."
                 }
               ],
@@ -1230,7 +1414,7 @@ window.GRADE9V3_CORE = {
               "action": "Compute formal charges only after the Lewis arrangement is explicit.",
               "why_valid": "Formal charge follows a defined partition of bonding electrons and is a diagnostic of the representation.",
               "inputs": [],
-              "output": "Formal charge helps compare contributors but is not a direct measured partial charge."
+              "output": "For NH₃ nitrogen: FC = 5 − 2 − 6/2 = 0; this is Lewis bookkeeping, not a measured partial atomic charge."
             },
             {
               "id": "BOND-LEWIS-VSEPR-T3",
@@ -1238,7 +1422,7 @@ window.GRADE9V3_CORE = {
               "action": "Count VSEPR electron domains before naming molecular shape.",
               "why_valid": "Lone pairs occupy domains and influence geometry even though they are omitted from the atom-position shape name.",
               "inputs": [],
-              "output": "Electron-domain geometry and molecular shape can differ."
+              "output": "NH₃: 4 electron domains ⇒ tetrahedral electron-domain geometry; 3 bonded atoms + 1 lone pair ⇒ trigonal-pyramidal molecular shape."
             }
           ],
           "elicitation": {
@@ -1301,7 +1485,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "FC = V − N − B/2",
+                  "symbol": "FC",
                   "in_words": "For Lewis structures, formal charge and VSEPR geometry, the displayed symbols mean: Formal charge is computed from valence, nonbonding and bonding-electron bookkeeping for a chosen Lewis representation."
                 }
               ],
@@ -1460,7 +1644,7 @@ window.GRADE9V3_CORE = {
               "action": "Compute bond order from bonding-minus-antibonding occupancy and inspect unpaired electrons separately for magnetic behaviour.",
               "why_valid": "Bond order and paramagnetism answer different questions even though both use the same configuration.",
               "inputs": [],
-              "output": "Do not infer one from the other."
+              "output": "O₂: BO = 2 while unpaired e− = 2; bond order and magnetic behaviour are separate readouts of the same occupancy."
             },
             {
               "id": "BOND-MO-HBOND-T3",
@@ -1488,7 +1672,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "BO = (Nᵦ − Nₐᵦ)/2",
+                  "symbol": "BO",
                   "in_words": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the displayed symbols mean: Molecular-orbital bond order comes from bonding versus antibonding occupancy, while unpaired occupancy must be checked separately for magnetism."
                 }
               ],
@@ -1675,7 +1859,7 @@ window.GRADE9V3_CORE = {
               "action": "Compute bond order from bonding-minus-antibonding occupancy and inspect unpaired electrons separately for magnetic behaviour.",
               "why_valid": "Bond order and paramagnetism answer different questions even though both use the same configuration.",
               "inputs": [],
-              "output": "Do not infer one from the other."
+              "output": "O₂: BO = 2 while unpaired e− = 2; bond order and magnetic behaviour are separate readouts of the same occupancy."
             },
             {
               "id": "BOND-MO-HBOND-T3",
@@ -1746,7 +1930,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "BO = (Nᵦ − Nₐᵦ)/2",
+                  "symbol": "BO",
                   "in_words": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the displayed symbols mean: Molecular-orbital bond order comes from bonding versus antibonding occupancy, while unpaired occupancy must be checked separately for magnetism."
                 }
               ],
@@ -1904,7 +2088,7 @@ window.GRADE9V3_CORE = {
               "action": "Use the ideal-gas equation as a common model for state-variable changes.",
               "why_valid": "For a fixed amount of ideal gas, changing one state variable generally requires compensating changes in others.",
               "inputs": [],
-              "output": "The familiar simple gas laws are conditional cases of the same equation-of-state model."
+              "output": "For fixed n and T: P1V1 = P2V2; if V2 = V1/2, then P2 = 2P1."
             },
             {
               "id": "GAS-IDEAL-LAWS-T3",
@@ -1932,7 +2116,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "PV = nRT",
+                  "symbol": "P",
                   "in_words": "For Gas-law constraints, mixtures and transport, the displayed symbols mean: Pressure, volume, amount and absolute temperature are linked by the ideal-gas model; a simple gas law fixes a subset of them."
                 }
               ],
@@ -2118,7 +2302,7 @@ window.GRADE9V3_CORE = {
               "action": "Use the ideal-gas equation as a common model for state-variable changes.",
               "why_valid": "For a fixed amount of ideal gas, changing one state variable generally requires compensating changes in others.",
               "inputs": [],
-              "output": "The familiar simple gas laws are conditional cases of the same equation-of-state model."
+              "output": "For fixed n and T: P1V1 = P2V2; if V2 = V1/2, then P2 = 2P1."
             },
             {
               "id": "GAS-IDEAL-LAWS-T3",
@@ -2189,7 +2373,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "PV = nRT",
+                  "symbol": "P",
                   "in_words": "For Gas-law constraints, mixtures and transport, the displayed symbols mean: Pressure, volume, amount and absolute temperature are linked by the ideal-gas model; a simple gas law fixes a subset of them."
                 }
               ],
@@ -2347,7 +2531,7 @@ window.GRADE9V3_CORE = {
               "action": "Compare evaporation with boiling before discussing temperature.",
               "why_valid": "Evaporation can occur at a surface over a range of temperatures; boiling is a bulk transition when vapour pressure matches external pressure.",
               "inputs": [],
-              "output": "A boiling temperature is pressure-dependent, whereas evaporation need not wait for that condition."
+              "output": "Pext ↓ ⇒ Tb ↓ because Pvap(Tb) = Pext is reached at a lower vapour pressure; surface evaporation can still occur below Tb."
             },
             {
               "id": "GAS-KINETIC-PHASE-T3",
@@ -2355,7 +2539,7 @@ window.GRADE9V3_CORE = {
               "action": "Track energy through a phase change for a pure substance at fixed pressure in phase equilibrium.",
               "why_valid": "Energy supplied during coexistence can change phase rather than raise temperature.",
               "inputs": [],
-              "output": "Latent heat is energy associated with the phase transition under the stated conditions."
+              "output": "At phase coexistence under fixed Pext: energy in > 0 while T = Tb and liquid fraction ↓; the added energy changes phase instead of producing ΔT."
             }
           ],
           "elicitation": null,
@@ -2375,7 +2559,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "T ↑ ⇒ mean Eₖ ↑",
+                  "symbol": "T",
                   "in_words": "For Particle model, speed distributions and phase change, the displayed symbols mean: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains."
                 }
               ],
@@ -2561,7 +2745,7 @@ window.GRADE9V3_CORE = {
               "action": "Compare evaporation with boiling before discussing temperature.",
               "why_valid": "Evaporation can occur at a surface over a range of temperatures; boiling is a bulk transition when vapour pressure matches external pressure.",
               "inputs": [],
-              "output": "A boiling temperature is pressure-dependent, whereas evaporation need not wait for that condition."
+              "output": "Pext ↓ ⇒ Tb ↓ because Pvap(Tb) = Pext is reached at a lower vapour pressure; surface evaporation can still occur below Tb."
             },
             {
               "id": "GAS-KINETIC-PHASE-T3",
@@ -2569,7 +2753,7 @@ window.GRADE9V3_CORE = {
               "action": "Track energy through a phase change for a pure substance at fixed pressure in phase equilibrium.",
               "why_valid": "Energy supplied during coexistence can change phase rather than raise temperature.",
               "inputs": [],
-              "output": "Latent heat is energy associated with the phase transition under the stated conditions."
+              "output": "At phase coexistence under fixed Pext: energy in > 0 while T = Tb and liquid fraction ↓; the added energy changes phase instead of producing ΔT."
             }
           ],
           "elicitation": {
@@ -2632,7 +2816,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "T ↑ ⇒ mean Eₖ ↑",
+                  "symbol": "T",
                   "in_words": "For Particle model, speed distributions and phase change, the displayed symbols mean: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains."
                 }
               ],
@@ -2791,7 +2975,7 @@ window.GRADE9V3_CORE = {
               "action": "Interpret van der Waals attraction and excluded-volume terms as phenomenological corrections.",
               "why_valid": "Attractions and finite molecular size affect the pressure-volume relation differently and with state-dependent importance.",
               "inputs": [],
-              "output": "The corrected equation is a thermodynamic model, not a literal collision or bonding mechanism."
+              "output": "Z ≠ 1 ⇒ the stated P,V,n,T state deviates from the ideal reference; Z alone does not identify one unique microscopic mechanism."
             },
             {
               "id": "GAS-REAL-CRITICAL-T3",
@@ -2819,7 +3003,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "Z = PV/(nRT)",
+                  "symbol": "Z",
                   "in_words": "For Real-gas deviations and critical behaviour, the displayed symbols mean: Compressibility factor compares a real-gas state with the ideal reference at the same pressure, volume, amount and temperature."
                 }
               ],
@@ -3004,7 +3188,7 @@ window.GRADE9V3_CORE = {
               "action": "Interpret van der Waals attraction and excluded-volume terms as phenomenological corrections.",
               "why_valid": "Attractions and finite molecular size affect the pressure-volume relation differently and with state-dependent importance.",
               "inputs": [],
-              "output": "The corrected equation is a thermodynamic model, not a literal collision or bonding mechanism."
+              "output": "Z ≠ 1 ⇒ the stated P,V,n,T state deviates from the ideal reference; Z alone does not identify one unique microscopic mechanism."
             },
             {
               "id": "GAS-REAL-CRITICAL-T3",
@@ -3075,7 +3259,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "Z = PV/(nRT)",
+                  "symbol": "Z",
                   "in_words": "For Real-gas deviations and critical behaviour, the displayed symbols mean: Compressibility factor compares a real-gas state with the ideal reference at the same pressure, volume, amount and temperature."
                 }
               ],
@@ -3233,7 +3417,7 @@ window.GRADE9V3_CORE = {
               "action": "For temperature-change reasoning, state whether the sample is closed and composition/amounts remain unchanged.",
               "why_valid": "Molarity can change if solution volume changes; molality and mole fraction do not change merely from temperature when solvent mass and mole amounts stay unchanged.",
               "inputs": [],
-              "output": "Invariance claims require the no-loss/no-reaction qualification."
+              "output": "Closed unchanged sample: Vsolution ↑ with fixed nsolute ⇒ c ↓, while fixed msolvent and fixed mole amounts leave b and xi unchanged."
             },
             {
               "id": "MOLE-CONCENTRATION-T3",
@@ -3261,7 +3445,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "c = n/V",
+                  "symbol": "c",
                   "in_words": "For Molarity, molality and mole fraction, the displayed symbols mean: Molarity uses solution volume as its denominator; molality and mole fraction use different denominators and therefore different temperature sensitivities."
                 }
               ],
@@ -3448,7 +3632,7 @@ window.GRADE9V3_CORE = {
               "action": "For temperature-change reasoning, state whether the sample is closed and composition/amounts remain unchanged.",
               "why_valid": "Molarity can change if solution volume changes; molality and mole fraction do not change merely from temperature when solvent mass and mole amounts stay unchanged.",
               "inputs": [],
-              "output": "Invariance claims require the no-loss/no-reaction qualification."
+              "output": "Closed unchanged sample: Vsolution ↑ with fixed nsolute ⇒ c ↓, while fixed msolvent and fixed mole amounts leave b and xi unchanged."
             },
             {
               "id": "MOLE-CONCENTRATION-T3",
@@ -3519,7 +3703,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "c = n/V",
+                  "symbol": "c",
                   "in_words": "For Molarity, molality and mole fraction, the displayed symbols mean: Molarity uses solution volume as its denominator; molality and mole fraction use different denominators and therefore different temperature sensitivities."
                 }
               ],
@@ -3714,7 +3898,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "extent ∝ nᵢ/νᵢ",
+                  "symbol": "ξi",
                   "in_words": "For Empirical formula, stoichiometry and limiting reagent, the displayed symbols mean: Available amount divided by the balanced-equation stoichiometric coefficient reveals which reactant inventory supports the smallest reaction extent."
                 }
               ],
@@ -3980,7 +4164,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "extent ∝ nᵢ/νᵢ",
+                  "symbol": "ξi",
                   "in_words": "For Empirical formula, stoichiometry and limiting reagent, the displayed symbols mean: Available amount divided by the balanced-equation stoichiometric coefficient reveals which reactant inventory supports the smallest reaction extent."
                 }
               ],
@@ -4146,7 +4330,7 @@ window.GRADE9V3_CORE = {
               "action": "Use the path mass ↔ moles ↔ entities with units visible.",
               "why_valid": "Molar mass connects grams and moles; Avogadro's constant connects moles and entity count.",
               "inputs": [],
-              "output": "Unit cancellation checks the conversion direction."
+              "output": "18.0 g H₂O ÷ 18.0 g mol⁻¹ = 1.00 mol H₂O; 1.00 mol × NA = NA water molecules."
             }
           ],
           "elicitation": null,
@@ -4166,7 +4350,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "N = nNₐ",
+                  "symbol": "N",
                   "in_words": "For Combination laws, mole, Avogadro constant and molar mass, the displayed symbols mean: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge."
                 }
               ],
@@ -4361,7 +4545,7 @@ window.GRADE9V3_CORE = {
               "action": "Use the path mass ↔ moles ↔ entities with units visible.",
               "why_valid": "Molar mass connects grams and moles; Avogadro's constant connects moles and entity count.",
               "inputs": [],
-              "output": "Unit cancellation checks the conversion direction."
+              "output": "18.0 g H₂O ÷ 18.0 g mol⁻¹ = 1.00 mol H₂O; 1.00 mol × NA = NA water molecules."
             }
           ],
           "elicitation": {
@@ -4424,7 +4608,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "N = nNₐ",
+                  "symbol": "N",
                   "in_words": "For Combination laws, mole, Avogadro constant and molar mass, the displayed symbols mean: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge."
                 }
               ],
@@ -4611,7 +4795,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "atomsL = atomsR; chargeL = chargeR",
+                  "symbol": "e−",
                   "in_words": "For Half-reaction balancing and reaction-dependent n-factor, the displayed symbols mean: A balanced ionic redox equation conserves every element and total charge; reaction-specific electron transfer then determines n-factor."
                 }
               ],
@@ -4870,7 +5054,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "atomsL = atomsR; chargeL = chargeR",
+                  "symbol": "e−",
                   "in_words": "For Half-reaction balancing and reaction-dependent n-factor, the displayed symbols mean: A balanced ionic redox equation conserves every element and total charge; reaction-specific electron transfer then determines n-factor."
                 }
               ],
@@ -5036,7 +5220,7 @@ window.GRADE9V3_CORE = {
               "action": "For the same element, map one initial state splitting upward and downward as disproportionation, and two starting states converging as comproportionation.",
               "why_valid": "The classification depends on the directed oxidation-state map.",
               "inputs": [],
-              "output": "Counting how many states appear is not enough."
+              "output": "Cl in Cl₂: 0 → −1 and 0 → +1 ⇒ disproportionation; the directed oxidation-state split, not the number of states, establishes the pattern."
             }
           ],
           "elicitation": null,
@@ -5056,7 +5240,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "redox ⇒ coupled ON increase + decrease",
+                  "symbol": "ON",
                   "in_words": "For Redox classification, displacement and disproportionation patterns, the displayed symbols mean: Calling a reaction redox requires coupled oxidation-number changes; a reaction-type label by itself is insufficient."
                 }
               ],
@@ -5249,7 +5433,7 @@ window.GRADE9V3_CORE = {
               "action": "For the same element, map one initial state splitting upward and downward as disproportionation, and two starting states converging as comproportionation.",
               "why_valid": "The classification depends on the directed oxidation-state map.",
               "inputs": [],
-              "output": "Counting how many states appear is not enough."
+              "output": "Cl in Cl₂: 0 → −1 and 0 → +1 ⇒ disproportionation; the directed oxidation-state split, not the number of states, establishes the pattern."
             }
           ],
           "elicitation": {
@@ -5312,7 +5496,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "redox ⇒ coupled ON increase + decrease",
+                  "symbol": "ON",
                   "in_words": "For Redox classification, displacement and disproportionation patterns, the displayed symbols mean: Calling a reaction redox requires coupled oxidation-number changes; a reaction-type label by itself is insufficient."
                 }
               ],
@@ -5470,7 +5654,7 @@ window.GRADE9V3_CORE = {
               "action": "Track the same element from reactant to product and classify increases as oxidation and decreases as reduction.",
               "why_valid": "A direction can only be named after matching the element across both sides.",
               "inputs": [],
-              "output": "Electron-loss/gain and oxidation-number change are two views of the same bookkeeping."
+              "output": "Zn: 0 → +2 = oxidation; Cu: +2 → 0 = reduction."
             },
             {
               "id": "REDOX-OXIDATION-AGENTS-T3",
@@ -5478,7 +5662,7 @@ window.GRADE9V3_CORE = {
               "action": "Name the species being reduced as the oxidising agent and the species being oxidised as the reducing agent.",
               "why_valid": "Agent names describe the process caused in the partner, not the self-change.",
               "inputs": [],
-              "output": "Separating self-change from agent role prevents reversal."
+              "output": "Zn 0 → +2 ⇒ Zn is the reducing agent; Cu²⁺ +2 → 0 ⇒ Cu²⁺ is the oxidising agent."
             }
           ],
           "elicitation": null,
@@ -5498,7 +5682,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "ON ↑ = oxidation; ON ↓ = reduction",
+                  "symbol": "ONi",
                   "in_words": "For Oxidation number, oxidation/reduction and agents, the displayed symbols mean: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner."
                 }
               ],
@@ -5685,7 +5869,7 @@ window.GRADE9V3_CORE = {
               "action": "Track the same element from reactant to product and classify increases as oxidation and decreases as reduction.",
               "why_valid": "A direction can only be named after matching the element across both sides.",
               "inputs": [],
-              "output": "Electron-loss/gain and oxidation-number change are two views of the same bookkeeping."
+              "output": "Zn: 0 → +2 = oxidation; Cu: +2 → 0 = reduction."
             },
             {
               "id": "REDOX-OXIDATION-AGENTS-T3",
@@ -5693,7 +5877,7 @@ window.GRADE9V3_CORE = {
               "action": "Name the species being reduced as the oxidising agent and the species being oxidised as the reducing agent.",
               "why_valid": "Agent names describe the process caused in the partner, not the self-change.",
               "inputs": [],
-              "output": "Separating self-change from agent role prevents reversal."
+              "output": "Zn 0 → +2 ⇒ Zn is the reducing agent; Cu²⁺ +2 → 0 ⇒ Cu²⁺ is the oxidising agent."
             }
           ],
           "elicitation": {
@@ -5756,7 +5940,7 @@ window.GRADE9V3_CORE = {
               "correspondence": [
                 {
                   "element": "equation body",
-                  "symbol": "ON ↑ = oxidation; ON ↓ = reduction",
+                  "symbol": "ONi",
                   "in_words": "For Oxidation number, oxidation/reduction and agents, the displayed symbols mean: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner."
                 }
               ],

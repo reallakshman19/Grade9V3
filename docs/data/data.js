@@ -148,7 +148,7 @@ window.GRADE9V3 = {
                   "action": "Compute formal charges only after the Lewis arrangement is explicit.",
                   "why_valid": "Formal charge follows a defined partition of bonding electrons and is a diagnostic of the representation.",
                   "role": "TRANSFORM",
-                  "output": "Formal charge helps compare contributors but is not a direct measured partial charge.",
+                  "output": "For NH₃ nitrogen: FC = 5 − 2 − 6/2 = 0; this is Lewis bookkeeping, not a measured partial atomic charge.",
                   "inputs": []
                 },
                 {
@@ -156,7 +156,7 @@ window.GRADE9V3 = {
                   "action": "Count VSEPR electron domains before naming molecular shape.",
                   "why_valid": "Lone pairs occupy domains and influence geometry even though they are omitted from the atom-position shape name.",
                   "role": "TRANSFORM",
-                  "output": "Electron-domain geometry and molecular shape can differ.",
+                  "output": "NH₃: 4 electron domains ⇒ tetrahedral electron-domain geometry; 3 bonded atoms + 1 lone pair ⇒ trigonal-pyramidal molecular shape.",
                   "inputs": []
                 }
               ],
@@ -220,7 +220,7 @@ window.GRADE9V3 = {
                   "action": "Add bond dipoles as vectors in the molecular geometry.",
                   "why_valid": "Equal polar bonds can cancel by symmetry, so scalar bond counting cannot establish a net molecular dipole.",
                   "role": "TRANSFORM",
-                  "output": "Geometry is indispensable to molecular-polarity prediction.",
+                  "output": "Ideal isolated PCl₅: the 2 equal axial bond-dipole vectors cancel and the 3 equal 120° equatorial vectors cancel ⇒ μnet = 0.",
                   "inputs": []
                 }
               ],
@@ -276,7 +276,7 @@ window.GRADE9V3 = {
                   "action": "Compute bond order from bonding-minus-antibonding occupancy and inspect unpaired electrons separately for magnetic behaviour.",
                   "why_valid": "Bond order and paramagnetism answer different questions even though both use the same configuration.",
                   "role": "TRANSFORM",
-                  "output": "Do not infer one from the other.",
+                  "output": "O₂: BO = 2 while unpaired e− = 2; bond order and magnetic behaviour are separate readouts of the same occupancy.",
                   "inputs": []
                 },
                 {
@@ -394,7 +394,7 @@ window.GRADE9V3 = {
               "CORE1A",
               "CORE1B"
             ],
-            "atoms": 13,
+            "atoms": 5,
             "questions": 3,
             "obligations": 5,
             "authoring_requirements": [
@@ -470,7 +470,7 @@ window.GRADE9V3 = {
                   "action": "Compare evaporation with boiling before discussing temperature.",
                   "why_valid": "Evaporation can occur at a surface over a range of temperatures; boiling is a bulk transition when vapour pressure matches external pressure.",
                   "role": "TRANSFORM",
-                  "output": "A boiling temperature is pressure-dependent, whereas evaporation need not wait for that condition.",
+                  "output": "Pext ↓ ⇒ Tb ↓ because Pvap(Tb) = Pext is reached at a lower vapour pressure; surface evaporation can still occur below Tb.",
                   "inputs": []
                 },
                 {
@@ -478,7 +478,7 @@ window.GRADE9V3 = {
                   "action": "Track energy through a phase change for a pure substance at fixed pressure in phase equilibrium.",
                   "why_valid": "Energy supplied during coexistence can change phase rather than raise temperature.",
                   "role": "TRANSFORM",
-                  "output": "Latent heat is energy associated with the phase transition under the stated conditions.",
+                  "output": "At phase coexistence under fixed Pext: energy in > 0 while T = Tb and liquid fraction ↓; the added energy changes phase instead of producing ΔT.",
                   "inputs": []
                 }
               ],
@@ -534,7 +534,7 @@ window.GRADE9V3 = {
                   "action": "Use the ideal-gas equation as a common model for state-variable changes.",
                   "why_valid": "For a fixed amount of ideal gas, changing one state variable generally requires compensating changes in others.",
                   "role": "TRANSFORM",
-                  "output": "The familiar simple gas laws are conditional cases of the same equation-of-state model.",
+                  "output": "For fixed n and T: P1V1 = P2V2; if V2 = V1/2, then P2 = 2P1.",
                   "inputs": []
                 },
                 {
@@ -598,7 +598,7 @@ window.GRADE9V3 = {
                   "action": "Interpret van der Waals attraction and excluded-volume terms as phenomenological corrections.",
                   "why_valid": "Attractions and finite molecular size affect the pressure-volume relation differently and with state-dependent importance.",
                   "role": "TRANSFORM",
-                  "output": "The corrected equation is a thermodynamic model, not a literal collision or bonding mechanism.",
+                  "output": "Z ≠ 1 ⇒ the stated P,V,n,T state deviates from the ideal reference; Z alone does not identify one unique microscopic mechanism.",
                   "inputs": []
                 },
                 {
@@ -716,7 +716,7 @@ window.GRADE9V3 = {
               "CORE1A",
               "CORE1B"
             ],
-            "atoms": 13,
+            "atoms": 5,
             "questions": 3,
             "obligations": 5,
             "authoring_requirements": [
@@ -800,7 +800,7 @@ window.GRADE9V3 = {
                   "action": "Use the path mass ↔ moles ↔ entities with units visible.",
                   "why_valid": "Molar mass connects grams and moles; Avogadro's constant connects moles and entity count.",
                   "role": "TRANSFORM",
-                  "output": "Unit cancellation checks the conversion direction.",
+                  "output": "18.0 g H₂O ÷ 18.0 g mol⁻¹ = 1.00 mol H₂O; 1.00 mol × NA = NA water molecules.",
                   "inputs": []
                 }
               ],
@@ -928,7 +928,7 @@ window.GRADE9V3 = {
                   "action": "For temperature-change reasoning, state whether the sample is closed and composition/amounts remain unchanged.",
                   "why_valid": "Molarity can change if solution volume changes; molality and mole fraction do not change merely from temperature when solvent mass and mole amounts stay unchanged.",
                   "role": "TRANSFORM",
-                  "output": "Invariance claims require the no-loss/no-reaction qualification.",
+                  "output": "Closed unchanged sample: Vsolution ↑ with fixed nsolute ⇒ c ↓, while fixed msolvent and fixed mole amounts leave b and xi unchanged.",
                   "inputs": []
                 },
                 {
@@ -1047,7 +1047,7 @@ window.GRADE9V3 = {
               "CORE1A",
               "CORE1B"
             ],
-            "atoms": 13,
+            "atoms": 5,
             "questions": 3,
             "obligations": 5,
             "authoring_requirements": [
@@ -1123,7 +1123,7 @@ window.GRADE9V3 = {
                   "action": "Track the same element from reactant to product and classify increases as oxidation and decreases as reduction.",
                   "why_valid": "A direction can only be named after matching the element across both sides.",
                   "role": "TRANSFORM",
-                  "output": "Electron-loss/gain and oxidation-number change are two views of the same bookkeeping.",
+                  "output": "Zn: 0 → +2 = oxidation; Cu: +2 → 0 = reduction.",
                   "inputs": []
                 },
                 {
@@ -1131,7 +1131,7 @@ window.GRADE9V3 = {
                   "action": "Name the species being reduced as the oxidising agent and the species being oxidised as the reducing agent.",
                   "why_valid": "Agent names describe the process caused in the partner, not the self-change.",
                   "role": "TRANSFORM",
-                  "output": "Separating self-change from agent role prevents reversal.",
+                  "output": "Zn 0 → +2 ⇒ Zn is the reducing agent; Cu²⁺ +2 → 0 ⇒ Cu²⁺ is the oxidising agent.",
                   "inputs": []
                 }
               ],
@@ -1195,7 +1195,7 @@ window.GRADE9V3 = {
                   "action": "For the same element, map one initial state splitting upward and downward as disproportionation, and two starting states converging as comproportionation.",
                   "why_valid": "The classification depends on the directed oxidation-state map.",
                   "role": "TRANSFORM",
-                  "output": "Counting how many states appear is not enough.",
+                  "output": "Cl in Cl₂: 0 → −1 and 0 → +1 ⇒ disproportionation; the directed oxidation-state split, not the number of states, establishes the pattern.",
                   "inputs": []
                 }
               ],
@@ -1369,7 +1369,7 @@ window.GRADE9V3 = {
               "CORE1A",
               "CORE1B"
             ],
-            "atoms": 13,
+            "atoms": 5,
             "questions": 3,
             "obligations": 5,
             "authoring_requirements": [
@@ -1407,17 +1407,17 @@ window.GRADE9V3 = {
         {
           "package_id": "LIB-CHEM-BEHAVIOUR-OF-GASES",
           "status": "CANDIDATE",
-          "admitted": false
+          "admitted": true
         },
         {
           "package_id": "LIB-CHEM-CHEMICAL-BONDING",
           "status": "CANDIDATE",
-          "admitted": false
+          "admitted": true
         },
         {
           "package_id": "LIB-CHEM-REDOX-REACTIONS",
           "status": "CANDIDATE",
-          "admitted": false
+          "admitted": true
         },
         {
           "package_id": "LIB-CHEM-SOME-BASIC-CONCEPTS",

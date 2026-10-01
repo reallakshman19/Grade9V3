@@ -19,7 +19,7 @@
     "WEB_CONTRACT": 7,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:428dbad4e7763ea9f5f4d5637218c89632f76aae082c2e2be6468d71959a12a0",
+  "digest": "sha256:4d74b7ad925c94b6ce277678d10b8ad043750ad8d5561e77edaa795e5322b958",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -1446,8 +1446,8 @@
       "path": "public/core-learning/data.js",
       "role": "WEB",
       "role_description": "Static Core learner host and generated projection data",
-      "bytes": 2772953,
-      "sha256": "e783e5b02d0bedb1d4a1aa228e9d9eeb9fd551b7fb9349e23c05c9b957faadfd"
+      "bytes": 2784798,
+      "sha256": "d2d7a23191bbaf96b3135a2cb204e38408869ee1527c4a3626d73d0b8be0315a"
     },
     {
       "path": "public/core-learning/index.html",
@@ -2979,8 +2979,8 @@
       "path": "tools/data.js",
       "role": "WEB",
       "role_description": "Browsable surfaces over generated data",
-      "bytes": 2409538,
-      "sha256": "899433339d11d86c2b82e85b6ff9ccdd5bee6ae06635711db494e8e866b57c22"
+      "bytes": 2410105,
+      "sha256": "b7af44e89bf1affa41f3f99870ba82e535fdc0415c9f28f8a38d7885fd615bd5"
     },
     {
       "path": "tools/index.html",
