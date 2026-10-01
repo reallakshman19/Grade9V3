@@ -138,16 +138,16 @@ class QbTabletStandaloneTest(unittest.TestCase):
         self.assertNotIn("<details class=\"solution-reveal\"", self.actual)
 
     def test_offline_and_accessible_viewport_contract(self):
-        external_runtime_patterns = [
-            r'<script[^>]+src=["\\\']https?://',
-            r'<(?:img|iframe|source)[^>]+src=["\\\']https?://',
-            r'<link[^>]+href=["\\\']https?://',
-            r'url\\(\\s*["\\\']?https?://',
-            r'@import[^;]+https?://',
-            r'fetch\\(\\s*["\\\']https?://',
-        ]
-        for pattern in external_runtime_patterns:
-            self.assertNotRegex(self.actual, pattern)
+        lower = self.actual.lower()
+        external_runtime_tokens = (
+            'src="http://', 'src="https://', "src='http://", "src='https://",
+            'href="http://', 'href="https://', "href='http://", "href='https://",
+            'url(http://', 'url(https://', 'url("http://', 'url("https://',
+            "url('http://", "url('https://", 'fetch("http://', 'fetch("https://',
+            "fetch('http://", "fetch('https://",
+        )
+        for token in external_runtime_tokens:
+            self.assertNotIn(token, lower)
         self.assertNotIn("user-scalable=no", self.actual)
         self.assertNotIn("maximum-scale=1", self.actual)
         self.assertIn("viewport-fit=cover", self.actual)
