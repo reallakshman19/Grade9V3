@@ -1,0 +1,72 @@
+name: preview-pr376-blueprint-v2
+
+on:
+  push:
+    branches:
+      - preview-pr376-blueprint-v2
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install render dependency
+        run: pip install --quiet jsonschema
+      - name: Render PR376 Chemistry through PR372 blueprint-v2
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from Shared.tools import render_core
+
+          manifests = [
+              Path("products/chemistry/behaviour-of-gases.manifest.json"),
+              Path("products/chemistry/chemical-bonding.manifest.json"),
+              Path("products/chemistry/redox-reactions.manifest.json"),
+              Path("products/chemistry/some-basic-concepts.manifest.json"),
+          ]
+          root = Path("/tmp/pr376-blueprint-v2")
+          root.mkdir(parents=True, exist_ok=True)
+          rows = []
+          for manifest in manifests:
+              slug = manifest.stem.replace(".manifest", "")
+              pages, gaps, digest, advisories, waived = render_core.build_report(
+                  manifest, mode="PAGES", held_to="FLOOR"
+              )
+              out = root / slug
+              out.mkdir(parents=True, exist_ok=True)
+              for name, content in pages.items():
+                  (out / name).write_text(content, encoding="utf-8")
+              rows.append({
+                  "product": slug,
+                  "manifest": manifest.as_posix(),
+                  "render_digest": digest,
+                  "gaps": gaps,
+                  "advisories": advisories,
+                  "waived": waived,
+                  "pages": sorted(pages),
+              })
+          (root / "preview-report.json").write_text(
+              json.dumps({
+                  "schema": "pr376-blueprint-v2-preview/v1",
+                  "blueprint_basis": "PR #372 exact branch head",
+                  "chemistry_basis": "PR #376 governed package/manifest/assets",
+                  "products": rows,
+              }, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          print(json.dumps(rows, indent=2))
+          PY
+      - name: Upload HTML preview
+        uses: actions/upload-artifact@v4
+        with:
+          name: pr376-blueprint-v2-html
+          path: /tmp/pr376-blueprint-v2
+          if-no-files-found: error
