@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "status": "CANDIDATE",
   "subject": "Chemistry",
-  "scope_summary": "Governed Core1A Owner-extension conversion of PR #376 Some Basic Concepts / Mole / Stoichiometry; unresolved source-labelled practice is excluded.",
+  "scope_summary": "Concept construction for mole/entity bridges, empirical formula, stoichiometric inventory and concentration definitions.",
   "curriculum_mappings": [
     {
       "board": "CBSE",
@@ -95,11 +95,11 @@
         }
       ],
       "scope": {
-        "covers": "Governed Core1A declarative teaching converted from PR #376.",
+        "covers": "Convert between mass, amount and named entities; build empirical ratios; use balanced coefficients for reaction inventory; and reason from concentration denominators.",
         "excluded": [
-          "Unresolved NCERT question identities and retained-card denominator claims.",
-          "Any claim of prescribed Grade-9 curriculum authority.",
-          "Core2 source-question admission."
+          "Reaction kinetics, equilibrium and real-yield modelling.",
+          "Analytical-chemistry procedures beyond the concentration definitions used here.",
+          "Question-bank practice sets beyond the worked anchors used for concept construction."
         ]
       },
       "primary_representation_ref": "REP-CHEM-MOLE-FOUNDATIONS-MOLE"

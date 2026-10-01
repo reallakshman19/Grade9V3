@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "status": "CANDIDATE",
   "subject": "Chemistry",
-  "scope_summary": "Governed Core1A Owner-extension conversion of PR #376 Behaviour of Gases and States of Matter. Source-labelled practice is excluded until custody is reconstructed.",
+  "scope_summary": "Concept construction for particle models, gas-law constraints, real-gas deviation and phase-change boundaries.",
   "curriculum_mappings": [
     {
       "board": "CBSE",
@@ -95,11 +95,11 @@
         }
       ],
       "scope": {
-        "covers": "Governed Core1A declarative teaching converted from PR #376.",
+        "covers": "Build and apply particle, gas-law and real-gas models while stating the conditions under which each model is valid.",
         "excluded": [
-          "Unresolved NCERT/ExamSIDE/JEE question identities.",
-          "Any claim that this Owner extension is prescribed CBSE Grade 9 content.",
-          "Core2 source-question custody until reconstruction is complete."
+          "Detailed statistical-mechanical derivations of molecular speed distributions.",
+          "Full thermodynamic phase-diagram analysis beyond the critical-point boundary used here.",
+          "Question-bank practice sets; this concept book focuses on construction and worked anchors."
         ]
       },
       "primary_representation_ref": "REP-CHEM-GAS-KINETIC-PHASE"
