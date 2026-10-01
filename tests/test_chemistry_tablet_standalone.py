@@ -54,10 +54,10 @@ class ChemistryBlueprintV2Test(unittest.TestCase):
                 self.assertIn('data-g9-mode="SINGLE_FILE"', text)
                 self.assertIn('data-blueprint-ref="BP-CORE1A-CONSTRUCTION@1.4.0"', text)
                 self.assertIn('meta name="g9-render" content="render_core/2 ', text)
-                self.assertEqual(3, text.count('data-g9-component="EQUATIONS"'))
-                self.assertEqual(3, text.count('data-g9-component="STAGED_VISUAL"'))
-                self.assertEqual(3, text.count('data-g9-component="QUICK_CHECK"'))
-                self.assertEqual(3, text.count('data-g9-component="WORKED_EXAMPLE"'))
+                self.assertEqual(3, text.count('data-g9-component="EQUATIONS" data-g9-level='))
+                self.assertEqual(3, text.count('data-g9-component="STAGED_VISUAL" data-g9-level='))
+                self.assertEqual(3, text.count('data-g9-component="QUICK_CHECK" data-g9-level='))
+                self.assertEqual(3, text.count('data-g9-component="WORKED_EXAMPLE" data-g9-level='))
                 self.assertEqual(9, len(re.findall(r'<g\b[^>]*data-g9-stage-id="', text)))
                 roles = re.findall(r'<li data-g9-triad-role="(CHECK|APPLY|CONNECT)"', text)
                 self.assertEqual(3, roles.count("CHECK"))
@@ -65,7 +65,7 @@ class ChemistryBlueprintV2Test(unittest.TestCase):
                 self.assertEqual(3, roles.count("CONNECT"))
                 self.assertNotIn("Draft audit hold:", text)
                 self.assertNotIn("NCERT Try the question", text)
-                self.assertIsNone(re.search(r'(?:src|href)\\s*=\\s*["\']https?://', text, re.I))
+                self.assertIsNone(re.search(r'(?:src|href)\s*=\s*["\']https?://', text, re.I))
 
     def test_lineage_snapshots_are_immutable_and_package_bound(self):
         for package_rel, (snapshot_rel, digest) in LINEAGE.items():
