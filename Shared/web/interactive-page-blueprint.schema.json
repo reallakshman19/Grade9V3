@@ -298,6 +298,58 @@
             "FULL_LAB"
           ]
         },
+        "presentation_profile": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "id",
+            "benchmark_ref",
+            "default_theme",
+            "anatomy",
+            "construction_step_format",
+            "support_rail"
+          ],
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "benchmark_ref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "default_theme": {
+              "enum": [
+                "LIGHT",
+                "DARK"
+              ]
+            },
+            "anatomy": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "enum": [
+                  "CHAPTER_HERO",
+                  "CONCEPT_CARD",
+                  "INFERENTIAL_JUMP_BANNER",
+                  "STEP_CARDS",
+                  "EQUATION_VALIDITY_CARD",
+                  "WORKED_ANCHOR_CARD",
+                  "STAGED_VISUAL_RAIL",
+                  "MISCONCEPTION_REPAIR_RAIL",
+                  "ACTIVE_RECALL_CLOSURE"
+                ]
+              }
+            },
+            "construction_step_format": {
+              "const": "ACTION_WHY_OUTPUT"
+            },
+            "support_rail": {
+              "const": "VISUAL_MISCONCEPTION_CHECKS"
+            }
+          }
+        },
         "slots": {
           "type": "array",
           "minItems": 1,
