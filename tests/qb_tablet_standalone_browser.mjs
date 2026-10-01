@@ -108,11 +108,14 @@ try {
     svg: document.querySelectorAll('.question-card[data-selected="true"] .representation-box svg').length,
     hints: document.querySelectorAll('.hint-pill').length,
     solutions: document.querySelectorAll('.solution-slot').length,
+    math: document.querySelectorAll('math').length,
   }));
   observations.runtime.counts = counts;
-  if (JSON.stringify(counts) !== JSON.stringify({ questions: 77, selected: 7, svg: 7, hints: 195, solutions: 77 })) {
-    fail('QB_RUNTIME_DENOMINATOR', JSON.stringify(counts));
+  const expectedCounts = { questions: 77, selected: 7, svg: 7, hints: 195, solutions: 77 };
+  for (const [key, expected] of Object.entries(expectedCounts)) {
+    if (counts[key] !== expected) fail('QB_RUNTIME_DENOMINATOR', `${key}: expected ${expected}, got ${counts[key]}`);
   }
+  if (counts.math < 100) fail('QB_DECLARED_MATH_NOT_TYPESET', `expected >100 MathML nodes, got ${counts.math}`);
 
   const visibleCount = async () => page.locator('.question-card:visible').count();
   for (const [filterName, expected] of [['physics', 31], ['chemistry', 46], ['selected', 7], ['d3d4', 30]]) {
