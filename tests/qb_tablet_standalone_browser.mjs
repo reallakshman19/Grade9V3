@@ -1,0 +1,183 @@
+// Exact-browser audit for standalone/core2-canonical-question-bank-tablet.html
+// Requires Playwright 1.56.1 + Chromium.
+import { createRequire } from 'node:module';
+import { spawn } from 'node:child_process';
+import { writeFileSync } from 'node:fs';
+
+const require = createRequire(import.meta.url);
+const { chromium } = require('playwright');
+const out = process.argv[2] || 'artifacts/qb-tablet-standalone-browser.json';
+const port = 8769;
+const base = `http://127.0.0.1:${port}/standalone/core2-canonical-question-bank-tablet.html`;
+
+const server = spawn('python3', ['-m', 'http.server', String(port), '--bind', '127.0.0.1'], {
+  stdio: ['ignore', 'pipe', 'pipe'],
+});
+await new Promise((resolve, reject) => {
+  const timer = setTimeout(resolve, 800);
+  server.on('error', err => { clearTimeout(timer); reject(err); });
+});
+
+const browser = await chromium.launch({ headless: true });
+const findings = [];
+const observations = { schema: 'grade9v3-qb-tablet-browser-audit-v1', viewports: {}, runtime: {} };
+const fail = (point, detail) => findings.push({ point, detail });
+
+async function load(page) {
+  const requests = [];
+  page.on('request', req => requests.push(req.url()));
+  await page.goto(base, { waitUntil: 'load' });
+  await page.waitForTimeout(80);
+  const remote = requests.filter(url => !url.startsWith(`http://127.0.0.1:${port}/`));
+  if (remote.length) fail('QB_EXTERNAL_RUNTIME_DEPENDENCY', remote.join(', '));
+  return requests;
+}
+
+try {
+  for (const vp of [
+    { name: 'tablet-landscape', width: 1280, height: 800 },
+    { name: 'tablet-portrait', width: 800, height: 1280 },
+    { name: 'compact', width: 390, height: 844 },
+  ]) {
+    const page = await browser.newPage({ viewport: { width: vp.width, height: vp.height } });
+    await load(page);
+
+    const metrics = await page.evaluate(() => {
+      const de = document.documentElement;
+      const card = document.querySelector('.question-card:not([hidden])');
+      const stage = card?.querySelector('.stage-column')?.getBoundingClientRect();
+      const support = card?.querySelector('.support-column')?.getBoundingClientRect();
+      const controls = [...document.querySelectorAll('button:not([hidden]),input:not([hidden]),textarea:not([hidden])')]
+        .filter(el => {
+          const cs = getComputedStyle(el);
+          return cs.display !== 'none' && cs.visibility !== 'hidden';
+        });
+      const undersized = [];
+      for (const el of controls) {
+        const r = el.getBoundingClientRect();
+        if (el.matches('input[type=radio],input[type=checkbox]')) {
+          const lr = el.closest('label')?.getBoundingClientRect();
+          if (!lr || lr.height < 48) undersized.push({ tag: el.tagName, cls: el.className, w: lr?.width || 0, h: lr?.height || 0 });
+        } else if (r.height < 48 || (el.tagName === 'BUTTON' && r.width < 48)) {
+          undersized.push({ tag: el.tagName, cls: el.className, w: r.width, h: r.height });
+        }
+      }
+      return {
+        scrollWidth: de.scrollWidth,
+        clientWidth: de.clientWidth,
+        overflow: de.scrollWidth - de.clientWidth,
+        stage: stage ? { x: stage.x, y: stage.y, w: stage.width, h: stage.height } : null,
+        support: support ? { x: support.x, y: support.y, w: support.width, h: support.height } : null,
+        undersized,
+      };
+    });
+    observations.viewports[vp.name] = metrics;
+    if (metrics.overflow > 1) fail('QB_HORIZONTAL_OVERFLOW', `${vp.name}: +${metrics.overflow}px`);
+    if (metrics.undersized.length) fail('QB_TOUCH_TARGET_UNDERSIZED', `${vp.name}: ${JSON.stringify(metrics.undersized.slice(0, 8))}`);
+    if (vp.width >= 1100) {
+      if (!(metrics.support && metrics.stage && metrics.support.x > metrics.stage.x && metrics.support.w >= 359)) {
+        fail('QB_TABLET_SUPPORT_RAIL_LAYOUT', `${vp.name}: ${JSON.stringify(metrics)}`);
+      }
+    } else {
+      if (!(metrics.support && metrics.stage && metrics.support.y > metrics.stage.y)) {
+        fail('QB_PORTRAIT_STACK_LAYOUT', `${vp.name}: ${JSON.stringify(metrics)}`);
+      }
+    }
+    await page.close();
+  }
+
+  const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  await load(page);
+
+  const counts = await page.evaluate(() => ({
+    questions: document.querySelectorAll('.question-card').length,
+    selected: document.querySelectorAll('.question-card[data-selected="true"]').length,
+    svg: document.querySelectorAll('.question-card[data-selected="true"] .representation-box svg').length,
+    hints: document.querySelectorAll('.hint-pill').length,
+    solutions: document.querySelectorAll('.solution-slot').length,
+  }));
+  observations.runtime.counts = counts;
+  if (JSON.stringify(counts) !== JSON.stringify({ questions: 77, selected: 7, svg: 7, hints: 195, solutions: 77 })) {
+    fail('QB_RUNTIME_DENOMINATOR', JSON.stringify(counts));
+  }
+
+  const visibleCount = async () => page.locator('.question-card:not([hidden])').count();
+  for (const [label, expected] of [['Physics · 31', 31], ['Chemistry · 46', 46], ['Selected D3/D4 · 7', 7], ['All D3/D4', 30]]) {
+    await page.getByRole('tab', { name: label }).click();
+    const actual = await visibleCount();
+    if (actual !== expected) fail('QB_FILTER_COUNT_MISMATCH', `${label}: expected ${expected}, got ${actual}`);
+  }
+
+  await page.getByRole('tab', { name: 'All 77' }).click();
+  const search = page.locator('#search-input');
+  await search.fill('redox');
+  const redoxCount = await visibleCount();
+  observations.runtime.redox_search_count = redoxCount;
+  if (redoxCount < 1) fail('QB_SEARCH_RUNTIME', 'redox returned no results');
+  await page.locator('#clear-search').click();
+  if (await visibleCount() !== 77) fail('QB_SEARCH_RESET', 'reset did not restore 77');
+
+  const q = page.locator('#PYQ-PHY-IITJEE-2007-P1-Q03');
+  const bodyBefore = await q.innerText();
+  if (bodyBefore.includes('Verified answer:') || bodyBefore.includes('Let the midpoint rise by y.')) {
+    fail('QB_SOLUTION_LIVE_DOM_LEAK', 'solution visible in learner text before commitment');
+  }
+  if (bodyBefore.includes('Sketch one half-string as a right triangle')) {
+    fail('QB_HINT_LIVE_DOM_LEAK', 'hint visible in learner text before request');
+  }
+
+  const hints = q.locator('.hint-pill');
+  if (!(await hints.nth(1).isDisabled())) fail('QB_HINT_PROGRESSION', 'hint 2 should begin disabled');
+  await hints.nth(0).click();
+  if (await hints.nth(1).isDisabled()) fail('QB_HINT_PROGRESSION', 'hint 2 did not unlock after hint 1');
+  if (!(await q.locator('.hint-slot').nth(0).innerText()).includes('right triangle')) fail('QB_HINT_MATERIALIZATION', 'hint 1 payload missing');
+
+  const reveal = q.locator('.check-solution-btn');
+  if (!(await reveal.isDisabled())) fail('QB_ATTEMPT_GATE', 'solution reveal should begin disabled');
+  await q.locator('input.answer-choice[value="B"]').check();
+  if (await reveal.isDisabled()) fail('QB_ATTEMPT_GATE', 'solution reveal did not enable after answer commit');
+  await reveal.click();
+  const feedback = await q.locator('.answer-feedback').innerText();
+  if (!feedback.includes('matches the verified answer')) fail('QB_OPTION_CHECK', feedback);
+  const solutionText = await q.locator('.solution-slot').innerText();
+  if (!solutionText.includes('Verified answer:') || !solutionText.includes('massless midpoint')) fail('QB_SOLUTION_MATERIALIZATION', solutionText.slice(0, 200));
+
+  const scratch = q.locator('.practice-textarea');
+  await scratch.fill('persisted scratchpad witness');
+  await page.reload({ waitUntil: 'load' });
+  const persisted = await page.locator('#PYQ-PHY-IITJEE-2007-P1-Q03 .practice-textarea').inputValue();
+  if (persisted !== 'persisted scratchpad witness') fail('QB_LOCALSTORAGE_PERSISTENCE', persisted);
+
+  const initialTheme = await page.locator('html').getAttribute('data-theme');
+  await page.locator('#theme-toggle').click();
+  const toggledTheme = await page.locator('html').getAttribute('data-theme');
+  if (toggledTheme === initialTheme) fail('QB_THEME_TOGGLE', 'theme did not change');
+  await page.reload({ waitUntil: 'load' });
+  if ((await page.locator('html').getAttribute('data-theme')) !== toggledTheme) fail('QB_THEME_PERSISTENCE', 'theme did not persist');
+
+  const viewportApi = await page.evaluate(() => ({
+    hasVisualViewport: !!window.visualViewport,
+    viewportMeta: document.querySelector('meta[name=viewport]')?.content || '',
+  }));
+  observations.runtime.viewport = viewportApi;
+  if (/user-scalable\s*=\s*no|max(?:imum)?-scale\s*=\s*1/i.test(viewportApi.viewportMeta)) {
+    fail('QB_ZOOM_DISABLED', viewportApi.viewportMeta);
+  }
+
+  await page.getByRole('tab', { name: 'Selected D3/D4 · 7' }).click();
+  const selectedWithSvg = await page.locator('.question-card:not([hidden]) .representation-box svg').count();
+  if (selectedWithSvg !== 7) fail('QB_SELECTED_BENCHMARK_REPRESENTATION', `expected 7 SVGs, got ${selectedWithSvg}`);
+
+  observations.runtime.findings = findings;
+  writeFileSync(out, JSON.stringify(observations, null, 2) + '\n');
+  if (findings.length) {
+    console.error(JSON.stringify(findings, null, 2));
+    process.exitCode = 1;
+  } else {
+    console.log('QB tablet standalone browser audit: PASS');
+  }
+  await page.close();
+} finally {
+  await browser.close();
+  server.kill('SIGTERM');
+}
