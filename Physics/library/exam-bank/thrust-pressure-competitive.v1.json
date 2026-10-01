@@ -1,0 +1,292 @@
+{
+  "manifest_id": "QB-PHY-THRUST-PRESSURE-INJSO-V1",
+  "version": "1.0.0",
+  "acquisition_ref": "ISS383-HBCSE-INJSO-2026-10-01",
+  "target_package": "Physics/library/exam-bank/thrust-pressure-competitive.v1.json",
+  "inspector_id": "issue383-source-custody",
+  "inspection_sections": [
+    "INJSO 2013 Q58",
+    "INJSO 2013 Q62",
+    "INJSO 2012 Q39",
+    "INJSO 2016 Q32A"
+  ],
+  "access_status": "FULL_ITEM_INSPECTED",
+  "resource": {
+    "id": "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE",
+    "version": "1.0.0",
+    "status": "REVIEWED",
+    "source_refs": [],
+    "evidence_refs": [],
+    "extensions": {"grade9v3:authority_class": "OFFICIAL_EXAM_ORGANIZER_ARCHIVE"},
+    "title": "HBCSE Indian National Junior Science Olympiad official past-paper archive",
+    "origin": "WEB",
+    "locator": "https://olympiads.hbcse.tifr.res.in/how-to-prepare/past-papers/",
+    "edition": "INJSO 2012, 2013 and 2016 official papers/solutions",
+    "section": "Selected pressure, scaling and surface-reaction questions",
+    "last_checked": "2026-10-01",
+    "access_status": "FULL_ITEM_INSPECTED",
+    "rights_status": "Official organizer archive. Exact source wording remains at the organizer PDFs; learner-facing records are faithful non-verbatim restatements with original identity and demand preserved.",
+    "snapshot_ref": null,
+    "snapshot_digest": null,
+    "role": ["QUESTION_BANK"],
+    "supports_claims": [],
+    "entry_capabilities": [],
+    "depth": ["ADVANCED"],
+    "selection_reason": "Official Junior Science problems expose pressure reasoning beyond direct substitution while staying within school-accessible mathematics.",
+    "fallback": []
+  },
+  "extensions": {
+    "grade9v3:pass_scope": "PASS_1_QUESTION_BANK_ONLY",
+    "grade9v3:generated_sets": false,
+    "grade9v3:source_hint_policy": "question.hints[] is source custody only; HBCSE supplied no hint ladder for these items, so authored staged support lives only in question.scaffolds[].",
+    "grade9v3:wording_policy": "Learner-facing stems are PYQ_ADAPTED faithful non-verbatim restatements. Exact source wording stays at the official HBCSE paper URL.",
+    "grade9v3:topic_counts": {"Thrust and Pressure": 4},
+    "grade9v3:source_resource_policy": "Question source_refs/origin_ref resolve to the official HBCSE archive resource; paper and solution locators are retained per item.",
+    "grade9v3:accepted_question_count": 4
+  },
+  "questions": [
+    {
+      "id": "PYQ-PHY-INJSO-2013-Q58",
+      "version": "1.0.0",
+      "status": "CANDIDATE",
+      "source_refs": ["SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "PYQ_ADAPTED",
+        "grade9v3:source_custody": {
+          "authority_class": "OFFICIAL_EXAM_ORGANIZER_ARCHIVE",
+          "exam": "INJSO",
+          "year": 2013,
+          "paper": "Question Paper",
+          "section": "Physics",
+          "question_number": "58",
+          "paper_url": "https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2016/09/injso2013-Q.pdf",
+          "archive_url": "https://olympiads.hbcse.tifr.res.in/how-to-prepare/past-papers/",
+          "answer_key_url": null,
+          "answer_authority": "OFFICIAL_PAPER_EMBEDDED_KEY",
+          "last_checked": "2026-10-01",
+          "source_status": "PYQ_VERIFIED_PARENT",
+          "parent_ref": "INJSO|2013|Question Paper|Physics|Q58",
+          "wording_custody": "FAITHFUL_NON_VERBATIM_RESTATEMENT"
+        },
+        "grade9v3:analysis": {
+          "topic": "Thrust and Pressure",
+          "concept_bucket": "BUCKET-PHY-THRUST-PRESSURE",
+          "exam_source_badge": "INJSO 2013 · Q58",
+          "original_question_type": "single_correct_mcq",
+          "learner_question_type": "single_correct_mcq",
+          "difficulty": {
+            "band": "D3",
+            "score": 7,
+            "components": {
+              "concept_model_selection": 2,
+              "representation_translation": 1,
+              "reasoning_chain_length": 2,
+              "algebra_computational_load": 0,
+              "trap_exception_sensitivity": 2
+            },
+            "basis": "The learner must combine cubic mass scaling with square contact-area scaling and resist treating pressure as scaling like either one alone."
+          },
+          "expected_time_seconds": 180,
+          "common_wrong_route": "Scale only weight or only contact area, or assume doubling all dimensions doubles pressure without deriving the exponents.",
+          "stable_crux_move": "Separate the L^3 scaling of weight from the L^2 scaling of contact area before forming their ratio.",
+          "transfer_profile": {"core2b_candidate": false, "dimension": null, "classification": "SAME_FAMILY_VARIATION"}
+        }
+      },
+      "origin": "ADAPTED",
+      "origin_ref": "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE",
+      "original_identifier": "INJSO|2013|Question Paper|Physics|Q58",
+      "stem": "Books A and B are made from the same paper stock. Every linear dimension of book B is twice the corresponding dimension of book A. Each book rests with its largest face flat on a horizontal table. Select the correct statement.",
+      "subparts": [],
+      "options": [
+        "A. The volume of B is 6 times the volume of A.",
+        "B. The pressure from B on the table is 4 times that from A.",
+        "C. The weight of B is 4 times the weight of A.",
+        "D. None of A, B or C is correct."
+      ],
+      "conditions": [
+        "The two books are made from the same paper stock, so corresponding material density is the same.",
+        "All three corresponding linear dimensions of B are twice those of A.",
+        "Each book rests on its largest face."
+      ],
+      "figure_refs": ["REP-PHY-PRESSURE-SCALING"],
+      "answer": {
+        "kind": "MODEL_RESPONSE",
+        "summary": "Option D. Book B has 8 times the weight and 4 times the contact area, so it exerts 2 times the pressure.",
+        "reasoning": [
+          "Let the scale factor in every length be λ=2.",
+          "For similar books of the same material, volume and therefore mass and weight scale as λ^3=8.",
+          "The resting face area scales as λ^2=4.",
+          "Pressure is thrust/contact area, so p_B/p_A = 8/4 = 2; none of the first three statements is correct."
+        ],
+        "reasoning_route": [
+          {"id":"PYQ-PHY-INJSO-2013-Q58-MOVE-1","kind":"REPRESENT","action":"Represent B as a geometrically similar enlargement of A with one linear scale factor λ=2.","why_valid":"The source states that every corresponding dimension doubles.","inputs":["linear scale factor"],"output":"λ=2"},
+          {"id":"PYQ-PHY-INJSO-2013-Q58-MOVE-2","kind":"CONNECT","action":"Convert linear scaling into weight scaling: same density gives W proportional to volume, so W_B/W_A=λ^3=8.","why_valid":"For the same material, mass is density times volume and weight is proportional to mass at the same place.","inputs":["λ=2","same material"],"output":"W_B/W_A=8"},
+          {"id":"PYQ-PHY-INJSO-2013-Q58-MOVE-3","kind":"CONNECT","action":"Scale the actual contact face independently: A_B/A_A=λ^2=4.","why_valid":"Area contains two independent length factors, not three.","inputs":["λ=2","largest corresponding face"],"output":"A_B/A_A=4"},
+          {"id":"PYQ-PHY-INJSO-2013-Q58-MOVE-4","kind":"VERIFY","action":"Form the pressure ratio only after both scalings are known: p_B/p_A=(8)/(4)=2, then compare with the choices.","why_valid":"Average pressure is normal thrust divided by actual contact area.","inputs":["W_B/W_A=8","A_B/A_A=4"],"output":"p_B/p_A=2; option D"}
+        ],
+        "crux_move_ref": "PYQ-PHY-INJSO-2013-Q58-MOVE-3",
+        "check": "For a general similar-object scale factor λ, weight scales as λ^3 and face area as λ^2, so pressure scales as λ; λ=2 must therefore give a factor 2.",
+        "acceptable_alternatives": [],
+        "subpart_answers": [],
+        "verification_status": "INDEPENDENTLY_CHECKED",
+        "rubric": [
+          {"criterion":"Separates volume/weight scaling from area scaling.","evidence_of":"Recognizes different geometric exponents."},
+          {"criterion":"Forms the pressure ratio and checks against the choices.","evidence_of":"Completes the model rather than guessing from size."}
+        ],
+        "difficult_move": 2
+      },
+      "primary_capability_ref": "CAP-PHY-PRESSURE-SCALING",
+      "secondary_capability_refs": ["CAP-PHY-PRESSURE-CONTACT-AREA"],
+      "family_ref": "FAM-PHY-THRUST-PRESSURE-COMPETITIVE",
+      "adaptation": {"parent_ref":"INJSO|2013|Question Paper|Physics|Q58","changed_fields":["stem","options","conditions"],"reason":"Faithful non-verbatim restatement preserving the original scale factors, answer choices' physical claims and correct answer."},
+      "exposure": [{"core":"CORE2A","role":"PYQ_ADAPTED_PRACTICE_CANDIDATE","artifact_ref":null}],
+      "hints": [],
+      "scaffolds": [
+        {"text":"Draw A and B as similar rectangular blocks and mark one length pair L and 2L.","prompt":"What single scale factor relates every corresponding length?","learner_stage":"REPRESENTATION","support_kind":"REPRESENT","reveals":"CONCEPT","supports_move_ref":"PYQ-PHY-INJSO-2013-Q58-MOVE-1"},
+        {"text":"Weight follows mass; for equal density, mass follows volume.","prompt":"How many independent length factors appear in volume?","learner_stage":"KEY_CONCEPT","support_kind":"CONNECT","reveals":"CONCEPT","supports_move_ref":"PYQ-PHY-INJSO-2013-Q58-MOVE-2"},
+        {"text":"The crux is that the face touching the table is an area, not a volume.","prompt":"How many length factors appear in the contact face?","learner_stage":"CRUX","support_kind":"CONNECT","reveals":"METHOD","supports_move_ref":"PYQ-PHY-INJSO-2013-Q58-MOVE-3"},
+        {"text":"Use p=W/A here only after finding both ratios separately.","prompt":"What ratio expression gives p_B/p_A without calculating either pressure?","learner_stage":"FORMAL_MODEL","support_kind":"EXECUTE","reveals":"METHOD","supports_move_ref":"PYQ-PHY-INJSO-2013-Q58-MOVE-4"},
+        {"text":"Your result should match the general law p proportional to λ for similar same-density blocks resting on corresponding faces.","prompt":"Does your answer reduce to p_B/p_A=1 when λ=1?","learner_stage":"CHECKPOINT","support_kind":"EXECUTE","reveals":"METHOD","supports_move_ref":"PYQ-PHY-INJSO-2013-Q58-MOVE-4"}
+      ],
+      "response": {"type":"single_choice"}
+    },
+    {
+      "id": "PYQ-PHY-INJSO-2013-Q62",
+      "version": "1.0.0",
+      "status": "CANDIDATE",
+      "source_refs": ["SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:provenance_class": "PYQ_ADAPTED",
+        "grade9v3:source_custody": {
+          "authority_class":"OFFICIAL_EXAM_ORGANIZER_ARCHIVE","exam":"INJSO","year":2013,"paper":"Question Paper","section":"Physics","question_number":"62",
+          "paper_url":"https://olympiads.hbcse.tifr.res.in/wp-content/uploads/2016/09/injso2013-Q.pdf","archive_url":"https://olympiads.hbcse.tifr.res.in/how-to-prepare/past-papers/","answer_key_url":null,"answer_authority":"OFFICIAL_PAPER_EMBEDDED_KEY","last_checked":"2026-10-01","source_status":"PYQ_VERIFIED_PARENT","parent_ref":"INJSO|2013|Question Paper|Physics|Q62","wording_custody":"FAITHFUL_NON_VERBATIM_RESTATEMENT"
+        },
+        "grade9v3:analysis": {
+          "topic":"Thrust and Pressure","concept_bucket":"BUCKET-PHY-THRUST-PRESSURE","exam_source_badge":"INJSO 2013 · Q62","original_question_type":"single_correct_mcq","learner_question_type":"single_correct_mcq",
+          "difficulty":{"band":"D3","score":7,"components":{"concept_model_selection":2,"representation_translation":2,"reasoning_chain_length":1,"algebra_computational_load":0,"trap_exception_sensitivity":2},"basis":"The learner must separate scalar pressure from the direction of the surface force and reject a projected-area cosine trap."},
+          "expected_time_seconds":150,"common_wrong_route":"Multiply the table area by cos 45 degrees because the surface is tilted.","stable_crux_move":"Use the actual planar area in F=pA; tilt changes the normal direction of the resultant, not its magnitude for uniform atmospheric pressure.","transfer_profile":{"core2b_candidate":false,"dimension":null,"classification":"SAME_FAMILY_VARIATION"}
+        }
+      },
+      "origin":"ADAPTED","origin_ref":"SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE","original_identifier":"INJSO|2013|Question Paper|Physics|Q62",
+      "stem":"Atmospheric pressure at the Earth's surface is P_a N/m^2. A flat table has top-surface area 2 m^2 and is tilted 45 degrees to the horizontal. What is the magnitude of the force exerted by the atmosphere on the top surface?",
+      "subparts":[],
+      "options":["A. 2P_a N","B. sqrt(2) P_a N","C. (2/sqrt(2)) P_a N","D. P_a/sqrt(2) N"],
+      "conditions":["Atmospheric pressure over the table is taken as uniform.","The stated 2 m^2 is the actual top-surface area."],
+      "figure_refs":["REP-PHY-PRESSURE-ORIENTATION"],
+      "answer":{
+        "kind":"MODEL_RESPONSE","summary":"Option A: the magnitude is F=P_a A=2P_a N.",
+        "reasoning":["Pressure is a scalar field value; the force it produces on each small surface element is normal to that surface.","Uniform pressure over one flat face gives a resultant normal to the face.","The magnitude is the pressure times the actual face area, not the horizontal projection.","With A=2 m^2, F=2P_a N; the 45-degree tilt changes direction only."],
+        "reasoning_route":[
+          {"id":"PYQ-PHY-INJSO-2013-Q62-MOVE-1","kind":"DECIDE","action":"Identify P_a as uniform pressure on the actual top face, not as a downward force density.","why_valid":"Static atmospheric pressure has no preferred downward vector direction; surface-force direction comes from the local normal.","inputs":["P_a","flat face"],"output":"uniform scalar pressure on the face"},
+          {"id":"PYQ-PHY-INJSO-2013-Q62-MOVE-2","kind":"REPRESENT","action":"Draw the resultant force perpendicular to the tilted face.","why_valid":"Pressure force on a surface element acts normal to that element.","inputs":["surface orientation"],"output":"resultant direction = surface normal"},
+          {"id":"PYQ-PHY-INJSO-2013-Q62-MOVE-3","kind":"CONNECT","action":"Use the actual face area in F=pA; do not replace it by A cos 45 degrees.","why_valid":"Integrating uniform normal traction p over the actual planar area gives magnitude pA.","inputs":["P_a","A=2 m^2"],"output":"F=P_a A"},
+          {"id":"PYQ-PHY-INJSO-2013-Q62-MOVE-4","kind":"VERIFY","action":"Substitute A=2 m^2 and check the limiting case that rotating the same table cannot change its physical area.","why_valid":"A rigid tilt preserves actual area; only the normal direction rotates.","inputs":["F=P_a A"],"output":"F=2P_a N; option A"}
+        ],
+        "crux_move_ref":"PYQ-PHY-INJSO-2013-Q62-MOVE-3","check":"Imagine slowly rotating the same rigid table while pressure remains uniform: its actual top area is unchanged, so force magnitude remains P_a A while the force direction rotates with the normal.","acceptable_alternatives":[],"subpart_answers":[],"verification_status":"INDEPENDENTLY_CHECKED",
+        "rubric":[{"criterion":"Separates pressure magnitude from force direction.","evidence_of":"No invented downward pressure vector."},{"criterion":"Uses actual area rather than projected area.","evidence_of":"Rejects the cosine trap."}],"difficult_move":2
+      },
+      "primary_capability_ref":"CAP-PHY-PRESSURE-SURFACE-ORIENTATION","secondary_capability_refs":["CAP-PHY-PRESSURE-CONTACT-AREA"],"family_ref":"FAM-PHY-THRUST-PRESSURE-COMPETITIVE",
+      "adaptation":{"parent_ref":"INJSO|2013|Question Paper|Physics|Q62","changed_fields":["stem","options","conditions"],"reason":"Faithful non-verbatim restatement preserving pressure, area, tilt, answer alternatives and physical demand."},
+      "exposure":[{"core":"CORE2A","role":"PYQ_ADAPTED_PRACTICE_CANDIDATE","artifact_ref":null}],"hints":[],
+      "scaffolds":[
+        {"text":"Sketch the tilted face and draw a small surface normal.","prompt":"Which direction is perpendicular to the surface?","learner_stage":"REPRESENTATION","support_kind":"REPRESENT","reveals":"CONCEPT","supports_move_ref":"PYQ-PHY-INJSO-2013-Q62-MOVE-2"},
+        {"text":"Pressure is a scalar; the surface chooses the direction of the force it experiences.","prompt":"Does atmospheric pressure itself point vertically downward?","learner_stage":"KEY_CONCEPT","support_kind":"CONNECT","reveals":"CONCEPT","supports_move_ref":"PYQ-PHY-INJSO-2013-Q62-MOVE-1"},
+        {"text":"The trap is substituting projected horizontal area for the table's actual area.","prompt":"Which area is given: the real tabletop or its projection?","learner_stage":"CRUX","support_kind":"CONNECT","reveals":"METHOD","supports_move_ref":"PYQ-PHY-INJSO-2013-Q62-MOVE-3"},
+        {"text":"For uniform pressure on a planar face, the resultant magnitude is F=pA.","prompt":"What stays unchanged when a rigid table is tilted?","learner_stage":"FORMAL_MODEL","support_kind":"EXECUTE","reveals":"METHOD","supports_move_ref":"PYQ-PHY-INJSO-2013-Q62-MOVE-3"},
+        {"text":"Use rotation as a check: the face area cannot change merely because its orientation changes.","prompt":"If the table were horizontal instead, should the magnitude differ?","learner_stage":"CHECKPOINT","support_kind":"EXECUTE","reveals":"METHOD","supports_move_ref":"PYQ-PHY-INJSO-2013-Q62-MOVE-4"}
+      ],
+      "response":{"type":"single_choice"}
+    },
+    {
+      "id":"PYQ-PHY-INJSO-2012-Q39","version":"1.0.0","status":"CANDIDATE","source_refs":["SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"],"evidence_refs":[],
+      "extensions":{
+        "grade9v3:provenance_class":"PYQ_ADAPTED",
+        "grade9v3:source_custody":{"authority_class":"OFFICIAL_EXAM_ORGANIZER_ARCHIVE","exam":"INJSO","year":2012,"paper":"Question Paper","section":"Physics","question_number":"39","paper_url":"https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/injso2012-Q.pdf","archive_url":"https://olympiads.hbcse.tifr.res.in/how-to-prepare/past-papers/","answer_key_url":"https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/injso2012-S.pdf","answer_authority":"OFFICIAL_FINAL_KEY","last_checked":"2026-10-01","source_status":"PYQ_VERIFIED_PARENT","parent_ref":"INJSO|2012|Question Paper|Physics|Q39","wording_custody":"FAITHFUL_NON_VERBATIM_RESTATEMENT"},
+        "grade9v3:analysis":{"topic":"Thrust and Pressure","concept_bucket":"BUCKET-PHY-THRUST-PRESSURE","exam_source_badge":"INJSO 2012 · Q39","original_question_type":"single_correct_mcq","learner_question_type":"single_correct_mcq","difficulty":{"band":"D4","score":8,"components":{"concept_model_selection":2,"representation_translation":1,"reasoning_chain_length":2,"algebra_computational_load":1,"trap_exception_sensitivity":2},"basis":"The item couples a gas-pressure ratio with absolute hydrostatic pressure and requires distinguishing water-column pressure from total pressure."},"expected_time_seconds":240,"common_wrong_route":"Treat the bottom pressure as only rho g h or use the stated 5 m water-column pressure as the total pressure including atmosphere.","stable_crux_move":"Convert the tenfold volume change into an absolute bottom-pressure ratio, then separate atmospheric and water-column contributions.","transfer_profile":{"core2b_candidate":false,"dimension":null,"classification":"SAME_FAMILY_VARIATION"}}
+      },
+      "origin":"ADAPTED","origin_ref":"SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE","original_identifier":"INJSO|2012|Question Paper|Physics|Q39",
+      "stem":"A diver releases gas bubbles from the bottom of a lake. At the surface each bubble has ten times its original volume. Assume the gas change is isothermal. A 5 m column of lake water produces a pressure equal to twice atmospheric pressure. Determine the lake depth.",
+      "subparts":[],"options":["A. 45 m","B. 90 m","C. 80 m","D. 22.5 m"],
+      "conditions":["Bubble expansion is treated as isothermal so PV is constant.","Surface absolute pressure is atmospheric pressure P_atm.","The pressure contribution of a 5 m water column is 2P_atm."],
+      "figure_refs":["REP-PHY-PRESSURE-HYDROSTATIC"],
+      "answer":{"kind":"MODEL_RESPONSE","summary":"Option D: 22.5 m.","reasoning":["Isothermal expansion from V to 10V gives P_bottom=10P_atm because the surface pressure is P_atm.","Bottom absolute pressure is P_atm plus the water-column contribution, so the column itself contributes 9P_atm.","The stated calibration gives 5 m of water -> 2P_atm, so depth h gives column pressure (2P_atm/5 m)h.","Set (2/5)h P_atm=9P_atm to obtain h=22.5 m."],
+        "reasoning_route":[
+          {"id":"PYQ-PHY-INJSO-2012-Q39-MOVE-1","kind":"CONNECT","action":"Use Boyle's law to translate V_surface=10V_bottom into P_bottom=10P_surface.","why_valid":"The question's isothermal gas model gives P_bottom V_bottom=P_surface V_surface.","inputs":["V_surface/V_bottom=10","P_surface=P_atm"],"output":"P_bottom=10P_atm"},
+          {"id":"PYQ-PHY-INJSO-2012-Q39-MOVE-2","kind":"DECIDE","action":"Separate bottom absolute pressure into atmospheric pressure plus the pressure contribution of the water column.","why_valid":"Hydrostatic gauge pressure adds to the pressure applied at the free surface.","inputs":["P_bottom=10P_atm"],"output":"P_water=9P_atm"},
+          {"id":"PYQ-PHY-INJSO-2012-Q39-MOVE-3","kind":"TRANSFORM","action":"Use the supplied calibration 5 m -> 2P_atm to write P_water/P_atm=2h/5.","why_valid":"For the same liquid and g, hydrostatic pressure contribution is proportional to vertical depth.","inputs":["5 m gives 2P_atm"],"output":"P_water=(2h/5)P_atm"},
+          {"id":"PYQ-PHY-INJSO-2012-Q39-MOVE-4","kind":"VERIFY","action":"Equate the two water-column pressure expressions and solve 2h/5=9.","why_valid":"Both expressions describe the same hydrostatic contribution at the lake bottom.","inputs":["P_water=9P_atm","P_water=(2h/5)P_atm"],"output":"h=22.5 m; option D"}
+        ],"crux_move_ref":"PYQ-PHY-INJSO-2012-Q39-MOVE-2","check":"At h=22.5 m the water column contributes 9P_atm, so absolute bottom pressure is 10P_atm and Boyle's law predicts exactly a tenfold volume increase at the surface.","acceptable_alternatives":[],"subpart_answers":[],"verification_status":"INDEPENDENTLY_CHECKED","rubric":[{"criterion":"Uses absolute pressure in Boyle's law.","evidence_of":"Includes atmospheric pressure at both surface and bottom."},{"criterion":"Interprets the 5 m statement as a water-column pressure contribution.","evidence_of":"Obtains 9P_atm hydrostatic contribution before scaling depth."}],"difficult_move":1
+      },
+      "primary_capability_ref":"CAP-PHY-PRESSURE-HYDROSTATIC-BRIDGE","secondary_capability_refs":["CAP-PHY-PRESSURE-CONTACT-AREA"],"family_ref":"FAM-PHY-THRUST-PRESSURE-COMPETITIVE",
+      "adaptation":{"parent_ref":"INJSO|2012|Question Paper|Physics|Q39","changed_fields":["stem","conditions"],"reason":"Faithful non-verbatim restatement preserving the tenfold volume ratio, 5 m pressure calibration, choices and official answer."},
+      "exposure":[{"core":"CORE2A","role":"PYQ_ADAPTED_PRACTICE_CANDIDATE","artifact_ref":null}],"hints":[],
+      "scaffolds":[
+        {"text":"Mark the bubble at the lake bottom and at the free surface; label V and 10V.","prompt":"What two states of the same gas bubble are being compared?","learner_stage":"REPRESENTATION","support_kind":"REPRESENT","reveals":"CONCEPT","supports_move_ref":"PYQ-PHY-INJSO-2012-Q39-MOVE-1"},
+        {"text":"Boyle's law uses absolute gas pressure, not gauge pressure.","prompt":"What is the absolute pressure of the bubble at the surface?","learner_stage":"KEY_CONCEPT","support_kind":"CONNECT","reveals":"CONCEPT","supports_move_ref":"PYQ-PHY-INJSO-2012-Q39-MOVE-1"},
+        {"text":"The bottom pressure contains two pieces: atmosphere transmitted from the surface plus the water-column contribution.","prompt":"If bottom absolute pressure is 10P_atm, how much of that is due to the water column alone?","learner_stage":"CRUX","support_kind":"CONNECT","reveals":"METHOD","supports_move_ref":"PYQ-PHY-INJSO-2012-Q39-MOVE-2"},
+        {"text":"Within one liquid under fixed g, hydrostatic pressure contribution is proportional to vertical depth.","prompt":"How would you scale from the given 5 m calibration to an unknown depth h?","learner_stage":"FORMAL_MODEL","support_kind":"EXECUTE","reveals":"METHOD","supports_move_ref":"PYQ-PHY-INJSO-2012-Q39-MOVE-3"},
+        {"text":"Back-substitute the depth into both the hydrostatic and Boyle-law descriptions.","prompt":"Does your depth recreate a 10:1 absolute-pressure ratio?","learner_stage":"CHECKPOINT","support_kind":"EXECUTE","reveals":"METHOD","supports_move_ref":"PYQ-PHY-INJSO-2012-Q39-MOVE-4"}
+      ],"response":{"type":"single_choice"}
+    },
+    {
+      "id":"PYQ-PHY-INJSO-2016-Q32A","version":"1.0.0","status":"CANDIDATE","source_refs":["SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE"],"evidence_refs":[],
+      "extensions":{
+        "grade9v3:provenance_class":"PYQ_ADAPTED",
+        "grade9v3:source_custody":{"authority_class":"OFFICIAL_EXAM_ORGANIZER_ARCHIVE","exam":"INJSO","year":2016,"paper":"Question Paper","section":"Physics","question_number":"32A","paper_url":"https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/injso2016-Q.pdf","archive_url":"https://olympiads.hbcse.tifr.res.in/how-to-prepare/past-papers/","answer_key_url":"https://olympiads.hbcse.tifr.res.in/olympiads/wp-content/uploads/2016/09/injso2016-S.pdf","answer_authority":"OFFICIAL_FINAL_KEY","last_checked":"2026-10-01","source_status":"PYQ_VERIFIED_PARENT","parent_ref":"INJSO|2016|Question Paper|Physics|Q32A","wording_custody":"FAITHFUL_NON_VERBATIM_RESTATEMENT"},
+        "grade9v3:analysis":{"topic":"Thrust and Pressure","concept_bucket":"BUCKET-PHY-THRUST-PRESSURE","exam_source_badge":"INJSO 2016 · Q32A","original_question_type":"multipart_constructed_response","learner_question_type":"multipart_constructed_response","difficulty":{"band":"D4","score":9,"components":{"concept_model_selection":2,"representation_translation":2,"reasoning_chain_length":2,"algebra_computational_load":1,"trap_exception_sensitivity":2},"basis":"The learner must build two FBDs, distinguish normal reaction from the full resultant table reaction, use kinetic friction and equilibrium, then report magnitude and direction."},"expected_time_seconds":420,"common_wrong_route":"Call the 80 N normal force on Q the entire reaction from the table and omit the 48 N friction component.","stable_crux_move":"Treat the table's contact reaction on Q as the vector resultant of normal and kinetic friction, not as normal force alone.","transfer_profile":{"core2b_candidate":false,"dimension":null,"classification":"SAME_FAMILY_VARIATION"}}
+      },
+      "origin":"ADAPTED","origin_ref":"SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE","original_identifier":"INJSO|2016|Question Paper|Physics|Q32A",
+      "stem":"Two cubical boxes P (4 kg) and Q (8 kg), made of the same-density material, are in contact on a rough horizontal table. Their kinetic-friction coefficients with the table are 0.4 and 0.6 respectively. A horizontal force F pushes P so that both boxes move with constant speed. Take g=10 m/s^2. Find (i) F, (ii) the magnitude and direction of the resultant force exerted by the table on Q, and (iii) draw free-body diagrams for P and Q.",
+      "subparts":["(i) Determine F.","(ii) Determine the magnitude and direction of the resultant table reaction on Q.","(iii) Draw free-body diagrams for P and Q."],"options":[],
+      "conditions":["P has mass 4 kg and kinetic-friction coefficient 0.4.","Q has mass 8 kg and kinetic-friction coefficient 0.6.","The boxes move together at constant speed on a horizontal table.","Use g=10 m/s^2."],
+      "figure_refs":["REP-PHY-THRUST-INTERFACE"],
+      "answer":{"kind":"MODEL_RESPONSE","summary":"F=64 N. On Q the table exerts normal 80 N upward and kinetic friction 48 N opposite the motion, giving a resultant 93.3 N at tan^-1(5/3) above the horizontal toward P.","reasoning":["Constant speed means zero horizontal net force. Normal forces are 40 N on P and 80 N on Q, so kinetic frictions are 16 N and 48 N.","For the two-box system, F must balance total friction: F=16+48=64 N.","The table's force on Q is not only the normal component: it is the vector sum of 80 N upward normal and 48 N backward friction.","Its magnitude is sqrt(80^2+48^2)=93.3 N and its direction is arctan(80/48)=arctan(5/3) above the horizontal toward P."],
+        "reasoning_route":[
+          {"id":"PYQ-PHY-INJSO-2016-Q32A-MOVE-1","kind":"REPRESENT","action":"Draw separate free-body diagrams for P and Q, assigning weight, normal, friction, applied/contact forces to the correct body.","why_valid":"Newton-law equations must be written for a chosen body; partner forces belong on different diagrams.","inputs":["m_P=4 kg","m_Q=8 kg","horizontal motion"],"output":"two body-specific FBDs"},
+          {"id":"PYQ-PHY-INJSO-2016-Q32A-MOVE-2","kind":"CONNECT","action":"Use vertical equilibrium to obtain N_P=40 N and N_Q=80 N, then kinetic friction f_P=16 N and f_Q=48 N.","why_valid":"There is no vertical acceleration and the stated kinetic-friction model is f_k=mu_k N.","inputs":["g=10","mu_P=0.4","mu_Q=0.6"],"output":"N_P=40 N, N_Q=80 N, f_P=16 N, f_Q=48 N"},
+          {"id":"PYQ-PHY-INJSO-2016-Q32A-MOVE-3","kind":"DECIDE","action":"For the two-box system, balance F against both friction forces; for Q alone, keep the table's normal and friction components as one contact resultant only after their components are known.","why_valid":"Constant speed gives zero net horizontal force, while the table transmits two perpendicular contact-force components to Q.","inputs":["f_P=16 N","f_Q=48 N","N_Q=80 N"],"output":"F=64 N and table-force components on Q=(48 N backward, 80 N upward)"},
+          {"id":"PYQ-PHY-INJSO-2016-Q32A-MOVE-4","kind":"VERIFY","action":"Combine the perpendicular table-force components on Q and check that their horizontal component equals the friction required by the Q FBD.","why_valid":"The resultant of perpendicular normal and friction components has magnitude sqrt(N^2+f^2) and direction fixed by their ratio.","inputs":["N_Q=80 N","f_Q=48 N"],"output":"R_Q=93.3 N; angle=arctan(5/3) above horizontal toward P"}
+        ],"crux_move_ref":"PYQ-PHY-INJSO-2016-Q32A-MOVE-3","check":"Resolve the 93.3 N resultant back into components: it must recover exactly 80 N normal and 48 N friction, and the full two-box horizontal balance must return F=64 N.","acceptable_alternatives":["Direction may be stated as about 59.0 degrees above the horizontal toward P, or about 31.0 degrees from the upward vertical toward P."],"subpart_answers":["(i) 64 N","(ii) 93.3 N at arctan(5/3) above the horizontal toward P","(iii) FBDs consistent with the stated component forces"],"verification_status":"INDEPENDENTLY_CHECKED","rubric":[{"criterion":"Uses separate body FBDs and zero acceleration.","evidence_of":"Correct force ownership and equilibrium model."},{"criterion":"Treats table reaction on Q as normal plus friction resultant.","evidence_of":"Does not conflate normal force with total contact force."}],"difficult_move":2
+      },
+      "primary_capability_ref":"CAP-PHY-THRUST-INTERFACE","secondary_capability_refs":["CAP-PHY-THRUST-NORMAL-BALANCE"],"family_ref":"FAM-PHY-THRUST-PRESSURE-COMPETITIVE",
+      "adaptation":{"parent_ref":"INJSO|2016|Question Paper|Physics|Q32A","changed_fields":["stem","conditions"],"reason":"Faithful non-verbatim restatement preserving masses, friction coefficients, constant-speed condition, multipart demand and official numerical result."},
+      "exposure":[{"core":"CORE2A","role":"PYQ_ADAPTED_PRACTICE_CANDIDATE","artifact_ref":null}],"hints":[],
+      "scaffolds":[
+        {"text":"Draw P and Q separately before writing any equation; every arrow must name the agent acting on that box.","prompt":"Which forces act on P, and which act on Q?","learner_stage":"REPRESENTATION","support_kind":"REPRESENT","reveals":"CONCEPT","supports_move_ref":"PYQ-PHY-INJSO-2016-Q32A-MOVE-1"},
+        {"text":"Constant speed means acceleration is zero, not that forces are absent.","prompt":"What must the horizontal and vertical net forces be on each box?","learner_stage":"KEY_CONCEPT","support_kind":"CONNECT","reveals":"CONCEPT","supports_move_ref":"PYQ-PHY-INJSO-2016-Q32A-MOVE-2"},
+        {"text":"The word 'reaction from the table' includes every force the table exerts on Q: normal and friction.","prompt":"Is the table's force on Q only vertical?","learner_stage":"CRUX","support_kind":"CONNECT","reveals":"METHOD","supports_move_ref":"PYQ-PHY-INJSO-2016-Q32A-MOVE-3"},
+        {"text":"Use f_k=mu_k N after the vertical balances, then use zero horizontal net force.","prompt":"What are the two friction magnitudes before solving for F?","learner_stage":"FORMAL_MODEL","support_kind":"EXECUTE","reveals":"METHOD","supports_move_ref":"PYQ-PHY-INJSO-2016-Q32A-MOVE-2"},
+        {"text":"Resolve your final table-reaction vector back into horizontal and vertical components.","prompt":"Do the components recover 48 N friction and 80 N normal on Q?","learner_stage":"CHECKPOINT","support_kind":"EXECUTE","reveals":"METHOD","supports_move_ref":"PYQ-PHY-INJSO-2016-Q32A-MOVE-4"}
+      ],"response":{"type":"multipart","parts":[{"label":"(i) F","type":"numeric"},{"label":"(ii) resultant table reaction on Q","type":"short_text"},{"label":"(iii) free-body diagrams","type":"free_response"}],"paper_ok":true}
+    }
+  ],
+  "resources": [
+    {
+      "id": "SRC-HBCSE-INJSO-OFFICIAL-ARCHIVE",
+      "version": "1.0.0",
+      "status": "REVIEWED",
+      "source_refs": [],
+      "evidence_refs": [],
+      "extensions": {"grade9v3:authority_class": "OFFICIAL_EXAM_ORGANIZER_ARCHIVE"},
+      "title": "HBCSE Indian National Junior Science Olympiad official past-paper archive",
+      "origin": "WEB",
+      "locator": "https://olympiads.hbcse.tifr.res.in/how-to-prepare/past-papers/",
+      "edition": "INJSO 2012, 2013 and 2016 official papers/solutions",
+      "section": "Selected pressure, scaling and surface-reaction questions",
+      "last_checked": "2026-10-01",
+      "access_status": "FULL_ITEM_INSPECTED",
+      "rights_status": "Official organizer archive. Exact source wording remains at organizer PDFs; learner-facing records are faithful non-verbatim restatements.",
+      "snapshot_ref": null,
+      "snapshot_digest": null,
+      "role": ["QUESTION_BANK"],
+      "supports_claims": [],
+      "entry_capabilities": [],
+      "depth": ["ADVANCED"],
+      "selection_reason": "Primary first-party source used to verify INJSO identity, question locators and official answer authority.",
+      "fallback": []
+    }
+  ],
+  "last_checked": "2026-10-01"
+}
