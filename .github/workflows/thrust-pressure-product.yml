@@ -40,11 +40,39 @@ jobs:
           npm install --no-save playwright@1.56.1
           npx playwright install --with-deps chromium
 
-      - name: Validate canonical package schema and references
-        run: >-
-          python3 -m Shared.library.resolve --schema
-          Physics/library/phy-thrust-pressure.v1.json
-          Physics/library/phy-nlm-first-law.v1.json
+      - name: Validate canonical schema and declared NLM prerequisites
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from Shared.library import resolve
+
+          thrust_path = Path("Physics/library/phy-thrust-pressure.v1.json")
+          nlm_path = Path("Physics/library/phy-nlm-first-law.v1.json")
+          thrust = resolve.load(thrust_path)
+          problems = resolve.schema_problems(thrust)
+          if problems:
+              for problem in problems:
+                  print(f"{thrust_path}: {problem}")
+              raise SystemExit(1)
+
+          nlm = resolve.load(nlm_path)
+          provider_ids = set()
+          for collection in ("buckets", "capabilities", "microtopics", "relations", "representations", "question_families", "questions"):
+              for row in nlm.get(collection, []):
+                  if isinstance(row, dict) and row.get("id"):
+                      provider_ids.add(row["id"])
+
+          external_refs = set()
+          for collection in ("buckets", "capabilities", "microtopics"):
+              for row in thrust.get(collection, []):
+                  for ref in row.get("prerequisite_refs", []):
+                      if ref.startswith(("CAP-NLM-", "BUCKET-PHY-NLM-")):
+                          external_refs.add(ref)
+          missing = sorted(external_refs - provider_ids)
+          if missing:
+              raise SystemExit(f"missing declared NLM provider prerequisites: {missing}")
+          print(f"Thrust schema: PASS; declared NLM provider prerequisites: {sorted(external_refs)}")
+          PY
 
       - name: Render exact governed Core1A and Core2 pages
         run: |
