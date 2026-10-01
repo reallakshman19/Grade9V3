@@ -26,6 +26,7 @@ EXPECTED_FILES = [
     "motion-in-2d-master-suite.html",
     "physics-motion-in-a-plane-interactive-suite.html",
     "core1a-physics-nlm-tablet.html",
+    "core2-physics-thrust-pressure-tablet.html",
 ]
 
 CDN_RE = re.compile(r'https?://(cdn\.|unpkg\.|jsdelivr\.|cdnjs\.)', re.I)
