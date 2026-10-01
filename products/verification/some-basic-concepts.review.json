@@ -1,0 +1,72 @@
+{
+  "schema": "product-review/v2",
+  "product": "some-basic-concepts",
+  "reviewer": "openai-independent-reviewer",
+  "reviewer_session": "pr376-independent-pages-review-2026-10-01",
+  "reviewed_at": "2026-10-01",
+  "render_digest": "0f7837c2399fb8f7",
+  "read_first": [
+    "docs/method/roles/REVIEWER.md",
+    "docs/method/FIRST-STAGE-REVIEW.md",
+    "evidence/reviews/pr376/INDEPENDENT-REVIEW-HANDOFF.md",
+    "artifact 11170849606 chemistry-governed-core1a-pages-review",
+    "Chemistry/library/some-basic-concepts.v1.json",
+    "products/chemistry/some-basic-concepts.manifest.json"
+  ],
+  "strengths": [
+    {
+      "record": "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
+      "technique": "entity-labelled mole reasoning",
+      "note": "The construction consistently requires the counted entity to be named and separates equal entity count from equal mass, which is a strong defence against a common mole misconception.",
+      "golden_candidate": true
+    },
+    {
+      "record": "MIC-CHEM-MOLE-CONCENTRATION",
+      "technique": "denominator-first concentration reasoning",
+      "note": "Molarity, molality and mole fraction are compared through their actual denominators and temperature claims are qualified by closed/unchanged-composition conditions.",
+      "golden_candidate": true
+    }
+  ],
+  "findings": [
+    {
+      "id": "PR376-MOLE-CONSTRUCTION-001",
+      "severity": "S2",
+      "kind": "content",
+      "record": "MIC-CHEM-MOLE-FORMULA-STOICH",
+      "page": "core1a.html",
+      "learner_impact": "The learner is told the correct conversion and limiting-reagent algorithm but never sees it executed numerically, so unit cancellation, ratio normalization and the limiting-extent comparison are not actually demonstrated.",
+      "detail": "The hard microtopic covers empirical formula, molecular multiple, stoichiometry and limiting reagent. Its worked anchor only asks what quantity should be compared across reactants; no masses/percentages are converted to moles, no empirical ratio is normalized, and no limiting-reagent inventory is carried through to product/leftover amounts.",
+      "suggested_fix": "Add at least one complete numerical worked construction with units: mass/percentage → moles → empirical ratio (and molecular multiple where relevant), plus a balanced-reaction inventory → n_i/ν_i comparison → limiting extent → product/leftover check.",
+      "anti_pattern": "PROCEDURAL_CORE1A_REDUCED_TO_RULE_CHECKLIST"
+    },
+    {
+      "id": "PR376-MOLE-REPRESENTATION-001",
+      "severity": "S2",
+      "kind": "figure",
+      "record": "REP-CHEM-MOLE-FORMULA-STOICH",
+      "page": "core1a.html",
+      "learner_impact": "The current figure repeats 'extent ∝ nᵢ/νᵢ' but does not visually distinguish initial inventory, stoichiometric requirement and supported reaction extent, so the representation does little extra work beyond the prose.",
+      "detail": "The governed representation is a SYMBOLIC_EQUATION card. For a hard quantitative concept, Core1A's required picture↔word↔symbol bridge is not realized as an inventory/ratio model or particle/mole mapping.",
+      "suggested_fix": "Add a governed inventory/ratio representation that shows available moles beside stoichiometric coefficients and the resulting supported extents; for the mole foundation, consider an explicit entity↔mole↔mass bridge rather than formula-only cards.",
+      "anti_pattern": "SYMBOLIC_CARD_SUBSTITUTES_FOR_REQUIRED_REPRESENTATION_BRIDGE"
+    },
+    {
+      "id": "PR376-MOLE-SURFACE-001",
+      "severity": "S3",
+      "kind": "content",
+      "record": "BUCKET-CHEM-MOLE",
+      "page": "core1a.html",
+      "learner_impact": "Internal source-denominator and promotion terminology is rendered as learner scope, adding process noise to an already dense quantitative topic.",
+      "detail": "The page visibly mentions conversion from PR #376, unresolved NCERT identities/retained-card denominator claims, Grade-9 curriculum authority and Core2 source admission.",
+      "suggested_fix": "Move those items to review evidence and replace them with plain educational scope/next-step language.",
+      "anti_pattern": "AUDIT_METADATA_RENDERED_AS_LEARNER_SCOPE"
+    }
+  ],
+  "previous_findings": [],
+  "overall": {
+    "teaches_at_reference_depth": "partly",
+    "recommendation": "revise",
+    "summary": "The definitions and conceptual bookkeeping are sound, especially entity naming and concentration denominators, but the hard stoichiometry unit remains procedural prose rather than a completed numerical construction. Strengthen the worked example and representation, clean the learner scope text, and re-review the new exact render."
+  },
+  "anti_pattern_proposal": null
+}
