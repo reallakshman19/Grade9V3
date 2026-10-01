@@ -58,7 +58,8 @@ try {
       const de = document.documentElement;
       const card = document.querySelector('.question-card:not([hidden])');
       const stage = card?.querySelector('.stage-column')?.getBoundingClientRect();
-      const support = card?.querySelector('.support-column')?.getBoundingClientRect();
+      const supportEl = card?.querySelector('.support-column');
+      const support = supportEl?.getBoundingClientRect();
       const controls = [...document.querySelectorAll('button:not([hidden]),input:not([hidden]),textarea:not([hidden])')]
         .filter(el => {
           const cs = getComputedStyle(el);
@@ -80,6 +81,7 @@ try {
         overflow: de.scrollWidth - de.clientWidth,
         stage: stage ? { x: stage.x, y: stage.y, w: stage.width, h: stage.height } : null,
         support: support ? { x: support.x, y: support.y, w: support.width, h: support.height } : null,
+        supportPosition: supportEl ? getComputedStyle(supportEl).position : null,
         undersized,
       };
     });
@@ -90,6 +92,9 @@ try {
     if (vp.width >= 1100) {
       if (!(metrics.support && metrics.stage && metrics.support.x > metrics.stage.x && metrics.support.w >= 359)) {
         fail('QB_TABLET_SUPPORT_RAIL_LAYOUT', `${vp.name}: ${JSON.stringify(metrics)}`);
+      }
+      if (metrics.supportPosition !== 'static') {
+        fail('QB_SUPPORT_RAIL_SCROLL_MODEL', `${vp.name}: expected normal-flow support rail, got ${metrics.supportPosition}`);
       }
     } else {
       if (!(metrics.support && metrics.stage && metrics.support.y > metrics.stage.y)) {

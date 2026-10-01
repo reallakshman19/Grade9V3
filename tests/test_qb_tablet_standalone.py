@@ -153,6 +153,7 @@ class QbTabletStandaloneTest(unittest.TestCase):
         self.assertIn("viewport-fit=cover", self.actual)
         self.assertIn("--touch:48px", self.actual)
         self.assertIn("minmax(360px,1fr)", self.actual)
+        self.assertNotIn(".support-column{position:sticky", self.actual)
         self.assertIn("visualViewport", self.actual)
         self.assertIn("scrollIntoView", self.actual)
         self.assertIn(":focus-visible", self.actual)
