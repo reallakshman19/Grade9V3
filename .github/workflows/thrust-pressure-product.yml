@@ -1,0 +1,136 @@
+name: thrust-pressure-product
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/thrust-pressure-product.yml"
+      - "Physics/library/phy-thrust-pressure.v1.json"
+      - "Physics/library/exam-bank/thrust-pressure-competitive.v1.json"
+      - "Physics/assets/representations/REP-PHY-THRUST-*.svg"
+      - "Physics/assets/representations/REP-PHY-PRESSURE-*.svg"
+      - "products/physics/phy-thrust-pressure.manifest.json"
+      - "Shared/tools/render_core.py"
+      - "Shared/library/package.schema.json"
+      - "Shared/library/competitive-exam-bank.schema.json"
+      - "Shared/web/interactive-page-blueprints.v1.json"
+      - "public/css/tablet-12-7.css"
+      - "tools/site-audit/core-page-audit.mjs"
+      - "tools/print/print-product.mjs"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-product:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install validation dependencies
+        run: |
+          pip install --quiet jsonschema pypdf
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Validate canonical package schema and references
+        run: python3 -m Shared.library.resolve --schema Physics/library/phy-thrust-pressure.v1.json
+
+      - name: Render exact governed Core1A and Core2 pages
+        run: |
+          python3 - <<'PY'
+          import json
+          import shutil
+          from pathlib import Path
+          from Shared.tools import render_core
+
+          manifest = Path("products/physics/phy-thrust-pressure.manifest.json")
+          pages, gaps, digest = render_core.build(manifest, mode="PAGES")
+          owned = [g for g in gaps if g.get("core") in {"CORE1A", "CORE2"}]
+          if owned:
+              print(json.dumps(owned, indent=2))
+              raise SystemExit(f"Thrust product has {len(owned)} governed Core1A/Core2 gap(s)")
+
+          root = Path("/tmp/thrust-pressure-site")
+          out = root / "products" / "physics" / "phy-thrust-pressure"
+          out.mkdir(parents=True, exist_ok=True)
+          for name, content in pages.items():
+              (out / name).write_text(content, encoding="utf-8")
+          css = root / "css"
+          css.mkdir(parents=True, exist_ok=True)
+          shutil.copy2("public/css/tablet-12-7.css", css / "tablet-12-7.css")
+          (out / "render-evidence.json").write_text(json.dumps({
+              "manifest": manifest.as_posix(),
+              "mode": "PAGES",
+              "render_digest": digest,
+              "gap_count": len(gaps),
+              "owned_gap_count": len(owned),
+              "pages": sorted(pages),
+          }, indent=2) + "\n", encoding="utf-8")
+          print(f"render_digest={digest}")
+          print(f"pages={sorted(pages)} gaps={len(gaps)} owned_gaps={len(owned)}")
+          PY
+
+      - name: Run 12.7-inch tablet browser audit
+        run: |
+          node tools/site-audit/core-page-audit.mjs \
+            /tmp/thrust-pressure-site/products/physics/phy-thrust-pressure \
+            --profile tablet-12.7 \
+            --http-root /tmp/thrust-pressure-site \
+            --enforce \
+            --json /tmp/thrust-pressure-site/products/physics/phy-thrust-pressure/browser-audit.json
+
+      - name: Print governed learner PDFs
+        run: |
+          node tools/print/print-product.mjs \
+            /tmp/thrust-pressure-site/products/physics/phy-thrust-pressure \
+            --out /tmp/thrust-pressure-site/products/physics/phy-thrust-pressure
+
+      - name: Verify PDF/page byte binding and content
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from pypdf import PdfReader
+          from Shared.tools import render_core
+
+          out = Path("/tmp/thrust-pressure-site/products/physics/phy-thrust-pressure")
+          problems = render_core.pdf_publication_problems(out)
+          if problems:
+              print("PDF publication problems:")
+              for p in problems:
+                  print(" -", p)
+              raise SystemExit(1)
+
+          expected = {
+              "core1a.pdf": ["Thrust", "Pressure", "Construction"],
+              "core2.pdf": ["Source questions", "INJSO"],
+          }
+          report = {}
+          for name, needles in expected.items():
+              path = out / name
+              reader = PdfReader(path)
+              text = "\n".join((page.extract_text() or "") for page in reader.pages)
+              missing = [n for n in needles if n.lower() not in text.lower()]
+              report[name] = {"pages": len(reader.pages), "bytes": path.stat().st_size, "missing_text": missing}
+              if missing:
+                  raise SystemExit(f"{name} missing expected text: {missing}")
+          (out / "pdf-audit.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
+          print(json.dumps(report, indent=2))
+          PY
+
+      - name: Upload exact learner product evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: thrust-pressure-product-evidence
+          path: |
+            /tmp/thrust-pressure-site/products/physics/phy-thrust-pressure
+            /tmp/thrust-pressure-site/css/tablet-12-7.css
+          if-no-files-found: error
