@@ -241,7 +241,9 @@
           "output": "Separating self-change from agent role prevents reversal."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-REDOX-OXIDATION-AGENTS"
+      ],
       "representation_refs": [
         "REP-CHEM-REDOX-OXIDATION-AGENTS"
       ],
@@ -406,7 +408,9 @@
           "output": "Counting how many states appear is not enough."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-REDOX-CLASSIFICATION"
+      ],
       "representation_refs": [
         "REP-CHEM-REDOX-CLASSIFICATION"
       ],
@@ -571,7 +575,9 @@
           "output": "Atoms balance and the total charge is +17 on both sides; the five-electron change is specific to this permanganate reaction in acid."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-REDOX-BALANCE-NFACTOR"
+      ],
       "representation_refs": [
         "REP-CHEM-REDOX-BALANCE-NFACTOR"
       ],
@@ -738,7 +744,8 @@
       "checks": [
         "Verify the oxidation-number sum before assigning oxidation, reduction or agent roles."
       ],
-      "gate_relation_ref": null
+      "gate_relation_ref": null,
+      "mathml": "<math display=\"block\"><mrow><mo>∑</mo><msub><mi>n</mi><mi>i</mi></msub><mo>(</mo><msub><mi>ON</mi><mi>i</mi></msub><mo>)</mo><mo>=</mo><mtext>species charge</mtext></mrow></math>"
     },
     {
       "id": "REL-CHEM-REDOX-CLASSIFICATION",
@@ -781,7 +788,8 @@
       "checks": [
         "Make a before/after oxidation-state table and look for both directions of change."
       ],
-      "gate_relation_ref": null
+      "gate_relation_ref": null,
+      "mathml": "<math display=\"block\"><mrow><mtext>redox</mtext><mo>⇔</mo><mtext>ON increase and ON decrease are both present</mtext></mrow></math>"
     },
     {
       "id": "REL-CHEM-REDOX-BALANCE-NFACTOR",
@@ -824,7 +832,8 @@
       "checks": [
         "After adding the halves, verify every atom count and the algebraic total charge on both sides."
       ],
-      "gate_relation_ref": null
+      "gate_relation_ref": null,
+      "mathml": "<math display=\"block\"><mrow><mtext>total e− lost</mtext><mo>=</mo><mtext>total e− gained</mtext></mrow></math>"
     }
   ],
   "representations": [
@@ -1563,10 +1572,11 @@
         "grade9v3:authored_by": "pr376-conversion-session"
       },
       "kind": "EQUATION",
-      "value": "<math display=\"block\"><mrow><mtext>oxidation number</mtext><mo>↑</mo><mo>=</mo><mtext>oxidation</mtext><mo>;</mo><mtext>oxidation number</mtext><mo>↓</mo><mo>=</mo><mtext>reduction</mtext></mrow></math>",
-      "symbol": "ON ↑ = oxidation; ON ↓ = reduction",
-      "meaning": "Oxidation-state direction: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner.",
-      "locator": "Author-created governed representation for Oxidation-state direction in PR #376."
+      "value": "<math display=\"block\"><mrow><mo>∑</mo><msub><mi>n</mi><mi>i</mi></msub><mo>(</mo><msub><mi>ON</mi><mi>i</mi></msub><mo>)</mo><mo>=</mo><mtext>species charge</mtext></mrow></math>",
+      "symbol": "Σ ni(ONi) = species charge",
+      "meaning": "Oxidation-number ledger: atom-count-weighted oxidation numbers sum to the charge of the whole species.",
+      "locator": "Author-created governed representation for Oxidation-state direction in PR #376.",
+      "relation_ref": "REL-CHEM-REDOX-OXIDATION-AGENTS"
     },
     {
       "id": "EQ-CHEM-REDOX-CLASSIFICATION",
@@ -1580,10 +1590,11 @@
         "grade9v3:authored_by": "pr376-conversion-session"
       },
       "kind": "EQUATION",
-      "value": "<math display=\"block\"><mrow><mtext>redox</mtext><mo>⇒</mo><mtext>coupled oxidation-number increase and decrease</mtext></mrow></math>",
-      "symbol": "redox ⇒ coupled ON increase + decrease",
-      "meaning": "Redox classification: Calling a reaction redox requires coupled oxidation-number changes; a reaction-type label by itself is insufficient.",
-      "locator": "Author-created governed representation for Redox classification in PR #376."
+      "value": "<math display=\"block\"><mrow><mtext>redox</mtext><mo>⇔</mo><mtext>ON increase and ON decrease are both present</mtext></mrow></math>",
+      "symbol": "redox ⇔ ON↑ and ON↓",
+      "meaning": "Redox classification: oxidation-number increase and decrease must be coupled in the same reaction.",
+      "locator": "Author-created governed representation for Redox classification in PR #376.",
+      "relation_ref": "REL-CHEM-REDOX-CLASSIFICATION"
     },
     {
       "id": "EQ-CHEM-REDOX-BALANCE-NFACTOR",
@@ -1597,10 +1608,11 @@
         "grade9v3:authored_by": "pr376-conversion-session"
       },
       "kind": "EQUATION",
-      "value": "<math display=\"block\"><mrow><mtext>atom counts left</mtext><mo>=</mo><mtext>atom counts right</mtext><mo>;</mo><mtext>charge left</mtext><mo>=</mo><mtext>charge right</mtext></mrow></math>",
-      "symbol": "atomsL = atomsR; chargeL = chargeR",
-      "meaning": "Redox conservation: A balanced ionic redox equation conserves every element and total charge; reaction-specific electron transfer then determines n-factor.",
-      "locator": "Author-created governed representation for Redox conservation in PR #376."
+      "value": "<math display=\"block\"><mrow><mtext>total e− lost</mtext><mo>=</mo><mtext>total e− gained</mtext></mrow></math>",
+      "symbol": "total e− lost = total e− gained",
+      "meaning": "Half-reaction balance: electron loss and gain are equalized before the balanced halves are added.",
+      "locator": "Author-created governed representation for Redox conservation in PR #376.",
+      "relation_ref": "REL-CHEM-REDOX-BALANCE-NFACTOR"
     }
   ]
 }
