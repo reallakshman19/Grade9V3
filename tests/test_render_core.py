@@ -14,7 +14,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(REPO))
 
-from Shared.tools import migrate_math_linear, package_depth, product_manifest, promote_verified, render_core  # noqa: E402
+from Shared.tools import core_template_contract, migrate_math_linear, package_depth, product_manifest, promote_verified, render_core  # noqa: E402
 
 # Frozen pre-pilot Motion in a Plane: the tests need a product that still has gaps.
 PKG = "tests/fixtures/render/thin-kin-2d-motion.v1.json"
@@ -35,10 +35,9 @@ class Renderer(unittest.TestCase):
         self.pages, self.gaps, self.digest = render_core.build(manifest_file(self.tmp))
 
     def test_every_role_renders_through_its_blueprint_slots_in_the_shell(self):
-        blueprints = json.loads(render_core.BLUEPRINTS.read_text(encoding="utf-8"))
         for role in render_core.ROLES:
             html = self.pages[render_core.ROLE_FILE[role]]
-            bp = next(b for b in blueprints["blueprints"] if role in b["core_roles"])
+            bp = core_template_contract.resolve_web_blueprint_for_core(role)
             with self.subTest(role=role):
                 self.assertIn("data-g9-shell", html)
                 self.assertIn("data-g9-shell-header", html)
@@ -138,6 +137,40 @@ class Renderer(unittest.TestCase):
         )
         self.assertIn("direct route unavailable in this product", orientation)
         self.assertNotIn("locked", orientation.lower())
+
+    def test_core1a_surfaces_only_governed_local_activity_companions_after_static_closure(self):
+        repo_manifest = REPO / "products" / "physics" / "phy-kin-2d-motion.manifest.json"
+        ctx = render_core.context(repo_manifest)
+        html = render_core.page(ctx, "CORE1A", "PAGES", render_core.render_digest(ctx))
+
+        self.assertIn('data-blueprint-slot="activity"', html)
+        self.assertIn('data-g9-block="governed_activity_companion"', html)
+        self.assertIn('data-g9-activity-ref="ACT-KIN-2D-SHARED-CLOCK"', html)
+        self.assertIn(
+            'href="../../../physics/motion-2d/explorers/shared-clock/index.html"',
+            html,
+        )
+        first_article = html.index('<article ')
+        first_activity = html.index('data-blueprint-slot="activity"', first_article)
+        first_exit = html.index('data-g9-block="exit_task"', first_article)
+        self.assertGreater(first_activity, first_exit)
+
+    def test_core1a_missing_optional_activity_creates_no_gap_or_placeholder(self):
+        ctx = render_core.Ctx(
+            manifest={"product_id": "test-product"},
+            packages=[{"resources": [], "representations": []}],
+            bank=[],
+            blueprints={},
+        )
+        microtopic = {
+            "id": "MIC-NO-ACTIVITY",
+            "representation_refs": [],
+            "construction_units": [],
+        }
+        before = list(ctx.gaps)
+        rendered = render_core._core1a_activity_companion(ctx, microtopic)
+        self.assertEqual(rendered, "")
+        self.assertEqual(ctx.gaps, before)
 
     def test_core1a_difficulty_is_context_not_navigation_or_mastery_state(self):
         repo_manifest = REPO / "products" / "physics" / "phy-kin-2d-motion.manifest.json"
