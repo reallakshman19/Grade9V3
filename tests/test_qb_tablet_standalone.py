@@ -88,25 +88,32 @@ class QbTabletStandaloneTest(unittest.TestCase):
         reasoning_steps = 0
         for q in self.questions:
             article = articles[q["id"]]
-            def present(value):
-                self.assertIn(html.escape(str(value), quote=True), article)
+            def present(value, target=None):
+                expected = (
+                    builder.render_text(q, target, value)
+                    if target
+                    else html.escape(str(value), quote=True)
+                )
+                self.assertIn(expected, article)
 
-            present(q["stem"])
+            present(q["stem"], "stem")
             for condition in q.get("conditions") or []:
-                present(condition)
+                present(condition, "conditions")
             for option_index, option in enumerate(q.get("options") or []):
-                present(builder.option_parts(option, option_index)[1])
-            for scaffold in q.get("scaffolds") or []:
-                present(scaffold["text"])
-            present(q["answer"]["summary"])
+                present(builder.option_parts(option, option_index)[1], f"option:{option_index}")
+            for scaffold_index, scaffold in enumerate(q.get("scaffolds") or []):
+                present(scaffold["text"], f"scaffold:{scaffold_index}")
+            present(q["answer"]["summary"], "answer_summary")
             route = q["answer"].get("reasoning_route") or []
             reasoning_steps += len(route)
-            for step in route:
-                present(step["action"])
-            present(q["extensions"]["grade9v3:analysis"]["stable_crux_move"])
-            present(q["extensions"]["grade9v3:analysis"]["common_wrong_route"])
+            for step_index, step in enumerate(route):
+                present(step["action"], f"answer_reasoning:{step_index}")
+            present(q["extensions"]["grade9v3:analysis"]["stable_crux_move"], "stable_crux_move")
+            present(q["extensions"]["grade9v3:analysis"]["common_wrong_route"], "common_wrong_route")
 
         self.assertGreater(reasoning_steps, 150)
+        self.assertGreater(self.actual.count("<math"), 100)
+        self.assertNotIn("katex.min.js", self.actual)
 
     def test_selected_benchmark_representations_are_explicitly_authored_not_source_figures(self):
         self.assertEqual(self.actual.count('class="representation-box"'), 7)
