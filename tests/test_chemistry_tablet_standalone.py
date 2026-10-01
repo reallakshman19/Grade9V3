@@ -11,6 +11,10 @@ CHEMISTRY_TABLET_FILES = [
     "standalone/core1a-chemistry-redox-reactions-tablet.html",
     "standalone/core1a-chemistry-chemical-bonding-tablet.html",
     "standalone/core1a-chemistry-some-basic-concepts-tablet.html",
+    "standalone/core1a-chemistry-behaviour-of-gases-tablet.html",
+    "standalone/core2-chemistry-chemical-bonding-tablet.html",
+    "standalone/core2-chemistry-redox-reactions-tablet.html",
+    "standalone/core2-chemistry-some-basic-concepts-tablet.html",
 ]
 
 
