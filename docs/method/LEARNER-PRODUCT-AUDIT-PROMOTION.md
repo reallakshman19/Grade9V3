@@ -1358,42 +1358,122 @@ Generated `docs/` MUST NOT be hand-edited.
 
 ## 21. Automatic triggering
 
-The implementation SHOULD use one inexpensive PR discovery workflow and one reusable audit workflow.
+LPAP automation uses four trigger layers. They MUST remain distinct so ordinary engineering PR activity does not accidentally become an expensive academic audit or a publication action.
 
-### 21.1 PR events
+```text
+INTAKE TRIGGER
+→ CHEAP CANDIDATE DISCOVERY
+→ EXPLICIT AUDIT ACTIVATION
+→ ROLE + CONTENT MODULE SELECTION
+→ DELTA-BASED RE-AUDIT / REWIND
+```
 
-Candidate discovery SHOULD run on relevant `pull_request` events including:
+Automatic triggering never grants publication authority.
 
-- opened;
-- synchronize;
-- reopened;
-- labeled/requested;
-- ready_for_review;
-- converted_to_draft where useful.
+### 21.1 Intake triggers
 
-A changed head MUST trigger delta classification. The orchestrator compares the new head with the recorded `candidate_content_basis`, `authority_basis_digest`, profile/rule revisions, and relevant context.
+LPAP intake may begin from any of these routes:
 
-- if a semantic/input basis changed, apply the dependency-aware rewind in §16.2;
-- if the commit is proven projection-only under §5.3, preserve valid semantic evidence and run targeted publication/search/Pages re-verification;
-- if the delta cannot be classified safely, treat affected evidence as stale rather than assuming reuse.
+1. **Existing PR** — a PR targeting `main` contains or is declared to contain learner-facing promotion candidates.
+2. **Upload** — HTML, ZIP, PDF, SVG, or supporting files are submitted to an authenticated intake adapter, which creates/updates a candidate branch and draft PR before LPAP audit begins.
+3. **TEST page** — the learner-product TEST/intake surface prepares the bundle, digests, metadata, and intake manifest; an authenticated least-privilege service MAY create the draft PR. The TEST page itself MUST NOT publish.
+4. **Manual replay** — an authorized `workflow_dispatch` or equivalent MAY request re-evaluation of an existing promotion set without changing publication authority.
 
-### 21.2 Candidate activation
+All routes normalize to the same draft-PR promotion-set model in §4.
 
-The expensive LPAP audit SHOULD run when at least one explicit candidate signal is present, such as:
+### 21.2 PR discovery events
 
-- LPAP intake manifest;
-- learner-promotion label/request;
-- recognized learner-product path plus confirmed promotion intent.
+Cheap candidate discovery SHOULD run on relevant `pull_request` activity, including:
 
-Detection alone MUST NOT publish.
+- `opened`;
+- `synchronize`;
+- `reopened`;
+- `labeled` or equivalent explicit promotion request;
+- `ready_for_review`;
+- `converted_to_draft` where useful for pausing/refreshing state.
 
-### 21.3 Workflow reuse
+Discovery SHOULD classify the PR as either:
 
-The heavy audit SHOULD be implemented as a reusable workflow or equivalent shared runner rather than copied into Core-specific workflows.
+- `NOT_A_LEARNER_PROMOTION`; or
+- `LEARNER_PROMOTION_CANDIDATE`.
 
-Product-specific existing workflows MAY feed evidence into the LPAP packet.
+Discovery MUST remain lightweight. Merely touching HTML, CSS, JavaScript, SVG, or `public/` does not by itself authorize the expensive LPAP audit.
 
-### 21.4 Security separation
+### 21.3 Audit activation
+
+The expensive LPAP audit SHOULD activate only when promotion intent is explicit. Valid activation signals include:
+
+- a valid LPAP intake manifest;
+- a `learner-promotion` label/request or its future repository equivalent;
+- recognized learner-product paths plus explicit confirmed promotion intent;
+- an authorized manual replay for an already registered promotion set.
+
+A discovered learner-facing file without promotion intent MAY be reported as a candidate but MUST NOT silently become a full promotion audit.
+
+Activation starts audit/evidence generation only. It MUST NOT merge, publish, create an Owner acceptance record, or expose production navigation/search entries.
+
+### 21.4 Role/profile and content-module triggers
+
+Once activated, the declared/established learner role selects the mandatory base profile:
+
+| Product role | Base audit |
+|---|---|
+| Core2 | Common Kernel + `LPAP.CORE2@1` |
+| Core1A | Common Kernel + `LPAP.CORE1A@1` |
+| Interactive webpage/product | Common Kernel + `LPAP.INTERACTIVE@1` |
+| Core1 | Common Kernel + `LPAP.CORE1@1` |
+| Core1B | Common Kernel + `LPAP.CORE1B@1` |
+| Core2A | Common Kernel + `LPAP.CORE2A@1` |
+| Core2B | Common Kernel + `LPAP.CORE2B@1` |
+
+Detected content may only add/escalate audit coverage:
+
+- substantive equations/calculations → Equation Module;
+- answerable quantitative/conceptual questions → Question Module;
+- instructional SVG/diagram/graph → SVG/Diagram Module;
+- learner controls that mutate model state/representation → Interactive Module / deep interactive profile;
+- PYQ/source/benchmark/source-custody claims → Source-Custody Module;
+- prerequisite/repair/transfer/exact-return claims across Cores → Cross-Core Module.
+
+Missing metadata MUST NOT be used to obtain a cheaper audit. Ambiguous role follows the escalation rule in §7.
+
+### 21.5 Change and re-audit triggers
+
+Every new candidate-branch commit triggers **delta classification**, not an unconditional full audit.
+
+The orchestrator compares the new head against:
+
+- `candidate_content_basis`;
+- `authority_basis_digest`;
+- selected profile/rule revisions;
+- source/dedup/denominator inputs;
+- relevant placement/runtime context.
+
+Then:
+
+- presentation-only changes rerun the affected browser/UX/accessibility evidence;
+- candidate academic/runtime/bundle changes rerun the dependent semantic/mechanical modules;
+- source, custody, canonical, denominator, lineage, role, topic/capability, or dedup-input changes rewind according to §16.2;
+- a proven projection-only acceptance commit under §5.3 keeps valid semantic evidence and runs targeted publication/search/Pages re-verification;
+- an unclassifiable delta makes affected evidence stale rather than assuming reuse.
+
+### 21.6 Reusable workflow architecture
+
+The heavy audit SHOULD be implemented as one reusable workflow or equivalent shared runner rather than copied into Core-specific workflows.
+
+Existing product-specific workflows MAY contribute evidence to the LPAP packet, but they MUST NOT independently redefine LPAP activation, Owner authority, or publication semantics.
+
+A useful implementation split is:
+
+```text
+candidate-discovery
+→ LPAP dispatcher
+→ reusable audit runner
+→ per-product evidence aggregation
+→ promotion packet
+```
+
+### 21.7 Security separation
 
 Candidate PR code is untrusted.
 
