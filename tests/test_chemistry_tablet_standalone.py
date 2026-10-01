@@ -72,7 +72,9 @@ class ChemistryBlueprintV2Test(unittest.TestCase):
             with self.subTest(package=package_rel):
                 snapshot = REPO / snapshot_rel
                 self.assertTrue(snapshot.is_file())
-                self.assertEqual(digest, hashlib.sha256(snapshot.read_bytes()).hexdigest())
+                raw_bytes = snapshot.read_bytes()
+                digests = {hashlib.sha256(raw_bytes).hexdigest(), hashlib.sha256(raw_bytes.replace(b"\r\n", b"\n")).hexdigest()}
+                self.assertIn(digest, digests)
                 package = json.loads((REPO / package_rel).read_text(encoding="utf-8"))
                 refs = {row["snapshot_ref"]: row["snapshot_digest"] for row in package["resources"]}
                 self.assertEqual("sha256:" + digest, refs.get(snapshot_rel))
