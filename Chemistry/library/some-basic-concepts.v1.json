@@ -238,7 +238,7 @@
           "action": "Use the path mass ↔ moles ↔ entities with units visible.",
           "why_valid": "Molar mass connects grams and moles; Avogadro's constant connects moles and entity count.",
           "inputs": [],
-          "output": "Unit cancellation checks the conversion direction."
+          "output": "18.0 g H₂O ÷ 18.0 g mol⁻¹ = 1.00 mol H₂O; 1.00 mol × NA = NA water molecules."
         }
       ],
       "relation_refs": [
@@ -573,7 +573,7 @@
           "action": "For temperature-change reasoning, state whether the sample is closed and composition/amounts remain unchanged.",
           "why_valid": "Molarity can change if solution volume changes; molality and mole fraction do not change merely from temperature when solvent mass and mole amounts stay unchanged.",
           "inputs": [],
-          "output": "Invariance claims require the no-loss/no-reaction qualification."
+          "output": "Closed unchanged sample: Vsolution ↑ with fixed nsolute ⇒ c ↓, while fixed msolvent and fixed mole amounts leave b and xi unchanged."
         },
         {
           "id": "MOLE-CONCENTRATION-T3",
