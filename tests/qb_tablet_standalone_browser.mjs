@@ -102,20 +102,24 @@ try {
   }
 
   const visibleCount = async () => page.locator('.question-card:not([hidden])').count();
-  for (const [label, expected] of [['Physics · 31', 31], ['Chemistry · 46', 46], ['Selected D3/D4 · 7', 7], ['All D3/D4', 30]]) {
-    await page.getByRole('tab', { name: label }).click();
+  for (const [filterName, expected] of [['physics', 31], ['chemistry', 46], ['selected', 7], ['d3d4', 30]]) {
+    await page.locator(`.tab-btn[data-filter="${filterName}"]`).click();
     const actual = await visibleCount();
-    if (actual !== expected) fail('QB_FILTER_COUNT_MISMATCH', `${label}: expected ${expected}, got ${actual}`);
+    if (actual !== expected) fail('QB_FILTER_COUNT_MISMATCH', `${filterName}: expected ${expected}, got ${actual}`);
   }
 
-  await page.getByRole('tab', { name: 'All 77' }).click();
+  await page.locator('.tab-btn[data-filter="all"]').click();
   const search = page.locator('#search-input');
   await search.fill('redox');
   const redoxCount = await visibleCount();
   observations.runtime.redox_search_count = redoxCount;
   if (redoxCount < 1) fail('QB_SEARCH_RUNTIME', 'redox returned no results');
   await page.locator('#clear-search').click();
-  if (await visibleCount() !== 77) fail('QB_SEARCH_RESET', 'reset did not restore 77');
+  await page.waitForTimeout(20);
+  const resetCount = await visibleCount();
+  const resetText = await page.locator('#result-count').innerText();
+  observations.runtime.search_reset = { resetCount, resetText };
+  if (resetCount !== 77) fail('QB_SEARCH_RESET', `expected 77, got ${resetCount}; result text=${resetText}`);
 
   const q = page.locator('#PYQ-PHY-IITJEE-2007-P1-Q03');
   const bodyBefore = await q.innerText();
@@ -164,7 +168,7 @@ try {
     fail('QB_ZOOM_DISABLED', viewportApi.viewportMeta);
   }
 
-  await page.getByRole('tab', { name: 'Selected D3/D4 · 7' }).click();
+  await page.locator('.tab-btn[data-filter="selected"]').click();
   const selectedWithSvg = await page.locator('.question-card:not([hidden]) .representation-box svg').count();
   if (selectedWithSvg !== 7) fail('QB_SELECTED_BENCHMARK_REPRESENTATION', `expected 7 SVGs, got ${selectedWithSvg}`);
 
