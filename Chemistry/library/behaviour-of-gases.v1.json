@@ -241,7 +241,9 @@
           "output": "Latent heat is energy associated with the phase transition under the stated conditions."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-GAS-KINETIC-PHASE"
+      ],
       "representation_refs": [
         "REP-CHEM-GAS-KINETIC-PHASE"
       ],
@@ -406,7 +408,9 @@
           "output": "Molar mass belongs in the rate comparison, not in the ideal partial-pressure sum."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-GAS-IDEAL-LAWS"
+      ],
       "representation_refs": [
         "REP-CHEM-GAS-IDEAL-LAWS"
       ],
@@ -571,7 +575,9 @@
           "output": "Liquefaction claims require the temperature-pressure regime to be stated."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-GAS-REAL-CRITICAL"
+      ],
       "representation_refs": [
         "REP-CHEM-GAS-REAL-CRITICAL"
       ],
@@ -748,7 +754,8 @@
       "checks": [
         "Keep ensemble averaging separate from the phase-equilibrium pressure condition."
       ],
-      "gate_relation_ref": null
+      "gate_relation_ref": null,
+      "mathml": "<math display=\"block\"><mrow><mtext>⟨Eₖ⟩ = 3kBT/2; Pvap(Tb) = Pext</mtext></mrow></math>"
     },
     {
       "id": "REL-CHEM-GAS-IDEAL-LAWS",
@@ -806,7 +813,8 @@
       "checks": [
         "Substitute both states and verify that the stated fixed variables are actually fixed."
       ],
-      "gate_relation_ref": null
+      "gate_relation_ref": null,
+      "mathml": "<math display=\"block\"><mrow><mi>P</mi><mi>V</mi><mo>=</mo><mi>n</mi><mi>R</mi><mi>T</mi></mrow></math>"
     },
     {
       "id": "REL-CHEM-GAS-REAL-CRITICAL",
@@ -869,7 +877,8 @@
       "checks": [
         "Z = 1 is the ideal reference; departures from 1 must be attached to the stated state."
       ],
-      "gate_relation_ref": null
+      "gate_relation_ref": null,
+      "mathml": "<math display=\"block\"><mrow><mi>Z</mi><mo>=</mo><mfrac><mrow><mi>P</mi><mi>V</mi></mrow><mrow><mi>n</mi><mi>R</mi><mi>T</mi></mrow></mfrac></mrow></math>"
     }
   ],
   "representations": [
@@ -1605,10 +1614,11 @@
         "grade9v3:authored_by": "pr376-conversion-session"
       },
       "kind": "EQUATION",
-      "value": "<math display=\"block\"><mrow><mi>T</mi><mo>↑</mo><mo>⇒</mo><mtext>mean translational kinetic energy</mtext><mo>↑</mo></mrow></math>",
-      "symbol": "T ↑ ⇒ mean Eₖ ↑",
-      "meaning": "Gas particle model: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains.",
-      "locator": "Author-created governed representation for Gas particle model in PR #376."
+      "value": "<math display=\"block\"><mrow><mtext>⟨Eₖ⟩ = 3kBT/2; Pvap(Tb) = Pext</mtext></mrow></math>",
+      "symbol": "⟨Eₖ⟩ = 3kBT/2; Pvap(Tb) = Pext",
+      "meaning": "Kinetic/phase relation: mean translational kinetic energy rises with absolute temperature in the ideal monatomic-gas model, while bulk boiling is located by vapour pressure matching external pressure.",
+      "locator": "Author-created governed representation for Gas particle model in PR #376.",
+      "relation_ref": "REL-CHEM-GAS-KINETIC-PHASE"
     },
     {
       "id": "EQ-CHEM-GAS-IDEAL-LAWS",
@@ -1624,8 +1634,9 @@
       "kind": "EQUATION",
       "value": "<math display=\"block\"><mrow><mi>P</mi><mi>V</mi><mo>=</mo><mi>n</mi><mi>R</mi><mi>T</mi></mrow></math>",
       "symbol": "PV = nRT",
-      "meaning": "Ideal-gas state model: Pressure, volume, amount and absolute temperature are linked by the ideal-gas model; a simple gas law fixes a subset of them.",
-      "locator": "Author-created governed representation for Ideal-gas state model in PR #376."
+      "meaning": "Ideal-gas state relation: pressure, volume, amount and absolute temperature are linked by the ideal-gas model.",
+      "locator": "Author-created governed representation for Ideal-gas state model in PR #376.",
+      "relation_ref": "REL-CHEM-GAS-IDEAL-LAWS"
     },
     {
       "id": "EQ-CHEM-GAS-REAL-CRITICAL",
@@ -1639,10 +1650,11 @@
         "grade9v3:authored_by": "pr376-conversion-session"
       },
       "kind": "EQUATION",
-      "value": "<math display=\"block\"><mrow><mi>Z</mi><mo>=</mo><mi>P</mi><mi>V</mi><mo>/</mo><mo>(</mo><mi>n</mi><mi>R</mi><mi>T</mi><mo>)</mo></mrow></math>",
+      "value": "<math display=\"block\"><mrow><mi>Z</mi><mo>=</mo><mfrac><mrow><mi>P</mi><mi>V</mi></mrow><mrow><mi>n</mi><mi>R</mi><mi>T</mi></mrow></mfrac></mrow></math>",
       "symbol": "Z = PV/(nRT)",
-      "meaning": "Real-gas comparison: Compressibility factor compares a real-gas state with the ideal reference at the same pressure, volume, amount and temperature.",
-      "locator": "Author-created governed representation for Real-gas comparison in PR #376."
+      "meaning": "Real-gas comparison: compressibility factor compares a measured gas state with the ideal-gas reference at the same P, V, n and T.",
+      "locator": "Author-created governed representation for Real-gas comparison in PR #376.",
+      "relation_ref": "REL-CHEM-GAS-REAL-CRITICAL"
     }
   ]
 }
