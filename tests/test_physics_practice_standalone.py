@@ -7,7 +7,9 @@ from __future__ import annotations
 
 import re
 import unittest
+from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import unquote, urlparse
 
 REPO = Path(__file__).resolve().parents[1]
 PRACTICE_DIR = REPO / "standalone" / "practice"
@@ -97,6 +99,30 @@ class TestPracticeQuestionCount(unittest.TestCase):
             f"Expected ≥50 questions in 2D challenge bank, found {total}")
 
 
+class LinkExtractor(HTMLParser):
+    def __init__(self):
+        super().__init__()
+        self.links = []
+        self.ids = set()
+        self.names = set()
+
+    def handle_starttag(self, tag, attrs):
+        attr_dict = dict(attrs)
+        if "id" in attr_dict:
+            self.ids.add(attr_dict["id"])
+        if tag == "a":
+            if "name" in attr_dict:
+                self.names.add(attr_dict["name"])
+            if "href" in attr_dict:
+                self.links.append((tag, attr_dict["href"], attr_dict.get("class", ""), attr_dict.get("id", "")))
+        elif tag in ("area", "link"):
+            if "href" in attr_dict:
+                self.links.append((tag, attr_dict["href"], attr_dict.get("class", ""), attr_dict.get("id", "")))
+        elif tag == "script":
+            if "src" in attr_dict:
+                self.links.append((tag, attr_dict["src"], attr_dict.get("class", ""), attr_dict.get("id", "")))
+
+
 class TestPracticeIndexLinks(unittest.TestCase):
     def test_index_links_to_all_modules(self):
         if not (PRACTICE_DIR / "index.html").exists():
@@ -104,6 +130,57 @@ class TestPracticeIndexLinks(unittest.TestCase):
         text = _read("index.html")
         missing = [f for f in EXPECTED_FILES if f != "index.html" and f not in text]
         self.assertFalse(missing, f"index.html missing links to: {missing}")
+
+
+class TestPracticeNavigationAndLinks(unittest.TestCase):
+    def test_all_modules_link_to_hub(self):
+        missing = []
+        for fname in EXPECTED_FILES:
+            if fname == "index.html":
+                continue
+            fpath = PRACTICE_DIR / fname
+            parser = LinkExtractor()
+            parser.feed(fpath.read_text(encoding="utf-8", errors="replace"))
+            has_hub = any(
+                href.strip().split("#")[0] in ("index.html", "./index.html")
+                for _, href, _, _ in parser.links
+            )
+            if not has_hub:
+                missing.append(fname)
+        self.assertFalse(missing, f"The following modules are missing a link to index.html: {missing}")
+
+    def test_zero_broken_relative_links(self):
+        broken = []
+        for fname in EXPECTED_FILES:
+            fpath = PRACTICE_DIR / fname
+            parser = LinkExtractor()
+            parser.feed(fpath.read_text(encoding="utf-8", errors="replace"))
+            for tag, href, _, _ in parser.links:
+                h = href.strip()
+                if not h or h.startswith(("#", "http://", "https://", "mailto:", "tel:", "data:", "blob:", "javascript:")):
+                    continue
+                parsed = urlparse(h)
+                if not parsed.path:
+                    continue
+                resolved = (fpath.parent / unquote(parsed.path)).resolve()
+                if not resolved.exists():
+                    broken.append(f"{fname} -> {h} (resolved {resolved})")
+        self.assertFalse(broken, f"Broken relative links found:\n" + "\n".join(broken))
+
+    def test_zero_broken_internal_anchors(self):
+        broken = []
+        for fname in EXPECTED_FILES:
+            fpath = PRACTICE_DIR / fname
+            parser = LinkExtractor()
+            parser.feed(fpath.read_text(encoding="utf-8", errors="replace"))
+            anchors = parser.ids | parser.names
+            for tag, href, _, _ in parser.links:
+                h = href.strip()
+                if h.startswith("#"):
+                    target = unquote(h[1:])
+                    if target and target not in anchors:
+                        broken.append(f"{fname} -> {h}")
+        self.assertFalse(broken, f"Broken internal anchor links found:\n" + "\n".join(broken))
 
 
 if __name__ == "__main__":

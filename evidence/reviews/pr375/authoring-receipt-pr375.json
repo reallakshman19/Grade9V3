@@ -381,56 +381,60 @@
   },
   "practice_suites": {
     "core1a-physics-motion-2d-ncert-tablet.html": {
-      "byte_count": 36987,
-      "sha256": "c68b530e66fa962de774eee4ac3091d2db9daa5f2555637d03a66f378b4531ea"
+      "byte_count": 37486,
+      "sha256": "33128409b47dc3c2166a2890a238b4adbf02efd343a48f03bce339008f885dc3"
     },
     "core1a-physics-nlm-tablet.html": {
-      "byte_count": 39479,
-      "sha256": "367cb9cc45aa2319fc1638628ba8d3c81ad9e838b77efbaff4d6a20417d26ef9"
+      "byte_count": 39978,
+      "sha256": "59149cbab96808810a522ae9924ad088600c77d41ec32afcfa593b63eca1c921"
     },
     "core1a-physics-vectors-tablet.html": {
-      "byte_count": 61537,
-      "sha256": "7b9af835aeec2626477c0ac446016a3e48809b05ecef6026292047339426c850"
+      "byte_count": 62036,
+      "sha256": "04ae14f57aee0a927c23b3771304048009514ebc453b4ec2bf6548fe8b6d4093"
     },
     "core1a-sba-06-07-trajectory-and-height-tablet.html": {
-      "byte_count": 40219,
-      "sha256": "257cbe7a47cebe3149f4a70cd9901186419b8670e1c583e530c5a2be78684d17"
+      "byte_count": 40753,
+      "sha256": "4c1f554f307518cf8157c9a09ffb16756082ecb709f0ecb9dfb0cad863bb2f63"
     },
     "core1a-sba-motion-in-a-plane-master-tablet.html": {
-      "byte_count": 71271,
-      "sha256": "e521b962fac30cddaa6073c8379ef7afc49f3a0be895b1fa11f70fb8110acb7d"
+      "byte_count": 71770,
+      "sha256": "e7bb3398a26dffba6d43e1373fe674c6b3e12950a2c14adb7dbf5d751c1f9047"
     },
     "core2-motion-1d-straight-line-tablet.html": {
-      "byte_count": 41564,
-      "sha256": "c179cc72782fedc84783d3ad74934b42d288a7f67ce93bba23ca30fa614c7540"
+      "byte_count": 42063,
+      "sha256": "fe866dadc42068b4b4890f5342ea773109488d3eed7cfed6faf77e1897ed5786"
     },
     "core2-motion-consolidated-practice-tablet.html": {
-      "byte_count": 46461,
-      "sha256": "29df6429ad9775ef12643302f04781a475a878c8f9796c477e365e6c732e7b81"
+      "byte_count": 46960,
+      "sha256": "cf4c9835e3805252030d41ee26c109d1ad49a6fd625a5dc5a6f5660cd0e1715b"
     },
     "core2-motion-in-a-plane-tablet.html": {
-      "byte_count": 544446,
-      "sha256": "8e1cc20f8a8635cca462db34df3e52f09b0cbadfd269f1024e766cd71e26f5ff"
+      "byte_count": 544980,
+      "sha256": "b0237ac7b685906e66b808cd58035607a80d7235783a14bf00fc3759ea9723a7"
+    },
+    "core2-physics-thrust-pressure-tablet.html": {
+      "byte_count": 240846,
+      "sha256": "18be7c2719519d68a7895b214470c0b2e570c5779ecd37a6b0ee1d30622dbd80"
     },
     "core2a-projectile-study.html": {
-      "byte_count": 93016,
-      "sha256": "47f1b18c2823567dccb419f93c0b9919f157cc0d89d46ba842502dc296eb7138"
+      "byte_count": 93540,
+      "sha256": "b854a9515a28502f584df4c1341370f9f00d488c11316d4b698d0f971df7ed01"
     },
     "index.html": {
-      "byte_count": 14782,
-      "sha256": "394c0bf5398a5f8e64185971e1bedbf6d3ec5b814fa3a95c74e53d3537ad842e"
+      "byte_count": 15760,
+      "sha256": "011c46f8d65fd3142a4440e451f99f74270560190040fbafbacb929eb0916714"
     },
     "motion-in-1d-master-suite.html": {
-      "byte_count": 192195,
-      "sha256": "9597288fe065fe5113d6423960e52d318c2b8dcd49422dc7674760d95aed5e10"
+      "byte_count": 192404,
+      "sha256": "ce3d2b07038110a6a3872effc4951d0ead437b51b278ea4849e46435a90880f7"
     },
     "motion-in-2d-master-suite.html": {
-      "byte_count": 419238,
-      "sha256": "d05e7d04912beeea9fbd14c5fa10ebcf4050e48e864c5388d194950a032d7a27"
+      "byte_count": 419636,
+      "sha256": "c783f44958468bc0ea2e5d7587d1a01b2c0e25bed9d7f43ba45637ac91d83f09"
     },
     "physics-motion-in-a-plane-interactive-suite.html": {
-      "byte_count": 46004,
-      "sha256": "b0fe341cf1a558eb944ae11c6504c2fa170ace78293cca3723335b58dc36381b"
+      "byte_count": 46066,
+      "sha256": "ee31f8c05b6730236597be683a15f3443ffb90c8794c8ecf325a926efaf9fbaf"
     }
   },
   "total_registered_questions": 341,
@@ -438,5 +442,12 @@
   "standalone_practice_modules": 13,
   "authoring_gate_status": "PASS",
   "schema_validation": "0 errors across all 4 packages (Draft202012Validator)",
-  "test_suite_result": "127/127 tests passed (Ran 127 tests in 21.62s, OK)"
+  "test_suite_result": "10/10 PASS",
+  "navigation_audit": {
+    "status": "PASS",
+    "files_audited": 14,
+    "broken_relative_links": 0,
+    "broken_internal_anchors": 0,
+    "hub_return_links_present": true
+  }
 }
