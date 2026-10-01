@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - preview-pr376-blueprint-v2
+  pull_request:
   workflow_dispatch:
 
 permissions:
