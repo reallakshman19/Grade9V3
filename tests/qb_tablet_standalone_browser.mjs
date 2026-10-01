@@ -84,6 +84,7 @@ try {
       };
     });
     observations.viewports[vp.name] = metrics;
+    await page.screenshot({ path: `artifacts/qb-tablet/${vp.name}.png`, fullPage: true });
     if (metrics.overflow > 1) fail('QB_HORIZONTAL_OVERFLOW', `${vp.name}: +${metrics.overflow}px`);
     if (metrics.undersized.length) fail('QB_TOUCH_TARGET_UNDERSIZED', `${vp.name}: ${JSON.stringify(metrics.undersized.slice(0, 8))}`);
     if (vp.width >= 1100) {
@@ -183,6 +184,7 @@ try {
   await page.locator('.tab-btn[data-filter="selected"]').click();
   const selectedWithSvg = await page.locator('.question-card:not([hidden]) .representation-box svg').count();
   if (selectedWithSvg !== 7) fail('QB_SELECTED_BENCHMARK_REPRESENTATION', `expected 7 SVGs, got ${selectedWithSvg}`);
+  await page.screenshot({ path: 'artifacts/qb-tablet/selected-d3d4.png', fullPage: true });
 
   observations.runtime.findings = findings;
   writeFileSync(out, JSON.stringify(observations, null, 2) + '\n');
