@@ -172,6 +172,37 @@ class Renderer(unittest.TestCase):
         self.assertEqual(rendered, "")
         self.assertEqual(ctx.gaps, before)
 
+    def test_core1a_uses_calibrated_tablet_benchmark_anatomy(self):
+        repo_manifest = REPO / "products" / "physics" / "phy-kin-2d-motion.manifest.json"
+        ctx = render_core.context(repo_manifest)
+        html = render_core.page(ctx, "CORE1A", "PAGES", render_core.render_digest(ctx))
+
+        self.assertIn('data-g9-presentation-profile="CORE1A_TABLET_BENCHMARK_V1"', html)
+        self.assertIn('data-theme="dark"', html)
+        self.assertIn('class="g9-core1a-book g9-chapter-hero"', html)
+        self.assertIn('class="g9-pedagogy-grid"', html)
+        self.assertIn('g9-core1a-concept-card', html)
+        self.assertIn('class="g9-inferential-banner"', html)
+        self.assertIn('class="g9-step-card"', html)
+        self.assertIn('class="g9-equation-card"', html)
+        self.assertIn('class="g9-worked-card"', html)
+        self.assertIn('class="g9-visual-card"', html)
+        self.assertIn('class="g9-cu-support g9-support-deck"', html)
+        self.assertIn('class="g9-active-recall-card"', html)
+
+        # The representation belongs to the support rail, matching the benchmark's
+        # primary construction / visual-support split rather than generic inline flow.
+        first_article = html.index('<article ')
+        first_construction = html.index('data-blueprint-slot="construction"', first_article)
+        first_support = html.index('data-blueprint-slot="repair_closure"', first_construction)
+        first_figure = html.index('data-g9-figure', first_construction)
+        self.assertGreater(first_figure, first_support)
+
+        self.assertIn(
+            'grid-template-columns:minmax(0,2.15fr) minmax(320px,1fr)',
+            render_core.CSS,
+        )
+
     def test_core1a_difficulty_is_context_not_navigation_or_mastery_state(self):
         repo_manifest = REPO / "products" / "physics" / "phy-kin-2d-motion.manifest.json"
         ctx = render_core.context(repo_manifest)
