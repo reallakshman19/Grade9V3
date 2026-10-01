@@ -9,25 +9,21 @@
   "two_pass_revision": "TPG-2P-2026-09-28-R3",
   "reviewer_role": "docs/method/roles/REVIEWER.md",
   "review_schema": "Shared/quality/product-review.schema.json",
-  "workflow_run": 36873849274,
+  "workflow_run": 36882101979,
   "review_artifact": {
-    "id": 11168167961,
-    "name": "chemistry-governed-core1a-review",
-    "digest": "sha256:54059c0a3637afff364668471294d7456f2a30c9d499865d79fc70ebd839b4c3",
-    "mode": "SINGLE_FILE",
+    "id": 11170849606,
+    "name": "chemistry-governed-core1a-pages-review",
+    "digest": "sha256:e5419ff9a4ef3800d44b8273c2e578f834b1940fdb356f494056a0b33cf3ff26",
+    "mode": "PAGES",
     "strict_render": true,
     "all_draft_false": true,
-    "all_gaps_empty": true
+    "all_gaps_empty": true,
+    "purpose": "exact publication-mode bytes reviewed by product-review/v2"
   },
   "integration_preview_artifact": {
-    "id": 11168102792,
+    "id": 11170649845,
     "name": "chemistry-governed-integration-preview",
-    "digest": "sha256:1a7089cd50eea4e9efa999ebddc4bac8ae0cd9642b7355199b46ddbbeec23731"
-  },
-  "browser_evidence_artifact": {
-    "id": 11168398068,
-    "name": "chemistry-tablet-browser-evidence",
-    "digest": "sha256:d5c4dcbd5638cadf9390a939a4c039e29b3e9dea715c36fa2e748267d65edea2"
+    "digest": "sha256:d16050b7a496bc320f70c9294c1c620574aa9d1ab5f9a089f1c21d02111b41ea"
   },
   "products": [
     {
@@ -38,9 +34,16 @@
       "package_blob_sha": "fe498bcf11c6aa116bd18a5f50e7119fcf86eafb",
       "manifest_path": "products/chemistry/behaviour-of-gases.manifest.json",
       "manifest_blob_sha": "ad28f378a6a8fe06fb7fbe48852cd16184d65aab",
-      "render_digest": "b1b5ca199632711f",
+      "render_digest": "295758088e987780",
       "semantic_digest": "9b742da7cfea576f",
-      "product_sha256": "d3f8ca577e5def5a7f62c7a4f87766eab8bd4484c0d20af269770c1672750602"
+      "product_sha256": "d3f8ca577e5def5a7f62c7a4f87766eab8bd4484c0d20af269770c1672750602",
+      "single_file_render_digest": "b1b5ca199632711f",
+      "publication_render_digest": "295758088e987780",
+      "publication_page_sha256": {
+        "core1a.html": "316b19b52243fc89d35c6d9cc8913a69f05574c9670afb8c3fa25399851f8560",
+        "index.html": "ef15c9b1fed8003d82be9b81e6bd3c05ba91a9fb932d5bfc7323bd11cfa639a9"
+      },
+      "product_review_v2": "products/verification/behaviour-of-gases.review.json"
     },
     {
       "promotion_id": "PR376-C1A-CHEM-BONDING",
@@ -50,9 +53,16 @@
       "package_blob_sha": "20e0fc6e14423092448ff4a4a777e32ac5d284ac",
       "manifest_path": "products/chemistry/chemical-bonding.manifest.json",
       "manifest_blob_sha": "af73faa567fdb145b02268e593bdab23e06efa81",
-      "render_digest": "da7454dfd5439f6e",
+      "render_digest": "cf79dd5d6ce99054",
       "semantic_digest": "4276eda90909714e",
-      "product_sha256": "20c740d83aced11a458a68100aedca21e3e049999da7ee52eb541589d4cb10d6"
+      "product_sha256": "20c740d83aced11a458a68100aedca21e3e049999da7ee52eb541589d4cb10d6",
+      "single_file_render_digest": "da7454dfd5439f6e",
+      "publication_render_digest": "cf79dd5d6ce99054",
+      "publication_page_sha256": {
+        "core1a.html": "dca047bec547c1afbedb87cf57efe757557b3ee345554c7586b93d1544b624ef",
+        "index.html": "8f9358330292248e79df541761fda8faa9878542ec7665c8a7a6a10285895a4f"
+      },
+      "product_review_v2": "products/verification/chemical-bonding.review.json"
     },
     {
       "promotion_id": "PR376-C1A-CHEM-REDOX",
@@ -62,9 +72,16 @@
       "package_blob_sha": "265749d6fd15239d59d3173c37091e951ecbc32b",
       "manifest_path": "products/chemistry/redox-reactions.manifest.json",
       "manifest_blob_sha": "0d87890f60a768f1bb28c7fc2dd1554d800c9326",
-      "render_digest": "2d3bc4ba8c63f322",
+      "render_digest": "8bd4a9a9de08d933",
       "semantic_digest": "771f5f383daa8ca6",
-      "product_sha256": "38927d078871bfc0f02ed5319188e770677bbd0d9c8a23c6aa90f028e7c5cf05"
+      "product_sha256": "38927d078871bfc0f02ed5319188e770677bbd0d9c8a23c6aa90f028e7c5cf05",
+      "single_file_render_digest": "2d3bc4ba8c63f322",
+      "publication_render_digest": "8bd4a9a9de08d933",
+      "publication_page_sha256": {
+        "core1a.html": "ada86a32d56d1dfec2a50d811e8b6be68c2af615d843dc12a243bb5891ff2a9f",
+        "index.html": "f116ab540f01b6a9f84d0308d6bb221517e67633b110e142425f4ec808910098"
+      },
+      "product_review_v2": "products/verification/redox-reactions.review.json"
     },
     {
       "promotion_id": "PR376-C1A-CHEM-MOLE",
@@ -74,9 +91,16 @@
       "package_blob_sha": "5332a4ebe22dd0a43f377751f54b21c734de7c05",
       "manifest_path": "products/chemistry/some-basic-concepts.manifest.json",
       "manifest_blob_sha": "ca79a443081a61a94b37f42cac29b3471e00910f",
-      "render_digest": "9d808bfb3a17049e",
+      "render_digest": "0f7837c2399fb8f7",
       "semantic_digest": "312bfca9aa38f836",
-      "product_sha256": "6ae51c7f77240d025a4d4c3662222ea17e0f8129648b3b0702517a273b24b509"
+      "product_sha256": "6ae51c7f77240d025a4d4c3662222ea17e0f8129648b3b0702517a273b24b509",
+      "single_file_render_digest": "9d808bfb3a17049e",
+      "publication_render_digest": "0f7837c2399fb8f7",
+      "publication_page_sha256": {
+        "core1a.html": "ebc37ae37463de1ea64bfe5a4442000ea27fd6366c2c2a84ad62d97df5ef294a",
+        "index.html": "c79fccde0ed7efb7076fb5898813683d2e64124bd65f058f0568c55517664cc1"
+      },
+      "product_review_v2": "products/verification/some-basic-concepts.review.json"
     }
   ],
   "scope_posture": {
@@ -104,19 +128,41 @@
     }
   ],
   "independence": {
-    "status": "READY_FOR_SEPARATE_REVIEW_SESSION",
-    "current_session_may_author_product_review_v2": false,
-    "authoritative_product_review_v2_present": false,
-    "required_output": "One product-review/v2 per exact governed render, produced by a reviewer session that authored none of these records."
+    "status": "COMPLETED_INDEPENDENT_PAGES_REVIEW",
+    "reviewer": "openai-independent-reviewer",
+    "reviewer_session": "pr376-independent-pages-review-2026-10-01",
+    "authored_candidate_records": false,
+    "authoritative_product_review_v2_present": true,
+    "review_files": [
+      "products/verification/behaviour-of-gases.review.json",
+      "products/verification/chemical-bonding.review.json",
+      "products/verification/redox-reactions.review.json",
+      "products/verification/some-basic-concepts.review.json"
+    ],
+    "recommendations": {
+      "behaviour-of-gases": "revise",
+      "chemical-bonding": "revise",
+      "redox-reactions": "revise",
+      "some-basic-concepts": "revise"
+    }
   },
   "owner_stage": {
-    "status": "NOT_READY_UNTIL_INDEPENDENT_REVIEWS_EXIST",
+    "status": "INDEPENDENT_REVIEW_COMPLETE_OPEN_FINDINGS",
     "disposition_allowed": [
       "ACCEPTED",
       "DEFERRED",
       "REJECTED"
     ],
     "acceptance_tool": "Shared/tools/accept_product.py",
-    "acceptance_rule": "Run only for products the Owner explicitly accepts, against the exact reviewed render digest."
-  }
+    "acceptance_rule": "Owner may decide each product, but acceptance must use the exact PAGES render digest reviewed above. Reviewer recommendations are evidence only; current reviews recommend revision and contain open S2/S3 findings.",
+    "owner_disposition_recorded": false
+  },
+  "semantic_review_artifact": {
+    "id": 11171004553,
+    "name": "chemistry-governed-core1a-review",
+    "digest": "sha256:ec46bd7ebbe5db6092a8dbf9d0bfe06ac1e3e5d01ebc22d83cb6fd5b06f2f17b",
+    "mode": "SINGLE_FILE",
+    "purpose": "cross-mode semantic/standalone review companion; not the publication-bound product-review/v2 basis"
+  },
+  "independent_browser_evidence": "evidence/reviews/pr376/INDEPENDENT-PAGES-BROWSER-EVIDENCE.json"
 }
