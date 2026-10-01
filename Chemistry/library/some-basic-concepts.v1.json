@@ -212,7 +212,7 @@
       "intrinsic_badge": "MEDIUM",
       "badge_reason": "The learner must separate empirical conservation/ratio laws from explanatory particle models and keep amount distinct from mass.",
       "entry_assumptions": [
-        "For Combination laws, mole, Avogadro constant and molar mass, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+        "Can distinguish an empirical mass observation from a particle-model explanation and can perform unit-carrying mass-to-amount conversions."
       ],
       "inferential_jump": "Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro's constant and molar mass.",
       "teaching_path": [
@@ -271,10 +271,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "The Combination laws, mole, Avogadro constant and molar mass exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+          "no_numeric_claim": "The exit is a meaning check on amount of substance; no new numerical particle count is asserted without a named entity."
         }
       },
-      "research_contribution": "For Combination laws, mole, Avogadro constant and molar mass, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
+      "research_contribution": "The conversion preserves the audit separation between laws of chemical combination and explanatory atomic models, and it requires the counted entity to be named whenever Avogadro's constant is used.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -305,16 +305,16 @@
           "defensible_answer": "For Combination laws, mole, Avogadro constant and molar mass, the defensible route is: Keep amount and mass separate, and attach an entity label to every particle-count statement."
         },
         "attempt": {
-          "produces": "A short Combination laws, mole, Avogadro constant and molar mass explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "produces": "A three-column bridge linking mass, moles and a named entity, plus one sentence separating empirical combination laws from the particle model used to explain them.",
           "closure": "CRITERIA",
           "rubric": [
             {
-              "criterion": "The Combination laws, mole, Avogadro constant and molar mass response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-              "evidence_of": "The learner can separate the Combination laws, mole, Avogadro constant and molar mass governing distinction from the tempting shortcut."
+              "criterion": "The response never equates one mole with one universal mass and never leaves the counted entity implicit.",
+              "evidence_of": "It can say what is the same and what differs between one mole of helium atoms and one mole of water molecules, with units attached."
             }
           ],
           "task": {
-            "prompt": "Explain the Combination laws, mole, Avogadro constant and molar mass decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "prompt": "Explain what one mole fixes and what it does not fix by comparing helium atoms with water molecules. Then state how an empirical mass-combination law differs from an atomic model used to explain it.",
             "givens": [
               "Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro's constant and molar mass."
             ],
@@ -325,22 +325,22 @@
         "reconstruct": {
           "route": [
             {
-              "ask": "In Combination laws, mole, Avogadro constant and molar mass, what must be decided before the move \"Separate an empirical combination law from a particle model used to explain it.\" is justified?",
-              "why_this_ask": "This makes the learner supply the entry decision for Combination laws, mole, Avogadro constant and molar mass instead of receiving the expert sequence first.",
+              "ask": "What is guaranteed to be equal for one mole of helium atoms and one mole of water molecules, and what is not guaranteed to be equal?",
+              "why_this_ask": "The comparison between two different substances reveals immediately whether the learner confuses equal amount of substance with equal mass.",
               "from_step_ref": "MOLE-FOUNDATIONS-MOLE-T1"
             },
             {
-              "ask": "For Combination laws, mole, Avogadro constant and molar mass, how would you test the conclusion reached by \"Use the path mass ↔ moles ↔ entities with units visible.\" without simply repeating the model answer?",
-              "why_this_ask": "This closes Combination laws, mole, Avogadro constant and molar mass through a learner-owned check rather than through recall of the declarative route.",
+              "ask": "When a fixed mass ratio is observed for a compound, which part is empirical evidence and which part belongs to the particle model used to explain it?",
+              "why_this_ask": "Returning to empirical law versus model checks that the learner has not turned a useful particle explanation into the observation itself.",
               "from_step_ref": "MOLE-FOUNDATIONS-MOLE-T3"
             }
           ],
-          "differs_from_teaching_path": "For Combination laws, mole, Avogadro constant and molar mass, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+          "differs_from_teaching_path": "The declarative route separates empirical law from model before introducing mole conversions; the reconstruction starts from one-mole-always-has-the-same-mass and makes the learner repair that statement by naming the entity and molar mass."
         },
         "boundary_test": {
           "prompt": "Why is '0.5 mol' incomplete as a particle-count statement until the substance and entity are named?",
           "answer": "Because an amount alone does not identify which chemical entities are being counted.",
-          "confirms": "For Combination laws, mole, Avogadro constant and molar mass, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+          "confirms": "It confirms that the learner can keep observation, amount of substance, entity identity and mass in distinct but connected roles."
         }
       }
     },
@@ -361,7 +361,7 @@
       "intrinsic_badge": "HARD",
       "badge_reason": "The learner must convert mass composition to mole ratios, distinguish empirical from molecular scale, and compare reactant inventories through balanced-equation coefficients.",
       "entry_assumptions": [
-        "For Empirical formula, stoichiometry and limiting reagent, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+        "Can divide mass by molar or atomic mass to obtain amount and can read balanced-equation coefficients as mole ratios."
       ],
       "inferential_jump": "Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.",
       "teaching_path": [
@@ -428,10 +428,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "The Empirical formula, stoichiometry and limiting reagent exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+          "no_numeric_claim": "The exit is a stoichiometric-ratio explanation; it asserts no new yield value and is checked by reaction extent and inventory conservation."
         }
       },
-      "research_contribution": "For Empirical formula, stoichiometry and limiting reagent, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
+      "research_contribution": "The conversion preserves the audit rule that formula subscripts and stoichiometric coefficients are amount ratios, so raw mass cannot be compared directly for either empirical-formula or limiting-reagent decisions.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -463,16 +463,16 @@
           "defensible_answer": "For Empirical formula, stoichiometry and limiting reagent, the defensible route is: Convert mass to moles before both formula-ratio and limiting-reagent comparisons."
         },
         "attempt": {
-          "produces": "A short Empirical formula, stoichiometry and limiting reagent explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "produces": "A mole-ratio workflow that converts composition to empirical subscripts, distinguishes empirical from molecular scale, and identifies limiting reagent by moles divided by stoichiometric coefficient.",
           "closure": "CRITERIA",
           "rubric": [
             {
-              "criterion": "The Empirical formula, stoichiometry and limiting reagent response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-              "evidence_of": "The learner can separate the Empirical formula, stoichiometry and limiting reagent governing distinction from the tempting shortcut."
+              "criterion": "The response converts mass data to amount before comparing ratios and checks that predicted consumption never exceeds the supplied inventory.",
+              "evidence_of": "It can explain why the smaller gram amount need not be limiting and why a molecular formula needs molar-mass information beyond the empirical ratio."
             }
           ],
           "task": {
-            "prompt": "Explain the Empirical formula, stoichiometry and limiting reagent decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "prompt": "Explain why raw mass percentages cannot be used directly as formula subscripts. Then state the comparison that identifies the limiting reagent and how you would verify the result against available inventories.",
             "givens": [
               "Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made."
             ],
@@ -483,22 +483,22 @@
         "reconstruct": {
           "route": [
             {
-              "ask": "In Empirical formula, stoichiometry and limiting reagent, what must be decided before the move \"Convert each elemental mass or percentage to moles before inferring an empirical ratio.\" is justified?",
-              "why_this_ask": "This makes the learner supply the entry decision for Empirical formula, stoichiometry and limiting reagent instead of receiving the expert sequence first.",
+              "ask": "Why must mass or percentage composition be converted to moles before you infer empirical-formula subscripts?",
+              "why_this_ask": "The empirical-formula question exposes atomic-mass weighting before the learner encounters a second mass comparison in stoichiometry.",
               "from_step_ref": "MOLE-FORMULA-STOICH-T1"
             },
             {
-              "ask": "For Empirical formula, stoichiometry and limiting reagent, how would you test the conclusion reached by \"Compare each available mole amount relative to its stoichiometric coefficient.\" without simply repeating the model answer?",
-              "why_this_ask": "This closes Empirical formula, stoichiometry and limiting reagent through a learner-owned check rather than through recall of the declarative route.",
+              "ask": "Which normalized amount should be compared across reactants to identify the limiting reagent, and how can the resulting reaction extent be checked?",
+              "why_this_ask": "The final inventory check makes the limiting-reagent decision falsifiable by conservation rather than a one-line coefficient trick.",
               "from_step_ref": "MOLE-FORMULA-STOICH-T4"
             }
           ],
-          "differs_from_teaching_path": "For Empirical formula, stoichiometry and limiting reagent, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+          "differs_from_teaching_path": "The expert route builds empirical formula before limiting-reagent reasoning; the reconstruction begins with two mass-based shortcuts and makes the learner discover that both fail for the same reason: chemical ratios count entities or amount, not grams."
         },
         "boundary_test": {
           "prompt": "Why can an excess reagent remain after a reaction even though the balanced equation has fixed coefficients?",
           "answer": "The coefficients fix the proportions that react, not the initial proportions supplied; material beyond the limiting ratio can remain.",
-          "confirms": "For Empirical formula, stoichiometry and limiting reagent, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+          "confirms": "It confirms that the learner uses moles as the common ratio language for both composition and reaction extent."
         }
       }
     },
@@ -519,7 +519,7 @@
       "intrinsic_badge": "HARD",
       "badge_reason": "The learner must choose the correct denominator and qualify temperature invariance by sample closure and unchanged composition.",
       "entry_assumptions": [
-        "For Molarity, molality and mole fraction, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+        "Can identify numerator and denominator in a ratio and can distinguish solution volume from solvent mass and total mole amount."
       ],
       "inferential_jump": "Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged.",
       "teaching_path": [
@@ -579,10 +579,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "The Molarity, molality and mole fraction exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+          "no_numeric_claim": "The exit is definition-based: it requires the closure and composition qualification and identifies which denominator can change; it does not assert a universal numeric temperature coefficient."
         }
       },
-      "research_contribution": "For Molarity, molality and mole fraction, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
+      "research_contribution": "The conversion preserves the audit qualification that temperature invariance of molality or mole fraction assumes a closed, unchanged-composition sample, while molarity can change through its volume denominator.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -613,16 +613,16 @@
           "defensible_answer": "For Molarity, molality and mole fraction, the defensible route is: Follow the definition and state the closure/composition assumptions before making a temperature-dependence claim."
         },
         "attempt": {
-          "produces": "A short Molarity, molality and mole fraction explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "produces": "A denominator-first comparison of molarity, molality and mole fraction, followed by a temperature-change argument that states whether the sample is closed and composition is unchanged.",
           "closure": "CRITERIA",
           "rubric": [
             {
-              "criterion": "The Molarity, molality and mole fraction response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
-              "evidence_of": "The learner can separate the Molarity, molality and mole fraction governing distinction from the tempting shortcut."
+              "criterion": "The response names each denominator correctly and makes temperature dependence follow from what actually changes in that denominator.",
+              "evidence_of": "It can explain why molarity may change on warming while molality and mole fraction remain unchanged only under no-loss and no-reaction conditions."
             }
           ],
           "task": {
-            "prompt": "Explain the Molarity, molality and mole fraction decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "prompt": "For a sealed solution that warms and expands without reaction or material loss, compare what happens to molarity, molality and mole fraction. Identify the relevant denominator in each case.",
             "givens": [
               "Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged."
             ],
@@ -633,22 +633,22 @@
         "reconstruct": {
           "route": [
             {
-              "ask": "In Molarity, molality and mole fraction, what must be decided before the move \"Write the denominator first: solution volume for molarity, solvent mass for molality, total moles for mole fraction.\" is justified?",
-              "why_this_ask": "This makes the learner supply the entry decision for Molarity, molality and mole fraction instead of receiving the expert sequence first.",
+              "ask": "Which denominator belongs to molarity, which belongs to molality, and which belongs to mole fraction?",
+              "why_this_ask": "Starting from the denominator forces the learner to distinguish solution volume from solvent mass and total moles before temperature enters the reasoning.",
               "from_step_ref": "MOLE-CONCENTRATION-T1"
             },
             {
-              "ask": "For Molarity, molality and mole fraction, how would you test the conclusion reached by \"Identify exactly which numerator or denominator changes in the scenario.\" without simply repeating the model answer?",
-              "why_this_ask": "This closes Molarity, molality and mole fraction through a learner-owned check rather than through recall of the declarative route.",
+              "ask": "In a sealed unchanged sample that warms and expands, which of those denominators can change directly and which remain composition quantities?",
+              "why_this_ask": "The closing sealed-sample check tests the qualification directly: volume may change while composition-defining masses and mole counts do not.",
               "from_step_ref": "MOLE-CONCENTRATION-T3"
             }
           ],
-          "differs_from_teaching_path": "For Molarity, molality and mole fraction, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+          "differs_from_teaching_path": "The declarative route lists the three definitions before discussing temperature; the reconstruction begins with the claim that all concentrations change when samples expand and makes the learner audit each denominator under a sealed-sample condition."
         },
         "boundary_test": {
           "prompt": "Under what qualification can molality and mole fraction be described as unchanged by temperature?",
           "answer": "For a closed sample whose composition and relevant masses/mole amounts do not change; temperature alone does not alter those mass- or mole-ratio denominators.",
-          "confirms": "For Molarity, molality and mole fraction, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+          "confirms": "It confirms that the learner can derive concentration behaviour from definitions and explicit sample assumptions rather than from a blanket rule about temperature."
         }
       }
     }
@@ -676,7 +676,7 @@
       "read_order": [
         "Read the Combination laws, mole, Avogadro constant and molar mass symbolic relation as one complete statement.",
         "Translate its symbols into the Combination laws, mole, Avogadro constant and molar mass verbal claim before applying it.",
-        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+        "Name the counted entity beside every mole-to-particle statement and keep molar mass as the substance-specific bridge to grams."
       ],
       "instance_constraints": [
         "The Combination laws, mole, Avogadro constant and molar mass equation is source-bound to an authored EQUATION datum.",
@@ -746,7 +746,7 @@
       "read_order": [
         "Read the Empirical formula, stoichiometry and limiting reagent symbolic relation as one complete statement.",
         "Translate its symbols into the Empirical formula, stoichiometry and limiting reagent verbal claim before applying it.",
-        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+        "Convert every relevant mass to amount before using formula subscripts or balanced-equation coefficients; verify the final reaction extent against each inventory."
       ],
       "instance_constraints": [
         "The Empirical formula, stoichiometry and limiting reagent equation is source-bound to an authored EQUATION datum.",
@@ -815,7 +815,7 @@
       "read_order": [
         "Read the Molarity, molality and mole fraction symbolic relation as one complete statement.",
         "Translate its symbols into the Molarity, molality and mole fraction verbal claim before applying it.",
-        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+        "Audit the denominator first—solution volume, solvent mass or total moles—then state the closed and unchanged-composition condition before claiming temperature invariance."
       ],
       "instance_constraints": [
         "The Molarity, molality and mole fraction equation is source-bound to an authored EQUATION datum.",
