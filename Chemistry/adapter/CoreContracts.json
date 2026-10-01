@@ -115,7 +115,7 @@
   "representation_kinds": [
     {
       "id": "PARTICLE_DIAGRAM",
-      "status": "PROPOSED",
+      "status": "IMPLEMENTED",
       "requires": [
         "declared representation level",
         "particle identity and count",
