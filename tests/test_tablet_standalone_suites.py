@@ -1,0 +1,77 @@
+"""Test suite ensuring 12.7\" Tablet Standalone HTML standards across converted modules."""
+from __future__ import annotations
+
+import re
+import unittest
+from pathlib import Path
+
+REPO = Path(__file__).resolve().parents[1]
+
+STANDALONE_TABLET_FILES = [
+    "standalone/core1a-motion-in-a-plane-tablet.html",
+    "standalone/core2-motion-in-a-plane-tablet.html",
+    "standalone/core1a-sba-06-07-trajectory-and-height-tablet.html",
+    "standalone/core1a-motion-1d-straight-line-tablet.html",
+]
+
+
+class TabletStandaloneSuitesTest(unittest.TestCase):
+    def test_standalone_files_exist_and_non_empty(self):
+        for rel_path in STANDALONE_TABLET_FILES:
+            with self.subTest(file=rel_path):
+                fpath = REPO / rel_path
+                self.assertTrue(fpath.exists(), f"File {rel_path} does not exist")
+                self.assertGreater(fpath.stat().st_size, 20_000, f"File {rel_path} is unexpectedly small")
+
+    def test_zero_external_cdn_dependencies(self):
+        """All files must be 100% self-contained offline HTML with no remote CDNs or fonts."""
+        cdn_patterns = [
+            r'https?://cdn\.',
+            r'https?://cdnjs\.',
+            r'https?://fonts\.googleapis\.com',
+            r'https?://fonts\.gstatic\.com',
+            r'https?://unpkg\.com',
+            r'https?://cdn\.jsdelivr\.net',
+        ]
+        for rel_path in STANDALONE_TABLET_FILES:
+            content = (REPO / rel_path).read_text(encoding="utf-8")
+            for pattern in cdn_patterns:
+                with self.subTest(file=rel_path, pattern=pattern):
+                    matches = re.findall(pattern, content, re.IGNORECASE)
+                    self.assertEqual(len(matches), 0, f"Found external remote CDN link matching {pattern} in {rel_path}")
+
+    def test_wcag_touch_targets_enforced(self):
+        """Interactive controls must enforce >= 48px touch target rule."""
+        for rel_path in STANDALONE_TABLET_FILES:
+            with self.subTest(file=rel_path):
+                content = (REPO / rel_path).read_text(encoding="utf-8")
+                self.assertTrue(
+                    "48px" in content or "--tab12-touch-min: 48px" in content,
+                    f"Touch target minimum 48px rule not found in {rel_path}",
+                )
+
+    def test_virtual_keyboard_safe_textareas(self):
+        """Active practice textareas must enforce min-height: 120px."""
+        for rel_path in STANDALONE_TABLET_FILES:
+            with self.subTest(file=rel_path):
+                content = (REPO / rel_path).read_text(encoding="utf-8")
+                self.assertIn(
+                    "120px",
+                    content,
+                    f"Virtual keyboard min-height 120px rule missing in {rel_path}",
+                )
+
+    def test_theme_toggle_supported(self):
+        """Theme toggle for dark/light contrast must be present."""
+        for rel_path in STANDALONE_TABLET_FILES:
+            with self.subTest(file=rel_path):
+                content = (REPO / rel_path).read_text(encoding="utf-8")
+                self.assertIn("data-theme", content, f"data-theme attribute missing in {rel_path}")
+                self.assertTrue(
+                    "theme-toggle-btn" in content or "themeToggle" in content or "Theme" in content,
+                    f"Theme toggle button missing in {rel_path}",
+                )
+
+
+if __name__ == "__main__":
+    unittest.main()
