@@ -1,0 +1,72 @@
+{
+  "schema": "product-review/v2",
+  "product": "redox-reactions",
+  "reviewer": "openai-independent-reviewer",
+  "reviewer_session": "pr376-independent-pages-review-2026-10-01",
+  "reviewed_at": "2026-10-01",
+  "render_digest": "8bd4a9a9de08d933",
+  "read_first": [
+    "docs/method/roles/REVIEWER.md",
+    "docs/method/FIRST-STAGE-REVIEW.md",
+    "evidence/reviews/pr376/INDEPENDENT-REVIEW-HANDOFF.md",
+    "artifact 11170849606 chemistry-governed-core1a-pages-review",
+    "Chemistry/library/redox-reactions.v1.json",
+    "products/chemistry/redox-reactions.manifest.json"
+  ],
+  "strengths": [
+    {
+      "record": "MIC-CHEM-REDOX-OXIDATION-AGENTS",
+      "technique": "formal-bookkeeping boundary before agent naming",
+      "note": "The construction makes oxidation number a formal assignment, tracks self-change first, and only then assigns oxidising/reducing-agent roles, directly targeting the common reversal error.",
+      "golden_candidate": true
+    },
+    {
+      "record": "MIC-CHEM-REDOX-CLASSIFICATION",
+      "technique": "directed oxidation-state map",
+      "note": "Reaction labels are explicitly separated from the oxidation-state test, and disproportionation/comproportionation are defined by the direction of state change rather than superficial state counts.",
+      "golden_candidate": true
+    }
+  ],
+  "findings": [
+    {
+      "id": "PR376-REDOX-CONSTRUCTION-001",
+      "severity": "S2",
+      "kind": "content",
+      "record": "MIC-CHEM-REDOX-BALANCE-NFACTOR",
+      "page": "core1a.html",
+      "learner_impact": "A learner can repeat the balancing checklist without seeing the algorithm executed on an actual ionic redox equation, so the hardest inference—where H2O/H+/OH− and electrons enter, scale and cancel—remains asserted rather than constructed.",
+      "detail": "The microtopic says to state medium, balance atoms/charge, scale electron transfer and derive reaction-specific n-factor, but the worked anchor only asks which two conservation checks close an equation. No concrete half-reaction is balanced and no actual n-factor is derived from one.",
+      "suggested_fix": "Add a complete worked ionic redox example in a declared acidic or basic medium: write both halves, balance O/H/charge, scale and cancel electrons, recombine and verify atom/charge ledgers; then derive the n-factor from that same specified transformation.",
+      "anti_pattern": "PROCEDURAL_CORE1A_REDUCED_TO_RULE_CHECKLIST"
+    },
+    {
+      "id": "PR376-REDOX-REPRESENTATION-001",
+      "severity": "S2",
+      "kind": "figure",
+      "record": "REP-CHEM-REDOX-BALANCE-NFACTOR",
+      "page": "core1a.html",
+      "learner_impact": "The figure repeats the conservation slogan rather than giving the learner a visual ledger or reaction-state representation that supports the multi-step balancing decision.",
+      "detail": "All three governed redox figures are SYMBOLIC_EQUATION cards. The balancing/n-factor card shows only 'atomsL = atomsR; chargeL = chargeR'; it does not represent the half-reaction stages, electron cancellation or oxidation-state/electron-flow mapping required by the construction.",
+      "suggested_fix": "Use a governed redox ledger/state-map representation with reactant/product oxidation states, half-reaction atom/charge columns and electron cancellation, with explicit picture↔word↔symbol correspondence.",
+      "anti_pattern": "SYMBOLIC_CARD_SUBSTITUTES_FOR_REQUIRED_REPRESENTATION_BRIDGE"
+    },
+    {
+      "id": "PR376-REDOX-SURFACE-001",
+      "severity": "S3",
+      "kind": "content",
+      "record": "BUCKET-CHEM-REDOX",
+      "page": "core1a.html",
+      "learner_impact": "Learners see unresolved source-denominator and publication-authority language instead of a clean educational scope statement.",
+      "detail": "The learner-facing orientation says it was converted from PR #376 and lists unresolved NCERT/JEE identities, denominator claims, Grade-9 authority and Core2 source-question admission under 'Outside this book'.",
+      "suggested_fix": "Keep those governance facts in the LPAP/review packet and render only educational exclusions/next steps to learners.",
+      "anti_pattern": "AUDIT_METADATA_RENDERED_AS_LEARNER_SCOPE"
+    }
+  ],
+  "previous_findings": [],
+  "overall": {
+    "teaches_at_reference_depth": "partly",
+    "recommendation": "revise",
+    "summary": "The conceptual redox bookkeeping is correct and well bounded, but the hard balancing/n-factor unit does not yet perform the procedure it claims to teach and its representation is only a slogan card. Add one full worked construction and a supporting ledger/state representation, then re-review the new exact render."
+  },
+  "anti_pattern_proposal": null
+}
