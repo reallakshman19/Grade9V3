@@ -167,7 +167,7 @@ class QbTabletStandaloneTest(unittest.TestCase):
         after_support = sample.split('</aside>', 1)[1]
         self.assertNotIn('class="hint-ladder"', stage)
         self.assertIn('class="hint-ladder"', support)
-        self.assertIn('class="pre-attempt-trap"', stage)
+        self.assertIn('class="trap-box pre-attempt-trap"', stage)
         self.assertIn('class="solution-column"', after_support)
         self.assertEqual(self.actual.count('class="solution-column"'), 77)
 
