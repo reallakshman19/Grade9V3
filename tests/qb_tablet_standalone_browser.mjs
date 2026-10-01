@@ -102,20 +102,32 @@ try {
   const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
   await load(page);
 
-  const counts = await page.evaluate(() => ({
-    questions: document.querySelectorAll('.question-card').length,
-    selected: document.querySelectorAll('.question-card[data-selected="true"]').length,
-    svg: document.querySelectorAll('.question-card[data-selected="true"] .representation-box svg').length,
-    hints: document.querySelectorAll('.hint-pill').length,
-    solutions: document.querySelectorAll('.solution-slot').length,
-    math: document.querySelectorAll('math').length,
-  }));
+  const counts = await page.evaluate(() => {
+    const mathLive = document.querySelectorAll('math').length;
+    const mathTemplate = [...document.querySelectorAll('template')]
+      .reduce((sum, tpl) => sum + tpl.content.querySelectorAll('math').length, 0);
+    return {
+      questions: document.querySelectorAll('.question-card').length,
+      selected: document.querySelectorAll('.question-card[data-selected="true"]').length,
+      svg: document.querySelectorAll('.question-card[data-selected="true"] .representation-box svg').length,
+      hints: document.querySelectorAll('.hint-pill').length,
+      solutions: document.querySelectorAll('.solution-slot').length,
+      mathLive,
+      mathTemplate,
+      mathTotal: mathLive + mathTemplate,
+    };
+  });
   observations.runtime.counts = counts;
   const expectedCounts = { questions: 77, selected: 7, svg: 7, hints: 195, solutions: 77 };
   for (const [key, expected] of Object.entries(expectedCounts)) {
     if (counts[key] !== expected) fail('QB_RUNTIME_DENOMINATOR', `${key}: expected ${expected}, got ${counts[key]}`);
   }
-  if (counts.math < 100) fail('QB_DECLARED_MATH_NOT_TYPESET', `expected >100 MathML nodes, got ${counts.math}`);
+  const markupMath = (candidateBytes.toString('utf8').match(/<math\\b/g) || []).length;
+  observations.runtime.math_markup_count = markupMath;
+  if (markupMath < 100) fail('QB_DECLARED_MATH_MARKUP_TOO_THIN', `expected >100 MathML nodes in exact HTML, got ${markupMath}`);
+  if (counts.mathTotal !== markupMath) {
+    fail('QB_DECLARED_MATH_DOM_MISMATCH', `HTML has ${markupMath}; live+template DOM has ${counts.mathTotal}`);
+  }
 
   const visibleCount = async () => page.locator('.question-card:visible').count();
   for (const [filterName, expected] of [['physics', 31], ['chemistry', 46], ['selected', 7], ['d3d4', 30]]) {
