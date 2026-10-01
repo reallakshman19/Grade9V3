@@ -48,31 +48,20 @@ jobs:
       - name: Question Bank legacy projection check
         id: qb_legacy
         if: always()
-        continue-on-error: true
         run: python3 Shared/tools/build_question_bank_web.py --check
 
       - name: Question Bank platform projection check
         id: qb_platform
         if: always()
-        continue-on-error: true
         run: python3 Shared/tools/build_question_bank_platform.py --check
 
       - name: Pages mirror projection check
         id: pages
         if: always()
-        continue-on-error: true
         run: python3 Shared/tools/build_pages_site.py --check
 
       - name: Architecture manifest projection check
         id: manifest
         if: always()
-        continue-on-error: true
         run: python3 Shared/tools/build_manifest.py --check
 
-      - name: Enforce projection dry-run
-        if: always()
-        run: |
-          test "${{ steps.qb_legacy.outcome }}" = success
-          test "${{ steps.qb_platform.outcome }}" = success
-          test "${{ steps.pages.outcome }}" = success
-          test "${{ steps.manifest.outcome }}" = success
