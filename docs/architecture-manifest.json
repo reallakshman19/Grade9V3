@@ -19,7 +19,7 @@
     "WEB_CONTRACT": 7,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:226c4fe180f6fe63c320b48a29f52ae3aff122fefcc3a4ba88903c9d157a7b6a",
+  "digest": "sha256:277695bf44c934b0be34ce95387b5b2517d0a6cb039cced5bb8cbf8d713339bc",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -1971,8 +1971,8 @@
       "path": "tests/test_chemistry_tablet_standalone.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 4091,
-      "sha256": "e2dda6b6ed8038de320b5504e321f25368729f3880b76e11b58d9ebc450b513d"
+      "bytes": 4149,
+      "sha256": "ec981ece7962a26f3343839bfb855451979dcd3c44b8f0575cb7f6695acfffb7"
     },
     {
       "path": "tests/test_competitive_exam_bank_contract.py",
