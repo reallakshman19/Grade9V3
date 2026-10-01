@@ -74,7 +74,7 @@ jobs:
       - name: Physics tablet standalone local HTTP audits
         # Evidence-only reuse of the existing shared Chromium audit. No --enforce:
         # measured findings remain review evidence and never become a publication gate.
-        # Run both the broad Core1A viewport set and the exact 12.7-inch target profile.
+        # Run both the broad viewport set and the exact 12.7-inch target profile.
         run: |
           rm -rf /tmp/g9-physics-tablet-standalone
           mkdir -p /tmp/g9-physics-tablet-standalone
@@ -82,8 +82,7 @@ jobs:
           cp standalone/core1a-motion-1d-straight-line-tablet.html /tmp/g9-physics-tablet-standalone/
           cp standalone/core1a-vector-add-sub-tablet.html /tmp/g9-physics-tablet-standalone/
           cp standalone/core1a-physics-nlm-tablet.html /tmp/g9-physics-tablet-standalone/
-          cp standalone/motion-1d-practice-companion-tablet.html \
-            /tmp/g9-physics-tablet-standalone/core-related-motion-1d-practice-companion-tablet.html
+          cp standalone/core2-motion-in-a-plane-tablet.html /tmp/g9-physics-tablet-standalone/
           node tools/site-audit/core-page-audit.mjs \
             /tmp/g9-physics-tablet-standalone \
             --profile core1a-spec \
@@ -162,26 +161,21 @@ jobs:
           cp /tmp/g9-blueprint-v2/nlm/core1a.html /tmp/g9-blueprint-v2/export/core1a-physics-nlm-tablet.html
           cp Shared/web/interactive-page-blueprints.v1.json /tmp/g9-blueprint-v2/export/blueprint-authority.json
           printf '%s\n' "$(git rev-parse HEAD)" > /tmp/g9-blueprint-v2/export/main-authority-sha.txt
-      - name: Verify Motion2D Core2 denominator
+      - name: Verify Motion2D Core2 denominator and order
+        working-directory: /tmp/g9-main
         run: |
           python3 - <<'PY'
           from pathlib import Path
-          import re
-          p = Path('/tmp/g9-blueprint-v2/export/core2-motion-in-a-plane-tablet.html')
-          text = p.read_text(encoding='utf-8')
-          ids = re.findall(r'PYQ-PHY-[A-Z0-9-]+', text)
-          selected = {
-            'PYQ-PHY-IITJEE-2011-P2-Q33','PYQ-PHY-JEEADV-2018-P2-Q08','PYQ-PHY-JEEADV-2019-P2-Q09',
-            'PYQ-PHY-JEEADV-2021-P1-Q05','PYQ-PHY-JEEADV-2021-P1-Q06','PYQ-PHY-JEEADV-2024-P2-Q09',
-            'PYQ-PHY-IITJEE-2012-P1-Q05','PYQ-PHY-JEEADV-2022-P1-Q08','PYQ-PHY-JEEADV-2023-P1-Q01',
-            'PYQ-PHY-JEEADV-2025-P2-Q15','PYQ-PHY-IITJEE-2011-P2-Q26','PYQ-PHY-JEEADV-2014-P1-Q11',
-            'PYQ-PHY-JEEADV-2026-P1-Q06','PYQ-PHY-JEEADV-2013-P1-Q07','PYQ-PHY-JEEMAIN-2026-04APR-S2-Q29'
-          }
-          present = selected.intersection(ids)
-          print(f'Core2 selected IDs present: {len(present)}/15')
-          missing = sorted(selected - present)
-          if missing:
-              raise SystemExit('missing selected Core2 IDs: ' + ', '.join(missing))
+          import json, re
+          manifest = json.loads(Path('products/physics/phy-kin-2d-motion.manifest.json').read_text(encoding='utf-8'))
+          expected = manifest['selection']['core2']
+          text = Path('/tmp/g9-blueprint-v2/export/core2-motion-in-a-plane-tablet.html').read_text(encoding='utf-8')
+          actual = re.findall(r'<article\b[^>]*data-g9-unit="([^"]+)"[^>]*data-g9-kind="QUESTION"', text)
+          print(f'Core2 manifest tally: {len(actual)}/{len(expected)}')
+          if actual != expected:
+              missing = [x for x in expected if x not in actual]
+              unexpected = [x for x in actual if x not in expected]
+              raise SystemExit(f'Core2 manifest/order mismatch; missing={missing}; unexpected={unexpected}')
           PY
       - uses: actions/upload-artifact@v4
         with:
