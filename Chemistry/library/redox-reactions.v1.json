@@ -679,7 +679,9 @@
       "misleading_alternatives": [
         "For Oxidation number, oxidation/reduction and agents, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
       ],
-      "rendered_asset_refs": [],
+      "rendered_asset_refs": [
+        "Chemistry/assets/representations/rep-chem-redox-oxidation-agents.svg"
+      ],
       "scene_instances": [
         {
           "id": "SCENE-CHEM-REDOX-OXIDATION-AGENTS",
@@ -747,7 +749,9 @@
       "misleading_alternatives": [
         "For Redox classification, displacement and disproportionation patterns, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
       ],
-      "rendered_asset_refs": [],
+      "rendered_asset_refs": [
+        "Chemistry/assets/representations/rep-chem-redox-classification.svg"
+      ],
       "scene_instances": [
         {
           "id": "SCENE-CHEM-REDOX-CLASSIFICATION",
@@ -814,7 +818,9 @@
       "misleading_alternatives": [
         "For Half-reaction balancing and reaction-dependent n-factor, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
       ],
-      "rendered_asset_refs": [],
+      "rendered_asset_refs": [
+        "Chemistry/assets/representations/rep-chem-redox-balance-nfactor.svg"
+      ],
       "scene_instances": [
         {
           "id": "SCENE-CHEM-REDOX-BALANCE-NFACTOR",
