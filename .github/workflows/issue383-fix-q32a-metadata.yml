@@ -1,0 +1,43 @@
+name: issue383-fix-q32a-metadata
+
+on:
+  push:
+    branches:
+      - physics/thrust-pressure-competitive-383
+    paths:
+      - ".github/workflows/issue383-fix-q32a-metadata.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: physics/thrust-pressure-competitive-383
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Correct Q32A learner taxonomy and refresh governed projections
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path("Physics/library/exam-bank/thrust-pressure-competitive.v1.json")
+          data = json.loads(path.read_text(encoding="utf-8"))
+          target = next(q for q in data["questions"] if q["id"] == "PYQ-PHY-INJSO-2016-Q32A")
+          analysis = target["extensions"]["grade9v3:analysis"]
+          assert analysis["original_question_type"] == "multipart_constructed_response"
+          analysis["learner_question_type"] = "constructed_response"
+          path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+          PY
+          python3 Shared/tools/build_question_bank_platform.py
+          python3 Shared/tools/build_pages_site.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Physics/library/exam-bank/thrust-pressure-competitive.v1.json public/data docs/data artifacts/question-bank
+          git commit -m "fix(physics): classify INJSO Q32A learner response"
+          git push origin HEAD:physics/thrust-pressure-competitive-383
