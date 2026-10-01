@@ -216,7 +216,10 @@ try {
   const restoredDetails=restored.locator('details[data-requires-attempt]');
   if(await restoredDetails.evaluate(el=>el.hasAttribute('data-locked'))) fail('QB_ATTEMPT_STATE_PERSISTENCE','committed solution relocked after refresh');
   if(await restored.locator('[data-g9-ladder]>li').count()!==3) fail('QB_HINT_STATE_PERSISTENCE','revealed hint depth was not restored');
-  if((await restored.locator('[data-g9-payload-slot]').innerText()).includes('Option (B):')===false) fail('QB_ATTEMPT_STATE_PERSISTENCE','committed solution payload was not restored');
+  if((await restored.locator('[data-g9-payload-slot]').innerText()).trim()!=='') fail('QB_SOLUTION_POLICY','refresh pre-materialized the unlocked solution');
+  if(await restoredDetails.getAttribute('open')!==null) fail('QB_SOLUTION_POLICY','refresh auto-opened the unlocked solution');
+  await restoredDetails.locator('summary').click();
+  if(!(await restored.locator('[data-g9-payload-slot]').innerText()).includes('Option (B):')) fail('QB_ATTEMPT_STATE_PERSISTENCE','restored unlocked solution did not materialize when learner opened it');
 
   const initialTheme=await page.locator('html').getAttribute('data-theme');
   await page.locator('[data-g9-action="display"]').click();

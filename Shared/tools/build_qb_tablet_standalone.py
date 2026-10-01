@@ -747,7 +747,6 @@ JS = r"""
     if(card&&safeGet('g9_qb_attempted_'+card.id)==='1'){
       card.dataset.attempted='1';
       details.removeAttribute('data-locked');
-      materializeSolution(details);
       const commit=card.querySelector('.commit-attempt-btn');
       commit.dataset.committed='true'; commit.disabled=true;
       card.querySelector('.answer-feedback').textContent='Attempt recorded. You can now open Answer and working.';
