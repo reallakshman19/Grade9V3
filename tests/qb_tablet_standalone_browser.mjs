@@ -66,7 +66,10 @@ try {
       const attempt = card?.querySelector('[data-g9-component="ATTEMPT"]')?.getBoundingClientRect();
       const hints = card?.querySelector('[data-g9-component="HINT_LADDER"]')?.getBoundingClientRect();
       const controls = [...document.querySelectorAll('button:not([hidden]),input:not([hidden]),textarea:not([hidden]),summary:not([hidden]),a:not([hidden])')]
-        .filter(el => { const cs=getComputedStyle(el); return cs.display!=='none'&&cs.visibility!=='hidden'; });
+        .filter(el => {
+          const cs=getComputedStyle(el);
+          return el.getClientRects().length>0 && cs.display!=='none' && cs.visibility!=='hidden';
+        });
       const undersized=[];
       for (const el of controls) {
         const r=el.getBoundingClientRect();
