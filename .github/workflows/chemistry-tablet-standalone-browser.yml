@@ -86,6 +86,54 @@ jobs:
           name: chemistry-governed-core1a-review
           path: /tmp/chemistry-governed-review
           if-no-files-found: error
+      - name: Render governed Core1A publication-mode review candidates
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/chemistry-governed-pages-review
+          mkdir -p /tmp/chemistry-governed-pages-review
+          for slug in behaviour-of-gases chemical-bonding redox-reactions some-basic-concepts; do
+            python3 Shared/tools/render_core.py build \
+              --manifest "products/chemistry/${slug}.manifest.json" \
+              --out "/tmp/chemistry-governed-pages-review/${slug}" \
+              --mode PAGES
+          done
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path("/tmp/chemistry-governed-pages-review")
+          rows = []
+          for folder in sorted(p for p in root.iterdir() if p.is_dir()):
+              receipt = json.loads((folder / "render-receipt.json").read_text(encoding="utf-8"))
+              page_hashes = {
+                  name: hashlib.sha256((folder / name).read_bytes()).hexdigest()
+                  for name in receipt["pages"]
+              }
+              rows.append({
+                  "product": folder.name,
+                  "manifest": receipt["manifest"],
+                  "mode": receipt["mode"],
+                  "draft": receipt["draft"],
+                  "gaps": receipt["gaps"],
+                  "render_digest": receipt["digest"],
+                  "semantic_digest": receipt["semantic_digest"],
+                  "page_sha256": page_hashes,
+              })
+          if any(row["mode"] != "PAGES" or row["draft"] or row["gaps"] for row in rows):
+              raise SystemExit("governed Chemistry publication review candidates must be strict PAGES renders")
+          (root / "digests.json").write_text(
+              json.dumps({"schema": "chemistry-governed-pages-review-digests/v1", "products": rows}, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+      - name: Upload governed Core1A publication-mode review candidates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chemistry-governed-core1a-pages-review
+          path: /tmp/chemistry-governed-pages-review
+          if-no-files-found: error
       - name: Generate governed integration previews
         run: |
           rm -rf /tmp/chemistry-generated-preview
