@@ -1,2 +1,3 @@
 finalize Chemistry blueprint-v2 generated state
 basis: 5ad517f8f3e95d2c0d4e966402b9cdb86176e155
+retry: ignore unrelated Mathematics baseline debt
