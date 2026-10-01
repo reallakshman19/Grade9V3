@@ -244,7 +244,7 @@ def render_question(q, selected_refs, svg_map):
     topic = a.get("topic", "")
     source_status = c.get("source_status", "")
     qtype = question_type(q)
-    correct = ",".join(correct_letters(q))
+    correct = ",".join(correct_letters(q)) if q.get("options") else ""
     search = " ".join(
         str(x) for x in (
             q["id"], exam, year, paper, topic, diff, q.get("stem", ""),
