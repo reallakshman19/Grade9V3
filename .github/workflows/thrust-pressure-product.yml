@@ -1,5 +1,6 @@
 name: thrust-pressure-product
 
+# Product-scoped evidence for issue #383: canonical schema, governed render, tablet audit, and learner PDFs.
 on:
   pull_request:
     paths:
