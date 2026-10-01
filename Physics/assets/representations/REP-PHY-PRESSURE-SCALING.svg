@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" role="img" aria-labelledby="title desc">
+<title id="title">Similar-object scaling: length, weight, contact area and pressure</title>
+<desc id="desc">Two similar books A and B have linear scale factor two. Stages expose length scaling, cubic weight scaling, square face-area scaling, and the resulting pressure ratio of two.</desc><rect width="440" height="300" fill="white"/>
+<g data-g9-stage-id="scale-length"><path d="M55 180 L145 180 L175 155 L85 155 Z" fill="#dbeafe" stroke="#1e3a8a" stroke-width="2"/><path d="M230 190 L390 190 L420 145 L260 145 Z" fill="#ede9fe" stroke="#5b21b6" stroke-width="3"/><text x="108" y="205" font-size="18" font-family="system-ui">A: L,W,H</text><text x="275" y="215" font-size="18" font-family="system-ui">B: 2L,2W,2H</text><text x="44" y="45" font-size="19" font-family="system-ui">linear scale factor λ = 2</text></g>
+<g data-g9-stage-id="scale-volume"><rect x="35" y="62" width="165" height="52" rx="8" fill="#fee2e2" stroke="#b91c1c"/><text x="50" y="84" font-size="16" font-family="system-ui">volume ∝ L³</text><text x="50" y="106" font-size="18" font-family="system-ui">W_B / W_A = 2³ = 8</text></g>
+<g data-g9-stage-id="scale-area"><rect x="225" y="62" width="180" height="52" rx="8" fill="#dcfce7" stroke="#15803d"/><text x="240" y="84" font-size="16" font-family="system-ui">contact face ∝ L²</text><text x="240" y="106" font-size="18" font-family="system-ui">A_B / A_A = 2² = 4</text></g>
+<g data-g9-stage-id="scale-pressure"><rect x="65" y="240" width="310" height="45" rx="8" fill="#fef3c7" stroke="#d97706"/><text x="82" y="269" font-size="19" font-family="system-ui">p_B/p_A = (8)/(4) = 2  ⇒  p ∝ λ</text></g>
+</svg>
