@@ -95,7 +95,7 @@ class QbTabletStandaloneTest(unittest.TestCase):
             for condition in q.get("conditions") or []:
                 present(condition)
             for option_index, option in enumerate(q.get("options") or []):
-                present(builder.option_payload(option, option_index))
+                present(builder.option_parts(option, option_index)[1])
             for scaffold in q.get("scaffolds") or []:
                 present(scaffold["text"])
             present(q["answer"]["summary"])
