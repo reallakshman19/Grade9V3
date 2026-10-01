@@ -707,16 +707,25 @@ JS = r"""
     const ghosts=ladder.querySelector('.g9-rung-map');
     const payloads=[...ladder.querySelectorAll('template[data-g9-rung-payload]')];
     const next=ladder.querySelector('[data-g9-next-rung]');
+    const card=ladder.closest('.question-card');
+    const hintKey='g9_qb_hints_'+card.id;
     const sync=()=>{
       const index=live.children.length;
       next.disabled=index>=payloads.length;
       next.textContent=index>=payloads.length?'All guided support shown':'Show guided support';
     };
-    next.addEventListener('click',()=>{
-      const index=live.children.length; if(index>=payloads.length)return;
+    const revealNext=()=>{
+      const index=live.children.length; if(index>=payloads.length)return false;
       live.append(payloads[index].content.cloneNode(true));
       ghosts.querySelector('[data-g9-rung-ghost]')?.remove();
       sync();
+      return true;
+    };
+    const savedCount=Math.max(0,Math.min(payloads.length,Number(safeGet(hintKey)||0)));
+    for(let i=0;i<savedCount;i++)revealNext();
+    next.addEventListener('click',()=>{
+      if(!revealNext())return;
+      safeSet(hintKey,String(live.children.length));
     });
     sync();
   });
@@ -728,14 +737,30 @@ JS = r"""
     if(tpl&&slot&&slot.childElementCount===0)slot.append(tpl.content.cloneNode(true));
   }
   document.querySelectorAll('details[data-requires-attempt]').forEach(details=>{
-    details.querySelector('summary').addEventListener('click',e=>{if(details.hasAttribute('data-locked'))e.preventDefault()});
-    details.addEventListener('toggle',()=>{if(details.open&&!details.hasAttribute('data-locked'))materializeSolution(details)});
+    const card=details.closest('.question-card');
+    details.querySelector('summary').addEventListener('click',e=>{
+      if(details.hasAttribute('data-locked')){
+        e.preventDefault();
+        card?.querySelector('.answer-choice,.answer-input,.practice-textarea,.paper-check')?.focus();
+      }
+    });
+    if(card&&safeGet('g9_qb_attempted_'+card.id)==='1'){
+      card.dataset.attempted='1';
+      details.removeAttribute('data-locked');
+      materializeSolution(details);
+      const commit=card.querySelector('.commit-attempt-btn');
+      commit.dataset.committed='true'; commit.disabled=true;
+      card.querySelector('.answer-feedback').textContent='Attempt recorded. You can now open Answer and working.';
+    }
   });
 
   document.querySelectorAll('.commit-attempt-btn').forEach(btn=>btn.addEventListener('click',()=>{
     const card=document.getElementById(btn.dataset.question); if(!card||!answerReady(card))return;
     const details=card.querySelector('details[data-requires-attempt]');
+    card.dataset.attempted='1';
     details.removeAttribute('data-locked');
+    materializeSolution(details);
+    safeSet('g9_qb_attempted_'+card.id,'1');
     btn.dataset.committed='true'; btn.disabled=true;
     card.querySelector('.answer-feedback').textContent='Attempt recorded. You can now open Answer and working.';
     details.querySelector('summary').focus();
@@ -749,6 +774,7 @@ JS = r"""
     const paper=card.querySelector('.paper-check');paper.checked=false;safeRemove('g9_qb_paper_'+card.id);
     const details=card.querySelector('details[data-requires-attempt]');details.open=false;details.setAttribute('data-locked','');
     details.querySelector('[data-g9-payload-slot]').replaceChildren();
+    safeRemove('g9_qb_attempted_'+card.id); delete card.dataset.attempted;
     const commit=card.querySelector('.commit-attempt-btn');delete commit.dataset.committed;
     card.querySelector('.answer-feedback').textContent='';syncCommit(card);
   }));

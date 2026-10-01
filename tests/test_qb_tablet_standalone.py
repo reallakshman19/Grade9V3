@@ -144,6 +144,9 @@ class QbTabletStandaloneTest(unittest.TestCase):
         self.assertEqual(len(re.findall(r'<template[^>]+data-g9-payload=', self.actual)), 77)
         self.assertEqual(len(re.findall(r'<template[^>]+data-g9-rung-payload=', self.actual)), 195)
         self.assertNotIn("matches the verified answer", self.actual)
+        self.assertIn("g9_qb_attempted_", self.actual)
+        self.assertIn("g9_qb_hints_", self.actual)
+        self.assertIn("materializeSolution(details);", self.actual)
 
     def test_offline_and_accessible_viewport_contract(self):
         lower = self.actual.lower()

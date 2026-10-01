@@ -211,7 +211,12 @@ try {
 
   const scratch=q.locator('.practice-textarea'); await scratch.fill('persisted scratchpad witness');
   await page.reload({waitUntil:'load'});
-  if(await page.locator('#PYQ-PHY-IITJEE-2007-P1-Q03 .practice-textarea').inputValue()!=='persisted scratchpad witness') fail('QB_LOCALSTORAGE_PERSISTENCE','scratch lost');
+  const restored=page.locator('#PYQ-PHY-IITJEE-2007-P1-Q03');
+  if(await restored.locator('.practice-textarea').inputValue()!=='persisted scratchpad witness') fail('QB_LOCALSTORAGE_PERSISTENCE','scratch lost');
+  const restoredDetails=restored.locator('details[data-requires-attempt]');
+  if(await restoredDetails.evaluate(el=>el.hasAttribute('data-locked'))) fail('QB_ATTEMPT_STATE_PERSISTENCE','committed solution relocked after refresh');
+  if(await restored.locator('[data-g9-ladder]>li').count()!==3) fail('QB_HINT_STATE_PERSISTENCE','revealed hint depth was not restored');
+  if((await restored.locator('[data-g9-payload-slot]').innerText()).includes('Option (B):')===false) fail('QB_ATTEMPT_STATE_PERSISTENCE','committed solution payload was not restored');
 
   const initialTheme=await page.locator('html').getAttribute('data-theme');
   await page.locator('[data-g9-action="display"]').click();
@@ -240,7 +245,9 @@ try {
   const kdetails=kq.locator('details[data-requires-attempt]');
   if(await kdetails.evaluate(el=>el.hasAttribute('data-locked'))) fail('QB_KEYBOARD_OPERABILITY','Enter did not commit');
   await kdetails.locator('summary').focus(); await keyboardPage.keyboard.press('Enter');
-  if(!(await kdetails.innerText()).includes('Option (B):')) fail('QB_KEYBOARD_OPERABILITY','Enter did not open solution disclosure');
+  await keyboardPage.waitForTimeout(50);
+  if(!(await kdetails.evaluate(el=>el.open))) fail('QB_KEYBOARD_OPERABILITY','Enter did not open solution disclosure');
+  if(!(await kdetails.innerText()).includes('Option (B):')) fail('QB_KEYBOARD_OPERABILITY','opened solution did not contain the materialized answer');
 
   const keyboardFree=keyboardPage.locator('#PYQ-PHY-IITJEE-2011-P1-Q41 .answer-input'); await keyboardFree.focus(); await keyboardPage.waitForTimeout(100);
   const beforeResize=await keyboardPage.evaluate(()=>window.__qbScrollCalls.length);
