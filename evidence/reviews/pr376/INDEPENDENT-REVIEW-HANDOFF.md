@@ -1,5 +1,9 @@
 # PR #376 — Independent Chemistry Review Handoff
 
+> **Blueprint-v2 revision notice (current):** The exact independent reviews recorded below are historical evidence only. PR #376 was materially revised after those reviews to adopt merged PR #372 / `render_core/2`, deepen the governed Chemistry records, replace one-stage figures with three-stage construction visuals, add per-unit equation cards and CHECK/APPLY/CONNECT triads, and deepen the Bonding, Redox and Mole worked constructions. The reviewed render digests below therefore **must not be used for Owner acceptance**. A fresh independent review is required against the revised strict PAGES render.
+
+> The three ungoverned Core2 standalone learner HTML files have been withdrawn. Exact source-question custody, denominator and trustworthy solution reconstruction remain unresolved, so no blueprint-v2 Core2 learner page is claimed.
+
 This file now records the completed independent-review handoff. It is **not** an Owner acceptance record.
 
 ## Exact publication-review basis

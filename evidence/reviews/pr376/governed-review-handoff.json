@@ -128,11 +128,11 @@
     }
   ],
   "independence": {
-    "status": "COMPLETED_INDEPENDENT_PAGES_REVIEW",
+    "status": "SUPERSEDED_BY_AUTHORED_REVISION",
     "reviewer": "openai-independent-reviewer",
     "reviewer_session": "pr376-independent-pages-review-2026-10-01",
     "authored_candidate_records": false,
-    "authoritative_product_review_v2_present": true,
+    "authoritative_product_review_v2_present": false,
     "review_files": [
       "products/verification/behaviour-of-gases.review.json",
       "products/verification/chemical-bonding.review.json",
@@ -144,17 +144,18 @@
       "chemical-bonding": "revise",
       "redox-reactions": "revise",
       "some-basic-concepts": "revise"
-    }
+    },
+    "note": "The product-review/v2 files remain historical exact-digest evidence for the pre-blueprint revision only. Fresh independent reviews are required for the current candidate."
   },
   "owner_stage": {
-    "status": "INDEPENDENT_REVIEW_COMPLETE_OPEN_FINDINGS",
+    "status": "FRESH_INDEPENDENT_REVIEW_REQUIRED",
     "disposition_allowed": [
       "ACCEPTED",
       "DEFERRED",
       "REJECTED"
     ],
     "acceptance_tool": "Shared/tools/accept_product.py",
-    "acceptance_rule": "Owner may decide each product, but acceptance must use the exact PAGES render digest reviewed above. Reviewer recommendations are evidence only; current reviews recommend revision and contain open S2/S3 findings.",
+    "acceptance_rule": "Do not accept the revised candidate using the historical product-review/v2 digests. Produce a fresh independent review against the current strict PAGES render first.",
     "owner_disposition_recorded": false
   },
   "semantic_review_artifact": {
@@ -164,5 +165,34 @@
     "mode": "SINGLE_FILE",
     "purpose": "cross-mode semantic/standalone review companion; not the publication-bound product-review/v2 basis"
   },
-  "independent_browser_evidence": "evidence/reviews/pr376/INDEPENDENT-PAGES-BROWSER-EVIDENCE.json"
+  "independent_browser_evidence": "evidence/reviews/pr376/INDEPENDENT-PAGES-BROWSER-EVIDENCE.json",
+  "current_revision": {
+    "status": "REQUIRES_FRESH_INDEPENDENT_REVIEW",
+    "renderer_basis": "merged PR #372 / render_core/2 / BP-CORE1A-CONSTRUCTION@1.4.0",
+    "blueprint_merge_commit": "0021068976f1d0e00690d67d9471e600d0156973",
+    "governed_depth_commit": "96bf7e6a08bef14ebdf0e8bfdb660cd2468fc77e",
+    "visual_stage_commits": [
+      "e658cd55ac7dce056ad817515e21fa918e319e94",
+      "8d488737c2a035ee202a380c53e4060b1adb7b09"
+    ],
+    "generated_snapshot_commit": "f979de659a98089454015beae409d5fbdb992163",
+    "core1a": {
+      "products": 4,
+      "construction_units": 12,
+      "visual_stages_per_unit": 3,
+      "per_unit_equations": true,
+      "quick_check_roles": [
+        "CHECK",
+        "APPLY",
+        "CONNECT"
+      ],
+      "learner_html_authority": "renderer-generated from governed records"
+    },
+    "core2": {
+      "governed_render_present": false,
+      "standalone_learner_html_withdrawn": true,
+      "hold_reason": "Exact source-question custody, denominator and independently verified solution reconstruction remain unresolved."
+    },
+    "previous_review_basis": "SUPERSEDED_BY_AUTHORED_REVISION"
+  }
 }
