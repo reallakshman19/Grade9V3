@@ -96,6 +96,7 @@ jobs:
                   raise SystemExit(f'{name}: expected {count} units, found {len(units)}')
               if re.search(r'<(?:script|link)\b[^>]*(?:src|href)="https?://', text, re.I):
                   raise SystemExit(f'{name}: external runtime dependency')
+              text = '\n'.join(line.rstrip() for line in text.splitlines()) + '\n'
               out = repo/'standalone'/name
               out.write_text(text, encoding='utf-8')
               print(name, 'units=', len(units), 'bytes=', out.stat().st_size)
