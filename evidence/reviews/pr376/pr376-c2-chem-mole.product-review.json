@@ -1,0 +1,67 @@
+{
+  "schema": "product-review/v2",
+  "product": "PR376-C2-CHEM-MOLE",
+  "reviewer": "Grade9V3 Learner Product Promotion Expert",
+  "reviewer_session": "pr376-lpap-promotion-2026-10-01",
+  "reviewed_at": "2026-10-01",
+  "render_digest": "805e7512405f538b",
+  "read_first": [
+    "docs/method/LEARNER-PRODUCT-AUDIT-PROMOTION.md",
+    "docs/method/PROTOCOL.md",
+    "docs/method/REVIEW-GUIDE.md",
+    "docs/method/roles/REVIEWER.md",
+    "Chemistry/adapter/CoreContracts.json",
+    "Chemistry/research/syllabus-spine.json",
+    "Chemistry/library/exam-bank/competitive-exam-question-bank.v2.json",
+    "Chemistry/question-bank/resources.v1.json",
+    "standalone/core2-chemistry-some-basic-concepts-tablet.html"
+  ],
+  "strengths": [
+    {
+      "record": "PR376-C2-CHEM-MOLE",
+      "technique": "AUDITED_STRENGTH_1",
+      "note": "All unsafe source answers are held consistently across 94 logical items.",
+      "golden_candidate": false
+    },
+    {
+      "record": "PR376-C2-CHEM-MOLE",
+      "technique": "AUDITED_STRENGTH_2",
+      "note": "Aggregate and per-part representations have identical logical identities.",
+      "golden_candidate": false
+    },
+    {
+      "record": "PR376-C2-CHEM-MOLE",
+      "technique": "AUDITED_STRENGTH_3",
+      "note": "Viewport, zoom, focus, persistence and offline runtime checks pass.",
+      "golden_candidate": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "PR376-C2-CHEM-MOLE-F1",
+      "severity": "S1",
+      "kind": "source",
+      "record": "94 logical cards",
+      "page": "standalone/core2-chemistry-some-basic-concepts-tablet.html",
+      "learner_impact": "Source attribution and completeness cannot be relied upon.",
+      "detail": "LPAP.C2.SOURCE.CUSTODY@1 — Exact NCERT source records and denominator are absent.",
+      "suggested_fix": "Reconstruct canonical source custody and exact stems before Question Bank admission."
+    },
+    {
+      "id": "PR376-C2-CHEM-MOLE-F2",
+      "severity": "S1",
+      "kind": "content",
+      "record": "94 logical cards",
+      "page": "standalone/core2-chemistry-some-basic-concepts-tablet.html",
+      "learner_impact": "The helper cannot provide trustworthy worked answers or hint progression.",
+      "detail": "LPAP.C2.SOLUTION.WITHHELD@1 — Solutions are held because the imported answer stream was not safely aligned to question identity.",
+      "suggested_fix": "Rebuild solutions/scaffolds from verified questions, solve independently and rerun Question/Equation modules."
+    }
+  ],
+  "previous_findings": [],
+  "overall": {
+    "teaches_at_reference_depth": "partly",
+    "recommendation": "revise",
+    "summary": "Local content/runtime quality was improved and the exact browser matrix passes, but authority/source/lineage obligations remain unresolved. This is a coaching recommendation, not an Owner disposition."
+  }
+}

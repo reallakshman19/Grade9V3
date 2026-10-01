@@ -1,0 +1,67 @@
+{
+  "schema": "product-review/v2",
+  "product": "PR376-C2-CHEM-REDOX",
+  "reviewer": "Grade9V3 Learner Product Promotion Expert",
+  "reviewer_session": "pr376-lpap-promotion-2026-10-01",
+  "reviewed_at": "2026-10-01",
+  "render_digest": "15c26937e8877fcb",
+  "read_first": [
+    "docs/method/LEARNER-PRODUCT-AUDIT-PROMOTION.md",
+    "docs/method/PROTOCOL.md",
+    "docs/method/REVIEW-GUIDE.md",
+    "docs/method/roles/REVIEWER.md",
+    "Chemistry/adapter/CoreContracts.json",
+    "Chemistry/research/syllabus-spine.json",
+    "Chemistry/library/exam-bank/competitive-exam-question-bank.v2.json",
+    "Chemistry/question-bank/resources.v1.json",
+    "standalone/core2-chemistry-redox-reactions-tablet.html"
+  ],
+  "strengths": [
+    {
+      "record": "PR376-C2-CHEM-REDOX",
+      "technique": "AUDITED_STRENGTH_1",
+      "note": "Unsafe extracted solutions are explicitly held rather than silently trusted.",
+      "golden_candidate": false
+    },
+    {
+      "record": "PR376-C2-CHEM-REDOX",
+      "technique": "AUDITED_STRENGTH_2",
+      "note": "The 11 logical question identities are consistent across tab surfaces.",
+      "golden_candidate": false
+    },
+    {
+      "record": "PR376-C2-CHEM-REDOX",
+      "technique": "AUDITED_STRENGTH_3",
+      "note": "Rendered runtime/accessibility matrix passes all required viewports.",
+      "golden_candidate": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "PR376-C2-CHEM-REDOX-F1",
+      "severity": "S1",
+      "kind": "source",
+      "record": "11 logical cards",
+      "page": "standalone/core2-chemistry-redox-reactions-tablet.html",
+      "learner_impact": "Source truth and completeness cannot be established.",
+      "detail": "LPAP.C2.SOURCE.CUSTODY@1 — Claimed source identities are not bound to repository custody records.",
+      "suggested_fix": "Create canonical custody records and reconcile each question before admission."
+    },
+    {
+      "id": "PR376-C2-CHEM-REDOX-F2",
+      "severity": "S1",
+      "kind": "content",
+      "record": "11 logical cards",
+      "page": "standalone/core2-chemistry-redox-reactions-tablet.html",
+      "learner_impact": "Core2 lacks trusted answer/reasoning support.",
+      "detail": "LPAP.C2.SOLUTION.WITHHELD@1 — Solutions are intentionally withheld after detecting shifted/merged extraction.",
+      "suggested_fix": "Independently solve verified stems, rebuild scaffolds/solutions and re-audit."
+    }
+  ],
+  "previous_findings": [],
+  "overall": {
+    "teaches_at_reference_depth": "partly",
+    "recommendation": "revise",
+    "summary": "Local content/runtime quality was improved and the exact browser matrix passes, but authority/source/lineage obligations remain unresolved. This is a coaching recommendation, not an Owner disposition."
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "schema": "product-review/v2",
+  "product": "PR376-C1A-CHEM-MOLE",
+  "reviewer": "Grade9V3 Learner Product Promotion Expert",
+  "reviewer_session": "pr376-lpap-promotion-2026-10-01",
+  "reviewed_at": "2026-10-01",
+  "render_digest": "cc0bc2d8463ca55c",
+  "read_first": [
+    "docs/method/LEARNER-PRODUCT-AUDIT-PROMOTION.md",
+    "docs/method/PROTOCOL.md",
+    "docs/method/REVIEW-GUIDE.md",
+    "docs/method/roles/REVIEWER.md",
+    "Chemistry/adapter/CoreContracts.json",
+    "Chemistry/research/syllabus-spine.json",
+    "Chemistry/library/exam-bank/competitive-exam-question-bank.v2.json",
+    "Chemistry/question-bank/resources.v1.json",
+    "standalone/core1a-chemistry-some-basic-concepts-tablet.html"
+  ],
+  "strengths": [
+    {
+      "record": "PR376-C1A-CHEM-MOLE",
+      "technique": "AUDITED_STRENGTH_1",
+      "note": "Avogadro constant and gas-volume conditions now state exact model/conditions.",
+      "golden_candidate": false
+    },
+    {
+      "record": "PR376-C1A-CHEM-MOLE",
+      "technique": "AUDITED_STRENGTH_2",
+      "note": "Molality/mole-fraction temperature wording states closed-composition assumptions.",
+      "golden_candidate": false
+    },
+    {
+      "record": "PR376-C1A-CHEM-MOLE",
+      "technique": "AUDITED_STRENGTH_3",
+      "note": "Mole/molarity calculators reject invalid denominator states and pass browser runtime checks.",
+      "golden_candidate": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "PR376-C1A-CHEM-MOLE-F1",
+      "severity": "S1",
+      "kind": "source",
+      "record": "C1A-MOLE",
+      "page": "standalone/core1a-chemistry-some-basic-concepts-tablet.html",
+      "learner_impact": "Curricular scope could be overstated if published as Grade-9 Core1A.",
+      "detail": "LPAP.C1A.AUTHORITY.BINDING@1 — Only a Class-11 syllabus spine exists; there is no exact Grade-9/Core1A product/capability binding.",
+      "suggested_fix": "Obtain Owner-approved binding or reclassify to a governed Class-11/extension role."
+    },
+    {
+      "id": "PR376-C1A-CHEM-MOLE-F2",
+      "severity": "S1",
+      "kind": "source",
+      "record": "source-labelled practice",
+      "page": "standalone/core1a-chemistry-some-basic-concepts-tablet.html",
+      "learner_impact": "Completeness/provenance cannot be trusted from card counts alone.",
+      "detail": "LPAP.C1A.SOURCE.CUSTODY@1 — Exact NCERT source records/custody are absent and prior retained-card counts are not a valid denominator.",
+      "suggested_fix": "Reconstruct source custody and denominator before any completeness claim."
+    }
+  ],
+  "previous_findings": [],
+  "overall": {
+    "teaches_at_reference_depth": "partly",
+    "recommendation": "revise",
+    "summary": "Local content/runtime quality was improved and the exact browser matrix passes, but authority/source/lineage obligations remain unresolved. This is a coaching recommendation, not an Owner disposition."
+  }
+}

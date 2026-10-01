@@ -1,0 +1,67 @@
+{
+  "schema": "product-review/v2",
+  "product": "PR376-C2-CHEM-BONDING",
+  "reviewer": "Grade9V3 Learner Product Promotion Expert",
+  "reviewer_session": "pr376-lpap-promotion-2026-10-01",
+  "reviewed_at": "2026-10-01",
+  "render_digest": "99bb2b78f3e49631",
+  "read_first": [
+    "docs/method/LEARNER-PRODUCT-AUDIT-PROMOTION.md",
+    "docs/method/PROTOCOL.md",
+    "docs/method/REVIEW-GUIDE.md",
+    "docs/method/roles/REVIEWER.md",
+    "Chemistry/adapter/CoreContracts.json",
+    "Chemistry/research/syllabus-spine.json",
+    "Chemistry/library/exam-bank/competitive-exam-question-bank.v2.json",
+    "Chemistry/question-bank/resources.v1.json",
+    "standalone/core2-chemistry-chemical-bonding-tablet.html"
+  ],
+  "strengths": [
+    {
+      "record": "PR376-C2-CHEM-BONDING",
+      "technique": "AUDITED_STRENGTH_1",
+      "note": "Unsafe shifted/merged answers are no longer exposed as trusted content.",
+      "golden_candidate": false
+    },
+    {
+      "record": "PR376-C2-CHEM-BONDING",
+      "technique": "AUDITED_STRENGTH_2",
+      "note": "All 38 logical cards are consistent between aggregate and part-tab views.",
+      "golden_candidate": false
+    },
+    {
+      "record": "PR376-C2-CHEM-BONDING",
+      "technique": "AUDITED_STRENGTH_3",
+      "note": "Responsive, focus, persistence and offline runtime checks pass.",
+      "golden_candidate": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "PR376-C2-CHEM-BONDING-F1",
+      "severity": "S1",
+      "kind": "source",
+      "record": "38 logical cards",
+      "page": "standalone/core2-chemistry-chemical-bonding-tablet.html",
+      "learner_impact": "Learners cannot rely on source labels or completeness claims.",
+      "detail": "LPAP.C2.SOURCE.CUSTODY@1 — Exact NCERT/source identity and expected source denominator are unresolved; the canonical exam bank has no Bonding questions.",
+      "suggested_fix": "Reconstruct canonical source custody for every admitted question before Question Bank integration."
+    },
+    {
+      "id": "PR376-C2-CHEM-BONDING-F2",
+      "severity": "S1",
+      "kind": "content",
+      "record": "38 logical cards",
+      "page": "standalone/core2-chemistry-chemical-bonding-tablet.html",
+      "learner_impact": "The artifact cannot currently fulfill the Core2 worked-solution role.",
+      "detail": "LPAP.C2.SOLUTION.WITHHELD@1 — Prior extracted solutions were shifted/merged; the candidate now withholds them under LPAP source-custody hold.",
+      "suggested_fix": "Rebuild each solution from independently verified source stems and re-solve before release."
+    }
+  ],
+  "previous_findings": [],
+  "overall": {
+    "teaches_at_reference_depth": "partly",
+    "recommendation": "revise",
+    "summary": "Local content/runtime quality was improved and the exact browser matrix passes, but authority/source/lineage obligations remain unresolved. This is a coaching recommendation, not an Owner disposition."
+  }
+}

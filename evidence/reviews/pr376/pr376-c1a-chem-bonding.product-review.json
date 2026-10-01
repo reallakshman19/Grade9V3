@@ -1,0 +1,77 @@
+{
+  "schema": "product-review/v2",
+  "product": "PR376-C1A-CHEM-BONDING",
+  "reviewer": "Grade9V3 Learner Product Promotion Expert",
+  "reviewer_session": "pr376-lpap-promotion-2026-10-01",
+  "reviewed_at": "2026-10-01",
+  "render_digest": "e48261dcdac2d1f6",
+  "read_first": [
+    "docs/method/LEARNER-PRODUCT-AUDIT-PROMOTION.md",
+    "docs/method/PROTOCOL.md",
+    "docs/method/REVIEW-GUIDE.md",
+    "docs/method/roles/REVIEWER.md",
+    "Chemistry/adapter/CoreContracts.json",
+    "Chemistry/research/syllabus-spine.json",
+    "Chemistry/library/exam-bank/competitive-exam-question-bank.v2.json",
+    "Chemistry/question-bank/resources.v1.json",
+    "standalone/core1a-chemistry-chemical-bonding-tablet.html"
+  ],
+  "strengths": [
+    {
+      "record": "PR376-C1A-CHEM-BONDING",
+      "technique": "AUDITED_STRENGTH_1",
+      "note": "Formal-charge and VSEPR heuristics are explicitly qualified.",
+      "golden_candidate": false
+    },
+    {
+      "record": "PR376-C1A-CHEM-BONDING",
+      "technique": "AUDITED_STRENGTH_2",
+      "note": "Hypervalent bonding no longer claims literal vacant-d-orbital expansion as fact.",
+      "golden_candidate": false
+    },
+    {
+      "record": "PR376-C1A-CHEM-BONDING",
+      "technique": "AUDITED_STRENGTH_3",
+      "note": "MOT/VSEPR controls pass isolated runtime and responsive browser checks.",
+      "golden_candidate": false
+    }
+  ],
+  "findings": [
+    {
+      "id": "PR376-C1A-CHEM-BONDING-F1",
+      "severity": "S1",
+      "kind": "source",
+      "record": "C1A-BONDING",
+      "page": "standalone/core1a-chemistry-chemical-bonding-tablet.html",
+      "learner_impact": "Role and curriculum depth can be misrepresented to learners.",
+      "detail": "LPAP.C1A.AUTHORITY.BINDING@1 — Claimed Core1A/Grade-9 role has no exact registry binding; the related canonical resource is an unbound JEE extension.",
+      "suggested_fix": "Establish a canonical package/capability binding or reclassify as an extension/resource variant."
+    },
+    {
+      "id": "PR376-C1A-CHEM-BONDING-F2",
+      "severity": "S1",
+      "kind": "source",
+      "record": "BOND-Q01..BOND-Q04",
+      "page": "standalone/core1a-chemistry-chemical-bonding-tablet.html",
+      "learner_impact": "Publication would create ambiguous lineage and colliding question/search identity.",
+      "detail": "LPAP.C2.IDENTITY.SOURCE_COLLISION@1 — BOND-Q01 duplicates the existing published BOND-Q01; candidate BOND-Q02..Q04 reuse existing suite IDs for different questions/sources.",
+      "suggested_fix": "Reuse canonical BOND-Q01; establish source-backed identities for other items only after custody reconciliation."
+    },
+    {
+      "id": "PR376-C1A-CHEM-BONDING-F3",
+      "severity": "S2",
+      "kind": "content",
+      "record": "embedded JEE bank",
+      "page": "standalone/core1a-chemistry-chemical-bonding-tablet.html",
+      "learner_impact": "The learner route blurs construction versus assessment/source-custody roles.",
+      "detail": "LPAP.C1A.ROLE.MIXED_BANK@1 — The Core1A artifact mixes Concept Book construction with an unbound JEE question bank.",
+      "suggested_fix": "Separate or canonically bind the bank portion and keep the Core1A construction role explicit."
+    }
+  ],
+  "previous_findings": [],
+  "overall": {
+    "teaches_at_reference_depth": "partly",
+    "recommendation": "revise",
+    "summary": "Local content/runtime quality was improved and the exact browser matrix passes, but authority/source/lineage obligations remain unresolved. This is a coaching recommendation, not an Owner disposition."
+  }
+}
