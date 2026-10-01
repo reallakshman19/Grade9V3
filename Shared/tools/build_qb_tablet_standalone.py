@@ -67,13 +67,13 @@ def benchmark_svgs(refs, questions):
     """Bind benchmark study SVGs by source identity, never by local Q-number."""
     raw = BENCHMARK.read_text(encoding="utf-8")
     articles = []
-    for match in re.finditer(r'<article class="question" id="([^"]+)">([\\s\\S]*?)</article>', raw):
+    for match in re.finditer(r'<article class="question" id="([^"]+)">(.*?)</article>', raw, re.S):
         local_id, block = match.groups()
-        qid_match = re.search(r'<div class="qid">([\\s\\S]*?)</div>', block)
-        svg_match = re.search(r'(<svg\\b[\\s\\S]*?</svg>)', block)
+        qid_match = re.search(r'<div class="qid">(.*?)</div>', block, re.S)
+        svg_match = re.search(r'(<svg\b.*?</svg>)', block, re.S)
         if qid_match and svg_match:
             label = re.sub(r'<[^>]+>', ' ', qid_match.group(1))
-            label = re.sub(r'\\s+', ' ', label).strip()
+            label = re.sub(r'\s+', ' ', label).strip()
             articles.append((local_id, label, svg_match.group(1)))
     if len(articles) != 7:
         raise ValueError(f"Expected seven benchmark SVG articles, got {len(articles)}")
@@ -92,7 +92,7 @@ def benchmark_svgs(refs, questions):
             low = label.lower()
             exam_ok = exam in low
             year_ok = year in label
-            q_ok = re.search(rf'\\bQ0*{re.escape(qnum)}\\b', label, re.I) is not None
+            q_ok = re.search(rf'\bQ0*{re.escape(qnum)}\b', label, re.I) is not None
             if exam_ok and year_ok and q_ok:
                 matches.append((local_id, svg))
         if len(matches) != 1:
