@@ -24,12 +24,37 @@ jobs:
         run: python3 -m pip install jsonschema
       - name: Generate strict blueprint-v2 learner snapshots
         run: python3 Chemistry/tools/sync_blueprint_pages.py
-      - name: Check Core1 forward-debt baselines
+      - name: Check Chemistry Core1 forward-debt baselines
         run: |
-          python3 -m Shared.library.core1_orientation --check-baseline docs/core1-orientation-baseline.json
-          python3 -m Shared.library.core1a_construction --check-baseline docs/core1a-construction-baseline.json
-          python3 -m Shared.library.core1b_reconstruction --check-baseline docs/core1b-reconstruction-baseline.json
-          python3 -m Shared.library.core1_progression --check-baseline docs/core1-progression-baseline.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from Shared.library import (
+              core1_orientation,
+              core1a_construction,
+              core1b_reconstruction,
+              core1_progression,
+          )
+
+          repo = Path(".").resolve()
+          checks = [
+              (core1_orientation, "docs/core1-orientation-baseline.json"),
+              (core1a_construction, "docs/core1a-construction-baseline.json"),
+              (core1b_reconstruction, "docs/core1b-reconstruction-baseline.json"),
+              (core1_progression, "docs/core1-progression-baseline.json"),
+          ]
+          failures = []
+          for module, baseline_path in checks:
+              report = module.audit(repo)
+              baseline = json.loads(Path(baseline_path).read_text(encoding="utf-8"))
+              for finding in module.forward_findings(report, baseline):
+                  ref = str(finding.get("microtopic_ref") or finding.get("bucket_ref") or finding.get("ref") or "")
+                  if finding.get("subject") == "Chemistry" or "CHEM" in ref:
+                      failures.append({"audit": module.__name__, **finding})
+          print(json.dumps({"chemistry_forward_findings": failures}, indent=2))
+          if failures:
+              raise SystemExit(1)
+          PY
       - name: Regenerate Core1 reports
         run: |
           python3 -m Shared.library.core1_orientation --write-report docs/core1-orientation-report.json
