@@ -1,1347 +1,554 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="dark">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GRADE 9 CHEMISTRY - Some Basic Concepts &amp; Mole Concept | 12.7" Tablet Standalone Edition</title>
-  <meta name="description" content="Complete textbook for Some Basic Concepts of Chemistry and Mole Concept. Optimized for 12.7-inch tablets.">
-  <style>
-
-/* ==========================================================================
-   Chemistry: Some Basic Concepts & Mole Concept 12.7" Tablet Stylesheet
-   WCAG 2.5.5 >= 48px touch targets, >= 120px textareas, no micro-fonts (<13.5px)
-   100% Offline Standalone · Dark/Light Mode · Responsive Stage/Support Grid
+<!doctype html>
+<html lang="en" data-theme="dark" data-g9-shell data-g9-role="CORE1A" data-g9-mode="SINGLE_FILE" data-g9-product="PRODUCT-CHEM-SOME-BASIC-CONCEPTS" data-g9-render-digest="6bf8036d4de84cb5"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="g9-render" content="render_core/2 6bf8036d4de84cb5"><style data-g9-tablet-shell>/* ==========================================================================
+   Grade9V3 · 12.7" Tablet Ergonomics, Touch Targets & Icon Design System
+   Target Viewport: 1366x854 to 1440x900 CSS px (Landscape), 900x1440 (Portrait)
+   WCAG 2.5.5 Enhanced / Android Material Large Tablet Compliance (>= 48x48 px)
    ========================================================================== */
 
 :root {
-  --tab12-container-max: 1400px;
+  --tab12-container-max: 1380px;
   --tab12-touch-min: 48px;
+  --tab12-thumb-size: 30px;
   --tab12-base-font: 16px;
   --tab12-radius-sm: 8px;
   --tab12-radius-md: 12px;
   --tab12-radius-lg: 16px;
-
-  /* Dark Theme Palette (Default) */
-  --bg-app: #080d1a;
-  --bg-surface: #0f172a;
-  --bg-card: #152238;
-  --bg-card-subtle: #1a2942;
-  --border: #263859;
-  --border-light: #334b75;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --accent: #38bdf8;
-  --accent-glow: rgba(56, 189, 248, 0.25);
-  --success: #34d399;
-  --warning: #f59e0b;
-  --danger: #f87171;
-  --purple: #c084fc;
 }
 
-[data-theme="light"] {
-  --bg-app: #f1f5f9;
-  --bg-surface: #ffffff;
-  --bg-card: #ffffff;
-  --bg-card-subtle: #f8fafc;
-  --border: #cbd5e1;
-  --border-light: #e2e8f0;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #64748b;
-  --accent: #0284c7;
-  --accent-glow: rgba(2, 132, 199, 0.15);
-  --success: #059669;
-  --warning: #d97706;
-  --danger: #dc2626;
-  --purple: #7e22ce;
+/* 12.7" Base Typography Elevation */
+@media (min-width: 900px) {
+  html {
+    font-size: var(--tab12-base-font);
+  }
 }
 
-*, *::before, *::after {
+/* Large Tablet Container Constraints */
+.container, main, .main-container {
+  max-width: var(--tab12-container-max);
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
-html {
-  font-size: var(--tab12-base-font);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: var(--text-primary);
-  background-color: var(--bg-app);
-  scroll-behavior: smooth;
-  -webkit-text-size-adjust: 100%;
-}
+/* ==========================================================================
+   1. STRICT 48px+ TOUCH TARGET ENFORCEMENT
+   ========================================================================== */
 
-body {
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* Strict 48px+ Touch Target Rule */
+/* Buttons, Action Links, and Tab Buttons */
 button, 
 .btn, 
+.g9-btn, 
 .tab-btn, 
-.pill-btn,
-summary {
+.rung-node, 
+.subtopic-actions a, 
+.jump-nav a,
+a.action-btn {
   min-height: var(--tab12-touch-min);
   min-width: var(--tab12-touch-min);
-  padding: 10px 18px;
-  font-size: 15px;
-  font-weight: 600;
-  border-radius: var(--tab12-radius-sm);
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
   touch-action: manipulation;
-  transition: all 0.18s ease;
-  border: 1px solid transparent;
-  text-decoration: none;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: var(--tab12-radius-sm);
+  padding: 10px 18px;
 }
 
-/* Typography Floor Enforcement: No Micro-Fonts (< 13.5px) */
-small, .badge, .meta-text, .tag, .diff-badge, .unit-badge {
+/* Accordion Summary & Disclosure Controls */
+details summary, 
+summary.rung-summary, 
+details.reveal-block summary, 
+details.core-box summary {
+  min-height: 52px;
+  padding: 14px 20px;
+  cursor: pointer;
+  touch-action: manipulation;
+  font-size: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Touch-Optimized Range Sliders */
+input[type="range"] {
+  height: var(--tab12-touch-min) !important;
+  touch-action: pan-y;
+  cursor: pointer;
+  margin: 4px 0;
+  accent-color: #38bdf8;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  width: var(--tab12-thumb-size);
+  height: var(--tab12-thumb-size);
+  border-radius: 50%;
+  background: #38bdf8;
+  cursor: pointer;
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+  touch-action: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: var(--tab12-thumb-size);
+  height: var(--tab12-thumb-size);
+  border-radius: 50%;
+  background: #38bdf8;
+  cursor: pointer;
+  border: 2.5px solid #ffffff;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Textareas for Virtual Tablet Keyboard Typing */
+textarea, 
+textarea.attempt-input, 
+.attempt-box textarea {
+  min-height: 120px;
+  font-size: 16px;
+  line-height: 1.6;
+  padding: 14px 16px;
+  border-radius: var(--tab12-radius-sm);
+  box-sizing: border-box;
+  touch-action: manipulation;
+}
+
+/* Elimination of sub-13px micro fonts */
+small, .badge, .subtopic-desc, .node-id, .stat-label, .evidence-citation {
   font-size: 13.5px !important;
 }
 
-.app-container {
-  max-width: var(--tab12-container-max);
-  margin: 0 auto;
-  padding: 16px 20px 60px 20px;
-  width: 100%;
+/* Tailwind utility floor: arbitrary micro-font classes are common in legacy explorers.
+   Keep learner-visible text at or above 13px on the tablet target even when a
+   runtime utility stylesheet is injected after this file. */
+.text-xs,
+[class~="text-[9px]"],
+[class~="text-[10px]"],
+[class~="text-[11px]"],
+[class~="text-[12px]"],
+[class~="text-[12.5px]"] {
+  font-size: 13px !important;
 }
 
-/* Header & Nav */
-.top-nav {
-  background: var(--bg-surface);
-  border: 1px solid var(--border);
+/* ==========================================================================
+   2. ICONS-INSTEAD-OF-TABLES COMPONENT SYSTEM
+   ========================================================================== */
+
+/* Metric Tile Clusters (replaces tabular telemetry) */
+.metric-tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin: 14px 0;
+}
+
+.metric-tile {
+  background: var(--bg-card, #1f293b);
+  border: 1px solid var(--border, #2e3d56);
   border-radius: var(--tab12-radius-md);
-  padding: 18px 24px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-}
-
-.top-nav-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 16px;
-  margin-bottom: 16px;
-}
-
-.course-info {
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
   gap: 6px;
-}
-
-.course-badge-row {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  flex-wrap: wrap;
-}
-
-.badge {
-  padding: 4px 10px;
-  border-radius: 999px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.badge-primary { background: var(--accent); color: #000000; }
-.badge-secondary { background: rgba(56, 189, 248, 0.15); border: 1px solid var(--accent); color: var(--accent); }
-.badge-success { background: rgba(52, 211, 153, 0.15); border: 1px solid var(--success); color: var(--success); }
-.badge-warning { background: rgba(245, 158, 11, 0.15); border: 1px solid var(--warning); color: var(--warning); }
-.badge-purple { background: rgba(192, 132, 252, 0.15); border: 1px solid var(--purple); color: var(--purple); }
-
-.course-title {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--text-primary);
-  line-height: 1.25;
-}
-
-.course-subtitle {
-  font-size: 14.5px;
-  color: var(--text-secondary);
-}
-
-.theme-toggle-btn {
-  background: var(--bg-card);
-  border: 1.5px solid var(--border);
-  color: var(--text-primary);
-  display: inline-flex;
-  gap: 8px;
-}
-.theme-toggle-btn:hover { border-color: var(--accent); }
-
-/* Search Bar */
-.search-bar-row {
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-.search-input-wrapper {
   position: relative;
-  flex: 1;
+  transition: transform 0.15s, border-color 0.15s;
 }
 
-.search-input {
-  width: 100%;
-  min-height: var(--tab12-touch-min);
-  background: var(--bg-card);
-  border: 1.5px solid var(--border);
-  border-radius: var(--tab12-radius-sm);
-  padding: 10px 16px 10px 42px;
-  color: var(--text-primary);
-  font-size: 16px;
+.metric-tile:hover {
+  border-color: var(--accent, #38bdf8);
 }
 
-.search-input:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow);
-}
-
-.search-icon {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted);
-  pointer-events: none;
-  font-size: 18px;
-}
-
-.clear-search-btn {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-}
-
-/* Tabs */
-.tabs-scroll-row {
+.metric-tile-header {
   display: flex;
+  align-items: center;
   gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 6px;
-  -webkit-overflow-scrolling: touch;
-}
-
-.tab-btn {
-  background: var(--bg-card);
-  border: 1.5px solid var(--border);
-  color: var(--text-secondary);
-  white-space: nowrap;
-}
-
-.tab-btn:hover {
-  color: var(--text-primary);
-  border-color: var(--border-light);
-}
-
-.tab-btn.active {
-  background: var(--accent);
-  color: #000000;
-  border-color: var(--accent);
+  font-size: 13.5px;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted, #94a3b8);
 }
 
-/* Module Card Layout */
-.module-card {
-  background: var(--bg-surface);
-  border: 1.5px solid var(--border);
+.metric-tile-icon {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.metric-tile-value {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent, #38bdf8);
+  font-family: ui-monospace, SFMono-Regular, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+.metric-tile-sub {
+  font-size: 13.5px;
+  color: var(--text-muted, #94a3b8);
+}
+
+/* Tablet Card Deck (replaces table rows) */
+.tablet-card-deck {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 16px 0;
+}
+
+.tablet-card-row {
+  background: var(--bg-card, #1f293b);
+  border: 1px solid var(--border, #2e3d56);
   border-radius: var(--tab12-radius-md);
-  margin-bottom: 28px;
-  padding: 24px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-}
-
-@media (min-width: 1100px) {
-  .stage-support-columns {
-    display: grid;
-    grid-template-columns: minmax(0, 2.15fr) minmax(330px, 1fr);
-    column-gap: 26px;
-    align-items: start;
-  }
-  .stage-column { min-width: 0; }
-  .support-column { min-width: 0; position: sticky; top: 20px; }
-}
-
-@media (max-width: 1099px) {
-  .stage-support-columns { display: block !important; }
-  .support-column {
-    margin-top: 24px;
-    padding-top: 20px;
-    border-top: 1px dashed var(--border);
-  }
-}
-
-.module-header {
+  padding: 16px 20px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--border);
+  gap: 14px;
+  min-height: 64px;
 }
 
-.module-code {
-  font-size: 19px;
-  font-weight: 800;
-  color: var(--accent);
-}
-
-.module-title {
-  font-size: 21px;
-  font-weight: 800;
-  color: var(--text-primary);
-}
-
-.target-banner {
-  background: rgba(56, 189, 248, 0.08);
-  border-left: 4px solid var(--accent);
-  padding: 12px 16px;
-  border-radius: 0 var(--tab12-radius-sm) var(--tab12-radius-sm) 0;
-  font-size: 15px;
-  font-weight: 600;
-  color: var(--text-primary);
-  margin-bottom: 18px;
-}
-
-.concept-box {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--tab12-radius-sm);
-  padding: 16px 18px;
-  margin-bottom: 16px;
-}
-
-.concept-box-title {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--accent);
-  text-transform: uppercase;
-  margin-bottom: 6px;
-}
-
-.concept-box-text {
-  font-size: 14.5px;
-  color: var(--text-primary);
-  line-height: 1.5;
-}
-
-.contrast-box {
-  background: rgba(52, 211, 153, 0.08);
-  border: 1px solid var(--success);
-  border-radius: var(--tab12-radius-sm);
-  padding: 14px 16px;
-  margin-bottom: 16px;
-}
-
-.contrast-title {
-  font-size: 13.5px;
-  font-weight: 700;
-  color: var(--success);
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.trap-box {
-  background: rgba(248, 113, 113, 0.08);
-  border: 1.5px solid var(--danger);
-  border-radius: var(--tab12-radius-sm);
-  padding: 14px 16px;
-  margin-bottom: 16px;
-}
-
-.trap-title {
-  font-size: 13.5px;
-  font-weight: 800;
-  color: var(--danger);
-  text-transform: uppercase;
-  margin-bottom: 4px;
-}
-
-.trap-text {
-  font-size: 14px;
-  color: var(--text-primary);
-  line-height: 1.45;
-}
-
-/* Practice & Recall Box */
-.practice-surface {
-  background: var(--bg-card);
-  border: 1.5px solid var(--border);
-  border-radius: var(--tab12-radius-sm);
-  padding: 18px;
-  margin-top: 16px;
-}
-
-.practice-textarea {
-  width: 100%;
-  min-height: 120px;
-  background: var(--bg-surface);
-  border: 1.5px solid var(--border);
-  border-radius: var(--tab12-radius-sm);
-  padding: 12px 14px;
-  color: var(--text-primary);
-  font-size: 15.5px;
-  font-family: inherit;
-  resize: vertical;
-  margin-bottom: 10px;
-}
-
-.practice-textarea:focus {
-  outline: none;
-  border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-glow);
-}
-
-details.guided-reveal {
-  border: 1px solid var(--border);
-  border-radius: var(--tab12-radius-sm);
-  overflow: hidden;
-  margin-top: 10px;
-}
-
-details.guided-reveal summary {
-  background: var(--bg-card-subtle);
-  min-height: var(--tab12-touch-min);
-  padding: 10px 16px;
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--accent);
-}
-
-.guided-solution-text {
-  padding: 14px 16px;
-  font-size: 14px;
-  color: var(--text-primary);
-  background: var(--bg-surface);
-  border-top: 1px solid var(--border);
-  line-height: 1.5;
-  white-space: pre-line;
-}
-
-/* Tool Box */
-.tool-box {
-  background: var(--bg-surface);
-  border: 1.5px solid var(--accent);
-  border-radius: var(--tab12-radius-sm);
-  padding: 16px;
-  margin-top: 16px;
-}
-
-.tool-title {
-  font-size: 15px;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 10px;
-}
-
-.tool-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
+.tablet-card-badge {
+  display: inline-flex;
   align-items: center;
-  margin-bottom: 10px;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  background: rgba(56, 189, 248, 0.15);
+  border: 1px solid var(--accent, #38bdf8);
+  color: var(--accent, #38bdf8);
 }
 
-.tool-input, .tool-select {
-  min-height: var(--tab12-touch-min);
-  background: var(--bg-card);
-  border: 1.5px solid var(--border);
+/* Dual Comparison Cards (replaces side-by-side comparison tables) */
+.dual-frame-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 16px 0;
+}
+
+@media (min-width: 860px) {
+  .dual-frame-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.dual-frame-card {
+  background: var(--bg-card, #161b22);
+  border: 1.5px solid var(--border, #30363d);
+  border-radius: var(--tab12-radius-md);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dual-frame-card.active {
+  border-color: var(--accent, #58a6ff);
+  box-shadow: 0 0 16px rgba(88, 166, 255, 0.2);
+}
+
+.dual-frame-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text, #f0f6fc);
+}
+
+/* Visual Arithmetic Flow Pipeline (replaces numeric arrays and synthetic division tables) */
+.arithmetic-pipeline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  overflow-x: auto;
+  padding: 16px 8px;
+  -webkit-overflow-scrolling: touch;
+}
+
+.pipeline-step {
+  background: var(--bg-card, #1f293b);
+  border: 1px solid var(--border, #2e3d56);
   border-radius: var(--tab12-radius-sm);
-  padding: 8px 14px;
-  color: var(--text-primary);
-  font-size: 15px;
-}
-
-.tool-result {
-  background: rgba(56, 189, 248, 0.1);
-  border-left: 4px solid var(--accent);
-  padding: 10px 14px;
-  font-size: 14.5px;
-  color: var(--text-primary);
-}
-
-footer {
+  padding: 12px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 110px;
   text-align: center;
-  padding: 24px 20px;
-  color: var(--text-muted);
-  font-size: 13.5px;
-  border-top: 1px solid var(--border);
-  margin-top: auto;
 }
 
-  
-/* LPAP audit repair: preserve zoom, reduced motion, and explicit draft state. */
-.lpap-audit-hold { margin:0; padding:12px 20px; border-bottom:2px solid var(--warning,#f59e0b); background:rgba(245,158,11,.12); color:var(--text-primary,#111827); font-size:14px; line-height:1.5; }
-@media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto !important; } *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
-</style>
-</head>
-<body>
-  <div class="lpap-audit-hold" role="status"><strong>Draft audit hold:</strong> curriculum/source binding to a governed Grade9V3 Core1A product is unresolved. This standalone candidate is audit evidence, not an accepted learner publication.</div>
-  <div class="app-container">
-    <header class="top-nav">
-      <div class="top-nav-header">
-        <div class="course-info">
-          <div class="course-badge-row">
-            <span class="badge badge-primary">CHEMISTRY MASTER SUITE</span>
-            <span class="badge badge-secondary">GRADE 9 &rarr; JEE BRIDGE</span>
-            <span class="badge badge-success">CORE 1 &amp; CORE 2</span>
-            <span class="badge badge-warning">INTERACTIVE TOOLS</span>
-            <span class="badge badge-purple">68 NCERT QUESTIONS</span>
-            <span class="badge badge-secondary">12.7" TABLET COMPLIANT</span>
-          </div>
-          <h1 class="course-title">Some Basic Concepts &amp; Mole Concept: Tablet Edition</h1>
-          <p class="course-subtitle">Chemical Laws &rarr; The Universal Mole Bridge &rarr; Empirical Formulas &rarr; Limiting Reagent &rarr; Concentration Units (M, m, &chi;) &rarr; NCERT Bank</p>
-        </div>
-        <button id="theme-toggle-btn" class="theme-toggle-btn">☀️ Light Mode</button>
-      </div>
-
-      <!-- Live Search Bar -->
-      <div class="search-bar-row">
-        <div class="search-input-wrapper">
-          <span class="search-icon">🔍</span>
-          <input type="text" id="search-input" class="search-input" placeholder="Search mole, Avogadro, molarity, empirical formula, limiting reagent, or NCERT...">
-        </div>
-        <button id="clear-search-btn" class="btn clear-search-btn">Reset</button>
-      </div>
-
-      <!-- Unit Tabs -->
-      <div class="tabs-scroll-row">
-        <button class="tab-btn active" data-unit="all">All Modules</button>
-        <button class="tab-btn" data-unit="1">Part 1: Chemical Laws</button>
-        <button class="tab-btn" data-unit="2">Part 2: Mole Concept &amp; N_A</button>
-        <button class="tab-btn" data-unit="3">Part 3: Empirical Formulas</button>
-        <button class="tab-btn" data-unit="4">Part 4: Limiting Reagent</button>
-        <button class="tab-btn" data-unit="5">Part 5: Solution Molarity &amp; Molality</button>
-        <button class="tab-btn" data-unit="ncert">Part 6: NCERT Transfer Bank</button>
-      </div>
-    </header>
-
-    <main id="main-content">
-      
-    <article class="module-card stage-support-columns" id="MOLE-MOD-01" data-unit="1">
-      <div class="stage-column">
-        <header class="module-header">
-          <div>
-            <span class="module-code">MOLE-MOD-01</span>
-            <h2 class="module-title">Laws of Chemical Combination &amp; Dalton's Theory</h2>
-          </div>
-          <span class="badge badge-secondary">Part 1 · Core Concepts</span>
-        </header>
-
-        <div class="target-banner">
-          🎯 <strong>Learning Target:</strong> Apply the Law of Conservation of Mass, Definite Proportions, and Multiple Proportions to reaction stoichiometry.
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">🧠 Memory Anchor</div>
-          <div class="concept-box-text"><strong style="color:var(--accent);">Definite Proportions: Same compound always contains elements in fixed mass ratio. Multiple Proportions: If two elements form &gt;1 compound, masses of B combining with fixed mass of A are in simple whole-number ratios.</strong></div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">⚙️ Why It Works</div>
-          <div class="concept-box-text">Atoms are indivisible units of chemical reaction (Dalton). Compounds form by whole-atom combinations, requiring simple whole-number stoichiometric mass ratios.</div>
-        </div>
-
-        <div class="contrast-box">
-          <div class="contrast-title">🔍 Worked Contrast</div>
-          <div class="concept-box-text">Carbon oxides: CO has 12g C with 16g O. CO₂ has 12g C with 32g O. Mass ratio of O combining with 12g C is 16:32 = 1:2 (simple whole number!).</div>
-        </div>
-
-        
-
-        <div class="practice-surface">
-          <div class="concept-box-title">✍️ Active Practice &amp; Step-by-Step Working</div>
-          <p style="font-size:15px;color:var(--text-primary);margin-bottom:8px;"><strong>Problem:</strong> Two oxides of nitrogen contain 63.6% and 46.7% nitrogen respectively. Show that these results illustrate the Law of Multiple Proportions.</p>
-          <textarea class="practice-textarea" data-key="MOLE-MOD-01" placeholder="Type your step-by-step stoichiometric calculations on tablet keyboard..."></textarea>
-          <div style="display:flex;gap:10px;">
-            <button class="btn btn-check-mole" style="background:var(--accent);color:#000;font-weight:700;">Check Solution</button>
-            <button class="btn btn-clear-mole" style="background:var(--bg-surface);border:1px solid var(--border);color:var(--text-secondary);">Clear</button>
-          </div>
-          <details class="guided-reveal">
-            <summary>Reveal Checked Model Answer</summary>
-            <div class="guided-solution-text">
-In Oxide 1: 63.6g N combines with 36.4g O =&gt; 1g N combines with 36.4 / 63.6 = 0.572g O.
-In Oxide 2: 46.7g N combines with 53.3g O =&gt; 1g N combines with 53.3 / 46.7 = 1.141g O.
-Ratio of oxygen masses combining with 1g of nitrogen = 0.572 : 1.141 = 1 : 2.0 (exact simple whole number ratio 1:2). The 1:2 ratio is consistent with the Law of Multiple Proportions for these two nitrogen oxides; one worked pair illustrates the law rather than proving it universally.
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <div class="support-column">
-        <div class="trap-box">
-          <div class="trap-title">⚠️ Common Trap to Avoid</div>
-          <div class="trap-text">Confusing Law of Definite Proportions with Multiple Proportions. Definite applies to ONE compound; Multiple compares TWO DIFFERENT compounds formed by the same elements.</div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">📑 Academic Authority &amp; Benchmark</div>
-          <div class="concept-box-text" style="font-size:13.5px;color:var(--text-secondary);">
-            <strong>NCERT Chemistry:</strong> Class 9 Units 1–3 + Class 11 Chapter 1.<br><br>
-            <strong>Candidate source-question set:</strong> source custody remains unresolved; no retained-card count is used as the canonical completeness denominator.
-          </div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">⚡ Quick Mole &amp; Formula Guide</div>
-          <div class="concept-box-text" style="font-size:14px;color:var(--text-primary);">
-            <code>n = m / M = N / N_A</code><br>
-            <code>V_(0 °C, 1 atm) ≈ n × 22.414 L</code><br>
-            <code>M = n_solute / V_solution(L)</code><br>
-            <code>m = n_solute / mass_solvent(kg)</code><br>
-            <code>M₁V₁ = M₂V₂</code><br>
-            <code>T(K) = T(°C) + 273.15</code>
-          </div>
-        </div>
-      </div>
-    </article>
-    
-    <article class="module-card stage-support-columns" id="MOLE-MOD-02" data-unit="2">
-      <div class="stage-column">
-        <header class="module-header">
-          <div>
-            <span class="module-code">MOLE-MOD-02</span>
-            <h2 class="module-title">The Mole Concept &amp; Avogadro's Number</h2>
-          </div>
-          <span class="badge badge-secondary">Part 2 · Core Concepts</span>
-        </header>
-
-        <div class="target-banner">
-          🎯 <strong>Learning Target:</strong> Convert between mass, amount of substance, number of specified entities, and—when an ideal-gas model is appropriate—gas volume at stated temperature and pressure.
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">🧠 Memory Anchor</div>
-          <div class="concept-box-text"><strong style="color:var(--accent);">The Universal Mole Bridge: n = mass / Molar_mass = N / N_A = Volume_(0 °C, 1 atm) / 22.414 L (where N_A = 6.022 × 10²³).</strong></div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">⚙️ Why It Works</div>
-          <div class="concept-box-text">Since the 2019 SI redefinition, one mole contains exactly 6.02214076 × 10²³ specified elementary entities. The older carbon-12 wording is historical context, not the current definition of the mole.</div>
-        </div>
-
-        <div class="contrast-box">
-          <div class="contrast-title">🔍 Worked Contrast</div>
-          <div class="concept-box-text">1 mole of O atoms = 16.0 g = 6.022 × 10²³ atoms. 1 mole of O₂ molecules = 32.0 g = 6.02214076 × 10²³ molecules; an ideal gas occupies about 22.414 L mol⁻¹ at 0 °C and 1 atm (not a universal molar volume at arbitrary “STP” conventions).</div>
-        </div>
-
-        
-        <div class="tool-box">
-          <div class="tool-title">⚖️ Interactive Universal Mole Bridge Calculator</div>
-          <div class="tool-row">
-            <label style="font-weight:600;font-size:14.5px;">Mass (g):</label>
-            <input type="number" id="input-mole-mass" class="tool-input" placeholder="e.g. 1.4" value="1.4" style="width:110px;">
-            <label style="font-weight:600;font-size:14.5px;">Molar Mass (g/mol):</label>
-            <input type="number" id="input-mole-mm" class="tool-input" placeholder="e.g. 28" value="28" style="width:110px;">
-            <button id="btn-calc-mole" class="btn" style="background:var(--accent);color:#000;">Calculate</button>
-          </div>
-          <div id="res-mole-calc" class="tool-result">Enter mass and molar mass above and tap Calculate.</div>
-        </div>
-        
-
-        <div class="practice-surface">
-          <div class="concept-box-title">✍️ Active Practice &amp; Step-by-Step Working</div>
-          <p style="font-size:15px;color:var(--text-primary);margin-bottom:8px;"><strong>Problem:</strong> Calculate the total number of electrons present in 1.4 g of dinitrogen gas (N₂).</p>
-          <textarea class="practice-textarea" data-key="MOLE-MOD-02" placeholder="Type your step-by-step stoichiometric calculations on tablet keyboard..."></textarea>
-          <div style="display:flex;gap:10px;">
-            <button class="btn btn-check-mole" style="background:var(--accent);color:#000;font-weight:700;">Check Solution</button>
-            <button class="btn btn-clear-mole" style="background:var(--bg-surface);border:1px solid var(--border);color:var(--text-secondary);">Clear</button>
-          </div>
-          <details class="guided-reveal">
-            <summary>Reveal Checked Model Answer</summary>
-            <div class="guided-solution-text">
-Molar mass of N₂ = 28 g/mol.
-Moles of N₂ = 1.4 g / 28 g/mol = 0.05 mol.
-Number of N₂ molecules = 0.05 × 6.022 × 10²³ = 3.011 × 10²² molecules.
-Each N₂ molecule has 7 + 7 = 14 electrons.
-Total electrons = 14 × 3.011 × 10²² = 4.215 × 10²³ electrons.
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <div class="support-column">
-        <div class="trap-box">
-          <div class="trap-title">⚠️ Common Trap to Avoid</div>
-          <div class="trap-text">Failing to distinguish between atoms and molecules. Asking for 'atoms in 32g O₂' gives 2 × N_A, not 1 × N_A!</div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">📑 Academic Authority &amp; Benchmark</div>
-          <div class="concept-box-text" style="font-size:13.5px;color:var(--text-secondary);">
-            <strong>NCERT Chemistry:</strong> Class 9 Units 1–3 + Class 11 Chapter 1.<br><br>
-            <strong>Core 2 Helper:</strong> 68 Retained NCERT question instances across 7 parts.
-          </div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">⚡ Quick Mole &amp; Formula Guide</div>
-          <div class="concept-box-text" style="font-size:14px;color:var(--text-primary);">
-            <code>n = m / M = N / N_A</code><br>
-            <code>V_(0 °C, 1 atm) ≈ n × 22.414 L</code><br>
-            <code>M = n_solute / V_solution(L)</code><br>
-            <code>m = n_solute / mass_solvent(kg)</code><br>
-            <code>M₁V₁ = M₂V₂</code><br>
-            <code>T(K) = T(°C) + 273.15</code>
-          </div>
-        </div>
-      </div>
-    </article>
-    
-    <article class="module-card stage-support-columns" id="MOLE-MOD-03" data-unit="3">
-      <div class="stage-column">
-        <header class="module-header">
-          <div>
-            <span class="module-code">MOLE-MOD-03</span>
-            <h2 class="module-title">Empirical and Molecular Formula Derivation</h2>
-          </div>
-          <span class="badge badge-secondary">Part 3 · Core Concepts</span>
-        </header>
-
-        <div class="target-banner">
-          🎯 <strong>Learning Target:</strong> Determine simplest integer mole ratios from mass percentage and deduce molecular formula from molar mass.
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">🧠 Memory Anchor</div>
-          <div class="concept-box-text"><strong style="color:var(--accent);">Empirical = Simplest whole-number ratio of atoms. Molecular = n × (Empirical Formula), where n = Molar Mass / Empirical Formula Mass.</strong></div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">⚙️ Why It Works</div>
-          <div class="concept-box-text">Combustion analysis and mass spectrometry provide elemental percentages. Dividing each mass percent by atomic mass yields relative mole counts; dividing by the smallest value normalizes to whole-number empirical subscripts.</div>
-        </div>
-
-        <div class="contrast-box">
-          <div class="contrast-title">🔍 Worked Contrast</div>
-          <div class="concept-box-text">Glucose: Molecular formula is C₆H₁₂O₆ (mass 180). Empirical formula is CH₂O (mass 30). Ratio n = 180 / 30 = 6.</div>
-        </div>
-
-        
-
-        <div class="practice-surface">
-          <div class="concept-box-title">✍️ Active Practice &amp; Step-by-Step Working</div>
-          <p style="font-size:15px;color:var(--text-primary);margin-bottom:8px;"><strong>Problem:</strong> An organic compound contains 40.0% C, 6.7% H, and 53.3% O by mass. Its molar mass is 60 g/mol. Find its empirical and molecular formulas.</p>
-          <textarea class="practice-textarea" data-key="MOLE-MOD-03" placeholder="Type your step-by-step stoichiometric calculations on tablet keyboard..."></textarea>
-          <div style="display:flex;gap:10px;">
-            <button class="btn btn-check-mole" style="background:var(--accent);color:#000;font-weight:700;">Check Solution</button>
-            <button class="btn btn-clear-mole" style="background:var(--bg-surface);border:1px solid var(--border);color:var(--text-secondary);">Clear</button>
-          </div>
-          <details class="guided-reveal">
-            <summary>Reveal Checked Model Answer</summary>
-            <div class="guided-solution-text">
-Moles of C = 40.0 / 12 = 3.33.
-Moles of H = 6.7 / 1 = 6.70.
-Moles of O = 53.3 / 16 = 3.33.
-Simplest ratio: C = 3.33/3.33 = 1, H = 6.70/3.33 = 2, O = 3.33/3.33 = 1.
-Empirical Formula = CH₂O (Empirical mass = 12 + 2 + 16 = 30).
-n = Molar Mass / Empirical Mass = 60 / 30 = 2.
-Molecular Formula = (CH₂O)₂ = C₂H₄O₂ (Acetic acid).
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <div class="support-column">
-        <div class="trap-box">
-          <div class="trap-title">⚠️ Common Trap to Avoid</div>
-          <div class="trap-text">If mole ratios yield a fractional value like 1.33 or 1.5, do NOT round to nearest integer! Multiply all subscripts by 3 (for .33) or by 2 (for .5) to clear fractions.</div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">📑 Academic Authority &amp; Benchmark</div>
-          <div class="concept-box-text" style="font-size:13.5px;color:var(--text-secondary);">
-            <strong>NCERT Chemistry:</strong> Class 9 Units 1–3 + Class 11 Chapter 1.<br><br>
-            <strong>Core 2 Helper:</strong> 68 Retained NCERT question instances across 7 parts.
-          </div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">⚡ Quick Mole &amp; Formula Guide</div>
-          <div class="concept-box-text" style="font-size:14px;color:var(--text-primary);">
-            <code>n = m / M = N / N_A</code><br>
-            <code>V_(0 °C, 1 atm) ≈ n × 22.414 L</code><br>
-            <code>M = n_solute / V_solution(L)</code><br>
-            <code>m = n_solute / mass_solvent(kg)</code><br>
-            <code>M₁V₁ = M₂V₂</code><br>
-            <code>T(K) = T(°C) + 273.15</code>
-          </div>
-        </div>
-      </div>
-    </article>
-    
-    <article class="module-card stage-support-columns" id="MOLE-MOD-04" data-unit="4">
-      <div class="stage-column">
-        <header class="module-header">
-          <div>
-            <span class="module-code">MOLE-MOD-04</span>
-            <h2 class="module-title">Stoichiometry &amp; Limiting Reagent Analysis</h2>
-          </div>
-          <span class="badge badge-secondary">Part 4 · Core Concepts</span>
-        </header>
-
-        <div class="target-banner">
-          🎯 <strong>Learning Target:</strong> Identify the limiting reactant by mole-to-coefficient ratio and calculate theoretical yield.
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">🧠 Memory Anchor</div>
-          <div class="concept-box-text"><strong style="color:var(--accent);">Limiting Reagent Test: For each reactant, compute (Available Moles) / (Stoichiometric Coefficient). The SMALLEST value identifies the Limiting Reagent.</strong></div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">⚙️ Why It Works</div>
-          <div class="concept-box-text">Reactions proceed on an atom-by-atom basis dictated by balanced equation coefficients. The reactant that runs out first halts the reaction, dictating the maximum yield of products.</div>
-        </div>
-
-        <div class="contrast-box">
-          <div class="contrast-title">🔍 Worked Contrast</div>
-          <div class="concept-box-text">50 kg N₂ + 10 kg H₂ → NH₃. Moles N₂ = 50,000 / 28 = 1785.7 mol (Ratio = 1785.7/1 = 1785.7). Moles H₂ = 10,000 / 2.016 = 4960.3 mol (Ratio = 4960.3/3 = 1653.4). H₂ ratio is smaller =&gt; H₂ is Limiting Reagent!</div>
-        </div>
-
-        
-
-        <div class="practice-surface">
-          <div class="concept-box-title">✍️ Active Practice &amp; Step-by-Step Working</div>
-          <p style="font-size:15px;color:var(--text-primary);margin-bottom:8px;"><strong>Problem:</strong> 3.0 g of H₂ reacts with 29.0 g of O₂ to yield H₂O. (a) Which is the limiting reagent? (b) Calculate the maximum mass of H₂O formed.</p>
-          <textarea class="practice-textarea" data-key="MOLE-MOD-04" placeholder="Type your step-by-step stoichiometric calculations on tablet keyboard..."></textarea>
-          <div style="display:flex;gap:10px;">
-            <button class="btn btn-check-mole" style="background:var(--accent);color:#000;font-weight:700;">Check Solution</button>
-            <button class="btn btn-clear-mole" style="background:var(--bg-surface);border:1px solid var(--border);color:var(--text-secondary);">Clear</button>
-          </div>
-          <details class="guided-reveal">
-            <summary>Reveal Checked Model Answer</summary>
-            <div class="guided-solution-text">
-Reaction: 2H₂ + O₂ → 2H₂O.
-Moles of H₂ = 3.0 / 2.016 = 1.488 mol. Ratio = 1.488 / 2 = 0.744.
-Moles of O₂ = 29.0 / 32.0 = 0.906 mol. Ratio = 0.906 / 1 = 0.906.
-Since 0.744 &lt; 0.906, H₂ is the LIMITING REAGENT.
-2 moles H₂ produce 2 moles H₂O =&gt; 1.488 moles H₂ produce 1.488 moles H₂O.
-Mass of H₂O formed = 1.488 mol × 18.015 g/mol = 26.8 g H₂O.
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <div class="support-column">
-        <div class="trap-box">
-          <div class="trap-title">⚠️ Common Trap to Avoid</div>
-          <div class="trap-text">Never pick the limiting reagent based solely on smaller mass. Always divide moles by stoichiometric coefficients!</div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">📑 Academic Authority &amp; Benchmark</div>
-          <div class="concept-box-text" style="font-size:13.5px;color:var(--text-secondary);">
-            <strong>NCERT Chemistry:</strong> Class 9 Units 1–3 + Class 11 Chapter 1.<br><br>
-            <strong>Core 2 Helper:</strong> 68 Retained NCERT question instances across 7 parts.
-          </div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">⚡ Quick Mole &amp; Formula Guide</div>
-          <div class="concept-box-text" style="font-size:14px;color:var(--text-primary);">
-            <code>n = m / M = N / N_A</code><br>
-            <code>V_(0 °C, 1 atm) ≈ n × 22.414 L</code><br>
-            <code>M = n_solute / V_solution(L)</code><br>
-            <code>m = n_solute / mass_solvent(kg)</code><br>
-            <code>M₁V₁ = M₂V₂</code><br>
-            <code>T(K) = T(°C) + 273.15</code>
-          </div>
-        </div>
-      </div>
-    </article>
-    
-    <article class="module-card stage-support-columns" id="MOLE-MOD-05" data-unit="5">
-      <div class="stage-column">
-        <header class="module-header">
-          <div>
-            <span class="module-code">MOLE-MOD-05</span>
-            <h2 class="module-title">Concentration of Solutions: Molarity, Molality &amp; Mole Fraction</h2>
-          </div>
-          <span class="badge badge-secondary">Part 5 · Core Concepts</span>
-        </header>
-
-        <div class="target-banner">
-          🎯 <strong>Learning Target:</strong> Calculate solution concentrations and convert between Molarity (M), Molality (m), and Mole Fraction (χ).
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">🧠 Memory Anchor</div>
-          <div class="concept-box-text"><strong style="color:var(--accent);">Molarity M = moles solute / Litres solution (Temperature DEPENDENT). Molality m = moles solute / kg solvent (Temperature INDEPENDENT).</strong></div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">⚙️ Why It Works</div>
-          <div class="concept-box-text">Molarity depends on solution volume, so thermal expansion or contraction can change its numerical value. Molality and mole fraction do not depend directly on solution volume; for a closed sample whose chemical and phase composition remain unchanged, thermal expansion alone does not change them.</div>
-        </div>
-
-        <div class="contrast-box">
-          <div class="contrast-title">🔍 Worked Contrast</div>
-          <div class="concept-box-text">Dilution equation: M₁V₁ = M₂V₂ (conserves total moles of solute upon solvent addition).</div>
-        </div>
-
-        
-        <div class="tool-box">
-          <div class="tool-title">🧪 Solution Molarity &amp; Dilution Calculator</div>
-          <div class="tool-row">
-            <label style="font-weight:600;font-size:14.5px;">Moles of Solute:</label>
-            <input type="number" id="input-conc-moles" class="tool-input" placeholder="e.g. 0.1" value="0.1" style="width:110px;">
-            <label style="font-weight:600;font-size:14.5px;">Volume of Solution (L):</label>
-            <input type="number" id="input-conc-vol" class="tool-input" placeholder="e.g. 0.25" value="0.25" style="width:110px;">
-            <button id="btn-calc-conc" class="btn" style="background:var(--accent);color:#000;">Compute Molarity</button>
-          </div>
-          <div id="res-conc-calc" class="tool-result">Enter solute moles and solution volume above and tap Compute.</div>
-        </div>
-        
-
-        <div class="practice-surface">
-          <div class="concept-box-title">✍️ Active Practice &amp; Step-by-Step Working</div>
-          <p style="font-size:15px;color:var(--text-primary);margin-bottom:8px;"><strong>Problem:</strong> Calculate the molarity of NaOH in the solution prepared by dissolving 4 g in enough water to form 250 mL of the solution.</p>
-          <textarea class="practice-textarea" data-key="MOLE-MOD-05" placeholder="Type your step-by-step stoichiometric calculations on tablet keyboard..."></textarea>
-          <div style="display:flex;gap:10px;">
-            <button class="btn btn-check-mole" style="background:var(--accent);color:#000;font-weight:700;">Check Solution</button>
-            <button class="btn btn-clear-mole" style="background:var(--bg-surface);border:1px solid var(--border);color:var(--text-secondary);">Clear</button>
-          </div>
-          <details class="guided-reveal">
-            <summary>Reveal Checked Model Answer</summary>
-            <div class="guided-solution-text">
-Molar mass of NaOH = 23 + 16 + 1 = 40 g/mol.
-Moles of NaOH = 4 g / 40 g/mol = 0.1 mol.
-Volume of solution in litres = 250 mL / 1000 = 0.250 L.
-Molarity M = moles / Litres = 0.1 mol / 0.250 L = 0.4 mol/L (0.4 M).
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <div class="support-column">
-        <div class="trap-box">
-          <div class="trap-title">⚠️ Common Trap to Avoid</div>
-          <div class="trap-text">In molality, the denominator is MASS OF SOLVENT in kg, NOT total mass of solution!</div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">📑 Academic Authority &amp; Benchmark</div>
-          <div class="concept-box-text" style="font-size:13.5px;color:var(--text-secondary);">
-            <strong>NCERT Chemistry:</strong> Class 9 Units 1–3 + Class 11 Chapter 1.<br><br>
-            <strong>Core 2 Helper:</strong> 68 Retained NCERT question instances across 7 parts.
-          </div>
-        </div>
-
-        <div class="concept-box">
-          <div class="concept-box-title">⚡ Quick Mole &amp; Formula Guide</div>
-          <div class="concept-box-text" style="font-size:14px;color:var(--text-primary);">
-            <code>n = m / M = N / N_A</code><br>
-            <code>V_(0 °C, 1 atm) ≈ n × 22.414 L</code><br>
-            <code>M = n_solute / V_solution(L)</code><br>
-            <code>m = n_solute / mass_solvent(kg)</code><br>
-            <code>M₁V₁ = M₂V₂</code><br>
-            <code>T(K) = T(°C) + 273.15</code>
-          </div>
-        </div>
-      </div>
-    </article>
-    <div style="margin:40px 0 20px 0;border-top:2px solid var(--border);padding-top:20px;"><h2 style="font-size:22px;color:var(--accent);">📘 NCERT Question Helper &amp; Transfer Bank (Core 2)</h2></div>
-    <article class="module-card stage-support-columns" id="NCERT-Q1" data-unit="ncert">
-      <div class="stage-column">
-        <header class="module-header">
-          <div>
-            <span class="module-code">Q1 · NCERT Unit 3 Q1</span>
-            <h2 class="module-title">Ratio of Combining Masses in Water</h2>
-          </div>
-          <span class="badge badge-purple">Core 2 NCERT Helper</span>
-        </header>
-
-        <p style="font-size:16px;color:var(--text-primary);margin-bottom:14px;font-weight:600;line-height:1.5;">
-          In water (H₂O), what is the ratio of the mass of hydrogen to the mass of oxygen, and how much oxygen is required to react completely with 3 g of hydrogen gas?
-        </p>
-
-        <div class="concept-box">
-          <div class="concept-box-title">💡 See the Idea (Visual First Move)</div>
-          <div class="concept-box-text">Chemical formula H₂O has 2 H atoms (2 × 1 = 2 u) and 1 O atom (16 u). Fixed mass ratio = 2:16 = 1:8.</div>
-        </div>
-
-        <div class="contrast-box">
-          <div class="contrast-title">👨‍🏫 Teacher-Style Helper</div>
-          <div class="concept-box-text">Use Law of Definite Proportions: 1 g H requires 8 g O.</div>
-        </div>
-
-        <div class="practice-surface">
-          <div class="concept-box-title">✍️ Your Working &amp; Answer Commit</div>
-          <textarea class="practice-textarea" data-key="ncert_mole_Q1" placeholder="Commit your answer here before revealing check..."></textarea>
-          <div style="display:flex;gap:10px;">
-            <button class="btn btn-check-mole" style="background:var(--success);color:#000;font-weight:700;">Check Answer</button>
-            <button class="btn btn-clear-mole" style="background:var(--bg-surface);border:1px solid var(--border);color:var(--text-secondary);">Clear</button>
-          </div>
-          <details class="guided-reveal">
-            <summary>Reveal Answer &amp; Step-by-Step Solution</summary>
-            <div class="guided-solution-text">
-              <strong style="color:var(--success);font-size:15px;">Immediate Answer:</strong> Mass ratio H : O = 1 : 8. For 3 g of hydrogen, 3 × 8 = 24 g of oxygen is required.<br><br>
-              <strong>Complete Solution:</strong><br>
-1. Molar mass contribution: 2 H = 2 g, 1 O = 16 g.
-2. Ratio of mass = 2 : 16 = 1 : 8.
-3. By Law of Definite Proportions, 1 g hydrogen requires 8 g oxygen.
-4. Therefore 3 g hydrogen requires 3 × 8 = 24 g oxygen.
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <div class="support-column">
-        <div class="concept-box">
-          <div class="concept-box-title">📋 Question Provenance</div>
-          <div class="concept-box-text" style="font-size:13.5px;color:var(--text-secondary);">
-            <strong>Source:</strong> NCERT Unit 3 Q1<br>
-            <strong>Skill:</strong> Atoms, molecules, chemical mass laws, and unit conversion.
-          </div>
-        </div>
-      </div>
-    </article>
-    
-    <article class="module-card stage-support-columns" id="NCERT-Q2" data-unit="ncert">
-      <div class="stage-column">
-        <header class="module-header">
-          <div>
-            <span class="module-code">Q2 · NCERT Unit 3 Q3</span>
-            <h2 class="module-title">Formula Unit Mass of Sodium Carbonate</h2>
-          </div>
-          <span class="badge badge-purple">Core 2 NCERT Helper</span>
-        </header>
-
-        <p style="font-size:16px;color:var(--text-primary);margin-bottom:14px;font-weight:600;line-height:1.5;">
-          Calculate the formula unit mass of: (a) Na₂CO₃·10H₂O (Washing Soda), (b) Ca(OH)₂ (Slaked Lime).
-        </p>
-
-        <div class="concept-box">
-          <div class="concept-box-title">💡 See the Idea (Visual First Move)</div>
-          <div class="concept-box-text">Sum atomic masses of all atoms indicated in the formula unit.</div>
-        </div>
-
-        <div class="contrast-box">
-          <div class="contrast-title">👨‍🏫 Teacher-Style Helper</div>
-          <div class="concept-box-text">Atomic masses: Na = 23, C = 12, O = 16, H = 1, Ca = 40. Remember 10H₂O = 10 × 18 = 180 u.</div>
-        </div>
-
-        <div class="practice-surface">
-          <div class="concept-box-title">✍️ Your Working &amp; Answer Commit</div>
-          <textarea class="practice-textarea" data-key="ncert_mole_Q2" placeholder="Commit your answer here before revealing check..."></textarea>
-          <div style="display:flex;gap:10px;">
-            <button class="btn btn-check-mole" style="background:var(--success);color:#000;font-weight:700;">Check Answer</button>
-            <button class="btn btn-clear-mole" style="background:var(--bg-surface);border:1px solid var(--border);color:var(--text-secondary);">Clear</button>
-          </div>
-          <details class="guided-reveal">
-            <summary>Reveal Answer &amp; Step-by-Step Solution</summary>
-            <div class="guided-solution-text">
-              <strong style="color:var(--success);font-size:15px;">Immediate Answer:</strong> (a) Na₂CO₃·10H₂O = 286 u, (b) Ca(OH)₂ = 74 u.<br><br>
-              <strong>Complete Solution:</strong><br>
-1. Na₂CO₃·10H₂O = (2 × 23) + 12 + (3 × 16) + 10 × (2 × 1 + 16) = 46 + 12 + 48 + 180 = 286 u.
-2. Ca(OH)₂ = 40 + 2 × (16 + 1) = 40 + 34 = 74 u.
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <div class="support-column">
-        <div class="concept-box">
-          <div class="concept-box-title">📋 Question Provenance</div>
-          <div class="concept-box-text" style="font-size:13.5px;color:var(--text-secondary);">
-            <strong>Source:</strong> NCERT Unit 3 Q3<br>
-            <strong>Skill:</strong> Atoms, molecules, chemical mass laws, and unit conversion.
-          </div>
-        </div>
-      </div>
-    </article>
-    
-    <article class="module-card stage-support-columns" id="NCERT-Q3" data-unit="ncert">
-      <div class="stage-column">
-        <header class="module-header">
-          <div>
-            <span class="module-code">Q3 · NCERT Unit 3 Q10</span>
-            <h2 class="module-title">Number of Molecules in Sulphur</h2>
-          </div>
-          <span class="badge badge-purple">Core 2 NCERT Helper</span>
-        </header>
-
-        <p style="font-size:16px;color:var(--text-primary);margin-bottom:14px;font-weight:600;line-height:1.5;">
-          Calculate the number of molecules of sulphur (S₈) present in 16 g of solid sulphur.
-        </p>
-
-        <div class="concept-box">
-          <div class="concept-box-title">💡 See the Idea (Visual First Move)</div>
-          <div class="concept-box-text">First find molar mass of S₈ = 8 × 32 = 256 g/mol. Then moles, then multiply by N_A.</div>
-        </div>
-
-        <div class="contrast-box">
-          <div class="contrast-title">👨‍🏫 Teacher-Style Helper</div>
-          <div class="concept-box-text">N = (mass / Molar mass) × 6.022 × 10²³.</div>
-        </div>
-
-        <div class="practice-surface">
-          <div class="concept-box-title">✍️ Your Working &amp; Answer Commit</div>
-          <textarea class="practice-textarea" data-key="ncert_mole_Q3" placeholder="Commit your answer here before revealing check..."></textarea>
-          <div style="display:flex;gap:10px;">
-            <button class="btn btn-check-mole" style="background:var(--success);color:#000;font-weight:700;">Check Answer</button>
-            <button class="btn btn-clear-mole" style="background:var(--bg-surface);border:1px solid var(--border);color:var(--text-secondary);">Clear</button>
-          </div>
-          <details class="guided-reveal">
-            <summary>Reveal Answer &amp; Step-by-Step Solution</summary>
-            <div class="guided-solution-text">
-              <strong style="color:var(--success);font-size:15px;">Immediate Answer:</strong> 3.76 × 10²² molecules of S₈.<br><br>
-              <strong>Complete Solution:</strong><br>
-1. Molar mass of S₈ = 8 × 32 = 256 g/mol.
-2. Moles of S₈ = 16 g / 256 g/mol = 0.0625 mol.
-3. Number of molecules = 0.0625 × 6.022 × 10²³ = 3.764 × 10²² molecules.
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <div class="support-column">
-        <div class="concept-box">
-          <div class="concept-box-title">📋 Question Provenance</div>
-          <div class="concept-box-text" style="font-size:13.5px;color:var(--text-secondary);">
-            <strong>Source:</strong> NCERT Unit 3 Q10<br>
-            <strong>Skill:</strong> Atoms, molecules, chemical mass laws, and unit conversion.
-          </div>
-        </div>
-      </div>
-    </article>
-    
-    <article class="module-card stage-support-columns" id="NCERT-Q4" data-unit="ncert">
-      <div class="stage-column">
-        <header class="module-header">
-          <div>
-            <span class="module-code">Q4 · NCERT Unit 1 Q5</span>
-            <h2 class="module-title">Temperature Conversion Discipline</h2>
-          </div>
-          <span class="badge badge-purple">Core 2 NCERT Helper</span>
-        </header>
-
-        <p style="font-size:16px;color:var(--text-primary);margin-bottom:14px;font-weight:600;line-height:1.5;">
-          Convert the following temperatures to the Celsius and Kelvin scales: (a) 300 K to °C, (b) 573 K to °C, (c) 25°C to K, (d) 373°C to K.
-        </p>
-
-        <div class="concept-box">
-          <div class="concept-box-title">💡 See the Idea (Visual First Move)</div>
-          <div class="concept-box-text">Relationship: T(K) = T(°C) + 273.15.</div>
-        </div>
-
-        <div class="contrast-box">
-          <div class="contrast-title">👨‍🏫 Teacher-Style Helper</div>
-          <div class="concept-box-text">Celsius = Kelvin - 273; Kelvin = Celsius + 273.</div>
-        </div>
-
-        <div class="practice-surface">
-          <div class="concept-box-title">✍️ Your Working &amp; Answer Commit</div>
-          <textarea class="practice-textarea" data-key="ncert_mole_Q4" placeholder="Commit your answer here before revealing check..."></textarea>
-          <div style="display:flex;gap:10px;">
-            <button class="btn btn-check-mole" style="background:var(--success);color:#000;font-weight:700;">Check Answer</button>
-            <button class="btn btn-clear-mole" style="background:var(--bg-surface);border:1px solid var(--border);color:var(--text-secondary);">Clear</button>
-          </div>
-          <details class="guided-reveal">
-            <summary>Reveal Answer &amp; Step-by-Step Solution</summary>
-            <div class="guided-solution-text">
-              <strong style="color:var(--success);font-size:15px;">Immediate Answer:</strong> (a) 27°C, (b) 300°C, (c) 298 K, (d) 646 K.<br><br>
-              <strong>Complete Solution:</strong><br>
-1. 300 K - 273 = 27°C.
-2. 573 K - 273 = 300°C.
-3. 25°C + 273 = 298 K.
-4. 373°C + 273 = 646 K.
-            </div>
-          </details>
-        </div>
-      </div>
-
-      <div class="support-column">
-        <div class="concept-box">
-          <div class="concept-box-title">📋 Question Provenance</div>
-          <div class="concept-box-text" style="font-size:13.5px;color:var(--text-secondary);">
-            <strong>Source:</strong> NCERT Unit 1 Q5<br>
-            <strong>Skill:</strong> Atoms, molecules, chemical mass laws, and unit conversion.
-          </div>
-        </div>
-      </div>
-    </article>
-    
-    </main>
-
-    <footer>
-      Grade 9 Chemistry · Some Basic Concepts &amp; Mole Concept · Standalone 12.7" Tablet Format · WCAG 2.5.5 Compliant (≥48px touch targets) · Zero External CDN Dependencies
-    </footer>
-  </div>
-
-  <script>
-
-document.addEventListener('DOMContentLoaded', () => {
-  initTheme();
-  initTabs();
-  initSearch();
-  initTextareas();
-  initMoleTools();
-});
-
-function initTheme() {
-  const toggleBtn = document.getElementById('theme-toggle-btn');
-  if (!toggleBtn) return;
-  const saved = localStorage.getItem('g9_mole_theme') || 'dark';
-  document.documentElement.setAttribute('data-theme', saved);
-  toggleBtn.innerHTML = saved === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-
-  toggleBtn.addEventListener('click', () => {
-    const cur = document.documentElement.getAttribute('data-theme') || 'dark';
-    const next = cur === 'dark' ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('g9_mole_theme', next);
-    toggleBtn.innerHTML = next === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-  });
+.pipeline-step.highlight {
+  border-color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
 }
 
-function initTabs() {
-  const tabBtns = document.querySelectorAll('.tab-btn');
-  tabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      tabBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const targetUnit = btn.getAttribute('data-unit');
-      filterUnit(targetUnit);
-    });
-  });
+.pipeline-arrow {
+  font-size: 20px;
+  color: var(--text-muted, #94a3b8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 28px;
 }
 
-function filterUnit(target) {
-  const cards = document.querySelectorAll('.module-card');
-  const search = (document.getElementById('search-input')?.value || '').toLowerCase().trim();
-
-  cards.forEach(c => {
-    const u = c.getAttribute('data-unit');
-    const txt = c.textContent.toLowerCase();
-    const matchUnit = (target === 'all' || u === target);
-    const matchSearch = (!search || txt.includes(search));
-
-    c.style.display = (matchUnit && matchSearch) ? '' : 'none';
-  });
-}
-
-function initSearch() {
-  const searchInput = document.getElementById('search-input');
-  const clearBtn = document.getElementById('clear-search-btn');
-
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      const activeTab = document.querySelector('.tab-btn.active')?.getAttribute('data-unit') || 'all';
-      filterUnit(activeTab);
-    });
-  }
-
-  if (clearBtn) {
-    clearBtn.addEventListener('click', () => {
-      if (searchInput) {
-        searchInput.value = '';
-        const activeTab = document.querySelector('.tab-btn.active')?.getAttribute('data-unit') || 'all';
-        filterUnit(activeTab);
-        searchInput.focus();
-      }
-    });
+/* Stage Layout on 12.7" Tablets */
+@media (min-width: 960px) {
+  .stage-grid-12-7 {
+    display: grid;
+    grid-template-columns: 1.85fr 1fr;
+    gap: 24px;
+    align-items: start;
   }
 }
+</style><title>Construction · Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry</title><style>
+[hidden]{display:none!important}
+:root{--g9-zoom:1;--g9-content-max:1380px;--g9-touch-min:48px;--g9-space:clamp(16px,2vw,28px);--g9-type-body:17px;--bg:#f6f7fb;--fg:#172033;--card:#fff;--line:#d5dce6;--accent:#1f5fae;--muted:#52627a;
+--soft:#fbfdff;--pill-bg:#eef2ff;--pill-fg:#4338ca;--src-bg:#ecfdf5;--src-fg:#047857;--info-bg:#f8fbff;--info-line:#93c5fd;--info-fg:#455d72;--warn-bg:#fff7f8;--warn-line:#ffc9d3;--warn-fg:#8a2942;--ok-bg:#f0fdf7;--ok-line:#bbf7d0;--ok-fg:#14532d}
+:root[data-theme=dark]{--bg:#0f1520;--fg:#e8edf5;--card:#18212f;--line:#2c394d;--accent:#8ab4f8;--muted:#a3b1c6;
+--soft:#141c29;--pill-bg:#262f5a;--pill-fg:#c3c9ff;--src-bg:#12301f;--src-fg:#6ee7b7;--info-bg:#14263d;--info-line:#3b6db3;--info-fg:#b8c9de;--warn-bg:#2b1620;--warn-line:#6b3045;--warn-fg:#f3b6c4;--ok-bg:#10281d;--ok-line:#1f6b44;--ok-fg:#b7efcf}
+html{font-size:calc(var(--g9-type-body) * var(--g9-zoom))}body{margin:0;background:var(--bg);color:var(--fg);font:1rem/1.6 system-ui,sans-serif;overflow-wrap:break-word}
+header[data-g9-shell-header]{position:sticky;top:0;z-index:5;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px var(--g9-space);background:var(--card);border-bottom:1px solid var(--line)}
+a{color:var(--accent)}
+header a,header button,button,summary,nav a{min-height:var(--g9-touch-min);min-width:var(--g9-touch-min);padding:10px 14px;box-sizing:border-box;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--fg);font:inherit;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;touch-action:manipulation}
+nav[data-g9-breadcrumb]{display:flex;gap:8px;flex-wrap:wrap;padding:8px var(--g9-space)}
+main{max-width:var(--g9-content-max);margin:0 auto;padding:var(--g9-space);box-sizing:border-box}
+main>*{min-width:0}article[data-g9-unit]{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:var(--g9-space);margin:18px 0;min-width:0}
+article[data-g9-unit]>*{min-width:0}
+article[id],section[id]{scroll-margin-top:96px}
+.g9-core1a-book{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:clamp(16px,2vw,24px);margin:0 0 18px;min-width:0}
+.g9-core1a-book>h2{margin:.15em 0 .6em}
+.g9-bucket-orientation-grid{display:block;min-width:0}.g9-bucket-orientation-grid>*{min-width:0}
+[data-g9-concept-route] ol,[data-g9-section-route] ol{padding-left:1.4rem;margin:.5rem 0;box-sizing:border-box;max-width:100%;min-width:0}
+[data-g9-concept-route] li,[data-g9-section-route] li{margin:.35rem 0;max-width:100%;min-width:0}
+[data-g9-concept-route] a,[data-g9-section-route] a{display:flex;width:100%;max-width:100%;min-width:0;justify-content:flex-start;text-align:left;white-space:normal;overflow-wrap:anywhere}
+.g9-cu{padding-top:8px;border-top:1px solid var(--line)}
+.g9-cu:first-child{border-top:0}
+.g9-path-bridge[data-g9-derivation-bridge] [data-g9-block=construction] ol{list-style:none;padding-left:0;counter-reset:g9-derive}
+.g9-path-bridge[data-g9-derivation-bridge] [data-g9-block=construction] li{counter-increment:g9-derive;margin:0 0 12px;padding:12px 14px;border-left:3px solid var(--accent);background:var(--bg)}
+.g9-path-bridge[data-g9-derivation-bridge] [data-g9-block=construction] li::before{content:"Step " counter(g9-derive);display:block;color:var(--muted);font-size:.85rem;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.g9-cu-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:.35rem 0 .8rem}
+.g9-cu-nav-links{display:flex;gap:8px;flex-wrap:wrap}
+.g9-stage-controls{display:grid;gap:8px;max-width:100%}
+.g9-stage-chips{display:flex;flex-wrap:wrap;gap:8px}
+.g9-stage-chip{border-radius:999px;padding:6px 14px;font-size:.9rem}.g9-stage-chip[aria-pressed=true]{background:var(--accent);color:var(--card);border-color:var(--accent);font-weight:700}
+.g9-stage-desc{margin:0;color:var(--muted);font-size:.92rem;min-height:1.4em}
+.g9-stage-stepper{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.g9-stage-stepper>[data-g9-stage-label]{color:var(--muted);flex:0 1 auto}
+.g9-table-scroll{max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.g9-table-scroll table{width:100%;min-width:680px;border-collapse:collapse}
+.g9-table-scroll th,.g9-table-scroll td{border:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top}
+.g9-table-scroll th{background:var(--bg)}
+.g9-table-scroll td>.g9-math,.g9-table-scroll td>.g9-expr{margin:.15rem 0}
+[data-g9-block=worked_anchor]{border-left:4px solid var(--accent);padding-left:14px}
+.g9-watch-steps>li{margin:.8rem 0}.g9-watch-steps p{margin:.2rem 0}
+[data-g9-block=wrong_path],[data-g9-block=repair]{border-left:3px solid var(--line);padding-left:12px}
+[data-g9-block=scope_boundary]{color:var(--muted);font-size:.92rem}
+[data-g9-block=scope_boundary] ul{margin:.35rem 0;padding-left:1.2rem}
+.g9-availability-note{color:var(--muted);font-size:.9rem}
+.g9-cu-support{padding:0 0 16px;margin:0 0 16px;border-bottom:1px solid var(--line)}
+.g9-cu-support:last-of-type{border-bottom:0}.g9-cu-support>h3{font-size:1rem;line-height:1.35;margin:.3rem 0 .7rem;color:var(--muted)}
+@media (min-width:1100px){.g9-bucket-orientation-grid{display:grid;grid-template-columns:.68fr .32fr;gap:20px}}
+textarea{width:100%;min-height:120px;font:inherit;border:1px solid var(--line);border-radius:10px;padding:14px 16px;box-sizing:border-box;background:var(--card);color:var(--fg)}
+details{border:1px solid var(--line);border-radius:10px;margin:12px 0;padding:0 12px}details[data-locked] summary{opacity:.55;cursor:not-allowed}
+figure{margin:14px 0;max-width:100%;overflow-x:auto}figure svg{width:100%;height:auto;max-width:720px}figcaption{color:var(--muted)}
+.g9-prov{color:var(--muted);font-size:.95rem}.g9-expr{font-family:ui-monospace,monospace;font-size:1.05rem}
+[data-g9-meta-strip]{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 4px}
+[data-g9-meta-item]{display:inline-flex;flex-wrap:wrap;gap:4px;align-items:baseline;padding:5px 9px;border:1px solid var(--line);border-radius:999px;background:var(--bg);font-size:.9rem;max-width:100%;min-width:0;box-sizing:border-box}
+[data-g9-meta-item] strong{font-weight:700;flex:0 0 auto}
+[data-g9-meta-label]{min-width:0;overflow-wrap:anywhere}
+h4{margin:.8em 0 .3em}:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+footer{padding:24px 16px;color:var(--muted)}
+@media print{:root,:root[data-theme=dark]{--bg:#fff;--fg:#000;--card:#fff;--line:#bbb;--accent:#1f5fae;--muted:#333;--soft:#fff;--pill-bg:#eee;--pill-fg:#222;--src-bg:#eee;--src-fg:#222;--info-bg:#fff;--info-line:#888;--info-fg:#222;--warn-bg:#fff;--warn-line:#888;--warn-fg:#222;--ok-bg:#fff;--ok-line:#888;--ok-fg:#222}
+header[data-g9-shell-header],nav[data-g9-breadcrumb],.g9-attempt,button,[data-g9-display-panel],[data-g9-source-pdf]{display:none!important}
+.g9-attempt:has(.g9-answer-options){display:block!important}
+.g9-attempt>:not(.g9-answer-options),.g9-answer-option input{display:none!important}
+details[data-requires-attempt]:not([open]){display:none!important}
+details{border:none}article[data-g9-unit]{break-inside:auto;border:none}
+h1,h2,h3,h4{break-after:avoid-page}footer{padding:0;break-before:avoid-page}
+body{background:#fff;color:#000}}
+.g9-attempt input[type=text],.g9-attempt select,.g9-attempt textarea{min-height:48px;box-sizing:border-box}
+.g9-answer-option,.g9-paper,.g9-match{display:flex;align-items:center;gap:.5rem;min-height:48px}
+.g9-answer-option input,.g9-paper input{min-width:48px;min-height:48px}
+.g9-attempt fieldset{min-height:48px}
+.g9-math,pre,table{max-width:100%;overflow-x:auto}
+input,select{font-size:max(16px,1rem)}
+@media (max-width:899px){header[data-g9-shell-header]{position:relative}article[data-g9-unit]{padding:16px}nav[data-g9-breadcrumb]{font-size:.95rem}}
 
-function initTextareas() {
-  const tas = document.querySelectorAll('.practice-textarea');
-  tas.forEach(t => {
-    const key = t.getAttribute('data-key');
-    if (!key) return;
-    const s = localStorage.getItem(`g9_mole_${key}`);
-    if (s) t.value = s;
-
-    t.addEventListener('input', () => {
-      localStorage.setItem(`g9_mole_${key}`, t.value);
-    });
-  });
-
-  const clearBtns = document.querySelectorAll('.btn-clear-mole');
-  clearBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const parent = btn.closest('.practice-surface');
-      const ta = parent?.querySelector('.practice-textarea');
-      const key = ta?.getAttribute('data-key');
-      if (ta) ta.value = '';
-      if (key) localStorage.removeItem(`g9_mole_${key}`);
-      const rev = parent?.querySelector('details.guided-reveal');
-      if (rev) rev.open = false;
-    });
-  });
-
-  const checkBtns = document.querySelectorAll('.btn-check-mole');
-  checkBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      const parent = btn.closest('.practice-surface');
-      const rev = parent?.querySelector('details.guided-reveal');
-      if (rev) rev.open = true;
-    });
-  });
-}
-
-function initMoleTools() {
-  // Mole Calculator
-  const calcBtn = document.getElementById('btn-calc-mole');
-  if (calcBtn) {
-    calcBtn.addEventListener('click', () => {
-      const mass = parseFloat(document.getElementById('input-mole-mass')?.value);
-      const mm = parseFloat(document.getElementById('input-mole-mm')?.value);
-      const res = document.getElementById('res-mole-calc');
-      if (!res) return;
-
-      if (!Number.isFinite(mass) || !Number.isFinite(mm) || mass < 0 || mm <= 0) {
-        res.innerHTML = 'Please enter valid positive numbers.';
-        return;
-      }
-
-      const moles = mass / mm;
-      const molecules = moles * 6.02214076e23;
-      const volSTP = moles * 22.414;
-
-      res.innerHTML = `<strong>Results:</strong><br>
-        &bull; <strong>Moles:</strong> ${moles.toFixed(4)} mol<br>
-        &bull; <strong>Entities (Molecules/Atoms):</strong> ${molecules.toExponential(3)}<br>
-        &bull; <strong>Ideal-gas volume at 0 °C and 1 atm:</strong> ${volSTP.toFixed(2)} L`;
-    });
-  }
-
-  // Molarity Calculator
-  const concBtn = document.getElementById('btn-calc-conc');
-  if (concBtn) {
-    concBtn.addEventListener('click', () => {
-      const mSol = parseFloat(document.getElementById('input-conc-moles')?.value);
-      const vL = parseFloat(document.getElementById('input-conc-vol')?.value);
-      const res = document.getElementById('res-conc-calc');
-      if (!res) return;
-
-      if (!Number.isFinite(mSol) || !Number.isFinite(vL) || mSol < 0 || vL <= 0) {
-        res.innerHTML = 'Please enter valid positive numbers.';
-        return;
-      }
-
-      const molarity = mSol / vL;
-      res.innerHTML = `<strong>Molarity:</strong> ${molarity.toFixed(4)} M (mol/L)`;
-    });
-  }
-}
-
-  </script>
-</body>
-</html>
+.g9-split{display:block;min-width:0}.g9-col{min-width:0}
+.g9-component{min-width:0;margin:14px 0}.g9-component:first-child{margin-top:0}
+.g9-eyebrow{font-size:.85rem;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 0 6px}
+.g9-pill{display:inline-flex;align-items:center;font-size:.85rem;font-weight:800;line-height:1.2;padding:3px 10px;border-radius:999px;background:var(--pill-bg);color:var(--pill-fg);white-space:nowrap}
+.g9-pill-source{background:var(--src-bg);color:var(--src-fg)}
+article[data-g9-unit]>.slot-identity{padding:0 0 12px;margin-bottom:16px;border-bottom:1px solid var(--line)}
+.g9-c-header h2,.g9-c-concept-header h2{font-size:1.2rem;line-height:1.3;margin:0;letter-spacing:-.01em}
+.g9-c-header .g9-prov{margin:2px 0 0}
+.g9-c-disclosure-grid{margin-top:0}
+.g9-c-unit-header{margin-top:0}
+.g9-why-toggle{margin-top:10px;gap:4px 10px;flex-wrap:wrap;max-width:100%;text-align:left;justify-content:flex-start;border:0;background:transparent;padding:6px 0;font-weight:700;color:var(--muted)}
+.g9-pill-band{background:#fff7ed;color:#9a3412}.g9-pill-band[data-g9-band=D1]{background:#ecfdf5;color:#047857}.g9-pill-band[data-g9-band=D2]{background:#eff6ff;color:#1d4ed8}.g9-pill-band[data-g9-band=D4]{background:#fdf2f8;color:#be185d}
+:root[data-theme=dark] .g9-pill-band{background:#3a2a14;color:#fdba74}:root[data-theme=dark] .g9-pill-band[data-g9-band=D1]{background:#12301f;color:#6ee7b7}:root[data-theme=dark] .g9-pill-band[data-g9-band=D2]{background:#172a4d;color:#9ec5ff}:root[data-theme=dark] .g9-pill-band[data-g9-band=D4]{background:#3a1830;color:#f9a8d4}
+.g9-why{margin-top:6px}.g9-why p{margin:.2rem 0 .6rem;color:var(--muted)}
+.g9-dgrid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+.g9-dcell{background:var(--soft);border:1px solid var(--line);border-radius:10px;padding:8px 10px;font-size:.85rem;color:var(--muted)}.g9-dcell b{display:block;color:var(--fg);font-size:1rem}
+.g9-c-stem [data-g9-block=stem] p{margin:.1rem 0;font-size:1.12rem;line-height:1.58;font-weight:560;white-space:pre-line}
+.g9-c-callout-info{border-left:4px solid var(--info-line);background:var(--info-bg);padding:10px 14px;border-radius:0 12px 12px 0;color:var(--info-fg)}
+.g9-c-callout-warn{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:12px;padding:10px 14px;color:var(--warn-fg)}
+.g9-c-callout-info h4,.g9-c-callout-warn h4{margin:0 0 .2rem;font-size:1rem}.g9-c-callout-warn h4{color:var(--warn-fg)}
+.g9-c-callout-info ul{margin:.2rem 0;padding-left:1.2rem}.g9-c-callout-info p,.g9-c-callout-warn p{margin:.1rem 0}
+.g9-bridge-link{color:var(--accent);font-weight:700;text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.g9-crux-tag{display:inline-block;margin:0 0 4px;padding:1px 10px;border-radius:999px;background:var(--pill-bg);color:var(--pill-fg);font-size:.85rem;font-weight:800}
+.g9-c-step-cards [data-g9-block=construction] ol>li[data-g9-crux-step]{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.g9-lines{white-space:pre-line}
+.g9-cu-support>h3{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.g9-c-attempt .g9-attempt{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--soft)}
+.g9-answer-options{display:grid;gap:8px;counter-reset:g9opt}
+.g9-answer-option{border:1px solid var(--line);background:var(--card);border-radius:12px;padding:6px 12px}
+.g9-answer-option::before{counter-increment:g9opt;content:"(" counter(g9opt,upper-alpha) ")";font-weight:850;color:var(--accent);order:1;min-width:2.2rem}
+.g9-answer-option input{order:0}.g9-answer-option>span{order:2}
+.g9-c-visual-card,.g9-c-staged-visual{border:1px solid var(--line);border-radius:16px;background:var(--soft);padding:10px 12px 12px}
+.g9-card-head{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:6px}.g9-card-head strong{font-size:.9rem}
+.g9-c-visual-card figure,.g9-c-staged-visual figure{margin:0}
+.g9-c-visual-card figure svg,.g9-c-staged-visual figure svg{display:block;width:100%;height:auto;max-width:100%}
+.g9-c-visual-card figure svg{max-height:min(48vh,440px)}.g9-c-staged-visual figure svg{max-height:min(42vh,360px)}
+.g9-c-ladder .g9-block>h4{margin:.9rem 0 .2rem;font-size:.85rem;color:var(--muted)}
+.g9-rung-map,.g9-c-ladder [data-g9-ladder]{list-style:none;margin:8px 0 0;padding:0;display:grid;gap:8px}
+.g9-rung-map>li{border:1px dashed var(--line);border-radius:12px;padding:9px 13px;color:var(--muted)}
+.g9-c-ladder [data-g9-ladder]>li{border:1px solid var(--line);border-radius:12px;background:var(--card);padding:10px 13px}
+.g9-rung-head{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-weight:800}
+.g9-rung-no{display:inline-grid;place-items:center;min-width:2.3em;height:2.1em;border-radius:8px;background:var(--pill-bg);color:var(--pill-fg);font-size:.85rem}
+.g9-c-ladder details[data-g9-support-reveal]{border:0;padding:0;margin:.5rem 0}
+.g9-c-ladder details[data-g9-support-reveal]>summary{width:100%;justify-content:space-between;font-weight:700}
+.g9-c-ladder [data-g9-support-prompt]{margin:.5rem 0}.g9-c-ladder .g9-ladder>button{margin-top:10px}
+.g9-pdf-link{gap:6px;font-weight:700}.g9-pdf-icon{flex:none;width:24px;height:24px}.g9-pdf-link span{white-space:nowrap}header .g9-pdf-link{color:var(--accent)}.g9-c-link-list .g9-source-pdf{border-radius:12px}
+.g9-c-link-list h4{margin:.9rem 0 .3rem;font-size:.85rem;color:var(--muted)}
+.g9-c-link-list ul{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:.2rem 0;padding:0}
+.g9-c-link-list li{margin:0}.g9-c-link-list a{display:inline-flex;align-items:center;min-height:48px;padding:6px 14px;border:1px solid var(--line);border-radius:999px;background:var(--card);color:var(--fg);text-decoration:none}
+.g9-c-disclosure>details{border:1px solid var(--line);border-radius:14px;background:var(--soft);padding:0;overflow:hidden;margin:0}
+.g9-c-disclosure>details>summary{list-style:none;display:flex;width:100%;justify-content:space-between;border:0;border-radius:0;background:transparent;padding:13px 15px;font-weight:850;min-height:48px}
+.g9-c-disclosure>details>summary::-webkit-details-marker{display:none}
+.g9-c-disclosure>details>summary::after{content:"Show";font-size:.85rem;background:var(--pill-bg);color:var(--pill-fg);padding:4px 10px;border-radius:999px}
+.g9-c-disclosure>details[open]>summary::after{content:"Hide"}.g9-c-disclosure>details[data-locked]>summary::after{content:"After you attempt"}
+.g9-c-disclosure>details[open]>summary{border-bottom:1px solid var(--line);background:var(--card)}
+.g9-c-disclosure [data-g9-payload-slot]{padding:6px 16px 16px}
+.g9-solution-move{display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.g9-solution-move:last-child{border-bottom:0}
+.g9-step-no{font-weight:850;font-size:.9rem;color:var(--pill-fg);background:var(--pill-bg);border-radius:8px;padding:5px 6px;text-align:center;height:max-content}
+.g9-step-body [data-g9-block=solution_inputs]{display:flex;flex-wrap:wrap;gap:.4rem;align-items:baseline;color:var(--muted)}
+.g9-step-body [data-g9-block=solution_inputs] h4{margin:0}
+.g9-step-body [data-g9-block=solution_inputs] ul{display:flex;flex-wrap:wrap;gap:.4rem;list-style:none;margin:0;padding:0}
+.g9-step-body [data-g9-block=solution_inputs] li{border:1px solid var(--line);border-radius:999px;padding:1px 10px;font-size:.85rem}
+.g9-step-body p{margin:.25rem 0}.g9-step-body h4{margin:0;font-size:.85rem;color:var(--muted)}
+.g9-solution-move[data-g9-solution-crux=true]{background:var(--info-bg);border-radius:10px;padding-left:8px;padding-right:8px}
+.g9-c-step-list [data-g9-block=working] ol{list-style:none;padding:0;margin:0;counter-reset:g9s}
+.g9-c-step-list [data-g9-block=working] ol>li{counter-increment:g9s;display:grid;grid-template-columns:42px minmax(0,1fr);gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.g9-c-step-list [data-g9-block=working] ol>li::before{content:counter(g9s);font-weight:850;font-size:.9rem;color:var(--pill-fg);background:var(--pill-bg);border-radius:8px;padding:5px 6px;text-align:center;height:max-content}
+.g9-c-answer-box{background:var(--ok-bg);border:1px solid var(--ok-line);border-radius:12px;padding:10px 14px;color:var(--ok-fg)}
+.g9-c-answer-box p{margin:.15rem 0}.g9-c-answer-box h4{margin:0 0 .2rem;font-size:.85rem}
+.g9-c-check-box{border-left:4px solid var(--ok-line);padding:4px 14px;color:var(--ok-fg)}.g9-c-check-box h4{margin:0;font-size:.85rem}.g9-c-check-box p{margin:.15rem 0}
+.g9-c-tile,.g9-c-recall-card{border:1px solid var(--line);border-radius:14px;background:var(--soft);padding:12px 16px}
+.g9-c-tile h4,.g9-c-recall-card h4{margin:0 0 .3rem}.g9-c-tile ul{margin:.2rem 0;padding-left:1.2rem}
+.g9-c-banner{border-left:5px solid var(--accent);background:var(--info-bg);padding:12px 16px;border-radius:0 14px 14px 0}.g9-c-banner h4{margin:0 0 .2rem;color:var(--accent)}.g9-c-banner p{margin:.1rem 0}
+.g9-unit-head{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.g9-unit-no{display:inline-grid;place-items:center;width:2.3em;height:2.3em;border-radius:50%;background:var(--accent);color:var(--card);font-weight:850}
+.g9-unit-head h3{margin:0;flex:1 1 12rem;font-size:1.12rem;line-height:1.35}.g9-pill-concept{background:var(--info-bg);color:var(--info-fg);border:1px solid var(--info-line)}
+.g9-c-step-cards [data-g9-block=construction] ol{list-style:none;margin:0;padding:0;counter-reset:g9c;display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.g9-c-step-cards [data-g9-block=construction] ol>li{counter-increment:g9c;position:relative;border:1px solid var(--line);border-radius:14px;background:var(--card);padding:12px 14px 12px 54px;min-width:0;overflow-wrap:anywhere}
+.g9-c-step-cards [data-g9-block=construction] ol>li::before{content:counter(g9c);position:absolute;left:14px;top:12px;display:grid;place-items:center;width:1.9em;height:1.9em;border-radius:50%;background:var(--pill-bg);color:var(--pill-fg);font-weight:850;font-size:.9rem}
+.g9-c-step-cards li em{display:inline-block;min-width:5.6rem;color:var(--muted);font-style:normal;font-weight:700}
+.g9-c-step-cards li br{display:block;content:"";margin-top:.3rem}
+.g9-c-equation-card,.g9-c-worked-card{border:1px solid var(--line);border-radius:14px;background:var(--soft);padding:10px 14px}
+.g9-c-worked-card{border-left:4px solid var(--accent)}.g9-c-worked-card [data-g9-block=worked_anchor]{border-left:0;padding-left:0}
+.g9-c-trap-card{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:14px;padding:10px 14px;color:var(--warn-fg)}
+.g9-c-trap-card [data-g9-block]{border-left:0;padding-left:0}.g9-c-trap-card h4{margin:.5rem 0 .1rem;font-size:.85rem}
+.g9-c-trap-card ul{margin:.1rem 0;padding-left:1.2rem}
+.g9-c-triad{border:1px solid var(--line);border-radius:14px;background:var(--soft);padding:10px 14px}
+.g9-c-triad h4{margin:0 0 .4rem;font-size:.85rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.g9-triad{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.g9-triad>li{display:grid;gap:2px;border-left:4px solid var(--line);padding:2px 0 2px 10px}
+.g9-triad>li[data-g9-triad-role=CHECK]{border-color:var(--info-line)}.g9-triad>li[data-g9-triad-role=APPLY]{border-color:var(--ok-line)}.g9-triad>li[data-g9-triad-role=CONNECT]{border-color:var(--pill-fg)}
+.g9-triad-head{font-size:.85rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.g9-c-chips ul,.g9-c-chips ol{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:.3rem 0;padding:0}
+.g9-c-chips li{margin:0}
+.g9-c-chips a{border:1px solid var(--line);border-radius:999px;background:var(--card);padding:6px 14px;min-height:48px;display:inline-flex;align-items:center;text-decoration:none;color:var(--fg)}
+/* 12.7-inch tablet: the identity block is a title row and a chip row, so the first screen shows the work and not the labels */
+article[data-g9-role=CORE2]>.slot-identity,article[data-g9-role=CORE1A]>.slot-identity{display:flex;flex-wrap:wrap;align-items:center;gap:4px 16px;padding:0 0 8px;margin-bottom:12px}
+article[data-g9-role=CORE2]>.slot-identity>.g9-component,article[data-g9-role=CORE1A]>.slot-identity>.g9-component{display:contents}
+article[data-g9-role=CORE2]>.slot-identity [data-g9-block=source_identity]{order:1;flex:1 1 16rem;display:flex;align-items:baseline;flex-wrap:wrap;gap:0 14px;min-width:0}
+article[data-g9-role=CORE2]>.slot-identity [data-g9-block=source_identity] h2,article[data-g9-role=CORE1A]>.slot-identity h2{margin:0}
+article[data-g9-role=CORE2]>.slot-identity [data-g9-block=source_identity] .g9-prov{margin:0}
+article[data-g9-role=CORE2]>.slot-identity .g9-why-toggle{order:2;margin:0;padding:2px 0;min-height:var(--g9-touch-min)}
+article[data-g9-role=CORE2]>.slot-identity [data-g9-meta-strip],article[data-g9-role=CORE1A]>.slot-identity [data-g9-meta-strip]{order:3;flex:1 0 100%;margin:0;gap:6px}
+article[data-g9-role=CORE2]>.slot-identity .g9-why{order:4;flex:1 0 100%}
+article[data-g9-role=CORE1A]>.slot-identity h2{order:1;flex:1 1 auto}
+article[data-g9-role=CORE1A]>.slot-identity [data-g9-block=section_route]{order:4;flex:1 0 100%;display:flex;align-items:center;gap:6px 12px;flex-wrap:wrap}
+article[data-g9-role=CORE1A]>.slot-identity [data-g9-block=section_route] h4{margin:0;white-space:nowrap}
+article[data-g9-role=CORE1A]>.slot-identity [data-g9-section-route] ol{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
+article[data-g9-role=CORE1A]>.slot-identity [data-g9-section-route] li{margin:0}
+article[data-g9-role=CORE1A]>.slot-identity [data-g9-section-route] a{display:inline-block;width:auto;max-width:24rem;padding:4px 14px;border-radius:999px;line-height:38px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+article[data-g9-role=CORE2]>.slot-identity [data-g9-meta-item],article[data-g9-role=CORE1A]>.slot-identity [data-g9-meta-item]{padding:2px 10px;line-height:1.35}
+@media (min-width:980px){article[data-g9-role="CORE2"] .g9-split{display:grid;grid-template-columns:minmax(0,42fr) minmax(0,58fr);gap:22px;align-items:start}article[data-g9-role="CORE2"] .g9-split-primary-only,article[data-g9-role="CORE2"] .g9-split-support-only{grid-template-columns:minmax(0,1fr)}}@media (max-width:979px){article[data-g9-role="CORE2"] .g9-split{display:flex;flex-direction:column}article[data-g9-role="CORE2"] .g9-split .g9-col,article[data-g9-role="CORE2"] .g9-split .blueprint-slot,article[data-g9-role="CORE2"] .g9-split .g9-cu,article[data-g9-role="CORE2"] .g9-split .g9-cu-support{display:contents}article[data-g9-role="CORE2"] [data-g9-component="IDENTITY"]{order:10}article[data-g9-role="CORE2"] [data-g9-component="SOURCE_PDF"]{order:15}article[data-g9-role="CORE2"] [data-g9-component="DIFFICULTY_WHY"]{order:20}article[data-g9-role="CORE2"] [data-g9-component="STEM"]{order:30}article[data-g9-role="CORE2"] [data-g9-component="CONDITIONS"]{order:50}article[data-g9-role="CORE2"] [data-g9-component="TRAP"]{order:60}article[data-g9-role="CORE2"] [data-g9-component="ATTEMPT"]{order:70}article[data-g9-role="CORE2"] [data-g9-component="REPRESENTATION"]{order:40}article[data-g9-role="CORE2"] [data-g9-component="HINT_LADDER"]{order:80}article[data-g9-role="CORE2"] [data-g9-component="CONCEPT_NAV"]{order:90}article[data-g9-role="CORE2"] [data-g9-component="SOLUTION"]{order:100}}@media print{article[data-g9-role="CORE2"] .g9-split{display:grid;grid-template-columns:minmax(0,42fr) minmax(0,58fr);gap:12px}}@media (min-width:1100px){article[data-g9-role="CORE1A"] .g9-split{display:grid;grid-template-columns:minmax(0,60fr) minmax(0,40fr);gap:22px;align-items:start}article[data-g9-role="CORE1A"] .g9-split-primary-only,article[data-g9-role="CORE1A"] .g9-split-support-only{grid-template-columns:minmax(0,1fr)}article[data-g9-role="CORE1A"] .g9-split:not(.g9-split-support-only)>.g9-col-support{position:sticky;top:80px;max-height:calc(100vh - 96px);overflow-y:auto;overscroll-behavior:contain}}@media (max-width:1099px){article[data-g9-role="CORE1A"] .g9-split{display:flex;flex-direction:column}article[data-g9-role="CORE1A"] .g9-split .g9-col,article[data-g9-role="CORE1A"] .g9-split .blueprint-slot,article[data-g9-role="CORE1A"] .g9-split .g9-cu,article[data-g9-role="CORE1A"] .g9-split .g9-cu-support{display:contents}article[data-g9-role="CORE1A"] [data-g9-component="CONCEPT_HEADER"]{order:10}article[data-g9-role="CORE1A"] [data-g9-component="SECTION_ROUTE"]{order:20}article[data-g9-role="CORE1A"] [data-g9-component="UNIT_HEADER"]{order:30}article[data-g9-role="CORE1A"] [data-g9-component="KEY_STEP"]{order:40}article[data-g9-role="CORE1A"] [data-g9-component="MODEL_CONTRACT"]{order:50}article[data-g9-role="CORE1A"] [data-g9-component="QUESTION_BRIDGE"]{order:60}article[data-g9-role="CORE1A"] [data-g9-component="CONSTRUCTION_STEPS"]{order:80}article[data-g9-role="CORE1A"] [data-g9-component="EQUATIONS"]{order:90}article[data-g9-role="CORE1A"] [data-g9-component="WORKED_EXAMPLE"]{order:100}article[data-g9-role="CORE1A"] [data-g9-component="STAGED_VISUAL"]{order:70}article[data-g9-role="CORE1A"] [data-g9-component="TRAP_REPAIR"]{order:110}article[data-g9-role="CORE1A"] [data-g9-component="QUICK_CHECK"]{order:120}article[data-g9-role="CORE1A"] [data-g9-component="EXIT_RECALL"]{order:130}article[data-g9-role="CORE1A"] [data-g9-component="PRACTICE_LINKS"]{order:140}}@media print{article[data-g9-role="CORE1A"] .g9-split{display:grid;grid-template-columns:minmax(0,60fr) minmax(0,40fr);gap:12px}}@media (min-width:1100px){article[data-g9-role="CORE1B"] .g9-split{display:grid;grid-template-columns:minmax(0,68fr) minmax(0,32fr);gap:22px;align-items:start}article[data-g9-role="CORE1B"] .g9-split-primary-only,article[data-g9-role="CORE1B"] .g9-split-support-only{grid-template-columns:minmax(0,1fr)}}@media print{article[data-g9-role="CORE1B"] .g9-split{display:grid;grid-template-columns:minmax(0,68fr) minmax(0,32fr);gap:12px}}@media (min-width:1100px){article[data-g9-role="CORE2A"] .g9-split{display:grid;grid-template-columns:minmax(0,68fr) minmax(0,32fr);gap:22px;align-items:start}article[data-g9-role="CORE2A"] .g9-split-primary-only,article[data-g9-role="CORE2A"] .g9-split-support-only{grid-template-columns:minmax(0,1fr)}}@media print{article[data-g9-role="CORE2A"] .g9-split{display:grid;grid-template-columns:minmax(0,68fr) minmax(0,32fr);gap:12px}}@media (min-width:1100px){article[data-g9-role="CORE2B"] .g9-split{display:grid;grid-template-columns:minmax(0,68fr) minmax(0,32fr);gap:22px;align-items:start}article[data-g9-role="CORE2B"] .g9-split-primary-only,article[data-g9-role="CORE2B"] .g9-split-support-only{grid-template-columns:minmax(0,1fr)}}@media print{article[data-g9-role="CORE2B"] .g9-split{display:grid;grid-template-columns:minmax(0,68fr) minmax(0,32fr);gap:12px}}</style></head><body data-core="CORE1A" data-blueprint-ref="BP-CORE1A-CONSTRUCTION@1.4.0"><header data-g9-shell-header><a data-g9-home href="../public/index.html">Home</a><button type="button" onclick="history.back()">Back</button><a href="../public/question-bank/index.html">Question bank</a><button type="button" data-g9-action="search">Search</button><button type="button" data-g9-action="display">Display</button><div data-g9-search-panel hidden><input data-g9-search-input type="search" aria-label="Search this page"></div><div data-g9-display-panel hidden><button type="button" data-g9-font="dec">A−</button><button type="button" data-g9-font="reset">A</button><button type="button" data-g9-font="inc">A+</button><button type="button" data-g9-theme="light">Light</button><button type="button" data-g9-theme="dark">Dark</button><button type="button" data-g9-zoom="dec">Zoom −</button><button type="button" data-g9-zoom="reset">100%</button><button type="button" data-g9-zoom="inc">Zoom +</button></div></header><nav data-g9-breadcrumb aria-label="Breadcrumb"><a href="../public/index.html">Home</a><a href="#g9-role-CORE1A">Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry</a><a href="#g9-role-CORE1A">CORE1A</a></nav><noscript>Answers open after you attempt; this page needs JavaScript.</noscript><main><section id="g9-role-CORE1A" data-g9-role-section="CORE1A"><h1>Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry: Construction</h1><section class="g9-core1a-book" data-g9-bucket-orientation data-g9-bucket-ref="BUCKET-CHEM-MOLE"><p class="g9-prov">Concept Book</p><h2>Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry</h2><div class="g9-bucket-orientation-grid"><div><div class="g9-block" data-g9-block="learning_promise"><h4>Learning promise</h4><p>Governed Core1A declarative teaching converted from PR #376.</p></div><nav class="g9-block" data-g9-block="concept_route" data-g9-concept-route aria-label="Concept Book route"><h4>Concept route</h4><ol><li data-g9-concept-ref="MIC-CHEM-MOLE-FOUNDATIONS-MOLE"><a href="#g9-CORE1A--MIC-CHEM-MOLE-FOUNDATIONS-MOLE">Combination laws, mole, Avogadro constant and molar mass</a><ol><li><a href="#g9-CORE1A--CU-CHEM-MOLE-FOUNDATIONS-MOLE">Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro&#x27;s constant and molar mass.</a></li></ol></li><li data-g9-concept-ref="MIC-CHEM-MOLE-FORMULA-STOICH"><a href="#g9-CORE1A--MIC-CHEM-MOLE-FORMULA-STOICH">Empirical formula, stoichiometry and limiting reagent</a><ol><li><a href="#g9-CORE1A--CU-CHEM-MOLE-FORMULA-STOICH">Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.</a></li></ol></li><li data-g9-concept-ref="MIC-CHEM-MOLE-CONCENTRATION"><a href="#g9-CORE1A--MIC-CHEM-MOLE-CONCENTRATION">Molarity, molality and mole fraction</a><ol><li><a href="#g9-CORE1A--CU-CHEM-MOLE-CONCENTRATION">Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged.</a></li></ol></li></ol></nav></div><aside><div class="g9-block" data-g9-block="model_contract"><h4>Model contract</h4><ul><li>Name the counted entity—atoms, molecules, ions or formula units—whenever using the mole.</li><li>Carry units through mass–amount–particle conversions.</li><li>For concentration, distinguish solution-volume, solvent-mass and mole-ratio denominators and state whether sample composition is unchanged.</li></ul></div><div class="g9-block" data-g9-block="scope_boundary"><h4>Outside this book</h4><ul><li>Unresolved NCERT question identities and retained-card denominator claims.</li><li>Any claim of prescribed Grade-9 curriculum authority.</li><li>Core2 source-question admission.</li></ul></div></aside></div></section><article id="g9-CORE1A--MIC-CHEM-MOLE-FOUNDATIONS-MOLE" data-g9-unit="MIC-CHEM-MOLE-FOUNDATIONS-MOLE" data-g9-kind="CONCEPT" data-g9-role="CORE1A" data-g9-search-text="Chemistry Some Basic Concepts / Mole Concept / Stoichiometry Combination laws, mole, Avogadro constant and molar mass Medium concept Combination laws, mole, Avogadro constant and molar mass" class="g9-stage-support"><section class="blueprint-slot slot-identity" data-blueprint-slot="identity" data-required="true"><div class="g9-component g9-c-concept-header" data-g9-component="CONCEPT_HEADER" data-g9-level="REQUIRED" data-g9-presentation="CONCEPT_HEADER"><h2>Combination laws, mole, Avogadro constant and molar mass</h2><div data-g9-meta-strip data-g9-meta-role="CORE1A" data-g9-meta-record="MIC-CHEM-MOLE-FOUNDATIONS-MOLE" data-g9-search-safe><span data-g9-meta-item data-g9-meta-kind="subject" data-g9-meta-ref="Chemistry" data-g9-meta-value="Chemistry"><strong>Subject:</strong> <span data-g9-meta-label>Chemistry</span></span><span data-g9-meta-item data-g9-meta-kind="topic" data-g9-meta-ref="BUCKET-CHEM-MOLE" data-g9-meta-value="Some Basic Concepts / Mole Concept / Stoichiometry"><strong>Topic:</strong> <span data-g9-meta-label>Some Basic Concepts / Mole Concept / Stoichiometry</span></span><span data-g9-meta-item data-g9-meta-kind="concept" data-g9-meta-ref="MIC-CHEM-MOLE-FOUNDATIONS-MOLE" data-g9-meta-value="Combination laws, mole, Avogadro constant and molar mass"><strong>Concept:</strong> <span data-g9-meta-label>Combination laws, mole, Avogadro constant and molar mass</span></span><span data-g9-meta-item data-g9-meta-kind="concept-difficulty" data-g9-meta-ref="MIC-CHEM-MOLE-FOUNDATIONS-MOLE" data-g9-meta-value="MEDIUM"><strong>Concept difficulty:</strong> <span data-g9-meta-label>Medium concept</span></span></div></div></section><div class="g9-split"><div class="g9-col g9-col-primary"><section class="blueprint-slot slot-construction" data-blueprint-slot="construction" data-required="true"><section id="g9-CORE1A--CU-CHEM-MOLE-FOUNDATIONS-MOLE" class="g9-cu" data-g9-cu="CU-CHEM-MOLE-FOUNDATIONS-MOLE"><div class="g9-component g9-c-unit-header" data-g9-component="UNIT_HEADER" data-g9-level="REQUIRED" data-g9-presentation="UNIT_HEADER" data-g9-component-unit="CU-CHEM-MOLE-FOUNDATIONS-MOLE"><div class="g9-unit-head"><span class="g9-unit-no" aria-hidden="true">1</span><h3>Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro&#x27;s constant and molar mass.</h3><span class="g9-pill g9-pill-concept">Medium concept</span></div><nav class="g9-cu-nav" data-g9-unit-navigation aria-label="Concept Book section navigation"><span data-g9-route-position>Section 1 of 3</span><span class="g9-cu-nav-links"><a data-g9-next-section href="#g9-CORE1A--CU-CHEM-MOLE-FORMULA-STOICH" aria-label="Next section: Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.">Next →</a></span></nav></div><div class="g9-component g9-c-banner" data-g9-component="KEY_STEP" data-g9-level="REQUIRED" data-g9-presentation="BANNER"><div class="g9-block" data-g9-block="inferential_jump"><h4>The key step</h4><p>Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro&#x27;s constant and molar mass.</p></div></div><div class="g9-component g9-c-tile" data-g9-component="MODEL_CONTRACT" data-g9-level="EXPECTED" data-g9-presentation="TILE"><div class="g9-block" data-g9-block="entry_assumptions"><h4>You need</h4><ul><li>Can distinguish an empirical mass observation from a particle-model explanation and can perform unit-carrying mass-to-amount conversions.</li></ul></div></div><div class="g9-component g9-c-step-cards" data-g9-component="CONSTRUCTION_STEPS" data-g9-level="REQUIRED" data-g9-presentation="STEP_CARDS" data-g9-component-items="3" data-g9-component-unit="CU-CHEM-MOLE-FOUNDATIONS-MOLE"><div class="g9-block" data-g9-block="construction"><ol><li data-g9-step="MOLE-FOUNDATIONS-MOLE-T1"><strong>Separate an empirical combination law from a particle model used to explain it.</strong><br><em>Why valid:</em> A measured mass relation and an atomic interpretation are different kinds of claim.<br><em>Result:</em> The model can explain the regularity without becoming identical to the observation.</li><li data-g9-step="MOLE-FOUNDATIONS-MOLE-T2"><strong>Name the counted entity and distinguish moles from grams.</strong><br><em>Why valid:</em> A mole is an amount of specified entities, not one universal mass.<br><em>Result:</em> The mass of one mole depends on the substance&#x27;s molar mass.</li><li data-g9-step="MOLE-FOUNDATIONS-MOLE-T3"><strong>Use the path mass ↔ moles ↔ entities with units visible.</strong><br><em>Why valid:</em> Molar mass connects grams and moles; Avogadro&#x27;s constant connects moles and entity count.<br><em>Result:</em> Unit cancellation checks the conversion direction.</li></ol></div></div><div class="g9-component g9-c-equation-card" data-g9-component="EQUATIONS" data-g9-level="EXPECTED" data-g9-presentation="EQUATION_CARD" data-g9-component-unit="CU-CHEM-MOLE-FOUNDATIONS-MOLE"><div class="g9-block" data-g9-block="equation_matrix"><h4>Equations and validity</h4><div class="g9-table-scroll" data-g9-equation-matrix><table><thead><tr><th scope="col">Equation</th><th scope="col">What it tells you</th><th scope="col">When you can use it</th></tr></thead><tbody><tr data-g9-relation-ref="REL-CHEM-MOLE-FOUNDATIONS-MOLE"><td><p class="g9-expr">n = m/M; N = nNA</p></td><td><p>Molar mass converts measurable mass to amount of substance, and Avogadro constant converts that amount to a count of explicitly named entities.</p></td><td><ul><li>Name the substance and the entity being counted.</li><li>Use a molar mass that corresponds to that same chemical entity/formula unit.</li></ul></td></tr></tbody></table></div></div></div><div class="g9-component g9-c-worked-card" data-g9-component="WORKED_EXAMPLE" data-g9-level="REQUIRED" data-g9-presentation="WORKED_CARD" data-g9-component-unit="CU-CHEM-MOLE-FOUNDATIONS-MOLE"><div class="g9-block" data-g9-block="worked_anchor"><h4>Watch one</h4><p>Why must a particle-count answer specify molecules, atoms, ions or formula units?</p><ol><li>Avogadro&#x27;s constant maps moles to a number of entities.</li><li>The substance and chemical representation determine what those entities are.</li><li>For an ionic solid, formula units are not the same entity as individual ions.</li></ol><div class="g9-block" data-g9-block="worked_result"><h4>Result</h4><p>Because the mole counts specified entities, and different entity choices correspond to different physical counts.</p></div><div class="g9-block" data-g9-block="worked_check"><h4>Check</h4><p>Write the entity name immediately after the numerical particle count.</p></div></div></div></section></section></div><div class="g9-col g9-col-support"><section class="blueprint-slot slot-representation" data-blueprint-slot="representation" data-required="true"><div class="g9-component g9-c-staged-visual" data-g9-component="STAGED_VISUAL" data-g9-level="REQUIRED" data-g9-presentation="STAGED_VISUAL" data-g9-component-items="3" data-g9-component-unit="CU-CHEM-MOLE-FOUNDATIONS-MOLE"><figure data-g9-figure data-g9-fig="CU-CHEM-MOLE-FOUNDATIONS-MOLE-REP-CHEM-MOLE-FOUNDATIONS-MOLE" data-g9-stage="TEACHING" data-g9-representation="REP-CHEM-MOLE-FOUNDATIONS-MOLE" data-g9-kind="SYMBOLIC_EQUATION" data-reveal-stages="3" data-g9-stages-total="3" data-g9-stages="MOLE-FM-S1 MOLE-FM-S2 MOLE-FM-S3" data-g9-stage-sequence="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" role="img" aria-label="Mass to moles to entities">
+<title>Mass to moles to entities</title><desc>A staged bridge from sample mass to amount of substance to explicitly named entity count.</desc>
+<rect x="1" y="1" width="438" height="298" rx="18" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<g data-g9-stage-id="MOLE-FM-S1" id="g9fig-CORE1A-CU-CHEM-MOLE-FOUNDATIONS-MOLE-REP-CHEM-MOLE-FOUNDATIONS-MOLE-1--stage-1"><text x="24" y="32" text-anchor="start" font-family="sans-serif" font-size="16" font-weight="700" fill="#0f172a">1  Mass bridge</text><rect x="24" y="46" width="392" height="48" rx="8" fill="#e0f2fe" stroke="#64748b" stroke-width="2"/><text x="220" y="76" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">18.0 g H₂O ÷ 18.0 g mol⁻¹ = 1.00 mol</text></g>
+<g data-g9-stage-id="MOLE-FM-S2" id="g9fig-CORE1A-CU-CHEM-MOLE-FOUNDATIONS-MOLE-REP-CHEM-MOLE-FOUNDATIONS-MOLE-1--stage-2"><text x="24" y="126" text-anchor="start" font-family="sans-serif" font-size="16" font-weight="700" fill="#0f172a">2  Entity bridge</text><rect x="24" y="140" width="392" height="48" rx="8" fill="#dcfce7" stroke="#64748b" stroke-width="2"/><text x="220" y="170" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">1.00 mol H₂O × NA = NA molecules</text></g>
+<g data-g9-stage-id="MOLE-FM-S3" id="g9fig-CORE1A-CU-CHEM-MOLE-FOUNDATIONS-MOLE-REP-CHEM-MOLE-FOUNDATIONS-MOLE-1--stage-3"><text x="24" y="222" text-anchor="start" font-family="sans-serif" font-size="16" font-weight="700" fill="#0f172a">3  Name the counted entity</text><text x="220" y="254" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">molecules ≠ atoms ≠ ions ≠ formula units</text><text x="220" y="282" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">the entity label is part of the answer</text></g></svg>
+<div class="g9-stage-controls"><div class="g9-stage-chips" role="group" aria-label="Stages"><button type="button" class="g9-stage-chip" data-g9-stage-goto="0" data-g9-stage-desc="Use 18.0 g H₂O → 1.00 mol H₂O.">1: Mass to moles</button><button type="button" class="g9-stage-chip" data-g9-stage-goto="1" data-g9-stage-desc="Add 1.00 mol H₂O → NA water molecules.">2: Moles to entities</button><button type="button" class="g9-stage-chip" data-g9-stage-goto="2" data-g9-stage-desc="Separate molecules, atoms, ions and formula units in the count.">3: Name the entity</button></div><p class="g9-stage-desc" data-g9-stage-desc-text></p><div class="g9-stage-stepper"><button type="button" data-g9-stage-step="prev">Previous stage</button><span data-g9-stage-label></span><button type="button" data-g9-stage-step="next">Next stage</button></div></div><figcaption data-g9-block="representation_bridge" data-g9-caption="purpose">For Combination laws, mole, Avogadro constant and molar mass, make the governing symbolic relationship visible beside its verbal meaning and notation limits.</figcaption></figure></div></section><section class="blueprint-slot slot-repair_closure" data-blueprint-slot="repair_closure" data-required="true"><section class="g9-cu-support" data-g9-support-for="CU-CHEM-MOLE-FOUNDATIONS-MOLE"><h3>Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro&#x27;s constant and molar mass.</h3><div class="g9-component g9-c-trap-card" data-g9-component="TRAP_REPAIR" data-g9-level="REQUIRED" data-g9-presentation="TRAP_CARD" data-g9-component-items="1" data-g9-component-unit="CU-CHEM-MOLE-FOUNDATIONS-MOLE"><div class="g9-block" data-g9-block="wrong_path"><h4>A tempting wrong path</h4><ul><li>One mole of every substance has the same mass, and a mole count is meaningful without naming the entity.</li></ul></div><div class="g9-block" data-g9-block="diagnose"><h4>Diagnose</h4><ul><li>Do one mole of helium atoms and one mole of water molecules have the same entity count, the same mass, or both?</li></ul></div><div class="g9-block" data-g9-block="repair"><h4>Repair</h4><ul><li>Keep amount and mass separate, and attach an entity label to every particle-count statement.</li></ul></div></div><div class="g9-component g9-c-triad" data-g9-component="QUICK_CHECK" data-g9-level="REQUIRED" data-g9-presentation="TRIAD" data-g9-component-items="3" data-g9-component-unit="CU-CHEM-MOLE-FOUNDATIONS-MOLE"><div class="g9-block" data-g9-block="independent_check"><h4>1-2-3 quick check</h4><ol class="g9-triad"><li data-g9-triad-role="CHECK"><span class="g9-triad-head">1 · Check</span><span class="g9-triad-text">What is the same for one mole of any entity, and what generally differs between substances?</span></li><li data-g9-triad-role="APPLY"><span class="g9-triad-head">2 · Apply</span><span class="g9-triad-text">Convert 0.50 mol H₂O to a molecule count in terms of NA, naming the counted entity.</span></li><li data-g9-triad-role="CONNECT"><span class="g9-triad-head">3 · Connect</span><span class="g9-triad-text">Use moles—not raw masses—as the quantities compared by stoichiometric coefficients.</span></li></ol></div></div></section></section></div></div><div class="g9-split g9-split-support-only"><div class="g9-col g9-col-support"><section class="blueprint-slot slot-repair_closure" data-blueprint-slot="repair_closure" data-required="true"><div class="g9-component g9-c-recall-card" data-g9-component="EXIT_RECALL" data-g9-level="REQUIRED" data-g9-presentation="RECALL_CARD"><div class="g9-block" data-g9-block="exit_task"><h4>Try it with less support</h4><p>Why is &#x27;0.5 mol&#x27; incomplete as a particle-count statement until the substance and entity are named?</p></div><div class="g9-attempt" data-g9-attempt-box data-g9-response-type="free_response"><label>Your answer<textarea data-g9-attempt rows="4"></textarea></label><label class="g9-paper"><input data-g9-paper type="checkbox">I worked this on paper</label><button type="button" data-g9-commit>I have attempted this</button></div><details data-g9-reveal data-requires-attempt data-g9-payload-ref="CORE1A-MIC-CHEM-MOLE-FOUNDATIONS-MOLE-exit"><summary>Model answer</summary><div data-g9-payload-slot></div></details><template data-g9-payload="CORE1A-MIC-CHEM-MOLE-FOUNDATIONS-MOLE-exit"><div class="g9-block" data-g9-block="exit_answer"><p>Because an amount alone does not identify which chemical entities are being counted.</p><ol><li>The numerical amount is generic.</li><li>The entity identity supplies the chemical meaning of the count.</li></ol></div></template></div></section></div></div></article><article id="g9-CORE1A--MIC-CHEM-MOLE-FORMULA-STOICH" data-g9-unit="MIC-CHEM-MOLE-FORMULA-STOICH" data-g9-kind="CONCEPT" data-g9-role="CORE1A" data-g9-search-text="Chemistry Some Basic Concepts / Mole Concept / Stoichiometry Empirical formula, stoichiometry and limiting reagent Hard concept Empirical formula, stoichiometry and limiting reagent" class="g9-stage-support"><section class="blueprint-slot slot-identity" data-blueprint-slot="identity" data-required="true"><div class="g9-component g9-c-concept-header" data-g9-component="CONCEPT_HEADER" data-g9-level="REQUIRED" data-g9-presentation="CONCEPT_HEADER"><h2>Empirical formula, stoichiometry and limiting reagent</h2><div data-g9-meta-strip data-g9-meta-role="CORE1A" data-g9-meta-record="MIC-CHEM-MOLE-FORMULA-STOICH" data-g9-search-safe><span data-g9-meta-item data-g9-meta-kind="subject" data-g9-meta-ref="Chemistry" data-g9-meta-value="Chemistry"><strong>Subject:</strong> <span data-g9-meta-label>Chemistry</span></span><span data-g9-meta-item data-g9-meta-kind="topic" data-g9-meta-ref="BUCKET-CHEM-MOLE" data-g9-meta-value="Some Basic Concepts / Mole Concept / Stoichiometry"><strong>Topic:</strong> <span data-g9-meta-label>Some Basic Concepts / Mole Concept / Stoichiometry</span></span><span data-g9-meta-item data-g9-meta-kind="concept" data-g9-meta-ref="MIC-CHEM-MOLE-FORMULA-STOICH" data-g9-meta-value="Empirical formula, stoichiometry and limiting reagent"><strong>Concept:</strong> <span data-g9-meta-label>Empirical formula, stoichiometry and limiting reagent</span></span><span data-g9-meta-item data-g9-meta-kind="concept-difficulty" data-g9-meta-ref="MIC-CHEM-MOLE-FORMULA-STOICH" data-g9-meta-value="HARD"><strong>Concept difficulty:</strong> <span data-g9-meta-label>Hard concept</span></span></div></div></section><div class="g9-split"><div class="g9-col g9-col-primary"><section class="blueprint-slot slot-construction" data-blueprint-slot="construction" data-required="true"><section id="g9-CORE1A--CU-CHEM-MOLE-FORMULA-STOICH" class="g9-cu" data-g9-cu="CU-CHEM-MOLE-FORMULA-STOICH"><div class="g9-component g9-c-unit-header" data-g9-component="UNIT_HEADER" data-g9-level="REQUIRED" data-g9-presentation="UNIT_HEADER" data-g9-component-unit="CU-CHEM-MOLE-FORMULA-STOICH"><div class="g9-unit-head"><span class="g9-unit-no" aria-hidden="true">1</span><h3>Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.</h3><span class="g9-pill g9-pill-concept">Hard concept</span></div><nav class="g9-cu-nav" data-g9-unit-navigation aria-label="Concept Book section navigation"><span data-g9-route-position>Section 2 of 3</span><span class="g9-cu-nav-links"><a data-g9-prev-section href="#g9-CORE1A--CU-CHEM-MOLE-FOUNDATIONS-MOLE" aria-label="Previous section: Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro&#x27;s constant and molar mass.">← Previous</a><a data-g9-next-section href="#g9-CORE1A--CU-CHEM-MOLE-CONCENTRATION" aria-label="Next section: Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged.">Next →</a></span></nav></div><div class="g9-component g9-c-banner" data-g9-component="KEY_STEP" data-g9-level="REQUIRED" data-g9-presentation="BANNER"><div class="g9-block" data-g9-block="inferential_jump"><h4>The key step</h4><p>Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.</p></div></div><div class="g9-component g9-c-tile" data-g9-component="MODEL_CONTRACT" data-g9-level="EXPECTED" data-g9-presentation="TILE"><div class="g9-block" data-g9-block="entry_assumptions"><h4>You need</h4><ul><li>Can divide mass by molar or atomic mass to obtain amount and can read balanced-equation coefficients as mole ratios.</li></ul></div></div><div class="g9-component g9-c-step-cards" data-g9-component="CONSTRUCTION_STEPS" data-g9-level="REQUIRED" data-g9-presentation="STEP_CARDS" data-g9-component-items="4" data-g9-component-unit="CU-CHEM-MOLE-FORMULA-STOICH"><div class="g9-block" data-g9-block="construction"><ol><li data-g9-step="MOLE-FORMULA-STOICH-T1"><strong>On a 100 g basis for 40.0% C, 6.7% H and 53.3% O, convert each mass to amount before comparing the elements.</strong><br><em>Why valid:</em> Formula subscripts follow relative atom amounts, not mass percentages.<br><em>Result:</em> Approximately 3.33 mol C : 6.65 mol H : 3.33 mol O.</li><li data-g9-step="MOLE-FORMULA-STOICH-T2"><strong>Divide by the smallest amount and scale only if needed to obtain the smallest reliable whole-number ratio.</strong><br><em>Why valid:</em> A common scaling preserves the relative particle counts represented by the empirical formula.<br><em>Result:</em> The ratio is approximately 1 : 2 : 1, giving empirical formula CH₂O.</li><li data-g9-step="MOLE-FORMULA-STOICH-T3"><strong>For 2H₂ + O₂ → 2H₂O with 3.0 mol H₂ and 2.0 mol O₂, place the initial mole inventories beside the balanced coefficients.</strong><br><em>Why valid:</em> Stoichiometric coefficients compare amounts of substance, so the inventories must be expressed in moles.<br><em>Result:</em> H₂ supports 3.0/2 = 1.5 reaction extents; O₂ supports 2.0/1 = 2.0.</li><li data-g9-step="MOLE-FORMULA-STOICH-T4"><strong>Choose the smaller supported extent and use it to compute consumption, product and leftover amounts.</strong><br><em>Why valid:</em> The first exhausted reactant fixes the maximum complete-reaction extent under the model.<br><em>Result:</em> H₂ is limiting; 3.0 mol H₂ and 1.5 mol O₂ are consumed, 3.0 mol H₂O forms, and 0.5 mol O₂ remains.</li></ol></div></div><div class="g9-component g9-c-equation-card" data-g9-component="EQUATIONS" data-g9-level="EXPECTED" data-g9-presentation="EQUATION_CARD" data-g9-component-unit="CU-CHEM-MOLE-FORMULA-STOICH"><div class="g9-block" data-g9-block="equation_matrix"><h4>Equations and validity</h4><div class="g9-table-scroll" data-g9-equation-matrix><table><thead><tr><th scope="col">Equation</th><th scope="col">What it tells you</th><th scope="col">When you can use it</th></tr></thead><tbody><tr data-g9-relation-ref="REL-CHEM-MOLE-FORMULA-STOICH"><td><p class="g9-expr">supported extent ξi = ni/νi; limiting extent = min(ni/νi)</p></td><td><p>A balanced equation compares amounts through stoichiometric coefficients; the reactant supporting the smallest reaction extent is limiting in the complete-reaction model.</p></td><td><ul><li>Convert each starting inventory to moles first.</li><li>Use a balanced equation and the complete-reaction stoichiometric model.</li></ul></td></tr></tbody></table></div></div></div><div class="g9-component g9-c-worked-card" data-g9-component="WORKED_EXAMPLE" data-g9-level="REQUIRED" data-g9-presentation="WORKED_CARD" data-g9-component-unit="CU-CHEM-MOLE-FORMULA-STOICH"><div class="g9-block" data-g9-block="worked_anchor"><h4>Watch one</h4><p>For 2H₂ + O₂ → 2H₂O, a mixture starts with 3.0 mol H₂ and 2.0 mol O₂. Use ni/νi to identify the limiting reactant, then determine H₂O formed and excess O₂ remaining.</p><ol><li>For H₂, ni/νi = 3.0/2 = 1.5.</li><li>For O₂, ni/νi = 2.0/1 = 2.0.</li><li>The smaller supported extent, 1.5, makes H₂ limiting.</li><li>At extent 1.5, product H₂O = 2 × 1.5 = 3.0 mol and O₂ consumed = 1 × 1.5 = 1.5 mol, leaving 0.5 mol O₂.</li></ol><div class="g9-block" data-g9-block="worked_result"><h4>Result</h4><p>H₂ is limiting; 3.0 mol H₂O forms and 0.5 mol O₂ remains.</p></div><div class="g9-block" data-g9-block="worked_check"><h4>Check</h4><p>Confirm that the calculated consumption of neither reactant exceeds its initial inventory.</p></div></div></div></section></section></div><div class="g9-col g9-col-support"><section class="blueprint-slot slot-representation" data-blueprint-slot="representation" data-required="true"><div class="g9-component g9-c-staged-visual" data-g9-component="STAGED_VISUAL" data-g9-level="REQUIRED" data-g9-presentation="STAGED_VISUAL" data-g9-component-items="3" data-g9-component-unit="CU-CHEM-MOLE-FORMULA-STOICH"><figure data-g9-figure data-g9-fig="CU-CHEM-MOLE-FORMULA-STOICH-REP-CHEM-MOLE-FORMULA-STOICH" data-g9-stage="TEACHING" data-g9-representation="REP-CHEM-MOLE-FORMULA-STOICH" data-g9-kind="SYMBOLIC_EQUATION" data-reveal-stages="3" data-g9-stages-total="3" data-g9-stages="MOLE-FS-S1 MOLE-FS-S2 MOLE-FS-S3" data-g9-stage-sequence="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" role="img" aria-label="Formula ratio and limiting reagent">
+<title>Formula ratio and limiting reagent</title><desc>A staged numerical construction from percentage masses to mole ratio, then from balanced coefficients to limiting extent and leftovers.</desc>
+<rect x="1" y="1" width="438" height="298" rx="18" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<g data-g9-stage-id="MOLE-FS-S1" id="g9fig-CORE1A-CU-CHEM-MOLE-FORMULA-STOICH-REP-CHEM-MOLE-FORMULA-STOICH-1--stage-1"><text x="24" y="32" text-anchor="start" font-family="sans-serif" font-size="16" font-weight="700" fill="#0f172a">1  Mass data → mole ratio</text><text x="220" y="60" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">40.0%C/12 : 6.7%H/1 : 53.3%O/16</text><rect x="24" y="72" width="392" height="38" rx="8" fill="#e0f2fe" stroke="#64748b" stroke-width="2"/><text x="220" y="97" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">3.33 : 6.65 : 3.33 ≈ 1 : 2 : 1 → CH₂O</text></g>
+<g data-g9-stage-id="MOLE-FS-S2" id="g9fig-CORE1A-CU-CHEM-MOLE-FORMULA-STOICH-REP-CHEM-MOLE-FORMULA-STOICH-1--stage-2"><text x="24" y="142" text-anchor="start" font-family="sans-serif" font-size="16" font-weight="700" fill="#0f172a">2  Reaction inventory</text><text x="220" y="168" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="700" fill="#0f172a">2H₂ + O₂ → 2H₂O</text><rect x="24" y="178" width="392" height="38" rx="8" fill="#dcfce7" stroke="#64748b" stroke-width="2"/><text x="220" y="203" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">H₂: 3.0/2=1.5   O₂: 2.0/1=2.0</text></g>
+<g data-g9-stage-id="MOLE-FS-S3" id="g9fig-CORE1A-CU-CHEM-MOLE-FORMULA-STOICH-REP-CHEM-MOLE-FORMULA-STOICH-1--stage-3"><text x="24" y="246" text-anchor="start" font-family="sans-serif" font-size="16" font-weight="700" fill="#0f172a">3  Smaller extent sets the result</text><text x="220" y="272" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">H₂ limiting; H₂O 3.0 mol; O₂ left 0.5 mol</text><text x="220" y="296" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">coefficients are reacting, not starting, ratios</text></g></svg>
+<div class="g9-stage-controls"><div class="g9-stage-chips" role="group" aria-label="Stages"><button type="button" class="g9-stage-chip" data-g9-stage-goto="0" data-g9-stage-desc="Use a concrete C/H/O percentage example to obtain a mole ratio.">1: Mass to mole ratio</button><button type="button" class="g9-stage-chip" data-g9-stage-goto="1" data-g9-stage-desc="For 2H₂ + O₂ → 2H₂O compare 3.0/2 with 2.0/1.">2: Reaction inventory</button><button type="button" class="g9-stage-chip" data-g9-stage-goto="2" data-g9-stage-desc="Use the smaller supported extent to compute product and leftover inventory.">3: Limiting extent</button></div><p class="g9-stage-desc" data-g9-stage-desc-text></p><div class="g9-stage-stepper"><button type="button" data-g9-stage-step="prev">Previous stage</button><span data-g9-stage-label></span><button type="button" data-g9-stage-step="next">Next stage</button></div></div><figcaption data-g9-block="representation_bridge" data-g9-caption="purpose">For Empirical formula, stoichiometry and limiting reagent, make the governing symbolic relationship visible beside its verbal meaning and notation limits.</figcaption></figure></div></section><section class="blueprint-slot slot-repair_closure" data-blueprint-slot="repair_closure" data-required="true"><section class="g9-cu-support" data-g9-support-for="CU-CHEM-MOLE-FORMULA-STOICH"><h3>Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.</h3><div class="g9-component g9-c-trap-card" data-g9-component="TRAP_REPAIR" data-g9-level="REQUIRED" data-g9-presentation="TRAP_CARD" data-g9-component-items="1" data-g9-component-unit="CU-CHEM-MOLE-FORMULA-STOICH"><div class="g9-block" data-g9-block="wrong_path"><h4>A tempting wrong path</h4><ul><li>The largest mass percentage gives the largest formula subscript, and the reactant with the smaller starting mass is always limiting.</li></ul></div><div class="g9-block" data-g9-block="diagnose"><h4>Diagnose</h4><ul><li>Can a light element contribute many atoms but little mass, and can different molar masses make the smaller gram amount contain more moles?</li></ul></div><div class="g9-block" data-g9-block="repair"><h4>Repair</h4><ul><li>Convert mass to moles before both formula-ratio and limiting-reagent comparisons.</li></ul></div></div><div class="g9-component g9-c-triad" data-g9-component="QUICK_CHECK" data-g9-level="REQUIRED" data-g9-presentation="TRIAD" data-g9-component-items="3" data-g9-component-unit="CU-CHEM-MOLE-FORMULA-STOICH"><div class="g9-block" data-g9-block="independent_check"><h4>1-2-3 quick check</h4><ol class="g9-triad"><li data-g9-triad-role="CHECK"><span class="g9-triad-head">1 · Check</span><span class="g9-triad-text">Why must percentage or mass data be converted to moles before formula subscripts are inferred?</span></li><li data-g9-triad-role="APPLY"><span class="g9-triad-head">2 · Apply</span><span class="g9-triad-text">For 2H₂ + O₂ → 2H₂O with 3.0 mol H₂ and 2.0 mol O₂, compare ni/νi and identify the limiting reactant.</span></li><li data-g9-triad-role="CONNECT"><span class="g9-triad-head">3 · Connect</span><span class="g9-triad-text">Once reaction inventories are in moles, connect them to concentration data only through the correct concentration denominator.</span></li></ol></div></div></section></section></div></div><div class="g9-split g9-split-support-only"><div class="g9-col g9-col-support"><section class="blueprint-slot slot-repair_closure" data-blueprint-slot="repair_closure" data-required="true"><div class="g9-component g9-c-recall-card" data-g9-component="EXIT_RECALL" data-g9-level="REQUIRED" data-g9-presentation="RECALL_CARD"><div class="g9-block" data-g9-block="exit_task"><h4>Try it with less support</h4><p>Why can an excess reagent remain after a reaction even though the balanced equation has fixed coefficients?</p></div><div class="g9-attempt" data-g9-attempt-box data-g9-response-type="free_response"><label>Your answer<textarea data-g9-attempt rows="4"></textarea></label><label class="g9-paper"><input data-g9-paper type="checkbox">I worked this on paper</label><button type="button" data-g9-commit>I have attempted this</button></div><details data-g9-reveal data-requires-attempt data-g9-payload-ref="CORE1A-MIC-CHEM-MOLE-FORMULA-STOICH-exit"><summary>Model answer</summary><div data-g9-payload-slot></div></details><template data-g9-payload="CORE1A-MIC-CHEM-MOLE-FORMULA-STOICH-exit"><div class="g9-block" data-g9-block="exit_answer"><p>The coefficients fix the proportions that react, not the initial proportions supplied; material beyond the limiting ratio can remain.</p><ol><li>The limiting reagent determines how far the reaction proceeds.</li><li>Other reactants may have inventory left after the stoichiometrically required amount is consumed.</li></ol></div></template></div></section></div></div></article><article id="g9-CORE1A--MIC-CHEM-MOLE-CONCENTRATION" data-g9-unit="MIC-CHEM-MOLE-CONCENTRATION" data-g9-kind="CONCEPT" data-g9-role="CORE1A" data-g9-search-text="Chemistry Some Basic Concepts / Mole Concept / Stoichiometry Molarity, molality and mole fraction Hard concept Molarity, molality and mole fraction" class="g9-stage-support"><section class="blueprint-slot slot-identity" data-blueprint-slot="identity" data-required="true"><div class="g9-component g9-c-concept-header" data-g9-component="CONCEPT_HEADER" data-g9-level="REQUIRED" data-g9-presentation="CONCEPT_HEADER"><h2>Molarity, molality and mole fraction</h2><div data-g9-meta-strip data-g9-meta-role="CORE1A" data-g9-meta-record="MIC-CHEM-MOLE-CONCENTRATION" data-g9-search-safe><span data-g9-meta-item data-g9-meta-kind="subject" data-g9-meta-ref="Chemistry" data-g9-meta-value="Chemistry"><strong>Subject:</strong> <span data-g9-meta-label>Chemistry</span></span><span data-g9-meta-item data-g9-meta-kind="topic" data-g9-meta-ref="BUCKET-CHEM-MOLE" data-g9-meta-value="Some Basic Concepts / Mole Concept / Stoichiometry"><strong>Topic:</strong> <span data-g9-meta-label>Some Basic Concepts / Mole Concept / Stoichiometry</span></span><span data-g9-meta-item data-g9-meta-kind="concept" data-g9-meta-ref="MIC-CHEM-MOLE-CONCENTRATION" data-g9-meta-value="Molarity, molality and mole fraction"><strong>Concept:</strong> <span data-g9-meta-label>Molarity, molality and mole fraction</span></span><span data-g9-meta-item data-g9-meta-kind="concept-difficulty" data-g9-meta-ref="MIC-CHEM-MOLE-CONCENTRATION" data-g9-meta-value="HARD"><strong>Concept difficulty:</strong> <span data-g9-meta-label>Hard concept</span></span></div></div></section><div class="g9-split"><div class="g9-col g9-col-primary"><section class="blueprint-slot slot-construction" data-blueprint-slot="construction" data-required="true"><section id="g9-CORE1A--CU-CHEM-MOLE-CONCENTRATION" class="g9-cu" data-g9-cu="CU-CHEM-MOLE-CONCENTRATION"><div class="g9-component g9-c-unit-header" data-g9-component="UNIT_HEADER" data-g9-level="REQUIRED" data-g9-presentation="UNIT_HEADER" data-g9-component-unit="CU-CHEM-MOLE-CONCENTRATION"><div class="g9-unit-head"><span class="g9-unit-no" aria-hidden="true">1</span><h3>Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged.</h3><span class="g9-pill g9-pill-concept">Hard concept</span></div><nav class="g9-cu-nav" data-g9-unit-navigation aria-label="Concept Book section navigation"><span data-g9-route-position>Section 3 of 3</span><span class="g9-cu-nav-links"><a data-g9-prev-section href="#g9-CORE1A--CU-CHEM-MOLE-FORMULA-STOICH" aria-label="Previous section: Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.">← Previous</a></span></nav></div><div class="g9-component g9-c-banner" data-g9-component="KEY_STEP" data-g9-level="REQUIRED" data-g9-presentation="BANNER"><div class="g9-block" data-g9-block="inferential_jump"><h4>The key step</h4><p>Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged.</p></div></div><div class="g9-component g9-c-tile" data-g9-component="MODEL_CONTRACT" data-g9-level="EXPECTED" data-g9-presentation="TILE"><div class="g9-block" data-g9-block="entry_assumptions"><h4>You need</h4><ul><li>Can identify numerator and denominator in a ratio and can distinguish solution volume from solvent mass and total mole amount.</li></ul></div></div><div class="g9-component g9-c-step-cards" data-g9-component="CONSTRUCTION_STEPS" data-g9-level="REQUIRED" data-g9-presentation="STEP_CARDS" data-g9-component-items="3" data-g9-component-unit="CU-CHEM-MOLE-CONCENTRATION"><div class="g9-block" data-g9-block="construction"><ol><li data-g9-step="MOLE-CONCENTRATION-T1"><strong>Write the denominator first: solution volume for molarity, solvent mass for molality, total moles for mole fraction.</strong><br><em>Why valid:</em> These concentration measures are not interchangeable because they normalize composition differently.<br><em>Result:</em> The denominator determines units and temperature sensitivity.</li><li data-g9-step="MOLE-CONCENTRATION-T2"><strong>For temperature-change reasoning, state whether the sample is closed and composition/amounts remain unchanged.</strong><br><em>Why valid:</em> Molarity can change if solution volume changes; molality and mole fraction do not change merely from temperature when solvent mass and mole amounts stay unchanged.<br><em>Result:</em> Invariance claims require the no-loss/no-reaction qualification.</li><li data-g9-step="MOLE-CONCENTRATION-T3"><strong>Identify exactly which numerator or denominator changes in the scenario.</strong><br><em>Why valid:</em> A generic claim that &#x27;temperature changes concentration&#x27; hides the definition that controls the result.<br><em>Result:</em> Definition-level bookkeeping closes the reasoning.</li></ol></div></div><div class="g9-component g9-c-equation-card" data-g9-component="EQUATIONS" data-g9-level="EXPECTED" data-g9-presentation="EQUATION_CARD" data-g9-component-unit="CU-CHEM-MOLE-CONCENTRATION"><div class="g9-block" data-g9-block="equation_matrix"><h4>Equations and validity</h4><div class="g9-table-scroll" data-g9-equation-matrix><table><thead><tr><th scope="col">Equation</th><th scope="col">What it tells you</th><th scope="col">When you can use it</th></tr></thead><tbody><tr data-g9-relation-ref="REL-CHEM-MOLE-CONCENTRATION"><td><p class="g9-expr">c = nsolute/Vsolution; b = nsolute/msolvent; xi = ni/Σnj</p></td><td><p>Molarity, molality and mole fraction use different denominators, so their units and temperature sensitivity follow different bookkeeping.</p></td><td><ul><li>State whether the sample is closed and whether composition changes.</li><li>Use solution volume for molarity, solvent mass for molality and total mole amount for mole fraction.</li></ul></td></tr></tbody></table></div></div></div><div class="g9-component g9-c-worked-card" data-g9-component="WORKED_EXAMPLE" data-g9-level="REQUIRED" data-g9-presentation="WORKED_CARD" data-g9-component-unit="CU-CHEM-MOLE-CONCENTRATION"><div class="g9-block" data-g9-block="worked_anchor"><h4>Watch one</h4><p>Why can molarity change with temperature even when no solute or solvent is added or removed?</p><ol><li>A closed unchanged sample can keep the solute mole amount constant.</li><li>Thermal expansion or contraction can change the solution-volume denominator.</li><li>The ratio therefore can change without a composition change.</li></ol><div class="g9-block" data-g9-block="worked_result"><h4>Result</h4><p>Because molarity divides solute amount by solution volume, and the volume can change with temperature while the solute amount remains fixed.</p></div><div class="g9-block" data-g9-block="worked_check"><h4>Check</h4><p>Name which numerator or denominator changed rather than attributing the result generically to temperature.</p></div></div></div></section></section></div><div class="g9-col g9-col-support"><section class="blueprint-slot slot-representation" data-blueprint-slot="representation" data-required="true"><div class="g9-component g9-c-staged-visual" data-g9-component="STAGED_VISUAL" data-g9-level="REQUIRED" data-g9-presentation="STAGED_VISUAL" data-g9-component-items="3" data-g9-component-unit="CU-CHEM-MOLE-CONCENTRATION"><figure data-g9-figure data-g9-fig="CU-CHEM-MOLE-CONCENTRATION-REP-CHEM-MOLE-CONCENTRATION" data-g9-stage="TEACHING" data-g9-representation="REP-CHEM-MOLE-CONCENTRATION" data-g9-kind="SYMBOLIC_EQUATION" data-reveal-stages="3" data-g9-stages-total="3" data-g9-stages="MOLE-CO-S1 MOLE-CO-S2 MOLE-CO-S3" data-g9-stage-sequence="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 300" role="img" aria-label="Concentration denominators">
+<title>Concentration denominators</title><desc>A staged denominator-first comparison of molarity, molality and mole fraction for a closed sample.</desc>
+<rect x="1" y="1" width="438" height="298" rx="18" fill="#f8fafc" stroke="#64748b" stroke-width="2"/>
+<g data-g9-stage-id="MOLE-CO-S1" id="g9fig-CORE1A-CU-CHEM-MOLE-CONCENTRATION-REP-CHEM-MOLE-CONCENTRATION-1--stage-1"><text x="24" y="32" text-anchor="start" font-family="sans-serif" font-size="16" font-weight="700" fill="#0f172a">1  Write each denominator first</text><text x="220" y="62" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">c = nsolute / Vsolution</text><text x="220" y="87" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">b = nsolute / msolvent</text><text x="220" y="112" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">xi = ni / Σnj</text></g>
+<g data-g9-stage-id="MOLE-CO-S2" id="g9fig-CORE1A-CU-CHEM-MOLE-CONCENTRATION-REP-CHEM-MOLE-CONCENTRATION-1--stage-2"><text x="24" y="148" text-anchor="start" font-family="sans-serif" font-size="16" font-weight="700" fill="#0f172a">2  Closed sample warms</text><rect x="24" y="162" width="392" height="44" rx="8" fill="#e0f2fe" stroke="#64748b" stroke-width="2"/><text x="220" y="189" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">V can change; n and solvent mass stay fixed</text></g>
+<g data-g9-stage-id="MOLE-CO-S3" id="g9fig-CORE1A-CU-CHEM-MOLE-CONCENTRATION-REP-CHEM-MOLE-CONCENTRATION-1--stage-3"><text x="24" y="236" text-anchor="start" font-family="sans-serif" font-size="16" font-weight="700" fill="#0f172a">3  Audit the denominator</text><rect x="24" y="252" width="118" height="34" rx="8" fill="#fef3c7" stroke="#64748b" stroke-width="2"/><text x="83" y="275" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">c can change</text><rect x="160" y="252" width="118" height="34" rx="8" fill="#dcfce7" stroke="#64748b" stroke-width="2"/><text x="219" y="275" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">b unchanged</text><rect x="296" y="252" width="120" height="34" rx="8" fill="#dcfce7" stroke="#64748b" stroke-width="2"/><text x="356" y="275" text-anchor="middle" font-family="sans-serif" font-size="16" font-weight="500" fill="#0f172a">xi unchanged</text></g></svg>
+<div class="g9-stage-controls"><div class="g9-stage-chips" role="group" aria-label="Stages"><button type="button" class="g9-stage-chip" data-g9-stage-goto="0" data-g9-stage-desc="Place molarity, molality and mole fraction definitions side by side.">1: Three denominators</button><button type="button" class="g9-stage-chip" data-g9-stage-goto="1" data-g9-stage-desc="Show solution volume changing while solute moles and solvent mass stay fixed.">2: Closed warming</button><button type="button" class="g9-stage-chip" data-g9-stage-goto="2" data-g9-stage-desc="Identify which denominator changed before stating which concentration changes.">3: Definition audit</button></div><p class="g9-stage-desc" data-g9-stage-desc-text></p><div class="g9-stage-stepper"><button type="button" data-g9-stage-step="prev">Previous stage</button><span data-g9-stage-label></span><button type="button" data-g9-stage-step="next">Next stage</button></div></div><figcaption data-g9-block="representation_bridge" data-g9-caption="purpose">For Molarity, molality and mole fraction, make the governing symbolic relationship visible beside its verbal meaning and notation limits.</figcaption></figure></div></section><section class="blueprint-slot slot-repair_closure" data-blueprint-slot="repair_closure" data-required="true"><section class="g9-cu-support" data-g9-support-for="CU-CHEM-MOLE-CONCENTRATION"><h3>Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged.</h3><div class="g9-component g9-c-trap-card" data-g9-component="TRAP_REPAIR" data-g9-level="REQUIRED" data-g9-presentation="TRAP_CARD" data-g9-component-items="1" data-g9-component-unit="CU-CHEM-MOLE-CONCENTRATION"><div class="g9-block" data-g9-block="wrong_path"><h4>A tempting wrong path</h4><ul><li>Every concentration measure must change with temperature because physical samples expand or contract.</li></ul></div><div class="g9-block" data-g9-block="diagnose"><h4>Diagnose</h4><ul><li>In a sealed unchanged sample whose solution volume changes with temperature, which denominators change directly: solution volume, solvent mass or total mole amount?</li></ul></div><div class="g9-block" data-g9-block="repair"><h4>Repair</h4><ul><li>Follow the definition and state the closure/composition assumptions before making a temperature-dependence claim.</li></ul></div></div><div class="g9-component g9-c-triad" data-g9-component="QUICK_CHECK" data-g9-level="REQUIRED" data-g9-presentation="TRIAD" data-g9-component-items="3" data-g9-component-unit="CU-CHEM-MOLE-CONCENTRATION"><div class="g9-block" data-g9-block="independent_check"><h4>1-2-3 quick check</h4><ol class="g9-triad"><li data-g9-triad-role="CHECK"><span class="g9-triad-head">1 · Check</span><span class="g9-triad-text">Name the denominator used by molarity, molality and mole fraction.</span></li><li data-g9-triad-role="APPLY"><span class="g9-triad-head">2 · Apply</span><span class="g9-triad-text">A sealed solution warms and expands without loss or reaction. Identify which of c, b and xi can change from the definitions alone.</span></li><li data-g9-triad-role="CONNECT"><span class="g9-triad-head">3 · Connect</span><span class="g9-triad-text">Use denominator-first bookkeeping when concentration becomes an input to later stoichiometric calculations.</span></li></ol></div></div></section></section></div></div><div class="g9-split g9-split-support-only"><div class="g9-col g9-col-support"><section class="blueprint-slot slot-repair_closure" data-blueprint-slot="repair_closure" data-required="true"><div class="g9-component g9-c-recall-card" data-g9-component="EXIT_RECALL" data-g9-level="REQUIRED" data-g9-presentation="RECALL_CARD"><div class="g9-block" data-g9-block="exit_task"><h4>Try it with less support</h4><p>Under what qualification can molality and mole fraction be described as unchanged by temperature?</p></div><div class="g9-attempt" data-g9-attempt-box data-g9-response-type="free_response"><label>Your answer<textarea data-g9-attempt rows="4"></textarea></label><label class="g9-paper"><input data-g9-paper type="checkbox">I worked this on paper</label><button type="button" data-g9-commit>I have attempted this</button></div><details data-g9-reveal data-requires-attempt data-g9-payload-ref="CORE1A-MIC-CHEM-MOLE-CONCENTRATION-exit"><summary>Model answer</summary><div data-g9-payload-slot></div></details><template data-g9-payload="CORE1A-MIC-CHEM-MOLE-CONCENTRATION-exit"><div class="g9-block" data-g9-block="exit_answer"><p>For a closed sample whose composition and relevant masses/mole amounts do not change; temperature alone does not alter those mass- or mole-ratio denominators.</p><ol><li>Molality uses solute moles per solvent mass.</li><li>Mole fraction uses component moles divided by total moles.</li><li>Loss, reaction or composition change would invalidate the invariance claim.</li></ol></div></template></div></section></div></div></article></section></main><footer data-g9-footer>Chemistry · Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry</footer><script>
+(()=>{const q=(s,r=document)=>[...r.querySelectorAll(s)];
+const store={get:k=>{try{return localStorage.getItem('g9-'+k)}catch(e){return null}},set:(k,v)=>{try{localStorage.setItem('g9-'+k,v);return true}catch(e){return false}},remove:k=>{try{localStorage.removeItem('g9-'+k);return true}catch(e){return false}}};
+const root=document.documentElement;const scope=root.dataset.g9Product&&root.dataset.g9RenderDigest?root.dataset.g9Product+':'+root.dataset.g9RenderDigest:'';
+const apply=()=>{root.dataset.theme=store.get('theme')||root.dataset.theme||'light';root.style.setProperty('--g9-zoom',store.get('zoom')||'1');};apply();
+q('[data-g9-theme]').forEach(b=>b.onclick=()=>{store.set('theme',b.dataset.g9Theme);apply()});
+q('[data-g9-zoom]').forEach(b=>b.onclick=()=>{let z=parseFloat(store.get('zoom')||'1');z=b.dataset.g9Zoom==='inc'?Math.min(1.6,z+0.1):b.dataset.g9Zoom==='dec'?Math.max(0.8,z-0.1):1;store.set('zoom',z.toFixed(1));apply()});
+q('[data-g9-font]').forEach(b=>b.onclick=()=>q('[data-g9-zoom="'+b.dataset.g9Font+'"]')[0]?.click());
+function initFigure(f){if(f.dataset.g9Init)return;f.dataset.g9Init='1';const ids=(f.dataset.g9Stages||'').split(' ').filter(Boolean);if(ids.length<2)return;let i=0;
+const chips=q('[data-g9-stage-goto]',f);const desc=q('[data-g9-stage-desc-text]',f)[0];
+const show=()=>{ids.forEach((id,n)=>q('[data-g9-stage-id="'+id+'"]',f).forEach(g=>g.style.display=n<=i?'':'none'));const l=q('[data-g9-stage-label]',f)[0];if(l)l.textContent='Stage '+(i+1)+' of '+ids.length;chips.forEach((c,n)=>c.setAttribute('aria-pressed',String(n===i)));if(desc)desc.textContent=(chips[i]&&chips[i].dataset.g9StageDesc)||''};show();chips.forEach((c,n)=>c.onclick=()=>{i=n;show()});
+q('[data-g9-stage-step]',f).forEach(b=>b.onclick=()=>{i=Math.max(0,Math.min(ids.length-1,i+(b.dataset.g9StageStep==='next'?1:-1)));show()})}
+function nextRung(l){const t=q('template[data-g9-rung-payload]',l)[0];if(!t)return false;const payload=t.content.cloneNode(true);q('[data-g9-rung-ghost]',l)[0]?.remove();q('figure[data-g9-figure]',payload).forEach(initFigure);q('[data-g9-ladder]',l)[0].append(payload);t.remove();const b=q('[data-g9-next-rung]',l)[0];if(b){if(!q('template[data-g9-rung-payload]',l).length)b.disabled=true;else b.textContent='Show next support'}return true}
+function materialise(a){q('details[data-g9-payload-ref]',a).forEach(d=>{const slot=q('[data-g9-payload-slot]',d)[0];if(!slot||slot.dataset.g9Filled)return;const t=q('template[data-g9-payload]',a).find(x=>x.dataset.g9Payload===d.dataset.g9PayloadRef);if(!t)return;slot.replaceChildren(t.content.cloneNode(true));slot.dataset.g9Filled='1';q('figure[data-g9-figure]',slot).forEach(initFigure)})}
+const number=t=>{const v=t.trim();if(!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?(?:\s*\/\s*[+-]?(?:\d+(?:\.\d*)?|\.\d+)(?:e[+-]?\d+)?)?$/i.test(v))return false;const p=v.split('/').map(x=>Number(x.trim()));return p.every(Number.isFinite)&&(p.length===1||p[1]!==0)};
+function validAttempt(box){const type=box.dataset.g9ResponseType;if(type==='single_choice'||type==='multiple_choice'||type==='true_false')return q('[data-g9-choice]:checked',box).length>0;
+if(type==='numeric')return number(q('[data-g9-number]',box)[0]?.value||'');if(type==='short_text')return !!q('[data-g9-attempt]',box)[0]?.value.trim();
+if(type==='match'){const fields=q('[data-g9-match]',box);return fields.length>0&&fields.every(x=>x.value!=='')}
+if(q('[data-g9-paper]:checked',box).length)return true;if(type==='multipart'){const fields=q('[data-g9-part-input]',box);return fields.length>0&&fields.every(x=>x.value.trim()&&(!x.dataset.g9PartType||x.dataset.g9PartType!=='numeric'||number(x.value)))}
+return !!q('[data-g9-attempt]',box)[0]?.value.trim()}
+const stateKey=a=>scope&&a?.dataset.g9Unit?'state:'+scope+':'+a.dataset.g9Unit:null;const returnKey=concept=>scope&&concept?'return:'+scope+':'+concept:null;
+function readState(key){if(!key)return null;const raw=store.get(key);if(!raw)return null;try{const state=JSON.parse(raw);return state&&typeof state==='object'?state:null}catch(e){return null}}
+const attemptFields=a=>q('[data-g9-attempt-box] input,[data-g9-attempt-box] textarea,[data-g9-attempt-box] select',a);const rungCount=l=>{const list=q('[data-g9-ladder]',l)[0];return list?q('[data-g9-rung]',list).length:0};
+function saveCore2State(a){if(a.dataset.g9Role!=='CORE2')return;const key=stateKey(a);if(!key)return;const fields=attemptFields(a).map(el=>({value:el.value,checked:!!el.checked}));const ladders={};q('.g9-ladder[data-g9-ladder-ref]',a).forEach(l=>ladders[l.dataset.g9LadderRef]=rungCount(l));const reveals=q('details[data-g9-support-reveal]',a).map(d=>!!d.open);store.set(key,JSON.stringify({attempted:!!a.dataset.attempted,fields,ladders,reveals}))}
+function bindSupportRevealState(a){q('details[data-g9-support-reveal]',a).forEach(d=>{if(d.dataset.g9StateBound)return;d.dataset.g9StateBound='1';d.addEventListener('toggle',()=>saveCore2State(a))})}
+function restoreCore2State(a,lock){if(a.dataset.g9Role!=='CORE2')return;const state=readState(stateKey(a));if(!state)return;const fields=attemptFields(a);(state.fields||[]).forEach((saved,i)=>{const el=fields[i];if(!el||!saved||typeof saved!=='object')return;if(Object.prototype.hasOwnProperty.call(saved,'value'))el.value=saved.value??'';if(el.type==='checkbox'||el.type==='radio')el.checked=!!saved.checked});Object.entries(state.ladders||{}).forEach(([ref,count])=>{const l=q('.g9-ladder[data-g9-ladder-ref]',a).find(x=>x.dataset.g9LadderRef===ref);if(!l||!Number.isInteger(count)||count<0)return;while(rungCount(l)<count&&nextRung(l)){};});bindSupportRevealState(a);q('details[data-g9-support-reveal]',a).forEach((d,i)=>d.open=!!(state.reveals||[])[i]);if(state.attempted){a.dataset.attempted='1';materialise(a)}lock()}
+const articles=q('article[data-g9-unit],article[data-g9-diagnostic]');
+articles.forEach(a=>{const lock=()=>q('details[data-requires-attempt]',a).forEach(d=>{if(!a.dataset.attempted){d.dataset.locked='';d.open=false}else delete d.dataset.locked});lock();restoreCore2State(a,lock);
+q('details[data-requires-attempt] summary',a).forEach(s=>s.addEventListener('click',e=>{if(!a.dataset.attempted){e.preventDefault();q('[data-g9-attempt-box] input,[data-g9-attempt-box] textarea,[data-g9-attempt-box] select',a)[0]?.focus()}}));
+q('[data-g9-commit]',a).forEach(b=>b.onclick=()=>{const box=b.closest('[data-g9-attempt-box]');if(!box||!validAttempt(box)){q('input,textarea,select',box||a)[0]?.focus();return}a.dataset.attempted='1';lock();materialise(a);saveCore2State(a)});
+a.addEventListener('click',e=>{const b=e.target.closest('[data-g9-next-rung]');if(b&&a.contains(b)){nextRung(b.closest('.g9-ladder'));bindSupportRevealState(a);saveCore2State(a)}});attemptFields(a).forEach(el=>{el.addEventListener('input',()=>saveCore2State(a));el.addEventListener('change',()=>saveCore2State(a))});
+q('[data-g9-concept-link]',a).forEach(link=>link.addEventListener('click',()=>{saveCore2State(a);const key=returnKey(link.dataset.g9ConceptRef);if(key)store.set(key,link.dataset.g9QuestionRef||a.dataset.g9Unit);refreshReturnLinks()}))});
+const practiceLinks=q('[data-g9-practice-link]');const practiceLabels=new Map(practiceLinks.map(link=>[link,link.textContent]));
+function refreshReturnLinks(){practiceLinks.forEach(link=>{const key=returnKey(link.dataset.g9ConceptRef);const active=!!key&&store.get(key)===link.dataset.g9QuestionRef;if(active){link.dataset.g9ReturnLink='';link.textContent='Return to question · '+practiceLabels.get(link)}else{delete link.dataset.g9ReturnLink;link.textContent=practiceLabels.get(link)}})}
+practiceLinks.forEach(link=>link.addEventListener('click',()=>{const key=returnKey(link.dataset.g9ConceptRef);if(key&&store.get(key)===link.dataset.g9QuestionRef){store.remove(key);refreshReturnLinks()}}));refreshReturnLinks();
+window.g9MaterialiseAll=()=>articles.forEach(a=>{a.dataset.attempted='1';q('details[data-requires-attempt]',a).forEach(d=>delete d.dataset.locked);materialise(a);q('.g9-ladder',a).forEach(l=>{while(nextRung(l)){};});q('details[data-g9-support-reveal]',a).forEach(d=>d.open=true)});
+q('figure[data-g9-figure]').forEach(initFigure);
+q('[data-g9-toggle]').forEach(b=>b.onclick=()=>{const t=document.getElementById(b.getAttribute('aria-controls'));if(!t)return;const open=b.getAttribute('aria-expanded')==='true';b.setAttribute('aria-expanded',String(!open));t.hidden=open});
+const input=q('[data-g9-search-input]')[0];if(input)input.oninput=()=>{const v=input.value.trim().toLowerCase();articles.forEach(a=>{a.hidden=!!v&&!(a.dataset.g9SearchText||'').toLowerCase().includes(v)})};
+q('[data-g9-action="search"]').forEach(b=>b.onclick=()=>{const p=q('[data-g9-search-panel]')[0];p.hidden=!p.hidden;if(!p.hidden)input.focus()});
+q('[data-g9-action="display"]').forEach(b=>b.onclick=()=>{const p=q('[data-g9-display-panel]')[0];p.hidden=!p.hidden});
+})();
+</script></body></html>

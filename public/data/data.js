@@ -131,7 +131,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must keep electron-count bookkeeping distinct from physical charge and distinguish electron-domain geometry from molecular shape.",
               "entry_assumptions": [
-                "For Lewis structures, formal charge and VSEPR geometry, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can count valence electrons for simple main-group species and can distinguish a bonded atom position from a lone-pair electron domain."
               ],
               "inferential_jump": "Lewis structures conserve a declared valence-electron inventory, while VSEPR uses electron domains to predict geometry; neither bookkeeping convention should be promoted beyond its model scope.",
               "teaching_path": [
@@ -183,7 +183,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Lewis structures, formal charge and VSEPR geometry exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is judged by correctly separating formal-charge bookkeeping from physical electron density; it does not claim a numerical charge measurement."
                 }
               },
               "prerequisites": []
@@ -195,7 +195,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must distinguish observed geometry from simplified hybridisation language and then perform vector rather than scalar polarity reasoning.",
               "entry_assumptions": [
-                "For PCl5 geometry, model shorthand and molecular dipoles, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can recognise a trigonal-bipyramidal arrangement and can add simple vectors qualitatively by symmetry."
               ],
               "inferential_jump": "Trigonal-bipyramidal geometry is a structural claim, whereas sp3d is simplified model language; molecular polarity then depends on vector addition in that geometry rather than a count of polar bonds.",
               "teaching_path": [
@@ -247,7 +247,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The PCl5 geometry, model shorthand and molecular dipoles exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit has no numeric dipole calculation; it is correct if the learner uses geometric vector cancellation rather than counting polar bonds."
                 }
               },
               "prerequisites": []
@@ -259,7 +259,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must make two distinct readouts from MO occupancy and separately identify structural requirements for hydrogen bonding.",
               "entry_assumptions": [
-                "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can fill a supplied molecular-orbital ordering with electrons and can identify common hydrogen-bond donor and acceptor sites."
               ],
               "inferential_jump": "MO bond order and magnetism are separate consequences of the same orbital occupancy, while hydrogen bonding is a different intermolecular structural interaction requiring appropriate donor and acceptor sites.",
               "teaching_path": [
@@ -311,31 +311,59 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Molecular-orbital occupancy, magnetism and hydrogen bonding exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is a structural-comparison explanation; no universal boiling-temperature or magnetic number is asserted."
                 }
               },
               "prerequisites": []
             }
           ],
-          "relations": [],
+          "relations": [
+            {
+              "id": "REL-CHEM-BOND-GEOMETRY-DIPOLE",
+              "expression": "μnet = Σ μ⃗bond",
+              "meaning": "Molecular dipole is the vector sum of bond-dipole contributions in the molecular geometry; symmetric vectors can cancel even when individual bonds are polar.",
+              "conditions": [
+                "Use the molecular geometry and the relevant bond-dipole directions.",
+                "For PCl₅ here, the trigonal-bipyramidal statement is the isolated-molecule/gas-phase model."
+              ]
+            },
+            {
+              "id": "REL-CHEM-BOND-LEWIS-VSEPR",
+              "expression": "FC = V − N − B/2",
+              "meaning": "Formal charge is Lewis electron bookkeeping for a chosen structure; VSEPR then uses electron-domain count, not formal charge, to name electron-domain geometry and molecular shape.",
+              "conditions": [
+                "First draw a Lewis structure with the correct total valence-electron inventory.",
+                "Use the same declared Lewis bookkeeping convention for every atom compared."
+              ]
+            },
+            {
+              "id": "REL-CHEM-BOND-MO-HBOND",
+              "expression": "BO = (Nb − Nab)/2",
+              "meaning": "MO bond order follows bonding and antibonding occupancy, while magnetic behaviour requires a separate inspection of unpaired electrons.",
+              "conditions": [
+                "Use a stated molecular-orbital ordering and the correct total electron count for the species.",
+                "Assess pairing after the occupancy is written."
+              ]
+            }
+          ],
           "questions": [
             {
               "id": "Q-CHEM-BOND-GEOMETRY-DIPOLE-1A",
-              "stem": "Why are axial and equatorial bond directions in trigonal-bipyramidal PCl5 not geometrically equivalent?",
+              "stem": "For an isolated gaseous PCl₅ molecule in the trigonal-bipyramidal model, compare axial and equatorial angular environments and determine the net dipole for five equivalent P–Cl bond-dipole magnitudes by vector symmetry.",
               "origin": "AUTHORED",
-              "answer": "Equatorial directions are 120° apart in one plane, while each axial direction is perpendicular to that plane and has three 90° relationships to equatorial directions."
+              "answer": "The two axial directions are opposite and cancel; the three equatorial directions are 120° apart and cancel, so the idealised symmetric isolated molecule has μnet = 0. Axial and equatorial sites are nevertheless geometrically inequivalent."
             },
             {
               "id": "Q-CHEM-BOND-LEWIS-VSEPR-1A",
-              "stem": "A central atom has four electron domains, one of which is a lone pair. What distinction must be made before naming the geometry?",
+              "stem": "For NH₃, count the 8 valence electrons, build a Lewis structure, check the formal charge on N, then distinguish the electron-domain geometry from the molecular shape.",
               "origin": "AUTHORED",
-              "answer": "The electron-domain geometry is tetrahedral, while a three-bond/one-lone-pair molecular shape is trigonal pyramidal."
+              "answer": "NH₃ uses three N–H bonds and one lone pair on N; N has formal charge 0, four electron domains give tetrahedral electron-domain geometry, and the bonded-atom shape is trigonal pyramidal."
             },
             {
               "id": "Q-CHEM-BOND-MO-HBOND-1A",
-              "stem": "After filling an MO diagram, what two separate checks are needed to discuss bonding and magnetism?",
+              "stem": "For O₂ in the usual second-row molecular-orbital ordering, use its 16-electron occupancy to determine bond order and magnetic behaviour. Keep the two readouts separate.",
               "origin": "AUTHORED",
-              "answer": "Count bonding versus antibonding electrons for bond order, and independently inspect occupied orbitals for unpaired electrons to determine paramagnetism."
+              "answer": "O₂ has bond order 2 and is paramagnetic because two electrons occupy the degenerate π* antibonding orbitals singly."
             }
           ],
           "capabilities": [
@@ -358,7 +386,7 @@ window.GRADE9V3 = {
               "acceptance": "CANDIDATE"
             }
           ],
-          "record_count": 21,
+          "record_count": 24,
           "compile_preview": {
             "compilable": true,
             "supported_products": [
@@ -425,7 +453,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must connect distributed molecular motion to macroscopic temperature and distinguish surface evaporation from pressure-dependent boiling.",
               "entry_assumptions": [
-                "For Particle model, speed distributions and phase change, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can distinguish temperature from the speed of one molecule and can describe pressure as an external condition on a liquid surface."
               ],
               "inferential_jump": "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions.",
               "teaching_path": [
@@ -477,7 +505,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Particle model, speed distributions and phase change exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit asks for a causal account of evaporative cooling; success is judged by retaining a distribution of molecular energies and preferential surface escape, not by a calculated number."
                 }
               },
               "prerequisites": []
@@ -489,7 +517,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "Correct use depends on controlled variables and on separating pressure bookkeeping from effusion-rate comparisons.",
               "entry_assumptions": [
-                "For Gas-law constraints, mixtures and transport, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can identify pressure, volume, amount and absolute temperature as distinct state variables and can read direct and inverse proportionality statements."
               ],
               "inferential_jump": "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation.",
               "teaching_path": [
@@ -541,7 +569,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Gas-law constraints, mixtures and transport exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is conceptual: it is correct only if it distinguishes effusion rate from partial pressure and identifies the state variables that determine ideal partial pressure."
                 }
               },
               "prerequisites": []
@@ -553,7 +581,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must treat van der Waals terms as state-model corrections and distinguish critical behaviour from ordinary boiling.",
               "entry_assumptions": [
-                "For Real-gas deviations and critical behaviour, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can use the ideal-gas equation as a reference model and can distinguish a thermodynamic state relation from a microscopic mechanism."
               ],
               "inferential_jump": "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism.",
               "teaching_path": [
@@ -605,13 +633,41 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Real-gas deviations and critical behaviour exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is qualitative and is closed only by stating the distinct roles of the coexistence curve, pressure-dependent boiling and the critical endpoint."
                 }
               },
               "prerequisites": []
             }
           ],
-          "relations": [],
+          "relations": [
+            {
+              "id": "REL-CHEM-GAS-IDEAL-LAWS",
+              "expression": "PV = nRT",
+              "meaning": "The ideal-gas equation links pressure, volume, amount and absolute temperature; simple gas-law proportionalities are constrained cases of this state model.",
+              "conditions": [
+                "Use an ideal-gas model or a regime where ideal behaviour is an adequate approximation.",
+                "State which variables are held fixed before reducing the equation to a simple proportionality."
+              ]
+            },
+            {
+              "id": "REL-CHEM-GAS-KINETIC-PHASE",
+              "expression": "⟨Eₖ⟩ = 3kBT/2; boiling when Pvap(Tb) = Pext",
+              "meaning": "Temperature sets the ensemble mean translational kinetic energy in the ideal-gas model, while bulk boiling begins when vapour pressure reaches the external pressure.",
+              "conditions": [
+                "The kinetic-energy relation is for an equilibrium ideal monatomic-gas translational model.",
+                "The boiling criterion refers to a pure liquid at a stated external pressure and does not describe surface evaporation."
+              ]
+            },
+            {
+              "id": "REL-CHEM-GAS-REAL-CRITICAL",
+              "expression": "Z = PV/(nRT)",
+              "meaning": "The compressibility factor compares a measured real-gas state with the ideal-gas reference at the same P, V, n and T.",
+              "conditions": [
+                "Compare states using consistent P, V, n and T values.",
+                "Interpret the sign and magnitude of deviation only for the stated thermodynamic state."
+              ]
+            }
+          ],
           "questions": [
             {
               "id": "Q-CHEM-GAS-IDEAL-LAWS-1A",
@@ -652,7 +708,7 @@ window.GRADE9V3 = {
               "acceptance": "CANDIDATE"
             }
           ],
-          "record_count": 20,
+          "record_count": 23,
           "compile_preview": {
             "compilable": true,
             "supported_products": [
@@ -719,7 +775,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must separate empirical conservation/ratio laws from explanatory particle models and keep amount distinct from mass.",
               "entry_assumptions": [
-                "For Combination laws, mole, Avogadro constant and molar mass, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can distinguish an empirical mass observation from a particle-model explanation and can perform unit-carrying mass-to-amount conversions."
               ],
               "inferential_jump": "Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro's constant and molar mass.",
               "teaching_path": [
@@ -771,7 +827,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Combination laws, mole, Avogadro constant and molar mass exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is a meaning check on amount of substance; no new numerical particle count is asserted without a named entity."
                 }
               },
               "prerequisites": []
@@ -783,40 +839,40 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must convert mass composition to mole ratios, distinguish empirical from molecular scale, and compare reactant inventories through balanced-equation coefficients.",
               "entry_assumptions": [
-                "For Empirical formula, stoichiometry and limiting reagent, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can divide mass by molar or atomic mass to obtain amount and can read balanced-equation coefficients as mole ratios."
               ],
               "inferential_jump": "Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.",
               "teaching_path": [
                 {
                   "id": "MOLE-FORMULA-STOICH-T1",
-                  "action": "Convert each elemental mass or percentage to moles before inferring an empirical ratio.",
-                  "why_valid": "Atom counts are proportional to amount, not raw mass.",
+                  "action": "On a 100 g basis for 40.0% C, 6.7% H and 53.3% O, convert each mass to amount before comparing the elements.",
+                  "why_valid": "Formula subscripts follow relative atom amounts, not mass percentages.",
                   "role": "TRANSFORM",
-                  "output": "Dividing by atomic mass removes the mass weighting.",
+                  "output": "Approximately 3.33 mol C : 6.65 mol H : 3.33 mol O.",
                   "inputs": []
                 },
                 {
                   "id": "MOLE-FORMULA-STOICH-T2",
-                  "action": "Scale mole ratios to the smallest reliable whole-number set and use molar mass to determine any molecular-formula multiple.",
-                  "why_valid": "The empirical formula fixes ratio only; molecular molar mass supplies scale.",
+                  "action": "Divide by the smallest amount and scale only if needed to obtain the smallest reliable whole-number ratio.",
+                  "why_valid": "A common scaling preserves the relative particle counts represented by the empirical formula.",
                   "role": "TRANSFORM",
-                  "output": "The molecular multiple should be an integer within data precision.",
+                  "output": "The ratio is approximately 1 : 2 : 1, giving empirical formula CH₂O.",
                   "inputs": []
                 },
                 {
                   "id": "MOLE-FORMULA-STOICH-T3",
-                  "action": "For stoichiometry, start from a balanced equation and convert reactant inventories to moles.",
-                  "why_valid": "Reaction coefficients compare amounts of substance.",
+                  "action": "For 2H₂ + O₂ → 2H₂O with 3.0 mol H₂ and 2.0 mol O₂, place the initial mole inventories beside the balanced coefficients.",
+                  "why_valid": "Stoichiometric coefficients compare amounts of substance, so the inventories must be expressed in moles.",
                   "role": "DECLARE",
-                  "output": "Raw masses of different substances cannot identify the limiting reagent directly.",
+                  "output": "H₂ supports 3.0/2 = 1.5 reaction extents; O₂ supports 2.0/1 = 2.0.",
                   "inputs": []
                 },
                 {
                   "id": "MOLE-FORMULA-STOICH-T4",
-                  "action": "Compare each available mole amount relative to its stoichiometric coefficient.",
-                  "why_valid": "The reactant supporting the smallest reaction extent is exhausted first in the complete-reaction model.",
+                  "action": "Choose the smaller supported extent and use it to compute consumption, product and leftover amounts.",
+                  "why_valid": "The first exhausted reactant fixes the maximum complete-reaction extent under the model.",
                   "role": "TRANSFORM",
-                  "output": "Product and leftovers follow from that limiting extent.",
+                  "output": "H₂ is limiting; 3.0 mol H₂ and 1.5 mol O₂ are consumed, 3.0 mol H₂O forms, and 0.5 mol O₂ remains.",
                   "inputs": []
                 }
               ],
@@ -843,7 +899,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Empirical formula, stoichiometry and limiting reagent exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is a stoichiometric-ratio explanation; it asserts no new yield value and is checked by reaction extent and inventory conservation."
                 }
               },
               "prerequisites": []
@@ -855,7 +911,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must choose the correct denominator and qualify temperature invariance by sample closure and unchanged composition.",
               "entry_assumptions": [
-                "For Molarity, molality and mole fraction, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can identify numerator and denominator in a ratio and can distinguish solution volume from solvent mass and total mole amount."
               ],
               "inferential_jump": "Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged.",
               "teaching_path": [
@@ -908,13 +964,41 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Molarity, molality and mole fraction exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is definition-based: it requires the closure and composition qualification and identifies which denominator can change; it does not assert a universal numeric temperature coefficient."
                 }
               },
               "prerequisites": []
             }
           ],
-          "relations": [],
+          "relations": [
+            {
+              "id": "REL-CHEM-MOLE-CONCENTRATION",
+              "expression": "c = nsolute/Vsolution; b = nsolute/msolvent; xi = ni/Σnj",
+              "meaning": "Molarity, molality and mole fraction use different denominators, so their units and temperature sensitivity follow different bookkeeping.",
+              "conditions": [
+                "State whether the sample is closed and whether composition changes.",
+                "Use solution volume for molarity, solvent mass for molality and total mole amount for mole fraction."
+              ]
+            },
+            {
+              "id": "REL-CHEM-MOLE-FORMULA-STOICH",
+              "expression": "supported extent ξi = ni/νi; limiting extent = min(ni/νi)",
+              "meaning": "A balanced equation compares amounts through stoichiometric coefficients; the reactant supporting the smallest reaction extent is limiting in the complete-reaction model.",
+              "conditions": [
+                "Convert each starting inventory to moles first.",
+                "Use a balanced equation and the complete-reaction stoichiometric model."
+              ]
+            },
+            {
+              "id": "REL-CHEM-MOLE-FOUNDATIONS-MOLE",
+              "expression": "n = m/M; N = nNA",
+              "meaning": "Molar mass converts measurable mass to amount of substance, and Avogadro constant converts that amount to a count of explicitly named entities.",
+              "conditions": [
+                "Name the substance and the entity being counted.",
+                "Use a molar mass that corresponds to that same chemical entity/formula unit."
+              ]
+            }
+          ],
           "questions": [
             {
               "id": "Q-CHEM-MOLE-CONCENTRATION-1A",
@@ -924,9 +1008,9 @@ window.GRADE9V3 = {
             },
             {
               "id": "Q-CHEM-MOLE-FORMULA-STOICH-1A",
-              "stem": "What should be compared across reactants to identify the limiting reagent from a balanced equation?",
+              "stem": "For 2H₂ + O₂ → 2H₂O, a mixture starts with 3.0 mol H₂ and 2.0 mol O₂. Use ni/νi to identify the limiting reactant, then determine H₂O formed and excess O₂ remaining.",
               "origin": "AUTHORED",
-              "answer": "Compare the available moles relative to each reactant's stoichiometric coefficient—the reaction extent each inventory can support."
+              "answer": "H₂ is limiting; 3.0 mol H₂O forms and 0.5 mol O₂ remains."
             },
             {
               "id": "Q-CHEM-MOLE-FOUNDATIONS-MOLE-1A",
@@ -955,7 +1039,7 @@ window.GRADE9V3 = {
               "acceptance": "CANDIDATE"
             }
           ],
-          "record_count": 20,
+          "record_count": 23,
           "compile_preview": {
             "compilable": true,
             "supported_products": [
@@ -1022,7 +1106,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must coordinate formal oxidation-state bookkeeping with electron transfer and avoid the common agent-name inversion.",
               "entry_assumptions": [
-                "For Oxidation number, oxidation/reduction and agents, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can assign simple oxidation numbers using standard priority rules and can track the same element from reactants to products."
               ],
               "inferential_jump": "Oxidation number is a formal assignment whose increase corresponds to oxidation and decrease to reduction; an oxidising agent is itself reduced while a reducing agent is itself oxidised.",
               "teaching_path": [
@@ -1074,7 +1158,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Oxidation number, oxidation/reduction and agents exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is a bookkeeping explanation; it is closed by reconciling oxidation-state changes and agent roles, not by a measured atomic charge."
                 }
               },
               "prerequisites": []
@@ -1086,7 +1170,7 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must distinguish chemical change from redox and identify split/convergent oxidation-state patterns.",
               "entry_assumptions": [
-                "For Redox classification, displacement and disproportionation patterns, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can compare oxidation numbers for the same element on both sides of a reaction and can read reactant-to-product direction explicitly."
               ],
               "inferential_jump": "A reaction is redox only when oxidation-number bookkeeping shows coupled increase and decrease; reaction labels such as decomposition or displacement do not replace that test.",
               "teaching_path": [
@@ -1138,7 +1222,7 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Redox classification, displacement and disproportionation patterns exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit is classificatory rather than numerical; the required evidence is an actual oxidation-number change, not the reaction's surface label."
                 }
               },
               "prerequisites": []
@@ -1150,32 +1234,32 @@ window.GRADE9V3 = {
               "status": "CANDIDATE",
               "badge_reason": "The learner must conserve atoms and charge in a declared medium and derive electron-change counts from the specified reaction rather than memorising them as universal properties.",
               "entry_assumptions": [
-                "For Half-reaction balancing and reaction-dependent n-factor, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
+                "Can conserve atom counts and algebraic charge in an ionic equation and can interpret electrons as transfer bookkeeping."
               ],
               "inferential_jump": "Half-reaction balancing is a conservation algorithm, while n-factor compresses the electron change for one specified redox transformation; neither is valid without the reaction context.",
               "teaching_path": [
                 {
                   "id": "REDOX-BALANCE-NFACTOR-T1",
-                  "action": "State acidic or basic aqueous medium before choosing balancing species.",
-                  "why_valid": "The allowed bookkeeping species depend on the declared medium.",
-                  "role": "DECLARE",
-                  "output": "Medium is part of the problem conditions.",
+                  "action": "In acidic solution, write and balance the permanganate reduction half-reaction: MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O.",
+                  "why_valid": "O is balanced with H₂O, H with H⁺, and charge with electrons; both atoms and charge then match.",
+                  "role": "TRANSFORM",
+                  "output": "The permanganate half consumes 5 e⁻ per MnO₄⁻ in this acidic reduction to Mn²⁺.",
                   "inputs": []
                 },
                 {
                   "id": "REDOX-BALANCE-NFACTOR-T2",
-                  "action": "Balance atoms and charge within each half-reaction, then scale so electrons cancel when the halves are added.",
-                  "why_valid": "Electrons are transfer bookkeeping and must not remain in the final net reaction.",
+                  "action": "Write Fe²⁺ → Fe³⁺ + e⁻ and multiply it by five so the electron count matches the permanganate half.",
+                  "why_valid": "Electrons are bookkeeping intermediates and must cancel when the two half-reactions are added.",
                   "role": "TRANSFORM",
-                  "output": "The final equation must conserve every element and total charge.",
+                  "output": "5Fe²⁺ → 5Fe³⁺ + 5e⁻.",
                   "inputs": []
                 },
                 {
                   "id": "REDOX-BALANCE-NFACTOR-T3",
-                  "action": "Derive n-factor from the electron change and stoichiometric role in the specified balanced reaction.",
-                  "why_valid": "The same substance can participate in different redox changes and therefore have different reaction-specific n-factors.",
-                  "role": "TRANSFORM",
-                  "output": "Equivalent-mass use is tied to that reaction context.",
+                  "action": "Add the halves and verify MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 4H₂O + 5Fe³⁺ by separate atom and charge ledgers.",
+                  "why_valid": "A valid ionic equation conserves every element and total electric charge.",
+                  "role": "VERIFY",
+                  "output": "Atoms balance and the total charge is +17 on both sides; the five-electron change is specific to this permanganate reaction in acid.",
                   "inputs": []
                 }
               ],
@@ -1202,19 +1286,47 @@ window.GRADE9V3 = {
                   "verification_status": "CHECKED_BY_AUTHOR"
                 },
                 "oracle": {
-                  "no_numeric_claim": "The Half-reaction balancing and reaction-dependent n-factor exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
+                  "no_numeric_claim": "The exit has no standalone numeric n-factor claim; correctness depends on atom and charge conservation plus explicit reaction context."
                 }
               },
               "prerequisites": []
             }
           ],
-          "relations": [],
+          "relations": [
+            {
+              "id": "REL-CHEM-REDOX-BALANCE-NFACTOR",
+              "expression": "total e− lost = total e− gained",
+              "meaning": "Half-reaction balancing equalises electron transfer before the halves are added; the final ionic equation must also conserve each element and total charge.",
+              "conditions": [
+                "Write separate oxidation and reduction half-reactions in the stated medium.",
+                "Balance atoms and charge within each half before scaling electron counts to cancel."
+              ]
+            },
+            {
+              "id": "REL-CHEM-REDOX-CLASSIFICATION",
+              "expression": "redox ⇔ at least one ON increases and at least one ON decreases",
+              "meaning": "A reaction is redox when oxidation-number changes are coupled; labels such as decomposition or displacement do not establish redox by themselves.",
+              "conditions": [
+                "Track the same element from reactant to product species.",
+                "Use actual before/after oxidation numbers rather than a reaction-name shortcut."
+              ]
+            },
+            {
+              "id": "REL-CHEM-REDOX-OXIDATION-AGENTS",
+              "expression": "Σ ni(ONi) = species charge",
+              "meaning": "Oxidation numbers are formal assignments constrained by the total species charge; an increase tracks oxidation and a decrease tracks reduction.",
+              "conditions": [
+                "Apply the oxidation-number priority rules consistently.",
+                "The algebraic weighted sum must equal the charge of the whole species."
+              ]
+            }
+          ],
           "questions": [
             {
               "id": "Q-CHEM-REDOX-BALANCE-NFACTOR-1A",
-              "stem": "What two independent conservation checks close a balanced ionic redox equation?",
+              "stem": "Balance MnO₄⁻ + Fe²⁺ → Mn²⁺ + Fe³⁺ in acidic solution by the half-reaction method, then state the electron transfer associated with one MnO₄⁻ in this reaction.",
               "origin": "AUTHORED",
-              "answer": "Every element count and the total electric charge must match on both sides."
+              "answer": "MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 4H₂O + 5Fe³⁺; one permanganate ion gains 5 electrons in this acidic reduction."
             },
             {
               "id": "Q-CHEM-REDOX-CLASSIFICATION-1A",
@@ -1249,7 +1361,7 @@ window.GRADE9V3 = {
               "acceptance": "CANDIDATE"
             }
           ],
-          "record_count": 20,
+          "record_count": 23,
           "compile_preview": {
             "compilable": true,
             "supported_products": [
@@ -41889,6 +42001,106 @@ window.GRADE9V3 = {
             }
           }
         ]
+      }
+    },
+    "TEST": {
+      "contract": {
+        "learner_products": {
+          "CORE1": {
+            "role": "COMPACT_ORIENTATION_NOTES",
+            "production": "COMPILED"
+          },
+          "CORE2": {
+            "role": "SOURCE_QUESTION_CUSTODY",
+            "production": "COMPILED"
+          },
+          "CORE1A": {
+            "role": "DECLARATIVE_STUDY",
+            "production": "COMPILED"
+          },
+          "CORE1B": {
+            "role": "CONCEPTUAL_SELF_TUTOR",
+            "production": "COMPILED"
+          },
+          "CORE2A": {
+            "role": "SOLUTION_APPRENTICESHIP",
+            "production": "COMPILED"
+          },
+          "CORE2B": {
+            "role": "APPLICATION_AND_TRANSFER_TUTOR",
+            "production": "COMPILED"
+          }
+        },
+        "validator_catalogue": [],
+        "representation_kinds": [
+          {
+            "id": "VECTOR",
+            "status": "PROPOSED",
+            "requires": [
+              "frame",
+              "axis labels",
+              "unit",
+              "symbol",
+              "equal coordinate scale"
+            ]
+          },
+          {
+            "id": "VECTOR_SUBTRACTION",
+            "status": "PROPOSED",
+            "requires": [
+              "frame",
+              "both source vectors labelled",
+              "the reversed vector labelled",
+              "tail-to-head placement without rotation",
+              "resultant labelled with tail and head",
+              "one length scale for every vector drawn"
+            ],
+            "limits": [
+              "a construction, not a component readout; VECTOR draws one vector against axes, and using it here would hide the reversal that the construction exists to show"
+            ]
+          }
+        ],
+        "curriculum": {
+          "boards": [
+            "CBSE"
+          ],
+          "grades": [
+            9,
+            10,
+            11
+          ],
+          "tiers": [
+            "NOT_IN_JEE",
+            "JEE_MAINS",
+            "JEE_ADVANCED",
+            "BOTH"
+          ],
+          "binding_authority": "EXACT_REGISTRY_BINDING_REQUIRED",
+          "unbound_scope_state": "HELD_INSUFFICIENT_AUTHORITY"
+        }
+      },
+      "gates": [],
+      "buckets": [],
+      "matrices": [],
+      "packages": [],
+      "library_available": false,
+      "atlas_index_contract_version": "2.0",
+      "atlas_index": [],
+      "visual_targets": {},
+      "findings": [],
+      "coverage": {
+        "rung_count": 0,
+        "availability": {
+          "mapping": {},
+          "core": {},
+          "representation": {},
+          "activity": {},
+          "locator": {},
+          "portable_package": {},
+          "standalone": {}
+        },
+        "finding_counts": {},
+        "matrices": []
       }
     }
   }

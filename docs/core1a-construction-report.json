@@ -35,7 +35,9 @@
       "worked_anchor_refs": [
         "Q-CHEM-BOND-GEOMETRY-DIPOLE-1A"
       ],
-      "relation_check_refs": [],
+      "relation_check_refs": [
+        "REL-CHEM-BOND-GEOMETRY-DIPOLE"
+      ],
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [
@@ -60,7 +62,9 @@
       "worked_anchor_refs": [
         "Q-CHEM-BOND-LEWIS-VSEPR-1A"
       ],
-      "relation_check_refs": [],
+      "relation_check_refs": [
+        "REL-CHEM-BOND-LEWIS-VSEPR"
+      ],
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [
@@ -85,7 +89,9 @@
       "worked_anchor_refs": [
         "Q-CHEM-BOND-MO-HBOND-1A"
       ],
-      "relation_check_refs": [],
+      "relation_check_refs": [
+        "REL-CHEM-BOND-MO-HBOND"
+      ],
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [
@@ -110,7 +116,9 @@
       "worked_anchor_refs": [
         "Q-CHEM-GAS-IDEAL-LAWS-1A"
       ],
-      "relation_check_refs": [],
+      "relation_check_refs": [
+        "REL-CHEM-GAS-IDEAL-LAWS"
+      ],
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [
@@ -135,7 +143,9 @@
       "worked_anchor_refs": [
         "Q-CHEM-GAS-KINETIC-PHASE-1A"
       ],
-      "relation_check_refs": [],
+      "relation_check_refs": [
+        "REL-CHEM-GAS-KINETIC-PHASE"
+      ],
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [
@@ -160,7 +170,9 @@
       "worked_anchor_refs": [
         "Q-CHEM-GAS-REAL-CRITICAL-1A"
       ],
-      "relation_check_refs": [],
+      "relation_check_refs": [
+        "REL-CHEM-GAS-REAL-CRITICAL"
+      ],
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [
@@ -185,7 +197,9 @@
       "worked_anchor_refs": [
         "Q-CHEM-MOLE-CONCENTRATION-1A"
       ],
-      "relation_check_refs": [],
+      "relation_check_refs": [
+        "REL-CHEM-MOLE-CONCENTRATION"
+      ],
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [
@@ -210,7 +224,9 @@
       "worked_anchor_refs": [
         "Q-CHEM-MOLE-FORMULA-STOICH-1A"
       ],
-      "relation_check_refs": [],
+      "relation_check_refs": [
+        "REL-CHEM-MOLE-FORMULA-STOICH"
+      ],
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [
@@ -235,7 +251,9 @@
       "worked_anchor_refs": [
         "Q-CHEM-MOLE-FOUNDATIONS-MOLE-1A"
       ],
-      "relation_check_refs": [],
+      "relation_check_refs": [
+        "REL-CHEM-MOLE-FOUNDATIONS-MOLE"
+      ],
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [
@@ -260,7 +278,9 @@
       "worked_anchor_refs": [
         "Q-CHEM-REDOX-BALANCE-NFACTOR-1A"
       ],
-      "relation_check_refs": [],
+      "relation_check_refs": [
+        "REL-CHEM-REDOX-BALANCE-NFACTOR"
+      ],
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [
@@ -285,7 +305,9 @@
       "worked_anchor_refs": [
         "Q-CHEM-REDOX-CLASSIFICATION-1A"
       ],
-      "relation_check_refs": [],
+      "relation_check_refs": [
+        "REL-CHEM-REDOX-CLASSIFICATION"
+      ],
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [
@@ -310,7 +332,9 @@
       "worked_anchor_refs": [
         "Q-CHEM-REDOX-OXIDATION-AGENTS-1A"
       ],
-      "relation_check_refs": [],
+      "relation_check_refs": [
+        "REL-CHEM-REDOX-OXIDATION-AGENTS"
+      ],
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [

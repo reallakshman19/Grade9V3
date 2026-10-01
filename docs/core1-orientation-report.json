@@ -23,6 +23,7 @@
       "core1_compilable": true,
       "core1_compilability_reason": "ORIENTABLE_CANONICAL_CONTENT_PRESENT",
       "orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -33,7 +34,23 @@
       "scope_state": "AUTHORED",
       "primary_representation_state": "RESOLVED",
       "primary_representation_ref": "REP-CHEM-BOND-LEWIS-VSEPR",
-      "relations": [],
+      "relations": [
+        {
+          "id": "REL-CHEM-BOND-GEOMETRY-DIPOLE",
+          "has_meaning": true,
+          "condition_count": 2
+        },
+        {
+          "id": "REL-CHEM-BOND-LEWIS-VSEPR",
+          "has_meaning": true,
+          "condition_count": 2
+        },
+        {
+          "id": "REL-CHEM-BOND-MO-HBOND",
+          "has_meaning": true,
+          "condition_count": 2
+        }
+      ],
       "hard_transitions": [
         {
           "microtopic_ref": "MIC-CHEM-BOND-LEWIS-VSEPR",
@@ -70,6 +87,7 @@
       "core1_compilable": true,
       "core1_compilability_reason": "ORIENTABLE_CANONICAL_CONTENT_PRESENT",
       "orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -80,7 +98,23 @@
       "scope_state": "AUTHORED",
       "primary_representation_state": "RESOLVED",
       "primary_representation_ref": "REP-CHEM-GAS-KINETIC-PHASE",
-      "relations": [],
+      "relations": [
+        {
+          "id": "REL-CHEM-GAS-IDEAL-LAWS",
+          "has_meaning": true,
+          "condition_count": 2
+        },
+        {
+          "id": "REL-CHEM-GAS-KINETIC-PHASE",
+          "has_meaning": true,
+          "condition_count": 2
+        },
+        {
+          "id": "REL-CHEM-GAS-REAL-CRITICAL",
+          "has_meaning": true,
+          "condition_count": 2
+        }
+      ],
       "hard_transitions": [
         {
           "microtopic_ref": "MIC-CHEM-GAS-KINETIC-PHASE",
@@ -117,6 +151,7 @@
       "core1_compilable": true,
       "core1_compilability_reason": "ORIENTABLE_CANONICAL_CONTENT_PRESENT",
       "orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -127,7 +162,23 @@
       "scope_state": "AUTHORED",
       "primary_representation_state": "RESOLVED",
       "primary_representation_ref": "REP-CHEM-MOLE-FOUNDATIONS-MOLE",
-      "relations": [],
+      "relations": [
+        {
+          "id": "REL-CHEM-MOLE-CONCENTRATION",
+          "has_meaning": true,
+          "condition_count": 2
+        },
+        {
+          "id": "REL-CHEM-MOLE-FORMULA-STOICH",
+          "has_meaning": true,
+          "condition_count": 2
+        },
+        {
+          "id": "REL-CHEM-MOLE-FOUNDATIONS-MOLE",
+          "has_meaning": true,
+          "condition_count": 2
+        }
+      ],
       "hard_transitions": [
         {
           "microtopic_ref": "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
@@ -164,6 +215,7 @@
       "core1_compilable": true,
       "core1_compilability_reason": "ORIENTABLE_CANONICAL_CONTENT_PRESENT",
       "orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -174,7 +226,23 @@
       "scope_state": "AUTHORED",
       "primary_representation_state": "RESOLVED",
       "primary_representation_ref": "REP-CHEM-REDOX-OXIDATION-AGENTS",
-      "relations": [],
+      "relations": [
+        {
+          "id": "REL-CHEM-REDOX-BALANCE-NFACTOR",
+          "has_meaning": true,
+          "condition_count": 2
+        },
+        {
+          "id": "REL-CHEM-REDOX-CLASSIFICATION",
+          "has_meaning": true,
+          "condition_count": 2
+        },
+        {
+          "id": "REL-CHEM-REDOX-OXIDATION-AGENTS",
+          "has_meaning": true,
+          "condition_count": 2
+        }
+      ],
       "hard_transitions": [
         {
           "microtopic_ref": "MIC-CHEM-REDOX-OXIDATION-AGENTS",

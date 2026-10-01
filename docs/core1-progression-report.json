@@ -30,6 +30,7 @@
       "bucket_ref": "BUCKET-CHEM-BOND",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -45,6 +46,7 @@
       "bucket_ref": "BUCKET-CHEM-GAS",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -60,6 +62,7 @@
       "bucket_ref": "BUCKET-CHEM-MOLE",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -75,6 +78,7 @@
       "bucket_ref": "BUCKET-CHEM-REDOX",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -414,6 +418,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -452,6 +457,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -490,6 +496,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -528,6 +535,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -566,6 +574,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -604,6 +613,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -642,6 +652,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -680,6 +691,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -718,6 +730,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -756,6 +769,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -794,6 +808,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
@@ -832,6 +847,7 @@
       "depth_authority": "CANONICAL_MICROTOPIC",
       "core1_orientation_available": true,
       "core1_orientation_surfaces": [
+        "GOVERNING_RELATIONS",
         "DECLARED_CONVENTIONS",
         "DECLARED_SCOPE",
         "HARD_TRANSITION_POINTERS",
