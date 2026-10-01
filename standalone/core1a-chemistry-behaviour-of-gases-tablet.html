@@ -499,6 +499,16 @@ table.data-table tr:hover td {
 /* LPAP audit repair: preserve zoom, reduced motion, and explicit draft state. */
 .lpap-audit-hold { margin:0; padding:12px 20px; border-bottom:2px solid var(--warning,#f59e0b); background:rgba(245,158,11,.12); color:var(--text-primary,#111827); font-size:14px; line-height:1.5; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior:auto !important; } *,*::before,*::after { animation-duration:.01ms !important; animation-iteration-count:1 !important; transition-duration:.01ms !important; } }
+
+@media (max-width: 600px) {
+  main.layout-container { grid-template-columns: minmax(0, 1fr); }
+  .stage-area, .support-rail, .content-card, .support-widget, .tab-content {
+    min-width: 0;
+    max-width: 100%;
+  }
+  .formula-box { overflow-wrap: anywhere; }
+  .calc-row { grid-template-columns: minmax(0, 1fr); }
+}
 </style>
 </head>
 <body>

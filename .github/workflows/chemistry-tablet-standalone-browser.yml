@@ -46,6 +46,7 @@ jobs:
             /tmp/chemistry-http.log
           if-no-files-found: error
       - name: Canonical projection dry-run
+        if: always()
         run: |
           python3 Shared/tools/build_question_bank_web.py --check
           python3 Shared/tools/build_question_bank_platform.py --check

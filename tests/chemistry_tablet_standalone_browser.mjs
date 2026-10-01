@@ -155,6 +155,7 @@ for (const file of files) {
       themeAfter = await page.evaluate(() => document.documentElement.getAttribute('data-theme'));
     }
     await page.reload({ waitUntil: 'load' });
+    await page.waitForTimeout(75);
     const persisted = await page.evaluate(probe => {
       const ta = probe ? (probe.id ? document.getElementById(probe.id) : document.querySelector(`textarea[data-key="${probe.key}"]`)) : null;
       return {
