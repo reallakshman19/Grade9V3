@@ -230,7 +230,7 @@
           "action": "Compute formal charges only after the Lewis arrangement is explicit.",
           "why_valid": "Formal charge follows a defined partition of bonding electrons and is a diagnostic of the representation.",
           "inputs": [],
-          "output": "Formal charge helps compare contributors but is not a direct measured partial charge."
+          "output": "For NH₃ nitrogen: FC = 5 − 2 − 6/2 = 0; this is Lewis bookkeeping, not a measured partial atomic charge."
         },
         {
           "id": "BOND-LEWIS-VSEPR-T3",
@@ -238,7 +238,7 @@
           "action": "Count VSEPR electron domains before naming molecular shape.",
           "why_valid": "Lone pairs occupy domains and influence geometry even though they are omitted from the atom-position shape name.",
           "inputs": [],
-          "output": "Electron-domain geometry and molecular shape can differ."
+          "output": "NH₃: 4 electron domains ⇒ tetrahedral electron-domain geometry; 3 bonded atoms + 1 lone pair ⇒ trigonal-pyramidal molecular shape."
         }
       ],
       "relation_refs": [
@@ -405,7 +405,7 @@
           "action": "Add bond dipoles as vectors in the molecular geometry.",
           "why_valid": "Equal polar bonds can cancel by symmetry, so scalar bond counting cannot establish a net molecular dipole.",
           "inputs": [],
-          "output": "Geometry is indispensable to molecular-polarity prediction."
+          "output": "Ideal isolated PCl₅: the 2 equal axial bond-dipole vectors cancel and the 3 equal 120° equatorial vectors cancel ⇒ μnet = 0."
         }
       ],
       "relation_refs": [
@@ -564,7 +564,7 @@
           "action": "Compute bond order from bonding-minus-antibonding occupancy and inspect unpaired electrons separately for magnetic behaviour.",
           "why_valid": "Bond order and paramagnetism answer different questions even though both use the same configuration.",
           "inputs": [],
-          "output": "Do not infer one from the other."
+          "output": "O₂: BO = 2 while unpaired e− = 2; bond order and magnetic behaviour are separate readouts of the same occupancy."
         },
         {
           "id": "BOND-MO-HBOND-T3",
