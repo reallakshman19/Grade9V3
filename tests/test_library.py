@@ -304,6 +304,35 @@ class Compilation(unittest.TestCase):
         self.assertEqual(held, {"Q-TEST-FIXTURE-REL-01"})
         self.assertNotIn("Q-AUTHOR-REL-01", held)
 
+    def test_equation_datum_without_relation_ref_remains_compilable(self):
+        # package.schema.json makes datum.relation_ref optional. A symbolic teaching
+        # representation may therefore carry an EQUATION atom without claiming that a
+        # subject gate owns a governing relation. The compiler must preserve the atom
+        # instead of dereferencing the absent optional key.
+        data = packages()
+        target = next(
+            package for package in data
+            if package["package_id"] == seed()["package_id"]
+        )
+        source = next(row for row in target["data"] if row["kind"] == "EQUATION")
+        unbound = copy.deepcopy(source)
+        unbound["id"] = "EQ-UNBOUND-SCHEMA-VALID"
+        unbound.pop("relation_ref", None)
+        unbound["meaning"] = "Schema-valid symbolic teaching equation with no relation authority claim."
+        unbound["locator"] = "Author-created compiler regression witness."
+        target["data"].append(unbound)
+
+        compiled = compile_bucket(
+            build_index(data),
+            "BUCKET-RELATIVE-MOTION",
+            topic_id="T-UNBOUND-EQUATION",
+            title="Unbound equation compiler witness",
+            subject="Physics",
+            practice_control={"mode": "DESIGN_PREVIEW", "purpose": "PRACTICE"},
+        )
+        atoms = {row["id"] for row in compiled["source"]["atoms"]}
+        self.assertIn("EQ-UNBOUND-SCHEMA-VALID", atoms)
+
     def test_a_question_binding_an_unknown_datum_is_rejected(self):
         data = packages()
         for question in next(p for p in data
