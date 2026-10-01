@@ -68,12 +68,12 @@ class QbTabletStandaloneTest(unittest.TestCase):
     def test_all_learner_support_and_solution_payloads_are_projected(self):
         scaffolds = sum(len(q.get("scaffolds") or []) for q in self.questions)
         self.assertEqual(scaffolds, 195)
-        self.assertEqual(self.actual.count('class="question-card stage-support-columns"'), 77)
-        self.assertEqual(self.actual.count('class="solution-slot"'), 77)
-        self.assertEqual(self.actual.count('class="check-solution-btn"'), 77)
-        self.assertEqual(self.actual.count('class="hint-pill"'), 195)
-        self.assertEqual(self.actual.count('class="hint-slot"'), 195)
-        self.assertEqual(self.actual.count('<template id='), 272)  # 195 hints + 77 solutions
+        self.assertEqual(self.actual.count('class="question-card g9-stage-support"'), 77)
+        self.assertEqual(self.actual.count('class="commit-attempt-btn"'), 77)
+        self.assertEqual(self.actual.count('data-g9-next-rung'), 77)
+        self.assertEqual(self.actual.count('data-g9-rung-payload='), 195)
+        self.assertEqual(self.actual.count('data-g9-payload='), 77)
+        self.assertEqual(self.actual.count("<template"), 272)  # 195 hints + 77 solutions
 
     def test_every_question_projects_its_full_canonical_learner_payload(self):
         article_chunks = self.actual.split('<article class="question-card')[1:]
@@ -116,10 +116,10 @@ class QbTabletStandaloneTest(unittest.TestCase):
         self.assertNotIn("katex.min.js", self.actual)
 
     def test_selected_benchmark_representations_are_explicitly_authored_not_source_figures(self):
-        self.assertEqual(self.actual.count('class="representation-box"'), 7)
+        self.assertEqual(self.actual.count('g9-c-visual-card representation-box'), 7)
         self.assertEqual(len(re.findall(r"<svg\b", self.actual, re.I)), 7)
         self.assertEqual(
-            self.actual.count("authored representation, not an original exam-source figure"),
+            self.actual.count("not an original exam-source figure"),
             7,
         )
 
@@ -132,44 +132,76 @@ class QbTabletStandaloneTest(unittest.TestCase):
     def test_attempt_reveal_and_hint_payloads_are_inert_by_construction(self):
         self.assertRegex(
             self.actual,
-            r'<button type="button" class="check-solution-btn"[^>]+ disabled>',
+            r'<button type="button" class="commit-attempt-btn"[^>]+ disabled>I have attempted this</button>',
         )
-        self.assertIn("<template", self.actual)
-        self.assertNotIn("<details class=\"solution-reveal\"", self.actual)
+        self.assertEqual(self.actual.count("data-requires-attempt data-locked"), 77)
+        self.assertEqual(self.actual.count("data-g9-payload="), 77)
+        self.assertEqual(self.actual.count("data-g9-rung-payload="), 195)
+        self.assertNotIn("matches the verified answer", self.actual)
 
     def test_offline_and_accessible_viewport_contract(self):
         lower = self.actual.lower()
-        external_runtime_tokens = (
+        remote_runtime_tokens = (
             'src="http://', 'src="https://', "src='http://", "src='https://",
-            'href="http://', 'href="https://', "href='http://", "href='https://",
             'url(http://', 'url(https://', 'url("http://', 'url("https://',
             "url('http://", "url('https://", 'fetch("http://', 'fetch("https://',
             "fetch('http://", "fetch('https://",
         )
-        for token in external_runtime_tokens:
+        for token in remote_runtime_tokens:
             self.assertNotIn(token, lower)
+        self.assertEqual(self.actual.count('data-g9-source-pdf href="https://'), 77)
         self.assertNotIn("user-scalable=no", self.actual)
         self.assertNotIn("maximum-scale=1", self.actual)
         self.assertIn("viewport-fit=cover", self.actual)
-        self.assertIn("--touch:48px", self.actual)
+        self.assertIn("--g9-touch-min:48px", self.actual)
+        self.assertIn("--g9-type-body:17px", self.actual)
+        self.assertIn('data-theme="light"', self.actual)
         self.assertIn("@media(min-width:980px)", self.actual)
         self.assertIn("minmax(0,42fr) minmax(0,58fr)", self.actual)
-        self.assertNotIn(".support-column{position:sticky", self.actual)
+        self.assertNotIn("position:sticky;top:80px", self.actual)
         self.assertIn("visualViewport", self.actual)
         self.assertIn("scrollIntoView", self.actual)
         self.assertIn(":focus-visible", self.actual)
         self.assertIn("prefers-reduced-motion", self.actual)
+        self.assertIn(".representation-box .question-svg .small{font-size:14px}", self.actual)
+
+    def test_pr372_core2_blueprint_contract_is_bound_and_projected(self):
+        self.assertIn('data-blueprint-ref="BP-CORE2-SOURCE-QUESTION@1.5.0"', self.actual)
+        self.assertIn(
+            '<meta name="grade9v3-blueprint-source" content="PR372@edba5daf43371b4f5142ccc3ae16a1a1af6ba7a6">',
+            self.actual,
+        )
+        self.assertIn('data-g9-mode="SINGLE_FILE"', self.actual)
+        self.assertIn("Single-file mode: page-PDF control omitted by the #372 shell policy.", self.actual)
+        for component, count in {
+            "IDENTITY": 77,
+            "SOURCE_PDF": 77,
+            "DIFFICULTY_WHY": 77,
+            "STEM": 77,
+            "ATTEMPT": 77,
+            "HINT_LADDER": 77,
+            "SOLUTION": 77,
+            "SOLUTION_STEPS": 77,
+            "ANSWER": 77,
+            "CHECK": 77,
+        }.items():
+            self.assertEqual(self.actual.count(f'data-g9-component="{component}"'), count)
+        self.assertEqual(self.actual.count('data-g9-support-provenance="AUTHORED_CORE2_PROMPT_REVEAL"'), 195)
+        self.assertEqual(self.actual.count('class="g9-dcell"'), 77 * 5)
 
     def test_core2_reference_lane_structure(self):
         sample = builder.render_question(self.questions[0], set(self.view["resolved_question_refs"]), {})
-        stage = sample.split('<div class="stage-column">', 1)[1].split('<aside class="support-column">', 1)[0]
-        support = sample.split('<aside class="support-column">', 1)[1].split('</aside>', 1)[0]
-        after_support = sample.split('</aside>', 1)[1]
-        self.assertNotIn('class="hint-ladder"', stage)
-        self.assertIn('class="hint-ladder"', support)
-        self.assertIn('class="trap-box pre-attempt-trap"', stage)
-        self.assertIn('class="solution-column"', after_support)
-        self.assertEqual(self.actual.count('class="solution-column"'), 77)
+        primary = sample.split('<div class="g9-col g9-col-primary">', 1)[1].split('<div class="g9-col g9-col-support">', 1)[0]
+        support = sample.split('<div class="g9-col g9-col-support">', 1)[1].split('</div>\n  </div>', 1)[0]
+        self.assertNotIn('data-g9-component="HINT_LADDER"', primary)
+        self.assertIn('data-g9-component="HINT_LADDER"', support)
+        self.assertIn('data-g9-component="TRAP"', primary)
+        self.assertIn('data-blueprint-slot="solution"', sample)
+        self.assertEqual(self.actual.count('data-blueprint-slot="solution"'), 77)
+        self.assertIn('[data-g9-component="REPRESENTATION"]{order:40}', self.actual)
+        self.assertIn('[data-g9-component="CONDITIONS"]{order:50}', self.actual)
+        self.assertIn('[data-g9-component="ATTEMPT"]{order:70}', self.actual)
+        self.assertIn('[data-g9-component="HINT_LADDER"]{order:80}', self.actual)
 
     def test_question_types_drive_real_answer_controls(self):
         single = sum(
@@ -182,8 +214,9 @@ class QbTabletStandaloneTest(unittest.TestCase):
         self.assertEqual(multi, 6)
         self.assertEqual(free, 42)
         self.assertEqual(self.actual.count('type="radio"'), 116)
-        self.assertEqual(self.actual.count('type="checkbox"'), 24)
+        self.assertEqual(self.actual.count('class="answer-choice" type="checkbox"'), 24)
         self.assertEqual(self.actual.count('class="answer-input"'), 42)
+        self.assertEqual(self.actual.count('class="paper-check"'), 77)
 
 
 if __name__ == "__main__":
