@@ -1,61 +1,124 @@
-"""Test suite ensuring 12.7\" Tablet Standalone HTML standards across Question Bank platform."""
+"""Contracts for the generated 12.7-inch standalone Canonical Question Bank."""
 from __future__ import annotations
 
+import importlib.util
 import re
 import unittest
 from pathlib import Path
 
-REPO = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[1]
+BUILDER = ROOT / "Shared/tools/build_qb_tablet_standalone.py"
+OUT = ROOT / "standalone/core2-canonical-question-bank-tablet.html"
 
-QB_TABLET_FILES = [
-    "standalone/core2-canonical-question-bank-tablet.html",
-]
+spec = importlib.util.spec_from_file_location("qb_tablet_builder", BUILDER)
+builder = importlib.util.module_from_spec(spec)
+assert spec and spec.loader
+spec.loader.exec_module(builder)
 
 
 class QbTabletStandaloneTest(unittest.TestCase):
-    def test_qb_files_exist_and_non_empty(self):
-        for rel_path in QB_TABLET_FILES:
-            with self.subTest(file=rel_path):
-                fpath = REPO / rel_path
-                self.assertTrue(fpath.exists(), f"File {rel_path} does not exist")
-                self.assertGreater(fpath.stat().st_size, 100_000, f"File {rel_path} is unexpectedly small")
+    @classmethod
+    def setUpClass(cls):
+        cls.questions = builder.canonical_questions()
+        cls.view = builder.selected_view()
+        cls.expected = builder.render()
+        cls.actual = OUT.read_text(encoding="utf-8")
 
-    def test_zero_external_cdn_dependencies(self):
-        cdn_patterns = [
-            r'https?://cdn\.',
-            r'https?://cdnjs\.',
-            r'https?://fonts\.googleapis\.com',
-            r'https?://fonts\.gstatic\.com',
-            r'https?://unpkg\.com',
-            r'https?://cdn\.jsdelivr\.net',
-        ]
-        for rel_path in QB_TABLET_FILES:
-            content = (REPO / rel_path).read_text(encoding="utf-8")
-            for pattern in cdn_patterns:
-                with self.subTest(file=rel_path, pattern=pattern):
-                    matches = re.findall(pattern, content, re.IGNORECASE)
-                    self.assertEqual(len(matches), 0, f"Found external remote CDN link in {rel_path}")
+    def test_committed_html_is_exact_deterministic_projection(self):
+        self.assertEqual(self.actual, self.expected)
 
-    def test_wcag_touch_targets_enforced(self):
-        for rel_path in QB_TABLET_FILES:
-            with self.subTest(file=rel_path):
-                content = (REPO / rel_path).read_text(encoding="utf-8")
-                self.assertTrue(
-                    "48px" in content or "--tab12-touch-min: 48px" in content,
-                    f"Touch target minimum 48px rule not found in {rel_path}",
+    def test_canonical_denominator_and_selected_view_are_exact(self):
+        self.assertEqual(len(self.questions), 77)
+        self.assertEqual(len({q["id"] for q in self.questions}), 77)
+        self.assertEqual(
+            {q["extensions"]["grade9v3:source_custody"]["section"] for q in self.questions},
+            {"Physics", "Chemistry"},
+        )
+        self.assertEqual(
+            sum(q["extensions"]["grade9v3:source_custody"]["section"] == "Physics" for q in self.questions),
+            31,
+        )
+        self.assertEqual(
+            sum(q["extensions"]["grade9v3:source_custody"]["section"] == "Chemistry" for q in self.questions),
+            46,
+        )
+        self.assertEqual(len(self.view["resolved_question_refs"]), 7)
+        self.assertEqual(
+            set(self.view["resolved_question_refs"]),
+            {
+                q["id"]
+                for q in self.questions
+                if f'id="{q["id"]}"' in self.actual and f'id="{q["id"]}"' in self.actual
+                and re.search(
+                    rf'id="{re.escape(q["id"])}"[\s\S]*?data-selected="true"',
+                    self.actual,
                 )
+            },
+        )
 
-    def test_virtual_keyboard_safe_textareas(self):
-        for rel_path in QB_TABLET_FILES:
-            with self.subTest(file=rel_path):
-                content = (REPO / rel_path).read_text(encoding="utf-8")
-                self.assertIn("120px", content, f"Min-height 120px missing in {rel_path}")
+    def test_every_question_keeps_verified_parent_custody(self):
+        for q in self.questions:
+            with self.subTest(q=q["id"]):
+                custody = q["extensions"]["grade9v3:source_custody"]
+                self.assertEqual(custody["source_status"], "PYQ_VERIFIED_PARENT")
+                self.assertTrue(custody["parent_ref"])
+                self.assertTrue(custody["paper_url"])
 
-    def test_theme_toggle_supported(self):
-        for rel_path in QB_TABLET_FILES:
-            with self.subTest(file=rel_path):
-                content = (REPO / rel_path).read_text(encoding="utf-8")
-                self.assertIn("data-theme", content, f"data-theme attribute missing in {rel_path}")
+    def test_all_learner_support_and_solution_payloads_are_projected(self):
+        scaffolds = sum(len(q.get("scaffolds") or []) for q in self.questions)
+        self.assertEqual(scaffolds, 195)
+        self.assertEqual(self.actual.count('class="question-card stage-support-columns"'), 77)
+        self.assertEqual(self.actual.count('class="solution-slot"'), 77)
+        self.assertEqual(self.actual.count('class="check-solution-btn"'), 77)
+        self.assertEqual(self.actual.count('class="hint-pill"'), 195)
+        self.assertEqual(self.actual.count('class="hint-slot"'), 195)
+        self.assertEqual(self.actual.count('<template id='), 272)  # 195 hints + 77 solutions
+
+    def test_selected_benchmark_representations_are_explicitly_authored_not_source_figures(self):
+        self.assertEqual(self.actual.count('class="representation-box"'), 7)
+        self.assertEqual(len(re.findall(r"<svg\b", self.actual, re.I)), 7)
+        self.assertEqual(
+            self.actual.count("authored representation, not an original exam-source figure"),
+            7,
+        )
+
+    def test_option_labels_are_not_duplicated(self):
+        self.assertNotRegex(
+            self.actual,
+            r'class="option-letter">([A-Z])</span><span class="option-text">\(\1\)',
+        )
+
+    def test_attempt_reveal_and_hint_payloads_are_inert_by_construction(self):
+        self.assertRegex(
+            self.actual,
+            r'<button type="button" class="check-solution-btn"[^>]+ disabled>',
+        )
+        self.assertIn("<template", self.actual)
+        self.assertNotIn("<details class=\"solution-reveal\"", self.actual)
+
+    def test_offline_and_accessible_viewport_contract(self):
+        self.assertNotRegex(self.actual, r'https?://')
+        self.assertNotIn("user-scalable=no", self.actual)
+        self.assertNotIn("maximum-scale=1", self.actual)
+        self.assertIn("viewport-fit=cover", self.actual)
+        self.assertIn("--touch:48px", self.actual)
+        self.assertIn("minmax(360px,1fr)", self.actual)
+        self.assertIn("visualViewport", self.actual)
+        self.assertIn("scrollIntoView", self.actual)
+
+    def test_question_types_drive_real_answer_controls(self):
+        single = sum(
+            builder.question_type(q) in builder.MCQ_SINGLE and bool(q.get("options"))
+            for q in self.questions
+        )
+        multi = sum(builder.question_type(q) in builder.MCQ_MULTI for q in self.questions)
+        free = 77 - single - multi
+        self.assertEqual(single, 29)
+        self.assertEqual(multi, 6)
+        self.assertEqual(free, 42)
+        self.assertEqual(self.actual.count('type="radio"'), 116)
+        self.assertEqual(self.actual.count('type="checkbox"'), 24)
+        self.assertEqual(self.actual.count('class="answer-input"'), 42)
 
 
 if __name__ == "__main__":
