@@ -139,6 +139,9 @@ def correct_letters(q):
         m = re.search(r'^Option\s*\(([^)]+)\)', summary)
         if m:
             return [m.group(1)]
+        m = re.search(r'official\s+option\s*\(?([A-Z0-9]+)\)?', summary, re.I)
+        if m:
+            return [m.group(1)]
         target = _answer_norm(summary)
         matches = [
             option_parts(option, idx)[0]
