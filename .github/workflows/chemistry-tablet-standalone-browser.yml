@@ -35,8 +35,6 @@ jobs:
         run: python3 -m unittest tests.test_chemistry_tablet_standalone
       - name: Install governed renderer dependencies
         run: python3 -m pip install jsonschema
-      - name: Verify committed blueprint-v2 standalone pages
-        run: python3 Chemistry/tools/sync_blueprint_pages.py --check
       - name: Inspect governed Core1A render gaps
         run: |
           for slug in behaviour-of-gases chemical-bonding redox-reactions some-basic-concepts; do
@@ -44,6 +42,8 @@ jobs:
             python3 Shared/tools/render_core.py gaps \
               --manifest "products/chemistry/${slug}.manifest.json" || true
           done
+      - name: Verify committed blueprint-v2 standalone pages
+        run: python3 Chemistry/tools/sync_blueprint_pages.py --check
       - name: Render governed Core1A review candidates
         run: |
           set -euo pipefail
