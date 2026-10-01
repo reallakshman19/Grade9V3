@@ -18,7 +18,7 @@
     "WEB_CONTRACT": 3,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:523aa601507a35e42604a1e1d728fc595286b00d99931c5f1c581780a661bb5a",
+  "digest": "sha256:f16c07a8e09b72b72dba101b2527a4c5d198cca8512261f34e9a48656088b240",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -675,8 +675,8 @@
       "path": "Shared/tools/build_qb_tablet_standalone.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 53836,
-      "sha256": "64052e751847ab90ff66a9b6866818d4adeadad191fd6d2de4ba66e45c6fd672"
+      "bytes": 54046,
+      "sha256": "c0bdbac4b13be9831c7e4dfa289faa0880da45eaf4fb24770f84c70e03dd13af"
     },
     {
       "path": "Shared/tools/build_question_bank_platform.py",
