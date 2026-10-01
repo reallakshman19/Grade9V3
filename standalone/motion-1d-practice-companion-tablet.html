@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 9 Physics — Motion in 1D Practice Companion | 12.7&quot; Tablet</title>
+  <meta name="description" content="Author-created Grade 9 Motion in 1D practice companion. This is a related practice resource, not the canonical Core2 source-question product.">
+  <style>
+    :root {
+      --bg:#08101f; --surface:#101a2d; --card:#16243a; --card2:#1c2d47;
+      --border:#314866; --text:#f8fafc; --muted:#b2c0d2; --accent:#55c8ff;
+      --success:#4ade80; --warn:#fbbf24; --danger:#fb7185; --purple:#d8b4fe;
+      --touch:48px; --radius:12px; --max:1380px;
+    }
+    [data-theme="light"] {
+      --bg:#eef4f8; --surface:#ffffff; --card:#ffffff; --card2:#f6f9fc;
+      --border:#b9c8d8; --text:#0f172a; --muted:#475569; --accent:#0369a1;
+      --success:#15803d; --warn:#b45309; --danger:#be123c; --purple:#7e22ce;
+    }
+    *{box-sizing:border-box} html{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text);font-size:16px;scroll-behavior:smooth}
+    body{margin:0;line-height:1.58;min-height:100vh}
+    button,.btn,summary,input[type="checkbox"]+label{min-height:48px;min-width:48px}
+    button,.btn{font:inherit;border-radius:10px;border:1px solid var(--border);padding:10px 16px;background:var(--card);color:var(--text);cursor:pointer}
+    button:focus-visible,.btn:focus-visible,textarea:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+    a{color:var(--accent)}
+    .shell{max-width:var(--max);margin:0 auto;padding:16px 20px 64px}
+    .top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(10px);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px;margin-bottom:18px}
+    .top-row{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}
+    h1{font-size:clamp(1.35rem,2.4vw,2rem);margin:0;line-height:1.2}.subtitle{color:var(--muted);margin:.35rem 0 0;font-size:1rem}
+    .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.badge{display:inline-flex;align-items:center;min-height:32px;border:1px solid var(--border);border-radius:999px;padding:5px 10px;font-size:14px;font-weight:700}.badge.author{color:var(--success)}.badge.not-core2{color:var(--warn)}
+    .authority{background:linear-gradient(135deg,color-mix(in srgb,var(--warn) 10%,var(--surface)),var(--surface));border:2px solid var(--warn);border-radius:var(--radius);padding:18px 20px;margin:18px 0}.authority h2{font-size:1.2rem;margin:0 0 8px}.authority p{margin:7px 0}.authority strong{color:var(--warn)}
+    .guide{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:18px 0}.guide-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px}.guide-card h2{font-size:1.05rem;margin:0 0 8px;color:var(--accent)}
+    .jump{display:flex;gap:8px;overflow:auto;padding:8px 0 14px;scrollbar-width:thin}.jump a{display:inline-flex;align-items:center;min-height:48px;white-space:nowrap;text-decoration:none;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:8px 13px;color:var(--text)}
+    .question{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin:20px 0;padding:20px;scroll-margin-top:150px}.question h2{font-size:1.3rem;margin:0 0 6px}.meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;color:var(--muted);font-size:14px}.tag{border:1px solid var(--border);border-radius:999px;padding:4px 9px}.prompt{font-size:1.05rem;background:var(--card);border-left:4px solid var(--accent);border-radius:8px;padding:14px 16px;margin:12px 0}.hint{background:color-mix(in srgb,var(--accent) 8%,var(--card));border:1px solid color-mix(in srgb,var(--accent) 55%,var(--border));border-radius:10px;padding:13px 15px;margin:12px 0}.hint strong{color:var(--accent)}
+    textarea.tablet-safe-input{min-height:120px;width:100%;resize:vertical;background:var(--card);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:13px 14px;font:inherit;margin:10px 0}
+    .commit-row{display:flex;align-items:flex-start;gap:10px;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin:8px 0 12px}.commit-row input{width:24px;height:24px;flex:0 0 auto;margin-top:3px}.commit-row label{display:flex;align-items:center;font-size:15px;padding:0 4px}
+    .solution-toggle[disabled]{opacity:.45;cursor:not-allowed}.solution{display:none;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:12px}.solution.open{display:block}.solution h3{margin:0 0 10px;color:var(--success);font-size:1.08rem}.solution h4{margin:16px 0 6px;color:var(--accent);font-size:1rem}.solution p{margin:7px 0}.equation{font-family:"SFMono-Regular",Consolas,monospace;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:9px 12px;margin:9px 0;overflow:auto}.check{border-left:4px solid var(--success);padding-left:12px}.watch{border-left:4px solid var(--danger);padding-left:12px}
+    .support{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:18px;margin:24px 0}.support h2{font-size:1.15rem;margin-top:0}.matrix{display:grid;grid-template-columns:1fr 1fr;gap:10px}.matrix div{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:11px 12px}.matrix strong{color:var(--accent)}
+    footer{color:var(--muted);border-top:1px solid var(--border);margin-top:28px;padding-top:18px;font-size:14px}
+    @media(max-width:900px){.guide{grid-template-columns:1fr}.matrix{grid-template-columns:1fr}.shell{padding-inline:12px}.question{padding:16px}.top{border-radius:0;margin-inline:-12px;top:0}}
+    @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header class="top">
+    <div class="top-row">
+      <div>
+        <h1>Motion in 1D · Practice Companion</h1>
+        <p class="subtitle">Fourteen author-created challenges for reasoning, representation and method choice.</p>
+      </div>
+      <button id="themeToggle" type="button" aria-label="Toggle light and dark theme">🌓 Theme</button>
+    </div>
+    <div class="badges">
+      <span class="badge author">AUTHORED PRACTICE</span>
+      <span class="badge not-core2">NOT CANONICAL CORE2</span>
+      <span class="badge">GRADE 9 PHYSICS</span>
+    </div>
+  </header>
+
+  <section class="authority" aria-labelledby="authority-title">
+    <h2 id="authority-title">What this page is — and is not</h2>
+    <p><strong>This is an author-created practice companion.</strong> It is not a source-question Core2 product and does not claim external exam/source custody.</p>
+    <p>The current governed Motion‑1D product manifest has no selected Core2 source questions. Its selected practice lives in Core2A/Core2B records. These fourteen challenges are therefore presented honestly as related authored practice while their record-level admission is reconciled.</p>
+    <p>Use this page to practise decisions such as sign convention, graph meaning, interval decomposition, event selection and sanity checking. Use the governed Question Bank/Core products for canonical question identity and provenance.</p>
+  </section>
+
+  <section class="guide" aria-label="How to use this practice companion">
+    <article class="guide-card"><h2>1 · Represent first</h2><p>Before choosing an equation, name the interval or event, choose a positive direction, list what is known and draw the smallest useful representation.</p></article>
+    <article class="guide-card"><h2>2 · Commit to an attempt</h2><p>Write a line of working in the scratch area or tick “worked on paper”. The worked solution is deliberately unavailable until that commitment.</p></article>
+    <article class="guide-card"><h2>3 · Check, don’t copy</h2><p>Compare your method with the worked route. Pay special attention to why that representation or equation is valid and to the independent check at the end.</p></article>
+  </section>
+
+  <nav class="jump" aria-label="Jump to a challenge">
+    <a href="#q1">T1 Reversal</a><a href="#q2">T2 Averages</a><a href="#q3">T3 Signs</a><a href="#q4">T4 No time</a><a href="#q5">T5 x–t slope</a><a href="#q6">T6 v–t area</a><a href="#q7">T7 Phases</a><a href="#q8">T8 Top state</a><a href="#q9">T9 Fall scaling</a><a href="#q10">T10 Relative a</a><a href="#q11">T11 Equal distance</a><a href="#q12">T12 Fifth second</a><a href="#q13">T13 Catch-up</a><a href="#q14">T14 Graph test</a>
+  </nav>
+
+  <main id="questions">
+    <article class="question" id="q1" data-question="T1">
+      <h2>T1 · Reversal path</h2><div class="meta"><span class="tag">distance vs displacement</span><span class="tag">representation</span><span class="tag">sign convention</span></div>
+      <div class="prompt">A robot moves +7 m, then −11 m, then +2 m along one straight line. Find its displacement and total distance travelled.</div>
+      <div class="hint"><strong>Key concept:</strong> displacement depends only on start and finish; distance counts every leg. Put all three legs on one signed axis before calculating.</div>
+      <textarea class="tablet-safe-input" id="work1" aria-label="Working for T1" placeholder="Choose +x, sketch the three legs, then write your calculation…"></textarea>
+      <div class="commit-row"><input type="checkbox" id="paper1"><label for="paper1">I made a genuine attempt here or on paper.</label></div>
+      <button class="solution-toggle" data-q="1" disabled>Show worked solution</button>
+      <section class="solution" id="solution1" aria-live="polite"><h3>Worked solution</h3><h4>Understand</h4><p>Keep two different questions separate: net change in position and accumulated path length.</p><h4>Represent</h4><p>Take right as +x. Start at x = 0. After +7 m the robot is at +7 m; after −11 m it is at −4 m; after +2 m it is at −2 m.</p><h4>Calculate</h4><div class="equation">displacement = (+7) + (−11) + (+2) = −2 m</div><div class="equation">distance = |7| + |−11| + |2| = 20 m</div><h4>Interpret</h4><p>The displacement is 2 m in the negative direction; the robot travelled 20 m in total.</p><p class="check"><strong>Independent check:</strong> the final coordinate is −2 m, so the displacement must be −2 m regardless of the route.</p><p class="watch"><strong>Common wrong route:</strong> adding signed legs and calling the result “distance”. Distance cannot be negative and must include all path lengths.</p></section>
+    </article>
+
+    <article class="question" id="q2" data-question="T2">
+      <h2>T2 · Round-trip averages</h2><div class="meta"><span class="tag">average speed</span><span class="tag">average velocity</span><span class="tag">total time</span></div>
+      <div class="prompt">A vehicle travels 60 km to a station at 40 km/h and returns the same 60 km at 30 km/h. Find the average speed and average velocity for the complete trip.</div>
+      <div class="hint"><strong>Representation:</strong> draw the out-and-back route. The vehicle returns to its start, but the travel times of the two legs are different.</div>
+      <textarea class="tablet-safe-input" id="work2" aria-label="Working for T2" placeholder="Find each leg time, then use total distance / total time…"></textarea>
+      <div class="commit-row"><input type="checkbox" id="paper2"><label for="paper2">I made a genuine attempt here or on paper.</label></div><button class="solution-toggle" data-q="2" disabled>Show worked solution</button>
+      <section class="solution" id="solution2"><h3>Worked solution</h3><h4>Understand</h4><p>Average speed uses total distance; average velocity uses displacement. Both use the same total elapsed time.</p><h4>Calculate the times</h4><div class="equation">t_out = 60/40 = 1.5 h; t_back = 60/30 = 2 h</div><div class="equation">total time = 3.5 h; total distance = 120 km</div><div class="equation">average speed = 120/3.5 = 34.2857… km/h ≈ 34.3 km/h</div><p>The final position equals the initial position, so displacement = 0 km.</p><div class="equation">average velocity = 0/3.5 = 0 km/h</div><p class="check"><strong>Independent check:</strong> the average speed must lie between 30 and 40 km/h and should be closer to 30 because more time is spent on the slower leg.</p><p class="watch"><strong>Common wrong route:</strong> using (40 + 30)/2 = 35 km/h. That simple average would require equal times, not equal distances.</p></section>
+    </article>
+
+    <article class="question" id="q3" data-question="T3">
+      <h2>T3 · Negative velocity and negative acceleration</h2><div class="meta"><span class="tag">signed velocity</span><span class="tag">acceleration</span><span class="tag">speed change</span></div>
+      <div class="prompt">A particle has u = −4 m/s and constant a = −3 m/s² for 2 s. Find its final velocity and decide whether its speed increased or decreased.</div>
+      <div class="hint"><strong>First move:</strong> use v = u + at. Then compare magnitudes |u| and |v|; do not equate “negative acceleration” with “slowing down”.</div>
+      <textarea class="tablet-safe-input" id="work3" aria-label="Working for T3" placeholder="Write v = u + at with signs intact…"></textarea><div class="commit-row"><input type="checkbox" id="paper3"><label for="paper3">I made a genuine attempt here or on paper.</label></div><button class="solution-toggle" data-q="3" disabled>Show worked solution</button>
+      <section class="solution" id="solution3"><h3>Worked solution</h3><p>Keep the sign convention fixed. The initial velocity and acceleration both point in the negative direction.</p><div class="equation">v = u + at = −4 + (−3)(2) = −10 m/s</div><p>Initial speed = 4 m/s; final speed = 10 m/s. Therefore the particle speeds up.</p><p class="check"><strong>Independent check:</strong> acceleration and velocity have the same sign throughout this interval, so the magnitude of velocity should increase.</p><p class="watch"><strong>Common wrong route:</strong> reading “negative acceleration” as a synonym for deceleration. Whether speed rises or falls depends on the relative directions of velocity and acceleration.</p></section>
+    </article>
+
+    <article class="question" id="q4" data-question="T4">
+      <h2>T4 · Choose the no-time equation</h2><div class="meta"><span class="tag">model choice</span><span class="tag">constant acceleration</span><span class="tag">equation selection</span></div>
+      <div class="prompt">A car moves at 5 m/s and accelerates uniformly at 2 m/s² through 24 m. Find its final speed without finding time.</div>
+      <div class="hint"><strong>First mathematical move:</strong> time is neither given nor wanted. Under constant acceleration, choose the relation connecting u, v, a and s directly.</div>
+      <textarea class="tablet-safe-input" id="work4" aria-label="Working for T4" placeholder="List u, a, s, v. Which constant-a relation omits t?…"></textarea><div class="commit-row"><input type="checkbox" id="paper4"><label for="paper4">I made a genuine attempt here or on paper.</label></div><button class="solution-toggle" data-q="4" disabled>Show worked solution</button>
+      <section class="solution" id="solution4"><h3>Worked solution</h3><h4>Model check</h4><p>“Accelerates uniformly” permits the constant-acceleration relations over the stated 24 m interval.</p><div class="equation">v² = u² + 2as</div><div class="equation">v² = 5² + 2(2)(24) = 25 + 96 = 121</div><div class="equation">v = 11 m/s</div><p>Choose the positive root because the question asks for speed and the car is continuing in the positive direction.</p><p class="check"><strong>Independent check:</strong> positive acceleration over positive displacement should make the speed larger than 5 m/s; 11 m/s is consistent.</p><p class="watch"><strong>Common wrong route:</strong> first solving for time just because v = u + at is familiar. Correct equation choice can remove an unnecessary unknown.</p></section>
+    </article>
+
+    <article class="question" id="q5" data-question="T5">
+      <h2>T5 · Read slope from an x–t graph</h2><div class="meta"><span class="tag">position–time</span><span class="tag">slope</span><span class="tag">rest interval</span></div>
+      <div class="prompt">An x–t graph rises linearly from x = 2 m at t = 0 to x = 14 m at t = 4 s, then remains flat for 3 s. Find the velocity in each interval.</div>
+      <div class="hint"><strong>Representation:</strong> on an x–t graph, velocity is the slope Δx/Δt. A horizontal segment has zero slope even if its vertical coordinate is not zero.</div>
+      <textarea class="tablet-safe-input" id="work5" aria-label="Working for T5" placeholder="Compute the slope of each straight segment…"></textarea><div class="commit-row"><input type="checkbox" id="paper5"><label for="paper5">I made a genuine attempt here or on paper.</label></div><button class="solution-toggle" data-q="5" disabled>Show worked solution</button>
+      <section class="solution" id="solution5"><h3>Worked solution</h3><div class="equation">v₁ = Δx/Δt = (14 − 2)/(4 − 0) = 12/4 = 3 m/s</div><p>From t = 4 s to t = 7 s, x is constant.</p><div class="equation">v₂ = Δx/Δt = 0/3 = 0 m/s</div><p class="check"><strong>Independent check:</strong> a straight rising x–t segment means constant positive velocity; a flat segment means the object is at rest.</p><p class="watch"><strong>Common wrong route:</strong> reading x = 14 m as a velocity. Graph height gives position; slope gives velocity.</p></section>
+    </article>
+
+    <article class="question" id="q6" data-question="T6">
+      <h2>T6 · Signed area under a v–t graph</h2><div class="meta"><span class="tag">velocity–time</span><span class="tag">signed area</span><span class="tag">distance</span></div>
+      <div class="prompt">A particle moves at +4 m/s for 3 s, then at −2 m/s for 4 s. Find total displacement and total distance.</div>
+      <div class="hint"><strong>Key concept:</strong> signed area under v–t gives displacement. Distance uses the magnitude of each interval’s displacement.</div>
+      <textarea class="tablet-safe-input" id="work6" aria-label="Working for T6" placeholder="Find the signed rectangular area for each interval…"></textarea><div class="commit-row"><input type="checkbox" id="paper6"><label for="paper6">I made a genuine attempt here or on paper.</label></div><button class="solution-toggle" data-q="6" disabled>Show worked solution</button>
+      <section class="solution" id="solution6"><h3>Worked solution</h3><div class="equation">Δx₁ = (+4)(3) = +12 m</div><div class="equation">Δx₂ = (−2)(4) = −8 m</div><div class="equation">total displacement = +12 − 8 = +4 m</div><div class="equation">total distance = |12| + |−8| = 20 m</div><p class="check"><strong>Independent check:</strong> distance must be at least the magnitude of displacement; 20 m ≥ 4 m.</p><p class="watch"><strong>Common wrong route:</strong> adding the two areas without preserving sign for displacement, or preserving sign when calculating distance.</p></section>
+    </article>
+
+    <article class="question" id="q7" data-question="T7">
+      <h2>T7 · Three-phase motion</h2><div class="meta"><span class="tag">piecewise motion</span><span class="tag">v–t area</span><span class="tag">phase boundary</span></div>
+      <div class="prompt">A cart accelerates uniformly from 0 to 8 m/s in 4 s, travels at 8 m/s for 5 s, then brakes uniformly to rest in 2 s. Find the total displacement.</div>
+      <div class="hint"><strong>Representation:</strong> sketch v against t. The three phases form a triangle, rectangle and triangle. Their total area is displacement.</div>
+      <textarea class="tablet-safe-input" id="work7" aria-label="Working for T7" placeholder="Draw the piecewise v–t graph and add its areas…"></textarea><div class="commit-row"><input type="checkbox" id="paper7"><label for="paper7">I made a genuine attempt here or on paper.</label></div><button class="solution-toggle" data-q="7" disabled>Show worked solution</button>
+      <section class="solution" id="solution7"><h3>Worked solution</h3><p>The acceleration law changes between phases, so do not force one constant-a equation across the entire 11 s.</p><div class="equation">s₁ = ½(4)(8) = 16 m</div><div class="equation">s₂ = (5)(8) = 40 m</div><div class="equation">s₃ = ½(2)(8) = 8 m</div><div class="equation">s_total = 16 + 40 + 8 = 64 m</div><p class="check"><strong>Independent check:</strong> average velocity over the 11 s is 64/11 ≈ 5.82 m/s, which is plausible because velocity stays between 0 and 8 m/s.</p><p class="watch"><strong>Common wrong route:</strong> calculating one acceleration for the whole journey despite the cruise interval and braking interval.</p></section>
+    </article>
+
+    <article class="question" id="q8" data-question="T8">
+      <h2>T8 · Highest point in vertical motion</h2><div class="meta"><span class="tag">vertical motion</span><span class="tag">event condition</span><span class="tag">gravity</span></div>
+      <div class="prompt">A ball is thrown vertically upward at 18 m/s. Take g = 9 m/s² and upward as positive. Find the time to the highest point.</div>
+      <div class="hint"><strong>Event condition:</strong> at the highest point the instantaneous velocity is zero. Gravity is still −9 m/s² there.</div>
+      <textarea class="tablet-safe-input" id="work8" aria-label="Working for T8" placeholder="Write the sign convention, event condition v = 0, and solve…"></textarea><div class="commit-row"><input type="checkbox" id="paper8"><label for="paper8">I made a genuine attempt here or on paper.</label></div><button class="solution-toggle" data-q="8" disabled>Show worked solution</button>
+      <section class="solution" id="solution8"><h3>Worked solution</h3><div class="equation">v = u + at</div><div class="equation">0 = 18 + (−9)t</div><div class="equation">t = 2 s</div><p class="check"><strong>Independent check:</strong> velocity decreases by 9 m/s each second, so 18 m/s takes 2 s to fall to zero.</p><p class="watch"><strong>Common wrong route:</strong> setting acceleration to zero at the top. Velocity is momentarily zero; gravitational acceleration is not.</p></section>
+    </article>
+
+    <article class="question" id="q9" data-question="T9">
+      <h2>T9 · Free-fall time scaling</h2><div class="meta"><span class="tag">scaling</span><span class="tag">free fall</span><span class="tag">from rest</span></div>
+      <div class="prompt">Two stones are dropped from rest under the same constant gravitational acceleration. One falls for time t and the other for time 2t. Compare the distances fallen.</div>
+      <div class="hint"><strong>First move:</strong> for a drop from rest under constant g, s = ½gt². Compare the time factors before inserting any numbers.</div>
+      <textarea class="tablet-safe-input" id="work9" aria-label="Working for T9" placeholder="Write s(t) and s(2t), then form a ratio…"></textarea><div class="commit-row"><input type="checkbox" id="paper9"><label for="paper9">I made a genuine attempt here or on paper.</label></div><button class="solution-toggle" data-q="9" disabled>Show worked solution</button>
+      <section class="solution" id="solution9"><h3>Worked solution</h3><div class="equation">s₁ = ½gt²</div><div class="equation">s₂ = ½g(2t)² = ½g(4t²) = 4s₁</div><p>The second stone falls four times the distance.</p><p class="check"><strong>Independent check:</strong> constant acceleration from rest gives quadratic, not linear, growth of distance with time.</p><p class="watch"><strong>Common wrong route:</strong> doubling the time and therefore doubling the distance. That would fit constant velocity, not acceleration from rest.</p></section>
+    </article>
+
+    <article class="question" id="q10" data-question="T10">
+      <h2>T10 · Relative acceleration in the same gravitational field</h2><div class="meta"><span class="tag">relative motion</span><span class="tag">common acceleration</span><span class="tag">frame</span></div>
+      <div class="prompt">Two objects are simultaneously in ideal free fall near Earth and experience the same gravitational acceleration g in the same inertial frame. What is their relative acceleration?</div>
+      <div class="hint"><strong>Representation:</strong> relative acceleration is the vector difference a_rel = a_B − a_A. Both absolute accelerations are the same vector.</div>
+      <textarea class="tablet-safe-input" id="work10" aria-label="Working for T10" placeholder="Write both acceleration vectors in the same sign convention…"></textarea><div class="commit-row"><input type="checkbox" id="paper10"><label for="paper10">I made a genuine attempt here or on paper.</label></div><button class="solution-toggle" data-q="10" disabled>Show worked solution</button>
+      <section class="solution" id="solution10"><h3>Worked solution</h3><p>Take upward as positive. Both objects have acceleration −g.</p><div class="equation">a_rel = a_B − a_A = (−g) − (−g) = 0</div><p>The relative velocity therefore remains constant while the shared-g idealisation holds.</p><p class="check"><strong>Independent check:</strong> identical accelerations change both velocities by the same amount in the same time, so their velocity difference does not change.</p><p class="watch"><strong>Boundary:</strong> this conclusion relies on both objects experiencing the same g in the same frame; appreciably different fields or drag would break the assumption.</p></section>
+    </article>
+
+    <article class="question" id="q11" data-question="T11">
+      <h2>T11 · Equal-distance average speed</h2><div class="meta"><span class="tag">average speed</span><span class="tag">harmonic structure</span><span class="tag">equal distance</span></div>
+      <div class="prompt">A car covers two equal 1 km legs at 20 m/s and 30 m/s. Find its average speed.</div>
+      <div class="hint"><strong>Key concept:</strong> the distances are equal, not the times. Compute the time of each leg and use total distance divided by total time.</div>
+      <textarea class="tablet-safe-input" id="work11" aria-label="Working for T11" placeholder="Use a common leg length L or convert 1 km to 1000 m…"></textarea><div class="commit-row"><input type="checkbox" id="paper11"><label for="paper11">I made a genuine attempt here or on paper.</label></div><button class="solution-toggle" data-q="11" disabled>Show worked solution</button>
+      <section class="solution" id="solution11"><h3>Worked solution</h3><p>Let each leg be L = 1000 m.</p><div class="equation">t₁ = 1000/20 = 50 s; t₂ = 1000/30 = 33.333… s</div><div class="equation">v_avg = 2000/(50 + 33.333…) = 24 m/s</div><p class="check"><strong>Independent check:</strong> 24 m/s lies between 20 and 30 and is closer to 20 because the slower leg occupies more time.</p><p class="watch"><strong>Common wrong route:</strong> using (20 + 30)/2 = 25 m/s. That would be the average for equal time spent at each speed.</p></section>
+    </article>
+
+    <article class="question" id="q12" data-question="T12">
+      <h2>T12 · Displacement during the fifth second</h2><div class="meta"><span class="tag">interval vs cumulative</span><span class="tag">constant acceleration</span><span class="tag">difference of states</span></div>
+      <div class="prompt">Starting from rest with constant acceleration, a particle travels 32 m in the first 4 s. Find the displacement during the fifth second.</div>
+      <div class="hint"><strong>Representation:</strong> “during the fifth second” means the interval from t = 4 s to t = 5 s. Find S(5) − S(4), not S(5).</div>
+      <textarea class="tablet-safe-input" id="work12" aria-label="Working for T12" placeholder="Use S(t)=½at² to infer a from S(4), then subtract states…"></textarea><div class="commit-row"><input type="checkbox" id="paper12"><label for="paper12">I made a genuine attempt here or on paper.</label></div><button class="solution-toggle" data-q="12" disabled>Show worked solution</button>
+      <section class="solution" id="solution12"><h3>Worked solution</h3><p>From rest, S(t) = ½at².</p><div class="equation">32 = ½a(4²) = 8a ⇒ a = 4 m/s²</div><div class="equation">S(5) = ½(4)(25) = 50 m</div><div class="equation">displacement during 5th second = S(5) − S(4) = 50 − 32 = 18 m</div><p class="check"><strong>Independent check:</strong> the object is speeding up, so the distance in the fifth one-second interval should exceed that in earlier one-second intervals.</p><p class="watch"><strong>Common wrong route:</strong> reporting 50 m, which is the cumulative displacement after 5 s rather than the displacement only during the fifth second.</p></section>
+    </article>
+
+    <article class="question" id="q13" data-question="T13">
+      <h2>T13 · Delayed-start catch-up</h2><div class="meta"><span class="tag">shared clock</span><span class="tag">head start</span><span class="tag">meeting event</span></div>
+      <div class="prompt">Car A passes a point at 10 m/s. Two seconds later, car B starts from rest at that point with constant acceleration 4 m/s². When does B catch A, measured from B’s start?</div>
+      <div class="hint"><strong>First move:</strong> reset the clock when B starts. At that instant A is already 20 m ahead. At the catch event both cars have the same position in this new clock.</div>
+      <textarea class="tablet-safe-input" id="work13" aria-label="Working for T13" placeholder="Let τ be time since B starts. Write x_A(τ) and x_B(τ)…"></textarea><div class="commit-row"><input type="checkbox" id="paper13"><label for="paper13">I made a genuine attempt here or on paper.</label></div><button class="solution-toggle" data-q="13" disabled>Show worked solution</button>
+      <section class="solution" id="solution13"><h3>Worked solution</h3><p>At τ = 0 (B starts), A has travelled 10×2 = 20 m.</p><div class="equation">x_A = 20 + 10τ</div><div class="equation">x_B = ½(4)τ² = 2τ²</div><p>Catch-up requires x_A = x_B:</p><div class="equation">2τ² = 20 + 10τ ⇒ τ² − 5τ − 10 = 0</div><div class="equation">τ = (5 ± √65)/2</div><p>Only the positive time is physical:</p><div class="equation">τ = (5 + √65)/2 ≈ 6.53 s</div><p class="check"><strong>Independent check:</strong> at 6.53 s, A is about 85.3 m from the origin and B’s 2τ² is also about 85.3 m.</p><p class="watch"><strong>Common wrong route:</strong> using the same zero-position initial condition for both cars when B starts, thereby erasing A’s 20 m head start.</p></section>
+    </article>
+
+    <article class="question" id="q14" data-question="T14">
+      <h2>T14 · Can an x–t graph loop back on itself?</h2><div class="meta"><span class="tag">graph validity</span><span class="tag">function of time</span><span class="tag">model boundary</span></div>
+      <div class="prompt">A proposed position–time graph forms a closed loop so that, for some time values, one vertical line crosses the curve twice. Can it describe one particle in one frame? Explain.</div>
+      <div class="hint"><strong>Boundary test:</strong> ask how many positions one particle may occupy at one instant in one frame. Then apply the vertical-line test with time on the horizontal axis.</div>
+      <textarea class="tablet-safe-input" id="work14" aria-label="Working for T14" placeholder="State the physical rule and connect it to the graph…"></textarea><div class="commit-row"><input type="checkbox" id="paper14"><label for="paper14">I made a genuine attempt here or on paper.</label></div><button class="solution-toggle" data-q="14" disabled>Show worked solution</button>
+      <section class="solution" id="solution14"><h3>Worked solution</h3><p>No. In a classical one-particle description in one frame, each instant t must correspond to one position x(t). If a vertical line at a single time intersects the graph twice, the graph assigns two positions to the same particle at the same instant.</p><p>This does not mean a particle cannot reverse direction. A valid x–t graph may rise, flatten and fall; reversal changes the sign of slope but still leaves exactly one x value at each t.</p><p class="check"><strong>Independent check:</strong> apply the vertical-line test with t on the horizontal axis. A valid single-particle x(t) history is single-valued.</p><p class="watch"><strong>Common wrong route:</strong> thinking that “looping back in space” requires a loop in x–t. Spatial reversal is shown by changing slope, not by giving one time two positions.</p></section>
+    </article>
+  </main>
+
+  <section class="support">
+    <h2>Method map for this companion</h2>
+    <div class="matrix">
+      <div><strong>Endpoint reasoning</strong><br>T1, T2 — distinguish path totals from start-to-finish change.</div>
+      <div><strong>Sign and state</strong><br>T3, T8 — signs describe direction; zero velocity at an event does not erase acceleration.</div>
+      <div><strong>Equation choice</strong><br>T4, T12 — choose relations from known/unknown quantities and interval meaning, not habit.</div>
+      <div><strong>Graph semantics</strong><br>T5, T6, T7, T14 — slope, signed area, piecewise phases and graph validity each encode different physics.</div>
+      <div><strong>Scaling and invariants</strong><br>T9, T10 — expose quadratic time scaling and cancellation of equal accelerations.</div>
+      <div><strong>Shared-event modelling</strong><br>T11, T13 — averages and catch-up require correct elapsed times and a common event clock.</div>
+    </div>
+    <h2 style="margin-top:20px">Formula reminders — use only after checking the model</h2>
+    <div class="equation">constant acceleration: v = u + at; s = ut + ½at²; v² = u² + 2as</div>
+    <div class="equation">average speed = total distance / total time; average velocity = displacement / total time</div>
+    <div class="equation">x–t slope = velocity; v–t signed area = displacement</div>
+    <p><strong>Validity reminder:</strong> the constant-acceleration equations are exact only on an interval for which one acceleration value describes the motion. Break multi-phase motion into intervals when the motion law changes.</p>
+  </section>
+
+  <footer>
+    <p><strong>Provenance:</strong> author-created Grade9V3 practice material reconstructed from the existing #375 candidate. It does not claim external source-question custody. Canonical product/question identity remains governed by the Physics library, product manifests and Question Bank projections.</p>
+    <p><strong>Accessibility:</strong> user zoom remains enabled; primary controls are at least 48 CSS px; solutions require an explicit learner attempt signal; keyboard focus is visible; no external runtime dependency is required.</p>
+  </footer>
+</div>
+<script>
+  const themeBtn = document.getElementById('themeToggle');
+  const root = document.documentElement;
+  const savedTheme = localStorage.getItem('g9_motion1d_practice_theme') || 'dark';
+  root.setAttribute('data-theme', savedTheme);
+  themeBtn.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('g9_motion1d_practice_theme', next);
+  });
+
+  for (let i = 1; i <= 14; i += 1) {
+    const work = document.getElementById(`work${i}`);
+    const paper = document.getElementById(`paper${i}`);
+    const button = document.querySelector(`.solution-toggle[data-q="${i}"]`);
+    const solution = document.getElementById(`solution${i}`);
+    const storageKey = `g9_motion1d_practice_work_${i}`;
+    work.value = localStorage.getItem(storageKey) || '';
+    const updateCommit = () => {
+      localStorage.setItem(storageKey, work.value);
+      button.disabled = !(work.value.trim().length > 0 || paper.checked);
+    };
+    work.addEventListener('input', updateCommit);
+    paper.addEventListener('change', updateCommit);
+    button.addEventListener('click', () => {
+      const opening = !solution.classList.contains('open');
+      solution.classList.toggle('open', opening);
+      button.textContent = opening ? 'Hide worked solution' : 'Show worked solution';
+      button.setAttribute('aria-expanded', String(opening));
+      if (opening) solution.scrollIntoView({block:'nearest'});
+    });
+    button.setAttribute('aria-controls', `solution${i}`);
+    button.setAttribute('aria-expanded', 'false');
+    updateCommit();
+  }
+</script>
+</body>
+</html>
