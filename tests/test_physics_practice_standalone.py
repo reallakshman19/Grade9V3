@@ -23,6 +23,8 @@ EXPECTED_FILES = [
     "core2-motion-consolidated-practice-tablet.html",
     "core1a-physics-vectors-tablet.html",
     "motion-in-1d-master-suite.html",
+    "motion-in-2d-master-suite.html",
+    "physics-motion-in-a-plane-interactive-suite.html",
 ]
 
 CDN_RE = re.compile(r'https?://(cdn\.|unpkg\.|jsdelivr\.|cdnjs\.)', re.I)
