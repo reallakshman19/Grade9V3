@@ -55,7 +55,9 @@
       "id": "BUCKET-CHEM-REDOX",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -99,7 +101,8 @@
           "Any claim of prescribed Grade-9 curriculum authority.",
           "Core2 source-question admission."
         ]
-      }
+      },
+      "primary_representation_ref": "REP-CHEM-REDOX-OXIDATION-AGENTS"
     }
   ],
   "capabilities": [
@@ -107,7 +110,9 @@
       "id": "CAP-CHEM-REDOX-OXIDATION-AGENTS",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -134,7 +139,9 @@
       "id": "CAP-CHEM-REDOX-CLASSIFICATION",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -161,7 +168,9 @@
       "id": "CAP-CHEM-REDOX-BALANCE-NFACTOR",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -190,7 +199,9 @@
       "id": "MIC-CHEM-REDOX-OXIDATION-AGENTS",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -201,7 +212,7 @@
       "intrinsic_badge": "MEDIUM",
       "badge_reason": "The learner must coordinate formal oxidation-state bookkeeping with electron transfer and avoid the common agent-name inversion.",
       "entry_assumptions": [
-        "Can read chemical equations, ionic charges and integer oxidation-state labels when the bookkeeping rules are supplied."
+        "For Oxidation number, oxidation/reduction and agents, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
       ],
       "inferential_jump": "Oxidation number is a formal assignment whose increase corresponds to oxidation and decrease to reduction; an oxidising agent is itself reduced while a reducing agent is itself oxidised.",
       "teaching_path": [
@@ -231,7 +242,9 @@
         }
       ],
       "relation_refs": [],
-      "representation_refs": [],
+      "representation_refs": [
+        "REP-CHEM-REDOX-OXIDATION-AGENTS"
+      ],
       "question_family_refs": [
         "FAM-CHEM-REDOX-OXIDATION-AGENTS"
       ],
@@ -258,10 +271,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "Qualitative bookkeeping explanation; no new computed numerical oracle is asserted."
+          "no_numeric_claim": "The Oxidation number, oxidation/reduction and agents exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
         }
       },
-      "research_contribution": "Carries the corrected oxidation-state, agent, classification, balancing and n-factor boundaries from the PR #376 audit into governed records; independent exact-render review remains pending.",
+      "research_contribution": "For Oxidation number, oxidation/reduction and agents, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -273,7 +286,7 @@
             "REDOX-OXIDATION-AGENTS-T2",
             "REDOX-OXIDATION-AGENTS-T3"
           ],
-          "representation_ref": null,
+          "representation_ref": "REP-CHEM-REDOX-OXIDATION-AGENTS",
           "reveal_stage_refs": [],
           "worked_anchor_ref": "Q-CHEM-REDOX-OXIDATION-AGENTS-1A",
           "misconception_indexes": [
@@ -285,13 +298,59 @@
             }
           ]
         }
-      ]
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "For Oxidation number, oxidation/reduction and agents, decide before the completed route is revealed: Can resonance/electron sharing make physical charge differ from formal oxidation number, and what happens to the electron acceptor itself?",
+          "defensible_answer": "For Oxidation number, oxidation/reduction and agents, the defensible route is: Label oxidation state as formal bookkeeping; write self-change first, then assign the opposite process as the agent name."
+        },
+        "attempt": {
+          "produces": "A short Oxidation number, oxidation/reduction and agents explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "closure": "CRITERIA",
+          "rubric": [
+            {
+              "criterion": "The Oxidation number, oxidation/reduction and agents response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+              "evidence_of": "The learner can separate the Oxidation number, oxidation/reduction and agents governing distinction from the tempting shortcut."
+            }
+          ],
+          "task": {
+            "prompt": "Explain the Oxidation number, oxidation/reduction and agents decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "givens": [
+              "Oxidation number is a formal assignment whose increase corresponds to oxidation and decrease to reduction; an oxidising agent is itself reduced while a reducing agent is itself oxidised."
+            ],
+            "representation_ref": "REP-CHEM-REDOX-OXIDATION-AGENTS",
+            "stage_refs": []
+          }
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "In Oxidation number, oxidation/reduction and agents, what must be decided before the move \"Apply oxidation-number priority rules and require the algebraic sum to equal the species charge.\" is justified?",
+              "why_this_ask": "This makes the learner supply the entry decision for Oxidation number, oxidation/reduction and agents instead of receiving the expert sequence first.",
+              "from_step_ref": "REDOX-OXIDATION-AGENTS-T1"
+            },
+            {
+              "ask": "For Oxidation number, oxidation/reduction and agents, how would you test the conclusion reached by \"Name the species being reduced as the oxidising agent and the species being oxidised as the reducing agent.\" without simply repeating the model answer?",
+              "why_this_ask": "This closes Oxidation number, oxidation/reduction and agents through a learner-owned check rather than through recall of the declarative route.",
+              "from_step_ref": "REDOX-OXIDATION-AGENTS-T3"
+            }
+          ],
+          "differs_from_teaching_path": "For Oxidation number, oxidation/reduction and agents, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+        },
+        "boundary_test": {
+          "prompt": "Why is an oxidation number useful even though it is not generally a measured atomic charge?",
+          "answer": "Its formal assignment rules consistently expose electron-accounting changes between reactants and products.",
+          "confirms": "For Oxidation number, oxidation/reduction and agents, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+        }
+      }
     },
     {
       "id": "MIC-CHEM-REDOX-CLASSIFICATION",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -302,7 +361,7 @@
       "intrinsic_badge": "HARD",
       "badge_reason": "The learner must distinguish chemical change from redox and identify split/convergent oxidation-state patterns.",
       "entry_assumptions": [
-        "Can read chemical equations, ionic charges and integer oxidation-state labels when the bookkeeping rules are supplied."
+        "For Redox classification, displacement and disproportionation patterns, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
       ],
       "inferential_jump": "A reaction is redox only when oxidation-number bookkeeping shows coupled increase and decrease; reaction labels such as decomposition or displacement do not replace that test.",
       "teaching_path": [
@@ -332,7 +391,9 @@
         }
       ],
       "relation_refs": [],
-      "representation_refs": [],
+      "representation_refs": [
+        "REP-CHEM-REDOX-CLASSIFICATION"
+      ],
       "question_family_refs": [
         "FAM-CHEM-REDOX-CLASSIFICATION"
       ],
@@ -359,10 +420,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "Qualitative bookkeeping explanation; no new computed numerical oracle is asserted."
+          "no_numeric_claim": "The Redox classification, displacement and disproportionation patterns exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
         }
       },
-      "research_contribution": "Carries the corrected oxidation-state, agent, classification, balancing and n-factor boundaries from the PR #376 audit into governed records; independent exact-render review remains pending.",
+      "research_contribution": "For Redox classification, displacement and disproportionation patterns, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -374,7 +435,7 @@
             "REDOX-CLASSIFICATION-T2",
             "REDOX-CLASSIFICATION-T3"
           ],
-          "representation_ref": null,
+          "representation_ref": "REP-CHEM-REDOX-CLASSIFICATION",
           "reveal_stage_refs": [],
           "worked_anchor_ref": "Q-CHEM-REDOX-CLASSIFICATION-1A",
           "misconception_indexes": [
@@ -386,13 +447,59 @@
             }
           ]
         }
-      ]
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "For Redox classification, displacement and disproportionation patterns, decide before the completed route is revealed: Can ions exchange partners with unchanged oxidation numbers, and are the three states arranged as one-to-two or two-to-one across the reaction arrow?",
+          "defensible_answer": "For Redox classification, displacement and disproportionation patterns, the defensible route is: Run the oxidation-number change check first, then draw the directed state map before naming a special redox pattern."
+        },
+        "attempt": {
+          "produces": "A short Redox classification, displacement and disproportionation patterns explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "closure": "CRITERIA",
+          "rubric": [
+            {
+              "criterion": "The Redox classification, displacement and disproportionation patterns response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+              "evidence_of": "The learner can separate the Redox classification, displacement and disproportionation patterns governing distinction from the tempting shortcut."
+            }
+          ],
+          "task": {
+            "prompt": "Explain the Redox classification, displacement and disproportionation patterns decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "givens": [
+              "A reaction is redox only when oxidation-number bookkeeping shows coupled increase and decrease; reaction labels such as decomposition or displacement do not replace that test."
+            ],
+            "representation_ref": "REP-CHEM-REDOX-CLASSIFICATION",
+            "stage_refs": []
+          }
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "In Redox classification, displacement and disproportionation patterns, what must be decided before the move \"Recognise the chemical reaction without yet calling it redox.\" is justified?",
+              "why_this_ask": "This makes the learner supply the entry decision for Redox classification, displacement and disproportionation patterns instead of receiving the expert sequence first.",
+              "from_step_ref": "REDOX-CLASSIFICATION-T1"
+            },
+            {
+              "ask": "For Redox classification, displacement and disproportionation patterns, how would you test the conclusion reached by \"For the same element, map one initial state splitting upward and downward as disproportionation, and two starting states converging as comproportionation.\" without simply repeating the model answer?",
+              "why_this_ask": "This closes Redox classification, displacement and disproportionation patterns through a learner-owned check rather than through recall of the declarative route.",
+              "from_step_ref": "REDOX-CLASSIFICATION-T3"
+            }
+          ],
+          "differs_from_teaching_path": "For Redox classification, displacement and disproportionation patterns, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+        },
+        "boundary_test": {
+          "prompt": "Why is decomposition alone insufficient to call a reaction redox?",
+          "answer": "Decomposition describes a reaction pattern, whereas redox requires actual oxidation-number changes.",
+          "confirms": "For Redox classification, displacement and disproportionation patterns, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+        }
+      }
     },
     {
       "id": "MIC-CHEM-REDOX-BALANCE-NFACTOR",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -403,7 +510,7 @@
       "intrinsic_badge": "HARD",
       "badge_reason": "The learner must conserve atoms and charge in a declared medium and derive electron-change counts from the specified reaction rather than memorising them as universal properties.",
       "entry_assumptions": [
-        "Can read chemical equations, ionic charges and integer oxidation-state labels when the bookkeeping rules are supplied."
+        "For Half-reaction balancing and reaction-dependent n-factor, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
       ],
       "inferential_jump": "Half-reaction balancing is a conservation algorithm, while n-factor compresses the electron change for one specified redox transformation; neither is valid without the reaction context.",
       "teaching_path": [
@@ -433,7 +540,9 @@
         }
       ],
       "relation_refs": [],
-      "representation_refs": [],
+      "representation_refs": [
+        "REP-CHEM-REDOX-BALANCE-NFACTOR"
+      ],
       "question_family_refs": [
         "FAM-CHEM-REDOX-BALANCE-NFACTOR"
       ],
@@ -460,10 +569,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "Qualitative bookkeeping explanation; no new computed numerical oracle is asserted."
+          "no_numeric_claim": "The Half-reaction balancing and reaction-dependent n-factor exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
         }
       },
-      "research_contribution": "Carries the corrected oxidation-state, agent, classification, balancing and n-factor boundaries from the PR #376 audit into governed records; independent exact-render review remains pending.",
+      "research_contribution": "For Half-reaction balancing and reaction-dependent n-factor, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -475,7 +584,7 @@
             "REDOX-BALANCE-NFACTOR-T2",
             "REDOX-BALANCE-NFACTOR-T3"
           ],
-          "representation_ref": null,
+          "representation_ref": "REP-CHEM-REDOX-BALANCE-NFACTOR",
           "reveal_stage_refs": [],
           "worked_anchor_ref": "Q-CHEM-REDOX-BALANCE-NFACTOR-1A",
           "misconception_indexes": [
@@ -487,17 +596,266 @@
             }
           ]
         }
-      ]
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "For Half-reaction balancing and reaction-dependent n-factor, decide before the completed route is revealed: Would an ionic equation with equal atom counts but unequal total charge be balanced, and can the same reagent form products at different oxidation states?",
+          "defensible_answer": "For Half-reaction balancing and reaction-dependent n-factor, the defensible route is: Keep separate atom and charge ledgers, and derive n-factor from the actual balanced transformation each time."
+        },
+        "attempt": {
+          "produces": "A short Half-reaction balancing and reaction-dependent n-factor explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "closure": "CRITERIA",
+          "rubric": [
+            {
+              "criterion": "The Half-reaction balancing and reaction-dependent n-factor response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+              "evidence_of": "The learner can separate the Half-reaction balancing and reaction-dependent n-factor governing distinction from the tempting shortcut."
+            }
+          ],
+          "task": {
+            "prompt": "Explain the Half-reaction balancing and reaction-dependent n-factor decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "givens": [
+              "Half-reaction balancing is a conservation algorithm, while n-factor compresses the electron change for one specified redox transformation; neither is valid without the reaction context."
+            ],
+            "representation_ref": "REP-CHEM-REDOX-BALANCE-NFACTOR",
+            "stage_refs": []
+          }
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "In Half-reaction balancing and reaction-dependent n-factor, what must be decided before the move \"State acidic or basic aqueous medium before choosing balancing species.\" is justified?",
+              "why_this_ask": "This makes the learner supply the entry decision for Half-reaction balancing and reaction-dependent n-factor instead of receiving the expert sequence first.",
+              "from_step_ref": "REDOX-BALANCE-NFACTOR-T1"
+            },
+            {
+              "ask": "For Half-reaction balancing and reaction-dependent n-factor, how would you test the conclusion reached by \"Derive n-factor from the electron change and stoichiometric role in the specified balanced reaction.\" without simply repeating the model answer?",
+              "why_this_ask": "This closes Half-reaction balancing and reaction-dependent n-factor through a learner-owned check rather than through recall of the declarative route.",
+              "from_step_ref": "REDOX-BALANCE-NFACTOR-T3"
+            }
+          ],
+          "differs_from_teaching_path": "For Half-reaction balancing and reaction-dependent n-factor, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+        },
+        "boundary_test": {
+          "prompt": "Why can a redox reagent have different n-factors in different reactions?",
+          "answer": "Because n-factor is the reaction-specific number of electrons transferred per formula amount, and that electron change can differ with the product and oxidation-state pathway.",
+          "confirms": "For Half-reaction balancing and reaction-dependent n-factor, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+        }
+      }
     }
   ],
   "relations": [],
-  "representations": [],
+  "representations": [
+    {
+      "id": "REP-CHEM-REDOX-OXIDATION-AGENTS",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "SYMBOLIC_EQUATION",
+      "purpose": "For Oxidation number, oxidation/reduction and agents, make the governing symbolic relationship visible beside its verbal meaning and notation limits.",
+      "required_elements": [
+        "equation body",
+        "scope notes"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "Read the Oxidation number, oxidation/reduction and agents symbolic relation as one complete statement.",
+        "Translate its symbols into the Oxidation number, oxidation/reduction and agents verbal claim before applying it.",
+        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+      ],
+      "instance_constraints": [
+        "The Oxidation number, oxidation/reduction and agents equation is source-bound to an authored EQUATION datum.",
+        "The Oxidation number, oxidation/reduction and agents scene may not imply coefficients, charges, phases or reaction arrows that the displayed statement does not contain."
+      ],
+      "accessibility": [
+        "The Oxidation number, oxidation/reduction and agents equation is repeated in the text caption.",
+        "The Oxidation number, oxidation/reduction and agents annotation states the same conceptual restriction without depending on visual styling."
+      ],
+      "misleading_alternatives": [
+        "For Oxidation number, oxidation/reduction and agents, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-CHEM-REDOX-OXIDATION-AGENTS",
+          "cores": [
+            "CORE1",
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-CHEM-REDOX-OXIDATION-AGENTS",
+          "datum_refs": [
+            "EQ-CHEM-REDOX-OXIDATION-AGENTS"
+          ],
+          "scene": {
+            "kind": "SYMBOLIC_EQUATION",
+            "frame": "Author-created symbolic model for Oxidation number, oxidation/reduction and agents.",
+            "caption": "Oxidation-state direction: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner.",
+            "equation_atom": "EQ-CHEM-REDOX-OXIDATION-AGENTS",
+            "annotation": "Oxidation number is formal electron bookkeeping, not generally a measured atomic charge.",
+            "coefficient_note": "In Oxidation-state direction, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+            "charge_note": "In Oxidation-state direction, no ionic charge is implied unless a charge is explicitly shown.",
+            "phase_note": "In Oxidation-state direction, no phase label is implied unless a phase is explicitly shown.",
+            "arrow_note": "In Oxidation-state direction, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "equation body",
+          "symbol": "ON ↑ = oxidation; ON ↓ = reduction",
+          "in_words": "For Oxidation number, oxidation/reduction and agents, the displayed symbols mean: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner."
+        }
+      ]
+    },
+    {
+      "id": "REP-CHEM-REDOX-CLASSIFICATION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "SYMBOLIC_EQUATION",
+      "purpose": "For Redox classification, displacement and disproportionation patterns, make the governing symbolic relationship visible beside its verbal meaning and notation limits.",
+      "required_elements": [
+        "equation body",
+        "scope notes"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "Read the Redox classification, displacement and disproportionation patterns symbolic relation as one complete statement.",
+        "Translate its symbols into the Redox classification, displacement and disproportionation patterns verbal claim before applying it.",
+        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+      ],
+      "instance_constraints": [
+        "The Redox classification, displacement and disproportionation patterns equation is source-bound to an authored EQUATION datum.",
+        "The Redox classification, displacement and disproportionation patterns scene may not imply coefficients, charges, phases or reaction arrows that the displayed statement does not contain."
+      ],
+      "accessibility": [
+        "The Redox classification, displacement and disproportionation patterns equation is repeated in the text caption.",
+        "The Redox classification, displacement and disproportionation patterns annotation states the same conceptual restriction without depending on visual styling."
+      ],
+      "misleading_alternatives": [
+        "For Redox classification, displacement and disproportionation patterns, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-CHEM-REDOX-CLASSIFICATION",
+          "cores": [
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-CHEM-REDOX-CLASSIFICATION",
+          "datum_refs": [
+            "EQ-CHEM-REDOX-CLASSIFICATION"
+          ],
+          "scene": {
+            "kind": "SYMBOLIC_EQUATION",
+            "frame": "Author-created symbolic model for Redox classification, displacement and disproportionation patterns.",
+            "caption": "Redox classification: Calling a reaction redox requires coupled oxidation-number changes; a reaction-type label by itself is insufficient.",
+            "equation_atom": "EQ-CHEM-REDOX-CLASSIFICATION",
+            "annotation": "Track the same element across reactants and products before naming the redox pattern.",
+            "coefficient_note": "In Redox classification, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+            "charge_note": "In Redox classification, no ionic charge is implied unless a charge is explicitly shown.",
+            "phase_note": "In Redox classification, no phase label is implied unless a phase is explicitly shown.",
+            "arrow_note": "In Redox classification, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "equation body",
+          "symbol": "redox ⇒ coupled ON increase + decrease",
+          "in_words": "For Redox classification, displacement and disproportionation patterns, the displayed symbols mean: Calling a reaction redox requires coupled oxidation-number changes; a reaction-type label by itself is insufficient."
+        }
+      ]
+    },
+    {
+      "id": "REP-CHEM-REDOX-BALANCE-NFACTOR",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "SYMBOLIC_EQUATION",
+      "purpose": "For Half-reaction balancing and reaction-dependent n-factor, make the governing symbolic relationship visible beside its verbal meaning and notation limits.",
+      "required_elements": [
+        "equation body",
+        "scope notes"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "Read the Half-reaction balancing and reaction-dependent n-factor symbolic relation as one complete statement.",
+        "Translate its symbols into the Half-reaction balancing and reaction-dependent n-factor verbal claim before applying it.",
+        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+      ],
+      "instance_constraints": [
+        "The Half-reaction balancing and reaction-dependent n-factor equation is source-bound to an authored EQUATION datum.",
+        "The Half-reaction balancing and reaction-dependent n-factor scene may not imply coefficients, charges, phases or reaction arrows that the displayed statement does not contain."
+      ],
+      "accessibility": [
+        "The Half-reaction balancing and reaction-dependent n-factor equation is repeated in the text caption.",
+        "The Half-reaction balancing and reaction-dependent n-factor annotation states the same conceptual restriction without depending on visual styling."
+      ],
+      "misleading_alternatives": [
+        "For Half-reaction balancing and reaction-dependent n-factor, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-CHEM-REDOX-BALANCE-NFACTOR",
+          "cores": [
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-CHEM-REDOX-BALANCE-NFACTOR",
+          "datum_refs": [
+            "EQ-CHEM-REDOX-BALANCE-NFACTOR"
+          ],
+          "scene": {
+            "kind": "SYMBOLIC_EQUATION",
+            "frame": "Author-created symbolic model for Half-reaction balancing and reaction-dependent n-factor.",
+            "caption": "Redox conservation: A balanced ionic redox equation conserves every element and total charge; reaction-specific electron transfer then determines n-factor.",
+            "equation_atom": "EQ-CHEM-REDOX-BALANCE-NFACTOR",
+            "annotation": "State acidic or basic medium before introducing balancing species.",
+            "coefficient_note": "In Redox conservation, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+            "charge_note": "In Redox conservation, no ionic charge is implied unless a charge is explicitly shown.",
+            "phase_note": "In Redox conservation, no phase label is implied unless a phase is explicitly shown.",
+            "arrow_note": "In Redox conservation, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "equation body",
+          "symbol": "atomsL = atomsR; chargeL = chargeR",
+          "in_words": "For Half-reaction balancing and reaction-dependent n-factor, the displayed symbols mean: A balanced ionic redox equation conserves every element and total charge; reaction-specific electron transfer then determines n-factor."
+        }
+      ]
+    }
+  ],
   "question_families": [
     {
       "id": "FAM-CHEM-REDOX-OXIDATION-AGENTS",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -507,21 +865,21 @@
         "CAP-CHEM-REDOX-OXIDATION-AGENTS"
       ],
       "solution_structure": [
-        "State the oxidation-state or conservation rule.",
-        "Apply it to the case.",
-        "Run the independent check."
+        "For Oxidation number, oxidation/reduction and agents, identify the governing condition that decides the authored anchor.",
+        "Apply that Oxidation number, oxidation/reduction and agents condition to the concrete stem without importing an unstated model.",
+        "Close the Oxidation number, oxidation/reduction and agents anchor with the independent check stated in its model answer."
       ],
       "demand_dimensions": {
-        "model_choice": "Use the redox bookkeeping model stated in the adjacent Core1A construction.",
-        "representation_translation": "Translate among electron language, oxidation-number language and reaction notation.",
-        "reasoning_steps": "Track, classify, verify.",
-        "novelty": "Worked anchor stays within the just-taught construction."
+        "model_choice": "Choose the specific Oxidation number, oxidation/reduction and agents model or bookkeeping convention taught in the adjacent construction.",
+        "representation_translation": "For Oxidation number, oxidation/reduction and agents, connect the governed figure or symbolic relation to the learner-facing words before concluding.",
+        "reasoning_steps": "For Oxidation number, oxidation/reduction and agents, state the condition, apply it to the stem, then run the recorded independent check.",
+        "novelty": "The Oxidation number, oxidation/reduction and agents anchor remains inside the just-taught construction and does not claim external-source transfer."
       },
       "safe_variations": [
-        "Change species while preserving the same bookkeeping demand."
+        "For Oxidation number, oxidation/reduction and agents, vary the surface species or condition only when the same governing distinction remains testable."
       ],
       "transfer_boundaries": [
-        "Do not admit unresolved NCERT/JEE source labels as canonical question identity."
+        "The Oxidation number, oxidation/reduction and agents family is author-created for PR #376; do not relabel it as a verified NCERT, ExamSIDE or JEE item."
       ],
       "common_wrong_routes": [
         "Oxidation number is a literal measured atomic charge, and the species oxidised is the oxidising agent."
@@ -534,7 +892,9 @@
       "id": "FAM-CHEM-REDOX-CLASSIFICATION",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -544,21 +904,21 @@
         "CAP-CHEM-REDOX-CLASSIFICATION"
       ],
       "solution_structure": [
-        "State the oxidation-state or conservation rule.",
-        "Apply it to the case.",
-        "Run the independent check."
+        "For Redox classification, displacement and disproportionation patterns, identify the governing condition that decides the authored anchor.",
+        "Apply that Redox classification, displacement and disproportionation patterns condition to the concrete stem without importing an unstated model.",
+        "Close the Redox classification, displacement and disproportionation patterns anchor with the independent check stated in its model answer."
       ],
       "demand_dimensions": {
-        "model_choice": "Use the redox bookkeeping model stated in the adjacent Core1A construction.",
-        "representation_translation": "Translate among electron language, oxidation-number language and reaction notation.",
-        "reasoning_steps": "Track, classify, verify.",
-        "novelty": "Worked anchor stays within the just-taught construction."
+        "model_choice": "Choose the specific Redox classification, displacement and disproportionation patterns model or bookkeeping convention taught in the adjacent construction.",
+        "representation_translation": "For Redox classification, displacement and disproportionation patterns, connect the governed figure or symbolic relation to the learner-facing words before concluding.",
+        "reasoning_steps": "For Redox classification, displacement and disproportionation patterns, state the condition, apply it to the stem, then run the recorded independent check.",
+        "novelty": "The Redox classification, displacement and disproportionation patterns anchor remains inside the just-taught construction and does not claim external-source transfer."
       },
       "safe_variations": [
-        "Change species while preserving the same bookkeeping demand."
+        "For Redox classification, displacement and disproportionation patterns, vary the surface species or condition only when the same governing distinction remains testable."
       ],
       "transfer_boundaries": [
-        "Do not admit unresolved NCERT/JEE source labels as canonical question identity."
+        "The Redox classification, displacement and disproportionation patterns family is author-created for PR #376; do not relabel it as a verified NCERT, ExamSIDE or JEE item."
       ],
       "common_wrong_routes": [
         "Every chemical reaction is redox, and any reaction showing three oxidation states is disproportionation."
@@ -571,7 +931,9 @@
       "id": "FAM-CHEM-REDOX-BALANCE-NFACTOR",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -581,21 +943,21 @@
         "CAP-CHEM-REDOX-BALANCE-NFACTOR"
       ],
       "solution_structure": [
-        "State the oxidation-state or conservation rule.",
-        "Apply it to the case.",
-        "Run the independent check."
+        "For Half-reaction balancing and reaction-dependent n-factor, identify the governing condition that decides the authored anchor.",
+        "Apply that Half-reaction balancing and reaction-dependent n-factor condition to the concrete stem without importing an unstated model.",
+        "Close the Half-reaction balancing and reaction-dependent n-factor anchor with the independent check stated in its model answer."
       ],
       "demand_dimensions": {
-        "model_choice": "Use the redox bookkeeping model stated in the adjacent Core1A construction.",
-        "representation_translation": "Translate among electron language, oxidation-number language and reaction notation.",
-        "reasoning_steps": "Track, classify, verify.",
-        "novelty": "Worked anchor stays within the just-taught construction."
+        "model_choice": "Choose the specific Half-reaction balancing and reaction-dependent n-factor model or bookkeeping convention taught in the adjacent construction.",
+        "representation_translation": "For Half-reaction balancing and reaction-dependent n-factor, connect the governed figure or symbolic relation to the learner-facing words before concluding.",
+        "reasoning_steps": "For Half-reaction balancing and reaction-dependent n-factor, state the condition, apply it to the stem, then run the recorded independent check.",
+        "novelty": "The Half-reaction balancing and reaction-dependent n-factor anchor remains inside the just-taught construction and does not claim external-source transfer."
       },
       "safe_variations": [
-        "Change species while preserving the same bookkeeping demand."
+        "For Half-reaction balancing and reaction-dependent n-factor, vary the surface species or condition only when the same governing distinction remains testable."
       ],
       "transfer_boundaries": [
-        "Do not admit unresolved NCERT/JEE source labels as canonical question identity."
+        "The Half-reaction balancing and reaction-dependent n-factor family is author-created for PR #376; do not relabel it as a verified NCERT, ExamSIDE or JEE item."
       ],
       "common_wrong_routes": [
         "Matching atom counts is enough even if charge differs, and every reagent has one universal n-factor."
@@ -662,7 +1024,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Single-concept authored worked anchor after instruction."
+        "basis": "Authored Core1A anchor for Oxidation number, oxidation/reduction and agents; it tests the immediately preceding distinction rather than a new transfer demand."
       }
     },
     {
@@ -720,7 +1082,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Single-concept authored worked anchor after instruction."
+        "basis": "Authored Core1A anchor for Redox classification, displacement and disproportionation patterns; it tests the immediately preceding distinction rather than a new transfer demand."
       }
     },
     {
@@ -779,11 +1141,96 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Single-concept authored worked anchor after instruction."
+        "basis": "Authored Core1A anchor for Half-reaction balancing and reaction-dependent n-factor; it tests the immediately preceding distinction rather than a new transfer demand."
       }
     }
   ],
-  "teaching_routes": [],
+  "teaching_routes": [
+    {
+      "id": "ROUTE-CHEM-REDOX-CORE1A",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Redox Reactions completed Core1A construction",
+      "cores": [
+        "CORE1A"
+      ],
+      "microtopic_refs": [
+        "MIC-CHEM-REDOX-OXIDATION-AGENTS",
+        "MIC-CHEM-REDOX-CLASSIFICATION",
+        "MIC-CHEM-REDOX-BALANCE-NFACTOR"
+      ],
+      "entry_needs": [
+        "For Redox Reactions, use the stated entry assumptions rather than a learner-percentage gate."
+      ],
+      "learner_actions": [
+        "Follow the completed Redox Reactions construction and explain why each move is valid."
+      ],
+      "help_plan": [
+        "Keep the Redox Reactions representation bridge visible beside the verbal construction."
+      ],
+      "reveal_plan": "For Redox Reactions, the completed Core1A reasoning and governed representation are visible without an attempt gate.",
+      "source_preferences": [
+        {
+          "resource_ref": "SRC-CHEM-PR376-REDOX-AUTHOR",
+          "purpose": "Author-created governed construction",
+          "reason": "The Redox Reactions Core1A conversion is authored from the exact PR #376 standalone basis while unresolved external-source question identities stay excluded."
+        }
+      ],
+      "when_not_suitable": [
+        "Do not present Redox Reactions as prescribed Grade-9 CBSE content; this package is an explicit Owner extension."
+      ],
+      "practice_profile_ref": null
+    },
+    {
+      "id": "ROUTE-CHEM-REDOX-CORE1B",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Redox Reactions attempt-first Core1B reconstruction",
+      "cores": [
+        "CORE1B"
+      ],
+      "microtopic_refs": [
+        "MIC-CHEM-REDOX-OXIDATION-AGENTS",
+        "MIC-CHEM-REDOX-CLASSIFICATION",
+        "MIC-CHEM-REDOX-BALANCE-NFACTOR"
+      ],
+      "entry_needs": [
+        "For Redox Reactions, Core1B assumes the same conceptual coverage as Core1A and changes learner agency rather than academic truth."
+      ],
+      "learner_actions": [
+        "Predict, attempt and reconstruct the Redox Reactions governing distinctions before the completed route is revealed."
+      ],
+      "help_plan": [
+        "For Redox Reactions, use the recorded misconception diagnosis and representation bridge as post-attempt support rather than pre-answer disclosure."
+      ],
+      "reveal_plan": "For Redox Reactions, the learner attempts first; the self-study closure then reveals the governed reconstruction and check.",
+      "source_preferences": [
+        {
+          "resource_ref": "SRC-CHEM-PR376-REDOX-AUTHOR",
+          "purpose": "Author-created self-study reconstruction",
+          "reason": "The Redox Reactions Core1B route is authored alongside Core1A so both products share one canonical microtopic truth."
+        }
+      ],
+      "when_not_suitable": [
+        "Do not treat Redox Reactions Core1B completion as evidence of learner mastery or as verification of held external-source questions."
+      ],
+      "practice_profile_ref": null
+    }
+  ],
   "practice_profiles": [],
   "evidence": [],
   "known_issues": [
@@ -828,5 +1275,57 @@
       "conversion_posture": "GOVERNED_CORE1A_OWNER_EXTENSION_SOURCE_BANK_EXCLUDED"
     }
   },
-  "data": []
+  "data": [
+    {
+      "id": "EQ-CHEM-REDOX-OXIDATION-AGENTS",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "EQUATION",
+      "value": "<math display=\"block\"><mrow><mtext>oxidation number</mtext><mo>↑</mo><mo>=</mo><mtext>oxidation</mtext><mo>;</mo><mtext>oxidation number</mtext><mo>↓</mo><mo>=</mo><mtext>reduction</mtext></mrow></math>",
+      "symbol": "ON ↑ = oxidation; ON ↓ = reduction",
+      "meaning": "Oxidation-state direction: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner.",
+      "locator": "Author-created governed representation for Oxidation-state direction in PR #376."
+    },
+    {
+      "id": "EQ-CHEM-REDOX-CLASSIFICATION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "EQUATION",
+      "value": "<math display=\"block\"><mrow><mtext>redox</mtext><mo>⇒</mo><mtext>coupled oxidation-number increase and decrease</mtext></mrow></math>",
+      "symbol": "redox ⇒ coupled ON increase + decrease",
+      "meaning": "Redox classification: Calling a reaction redox requires coupled oxidation-number changes; a reaction-type label by itself is insufficient.",
+      "locator": "Author-created governed representation for Redox classification in PR #376."
+    },
+    {
+      "id": "EQ-CHEM-REDOX-BALANCE-NFACTOR",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "EQUATION",
+      "value": "<math display=\"block\"><mrow><mtext>atom counts left</mtext><mo>=</mo><mtext>atom counts right</mtext><mo>;</mo><mtext>charge left</mtext><mo>=</mo><mtext>charge right</mtext></mrow></math>",
+      "symbol": "atomsL = atomsR; chargeL = chargeR",
+      "meaning": "Redox conservation: A balanced ionic redox equation conserves every element and total charge; reaction-specific electron transfer then determines n-factor.",
+      "locator": "Author-created governed representation for Redox conservation in PR #376."
+    }
+  ]
 }
