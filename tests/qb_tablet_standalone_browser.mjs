@@ -2,7 +2,8 @@
 // Requires Playwright 1.56.1 + Chromium.
 import { createRequire } from 'node:module';
 import { spawn } from 'node:child_process';
-import { readFileSync, writeFileSync } from 'node:fs';\nimport { createHash } from 'node:crypto';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 
 const require = createRequire(import.meta.url);
 const { chromium } = require('playwright');
