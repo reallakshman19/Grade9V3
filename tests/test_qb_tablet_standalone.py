@@ -80,7 +80,7 @@ class QbTabletStandaloneTest(unittest.TestCase):
         articles = {}
         for chunk in article_chunks:
             article = '<article class="question-card' + chunk.split('</article>', 1)[0] + '</article>'
-            match = re.search(r'\\bid="([^"]+)"', article)
+            match = re.search(r'\bid="([^"]+)"', article)
             self.assertIsNotNone(match)
             articles[match.group(1)] = article
         self.assertEqual(set(articles), {q["id"] for q in self.questions})
