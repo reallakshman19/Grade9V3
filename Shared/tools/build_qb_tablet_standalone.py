@@ -63,21 +63,45 @@ def selected_view():
     return view
 
 
-def benchmark_svgs(refs):
+def benchmark_svgs(refs, questions):
+    """Bind benchmark study SVGs by source identity, never by local Q-number."""
     raw = BENCHMARK.read_text(encoding="utf-8")
+    articles = []
+    for match in re.finditer(r'<article class="question" id="([^"]+)">([\\s\\S]*?)</article>', raw):
+        local_id, block = match.groups()
+        qid_match = re.search(r'<div class="qid">([\\s\\S]*?)</div>', block)
+        svg_match = re.search(r'(<svg\\b[\\s\\S]*?</svg>)', block)
+        if qid_match and svg_match:
+            label = re.sub(r'<[^>]+>', ' ', qid_match.group(1))
+            label = re.sub(r'\\s+', ' ', label).strip()
+            articles.append((local_id, label, svg_match.group(1)))
+    if len(articles) != 7:
+        raise ValueError(f"Expected seven benchmark SVG articles, got {len(articles)}")
+
+    by_id = {q["id"]: q for q in questions}
     svgs = {}
-    for index, qid in enumerate(refs, 1):
-        marker = f'Q{index:02d}'
-        match = re.search(
-            rf'<article class="question" id="{re.escape(marker)}">([\s\S]*?)</article>',
-            raw,
-        )
-        if not match:
-            raise ValueError(f"Benchmark article {marker} missing")
-        svg = re.search(r'(<svg\b[\s\S]*?</svg>)', match.group(1))
-        if not svg:
-            raise ValueError(f"Benchmark SVG missing for {marker}/{qid}")
-        svgs[qid] = svg.group(1)
+    used = set()
+    for ref in refs:
+        q = by_id[ref]
+        source = custody(q)
+        exam = str(source.get("exam", "")).lower()
+        year = str(source.get("year", ""))
+        qnum = re.sub(r'^Q', '', str(source.get("question_number", "")), flags=re.I).lstrip('0') or '0'
+        matches = []
+        for local_id, label, svg in articles:
+            low = label.lower()
+            exam_ok = exam in low
+            year_ok = year in label
+            q_ok = re.search(rf'\\bQ0*{re.escape(qnum)}\\b', label, re.I) is not None
+            if exam_ok and year_ok and q_ok:
+                matches.append((local_id, svg))
+        if len(matches) != 1:
+            raise ValueError(f"Benchmark source identity for {ref} resolved to {len(matches)} articles")
+        local_id, svg = matches[0]
+        if local_id in used:
+            raise ValueError(f"Benchmark article {local_id} mapped more than once")
+        used.add(local_id)
+        svgs[ref] = svg
     return svgs
 
 
@@ -403,7 +427,7 @@ def render():
     ids = {q["id"] for q in questions}
     if not set(selected_refs) <= ids:
         raise ValueError("Selected D3/D4 view contains unknown canonical IDs")
-    svg_map = benchmark_svgs(selected_refs)
+    svg_map = benchmark_svgs(selected_refs, questions)
     cards = "\n".join(render_question(q, set(selected_refs), svg_map) for q in questions)
     bid = build_id()
     return f"""<!doctype html>
