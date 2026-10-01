@@ -21,6 +21,8 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+      - name: Install renderer validation dependency
+        run: python -m pip install jsonschema
       - name: Render exact Motion in 2D Core1A/Core2 pages
         run: |
           python3 - <<'PY'
