@@ -289,9 +289,9 @@ window.GRADE9V3_PROMPT_COMPOSER = {
     },
     "CORE2": {
       "core": "CORE2",
-      "blueprint_ref": "BP-CORE2-SOURCE-QUESTION@1.1.0",
+      "blueprint_ref": "BP-CORE2-SOURCE-QUESTION@1.2.0",
       "blueprint_id": "BP-CORE2-SOURCE-QUESTION",
-      "blueprint_version": "1.1.0",
+      "blueprint_version": "1.2.0",
       "shell_ref": "G9-TABLET-SHELL-V1",
       "layout_family": "QUESTION_READER",
       "required_slots": [
@@ -343,7 +343,24 @@ window.GRADE9V3_PROMPT_COMPOSER = {
         "ANSWER_REVEALED_BY_PRE_SOLUTION_SUPPORT",
         "GENERIC_FILLER_SUPPORT_TO_MEET_RUNG_COUNT",
         "CORE2_COLLAPSED_INTO_QUESTION_CLINIC"
-      ]
+      ],
+      "presentation_profile": {
+        "id": "CORE2_TABLET_QBANK_R2_V1",
+        "benchmark_ref": "docs/question-bank/pass1/canonical_question_bank_10inch_tablet.html@08446b534bef5a6cb364f0c355881d7d5cbda0b7#sha256:4e264fc62da5846e316ca49d69bbc62cb44cbf6dcfe5173c57f941fde64b47c0",
+        "default_theme": "LIGHT",
+        "anatomy": [
+          "QUESTION_CARD_HEADER",
+          "ATTEMPT_FIRST_STEM",
+          "CONDITIONS_PANEL",
+          "QUESTION_ALIGNED_VISUAL",
+          "PROVENANCE_SUPPORT_LANES",
+          "LEARNER_OPENABLE_SOLUTION",
+          "STRUCTURED_DERIVATION",
+          "INDEPENDENT_CHECK"
+        ],
+        "question_layout": "QUESTION_VISUAL_42_58_WITH_SUPPORT_RAIL",
+        "support_model": "PROVENANCE_PROGRESSIVE"
+      }
     },
     "CORE1A": {
       "core": "CORE1A",
