@@ -71,9 +71,10 @@ jobs:
             /tmp/g9-core2-v2-site/products/physics/phy-kin-2d-motion \
             --profile tablet-12.7 \
             --json /tmp/core-page-audit.json
-      - name: Physics tablet standalone local HTTP audit
+      - name: Physics tablet standalone local HTTP audits
         # Evidence-only reuse of the existing shared Chromium audit. No --enforce:
         # measured findings remain review evidence and never become a publication gate.
+        # Run both the broad Core1A viewport set and the exact 12.7-inch target profile.
         run: |
           rm -rf /tmp/g9-physics-tablet-standalone
           mkdir -p /tmp/g9-physics-tablet-standalone
@@ -88,6 +89,11 @@ jobs:
             --profile core1a-spec \
             --http-root /tmp/g9-physics-tablet-standalone \
             --json /tmp/physics-tablet-standalone-audit.json
+          node tools/site-audit/core-page-audit.mjs \
+            /tmp/g9-physics-tablet-standalone \
+            --profile tablet-12.7 \
+            --http-root /tmp/g9-physics-tablet-standalone \
+            --json /tmp/physics-tablet-standalone-12-7-audit.json
       - name: Core2 v2 local HTTP interaction audit
         run: |
           python3 -m http.server 8765 --directory /tmp/g9-core2-v2-site >/tmp/g9-core2-v2-http.log 2>&1 &
