@@ -689,7 +689,9 @@
       "misleading_alternatives": [
         "For Combination laws, mole, Avogadro constant and molar mass, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
       ],
-      "rendered_asset_refs": [],
+      "rendered_asset_refs": [
+        "Chemistry/assets/representations/rep-chem-mole-foundations-mole.svg"
+      ],
       "scene_instances": [
         {
           "id": "SCENE-CHEM-MOLE-FOUNDATIONS-MOLE",
@@ -757,7 +759,9 @@
       "misleading_alternatives": [
         "For Empirical formula, stoichiometry and limiting reagent, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
       ],
-      "rendered_asset_refs": [],
+      "rendered_asset_refs": [
+        "Chemistry/assets/representations/rep-chem-mole-formula-stoich.svg"
+      ],
       "scene_instances": [
         {
           "id": "SCENE-CHEM-MOLE-FORMULA-STOICH",
@@ -824,7 +828,9 @@
       "misleading_alternatives": [
         "For Molarity, molality and mole fraction, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
       ],
-      "rendered_asset_refs": [],
+      "rendered_asset_refs": [
+        "Chemistry/assets/representations/rep-chem-mole-concentration.svg"
+      ],
       "scene_instances": [
         {
           "id": "SCENE-CHEM-MOLE-CONCENTRATION",
