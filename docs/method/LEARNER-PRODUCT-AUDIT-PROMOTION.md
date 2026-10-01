@@ -139,15 +139,20 @@ If one-click draft-PR creation is required, it MUST use an authenticated least-p
 
 ## 5. Exact-version rule
 
-Every audit packet MUST bind to:
+Every audit packet MUST distinguish **audit provenance** from the **semantic/content basis** that the evidence actually proves.
+
+It MUST bind to:
 
 - candidate PR number or intake identity;
-- exact candidate head SHA;
-- exact per-product artifact or bundle digest;
+- `audit_basis_head`: the exact PR head SHA at which the audit evidence was produced;
+- `candidate_content_basis`: per-product exact artifact/render/bundle identity plus any candidate metadata that affects product identity, role, semantics, runtime, or learner context;
 - exact raw-upload digest when an upload/ZIP supplied the bytes;
 - selected profile IDs and rule revisions/digests;
 - `protocol_digest`;
-- canonical/source-basis digest or equivalent source-state identity where applicable.
+- `authority_basis_digest`: the canonical/source/denominator/lineage state used by the audit;
+- context identity where evidence is role-, route-, or placement-sensitive.
+
+The PR head SHA is therefore a provenance pointer, not by itself the semantic reuse key. A later commit does not force a full re-audit merely because the SHA changed; the workflow MUST first determine whether the candidate/content basis, authority basis, governing audit logic, or relevant context changed.
 
 ### 5.1 Multi-file and interactive bundle identity
 
@@ -199,9 +204,33 @@ The affected claim MUST NOT be described as `PASS` while the disagreement remain
 
 This is evidence preservation, not a new permission gate: the Owner may still accept an exact product with acknowledged findings under the existing acceptance method.
 
-When the PR head changes, evidence tied to the old head remains historical evidence and MUST NOT silently apply to the new bytes.
+### 5.3 Acceptance projection versus audit basis
 
-Expensive evidence MAY be reused only when its complete reuse key still matches.
+Owner acceptance deliberately creates publication-projection changes and therefore may move the PR head after semantic review. LPAP MUST NOT create an `audit → accept → commit → invalidate → audit again` loop.
+
+Record separately:
+
+- `audit_basis_head` — the head at which semantic/mechanical evidence was produced;
+- `candidate_content_basis` — the exact per-product content/render/bundle identity that was reviewed;
+- `authority_basis_digest` — the exact source/canonical/denominator/lineage basis used;
+- `projection_commit` — a later commit that records Owner acceptance and its deterministic publication consequences.
+
+A commit qualifies as a **projection-only commit** only when it changes no candidate/content basis and no authority/source/denominator inputs. It may contain only the Owner acceptance record, accepted `public/` projection, generated `docs/` mirror, generated search/navigation/manifests, and other deterministic publication outputs derived from the already accepted basis.
+
+For a valid projection-only commit, prior semantic evidence MAY remain current when all applicable reuse keys still match. The projection commit receives targeted re-verification instead of a full semantic re-audit.
+
+Targeted projection re-verification MUST prove:
+
+- every published product still has the exact accepted render/bundle digest;
+- the acceptance record names that exact digest;
+- copied `public/` bytes equal the accepted projection;
+- generated `docs/` equals the current `public/` projection as required by the Pages builder;
+- generated search/navigation/manifests are current;
+- no candidate, canonical, source, denominator, role, topic/capability, or dedup basis changed in the same commit.
+
+If any of those bases changed, the commit is not projection-only and the dependency-aware rewind rules in §16.2 apply.
+
+Evidence tied to an older head remains historical provenance; it may be reused only when its complete semantic reuse key still matches.
 
 ## 6. Deduplication and lineage reconciliation
 
@@ -304,19 +333,20 @@ Finding disposition across renders is recorded through the existing review histo
 
 ### 6.7 Audit-run reuse
 
-An audit run or individual evidence item may be reused only when every relevant key matches, including:
+An audit run or individual evidence item may be reused only when every relevant semantic key matches, including:
 
 ```text
-candidate artifact/bundle digest
-+ exact head SHA or immutable content basis
+candidate_content_basis
++ authority_basis_digest
 + protocol_digest
 + selected profile_id@revision
 + applicable rule_id@revision or rule digest
-+ canonical/source basis digest
 + context identity for role-sensitive evidence
 ```
 
-Any semantic change to the governing rule/profile invalidates reuse unless a compatibility mapping is explicitly defined.
+`audit_basis_head` MUST be retained as provenance, but a head-SHA change alone does not invalidate semantic evidence when the new delta is proven projection-only under §5.3.
+
+Any semantic change to the candidate/content basis, authority basis, governing rule/profile, or relevant context invalidates the dependent evidence unless an explicit compatibility mapping exists.
 
 ### 6.8 Intrinsic versus contextual evidence
 
@@ -1064,19 +1094,20 @@ The normal sequence is:
 ```text
 INTAKE
 → EXACT-VERSION CAPTURE
+→ SOURCE / AUTHORITY BASIS CAPTURE
 → DEDUPLICATION / LINEAGE RECONCILIATION
-→ SOURCE / DENOMINATOR RECONSTRUCTION
+→ FULL SOURCE / DENOMINATOR RECONSTRUCTION
 → AUDIT-PLAN SELECTION
 → MECHANICAL AUDIT
 → INDEPENDENT ACADEMIC / PRODUCT AUDIT
 → CORRECTION ON SAME PR
-→ RE-AUDIT CHANGED DIGEST
+→ REWIND TO EARLIEST AFFECTED STAGE
 → INTEGRATION / NAVIGATION RESOLUTION
 → PRODUCTION DRY-RUN
 → OWNER REVIEW
-→ OWNER EXACT-DIGEST DECISION
-→ TRUSTED ACCEPTANCE/PUBLICATION PROJECTION ON THE CANDIDATE BRANCH
-→ COMMIT + REVERIFY THE EXACT ACCEPTED PROJECTION
+→ PER-PRODUCT OWNER DISPOSITION
+→ TRUSTED ACCEPTANCE/PUBLICATION PROJECTION FOR ACCEPTED PRODUCTS
+→ COMMIT + TARGETED REVERIFY OF THE EXACT ACCEPTED PROJECTION
 → MERGE TO MAIN
 → TRUSTED DEFAULT-BRANCH PAGES DEPLOYMENT
 → POST-PUBLICATION VERIFICATION
@@ -1084,7 +1115,53 @@ INTAKE
 
 The sequence is evidence flow, not a new numerical quality gate.
 
-### 16.1 Current publication interface versus generic resources
+### 16.1 Source / authority basis capture
+
+Before identity classification, capture the minimum stable source/authority facts needed to interpret deduplication and lineage safely.
+
+This cheap pre-dedup capture SHOULD include, where applicable:
+
+- supplied source locators and source files;
+- claimed canonical IDs;
+- source-custody identity fields;
+- explicit adaptation/family/parent refs;
+- current canonical record identity and digest;
+- admitted extension/benchmark identity;
+- declared product role and subject/topic context.
+
+This stage does not need to reconstruct the full denominator. Its purpose is to ensure LPAP never attempts to distinguish `SOURCE_COLLISION` from `VARIANT` before the relevant source identity is known.
+
+After deduplication/lineage reconciliation, perform full source/denominator reconstruction for completeness, correctness, authority conflict, and audit-plan selection.
+
+### 16.2 Dependency-aware correction and rewind
+
+A correction does not automatically mean “rerun only the changed page.” The workflow MUST determine the earliest audit stage whose inputs changed and recompute from there.
+
+Examples:
+
+| Correction/change | Minimum rewind |
+|---|---|
+| presentation-only CSS/layout change with unchanged product/source/identity basis | exact-version capture + affected browser/UX/accessibility evidence |
+| candidate academic content, question, hint, SVG, equation, runtime model, or bundle content | exact-version capture + every identity/dedup/audit module whose inputs changed |
+| source locator/custody, canonical identity, lineage, family/adaptation relation, or dedup input | source/authority basis capture → dedup/lineage → denominator → plan/audit as affected |
+| canonical academic record, denominator, topic/capability mapping, or role identity | source/authority basis capture → affected identity/denominator reconstruction → audit-plan selection → dependent audits |
+| protocol/profile/rule semantics | audit-plan selection and invalidation of all evidence governed by the changed profile/rule |
+
+The table states minimum rewind, not permission to skip a dependency that actually changed.
+
+Canonical/source/denominator truth MUST NOT be edited merely to make the candidate pass or to erase a finding.
+
+A legitimate correction to canonical/source/denominator authority MUST:
+
+- have evidence independent of the candidate's desire to pass;
+- record why the prior authority was wrong/incomplete;
+- preserve the prior basis/history;
+- produce a new `authority_basis_digest`;
+- re-run every dependent reconciliation/audit stage against that new basis.
+
+If an authority change resolves a prior `AUTHORITY_CONFLICT` or `SOURCE_CONFLICT`, the reconciliation record must show both the prior disagreement and the new authoritative basis rather than rewriting history.
+
+### 16.3 Current publication interface versus generic resources
 
 For governed Core products, current repository reality is normative: `Shared/tools/accept_product.py` is the publication entry point. During Owner acceptance it verifies the exact governed render, records the decision, copies the exact accepted pages into `public/`, and rebuilds/checks the Pages mirror. Those publication-projection changes are then committed/reverified on the candidate branch before merge; deployment from `main` follows separately.
 
@@ -1294,7 +1371,11 @@ Candidate discovery SHOULD run on relevant `pull_request` events including:
 - ready_for_review;
 - converted_to_draft where useful.
 
-A changed head automatically invalidates exact-version evidence for promotion and causes the current candidate to be re-evaluated.
+A changed head MUST trigger delta classification. The orchestrator compares the new head with the recorded `candidate_content_basis`, `authority_basis_digest`, profile/rule revisions, and relevant context.
+
+- if a semantic/input basis changed, apply the dependency-aware rewind in §16.2;
+- if the commit is proven projection-only under §5.3, preserve valid semantic evidence and run targeted publication/search/Pages re-verification;
+- if the delta cannot be classified safely, treat affected evidence as stale rather than assuming reuse.
 
 ### 21.2 Candidate activation
 
@@ -1373,35 +1454,63 @@ No automated label such as `PASS` may imply human/independent academic review un
 
 Before publication, present the Owner with:
 
-- exact PR/head SHA;
-- exact artifact/render digest;
+- current PR/head SHA and the `audit_basis_head`;
+- per-product `candidate_content_basis` and exact artifact/render/bundle digest;
+- `authority_basis_digest` and source/denominator summary;
 - declared product role;
-- source/denominator summary;
 - deduplication/lineage reconciliation;
 - selected audit plan;
 - independent review and unresolved findings;
 - representative browser/render evidence;
 - Core1A↔Core2 coverage when applicable;
 - proposed navigation;
+- search/discoverability evidence required by §19.5;
 - proposed public/deployed paths;
 - validation/test results.
 
-The Owner accepts or rejects the exact version.
+### 23.1 Per-product Owner disposition
+
+A promotion set is not all-or-nothing.
+
+Before merge, every in-scope product MUST have an explicit Owner disposition in the promotion packet:
+
+- `ACCEPTED` — the exact named render/bundle digest may enter the governed publication projection;
+- `DEFERRED` — no publication projection is created for this product in the current promotion;
+- `REJECTED` — no publication projection is created for this product in the current promotion.
+
+Only `ACCEPTED` products may receive acceptance records, production navigation/search exposure, or published `public/` bytes through LPAP.
+
+A `DEFERRED` or `REJECTED` candidate MAY remain in the merged repository only when repository policy otherwise permits it and it is unmistakably non-published/non-authoritative. At minimum it MUST:
+
+- remain outside the deployed `public/` and generated `docs/` learner tree;
+- have no production acceptance record;
+- have no production navigation/search/resource-registry exposure;
+- not masquerade as canonical academic/source authority;
+- remain clearly identified as draft/test/source material where its location is otherwise ambiguous.
+
+If those conditions cannot be met, remove the deferred/rejected product changes from the promotion set or split them to another PR before merge.
+
+Per-product disposition does not waive validation of shared files. If accepted and non-accepted products share runtime, canonical, source, or generated inputs, the shared changes must still be justified and validated independently.
+
+The Owner's decision is always tied to the exact product digest/basis named in the packet.
 
 ## 24. Publication
 
-For governed Core products, use the existing `Shared/tools/accept_product.py` acceptance/publication path exactly as described in §16.1.
+For governed Core products, use the existing `Shared/tools/accept_product.py` acceptance/publication path exactly as described in §16.3.
 
 LPAP MUST NOT introduce a second publisher.
 
-If an imported candidate cannot be represented by an existing governed acceptance interface, it may be audited and integrated in draft form but is not yet `PUBLISHABLE_UNDER_LPAP`. It must first be adapted to an existing governed representation or wait for the separately reviewed generic resource acceptance adapter described in §16.1.
+If an imported candidate cannot be represented by an existing governed acceptance interface, it may be audited and integrated in draft form but is not yet `PUBLISHABLE_UNDER_LPAP`. It must first be adapted to an existing governed representation or wait for the separately reviewed generic resource acceptance adapter described in §16.3.
 
-For the current governed Core path, after the Owner decision:
+For the current governed Core path, after the per-product Owner dispositions are recorded:
 
-- run the trusted acceptance/publication projection on the candidate branch for the exact accepted render;
-- commit the acceptance record plus exact `public/` and generated `docs/` changes;
-- reverify that committed projection still matches the accepted digest;
-- merge the approved PR;
+- run the trusted acceptance/publication projection only for products marked `ACCEPTED`;
+- create no production acceptance/search/navigation/public projection for `DEFERRED` or `REJECTED` products;
+- commit the acceptance records plus exact accepted `public/` bytes and deterministic generated `docs/`/search/navigation/manifests;
+- record that commit as `projection_commit`;
+- run the targeted projection re-verification required by §5.3;
+- confirm every in-scope product has an explicit disposition and any non-accepted bytes satisfy §23.1;
+- merge the approved promotion set;
 - deploy from trusted/default-branch state;
 - verify resulting learner routes.
 
