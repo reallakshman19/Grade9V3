@@ -3,7 +3,8 @@
 
 The governed package/manifests are the source of truth. The committed standalone
 HTML files are deterministic SINGLE_FILE convenience snapshots for review; they
-must never be hand-authored or used as a second academic source.
+must never be hand-authored or used as a second academic source. This is the
+PR #376 sync contract after adoption of merged PR #372 blueprint-v2.
 """
 from __future__ import annotations
 
