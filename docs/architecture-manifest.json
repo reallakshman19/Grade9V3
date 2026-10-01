@@ -18,7 +18,7 @@
     "WEB_CONTRACT": 3,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:d08de1ed9617cdc876ebc65221e17a52fa6842ac8272309bebfcddbf1c163dc6",
+  "digest": "sha256:4cb04e278d1f8ed0bb9c530ee59c0a462dcf38e996c4d260e12c132712e94e6f",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -675,8 +675,8 @@
       "path": "Shared/tools/build_qb_tablet_standalone.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 32024,
-      "sha256": "c224efde377ad22b7b71cfc4dac9b6af5a536183358fadfe80a5118f90730ef7"
+      "bytes": 32084,
+      "sha256": "db307d864ae872d9aa69d921a0fea93ad8172f8af63f8e77b870cbc8febf4338"
     },
     {
       "path": "Shared/tools/build_question_bank_platform.py",
@@ -1718,8 +1718,8 @@
       "path": "tests/qb_tablet_standalone_browser.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 16486,
-      "sha256": "1b61099e54af3ef34589af352ed244f132af9e017486b3f496ee5993af6b434b"
+      "bytes": 18242,
+      "sha256": "dfc83076dea2a7f6609aed02d62be120f85d839bcac91109460e9b0a993bc2e1"
     },
     {
       "path": "tests/question_bank_bootstrap.test.mjs",
@@ -2502,8 +2502,8 @@
       "path": "tests/test_qb_tablet_standalone.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 8119,
-      "sha256": "e12884fe674f3ff68d8d298153a447833dfd64b52b465dfcf4838e841e55e8cc"
+      "bytes": 8917,
+      "sha256": "40af66c7244b6a1569b6b3ff3a22d4b60ea523b513ef511530a39995f0ec3d4a"
     },
     {
       "path": "tests/test_quality_contract.py",

@@ -152,12 +152,24 @@ class QbTabletStandaloneTest(unittest.TestCase):
         self.assertNotIn("maximum-scale=1", self.actual)
         self.assertIn("viewport-fit=cover", self.actual)
         self.assertIn("--touch:48px", self.actual)
-        self.assertIn("minmax(360px,1fr)", self.actual)
+        self.assertIn("@media(min-width:980px)", self.actual)
+        self.assertIn("minmax(0,42fr) minmax(0,58fr)", self.actual)
         self.assertNotIn(".support-column{position:sticky", self.actual)
         self.assertIn("visualViewport", self.actual)
         self.assertIn("scrollIntoView", self.actual)
         self.assertIn(":focus-visible", self.actual)
         self.assertIn("prefers-reduced-motion", self.actual)
+
+    def test_core2_reference_lane_structure(self):
+        sample = builder.render_question(self.questions[0], set(self.view["resolved_question_refs"]), {})
+        stage = sample.split('<div class="stage-column">', 1)[1].split('<aside class="support-column">', 1)[0]
+        support = sample.split('<aside class="support-column">', 1)[1].split('</aside>', 1)[0]
+        after_support = sample.split('</aside>', 1)[1]
+        self.assertNotIn('class="hint-ladder"', stage)
+        self.assertIn('class="hint-ladder"', support)
+        self.assertIn('class="pre-attempt-trap"', stage)
+        self.assertIn('class="solution-column"', after_support)
+        self.assertEqual(self.actual.count('class="solution-column"'), 77)
 
     def test_question_types_drive_real_answer_controls(self):
         single = sum(

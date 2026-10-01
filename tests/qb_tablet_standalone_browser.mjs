@@ -47,8 +47,12 @@ async function load(page) {
 
 try {
   for (const vp of [
-    { name: 'tablet-landscape', width: 1280, height: 800 },
-    { name: 'tablet-portrait', width: 800, height: 1280 },
+    { name: 'tablet-1366-landscape', width: 1366, height: 854 },
+    { name: 'tablet-1440-landscape', width: 1440, height: 900 },
+    { name: 'tablet-1280-landscape', width: 1280, height: 800 },
+    { name: 'tablet-854-portrait', width: 854, height: 1366 },
+    { name: 'tablet-900-portrait', width: 900, height: 1440 },
+    { name: 'tablet-800-portrait', width: 800, height: 1280 },
     { name: 'compact', width: 390, height: 844 },
   ]) {
     const page = await browser.newPage({ viewport: { width: vp.width, height: vp.height } });
@@ -60,6 +64,10 @@ try {
       const stage = card?.querySelector('.stage-column')?.getBoundingClientRect();
       const supportEl = card?.querySelector('.support-column');
       const support = supportEl?.getBoundingClientRect();
+      const solution = card?.querySelector('.solution-column')?.getBoundingClientRect();
+      const header = card?.querySelector('.q-header')?.getBoundingClientRect();
+      const hintInSupport = !!card?.querySelector('.support-column .hint-ladder');
+      const hintInStage = !!card?.querySelector('.stage-column .hint-ladder');
       const controls = [...document.querySelectorAll('button:not([hidden]),input:not([hidden]),textarea:not([hidden])')]
         .filter(el => {
           const cs = getComputedStyle(el);
@@ -81,7 +89,12 @@ try {
         overflow: de.scrollWidth - de.clientWidth,
         stage: stage ? { x: stage.x, y: stage.y, w: stage.width, h: stage.height } : null,
         support: support ? { x: support.x, y: support.y, w: support.width, h: support.height } : null,
+        solution: solution ? { x: solution.x, y: solution.y, w: solution.width, h: solution.height, right: solution.right } : null,
+        header: header ? { x: header.x, y: header.y, w: header.width, h: header.height, right: header.right } : null,
+        primaryFraction: stage && support ? stage.width / (stage.width + support.width) : null,
         supportPosition: supportEl ? getComputedStyle(supportEl).position : null,
+        hintInSupport,
+        hintInStage,
         undersized,
       };
     });
@@ -89,22 +102,34 @@ try {
     await page.screenshot({ path: `artifacts/qb-tablet/${vp.name}.png`, fullPage: true });
     if (metrics.overflow > 1) fail('QB_HORIZONTAL_OVERFLOW', `${vp.name}: +${metrics.overflow}px`);
     if (metrics.undersized.length) fail('QB_TOUCH_TARGET_UNDERSIZED', `${vp.name}: ${JSON.stringify(metrics.undersized.slice(0, 8))}`);
-    if (vp.width >= 1100) {
-      if (!(metrics.support && metrics.stage && metrics.support.x > metrics.stage.x && metrics.support.w >= 359)) {
+    if (vp.width >= 980) {
+      if (!(metrics.support && metrics.stage && metrics.support.x > metrics.stage.x)) {
         fail('QB_TABLET_SUPPORT_RAIL_LAYOUT', `${vp.name}: ${JSON.stringify(metrics)}`);
+      }
+      if (metrics.primaryFraction === null || Math.abs(metrics.primaryFraction - 0.42) > 0.03) {
+        fail('QB_CORE2_REFERENCE_FRACTION', `${vp.name}: expected 0.42/0.58, got ${metrics.primaryFraction}`);
       }
       if (metrics.supportPosition !== 'static') {
         fail('QB_SUPPORT_RAIL_SCROLL_MODEL', `${vp.name}: expected normal-flow support rail, got ${metrics.supportPosition}`);
       }
+      if (!metrics.hintInSupport || metrics.hintInStage) {
+        fail('QB_CORE2_SUPPORT_LANE', `${vp.name}: hints must live in the support lane`);
+      }
+      if (!(metrics.solution && metrics.stage && metrics.support &&
+            Math.abs(metrics.solution.x - metrics.stage.x) <= 2 &&
+            Math.abs(metrics.solution.right - (metrics.support.x + metrics.support.w)) <= 2)) {
+        fail('QB_CORE2_FULL_WIDTH_SOLUTION', `${vp.name}: ${JSON.stringify(metrics)}`);
+      }
     } else {
-      if (!(metrics.support && metrics.stage && metrics.support.y > metrics.stage.y)) {
+      if (!(metrics.support && metrics.stage && metrics.support.y > metrics.stage.y &&
+            metrics.solution && metrics.solution.y >= metrics.support.y + metrics.support.h - 2)) {
         fail('QB_PORTRAIT_STACK_LAYOUT', `${vp.name}: ${JSON.stringify(metrics)}`);
       }
     }
     await page.close();
   }
 
-  const page = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  const page = await browser.newPage({ viewport: { width: 1366, height: 854 } });
   await load(page);
 
   const counts = await page.evaluate(() => {

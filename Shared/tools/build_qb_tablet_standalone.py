@@ -321,7 +321,6 @@ def render_attempt(q):
         f'data-question="{esc(q["id"])}" disabled>Commit attempt &amp; reveal solution</button>'
         f'<button type="button" class="clear-attempt-btn" data-question="{esc(q["id"])}">Clear</button></div>'
         f'<div class="answer-feedback" aria-live="polite"></div>'
-        + render_solution(q)
         + "</div>"
     )
 
@@ -364,16 +363,17 @@ def render_question(q, selected_refs, svg_map):
   data-subject="{esc(c.get('section', ''))}" data-diff="{esc(diff)}"
   data-selected="{'true' if selected else 'false'}" data-question-type="{esc(qtype)}"
   data-correct="{esc(correct)}" data-search="{esc(search)}">
+  <header class="q-header">
+    <div><span class="q-id">{esc(q['id'])}</span><span class="paper-label">{esc(paper)}</span></div>
+    <div class="q-badges"><span class="badge">{esc(c.get('section', ''))}</span>
+    <span class="badge difficulty">{esc(diff)}{f' · {score}/10' if score != '' else ''}</span>
+    {'<span class="badge selected">Selected D3/D4</span>' if selected else ''}</div>
+  </header>
   <div class="stage-column">
-    <header class="q-header">
-      <div><span class="q-id">{esc(q['id'])}</span><span class="paper-label">{esc(paper)}</span></div>
-      <div class="q-badges"><span class="badge">{esc(c.get('section', ''))}</span>
-      <span class="badge difficulty">{esc(diff)}{f' · {score}/10' if score != '' else ''}</span>
-      {'<span class="badge selected">Selected D3/D4</span>' if selected else ''}</div>
-    </header>
     <p class="q-stem">{render_text(q, "stem", q.get('stem', ''))}</p>
     {render_conditions(q)}
-    {render_hints(q)}
+    <div class="trap-box pre-attempt-trap"><strong>Common trap:</strong>
+      {render_text(q, "common_wrong_route", a.get('common_wrong_route', ''))}</div>
     {render_attempt(q)}
   </div>
   <aside class="support-column">
@@ -382,9 +382,9 @@ def render_question(q, selected_refs, svg_map):
       <strong>Session:</strong> {esc(paper)}<br><strong>Topic:</strong> {esc(topic)}<br>
       <strong>Status:</strong> {esc(source_status.replace('_', ' ').title())}</div></div>
     {render_representation(q, svg_map)}
-    <div class="meta-box"><div class="meta-title">Common trap</div>
-      <div class="meta-desc">{render_text(q, "common_wrong_route", a.get('common_wrong_route', ''))}</div></div>
+    {render_hints(q)}
   </aside>
+  <div class="solution-column">{render_solution(q)}</div>
 </article>"""
 
 
@@ -394,11 +394,11 @@ CSS = r"""
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--page);color:var(--text);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 button,input,textarea{font:inherit}button,.tab-btn,.clear-search-btn,.hint-pill,.check-solution-btn,.clear-attempt-btn,.theme-toggle{min-height:var(--touch);min-width:var(--touch);touch-action:manipulation}
 button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.48}.app{width:min(1480px,100%);margin:auto;padding:18px}.hero{background:linear-gradient(135deg,var(--surface),var(--card));border:1px solid var(--line);border-radius:20px;padding:22px;margin-bottom:16px}.hero-row{display:flex;gap:14px;justify-content:space-between;align-items:flex-start}.hero h1{font-size:clamp(24px,3vw,38px);line-height:1.12;margin:8px 0}.hero p{color:var(--muted);max-width:85ch}.badge-row,.tabs,.hint-pill-row,.q-badges,.attempt-actions{display:flex;gap:8px;flex-wrap:wrap}.badge{display:inline-flex;align-items:center;border:1px solid var(--line);background:var(--soft);padding:5px 9px;border-radius:999px;font-size:12px;font-weight:700}.selected{border-color:var(--accent);color:var(--accent)}.difficulty{color:var(--warn)}.toolbar{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--page) 90%,transparent);backdrop-filter:blur(12px);padding:10px 0}.search-row{display:flex;gap:10px;margin-bottom:10px}.search-input{width:100%;min-height:var(--touch);border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);padding:10px 13px}.tab-btn,.clear-search-btn,.theme-toggle,.hint-pill,.clear-attempt-btn{border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--text);padding:10px 14px}.tab-btn[aria-selected="true"],.hint-pill.revealed{border-color:var(--accent);color:var(--accent)}.result-count{color:var(--muted);font-size:14px;margin:8px 0 14px}
-.question-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:0 0 18px}.question-card[hidden]{display:none!important}.q-header{display:flex;gap:10px;justify-content:space-between;align-items:flex-start}.q-id{font:700 13px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--accent)}.paper-label{margin-left:8px;color:var(--muted);font-size:13px}.q-stem{font-size:17px;line-height:1.58}.q-conditions{color:var(--muted);padding-left:22px}.hint-ladder{margin:14px 0}.hint-slot:empty{display:none}.hint-box{margin:8px 0;padding:11px 13px;border-left:3px solid var(--accent);background:color-mix(in srgb,var(--accent) 9%,var(--surface));border-radius:0 9px 9px 0}
+.question-card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px;margin:0 0 18px}.question-card[hidden]{display:none!important}.q-header{display:flex;gap:10px;justify-content:space-between;align-items:flex-start}.solution-column{min-width:0}.q-id{font:700 13px/1.3 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--accent)}.paper-label{margin-left:8px;color:var(--muted);font-size:13px}.q-stem{font-size:17px;line-height:1.58}.q-conditions{color:var(--muted);padding-left:22px}.hint-ladder{margin:14px 0}.hint-slot:empty{display:none}.hint-box{margin:8px 0;padding:11px 13px;border-left:3px solid var(--accent);background:color-mix(in srgb,var(--accent) 9%,var(--surface));border-radius:0 9px 9px 0}
 .attempt-box{margin-top:16px;padding:15px;border:1px solid var(--line);border-radius:13px;background:var(--surface)}.q-options{border:0;padding:0;margin:0 0 12px;display:grid;gap:8px}.q-option-control{min-height:var(--touch);display:grid;grid-template-columns:28px 34px 1fr;align-items:center;gap:7px;border:1px solid var(--line);border-radius:10px;padding:8px 10px;background:var(--card)}.q-option-control:focus-within{outline:3px solid color-mix(in srgb,var(--accent) 40%,transparent)}.answer-choice{width:20px;height:20px}.option-letter{font-weight:800;color:var(--accent)}.answer-label{display:block;font-weight:700;margin:8px 0 5px}.answer-input,.practice-textarea{width:100%;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:10px;padding:11px 12px;scroll-margin-bottom:42vh}.answer-input{min-height:var(--touch)}.practice-textarea{min-height:130px;resize:vertical}.check-solution-btn{border:1px solid var(--accent);background:var(--accent);color:#00131c;border-radius:10px;padding:10px 15px;font-weight:800}.answer-feedback{min-height:24px;margin-top:8px;font-weight:700}.answer-feedback.correct{color:var(--success)}.answer-feedback.incorrect{color:var(--danger)}.solution-slot:empty{display:none}.solution-body{margin-top:12px;padding:14px;border:1px solid var(--line);border-radius:10px;background:var(--card)}.verified-answer{color:var(--success)}.reasoning-route{display:grid;gap:8px;padding-left:22px}.reasoning-route li{padding-left:4px}.step-kind{font-size:11px;font-weight:800;color:var(--accent);margin-right:8px}.crux-box,.trap-box,.check-box{padding:10px;border-radius:8px;margin-top:8px}.crux-box{background:color-mix(in srgb,var(--accent) 9%,var(--surface))}.trap-box{background:color-mix(in srgb,var(--danger) 9%,var(--surface))}.check-box{background:color-mix(in srgb,var(--success) 9%,var(--surface))}
 .meta-box,.representation-box{border:1px solid var(--line);background:var(--surface);border-radius:12px;padding:12px;margin-bottom:12px}.meta-title{font-weight:800;color:var(--accent);margin-bottom:6px}.meta-desc,.representation-note{color:var(--muted);font-size:13px}.representation-box svg{display:block;width:100%;height:auto;max-height:340px}.support-column{min-width:0}
-@media(min-width:1100px){.stage-support-columns{display:grid;grid-template-columns:minmax(0,2.1fr) minmax(360px,1fr);gap:26px;align-items:start}}
-@media(max-width:1099px){.support-column{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}}@media(max-width:620px){.app{padding:10px}.hero{padding:16px}.hero-row,.q-header,.search-row{flex-direction:column}.q-stem{font-size:16px}.question-card{padding:13px}.tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}.tab-btn{flex:0 0 auto}.q-option-control{grid-template-columns:26px 30px 1fr}}
+@media(min-width:980px){.stage-support-columns{display:grid;grid-template-columns:minmax(0,42fr) minmax(0,58fr);gap:22px;align-items:start}.q-header,.solution-column{grid-column:1/-1}}
+@media(max-width:979px){.support-column{margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}}@media(max-width:620px){.app{padding:10px}.hero{padding:16px}.hero-row,.q-header,.search-row{flex-direction:column}.q-stem{font-size:16px}.question-card{padding:13px}.tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:6px}.tab-btn{flex:0 0 auto}.q-option-control{grid-template-columns:26px 30px 1fr}}
 button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}
 @media print{body{background:#fff;color:#000}.toolbar,.theme-toggle,.attempt-actions,.practice-textarea,.answer-input,.hint-pill-row{display:none!important}.app{width:auto;padding:0}.hero,.question-card{box-shadow:none;border:0;border-radius:0}.question-card{break-after:page}.stage-support-columns{display:block}.support-column{position:static}.solution-slot:empty::before{content:"Solution remains withheld because no learner attempt was committed in this interactive session.";font-size:11px;color:#555}}
