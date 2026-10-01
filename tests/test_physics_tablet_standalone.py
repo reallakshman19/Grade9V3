@@ -1,4 +1,10 @@
-"""Test suite ensuring 12.7\" Tablet Standalone HTML standards across Physics modules."""
+"""Cheap static guardrails for Physics tablet standalone promotion candidates.
+
+These checks intentionally do *not* claim rendered WCAG compliance, academic
+correctness, source fidelity, Core-role conformance, responsive behaviour, or
+publication readiness. LPAP browser/semantic evidence must establish those
+properties separately.
+"""
 from __future__ import annotations
 
 import re
@@ -18,50 +24,150 @@ PHYSICS_TABLET_FILES = [
 ]
 
 
-class PhysicsTabletStandaloneTest(unittest.TestCase):
-    def test_physics_files_exist_and_non_empty(self):
+def _read(rel_path: str) -> str:
+    return (REPO / rel_path).read_text(encoding="utf-8")
+
+
+def _viewport_content(html: str) -> str:
+    match = re.search(
+        r'<meta\s+[^>]*name=["\']viewport["\'][^>]*content=["\']([^"\']*)["\'][^>]*>',
+        html,
+        re.IGNORECASE,
+    )
+    if not match:
+        # Also accept attributes in the opposite order.
+        match = re.search(
+            r'<meta\s+[^>]*content=["\']([^"\']*)["\'][^>]*name=["\']viewport["\'][^>]*>',
+            html,
+            re.IGNORECASE,
+        )
+    return match.group(1) if match else ""
+
+
+class PhysicsTabletStandaloneStaticGuardTest(unittest.TestCase):
+    def test_candidate_files_exist_and_non_empty(self):
         for rel_path in PHYSICS_TABLET_FILES:
             with self.subTest(file=rel_path):
                 fpath = REPO / rel_path
                 self.assertTrue(fpath.exists(), f"File {rel_path} does not exist")
-                self.assertGreater(fpath.stat().st_size, 30_000, f"File {rel_path} is unexpectedly small")
-
-    def test_zero_external_cdn_dependencies(self):
-        cdn_patterns = [
-            r'https?://cdn\.',
-            r'https?://cdnjs\.',
-            r'https?://fonts\.googleapis\.com',
-            r'https?://fonts\.gstatic\.com',
-            r'https?://unpkg\.com',
-            r'https?://cdn\.jsdelivr\.net',
-        ]
-        for rel_path in PHYSICS_TABLET_FILES:
-            content = (REPO / rel_path).read_text(encoding="utf-8")
-            for pattern in cdn_patterns:
-                with self.subTest(file=rel_path, pattern=pattern):
-                    matches = re.findall(pattern, content, re.IGNORECASE)
-                    self.assertEqual(len(matches), 0, f"Found external remote CDN link in {rel_path}")
-
-    def test_wcag_touch_targets_enforced(self):
-        for rel_path in PHYSICS_TABLET_FILES:
-            with self.subTest(file=rel_path):
-                content = (REPO / rel_path).read_text(encoding="utf-8")
-                self.assertTrue(
-                    "48px" in content or "--tab12-touch-min: 48px" in content,
-                    f"Touch target minimum 48px rule not found in {rel_path}",
+                self.assertGreater(
+                    fpath.stat().st_size,
+                    30_000,
+                    f"File {rel_path} is unexpectedly small",
                 )
 
-    def test_virtual_keyboard_safe_textareas(self):
+    def test_no_remote_runtime_dependency_urls(self):
+        """Reject remote load-bearing URLs; ordinary cited/source links are not banned."""
+        load_patterns = [
+            re.compile(
+                r'<(?:script|img|iframe|source|video|audio|link)\b[^>]*'
+                r'(?:src|href)\s*=\s*["\']\s*https?://',
+                re.IGNORECASE,
+            ),
+            re.compile(r'url\(\s*["\']?\s*https?://', re.IGNORECASE),
+        ]
         for rel_path in PHYSICS_TABLET_FILES:
-            with self.subTest(file=rel_path):
-                content = (REPO / rel_path).read_text(encoding="utf-8")
-                self.assertIn("120px", content, f"Min-height 120px missing in {rel_path}")
+            content = _read(rel_path)
+            for pattern in load_patterns:
+                with self.subTest(file=rel_path, pattern=pattern.pattern):
+                    self.assertIsNone(
+                        pattern.search(content),
+                        f"Remote runtime dependency found in {rel_path}",
+                    )
 
-    def test_theme_toggle_supported(self):
+    def test_viewport_does_not_disable_user_zoom(self):
         for rel_path in PHYSICS_TABLET_FILES:
             with self.subTest(file=rel_path):
-                content = (REPO / rel_path).read_text(encoding="utf-8")
-                self.assertIn("data-theme", content, f"data-theme attribute missing in {rel_path}")
+                viewport = _viewport_content(_read(rel_path))
+                self.assertTrue(viewport, f"Viewport meta missing in {rel_path}")
+                compact = re.sub(r"\s+", "", viewport.lower())
+                self.assertNotIn(
+                    "user-scalable=no",
+                    compact,
+                    f"User zoom is disabled in {rel_path}",
+                )
+                self.assertIsNone(
+                    re.search(r"(?:^|,)maximum-scale=1(?:\.0+)?(?:,|$)", compact),
+                    f"Viewport caps zoom at 1x in {rel_path}",
+                )
+
+    def test_no_unresolved_generator_count_tokens(self):
+        for rel_path in PHYSICS_TABLET_FILES:
+            with self.subTest(file=rel_path):
+                content = _read(rel_path)
+                self.assertNotIn(
+                    "{len(",
+                    content,
+                    f"Unresolved generator count token in learner HTML: {rel_path}",
+                )
+
+    def test_no_declared_sub_48px_interactive_min_heights(self):
+        """Catch explicit undersizing; rendered geometry still requires browser evidence."""
+        selector_block = re.compile(r"([^{}]+)\{([^{}]*)\}", re.DOTALL)
+        min_height = re.compile(r"min-height\s*:\s*([0-9]+(?:\.[0-9]+)?)px", re.I)
+        control_selector = re.compile(
+            r"(?:^|[\s,.#>+~:])(?:button|input|select|summary|\.btn|\.tab-btn)(?:\b|[\s,.#>+~:\[])",
+            re.I,
+        )
+        inline_control = re.compile(
+            r"<(?:button|input|select|summary)\b[^>]*\bstyle=[\"'][^\"']*"
+            r"min-height\s*:\s*([0-9]+(?:\.[0-9]+)?)px",
+            re.I,
+        )
+
+        for rel_path in PHYSICS_TABLET_FILES:
+            content = _read(rel_path)
+            offenders: list[str] = []
+            for selector, declarations in selector_block.findall(content):
+                if not control_selector.search(selector):
+                    continue
+                for raw in min_height.findall(declarations):
+                    if float(raw) < 48:
+                        offenders.append(f"{selector.strip()} => {raw}px")
+            for raw in inline_control.findall(content):
+                if float(raw) < 48:
+                    offenders.append(f"inline interactive control => {raw}px")
+            with self.subTest(file=rel_path):
+                self.assertEqual(
+                    offenders,
+                    [],
+                    f"Explicit interactive min-height below 48px in {rel_path}: {offenders}",
+                )
+
+    def test_scratchpad_textarea_rule_reserves_120px(self):
+        rule = re.compile(
+            r"textarea\.tablet-safe-input\s*\{([^}]*)\}",
+            re.IGNORECASE | re.DOTALL,
+        )
+        height = re.compile(r"min-height\s*:\s*([0-9]+(?:\.[0-9]+)?)px", re.I)
+        for rel_path in PHYSICS_TABLET_FILES:
+            with self.subTest(file=rel_path):
+                content = _read(rel_path)
+                match = rule.search(content)
+                self.assertIsNotNone(
+                    match,
+                    f"Scoped tablet scratchpad rule missing in {rel_path}",
+                )
+                values = height.findall(match.group(1)) if match else []
+                self.assertTrue(values, f"Scratchpad min-height missing in {rel_path}")
+                self.assertGreaterEqual(
+                    max(map(float, values)),
+                    120,
+                    f"Scratchpad min-height below 120px in {rel_path}",
+                )
+
+    def test_theme_toggle_has_static_runtime_wiring(self):
+        """Static wiring only; browser behaviour is verified separately."""
+        for rel_path in PHYSICS_TABLET_FILES:
+            with self.subTest(file=rel_path):
+                content = _read(rel_path)
+                self.assertRegex(content, r'id=["\']themeToggle["\']')
+                self.assertIn("getElementById('themeToggle')", content)
+                self.assertRegex(
+                    content,
+                    r"themeBtn\.addEventListener\(\s*['\"]click['\"]",
+                )
+                self.assertIn("setAttribute('data-theme'", content)
 
 
 if __name__ == "__main__":
