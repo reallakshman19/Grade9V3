@@ -19,6 +19,21 @@
     ],
     "core2": [],
     "core2a": [
+      "Q-PHY-VECOPS-2A-01",
+      "Q-PHY-VEC-DECOMP-2A-FROM-X-01",
+      "Q-PHY-VEC-DECOMP-2A-FROM-Y-02",
+      "Q-PHY-VEC-DECOMP-2A-QUADRANT-II-03",
+      "Q-PHY-VEC-DECOMP-2A-QUADRANT-IV-04",
+      "Q-PHY-VEC-DECOMP-2A-INITIAL-STATE-05"
+    ],
+    "core2b": [
+      "Q-PHY-VEC-DECOMP-2B-VERBAL-NW-01",
+      "Q-PHY-VEC-DECOMP-2B-ALREADY-COMPONENTS-02",
+      "Q-PHY-VEC-DECOMP-2B-COMPLEMENTARY-ANGLES-03",
+      "Q-PHY-VEC-DECOMP-2B-FORCE-CONTEXT-04",
+      "Q-PHY-VEC-DECOMP-2B-REVERSED-X-AXIS-05"
+    ],
+    "challenges_vec": [
       "Q-PHY-VEC-ADD-SRC-01",
       "Q-PHY-VEC-ADD-SRC-02",
       "Q-PHY-VEC-ADD-SRC-03",
@@ -33,13 +48,6 @@
       "Q-PHY-VEC-ADD-SRC-12",
       "Q-PHY-VEC-ADD-SRC-13",
       "Q-PHY-VEC-ADD-SRC-14"
-    ],
-    "core2b": [
-      "Q-PHY-VEC-DECOMP-2B-VERBAL-NW-01",
-      "Q-PHY-VEC-DECOMP-2B-ALREADY-COMPONENTS-02",
-      "Q-PHY-VEC-DECOMP-2B-COMPLEMENTARY-ANGLES-03",
-      "Q-PHY-VEC-DECOMP-2B-FORCE-CONTEXT-04",
-      "Q-PHY-VEC-DECOMP-2B-REVERSED-X-AXIS-05"
     ]
   },
   "extensions": {
