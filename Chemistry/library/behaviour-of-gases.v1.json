@@ -55,7 +55,9 @@
       "id": "BUCKET-CHEM-GAS",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -99,7 +101,8 @@
           "Any claim that this Owner extension is prescribed CBSE Grade 9 content.",
           "Core2 source-question custody until reconstruction is complete."
         ]
-      }
+      },
+      "primary_representation_ref": "REP-CHEM-GAS-KINETIC-PHASE"
     }
   ],
   "capabilities": [
@@ -107,7 +110,9 @@
       "id": "CAP-CHEM-GAS-KINETIC-PHASE",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -134,7 +139,9 @@
       "id": "CAP-CHEM-GAS-IDEAL-LAWS",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -161,7 +168,9 @@
       "id": "CAP-CHEM-GAS-REAL-CRITICAL",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -190,7 +199,9 @@
       "id": "MIC-CHEM-GAS-KINETIC-PHASE",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -201,7 +212,7 @@
       "intrinsic_badge": "MEDIUM",
       "badge_reason": "The learner must connect distributed molecular motion to macroscopic temperature and distinguish surface evaporation from pressure-dependent boiling.",
       "entry_assumptions": [
-        "Can read basic chemical symbols and distinguish a named model from an observation."
+        "For Particle model, speed distributions and phase change, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
       ],
       "inferential_jump": "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions.",
       "teaching_path": [
@@ -231,7 +242,9 @@
         }
       ],
       "relation_refs": [],
-      "representation_refs": [],
+      "representation_refs": [
+        "REP-CHEM-GAS-KINETIC-PHASE"
+      ],
       "question_family_refs": [
         "FAM-CHEM-GAS-KINETIC-PHASE"
       ],
@@ -258,10 +271,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "This exit task asks for a qualitative model-bound explanation rather than a new computed numerical value."
+          "no_numeric_claim": "The Particle model, speed distributions and phase change exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
         }
       },
-      "research_contribution": "Carries corrected model boundaries from the PR #376 audit into governed Core1A records. Independent Chemistry review of the exact render is still pending.",
+      "research_contribution": "For Particle model, speed distributions and phase change, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -273,7 +286,7 @@
             "GAS-KINETIC-PHASE-T2",
             "GAS-KINETIC-PHASE-T3"
           ],
-          "representation_ref": null,
+          "representation_ref": "REP-CHEM-GAS-KINETIC-PHASE",
           "reveal_stage_refs": [],
           "worked_anchor_ref": "Q-CHEM-GAS-KINETIC-PHASE-1A",
           "misconception_indexes": [
@@ -285,13 +298,59 @@
             }
           ]
         }
-      ]
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "For Particle model, speed distributions and phase change, decide before the completed route is revealed: What would a molecular speed distribution mean if every molecule had one speed, and why does changing external pressure change the boiling condition?",
+          "defensible_answer": "For Particle model, speed distributions and phase change, the defensible route is: Keep a distribution of molecular energies, and attach external pressure to any boiling-temperature statement."
+        },
+        "attempt": {
+          "produces": "A short Particle model, speed distributions and phase change explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "closure": "CRITERIA",
+          "rubric": [
+            {
+              "criterion": "The Particle model, speed distributions and phase change response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+              "evidence_of": "The learner can separate the Particle model, speed distributions and phase change governing distinction from the tempting shortcut."
+            }
+          ],
+          "task": {
+            "prompt": "Explain the Particle model, speed distributions and phase change decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "givens": [
+              "Temperature describes ensemble kinetic behaviour rather than one common molecular speed, while phase-change claims require the relevant pressure and equilibrium conditions."
+            ],
+            "representation_ref": "REP-CHEM-GAS-KINETIC-PHASE",
+            "stage_refs": []
+          }
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "In Particle model, speed distributions and phase change, what must be decided before the move \"Separate the microscopic particle model from the macroscopic observation.\" is justified?",
+              "why_this_ask": "This makes the learner supply the entry decision for Particle model, speed distributions and phase change instead of receiving the expert sequence first.",
+              "from_step_ref": "GAS-KINETIC-PHASE-T1"
+            },
+            {
+              "ask": "For Particle model, speed distributions and phase change, how would you test the conclusion reached by \"Track energy through a phase change for a pure substance at fixed pressure in phase equilibrium.\" without simply repeating the model answer?",
+              "why_this_ask": "This closes Particle model, speed distributions and phase change through a learner-owned check rather than through recall of the declarative route.",
+              "from_step_ref": "GAS-KINETIC-PHASE-T3"
+            }
+          ],
+          "differs_from_teaching_path": "For Particle model, speed distributions and phase change, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+        },
+        "boundary_test": {
+          "prompt": "Why can evaporation cool a liquid without implying that every molecule had the same initial speed?",
+          "answer": "Because the sample has a distribution of molecular energies and higher-energy surface molecules can preferentially escape.",
+          "confirms": "For Particle model, speed distributions and phase change, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+        }
+      }
     },
     {
       "id": "MIC-CHEM-GAS-IDEAL-LAWS",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -302,7 +361,7 @@
       "intrinsic_badge": "MEDIUM",
       "badge_reason": "Correct use depends on controlled variables and on separating pressure bookkeeping from effusion-rate comparisons.",
       "entry_assumptions": [
-        "Can read basic chemical symbols and distinguish a named model from an observation."
+        "For Gas-law constraints, mixtures and transport, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
       ],
       "inferential_jump": "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation.",
       "teaching_path": [
@@ -332,7 +391,9 @@
         }
       ],
       "relation_refs": [],
-      "representation_refs": [],
+      "representation_refs": [
+        "REP-CHEM-GAS-IDEAL-LAWS"
+      ],
       "question_family_refs": [
         "FAM-CHEM-GAS-IDEAL-LAWS"
       ],
@@ -359,10 +420,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "This exit task asks for a qualitative model-bound explanation rather than a new computed numerical value."
+          "no_numeric_claim": "The Gas-law constraints, mixtures and transport exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
         }
       },
-      "research_contribution": "Carries corrected model boundaries from the PR #376 audit into governed Core1A records. Independent Chemistry review of the exact render is still pending.",
+      "research_contribution": "For Gas-law constraints, mixtures and transport, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -374,7 +435,7 @@
             "GAS-IDEAL-LAWS-T2",
             "GAS-IDEAL-LAWS-T3"
           ],
-          "representation_ref": null,
+          "representation_ref": "REP-CHEM-GAS-IDEAL-LAWS",
           "reveal_stage_refs": [],
           "worked_anchor_ref": "Q-CHEM-GAS-IDEAL-LAWS-1A",
           "misconception_indexes": [
@@ -386,13 +447,59 @@
             }
           ]
         }
-      ]
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "For Gas-law constraints, mixtures and transport, decide before the completed route is revealed: If temperature and volume both change, can a fixed-temperature Boyle-law relation alone determine the final pressure?",
+          "defensible_answer": "For Gas-law constraints, mixtures and transport, the defensible route is: Write the constraints first and use the combined or ideal-gas model when more than one state variable changes."
+        },
+        "attempt": {
+          "produces": "A short Gas-law constraints, mixtures and transport explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "closure": "CRITERIA",
+          "rubric": [
+            {
+              "criterion": "The Gas-law constraints, mixtures and transport response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+              "evidence_of": "The learner can separate the Gas-law constraints, mixtures and transport governing distinction from the tempting shortcut."
+            }
+          ],
+          "task": {
+            "prompt": "Explain the Gas-law constraints, mixtures and transport decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "givens": [
+              "Boyle, Charles, Gay-Lussac, Avogadro, Dalton and Graham relations answer different conditional questions; the variables and observable must be named before selecting a relation."
+            ],
+            "representation_ref": "REP-CHEM-GAS-IDEAL-LAWS",
+            "stage_refs": []
+          }
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "In Gas-law constraints, mixtures and transport, what must be decided before the move \"Name pressure, volume, absolute temperature and amount, then state which variables are fixed.\" is justified?",
+              "why_this_ask": "This makes the learner supply the entry decision for Gas-law constraints, mixtures and transport instead of receiving the expert sequence first.",
+              "from_step_ref": "GAS-IDEAL-LAWS-T1"
+            },
+            {
+              "ask": "For Gas-law constraints, mixtures and transport, how would you test the conclusion reached by \"Separate Dalton partial-pressure bookkeeping from Graham effusion-rate comparison.\" without simply repeating the model answer?",
+              "why_this_ask": "This closes Gas-law constraints, mixtures and transport through a learner-owned check rather than through recall of the declarative route.",
+              "from_step_ref": "GAS-IDEAL-LAWS-T3"
+            }
+          ],
+          "differs_from_teaching_path": "For Gas-law constraints, mixtures and transport, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+        },
+        "boundary_test": {
+          "prompt": "Why does Graham's law not justify assigning a larger partial pressure to a lighter gas solely because it has lower molar mass?",
+          "answer": "Because Graham's law concerns effusion rate, while ideal partial pressure is determined by the component amount, temperature and volume.",
+          "confirms": "For Gas-law constraints, mixtures and transport, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+        }
+      }
     },
     {
       "id": "MIC-CHEM-GAS-REAL-CRITICAL",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -403,7 +510,7 @@
       "intrinsic_badge": "HARD",
       "badge_reason": "The learner must treat van der Waals terms as state-model corrections and distinguish critical behaviour from ordinary boiling.",
       "entry_assumptions": [
-        "Can read basic chemical symbols and distinguish a named model from an observation."
+        "For Real-gas deviations and critical behaviour, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
       ],
       "inferential_jump": "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism.",
       "teaching_path": [
@@ -433,7 +540,9 @@
         }
       ],
       "relation_refs": [],
-      "representation_refs": [],
+      "representation_refs": [
+        "REP-CHEM-GAS-REAL-CRITICAL"
+      ],
       "question_family_refs": [
         "FAM-CHEM-GAS-REAL-CRITICAL"
       ],
@@ -460,10 +569,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "This exit task asks for a qualitative model-bound explanation rather than a new computed numerical value."
+          "no_numeric_claim": "The Real-gas deviations and critical behaviour exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
         }
       },
-      "research_contribution": "Carries corrected model boundaries from the PR #376 audit into governed Core1A records. Independent Chemistry review of the exact render is still pending.",
+      "research_contribution": "For Real-gas deviations and critical behaviour, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -475,7 +584,7 @@
             "GAS-REAL-CRITICAL-T2",
             "GAS-REAL-CRITICAL-T3"
           ],
-          "representation_ref": null,
+          "representation_ref": "REP-CHEM-GAS-REAL-CRITICAL",
           "reveal_stage_refs": [],
           "worked_anchor_ref": "Q-CHEM-GAS-REAL-CRITICAL-1A",
           "misconception_indexes": [
@@ -487,17 +596,266 @@
             }
           ]
         }
-      ]
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "For Real-gas deviations and critical behaviour, decide before the completed route is revealed: Does an equation of state uniquely determine how molecules collide, and can attraction and finite-size effects dominate equally at every pressure and temperature?",
+          "defensible_answer": "For Real-gas deviations and critical behaviour, the defensible route is: Treat the correction parameters as state-model terms and interpret deviations only with the stated thermodynamic conditions."
+        },
+        "attempt": {
+          "produces": "A short Real-gas deviations and critical behaviour explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "closure": "CRITERIA",
+          "rubric": [
+            {
+              "criterion": "The Real-gas deviations and critical behaviour response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+              "evidence_of": "The learner can separate the Real-gas deviations and critical behaviour governing distinction from the tempting shortcut."
+            }
+          ],
+          "task": {
+            "prompt": "Explain the Real-gas deviations and critical behaviour decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "givens": [
+              "Real-gas deviations matter when neglected finite-size and intermolecular-interaction effects are no longer small; equation-of-state corrections do not uniquely specify a microscopic mechanism."
+            ],
+            "representation_ref": "REP-CHEM-GAS-REAL-CRITICAL",
+            "stage_refs": []
+          }
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "In Real-gas deviations and critical behaviour, what must be decided before the move \"Use compressibility factor as a comparison with the ideal reference at the same state.\" is justified?",
+              "why_this_ask": "This makes the learner supply the entry decision for Real-gas deviations and critical behaviour instead of receiving the expert sequence first.",
+              "from_step_ref": "GAS-REAL-CRITICAL-T1"
+            },
+            {
+              "ask": "For Real-gas deviations and critical behaviour, how would you test the conclusion reached by \"Distinguish a critical point from an ordinary boiling point.\" without simply repeating the model answer?",
+              "why_this_ask": "This closes Real-gas deviations and critical behaviour through a learner-owned check rather than through recall of the declarative route.",
+              "from_step_ref": "GAS-REAL-CRITICAL-T3"
+            }
+          ],
+          "differs_from_teaching_path": "For Real-gas deviations and critical behaviour, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+        },
+        "boundary_test": {
+          "prompt": "Why must a liquefaction statement distinguish critical temperature from boiling temperature?",
+          "answer": "Boiling temperature is pressure-dependent phase equilibrium below the critical point, while the critical temperature marks whether a distinct liquid-vapour boundary can exist.",
+          "confirms": "For Real-gas deviations and critical behaviour, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+        }
+      }
     }
   ],
   "relations": [],
-  "representations": [],
+  "representations": [
+    {
+      "id": "REP-CHEM-GAS-KINETIC-PHASE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "SYMBOLIC_EQUATION",
+      "purpose": "For Particle model, speed distributions and phase change, make the governing symbolic relationship visible beside its verbal meaning and notation limits.",
+      "required_elements": [
+        "equation body",
+        "scope notes"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "Read the Particle model, speed distributions and phase change symbolic relation as one complete statement.",
+        "Translate its symbols into the Particle model, speed distributions and phase change verbal claim before applying it.",
+        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+      ],
+      "instance_constraints": [
+        "The Particle model, speed distributions and phase change equation is source-bound to an authored EQUATION datum.",
+        "The Particle model, speed distributions and phase change scene may not imply coefficients, charges, phases or reaction arrows that the displayed statement does not contain."
+      ],
+      "accessibility": [
+        "The Particle model, speed distributions and phase change equation is repeated in the text caption.",
+        "The Particle model, speed distributions and phase change annotation states the same conceptual restriction without depending on visual styling."
+      ],
+      "misleading_alternatives": [
+        "For Particle model, speed distributions and phase change, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-CHEM-GAS-KINETIC-PHASE",
+          "cores": [
+            "CORE1",
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-CHEM-GAS-KINETIC-PHASE",
+          "datum_refs": [
+            "EQ-CHEM-GAS-KINETIC-PHASE"
+          ],
+          "scene": {
+            "kind": "SYMBOLIC_EQUATION",
+            "frame": "Author-created symbolic model for Particle model, speed distributions and phase change.",
+            "caption": "Gas particle model: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains.",
+            "equation_atom": "EQ-CHEM-GAS-KINETIC-PHASE",
+            "annotation": "The mean changes; the molecular speed distribution does not collapse to one speed.",
+            "coefficient_note": "In Gas particle model, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+            "charge_note": "In Gas particle model, no ionic charge is implied unless a charge is explicitly shown.",
+            "phase_note": "In Gas particle model, no phase label is implied unless a phase is explicitly shown.",
+            "arrow_note": "In Gas particle model, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "equation body",
+          "symbol": "T ↑ ⇒ mean Eₖ ↑",
+          "in_words": "For Particle model, speed distributions and phase change, the displayed symbols mean: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains."
+        }
+      ]
+    },
+    {
+      "id": "REP-CHEM-GAS-IDEAL-LAWS",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "SYMBOLIC_EQUATION",
+      "purpose": "For Gas-law constraints, mixtures and transport, make the governing symbolic relationship visible beside its verbal meaning and notation limits.",
+      "required_elements": [
+        "equation body",
+        "scope notes"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "Read the Gas-law constraints, mixtures and transport symbolic relation as one complete statement.",
+        "Translate its symbols into the Gas-law constraints, mixtures and transport verbal claim before applying it.",
+        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+      ],
+      "instance_constraints": [
+        "The Gas-law constraints, mixtures and transport equation is source-bound to an authored EQUATION datum.",
+        "The Gas-law constraints, mixtures and transport scene may not imply coefficients, charges, phases or reaction arrows that the displayed statement does not contain."
+      ],
+      "accessibility": [
+        "The Gas-law constraints, mixtures and transport equation is repeated in the text caption.",
+        "The Gas-law constraints, mixtures and transport annotation states the same conceptual restriction without depending on visual styling."
+      ],
+      "misleading_alternatives": [
+        "For Gas-law constraints, mixtures and transport, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-CHEM-GAS-IDEAL-LAWS",
+          "cores": [
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-CHEM-GAS-IDEAL-LAWS",
+          "datum_refs": [
+            "EQ-CHEM-GAS-IDEAL-LAWS"
+          ],
+          "scene": {
+            "kind": "SYMBOLIC_EQUATION",
+            "frame": "Author-created symbolic model for Gas-law constraints, mixtures and transport.",
+            "caption": "Ideal-gas state model: Pressure, volume, amount and absolute temperature are linked by the ideal-gas model; a simple gas law fixes a subset of them.",
+            "equation_atom": "EQ-CHEM-GAS-IDEAL-LAWS",
+            "annotation": "Choose a proportionality only after naming which state variables are fixed.",
+            "coefficient_note": "In Ideal-gas state model, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+            "charge_note": "In Ideal-gas state model, no ionic charge is implied unless a charge is explicitly shown.",
+            "phase_note": "In Ideal-gas state model, no phase label is implied unless a phase is explicitly shown.",
+            "arrow_note": "In Ideal-gas state model, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "equation body",
+          "symbol": "PV = nRT",
+          "in_words": "For Gas-law constraints, mixtures and transport, the displayed symbols mean: Pressure, volume, amount and absolute temperature are linked by the ideal-gas model; a simple gas law fixes a subset of them."
+        }
+      ]
+    },
+    {
+      "id": "REP-CHEM-GAS-REAL-CRITICAL",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "SYMBOLIC_EQUATION",
+      "purpose": "For Real-gas deviations and critical behaviour, make the governing symbolic relationship visible beside its verbal meaning and notation limits.",
+      "required_elements": [
+        "equation body",
+        "scope notes"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "Read the Real-gas deviations and critical behaviour symbolic relation as one complete statement.",
+        "Translate its symbols into the Real-gas deviations and critical behaviour verbal claim before applying it.",
+        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+      ],
+      "instance_constraints": [
+        "The Real-gas deviations and critical behaviour equation is source-bound to an authored EQUATION datum.",
+        "The Real-gas deviations and critical behaviour scene may not imply coefficients, charges, phases or reaction arrows that the displayed statement does not contain."
+      ],
+      "accessibility": [
+        "The Real-gas deviations and critical behaviour equation is repeated in the text caption.",
+        "The Real-gas deviations and critical behaviour annotation states the same conceptual restriction without depending on visual styling."
+      ],
+      "misleading_alternatives": [
+        "For Real-gas deviations and critical behaviour, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-CHEM-GAS-REAL-CRITICAL",
+          "cores": [
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-CHEM-GAS-REAL-CRITICAL",
+          "datum_refs": [
+            "EQ-CHEM-GAS-REAL-CRITICAL"
+          ],
+          "scene": {
+            "kind": "SYMBOLIC_EQUATION",
+            "frame": "Author-created symbolic model for Real-gas deviations and critical behaviour.",
+            "caption": "Real-gas comparison: Compressibility factor compares a real-gas state with the ideal reference at the same pressure, volume, amount and temperature.",
+            "equation_atom": "EQ-CHEM-GAS-REAL-CRITICAL",
+            "annotation": "Interpret Z only for the stated thermodynamic state; it does not specify a collision mechanism.",
+            "coefficient_note": "In Real-gas comparison, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+            "charge_note": "In Real-gas comparison, no ionic charge is implied unless a charge is explicitly shown.",
+            "phase_note": "In Real-gas comparison, no phase label is implied unless a phase is explicitly shown.",
+            "arrow_note": "In Real-gas comparison, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "equation body",
+          "symbol": "Z = PV/(nRT)",
+          "in_words": "For Real-gas deviations and critical behaviour, the displayed symbols mean: Compressibility factor compares a real-gas state with the ideal reference at the same pressure, volume, amount and temperature."
+        }
+      ]
+    }
+  ],
   "question_families": [
     {
       "id": "FAM-CHEM-GAS-KINETIC-PHASE",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -507,21 +865,21 @@
         "CAP-CHEM-GAS-KINETIC-PHASE"
       ],
       "solution_structure": [
-        "State the governing distinction or model condition.",
-        "Apply it to the concrete case.",
-        "Run the named independent check."
+        "For Particle model, speed distributions and phase change, identify the governing condition that decides the authored anchor.",
+        "Apply that Particle model, speed distributions and phase change condition to the concrete stem without importing an unstated model.",
+        "Close the Particle model, speed distributions and phase change anchor with the independent check stated in its model answer."
       ],
       "demand_dimensions": {
-        "model_choice": "Use the model explicitly taught in the adjacent Core1A construction.",
-        "representation_translation": "Explain the chemical statement in words and supplied notation.",
-        "reasoning_steps": "State the condition, apply it, then verify.",
-        "novelty": "Worked anchor remains within the just-taught concept rather than claiming transfer."
+        "model_choice": "Choose the specific Particle model, speed distributions and phase change model or bookkeeping convention taught in the adjacent construction.",
+        "representation_translation": "For Particle model, speed distributions and phase change, connect the governed figure or symbolic relation to the learner-facing words before concluding.",
+        "reasoning_steps": "For Particle model, speed distributions and phase change, state the condition, apply it to the stem, then run the recorded independent check.",
+        "novelty": "The Particle model, speed distributions and phase change anchor remains inside the just-taught construction and does not claim external-source transfer."
       },
       "safe_variations": [
-        "Change the surface example while preserving the same governing condition."
+        "For Particle model, speed distributions and phase change, vary the surface species or condition only when the same governing distinction remains testable."
       ],
       "transfer_boundaries": [
-        "Do not convert unresolved source-bank prompts into verified source questions."
+        "The Particle model, speed distributions and phase change family is author-created for PR #376; do not relabel it as a verified NCERT, ExamSIDE or JEE item."
       ],
       "common_wrong_routes": [
         "All molecules in a thermal sample have the same speed, and a liquid boils at one universal temperature."
@@ -534,7 +892,9 @@
       "id": "FAM-CHEM-GAS-IDEAL-LAWS",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -544,21 +904,21 @@
         "CAP-CHEM-GAS-IDEAL-LAWS"
       ],
       "solution_structure": [
-        "State the governing distinction or model condition.",
-        "Apply it to the concrete case.",
-        "Run the named independent check."
+        "For Gas-law constraints, mixtures and transport, identify the governing condition that decides the authored anchor.",
+        "Apply that Gas-law constraints, mixtures and transport condition to the concrete stem without importing an unstated model.",
+        "Close the Gas-law constraints, mixtures and transport anchor with the independent check stated in its model answer."
       ],
       "demand_dimensions": {
-        "model_choice": "Use the model explicitly taught in the adjacent Core1A construction.",
-        "representation_translation": "Explain the chemical statement in words and supplied notation.",
-        "reasoning_steps": "State the condition, apply it, then verify.",
-        "novelty": "Worked anchor remains within the just-taught concept rather than claiming transfer."
+        "model_choice": "Choose the specific Gas-law constraints, mixtures and transport model or bookkeeping convention taught in the adjacent construction.",
+        "representation_translation": "For Gas-law constraints, mixtures and transport, connect the governed figure or symbolic relation to the learner-facing words before concluding.",
+        "reasoning_steps": "For Gas-law constraints, mixtures and transport, state the condition, apply it to the stem, then run the recorded independent check.",
+        "novelty": "The Gas-law constraints, mixtures and transport anchor remains inside the just-taught construction and does not claim external-source transfer."
       },
       "safe_variations": [
-        "Change the surface example while preserving the same governing condition."
+        "For Gas-law constraints, mixtures and transport, vary the surface species or condition only when the same governing distinction remains testable."
       ],
       "transfer_boundaries": [
-        "Do not convert unresolved source-bank prompts into verified source questions."
+        "The Gas-law constraints, mixtures and transport family is author-created for PR #376; do not relabel it as a verified NCERT, ExamSIDE or JEE item."
       ],
       "common_wrong_routes": [
         "Any familiar gas-law proportion can be used when several supposedly fixed variables are also changing."
@@ -571,7 +931,9 @@
       "id": "FAM-CHEM-GAS-REAL-CRITICAL",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -581,21 +943,21 @@
         "CAP-CHEM-GAS-REAL-CRITICAL"
       ],
       "solution_structure": [
-        "State the governing distinction or model condition.",
-        "Apply it to the concrete case.",
-        "Run the named independent check."
+        "For Real-gas deviations and critical behaviour, identify the governing condition that decides the authored anchor.",
+        "Apply that Real-gas deviations and critical behaviour condition to the concrete stem without importing an unstated model.",
+        "Close the Real-gas deviations and critical behaviour anchor with the independent check stated in its model answer."
       ],
       "demand_dimensions": {
-        "model_choice": "Use the model explicitly taught in the adjacent Core1A construction.",
-        "representation_translation": "Explain the chemical statement in words and supplied notation.",
-        "reasoning_steps": "State the condition, apply it, then verify.",
-        "novelty": "Worked anchor remains within the just-taught concept rather than claiming transfer."
+        "model_choice": "Choose the specific Real-gas deviations and critical behaviour model or bookkeeping convention taught in the adjacent construction.",
+        "representation_translation": "For Real-gas deviations and critical behaviour, connect the governed figure or symbolic relation to the learner-facing words before concluding.",
+        "reasoning_steps": "For Real-gas deviations and critical behaviour, state the condition, apply it to the stem, then run the recorded independent check.",
+        "novelty": "The Real-gas deviations and critical behaviour anchor remains inside the just-taught construction and does not claim external-source transfer."
       },
       "safe_variations": [
-        "Change the surface example while preserving the same governing condition."
+        "For Real-gas deviations and critical behaviour, vary the surface species or condition only when the same governing distinction remains testable."
       ],
       "transfer_boundaries": [
-        "Do not convert unresolved source-bank prompts into verified source questions."
+        "The Real-gas deviations and critical behaviour family is author-created for PR #376; do not relabel it as a verified NCERT, ExamSIDE or JEE item."
       ],
       "common_wrong_routes": [
         "A van der Waals equation proves the exact molecular collision mechanism and gives one universal direction of deviation."
@@ -661,7 +1023,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Single-concept authored Core1A worked anchor after the construction is visible."
+        "basis": "Authored Core1A anchor for Particle model, speed distributions and phase change; it tests the immediately preceding distinction rather than a new transfer demand."
       }
     },
     {
@@ -720,7 +1082,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Single-concept authored Core1A worked anchor after the construction is visible."
+        "basis": "Authored Core1A anchor for Gas-law constraints, mixtures and transport; it tests the immediately preceding distinction rather than a new transfer demand."
       }
     },
     {
@@ -778,11 +1140,96 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Single-concept authored Core1A worked anchor after the construction is visible."
+        "basis": "Authored Core1A anchor for Real-gas deviations and critical behaviour; it tests the immediately preceding distinction rather than a new transfer demand."
       }
     }
   ],
-  "teaching_routes": [],
+  "teaching_routes": [
+    {
+      "id": "ROUTE-CHEM-GAS-CORE1A",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Behaviour of Gases and States of Matter completed Core1A construction",
+      "cores": [
+        "CORE1A"
+      ],
+      "microtopic_refs": [
+        "MIC-CHEM-GAS-KINETIC-PHASE",
+        "MIC-CHEM-GAS-IDEAL-LAWS",
+        "MIC-CHEM-GAS-REAL-CRITICAL"
+      ],
+      "entry_needs": [
+        "For Behaviour of Gases and States of Matter, use the stated entry assumptions rather than a learner-percentage gate."
+      ],
+      "learner_actions": [
+        "Follow the completed Behaviour of Gases and States of Matter construction and explain why each move is valid."
+      ],
+      "help_plan": [
+        "Keep the Behaviour of Gases and States of Matter representation bridge visible beside the verbal construction."
+      ],
+      "reveal_plan": "For Behaviour of Gases and States of Matter, the completed Core1A reasoning and governed representation are visible without an attempt gate.",
+      "source_preferences": [
+        {
+          "resource_ref": "SRC-CHEM-PR376-GAS-AUTHOR",
+          "purpose": "Author-created governed construction",
+          "reason": "The Behaviour of Gases and States of Matter Core1A conversion is authored from the exact PR #376 standalone basis while unresolved external-source question identities stay excluded."
+        }
+      ],
+      "when_not_suitable": [
+        "Do not present Behaviour of Gases and States of Matter as prescribed Grade-9 CBSE content; this package is an explicit Owner extension."
+      ],
+      "practice_profile_ref": null
+    },
+    {
+      "id": "ROUTE-CHEM-GAS-CORE1B",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Behaviour of Gases and States of Matter attempt-first Core1B reconstruction",
+      "cores": [
+        "CORE1B"
+      ],
+      "microtopic_refs": [
+        "MIC-CHEM-GAS-KINETIC-PHASE",
+        "MIC-CHEM-GAS-IDEAL-LAWS",
+        "MIC-CHEM-GAS-REAL-CRITICAL"
+      ],
+      "entry_needs": [
+        "For Behaviour of Gases and States of Matter, Core1B assumes the same conceptual coverage as Core1A and changes learner agency rather than academic truth."
+      ],
+      "learner_actions": [
+        "Predict, attempt and reconstruct the Behaviour of Gases and States of Matter governing distinctions before the completed route is revealed."
+      ],
+      "help_plan": [
+        "For Behaviour of Gases and States of Matter, use the recorded misconception diagnosis and representation bridge as post-attempt support rather than pre-answer disclosure."
+      ],
+      "reveal_plan": "For Behaviour of Gases and States of Matter, the learner attempts first; the self-study closure then reveals the governed reconstruction and check.",
+      "source_preferences": [
+        {
+          "resource_ref": "SRC-CHEM-PR376-GAS-AUTHOR",
+          "purpose": "Author-created self-study reconstruction",
+          "reason": "The Behaviour of Gases and States of Matter Core1B route is authored alongside Core1A so both products share one canonical microtopic truth."
+        }
+      ],
+      "when_not_suitable": [
+        "Do not treat Behaviour of Gases and States of Matter Core1B completion as evidence of learner mastery or as verification of held external-source questions."
+      ],
+      "practice_profile_ref": null
+    }
+  ],
   "practice_profiles": [],
   "evidence": [],
   "known_issues": [
@@ -827,5 +1274,57 @@
       "conversion_posture": "GOVERNED_CORE1A_OWNER_EXTENSION_SOURCE_BANK_EXCLUDED"
     }
   },
-  "data": []
+  "data": [
+    {
+      "id": "EQ-CHEM-GAS-KINETIC-PHASE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "EQUATION",
+      "value": "<math display=\"block\"><mrow><mi>T</mi><mo>↑</mo><mo>⇒</mo><mtext>mean translational kinetic energy</mtext><mo>↑</mo></mrow></math>",
+      "symbol": "T ↑ ⇒ mean Eₖ ↑",
+      "meaning": "Gas particle model: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains.",
+      "locator": "Author-created governed representation for Gas particle model in PR #376."
+    },
+    {
+      "id": "EQ-CHEM-GAS-IDEAL-LAWS",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "EQUATION",
+      "value": "<math display=\"block\"><mrow><mi>P</mi><mi>V</mi><mo>=</mo><mi>n</mi><mi>R</mi><mi>T</mi></mrow></math>",
+      "symbol": "PV = nRT",
+      "meaning": "Ideal-gas state model: Pressure, volume, amount and absolute temperature are linked by the ideal-gas model; a simple gas law fixes a subset of them.",
+      "locator": "Author-created governed representation for Ideal-gas state model in PR #376."
+    },
+    {
+      "id": "EQ-CHEM-GAS-REAL-CRITICAL",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "EQUATION",
+      "value": "<math display=\"block\"><mrow><mi>Z</mi><mo>=</mo><mi>P</mi><mi>V</mi><mo>/</mo><mo>(</mo><mi>n</mi><mi>R</mi><mi>T</mi><mo>)</mo></mrow></math>",
+      "symbol": "Z = PV/(nRT)",
+      "meaning": "Real-gas comparison: Compressibility factor compares a real-gas state with the ideal reference at the same pressure, volume, amount and temperature.",
+      "locator": "Author-created governed representation for Real-gas comparison in PR #376."
+    }
+  ]
 }
