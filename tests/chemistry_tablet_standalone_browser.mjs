@@ -64,16 +64,23 @@ for (const file of files) {
     if (await tabs.count() > 1 && await tabs.nth(1).isVisible()) await tabs.nth(1).click();
 
     if (file.includes('behaviour-of-gases')) {
-      for (const id of ['#inputP','#inputV','#inputN','#inputT']) {
-        if (await page.locator(id).count()) await page.locator(id).fill('0');
-      }
-      if (await page.locator('#calcTarget').count()) await page.locator('#calcTarget').selectOption('P');
-      const calc = page.locator('button').filter({ hasText: /^Calculate$/ }).first();
-      if (await calc.count() && await calc.isVisible()) await calc.click();
+      await page.evaluate(() => {
+        for (const id of ['inputP','inputV','inputN','inputT']) {
+          const el = document.getElementById(id);
+          if (el) el.value = '0';
+        }
+        const target = document.getElementById('calcTarget');
+        if (target) target.value = 'P';
+        if (typeof window.runGasCalc === 'function') window.runGasCalc();
+      });
     }
     if (file.includes('core1a-chemistry-some-basic-concepts')) {
-      if (await page.locator('#input-mole-mass').count()) await page.locator('#input-mole-mass').fill('-1');
-      if (await page.locator('#btn-calc-mole').count()) await page.locator('#btn-calc-mole').click();
+      await page.evaluate(() => {
+        const mass = document.getElementById('input-mole-mass');
+        if (mass) mass.value = '-1';
+        const btn = document.getElementById('btn-calc-mole');
+        if (btn) btn.click();
+      });
     }
     const badNumeric = await page.locator('body').evaluate(el => /\b(?:NaN|Infinity)\b/.test(el.innerText));
 
