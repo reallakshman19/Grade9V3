@@ -15,14 +15,10 @@ REPO = Path(__file__).resolve().parents[1]
 
 PHYSICS_TABLET_FILES = [
     "standalone/core1a-motion-in-a-plane-tablet.html",
-    "standalone/core1a-sba-06-07-trajectory-and-height-tablet.html",
-    "standalone/core1a-sba-motion-in-a-plane-master-tablet.html",
     "standalone/core1a-motion-1d-straight-line-tablet.html",
     "standalone/motion-1d-practice-companion-tablet.html",
     "standalone/core1a-physics-nlm-tablet.html",
     "standalone/core1a-vector-add-sub-tablet.html",
-    "standalone/core1a-physics-motion-2d-ncert-tablet.html",
-    "standalone/core2-motion-consolidated-practice-tablet.html",
 ]
 
 
@@ -37,7 +33,6 @@ def _viewport_content(html: str) -> str:
         re.IGNORECASE,
     )
     if not match:
-        # Also accept attributes in the opposite order.
         match = re.search(
             r'<meta\s+[^>]*content=["\']([^"\']*)["\'][^>]*name=["\']viewport["\'][^>]*>',
             html,
