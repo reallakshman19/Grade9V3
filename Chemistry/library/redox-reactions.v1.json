@@ -241,7 +241,9 @@
           "output": "Separating self-change from agent role prevents reversal."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-REDOX-OXIDATION-AGENTS"
+      ],
       "representation_refs": [
         "REP-CHEM-REDOX-OXIDATION-AGENTS"
       ],
@@ -287,15 +289,31 @@
             "REDOX-OXIDATION-AGENTS-T3"
           ],
           "representation_ref": "REP-CHEM-REDOX-OXIDATION-AGENTS",
-          "reveal_stage_refs": [],
+          "reveal_stage_refs": [
+            "REDOX-OA-S1",
+            "REDOX-OA-S2",
+            "REDOX-OA-S3"
+          ],
           "worked_anchor_ref": "Q-CHEM-REDOX-OXIDATION-AGENTS-1A",
           "misconception_indexes": [
             0
           ],
           "independent_checks": [
             {
-              "statement": "Use the phrase formal assignment and verify the total-charge sum."
+              "statement": "If a species is the oxidising agent, what happens to that species itself?",
+              "role": "CHECK"
+            },
+            {
+              "statement": "In Zn + Cu²⁺ → Zn²⁺ + Cu, identify what is oxidised, what is reduced, and both agents.",
+              "role": "APPLY"
+            },
+            {
+              "statement": "Use the same before/after oxidation-state ledger to classify whole reaction patterns.",
+              "role": "CONNECT"
             }
+          ],
+          "relation_refs": [
+            "REL-CHEM-REDOX-OXIDATION-AGENTS"
           ]
         }
       ],
@@ -390,7 +408,9 @@
           "output": "Counting how many states appear is not enough."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-REDOX-CLASSIFICATION"
+      ],
       "representation_refs": [
         "REP-CHEM-REDOX-CLASSIFICATION"
       ],
@@ -436,15 +456,31 @@
             "REDOX-CLASSIFICATION-T3"
           ],
           "representation_ref": "REP-CHEM-REDOX-CLASSIFICATION",
-          "reveal_stage_refs": [],
+          "reveal_stage_refs": [
+            "REDOX-CL-S1",
+            "REDOX-CL-S2",
+            "REDOX-CL-S3"
+          ],
           "worked_anchor_ref": "Q-CHEM-REDOX-CLASSIFICATION-1A",
           "misconception_indexes": [
             0
           ],
           "independent_checks": [
             {
-              "statement": "List oxidation states before and after rather than relying on the reaction-type label."
+              "statement": "What oxidation-state evidence is required before calling a reaction redox?",
+              "role": "CHECK"
+            },
+            {
+              "statement": "In Cl₂ + 2OH⁻ → Cl⁻ + ClO⁻ + H₂O, chlorine goes 0 → −1 and 0 → +1. Classify the pattern.",
+              "role": "APPLY"
+            },
+            {
+              "statement": "Split the two directions of oxidation-state change into half-reactions before balancing.",
+              "role": "CONNECT"
             }
+          ],
+          "relation_refs": [
+            "REL-CHEM-REDOX-CLASSIFICATION"
           ]
         }
       ],
@@ -516,30 +552,32 @@
       "teaching_path": [
         {
           "id": "REDOX-BALANCE-NFACTOR-T1",
-          "role": "DECLARE",
-          "action": "State acidic or basic aqueous medium before choosing balancing species.",
-          "why_valid": "The allowed bookkeeping species depend on the declared medium.",
+          "role": "TRANSFORM",
+          "action": "In acidic solution, write and balance the permanganate reduction half-reaction: MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O.",
+          "why_valid": "O is balanced with H₂O, H with H⁺, and charge with electrons; both atoms and charge then match.",
           "inputs": [],
-          "output": "Medium is part of the problem conditions."
+          "output": "The permanganate half consumes 5 e⁻ per MnO₄⁻ in this acidic reduction to Mn²⁺."
         },
         {
           "id": "REDOX-BALANCE-NFACTOR-T2",
           "role": "TRANSFORM",
-          "action": "Balance atoms and charge within each half-reaction, then scale so electrons cancel when the halves are added.",
-          "why_valid": "Electrons are transfer bookkeeping and must not remain in the final net reaction.",
+          "action": "Write Fe²⁺ → Fe³⁺ + e⁻ and multiply it by five so the electron count matches the permanganate half.",
+          "why_valid": "Electrons are bookkeeping intermediates and must cancel when the two half-reactions are added.",
           "inputs": [],
-          "output": "The final equation must conserve every element and total charge."
+          "output": "5Fe²⁺ → 5Fe³⁺ + 5e⁻."
         },
         {
           "id": "REDOX-BALANCE-NFACTOR-T3",
-          "role": "TRANSFORM",
-          "action": "Derive n-factor from the electron change and stoichiometric role in the specified balanced reaction.",
-          "why_valid": "The same substance can participate in different redox changes and therefore have different reaction-specific n-factors.",
+          "role": "VERIFY",
+          "action": "Add the halves and verify MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 4H₂O + 5Fe³⁺ by separate atom and charge ledgers.",
+          "why_valid": "A valid ionic equation conserves every element and total electric charge.",
           "inputs": [],
-          "output": "Equivalent-mass use is tied to that reaction context."
+          "output": "Atoms balance and the total charge is +17 on both sides; the five-electron change is specific to this permanganate reaction in acid."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-REDOX-BALANCE-NFACTOR"
+      ],
       "representation_refs": [
         "REP-CHEM-REDOX-BALANCE-NFACTOR"
       ],
@@ -585,15 +623,31 @@
             "REDOX-BALANCE-NFACTOR-T3"
           ],
           "representation_ref": "REP-CHEM-REDOX-BALANCE-NFACTOR",
-          "reveal_stage_refs": [],
+          "reveal_stage_refs": [
+            "REDOX-BN-S1",
+            "REDOX-BN-S2",
+            "REDOX-BN-S3"
+          ],
           "worked_anchor_ref": "Q-CHEM-REDOX-BALANCE-NFACTOR-1A",
           "misconception_indexes": [
             0
           ],
           "independent_checks": [
             {
-              "statement": "Write the reaction or oxidation-state change beside every n-factor value."
+              "statement": "What two independent ledgers must balance after half-reaction electrons cancel?",
+              "role": "CHECK"
+            },
+            {
+              "statement": "For MnO₄⁻ + Fe²⁺ in acidic solution, determine the electron multiplier needed to combine the two half-reactions.",
+              "role": "APPLY"
+            },
+            {
+              "statement": "Attach any n-factor you quote to this specific reaction and medium.",
+              "role": "CONNECT"
             }
+          ],
+          "relation_refs": [
+            "REL-CHEM-REDOX-BALANCE-NFACTOR"
           ]
         }
       ],
@@ -643,7 +697,142 @@
       }
     }
   ],
-  "relations": [],
+  "relations": [
+    {
+      "id": "REL-CHEM-REDOX-OXIDATION-AGENTS",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-blueprint-v2-depth-revision"
+      },
+      "expression": "Σ ni(ONi) = species charge",
+      "meaning": "Oxidation numbers are formal assignments constrained by the total species charge; an increase tracks oxidation and a decrease tracks reduction.",
+      "symbols": [
+        {
+          "symbol": "ni",
+          "meaning": "number of atoms of element i",
+          "unit_or_domain": "count"
+        },
+        {
+          "symbol": "ONi",
+          "meaning": "formal oxidation number of element i",
+          "unit_or_domain": "formal oxidation-state assignment"
+        }
+      ],
+      "conditions": [
+        "Apply the oxidation-number priority rules consistently.",
+        "The algebraic weighted sum must equal the charge of the whole species."
+      ],
+      "derivation": [
+        {
+          "id": "REL-CHEM-REDOX-OXIDATION-AGENTS-D1",
+          "role": "DECLARE",
+          "action": "Write the relation only after the quantities and model conditions have been named.",
+          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "inputs": [],
+          "output": "Σ ni(ONi) = species charge"
+        }
+      ],
+      "limits": [
+        "Oxidation number is formal bookkeeping and need not equal a measured atomic charge.",
+        "Agent names refer to the process caused in the partner: the oxidising agent is itself reduced."
+      ],
+      "checks": [
+        "Verify the oxidation-number sum before assigning oxidation, reduction or agent roles."
+      ],
+      "gate_relation_ref": null
+    },
+    {
+      "id": "REL-CHEM-REDOX-CLASSIFICATION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-blueprint-v2-depth-revision"
+      },
+      "expression": "redox ⇔ at least one ON increases and at least one ON decreases",
+      "meaning": "A reaction is redox when oxidation-number changes are coupled; labels such as decomposition or displacement do not establish redox by themselves.",
+      "symbols": [
+        {
+          "symbol": "ON",
+          "meaning": "oxidation number of a tracked element",
+          "unit_or_domain": "formal oxidation-state assignment"
+        }
+      ],
+      "conditions": [
+        "Track the same element from reactant to product species.",
+        "Use actual before/after oxidation numbers rather than a reaction-name shortcut."
+      ],
+      "derivation": [
+        {
+          "id": "REL-CHEM-REDOX-CLASSIFICATION-D1",
+          "role": "DECLARE",
+          "action": "Write the relation only after the quantities and model conditions have been named.",
+          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "inputs": [],
+          "output": "redox ⇔ at least one ON increases and at least one ON decreases"
+        }
+      ],
+      "limits": [
+        "Some decomposition or combination reactions are non-redox.",
+        "Disproportionation requires the same initial oxidation state to branch to both a higher and a lower state."
+      ],
+      "checks": [
+        "Make a before/after oxidation-state table and look for both directions of change."
+      ],
+      "gate_relation_ref": null
+    },
+    {
+      "id": "REL-CHEM-REDOX-BALANCE-NFACTOR",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-REDOX-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-blueprint-v2-depth-revision"
+      },
+      "expression": "total e− lost = total e− gained",
+      "meaning": "Half-reaction balancing equalises electron transfer before the halves are added; the final ionic equation must also conserve each element and total charge.",
+      "symbols": [
+        {
+          "symbol": "e−",
+          "meaning": "electrons transferred in the half-reaction bookkeeping",
+          "unit_or_domain": "electron count"
+        }
+      ],
+      "conditions": [
+        "Write separate oxidation and reduction half-reactions in the stated medium.",
+        "Balance atoms and charge within each half before scaling electron counts to cancel."
+      ],
+      "derivation": [
+        {
+          "id": "REL-CHEM-REDOX-BALANCE-NFACTOR-D1",
+          "role": "DECLARE",
+          "action": "Write the relation only after the quantities and model conditions have been named.",
+          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "inputs": [],
+          "output": "total e− lost = total e− gained"
+        }
+      ],
+      "limits": [
+        "n-factor is reaction- and condition-dependent rather than an immutable property of a substance.",
+        "Electron cancellation is necessary but the final atom and charge ledgers must still be checked."
+      ],
+      "checks": [
+        "After adding the halves, verify every atom count and the algebraic total charge on both sides."
+      ],
+      "gate_relation_ref": null
+    }
+  ],
   "representations": [
     {
       "id": "REP-CHEM-REDOX-OXIDATION-AGENTS",
@@ -662,7 +851,9 @@
         "equation body",
         "scope notes"
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-REDOX-OXIDATION-AGENTS"
+      ],
       "read_order": [
         "Read the Oxidation number, oxidation/reduction and agents symbolic relation as one complete statement.",
         "Translate its symbols into the Oxidation number, oxidation/reduction and agents verbal claim before applying it.",
@@ -713,6 +904,32 @@
           "symbol": "ON ↑ = oxidation; ON ↓ = reduction",
           "in_words": "For Oxidation number, oxidation/reduction and agents, the displayed symbols mean: An increase in formal oxidation number tracks oxidation and a decrease tracks reduction; agent names describe the process caused in the partner."
         }
+      ],
+      "reveal_stages": [
+        {
+          "id": "REDOX-OA-S1",
+          "label": "Oxidation states",
+          "purpose": "Track Zn 0 → +2 and Cu +2 → 0.",
+          "visible_elements": [
+            "stage-1"
+          ]
+        },
+        {
+          "id": "REDOX-OA-S2",
+          "label": "Electron transfer",
+          "purpose": "Add the two-electron transfer bookkeeping.",
+          "visible_elements": [
+            "stage-2"
+          ]
+        },
+        {
+          "id": "REDOX-OA-S3",
+          "label": "Agent roles",
+          "purpose": "Name Zn as reducing agent and Cu²⁺ as oxidising agent from what each undergoes.",
+          "visible_elements": [
+            "stage-3"
+          ]
+        }
       ]
     },
     {
@@ -732,7 +949,9 @@
         "equation body",
         "scope notes"
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-REDOX-CLASSIFICATION"
+      ],
       "read_order": [
         "Read the Redox classification, displacement and disproportionation patterns symbolic relation as one complete statement.",
         "Translate its symbols into the Redox classification, displacement and disproportionation patterns verbal claim before applying it.",
@@ -782,6 +1001,32 @@
           "symbol": "redox ⇒ coupled ON increase + decrease",
           "in_words": "For Redox classification, displacement and disproportionation patterns, the displayed symbols mean: Calling a reaction redox requires coupled oxidation-number changes; a reaction-type label by itself is insufficient."
         }
+      ],
+      "reveal_stages": [
+        {
+          "id": "REDOX-CL-S1",
+          "label": "Before and after",
+          "purpose": "Create an oxidation-state map before using a reaction label.",
+          "visible_elements": [
+            "stage-1"
+          ]
+        },
+        {
+          "id": "REDOX-CL-S2",
+          "label": "Coupled change",
+          "purpose": "Mark simultaneous increase and decrease as the redox evidence.",
+          "visible_elements": [
+            "stage-2"
+          ]
+        },
+        {
+          "id": "REDOX-CL-S3",
+          "label": "Disproportionation",
+          "purpose": "Show one initial state branching to a higher and a lower product state.",
+          "visible_elements": [
+            "stage-3"
+          ]
+        }
       ]
     },
     {
@@ -801,7 +1046,9 @@
         "equation body",
         "scope notes"
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-REDOX-BALANCE-NFACTOR"
+      ],
       "read_order": [
         "Read the Half-reaction balancing and reaction-dependent n-factor symbolic relation as one complete statement.",
         "Translate its symbols into the Half-reaction balancing and reaction-dependent n-factor verbal claim before applying it.",
@@ -850,6 +1097,32 @@
           "element": "equation body",
           "symbol": "atomsL = atomsR; chargeL = chargeR",
           "in_words": "For Half-reaction balancing and reaction-dependent n-factor, the displayed symbols mean: A balanced ionic redox equation conserves every element and total charge; reaction-specific electron transfer then determines n-factor."
+        }
+      ],
+      "reveal_stages": [
+        {
+          "id": "REDOX-BN-S1",
+          "label": "Half-reactions",
+          "purpose": "Write concrete permanganate reduction and iron(II) oxidation halves in acid.",
+          "visible_elements": [
+            "stage-1"
+          ]
+        },
+        {
+          "id": "REDOX-BN-S2",
+          "label": "Cancel electrons",
+          "purpose": "Scale the Fe²⁺ half-reaction by five and add the halves.",
+          "visible_elements": [
+            "stage-2"
+          ]
+        },
+        {
+          "id": "REDOX-BN-S3",
+          "label": "Close the ledgers",
+          "purpose": "Check atoms, total charge and the reaction-specific five-electron permanganate change.",
+          "visible_elements": [
+            "stage-3"
+          ]
         }
       ]
     }
@@ -1105,7 +1378,7 @@
       "origin": "AUTHORED",
       "origin_ref": "SRC-CHEM-PR376-REDOX-AUTHOR",
       "original_identifier": "PR376-REDOX-BALANCE-NFACTOR-AUTHORED-ANCHOR",
-      "stem": "What two independent conservation checks close a balanced ionic redox equation?",
+      "stem": "Balance MnO₄⁻ + Fe²⁺ → Mn²⁺ + Fe³⁺ in acidic solution by the half-reaction method, then state the electron transfer associated with one MnO₄⁻ in this reaction.",
       "subparts": [],
       "options": [],
       "conditions": [
@@ -1114,13 +1387,15 @@
       "figure_refs": [],
       "answer": {
         "kind": "MODEL_RESPONSE",
-        "summary": "Every element count and the total electric charge must match on both sides.",
+        "summary": "MnO₄⁻ + 8H⁺ + 5Fe²⁺ → Mn²⁺ + 4H₂O + 5Fe³⁺; one permanganate ion gains 5 electrons in this acidic reduction.",
         "reasoning": [
-          "Chemical equations conserve atoms.",
-          "Ionic redox equations also conserve total charge.",
-          "Half-reaction electrons must cancel from the net equation."
+          "Balance MnO₄⁻ + 8H⁺ + 5e⁻ → Mn²⁺ + 4H₂O.",
+          "Write Fe²⁺ → Fe³⁺ + e⁻ and multiply by five.",
+          "Add the halves so 5e⁻ cancels.",
+          "Check Mn, Fe, O and H atom counts and verify total charge +17 on each side.",
+          "The corresponding 5-electron value belongs to this specified reaction and medium, not to permanganate under every condition."
         ],
-        "check": "Make an element-count table and a separate algebraic charge sum.",
+        "check": "The final equation must pass both the atom-count ledger and the total-charge ledger.",
         "acceptable_alternatives": [],
         "subpart_answers": [],
         "verification_status": "CHECKED_BY_AUTHOR"
@@ -1138,7 +1413,7 @@
       ],
       "learner_question_type": "constructed_response",
       "difficulty": {
-        "band": "D1",
+        "band": "D2",
         "score": 2,
         "components": {
           "concept_model_selection": 1,
@@ -1147,7 +1422,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Authored Core1A anchor for Half-reaction balancing and reaction-dependent n-factor; it tests the immediately preceding distinction rather than a new transfer demand."
+        "basis": "Author-created Core1A worked anchor revised for blueprint-v2: it executes the unit construction on a concrete species or numerical case."
       }
     }
   ],

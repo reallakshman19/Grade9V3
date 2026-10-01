@@ -241,7 +241,9 @@
           "output": "Unit cancellation checks the conversion direction."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-MOLE-FOUNDATIONS-MOLE"
+      ],
       "representation_refs": [
         "REP-CHEM-MOLE-FOUNDATIONS-MOLE"
       ],
@@ -287,15 +289,31 @@
             "MOLE-FOUNDATIONS-MOLE-T3"
           ],
           "representation_ref": "REP-CHEM-MOLE-FOUNDATIONS-MOLE",
-          "reveal_stage_refs": [],
+          "reveal_stage_refs": [
+            "MOLE-FM-S1",
+            "MOLE-FM-S2",
+            "MOLE-FM-S3"
+          ],
           "worked_anchor_ref": "Q-CHEM-MOLE-FOUNDATIONS-MOLE-1A",
           "misconception_indexes": [
             0
           ],
           "independent_checks": [
             {
-              "statement": "Attach both substance and entity to the amount statement."
+              "statement": "What is the same for one mole of any entity, and what generally differs between substances?",
+              "role": "CHECK"
+            },
+            {
+              "statement": "Convert 0.50 mol H₂O to a molecule count in terms of NA, naming the counted entity.",
+              "role": "APPLY"
+            },
+            {
+              "statement": "Use moles—not raw masses—as the quantities compared by stoichiometric coefficients.",
+              "role": "CONNECT"
             }
+          ],
+          "relation_refs": [
+            "REL-CHEM-MOLE-FOUNDATIONS-MOLE"
           ]
         }
       ],
@@ -368,37 +386,39 @@
         {
           "id": "MOLE-FORMULA-STOICH-T1",
           "role": "TRANSFORM",
-          "action": "Convert each elemental mass or percentage to moles before inferring an empirical ratio.",
-          "why_valid": "Atom counts are proportional to amount, not raw mass.",
+          "action": "On a 100 g basis for 40.0% C, 6.7% H and 53.3% O, convert each mass to amount before comparing the elements.",
+          "why_valid": "Formula subscripts follow relative atom amounts, not mass percentages.",
           "inputs": [],
-          "output": "Dividing by atomic mass removes the mass weighting."
+          "output": "Approximately 3.33 mol C : 6.65 mol H : 3.33 mol O."
         },
         {
           "id": "MOLE-FORMULA-STOICH-T2",
           "role": "TRANSFORM",
-          "action": "Scale mole ratios to the smallest reliable whole-number set and use molar mass to determine any molecular-formula multiple.",
-          "why_valid": "The empirical formula fixes ratio only; molecular molar mass supplies scale.",
+          "action": "Divide by the smallest amount and scale only if needed to obtain the smallest reliable whole-number ratio.",
+          "why_valid": "A common scaling preserves the relative particle counts represented by the empirical formula.",
           "inputs": [],
-          "output": "The molecular multiple should be an integer within data precision."
+          "output": "The ratio is approximately 1 : 2 : 1, giving empirical formula CH₂O."
         },
         {
           "id": "MOLE-FORMULA-STOICH-T3",
           "role": "DECLARE",
-          "action": "For stoichiometry, start from a balanced equation and convert reactant inventories to moles.",
-          "why_valid": "Reaction coefficients compare amounts of substance.",
+          "action": "For 2H₂ + O₂ → 2H₂O with 3.0 mol H₂ and 2.0 mol O₂, place the initial mole inventories beside the balanced coefficients.",
+          "why_valid": "Stoichiometric coefficients compare amounts of substance, so the inventories must be expressed in moles.",
           "inputs": [],
-          "output": "Raw masses of different substances cannot identify the limiting reagent directly."
+          "output": "H₂ supports 3.0/2 = 1.5 reaction extents; O₂ supports 2.0/1 = 2.0."
         },
         {
           "id": "MOLE-FORMULA-STOICH-T4",
           "role": "TRANSFORM",
-          "action": "Compare each available mole amount relative to its stoichiometric coefficient.",
-          "why_valid": "The reactant supporting the smallest reaction extent is exhausted first in the complete-reaction model.",
+          "action": "Choose the smaller supported extent and use it to compute consumption, product and leftover amounts.",
+          "why_valid": "The first exhausted reactant fixes the maximum complete-reaction extent under the model.",
           "inputs": [],
-          "output": "Product and leftovers follow from that limiting extent."
+          "output": "H₂ is limiting; 3.0 mol H₂ and 1.5 mol O₂ are consumed, 3.0 mol H₂O forms, and 0.5 mol O₂ remains."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-MOLE-FORMULA-STOICH"
+      ],
       "representation_refs": [
         "REP-CHEM-MOLE-FORMULA-STOICH"
       ],
@@ -445,15 +465,31 @@
             "MOLE-FORMULA-STOICH-T4"
           ],
           "representation_ref": "REP-CHEM-MOLE-FORMULA-STOICH",
-          "reveal_stage_refs": [],
+          "reveal_stage_refs": [
+            "MOLE-FS-S1",
+            "MOLE-FS-S2",
+            "MOLE-FS-S3"
+          ],
           "worked_anchor_ref": "Q-CHEM-MOLE-FORMULA-STOICH-1A",
           "misconception_indexes": [
             0
           ],
           "independent_checks": [
             {
-              "statement": "Separate initial inventories from reaction coefficients."
+              "statement": "Why must percentage or mass data be converted to moles before formula subscripts are inferred?",
+              "role": "CHECK"
+            },
+            {
+              "statement": "For 2H₂ + O₂ → 2H₂O with 3.0 mol H₂ and 2.0 mol O₂, compare ni/νi and identify the limiting reactant.",
+              "role": "APPLY"
+            },
+            {
+              "statement": "Once reaction inventories are in moles, connect them to concentration data only through the correct concentration denominator.",
+              "role": "CONNECT"
             }
+          ],
+          "relation_refs": [
+            "REL-CHEM-MOLE-FORMULA-STOICH"
           ]
         }
       ],
@@ -548,7 +584,9 @@
           "output": "Definition-level bookkeeping closes the reasoning."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-MOLE-CONCENTRATION"
+      ],
       "representation_refs": [
         "REP-CHEM-MOLE-CONCENTRATION"
       ],
@@ -595,15 +633,31 @@
             "MOLE-CONCENTRATION-T3"
           ],
           "representation_ref": "REP-CHEM-MOLE-CONCENTRATION",
-          "reveal_stage_refs": [],
+          "reveal_stage_refs": [
+            "MOLE-CO-S1",
+            "MOLE-CO-S2",
+            "MOLE-CO-S3"
+          ],
           "worked_anchor_ref": "Q-CHEM-MOLE-CONCENTRATION-1A",
           "misconception_indexes": [
             0
           ],
           "independent_checks": [
             {
-              "statement": "Include the closed, unchanged-composition condition."
+              "statement": "Name the denominator used by molarity, molality and mole fraction.",
+              "role": "CHECK"
+            },
+            {
+              "statement": "A sealed solution warms and expands without loss or reaction. Identify which of c, b and xi can change from the definitions alone.",
+              "role": "APPLY"
+            },
+            {
+              "statement": "Use denominator-first bookkeeping when concentration becomes an input to later stoichiometric calculations.",
+              "role": "CONNECT"
             }
+          ],
+          "relation_refs": [
+            "REL-CHEM-MOLE-CONCENTRATION"
           ]
         }
       ],
@@ -653,7 +707,192 @@
       }
     }
   ],
-  "relations": [],
+  "relations": [
+    {
+      "id": "REL-CHEM-MOLE-FOUNDATIONS-MOLE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-blueprint-v2-depth-revision"
+      },
+      "expression": "n = m/M; N = nNA",
+      "meaning": "Molar mass converts measurable mass to amount of substance, and Avogadro constant converts that amount to a count of explicitly named entities.",
+      "symbols": [
+        {
+          "symbol": "n",
+          "meaning": "amount of substance",
+          "unit_or_domain": "mole"
+        },
+        {
+          "symbol": "m",
+          "meaning": "sample mass",
+          "unit_or_domain": "mass"
+        },
+        {
+          "symbol": "M",
+          "meaning": "molar mass of the named substance",
+          "unit_or_domain": "mass per mole"
+        },
+        {
+          "symbol": "N",
+          "meaning": "number of named entities",
+          "unit_or_domain": "count"
+        },
+        {
+          "symbol": "NA",
+          "meaning": "Avogadro constant",
+          "unit_or_domain": "entities per mole"
+        }
+      ],
+      "conditions": [
+        "Name the substance and the entity being counted.",
+        "Use a molar mass that corresponds to that same chemical entity/formula unit."
+      ],
+      "derivation": [
+        {
+          "id": "REL-CHEM-MOLE-FOUNDATIONS-MOLE-D1",
+          "role": "DECLARE",
+          "action": "Write the relation only after the quantities and model conditions have been named.",
+          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "inputs": [],
+          "output": "n = m/M; N = nNA"
+        }
+      ],
+      "limits": [
+        "One mole of different substances has the same entity count but generally not the same mass.",
+        "For ionic solids, formula units and individual ions are different entity counts."
+      ],
+      "checks": [
+        "Carry units and write the entity name beside the final count."
+      ],
+      "gate_relation_ref": null
+    },
+    {
+      "id": "REL-CHEM-MOLE-FORMULA-STOICH",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-blueprint-v2-depth-revision"
+      },
+      "expression": "supported extent ξi = ni/νi; limiting extent = min(ni/νi)",
+      "meaning": "A balanced equation compares amounts through stoichiometric coefficients; the reactant supporting the smallest reaction extent is limiting in the complete-reaction model.",
+      "symbols": [
+        {
+          "symbol": "ni",
+          "meaning": "available amount of reactant i",
+          "unit_or_domain": "mole"
+        },
+        {
+          "symbol": "νi",
+          "meaning": "stoichiometric coefficient of reactant i",
+          "unit_or_domain": "coefficient"
+        },
+        {
+          "symbol": "ξi",
+          "meaning": "reaction extent supported by reactant i",
+          "unit_or_domain": "mole of reaction"
+        }
+      ],
+      "conditions": [
+        "Convert each starting inventory to moles first.",
+        "Use a balanced equation and the complete-reaction stoichiometric model."
+      ],
+      "derivation": [
+        {
+          "id": "REL-CHEM-MOLE-FORMULA-STOICH-D1",
+          "role": "DECLARE",
+          "action": "Write the relation only after the quantities and model conditions have been named.",
+          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "inputs": [],
+          "output": "supported extent ξi = ni/νi; limiting extent = min(ni/νi)"
+        }
+      ],
+      "limits": [
+        "Raw gram amounts of different substances cannot be compared directly to identify the limiting reactant.",
+        "The model does not assert real yield, equilibrium position or reaction rate."
+      ],
+      "checks": [
+        "At the limiting extent, no calculated reactant consumption may exceed its available amount."
+      ],
+      "gate_relation_ref": null
+    },
+    {
+      "id": "REL-CHEM-MOLE-CONCENTRATION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-blueprint-v2-depth-revision"
+      },
+      "expression": "c = nsolute/Vsolution; b = nsolute/msolvent; xi = ni/Σnj",
+      "meaning": "Molarity, molality and mole fraction use different denominators, so their units and temperature sensitivity follow different bookkeeping.",
+      "symbols": [
+        {
+          "symbol": "c",
+          "meaning": "molarity",
+          "unit_or_domain": "mole per volume"
+        },
+        {
+          "symbol": "b",
+          "meaning": "molality",
+          "unit_or_domain": "mole per mass of solvent"
+        },
+        {
+          "symbol": "xi",
+          "meaning": "mole fraction of component i",
+          "unit_or_domain": "dimensionless"
+        },
+        {
+          "symbol": "n",
+          "meaning": "amount of substance",
+          "unit_or_domain": "mole"
+        },
+        {
+          "symbol": "Vsolution",
+          "meaning": "solution volume",
+          "unit_or_domain": "volume"
+        },
+        {
+          "symbol": "msolvent",
+          "meaning": "solvent mass",
+          "unit_or_domain": "mass"
+        }
+      ],
+      "conditions": [
+        "State whether the sample is closed and whether composition changes.",
+        "Use solution volume for molarity, solvent mass for molality and total mole amount for mole fraction."
+      ],
+      "derivation": [
+        {
+          "id": "REL-CHEM-MOLE-CONCENTRATION-D1",
+          "role": "DECLARE",
+          "action": "Write the relation only after the quantities and model conditions have been named.",
+          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "inputs": [],
+          "output": "c = nsolute/Vsolution; b = nsolute/msolvent; xi = ni/Σnj"
+        }
+      ],
+      "limits": [
+        "A temperature change alone need not alter mass- or mole-ratio concentrations in a closed unchanged sample.",
+        "Loss, reaction or phase separation can invalidate the simple invariance statement."
+      ],
+      "checks": [
+        "Circle the denominator that changes in the stated scenario."
+      ],
+      "gate_relation_ref": null
+    }
+  ],
   "representations": [
     {
       "id": "REP-CHEM-MOLE-FOUNDATIONS-MOLE",
@@ -672,7 +911,9 @@
         "equation body",
         "scope notes"
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-MOLE-FOUNDATIONS-MOLE"
+      ],
       "read_order": [
         "Read the Combination laws, mole, Avogadro constant and molar mass symbolic relation as one complete statement.",
         "Translate its symbols into the Combination laws, mole, Avogadro constant and molar mass verbal claim before applying it.",
@@ -723,6 +964,32 @@
           "symbol": "N = nNₐ",
           "in_words": "For Combination laws, mole, Avogadro constant and molar mass, the displayed symbols mean: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge."
         }
+      ],
+      "reveal_stages": [
+        {
+          "id": "MOLE-FM-S1",
+          "label": "Mass to moles",
+          "purpose": "Use 18.0 g H₂O → 1.00 mol H₂O.",
+          "visible_elements": [
+            "stage-1"
+          ]
+        },
+        {
+          "id": "MOLE-FM-S2",
+          "label": "Moles to entities",
+          "purpose": "Add 1.00 mol H₂O → NA water molecules.",
+          "visible_elements": [
+            "stage-2"
+          ]
+        },
+        {
+          "id": "MOLE-FM-S3",
+          "label": "Name the entity",
+          "purpose": "Separate molecules, atoms, ions and formula units in the count.",
+          "visible_elements": [
+            "stage-3"
+          ]
+        }
       ]
     },
     {
@@ -742,7 +1009,9 @@
         "equation body",
         "scope notes"
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-MOLE-FORMULA-STOICH"
+      ],
       "read_order": [
         "Read the Empirical formula, stoichiometry and limiting reagent symbolic relation as one complete statement.",
         "Translate its symbols into the Empirical formula, stoichiometry and limiting reagent verbal claim before applying it.",
@@ -792,6 +1061,32 @@
           "symbol": "extent ∝ nᵢ/νᵢ",
           "in_words": "For Empirical formula, stoichiometry and limiting reagent, the displayed symbols mean: Available amount divided by the balanced-equation stoichiometric coefficient reveals which reactant inventory supports the smallest reaction extent."
         }
+      ],
+      "reveal_stages": [
+        {
+          "id": "MOLE-FS-S1",
+          "label": "Mass to mole ratio",
+          "purpose": "Use a concrete C/H/O percentage example to obtain a mole ratio.",
+          "visible_elements": [
+            "stage-1"
+          ]
+        },
+        {
+          "id": "MOLE-FS-S2",
+          "label": "Reaction inventory",
+          "purpose": "For 2H₂ + O₂ → 2H₂O compare 3.0/2 with 2.0/1.",
+          "visible_elements": [
+            "stage-2"
+          ]
+        },
+        {
+          "id": "MOLE-FS-S3",
+          "label": "Limiting extent",
+          "purpose": "Use the smaller supported extent to compute product and leftover inventory.",
+          "visible_elements": [
+            "stage-3"
+          ]
+        }
       ]
     },
     {
@@ -811,7 +1106,9 @@
         "equation body",
         "scope notes"
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-MOLE-CONCENTRATION"
+      ],
       "read_order": [
         "Read the Molarity, molality and mole fraction symbolic relation as one complete statement.",
         "Translate its symbols into the Molarity, molality and mole fraction verbal claim before applying it.",
@@ -860,6 +1157,32 @@
           "element": "equation body",
           "symbol": "c = n/V",
           "in_words": "For Molarity, molality and mole fraction, the displayed symbols mean: Molarity uses solution volume as its denominator; molality and mole fraction use different denominators and therefore different temperature sensitivities."
+        }
+      ],
+      "reveal_stages": [
+        {
+          "id": "MOLE-CO-S1",
+          "label": "Three denominators",
+          "purpose": "Place molarity, molality and mole fraction definitions side by side.",
+          "visible_elements": [
+            "stage-1"
+          ]
+        },
+        {
+          "id": "MOLE-CO-S2",
+          "label": "Closed warming",
+          "purpose": "Show solution volume changing while solute moles and solvent mass stay fixed.",
+          "visible_elements": [
+            "stage-2"
+          ]
+        },
+        {
+          "id": "MOLE-CO-S3",
+          "label": "Definition audit",
+          "purpose": "Identify which denominator changed before stating which concentration changes.",
+          "visible_elements": [
+            "stage-3"
+          ]
         }
       ]
     }
@@ -1057,7 +1380,7 @@
       "origin": "AUTHORED",
       "origin_ref": "SRC-CHEM-PR376-MOLE-AUTHOR",
       "original_identifier": "PR376-MOLE-FORMULA-STOICH-AUTHORED-ANCHOR",
-      "stem": "What should be compared across reactants to identify the limiting reagent from a balanced equation?",
+      "stem": "For 2H₂ + O₂ → 2H₂O, a mixture starts with 3.0 mol H₂ and 2.0 mol O₂. Use ni/νi to identify the limiting reactant, then determine H₂O formed and excess O₂ remaining.",
       "subparts": [],
       "options": [],
       "conditions": [
@@ -1066,13 +1389,14 @@
       "figure_refs": [],
       "answer": {
         "kind": "MODEL_RESPONSE",
-        "summary": "Compare the available moles relative to each reactant's stoichiometric coefficient—the reaction extent each inventory can support.",
+        "summary": "H₂ is limiting; 3.0 mol H₂O forms and 0.5 mol O₂ remains.",
         "reasoning": [
-          "Coefficients specify the required mole ratio.",
-          "Different substances' masses are not directly comparable.",
-          "The smallest supported reaction extent identifies the reactant exhausted first."
+          "For H₂, ni/νi = 3.0/2 = 1.5.",
+          "For O₂, ni/νi = 2.0/1 = 2.0.",
+          "The smaller supported extent, 1.5, makes H₂ limiting.",
+          "At extent 1.5, product H₂O = 2 × 1.5 = 3.0 mol and O₂ consumed = 1 × 1.5 = 1.5 mol, leaving 0.5 mol O₂."
         ],
-        "check": "Use the chosen limiting extent to verify that no reactant consumption exceeds its available amount.",
+        "check": "Confirm that the calculated consumption of neither reactant exceeds its initial inventory.",
         "acceptable_alternatives": [],
         "subpart_answers": [],
         "verification_status": "CHECKED_BY_AUTHOR"
@@ -1090,7 +1414,7 @@
       ],
       "learner_question_type": "constructed_response",
       "difficulty": {
-        "band": "D1",
+        "band": "D2",
         "score": 2,
         "components": {
           "concept_model_selection": 1,
@@ -1099,7 +1423,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Authored Core1A anchor for Empirical formula, stoichiometry and limiting reagent; it tests the immediately preceding distinction rather than a new transfer demand."
+        "basis": "Author-created Core1A worked anchor revised for blueprint-v2: it executes the unit construction on a concrete species or numerical case."
       }
     },
     {

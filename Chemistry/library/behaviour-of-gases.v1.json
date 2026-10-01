@@ -241,7 +241,9 @@
           "output": "Latent heat is energy associated with the phase transition under the stated conditions."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-GAS-KINETIC-PHASE"
+      ],
       "representation_refs": [
         "REP-CHEM-GAS-KINETIC-PHASE"
       ],
@@ -287,15 +289,31 @@
             "GAS-KINETIC-PHASE-T3"
           ],
           "representation_ref": "REP-CHEM-GAS-KINETIC-PHASE",
-          "reveal_stage_refs": [],
+          "reveal_stage_refs": [
+            "GAS-KP-S1",
+            "GAS-KP-S2",
+            "GAS-KP-S3"
+          ],
           "worked_anchor_ref": "Q-CHEM-GAS-KINETIC-PHASE-1A",
           "misconception_indexes": [
             0
           ],
           "independent_checks": [
             {
-              "statement": "Keep the molecular distribution and the surface-vs-bulk distinction explicit."
+              "statement": "Why does one equilibrium temperature not imply one molecular speed?",
+              "role": "CHECK"
+            },
+            {
+              "statement": "External pressure is lowered. Using Pvap(Tb) = Pext, explain why the boiling temperature falls.",
+              "role": "APPLY"
+            },
+            {
+              "statement": "Carry the habit of naming the model condition into gas-law and phase-equilibrium questions.",
+              "role": "CONNECT"
             }
+          ],
+          "relation_refs": [
+            "REL-CHEM-GAS-KINETIC-PHASE"
           ]
         }
       ],
@@ -390,7 +408,9 @@
           "output": "Molar mass belongs in the rate comparison, not in the ideal partial-pressure sum."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-GAS-IDEAL-LAWS"
+      ],
       "representation_refs": [
         "REP-CHEM-GAS-IDEAL-LAWS"
       ],
@@ -436,15 +456,31 @@
             "GAS-IDEAL-LAWS-T3"
           ],
           "representation_ref": "REP-CHEM-GAS-IDEAL-LAWS",
-          "reveal_stage_refs": [],
+          "reveal_stage_refs": [
+            "GAS-IL-S1",
+            "GAS-IL-S2",
+            "GAS-IL-S3"
+          ],
           "worked_anchor_ref": "Q-CHEM-GAS-IDEAL-LAWS-1A",
           "misconception_indexes": [
             0
           ],
           "independent_checks": [
             {
-              "statement": "Name the observable—state pressure or transport rate—before selecting the law."
+              "statement": "Before using Boyle's law, which variables must be fixed?",
+              "role": "CHECK"
+            },
+            {
+              "statement": "For fixed n and T, volume is halved. Use PV = nRT to determine the pressure change.",
+              "role": "APPLY"
+            },
+            {
+              "statement": "Use the ideal state as the reference before discussing real-gas deviation with Z.",
+              "role": "CONNECT"
             }
+          ],
+          "relation_refs": [
+            "REL-CHEM-GAS-IDEAL-LAWS"
           ]
         }
       ],
@@ -539,7 +575,9 @@
           "output": "Liquefaction claims require the temperature-pressure regime to be stated."
         }
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-GAS-REAL-CRITICAL"
+      ],
       "representation_refs": [
         "REP-CHEM-GAS-REAL-CRITICAL"
       ],
@@ -585,15 +623,31 @@
             "GAS-REAL-CRITICAL-T3"
           ],
           "representation_ref": "REP-CHEM-GAS-REAL-CRITICAL",
-          "reveal_stage_refs": [],
+          "reveal_stage_refs": [
+            "GAS-RC-S1",
+            "GAS-RC-S2",
+            "GAS-RC-S3"
+          ],
           "worked_anchor_ref": "Q-CHEM-GAS-REAL-CRITICAL-1A",
           "misconception_indexes": [
             0
           ],
           "independent_checks": [
             {
-              "statement": "State which temperature concept is being used and the associated pressure or phase condition."
+              "statement": "What does Z = 1 mean, and what does it not tell you about molecular mechanism?",
+              "role": "CHECK"
+            },
+            {
+              "statement": "At high pressure, explain why finite molecular size and intermolecular interactions can no longer be neglected.",
+              "role": "APPLY"
+            },
+            {
+              "statement": "Relate model deviation to the separate liquid-vapour boundary and critical-point idea.",
+              "role": "CONNECT"
             }
+          ],
+          "relation_refs": [
+            "REL-CHEM-GAS-REAL-CRITICAL"
           ]
         }
       ],
@@ -643,7 +697,187 @@
       }
     }
   ],
-  "relations": [],
+  "relations": [
+    {
+      "id": "REL-CHEM-GAS-KINETIC-PHASE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-blueprint-v2-depth-revision"
+      },
+      "expression": "⟨Eₖ⟩ = 3kBT/2; boiling when Pvap(Tb) = Pext",
+      "meaning": "Temperature sets the ensemble mean translational kinetic energy in the ideal-gas model, while bulk boiling begins when vapour pressure reaches the external pressure.",
+      "symbols": [
+        {
+          "symbol": "⟨Eₖ⟩",
+          "meaning": "mean translational kinetic energy per particle",
+          "unit_or_domain": "energy"
+        },
+        {
+          "symbol": "T",
+          "meaning": "absolute thermodynamic temperature",
+          "unit_or_domain": "kelvin"
+        },
+        {
+          "symbol": "Pvap",
+          "meaning": "equilibrium vapour pressure of the liquid",
+          "unit_or_domain": "pressure"
+        },
+        {
+          "symbol": "Pext",
+          "meaning": "external pressure on the liquid",
+          "unit_or_domain": "pressure"
+        }
+      ],
+      "conditions": [
+        "The kinetic-energy relation is for an equilibrium ideal monatomic-gas translational model.",
+        "The boiling criterion refers to a pure liquid at a stated external pressure and does not describe surface evaporation."
+      ],
+      "derivation": [
+        {
+          "id": "REL-CHEM-GAS-KINETIC-PHASE-D1",
+          "role": "DECLARE",
+          "action": "Write the relation only after the quantities and model conditions have been named.",
+          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "inputs": [],
+          "output": "⟨Eₖ⟩ = 3kBT/2; boiling when Pvap(Tb) = Pext"
+        }
+      ],
+      "limits": [
+        "A temperature does not assign one common speed to all molecules.",
+        "The boiling criterion does not imply a universal boiling temperature independent of pressure."
+      ],
+      "checks": [
+        "Keep ensemble averaging separate from the phase-equilibrium pressure condition."
+      ],
+      "gate_relation_ref": null
+    },
+    {
+      "id": "REL-CHEM-GAS-IDEAL-LAWS",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-blueprint-v2-depth-revision"
+      },
+      "expression": "PV = nRT",
+      "meaning": "The ideal-gas equation links pressure, volume, amount and absolute temperature; simple gas-law proportionalities are constrained cases of this state model.",
+      "symbols": [
+        {
+          "symbol": "P",
+          "meaning": "gas pressure",
+          "unit_or_domain": "pressure"
+        },
+        {
+          "symbol": "V",
+          "meaning": "gas volume",
+          "unit_or_domain": "volume"
+        },
+        {
+          "symbol": "n",
+          "meaning": "amount of gas",
+          "unit_or_domain": "mole"
+        },
+        {
+          "symbol": "T",
+          "meaning": "absolute temperature",
+          "unit_or_domain": "kelvin"
+        }
+      ],
+      "conditions": [
+        "Use an ideal-gas model or a regime where ideal behaviour is an adequate approximation.",
+        "State which variables are held fixed before reducing the equation to a simple proportionality."
+      ],
+      "derivation": [
+        {
+          "id": "REL-CHEM-GAS-IDEAL-LAWS-D1",
+          "role": "DECLARE",
+          "action": "Write the relation only after the quantities and model conditions have been named.",
+          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "inputs": [],
+          "output": "PV = nRT"
+        }
+      ],
+      "limits": [
+        "The equation of state does not by itself describe diffusion or effusion rates.",
+        "For real gases, deviations can become important at sufficiently high pressure or low temperature."
+      ],
+      "checks": [
+        "Substitute both states and verify that the stated fixed variables are actually fixed."
+      ],
+      "gate_relation_ref": null
+    },
+    {
+      "id": "REL-CHEM-GAS-REAL-CRITICAL",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-GAS-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-blueprint-v2-depth-revision"
+      },
+      "expression": "Z = PV/(nRT)",
+      "meaning": "The compressibility factor compares a measured real-gas state with the ideal-gas reference at the same P, V, n and T.",
+      "symbols": [
+        {
+          "symbol": "Z",
+          "meaning": "compressibility factor",
+          "unit_or_domain": "dimensionless"
+        },
+        {
+          "symbol": "P",
+          "meaning": "gas pressure",
+          "unit_or_domain": "pressure"
+        },
+        {
+          "symbol": "V",
+          "meaning": "gas volume",
+          "unit_or_domain": "volume"
+        },
+        {
+          "symbol": "n",
+          "meaning": "amount of gas",
+          "unit_or_domain": "mole"
+        },
+        {
+          "symbol": "T",
+          "meaning": "absolute temperature",
+          "unit_or_domain": "kelvin"
+        }
+      ],
+      "conditions": [
+        "Compare states using consistent P, V, n and T values.",
+        "Interpret the sign and magnitude of deviation only for the stated thermodynamic state."
+      ],
+      "derivation": [
+        {
+          "id": "REL-CHEM-GAS-REAL-CRITICAL-D1",
+          "role": "DECLARE",
+          "action": "Write the relation only after the quantities and model conditions have been named.",
+          "why_valid": "The relation is meaningful only inside its declared model and bookkeeping conditions.",
+          "inputs": [],
+          "output": "Z = PV/(nRT)"
+        }
+      ],
+      "limits": [
+        "Z alone does not determine a unique microscopic collision or intermolecular mechanism.",
+        "Critical behaviour requires the full phase-state context, not only a value of Z."
+      ],
+      "checks": [
+        "Z = 1 is the ideal reference; departures from 1 must be attached to the stated state."
+      ],
+      "gate_relation_ref": null
+    }
+  ],
   "representations": [
     {
       "id": "REP-CHEM-GAS-KINETIC-PHASE",
@@ -662,7 +896,9 @@
         "equation body",
         "scope notes"
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-GAS-KINETIC-PHASE"
+      ],
       "read_order": [
         "Read the Particle model, speed distributions and phase change symbolic relation as one complete statement.",
         "Translate its symbols into the Particle model, speed distributions and phase change verbal claim before applying it.",
@@ -713,6 +949,32 @@
           "symbol": "T ↑ ⇒ mean Eₖ ↑",
           "in_words": "For Particle model, speed distributions and phase change, the displayed symbols mean: Raising equilibrium temperature raises mean translational kinetic energy while a distribution of molecular speeds remains."
         }
+      ],
+      "reveal_stages": [
+        {
+          "id": "GAS-KP-S1",
+          "label": "Many speeds",
+          "purpose": "Show an ensemble at one temperature with different molecular speeds.",
+          "visible_elements": [
+            "stage-1"
+          ]
+        },
+        {
+          "id": "GAS-KP-S2",
+          "label": "Temperature shift",
+          "purpose": "Add a second speed distribution to show that the mean shifts without collapsing the spread.",
+          "visible_elements": [
+            "stage-2"
+          ]
+        },
+        {
+          "id": "GAS-KP-S3",
+          "label": "Boiling boundary",
+          "purpose": "Add the separate vapour-pressure/external-pressure condition for bulk boiling.",
+          "visible_elements": [
+            "stage-3"
+          ]
+        }
       ]
     },
     {
@@ -732,7 +994,9 @@
         "equation body",
         "scope notes"
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-GAS-IDEAL-LAWS"
+      ],
       "read_order": [
         "Read the Gas-law constraints, mixtures and transport symbolic relation as one complete statement.",
         "Translate its symbols into the Gas-law constraints, mixtures and transport verbal claim before applying it.",
@@ -782,6 +1046,32 @@
           "symbol": "PV = nRT",
           "in_words": "For Gas-law constraints, mixtures and transport, the displayed symbols mean: Pressure, volume, amount and absolute temperature are linked by the ideal-gas model; a simple gas law fixes a subset of them."
         }
+      ],
+      "reveal_stages": [
+        {
+          "id": "GAS-IL-S1",
+          "label": "State variables",
+          "purpose": "Name P, V, n and T before choosing a law.",
+          "visible_elements": [
+            "stage-1"
+          ]
+        },
+        {
+          "id": "GAS-IL-S2",
+          "label": "Constrained relation",
+          "purpose": "Add PV = nRT and the fixed-variable condition.",
+          "visible_elements": [
+            "stage-2"
+          ]
+        },
+        {
+          "id": "GAS-IL-S3",
+          "label": "Do not mix observables",
+          "purpose": "Separate Dalton pressure bookkeeping from Graham transport-rate comparison.",
+          "visible_elements": [
+            "stage-3"
+          ]
+        }
       ]
     },
     {
@@ -801,7 +1091,9 @@
         "equation body",
         "scope notes"
       ],
-      "relation_refs": [],
+      "relation_refs": [
+        "REL-CHEM-GAS-REAL-CRITICAL"
+      ],
       "read_order": [
         "Read the Real-gas deviations and critical behaviour symbolic relation as one complete statement.",
         "Translate its symbols into the Real-gas deviations and critical behaviour verbal claim before applying it.",
@@ -850,6 +1142,32 @@
           "element": "equation body",
           "symbol": "Z = PV/(nRT)",
           "in_words": "For Real-gas deviations and critical behaviour, the displayed symbols mean: Compressibility factor compares a real-gas state with the ideal reference at the same pressure, volume, amount and temperature."
+        }
+      ],
+      "reveal_stages": [
+        {
+          "id": "GAS-RC-S1",
+          "label": "Ideal reference",
+          "purpose": "Place Z = 1 as the comparison baseline.",
+          "visible_elements": [
+            "stage-1"
+          ]
+        },
+        {
+          "id": "GAS-RC-S2",
+          "label": "Real-gas effects",
+          "purpose": "Add attraction and finite-size effects as state-dependent deviations.",
+          "visible_elements": [
+            "stage-2"
+          ]
+        },
+        {
+          "id": "GAS-RC-S3",
+          "label": "Critical boundary",
+          "purpose": "Add the liquid-vapour coexistence endpoint and the no-separate-liquid boundary above Tc.",
+          "visible_elements": [
+            "stage-3"
+          ]
         }
       ]
     }
