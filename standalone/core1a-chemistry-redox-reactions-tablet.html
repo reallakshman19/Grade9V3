@@ -565,7 +565,7 @@ footer {
 
         <div class="contrast-box">
           <div class="contrast-title">🔍 Worked Contrast</div>
-          <div class="concept-box-text">Flawed: Assuming Cr in CrO₅ is +10 from formula x - 10 = 0. Correct: Butterfly structure has 4 peroxo oxygens (-1) and 1 oxo oxygen (-2), yielding Cr = +6 (maximum possible).</div>
+          <div class="concept-box-text">Flawed: Assuming Cr in CrO₅ is +10 from formula x - 10 = 0. Correct: Butterfly structure has 4 peroxo oxygens (-1) and 1 oxo oxygen (-2), yielding Cr = +6. This is the standard formal assignment for the peroxide-containing structure; the oxidation-state calculation is bookkeeping, not a claim about a literal atomic charge.</div>
         </div>
 
         <!-- Live Tool if applicable -->
@@ -1528,7 +1528,7 @@ function initCalculators() {
       const data = {
         'KMnO4': 'K = +1, O = -2 (x4 = -8). Sum = 0 => <strong>Mn = +7</strong> (Maximum permanganate state)',
         'K2Cr2O7': 'K = +1 (x2 = +2), O = -2 (x7 = -14). 2 + 2Cr - 14 = 0 => 2Cr = +12 => <strong>Cr = +6</strong>',
-        'CrO5': 'Contains butterfly peroxo structure: 1 oxo (=O, -2) + 2 peroxo (-O-O-, -1 each x4 = -4). Sum = 0 => <strong>Cr = +6</strong> (NOT +10!)',
+        'CrO5': 'Contains butterfly peroxo structure: 1 oxo (=O, -2) + 2 peroxo (-O-O-, -1 each x4 = -4). Sum = 0 => <strong>Cr = +6</strong> (the peroxide oxygens must be assigned −1, not −2)',
         'H2SO5': "Caro's acid: contains one peroxo link (-O-O-). H = +1 (x2), 3 oxo O (-6), 2 peroxo O (-2). => <strong>S = +6</strong> (NOT +8!)",
         'Fe3O4': 'Mixed oxide: FeO·Fe₂O₃. Average ON = <strong>+8/3</strong>; structural breakdown = one Fe²⁺ (+2) and two Fe³⁺ (+3).'
       };
