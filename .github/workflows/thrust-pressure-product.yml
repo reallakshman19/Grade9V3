@@ -19,15 +19,13 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   validate-product:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: physics/thrust-pressure-competitive-383
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -35,38 +33,9 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Install Python validation dependencies
-        run: pip install --quiet jsonschema pypdf
-
-      - name: Normalize schema-only fields and generated Question Bank projections
+      - name: Install validation dependencies
         run: |
-          python3 - <<'PY'
-          import json
-          from pathlib import Path
-
-          path = Path("Physics/library/phy-thrust-pressure.v1.json")
-          package = json.loads(path.read_text(encoding="utf-8"))
-          by_id = {m["id"]: m for m in package["microtopics"]}
-          for mid in ("MIC-PHY-THRUST-NORMAL-BALANCE", "MIC-PHY-PRESSURE-CONTACT-AREA"):
-              unit = by_id[mid]["construction_units"][0]
-              unit.pop("crux_question_refs", None)
-              unit.pop("crux_step_ref", None)
-          for family in package.get("question_families", []):
-              if family.get("id") == "FAM-PHY-THRUST-PRESSURE-COMPETITIVE":
-                  family["item_refs"] = []
-          path.write_text(json.dumps(package, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
-          PY
-          python3 Shared/tools/build_question_bank_platform.py
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -A
-          if ! git diff --cached --quiet; then
-            git commit -m "fix(physics): normalize Thrust product records"
-            git push origin HEAD:physics/thrust-pressure-competitive-383
-          fi
-
-      - name: Install browser validation dependencies
-        run: |
+          pip install --quiet jsonschema pypdf
           npm install --no-save playwright@1.56.1
           npx playwright install --with-deps chromium
 
