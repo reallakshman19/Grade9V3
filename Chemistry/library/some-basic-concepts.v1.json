@@ -55,7 +55,9 @@
       "id": "BUCKET-CHEM-MOLE",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -99,7 +101,8 @@
           "Any claim of prescribed Grade-9 curriculum authority.",
           "Core2 source-question admission."
         ]
-      }
+      },
+      "primary_representation_ref": "REP-CHEM-MOLE-FOUNDATIONS-MOLE"
     }
   ],
   "capabilities": [
@@ -107,7 +110,9 @@
       "id": "CAP-CHEM-MOLE-FOUNDATIONS-MOLE",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -134,7 +139,9 @@
       "id": "CAP-CHEM-MOLE-FORMULA-STOICH",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -161,7 +168,9 @@
       "id": "CAP-CHEM-MOLE-CONCENTRATION",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -190,7 +199,9 @@
       "id": "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -201,7 +212,7 @@
       "intrinsic_badge": "MEDIUM",
       "badge_reason": "The learner must separate empirical conservation/ratio laws from explanatory particle models and keep amount distinct from mass.",
       "entry_assumptions": [
-        "Can read chemical formula subscripts and perform basic proportional arithmetic with units when the quantity definition is stated."
+        "For Combination laws, mole, Avogadro constant and molar mass, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
       ],
       "inferential_jump": "Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro's constant and molar mass.",
       "teaching_path": [
@@ -231,7 +242,9 @@
         }
       ],
       "relation_refs": [],
-      "representation_refs": [],
+      "representation_refs": [
+        "REP-CHEM-MOLE-FOUNDATIONS-MOLE"
+      ],
       "question_family_refs": [
         "FAM-CHEM-MOLE-FOUNDATIONS-MOLE"
       ],
@@ -258,10 +271,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "Qualitative definition-bound explanation; no new computed numerical oracle is asserted."
+          "no_numeric_claim": "The Combination laws, mole, Avogadro constant and molar mass exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
         }
       },
-      "research_contribution": "Carries the corrected mole/entity, stoichiometry and concentration-definition boundaries from the PR #376 audit into governed records; independent exact-render review remains pending.",
+      "research_contribution": "For Combination laws, mole, Avogadro constant and molar mass, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -273,7 +286,7 @@
             "MOLE-FOUNDATIONS-MOLE-T2",
             "MOLE-FOUNDATIONS-MOLE-T3"
           ],
-          "representation_ref": null,
+          "representation_ref": "REP-CHEM-MOLE-FOUNDATIONS-MOLE",
           "reveal_stage_refs": [],
           "worked_anchor_ref": "Q-CHEM-MOLE-FOUNDATIONS-MOLE-1A",
           "misconception_indexes": [
@@ -285,13 +298,59 @@
             }
           ]
         }
-      ]
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "For Combination laws, mole, Avogadro constant and molar mass, decide before the completed route is revealed: Do one mole of helium atoms and one mole of water molecules have the same entity count, the same mass, or both?",
+          "defensible_answer": "For Combination laws, mole, Avogadro constant and molar mass, the defensible route is: Keep amount and mass separate, and attach an entity label to every particle-count statement."
+        },
+        "attempt": {
+          "produces": "A short Combination laws, mole, Avogadro constant and molar mass explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "closure": "CRITERIA",
+          "rubric": [
+            {
+              "criterion": "The Combination laws, mole, Avogadro constant and molar mass response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+              "evidence_of": "The learner can separate the Combination laws, mole, Avogadro constant and molar mass governing distinction from the tempting shortcut."
+            }
+          ],
+          "task": {
+            "prompt": "Explain the Combination laws, mole, Avogadro constant and molar mass decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "givens": [
+              "Empirical combination laws constrain chemical bookkeeping, while the mole links a specified number of entities to measurable mass through Avogadro's constant and molar mass."
+            ],
+            "representation_ref": "REP-CHEM-MOLE-FOUNDATIONS-MOLE",
+            "stage_refs": []
+          }
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "In Combination laws, mole, Avogadro constant and molar mass, what must be decided before the move \"Separate an empirical combination law from a particle model used to explain it.\" is justified?",
+              "why_this_ask": "This makes the learner supply the entry decision for Combination laws, mole, Avogadro constant and molar mass instead of receiving the expert sequence first.",
+              "from_step_ref": "MOLE-FOUNDATIONS-MOLE-T1"
+            },
+            {
+              "ask": "For Combination laws, mole, Avogadro constant and molar mass, how would you test the conclusion reached by \"Use the path mass ↔ moles ↔ entities with units visible.\" without simply repeating the model answer?",
+              "why_this_ask": "This closes Combination laws, mole, Avogadro constant and molar mass through a learner-owned check rather than through recall of the declarative route.",
+              "from_step_ref": "MOLE-FOUNDATIONS-MOLE-T3"
+            }
+          ],
+          "differs_from_teaching_path": "For Combination laws, mole, Avogadro constant and molar mass, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+        },
+        "boundary_test": {
+          "prompt": "Why is '0.5 mol' incomplete as a particle-count statement until the substance and entity are named?",
+          "answer": "Because an amount alone does not identify which chemical entities are being counted.",
+          "confirms": "For Combination laws, mole, Avogadro constant and molar mass, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+        }
+      }
     },
     {
       "id": "MIC-CHEM-MOLE-FORMULA-STOICH",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -302,7 +361,7 @@
       "intrinsic_badge": "HARD",
       "badge_reason": "The learner must convert mass composition to mole ratios, distinguish empirical from molecular scale, and compare reactant inventories through balanced-equation coefficients.",
       "entry_assumptions": [
-        "Can read chemical formula subscripts and perform basic proportional arithmetic with units when the quantity definition is stated."
+        "For Empirical formula, stoichiometry and limiting reagent, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
       ],
       "inferential_jump": "Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made.",
       "teaching_path": [
@@ -340,7 +399,9 @@
         }
       ],
       "relation_refs": [],
-      "representation_refs": [],
+      "representation_refs": [
+        "REP-CHEM-MOLE-FORMULA-STOICH"
+      ],
       "question_family_refs": [
         "FAM-CHEM-MOLE-FORMULA-STOICH"
       ],
@@ -367,10 +428,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "Qualitative definition-bound explanation; no new computed numerical oracle is asserted."
+          "no_numeric_claim": "The Empirical formula, stoichiometry and limiting reagent exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
         }
       },
-      "research_contribution": "Carries the corrected mole/entity, stoichiometry and concentration-definition boundaries from the PR #376 audit into governed records; independent exact-render review remains pending.",
+      "research_contribution": "For Empirical formula, stoichiometry and limiting reagent, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -383,7 +444,7 @@
             "MOLE-FORMULA-STOICH-T3",
             "MOLE-FORMULA-STOICH-T4"
           ],
-          "representation_ref": null,
+          "representation_ref": "REP-CHEM-MOLE-FORMULA-STOICH",
           "reveal_stage_refs": [],
           "worked_anchor_ref": "Q-CHEM-MOLE-FORMULA-STOICH-1A",
           "misconception_indexes": [
@@ -395,13 +456,59 @@
             }
           ]
         }
-      ]
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "For Empirical formula, stoichiometry and limiting reagent, decide before the completed route is revealed: Can a light element contribute many atoms but little mass, and can different molar masses make the smaller gram amount contain more moles?",
+          "defensible_answer": "For Empirical formula, stoichiometry and limiting reagent, the defensible route is: Convert mass to moles before both formula-ratio and limiting-reagent comparisons."
+        },
+        "attempt": {
+          "produces": "A short Empirical formula, stoichiometry and limiting reagent explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "closure": "CRITERIA",
+          "rubric": [
+            {
+              "criterion": "The Empirical formula, stoichiometry and limiting reagent response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+              "evidence_of": "The learner can separate the Empirical formula, stoichiometry and limiting reagent governing distinction from the tempting shortcut."
+            }
+          ],
+          "task": {
+            "prompt": "Explain the Empirical formula, stoichiometry and limiting reagent decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "givens": [
+              "Formula subscripts and balanced-equation coefficients are particle/mole ratios, so mass data must first be converted to amount before formula or limiting-reagent decisions are made."
+            ],
+            "representation_ref": "REP-CHEM-MOLE-FORMULA-STOICH",
+            "stage_refs": []
+          }
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "In Empirical formula, stoichiometry and limiting reagent, what must be decided before the move \"Convert each elemental mass or percentage to moles before inferring an empirical ratio.\" is justified?",
+              "why_this_ask": "This makes the learner supply the entry decision for Empirical formula, stoichiometry and limiting reagent instead of receiving the expert sequence first.",
+              "from_step_ref": "MOLE-FORMULA-STOICH-T1"
+            },
+            {
+              "ask": "For Empirical formula, stoichiometry and limiting reagent, how would you test the conclusion reached by \"Compare each available mole amount relative to its stoichiometric coefficient.\" without simply repeating the model answer?",
+              "why_this_ask": "This closes Empirical formula, stoichiometry and limiting reagent through a learner-owned check rather than through recall of the declarative route.",
+              "from_step_ref": "MOLE-FORMULA-STOICH-T4"
+            }
+          ],
+          "differs_from_teaching_path": "For Empirical formula, stoichiometry and limiting reagent, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+        },
+        "boundary_test": {
+          "prompt": "Why can an excess reagent remain after a reaction even though the balanced equation has fixed coefficients?",
+          "answer": "The coefficients fix the proportions that react, not the initial proportions supplied; material beyond the limiting ratio can remain.",
+          "confirms": "For Empirical formula, stoichiometry and limiting reagent, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+        }
+      }
     },
     {
       "id": "MIC-CHEM-MOLE-CONCENTRATION",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -412,7 +519,7 @@
       "intrinsic_badge": "HARD",
       "badge_reason": "The learner must choose the correct denominator and qualify temperature invariance by sample closure and unchanged composition.",
       "entry_assumptions": [
-        "Can read chemical formula subscripts and perform basic proportional arithmetic with units when the quantity definition is stated."
+        "For Molarity, molality and mole fraction, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
       ],
       "inferential_jump": "Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged.",
       "teaching_path": [
@@ -442,7 +549,9 @@
         }
       ],
       "relation_refs": [],
-      "representation_refs": [],
+      "representation_refs": [
+        "REP-CHEM-MOLE-CONCENTRATION"
+      ],
       "question_family_refs": [
         "FAM-CHEM-MOLE-CONCENTRATION"
       ],
@@ -470,10 +579,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "Qualitative definition-bound explanation; no new computed numerical oracle is asserted."
+          "no_numeric_claim": "The Molarity, molality and mole fraction exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
         }
       },
-      "research_contribution": "Carries the corrected mole/entity, stoichiometry and concentration-definition boundaries from the PR #376 audit into governed records; independent exact-render review remains pending.",
+      "research_contribution": "For Molarity, molality and mole fraction, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -485,7 +594,7 @@
             "MOLE-CONCENTRATION-T2",
             "MOLE-CONCENTRATION-T3"
           ],
-          "representation_ref": null,
+          "representation_ref": "REP-CHEM-MOLE-CONCENTRATION",
           "reveal_stage_refs": [],
           "worked_anchor_ref": "Q-CHEM-MOLE-CONCENTRATION-1A",
           "misconception_indexes": [
@@ -497,17 +606,266 @@
             }
           ]
         }
-      ]
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "For Molarity, molality and mole fraction, decide before the completed route is revealed: In a sealed unchanged sample whose solution volume changes with temperature, which denominators change directly: solution volume, solvent mass or total mole amount?",
+          "defensible_answer": "For Molarity, molality and mole fraction, the defensible route is: Follow the definition and state the closure/composition assumptions before making a temperature-dependence claim."
+        },
+        "attempt": {
+          "produces": "A short Molarity, molality and mole fraction explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "closure": "CRITERIA",
+          "rubric": [
+            {
+              "criterion": "The Molarity, molality and mole fraction response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+              "evidence_of": "The learner can separate the Molarity, molality and mole fraction governing distinction from the tempting shortcut."
+            }
+          ],
+          "task": {
+            "prompt": "Explain the Molarity, molality and mole fraction decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "givens": [
+              "Molarity, molality and mole fraction normalize composition differently; a temperature change can alter a volume-based ratio even when the chemical composition of a closed sample is unchanged."
+            ],
+            "representation_ref": "REP-CHEM-MOLE-CONCENTRATION",
+            "stage_refs": []
+          }
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "In Molarity, molality and mole fraction, what must be decided before the move \"Write the denominator first: solution volume for molarity, solvent mass for molality, total moles for mole fraction.\" is justified?",
+              "why_this_ask": "This makes the learner supply the entry decision for Molarity, molality and mole fraction instead of receiving the expert sequence first.",
+              "from_step_ref": "MOLE-CONCENTRATION-T1"
+            },
+            {
+              "ask": "For Molarity, molality and mole fraction, how would you test the conclusion reached by \"Identify exactly which numerator or denominator changes in the scenario.\" without simply repeating the model answer?",
+              "why_this_ask": "This closes Molarity, molality and mole fraction through a learner-owned check rather than through recall of the declarative route.",
+              "from_step_ref": "MOLE-CONCENTRATION-T3"
+            }
+          ],
+          "differs_from_teaching_path": "For Molarity, molality and mole fraction, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+        },
+        "boundary_test": {
+          "prompt": "Under what qualification can molality and mole fraction be described as unchanged by temperature?",
+          "answer": "For a closed sample whose composition and relevant masses/mole amounts do not change; temperature alone does not alter those mass- or mole-ratio denominators.",
+          "confirms": "For Molarity, molality and mole fraction, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+        }
+      }
     }
   ],
   "relations": [],
-  "representations": [],
+  "representations": [
+    {
+      "id": "REP-CHEM-MOLE-FOUNDATIONS-MOLE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "SYMBOLIC_EQUATION",
+      "purpose": "For Combination laws, mole, Avogadro constant and molar mass, make the governing symbolic relationship visible beside its verbal meaning and notation limits.",
+      "required_elements": [
+        "equation body",
+        "scope notes"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "Read the Combination laws, mole, Avogadro constant and molar mass symbolic relation as one complete statement.",
+        "Translate its symbols into the Combination laws, mole, Avogadro constant and molar mass verbal claim before applying it.",
+        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+      ],
+      "instance_constraints": [
+        "The Combination laws, mole, Avogadro constant and molar mass equation is source-bound to an authored EQUATION datum.",
+        "The Combination laws, mole, Avogadro constant and molar mass scene may not imply coefficients, charges, phases or reaction arrows that the displayed statement does not contain."
+      ],
+      "accessibility": [
+        "The Combination laws, mole, Avogadro constant and molar mass equation is repeated in the text caption.",
+        "The Combination laws, mole, Avogadro constant and molar mass annotation states the same conceptual restriction without depending on visual styling."
+      ],
+      "misleading_alternatives": [
+        "For Combination laws, mole, Avogadro constant and molar mass, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-CHEM-MOLE-FOUNDATIONS-MOLE",
+          "cores": [
+            "CORE1",
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
+          "datum_refs": [
+            "EQ-CHEM-MOLE-FOUNDATIONS-MOLE"
+          ],
+          "scene": {
+            "kind": "SYMBOLIC_EQUATION",
+            "frame": "Author-created symbolic model for Combination laws, mole, Avogadro constant and molar mass.",
+            "caption": "Mole-to-entity bridge: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge.",
+            "equation_atom": "EQ-CHEM-MOLE-FOUNDATIONS-MOLE",
+            "annotation": "Always name the counted entity when converting moles to particle number.",
+            "coefficient_note": "In Mole-to-entity bridge, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+            "charge_note": "In Mole-to-entity bridge, no ionic charge is implied unless a charge is explicitly shown.",
+            "phase_note": "In Mole-to-entity bridge, no phase label is implied unless a phase is explicitly shown.",
+            "arrow_note": "In Mole-to-entity bridge, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "equation body",
+          "symbol": "N = nNₐ",
+          "in_words": "For Combination laws, mole, Avogadro constant and molar mass, the displayed symbols mean: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge."
+        }
+      ]
+    },
+    {
+      "id": "REP-CHEM-MOLE-FORMULA-STOICH",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "SYMBOLIC_EQUATION",
+      "purpose": "For Empirical formula, stoichiometry and limiting reagent, make the governing symbolic relationship visible beside its verbal meaning and notation limits.",
+      "required_elements": [
+        "equation body",
+        "scope notes"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "Read the Empirical formula, stoichiometry and limiting reagent symbolic relation as one complete statement.",
+        "Translate its symbols into the Empirical formula, stoichiometry and limiting reagent verbal claim before applying it.",
+        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+      ],
+      "instance_constraints": [
+        "The Empirical formula, stoichiometry and limiting reagent equation is source-bound to an authored EQUATION datum.",
+        "The Empirical formula, stoichiometry and limiting reagent scene may not imply coefficients, charges, phases or reaction arrows that the displayed statement does not contain."
+      ],
+      "accessibility": [
+        "The Empirical formula, stoichiometry and limiting reagent equation is repeated in the text caption.",
+        "The Empirical formula, stoichiometry and limiting reagent annotation states the same conceptual restriction without depending on visual styling."
+      ],
+      "misleading_alternatives": [
+        "For Empirical formula, stoichiometry and limiting reagent, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-CHEM-MOLE-FORMULA-STOICH",
+          "cores": [
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-CHEM-MOLE-FORMULA-STOICH",
+          "datum_refs": [
+            "EQ-CHEM-MOLE-FORMULA-STOICH"
+          ],
+          "scene": {
+            "kind": "SYMBOLIC_EQUATION",
+            "frame": "Author-created symbolic model for Empirical formula, stoichiometry and limiting reagent.",
+            "caption": "Stoichiometric extent: Available amount divided by the balanced-equation stoichiometric coefficient reveals which reactant inventory supports the smallest reaction extent.",
+            "equation_atom": "EQ-CHEM-MOLE-FORMULA-STOICH",
+            "annotation": "Compare mole amount per stoichiometric coefficient, not raw reactant mass.",
+            "coefficient_note": "In Stoichiometric extent, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+            "charge_note": "In Stoichiometric extent, no ionic charge is implied unless a charge is explicitly shown.",
+            "phase_note": "In Stoichiometric extent, no phase label is implied unless a phase is explicitly shown.",
+            "arrow_note": "In Stoichiometric extent, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "equation body",
+          "symbol": "extent ∝ nᵢ/νᵢ",
+          "in_words": "For Empirical formula, stoichiometry and limiting reagent, the displayed symbols mean: Available amount divided by the balanced-equation stoichiometric coefficient reveals which reactant inventory supports the smallest reaction extent."
+        }
+      ]
+    },
+    {
+      "id": "REP-CHEM-MOLE-CONCENTRATION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "SYMBOLIC_EQUATION",
+      "purpose": "For Molarity, molality and mole fraction, make the governing symbolic relationship visible beside its verbal meaning and notation limits.",
+      "required_elements": [
+        "equation body",
+        "scope notes"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "Read the Molarity, molality and mole fraction symbolic relation as one complete statement.",
+        "Translate its symbols into the Molarity, molality and mole fraction verbal claim before applying it.",
+        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+      ],
+      "instance_constraints": [
+        "The Molarity, molality and mole fraction equation is source-bound to an authored EQUATION datum.",
+        "The Molarity, molality and mole fraction scene may not imply coefficients, charges, phases or reaction arrows that the displayed statement does not contain."
+      ],
+      "accessibility": [
+        "The Molarity, molality and mole fraction equation is repeated in the text caption.",
+        "The Molarity, molality and mole fraction annotation states the same conceptual restriction without depending on visual styling."
+      ],
+      "misleading_alternatives": [
+        "For Molarity, molality and mole fraction, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-CHEM-MOLE-CONCENTRATION",
+          "cores": [
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-CHEM-MOLE-CONCENTRATION",
+          "datum_refs": [
+            "EQ-CHEM-MOLE-CONCENTRATION"
+          ],
+          "scene": {
+            "kind": "SYMBOLIC_EQUATION",
+            "frame": "Author-created symbolic model for Molarity, molality and mole fraction.",
+            "caption": "Molarity definition: Molarity uses solution volume as its denominator; molality and mole fraction use different denominators and therefore different temperature sensitivities.",
+            "equation_atom": "EQ-CHEM-MOLE-CONCENTRATION",
+            "annotation": "A temperature claim is valid only after the concentration denominator and sample closure are stated.",
+            "coefficient_note": "In Molarity definition, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+            "charge_note": "In Molarity definition, no ionic charge is implied unless a charge is explicitly shown.",
+            "phase_note": "In Molarity definition, no phase label is implied unless a phase is explicitly shown.",
+            "arrow_note": "In Molarity definition, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "equation body",
+          "symbol": "c = n/V",
+          "in_words": "For Molarity, molality and mole fraction, the displayed symbols mean: Molarity uses solution volume as its denominator; molality and mole fraction use different denominators and therefore different temperature sensitivities."
+        }
+      ]
+    }
+  ],
   "question_families": [
     {
       "id": "FAM-CHEM-MOLE-FOUNDATIONS-MOLE",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -517,21 +875,21 @@
         "CAP-CHEM-MOLE-FOUNDATIONS-MOLE"
       ],
       "solution_structure": [
-        "State the entity, ratio or denominator being used.",
-        "Convert through amount where required.",
-        "Run the unit/definition check."
+        "For Combination laws, mole, Avogadro constant and molar mass, identify the governing condition that decides the authored anchor.",
+        "Apply that Combination laws, mole, Avogadro constant and molar mass condition to the concrete stem without importing an unstated model.",
+        "Close the Combination laws, mole, Avogadro constant and molar mass anchor with the independent check stated in its model answer."
       ],
       "demand_dimensions": {
-        "model_choice": "Use the adjacent Core1A quantity definition or stoichiometric model.",
-        "representation_translation": "Translate among formula, amount, mass and concentration language.",
-        "reasoning_steps": "Define, convert, verify.",
-        "novelty": "Worked anchor remains within the just-taught construction."
+        "model_choice": "Choose the specific Combination laws, mole, Avogadro constant and molar mass model or bookkeeping convention taught in the adjacent construction.",
+        "representation_translation": "For Combination laws, mole, Avogadro constant and molar mass, connect the governed figure or symbolic relation to the learner-facing words before concluding.",
+        "reasoning_steps": "For Combination laws, mole, Avogadro constant and molar mass, state the condition, apply it to the stem, then run the recorded independent check.",
+        "novelty": "The Combination laws, mole, Avogadro constant and molar mass anchor remains inside the just-taught construction and does not claim external-source transfer."
       },
       "safe_variations": [
-        "Change substances or numerical surface data without changing the quantity definition."
+        "For Combination laws, mole, Avogadro constant and molar mass, vary the surface species or condition only when the same governing distinction remains testable."
       ],
       "transfer_boundaries": [
-        "Do not admit unresolved NCERT helper identities as source-verified questions."
+        "The Combination laws, mole, Avogadro constant and molar mass family is author-created for PR #376; do not relabel it as a verified NCERT, ExamSIDE or JEE item."
       ],
       "common_wrong_routes": [
         "One mole of every substance has the same mass, and a mole count is meaningful without naming the entity."
@@ -544,7 +902,9 @@
       "id": "FAM-CHEM-MOLE-FORMULA-STOICH",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -554,21 +914,21 @@
         "CAP-CHEM-MOLE-FORMULA-STOICH"
       ],
       "solution_structure": [
-        "State the entity, ratio or denominator being used.",
-        "Convert through amount where required.",
-        "Run the unit/definition check."
+        "For Empirical formula, stoichiometry and limiting reagent, identify the governing condition that decides the authored anchor.",
+        "Apply that Empirical formula, stoichiometry and limiting reagent condition to the concrete stem without importing an unstated model.",
+        "Close the Empirical formula, stoichiometry and limiting reagent anchor with the independent check stated in its model answer."
       ],
       "demand_dimensions": {
-        "model_choice": "Use the adjacent Core1A quantity definition or stoichiometric model.",
-        "representation_translation": "Translate among formula, amount, mass and concentration language.",
-        "reasoning_steps": "Define, convert, verify.",
-        "novelty": "Worked anchor remains within the just-taught construction."
+        "model_choice": "Choose the specific Empirical formula, stoichiometry and limiting reagent model or bookkeeping convention taught in the adjacent construction.",
+        "representation_translation": "For Empirical formula, stoichiometry and limiting reagent, connect the governed figure or symbolic relation to the learner-facing words before concluding.",
+        "reasoning_steps": "For Empirical formula, stoichiometry and limiting reagent, state the condition, apply it to the stem, then run the recorded independent check.",
+        "novelty": "The Empirical formula, stoichiometry and limiting reagent anchor remains inside the just-taught construction and does not claim external-source transfer."
       },
       "safe_variations": [
-        "Change substances or numerical surface data without changing the quantity definition."
+        "For Empirical formula, stoichiometry and limiting reagent, vary the surface species or condition only when the same governing distinction remains testable."
       ],
       "transfer_boundaries": [
-        "Do not admit unresolved NCERT helper identities as source-verified questions."
+        "The Empirical formula, stoichiometry and limiting reagent family is author-created for PR #376; do not relabel it as a verified NCERT, ExamSIDE or JEE item."
       ],
       "common_wrong_routes": [
         "The largest mass percentage gives the largest formula subscript, and the reactant with the smaller starting mass is always limiting."
@@ -581,7 +941,9 @@
       "id": "FAM-CHEM-MOLE-CONCENTRATION",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -591,21 +953,21 @@
         "CAP-CHEM-MOLE-CONCENTRATION"
       ],
       "solution_structure": [
-        "State the entity, ratio or denominator being used.",
-        "Convert through amount where required.",
-        "Run the unit/definition check."
+        "For Molarity, molality and mole fraction, identify the governing condition that decides the authored anchor.",
+        "Apply that Molarity, molality and mole fraction condition to the concrete stem without importing an unstated model.",
+        "Close the Molarity, molality and mole fraction anchor with the independent check stated in its model answer."
       ],
       "demand_dimensions": {
-        "model_choice": "Use the adjacent Core1A quantity definition or stoichiometric model.",
-        "representation_translation": "Translate among formula, amount, mass and concentration language.",
-        "reasoning_steps": "Define, convert, verify.",
-        "novelty": "Worked anchor remains within the just-taught construction."
+        "model_choice": "Choose the specific Molarity, molality and mole fraction model or bookkeeping convention taught in the adjacent construction.",
+        "representation_translation": "For Molarity, molality and mole fraction, connect the governed figure or symbolic relation to the learner-facing words before concluding.",
+        "reasoning_steps": "For Molarity, molality and mole fraction, state the condition, apply it to the stem, then run the recorded independent check.",
+        "novelty": "The Molarity, molality and mole fraction anchor remains inside the just-taught construction and does not claim external-source transfer."
       },
       "safe_variations": [
-        "Change substances or numerical surface data without changing the quantity definition."
+        "For Molarity, molality and mole fraction, vary the surface species or condition only when the same governing distinction remains testable."
       ],
       "transfer_boundaries": [
-        "Do not admit unresolved NCERT helper identities as source-verified questions."
+        "The Molarity, molality and mole fraction family is author-created for PR #376; do not relabel it as a verified NCERT, ExamSIDE or JEE item."
       ],
       "common_wrong_routes": [
         "Every concentration measure must change with temperature because physical samples expand or contract."
@@ -672,7 +1034,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Single-concept authored worked anchor after instruction."
+        "basis": "Authored Core1A anchor for Combination laws, mole, Avogadro constant and molar mass; it tests the immediately preceding distinction rather than a new transfer demand."
       }
     },
     {
@@ -731,7 +1093,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Single-concept authored worked anchor after instruction."
+        "basis": "Authored Core1A anchor for Empirical formula, stoichiometry and limiting reagent; it tests the immediately preceding distinction rather than a new transfer demand."
       }
     },
     {
@@ -790,11 +1152,96 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Single-concept authored worked anchor after instruction."
+        "basis": "Authored Core1A anchor for Molarity, molality and mole fraction; it tests the immediately preceding distinction rather than a new transfer demand."
       }
     }
   ],
-  "teaching_routes": [],
+  "teaching_routes": [
+    {
+      "id": "ROUTE-CHEM-MOLE-CORE1A",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry completed Core1A construction",
+      "cores": [
+        "CORE1A"
+      ],
+      "microtopic_refs": [
+        "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
+        "MIC-CHEM-MOLE-FORMULA-STOICH",
+        "MIC-CHEM-MOLE-CONCENTRATION"
+      ],
+      "entry_needs": [
+        "For Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry, use the stated entry assumptions rather than a learner-percentage gate."
+      ],
+      "learner_actions": [
+        "Follow the completed Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry construction and explain why each move is valid."
+      ],
+      "help_plan": [
+        "Keep the Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry representation bridge visible beside the verbal construction."
+      ],
+      "reveal_plan": "For Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry, the completed Core1A reasoning and governed representation are visible without an attempt gate.",
+      "source_preferences": [
+        {
+          "resource_ref": "SRC-CHEM-PR376-MOLE-AUTHOR",
+          "purpose": "Author-created governed construction",
+          "reason": "The Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry Core1A conversion is authored from the exact PR #376 standalone basis while unresolved external-source question identities stay excluded."
+        }
+      ],
+      "when_not_suitable": [
+        "Do not present Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry as prescribed Grade-9 CBSE content; this package is an explicit Owner extension."
+      ],
+      "practice_profile_ref": null
+    },
+    {
+      "id": "ROUTE-CHEM-MOLE-CORE1B",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry attempt-first Core1B reconstruction",
+      "cores": [
+        "CORE1B"
+      ],
+      "microtopic_refs": [
+        "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
+        "MIC-CHEM-MOLE-FORMULA-STOICH",
+        "MIC-CHEM-MOLE-CONCENTRATION"
+      ],
+      "entry_needs": [
+        "For Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry, Core1B assumes the same conceptual coverage as Core1A and changes learner agency rather than academic truth."
+      ],
+      "learner_actions": [
+        "Predict, attempt and reconstruct the Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry governing distinctions before the completed route is revealed."
+      ],
+      "help_plan": [
+        "For Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry, use the recorded misconception diagnosis and representation bridge as post-attempt support rather than pre-answer disclosure."
+      ],
+      "reveal_plan": "For Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry, the learner attempts first; the self-study closure then reveals the governed reconstruction and check.",
+      "source_preferences": [
+        {
+          "resource_ref": "SRC-CHEM-PR376-MOLE-AUTHOR",
+          "purpose": "Author-created self-study reconstruction",
+          "reason": "The Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry Core1B route is authored alongside Core1A so both products share one canonical microtopic truth."
+        }
+      ],
+      "when_not_suitable": [
+        "Do not treat Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry Core1B completion as evidence of learner mastery or as verification of held external-source questions."
+      ],
+      "practice_profile_ref": null
+    }
+  ],
   "practice_profiles": [],
   "evidence": [],
   "known_issues": [
@@ -839,5 +1286,57 @@
       "conversion_posture": "GOVERNED_CORE1A_OWNER_EXTENSION_SOURCE_BANK_EXCLUDED"
     }
   },
-  "data": []
+  "data": [
+    {
+      "id": "EQ-CHEM-MOLE-FOUNDATIONS-MOLE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "EQUATION",
+      "value": "<math display=\"block\"><mrow><mi>N</mi><mo>=</mo><mi>n</mi><mi>N_A</mi></mrow></math>",
+      "symbol": "N = nNₐ",
+      "meaning": "Mole-to-entity bridge: Amount in moles converts to a count of explicitly named entities through Avogadro constant; molar mass is the separate mass bridge.",
+      "locator": "Author-created governed representation for Mole-to-entity bridge in PR #376."
+    },
+    {
+      "id": "EQ-CHEM-MOLE-FORMULA-STOICH",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "EQUATION",
+      "value": "<math display=\"block\"><mrow><mtext>supported reaction extent</mtext><mo>∝</mo><mi>n_i</mi><mo>/</mo><mi>nu_i</mi></mrow></math>",
+      "symbol": "extent ∝ nᵢ/νᵢ",
+      "meaning": "Stoichiometric extent: Available amount divided by the balanced-equation stoichiometric coefficient reveals which reactant inventory supports the smallest reaction extent.",
+      "locator": "Author-created governed representation for Stoichiometric extent in PR #376."
+    },
+    {
+      "id": "EQ-CHEM-MOLE-CONCENTRATION",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-MOLE-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "EQUATION",
+      "value": "<math display=\"block\"><mrow><mi>c</mi><mo>=</mo><mi>n</mi><mo>/</mo><mi>V</mi></mrow></math>",
+      "symbol": "c = n/V",
+      "meaning": "Molarity definition: Molarity uses solution volume as its denominator; molality and mole fraction use different denominators and therefore different temperature sensitivities.",
+      "locator": "Author-created governed representation for Molarity definition in PR #376."
+    }
+  ]
 }
