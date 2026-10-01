@@ -55,7 +55,9 @@
       "id": "BUCKET-CHEM-BOND",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -99,7 +101,8 @@
           "BOND-Q02..Q04 unresolved source collisions.",
           "Any claim of prescribed Grade-9 curriculum authority."
         ]
-      }
+      },
+      "primary_representation_ref": "REP-CHEM-BOND-LEWIS-VSEPR"
     }
   ],
   "capabilities": [
@@ -107,7 +110,9 @@
       "id": "CAP-CHEM-BOND-LEWIS-VSEPR",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -134,7 +139,9 @@
       "id": "CAP-CHEM-BOND-GEOMETRY-DIPOLE",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -161,7 +168,9 @@
       "id": "CAP-CHEM-BOND-MO-HBOND",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -190,7 +199,9 @@
       "id": "MIC-CHEM-BOND-LEWIS-VSEPR",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -201,7 +212,7 @@
       "intrinsic_badge": "MEDIUM",
       "badge_reason": "The learner must keep electron-count bookkeeping distinct from physical charge and distinguish electron-domain geometry from molecular shape.",
       "entry_assumptions": [
-        "Can count valence electrons and read basic chemical/molecular notation when the model is named."
+        "For Lewis structures, formal charge and VSEPR geometry, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
       ],
       "inferential_jump": "Lewis structures conserve a declared valence-electron inventory, while VSEPR uses electron domains to predict geometry; neither bookkeeping convention should be promoted beyond its model scope.",
       "teaching_path": [
@@ -231,7 +242,9 @@
         }
       ],
       "relation_refs": [],
-      "representation_refs": [],
+      "representation_refs": [
+        "REP-CHEM-BOND-LEWIS-VSEPR"
+      ],
       "question_family_refs": [
         "FAM-CHEM-BOND-LEWIS-VSEPR"
       ],
@@ -258,10 +271,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "Qualitative model-bound explanation; no new numerical oracle is asserted."
+          "no_numeric_claim": "The Lewis structures, formal charge and VSEPR geometry exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
         }
       },
-      "research_contribution": "Carries the corrected formal-charge, VSEPR, hypervalent-model, dipole, MO and hydrogen-bond boundaries from the PR #376 audit into governed records; independent exact-render review remains pending.",
+      "research_contribution": "For Lewis structures, formal charge and VSEPR geometry, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -273,7 +286,7 @@
             "BOND-LEWIS-VSEPR-T2",
             "BOND-LEWIS-VSEPR-T3"
           ],
-          "representation_ref": null,
+          "representation_ref": "REP-CHEM-BOND-LEWIS-VSEPR",
           "reveal_stage_refs": [],
           "worked_anchor_ref": "Q-CHEM-BOND-LEWIS-VSEPR-1A",
           "misconception_indexes": [
@@ -285,13 +298,59 @@
             }
           ]
         }
-      ]
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "For Lewis structures, formal charge and VSEPR geometry, decide before the completed route is revealed: Can resonance contributors assign different formal charges to the same atom, and what happens to the shape name when one of four domains is a lone pair?",
+          "defensible_answer": "For Lewis structures, formal charge and VSEPR geometry, the defensible route is: Treat formal charge as Lewis bookkeeping, then count electron domains and bonded-atom positions separately for VSEPR."
+        },
+        "attempt": {
+          "produces": "A short Lewis structures, formal charge and VSEPR geometry explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "closure": "CRITERIA",
+          "rubric": [
+            {
+              "criterion": "The Lewis structures, formal charge and VSEPR geometry response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+              "evidence_of": "The learner can separate the Lewis structures, formal charge and VSEPR geometry governing distinction from the tempting shortcut."
+            }
+          ],
+          "task": {
+            "prompt": "Explain the Lewis structures, formal charge and VSEPR geometry decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "givens": [
+              "Lewis structures conserve a declared valence-electron inventory, while VSEPR uses electron domains to predict geometry; neither bookkeeping convention should be promoted beyond its model scope."
+            ],
+            "representation_ref": "REP-CHEM-BOND-LEWIS-VSEPR",
+            "stage_refs": []
+          }
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "In Lewis structures, formal charge and VSEPR geometry, what must be decided before the move \"Count the total valence-electron inventory before placing bonds and lone pairs.\" is justified?",
+              "why_this_ask": "This makes the learner supply the entry decision for Lewis structures, formal charge and VSEPR geometry instead of receiving the expert sequence first.",
+              "from_step_ref": "BOND-LEWIS-VSEPR-T1"
+            },
+            {
+              "ask": "For Lewis structures, formal charge and VSEPR geometry, how would you test the conclusion reached by \"Count VSEPR electron domains before naming molecular shape.\" without simply repeating the model answer?",
+              "why_this_ask": "This closes Lewis structures, formal charge and VSEPR geometry through a learner-owned check rather than through recall of the declarative route.",
+              "from_step_ref": "BOND-LEWIS-VSEPR-T3"
+            }
+          ],
+          "differs_from_teaching_path": "For Lewis structures, formal charge and VSEPR geometry, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+        },
+        "boundary_test": {
+          "prompt": "Why can formal charge guide selection among Lewis contributors without proving the physical charge on each atom?",
+          "answer": "Formal charge is defined by a bookkeeping partition of electrons in a chosen Lewis structure, whereas physical electron density is a separate electronic-structure property.",
+          "confirms": "For Lewis structures, formal charge and VSEPR geometry, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+        }
+      }
     },
     {
       "id": "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -302,7 +361,7 @@
       "intrinsic_badge": "HARD",
       "badge_reason": "The learner must distinguish observed geometry from simplified hybridisation language and then perform vector rather than scalar polarity reasoning.",
       "entry_assumptions": [
-        "Can count valence electrons and read basic chemical/molecular notation when the model is named."
+        "For PCl5 geometry, model shorthand and molecular dipoles, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
       ],
       "inferential_jump": "Trigonal-bipyramidal geometry is a structural claim, whereas sp3d is simplified model language; molecular polarity then depends on vector addition in that geometry rather than a count of polar bonds.",
       "teaching_path": [
@@ -332,7 +391,9 @@
         }
       ],
       "relation_refs": [],
-      "representation_refs": [],
+      "representation_refs": [
+        "REP-CHEM-BOND-GEOMETRY-DIPOLE"
+      ],
       "question_family_refs": [
         "FAM-CHEM-BOND-GEOMETRY-DIPOLE"
       ],
@@ -359,10 +420,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "Qualitative model-bound explanation; no new numerical oracle is asserted."
+          "no_numeric_claim": "The PCl5 geometry, model shorthand and molecular dipoles exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
         }
       },
-      "research_contribution": "Carries the corrected formal-charge, VSEPR, hypervalent-model, dipole, MO and hydrogen-bond boundaries from the PR #376 audit into governed records; independent exact-render review remains pending.",
+      "research_contribution": "For PCl5 geometry, model shorthand and molecular dipoles, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -374,7 +435,7 @@
             "BOND-GEOMETRY-DIPOLE-T2",
             "BOND-GEOMETRY-DIPOLE-T3"
           ],
-          "representation_ref": null,
+          "representation_ref": "REP-CHEM-BOND-GEOMETRY-DIPOLE",
           "reveal_stage_refs": [],
           "worked_anchor_ref": "Q-CHEM-BOND-GEOMETRY-DIPOLE-1A",
           "misconception_indexes": [
@@ -386,13 +447,59 @@
             }
           ]
         }
-      ]
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "For PCl5 geometry, model shorthand and molecular dipoles, decide before the completed route is revealed: Does a hybridisation label itself measure orbital composition, and can equal bond-dipole vectors cancel in a symmetric arrangement?",
+          "defensible_answer": "For PCl5 geometry, model shorthand and molecular dipoles, the defensible route is: Separate geometry evidence from hybridisation shorthand and perform a vector-symmetry check before asserting molecular polarity."
+        },
+        "attempt": {
+          "produces": "A short PCl5 geometry, model shorthand and molecular dipoles explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "closure": "CRITERIA",
+          "rubric": [
+            {
+              "criterion": "The PCl5 geometry, model shorthand and molecular dipoles response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+              "evidence_of": "The learner can separate the PCl5 geometry, model shorthand and molecular dipoles governing distinction from the tempting shortcut."
+            }
+          ],
+          "task": {
+            "prompt": "Explain the PCl5 geometry, model shorthand and molecular dipoles decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "givens": [
+              "Trigonal-bipyramidal geometry is a structural claim, whereas sp3d is simplified model language; molecular polarity then depends on vector addition in that geometry rather than a count of polar bonds."
+            ],
+            "representation_ref": "REP-CHEM-BOND-GEOMETRY-DIPOLE",
+            "stage_refs": []
+          }
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "In PCl5 geometry, model shorthand and molecular dipoles, what must be decided before the move \"Place five electron domains in a trigonal-bipyramidal arrangement with three equatorial and two axial directions.\" is justified?",
+              "why_this_ask": "This makes the learner supply the entry decision for PCl5 geometry, model shorthand and molecular dipoles instead of receiving the expert sequence first.",
+              "from_step_ref": "BOND-GEOMETRY-DIPOLE-T1"
+            },
+            {
+              "ask": "For PCl5 geometry, model shorthand and molecular dipoles, how would you test the conclusion reached by \"Add bond dipoles as vectors in the molecular geometry.\" without simply repeating the model answer?",
+              "why_this_ask": "This closes PCl5 geometry, model shorthand and molecular dipoles through a learner-owned check rather than through recall of the declarative route.",
+              "from_step_ref": "BOND-GEOMETRY-DIPOLE-T3"
+            }
+          ],
+          "differs_from_teaching_path": "For PCl5 geometry, model shorthand and molecular dipoles, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+        },
+        "boundary_test": {
+          "prompt": "How can a molecule contain polar bonds yet have zero net dipole moment?",
+          "answer": "Its bond-dipole vectors can cancel exactly by molecular symmetry.",
+          "confirms": "For PCl5 geometry, model shorthand and molecular dipoles, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+        }
+      }
     },
     {
       "id": "MIC-CHEM-BOND-MO-HBOND",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -403,7 +510,7 @@
       "intrinsic_badge": "HARD",
       "badge_reason": "The learner must make two distinct readouts from MO occupancy and separately identify structural requirements for hydrogen bonding.",
       "entry_assumptions": [
-        "Can count valence electrons and read basic chemical/molecular notation when the model is named."
+        "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the learner can read the chemical notation used here and follow one stated comparison, count or ratio."
       ],
       "inferential_jump": "MO bond order and magnetism are separate consequences of the same orbital occupancy, while hydrogen bonding is a different intermolecular structural interaction requiring appropriate donor and acceptor sites.",
       "teaching_path": [
@@ -433,7 +540,9 @@
         }
       ],
       "relation_refs": [],
-      "representation_refs": [],
+      "representation_refs": [
+        "REP-CHEM-BOND-MO-HBOND"
+      ],
       "question_family_refs": [
         "FAM-CHEM-BOND-MO-HBOND"
       ],
@@ -460,10 +569,10 @@
           "verification_status": "CHECKED_BY_AUTHOR"
         },
         "oracle": {
-          "no_numeric_claim": "Qualitative model-bound explanation; no new numerical oracle is asserted."
+          "no_numeric_claim": "The Molecular-orbital occupancy, magnetism and hydrogen bonding exit asks for qualitative, definition-bound reasoning and does not assert a new numerical oracle."
         }
       },
-      "research_contribution": "Carries the corrected formal-charge, VSEPR, hypervalent-model, dipole, MO and hydrogen-bond boundaries from the PR #376 audit into governed records; independent exact-render review remains pending.",
+      "research_contribution": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, this governed conversion preserves the corrected model boundary from the PR #376 audit; independent review of the exact rendered digest remains pending.",
       "prerequisite_refs": [],
       "lineage": [],
       "construction_units": [
@@ -475,7 +584,7 @@
             "BOND-MO-HBOND-T2",
             "BOND-MO-HBOND-T3"
           ],
-          "representation_ref": null,
+          "representation_ref": "REP-CHEM-BOND-MO-HBOND",
           "reveal_stage_refs": [],
           "worked_anchor_ref": "Q-CHEM-BOND-MO-HBOND-1A",
           "misconception_indexes": [
@@ -487,17 +596,279 @@
             }
           ]
         }
-      ]
+      ],
+      "elicitation": {
+        "predict": {
+          "prompt": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, decide before the completed route is revealed: Can an MO configuration have positive bond order and an unpaired electron, and does a generic C-H bond meet the same donor condition as an O-H group in the usual introductory model?",
+          "defensible_answer": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the defensible route is: Run the bond-order and paired/unpaired checks separately, then require an explicit donor/acceptor structure before invoking hydrogen bonding."
+        },
+        "attempt": {
+          "produces": "A short Molecular-orbital occupancy, magnetism and hydrogen bonding explanation that names the governing condition, rejects the recorded wrong route, and states an independent check.",
+          "closure": "CRITERIA",
+          "rubric": [
+            {
+              "criterion": "The Molecular-orbital occupancy, magnetism and hydrogen bonding response names the decisive model condition or bookkeeping rule before drawing the conclusion.",
+              "evidence_of": "The learner can separate the Molecular-orbital occupancy, magnetism and hydrogen bonding governing distinction from the tempting shortcut."
+            }
+          ],
+          "task": {
+            "prompt": "Explain the Molecular-orbital occupancy, magnetism and hydrogen bonding decision in your own words before viewing the expert sequence, and include one check that could reveal a wrong conclusion.",
+            "givens": [
+              "MO bond order and magnetism are separate consequences of the same orbital occupancy, while hydrogen bonding is a different intermolecular structural interaction requiring appropriate donor and acceptor sites."
+            ],
+            "representation_ref": "REP-CHEM-BOND-MO-HBOND",
+            "stage_refs": []
+          }
+        },
+        "reconstruct": {
+          "route": [
+            {
+              "ask": "In Molecular-orbital occupancy, magnetism and hydrogen bonding, what must be decided before the move \"Fill the stated molecular-orbital ordering with the correct electron count for the species.\" is justified?",
+              "why_this_ask": "This makes the learner supply the entry decision for Molecular-orbital occupancy, magnetism and hydrogen bonding instead of receiving the expert sequence first.",
+              "from_step_ref": "BOND-MO-HBOND-T1"
+            },
+            {
+              "ask": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, how would you test the conclusion reached by \"Identify hydrogen-bond donor and acceptor environments before using hydrogen bonding to explain a bulk property.\" without simply repeating the model answer?",
+              "why_this_ask": "This closes Molecular-orbital occupancy, magnetism and hydrogen bonding through a learner-owned check rather than through recall of the declarative route.",
+              "from_step_ref": "BOND-MO-HBOND-T3"
+            }
+          ],
+          "differs_from_teaching_path": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the declarative route gives the expert ordering; reconstruction starts from the recorded misconception, asks the learner to choose the governing condition, and only then reconnects to the expert steps."
+        },
+        "boundary_test": {
+          "prompt": "Why should hydrogen bonding be used as a comparative intermolecular explanation rather than a universal property predictor?",
+          "answer": "Because it requires specific donor/acceptor structure and bulk properties also depend on other intermolecular and molecular features.",
+          "confirms": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, this boundary check confirms the learner can preserve the governing distinction when the surface wording changes."
+        }
+      }
     }
   ],
   "relations": [],
-  "representations": [],
+  "representations": [
+    {
+      "id": "REP-CHEM-BOND-LEWIS-VSEPR",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "SYMBOLIC_EQUATION",
+      "purpose": "For Lewis structures, formal charge and VSEPR geometry, make the governing symbolic relationship visible beside its verbal meaning and notation limits.",
+      "required_elements": [
+        "equation body",
+        "scope notes"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "Read the Lewis structures, formal charge and VSEPR geometry symbolic relation as one complete statement.",
+        "Translate its symbols into the Lewis structures, formal charge and VSEPR geometry verbal claim before applying it.",
+        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+      ],
+      "instance_constraints": [
+        "The Lewis structures, formal charge and VSEPR geometry equation is source-bound to an authored EQUATION datum.",
+        "The Lewis structures, formal charge and VSEPR geometry scene may not imply coefficients, charges, phases or reaction arrows that the displayed statement does not contain."
+      ],
+      "accessibility": [
+        "The Lewis structures, formal charge and VSEPR geometry equation is repeated in the text caption.",
+        "The Lewis structures, formal charge and VSEPR geometry annotation states the same conceptual restriction without depending on visual styling."
+      ],
+      "misleading_alternatives": [
+        "For Lewis structures, formal charge and VSEPR geometry, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-CHEM-BOND-LEWIS-VSEPR",
+          "cores": [
+            "CORE1",
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-CHEM-BOND-LEWIS-VSEPR",
+          "datum_refs": [
+            "EQ-CHEM-BOND-LEWIS-VSEPR"
+          ],
+          "scene": {
+            "kind": "SYMBOLIC_EQUATION",
+            "frame": "Author-created symbolic model for Lewis structures, formal charge and VSEPR geometry.",
+            "caption": "Lewis bookkeeping: Formal charge is computed from valence, nonbonding and bonding-electron bookkeeping for a chosen Lewis representation.",
+            "equation_atom": "EQ-CHEM-BOND-LEWIS-VSEPR",
+            "annotation": "Formal charge is representation bookkeeping, not a direct measured partial charge.",
+            "coefficient_note": "In Lewis bookkeeping, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+            "charge_note": "In Lewis bookkeeping, no ionic charge is implied unless a charge is explicitly shown.",
+            "phase_note": "In Lewis bookkeeping, no phase label is implied unless a phase is explicitly shown.",
+            "arrow_note": "In Lewis bookkeeping, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "equation body",
+          "symbol": "FC = V − N − B/2",
+          "in_words": "For Lewis structures, formal charge and VSEPR geometry, the displayed symbols mean: Formal charge is computed from valence, nonbonding and bonding-electron bookkeeping for a chosen Lewis representation."
+        }
+      ]
+    },
+    {
+      "id": "REP-CHEM-BOND-GEOMETRY-DIPOLE",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "PARTICLE_DIAGRAM",
+      "purpose": "For PCl5 geometry, model shorthand and molecular dipoles, show the declared particle identity and geometry/count distinction without implying a mechanism.",
+      "required_elements": [
+        "particle groups",
+        "representation-level label",
+        "model-limit note"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "Read the PCl5 geometry, model shorthand and molecular dipoles representation level before interpreting the circles.",
+        "For PCl5 geometry, model shorthand and molecular dipoles, identify each labelled particle group and its declared count.",
+        "Read the PCl5 geometry, model shorthand and molecular dipoles model-limit note before using the geometry as evidence."
+      ],
+      "instance_constraints": [
+        "The PCl5 geometry, model shorthand and molecular dipoles scene uses only source-bound authored counts.",
+        "The PCl5 geometry, model shorthand and molecular dipoles particle positions are a schematic geometry, not a trajectory or orbital-composition measurement."
+      ],
+      "accessibility": [
+        "The PCl5 geometry, model shorthand and molecular dipoles particle identities are printed inside the circles.",
+        "The PCl5 geometry, model shorthand and molecular dipoles caption and model-limit note carry the distinction without colour."
+      ],
+      "misleading_alternatives": [
+        "For PCl5 geometry, model shorthand and molecular dipoles, do not infer a collision path, time sequence or literal orbital hybrid composition from the static layout."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-CHEM-BOND-GEOMETRY-DIPOLE",
+          "cores": [
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
+          "datum_refs": [
+            "DAT-CHEM-BOND-GEOMETRY-DIPOLE-COUNT-1",
+            "DAT-CHEM-BOND-GEOMETRY-DIPOLE-COUNT-2"
+          ],
+          "scene": {
+            "kind": "PARTICLE_DIAGRAM",
+            "frame": "Author-created static particle-level schematic for PCl5 geometry, model shorthand and molecular dipoles.",
+            "caption": "PCl5 geometry: A trigonal-bipyramidal PCl5 geometry contains distinct equatorial and axial directions; the picture does not prove literal d-orbital hybridisation.",
+            "representation_level": "molecular/particle model",
+            "mechanism_note": "For PCl5 geometry, model shorthand and molecular dipoles, this is a static explanatory schematic, not a reaction or collision mechanism.",
+            "annotation": "Three equatorial directions and two axial directions are shown schematically.",
+            "groups": [
+              {
+                "label": "phosphorus centre",
+                "symbol": "P",
+                "count_atom": "DAT-CHEM-BOND-GEOMETRY-DIPOLE-COUNT-1"
+              },
+              {
+                "label": "chlorine positions",
+                "symbol": "Cl",
+                "count_atom": "DAT-CHEM-BOND-GEOMETRY-DIPOLE-COUNT-2"
+              }
+            ],
+            "layout": "CENTRAL_SHELL",
+            "geometry": "TRIGONAL_BIPYRAMIDAL"
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "particle groups",
+          "symbol": "PCl₅: 3 equatorial + 2 axial",
+          "in_words": "For PCl5 geometry, model shorthand and molecular dipoles, the labelled circles are the picture-side representation of this statement: A trigonal-bipyramidal PCl5 geometry contains distinct equatorial and axial directions; the picture does not prove literal d-orbital hybridisation."
+        }
+      ]
+    },
+    {
+      "id": "REP-CHEM-BOND-MO-HBOND",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "SYMBOLIC_EQUATION",
+      "purpose": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, make the governing symbolic relationship visible beside its verbal meaning and notation limits.",
+      "required_elements": [
+        "equation body",
+        "scope notes"
+      ],
+      "relation_refs": [],
+      "read_order": [
+        "Read the Molecular-orbital occupancy, magnetism and hydrogen bonding symbolic relation as one complete statement.",
+        "Translate its symbols into the Molecular-orbital occupancy, magnetism and hydrogen bonding verbal claim before applying it.",
+        "Check the notation-scope notes so coefficients, charges, phases or arrows are not overinterpreted."
+      ],
+      "instance_constraints": [
+        "The Molecular-orbital occupancy, magnetism and hydrogen bonding equation is source-bound to an authored EQUATION datum.",
+        "The Molecular-orbital occupancy, magnetism and hydrogen bonding scene may not imply coefficients, charges, phases or reaction arrows that the displayed statement does not contain."
+      ],
+      "accessibility": [
+        "The Molecular-orbital occupancy, magnetism and hydrogen bonding equation is repeated in the text caption.",
+        "The Molecular-orbital occupancy, magnetism and hydrogen bonding annotation states the same conceptual restriction without depending on visual styling."
+      ],
+      "misleading_alternatives": [
+        "For Molecular-orbital occupancy, magnetism and hydrogen bonding, do not read the symbolic relation beyond the model or bookkeeping scope stated in its annotation."
+      ],
+      "rendered_asset_refs": [],
+      "scene_instances": [
+        {
+          "id": "SCENE-CHEM-BOND-MO-HBOND",
+          "cores": [
+            "CORE1A",
+            "CORE1B"
+          ],
+          "microtopic_ref": "MIC-CHEM-BOND-MO-HBOND",
+          "datum_refs": [
+            "EQ-CHEM-BOND-MO-HBOND"
+          ],
+          "scene": {
+            "kind": "SYMBOLIC_EQUATION",
+            "frame": "Author-created symbolic model for Molecular-orbital occupancy, magnetism and hydrogen bonding.",
+            "caption": "MO occupancy: Molecular-orbital bond order comes from bonding versus antibonding occupancy, while unpaired occupancy must be checked separately for magnetism.",
+            "equation_atom": "EQ-CHEM-BOND-MO-HBOND",
+            "annotation": "Bond order and magnetic behaviour are separate readouts from the same MO occupancy.",
+            "coefficient_note": "In MO occupancy, symbols retain their declared variable or bookkeeping meaning; no hidden stoichiometric coefficient is added.",
+            "charge_note": "In MO occupancy, no ionic charge is implied unless a charge is explicitly shown.",
+            "phase_note": "In MO occupancy, no phase label is implied unless a phase is explicitly shown.",
+            "arrow_note": "In MO occupancy, any explanatory arrow is not a chemical-reaction mechanism unless a reaction arrow is explicitly declared."
+          }
+        }
+      ],
+      "correspondence": [
+        {
+          "element": "equation body",
+          "symbol": "BO = (Nᵦ − Nₐᵦ)/2",
+          "in_words": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, the displayed symbols mean: Molecular-orbital bond order comes from bonding versus antibonding occupancy, while unpaired occupancy must be checked separately for magnetism."
+        }
+      ]
+    }
+  ],
   "question_families": [
     {
       "id": "FAM-CHEM-BOND-LEWIS-VSEPR",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -507,21 +878,21 @@
         "CAP-CHEM-BOND-LEWIS-VSEPR"
       ],
       "solution_structure": [
-        "State the governing model distinction.",
-        "Apply it to the case.",
-        "Run the independent check."
+        "For Lewis structures, formal charge and VSEPR geometry, identify the governing condition that decides the authored anchor.",
+        "Apply that Lewis structures, formal charge and VSEPR geometry condition to the concrete stem without importing an unstated model.",
+        "Close the Lewis structures, formal charge and VSEPR geometry anchor with the independent check stated in its model answer."
       ],
       "demand_dimensions": {
-        "model_choice": "Use the adjacent Core1A model explicitly.",
-        "representation_translation": "Translate between chemical notation, geometry language and verbal explanation as required.",
-        "reasoning_steps": "State, apply, verify.",
-        "novelty": "Worked anchor stays within the just-taught construction."
+        "model_choice": "Choose the specific Lewis structures, formal charge and VSEPR geometry model or bookkeeping convention taught in the adjacent construction.",
+        "representation_translation": "For Lewis structures, formal charge and VSEPR geometry, connect the governed figure or symbolic relation to the learner-facing words before concluding.",
+        "reasoning_steps": "For Lewis structures, formal charge and VSEPR geometry, state the condition, apply it to the stem, then run the recorded independent check.",
+        "novelty": "The Lewis structures, formal charge and VSEPR geometry anchor remains inside the just-taught construction and does not claim external-source transfer."
       },
       "safe_variations": [
-        "Change the species or geometry while preserving the same model boundary."
+        "For Lewis structures, formal charge and VSEPR geometry, vary the surface species or condition only when the same governing distinction remains testable."
       ],
       "transfer_boundaries": [
-        "Do not reuse unresolved ExamSIDE/JEE labels as canonical identity."
+        "The Lewis structures, formal charge and VSEPR geometry family is author-created for PR #376; do not relabel it as a verified NCERT, ExamSIDE or JEE item."
       ],
       "common_wrong_routes": [
         "A formal charge is the atom's measured charge, and a tetrahedral electron-domain geometry always means a tetrahedral molecular shape."
@@ -534,7 +905,9 @@
       "id": "FAM-CHEM-BOND-GEOMETRY-DIPOLE",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -544,21 +917,21 @@
         "CAP-CHEM-BOND-GEOMETRY-DIPOLE"
       ],
       "solution_structure": [
-        "State the governing model distinction.",
-        "Apply it to the case.",
-        "Run the independent check."
+        "For PCl5 geometry, model shorthand and molecular dipoles, identify the governing condition that decides the authored anchor.",
+        "Apply that PCl5 geometry, model shorthand and molecular dipoles condition to the concrete stem without importing an unstated model.",
+        "Close the PCl5 geometry, model shorthand and molecular dipoles anchor with the independent check stated in its model answer."
       ],
       "demand_dimensions": {
-        "model_choice": "Use the adjacent Core1A model explicitly.",
-        "representation_translation": "Translate between chemical notation, geometry language and verbal explanation as required.",
-        "reasoning_steps": "State, apply, verify.",
-        "novelty": "Worked anchor stays within the just-taught construction."
+        "model_choice": "Choose the specific PCl5 geometry, model shorthand and molecular dipoles model or bookkeeping convention taught in the adjacent construction.",
+        "representation_translation": "For PCl5 geometry, model shorthand and molecular dipoles, connect the governed figure or symbolic relation to the learner-facing words before concluding.",
+        "reasoning_steps": "For PCl5 geometry, model shorthand and molecular dipoles, state the condition, apply it to the stem, then run the recorded independent check.",
+        "novelty": "The PCl5 geometry, model shorthand and molecular dipoles anchor remains inside the just-taught construction and does not claim external-source transfer."
       },
       "safe_variations": [
-        "Change the species or geometry while preserving the same model boundary."
+        "For PCl5 geometry, model shorthand and molecular dipoles, vary the surface species or condition only when the same governing distinction remains testable."
       ],
       "transfer_boundaries": [
-        "Do not reuse unresolved ExamSIDE/JEE labels as canonical identity."
+        "The PCl5 geometry, model shorthand and molecular dipoles family is author-created for PR #376; do not relabel it as a verified NCERT, ExamSIDE or JEE item."
       ],
       "common_wrong_routes": [
         "The label sp3d proves literal d-orbital bonding, and any molecule with polar bonds must have a nonzero net dipole."
@@ -571,7 +944,9 @@
       "id": "FAM-CHEM-BOND-MO-HBOND",
       "version": "0.1.0",
       "status": "CANDIDATE",
-      "source_refs": [],
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
       "evidence_refs": [],
       "extensions": {
         "grade9v3:authored_by": "pr376-conversion-session"
@@ -581,21 +956,21 @@
         "CAP-CHEM-BOND-MO-HBOND"
       ],
       "solution_structure": [
-        "State the governing model distinction.",
-        "Apply it to the case.",
-        "Run the independent check."
+        "For Molecular-orbital occupancy, magnetism and hydrogen bonding, identify the governing condition that decides the authored anchor.",
+        "Apply that Molecular-orbital occupancy, magnetism and hydrogen bonding condition to the concrete stem without importing an unstated model.",
+        "Close the Molecular-orbital occupancy, magnetism and hydrogen bonding anchor with the independent check stated in its model answer."
       ],
       "demand_dimensions": {
-        "model_choice": "Use the adjacent Core1A model explicitly.",
-        "representation_translation": "Translate between chemical notation, geometry language and verbal explanation as required.",
-        "reasoning_steps": "State, apply, verify.",
-        "novelty": "Worked anchor stays within the just-taught construction."
+        "model_choice": "Choose the specific Molecular-orbital occupancy, magnetism and hydrogen bonding model or bookkeeping convention taught in the adjacent construction.",
+        "representation_translation": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, connect the governed figure or symbolic relation to the learner-facing words before concluding.",
+        "reasoning_steps": "For Molecular-orbital occupancy, magnetism and hydrogen bonding, state the condition, apply it to the stem, then run the recorded independent check.",
+        "novelty": "The Molecular-orbital occupancy, magnetism and hydrogen bonding anchor remains inside the just-taught construction and does not claim external-source transfer."
       },
       "safe_variations": [
-        "Change the species or geometry while preserving the same model boundary."
+        "For Molecular-orbital occupancy, magnetism and hydrogen bonding, vary the surface species or condition only when the same governing distinction remains testable."
       ],
       "transfer_boundaries": [
-        "Do not reuse unresolved ExamSIDE/JEE labels as canonical identity."
+        "The Molecular-orbital occupancy, magnetism and hydrogen bonding family is author-created for PR #376; do not relabel it as a verified NCERT, ExamSIDE or JEE item."
       ],
       "common_wrong_routes": [
         "Higher MO bond order guarantees diamagnetism, and every hydrogen-containing compound forms strong hydrogen bonds."
@@ -661,7 +1036,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Single-concept authored worked anchor after instruction."
+        "basis": "Authored Core1A anchor for Lewis structures, formal charge and VSEPR geometry; it tests the immediately preceding distinction rather than a new transfer demand."
       }
     },
     {
@@ -719,7 +1094,7 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Single-concept authored worked anchor after instruction."
+        "basis": "Authored Core1A anchor for PCl5 geometry, model shorthand and molecular dipoles; it tests the immediately preceding distinction rather than a new transfer demand."
       }
     },
     {
@@ -778,11 +1153,96 @@
           "algebra_computational_load": 0,
           "trap_exception_sensitivity": 0
         },
-        "basis": "Single-concept authored worked anchor after instruction."
+        "basis": "Authored Core1A anchor for Molecular-orbital occupancy, magnetism and hydrogen bonding; it tests the immediately preceding distinction rather than a new transfer demand."
       }
     }
   ],
-  "teaching_routes": [],
+  "teaching_routes": [
+    {
+      "id": "ROUTE-CHEM-BOND-CORE1A",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Chemical Bonding and Molecular Structure completed Core1A construction",
+      "cores": [
+        "CORE1A"
+      ],
+      "microtopic_refs": [
+        "MIC-CHEM-BOND-LEWIS-VSEPR",
+        "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
+        "MIC-CHEM-BOND-MO-HBOND"
+      ],
+      "entry_needs": [
+        "For Chemical Bonding and Molecular Structure, use the stated entry assumptions rather than a learner-percentage gate."
+      ],
+      "learner_actions": [
+        "Follow the completed Chemical Bonding and Molecular Structure construction and explain why each move is valid."
+      ],
+      "help_plan": [
+        "Keep the Chemical Bonding and Molecular Structure representation bridge visible beside the verbal construction."
+      ],
+      "reveal_plan": "For Chemical Bonding and Molecular Structure, the completed Core1A reasoning and governed representation are visible without an attempt gate.",
+      "source_preferences": [
+        {
+          "resource_ref": "SRC-CHEM-PR376-BOND-AUTHOR",
+          "purpose": "Author-created governed construction",
+          "reason": "The Chemical Bonding and Molecular Structure Core1A conversion is authored from the exact PR #376 standalone basis while unresolved external-source question identities stay excluded."
+        }
+      ],
+      "when_not_suitable": [
+        "Do not present Chemical Bonding and Molecular Structure as prescribed Grade-9 CBSE content; this package is an explicit Owner extension."
+      ],
+      "practice_profile_ref": null
+    },
+    {
+      "id": "ROUTE-CHEM-BOND-CORE1B",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "title": "Chemical Bonding and Molecular Structure attempt-first Core1B reconstruction",
+      "cores": [
+        "CORE1B"
+      ],
+      "microtopic_refs": [
+        "MIC-CHEM-BOND-LEWIS-VSEPR",
+        "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
+        "MIC-CHEM-BOND-MO-HBOND"
+      ],
+      "entry_needs": [
+        "For Chemical Bonding and Molecular Structure, Core1B assumes the same conceptual coverage as Core1A and changes learner agency rather than academic truth."
+      ],
+      "learner_actions": [
+        "Predict, attempt and reconstruct the Chemical Bonding and Molecular Structure governing distinctions before the completed route is revealed."
+      ],
+      "help_plan": [
+        "For Chemical Bonding and Molecular Structure, use the recorded misconception diagnosis and representation bridge as post-attempt support rather than pre-answer disclosure."
+      ],
+      "reveal_plan": "For Chemical Bonding and Molecular Structure, the learner attempts first; the self-study closure then reveals the governed reconstruction and check.",
+      "source_preferences": [
+        {
+          "resource_ref": "SRC-CHEM-PR376-BOND-AUTHOR",
+          "purpose": "Author-created self-study reconstruction",
+          "reason": "The Chemical Bonding and Molecular Structure Core1B route is authored alongside Core1A so both products share one canonical microtopic truth."
+        }
+      ],
+      "when_not_suitable": [
+        "Do not treat Chemical Bonding and Molecular Structure Core1B completion as evidence of learner mastery or as verification of held external-source questions."
+      ],
+      "practice_profile_ref": null
+    }
+  ],
   "practice_profiles": [],
   "evidence": [],
   "known_issues": [
@@ -827,5 +1287,76 @@
       "conversion_posture": "GOVERNED_CORE1A_OWNER_EXTENSION_SOURCE_BANK_EXCLUDED"
     }
   },
-  "data": []
+  "data": [
+    {
+      "id": "EQ-CHEM-BOND-LEWIS-VSEPR",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "EQUATION",
+      "value": "<math display=\"block\"><mrow><mi>FC</mi><mo>=</mo><mi>V</mi><mo>−</mo><mi>N</mi><mo>−</mo><mi>B</mi><mo>/</mo><mn>2</mn></mrow></math>",
+      "symbol": "FC = V − N − B/2",
+      "meaning": "Lewis bookkeeping: Formal charge is computed from valence, nonbonding and bonding-electron bookkeeping for a chosen Lewis representation.",
+      "locator": "Author-created governed representation for Lewis bookkeeping in PR #376."
+    },
+    {
+      "id": "DAT-CHEM-BOND-GEOMETRY-DIPOLE-COUNT-1",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "DATUM",
+      "value": 1,
+      "unit": "count",
+      "symbol": "P",
+      "meaning": "PCl5 geometry: authored schematic count for phosphorus centre.",
+      "locator": "Author-created governed particle schematic for PCl5 geometry in PR #376."
+    },
+    {
+      "id": "DAT-CHEM-BOND-GEOMETRY-DIPOLE-COUNT-2",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "DATUM",
+      "value": 5,
+      "unit": "count",
+      "symbol": "Cl",
+      "meaning": "PCl5 geometry: authored schematic count for chlorine positions.",
+      "locator": "Author-created governed particle schematic for PCl5 geometry in PR #376."
+    },
+    {
+      "id": "EQ-CHEM-BOND-MO-HBOND",
+      "version": "0.1.0",
+      "status": "CANDIDATE",
+      "source_refs": [
+        "SRC-CHEM-PR376-BOND-AUTHOR"
+      ],
+      "evidence_refs": [],
+      "extensions": {
+        "grade9v3:authored_by": "pr376-conversion-session"
+      },
+      "kind": "EQUATION",
+      "value": "<math display=\"block\"><mrow><mi>BO</mi><mo>=</mo><mo>(</mo><mi>N_b</mi><mo>−</mo><mi>N_ab</mi><mo>)</mo><mo>/</mo><mn>2</mn></mrow></math>",
+      "symbol": "BO = (Nᵦ − Nₐᵦ)/2",
+      "meaning": "MO occupancy: Molecular-orbital bond order comes from bonding versus antibonding occupancy, while unpaired occupancy must be checked separately for magnetism.",
+      "locator": "Author-created governed representation for MO occupancy in PR #376."
+    }
+  ]
 }
