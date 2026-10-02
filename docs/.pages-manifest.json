@@ -121,16 +121,16 @@
       "target": "data/sample_learner_overlay.json"
     },
     {
-      "source": "public/data/search-index-manifest.v1.json",
-      "target": "data/search-index-manifest.v1.json"
+      "source": "public/data/search-index-manifest.v2.json",
+      "target": "data/search-index-manifest.v2.json"
     },
     {
-      "source": "public/data/search-index.v1.json",
-      "target": "data/search-index.v1.json"
+      "source": "public/data/search-index.v2.js",
+      "target": "data/search-index.v2.js"
     },
     {
-      "source": "public/data/site-search-resources.js",
-      "target": "data/site-search-resources.js"
+      "source": "public/data/search-index.v2.json",
+      "target": "data/search-index.v2.json"
     },
     {
       "source": "public/index.html",
@@ -175,6 +175,14 @@
     {
       "source": "public/js/site-header.js",
       "target": "js/site-header.js"
+    },
+    {
+      "source": "public/js/site-search-core.js",
+      "target": "js/site-search-core.js"
+    },
+    {
+      "source": "public/js/site-search.js",
+      "target": "js/site-search.js"
     },
     {
       "source": "public/js/topic-atlas.js",

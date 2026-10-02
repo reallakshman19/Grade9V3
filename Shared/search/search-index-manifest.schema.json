@@ -1,23 +1,31 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:grade9v3:search-index-manifest/v2",
+  "description": "What the search index was built from, what it holds, and which canonical questions no page of the site shows (unrouted).",
   "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "index_version", "generator", "inputs", "record_count", "counts", "questions", "index_digest", "script_digest", "generated_at"],
   "properties": {
-    "schema": { "const": "search-index-manifest/v1" },
-    "index_version": { "type": "string" },
-    "canonical_snapshot_digest": { "type": "string" },
-    "generator": {
+    "schema": {"const": "search-index-manifest/v2"},
+    "index_version": {"const": "2"},
+    "generator": {"type": "object", "required": ["name", "version"], "properties": {"name": {"type": "string"}, "version": {"type": "string"}}},
+    "inputs": {
       "type": "object",
-      "properties": {
-        "name": { "type": "string" },
-        "version": { "type": "string" }
-      },
-      "required": ["name", "version"]
+      "additionalProperties": false,
+      "required": ["library_digest", "pages_digest", "core_learning_digest", "question_bank_digest", "routes_digest"],
+      "patternProperties": {"_digest$": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}}
     },
-    "record_count": { "type": "integer" },
-    "canonical_ids": { "type": "array", "items": { "type": "string" } },
-    "excluded_ids": { "type": "array", "items": { "type": "string" } },
-    "index_digest": { "type": "string", "pattern": "^sha256:" },
-    "generated_at": { "type": "string", "format": "date-time" }
-  },
-  "required": ["schema", "index_version", "canonical_snapshot_digest", "generator", "record_count", "canonical_ids", "excluded_ids", "index_digest", "generated_at"]
+    "record_count": {"type": "integer"},
+    "counts": {"type": "object", "required": ["PAGE", "TOPIC", "QUESTION", "HINT"], "additionalProperties": {"type": "integer"}},
+    "questions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonical", "routed", "unrouted", "excluded"],
+      "properties": {"canonical": {"type": "array", "items": {"type": "string"}}, "routed": {"type": "array", "items": {"type": "string"}},
+                     "unrouted": {"type": "array", "items": {"type": "string"}}, "excluded": {"type": "array", "items": {"type": "string"}}}
+    },
+    "index_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "script_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "generated_at": {"type": "string", "format": "date-time"}
+  }
 }

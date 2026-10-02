@@ -1,4 +1,4 @@
-"""The projections of the library (a search index, a set of pages) and the release made of them: each says what it was built from, by digest, and can be checked against it.
+"""The projections of the library (a set of pages) and the release made of them: each says what it was built from, by digest, and can be checked against it.
 
 The first version of these tools compared a digest of the pages with a different kind of digest, wrote its evidence into the pages it judged, reported a stale index and exited 0,
 and digested CRLF checkouts differently from LF ones (so a committed index was stale on every other machine). Each of those is a test here.
@@ -14,7 +14,7 @@ from pathlib import Path
 from Shared.assurance import aggregate, contract
 from Shared.assurance.evidence import load_evidence
 from Shared.contracts import ContractError
-from Shared.tools import build_projection_manifest, build_search_index, drift_detector, release_fingerprint, verify_projection_manifest, verify_search_index
+from Shared.tools import build_projection_manifest, drift_detector, release_fingerprint, verify_projection_manifest
 
 REPO = Path(__file__).resolve().parents[1]
 
@@ -41,88 +41,6 @@ class Tree(unittest.TestCase):
 
     def evidence_records(self):
         return [load_evidence(p) for p in sorted(self.evidence.glob("*.json"))]
-
-
-class SearchIndex(Tree):
-    def build(self):
-        return build_search_index.main(["--library-dirs", str(self.lib), "--output-index", str(self.index), "--output-manifest", str(self.manifest)])
-
-    def verify(self, *extra):
-        return verify_search_index.main(["--index", str(self.index), "--manifest", str(self.manifest), "--library-dirs", str(self.lib), "--evidence-dir", str(self.evidence), *extra])
-
-    def test_the_index_holds_the_visible_questions_in_a_fixed_order_and_the_manifest_names_the_rest(self):
-        self.write("a.json", package(question("Q-3"), question("Q-2", extensions={"search_visibility": "EXCLUDED"}), question("Q-1")))
-        self.assertEqual(self.build(), 0)
-        manifest = json.loads(self.manifest.read_text())
-        self.assertEqual((manifest["canonical_ids"], manifest["excluded_ids"], manifest["record_count"]), (["Q-1", "Q-3"], ["Q-2"], 2))
-        self.assertEqual([d["canonical_id"] for d in json.loads(self.index.read_text())], ["Q-1", "Q-3"])
-
-    def test_an_index_that_is_current_complete_and_unaltered_passes_and_the_evidence_is_valid_and_bound_to_the_index(self):
-        self.write("a.json", package(question("Q-1")))
-        self.build()
-        self.assertEqual(self.verify("--enforce"), 0)
-        records = self.evidence_records()
-        self.assertEqual({r["assurance_type"]: r["outcome"] for r in records}, {"SEARCH_MEMBERSHIP": "PASS", "SEARCH_RETRIEVABILITY": "PASS"})
-        self.assertEqual({r["subject"]["kind"] for r in records}, {"PROJECTION"})
-        self.assertEqual({r["subject"]["digest"] for r in records}, {contract.digest_file(self.index)})
-
-    def test_a_question_added_to_the_library_after_the_build_is_missing_and_the_index_stale(self):
-        self.write("a.json", package(question("Q-1")))
-        self.build()
-        self.write("b.json", package(question("Q-2"), package_id="p2"))
-        self.assertEqual(self.verify("--enforce"), 1)
-        codes = {f["code"] for r in self.evidence_records() for f in r["findings"]}
-        self.assertEqual(codes, {"MISSING_FROM_INDEX", "STALE_INDEX"})
-
-    def test_a_question_removed_from_the_library_is_a_phantom_in_the_index(self):
-        self.write("a.json", package(question("Q-1"), question("Q-2")))
-        self.build()
-        self.write("a.json", package(question("Q-1")))
-        self.assertEqual(self.verify("--enforce"), 1)
-        self.assertIn("PHANTOM_IN_INDEX", {f["code"] for r in self.evidence_records() for f in r["findings"]})
-
-    def test_a_stale_index_whose_ids_still_match_is_a_fail_and_exits_nonzero(self):
-        """The first version reported INCONCLUSIVE and exited 0: the text in the index was the old text."""
-        self.write("a.json", package(question("Q-1")))
-        self.build()
-        self.write("a.json", package(question("Q-1", stem="A different stem that the index does not hold at all, with different words.")))
-        self.assertEqual(self.verify("--enforce"), 1)
-        self.assertEqual({f["code"] for r in self.evidence_records() for f in r["findings"]}, {"STALE_INDEX"})
-        self.assertEqual(self.verify(), 0, "without --enforce the run reports and does not fail")
-
-    def test_an_index_edited_after_the_build_fails_retrievability(self):
-        self.write("a.json", package(question("Q-1")))
-        self.build()
-        self.index.write_text("[]", encoding="utf-8")
-        self.assertEqual(self.verify("--enforce"), 1)
-        self.assertEqual({r["assurance_type"]: r["outcome"] for r in self.evidence_records()}["SEARCH_RETRIEVABILITY"], "FAIL")
-
-    def test_a_library_file_that_does_not_parse_stops_the_build_and_the_verification(self):
-        self.write("a.json", package(question("Q-1")))
-        self.build()
-        (self.lib / "broken.json").write_text("{ nope", encoding="utf-8")
-        with self.assertRaises(ContractError):
-            self.build()
-        self.assertEqual(self.verify("--enforce"), 1)
-
-    def test_the_index_is_the_same_on_every_checkout(self):
-        """A CRLF working copy of the library digests like the LF one: the committed index was stale on every machine but its author's."""
-        self.write("a.json", package(question("Q-1"), question("Q-2")))
-        self.build()
-        lf_index, lf_manifest = self.index.read_bytes(), json.loads(self.manifest.read_text())
-        self.write("a.json", package(question("Q-1"), question("Q-2")), newline="\r\n")
-        self.build()
-        self.assertEqual(self.index.read_bytes(), lf_index)
-        self.assertEqual(json.loads(self.manifest.read_text())["canonical_snapshot_digest"], lf_manifest["canonical_snapshot_digest"])
-        self.assertEqual(self.verify("--enforce"), 0)
-
-    def test_the_committed_index_is_current(self):
-        libs = [str(REPO / d) for d in ("Physics/library", "Chemistry/library", "Mathematics/library")]
-        out = Path(tempfile.mkdtemp())
-        self.addCleanup(shutil.rmtree, out, True)
-        argv = ["--index", str(REPO / "public/data/search-index.v1.json"), "--manifest", str(REPO / "public/data/search-index-manifest.v1.json"), "--library-dirs", *libs,
-                "--evidence-dir", str(out), "--enforce"]
-        self.assertEqual(verify_search_index.main(argv), 0, "rebuild it with Shared/tools/build_search_index.py")
 
 
 class ProjectionManifest(Tree):

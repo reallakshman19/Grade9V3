@@ -1,19 +1,30 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:grade9v3:search-document/v2",
+  "description": "One thing a learner can find. `url` is a route of the site that exists; `text` is what is searched; a document with `hidden` is searched and never shown (a hint).",
   "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "id", "kind", "title", "subject", "url", "text"],
   "properties": {
-    "schema": { "const": "search-document/v1" },
-    "canonical_id": { "type": "string" },
-    "canonical_digest": { "type": "string", "pattern": "^sha256:" },
-    "type": { "type": "string", "enum": ["QUESTION", "CONCEPT", "TOPIC", "PRODUCT"] },
-    "subject": { "type": "string" },
-    "concept_refs": { "type": "array", "items": { "type": "string" } },
-    "title": { "type": "string" },
-    "search_text": { "type": "string" },
-    "aliases": { "type": "array", "items": { "type": "string" } },
-    "canonical_url": { "type": "string" },
-    "source_refs": { "type": "array", "items": { "type": "string" } },
-    "search_visibility": { "type": "string", "enum": ["INCLUDED", "EXCLUDED"], "default": "INCLUDED" }
+    "schema": {"const": "search-document/v2"},
+    "id": {"type": "string", "minLength": 1},
+    "kind": {"enum": ["PAGE", "TOPIC", "QUESTION", "HINT"]},
+    "title": {"type": "string", "minLength": 1},
+    "subtitle": {"type": "string"},
+    "subject": {"type": "string", "minLength": 1},
+    "topic": {"type": "string"},
+    "difficulty": {"enum": ["D1", "D2", "D3", "D4"]},
+    "level": {"enum": ["CORE1", "CORE1A", "CORE1B", "CORE2", "CORE2A", "CORE2B"]},
+    "exam": {"type": "string"},
+    "year": {"type": "integer"},
+    "url": {"type": "string", "minLength": 1, "not": {"pattern": "^(/|[a-z][a-z0-9+.-]*:)"}},
+    "text": {"type": "string"},
+    "parent": {"type": "string"},
+    "position": {"type": "integer", "minimum": 1},
+    "hidden": {"const": true}
   },
-  "required": ["schema", "canonical_id", "canonical_digest", "type", "subject", "title", "search_text", "canonical_url"]
+  "allOf": [
+    {"if": {"properties": {"kind": {"const": "HINT"}}, "required": ["kind"]}, "then": {"required": ["hidden", "parent", "position"]}},
+    {"if": {"properties": {"kind": {"enum": ["PAGE", "TOPIC", "QUESTION"]}}, "required": ["kind"]}, "then": {"not": {"required": ["hidden"]}}}
+  ]
 }

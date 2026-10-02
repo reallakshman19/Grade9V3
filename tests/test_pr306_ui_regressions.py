@@ -9,9 +9,12 @@ REPO = Path(__file__).resolve().parents[1]
 
 class Pr306UiRegressions(unittest.TestCase):
     def test_shared_search_does_not_assign_read_only_window_top(self):
-        source = (REPO / "public" / "js" / "site-header.js").read_text(encoding="utf-8")
-        self.assertNotIn(",top=document.createElement", source)
-        self.assertIn("const top=document.createElement('div')", source)
+        """The dialog's header row was once declared as `,top=document.createElement`, which assigns the read-only window.top; it is `head` now, in the search script."""
+        for name in ("site-header.js", "site-search.js", "site-search-core.js"):
+            source = (REPO / "public" / "js" / name).read_text(encoding="utf-8")
+            self.assertNotIn(",top=document.createElement", source, name)
+            self.assertNotRegex(source, r"(?<![\w.])top\s*=\s*document\.createElement", name)
+        self.assertIn("var head = el('div', 'g9-search-top')", (REPO / "public" / "js" / "site-search.js").read_text(encoding="utf-8"))
 
     def test_friction_graph_uses_pointer_events_and_css_to_canvas_scaling(self):
         source = (

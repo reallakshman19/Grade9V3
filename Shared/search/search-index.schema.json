@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:grade9v3:search-index/v2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "counts", "facets", "documents"],
+  "properties": {
+    "schema": {"const": "search-index/v2"},
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["PAGE", "TOPIC", "QUESTION", "HINT"],
+      "properties": {"PAGE": {"type": "integer"}, "TOPIC": {"type": "integer"}, "QUESTION": {"type": "integer"}, "HINT": {"type": "integer"}}
+    },
+    "facets": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subject", "difficulty", "level"],
+      "properties": {"subject": {"type": "array", "items": {"type": "string"}}, "difficulty": {"type": "array", "items": {"type": "string"}}, "level": {"type": "array", "items": {"type": "string"}}}
+    },
+    "documents": {"type": "array", "items": {"$ref": "urn:grade9v3:search-document/v2"}}
+  }
+}

@@ -28,6 +28,8 @@ SCHEMAS = {
     "projection-manifest": "projection-manifest.schema.json",
     "release-fingerprint": "release-fingerprint.schema.json",
     "waivers": "waivers.schema.json",
+    "search-index": "../search/search-index.schema.json",
+    "search-index-manifest": "../search/search-index-manifest.schema.json",
 }
 # Evidence is about a subject; it must not be written into the subject's own tree (that changes the digest it claims, and a Pages mirror is not a
 # place for CI output).
@@ -60,6 +62,11 @@ def _validator(kind: str):
     from jsonschema import Draft202012Validator
     schema = json.loads((HERE / SCHEMAS[kind]).read_text(encoding="utf-8"))
     Draft202012Validator.check_schema(schema)
+    if kind == "search-index":                        # its documents are another schema, named by $id
+        from referencing import Registry, Resource
+        document = json.loads((HERE / "../search/search-document.schema.json").read_text(encoding="utf-8"))
+        registry = Registry().with_resource(document["$id"], Resource.from_contents(document))
+        return Draft202012Validator(schema, registry=registry, format_checker=_format_checker())
     return Draft202012Validator(schema, format_checker=_format_checker())
 
 

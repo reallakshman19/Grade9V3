@@ -6,20 +6,20 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 457,
-  "relation_count": 509,
+  "component_count": 460,
+  "relation_count": 512,
   "components_by_role": {
     "CONTRACT": 9,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 56,
-    "TEST": 219,
+    "TEST": 222,
     "TOOLING": 131,
     "WEB": 13,
     "WEB_CONTRACT": 8,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:72dfc1317c6e0e74a50158ce8721aff6e6c0892d47d35bee1fe0e3787d3e12b0",
+  "digest": "sha256:ecaee07eb7948d3eaa61cf5ad5bb3c5bb6be7b6d4e5b259a6fd4c22d1fbead4c",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -739,8 +739,8 @@
       "path": "Shared/tools/build_search_index.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 4930,
-      "sha256": "fb8e65eace43c0cabf719b4faf40f22cf473521403c9b6f433e4207b4a7d5de9"
+      "bytes": 4063,
+      "sha256": "1c7d43cf9277f9e04805bb3a3e89471af2cfa5fa54ecf25b888449f01d4552ff"
     },
     {
       "path": "Shared/tools/build_test_site.py",
@@ -1439,8 +1439,8 @@
       "path": "Shared/tools/verify_search_index.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 5015,
-      "sha256": "bc739001bde091793c16716cbd261901220801157cedd9ea4e36aa56905222fc"
+      "bytes": 8393,
+      "sha256": "4e21634648bb7eee2be5a9b22cb9483f58ff9a283a090bed626a90161df7178e"
     },
     {
       "path": "Shared/tools/web_blueprint_contract.py",
@@ -1996,6 +1996,13 @@
       "sha256": "f11b26e15869de0eb65a54008c0dbca02d1296807072fcc031569b3c2a9df514"
     },
     {
+      "path": "tests/site_search_core.test.mjs",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 6334,
+      "sha256": "1de1928be8d954f9ee2b4d4e6c3d349908911253066172014e32a13287278682"
+    },
+    {
       "path": "tests/test_agent_path_stress_prompts.py",
       "role": "TEST",
       "role_description": "Executable checks",
@@ -2048,8 +2055,8 @@
       "path": "tests/test_assurance_projections.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 14590,
-      "sha256": "3e58bab015755f22ec1e590a3ffc64248a232d1fac5620db4a94202b92cd0343"
+      "bytes": 9299,
+      "sha256": "79d4c8d73620bf241133d113eb8a60ba71fd09ee8445ff1206c7af2cb39c9f50"
     },
     {
       "path": "tests/test_assurance_verifiers.py",
@@ -2755,8 +2762,8 @@
       "path": "tests/test_pr306_ui_regressions.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 15929,
-      "sha256": "e11cb4508d38e972bef1b1c5012a3385de94a6f165a9584360ec180c7841f1e9"
+      "bytes": 16339,
+      "sha256": "d9dfb7030f1191273fc4c2658cdf92e8dee7242c21c55771130e68e47bf093aa"
     },
     {
       "path": "tests/test_pr375_u2_standalone.py",
@@ -2953,6 +2960,20 @@
       "role_description": "Executable checks",
       "bytes": 2140,
       "sha256": "a06306d6438f0be605456bff359376751e4279f25948486012ed53439ff20ae2"
+    },
+    {
+      "path": "tests/test_site_search_index.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 18104,
+      "sha256": "9dd06d6165f06122595c67a2d2a08bd993d6fe8075672f098c96407211a4f50a"
+    },
+    {
+      "path": "tests/test_site_search_ui.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 6466,
+      "sha256": "ef34646f77fa1e21feea77c938dec9418b1e49ea4c81d0175ad4c1af9b4ebe0b"
     },
     {
       "path": "tests/test_source_pipeline.py",
@@ -3619,7 +3640,7 @@
     },
     {
       "from": "Shared/tools/build_search_index.py",
-      "to": "Shared.contracts",
+      "to": "Shared.search",
       "kind": "IMPORTS"
     },
     {
@@ -4424,7 +4445,7 @@
     },
     {
       "from": "Shared/tools/verify_search_index.py",
-      "to": "Shared.tools.build_search_index",
+      "to": "Shared.search",
       "kind": "IMPORTS"
     },
     {
@@ -5559,6 +5580,21 @@
     },
     {
       "from": "tests/test_site_nav_audit.py",
+      "to": "Shared.tools",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_site_search_index.py",
+      "to": "Shared.assurance",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_site_search_index.py",
+      "to": "Shared.search",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_site_search_index.py",
       "to": "Shared.tools",
       "kind": "IMPORTS"
     },
