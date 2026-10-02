@@ -1,0 +1,253 @@
+name: pr375-u4-remediation-r6
+
+on:
+  push:
+    branches:
+      - feat/physics-tablet-standalone
+    paths:
+      - .github/workflows/pr375-u4-remediation-r6.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pr375-u4-remediation-r6
+  cancel-in-progress: false
+
+jobs:
+  remediate-verify-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/physics-tablet-standalone
+          fetch-depth: 0
+
+      - name: Pin exact audited branch head
+        shell: bash
+        run: echo "AUDIT_BASE_SHA=$(git rev-parse HEAD)" >> "$GITHUB_ENV"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Reconstruct reviewed U4 candidate
+        shell: bash
+        run: |
+          pip install --quiet pyyaml
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess, yaml
+          for workflow, step_name in [
+              ('.github/workflows/pr375-u4-remediation-r5.yml', 'Reconstruct reviewed U4 candidate'),
+              ('.github/workflows/pr375-u4-remediation-r5.yml', 'Contain long phone formula without page clipping'),
+              ('.github/workflows/pr375-u4-remediation-r5.yml', 'Verify exact U4 static denominator'),
+          ]:
+              data = yaml.safe_load(Path(workflow).read_text(encoding='utf-8'))
+              step = next(s for s in data['jobs']['remediate-verify-commit']['steps'] if s.get('name') == step_name)
+              subprocess.run(['bash', '-e', '-o', 'pipefail', '-c', step['run']], check=True)
+          PY
+
+      - name: Install Chromium audit dependency
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Re-run complete viewport and targeted U4 gates
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess, yaml
+          data = yaml.safe_load(Path('.github/workflows/pr375-u4-remediation-r5.yml').read_text(encoding='utf-8'))
+          for step_name in [
+              'Run complete 20-page U4 browser matrix',
+              'Verify reported contrast, forced-colour, and formula regressions',
+          ]:
+              step = next(s for s in data['jobs']['remediate-verify-commit']['steps'] if s.get('name') == step_name)
+              subprocess.run(['bash', '-e', '-o', 'pipefail', '-c', step['run']], check=True)
+          PY
+
+      - name: Robust keyboard, focus and semantic audit
+        shell: bash
+        run: |
+          python3 -m http.server 8108 --directory . >/tmp/pr375-u4-keyboard-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for i in $(seq 1 50); do curl -fsS http://127.0.0.1:8108/standalone/practice/index.html >/dev/null && break; sleep .2; done
+          cat >.tmp-pr375-u4-keyboard.mjs <<'JS'
+          import { chromium } from 'playwright';
+
+          const pages = [
+            'standalone/core1a-motion-1d-straight-line-tablet.html',
+            'standalone/core1a-motion-in-a-plane-tablet.html',
+            'standalone/core1a-physics-nlm-tablet.html',
+            'standalone/core1a-vector-add-sub-tablet.html',
+            'standalone/core2-motion-in-a-plane-tablet.html',
+            'standalone/core2-physics-thrust-pressure-tablet.html',
+            'standalone/practice/core1a-physics-motion-2d-ncert-tablet.html',
+            'standalone/practice/core1a-physics-nlm-tablet.html',
+            'standalone/practice/core1a-physics-vectors-tablet.html',
+            'standalone/practice/core1a-sba-06-07-trajectory-and-height-tablet.html',
+            'standalone/practice/core1a-sba-motion-in-a-plane-master-tablet.html',
+            'standalone/practice/core2-motion-1d-straight-line-tablet.html',
+            'standalone/practice/core2-motion-consolidated-practice-tablet.html',
+            'standalone/practice/core2-motion-in-a-plane-tablet.html',
+            'standalone/practice/core2-physics-thrust-pressure-tablet.html',
+            'standalone/practice/core2a-projectile-study.html',
+            'standalone/practice/index.html',
+            'standalone/practice/motion-in-1d-master-suite.html',
+            'standalone/practice/motion-in-2d-master-suite.html',
+            'standalone/practice/physics-motion-in-a-plane-interactive-suite.html',
+          ];
+
+          const browser = await chromium.launch({ headless: true });
+          const failures = [];
+
+          async function focusState(page) {
+            return page.evaluate(() => {
+              window.__u4ProbeSeq ||= 0;
+              let el = document.activeElement;
+              while (el?.shadowRoot?.activeElement) el = el.shadowRoot.activeElement;
+              if (!el || el === document.body || el === document.documentElement) {
+                return { terminal: true, key: 'document', visible: true, ring: true, tag: el?.tagName || 'NONE' };
+              }
+              if (!el.hasAttribute('data-u4-focus-probe')) {
+                el.setAttribute('data-u4-focus-probe', `u4-${++window.__u4ProbeSeq}`);
+              }
+              const cs = getComputedStyle(el);
+              const r = el.getBoundingClientRect();
+              const visible = r.width > 0 && r.height > 0 && cs.display !== 'none' && cs.visibility !== 'hidden' && Number(cs.opacity || 1) > 0;
+              const outline = cs.outlineStyle !== 'none' && parseFloat(cs.outlineWidth || '0') > 0;
+              const shadow = cs.boxShadow && cs.boxShadow !== 'none';
+              let focusVisible = false;
+              try { focusVisible = el.matches(':focus-visible'); } catch {}
+              return {
+                terminal: false,
+                key: el.getAttribute('data-u4-focus-probe'),
+                visible,
+                ring: !focusVisible || outline || shadow,
+                focusVisible,
+                outline: `${cs.outlineStyle} ${cs.outlineWidth}`,
+                boxShadow: cs.boxShadow,
+                tag: el.tagName,
+                id: el.id || '',
+                text: (el.getAttribute('aria-label') || el.textContent || el.value || '').replace(/\s+/g, ' ').trim().slice(0, 80),
+              };
+            });
+          }
+
+          for (const rel of pages) {
+            const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+            const page = await context.newPage();
+            await page.goto(`http://127.0.0.1:8108/${rel}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
+            await page.waitForTimeout(350);
+
+            const sem = await page.evaluate(() => ({
+              lang: document.documentElement.lang,
+              h1: document.querySelectorAll('h1').length,
+              unnamed: [...document.querySelectorAll('input,select,textarea,svg,canvas')].filter(el => {
+                if (el.matches('svg,canvas')) return !el.getAttribute('aria-label') && !el.getAttribute('aria-labelledby') && !el.getAttribute('aria-hidden') && !el.querySelector?.('title');
+                return !el.getAttribute('aria-label') && !el.getAttribute('aria-labelledby') && !el.title && !el.closest('label') && !(el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`));
+              }).length,
+            }));
+            if (!sem.lang) failures.push(`${rel}: missing html lang`);
+            if (sem.h1 !== 1) failures.push(`${rel}: expected one h1, found ${sem.h1}`);
+            if (sem.unnamed) failures.push(`${rel}: ${sem.unnamed} unnamed controls/figures after settle`);
+
+            // Fast pass: follow the browser's actual Tab order instead of counting hidden DOM controls.
+            const seen = new Set();
+            let firstKey = null;
+            let fastStops = 0;
+            for (let i = 0; i < 240; i++) {
+              await page.keyboard.press('Tab');
+              const s = await focusState(page);
+              if (s.terminal) {
+                if (fastStops > 0) break; // normal cycle boundary
+                continue;
+              }
+              if (!s.visible) {
+                failures.push(`${rel}: actual Tab stop ${fastStops + 1} is hidden (${s.tag}#${s.id} ${s.text})`);
+                break;
+              }
+              if (!firstKey) firstKey = s.key;
+              else if (s.key === firstKey) break; // full cycle completed
+              else if (seen.has(s.key)) {
+                failures.push(`${rel}: keyboard focus loop/trap before returning to first control (${s.tag}#${s.id} ${s.text})`);
+                break;
+              }
+              seen.add(s.key);
+              fastStops++;
+            }
+            if (!fastStops) failures.push(`${rel}: no keyboard-reachable control found`);
+
+            // Delayed pass mirrors the original U4 methodology: allow focus transitions to settle before judging the ring.
+            await page.reload({ waitUntil: 'domcontentloaded' });
+            await page.waitForTimeout(350);
+            const delayedSeen = new Set();
+            let delayedFirst = null;
+            for (let i = 0; i < 40; i++) {
+              await page.keyboard.press('Tab');
+              await page.waitForTimeout(300);
+              const s = await focusState(page);
+              if (s.terminal) {
+                if (delayedSeen.size) break;
+                continue;
+              }
+              if (!s.visible) {
+                failures.push(`${rel}: delayed Tab stop ${i + 1} hidden (${s.tag}#${s.id} ${s.text})`);
+                break;
+              }
+              if (!delayedFirst) delayedFirst = s.key;
+              else if (s.key === delayedFirst) break;
+              if (delayedSeen.has(s.key)) break;
+              delayedSeen.add(s.key);
+              if (s.focusVisible && !s.ring) {
+                failures.push(`${rel}: no visible focus indicator at delayed stop ${i + 1} (${s.tag}#${s.id} ${s.text}; outline=${s.outline}; shadow=${s.boxShadow})`);
+                break;
+              }
+            }
+            await context.close();
+          }
+
+          await browser.close();
+          if (failures.length) {
+            console.error('U4 keyboard/semantic failures:');
+            failures.forEach(f => console.error(`- ${f}`));
+            process.exit(1);
+          }
+          console.log(`U4 keyboard/semantic audit: PASS (${pages.length}/20 pages; actual Tab order + delayed focus rings)`);
+          JS
+          node .tmp-pr375-u4-keyboard.mjs
+          rm -f .tmp-pr375-u4-keyboard.mjs
+
+      - name: Ensure feature branch did not advance during audit
+        shell: bash
+        run: |
+          remote_sha=$(git ls-remote origin refs/heads/feat/physics-tablet-standalone | awk '{print $1}')
+          test "$remote_sha" = "$AUDIT_BASE_SHA" || { echo "branch advanced from $AUDIT_BASE_SHA to $remote_sha; refusing to overwrite"; exit 1; }
+
+      - name: Commit verified U4 remediation and remove U4 one-shot workflows
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/pr375-u4-remediation.yml \
+                 .github/workflows/pr375-u4-remediation-r2.yml \
+                 .github/workflows/pr375-u4-remediation-r3.yml \
+                 .github/workflows/pr375-u4-diagnostic-r4.yml \
+                 .github/workflows/pr375-u4-remediation-r5.yml \
+                 .github/workflows/pr375-u4-remediation-r6.yml
+          git add standalone/core1a-motion-1d-straight-line-tablet.html \
+                  standalone/core1a-motion-in-a-plane-tablet.html \
+                  standalone/core1a-physics-nlm-tablet.html \
+                  standalone/core1a-vector-add-sub-tablet.html \
+                  standalone/core2-motion-in-a-plane-tablet.html \
+                  standalone/core2-physics-thrust-pressure-tablet.html \
+                  standalone/practice/*.html
+          git commit -m "fix(physics): remediate PR375 U4 accessibility findings"
+          git push origin HEAD:feat/physics-tablet-standalone
