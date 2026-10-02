@@ -19,7 +19,7 @@
     "WEB_CONTRACT": 8,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:ecaee07eb7948d3eaa61cf5ad5bb3c5bb6be7b6d4e5b259a6fd4c22d1fbead4c",
+  "digest": "sha256:01e7402e6c386011e6ab5831b98d849a3f40a1901350f1187855a4c4e12cf780",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -2958,15 +2958,15 @@
       "path": "tests/test_site_nav_audit.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 2140,
-      "sha256": "a06306d6438f0be605456bff359376751e4279f25948486012ed53439ff20ae2"
+      "bytes": 2391,
+      "sha256": "1075d3bcf9dd9d51f6d66030aa2e817505fe0ff5bba2271671df5a344cc7e886"
     },
     {
       "path": "tests/test_site_search_index.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 18104,
-      "sha256": "9dd06d6165f06122595c67a2d2a08bd993d6fe8075672f098c96407211a4f50a"
+      "bytes": 18575,
+      "sha256": "f1c4b0539f1ac501bd9668dd2050216c88d5069f5a56aad191130da922b39f3e"
     },
     {
       "path": "tests/test_site_search_ui.py",

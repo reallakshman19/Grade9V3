@@ -21,9 +21,11 @@ class SiteNavAudit(unittest.TestCase):
         self.assertEqual(sorted(new), [], "fix these or, if intended, they must not exist; the baseline only shrinks")
 
     def test_shared_header_search_does_not_assign_window_top(self):
-        source = (REPO / "public" / "js" / "site-header.js").read_text(encoding="utf-8")
-        self.assertNotIn(",top=document.createElement", source)
-        self.assertIn("const top=document.createElement('div')", source)
+        """The search dialog moved out of the header into its own script; none of the three may declare the read-only window.top by assignment."""
+        for name in ("site-header.js", "site-search.js", "site-search-core.js"):
+            source = (REPO / "public" / "js" / name).read_text(encoding="utf-8")
+            self.assertNotIn(",top=document.createElement", source, name)
+            self.assertNotRegex(source, r"(?<![\w.])top\s*=\s*document\.createElement", name)
 
     def test_audit_detects_each_problem_class(self):
         with tempfile.TemporaryDirectory() as tmp:

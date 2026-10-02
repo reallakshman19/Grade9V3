@@ -177,9 +177,18 @@
       "path": "public/js/site-header.js",
       "kind": "JS_RENDER",
       "classification": "OUT_OF_SCOPE",
-      "renders": "Site header/search",
+      "renders": "Site header (loads the search dialog)",
       "location": "main",
       "reason": "Site shell",
+      "phase3_action": "Replaced by g9-shell (docs/specs/TABLET-SHELL-AND-NAVIGATION.md)"
+    },
+    {
+      "path": "public/js/site-search.js",
+      "kind": "JS_RENDER",
+      "classification": "OUT_OF_SCOPE",
+      "renders": "Header search dialog (results of pages, topics, questions and hints)",
+      "location": "main",
+      "reason": "Site shell; the results are links to pages, and hints are never displayed",
       "phase3_action": "Replaced by g9-shell (docs/specs/TABLET-SHELL-AND-NAVIGATION.md)"
     },
     {

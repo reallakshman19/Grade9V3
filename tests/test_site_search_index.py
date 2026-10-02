@@ -145,6 +145,13 @@ class Index(Fixture):
             self.assertNotIn(h["text"], h["title"] + h.get("subtitle", ""), "the hint's words are not in anything that is displayed")
             self.assertEqual(h["url"], next(d["url"] for d in self.docs("QUESTION") if d["id"] == h["parent"]))
 
+    def test_a_hint_carries_the_level_and_difficulty_of_its_question_so_that_the_filters_find_it(self):
+        by_parent = {}
+        for h in self.docs("HINT"):
+            by_parent.setdefault(h["parent"], []).append(h)
+        self.assertEqual({(h.get("level"), h.get("difficulty")) for h in by_parent["question:Q-LIB-1"]}, {("CORE2A", "D3")})
+        self.assertEqual({(h.get("level"), h.get("difficulty")) for h in by_parent["question:Q-BANK-1"]}, {(None, "D2")})
+
     def test_no_answer_is_in_the_index_at_all(self):
         self.assertNotIn(SECRET, json.dumps(self.build().index))
 

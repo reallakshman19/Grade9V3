@@ -281,7 +281,7 @@ def build(repo: Path, library_dirs: list[Path], config: dict | None = None) -> B
                          **{k: v for k, v in meta.items() if k != "topic"}, topic=meta.get("topic")))
         for n, hint in enumerate(hints_of(q), start=1):
             docs.append(_doc("HINT", f"hint:{qid}:{n}", f"Hint {n}", subject, url, hint, subtitle=title, parent=f"question:{qid}",
-                             position=n, hidden=True, topic=meta.get("topic"), difficulty=meta.get("difficulty")))
+                             position=n, hidden=True, topic=meta.get("topic"), difficulty=meta.get("difficulty"), level=level))
 
     order = {k: i for i, k in enumerate(KINDS)}
     docs.sort(key=lambda d: (order[d["kind"]], d["subject"], d["title"].lower(), d["id"]))
