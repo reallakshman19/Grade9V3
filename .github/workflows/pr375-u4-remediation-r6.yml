@@ -1,11 +1,10 @@
 name: pr375-u4-remediation-r6
 
 on:
-  push:
+  pull_request:
     branches:
-      - feat/physics-tablet-standalone
-    paths:
-      - .github/workflows/pr375-u4-remediation-r6.yml
+      - main
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
@@ -16,6 +15,7 @@ concurrency:
 
 jobs:
   remediate-verify-commit:
+    if: github.event.pull_request.number == 375 && github.event.pull_request.head.ref == 'feat/physics-tablet-standalone'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -159,7 +159,6 @@ jobs:
             if (sem.h1 !== 1) failures.push(`${rel}: expected one h1, found ${sem.h1}`);
             if (sem.unnamed) failures.push(`${rel}: ${sem.unnamed} unnamed controls/figures after settle`);
 
-            // Fast pass: follow the browser's actual Tab order instead of counting hidden DOM controls.
             const seen = new Set();
             let firstKey = null;
             let fastStops = 0;
@@ -167,7 +166,7 @@ jobs:
               await page.keyboard.press('Tab');
               const s = await focusState(page);
               if (s.terminal) {
-                if (fastStops > 0) break; // normal cycle boundary
+                if (fastStops > 0) break;
                 continue;
               }
               if (!s.visible) {
@@ -175,7 +174,7 @@ jobs:
                 break;
               }
               if (!firstKey) firstKey = s.key;
-              else if (s.key === firstKey) break; // full cycle completed
+              else if (s.key === firstKey) break;
               else if (seen.has(s.key)) {
                 failures.push(`${rel}: keyboard focus loop/trap before returning to first control (${s.tag}#${s.id} ${s.text})`);
                 break;
@@ -185,7 +184,6 @@ jobs:
             }
             if (!fastStops) failures.push(`${rel}: no keyboard-reachable control found`);
 
-            // Delayed pass mirrors the original U4 methodology: allow focus transitions to settle before judging the ring.
             await page.reload({ waitUntil: 'domcontentloaded' });
             await page.waitForTimeout(350);
             const delayedSeen = new Set();
