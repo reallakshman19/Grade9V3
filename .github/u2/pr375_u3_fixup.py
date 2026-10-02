@@ -33,7 +33,36 @@ for path in [ST/"core2-physics-thrust-pressure-tablet.html",PR/"core2-physics-th
     save(path,text)
 
 '''
-rem.write_text(s[:start] + replacement + s[end:], encoding="utf-8")
+s = s[:start] + replacement + s[end:]
+
+# U3-10 was audited against the 20 PR-added Physics pages. Keep the durable test
+# on exactly that denominator instead of globbing unrelated Chemistry/Math pages.
+old_pages = 'PAGES=list((ROOT/"standalone").glob("*.html"))+list(PR.glob("*.html"))'
+new_pages = '''PAGES=[
+ ROOT/"standalone/core1a-motion-1d-straight-line-tablet.html",
+ ROOT/"standalone/core1a-motion-in-a-plane-tablet.html",
+ ROOT/"standalone/core1a-physics-nlm-tablet.html",
+ ROOT/"standalone/core1a-vector-add-sub-tablet.html",
+ ROOT/"standalone/core2-motion-in-a-plane-tablet.html",
+ ROOT/"standalone/core2-physics-thrust-pressure-tablet.html",
+ PR/"core1a-physics-motion-2d-ncert-tablet.html",
+ PR/"core1a-physics-nlm-tablet.html",
+ PR/"core1a-physics-vectors-tablet.html",
+ PR/"core1a-sba-06-07-trajectory-and-height-tablet.html",
+ PR/"core1a-sba-motion-in-a-plane-master-tablet.html",
+ PR/"core2-motion-1d-straight-line-tablet.html",
+ PR/"core2-motion-consolidated-practice-tablet.html",
+ PR/"core2-motion-in-a-plane-tablet.html",
+ PR/"core2-physics-thrust-pressure-tablet.html",
+ PR/"core2a-projectile-study.html",
+ PR/"index.html",
+ PR/"motion-in-1d-master-suite.html",
+ PR/"motion-in-2d-master-suite.html",
+ PR/"physics-motion-in-a-plane-interactive-suite.html",
+]'''
+assert old_pages in s
+s = s.replace(old_pages, new_pages, 1)
+rem.write_text(s, encoding="utf-8")
 
 s = aud.read_text(encoding="utf-8")
 start = s.index(" // U3-6:")
@@ -57,4 +86,4 @@ replacement = r''' // U3-6: final-stage labels stay inside each of the six actua
 
 '''
 aud.write_text(s[:start] + replacement + s[end:], encoding="utf-8")
-print("patched U3 SVG remediation/audit to role-based six-figure selection")
+print("patched U3 SVG remediation/audit and scoped favicon regression to 20 audited Physics pages")
