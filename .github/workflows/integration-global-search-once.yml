@@ -1,0 +1,115 @@
+name: integration-global-search-once
+
+on:
+  push:
+    branches: [integration/pr376-pr377-pr378-global-search]
+    paths:
+      - ".github/workflows/integration-global-search-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: integration/pr376-pr377-pr378-global-search
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install validation dependency
+        run: pip install --quiet jsonschema
+      - name: Regenerate combined learner publication
+        run: |
+          python3 Chemistry/tools/sync_blueprint_pages.py
+          python3 Chemistry/tools/publish_practice.py
+          python3 Shared/tools/build_qb_tablet_standalone.py --write
+          python3 Shared/tools/build_site_search_resources.py
+          python3 Shared/tools/build_question_bank_web.py
+          python3 Shared/tools/build_question_bank_platform.py --write
+          python3 Shared/tools/build_search_index.py \
+            --library-dirs Physics/library Chemistry/library Mathematics/library \
+            --output-index public/data/search-index.v1.json \
+            --output-manifest public/data/search-index-manifest.v1.json
+          python3 Shared/tools/build_manifest.py
+          python3 Shared/tools/build_pages_site.py
+      - name: Verify deterministic builders and focused tests
+        run: |
+          python3 Chemistry/tools/sync_blueprint_pages.py --check
+          python3 Shared/tools/build_qb_tablet_standalone.py --check
+          python3 Shared/tools/build_site_search_resources.py --check
+          python3 -m unittest \
+            tests.test_chemistry_tablet_standalone \
+            tests.test_chemistry_practice_integration \
+            tests.test_qb_tablet_standalone \
+            tests.test_mathematics_tablet_standalone
+      - name: Enforce Blueprint 1.9 across integrated standalone surfaces
+        run: |
+          python3 Shared/tools/standalone_conformance.py \
+            standalone/core1a-chemistry-behaviour-of-gases-tablet.html \
+            standalone/core1a-chemistry-chemical-bonding-tablet.html \
+            standalone/core1a-chemistry-redox-reactions-tablet.html \
+            standalone/core1a-chemistry-some-basic-concepts-tablet.html \
+            public/standalone/practice/chemistry/index.html \
+            public/standalone/practice/chemistry/behaviour-of-gases.html \
+            public/standalone/practice/chemistry/chemical-bonding.html \
+            public/standalone/practice/chemistry/redox-reactions.html \
+            public/standalone/practice/chemistry/some-basic-concepts.html \
+            standalone/core2-canonical-question-bank-tablet.html \
+            standalone/core1a-mathematics-euclids-geometry-tablet.html \
+            standalone/core1a-mathematics-theory-of-equations-tablet.html \
+            public/standalone/practice/mathematics/index.html \
+            public/standalone/practice/mathematics/euclids-geometry.html \
+            public/standalone/practice/mathematics/theory-of-equations.html \
+            --enforce
+      - name: Verify one global static-resource catalog
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          payload = json.loads(Path('Shared/search/site-search-resources.v1.json').read_text(encoding='utf-8'))
+          resources = payload['resources']
+          paths = [item['path'] for item in resources]
+          required = [
+              'standalone/practice/friction/index.html',
+              'standalone/practice/friction/core1a.html',
+              'standalone/practice/friction/core2.html',
+              'standalone/practice/chemistry/index.html',
+              'standalone/practice/chemistry/behaviour-of-gases.html',
+              'standalone/practice/chemistry/chemical-bonding.html',
+              'standalone/practice/chemistry/redox-reactions.html',
+              'standalone/practice/chemistry/some-basic-concepts.html',
+              'standalone/practice/mathematics/index.html',
+              'standalone/practice/mathematics/euclids-geometry.html',
+              'standalone/practice/mathematics/theory-of-equations.html',
+          ]
+          assert payload['scope'] == 'global'
+          assert len(paths) == len(set(paths)), 'duplicate resource path in global search catalog'
+          missing = [path for path in required if path not in paths]
+          assert not missing, f'missing required global search resources: {missing}'
+          missing_files = [path for path in paths if not (Path('public') / path).is_file()]
+          assert not missing_files, f'global search resources point to missing learner pages: {missing_files}'
+          print(f'GLOBAL_SEARCH_CATALOG: PASS ({len(resources)} static resources, one catalog)')
+          PY
+      - name: Verify canonical search index and Pages mirror
+        run: |
+          python3 Shared/tools/verify_search_index.py \
+            --index public/data/search-index.v1.json \
+            --manifest public/data/search-index-manifest.v1.json \
+            --library-dirs Physics/library Chemistry/library Mathematics/library \
+            --enforce
+          python3 Shared/tools/build_pages_site.py --check
+      - name: Commit deterministic integrated publication
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Integrated publication already synchronized."
+            exit 0
+          fi
+          git commit -m "feat(search): publish combined physics chemistry mathematics corpus"
+          git push origin HEAD:integration/pr376-pr377-pr378-global-search
