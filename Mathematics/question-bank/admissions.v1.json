@@ -1,0 +1,144 @@
+{
+  "schema_version": "grade9v3-question-bank-admission-v1",
+  "subject": "Mathematics",
+  "package_path": "Mathematics/library/linear-equations.v1.json",
+  "package_id": "LIB-MATH-LINEAR-EQUATIONS",
+  "topic_ref": "TOPIC-MATHEMATICS-LINEAR-EQUATIONS",
+  "topic_label": "Linear Equations",
+  "last_checked": "2026-10-02",
+  "review_basis": "Independent re-derivation of each selected source-original item against its stem plus comparison with the canonical package's official-answer evidence. Authored teaching/transfer questions are intentionally excluded.",
+  "expected_time_seconds": 180,
+  "difficulty": {
+    "band": "D2",
+    "score": 4,
+    "basis": "Publication classification for these source exercise/exemplar items: one or more reversible algebra/substitution decisions, but no sustained multi-concept chain. This metadata controls learner filtering only; it does not alter the canonical stem or answer."
+  },
+  "questions": [
+    {
+      "id": "Q-MAT-LEQ-01-EXEMPLAR8-Q6",
+      "exam": "NCERT Exemplar Class VIII",
+      "paper": "Linear Equations in One Variable",
+      "question_number": "6",
+      "independent_check": "PASS: 3x - 4 = 2x + 1 gives x = 5, matching option (c)."
+    },
+    {
+      "id": "Q-MAT-LEQ-01-EXEMPLAR8-Q17",
+      "exam": "NCERT Exemplar Class VIII",
+      "paper": "Linear Equations in One Variable",
+      "question_number": "17",
+      "independent_check": "PASS: 3x - 4 = 1 - 2x gives 5x = 5 and x = 1."
+    },
+    {
+      "id": "Q-MAT-LEQ-01-EXEMPLAR8-Q20",
+      "exam": "NCERT Exemplar Class VIII",
+      "paper": "Linear Equations in One Variable",
+      "question_number": "20",
+      "independent_check": "PASS: 9(-2) - k = -21 gives -18 - k = -21 and k = 3."
+    },
+    {
+      "id": "Q-MAT-LEQ-02-NCERT8-EX2-1-Q1",
+      "exam": "NCERT Class VIII",
+      "paper": "Exercise 2.1",
+      "question_number": "1",
+      "independent_check": "PASS: 3x = 2x + 18 gives x = 18."
+    },
+    {
+      "id": "Q-MAT-LEQ-02-NCERT8-EX2-1-Q2",
+      "exam": "NCERT Class VIII",
+      "paper": "Exercise 2.1",
+      "question_number": "2",
+      "independent_check": "PASS: 5t - 3 = 3t - 5 gives 2t = -2 and t = -1."
+    },
+    {
+      "id": "Q-MAT-LEQ-02-NCERT8-EX2-1-Q3",
+      "exam": "NCERT Class VIII",
+      "paper": "Exercise 2.1",
+      "question_number": "3",
+      "independent_check": "PASS: 5x + 9 = 5 + 3x gives 2x = -4 and x = -2."
+    },
+    {
+      "id": "Q-MAT-LEQ-02-NCERT8-EX2-1-Q5",
+      "exam": "NCERT Class VIII",
+      "paper": "Exercise 2.1",
+      "question_number": "5",
+      "independent_check": "PASS: 2x - 1 = 14 - x gives 3x = 15 and x = 5."
+    },
+    {
+      "id": "Q-MAT-LEQ-02-EXEMPLAR9-4-1-Q16",
+      "exam": "NCERT Exemplar Class IX",
+      "paper": "Linear Equations in Two Variables",
+      "question_number": "16",
+      "independent_check": "PASS: the canonical answer was checked directly against the stated equation/solution-set condition and official-answer evidence."
+    },
+    {
+      "id": "Q-MAT-LEQ-03-NCERT8-EX2-2-Q7",
+      "exam": "NCERT Class VIII",
+      "paper": "Exercise 2.2",
+      "question_number": "7",
+      "independent_check": "PASS: 3(t - 3) = 5(2t + 1) gives 3t - 9 = 10t + 5 and t = -2."
+    },
+    {
+      "id": "Q-MAT-LEQ-03-NCERT8-EX2-2-Q9",
+      "exam": "NCERT Class VIII",
+      "paper": "Exercise 2.2",
+      "question_number": "9",
+      "independent_check": "PASS: simplifying both sides gives -3z + 1 = 32z - 69, hence z = 2."
+    },
+    {
+      "id": "Q-MAT-LEQ-03-NCERT8-EX2-2-Q10",
+      "exam": "NCERT Class VIII",
+      "paper": "Exercise 2.2",
+      "question_number": "10",
+      "independent_check": "PASS: 0.25(4f - 3) = 0.05(10f - 9) gives f - 0.75 = 0.5f - 0.45 and f = 0.6."
+    },
+    {
+      "id": "Q-MAT-LEQ-03-EXEMPLAR8-Q58",
+      "exam": "NCERT Exemplar Class VIII",
+      "paper": "Linear Equations in One Variable",
+      "question_number": "58",
+      "independent_check": "PASS: 8x - 7 - 3x = 6x - 2x - 3 gives 5x - 7 = 4x - 3 and x = 4."
+    },
+    {
+      "id": "Q-MAT-LEQ-03-EXEMPLAR8-Q61",
+      "exam": "NCERT Exemplar Class VIII",
+      "paper": "Linear Equations in One Variable",
+      "question_number": "61",
+      "independent_check": "PASS: 5(x - 1) - 2(x + 8) = 0 gives 3x - 21 = 0 and x = 7."
+    },
+    {
+      "id": "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q1",
+      "exam": "NCERT Exemplar Class IX",
+      "paper": "Linear Equations in Two Variables",
+      "question_number": "4.1 Q1",
+      "independent_check": "PASS: checked the equation's solution-set classification against its canonical reasoning and official-answer evidence."
+    },
+    {
+      "id": "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q3",
+      "exam": "NCERT Exemplar Class IX",
+      "paper": "Linear Equations in Two Variables",
+      "question_number": "4.1 Q3",
+      "independent_check": "PASS: substitution into the stated linear equation independently reproduces the canonical parameter value k = 4."
+    },
+    {
+      "id": "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q11",
+      "exam": "NCERT Exemplar Class IX",
+      "paper": "Linear Equations in Two Variables",
+      "question_number": "4.1 Q11",
+      "independent_check": "PASS: independently checked the option/equation relation; x + y = 7 is the matching relation."
+    },
+    {
+      "id": "Q-MAT-LEQ-04-EXEMPLAR9-4-2-Q1",
+      "exam": "NCERT Exemplar Class IX",
+      "paper": "Linear Equations in Two Variables",
+      "question_number": "4.2 Q1",
+      "independent_check": "PASS: the statement was independently checked against the solution-set definition and canonical official-answer evidence."
+    },
+    {
+      "id": "Q-MAT-LEQ-04-EXEMPLAR9-4-3-Q7",
+      "exam": "NCERT Exemplar Class IX",
+      "paper": "Linear Equations in Two Variables",
+      "question_number": "4.3 Q7",
+      "independent_check": "PASS: independently checked the one-variable solution x = -4 and the corresponding two-variable solution-set interpretation."
+    }
+  ]
+}

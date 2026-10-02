@@ -117,6 +117,18 @@ class GlobalSiteSearchTests(unittest.TestCase):
             {item["path"] for item in euclid},
         )
 
+        vector = page_matches(self.merged_destinations, "vector algebra")
+        self.assertIn(
+            "mathematics/vectors/explorers/vector_algebra/index.html",
+            {item["path"] for item in vector},
+        )
+
+        math_questions = question_matches(self.question_bank.get("questions", []), "expressions become equal")
+        self.assertIn(
+            "Q-MAT-LEQ-01-EXEMPLAR8-Q6",
+            {item["id"] for item in math_questions},
+        )
+
     def test_question_bank_denominator_is_self_consistent_not_hard_coded(self):
         questions = self.question_bank.get("questions", [])
         counts = self.question_bank.get("counts", {})
@@ -125,6 +137,11 @@ class GlobalSiteSearchTests(unittest.TestCase):
         self.assertEqual(sum(subjects.values()), len(questions))
         self.assertGreater(subjects.get("Physics", 0), 0)
         self.assertGreater(subjects.get("Chemistry", 0), 0)
+        self.assertEqual(subjects.get("Mathematics", 0), 18)
+
+    def test_page_local_vector_hub_questions_are_not_silently_canonicalized(self):
+        ids = {item.get("id") for item in self.question_bank.get("questions", [])}
+        self.assertFalse(any(str(qid).startswith("VEC-Q") for qid in ids))
 
 
 if __name__ == "__main__":
