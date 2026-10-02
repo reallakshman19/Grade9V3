@@ -469,6 +469,18 @@
       "target": "standalone/practice/index.html"
     },
     {
+      "source": "public/standalone/practice/mathematics/euclids-geometry.html",
+      "target": "standalone/practice/mathematics/euclids-geometry.html"
+    },
+    {
+      "source": "public/standalone/practice/mathematics/index.html",
+      "target": "standalone/practice/mathematics/index.html"
+    },
+    {
+      "source": "public/standalone/practice/mathematics/theory-of-equations.html",
+      "target": "standalone/practice/mathematics/theory-of-equations.html"
+    },
+    {
       "source": "public/standalone/practice/motion-in-1d-master-suite.html",
       "target": "standalone/practice/motion-in-1d-master-suite.html"
     },
