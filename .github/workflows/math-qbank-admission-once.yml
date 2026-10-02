@@ -1,5 +1,6 @@
 name: math-qbank-admission-once
 
+# Temporary branch-only materializer. Remove after successful deterministic publication.
 on:
   push:
     branches: [feat/math-qbank-admission-global-search]
