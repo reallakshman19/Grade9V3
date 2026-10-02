@@ -98,5 +98,15 @@ replacement = r''' // U3-6: final-stage labels stay inside each of the six actua
  }
 
 '''
-aud.write_text(s[:start] + replacement + s[end:], encoding="utf-8")
-print("patched U3 SVG remediation/audit and scoped favicon regression to 20 audited Physics pages")
+s = s[:start] + replacement + s[end:]
+
+# U2 remediation can change surrounding accessibility structure; bind the U3-8
+# interaction check to the exact control adjacent to #reconInput, not its
+# accessible-name computation. Behavior assertions remain unchanged.
+old_selector = "page.getByRole('button',{name:'Check Understanding'})"
+new_selector = "page.locator('#reconInput').locator('xpath=following-sibling::button[1]')"
+assert s.count(old_selector) == 2, s.count(old_selector)
+s = s.replace(old_selector, new_selector)
+
+aud.write_text(s, encoding="utf-8")
+print("patched U3 SVG remediation/audit, 20-page favicon scope, and reconstruction-control locator")
