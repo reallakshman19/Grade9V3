@@ -113,8 +113,8 @@
   </style>
   
   <!-- KaTeX for crisp mathematical typography -->
-  <link rel="stylesheet" href="../../public/vendor/katex/0.16.8/katex.min.css">
-  <script defer src="../../public/vendor/katex/0.16.8/katex.min.js"></script>
+  <link rel="stylesheet" href="../vendor/katex/0.16.8/katex.min.css">
+  <script defer src="../vendor/katex/0.16.8/katex.min.js"></script>
 
   <!-- High-Yield Question Bank -->
   <script>
@@ -1313,6 +1313,7 @@ window.JEE_QUESTIONS_DATA = [
 
 </script>
 
+  <script src="../vendor/tailwind/3.4.17/tailwind-play.js"></script>
   <script>
     (window.tailwind = window.tailwind || {}).config = {
       darkMode: 'class',
@@ -1604,6 +1605,9 @@ article[data-g9-role="CORE1A"]>.slot-identity [data-g9-section-route] a{white-sp
 
 .badge,.study-kicker{font-size:14px!important}
 </style>
+<style id="u2-practice-hub-target">
+a[href="index.html"]{min-height:48px!important;min-width:48px!important;box-sizing:border-box;display:inline-flex;align-items:center;justify-content:center}
+</style>
 </head>
 <body class="u4-tailwind-offline bg-background text-slate-100 min-h-screen flex flex-col font-sans selection:bg-sky-500/30">
 
@@ -1611,11 +1615,7 @@ article[data-g9-role="CORE1A"]>.slot-identity [data-g9-section-route] a{white-sp
   <header class="sticky top-0 z-40 bg-slate-950/90 backdrop-blur-md border-b border-border px-4 py-3">
     <div class="max-w-7xl mx-auto flex flex-col md:flex-row md:items-center justify-between gap-3">
       <div class="flex items-center gap-3">
-        <a href="index.html" class="p-2 rounded-lg bg-slate-900 border border-border hover:border-sky-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5" aria-label="Back to Practice Hub" title="Back to Practice Hub" style="min-height:48px;min-width:48px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-          </svg>
-        </a>
+        <a href="index.html" class="p-2 rounded-lg bg-slate-900 border border-border hover:border-sky-500/50 text-slate-300 hover:text-white transition flex items-center gap-1.5" aria-label="Back to Practice Hub" title="Back to Practice Hub" style="min-height:48px;min-width:48px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;">← Practice Hub</a>
         <div>
           <div class="flex items-center gap-2">
             <span class="px-2 py-0.5 text-[13px] font-extrabold uppercase tracking-wider rounded bg-sky-500/20 text-sky-400 border border-sky-500/30">
