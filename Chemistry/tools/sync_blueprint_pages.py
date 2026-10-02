@@ -30,6 +30,28 @@ WITHDRAWN_CORE2 = (
     REPO / "standalone/core2-chemistry-redox-reactions-tablet.html",
     REPO / "standalone/core2-chemistry-some-basic-concepts-tablet.html",
 )
+FONT_SIZE = re.compile(r"(font-size\s*:\s*)([0-9]*\.?[0-9]+)\s*(px|rem|em|pt)\b", re.I)
+
+
+def apply_blueprint_19_shell(text: str) -> str:
+    """Ratchet deterministic snapshots to the Blueprint 1.9 learner text floor.
+
+    The shared tablet shell used by render_core/2 predates the 14 px standalone
+    rule and still emits a few 13/13.5 px utility declarations.  Keep the
+    academic renderer as authority, but normalize only learner-visible CSS font
+    declarations that the 1.9 conformance contract classifies below its floor.
+    rem/em are evaluated conservatively against a 16 px root; the actual Core1A
+    root is 17 px, so this never reduces a rendered size.
+    """
+    def floor(match: re.Match[str]) -> str:
+        prefix, raw, unit = match.groups()
+        value = float(raw)
+        px = value * {"px": 1.0, "rem": 16.0, "em": 16.0, "pt": 4.0 / 3.0}[unit.lower()]
+        if value != 0 and px < 14.0:
+            return f"{prefix}14px"
+        return match.group(0)
+
+    return FONT_SIZE.sub(floor, text)
 
 
 def render(slug: str, root: Path) -> bytes:
@@ -53,6 +75,7 @@ def render(slug: str, root: Path) -> bytes:
     # The manifest navigation is authored for product build directories. These
     # committed convenience snapshots live one level below repository root.
     text = text.replace('../../../public/', '../public/')
+    text = apply_blueprint_19_shell(text)
     validate(slug, text)
     return text.encode("utf-8")
 
@@ -113,7 +136,7 @@ def main() -> int:
             print("\n".join(failures))
             print("Regenerate with: python3 Chemistry/tools/sync_blueprint_pages.py")
             return 1
-        print("Chemistry Core1A standalone snapshots match render_core/2 blueprint-v2 output.")
+        print("Chemistry Core1A standalone snapshots match render_core/2 blueprint-v2 output with Blueprint 1.9 shell compatibility.")
         return 0
 
     for slug, target in MAPPINGS.items():
