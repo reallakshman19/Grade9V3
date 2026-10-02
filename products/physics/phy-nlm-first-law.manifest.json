@@ -80,34 +80,6 @@
       "Q-PHY-NLM-INCLINE-2B-HORIZONTAL-THRESHOLD-03",
       "Q-PHY-NLM-INCLINE-2B-COMPONENT-TRAP-04",
       "Q-PHY-NLM-INCLINE-2B-TIMING-05"
-    ],
-    "nlm_challenges": [
-      "Q-PHY-NLM-SRC-01",
-      "Q-PHY-NLM-SRC-02",
-      "Q-PHY-NLM-SRC-03",
-      "Q-PHY-NLM-SRC-04",
-      "Q-PHY-NLM-SRC-05",
-      "Q-PHY-NLM-SRC-06",
-      "Q-PHY-NLM-SRC-07",
-      "Q-PHY-NLM-SRC-08",
-      "Q-PHY-NLM-SRC-09",
-      "Q-PHY-NLM-SRC-10",
-      "Q-PHY-NLM-SRC-11",
-      "Q-PHY-NLM-SRC-12",
-      "Q-PHY-NLM-SRC-13",
-      "Q-PHY-NLM-SRC-14",
-      "Q-PHY-NLM-SRC-15",
-      "Q-PHY-NLM-SRC-16",
-      "Q-PHY-NLM-SRC-17",
-      "Q-PHY-NLM-SRC-18",
-      "Q-PHY-NLM-SRC-19",
-      "Q-PHY-NLM-SRC-20"
     ]
-  },
-  "extensions": {
-    "grade9v3:phase2_nlm_challenges": {
-      "date": "2026-10-01",
-      "nlm_challenges_count": 20
-    }
   }
 }

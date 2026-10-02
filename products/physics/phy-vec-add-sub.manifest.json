@@ -32,28 +32,6 @@
       "Q-PHY-VEC-DECOMP-2B-COMPLEMENTARY-ANGLES-03",
       "Q-PHY-VEC-DECOMP-2B-FORCE-CONTEXT-04",
       "Q-PHY-VEC-DECOMP-2B-REVERSED-X-AXIS-05"
-    ],
-    "challenges_vec": [
-      "Q-PHY-VEC-ADD-SRC-01",
-      "Q-PHY-VEC-ADD-SRC-02",
-      "Q-PHY-VEC-ADD-SRC-03",
-      "Q-PHY-VEC-ADD-SRC-04",
-      "Q-PHY-VEC-ADD-SRC-05",
-      "Q-PHY-VEC-ADD-SRC-06",
-      "Q-PHY-VEC-ADD-SRC-07",
-      "Q-PHY-VEC-ADD-SRC-08",
-      "Q-PHY-VEC-ADD-SRC-09",
-      "Q-PHY-VEC-ADD-SRC-10",
-      "Q-PHY-VEC-ADD-SRC-11",
-      "Q-PHY-VEC-ADD-SRC-12",
-      "Q-PHY-VEC-ADD-SRC-13",
-      "Q-PHY-VEC-ADD-SRC-14"
     ]
-  },
-  "extensions": {
-    "grade9v3:phase2_registration": {
-      "date": "2026-10-01",
-      "core2a_count": 14
-    }
   }
 }

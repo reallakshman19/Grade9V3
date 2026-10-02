@@ -43,28 +43,6 @@
       "Q-PHY-KIN-VERT-2B-VT-GRAPH-05",
       "Q-PHY-KIN-CIRC-2B-FLAT-CURVE-02",
       "Q-PHY-KIN-CIRC-2B-VERTICAL-03"
-    ],
-    "challenges_1d": [
-      "Q-PHY-KIN-1D-SRC-01",
-      "Q-PHY-KIN-1D-SRC-02",
-      "Q-PHY-KIN-1D-SRC-03",
-      "Q-PHY-KIN-1D-SRC-04",
-      "Q-PHY-KIN-1D-SRC-05",
-      "Q-PHY-KIN-1D-SRC-06",
-      "Q-PHY-KIN-1D-SRC-07",
-      "Q-PHY-KIN-1D-SRC-08",
-      "Q-PHY-KIN-1D-SRC-09",
-      "Q-PHY-KIN-1D-SRC-10",
-      "Q-PHY-KIN-1D-SRC-11",
-      "Q-PHY-KIN-1D-SRC-12",
-      "Q-PHY-KIN-1D-SRC-13",
-      "Q-PHY-KIN-1D-SRC-14"
     ]
-  },
-  "extensions": {
-    "grade9v3:phase2_registration": {
-      "date": "2026-10-01",
-      "core2a_count": 14
-    }
   }
 }

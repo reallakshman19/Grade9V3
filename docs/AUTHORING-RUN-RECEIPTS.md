@@ -83,10 +83,3 @@ CI runs:
 
 This proves every runnable write-scope/action pair emitted by committed author-request fixtures
 is supported by the executor. Behavioral falsifiers live in `tests/test_authoring_run.py`.
-
-## Committed candidate receipts
-
-| Receipt ID | Target PR | Subject | Action | Records | Evidence Path |
-|---|---|---|---|---|---|
-| `REC-PR375-PHYSICS-RECOVERY-20261001` | PR #375 | Physics | `AUTHOR_CANDIDATE_QUESTION` | 244 Candidate Questions (341 total) | `evidence/reviews/pr375/TASK_EVIDENCE.md` |
-
