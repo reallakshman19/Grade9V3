@@ -72,8 +72,10 @@ jobs:
       - name: Commit verified remediation and self-remove
         shell: bash
         run: |
-          rm -rf .github/u2
-          rm .github/workflows/pr375-u2-remediation.yml
+          rm -f .github/u2/pr375_u2_remediate.py \
+                .github/u2/pr375_u2_audit.js \
+                .github/u2/pr375_u2_testfix.py \
+                .github/workflows/pr375-u2-remediation.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
