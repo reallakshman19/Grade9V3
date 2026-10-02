@@ -19,6 +19,32 @@
       ],
       "order": 10,
       "status": "PUBLISHED"
+    },
+    {
+      "id": "RES-PHY-STANDALONE-PRACTICE-HUB",
+      "kind": "practice",
+      "title": "Physics Practice Library",
+      "topic": "Physics standalone tablet practice",
+      "path": "standalone/practice/index.html",
+      "keywords": [
+        "physics",
+        "practice",
+        "standalone",
+        "tablet",
+        "offline",
+        "1d",
+        "2d",
+        "motion",
+        "vectors",
+        "nlm",
+        "newton",
+        "sba",
+        "projectile",
+        "thrust",
+        "pressure"
+      ],
+      "order": 20,
+      "status": "PUBLISHED"
     }
   ]
 }
