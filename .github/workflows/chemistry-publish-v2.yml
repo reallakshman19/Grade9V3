@@ -1,0 +1,72 @@
+name: chemistry-publish-v2
+
+on:
+  push:
+    branches: [feat/chemistry-tablet-standalone]
+    paths:
+      - ".github/workflows/chemistry-publish-v2.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/chemistry-tablet-standalone
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install validation dependency
+        run: pip install --quiet jsonschema
+      - name: Regenerate Chemistry snapshots and publish Practice routes
+        run: |
+          python3 Chemistry/tools/sync_blueprint_pages.py
+          python3 Chemistry/tools/publish_practice.py
+          python3 Shared/tools/build_question_bank_web.py
+          python3 Shared/tools/build_question_bank_platform.py --write
+          python3 Shared/tools/build_search_index.py \
+            --library-dirs Physics/library Chemistry/library Mathematics/library \
+            --output-index public/data/search-index.v1.json \
+            --output-manifest public/data/search-index-manifest.v1.json
+          python3 Shared/tools/build_pages_site.py
+          python3 Shared/tools/build_manifest.py
+      - name: Verify deterministic source and integration tests
+        run: |
+          python3 Chemistry/tools/sync_blueprint_pages.py --check
+          python3 -m unittest tests.test_chemistry_tablet_standalone tests.test_chemistry_practice_integration
+      - name: Enforce Blueprint 1.9 standalone conformance
+        run: |
+          python3 Shared/tools/standalone_conformance.py \
+            standalone/core1a-chemistry-behaviour-of-gases-tablet.html \
+            standalone/core1a-chemistry-chemical-bonding-tablet.html \
+            standalone/core1a-chemistry-redox-reactions-tablet.html \
+            standalone/core1a-chemistry-some-basic-concepts-tablet.html \
+            public/standalone/practice/chemistry/index.html \
+            public/standalone/practice/chemistry/behaviour-of-gases.html \
+            public/standalone/practice/chemistry/chemical-bonding.html \
+            public/standalone/practice/chemistry/redox-reactions.html \
+            public/standalone/practice/chemistry/some-basic-concepts.html \
+            --enforce
+      - name: Verify search index and Pages mirror
+        run: |
+          python3 Shared/tools/verify_search_index.py \
+            --index public/data/search-index.v1.json \
+            --manifest public/data/search-index-manifest.v1.json \
+            --library-dirs Physics/library Chemistry/library Mathematics/library \
+            --enforce
+          python3 Shared/tools/build_pages_site.py --check
+      - name: Commit deterministic publication
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Publication already synchronized."
+            exit 0
+          fi
+          git commit -m "feat(chemistry): publish Blueprint 1.9 practice and QB integration"
+          git push origin HEAD:feat/chemistry-tablet-standalone
