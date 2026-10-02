@@ -34,6 +34,20 @@ jobs:
         run: |
           python3 .github/u2/pr375_u2_remediate.py
           python3 .github/u2/pr375_u2_testfix.py
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          path = Path("standalone/practice/motion-in-2d-master-suite.html")
+          text = path.read_text(encoding="utf-8")
+          text, n = re.subn(
+              r'(<g id="sbTeacherChalk" style="display: none;"></g>\n)[ \t]+\n',
+              r'\1',
+              text,
+              count=1,
+          )
+          assert n == 1, "expected one whitespace-only line after duplicate-id collapse"
+          path.write_text(text, encoding="utf-8")
+          PY
 
       - name: Static U2 regression
         run: python3 -m unittest tests.test_pr375_u2_standalone
