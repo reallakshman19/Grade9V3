@@ -24,10 +24,12 @@ class QuestionBankCompactUi(unittest.TestCase):
 
         js = (ROOT / "public/js/question-bank-live-stats.js").read_text(encoding="utf-8")
         self.assertIn("Grade9QuestionBank", js)
+        self.assertIn("Grade9QuestionBankData", js)
         self.assertIn("api.filtered()", js)
+        self.assertIn("canonical questions", js)
+        self.assertIn("matching questions", js)
         self.assertIn("subjects in view", js)
         self.assertIn("topics in view", js)
-        self.assertIn("active filters", js)
         for stale in ("81", "46", "35", "26", "20"):
             self.assertNotIn(stale, js)
 
