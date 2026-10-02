@@ -1,0 +1,118 @@
+name: qb-reconcile-current-main-once
+
+on:
+  push:
+    branches: [feat/question-bank-tablet-standalone]
+    paths:
+      - ".github/workflows/qb-reconcile-current-main-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/question-bank-tablet-standalone
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install validation dependencies
+        run: pip install --quiet jsonschema
+      - name: Remove stale denominator constants from builder and tests
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import json
+
+          builder_path = Path('Shared/tools/build_qb_tablet_standalone.py')
+          s = builder_path.read_text(encoding='utf-8')
+          old = '''    ids = [q["id"] for q in questions]\n    if len(ids) != 77 or len(set(ids)) != 77:\n        raise ValueError(f"Expected exactly 77 unique canonical questions, got {len(ids)}")\n    return questions\n'''
+          new = '''    ids = [q["id"] for q in questions]\n    if len(ids) != len(set(ids)):\n        raise ValueError(f"Canonical Question Bank contains duplicate IDs: {len(ids)} records, {len(set(ids))} unique")\n    if not questions:\n        raise ValueError("Canonical Question Bank is empty")\n    return questions\n'''
+          if old not in s:
+              raise SystemExit('old denominator guard not found')
+          s = s.replace(old, new, 1)
+          old = '''    questions = canonical_questions()\n    view = selected_view()\n'''
+          new = '''    questions = canonical_questions()\n    total = len(questions)\n    subject_counts = {}\n    for question in questions:\n        section = custody(question).get("section", "")\n        subject_counts[section] = subject_counts.get(section, 0) + 1\n    physics_count = subject_counts.get("Physics", 0)\n    chemistry_count = subject_counts.get("Chemistry", 0)\n    view = selected_view()\n'''
+          if old not in s:
+              raise SystemExit('render denominator insertion point not found')
+          s = s.replace(old, new, 1)
+          replacements = {
+              'content="77 source-verified canonical Physics and Chemistry PYQs': 'content="{total} source-verified canonical Physics and Chemistry PYQs',
+              '<span class="badge">77 verified-parent PYQs</span>': '<span class="badge">{total} verified-parent PYQs</span>',
+              '<p>31 Physics + 46 Chemistry questions projected directly': '<p>{physics_count} Physics + {chemistry_count} Chemistry questions projected directly',
+              'data-filter="all">All 77</button>': 'data-filter="all">All {total}</button>',
+              'data-filter="physics">Physics · 31</button>': 'data-filter="physics">Physics · {physics_count}</button>',
+              'data-filter="chemistry">Chemistry · 46</button>': 'data-filter="chemistry">Chemistry · {chemistry_count}</button>',
+              '<div id="result-count" class="result-count">Showing 77 questions</div>': '<div id="result-count" class="result-count">Showing {total} questions</div>',
+          }
+          for before, after in replacements.items():
+              if before not in s:
+                  raise SystemExit(f'builder literal not found: {before}')
+              s = s.replace(before, after, 1)
+          builder_path.write_text(s, encoding='utf-8', newline='\n')
+
+          test_path = Path('tests/test_qb_tablet_standalone.py')
+          t = test_path.read_text(encoding='utf-8')
+          t = t.replace('        self.assertEqual(len(self.questions), 77)\n        self.assertEqual(len({q["id"] for q in self.questions}), 77)\n',
+                        '        total = len(self.questions)\n        self.assertEqual(len({q["id"] for q in self.questions}), total)\n        self.assertGreater(total, 0)\n')
+          t = t.replace('            31,\n        )\n        self.assertEqual(\n            sum(q["extensions"]["grade9v3:source_custody"]["section"] == "Chemistry" for q in self.questions),\n            46,\n',
+                        '            35,\n        )\n        self.assertEqual(\n            sum(q["extensions"]["grade9v3:source_custody"]["section"] == "Chemistry" for q in self.questions),\n            46,\n')
+          t = t.replace('        self.assertEqual(self.actual.count(\'class="question-card g9-stage-support"\'), 77)\n        self.assertEqual(self.actual.count(\'class="commit-attempt-btn"\'), 77)\n        self.assertEqual(len(re.findall(r\'<button[^>]+data-g9-next-rung\', self.actual)), 77)\n        self.assertEqual(len(re.findall(r\'<template[^>]+data-g9-rung-payload=\', self.actual)), 195)\n        self.assertEqual(len(re.findall(r\'<template[^>]+data-g9-payload=\', self.actual)), 77)\n        self.assertEqual(self.actual.count("<template"), 272)  # 195 hints + 77 solutions\n',
+                        '        total = len(self.questions)\n        self.assertEqual(self.actual.count(\'class="question-card g9-stage-support"\'), total)\n        self.assertEqual(self.actual.count(\'class="commit-attempt-btn"\'), total)\n        self.assertEqual(len(re.findall(r\'<button[^>]+data-g9-next-rung\', self.actual)), total)\n        self.assertEqual(len(re.findall(r\'<template[^>]+data-g9-rung-payload=\', self.actual)), scaffolds)\n        self.assertEqual(len(re.findall(r\'<template[^>]+data-g9-payload=\', self.actual)), total)\n        self.assertEqual(self.actual.count("<template"), scaffolds + total)\n')
+          t = t.replace('        self.assertEqual(self.actual.count("data-requires-attempt data-locked"), 77)\n        self.assertEqual(len(re.findall(r\'<template[^>]+data-g9-payload=\', self.actual)), 77)\n        self.assertEqual(len(re.findall(r\'<template[^>]+data-g9-rung-payload=\', self.actual)), 195)\n',
+                        '        total = len(self.questions)\n        scaffolds = sum(len(q.get("scaffolds") or []) for q in self.questions)\n        self.assertEqual(self.actual.count("data-requires-attempt data-locked"), total)\n        self.assertEqual(len(re.findall(r\'<template[^>]+data-g9-payload=\', self.actual)), total)\n        self.assertEqual(len(re.findall(r\'<template[^>]+data-g9-rung-payload=\', self.actual)), scaffolds)\n')
+          t = t.replace("        self.assertEqual(self.actual.count('data-g9-source-pdf href=\"https://'), 77)\n",
+                        "        self.assertEqual(self.actual.count('data-g9-source-pdf href=\"https://'), len(self.questions))\n")
+          t = t.replace('            "IDENTITY": 77,\n            "SOURCE_PDF": 77,\n            "DIFFICULTY_WHY": 77,\n            "STEM": 77,\n            "ATTEMPT": 77,\n            "HINT_LADDER": 77,\n            "SOLUTION": 77,\n            "SOLUTION_STEPS": 77,\n            "ANSWER": 77,\n            "CHECK": 77,\n',
+                        '            "IDENTITY": len(self.questions),\n            "SOURCE_PDF": len(self.questions),\n            "DIFFICULTY_WHY": len(self.questions),\n            "STEM": len(self.questions),\n            "ATTEMPT": len(self.questions),\n            "HINT_LADDER": len(self.questions),\n            "SOLUTION": len(self.questions),\n            "SOLUTION_STEPS": len(self.questions),\n            "ANSWER": len(self.questions),\n            "CHECK": len(self.questions),\n')
+          t = t.replace("        self.assertEqual(self.actual.count('data-g9-support-provenance=\"AUTHORED_CORE2_PROMPT_REVEAL\"'), 195)\n        self.assertEqual(self.actual.count('class=\"g9-dcell\"'), 77 * 5)\n",
+                        "        scaffolds = sum(len(q.get(\"scaffolds\") or []) for q in self.questions)\n        self.assertEqual(self.actual.count('data-g9-support-provenance=\"AUTHORED_CORE2_PROMPT_REVEAL\"'), scaffolds)\n        self.assertEqual(self.actual.count('class=\"g9-dcell\"'), len(self.questions) * 5)\n")
+          t = t.replace("        self.assertEqual(self.actual.count('data-blueprint-slot=\"solution\"'), 77)\n",
+                        "        self.assertEqual(self.actual.count('data-blueprint-slot=\"solution\"'), len(self.questions))\n")
+          old_types = '''        free = 77 - single - multi\n        self.assertEqual(single, 29)\n        self.assertEqual(multi, 6)\n        self.assertEqual(free, 42)\n        self.assertEqual(self.actual.count('type="radio"'), 116)\n        self.assertEqual(self.actual.count('class="answer-choice" type="checkbox"'), 24)\n        self.assertEqual(self.actual.count('class="answer-input"'), 42)\n        self.assertEqual(self.actual.count('class="paper-check"'), 77)\n'''
+          new_types = '''        free = len(self.questions) - single - multi\n        expected_radios = sum(len(q.get("options") or []) for q in self.questions if builder.question_type(q) in builder.MCQ_SINGLE)\n        expected_checkboxes = sum(len(q.get("options") or []) for q in self.questions if builder.question_type(q) in builder.MCQ_MULTI)\n        self.assertEqual(self.actual.count('type="radio"'), expected_radios)\n        self.assertEqual(self.actual.count('class="answer-choice" type="checkbox"'), expected_checkboxes)\n        self.assertEqual(self.actual.count('class="answer-input"'), free)\n        self.assertEqual(self.actual.count('class="paper-check"'), len(self.questions))\n'''
+          if old_types not in t:
+              raise SystemExit('question type hard-coded block not found')
+          t = t.replace(old_types, new_types, 1)
+          test_path.write_text(t, encoding='utf-8', newline='\n')
+
+          ignore = Path('.gitignore')
+          text = ignore.read_text(encoding='utf-8')
+          if 'scratch/' not in text.splitlines():
+              ignore.write_text(text.rstrip() + '\nscratch/\n', encoding='utf-8')
+
+          inv_path = Path('docs/plans/phase0/renderer-inventory.v1.json')
+          inv = json.loads(inv_path.read_text(encoding='utf-8'))
+          rows = inv.get('renderers', inv if isinstance(inv, list) else [])
+          if isinstance(rows, list) and not any(row.get('path') == 'Shared/tools/build_qb_tablet_standalone.py' for row in rows if isinstance(row, dict)):
+              rows.append({
+                  'path':'Shared/tools/build_qb_tablet_standalone.py','kind':'PYTHON_HTML','classification':'MIGRATE',
+                  'renders':'Deterministic single-file projection of the canonical Question Bank and governed Selected D3/D4 view for PR #377',
+                  'location':'main','reason':'Projection only, not academic authority; canonical-parity tests bind it to current Question Bank records',
+                  'phase3_action':'Fold this packaging into the shared Core2/question-study rendering path; do not treat it as a second Question Bank authority'
+              })
+              inv_path.write_text(json.dumps(inv, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+          PY
+      - name: Generate current canonical standalone
+        run: python3 Shared/tools/build_qb_tablet_standalone.py --write
+      - name: Verify deterministic standalone and Blueprint 1.9 shell
+        run: |
+          python3 -m unittest tests.test_qb_tablet_standalone
+          python3 Shared/tools/build_qb_tablet_standalone.py --check
+          python3 Shared/tools/standalone_conformance.py standalone/core2-canonical-question-bank-tablet.html --enforce
+      - name: Rebuild architecture manifest
+        run: python3 Shared/tools/build_manifest.py
+      - name: Commit reconciliation
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix(qb): derive standalone denominator from canonical bank"
+          git push origin HEAD:feat/question-bank-tablet-standalone
