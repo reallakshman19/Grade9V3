@@ -6,20 +6,20 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 465,
+  "component_count": 466,
   "relation_count": 509,
   "components_by_role": {
     "CONTRACT": 9,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 56,
-    "TEST": 225,
+    "TEST": 226,
     "TOOLING": 133,
     "WEB": 13,
     "WEB_CONTRACT": 8,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:0782e89457b383f7951c88955c50326624744f741011884021168b3661ba1886",
+  "digest": "sha256:5b79975077f9cee4a315e4dc0a9a8c584bae92dc1ff848096390432ca12d621c",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -2442,6 +2442,13 @@
       "role_description": "Executable checks",
       "bytes": 3604,
       "sha256": "b351e6da69d6d5b3dea318d63af064d238fa44442870307034fcd6df09b215c8"
+    },
+    {
+      "path": "tests/test_global_site_search.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 5522,
+      "sha256": "d352f383c9daac080efca6046e81847e177db561da52f1411007fe2c30a37f66"
     },
     {
       "path": "tests/test_grade10_optics_reflection_scope.py",

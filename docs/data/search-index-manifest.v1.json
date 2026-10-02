@@ -265,7 +265,7 @@
   ],
   "canonical_snapshot_digest": "sha256:7aa10f948aec9574ec1deee3f747fbe3318159f7e0a3abe6ab4b8ab0fe2d6df9",
   "excluded_ids": [],
-  "generated_at": "2026-10-02T06:47:23Z",
+  "generated_at": "2026-10-02T06:54:32Z",
   "generator": {
     "name": "build_search_index",
     "version": "1.1.0"
