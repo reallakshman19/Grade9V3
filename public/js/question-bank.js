@@ -399,16 +399,19 @@ function studyCard(q,inDialog){
     left.append(trap);
   }
   const right=el('section','qb-panel');
-  right.append(el('div','qb-eyebrow','Representation & support'));
-  const visual=el('div','qb-visual');
-  if(q.visual_ref){
-    const img=document.createElement('img');
-    img.loading='lazy';
-    img.src='../'+q.visual_ref;
-    img.alt='Question-aligned representation for '+q.id;
-    visual.append(img);
-  }else visual.textContent='No separate representation asset is published for this canonical record.';
-  right.append(visual);
+  const visualRefs=(Array.isArray(q.visual_refs)&&q.visual_refs.length)?q.visual_refs:(q.visual_ref?[q.visual_ref]:[]);
+  right.append(el('div','qb-eyebrow',visualRefs.length?'Representation & support':'Support'));
+  if(visualRefs.length){
+    const visual=el('div','qb-visual');
+    visualRefs.forEach((ref,index)=>{
+      const img=document.createElement('img');
+      img.loading='lazy';
+      img.src='../'+ref;
+      img.alt='Question-aligned representation '+(index+1)+' for '+q.id;
+      visual.append(img);
+    });
+    right.append(visual);
+  }
   (q.source_hints||[]).forEach((hint,i)=>{
     const d=disclosure('Source hint '+(i+1),typeof hint==='string'?hint:(hint.text||JSON.stringify(hint)),'qb-support','source_hint:'+i);
     d.querySelector('summary').prepend(el('span','qb-prov','SOURCE'));

@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import subprocess
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -19,6 +20,37 @@ class QuestionBankWebTest(unittest.TestCase):
         self.assertEqual(self.data["counts"]["questions"], 99)
         self.assertEqual(self.data["counts"]["subjects"], {"Chemistry": 46, "Mathematics": 18, "Physics": 35})
         self.assertEqual(len(self.data["counts"]["topics"]), 6)
+
+    def test_canonical_package_figure_resolves_and_mirrors_without_guessing(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "Mathematics/assets/representations/REP-MATH-LINE.svg"
+            source.parent.mkdir(parents=True)
+            source.write_text('<svg xmlns="http://www.w3.org/2000/svg"><path d="M0 0h10"/></svg>', encoding="utf-8")
+            package = {"representations": [{
+                "id": "REP-MATH-LINE",
+                "rendered_asset_refs": ["Mathematics/assets/representations/REP-MATH-LINE.svg"],
+            }]}
+            question = {
+                "id": "Q-MATH-VISUAL",
+                "figure_refs": ["REP-MATH-LINE"],
+                "scaffolds": [],
+                "extensions": {},
+            }
+            assets = []
+            refs = build_question_bank_web._resolve_visual_refs(root, "Mathematics", question, package, assets)
+            self.assertEqual(refs, ["question-bank/visuals/canonical/mathematics/REP-MATH-LINE.svg"])
+            self.assertEqual(assets, [{
+                "source": "Mathematics/assets/representations/REP-MATH-LINE.svg",
+                "target": "public/question-bank/visuals/canonical/mathematics/REP-MATH-LINE.svg",
+            }])
+            self.assertTrue(build_question_bank_web._sync_visual_assets(root, assets, check=False))
+            target = root / assets[0]["target"]
+            self.assertEqual(target.read_bytes(), source.read_bytes())
+            self.assertTrue(build_question_bank_web._sync_visual_assets(root, assets, check=True))
+
+            unbound = dict(question, id="Q-MATH-NO-VISUAL", figure_refs=["REP-NOT-THERE"])
+            self.assertEqual(build_question_bank_web._resolve_visual_refs(root, "Mathematics", unbound, package, []), [])
 
     def test_selected_d3d4_view_is_exact_and_canonical(self):
         view = next(v for v in self.data["views"] if v["id"] == "selected-d3d4-non-jee-advanced")
@@ -45,6 +77,9 @@ class QuestionBankWebTest(unittest.TestCase):
             result = subprocess.run(["node", "--check", str(path)], capture_output=True, text=True)
             self.assertEqual(result.returncode, 0, msg=result.stderr)
             self.assertNotIn("innerHTML", path.read_text(encoding="utf-8"))
+        qb_js = (ROOT / "public/js/question-bank.js").read_text(encoding="utf-8")
+        self.assertNotIn("No separate representation asset is published", qb_js)
+        self.assertIn("visualRefs", qb_js)
 
     def test_question_bank_page_has_shared_shell_and_starts_from_the_manifest(self):
         text = (ROOT / "public/question-bank/index.html").read_text(encoding="utf-8")

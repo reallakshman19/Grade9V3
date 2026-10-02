@@ -6,20 +6,20 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 467,
+  "component_count": 469,
   "relation_count": 508,
   "components_by_role": {
     "CONTRACT": 9,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 56,
-    "TEST": 226,
-    "TOOLING": 134,
+    "TEST": 227,
+    "TOOLING": 135,
     "WEB": 13,
     "WEB_CONTRACT": 8,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:283bd2e2fbad7ab775eccfbf917eb074841c2914d3dc64d437aa37e463ba43ac",
+  "digest": "sha256:b9303d1187c6667d99810ebb60edc6c8ca1b57b80509da7aab98007f8a8da126",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -568,6 +568,13 @@
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
+      "path": "Shared/tools/_patch_qb_visuals_once.py",
+      "role": "TOOLING",
+      "role_description": "Guardrails and generators",
+      "bytes": 12695,
+      "sha256": "4b3c5dd4368826619f36f5be193499efb995812ce75a30341c02110970975dc8"
+    },
+    {
       "path": "Shared/tools/academic_readiness.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
@@ -746,8 +753,8 @@
       "path": "Shared/tools/build_question_bank_web.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 12158,
-      "sha256": "ed0364da5add4200d85186910d779587de7089f06c93c0ae4497ed19db70655f"
+      "bytes": 17168,
+      "sha256": "d610d333676ce8c77970a939f9aaadcddea117e750d7094a087d0ea63e736b41"
     },
     {
       "path": "Shared/tools/build_search_index.py",
@@ -2153,8 +2160,8 @@
       "path": "tests/test_chemistry_practice_integration.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 2588,
-      "sha256": "a2b27c745f3e13cae0c939312f252711731c09075cbed0f491e2db200b93c2c8"
+      "bytes": 3220,
+      "sha256": "d454d86790677d1778a1d9daabfa7fedda74c670c2e7ea8d9e225efa1883a284"
     },
     {
       "path": "tests/test_chemistry_tablet_standalone.py",
@@ -2924,21 +2931,28 @@
       "role": "TEST",
       "role_description": "Executable checks",
       "bytes": 25647,
-      "sha256": "5da057aeaa3b92b01b0403e0c8e17f530fb109353bec815858decb7c0e5a8a87"
+      "sha256": "46db5da94948035bc9b8f8c0313e870079d9469e933c3bb6b8bffb65bdc53359"
     },
     {
       "path": "tests/test_question_bank_platform_runtime.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 2173,
-      "sha256": "2c1670544c670403462b7c40cd9ed5accf07a3bda62e14ab5ea0c038ed013f90"
+      "bytes": 2196,
+      "sha256": "0a5beb5668127017dfeedeb3cda21785d8b13c036ec9d5c360ff3fb8521408bb"
+    },
+    {
+      "path": "tests/test_question_bank_ui_compact.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 1999,
+      "sha256": "c85ebab67c117dfea812a393204685c0b75338755c3d4d0e5a226859fd4a0962"
     },
     {
       "path": "tests/test_question_bank_web.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 5867,
-      "sha256": "2d8d84d2bded1b1409266cb985508a6e8201cf12436710befa08ad48318169e5"
+      "bytes": 7916,
+      "sha256": "af7e696b34d030174b6b3471077460b6bb93892c248c3fc9ae7cd043e44d0601"
     },
     {
       "path": "tests/test_readiness_join_215.py",
