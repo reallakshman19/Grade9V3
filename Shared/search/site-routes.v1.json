@@ -2,7 +2,11 @@
   "schema": "site-routes/v1",
   "description": "Where the learner site keeps what search can find. A result opens only a route that exists: a page file, a Core learning projection, a Question Bank question.",
   "site_root": "public",
-  "excluded_prefixes": ["vendor/", "test/", "node_modules/"],
+  "excluded_prefixes": [
+    "vendor/",
+    "test/",
+    "node_modules/"
+  ],
   "default_subject": "General",
   "page_subject_by_prefix": {
     "physics/": "Physics",
@@ -10,9 +14,46 @@
     "mathematics/": "Mathematics",
     "standalone/practice/": "Physics"
   },
-  "core_learning": {"page": "core-learning/index.html", "data": "core-learning/data.js", "variable": "GRADE9V3_CORE"},
-  "question_bank": {"page": "question-bank/index.html", "data": "data/question-bank-data.js", "variable": "GRADE9_QUESTION_BANK"},
-  "core_labels": {"CORE1": "Core 1", "CORE1A": "Core 1A", "CORE1B": "Core 1B", "CORE2": "Core 2", "CORE2A": "Core 2A", "CORE2B": "Core 2B"},
-  "topic_cores": ["CORE1", "CORE1A"],
-  "question_core_preference": ["CORE2A", "CORE2B", "CORE2"]
+  "core_learning": {
+    "page": "core-learning/index.html",
+    "data": "core-learning/data.js",
+    "variable": "GRADE9V3_CORE"
+  },
+  "question_bank": {
+    "page": "question-bank/index.html",
+    "data": "data/question-bank-data.js",
+    "variable": "GRADE9_QUESTION_BANK"
+  },
+  "core_labels": {
+    "CORE1": "Core 1",
+    "CORE1A": "Core 1A",
+    "CORE1B": "Core 1B",
+    "CORE2": "Core 2",
+    "CORE2A": "Core 2A",
+    "CORE2B": "Core 2B"
+  },
+  "topic_cores": [
+    "CORE1",
+    "CORE1A"
+  ],
+  "question_core_preference": [
+    "CORE2A",
+    "CORE2B",
+    "CORE2"
+  ],
+  "library_dirs": [
+    "Physics/library",
+    "Chemistry/library",
+    "Mathematics/library"
+  ],
+  "outputs": {
+    "index": "public/data/search-index.v2.json",
+    "manifest": "public/data/search-index-manifest.v2.json",
+    "script": "public/data/search-index.v2.js"
+  },
+  "question_page_preference": [
+    "core2.html",
+    "core2a.html",
+    "core2b.html"
+  ]
 }

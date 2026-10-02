@@ -8,7 +8,7 @@ The search icon in the header (or Ctrl/⌘ K) opens one dialog that searches the
 |---|---|---|
 | **Topic** | a unit (bucket) or a topic (microtopic) | its Core 1 / Core 1A page |
 | **Page** | a page file of the site (portal, subject hubs, unit hubs, explorers, practice pages), and the sub pages of a topic that no topic result opens (Core 1B) | the page |
-| **Question** | a canonical question that a page of the site shows | the Question Bank, or the question's own Core 2A/2B page |
+| **Question** | a canonical question that a page of the site shows | the Question Bank; or the published product page that shows it (at the question's own element); or its Core 2A/2B page |
 | **Hint** | one hint of such a question | the question |
 
 Every result opens a route that exists. The routes come from `Shared/search/site-routes.v1.json` (where the site keeps things) and are checked, one by one, by `Shared/tools/verify_search_index.py`.
@@ -27,14 +27,23 @@ A hint is searched, so a learner can find a question by what its hint says. The 
 
 A canonical question that no page of the site shows has no route, so it is not a result. It is named in the index manifest (`questions.unrouted`) and reported by the verifier as an advisory (`UNROUTED_QUESTIONS`). Today that is 138 of 246: the 77 bank questions and 31 library questions are shown (the Question Bank, Core 2A/2B pages); the rest appear only in product pages that have not been accepted and published. Publishing a product's pages is what makes its questions findable. Pages under `test/` and `vendor/` are not indexed.
 
+## When a page is added
+
+The blueprint ensures it (`shell.search_policy` in `Shared/web/interactive-page-blueprints.v1.json`, registry 1.9.0; the generated spec is `docs/specs/PAGE-BLUEPRINT-COMPONENTS.md`, section "Search: every page is found"). Nothing has to be remembered:
+
+- **A page file under `public/`** (outside `vendor/`, `test/` and `node_modules/`): run `python3 Shared/tools/build_search_index.py`, then `python3 Shared/tools/build_pages_site.py`, and commit the regenerated files. If that is forgotten, CI's `verify_search_index.py --enforce` fails the pull request (`PAGE_INDEXED`: `MISSING_FROM_INDEX`, `STALE_INDEX`). The page needs a `<title>` (`PAGE_TITLED`); a question element needs its id (`QUESTION_ANCHORED`; the renderer writes `<article id="QUESTION-ID" data-g9-kind="QUESTION">`).
+- **A product accepted** (`accept_product.py`): the index is rebuilt in the same step, after the pages are published and before the Pages mirror is written (`PUBLICATION_REINDEXES`). The product's pages become results, and the questions they show are found at their own element on the page. Measured on a scratch copy of the site: publishing the three products that render without gaps today would make 36 of the 138 unrouted questions findable. The others cannot be published until their gaps are authored (for example `phy-kin-1d-motion` has 106).
+- **A TEST page** is not indexed: the sandbox's pages are drafts.
+
+Every rule has a finding code, and each code's severity is the blueprint's: a rule that only says (`UNROUTED_REPORTED`) does not fail a run.
+
 ## Where it comes from
 
-`Shared/tools/build_search_index.py` builds `public/data/search-index.v2.json` (the contract, validated against `Shared/search/*.schema.json`), `search-index.v2.js` (the same index as a script, so a page opened from a file can load it) and the manifest. It reads the library, the page files, `core-learning/data.js` and `data/question-bank-data.js`. Rebuild it, after those, whenever they change:
+`Shared/tools/build_search_index.py` builds `public/data/search-index.v2.json` (the contract, validated against `Shared/search/*.schema.json`), `search-index.v2.js` (the same index as a script, so a page opened from a file can load it) and the manifest. It reads the library, the page files, `core-learning/data.js` and `data/question-bank-data.js`. Rebuild it, after those, whenever they change (the command reads the route table, `Shared/search/site-routes.v1.json`, for where things are):
 
 ```
 python3 Shared/tools/build_core_learning_data.py
-python3 Shared/tools/build_search_index.py --library-dirs Physics/library Chemistry/library Mathematics/library \
-    --output-index public/data/search-index.v2.json --output-manifest public/data/search-index-manifest.v2.json --output-script public/data/search-index.v2.js
+python3 Shared/tools/build_search_index.py
 python3 Shared/tools/build_pages_site.py
 ```
 

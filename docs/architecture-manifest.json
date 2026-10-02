@@ -6,20 +6,20 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 460,
-  "relation_count": 512,
+  "component_count": 461,
+  "relation_count": 515,
   "components_by_role": {
     "CONTRACT": 9,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 56,
-    "TEST": 222,
+    "TEST": 223,
     "TOOLING": 131,
     "WEB": 13,
     "WEB_CONTRACT": 8,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:01e7402e6c386011e6ab5831b98d849a3f40a1901350f1187855a4c4e12cf780",
+  "digest": "sha256:221c9b2d69aae8863f3aa905c865d1e97b370e7869c03d4097e3739c19e1c36d",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -578,8 +578,8 @@
       "path": "Shared/tools/accept_product.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 15498,
-      "sha256": "27c884714d81ab44ee968d0b0348a7c0f611b6cedb99233043e2681821ed237a"
+      "bytes": 16046,
+      "sha256": "469f80239cb251cdade4d9a042b6018f6a89ccd2c44fd69d91cb59b90db59509"
     },
     {
       "path": "Shared/tools/apply_owner_decisions.py",
@@ -634,8 +634,8 @@
       "path": "Shared/tools/blueprint_spec.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 10723,
-      "sha256": "82915f1e460dac2cec33a4a769fedd350b8d16de0c43470883ddf780a0a56794"
+      "bytes": 11753,
+      "sha256": "f54bf159165219840954ac4cb4d352c0756780b4944af1f320b7825758bdfa6a"
     },
     {
       "path": "Shared/tools/build_core_learning_data.py",
@@ -739,8 +739,8 @@
       "path": "Shared/tools/build_search_index.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 4063,
-      "sha256": "1c7d43cf9277f9e04805bb3a3e89471af2cfa5fa54ecf25b888449f01d4552ff"
+      "bytes": 2931,
+      "sha256": "71c88715ed3d1a6de2f4a7d032b359038f87877118486d67c11255dd56bc998c"
     },
     {
       "path": "Shared/tools/build_test_site.py",
@@ -1439,8 +1439,8 @@
       "path": "Shared/tools/verify_search_index.py",
       "role": "TOOLING",
       "role_description": "Guardrails and generators",
-      "bytes": 8393,
-      "sha256": "4e21634648bb7eee2be5a9b22cb9483f58ff9a283a090bed626a90161df7178e"
+      "bytes": 10226,
+      "sha256": "f678807d3f961f92324a629321d38504f9907d23019d4e9b3e9d867a294ef7af"
     },
     {
       "path": "Shared/tools/web_blueprint_contract.py",
@@ -1516,15 +1516,15 @@
       "path": "Shared/web/interactive-page-blueprint.schema.json",
       "role": "WEB_CONTRACT",
       "role_description": "Subject-neutral interactive page blueprint contracts",
-      "bytes": 33295,
-      "sha256": "eeb9d8f811066d39ebecf1eba407b57a0b5a1534b390a845e3cd75d2c3029d32"
+      "bytes": 36136,
+      "sha256": "4e981ebe46d450b4f8691245a01287962c46d94d059dc7f3ed454a42418a4955"
     },
     {
       "path": "Shared/web/interactive-page-blueprints.v1.json",
       "role": "WEB_CONTRACT",
       "role_description": "Subject-neutral interactive page blueprint contracts",
-      "bytes": 86227,
-      "sha256": "30b6e4968c2ea1bfaf22e3b5a7a1037e12a532aa03edc040f53198b6c10bbaaa"
+      "bytes": 91109,
+      "sha256": "23fe2e8cdb1b9ae14a466919d1f4592f2d58c857d25b495603bd78f797fe5699"
     },
     {
       "path": "Shared/web/standalone-ledger.v1.json",
@@ -2811,8 +2811,8 @@
       "path": "tests/test_publication.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 20722,
-      "sha256": "61237becf928566912fd15b5a138bc7cd47d4b42455c481c57f11a64c663af80"
+      "bytes": 21474,
+      "sha256": "c5f6978cf6c0ffbef0fb850631a9f2f1f0139027efe7621ee7ff4feca8d16294"
     },
     {
       "path": "tests/test_publication_engine.py",
@@ -2941,6 +2941,13 @@
       "sha256": "6ec63adf5303df20704c1079816baab85db81f1e7fefcac29d9c62f2cc5d629f"
     },
     {
+      "path": "tests/test_search_policy.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 5936,
+      "sha256": "1933d88b9f7c4421ed97e9550b6ef9296a197d4ba70a306f1aada6f95f35a800"
+    },
+    {
       "path": "tests/test_session_readiness.py",
       "role": "TEST",
       "role_description": "Executable checks",
@@ -2965,8 +2972,8 @@
       "path": "tests/test_site_search_index.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 18575,
-      "sha256": "f1c4b0539f1ac501bd9668dd2050216c88d5069f5a56aad191130da922b39f3e"
+      "bytes": 24918,
+      "sha256": "442033f8d2013d8bb12c14d048c93d5a418db2cfef1f6610ed6bb85970eb102c"
     },
     {
       "path": "tests/test_site_search_ui.py",
@@ -3470,6 +3477,11 @@
     },
     {
       "from": "Shared/tools/accept_product.py",
+      "to": "Shared.search",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "Shared/tools/accept_product.py",
       "to": "Shared.tools",
       "kind": "IMPORTS"
     },
@@ -3631,11 +3643,6 @@
     {
       "from": "Shared/tools/build_prompt_composer_data.py",
       "to": "Shared.tools",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "Shared/tools/build_search_index.py",
-      "to": "Shared.assurance",
       "kind": "IMPORTS"
     },
     {
@@ -4446,6 +4453,11 @@
     {
       "from": "Shared/tools/verify_search_index.py",
       "to": "Shared.search",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "Shared/tools/verify_search_index.py",
+      "to": "Shared.tools",
       "kind": "IMPORTS"
     },
     {
@@ -5560,6 +5572,16 @@
     },
     {
       "from": "tests/test_review_schedule.py",
+      "to": "Shared.tools",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_search_policy.py",
+      "to": "Shared.search",
+      "kind": "IMPORTS"
+    },
+    {
+      "from": "tests/test_search_policy.py",
       "to": "Shared.tools",
       "kind": "IMPORTS"
     },

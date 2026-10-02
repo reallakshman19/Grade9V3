@@ -112,8 +112,15 @@ def mirror_pages(repo: Path) -> None:
         raise RuntimeError("Pages mirror findings: " + "; ".join(findings))
 
 
+def reindex_search(repo: Path) -> None:
+    """Rebuild the site search index from the repository as it is, so that the pages this acceptance publishes, and the questions they show, are found as soon as they
+    are published (the blueprint's search_policy, rule PUBLICATION_REINDEXES). It runs before the Pages mirror is written, so the mirror carries the new index."""
+    from Shared.search import publish
+    publish.rebuild(repo)
+
+
 def accept(slug: str, note: str = "", accept_open: str = "", repo: Path = REPO,
-           confirm=input, approval_ref: str = "", assurance: dict | None = None) -> dict:
+           confirm=input, approval_ref: str = "", assurance: dict | None = None, after_publish=None) -> dict:
     manifests = list((repo / "products").glob(f"*/{slug}.manifest.json"))
     if len(manifests) != 1:
         raise ValueError(f"expected exactly one manifest for {slug}, got {len(manifests)}")
@@ -223,6 +230,8 @@ def accept(slug: str, note: str = "", accept_open: str = "", repo: Path = REPO,
     acceptance = repo / "products" / "acceptance" / f"{slug}.json"
     acceptance.parent.mkdir(parents=True, exist_ok=True)
     acceptance.write_text(json.dumps(accepted, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    if after_publish is not None:
+        after_publish(repo)
     mirror_pages(repo)
     return accepted
 
@@ -281,7 +290,7 @@ def main(argv: list[str] | None = None) -> int:
         return 1
 
     try:
-        decision = accept(args.slug, args.note, args.accept_open, approval_ref=args.approval_ref, assurance=assurance)
+        decision = accept(args.slug, args.note, args.accept_open, approval_ref=args.approval_ref, assurance=assurance, after_publish=reindex_search)
     except (ValueError, OSError, RuntimeError, EOFError) as exc:
         print(str(exc), file=sys.stderr)
         return 1

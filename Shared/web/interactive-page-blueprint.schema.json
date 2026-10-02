@@ -379,7 +379,8 @@
         "fixed_header",
         "controls",
         "responsive_modes",
-        "standalone_policy"
+        "standalone_policy",
+        "search_policy"
       ],
       "properties": {
         "id": {
@@ -743,6 +744,107 @@
                 "note": {
                   "type": "string",
                   "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "search_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "purpose",
+            "applies_to",
+            "site_root",
+            "routes",
+            "index",
+            "builder",
+            "verifier",
+            "not_indexed",
+            "when_a_page_is_added",
+            "rules"
+          ],
+          "properties": {
+            "purpose": {
+              "type": "string",
+              "minLength": 10
+            },
+            "applies_to": {
+              "const": "LEARNER_PAGES_OF_THE_SITE"
+            },
+            "site_root": {
+              "type": "string",
+              "minLength": 1
+            },
+            "routes": {
+              "type": "string",
+              "minLength": 1
+            },
+            "index": {
+              "type": "string",
+              "minLength": 1
+            },
+            "builder": {
+              "type": "string",
+              "minLength": 1
+            },
+            "verifier": {
+              "type": "string",
+              "minLength": 1
+            },
+            "not_indexed": {
+              "type": "string",
+              "minLength": 10
+            },
+            "when_a_page_is_added": {
+              "type": "string",
+              "minLength": 10
+            },
+            "rules": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "id",
+                  "severity",
+                  "executes",
+                  "statement",
+                  "assurance_type",
+                  "finding_codes"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "pattern": "^[A-Z_]+$"
+                  },
+                  "severity": {
+                    "enum": [
+                      "BLOCK",
+                      "ADVISE"
+                    ]
+                  },
+                  "executes": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "statement": {
+                    "type": "string",
+                    "minLength": 10
+                  },
+                  "assurance_type": {
+                    "type": "string",
+                    "pattern": "^[A-Z_]+$"
+                  },
+                  "finding_codes": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^[A-Z_]+$"
+                    }
+                  }
                 }
               }
             }

@@ -13,8 +13,10 @@ import unittest
 from pathlib import Path
 
 from Shared.assurance import contract
-from Shared.search import site_index
-from Shared.tools import build_search_index, verify_search_index
+from unittest import mock
+
+from Shared.search import publish, site_index
+from Shared.tools import build_search_index, verify_search_index, web_blueprint_contract
 
 REPO = Path(__file__).resolve().parents[1]
 SECRET = "SECRET-ANSWER-42-DO-NOT-INDEX"
@@ -76,7 +78,7 @@ class Fixture(unittest.TestCase):
 
     def write_index(self):
         built = self.build()
-        index_text, script_text, manifest = build_search_index.render(built)
+        index_text, script_text, manifest = publish.render(built)
         data = self.repo / "public" / "data"
         (data / "search-index.v2.json").write_text(index_text, encoding="utf-8")
         (data / "search-index.v2.js").write_text(script_text, encoding="utf-8")
@@ -265,6 +267,106 @@ class Verifier(Fixture):
         self.assertGreaterEqual(self.codes(records["SEARCH_RETRIEVABILITY"]), {"SCRIPT_DIGEST_MISMATCH", "SCRIPT_NOT_THE_INDEX"})
         script.unlink()
         self.assertIn("SCRIPT_MISSING", self.codes(self.verify()[1]["SEARCH_RETRIEVABILITY"]))
+
+
+class AddingPages(Fixture):
+    """A page added to the site is indexed or the check fails, and a page that publishes a question makes that question findable (the blueprint's search_policy)."""
+
+    def add_product_page(self, name="core2.html", title="Friction practice", ids=("Q-NOROUTE",), anchored=True, product="physics/friction"):
+        def article(i):
+            anchor = f'id="{i}" ' if anchored else ""
+            return f'<article {anchor}data-g9-kind="QUESTION" data-g9-role="CORE2">Q</article>'
+        articles = "".join(article(i) for i in ids)
+        path = self.repo / "public" / "products" / product / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(f"<!doctype html><html><head><title>{title}</title></head><body><h1>{title}</h1>{articles}</body></html>", encoding="utf-8")
+        return path
+
+    def codes(self, record):
+        return {f["code"] for f in record["findings"]}
+
+    def test_a_page_added_without_rebuilding_the_index_fails_and_rebuilding_it_passes(self):
+        self.write_index()
+        self.assertEqual(self.verify()[0], 0)
+        (self.repo / "public" / "physics" / "waves.html").write_text(page("Waves and sound", "Wavelength"), encoding="utf-8")
+        code, records = self.verify()
+        self.assertEqual(code, 1)
+        self.assertGreaterEqual(self.codes(records["SEARCH_MEMBERSHIP"]), {"MISSING_FROM_INDEX", "STALE_INDEX"})
+        publish.rebuild(self.repo)
+        code, records = self.verify()
+        self.assertEqual(code, 0)
+        self.assertIn("Waves and sound", {d["title"] for d in json.loads((self.repo / "public/data/search-index.v2.json").read_text())["documents"]})
+
+    def test_the_command_with_no_arguments_rebuilds_where_the_route_table_says(self):
+        self.assertEqual(build_search_index.main(["--repo", str(self.repo)]), 0)
+        data = self.repo / "public" / "data"
+        self.assertTrue(all((data / n).is_file() for n in ("search-index.v2.json", "search-index.v2.js", "search-index-manifest.v2.json")))
+        self.assertEqual(self.verify()[0], 0)
+
+    def test_a_page_with_no_title_fails_even_when_the_index_is_current(self):
+        (self.repo / "public" / "physics" / "untitled.html").write_text("<html><body><h1>No title element</h1></body></html>", encoding="utf-8")
+        self.write_index()
+        code, records = self.verify()
+        self.assertEqual(code, 1)
+        self.assertEqual(self.codes(records["SEARCH_MEMBERSHIP"]) - {"UNROUTED_QUESTIONS"}, {"PAGE_UNTITLED"})
+
+    def test_a_question_element_with_no_id_cannot_be_found_and_fails(self):
+        self.add_product_page(anchored=False)
+        self.write_index()
+        code, records = self.verify()
+        self.assertEqual(code, 1)
+        self.assertEqual(self.codes(records["SEARCH_MEMBERSHIP"]) - {"UNROUTED_QUESTIONS"}, {"QUESTION_WITHOUT_ANCHOR"})
+
+    def test_a_published_page_that_shows_a_question_makes_it_a_result_with_its_hints_and_closes_the_distance(self):
+        before = self.build()
+        self.assertEqual(before.questions["unrouted"], ["Q-NOROUTE"])
+        self.add_product_page()
+        built = self.build()
+        self.assertEqual(built.questions["unrouted"], [])
+        docs = {d["id"]: d for d in built.index["documents"]}
+        self.assertEqual(docs["question:Q-NOROUTE"]["url"], "products/physics/friction/core2.html#Q-NOROUTE")
+        self.assertEqual(docs["question:Q-NOROUTE"]["level"], "CORE2")
+        self.assertEqual(docs["hint:Q-NOROUTE:1"]["url"], docs["question:Q-NOROUTE"]["url"])
+        self.assertEqual(docs["page:products/physics/friction/core2.html"]["title"], "Friction practice")
+        self.write_index()
+        self.assertEqual(self.verify()[0], 0)
+
+    def test_a_question_shown_on_several_pages_opens_the_preferred_one_and_a_bank_question_keeps_the_bank(self):
+        self.add_product_page("core2b.html", ids=("Q-NOROUTE", "Q-BANK-1"))
+        self.add_product_page("core2a.html", ids=("Q-NOROUTE",))
+        self.add_product_page("index.html", title="Product index", ids=("Q-NOROUTE",))
+        docs = {d["id"]: d for d in self.build().index["documents"]}
+        self.assertTrue(docs["question:Q-NOROUTE"]["url"].endswith("core2a.html#Q-NOROUTE"), docs["question:Q-NOROUTE"]["url"])
+        self.assertTrue(docs["question:Q-BANK-1"]["url"].startswith("question-bank/index.html?q=Q-BANK-1"))
+
+    def test_an_anchor_that_goes_away_leaves_a_result_that_opens_nothing(self):
+        page_path = self.add_product_page()
+        self.write_index()
+        page_path.write_text(page_path.read_text(encoding="utf-8").replace('id="Q-NOROUTE" ', ""), encoding="utf-8")
+        code, records = self.verify()
+        self.assertEqual(code, 1)
+        self.assertGreaterEqual(self.codes(records["SEARCH_MEMBERSHIP"]), {"BROKEN_ROUTE"})
+
+    def test_pages_under_the_excluded_prefixes_are_not_indexed_whatever_they_show(self):
+        (self.repo / "public" / "test" / "products").mkdir(parents=True)
+        (self.repo / "public" / "test" / "products" / "draft.html").write_text(
+            '<html><head><title>A TEST draft</title></head><body><article id="Q-NOROUTE" data-g9-kind="QUESTION"></article></body></html>', encoding="utf-8")
+        built = self.build()
+        self.assertNotIn("A TEST draft", {d["title"] for d in built.index["documents"]})
+        self.assertEqual(built.questions["unrouted"], ["Q-NOROUTE"])
+
+    def test_the_severity_of_a_finding_is_the_blueprints_not_the_verifiers(self):
+        self.write_index()
+        (self.repo / "public" / "physics" / "untitled.html").write_text("<html><body><h1>No title element</h1></body></html>", encoding="utf-8")
+        self.write_index()
+        registry = json.loads(json.dumps(web_blueprint_contract.load_registry()))
+        for rule in registry["shell"]["search_policy"]["rules"]:
+            if rule["id"] == "PAGE_TITLED":
+                rule["severity"] = "ADVISE"
+        with mock.patch.object(web_blueprint_contract, "load_registry", return_value=registry):
+            code, records = self.verify()
+        untitled = next(f for f in records["SEARCH_MEMBERSHIP"]["findings"] if f["code"] == "PAGE_UNTITLED")
+        self.assertEqual((code, records["SEARCH_MEMBERSHIP"]["outcome"], untitled["severity"]), (0, "PASS", "S3"), "a rule that only says does not fail the run")
 
 
 class Committed(unittest.TestCase):

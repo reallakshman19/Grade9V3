@@ -13,7 +13,7 @@ Held to: FLOOR: official records and products are judged at the floor; an EXPECT
 
 ## The shell (every page)
 
-`G9-TABLET-SHELL-V1` 1.3.0: a fixed header with `BACK`, `HOME`, `SUBJECT_CONTEXT`, `QUESTION_BANK`, `PRINT_PDF`, `SEARCH`, `REFRESH`, `DISPLAY`, `OVERFLOW`.
+`G9-TABLET-SHELL-V1` 1.4.0: a fixed header with `BACK`, `HOME`, `SUBJECT_CONTEXT`, `QUESTION_BANK`, `PRINT_PDF`, `SEARCH`, `REFRESH`, `DISPLAY`, `OVERFLOW`.
 
 **PRINT_PDF** · the PDF icon in the header. A learner or a teacher can print the page: a PDF icon in the fixed header opens the PDF printed from this very page, ready for the print dialog of the tablet.
 
@@ -46,6 +46,26 @@ Governed roots: `standalone/`. A page there that is not listed in the ledger has
 Ledger (`Shared/web/standalone-ledger.v1.json`): A page may have no more findings of a rule than the ledger records, and a page the ledger does not list has none. The ledger holds what was already there when the rule arrived; the checker writes it, and it can only be tightened.
 
 Browser audit (`tools/site-audit/core-page-audit.mjs --profile tablet-12.7`): measures horizontal overflow, touch targets of at least 48 px, rendered text size, SVG labels included, return navigation. These need a rendered page. A snapshot is not done until this audit has run on it; the static rules above are what a pull request can be held to without a browser.
+
+## Search: every page is found
+
+Every page a learner can open is found by the header search, and so is every question and hint a published page shows. Nothing about a new page has to be remembered: the search index is built from the page files, the route table and the library, and a page added without rebuilding it leaves the committed index stale, which the verifier fails on every pull request.
+
+Site root `public/`. Routes: `Shared/search/site-routes.v1.json`. Index: `public/data/search-index.v2.json`. Builder: `Shared/tools/build_search_index.py`. Verifier: `Shared/tools/verify_search_index.py`.
+
+Not indexed: Pages under the route table's excluded prefixes: vendor/ (third-party files), test/ (the TEST sandbox, whose pages are labelled drafts and are never learner products) and node_modules/ (tooling).
+
+**When a page is added.** Run `python3 Shared/tools/build_search_index.py` (it reads the route table), then `python3 Shared/tools/build_pages_site.py`, and commit the regenerated index. Accepting a product does this itself.
+
+| Rule | Held | Assurance type | Findings | What it asks |
+|---|---|---|---|---|
+| `PAGE_INDEXED` | blocks | `SEARCH_MEMBERSHIP` | `MISSING_FROM_INDEX`, `PHANTOM_IN_INDEX`, `INDEX_DIFFERS`, `STALE_INDEX`, `QUESTIONS_DIFFER` | Every page file under the site root that a learner can open is a PAGE document of the search index, and so is every question and hint its pages show. A page added, removed or retitled without rebuilding the index leaves it stale, and the check fails. |
+| `PAGE_TITLED` | blocks | `SEARCH_MEMBERSHIP` | `PAGE_UNTITLED` | A page names itself with a non-empty title element. A page without one would be found under the name of its folder. |
+| `QUESTION_ANCHORED` | blocks | `SEARCH_MEMBERSHIP` | `QUESTION_WITHOUT_ANCHOR` | A page that shows a canonical question gives its element the question's id (data-g9-kind="QUESTION" with an id, as the renderer writes it), so that search opens the question at its own place and not only the page. An element of that kind with no id cannot be found. |
+| `RESULT_OPENS` | blocks | `SEARCH_MEMBERSHIP` | `BROKEN_ROUTE` | Every result opens something that exists: a page file, a Core learning projection, a Question Bank question, or the element of a page that carries the question's id. |
+| `UNROUTED_REPORTED` | said | `SEARCH_MEMBERSHIP` | `UNROUTED_QUESTIONS` | A canonical question that no page of the site shows is not a result. It is named in the index manifest and reported, so that the distance between the library and what a learner can open stays a number; publishing the product that shows it closes the distance. |
+| `INDEX_LOADABLE` | blocks | `SEARCH_RETRIEVABILITY` | `INDEX_OR_MANIFEST_INVALID`, `INDEX_DIGEST_MISMATCH`, `SCRIPT_MISSING`, `SCRIPT_DIGEST_MISMATCH`, `SCRIPT_NOT_THE_INDEX` | The index file, the script a page loads (so that a page opened from a file can search), and the manifest are consistent: the script is the index, and both are the files the manifest describes. |
+| `PUBLICATION_REINDEXES` | blocks | `SEARCH_MEMBERSHIP` | by the code of the publication step | Accepting a product publishes its pages and rebuilds the search index in the same change, before the Pages mirror is written, so that its pages, topics, questions and hints are found when they are published and not at the next person's pull request. |
 
 ## Rules about a whole product
 
