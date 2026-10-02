@@ -1,0 +1,527 @@
+name: pr375-u4-remediation
+
+on:
+  push:
+    branches:
+      - feat/physics-tablet-standalone
+    paths:
+      - .github/workflows/pr375-u4-remediation.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pr375-u4-remediation
+  cancel-in-progress: false
+
+jobs:
+  remediate-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/physics-tablet-standalone
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Apply bounded U4 accessibility remediation
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          pages = [
+              'standalone/core1a-motion-1d-straight-line-tablet.html',
+              'standalone/core1a-motion-in-a-plane-tablet.html',
+              'standalone/core1a-physics-nlm-tablet.html',
+              'standalone/core1a-vector-add-sub-tablet.html',
+              'standalone/core2-motion-in-a-plane-tablet.html',
+              'standalone/core2-physics-thrust-pressure-tablet.html',
+              'standalone/practice/core1a-physics-motion-2d-ncert-tablet.html',
+              'standalone/practice/core1a-physics-nlm-tablet.html',
+              'standalone/practice/core1a-physics-vectors-tablet.html',
+              'standalone/practice/core1a-sba-06-07-trajectory-and-height-tablet.html',
+              'standalone/practice/core1a-sba-motion-in-a-plane-master-tablet.html',
+              'standalone/practice/core2-motion-1d-straight-line-tablet.html',
+              'standalone/practice/core2-motion-consolidated-practice-tablet.html',
+              'standalone/practice/core2-motion-in-a-plane-tablet.html',
+              'standalone/practice/core2-physics-thrust-pressure-tablet.html',
+              'standalone/practice/core2a-projectile-study.html',
+              'standalone/practice/index.html',
+              'standalone/practice/motion-in-1d-master-suite.html',
+              'standalone/practice/motion-in-2d-master-suite.html',
+              'standalone/practice/physics-motion-in-a-plane-interactive-suite.html',
+          ]
+
+          css = r'''
+          <style id="pr375-u4-remediation">
+          /* PR #375 U4 remediation: accessibility, reflow and alternate viewports. */
+          *, *::before, *::after { box-sizing: border-box; }
+          :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+            outline: 3px solid #38bdf8 !important;
+            outline-offset: 2px !important;
+          }
+          img, svg, canvas { max-width: 100%; }
+          input, select, textarea { max-width: 100%; }
+          ::placeholder { color: #94a3b8 !important; opacity: 1 !important; }
+          [data-theme="light"] ::placeholder { color: #475569 !important; }
+          .u4-clear-button { color: #f8fafc !important; }
+          [data-theme="light"] .u4-clear-button { color: #0f172a !important; }
+
+          /* Never communicate correctness by colour alone. */
+          .opt-btn.selected-correct::after {
+            content: " ✓ Correct";
+            margin-inline-start: .4rem;
+            font-weight: 800;
+          }
+          .opt-btn.selected-incorrect::after {
+            content: " ✕ Incorrect";
+            margin-inline-start: .4rem;
+            font-weight: 800;
+          }
+
+          /* Contrast repairs for the learner-visible light theme. */
+          [data-theme="light"] .step-content-calc {
+            color: #7c2d12 !important;
+            background: #fff7ed !important;
+            border: 1px solid #c2410c !important;
+          }
+          [data-theme="light"] .answer-banner,
+          [data-theme="light"] .badge-success,
+          [data-theme="light"] .saved-pill {
+            color: #065f46 !important;
+          }
+          [data-theme="light"] .badge-warning,
+          [data-theme="light"] .hint-tag,
+          [data-theme="light"] .diag-header-another {
+            color: #7c2d12 !important;
+          }
+          [data-theme="light"] .step-label,
+          [data-theme="light"] details > summary {
+            color: #075985 !important;
+          }
+          [data-theme="light"] .formula-box,
+          [data-theme="light"] .math-banner {
+            color: #422006 !important;
+            background: #fef3c7 !important;
+            border-color: #92400e !important;
+          }
+          [data-theme="light"] footer { color: #475569 !important; }
+
+          /* Default dark-theme contrast repairs from U4. */
+          html[data-theme="dark"] .step-label { color: #7dd3fc !important; }
+          html[data-theme="dark"] details > summary { color: #7dd3fc !important; }
+          .q-count, .open-btn { color: #93c5fd !important; }
+          .tag-2d, .tag-1d, .tag-vec, .tag-ncert, .tag-sba, .tag-proj, .tag-cons { color: #ffffff !important; }
+          footer { color: #94a3b8 !important; }
+
+          /* The offline 1D master lost Tailwind preflight + custom theme utilities. */
+          body.u4-tailwind-offline {
+            margin: 0 !important;
+            background: #090d16 !important;
+            color: #f1f5f9 !important;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+          }
+          .u4-tailwind-offline.bg-background, .u4-tailwind-offline .bg-background { background-color: #090d16 !important; }
+          .u4-tailwind-offline .bg-card { background-color: #111827 !important; }
+          .u4-tailwind-offline .border-border { border-color: #334155 !important; }
+          .u4-tailwind-offline .bg-slate-950\/90 { background-color: rgba(2, 6, 23, .94) !important; }
+          .u4-tailwind-offline .bg-slate-900 { background-color: #0f172a !important; }
+          .u4-tailwind-offline .bg-slate-800 { background-color: #1e293b !important; }
+          .u4-tailwind-offline .max-w-7xl { max-width: 80rem !important; }
+          .u4-tailwind-offline .overflow-x-auto { overflow-x: auto !important; }
+          .u4-tailwind-offline .whitespace-nowrap { white-space: nowrap !important; }
+          .u4-tailwind-offline .font-sans { font-family: ui-sans-serif, system-ui, sans-serif !important; }
+          .u4-tailwind-offline .text-slate-500,
+          .u4-tailwind-offline .text-slate-600 { color: #cbd5e1 !important; }
+          .u4-tailwind-offline .text-slate-400 { color: #a8b5c7 !important; }
+          .u4-tailwind-offline header { max-width: 100%; }
+
+          /* Reflow at phone width and at a 200% zoom-equivalent viewport. */
+          @media (max-width: 700px) {
+            header.sticky, .sticky-header, .top-nav.sticky { position: static !important; top: auto !important; }
+          }
+          @media (max-width: 480px) {
+            .header-actions,
+            .g9-nav-group,
+            .g9-header-actions,
+            .top-nav-header,
+            .course-badge-row,
+            .workspace-title-row {
+              max-width: 100% !important;
+              min-width: 0 !important;
+              flex-wrap: wrap !important;
+            }
+            .g9-block, nav, ol, ul, main, section, article, .app-container, .container {
+              max-width: 100% !important;
+              min-width: 0 !important;
+            }
+            ol, ul { padding-inline-start: 1.5rem !important; }
+            #jump-select { width: 100% !important; max-width: 100% !important; }
+            .tab-btn { white-space: normal !important; min-width: 0 !important; flex: 1 1 140px !important; }
+            .tabs, .tab-strip, .tab-nav, .tab-bar, .g9-tabs, [class*="tabs-row"] {
+              display: flex !important;
+              flex-wrap: wrap !important;
+              white-space: normal !important;
+              max-width: 100% !important;
+              min-width: 0 !important;
+            }
+            .g9-nav-group > *, .header-actions > * { max-width: 100% !important; }
+            pre { white-space: pre-wrap !important; overflow-wrap: anywhere !important; max-width: 100% !important; }
+            table { display: block; max-width: 100% !important; overflow-x: auto !important; }
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+              animation-duration: .001ms !important;
+              animation-iteration-count: 1 !important;
+              transition-duration: .001ms !important;
+              scroll-behavior: auto !important;
+            }
+          }
+
+          @media (forced-colors: active) {
+            svg text { fill: CanvasText !important; stroke: transparent !important; }
+            :where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+              outline: 3px solid Highlight !important;
+            }
+          }
+          </style>
+          '''.strip()
+
+          js = r'''
+          <script id="pr375-u4-remediation-script">
+          (() => {
+            const humanize = (value) => String(value || '')
+              .replace(/([a-z0-9])([A-Z])/g, '$1 $2')
+              .replace(/[_-]+/g, ' ')
+              .replace(/\b(vec)([ab])\b/gi, 'vector $2')
+              .replace(/\bproj\b/gi, 'projectile')
+              .replace(/\s+/g, ' ')
+              .trim();
+
+            const explicitNames = {
+              mass1: 'Mass m1 in kilograms', mass2: 'Mass m2 in kilograms',
+              vecA: 'Vector A', vecB: 'Vector B',
+              projU: 'Projectile launch speed', projAngle: 'Projectile launch angle',
+              'jump-select': 'Jump to question', search: 'Search questions',
+              searchInput: 'Search questions', questionSearch: 'Search questions'
+            };
+
+            const hasLabel = (el) => {
+              if (el.getAttribute('aria-label') || el.getAttribute('aria-labelledby') || el.title) return true;
+              if (el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`)) return true;
+              return !!el.closest('label');
+            };
+
+            document.querySelectorAll('input, select, textarea').forEach((el, index) => {
+              if (hasLabel(el)) return;
+              let name = explicitNames[el.id] || el.getAttribute('placeholder') || el.getAttribute('name') || el.id;
+              if (!name) {
+                const nearby = el.parentElement?.textContent?.trim();
+                if (nearby && nearby.length <= 100) name = nearby;
+              }
+              name = humanize(name) || `${el.tagName.toLowerCase()} ${index + 1}`;
+              el.setAttribute('aria-label', name);
+            });
+
+            document.querySelectorAll('button').forEach(btn => {
+              if (btn.textContent.trim().toLowerCase() === 'clear') btn.classList.add('u4-clear-button');
+            });
+
+            const syncOptions = () => {
+              document.querySelectorAll('.opt-btn').forEach(btn => {
+                const correct = btn.classList.contains('selected-correct');
+                const incorrect = btn.classList.contains('selected-incorrect');
+                btn.setAttribute('aria-pressed', correct || incorrect ? 'true' : 'false');
+                const base = btn.getAttribute('data-u4-base-label') || btn.getAttribute('aria-label') || btn.textContent.trim();
+                if (!btn.hasAttribute('data-u4-base-label')) btn.setAttribute('data-u4-base-label', base);
+                btn.setAttribute('aria-label', `${base}${correct ? ' — Correct' : incorrect ? ' — Incorrect' : ''}`);
+              });
+            };
+            syncOptions();
+
+            const syncTabs = () => {
+              document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.setAttribute('role', 'tab');
+                const active = btn.classList.contains('active') || btn.classList.contains('tab-btn-active') || btn.getAttribute('aria-current') === 'page';
+                btn.setAttribute('aria-selected', active ? 'true' : 'false');
+                if (btn.parentElement && !btn.parentElement.hasAttribute('role')) btn.parentElement.setAttribute('role', 'tablist');
+              });
+            };
+            syncTabs();
+
+            const figureName = (el, fallback) => {
+              const scope = el.closest('figure, section, article, .card, .panel, .simulator, .canvas-container') || el.parentElement;
+              const caption = scope?.querySelector('figcaption, h1, h2, h3, h4, .title, [class*="title"]');
+              const txt = caption?.textContent?.replace(/\s+/g, ' ').trim();
+              return txt && txt.length <= 120 ? txt : fallback;
+            };
+
+            document.querySelectorAll('svg').forEach(svg => {
+              if (svg.hasAttribute('aria-label') || svg.hasAttribute('aria-labelledby') || svg.hasAttribute('aria-hidden') || svg.querySelector('title')) return;
+              const control = svg.closest('a, button');
+              if (control && control.textContent.trim()) {
+                svg.setAttribute('aria-hidden', 'true');
+                svg.setAttribute('focusable', 'false');
+              } else {
+                svg.setAttribute('role', 'img');
+                svg.setAttribute('aria-label', figureName(svg, 'Physics diagram'));
+              }
+            });
+
+            document.querySelectorAll('canvas').forEach(canvas => {
+              if (canvas.hasAttribute('aria-label') || canvas.hasAttribute('aria-labelledby') || canvas.hasAttribute('aria-hidden')) return;
+              canvas.setAttribute('role', 'img');
+              canvas.setAttribute('aria-label', figureName(canvas, 'Interactive physics simulation'));
+            });
+
+            if (!document.querySelector('main, [role="main"]')) {
+              const mainCandidate = document.querySelector('.app-container, .container, .page-shell, #app');
+              if (mainCandidate) mainCandidate.setAttribute('role', 'main');
+            }
+
+            const observer = new MutationObserver(() => { syncOptions(); syncTabs(); });
+            observer.observe(document.documentElement, { subtree: true, attributes: true, attributeFilter: ['class', 'aria-current'] });
+          })();
+          </script>
+          '''.strip()
+
+          def demote_extra_h1(text):
+              count = 0
+              pattern = re.compile(r'<h1\b([^>]*)>(.*?)</h1>', re.I | re.S)
+              def repl(match):
+                  nonlocal count
+                  count += 1
+                  if count == 1:
+                      return match.group(0)
+                  return f'<h2{match.group(1)}>{match.group(2)}</h2>'
+              return pattern.sub(repl, text)
+
+          for rel in pages:
+              path = Path(rel)
+              if not path.exists():
+                  raise SystemExit(f'missing expected U4 page: {rel}')
+              text = path.read_text(encoding='utf-8')
+              original = text
+
+              if rel.endswith('motion-in-1d-master-suite.html'):
+                  text = text.replace('tailwind.config = {', '(window.tailwind = window.tailwind || {}).config = {', 1)
+                  text = re.sub(r'<body\s+class="([^"]*)"', lambda m: f'<body class="u4-tailwind-offline {m.group(1)}"', text, count=1)
+
+              if rel in {
+                  'standalone/core2-physics-thrust-pressure-tablet.html',
+                  'standalone/practice/core2-physics-thrust-pressure-tablet.html',
+                  'standalone/practice/core1a-sba-06-07-trajectory-and-height-tablet.html',
+              }:
+                  text = demote_extra_h1(text)
+
+              if 'id="pr375-u4-remediation"' not in text:
+                  if '</head>' not in text:
+                      raise SystemExit(f'no </head> in {rel}')
+                  text = text.replace('</head>', css + '\n</head>', 1)
+              if 'id="pr375-u4-remediation-script"' not in text:
+                  if '</body>' not in text:
+                      raise SystemExit(f'no </body> in {rel}')
+                  text = text.replace('</body>', js + '\n</body>', 1)
+
+              path.write_text(text, encoding='utf-8')
+              print(f'{rel}: {len(original)} -> {len(text)} bytes')
+          PY
+
+      - name: Static U4 invariants
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          pages = list(Path('standalone').glob('*.html')) + list(Path('standalone/practice').glob('*.html'))
+          scoped = [p for p in pages if p.name in {
+              'core1a-motion-1d-straight-line-tablet.html','core1a-motion-in-a-plane-tablet.html','core1a-physics-nlm-tablet.html',
+              'core1a-vector-add-sub-tablet.html','core2-motion-in-a-plane-tablet.html','core2-physics-thrust-pressure-tablet.html',
+              'core1a-physics-motion-2d-ncert-tablet.html','core1a-physics-vectors-tablet.html','core1a-sba-06-07-trajectory-and-height-tablet.html',
+              'core1a-sba-motion-in-a-plane-master-tablet.html','core2-motion-1d-straight-line-tablet.html',
+              'core2-motion-consolidated-practice-tablet.html','core2a-projectile-study.html','index.html','motion-in-1d-master-suite.html',
+              'motion-in-2d-master-suite.html','physics-motion-in-a-plane-interactive-suite.html'
+          }]
+          # Same-name root/practice files intentionally produce 20 paths total.
+          if len(scoped) != 20:
+              raise SystemExit(f'expected 20 scoped HTML pages, found {len(scoped)}')
+          for p in scoped:
+              t = p.read_text(encoding='utf-8')
+              assert 'id="pr375-u4-remediation"' in t, p
+              assert 'id="pr375-u4-remediation-script"' in t, p
+              assert 'prefers-reduced-motion: reduce' in t, p
+              assert 'forced-colors: active' in t, p
+              assert 'maximum-scale=5.0' in t or 'initial-scale=1' in t, p
+          master = Path('standalone/practice/motion-in-1d-master-suite.html').read_text(encoding='utf-8')
+          assert '(window.tailwind = window.tailwind || {}).config' in master
+          assert 'u4-tailwind-offline' in master
+          print('static U4 invariants: PASS (20/20)')
+          PY
+
+      - name: Install Chromium audit dependency
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Browser U4 regression audit
+        shell: bash
+        run: |
+          python3 -m http.server 8104 --directory . >/tmp/pr375-u4-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for i in $(seq 1 50); do
+            if curl -fsS http://127.0.0.1:8104/standalone/practice/index.html >/dev/null; then break; fi
+            sleep .2
+          done
+          cat >/tmp/pr375-u4-audit.mjs <<'JS'
+          import { chromium } from 'playwright';
+
+          const pages = [
+            'standalone/core1a-motion-1d-straight-line-tablet.html',
+            'standalone/core1a-motion-in-a-plane-tablet.html',
+            'standalone/core1a-physics-nlm-tablet.html',
+            'standalone/core1a-vector-add-sub-tablet.html',
+            'standalone/core2-motion-in-a-plane-tablet.html',
+            'standalone/core2-physics-thrust-pressure-tablet.html',
+            'standalone/practice/core1a-physics-motion-2d-ncert-tablet.html',
+            'standalone/practice/core1a-physics-nlm-tablet.html',
+            'standalone/practice/core1a-physics-vectors-tablet.html',
+            'standalone/practice/core1a-sba-06-07-trajectory-and-height-tablet.html',
+            'standalone/practice/core1a-sba-motion-in-a-plane-master-tablet.html',
+            'standalone/practice/core2-motion-1d-straight-line-tablet.html',
+            'standalone/practice/core2-motion-consolidated-practice-tablet.html',
+            'standalone/practice/core2-motion-in-a-plane-tablet.html',
+            'standalone/practice/core2-physics-thrust-pressure-tablet.html',
+            'standalone/practice/core2a-projectile-study.html',
+            'standalone/practice/index.html',
+            'standalone/practice/motion-in-1d-master-suite.html',
+            'standalone/practice/motion-in-2d-master-suite.html',
+            'standalone/practice/physics-motion-in-a-plane-interactive-suite.html',
+          ];
+          const viewports = [
+            { width: 390, height: 844, name: 'phone' },
+            { width: 768, height: 1024, name: 'portrait' },
+            { width: 1280, height: 800, name: 'small-desktop' },
+            { width: 1920, height: 1080, name: 'desktop' },
+            { width: 683, height: 427, name: 'zoom-200' },
+          ];
+          const browser = await chromium.launch({ headless: true });
+          const failures = [];
+
+          for (const rel of pages) {
+            for (const vp of viewports) {
+              const context = await browser.newContext({ viewport: { width: vp.width, height: vp.height } });
+              const page = await context.newPage();
+              const pageErrors = [];
+              page.on('pageerror', e => pageErrors.push(String(e)));
+              await page.goto(`http://127.0.0.1:8104/${rel}`, { waitUntil: 'domcontentloaded', timeout: 30000 });
+              await page.waitForTimeout(150);
+              const data = await page.evaluate(() => {
+                const unlabeledControls = [...document.querySelectorAll('input,select,textarea')].filter(el => {
+                  const labelled = el.getAttribute('aria-label') || el.getAttribute('aria-labelledby') || el.title || el.closest('label') || (el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`));
+                  return !labelled;
+                }).length;
+                const unlabeledFigures = [...document.querySelectorAll('svg,canvas')].filter(el => {
+                  return !el.getAttribute('aria-label') && !el.getAttribute('aria-labelledby') && !el.getAttribute('aria-hidden') && !el.querySelector?.('title');
+                }).length;
+                const stickyRatios = [...document.querySelectorAll('header, .sticky-header, .top-nav')].map(el => {
+                  const cs = getComputedStyle(el);
+                  if (cs.position !== 'sticky' && cs.position !== 'fixed') return 0;
+                  return el.getBoundingClientRect().height / innerHeight;
+                });
+                return {
+                  sw: document.documentElement.scrollWidth,
+                  iw: innerWidth,
+                  unlabeledControls,
+                  unlabeledFigures,
+                  maxStickyRatio: Math.max(0, ...stickyRatios),
+                  bodyBg: getComputedStyle(document.body).backgroundColor,
+                  bodyColor: getComputedStyle(document.body).color,
+                };
+              });
+              if ((vp.name === 'phone' || vp.name === 'zoom-200') && data.sw > data.iw + 1) {
+                failures.push(`${rel} ${vp.name}: horizontal overflow ${data.sw}/${data.iw}`);
+              }
+              if (data.maxStickyRatio > 0.3334) failures.push(`${rel} ${vp.name}: sticky header ratio ${data.maxStickyRatio.toFixed(3)}`);
+              if (data.unlabeledControls) failures.push(`${rel} ${vp.name}: ${data.unlabeledControls} unlabeled controls`);
+              if (data.unlabeledFigures) failures.push(`${rel} ${vp.name}: ${data.unlabeledFigures} unlabeled figures`);
+              if (rel.endsWith('motion-in-1d-master-suite.html') && pageErrors.some(e => /tailwind is not defined/i.test(e))) {
+                failures.push(`${rel} ${vp.name}: tailwind runtime error remains`);
+              }
+              await context.close();
+            }
+          }
+
+          // Targeted state/contrast regressions.
+          {
+            const context = await browser.newContext({ viewport: { width: 1280, height: 800 } });
+            const page = await context.newPage();
+            await page.goto('http://127.0.0.1:8104/standalone/practice/core2-motion-in-a-plane-tablet.html', { waitUntil: 'domcontentloaded' });
+            await page.evaluate(() => document.documentElement.setAttribute('data-theme', 'light'));
+            const state = await page.evaluate(() => {
+              const calc = document.querySelector('.step-content-calc');
+              const pseudoRule = [...document.styleSheets].flatMap(s => { try { return [...s.cssRules]; } catch { return []; } }).some(r => String(r.cssText).includes('✓ Correct'));
+              return { calcColor: calc ? getComputedStyle(calc).color : '', pseudoRule };
+            });
+            if (state.calcColor === 'rgb(251, 191, 36)') failures.push('core2 motion light theme: old amber calc colour remains');
+            if (!state.pseudoRule) failures.push('core2 motion: non-colour correctness cue missing');
+            await context.close();
+          }
+
+          {
+            const context = await browser.newContext({ viewport: { width: 1280, height: 800 }, reducedMotion: 'reduce', forcedColors: 'active' });
+            const page = await context.newPage();
+            await page.goto('http://127.0.0.1:8104/standalone/practice/motion-in-2d-master-suite.html', { waitUntil: 'domcontentloaded' });
+            const state = await page.evaluate(() => {
+              const pulse = document.querySelector('.animate-pulse');
+              const svgText = document.querySelector('svg text');
+              return {
+                pulseDuration: pulse ? parseFloat(getComputedStyle(pulse).animationDuration) || 0 : 0,
+                fill: svgText ? getComputedStyle(svgText).fill : '',
+              };
+            });
+            if (state.pulseDuration > 0.01) failures.push(`reduced motion: pulse duration ${state.pulseDuration}s`);
+            await context.close();
+          }
+
+          await browser.close();
+          if (failures.length) {
+            console.error('U4 browser audit failures:');
+            failures.forEach(f => console.error(`- ${f}`));
+            process.exit(1);
+          }
+          console.log(`U4 browser audit: PASS (${pages.length} pages × ${viewports.length} viewports)`);
+          JS
+          node /tmp/pr375-u4-audit.mjs
+
+      - name: Ensure branch did not advance during remediation
+        shell: bash
+        run: |
+          remote_sha=$(git ls-remote origin refs/heads/feat/physics-tablet-standalone | awk '{print $1}')
+          test "$remote_sha" = "$GITHUB_SHA" || { echo "branch advanced from $GITHUB_SHA to $remote_sha; refusing to overwrite"; exit 1; }
+
+      - name: Commit verified U4 remediation and remove one-shot workflow
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/pr375-u4-remediation.yml
+          git add standalone/core1a-motion-1d-straight-line-tablet.html \
+                  standalone/core1a-motion-in-a-plane-tablet.html \
+                  standalone/core1a-physics-nlm-tablet.html \
+                  standalone/core1a-vector-add-sub-tablet.html \
+                  standalone/core2-motion-in-a-plane-tablet.html \
+                  standalone/core2-physics-thrust-pressure-tablet.html \
+                  standalone/practice/*.html
+          git commit -m "fix(physics): remediate PR375 U4 accessibility findings"
+          git push origin HEAD:feat/physics-tablet-standalone
