@@ -1,0 +1,109 @@
+name: math-qbank-admission-once
+
+on:
+  push:
+    branches: [feat/math-qbank-admission-global-search]
+    paths:
+      - "Mathematics/question-bank/admissions.v1.json"
+      - "Shared/tools/apply_question_bank_admissions.py"
+      - "tests/test_question_bank_lineage_witnesses.py"
+      - "tests/test_global_site_search.py"
+      - ".github/workflows/math-qbank-admission-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  admit-and-regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/math-qbank-admission-global-search
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install validation dependency
+        run: pip install --quiet jsonschema
+
+      - name: Materialize reviewed Mathematics admissions
+        run: python3 Shared/tools/apply_question_bank_admissions.py --write
+
+      - name: Regenerate Question Bank, search and Pages projections
+        run: |
+          python3 Shared/tools/build_question_bank_web.py
+          python3 Shared/tools/build_question_bank_platform.py --write
+          python3 Shared/tools/build_search_index.py \
+            --library-dirs Physics/library Chemistry/library Mathematics/library \
+            --output-index public/data/search-index.v1.json \
+            --output-manifest public/data/search-index-manifest.v1.json
+          python3 Shared/tools/build_manifest.py
+          python3 Shared/tools/build_pages_site.py
+
+      - name: Run focused admission, lineage and global-search tests
+        run: |
+          python3 -m unittest \
+            tests.test_question_bank_web \
+            tests.test_question_bank_platform \
+            tests.test_question_bank_platform_runtime \
+            tests.test_question_bank_lineage_witnesses \
+            tests.test_global_site_search
+          node tests/question_bank_data_service.test.mjs
+
+      - name: Verify deterministic generated state
+        run: |
+          python3 Shared/tools/apply_question_bank_admissions.py --check
+          python3 Shared/tools/build_question_bank_web.py --check
+          python3 Shared/tools/build_question_bank_platform.py --check
+          python3 Shared/tools/verify_search_index.py \
+            --index public/data/search-index.v1.json \
+            --manifest public/data/search-index-manifest.v1.json \
+            --library-dirs Physics/library Chemistry/library Mathematics/library \
+            --enforce
+          python3 Shared/tools/build_pages_site.py --check
+
+      - name: Assert Mathematics admission and Vector-Hub authority boundary
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          def assignment(path, variable):
+              text = Path(path).read_text(encoding='utf-8').strip()
+              prefix = f'window.{variable}='
+              assert text.startswith(prefix) and text.endswith(';'), path
+              return json.loads(text[len(prefix):-1])
+
+          qb = assignment('public/data/question-bank-data.js', 'GRADE9_QUESTION_BANK')
+          questions = qb['questions']
+          ids = {row['id'] for row in questions}
+          assert len(questions) == 99, len(questions)
+          assert qb['counts']['subjects']['Mathematics'] == 18, qb['counts']['subjects']
+          assert 'Q-MAT-LEQ-01-EXEMPLAR8-Q6' in ids
+          assert not any(qid.startswith('VEC-Q') for qid in ids)
+
+          catalog = assignment('public/data/question-bank-catalog.js', 'GRADE9_QUESTION_BANK_CATALOG')
+          math = next(row for row in catalog['subjects'] if row['id'] == 'SUBJECT-MATHEMATICS')
+          assert math['question_count'] == 18, math
+          assert math['resource_count'] >= 1, math
+
+          search = assignment('public/data/question-bank-search.js', 'GRADE9_QUESTION_BANK_SEARCH')
+          docs = search['documents']
+          math_docs = [row for row in docs if row.get('kind') == 'question' and row.get('subject_ref') == 'SUBJECT-MATHEMATICS']
+          assert len(math_docs) == 18, len(math_docs)
+          assert any(row['id'] == 'Q-MAT-LEQ-01-EXEMPLAR8-Q6' for row in math_docs)
+          print('MATH_QBANK_ADMISSION: PASS (18 canonical Mathematics questions; Vector Hub remains resource-only)')
+          PY
+
+      - name: Commit deterministic admission and generated publication
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "4189824+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Mathematics admission already synchronized."
+            exit 0
+          fi
+          git commit -m "feat(math): publish 18 canonical questions to global search"
+          git push origin HEAD:feat/math-qbank-admission-global-search
