@@ -121,6 +121,10 @@
       "target": "data/sample_learner_overlay.json"
     },
     {
+      "source": "public/data/site-search-resources.js",
+      "target": "data/site-search-resources.js"
+    },
+    {
       "source": "public/index.html",
       "target": "index.html"
     },
