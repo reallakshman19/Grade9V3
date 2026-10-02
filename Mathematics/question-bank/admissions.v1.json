@@ -8,6 +8,11 @@
   "last_checked": "2026-10-02",
   "review_basis": "Independent re-derivation of each selected source-original item against its stem plus comparison with the canonical package's official-answer evidence. Authored teaching/transfer questions are intentionally excluded.",
   "expected_time_seconds": 180,
+  "difficulty": {
+    "band": "D2",
+    "score": 4,
+    "basis": "Publication classification for these source exercise/exemplar items: one or more reversible algebra/substitution decisions, but no sustained multi-concept chain. This metadata controls learner filtering only; it does not alter the canonical stem or answer."
+  },
   "questions": [
     {
       "id": "Q-MAT-LEQ-01-EXEMPLAR8-Q6",
