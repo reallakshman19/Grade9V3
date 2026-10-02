@@ -215,7 +215,7 @@ class Release(Tree):
         self.assertEqual(release_fingerprint.build_fingerprint("P", [self.lib], self.web)["canonical_snapshot_digest"], first["canonical_snapshot_digest"])
 
     def test_the_assurance_digest_is_the_bundles_own_and_a_broken_bundle_is_refused(self):
-        subjects = aggregate.package_subjects([str(self.lib)], Path("/"))
+        subjects = aggregate.package_subjects([self.lib.name], self.tmp)
         policies = [{"schema": "canonical-admission-policy/v1", "policy_id": "t", "version": "1", "subject_kind": "CANONICAL_RECORD", "required_pass": ["STRUCTURAL_VALIDITY"],
                      "required_pass_or_na": []}]
         bundle = aggregate.build_bundle("P", subjects, policies, aggregate.evaluate(subjects, policies, {}))

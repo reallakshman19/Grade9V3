@@ -149,7 +149,7 @@ class Ledger(unittest.TestCase):
             root = REPO_ROOT / "standalone"
             counts = sc.counts(sc.check_page(path, root=root, shell=shell, _ids=ids))
             if counts:
-                found[str(path.relative_to(REPO_ROOT))] = counts
+                found[path.relative_to(REPO_ROOT).as_posix()] = counts
         self.assertEqual(sc.ratchet(found, sc.load_ledger()), [])
 
     def test_the_ledger_names_only_pages_that_exist(self):

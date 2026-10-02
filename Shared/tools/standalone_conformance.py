@@ -380,8 +380,9 @@ def ratchet(findings_by_file: dict[str, dict[str, int]], ledger: dict) -> list[s
     held = ledger.get("files", {})
     problems = []
     for name, found in sorted(findings_by_file.items()):
+        norm_name = name.replace("\\", "/")
         for rule, number in sorted(found.items()):
-            allowed = held.get(name, {}).get(rule, 0)
+            allowed = held.get(norm_name, {}).get(rule, 0)
             if number > allowed:
                 problems.append(f"{name}: {rule} {number} (the ledger allows {allowed})")
     return problems
@@ -407,7 +408,7 @@ def main(argv: list[str] | None = None) -> int:
     result: dict[str, list[dict]] = {}
     for f in files:
         root = next((p for p in roots.values() if p in f.resolve().parents), None)
-        key = str(f.resolve().relative_to(REPO)) if REPO in f.resolve().parents else str(f)
+        key = f.resolve().relative_to(REPO).as_posix() if REPO in f.resolve().parents else str(f)
         result[key] = check_page(f, root=root, shell=shell, _ids=ids)
     held = {k: counts(v) for k, v in result.items() if counts(v)}
     if args.write_ledger:

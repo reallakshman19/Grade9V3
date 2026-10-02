@@ -307,13 +307,19 @@ class Ratchet(unittest.TestCase):
 
     def test_enforce_passes_at_the_baseline_and_fails_on_a_new_finding(self):
         empty = REPO / "build" / "test-assurance" / "empty-baseline.json"
+        empty.parent.mkdir(parents=True, exist_ok=True)
         baseline.write([], empty)
         self.addCleanup(lambda: empty.unlink(missing_ok=True))
         out = tempfile.mkdtemp()
         self.addCleanup(shutil.rmtree, out, True)
         argv = ["--packages", "Physics/library", "Mathematics/library", "--evidence-dir", f"build/test-assurance/{Path(out).name}"]
         self.assertEqual(assurance_run.main(argv + ["--enforce"]), 0, "main at its committed baseline")
-        self.assertEqual(assurance_run.main(argv + ["--enforce", "--baseline", empty.relative_to(REPO).as_posix()]), 1, "the Mathematics collisions are new against an empty baseline")
+        bad_dir = REPO / "build" / "test-assurance" / f"bad-{Path(out).name}"
+        bad_dir.mkdir(parents=True, exist_ok=True)
+        self.addCleanup(shutil.rmtree, bad_dir, True)
+        (bad_dir / "bad.json").write_text(json.dumps({"package_id": "BAD", "questions": [{"id": "Q-BAD", "primary_capability_ref": "NONEXISTENT", "stem": "bad", "answer": {"kind": "MODEL_RESPONSE", "summary": "x"}}]}), encoding="utf-8")
+        bad_argv = ["--packages", bad_dir.relative_to(REPO).as_posix(), "--evidence-dir", f"build/test-assurance/{Path(out).name}", "--baseline", empty.relative_to(REPO).as_posix(), "--enforce"]
+        self.assertEqual(assurance_run.main(bad_argv), 1, "a new finding fails against an empty baseline")
 
 
 # -- the acceptance test -------------------------------------------------------------------------------------------------------------------------
