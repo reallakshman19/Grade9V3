@@ -1,6 +1,6 @@
 {
   "basis": {
-    "browser_projection_digest": "sha256:6e3bd65e835609d4bc79adaaf1fa1b3abd1c7e56f7dffff26c3d539f7c7428cc",
+    "browser_projection_digest": "sha256:5d51ae335d809e770336803f92ba983e2284ba534b63e5099ce880aab837ee00",
     "resource_basis": [
       {
         "digest": "sha256:5697b12e7693110933ab9f8785a1f0533d1bd83d36adee6cdef746ab8986cdf4",
@@ -46,54 +46,54 @@
     "subtopic_titles": "sha256:9984302e90569a9c6630f5751b875261905ab5bf21d929eceb3bf9aa1f6cc04b",
     "worker_contract_version": "1.0.0"
   },
-  "build_id": "sha256:9238ef7eea3da346af50b1c72549ea7e5484be79e2973c72293acf7b636f8d5d",
+  "build_id": "sha256:482f4297469e857fa9c4b6ea91929bbf3c64210ebce30ecf82dd500d8501ac4a",
   "counts": {
-    "dedup_evidence": 7,
-    "detail_shards": 2,
+    "dedup_evidence": 11,
+    "detail_shards": 3,
     "near_duplicate_search_complete": true,
-    "questions": 81,
+    "questions": 99,
     "resources": 12,
-    "search_documents": 93
+    "search_documents": 111
   },
   "outputs": {
-    "catalog": "sha256:4a1a42358b27a6a15b6f75e6c784d4d858256794b11c869d34dd2b8c333732be",
-    "dedup": "sha256:301c20d9dd2a3201feffabc3563c7063ebd1ff500665a7eab21b0f55a7ebca0e",
-    "detail_shards": "sha256:ecdc407f3937626eb1c2033c823487d6b02b91023a09a7983bc59f84124c8c24",
-    "lineage": "sha256:e34d648a536bba116c232744bb6114b51c6f3b5d7ae30487ac60b2dece2e4eaf",
+    "catalog": "sha256:c03789288eb6cba6dc290909ba13e8f33c2b7dcf92136f425f76ab062c8dad41",
+    "dedup": "sha256:d84dc9598f60573c865fabbaef103c67917484a38bcaca07890bb7f20fa33b67",
+    "detail_shards": "sha256:d81122fada624fc0e562c45f56adc10d5fb91f9619424d83b257fc4d9c6045d5",
+    "lineage": "sha256:96ec1c34d1e7b19feea7cd19d617d3f1843448beb0b2c6a6f2f617aa69b16cfa",
     "resources": "sha256:a43446eec495ad35f6f86688fb185788630d43def3f2b99899816753bb12f582",
-    "search": "sha256:6e6cf51d7b4566f273de820e057920f4a245850ba590d180212cc2935c902b0b",
-    "summaries": "sha256:5adcd8177583cc7c42f0d9c79cdc8e96f99aada14745282e0e7fa26af4da7888"
+    "search": "sha256:237e7a3e950aca2d988dcaa8f5680aa3f9571f3255c0d61ddc234e09c1cbacf6",
+    "summaries": "sha256:446c900698023b3c861fb31670f8b2c3a19d0d26360fd0ec19c2ce8495a85371"
   },
   "schema_version": "grade9v3-question-bank-build-receipt-v1",
   "workers": [
     {
       "contract_version": "1.0.0",
-      "input_digest": "sha256:616e2e073ab7b7c2cd903f1ec3a3b271e5d22ee4a545c00c4aca8bede83421f1",
-      "output_digest": "sha256:4a1a42358b27a6a15b6f75e6c784d4d858256794b11c869d34dd2b8c333732be",
+      "input_digest": "sha256:ab60d29d22eaebcd212e5eb4f6da15b57f03bbb82607a051e5898e050c4c1700",
+      "output_digest": "sha256:c03789288eb6cba6dc290909ba13e8f33c2b7dcf92136f425f76ab062c8dad41",
       "worker_id": "catalog"
     },
     {
       "contract_version": "1.0.0",
-      "input_digest": "sha256:9bff77a086393fb9866043ddddcb2eb44542589f8082566ffb05571224e38abc",
-      "output_digest": "sha256:301c20d9dd2a3201feffabc3563c7063ebd1ff500665a7eab21b0f55a7ebca0e",
+      "input_digest": "sha256:29061f7d3fea5f0bee23da9b696acf01a862985dcc50c2ca28ff12d73b6fe73a",
+      "output_digest": "sha256:d84dc9598f60573c865fabbaef103c67917484a38bcaca07890bb7f20fa33b67",
       "worker_id": "dedup"
     },
     {
       "contract_version": "1.0.0",
-      "input_digest": "sha256:0636350a81b8d6a8cffd76afeed166d29a4294acbd47bb55ee5b6635fe3bec8a",
-      "output_digest": "sha256:ecdc407f3937626eb1c2033c823487d6b02b91023a09a7983bc59f84124c8c24",
+      "input_digest": "sha256:ff29a4012f261d374b988530de2e98f8e1fa4db6f665bfc0baff53578144aa0f",
+      "output_digest": "sha256:d81122fada624fc0e562c45f56adc10d5fb91f9619424d83b257fc4d9c6045d5",
       "worker_id": "details"
     },
     {
       "contract_version": "1.0.0",
-      "input_digest": "sha256:41b6e972b33c7fc6cf240cc4e0221deadd5fa2696181bb1feaf3ae82acbe113c",
-      "output_digest": "sha256:6e6cf51d7b4566f273de820e057920f4a245850ba590d180212cc2935c902b0b",
+      "input_digest": "sha256:a03570e04a308a3daef04de0d214b23c2a0e5f28a4d33e20a128a74de3e4f5f7",
+      "output_digest": "sha256:237e7a3e950aca2d988dcaa8f5680aa3f9571f3255c0d61ddc234e09c1cbacf6",
       "worker_id": "search"
     },
     {
       "contract_version": "1.0.0",
-      "input_digest": "sha256:9bff77a086393fb9866043ddddcb2eb44542589f8082566ffb05571224e38abc",
-      "output_digest": "sha256:5adcd8177583cc7c42f0d9c79cdc8e96f99aada14745282e0e7fa26af4da7888",
+      "input_digest": "sha256:29061f7d3fea5f0bee23da9b696acf01a862985dcc50c2ca28ff12d73b6fe73a",
+      "output_digest": "sha256:446c900698023b3c861fb31670f8b2c3a19d0d26360fd0ec19c2ce8495a85371",
       "worker_id": "summaries"
     }
   ]

@@ -3223,7 +3223,7 @@ window.GRADE9V3 = {
         {
           "package_id": "LIB-MATH-LINEAR-EQUATIONS",
           "status": "CANDIDATE",
-          "admitted": true
+          "admitted": false
         }
       ],
       "library_available": true,

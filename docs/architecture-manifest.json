@@ -6,20 +6,20 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 466,
-  "relation_count": 509,
+  "component_count": 467,
+  "relation_count": 508,
   "components_by_role": {
     "CONTRACT": 9,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 56,
     "TEST": 226,
-    "TOOLING": 133,
+    "TOOLING": 134,
     "WEB": 13,
     "WEB_CONTRACT": 8,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:5b79975077f9cee4a315e4dc0a9a8c584bae92dc1ff848096390432ca12d621c",
+  "digest": "sha256:283bd2e2fbad7ab775eccfbf917eb074841c2914d3dc64d437aa37e463ba43ac",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -587,6 +587,13 @@
       "role_description": "Guardrails and generators",
       "bytes": 11066,
       "sha256": "aecba84f32f2389f7dfed579f6b6d1f5113c0541437f197572f5030c2736fa0e"
+    },
+    {
+      "path": "Shared/tools/apply_question_bank_admissions.py",
+      "role": "TOOLING",
+      "role_description": "Guardrails and generators",
+      "bytes": 9474,
+      "sha256": "96a481bd69a632786478b54104bfc1270e2e0abfc158fa58c034a0a398162ef7"
     },
     {
       "path": "Shared/tools/assurance_product.py",
@@ -2447,8 +2454,8 @@
       "path": "tests/test_global_site_search.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 5522,
-      "sha256": "d352f383c9daac080efca6046e81847e177db561da52f1411007fe2c30a37f66"
+      "bytes": 6290,
+      "sha256": "3ee1dc49602e9f9e4f3cdc45b5974fb34e49871b63f5e82be93977de09359c7d"
     },
     {
       "path": "tests/test_grade10_optics_reflection_scope.py",
@@ -2909,8 +2916,8 @@
       "path": "tests/test_question_bank_lineage_witnesses.py",
       "role": "TEST",
       "role_description": "Executable checks",
-      "bytes": 9377,
-      "sha256": "9a36ca0e34c6c0859528876b0f7579cb4dfe81beb7f18c9720aba9a0427d19cf"
+      "bytes": 9953,
+      "sha256": "06aad844a14e346a5e0182e579ffb2f09ab566f9dc7ad3793a55b6e432d487e9"
     },
     {
       "path": "tests/test_question_bank_platform.py",
@@ -3224,8 +3231,8 @@
       "path": "tools/data.js",
       "role": "WEB",
       "role_description": "Browsable surfaces over generated data",
-      "bytes": 2413014,
-      "sha256": "6054238e45f543e3bff0a2f19d94d82a4edb581a737649f15bc146cc5772616c"
+      "bytes": 2413015,
+      "sha256": "7bb5b8dedb2ca55555c871f7e259334035012841793ebe60b024883d106042ef"
     },
     {
       "path": "tools/index.html",
@@ -5497,11 +5504,6 @@
     },
     {
       "from": "tests/test_question_bank_determinism.py",
-      "to": "Shared.tools",
-      "kind": "IMPORTS"
-    },
-    {
-      "from": "tests/test_question_bank_lineage_witnesses.py",
       "to": "Shared.tools",
       "kind": "IMPORTS"
     },

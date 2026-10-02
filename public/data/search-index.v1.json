@@ -1703,7 +1703,7 @@
     "aliases": [
       "Q-MAT-LEQ-01-EXEMPLAR8-Q17"
     ],
-    "canonical_digest": "sha256:e8af676c907243d17e7f39f712cab59121196d047ad249145a2cbd78bff4ffaa",
+    "canonical_digest": "sha256:10f07a6fe526ee13ccb8f06a1295261b0badefd9b38784195f3af92d99dfadd8",
     "canonical_id": "Q-MAT-LEQ-01-EXEMPLAR8-Q17",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-01-SUBSTITUTION-CHECK/",
     "concept_refs": [],
@@ -1720,7 +1720,7 @@
     "aliases": [
       "Q-MAT-LEQ-01-EXEMPLAR8-Q20"
     ],
-    "canonical_digest": "sha256:54c4a17f0e8be1069d75d7d1ee1e181e19bae2deca0c92fb1d3c7c70ee4cb6dc",
+    "canonical_digest": "sha256:934d84883a20d1e5e185927897f8300529afb1dfff8dfcf61c47a6b1eb36f651",
     "canonical_id": "Q-MAT-LEQ-01-EXEMPLAR8-Q20",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-01-SUBSTITUTION-CHECK/",
     "concept_refs": [],
@@ -1737,7 +1737,7 @@
     "aliases": [
       "Q-MAT-LEQ-01-EXEMPLAR8-Q6"
     ],
-    "canonical_digest": "sha256:52522880e92f370141b79308aa97d562475ae076e2f81a21998925a37a970716",
+    "canonical_digest": "sha256:dc91f18c5678b48c69d3802d08c39d63ce3ac51b567a3e6630965354b742738c",
     "canonical_id": "Q-MAT-LEQ-01-EXEMPLAR8-Q6",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-01-SUBSTITUTION-CHECK/",
     "concept_refs": [],
@@ -1788,7 +1788,7 @@
     "aliases": [
       "Q-MAT-LEQ-02-EXEMPLAR9-4-1-Q16"
     ],
-    "canonical_digest": "sha256:ba8fe5f7ea173ed50d2783831c3a09af35389406add96d5e3435d587397e6e3e",
+    "canonical_digest": "sha256:092823b21f6cccdeed204e8c7d190334bfb3abb75b6424d4643d5f64bfc10e15",
     "canonical_id": "Q-MAT-LEQ-02-EXEMPLAR9-4-1-Q16",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-02-SAME-OPERATION-BOTH-SIDES/",
     "concept_refs": [],
@@ -1805,7 +1805,7 @@
     "aliases": [
       "Q-MAT-LEQ-02-NCERT8-EX2-1-Q1"
     ],
-    "canonical_digest": "sha256:43103007859c15384d7cdc2bfff7b8073a3a6ae3e1c5d2025a6b2d4dc742d247",
+    "canonical_digest": "sha256:54980a5493b7d8fbd4ae1db33500f7b509ffbed598f3417ced6d6bf767980860",
     "canonical_id": "Q-MAT-LEQ-02-NCERT8-EX2-1-Q1",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-02-SAME-OPERATION-BOTH-SIDES/",
     "concept_refs": [],
@@ -1822,7 +1822,7 @@
     "aliases": [
       "Q-MAT-LEQ-02-NCERT8-EX2-1-Q2"
     ],
-    "canonical_digest": "sha256:7f69280dac0f4bb7c0fff99bf522aa00737f0f0e737d55ba3d7f223d45fdea32",
+    "canonical_digest": "sha256:9627e02266e59e986744364c19d3d963aae7dbd2834a7cd8c0ef217954454937",
     "canonical_id": "Q-MAT-LEQ-02-NCERT8-EX2-1-Q2",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-02-SAME-OPERATION-BOTH-SIDES/",
     "concept_refs": [],
@@ -1839,7 +1839,7 @@
     "aliases": [
       "Q-MAT-LEQ-02-NCERT8-EX2-1-Q3"
     ],
-    "canonical_digest": "sha256:6a291eee19a6ccde33dec7f6d04d51ffa79970dd88b4229b6cdcc38f875be722",
+    "canonical_digest": "sha256:3189a21804c496088da88c7fc7a3607b0f6c002b21a114182ba07cb1ea473324",
     "canonical_id": "Q-MAT-LEQ-02-NCERT8-EX2-1-Q3",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-02-SAME-OPERATION-BOTH-SIDES/",
     "concept_refs": [],
@@ -1856,7 +1856,7 @@
     "aliases": [
       "Q-MAT-LEQ-02-NCERT8-EX2-1-Q5"
     ],
-    "canonical_digest": "sha256:40f54ee5509426d1bec6214c666da9cdb53b5fe5c77971ce6cadbc663d46882f",
+    "canonical_digest": "sha256:6857844a693215786809436e06c1e0ec8a2775ed6b88bd5eb90cbc5a967eb98d",
     "canonical_id": "Q-MAT-LEQ-02-NCERT8-EX2-1-Q5",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-02-SAME-OPERATION-BOTH-SIDES/",
     "concept_refs": [],
@@ -1924,7 +1924,7 @@
     "aliases": [
       "Q-MAT-LEQ-03-EXEMPLAR8-Q58"
     ],
-    "canonical_digest": "sha256:49de6ae9f7b81f6aa5736be4db487a8364a39582bce40a477dffb50e5df41e1b",
+    "canonical_digest": "sha256:755160f2086e428ddc4fa61c3a488edf2a8d2bfac48956f692bc8bab23ca7f9e",
     "canonical_id": "Q-MAT-LEQ-03-EXEMPLAR8-Q58",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-03-REDUCE-TO-SIMPLER-FORM/",
     "concept_refs": [],
@@ -1941,7 +1941,7 @@
     "aliases": [
       "Q-MAT-LEQ-03-EXEMPLAR8-Q61"
     ],
-    "canonical_digest": "sha256:35319ac6de673085602e0fdaee2e244af8385371550183e066e97b4322507477",
+    "canonical_digest": "sha256:5568c8bdc4824b293122711718ddcbf0f4cca8555c793c22543a737ae0310c74",
     "canonical_id": "Q-MAT-LEQ-03-EXEMPLAR8-Q61",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-03-REDUCE-TO-SIMPLER-FORM/",
     "concept_refs": [],
@@ -1958,7 +1958,7 @@
     "aliases": [
       "Q-MAT-LEQ-03-NCERT8-EX2-2-Q10"
     ],
-    "canonical_digest": "sha256:4d424c2eaa6f0542c560dea8e84ac3d16225904146d8a7ecaef1834597890494",
+    "canonical_digest": "sha256:9e8eaad809d60fe81e1589821e760c658f0b7b832affb5dc099dc617f4356f3b",
     "canonical_id": "Q-MAT-LEQ-03-NCERT8-EX2-2-Q10",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-03-REDUCE-TO-SIMPLER-FORM/",
     "concept_refs": [],
@@ -1975,7 +1975,7 @@
     "aliases": [
       "Q-MAT-LEQ-03-NCERT8-EX2-2-Q7"
     ],
-    "canonical_digest": "sha256:51935d86e60a541b4243c7a6c12eaa48bc81100398f5cb62fc0e33de7f77c7ba",
+    "canonical_digest": "sha256:13687f10f372ac6e0346a8119a047e778196fa5a103067fd7269dc28d27c1126",
     "canonical_id": "Q-MAT-LEQ-03-NCERT8-EX2-2-Q7",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-03-REDUCE-TO-SIMPLER-FORM/",
     "concept_refs": [],
@@ -1992,7 +1992,7 @@
     "aliases": [
       "Q-MAT-LEQ-03-NCERT8-EX2-2-Q9"
     ],
-    "canonical_digest": "sha256:e51d3ff70de25ad3a64a59a0ae5cb294e921d8968d7c7dd15030891076c16375",
+    "canonical_digest": "sha256:33a4e08c4748a6ec5222f2c4060ff4a3325baa0f46f08df811138b27512babad",
     "canonical_id": "Q-MAT-LEQ-03-NCERT8-EX2-2-Q9",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-03-REDUCE-TO-SIMPLER-FORM/",
     "concept_refs": [],
@@ -2060,7 +2060,7 @@
     "aliases": [
       "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q1"
     ],
-    "canonical_digest": "sha256:d103b2487d4b5a414a41f682d083d3b00d6e8a2971b11dd6b4ceef399711b882",
+    "canonical_digest": "sha256:54c2ea80e40a256b634c3a207c57f0e0792cceb9d1a6aa53a60b38c9f0717862",
     "canonical_id": "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q1",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-04-TWO-VARIABLE-SOLUTIONS/",
     "concept_refs": [],
@@ -2077,7 +2077,7 @@
     "aliases": [
       "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q11"
     ],
-    "canonical_digest": "sha256:472e2f9bc4841969ce021cc58a7cd191e2604a586d076254c64120d848fb1bfc",
+    "canonical_digest": "sha256:f7d31fabf1cfb600905627aa5b693d98b3448222247bc4d8895bdd73a45c4ca1",
     "canonical_id": "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q11",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-04-TWO-VARIABLE-SOLUTIONS/",
     "concept_refs": [],
@@ -2094,7 +2094,7 @@
     "aliases": [
       "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q3"
     ],
-    "canonical_digest": "sha256:08514857a8f1c24d29b6959ca505f7de820d6d472f15461930bc61d14162819e",
+    "canonical_digest": "sha256:0a2da22d8d0b3d0f3df935c86e74e5a3af736bc28775e8eee2c0fd7c5a427a9f",
     "canonical_id": "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q3",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-04-TWO-VARIABLE-SOLUTIONS/",
     "concept_refs": [],
@@ -2111,7 +2111,7 @@
     "aliases": [
       "Q-MAT-LEQ-04-EXEMPLAR9-4-2-Q1"
     ],
-    "canonical_digest": "sha256:cc2295c7e6bc5cf842bb51a726267ef78c1f928def89ebdc037244984d5fa900",
+    "canonical_digest": "sha256:11e469d56462d98b8636217ac9c7f9ca80b9ab3064121b47e30fe3c2af8f575f",
     "canonical_id": "Q-MAT-LEQ-04-EXEMPLAR9-4-2-Q1",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-04-TWO-VARIABLE-SOLUTIONS/",
     "concept_refs": [],
@@ -2128,7 +2128,7 @@
     "aliases": [
       "Q-MAT-LEQ-04-EXEMPLAR9-4-3-Q7"
     ],
-    "canonical_digest": "sha256:60394f0c5c17b68b2cbe8a3051a034ed1cb2b8826c4f181555f3b578f356aad0",
+    "canonical_digest": "sha256:1a40f2460eca643393ded91fed02e3bddbf9397244337068e8a02f252c516275",
     "canonical_id": "Q-MAT-LEQ-04-EXEMPLAR9-4-3-Q7",
     "canonical_url": "/products/mathematics/CAP-MAT-LEQ-04-TWO-VARIABLE-SOLUTIONS/",
     "concept_refs": [],

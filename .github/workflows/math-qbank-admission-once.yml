@@ -42,6 +42,40 @@ jobs:
           python3 Shared/tools/build_manifest.py
           python3 Shared/tools/build_pages_site.py
 
+      - name: Refresh denominator regression expectations
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          def replace_once(path, old, new):
+              p = Path(path)
+              text = p.read_text(encoding='utf-8')
+              if text.count(old) != 1:
+                  raise SystemExit(f'{path}: expected exactly one match for {old!r}, found {text.count(old)}')
+              p.write_text(text.replace(old, new), encoding='utf-8')
+
+          replace_once(
+              'tests/test_question_bank_web.py',
+              'self.assertEqual(self.data["counts"]["questions"], 81)\n        self.assertEqual(self.data["counts"]["subjects"], {"Chemistry": 46, "Physics": 35})\n        self.assertEqual(len(self.data["counts"]["topics"]), 5)',
+              'self.assertEqual(self.data["counts"]["questions"], 99)\n        self.assertEqual(self.data["counts"]["subjects"], {"Chemistry": 46, "Mathematics": 18, "Physics": 35})\n        self.assertEqual(len(self.data["counts"]["topics"]), 6)',
+          )
+          replace_once(
+              'tests/test_question_bank_platform.py',
+              'self.assertEqual(platform["catalog"]["counts"]["questions"], 81)\n        question_docs = [row for row in platform["search"]["documents"] if row["kind"] == "question"]\n        self.assertEqual(len(question_docs), 81)',
+              'self.assertEqual(platform["catalog"]["counts"]["questions"], 99)\n        question_docs = [row for row in platform["search"]["documents"] if row["kind"] == "question"]\n        self.assertEqual(len(question_docs), 99)',
+          )
+          replace_once(
+              'tests/test_question_bank_platform_runtime.py',
+              'self.assertEqual(len(shards), 2)\n        self.assertEqual(sum(row["question_count"] for row in shards), 81)\n        self.assertEqual({row["subject_ref"] for row in shards}, {"SUBJECT-CHEMISTRY", "SUBJECT-PHYSICS"})',
+              'self.assertEqual(len(shards), 3)\n        self.assertEqual(sum(row["question_count"] for row in shards), 99)\n        self.assertEqual({row["subject_ref"] for row in shards}, {"SUBJECT-CHEMISTRY", "SUBJECT-MATHEMATICS", "SUBJECT-PHYSICS"})',
+          )
+          replace_once(
+              'tests/test_question_bank_platform_runtime.py',
+              'self.assertEqual(len(manifest["detail_shards"]), 2)',
+              'self.assertEqual(len(manifest["detail_shards"]), 3)',
+          )
+          PY
+
       - name: Run focused admission, lineage and global-search tests
         run: |
           python3 -m unittest \
