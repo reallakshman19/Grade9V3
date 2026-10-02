@@ -1,3 +1,4 @@
+# Rerun after structural catalog assertion fix.
 name: chemistry-publish-v2
 
 on:
