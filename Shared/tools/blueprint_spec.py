@@ -57,6 +57,53 @@ def _shell_lines(shell: dict) -> list[str]:
     return lines
 
 
+def _product_rules(policy: dict) -> list[str]:
+    """The rules about a whole product, not a page: what it covers, what it may select, how its equations are shown."""
+    cov, pro, typ = policy["coverage"], policy["promotion"], policy["typeset"]
+    word = {"ADVISORY": "an advisory", "GAP": "a gap"}
+    return [
+        "## Rules about a whole product", "",
+        f"**Coverage** (component `{cov['component']}`, duty `{cov['duty']}`). {cov['purpose']}", "",
+        f"- The denominator: {cov['denominator']}",
+        f"- The rule: {cov['rule']}",
+        f"- A shortfall is {word[cov['held_to']['FLOOR']]} for an official product (held to the floor) and {word[cov['held_to']['REFERENCE']]} for new authoring (held to the reference).",
+        f"- {cov['sources']}", "",
+        f"**Promotion.** {pro['purpose']}", "",
+        f"- Selectable statuses: {', '.join(pro['selectable_statuses'])}. Refused: {', '.join(pro['refused_statuses'])}, with `{pro['refusal']}`; it applies to {', '.join(pro['applies_to'])}.",
+        f"- {pro['note']}", "",
+        f"**Typeset** (component `{typ['component']}`, duty `{typ['duty']}`). {typ['purpose']}", "",
+        f"- {typ['rule']}",
+        f"- It is {word[typ['held_to']['FLOOR']]} for an official product and {word[typ['held_to']['REFERENCE']]} for new authoring.", "",
+    ]
+
+
+def _standalone_lines(shell: dict) -> list[str]:
+    """What a page that did not come through the renderer is held to: the shell's own policies, read from its bytes."""
+    sp = shell.get("standalone_policy")
+    if not sp:
+        return []
+    audit = sp["browser_audit"]
+    lines = ["## Pages that do not come through the renderer", "",
+             sp["purpose"], "",
+             f"Governed roots: {', '.join(f'`{r}/`' for r in sp['governed_roots'])}. A page there that is not listed in the ledger has no findings; an unknown page fails closed. "
+             f"Checker: `{sp['checker']}`; zoom is never limited below {sp['zoom_max_scale_min']}x.", "",
+             "| Rule | Held | Assurance type | Executes | What it asks |", "|---|---|---|---|---|"]
+    lines += [f"| `{r['id']}` | {'blocks' if r['severity'] == 'BLOCK' else 'said'} | `{r['assurance_type']}` | `{r['executes']}` | {r['statement']} |" for r in sp["rules"]]
+    lines += ["", f"Ledger (`{sp['ledger']}`): {sp['ledger_rule']}", "",
+              f"Browser audit (`{audit['tool']} --profile {audit['profile']}`): measures {', '.join(audit['measures'])}. {audit['note']}", ""]
+    return lines
+
+
+def _admission_lines(policy: dict) -> list[str]:
+    """How a question record gets into a library, and how a digest is kept the same on every machine."""
+    adm, ev = policy["admission"], policy["evidence"]
+    return ["## Rules about a record and its evidence", "",
+            f"**Admission.** {adm['purpose']} Authority: {', '.join(f'`{a}`' for a in adm['authority'])}.", "",
+            *[f"- `{pt['id']}` ({'blocks' if pt['severity'] == 'BLOCK' else 'said'}; evidence of type `{pt['assurance_type']}`): {pt['statement']}" for pt in adm["points"]],
+            f"- {adm['note']}", "",
+            f"**Evidence.** {ev['purpose']} Line endings: {ev['line_endings']} (`{ev['attributes_file']}`). {ev['note']}", ""]
+
+
 def render(registry: dict | None = None) -> str:
     registry = registry or blueprints.load_registry()
     policy = registry["component_policy"]
@@ -75,6 +122,9 @@ def render(registry: dict | None = None) -> str:
         f"Held to: {policy['held_to']}",
         "",
         *_shell_lines(registry["shell"]),
+        *_standalone_lines(registry["shell"]),
+        *_product_rules(policy),
+        *_admission_lines(policy),
     ]
     for blueprint in registry["blueprints"]:
         if not blueprints.components(blueprint):

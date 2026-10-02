@@ -8,363 +8,15 @@
     "manual_review_required": true
   },
   "summary": {
-    "microtopic_count": 107,
-    "routed_microtopics": 102,
-    "structured_routed_microtopics": 102,
+    "microtopic_count": 91,
+    "routed_microtopics": 90,
+    "structured_routed_microtopics": 90,
     "microtopics_with_reconstruction_debt": 0,
-    "unrouted_microtopics": 5,
+    "unrouted_microtopics": 1,
     "coverage_mismatches": 0,
     "finding_counts": {}
   },
   "microtopics": [
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/chemical-bonding.v1.json",
-      "microtopic_ref": "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
-      "bucket_ref": "BUCKET-CHEM-BOND",
-      "core1a_route_refs": [
-        "ROUTE-CHEM-BOND-CORE1A"
-      ],
-      "core1b_route_refs": [
-        "ROUTE-CHEM-BOND-CORE1B"
-      ],
-      "routing_state": "A_AND_B",
-      "coverage_equal": true,
-      "phase4_handoff_codes": [],
-      "reconstruct_step_count": 2,
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "RECONSTRUCTION_GENUINELY_DIFFERS_FROM_TEACHING_PATH",
-        "BOUNDARY_TEST_CHECKS_UNDERSTANDING_NOT_RECALL",
-        "PREDICTION_REQUIRES_A_REAL_CONCEPTUAL_DECISION"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/chemical-bonding.v1.json",
-      "microtopic_ref": "MIC-CHEM-BOND-LEWIS-VSEPR",
-      "bucket_ref": "BUCKET-CHEM-BOND",
-      "core1a_route_refs": [
-        "ROUTE-CHEM-BOND-CORE1A"
-      ],
-      "core1b_route_refs": [
-        "ROUTE-CHEM-BOND-CORE1B"
-      ],
-      "routing_state": "A_AND_B",
-      "coverage_equal": true,
-      "phase4_handoff_codes": [],
-      "reconstruct_step_count": 2,
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "RECONSTRUCTION_GENUINELY_DIFFERS_FROM_TEACHING_PATH",
-        "BOUNDARY_TEST_CHECKS_UNDERSTANDING_NOT_RECALL",
-        "PREDICTION_REQUIRES_A_REAL_CONCEPTUAL_DECISION"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/chemical-bonding.v1.json",
-      "microtopic_ref": "MIC-CHEM-BOND-MO-HBOND",
-      "bucket_ref": "BUCKET-CHEM-BOND",
-      "core1a_route_refs": [
-        "ROUTE-CHEM-BOND-CORE1A"
-      ],
-      "core1b_route_refs": [
-        "ROUTE-CHEM-BOND-CORE1B"
-      ],
-      "routing_state": "A_AND_B",
-      "coverage_equal": true,
-      "phase4_handoff_codes": [],
-      "reconstruct_step_count": 2,
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "RECONSTRUCTION_GENUINELY_DIFFERS_FROM_TEACHING_PATH",
-        "BOUNDARY_TEST_CHECKS_UNDERSTANDING_NOT_RECALL",
-        "PREDICTION_REQUIRES_A_REAL_CONCEPTUAL_DECISION"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/behaviour-of-gases.v1.json",
-      "microtopic_ref": "MIC-CHEM-GAS-IDEAL-LAWS",
-      "bucket_ref": "BUCKET-CHEM-GAS",
-      "core1a_route_refs": [
-        "ROUTE-CHEM-GAS-CORE1A"
-      ],
-      "core1b_route_refs": [
-        "ROUTE-CHEM-GAS-CORE1B"
-      ],
-      "routing_state": "A_AND_B",
-      "coverage_equal": true,
-      "phase4_handoff_codes": [],
-      "reconstruct_step_count": 2,
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "RECONSTRUCTION_GENUINELY_DIFFERS_FROM_TEACHING_PATH",
-        "BOUNDARY_TEST_CHECKS_UNDERSTANDING_NOT_RECALL",
-        "PREDICTION_REQUIRES_A_REAL_CONCEPTUAL_DECISION"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/behaviour-of-gases.v1.json",
-      "microtopic_ref": "MIC-CHEM-GAS-KINETIC-PHASE",
-      "bucket_ref": "BUCKET-CHEM-GAS",
-      "core1a_route_refs": [
-        "ROUTE-CHEM-GAS-CORE1A"
-      ],
-      "core1b_route_refs": [
-        "ROUTE-CHEM-GAS-CORE1B"
-      ],
-      "routing_state": "A_AND_B",
-      "coverage_equal": true,
-      "phase4_handoff_codes": [],
-      "reconstruct_step_count": 2,
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "RECONSTRUCTION_GENUINELY_DIFFERS_FROM_TEACHING_PATH",
-        "BOUNDARY_TEST_CHECKS_UNDERSTANDING_NOT_RECALL",
-        "PREDICTION_REQUIRES_A_REAL_CONCEPTUAL_DECISION"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/behaviour-of-gases.v1.json",
-      "microtopic_ref": "MIC-CHEM-GAS-REAL-CRITICAL",
-      "bucket_ref": "BUCKET-CHEM-GAS",
-      "core1a_route_refs": [
-        "ROUTE-CHEM-GAS-CORE1A"
-      ],
-      "core1b_route_refs": [
-        "ROUTE-CHEM-GAS-CORE1B"
-      ],
-      "routing_state": "A_AND_B",
-      "coverage_equal": true,
-      "phase4_handoff_codes": [],
-      "reconstruct_step_count": 2,
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "RECONSTRUCTION_GENUINELY_DIFFERS_FROM_TEACHING_PATH",
-        "BOUNDARY_TEST_CHECKS_UNDERSTANDING_NOT_RECALL",
-        "PREDICTION_REQUIRES_A_REAL_CONCEPTUAL_DECISION"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/some-basic-concepts.v1.json",
-      "microtopic_ref": "MIC-CHEM-MOLE-CONCENTRATION",
-      "bucket_ref": "BUCKET-CHEM-MOLE",
-      "core1a_route_refs": [
-        "ROUTE-CHEM-MOLE-CORE1A"
-      ],
-      "core1b_route_refs": [
-        "ROUTE-CHEM-MOLE-CORE1B"
-      ],
-      "routing_state": "A_AND_B",
-      "coverage_equal": true,
-      "phase4_handoff_codes": [],
-      "reconstruct_step_count": 2,
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "RECONSTRUCTION_GENUINELY_DIFFERS_FROM_TEACHING_PATH",
-        "BOUNDARY_TEST_CHECKS_UNDERSTANDING_NOT_RECALL",
-        "PREDICTION_REQUIRES_A_REAL_CONCEPTUAL_DECISION"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/some-basic-concepts.v1.json",
-      "microtopic_ref": "MIC-CHEM-MOLE-FORMULA-STOICH",
-      "bucket_ref": "BUCKET-CHEM-MOLE",
-      "core1a_route_refs": [
-        "ROUTE-CHEM-MOLE-CORE1A"
-      ],
-      "core1b_route_refs": [
-        "ROUTE-CHEM-MOLE-CORE1B"
-      ],
-      "routing_state": "A_AND_B",
-      "coverage_equal": true,
-      "phase4_handoff_codes": [],
-      "reconstruct_step_count": 2,
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "RECONSTRUCTION_GENUINELY_DIFFERS_FROM_TEACHING_PATH",
-        "BOUNDARY_TEST_CHECKS_UNDERSTANDING_NOT_RECALL",
-        "PREDICTION_REQUIRES_A_REAL_CONCEPTUAL_DECISION"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/some-basic-concepts.v1.json",
-      "microtopic_ref": "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
-      "bucket_ref": "BUCKET-CHEM-MOLE",
-      "core1a_route_refs": [
-        "ROUTE-CHEM-MOLE-CORE1A"
-      ],
-      "core1b_route_refs": [
-        "ROUTE-CHEM-MOLE-CORE1B"
-      ],
-      "routing_state": "A_AND_B",
-      "coverage_equal": true,
-      "phase4_handoff_codes": [],
-      "reconstruct_step_count": 2,
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "RECONSTRUCTION_GENUINELY_DIFFERS_FROM_TEACHING_PATH",
-        "BOUNDARY_TEST_CHECKS_UNDERSTANDING_NOT_RECALL",
-        "PREDICTION_REQUIRES_A_REAL_CONCEPTUAL_DECISION"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/redox-reactions.v1.json",
-      "microtopic_ref": "MIC-CHEM-REDOX-BALANCE-NFACTOR",
-      "bucket_ref": "BUCKET-CHEM-REDOX",
-      "core1a_route_refs": [
-        "ROUTE-CHEM-REDOX-CORE1A"
-      ],
-      "core1b_route_refs": [
-        "ROUTE-CHEM-REDOX-CORE1B"
-      ],
-      "routing_state": "A_AND_B",
-      "coverage_equal": true,
-      "phase4_handoff_codes": [],
-      "reconstruct_step_count": 2,
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "RECONSTRUCTION_GENUINELY_DIFFERS_FROM_TEACHING_PATH",
-        "BOUNDARY_TEST_CHECKS_UNDERSTANDING_NOT_RECALL",
-        "PREDICTION_REQUIRES_A_REAL_CONCEPTUAL_DECISION"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/redox-reactions.v1.json",
-      "microtopic_ref": "MIC-CHEM-REDOX-CLASSIFICATION",
-      "bucket_ref": "BUCKET-CHEM-REDOX",
-      "core1a_route_refs": [
-        "ROUTE-CHEM-REDOX-CORE1A"
-      ],
-      "core1b_route_refs": [
-        "ROUTE-CHEM-REDOX-CORE1B"
-      ],
-      "routing_state": "A_AND_B",
-      "coverage_equal": true,
-      "phase4_handoff_codes": [],
-      "reconstruct_step_count": 2,
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "RECONSTRUCTION_GENUINELY_DIFFERS_FROM_TEACHING_PATH",
-        "BOUNDARY_TEST_CHECKS_UNDERSTANDING_NOT_RECALL",
-        "PREDICTION_REQUIRES_A_REAL_CONCEPTUAL_DECISION"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/redox-reactions.v1.json",
-      "microtopic_ref": "MIC-CHEM-REDOX-OXIDATION-AGENTS",
-      "bucket_ref": "BUCKET-CHEM-REDOX",
-      "core1a_route_refs": [
-        "ROUTE-CHEM-REDOX-CORE1A"
-      ],
-      "core1b_route_refs": [
-        "ROUTE-CHEM-REDOX-CORE1B"
-      ],
-      "routing_state": "A_AND_B",
-      "coverage_equal": true,
-      "phase4_handoff_codes": [],
-      "reconstruct_step_count": 2,
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "RECONSTRUCTION_GENUINELY_DIFFERS_FROM_TEACHING_PATH",
-        "BOUNDARY_TEST_CHECKS_UNDERSTANDING_NOT_RECALL",
-        "PREDICTION_REQUIRES_A_REAL_CONCEPTUAL_DECISION"
-      ]
-    },
-    {
-      "subject": "Mathematics",
-      "package_path": "Mathematics/library/linear-equations.v1.json",
-      "microtopic_ref": "MIC-MAT-LEQ-01-SOLUTION-BY-SUBSTITUTION",
-      "bucket_ref": "BUCKET-MAT-09-LEQ",
-      "core1a_route_refs": [],
-      "core1b_route_refs": [],
-      "routing_state": "UNROUTED",
-      "coverage_equal": true,
-      "finding_codes": [],
-      "findings": [],
-      "phase4_handoff_codes": [
-        "CROSS_CORE_ROUTING_UNRESOLVED"
-      ],
-      "manual_review_obligations": [
-        "UNROUTED_CONCEPT_REQUIRES_PROGRAMME_ROUTING_DECISION"
-      ]
-    },
-    {
-      "subject": "Mathematics",
-      "package_path": "Mathematics/library/linear-equations.v1.json",
-      "microtopic_ref": "MIC-MAT-LEQ-02-VARIABLE-ON-BOTH-SIDES",
-      "bucket_ref": "BUCKET-MAT-09-LEQ",
-      "core1a_route_refs": [],
-      "core1b_route_refs": [],
-      "routing_state": "UNROUTED",
-      "coverage_equal": true,
-      "finding_codes": [],
-      "findings": [],
-      "phase4_handoff_codes": [
-        "CROSS_CORE_ROUTING_UNRESOLVED"
-      ],
-      "manual_review_obligations": [
-        "UNROUTED_CONCEPT_REQUIRES_PROGRAMME_ROUTING_DECISION"
-      ]
-    },
-    {
-      "subject": "Mathematics",
-      "package_path": "Mathematics/library/linear-equations.v1.json",
-      "microtopic_ref": "MIC-MAT-LEQ-03-REDUCE-TO-SIMPLER-FORM",
-      "bucket_ref": "BUCKET-MAT-09-LEQ",
-      "core1a_route_refs": [],
-      "core1b_route_refs": [],
-      "routing_state": "UNROUTED",
-      "coverage_equal": true,
-      "finding_codes": [],
-      "findings": [],
-      "phase4_handoff_codes": [
-        "CROSS_CORE_ROUTING_UNRESOLVED"
-      ],
-      "manual_review_obligations": [
-        "UNROUTED_CONCEPT_REQUIRES_PROGRAMME_ROUTING_DECISION"
-      ]
-    },
-    {
-      "subject": "Mathematics",
-      "package_path": "Mathematics/library/linear-equations.v1.json",
-      "microtopic_ref": "MIC-MAT-LEQ-04-TWO-VARIABLES-LINE-OF-SOLUTIONS",
-      "bucket_ref": "BUCKET-MAT-09-LEQ",
-      "core1a_route_refs": [],
-      "core1b_route_refs": [],
-      "routing_state": "UNROUTED",
-      "coverage_equal": true,
-      "finding_codes": [],
-      "findings": [],
-      "phase4_handoff_codes": [
-        "CROSS_CORE_ROUTING_UNRESOLVED"
-      ],
-      "manual_review_obligations": [
-        "UNROUTED_CONCEPT_REQUIRES_PROGRAMME_ROUTING_DECISION"
-      ]
-    },
     {
       "subject": "Mathematics",
       "package_path": "Mathematics/library/linear-equations.v1.json",
@@ -507,7 +159,7 @@
       "subject": "Physics",
       "package_path": "Physics/library/vector-representation.v1.json",
       "microtopic_ref": "MIC-FRAME-QUALIFICATION-BOUNDARY",
-      "bucket_ref": "BUCKET-VECTOR-REPRESENTATION",
+      "bucket_ref": "BUCKET-RELATIVE-MOTION",
       "core1a_route_refs": [],
       "core1b_route_refs": [],
       "routing_state": "UNROUTED",
@@ -1363,7 +1015,7 @@
       "routing_state": "A_AND_B",
       "coverage_equal": true,
       "phase4_handoff_codes": [],
-      "reconstruct_step_count": 4,
+      "reconstruct_step_count": 5,
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [
@@ -1639,7 +1291,7 @@
       "routing_state": "A_AND_B",
       "coverage_equal": true,
       "phase4_handoff_codes": [],
-      "reconstruct_step_count": 4,
+      "reconstruct_step_count": 3,
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [
@@ -1731,7 +1383,7 @@
       "routing_state": "A_AND_B",
       "coverage_equal": true,
       "phase4_handoff_codes": [],
-      "reconstruct_step_count": 4,
+      "reconstruct_step_count": 3,
       "finding_codes": [],
       "findings": [],
       "manual_review_obligations": [

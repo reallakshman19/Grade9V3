@@ -8,483 +8,17 @@
     "worked_anchor_mechanism": "question exposure CORE1A + answer.reasoning[]"
   },
   "summary": {
-    "microtopic_count": 107,
-    "structured_microtopics": 15,
-    "microtopics_with_debt": 92,
+    "microtopic_count": 91,
+    "structured_microtopics": 2,
+    "microtopics_with_debt": 89,
     "finding_counts": {
       "REPRESENTATION_BRIDGE_MISSING": 74,
       "REPRESENTATION_CORRESPONDENCE_MISSING": 1,
-      "REPRESENTATION_SCENE_BINDING_MISSING": 13,
-      "WORKED_CONCEPTUAL_ANCHOR_MISSING": 78
+      "REPRESENTATION_SCENE_BINDING_MISSING": 9,
+      "WORKED_CONCEPTUAL_ANCHOR_MISSING": 85
     }
   },
   "microtopics": [
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/chemical-bonding.v1.json",
-      "microtopic_ref": "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
-      "bucket_ref": "BUCKET-CHEM-BOND",
-      "intrinsic_badge": "HARD",
-      "representation_refs": [
-        "REP-CHEM-BOND-GEOMETRY-DIPOLE"
-      ],
-      "core1a_scene_representation_refs": [
-        "REP-CHEM-BOND-GEOMETRY-DIPOLE"
-      ],
-      "representation_bridge_count": 1,
-      "worked_anchor_refs": [
-        "Q-CHEM-BOND-GEOMETRY-DIPOLE-1A"
-      ],
-      "relation_check_refs": [
-        "REL-CHEM-BOND-GEOMETRY-DIPOLE"
-      ],
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/chemical-bonding.v1.json",
-      "microtopic_ref": "MIC-CHEM-BOND-LEWIS-VSEPR",
-      "bucket_ref": "BUCKET-CHEM-BOND",
-      "intrinsic_badge": "MEDIUM",
-      "representation_refs": [
-        "REP-CHEM-BOND-LEWIS-VSEPR"
-      ],
-      "core1a_scene_representation_refs": [
-        "REP-CHEM-BOND-LEWIS-VSEPR"
-      ],
-      "representation_bridge_count": 1,
-      "worked_anchor_refs": [
-        "Q-CHEM-BOND-LEWIS-VSEPR-1A"
-      ],
-      "relation_check_refs": [
-        "REL-CHEM-BOND-LEWIS-VSEPR"
-      ],
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/chemical-bonding.v1.json",
-      "microtopic_ref": "MIC-CHEM-BOND-MO-HBOND",
-      "bucket_ref": "BUCKET-CHEM-BOND",
-      "intrinsic_badge": "HARD",
-      "representation_refs": [
-        "REP-CHEM-BOND-MO-HBOND"
-      ],
-      "core1a_scene_representation_refs": [
-        "REP-CHEM-BOND-MO-HBOND"
-      ],
-      "representation_bridge_count": 1,
-      "worked_anchor_refs": [
-        "Q-CHEM-BOND-MO-HBOND-1A"
-      ],
-      "relation_check_refs": [
-        "REL-CHEM-BOND-MO-HBOND"
-      ],
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/behaviour-of-gases.v1.json",
-      "microtopic_ref": "MIC-CHEM-GAS-IDEAL-LAWS",
-      "bucket_ref": "BUCKET-CHEM-GAS",
-      "intrinsic_badge": "MEDIUM",
-      "representation_refs": [
-        "REP-CHEM-GAS-IDEAL-LAWS"
-      ],
-      "core1a_scene_representation_refs": [
-        "REP-CHEM-GAS-IDEAL-LAWS"
-      ],
-      "representation_bridge_count": 1,
-      "worked_anchor_refs": [
-        "Q-CHEM-GAS-IDEAL-LAWS-1A"
-      ],
-      "relation_check_refs": [
-        "REL-CHEM-GAS-IDEAL-LAWS"
-      ],
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/behaviour-of-gases.v1.json",
-      "microtopic_ref": "MIC-CHEM-GAS-KINETIC-PHASE",
-      "bucket_ref": "BUCKET-CHEM-GAS",
-      "intrinsic_badge": "MEDIUM",
-      "representation_refs": [
-        "REP-CHEM-GAS-KINETIC-PHASE"
-      ],
-      "core1a_scene_representation_refs": [
-        "REP-CHEM-GAS-KINETIC-PHASE"
-      ],
-      "representation_bridge_count": 1,
-      "worked_anchor_refs": [
-        "Q-CHEM-GAS-KINETIC-PHASE-1A"
-      ],
-      "relation_check_refs": [
-        "REL-CHEM-GAS-KINETIC-PHASE"
-      ],
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/behaviour-of-gases.v1.json",
-      "microtopic_ref": "MIC-CHEM-GAS-REAL-CRITICAL",
-      "bucket_ref": "BUCKET-CHEM-GAS",
-      "intrinsic_badge": "HARD",
-      "representation_refs": [
-        "REP-CHEM-GAS-REAL-CRITICAL"
-      ],
-      "core1a_scene_representation_refs": [
-        "REP-CHEM-GAS-REAL-CRITICAL"
-      ],
-      "representation_bridge_count": 1,
-      "worked_anchor_refs": [
-        "Q-CHEM-GAS-REAL-CRITICAL-1A"
-      ],
-      "relation_check_refs": [
-        "REL-CHEM-GAS-REAL-CRITICAL"
-      ],
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/some-basic-concepts.v1.json",
-      "microtopic_ref": "MIC-CHEM-MOLE-CONCENTRATION",
-      "bucket_ref": "BUCKET-CHEM-MOLE",
-      "intrinsic_badge": "HARD",
-      "representation_refs": [
-        "REP-CHEM-MOLE-CONCENTRATION"
-      ],
-      "core1a_scene_representation_refs": [
-        "REP-CHEM-MOLE-CONCENTRATION"
-      ],
-      "representation_bridge_count": 1,
-      "worked_anchor_refs": [
-        "Q-CHEM-MOLE-CONCENTRATION-1A"
-      ],
-      "relation_check_refs": [
-        "REL-CHEM-MOLE-CONCENTRATION"
-      ],
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/some-basic-concepts.v1.json",
-      "microtopic_ref": "MIC-CHEM-MOLE-FORMULA-STOICH",
-      "bucket_ref": "BUCKET-CHEM-MOLE",
-      "intrinsic_badge": "HARD",
-      "representation_refs": [
-        "REP-CHEM-MOLE-FORMULA-STOICH"
-      ],
-      "core1a_scene_representation_refs": [
-        "REP-CHEM-MOLE-FORMULA-STOICH"
-      ],
-      "representation_bridge_count": 1,
-      "worked_anchor_refs": [
-        "Q-CHEM-MOLE-FORMULA-STOICH-1A"
-      ],
-      "relation_check_refs": [
-        "REL-CHEM-MOLE-FORMULA-STOICH"
-      ],
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/some-basic-concepts.v1.json",
-      "microtopic_ref": "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
-      "bucket_ref": "BUCKET-CHEM-MOLE",
-      "intrinsic_badge": "MEDIUM",
-      "representation_refs": [
-        "REP-CHEM-MOLE-FOUNDATIONS-MOLE"
-      ],
-      "core1a_scene_representation_refs": [
-        "REP-CHEM-MOLE-FOUNDATIONS-MOLE"
-      ],
-      "representation_bridge_count": 1,
-      "worked_anchor_refs": [
-        "Q-CHEM-MOLE-FOUNDATIONS-MOLE-1A"
-      ],
-      "relation_check_refs": [
-        "REL-CHEM-MOLE-FOUNDATIONS-MOLE"
-      ],
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/redox-reactions.v1.json",
-      "microtopic_ref": "MIC-CHEM-REDOX-BALANCE-NFACTOR",
-      "bucket_ref": "BUCKET-CHEM-REDOX",
-      "intrinsic_badge": "HARD",
-      "representation_refs": [
-        "REP-CHEM-REDOX-BALANCE-NFACTOR"
-      ],
-      "core1a_scene_representation_refs": [
-        "REP-CHEM-REDOX-BALANCE-NFACTOR"
-      ],
-      "representation_bridge_count": 1,
-      "worked_anchor_refs": [
-        "Q-CHEM-REDOX-BALANCE-NFACTOR-1A"
-      ],
-      "relation_check_refs": [
-        "REL-CHEM-REDOX-BALANCE-NFACTOR"
-      ],
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/redox-reactions.v1.json",
-      "microtopic_ref": "MIC-CHEM-REDOX-CLASSIFICATION",
-      "bucket_ref": "BUCKET-CHEM-REDOX",
-      "intrinsic_badge": "HARD",
-      "representation_refs": [
-        "REP-CHEM-REDOX-CLASSIFICATION"
-      ],
-      "core1a_scene_representation_refs": [
-        "REP-CHEM-REDOX-CLASSIFICATION"
-      ],
-      "representation_bridge_count": 1,
-      "worked_anchor_refs": [
-        "Q-CHEM-REDOX-CLASSIFICATION-1A"
-      ],
-      "relation_check_refs": [
-        "REL-CHEM-REDOX-CLASSIFICATION"
-      ],
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Chemistry",
-      "package_path": "Chemistry/library/redox-reactions.v1.json",
-      "microtopic_ref": "MIC-CHEM-REDOX-OXIDATION-AGENTS",
-      "bucket_ref": "BUCKET-CHEM-REDOX",
-      "intrinsic_badge": "MEDIUM",
-      "representation_refs": [
-        "REP-CHEM-REDOX-OXIDATION-AGENTS"
-      ],
-      "core1a_scene_representation_refs": [
-        "REP-CHEM-REDOX-OXIDATION-AGENTS"
-      ],
-      "representation_bridge_count": 1,
-      "worked_anchor_refs": [
-        "Q-CHEM-REDOX-OXIDATION-AGENTS-1A"
-      ],
-      "relation_check_refs": [
-        "REL-CHEM-REDOX-OXIDATION-AGENTS"
-      ],
-      "finding_codes": [],
-      "findings": [],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Mathematics",
-      "package_path": "Mathematics/library/linear-equations.v1.json",
-      "microtopic_ref": "MIC-MAT-LEQ-01-SOLUTION-BY-SUBSTITUTION",
-      "bucket_ref": "BUCKET-MAT-09-LEQ",
-      "intrinsic_badge": "EASY",
-      "representation_refs": [
-        "REP-MAT-LEQ-01-SIDE-BY-SIDE-TABLE"
-      ],
-      "core1a_scene_representation_refs": [],
-      "representation_bridge_count": 3,
-      "worked_anchor_refs": [
-        "Q-MAT-LEQ-01-1A-EVALUATE-SIDES",
-        "Q-MAT-LEQ-01-1A-ONE-VALUE-NOT-ALL"
-      ],
-      "relation_check_refs": [
-        "REL-MAT-LEQ-01-SOLUTION-CONDITION"
-      ],
-      "finding_codes": [
-        "REPRESENTATION_SCENE_BINDING_MISSING"
-      ],
-      "findings": [
-        {
-          "code": "REPRESENTATION_SCENE_BINDING_MISSING",
-          "detail": "No canonical representation has a CORE1A scene bound to this microtopic.",
-          "ref": "MIC-MAT-LEQ-01-SOLUTION-BY-SUBSTITUTION"
-        }
-      ],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Mathematics",
-      "package_path": "Mathematics/library/linear-equations.v1.json",
-      "microtopic_ref": "MIC-MAT-LEQ-02-VARIABLE-ON-BOTH-SIDES",
-      "bucket_ref": "BUCKET-MAT-09-LEQ",
-      "intrinsic_badge": "MEDIUM",
-      "representation_refs": [
-        "REP-MAT-LEQ-02-BALANCE"
-      ],
-      "core1a_scene_representation_refs": [],
-      "representation_bridge_count": 3,
-      "worked_anchor_refs": [
-        "Q-MAT-LEQ-02-1A-COLLECT-TERMS",
-        "Q-MAT-LEQ-02-1A-DIVIDE-AND-CHECK"
-      ],
-      "relation_check_refs": [
-        "REL-MAT-LEQ-02-SOLUTION-PRESERVING-OPERATIONS"
-      ],
-      "finding_codes": [
-        "REPRESENTATION_SCENE_BINDING_MISSING"
-      ],
-      "findings": [
-        {
-          "code": "REPRESENTATION_SCENE_BINDING_MISSING",
-          "detail": "No canonical representation has a CORE1A scene bound to this microtopic.",
-          "ref": "MIC-MAT-LEQ-02-VARIABLE-ON-BOTH-SIDES"
-        }
-      ],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Mathematics",
-      "package_path": "Mathematics/library/linear-equations.v1.json",
-      "microtopic_ref": "MIC-MAT-LEQ-03-REDUCE-TO-SIMPLER-FORM",
-      "bucket_ref": "BUCKET-MAT-09-LEQ",
-      "intrinsic_badge": "MEDIUM",
-      "representation_refs": [
-        "REP-MAT-LEQ-01-SIDE-BY-SIDE-TABLE",
-        "REP-MAT-LEQ-02-BALANCE",
-        "REP-MAT-LEQ-03-BRACKET-AREA-MODEL"
-      ],
-      "core1a_scene_representation_refs": [],
-      "representation_bridge_count": 9,
-      "worked_anchor_refs": [
-        "Q-MAT-LEQ-03-1A-CLEAR-DENOMINATORS",
-        "Q-MAT-LEQ-03-1A-OPEN-BRACKETS",
-        "Q-MAT-LEQ-03-1A-VARIABLE-VANISHES"
-      ],
-      "relation_check_refs": [
-        "REL-MAT-LEQ-03-REDUCED-OUTCOMES",
-        "REL-MAT-LEQ-03-REDUCTION"
-      ],
-      "finding_codes": [
-        "REPRESENTATION_SCENE_BINDING_MISSING"
-      ],
-      "findings": [
-        {
-          "code": "REPRESENTATION_SCENE_BINDING_MISSING",
-          "detail": "No canonical representation has a CORE1A scene bound to this microtopic.",
-          "ref": "MIC-MAT-LEQ-03-REDUCE-TO-SIMPLER-FORM"
-        }
-      ],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
-    {
-      "subject": "Mathematics",
-      "package_path": "Mathematics/library/linear-equations.v1.json",
-      "microtopic_ref": "MIC-MAT-LEQ-04-TWO-VARIABLES-LINE-OF-SOLUTIONS",
-      "bucket_ref": "BUCKET-MAT-09-LEQ",
-      "intrinsic_badge": "HARD",
-      "representation_refs": [
-        "REP-MAT-LEQ-04-SOLUTION-LINE"
-      ],
-      "core1a_scene_representation_refs": [],
-      "representation_bridge_count": 3,
-      "worked_anchor_refs": [
-        "Q-MAT-LEQ-04-1A-GENERATE-PAIRS",
-        "Q-MAT-LEQ-04-1A-READ-THE-LINE",
-        "Q-MAT-LEQ-04-1A-TEST-PAIRS"
-      ],
-      "relation_check_refs": [
-        "REL-MAT-LEQ-04-STRAIGHT-LINE",
-        "REL-MAT-LEQ-04-TWO-VARIABLE-FORM"
-      ],
-      "finding_codes": [
-        "REPRESENTATION_SCENE_BINDING_MISSING"
-      ],
-      "findings": [
-        {
-          "code": "REPRESENTATION_SCENE_BINDING_MISSING",
-          "detail": "No canonical representation has a CORE1A scene bound to this microtopic.",
-          "ref": "MIC-MAT-LEQ-04-TWO-VARIABLES-LINE-OF-SOLUTIONS"
-        }
-      ],
-      "manual_review_obligations": [
-        "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
-        "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
-        "REPRESENTATION_BRIDGE_IS_SEMANTICALLY_BIDIRECTIONAL"
-      ]
-    },
     {
       "subject": "Mathematics",
       "package_path": "Mathematics/library/linear-equations.v1.json",
@@ -497,8 +31,6 @@
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 2,
       "worked_anchor_refs": [
-        "Q-MATH-CONSTRAINT-1A",
-        "Q-MATH-EXACT-1A",
         "Q-MATH-LINEAR-01"
       ],
       "relation_check_refs": [
@@ -532,8 +64,6 @@
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 2,
       "worked_anchor_refs": [
-        "Q-MATH-CONSTRAINT-1A",
-        "Q-MATH-EXACT-1A",
         "Q-MATH-LINEAR-01"
       ],
       "relation_check_refs": [
@@ -569,8 +99,6 @@
       ],
       "representation_bridge_count": 2,
       "worked_anchor_refs": [
-        "Q-MATH-CONSTRAINT-1A",
-        "Q-MATH-EXACT-1A",
         "Q-MATH-LINEAR-01"
       ],
       "relation_check_refs": [
@@ -628,9 +156,7 @@
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 0,
       "worked_anchor_refs": [],
-      "relation_check_refs": [
-        "REL-ELEC-CURRENT-CONSERVATION"
-      ],
+      "relation_check_refs": [],
       "finding_codes": [
         "REPRESENTATION_BRIDGE_MISSING",
         "WORKED_CONCEPTUAL_ANCHOR_MISSING"
@@ -663,9 +189,7 @@
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 0,
       "worked_anchor_refs": [],
-      "relation_check_refs": [
-        "REL-ELEC-OHMIC-MODEL"
-      ],
+      "relation_check_refs": [],
       "finding_codes": [
         "REPRESENTATION_BRIDGE_MISSING",
         "WORKED_CONCEPTUAL_ANCHOR_MISSING"
@@ -692,7 +216,7 @@
       "subject": "Physics",
       "package_path": "Physics/library/vector-representation.v1.json",
       "microtopic_ref": "MIC-FRAME-QUALIFICATION-BOUNDARY",
-      "bucket_ref": "BUCKET-VECTOR-REPRESENTATION",
+      "bucket_ref": "BUCKET-RELATIVE-MOTION",
       "intrinsic_badge": "HARD",
       "representation_refs": [],
       "core1a_scene_representation_refs": [],
@@ -1334,9 +858,7 @@
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 0,
       "worked_anchor_refs": [],
-      "relation_check_refs": [
-        "REL-OSC-ENERGY-EXCHANGE"
-      ],
+      "relation_check_refs": [],
       "finding_codes": [
         "REPRESENTATION_BRIDGE_MISSING",
         "WORKED_CONCEPTUAL_ANCHOR_MISSING"
@@ -1369,9 +891,7 @@
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 0,
       "worked_anchor_refs": [],
-      "relation_check_refs": [
-        "REL-OSC-STABLE-EQUILIBRIUM"
-      ],
+      "relation_check_refs": [],
       "finding_codes": [
         "REPRESENTATION_BRIDGE_MISSING",
         "WORKED_CONCEPTUAL_ANCHOR_MISSING"
@@ -1703,24 +1223,24 @@
       ],
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 6,
-      "worked_anchor_refs": [
-        "Q-PHY-KIN-2D-1A-CONSTANT-ACCEL-01",
-        "Q-PHY-KIN-2D-1A-SHARED-CLOCK-01",
-        "Q-PHY-KIN-PROJ-1A-EVENTS-01",
-        "Q-PHY-KIN-PROJ-1A-MODEL-01",
-        "Q-PHY-KIN-PROJ-1A-UNEQUAL-01"
-      ],
+      "worked_anchor_refs": [],
       "relation_check_refs": [
         "REL-KIN-2D-DISPLACEMENT",
         "REL-KIN-2D-VELOCITY"
       ],
       "finding_codes": [
-        "REPRESENTATION_SCENE_BINDING_MISSING"
+        "REPRESENTATION_SCENE_BINDING_MISSING",
+        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
       ],
       "findings": [
         {
           "code": "REPRESENTATION_SCENE_BINDING_MISSING",
           "detail": "No canonical representation has a CORE1A scene bound to this microtopic.",
+          "ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION"
+        },
+        {
+          "code": "WORKED_CONCEPTUAL_ANCHOR_MISSING",
+          "detail": "No mapped question is exposed to CORE1A with a completed answer.reasoning[] route.",
           "ref": "MIC-PHY-KIN-2D-CONSTANT-ACCELERATION"
         }
       ],
@@ -1743,18 +1263,18 @@
         "REP-KIN-2D-SHARED-CLOCK"
       ],
       "representation_bridge_count": 3,
-      "worked_anchor_refs": [
-        "Q-PHY-KIN-2D-1A-CONSTANT-ACCEL-01",
-        "Q-PHY-KIN-2D-1A-SHARED-CLOCK-01",
-        "Q-PHY-KIN-PROJ-1A-EVENTS-01",
-        "Q-PHY-KIN-PROJ-1A-MODEL-01",
-        "Q-PHY-KIN-PROJ-1A-UNEQUAL-01"
+      "worked_anchor_refs": [],
+      "relation_check_refs": [],
+      "finding_codes": [
+        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
       ],
-      "relation_check_refs": [
-        "REL-KIN-2D-DISPLACEMENT"
+      "findings": [
+        {
+          "code": "WORKED_CONCEPTUAL_ANCHOR_MISSING",
+          "detail": "No mapped question is exposed to CORE1A with a completed answer.reasoning[] route.",
+          "ref": "MIC-PHY-KIN-2D-INDEPENDENT-COMPONENTS"
+        }
       ],
-      "finding_codes": [],
-      "findings": [],
       "manual_review_obligations": [
         "TEACHING_PATH_ACTUALLY_CONSTRUCTS_INFERENTIAL_JUMP",
         "WORKED_ANCHOR_ILLUMINATES_CONCEPT_NOT_APPLICATION_DRILL",
@@ -1957,23 +1477,23 @@
       ],
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 9,
-      "worked_anchor_refs": [
-        "Q-PHY-KIN-2D-1A-CONSTANT-ACCEL-01",
-        "Q-PHY-KIN-2D-1A-SHARED-CLOCK-01",
-        "Q-PHY-KIN-PROJ-1A-EVENTS-01",
-        "Q-PHY-KIN-PROJ-1A-MODEL-01",
-        "Q-PHY-KIN-PROJ-1A-UNEQUAL-01"
-      ],
+      "worked_anchor_refs": [],
       "relation_check_refs": [
         "REL-PROJECTILE-COMPONENT-MODEL"
       ],
       "finding_codes": [
-        "REPRESENTATION_SCENE_BINDING_MISSING"
+        "REPRESENTATION_SCENE_BINDING_MISSING",
+        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
       ],
       "findings": [
         {
           "code": "REPRESENTATION_SCENE_BINDING_MISSING",
           "detail": "No canonical representation has a CORE1A scene bound to this microtopic.",
+          "ref": "MIC-PHY-KIN-PROJECTILE-MODEL"
+        },
+        {
+          "code": "WORKED_CONCEPTUAL_ANCHOR_MISSING",
+          "detail": "No mapped question is exposed to CORE1A with a completed answer.reasoning[] route.",
           "ref": "MIC-PHY-KIN-PROJECTILE-MODEL"
         }
       ],
@@ -2165,32 +1685,23 @@
       "representation_refs": [],
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 0,
-      "worked_anchor_refs": [
-        "Q-PHY-NLM-1A-CANCEL-01",
-        "Q-PHY-NLM-1A-CONNECTED-BODIES-01",
-        "Q-PHY-NLM-1A-CONSTRAINT-TENSION-01",
-        "Q-PHY-NLM-1A-ELEVATOR-FRAMES-01",
-        "Q-PHY-NLM-1A-FBD-OWNERSHIP-01",
-        "Q-PHY-NLM-1A-FRICTION-DIRECTION-01",
-        "Q-PHY-NLM-1A-FRICTION-TEST-01",
-        "Q-PHY-NLM-1A-NET-ZERO-01",
-        "Q-PHY-NLM-1A-SECOND-LAW-01",
-        "Q-PHY-NLM-1A-STRING-FBD-01",
-        "Q-PHY-NLM-1A-STRING-LENGTH-01",
-        "Q-PHY-NLM-1A-SYSTEM-CHOICE-01",
-        "Q-PHY-NLM-1A-TENSION-VALUE-01",
-        "Q-PHY-NLM-1A-THIRD-LAW-01"
-      ],
+      "worked_anchor_refs": [],
       "relation_check_refs": [
         "REL-NLM-COMMON-ACCEL-CONSTRAINT"
       ],
       "finding_codes": [
-        "REPRESENTATION_BRIDGE_MISSING"
+        "REPRESENTATION_BRIDGE_MISSING",
+        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
       ],
       "findings": [
         {
           "code": "REPRESENTATION_BRIDGE_MISSING",
           "detail": "No canonical representation is bound to this Core1A concept.",
+          "ref": "MIC-PHY-NLM-CONNECTED-COMMON-ACCEL"
+        },
+        {
+          "code": "WORKED_CONCEPTUAL_ANCHOR_MISSING",
+          "detail": "No mapped question is exposed to CORE1A with a completed answer.reasoning[] route.",
           "ref": "MIC-PHY-NLM-CONNECTED-COMMON-ACCEL"
         }
       ],
@@ -2212,9 +1723,7 @@
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 0,
       "worked_anchor_refs": [],
-      "relation_check_refs": [
-        "REL-NEWTON-SECOND-LAW"
-      ],
+      "relation_check_refs": [],
       "finding_codes": [
         "REPRESENTATION_CORRESPONDENCE_MISSING",
         "REPRESENTATION_SCENE_BINDING_MISSING",
@@ -2253,9 +1762,7 @@
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 0,
       "worked_anchor_refs": [],
-      "relation_check_refs": [
-        "REL-NEWTON-SECOND-LAW"
-      ],
+      "relation_check_refs": [],
       "finding_codes": [
         "REPRESENTATION_BRIDGE_MISSING",
         "WORKED_CONCEPTUAL_ANCHOR_MISSING"
@@ -2327,9 +1834,7 @@
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 0,
       "worked_anchor_refs": [],
-      "relation_check_refs": [
-        "REL-NLM-STATIC-FRICTION-BOUND"
-      ],
+      "relation_check_refs": [],
       "finding_codes": [
         "REPRESENTATION_BRIDGE_MISSING",
         "WORKED_CONCEPTUAL_ANCHOR_MISSING"
@@ -2363,33 +1868,24 @@
       ],
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 3,
-      "worked_anchor_refs": [
-        "Q-PHY-NLM-1A-CANCEL-01",
-        "Q-PHY-NLM-1A-CONNECTED-BODIES-01",
-        "Q-PHY-NLM-1A-CONSTRAINT-TENSION-01",
-        "Q-PHY-NLM-1A-ELEVATOR-FRAMES-01",
-        "Q-PHY-NLM-1A-FBD-OWNERSHIP-01",
-        "Q-PHY-NLM-1A-FRICTION-DIRECTION-01",
-        "Q-PHY-NLM-1A-FRICTION-TEST-01",
-        "Q-PHY-NLM-1A-NET-ZERO-01",
-        "Q-PHY-NLM-1A-SECOND-LAW-01",
-        "Q-PHY-NLM-1A-STRING-FBD-01",
-        "Q-PHY-NLM-1A-STRING-LENGTH-01",
-        "Q-PHY-NLM-1A-SYSTEM-CHOICE-01",
-        "Q-PHY-NLM-1A-TENSION-VALUE-01",
-        "Q-PHY-NLM-1A-THIRD-LAW-01"
-      ],
+      "worked_anchor_refs": [],
       "relation_check_refs": [
         "REL-NLM-KINETIC-FRICTION",
         "REL-NLM-STATIC-FRICTION-BOUND"
       ],
       "finding_codes": [
-        "REPRESENTATION_SCENE_BINDING_MISSING"
+        "REPRESENTATION_SCENE_BINDING_MISSING",
+        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
       ],
       "findings": [
         {
           "code": "REPRESENTATION_SCENE_BINDING_MISSING",
           "detail": "No canonical representation has a CORE1A scene bound to this microtopic.",
+          "ref": "MIC-PHY-NLM-FRICTION-QUANT"
+        },
+        {
+          "code": "WORKED_CONCEPTUAL_ANCHOR_MISSING",
+          "detail": "No mapped question is exposed to CORE1A with a completed answer.reasoning[] route.",
           "ref": "MIC-PHY-NLM-FRICTION-QUANT"
         }
       ],
@@ -2408,32 +1904,23 @@
       "representation_refs": [],
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 0,
-      "worked_anchor_refs": [
-        "Q-PHY-NLM-1A-CANCEL-01",
-        "Q-PHY-NLM-1A-CONNECTED-BODIES-01",
-        "Q-PHY-NLM-1A-CONSTRAINT-TENSION-01",
-        "Q-PHY-NLM-1A-ELEVATOR-FRAMES-01",
-        "Q-PHY-NLM-1A-FBD-OWNERSHIP-01",
-        "Q-PHY-NLM-1A-FRICTION-DIRECTION-01",
-        "Q-PHY-NLM-1A-FRICTION-TEST-01",
-        "Q-PHY-NLM-1A-NET-ZERO-01",
-        "Q-PHY-NLM-1A-SECOND-LAW-01",
-        "Q-PHY-NLM-1A-STRING-FBD-01",
-        "Q-PHY-NLM-1A-STRING-LENGTH-01",
-        "Q-PHY-NLM-1A-SYSTEM-CHOICE-01",
-        "Q-PHY-NLM-1A-TENSION-VALUE-01",
-        "Q-PHY-NLM-1A-THIRD-LAW-01"
-      ],
+      "worked_anchor_refs": [],
       "relation_check_refs": [
         "REL-NLM-IDEAL-STRING-TENSION"
       ],
       "finding_codes": [
-        "REPRESENTATION_BRIDGE_MISSING"
+        "REPRESENTATION_BRIDGE_MISSING",
+        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
       ],
       "findings": [
         {
           "code": "REPRESENTATION_BRIDGE_MISSING",
           "detail": "No canonical representation is bound to this Core1A concept.",
+          "ref": "MIC-PHY-NLM-IDEAL-STRING-TENSION"
+        },
+        {
+          "code": "WORKED_CONCEPTUAL_ANCHOR_MISSING",
+          "detail": "No mapped question is exposed to CORE1A with a completed answer.reasoning[] route.",
           "ref": "MIC-PHY-NLM-IDEAL-STRING-TENSION"
         }
       ],
@@ -2490,9 +1977,7 @@
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 0,
       "worked_anchor_refs": [],
-      "relation_check_refs": [
-        "REL-NEWTON-SECOND-LAW"
-      ],
+      "relation_check_refs": [],
       "finding_codes": [
         "REPRESENTATION_BRIDGE_MISSING",
         "WORKED_CONCEPTUAL_ANCHOR_MISSING"
@@ -2559,32 +2044,23 @@
       "representation_refs": [],
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 0,
-      "worked_anchor_refs": [
-        "Q-PHY-NLM-1A-CANCEL-01",
-        "Q-PHY-NLM-1A-CONNECTED-BODIES-01",
-        "Q-PHY-NLM-1A-CONSTRAINT-TENSION-01",
-        "Q-PHY-NLM-1A-ELEVATOR-FRAMES-01",
-        "Q-PHY-NLM-1A-FBD-OWNERSHIP-01",
-        "Q-PHY-NLM-1A-FRICTION-DIRECTION-01",
-        "Q-PHY-NLM-1A-FRICTION-TEST-01",
-        "Q-PHY-NLM-1A-NET-ZERO-01",
-        "Q-PHY-NLM-1A-SECOND-LAW-01",
-        "Q-PHY-NLM-1A-STRING-FBD-01",
-        "Q-PHY-NLM-1A-STRING-LENGTH-01",
-        "Q-PHY-NLM-1A-SYSTEM-CHOICE-01",
-        "Q-PHY-NLM-1A-TENSION-VALUE-01",
-        "Q-PHY-NLM-1A-THIRD-LAW-01"
-      ],
+      "worked_anchor_refs": [],
       "relation_check_refs": [
         "REL-NLM-FIXED-PULLEY-STRING-LENGTH"
       ],
       "finding_codes": [
-        "REPRESENTATION_BRIDGE_MISSING"
+        "REPRESENTATION_BRIDGE_MISSING",
+        "WORKED_CONCEPTUAL_ANCHOR_MISSING"
       ],
       "findings": [
         {
           "code": "REPRESENTATION_BRIDGE_MISSING",
           "detail": "No canonical representation is bound to this Core1A concept.",
+          "ref": "MIC-PHY-NLM-SINGLE-STRING-CONSTRAINT"
+        },
+        {
+          "code": "WORKED_CONCEPTUAL_ANCHOR_MISSING",
+          "detail": "No mapped question is exposed to CORE1A with a completed answer.reasoning[] route.",
           "ref": "MIC-PHY-NLM-SINGLE-STRING-CONSTRAINT"
         }
       ],
@@ -2604,9 +2080,7 @@
       "core1a_scene_representation_refs": [],
       "representation_bridge_count": 0,
       "worked_anchor_refs": [],
-      "relation_check_refs": [
-        "REL-NEWTON-SECOND-LAW"
-      ],
+      "relation_check_refs": [],
       "finding_codes": [
         "REPRESENTATION_BRIDGE_MISSING",
         "WORKED_CONCEPTUAL_ANCHOR_MISSING"
