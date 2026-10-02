@@ -58,7 +58,7 @@ class TestPracticeContentQuality(unittest.TestCase):
 
     def test_motion_2d_attempts_are_self_contained_short_answer_tasks(self):
         markup = text_of(PRACTICE / "core2-motion-in-a-plane-tablet.html")
-        cards = re.findall(r'<article[^>]*id="q\\d{2}"[^>]*>(.*?)</article>', markup, flags=re.S)
+        cards = re.findall(r'<article[^>]*id="q\d{2}"[^>]*>(.*?)</article>', markup, flags=re.S)
         self.assertEqual(len(cards), 59)
         for index, card in enumerate(cards, start=1):
             self.assertIn("attempt-question-card", card, f"q{index:02d}: missing visible learner question")
@@ -103,7 +103,7 @@ class TestPracticeContentQuality(unittest.TestCase):
         for qid in ("q49", "q51"):
             card = re.search(rf'<article[^>]*id="{qid}"[^>]*>(.*?)</article>', markup, flags=re.S).group(1)
             self.assertIn("SOURCE INCOMPLETE", card)
-            self.assertNotRegex(card, r"Option [A-D]|option \\([a-d]\\)")
+            self.assertNotRegex(card, r"Option [A-D]|option \([a-d]\)")
             self.assertNotIn("source answer key", card.lower())
             self.assertNotIn("printed source key", card.lower())
 
