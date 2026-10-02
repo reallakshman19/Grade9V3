@@ -155,6 +155,18 @@ class Publication(unittest.TestCase):
         self.assertEqual(recorded, decision["assurance"])
         self.assertEqual(recorded, {"status": "ELIGIBLE", "bundle_digest": "sha256:" + "a" * 64, "waived": ["ACCESSIBILITY", "SOURCE_INTEGRITY"]})
 
+    def test_the_search_index_is_rebuilt_after_the_pages_are_published_and_before_the_mirror_is_written(self):
+        """The blueprint's PUBLICATION_REINDEXES: the pages are in public/ when the hook runs, and the mirror, written after, carries what the hook wrote."""
+        seen = []
+        published = self.repo / "public" / "products" / "physics" / "sample"
+
+        def hook(repo):
+            seen.append(("hook", repo, (published / "core1.html").is_file()))
+
+        with mock.patch.object(accept_product, "mirror_pages", side_effect=lambda repo: seen.append(("mirror", repo))):
+            accept_product.accept("sample", repo=self.repo, after_publish=hook)
+        self.assertEqual(seen, [("hook", self.repo, True), ("mirror", self.repo)])
+
     def test_an_acceptance_without_a_release_decision_records_none(self):
         with mock.patch.object(accept_product, "mirror_pages"):
             accept_product.accept("sample", repo=self.repo)

@@ -5,19 +5,19 @@
   "QUESTION": 108,
   "TOPIC": 112
  },
- "generated_at": "2026-10-02T05:47:53Z",
+ "generated_at": "2026-10-02T05:54:01Z",
  "generator": {
   "name": "build_search_index",
-  "version": "2.0.0"
+  "version": "2.1.0"
  },
  "index_digest": "sha256:ef2f62c48c17dba31dea92d7b1ccad180359bc325b0e8784c11aeecd940f74d1",
  "index_version": "2",
  "inputs": {
   "core_learning_digest": "sha256:6bb4a0501eb592ef429b506dababd84c2e17d2d78c9c6da2dd5dd5e399a61142",
   "library_digest": "sha256:1b49adb6123b0bdc63ce9453e7df5abfb5cf8e49e113ebc871b3897090584a9e",
-  "pages_digest": "sha256:13bf910a811134dcbfe11c07e3a773e5b140811f1cdc2791311d137146daeed6",
+  "pages_digest": "sha256:b96c989bda422460306836a067b90586b75abd1804cf47614ad240cdca2b395e",
   "question_bank_digest": "sha256:8eba47db4413bcdf07f5890397687542c6d3538aa66d67f07981b9fe9f5c9a78",
-  "routes_digest": "sha256:49b9b5517eed829555b567ed0f14235612774f85a5a8e59838b06eb9eeab93fe"
+  "routes_digest": "sha256:cdd8587a1b4fed45608eab4b04ba5081ef1fe504f32a9b88b04059622c9db494"
  },
  "questions": {
   "canonical": [

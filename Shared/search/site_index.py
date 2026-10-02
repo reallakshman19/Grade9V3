@@ -4,7 +4,8 @@ Four kinds of document, each with a route that exists:
 
   PAGE      a page file of the site, and each Core learning projection (a sub page: Core 1, 1A, 1B, 2A, 2B of a topic or question)
   TOPIC     a bucket or microtopic, opening its Core page
-  QUESTION  a canonical question, opening the page that shows it: the Question Bank for a bank question, a Core 2 projection for a library question
+  QUESTION  a canonical question, opening the page that shows it: the Question Bank for a bank question; for a library question a published page that shows it by the
+            id of its element (a product the Owner has accepted), else a Core 2 projection
   HINT      one hint of a routed question, opening that question. Its text is searched and never shown (`hidden`): a learner who finds a question by its hint has
             not been given the hint.
 
@@ -81,12 +82,19 @@ class _Page(HTMLParser):
     def __init__(self, text: str):
         super().__init__(convert_charrefs=True)
         self.title, self.description, self.headings, self.refresh = "", "", [], False
+        self.questions: list[str] = []         # the canonical question ids the page shows, each as the id of its element
+        self.unanchored = 0                    # question elements with no id
         self._in = None
         self._buf: list[str] = []
         self.feed(text)
 
     def handle_starttag(self, tag, attrs):
         a = {k: (v or "") for k, v in attrs}
+        if a.get("data-g9-kind") == "QUESTION":
+            if a.get("id"):
+                self.questions.append(a["id"])
+            else:
+                self.unanchored += 1
         if tag == "title" or tag in ("h1", "h2", "h3"):
             self._in, self._buf = tag, []
         elif tag == "meta":
@@ -110,7 +118,8 @@ class _Page(HTMLParser):
 
 
 def page_descriptors(site: Path, config: dict) -> list[dict]:
-    """One descriptor per page file of the site that a learner can open: path (relative to the site), title, headings, description."""
+    """One descriptor per page file of the site that a learner can open: path (relative to the site), title (and whether the page had one), headings, description, and the
+    canonical questions it shows by the id of their element (a question element with no id is counted)."""
     out = []
     for path in sorted(site.rglob("*.html")):
         rel = path.relative_to(site).as_posix()
@@ -121,7 +130,8 @@ def page_descriptors(site: Path, config: dict) -> list[dict]:
             continue
         subject = next((s for prefix, s in config["page_subject_by_prefix"].items() if rel.startswith(prefix)), config["default_subject"])
         title = page.title or (page.headings[0] if page.headings else path.parent.name.replace("-", " ").replace("_", " ").title())
-        out.append({"path": rel, "title": title, "headings": page.headings, "description": page.description, "subject": subject})
+        out.append({"path": rel, "title": title, "titled": bool(page.title), "headings": page.headings, "description": page.description, "subject": subject,
+                    "questions": sorted(set(page.questions)), "unanchored": page.unanchored})
     return out
 
 
@@ -254,6 +264,11 @@ def build(repo: Path, library_dirs: list[Path], config: dict | None = None) -> B
     by_source: dict[str, dict[str, dict]] = defaultdict(dict)
     for p in projections:
         by_source[p["source_ref"]][p["projection"]["core"]] = p
+    preference = config["question_page_preference"]
+    anchor_page: dict[str, str] = {}                # question id -> the page that shows it, the preferred page first
+    for d in sorted(descriptors, key=lambda d: (preference.index(Path(d["path"]).name) if Path(d["path"]).name in preference else len(preference), d["path"])):
+        for qid in d["questions"]:
+            anchor_page.setdefault(qid, d["path"])
     routed: list[str] = []
     for qid, (subject, q, package) in sorted(canonical.items()):
         url, level, meta = None, None, {}
@@ -263,10 +278,15 @@ def build(repo: Path, library_dirs: list[Path], config: dict | None = None) -> B
             subject = b.get("subject") or subject
             meta = {"topic": b.get("topic"), "exam": b.get("exam"), "year": b.get("year"), "difficulty": difficulty_of(b.get("difficulty"))}
         else:
-            for core_level in config["question_core_preference"]:
-                if core_level in by_source.get(qid, {}):
-                    url, level = core_url(config, by_source[qid][core_level]["id"]), core_level
-                    break
+            if qid in anchor_page:
+                url = f"{anchor_page[qid]}#{quote(qid, safe='')}"
+                stem_name = Path(anchor_page[qid]).stem.upper()
+                level = stem_name if stem_name in labels else None
+            else:
+                for core_level in config["question_core_preference"]:
+                    if core_level in by_source.get(qid, {}):
+                        url, level = core_url(config, by_source[qid][core_level]["id"]), core_level
+                        break
             if url is None:
                 continue
             meta = {"topic": topic_of_capability.get(q.get("primary_capability_ref", "")), "difficulty": difficulty_of(q.get("difficulty"))}
@@ -304,17 +324,25 @@ def build(repo: Path, library_dirs: list[Path], config: dict | None = None) -> B
 
 # -- routes, checked independently of the builder ----------------------------------------------------------------------------------------------
 
-def resolve_url(repo: Path, url: str, config: dict, core_ids: set[str], bank_ids: set[str]) -> str | None:
-    """None if `url` opens something that exists; otherwise why not."""
+def anchors_of(descriptors: list[dict]) -> dict[str, set[str]]:
+    """The question ids each page carries as element ids, by page path."""
+    return {d["path"]: set(d["questions"]) for d in descriptors}
+
+
+def resolve_url(repo: Path, url: str, config: dict, core_ids: set[str], bank_ids: set[str], anchors: dict[str, set[str]] | None = None) -> str | None:
+    """None if `url` opens something that exists; otherwise why not. A fragment on a page that is not the Question Bank must be the id of a question element of that page."""
     parts = urlsplit(url)
-    target = repo / config["site_root"] / unquote(parts.path)
+    path = unquote(parts.path)
+    target = repo / config["site_root"] / path
     if not target.is_file():
         return f"{parts.path} is not a file of the site"
     query = parse_qs(parts.query)
-    if parts.path == config["core_learning"]["page"] and query.get("projection") and query["projection"][0] not in core_ids:
+    if path == config["core_learning"]["page"] and query.get("projection") and query["projection"][0] not in core_ids:
         return f"no Core learning projection {query['projection'][0]!r}"
-    if parts.path == config["question_bank"]["page"] and query.get("q") and query["q"][0] not in bank_ids:
+    if path == config["question_bank"]["page"] and query.get("q") and query["q"][0] not in bank_ids:
         return f"no Question Bank question {query['q'][0]!r}"
+    if parts.fragment and path != config["question_bank"]["page"] and anchors is not None and unquote(parts.fragment) not in anchors.get(path, set()):
+        return f"{path} has no question element with the id {unquote(parts.fragment)!r}"
     return None
 
 

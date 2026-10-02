@@ -94,6 +94,22 @@ def _standalone_lines(shell: dict) -> list[str]:
     return lines
 
 
+def _search_lines(shell: dict) -> list[str]:
+    """What keeps every page, and every question a published page shows, findable from the header search."""
+    sp = shell.get("search_policy")
+    if not sp:
+        return []
+    lines = ["## Search: every page is found", "",
+             sp["purpose"], "",
+             f"Site root `{sp['site_root']}/`. Routes: `{sp['routes']}`. Index: `{sp['index']}`. Builder: `{sp['builder']}`. Verifier: `{sp['verifier']}`.", "",
+             f"Not indexed: {sp['not_indexed']}", "",
+             f"**When a page is added.** {sp['when_a_page_is_added']}", "",
+             "| Rule | Held | Assurance type | Findings | What it asks |", "|---|---|---|---|---|"]
+    lines += [f"| `{r['id']}` | {'blocks' if r['severity'] == 'BLOCK' else 'said'} | `{r['assurance_type']}` | "
+              f"{', '.join(f'`{c}`' for c in r['finding_codes']) or 'by the code of the publication step'} | {r['statement']} |" for r in sp["rules"]]
+    return lines + [""]
+
+
 def _admission_lines(policy: dict) -> list[str]:
     """How a question record gets into a library, and how a digest is kept the same on every machine."""
     adm, ev = policy["admission"], policy["evidence"]
@@ -123,6 +139,7 @@ def render(registry: dict | None = None) -> str:
         "",
         *_shell_lines(registry["shell"]),
         *_standalone_lines(registry["shell"]),
+        *_search_lines(registry["shell"]),
         *_product_rules(policy),
         *_admission_lines(policy),
     ]

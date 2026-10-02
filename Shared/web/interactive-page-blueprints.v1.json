@@ -46,7 +46,7 @@
       "publication_rewrite": "BUILD_PIPELINE",
       "unknown_runtime_dependency": "FAIL_CLOSED"
     },
-    "version": "1.3.0",
+    "version": "1.4.0",
     "print_policy": {
       "control": "PRINT_PDF",
       "purpose": "A learner or a teacher can print the page: a PDF icon in the fixed header opens the PDF printed from this very page, ready for the print dialog of the tablet.",
@@ -165,6 +165,95 @@
         ],
         "note": "These need a rendered page. A snapshot is not done until this audit has run on it; the static rules above are what a pull request can be held to without a browser."
       }
+    },
+    "search_policy": {
+      "purpose": "Every page a learner can open is found by the header search, and so is every question and hint a published page shows. Nothing about a new page has to be remembered: the search index is built from the page files, the route table and the library, and a page added without rebuilding it leaves the committed index stale, which the verifier fails on every pull request.",
+      "applies_to": "LEARNER_PAGES_OF_THE_SITE",
+      "site_root": "public",
+      "routes": "Shared/search/site-routes.v1.json",
+      "index": "public/data/search-index.v2.json",
+      "builder": "Shared/tools/build_search_index.py",
+      "verifier": "Shared/tools/verify_search_index.py",
+      "not_indexed": "Pages under the route table's excluded prefixes: vendor/ (third-party files), test/ (the TEST sandbox, whose pages are labelled drafts and are never learner products) and node_modules/ (tooling).",
+      "when_a_page_is_added": "Run `python3 Shared/tools/build_search_index.py` (it reads the route table), then `python3 Shared/tools/build_pages_site.py`, and commit the regenerated index. Accepting a product does this itself.",
+      "rules": [
+        {
+          "id": "PAGE_INDEXED",
+          "severity": "BLOCK",
+          "executes": "search_policy.index",
+          "statement": "Every page file under the site root that a learner can open is a PAGE document of the search index, and so is every question and hint its pages show. A page added, removed or retitled without rebuilding the index leaves it stale, and the check fails.",
+          "assurance_type": "SEARCH_MEMBERSHIP",
+          "finding_codes": [
+            "MISSING_FROM_INDEX",
+            "PHANTOM_IN_INDEX",
+            "INDEX_DIFFERS",
+            "STALE_INDEX",
+            "QUESTIONS_DIFFER"
+          ]
+        },
+        {
+          "id": "PAGE_TITLED",
+          "severity": "BLOCK",
+          "executes": "search_policy.index",
+          "statement": "A page names itself with a non-empty title element. A page without one would be found under the name of its folder.",
+          "assurance_type": "SEARCH_MEMBERSHIP",
+          "finding_codes": [
+            "PAGE_UNTITLED"
+          ]
+        },
+        {
+          "id": "QUESTION_ANCHORED",
+          "severity": "BLOCK",
+          "executes": "search_policy.index",
+          "statement": "A page that shows a canonical question gives its element the question's id (data-g9-kind=\"QUESTION\" with an id, as the renderer writes it), so that search opens the question at its own place and not only the page. An element of that kind with no id cannot be found.",
+          "assurance_type": "SEARCH_MEMBERSHIP",
+          "finding_codes": [
+            "QUESTION_WITHOUT_ANCHOR"
+          ]
+        },
+        {
+          "id": "RESULT_OPENS",
+          "severity": "BLOCK",
+          "executes": "search_policy.routes",
+          "statement": "Every result opens something that exists: a page file, a Core learning projection, a Question Bank question, or the element of a page that carries the question's id.",
+          "assurance_type": "SEARCH_MEMBERSHIP",
+          "finding_codes": [
+            "BROKEN_ROUTE"
+          ]
+        },
+        {
+          "id": "UNROUTED_REPORTED",
+          "severity": "ADVISE",
+          "executes": "search_policy.index",
+          "statement": "A canonical question that no page of the site shows is not a result. It is named in the index manifest and reported, so that the distance between the library and what a learner can open stays a number; publishing the product that shows it closes the distance.",
+          "assurance_type": "SEARCH_MEMBERSHIP",
+          "finding_codes": [
+            "UNROUTED_QUESTIONS"
+          ]
+        },
+        {
+          "id": "INDEX_LOADABLE",
+          "severity": "BLOCK",
+          "executes": "search_policy.index",
+          "statement": "The index file, the script a page loads (so that a page opened from a file can search), and the manifest are consistent: the script is the index, and both are the files the manifest describes.",
+          "assurance_type": "SEARCH_RETRIEVABILITY",
+          "finding_codes": [
+            "INDEX_OR_MANIFEST_INVALID",
+            "INDEX_DIGEST_MISMATCH",
+            "SCRIPT_MISSING",
+            "SCRIPT_DIGEST_MISMATCH",
+            "SCRIPT_NOT_THE_INDEX"
+          ]
+        },
+        {
+          "id": "PUBLICATION_REINDEXES",
+          "severity": "BLOCK",
+          "executes": "search_policy.builder",
+          "statement": "Accepting a product publishes its pages and rebuilds the search index in the same change, before the Pages mirror is written, so that its pages, topics, questions and hints are found when they are published and not at the next person's pull request.",
+          "assurance_type": "SEARCH_MEMBERSHIP",
+          "finding_codes": []
+        }
+      ]
     }
   },
   "component_policy": {
