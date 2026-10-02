@@ -11,7 +11,7 @@ s = rem.read_text(encoding="utf-8")
 start = s.index("# U3-6/U3-12:")
 end = s.index("# U3-7:", start)
 replacement = r'''# U3-6/U3-12: fix the six rendered CORE1A concept SVGs and persist CORE1A attempts.
-short={"partner force on table":"partner force on table ↓","table acts on Q in two components":"table on Q: N and f","Rtable = vector sum of N and f":"Rtable = vector sum (N, f)","each dF is normal":"each dF ⟂ surface","N = mg - F⊥, only while contact remains":"N = mg − F⊥ (while in contact)","same N + smaller actual contact area -> larger p":"same N, smaller A ⇒ larger p","same N + smaller actual contact area → larger p"}
+short={"partner force on table":"partner force on table ↓","table acts on Q in two components":"table on Q: N and f","Rtable = vector sum of N and f":"Rtable = vector sum (N, f)","each dF is normal":"each dF ⟂ surface","N = mg - F⊥, only while contact remains":"N = mg − F⊥ (while in contact)","same N + smaller actual contact area -> larger p":"same N, smaller A ⇒ larger p","same N + smaller actual contact area → larger p":"same N, smaller A ⇒ larger p"}
 for path in [ST/"core2-physics-thrust-pressure-tablet.html",PR/"core2-physics-thrust-pressure-tablet.html"]:
     text=path.read_text(encoding="utf-8")
     boundary=text.find('<section id="g9-role-CORE2"')
