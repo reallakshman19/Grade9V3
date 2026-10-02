@@ -1,0 +1,62 @@
+name: qb-visual-repair-once
+
+on:
+  push:
+    branches: [fix/qb-canonical-representations]
+    paths:
+      - "Shared/tools/_patch_qb_visuals_once.py"
+      - ".github/workflows/qb-visual-repair-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  repair-and-materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/qb-canonical-representations
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install validation dependency
+        run: pip install --quiet jsonschema
+
+      - name: Apply focused Question Bank representation repair
+        run: python3 Shared/tools/_patch_qb_visuals_once.py
+
+      - name: Regenerate Question Bank and Pages projections
+        run: |
+          python3 Shared/tools/build_question_bank_web.py
+          python3 Shared/tools/build_question_bank_platform.py --write
+          python3 Shared/tools/build_manifest.py
+          python3 Shared/tools/build_pages_site.py
+
+      - name: Focused regression tests
+        run: |
+          python3 -m unittest \
+            tests.test_question_bank_web \
+            tests.test_question_bank_platform \
+            tests.test_question_bank_platform_runtime \
+            tests.test_question_bank_lineage_witnesses \
+            tests.test_global_site_search
+          node tests/question_bank_data_service.test.mjs
+
+      - name: Deterministic generated-state checks
+        run: |
+          python3 Shared/tools/build_question_bank_web.py --check
+          python3 Shared/tools/build_question_bank_platform.py --check
+          python3 Shared/tools/build_pages_site.py --check
+          node --check public/js/question-bank.js
+          ! grep -R "No separate representation asset is published" public docs
+
+      - name: Remove one-shot machinery and commit exact materialized repair
+        run: |
+          rm Shared/tools/_patch_qb_visuals_once.py .github/workflows/qb-visual-repair-once.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "4189824+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "fix(qb): reuse canonical representations in Study surface"
+          git push origin HEAD:fix/qb-canonical-representations
