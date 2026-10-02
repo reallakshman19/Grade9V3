@@ -82,6 +82,18 @@
     "PYQ-PHY-JEEMAIN-2026-06APR-S2-Q46",
     "PYQ-PHY-NEET-2020-E1-Q160",
     "Q-AUTHOR-REL-01",
+    "Q-CHEM-BOND-GEOMETRY-DIPOLE-1A",
+    "Q-CHEM-BOND-LEWIS-VSEPR-1A",
+    "Q-CHEM-BOND-MO-HBOND-1A",
+    "Q-CHEM-GAS-IDEAL-LAWS-1A",
+    "Q-CHEM-GAS-KINETIC-PHASE-1A",
+    "Q-CHEM-GAS-REAL-CRITICAL-1A",
+    "Q-CHEM-MOLE-CONCENTRATION-1A",
+    "Q-CHEM-MOLE-FORMULA-STOICH-1A",
+    "Q-CHEM-MOLE-FOUNDATIONS-MOLE-1A",
+    "Q-CHEM-REDOX-BALANCE-NFACTOR-1A",
+    "Q-CHEM-REDOX-CLASSIFICATION-1A",
+    "Q-CHEM-REDOX-OXIDATION-AGENTS-1A",
     "Q-ELEC-1A-CONSERVATION-01",
     "Q-ELEC-1A-OHMIC-01",
     "Q-ELEC-2A-CONSERVATION-01",
@@ -251,15 +263,15 @@
     "Q-VDU-2A-NOTATION-01",
     "Q-VDU-2B-DIRECTION-01"
   ],
-  "canonical_snapshot_digest": "sha256:c8c21b97cdfc8bfa4718f0b7c72c06161b7674bbd8c36dce6d4614445b6ca254",
+  "canonical_snapshot_digest": "sha256:7aa10f948aec9574ec1deee3f747fbe3318159f7e0a3abe6ab4b8ab0fe2d6df9",
   "excluded_ids": [],
-  "generated_at": "2026-10-02T05:50:47Z",
+  "generated_at": "2026-10-02T06:31:49Z",
   "generator": {
     "name": "build_search_index",
     "version": "1.1.0"
   },
-  "index_digest": "sha256:4e31b79596fe84dc9b9c027145d26068af4835599d8690ec22941e235f294718",
+  "index_digest": "sha256:f13a372a7bfe3b0d42e9ef0d21745fff52cc921620d861a008a852cbae5d8a28",
   "index_version": "1",
-  "record_count": 250,
+  "record_count": 262,
   "schema": "search-index-manifest/v1"
 }

@@ -1395,6 +1395,210 @@
   },
   {
     "aliases": [
+      "Q-CHEM-BOND-GEOMETRY-DIPOLE-1A"
+    ],
+    "canonical_digest": "sha256:25b27c35e4c5b36514977a4cf3853a33cc3c23f4f07c3619b6e84e1445156f91",
+    "canonical_id": "Q-CHEM-BOND-GEOMETRY-DIPOLE-1A",
+    "canonical_url": "/products/chemistry/CAP-CHEM-BOND-GEOMETRY-DIPOLE/",
+    "concept_refs": [],
+    "schema": "search-document/v1",
+    "search_text": "For an isolated gaseous PCl\u2085 molecule in the trigonal-bipyramidal model, compare axial and equatorial angular environments and determine the net dipole for five equivalent P\u2013Cl bond-dipole magnitudes by vector symmetry. The two axial directions are opposite and cancel; the three equatorial directions are 120\u00b0 apart and cancel, so the idealised symmetric isolated molecule has \u03bcnet = 0. Axial and equatorial sites are nevertheless geometrically inequivalent. Use only the model scope stated in the surrounding Core1A construction.",
+    "source_refs": [
+      "SRC-CHEM-PR376-BOND-AUTHOR"
+    ],
+    "subject": "Chemistry",
+    "title": "For an isolated gaseous PCl\u2085 molecule in the trigonal-bipyramidal model, compare",
+    "type": "QUESTION"
+  },
+  {
+    "aliases": [
+      "Q-CHEM-BOND-LEWIS-VSEPR-1A"
+    ],
+    "canonical_digest": "sha256:226244a53da2973a54c9c7329ccd03a94952eb0ff0e069652cff01cef81642bf",
+    "canonical_id": "Q-CHEM-BOND-LEWIS-VSEPR-1A",
+    "canonical_url": "/products/chemistry/CAP-CHEM-BOND-LEWIS-VSEPR/",
+    "concept_refs": [],
+    "schema": "search-document/v1",
+    "search_text": "For NH\u2083, count the 8 valence electrons, build a Lewis structure, check the formal charge on N, then distinguish the electron-domain geometry from the molecular shape. NH\u2083 uses three N\u2013H bonds and one lone pair on N; N has formal charge 0, four electron domains give tetrahedral electron-domain geometry, and the bonded-atom shape is trigonal pyramidal. Use only the model scope stated in the surrounding Core1A construction.",
+    "source_refs": [
+      "SRC-CHEM-PR376-BOND-AUTHOR"
+    ],
+    "subject": "Chemistry",
+    "title": "For NH\u2083, count the 8 valence electrons, build a Lewis structure, check the forma",
+    "type": "QUESTION"
+  },
+  {
+    "aliases": [
+      "Q-CHEM-BOND-MO-HBOND-1A"
+    ],
+    "canonical_digest": "sha256:5fd6083bd7ef92bce910098182c0d74cbe6b83de7900c35afae041da61985815",
+    "canonical_id": "Q-CHEM-BOND-MO-HBOND-1A",
+    "canonical_url": "/products/chemistry/CAP-CHEM-BOND-MO-HBOND/",
+    "concept_refs": [],
+    "schema": "search-document/v1",
+    "search_text": "For O\u2082 in the usual second-row molecular-orbital ordering, use its 16-electron occupancy to determine bond order and magnetic behaviour. Keep the two readouts separate. O\u2082 has bond order 2 and is paramagnetic because two electrons occupy the degenerate \u03c0* antibonding orbitals singly. Use only the model scope stated in the surrounding Core1A construction.",
+    "source_refs": [
+      "SRC-CHEM-PR376-BOND-AUTHOR"
+    ],
+    "subject": "Chemistry",
+    "title": "For O\u2082 in the usual second-row molecular-orbital ordering, use its 16-electron o",
+    "type": "QUESTION"
+  },
+  {
+    "aliases": [
+      "Q-CHEM-GAS-IDEAL-LAWS-1A"
+    ],
+    "canonical_digest": "sha256:e79d9ed8768d2312bdff1fa2337c9cf3c815f70285f1b9cd8c8054ef59e07288",
+    "canonical_id": "Q-CHEM-GAS-IDEAL-LAWS-1A",
+    "canonical_url": "/products/chemistry/CAP-CHEM-GAS-IDEAL-LAWS/",
+    "concept_refs": [],
+    "schema": "search-document/v1",
+    "search_text": "A fixed amount of ideal gas is compressed to half its volume at constant temperature. What happens to its pressure? Its pressure doubles in the ideal-gas model. Use the model assumptions and scope stated in the surrounding Core1A construction.",
+    "source_refs": [
+      "SRC-CHEM-PR376-GAS-AUTHOR"
+    ],
+    "subject": "Chemistry",
+    "title": "A fixed amount of ideal gas is compressed to half its volume at constant tempera",
+    "type": "QUESTION"
+  },
+  {
+    "aliases": [
+      "Q-CHEM-GAS-KINETIC-PHASE-1A"
+    ],
+    "canonical_digest": "sha256:e236a5640317b00c7bf9e6529451512edc7679f197bd985abc069cab5c201328",
+    "canonical_id": "Q-CHEM-GAS-KINETIC-PHASE-1A",
+    "canonical_url": "/products/chemistry/CAP-CHEM-GAS-KINETIC-PHASE/",
+    "concept_refs": [],
+    "schema": "search-document/v1",
+    "search_text": "Why can water boil at a lower temperature at high altitude than near sea level? Lower external pressure lets the vapour-pressure equality required for boiling be reached at a lower temperature. Use the model assumptions and scope stated in the surrounding Core1A construction.",
+    "source_refs": [
+      "SRC-CHEM-PR376-GAS-AUTHOR"
+    ],
+    "subject": "Chemistry",
+    "title": "Why can water boil at a lower temperature at high altitude than near sea level?",
+    "type": "QUESTION"
+  },
+  {
+    "aliases": [
+      "Q-CHEM-GAS-REAL-CRITICAL-1A"
+    ],
+    "canonical_digest": "sha256:b5a445cf99d9f0552d66f4c914581c4ee54651413e7a69e7a4aafc2e92015f74",
+    "canonical_id": "Q-CHEM-GAS-REAL-CRITICAL-1A",
+    "canonical_url": "/products/chemistry/CAP-CHEM-GAS-REAL-CRITICAL/",
+    "concept_refs": [],
+    "schema": "search-document/v1",
+    "search_text": "Why are real-gas deviations generally more important at high pressure than at sufficiently low pressure? At high pressure molecules are closer together, so finite molecular size and intermolecular interactions become less negligible relative to ideal assumptions. Use the model assumptions and scope stated in the surrounding Core1A construction.",
+    "source_refs": [
+      "SRC-CHEM-PR376-GAS-AUTHOR"
+    ],
+    "subject": "Chemistry",
+    "title": "Why are real-gas deviations generally more important at high pressure than at su",
+    "type": "QUESTION"
+  },
+  {
+    "aliases": [
+      "Q-CHEM-MOLE-CONCENTRATION-1A"
+    ],
+    "canonical_digest": "sha256:bf11c438ad0a5cc7b049b947108190f638fb720810a24e1a0fa8ea83293bb9a1",
+    "canonical_id": "Q-CHEM-MOLE-CONCENTRATION-1A",
+    "canonical_url": "/products/chemistry/CAP-CHEM-MOLE-CONCENTRATION/",
+    "concept_refs": [],
+    "schema": "search-document/v1",
+    "search_text": "Why can molarity change with temperature even when no solute or solvent is added or removed? Because molarity divides solute amount by solution volume, and the volume can change with temperature while the solute amount remains fixed. Use the quantity definitions and sample assumptions stated in the surrounding Core1A construction.",
+    "source_refs": [
+      "SRC-CHEM-PR376-MOLE-AUTHOR"
+    ],
+    "subject": "Chemistry",
+    "title": "Why can molarity change with temperature even when no solute or solvent is added",
+    "type": "QUESTION"
+  },
+  {
+    "aliases": [
+      "Q-CHEM-MOLE-FORMULA-STOICH-1A"
+    ],
+    "canonical_digest": "sha256:b0052a5f0618e51912f0871e80aa00bad55510e83b5e9ca053e3756c50ea4ef4",
+    "canonical_id": "Q-CHEM-MOLE-FORMULA-STOICH-1A",
+    "canonical_url": "/products/chemistry/CAP-CHEM-MOLE-FORMULA-STOICH/",
+    "concept_refs": [],
+    "schema": "search-document/v1",
+    "search_text": "For 2H\u2082 + O\u2082 \u2192 2H\u2082O, a mixture starts with 3.0 mol H\u2082 and 2.0 mol O\u2082. Use ni/\u03bdi to identify the limiting reactant, then determine H\u2082O formed and excess O\u2082 remaining. H\u2082 is limiting; 3.0 mol H\u2082O forms and 0.5 mol O\u2082 remains. Use the quantity definitions and sample assumptions stated in the surrounding Core1A construction.",
+    "source_refs": [
+      "SRC-CHEM-PR376-MOLE-AUTHOR"
+    ],
+    "subject": "Chemistry",
+    "title": "For 2H\u2082 + O\u2082 \u2192 2H\u2082O, a mixture starts with 3.0 mol H\u2082 and 2.0 mol O\u2082. Use ni/\u03bdi ",
+    "type": "QUESTION"
+  },
+  {
+    "aliases": [
+      "Q-CHEM-MOLE-FOUNDATIONS-MOLE-1A"
+    ],
+    "canonical_digest": "sha256:4f9c6a082af94ddd53397e2ac684b08fcf44cc3299bc2e7945d5097e3f037dc1",
+    "canonical_id": "Q-CHEM-MOLE-FOUNDATIONS-MOLE-1A",
+    "canonical_url": "/products/chemistry/CAP-CHEM-MOLE-FOUNDATIONS-MOLE/",
+    "concept_refs": [],
+    "schema": "search-document/v1",
+    "search_text": "Why must a particle-count answer specify molecules, atoms, ions or formula units? Because the mole counts specified entities, and different entity choices correspond to different physical counts. Use the quantity definitions and sample assumptions stated in the surrounding Core1A construction.",
+    "source_refs": [
+      "SRC-CHEM-PR376-MOLE-AUTHOR"
+    ],
+    "subject": "Chemistry",
+    "title": "Why must a particle-count answer specify molecules, atoms, ions or formula units",
+    "type": "QUESTION"
+  },
+  {
+    "aliases": [
+      "Q-CHEM-REDOX-BALANCE-NFACTOR-1A"
+    ],
+    "canonical_digest": "sha256:4f8d12ff99d9d045f209d8e2b10da2e1fbd4bbc48c62f6619beeefa141c55ea4",
+    "canonical_id": "Q-CHEM-REDOX-BALANCE-NFACTOR-1A",
+    "canonical_url": "/products/chemistry/CAP-CHEM-REDOX-BALANCE-NFACTOR/",
+    "concept_refs": [],
+    "schema": "search-document/v1",
+    "search_text": "Balance MnO\u2084\u207b + Fe\u00b2\u207a \u2192 Mn\u00b2\u207a + Fe\u00b3\u207a in acidic solution by the half-reaction method, then state the electron transfer associated with one MnO\u2084\u207b in this reaction. MnO\u2084\u207b + 8H\u207a + 5Fe\u00b2\u207a \u2192 Mn\u00b2\u207a + 4H\u2082O + 5Fe\u00b3\u207a; one permanganate ion gains 5 electrons in this acidic reduction. Use the formal redox bookkeeping model and reaction conditions stated in the surrounding Core1A construction.",
+    "source_refs": [
+      "SRC-CHEM-PR376-REDOX-AUTHOR"
+    ],
+    "subject": "Chemistry",
+    "title": "Balance MnO\u2084\u207b + Fe\u00b2\u207a \u2192 Mn\u00b2\u207a + Fe\u00b3\u207a in acidic solution by the half-reaction metho",
+    "type": "QUESTION"
+  },
+  {
+    "aliases": [
+      "Q-CHEM-REDOX-CLASSIFICATION-1A"
+    ],
+    "canonical_digest": "sha256:66ade3fa3df9c49d19893b0c443dc5c742a8053f7a75dd8d0295310f2921d2fa",
+    "canonical_id": "Q-CHEM-REDOX-CLASSIFICATION-1A",
+    "canonical_url": "/products/chemistry/CAP-CHEM-REDOX-CLASSIFICATION/",
+    "concept_refs": [],
+    "schema": "search-document/v1",
+    "search_text": "The same element begins in one oxidation state and appears in two products, one at a higher and one at a lower oxidation state. What pattern is this? Disproportionation. Use the formal redox bookkeeping model and reaction conditions stated in the surrounding Core1A construction.",
+    "source_refs": [
+      "SRC-CHEM-PR376-REDOX-AUTHOR"
+    ],
+    "subject": "Chemistry",
+    "title": "The same element begins in one oxidation state and appears in two products, one ",
+    "type": "QUESTION"
+  },
+  {
+    "aliases": [
+      "Q-CHEM-REDOX-OXIDATION-AGENTS-1A"
+    ],
+    "canonical_digest": "sha256:838bd949ae9ad219ca4b38d87a1fce16f8a15f955d054f7d86a6100b951e1bfe",
+    "canonical_id": "Q-CHEM-REDOX-OXIDATION-AGENTS-1A",
+    "canonical_url": "/products/chemistry/CAP-CHEM-REDOX-OXIDATION-AGENTS/",
+    "concept_refs": [],
+    "schema": "search-document/v1",
+    "search_text": "Species A gains electrons from species B. Which species is the oxidising agent and why? Species A is the oxidising agent because A is reduced while causing B to be oxidised. Use the formal redox bookkeeping model and reaction conditions stated in the surrounding Core1A construction.",
+    "source_refs": [
+      "SRC-CHEM-PR376-REDOX-AUTHOR"
+    ],
+    "subject": "Chemistry",
+    "title": "Species A gains electrons from species B. Which species is the oxidising agent a",
+    "type": "QUESTION"
+  },
+  {
+    "aliases": [
       "Q-ELEC-1A-CONSERVATION-01"
     ],
     "canonical_digest": "sha256:61b749abb92d32b123d6c80559cb41cd74260b10ced6e9e696b3f6fa34516cf3",

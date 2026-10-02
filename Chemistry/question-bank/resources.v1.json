@@ -20,6 +20,78 @@
       ],
       "order": 20,
       "status": "PUBLISHED"
+    },
+    {
+      "id": "RES-CHEM-PRACTICE-GASES",
+      "kind": "revision",
+      "title": "Behaviour of Gases · Core 1A Practice",
+      "topic": "JEE Main Chemistry · Gaseous State",
+      "path": "standalone/practice/chemistry/behaviour-of-gases.html",
+      "keywords": [
+        "chemistry",
+        "practice",
+        "gases",
+        "gas laws",
+        "kinetic theory",
+        "core1a",
+        "blueprint 1.9"
+      ],
+      "order": 30,
+      "status": "PUBLISHED"
+    },
+    {
+      "id": "RES-CHEM-PRACTICE-BONDING",
+      "kind": "revision",
+      "title": "Chemical Bonding · Core 1A Practice",
+      "topic": "JEE Main Chemistry · Chemical Bonding & Molecular Structure",
+      "path": "standalone/practice/chemistry/chemical-bonding.html",
+      "keywords": [
+        "chemistry",
+        "practice",
+        "chemical bonding",
+        "vsepr",
+        "molecular structure",
+        "core1a",
+        "blueprint 1.9"
+      ],
+      "order": 30,
+      "status": "PUBLISHED"
+    },
+    {
+      "id": "RES-CHEM-PRACTICE-REDOX",
+      "kind": "revision",
+      "title": "Redox Reactions · Core 1A Practice",
+      "topic": "Redox Reactions",
+      "path": "standalone/practice/chemistry/redox-reactions.html",
+      "keywords": [
+        "chemistry",
+        "practice",
+        "redox",
+        "oxidation state",
+        "balancing",
+        "core1a",
+        "blueprint 1.9"
+      ],
+      "order": 30,
+      "status": "PUBLISHED"
+    },
+    {
+      "id": "RES-CHEM-PRACTICE-MOLE",
+      "kind": "revision",
+      "title": "Mole Concept & Stoichiometry · Core 1A Practice",
+      "topic": "Some Basic Concepts of Chemistry / Mole Concept / Stoichiometry",
+      "path": "standalone/practice/chemistry/some-basic-concepts.html",
+      "keywords": [
+        "chemistry",
+        "practice",
+        "mole concept",
+        "stoichiometry",
+        "concentration",
+        "core1a",
+        "blueprint 1.9"
+      ],
+      "order": 30,
+      "status": "PUBLISHED"
     }
   ],
   "topic_links": [
