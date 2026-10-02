@@ -1,4 +1,4 @@
-name: pr375-u2-remediation
+name: pr375-u2-u3-remediation
 
 on:
   push:
@@ -9,12 +9,14 @@ on:
       - .github/u2/pr375_u2_remediate.py
       - .github/u2/pr375_u2_audit.js
       - .github/u2/pr375_u2_testfix.py
+      - .github/u2/pr375_u3_remediate.py
+      - .github/u2/pr375_u3_audit.js
 
 permissions:
   contents: write
 
 concurrency:
-  group: pr375-u2-remediation
+  group: pr375-u2-u3-remediation
   cancel-in-progress: false
 
 jobs:
@@ -30,23 +32,27 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Apply bounded U2 remediation
+      - name: Apply bounded U2 and U3 remediation
         run: |
           python3 .github/u2/pr375_u2_remediate.py
           python3 .github/u2/pr375_u2_testfix.py
+          python3 .github/u2/pr375_u3_remediate.py
 
-      - name: Static U2 regression
-        run: python3 -m unittest tests.test_pr375_u2_standalone
+      - name: Static U2 and U3 regression
+        run: |
+          python3 -m unittest tests.test_pr375_u2_standalone
+          python3 -m unittest tests.test_pr375_u3_standalone
+          python3 -m unittest tests.test_physics_practice_standalone
 
       - name: Install Chromium audit dependency outside repository
         run: |
           npm install --prefix /tmp/u2-node --package-lock=false playwright@1.56.1
           /tmp/u2-node/node_modules/.bin/playwright install --with-deps chromium
 
-      - name: Browser U2 regression
+      - name: Browser U2 and U3 regression
         shell: bash
         run: |
-          python3 -m http.server 8766 --directory . >/tmp/pr375-u2-http.log 2>&1 &
+          python3 -m http.server 8766 --directory . >/tmp/pr375-u2-u3-http.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid" 2>/dev/null || true' EXIT
           python3 - <<'PY'
@@ -61,6 +67,7 @@ jobs:
               raise SystemExit("local HTTP server did not start")
           PY
           NODE_PATH=/tmp/u2-node/node_modules node .github/u2/pr375_u2_audit.js
+          NODE_PATH=/tmp/u2-node/node_modules node .github/u2/pr375_u3_audit.js
 
       - name: Refuse stale-branch overwrite
         shell: bash
@@ -75,10 +82,12 @@ jobs:
           rm -f .github/u2/pr375_u2_remediate.py \
                 .github/u2/pr375_u2_audit.js \
                 .github/u2/pr375_u2_testfix.py \
+                .github/u2/pr375_u3_remediate.py \
+                .github/u2/pr375_u3_audit.js \
                 .github/workflows/pr375-u2-remediation.yml
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
           git diff --cached --check
-          git commit -m "fix(physics): remediate PR375 U2 navigation offline findings"
+          git commit -m "fix(physics): remediate PR375 U2 U3 learner findings"
           git push origin HEAD:feat/physics-tablet-standalone
