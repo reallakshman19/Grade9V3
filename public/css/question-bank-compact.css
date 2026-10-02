@@ -1,0 +1,186 @@
+/* Grade9V3 Question Bank compact learner scale.
+   Loaded after tablet-12-7.css so the Question Bank keeps touch-safe targets
+   without inheriting oversized generic tablet controls. */
+
+.qb-shell {
+  max-width: 1180px;
+  padding: 18px 18px 56px;
+}
+
+.qb-hero {
+  gap: 18px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+}
+
+.qb-kicker {
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.qb-hero h1 {
+  font-size: clamp(24px, 2.4vw, 30px);
+  line-height: 1.15;
+  margin-bottom: 6px;
+}
+
+.qb-lede {
+  font-size: 14px;
+  line-height: 1.5;
+  max-width: 640px;
+}
+
+.qb-stat-grid {
+  gap: 8px;
+}
+
+.qb-stat {
+  min-width: 86px;
+  padding: 9px 12px;
+}
+
+.qb-stat b {
+  font-size: 19px;
+  line-height: 1.15;
+}
+
+.qb-stat span {
+  font-size: 12.5px;
+  line-height: 1.25;
+}
+
+.qb-discover,
+.qb-browser {
+  margin-top: 20px;
+}
+
+.qb-section-heading {
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.qb-section-heading h2 {
+  font-size: 18px;
+}
+
+.qb-collection-grid,
+.qb-subject-grid {
+  gap: 12px;
+}
+
+.qb-subject-grid {
+  margin-top: 12px;
+}
+
+.qb-shell .qb-collection-card,
+.qb-shell .qb-subject-card {
+  display: flex;
+  min-height: 0;
+  padding: 15px 18px;
+  gap: 6px;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.qb-collection-card h3,
+.qb-subject-card h3 {
+  font-size: 16px;
+}
+
+.qb-collection-card p,
+.qb-subject-card p {
+  font-size: 13.5px;
+  line-height: 1.45;
+}
+
+.qb-card-meta span,
+.qb-chip {
+  font-size: 12px;
+  padding: 3px 8px;
+}
+
+.qb-shell #qbBrowseAll,
+.qb-shell .qb-clear,
+.qb-shell .qb-load-more,
+.qb-shell .qb-study-toolbar button,
+.qb-shell .qb-qactions .btn,
+.qb-shell .qb-topic-action-link,
+.qb-shell .qb-tab-btn,
+.qb-shell .qb-topic-pill {
+  min-height: 44px;
+  min-width: 0;
+  padding: 7px 12px;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+.qb-shell .qb-tab-btn {
+  padding-inline: 14px;
+}
+
+.qb-shell .qb-topic-pill {
+  padding-inline: 12px;
+  font-size: 13px;
+}
+
+.qb-filter-panel {
+  gap: 11px;
+  padding: 16px;
+  margin-bottom: 18px;
+}
+
+.qb-filter-panel input,
+.qb-filter-panel select {
+  min-height: 44px;
+  padding: 8px 11px;
+  font-size: 14px;
+}
+
+.qb-filter-panel label > span,
+.qb-result-count {
+  font-size: 12.5px;
+}
+
+.qb-nav-workspace {
+  gap: 9px;
+  margin-bottom: 16px;
+}
+
+.qb-subject-tabs {
+  gap: 6px;
+  padding: 5px;
+}
+
+.qb-topic-strip {
+  gap: 6px;
+}
+
+.qb-topic-banner {
+  padding: 13px 16px;
+  margin-top: 18px;
+  margin-bottom: 12px;
+}
+
+@media (max-width: 760px) {
+  .qb-shell {
+    padding: 14px 12px 40px;
+  }
+
+  .qb-hero {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .qb-stat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .qb-stat {
+    min-width: 0;
+  }
+
+  .qb-section-heading {
+    align-items: flex-start;
+  }
+}
