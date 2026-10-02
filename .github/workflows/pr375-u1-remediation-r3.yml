@@ -1,0 +1,121 @@
+name: pr375-u1-remediation-r3
+
+on:
+  push:
+    branches:
+      - feat/physics-tablet-standalone
+    paths:
+      - .github/workflows/pr375-u1-remediation-r3.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pr375-u1-remediation-r3
+  cancel-in-progress: false
+
+jobs:
+  remediate-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Apply bounded U1 remediation
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+          ST=Path('standalone'); PR=ST/'practice'
+          pages=[
+            ST/'core1a-motion-1d-straight-line-tablet.html',ST/'core1a-motion-in-a-plane-tablet.html',ST/'core1a-physics-nlm-tablet.html',ST/'core1a-vector-add-sub-tablet.html',ST/'core2-motion-in-a-plane-tablet.html',ST/'core2-physics-thrust-pressure-tablet.html',
+            PR/'core1a-physics-motion-2d-ncert-tablet.html',PR/'core1a-physics-nlm-tablet.html',PR/'core1a-physics-vectors-tablet.html',PR/'core1a-sba-06-07-trajectory-and-height-tablet.html',PR/'core1a-sba-motion-in-a-plane-master-tablet.html',PR/'core2-motion-1d-straight-line-tablet.html',PR/'core2-motion-consolidated-practice-tablet.html',PR/'core2-motion-in-a-plane-tablet.html',PR/'core2-physics-thrust-pressure-tablet.html',PR/'core2a-projectile-study.html',PR/'index.html',PR/'motion-in-1d-master-suite.html',PR/'motion-in-2d-master-suite.html',PR/'physics-motion-in-a-plane-interactive-suite.html']
+          assert len(pages)==20 and all(p.exists() for p in pages)
+          def normalize_viewport(text):
+            pat=re.compile(r'<meta\s+name=["\']viewport["\']\s+content=["\']([^"\']*)["\']\s*/?>',re.I); m=pat.search(text)
+            if not m: raise AssertionError('missing viewport')
+            parts=[x.strip() for x in m.group(1).split(',') if x.strip()]
+            parts=[x for x in parts if not re.match(r'(?i)(maximum-scale|user-scalable)\s*=',x)]; parts.append('maximum-scale=5.0')
+            v='<meta name="viewport" content="'+', '.join(parts)+'">'; return text[:m.start()]+v+text[m.end():]
+          base='''<style id="pr375-u1-remediation">
+          html{-webkit-text-size-adjust:100%;text-size-adjust:100%} body{overflow-wrap:anywhere} p,li{line-height:1.4}
+          :where(p,li,label,button,input,select,textarea,summary,td,th,figcaption,.btn,.q-badge,.tag-pill,.hint-badge,.hint-tag,.subject-badge,.step-label,.diag-header,.formula-box,#saveStatus,.save-status,.tag,.q-count,.open-btn,.stat .label,section.section-header h2,.study-kicker,.brand-badge,.hero-pill,.badge,.core-tag,.telemetry-title,.control-label,.card-action,.breadcrumb){font-size:max(14px,1em)!important}
+          :where(a[href="index.html"],header a,nav a,.breadcrumb a,a.g9-bridge-link,[data-g9-block="entry_assumptions"] a){min-height:48px!important;min-width:48px!important;display:inline-flex!important;align-items:center!important;justify-content:center;padding-block:10px!important;box-sizing:border-box!important}
+          @media(min-width:1100px){article[data-g9-role="CORE1A"] .g9-split{grid-template-columns:minmax(0,1fr)!important}article[data-g9-role="CORE1A"] .g9-col-support{position:static!important;top:auto!important}}
+          article[data-g9-role="CORE1A"]>.slot-identity [data-g9-section-route] a{white-space:normal!important;overflow:visible!important;text-overflow:clip!important;line-height:1.35!important;min-height:48px!important}
+          </style>'''
+          for path in pages:
+            text=normalize_viewport(path.read_text(encoding='utf-8'))
+            for sid in ['pr375-u1-remediation','pr375-u1-hub','pr375-u1-katex','pr375-u1-tailwind-floor','pr375-u1-svg-scale','pr375-u1-interactive-reflow']:
+              text=re.sub(r'\s*<style id="'+re.escape(sid)+r'">.*?</style>\s*','\n',text,flags=re.S)
+            if path==PR/'index.html':
+              text=text.replace('</head>','<style id="pr375-u1-hub">.stat .label,.card-desc,.tag,.q-count,.open-btn,section.section-header h2,footer{font-size:14px!important}</style>\n</head>',1)
+            if path==ST/'core1a-motion-in-a-plane-tablet.html':
+              text=text.replace('</head>','<style id="pr375-u1-svg-scale">figure svg,.g9-c-visual-card figure svg,.g9-c-staged-visual figure svg{width:100%!important;max-width:100%!important;max-height:none!important}</style>\n</head>',1)
+            if path==PR/'physics-motion-in-a-plane-interactive-suite.html':
+              text=text.replace('</head>','''<style id="pr375-u1-katex">.katex{font-size:1.8em!important}</style>
+              <style id="pr375-u1-interactive-reflow">header.g9-shell{height:auto!important;min-height:56px;flex-wrap:wrap!important}.g9-nav-group{flex-wrap:wrap!important;min-width:0}.g9-breadcrumb{white-space:normal!important;min-width:0;overflow:visible!important}.g9-shell>*{min-width:0}main,.panel,section,.formula-banner,.math-display{min-width:0;max-width:100%}.katex-display{max-width:100%;overflow-x:auto;overflow-y:hidden}</style>
+              </head>''',1)
+            if path==PR/'motion-in-2d-master-suite.html':
+              text=text.replace('<script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>','<script src="../../public/vendor/tailwind/3.4.17/tailwind-play.js"></script>').replace('../vendor/tailwind/3.4.17/tailwind-play.js','../../public/vendor/tailwind/3.4.17/tailwind-play.js')
+              text=text.replace('</head>','<style id="pr375-u1-tailwind-floor">.text-xs,.text-\\[10px\\],.text-\\[11px\\],.text-\\[12px\\],.text-\\[13px\\]{font-size:14px!important}a,button{min-height:48px}</style>\n</head>',1)
+            if path==PR/'motion-in-1d-master-suite.html':
+              text=text.replace('tailwind.config = {','(window.tailwind = window.tailwind || {}).config = {',1).replace('../vendor/tailwind/3.4.17/tailwind-play.js','../../public/vendor/tailwind/3.4.17/tailwind-play.js')
+              local='<script src="../../public/vendor/tailwind/3.4.17/tailwind-play.js"></script>'
+              if local not in text: text=text.replace('</head>',local+'\n</head>',1)
+              text=text.replace('</head>','<style id="pr375-u1-tailwind-floor">.text-xs,.text-\\[10px\\],.text-\\[11px\\],.text-\\[12px\\],.text-\\[13px\\]{font-size:14px!important}a,button{min-height:48px}</style>\n</head>',1)
+            text=text.replace('</head>',base+'\n</head>',1); path.write_text(text,encoding='utf-8')
+          for p in pages:
+            s=p.read_text(encoding='utf-8'); m=re.search(r'<meta\s+name="viewport"\s+content="([^"]+)"',s,re.I)
+            assert m and 'maximum-scale=5.0' in m.group(1) and 'user-scalable=no' not in m.group(1).lower(),p
+            assert 'id="pr375-u1-remediation"' in s,p
+          s2=(PR/'motion-in-2d-master-suite.html').read_text(encoding='utf-8'); s1=(PR/'motion-in-1d-master-suite.html').read_text(encoding='utf-8')
+          assert 'www.gstatic.com/antigravity/web/dev/tailwindcss.min.js' not in s2
+          assert '../../public/vendor/tailwind/3.4.17/tailwind-play.js' in s2 and '../../public/vendor/tailwind/3.4.17/tailwind-play.js' in s1
+          print('U1 r3 patch prepared on all 20 pages')
+          PY
+
+      - name: Install Chromium
+        shell: bash
+        run: |
+          npm install -g playwright@1.55.0
+          playwright install chromium
+
+      - name: Run 80-render Chromium gate
+        shell: bash
+        run: |
+          python3 -m http.server 8101 -d . >/tmp/u1-http.log 2>&1 &
+          SERVER_PID=$!; trap 'kill $SERVER_PID || true' EXIT; sleep 2; export NODE_PATH="$(npm root -g)"
+          cat >/tmp/u1-audit.cjs <<'JS'
+          const { chromium } = require('playwright');
+          (async()=>{
+          const files=['standalone/core1a-motion-1d-straight-line-tablet.html','standalone/core1a-motion-in-a-plane-tablet.html','standalone/core1a-physics-nlm-tablet.html','standalone/core1a-vector-add-sub-tablet.html','standalone/core2-motion-in-a-plane-tablet.html','standalone/core2-physics-thrust-pressure-tablet.html','standalone/practice/core1a-physics-motion-2d-ncert-tablet.html','standalone/practice/core1a-physics-nlm-tablet.html','standalone/practice/core1a-physics-vectors-tablet.html','standalone/practice/core1a-sba-06-07-trajectory-and-height-tablet.html','standalone/practice/core1a-sba-motion-in-a-plane-master-tablet.html','standalone/practice/core2-motion-1d-straight-line-tablet.html','standalone/practice/core2-motion-consolidated-practice-tablet.html','standalone/practice/core2-motion-in-a-plane-tablet.html','standalone/practice/core2-physics-thrust-pressure-tablet.html','standalone/practice/core2a-projectile-study.html','standalone/practice/index.html','standalone/practice/motion-in-1d-master-suite.html','standalone/practice/motion-in-2d-master-suite.html','standalone/practice/physics-motion-in-a-plane-interactive-suite.html'];
+          const vps=[[1366,854],[854,1366],[1280,800],[800,1280]]; const browser=await chromium.launch({headless:true}); let rows=0,fail=[];
+          for(const file of files) for(const [width,height] of vps){const page=await browser.newPage({viewport:{width,height}}),errors=[];page.on('pageerror',e=>errors.push(String(e)));await page.goto('http://127.0.0.1:8101/'+file,{waitUntil:'load',timeout:30000});await page.waitForTimeout(700);
+            const r=await page.evaluate(({file,width})=>{const vis=el=>{const s=getComputedStyle(el),b=el.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&+s.opacity!==0&&b.width>0&&b.height>0};const meta=document.querySelector('meta[name="viewport"]')?.content||'';const overflow=document.documentElement.scrollWidth-innerWidth;const overflowers=[...document.querySelectorAll('body *')].filter(vis).map(el=>({el,b:el.getBoundingClientRect()})).filter(x=>x.b.right>innerWidth+1||x.b.left<-1).slice(0,6).map(x=>({tag:x.el.tagName,cls:(x.el.className||'').toString().slice(0,50),l:Math.round(x.b.left),r:Math.round(x.b.right),w:Math.round(x.b.width)}));
+              let under12=[];const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);while(w.nextNode()){const n=w.currentNode,t=n.textContent||'',clean=t.replace(/[\s\u200B\u200C\u200D\u2060\uFEFF]/g,''),el=n.parentElement;if(!clean||!el||!vis(el))continue;const fs=parseFloat(getComputedStyle(el).fontSize);if(fs<11.95)under12.push({fs,text:clean.slice(0,35),tag:el.tagName,cls:(el.className||'').toString().slice(0,45)});if(under12.length>=8)break}
+              const sel='p,li,label,button,input,select,textarea,summary,td,th,figcaption,.btn,.q-badge,.tag-pill,.hint-badge,.hint-tag,.subject-badge,.step-label,.diag-header,.formula-box,#saveStatus,.save-status,.tag,.q-count,.open-btn,.stat .label,section.section-header h2,.study-kicker,.brand-badge,.hero-pill,.badge,.core-tag,.telemetry-title,.control-label,.card-action,.breadcrumb';const under14=[...document.querySelectorAll(sel)].filter(vis).map(el=>({el,fs:parseFloat(getComputedStyle(el).fontSize)})).filter(x=>x.fs<13.95).slice(0,8).map(x=>({fs:x.fs,tag:x.el.tagName,cls:(x.el.className||'').toString().slice(0,45),text:(x.el.innerText||x.el.value||'').trim().slice(0,35)}));
+              const touchSel='a[href="index.html"],header a,nav a,.breadcrumb a,a.g9-bridge-link,[data-g9-block="entry_assumptions"] a';const touch=[...document.querySelectorAll(touchSel)].filter(vis).map(el=>({el,b:el.getBoundingClientRect()})).filter(x=>x.b.height<47.5||x.b.width<47.5).slice(0,8).map(x=>({w:x.b.width,h:x.b.height,text:(x.el.innerText||'').trim().slice(0,30)}));let svg=[];if((file.endsWith('core1a-motion-in-a-plane-tablet.html')||file.endsWith('core1a-physics-nlm-tablet.html'))&&width>=1100)svg=[...document.querySelectorAll('svg text')].filter(vis).map(el=>({el,b:el.getBoundingClientRect()})).filter(x=>x.b.height<13).slice(0,8).map(x=>({h:x.b.height,text:(x.el.textContent||'').trim().slice(0,30)}));let sticky=[],clip=[];if(width>=1100&&file.includes('/core1a-')&&!file.includes('/practice/')){sticky=[...document.querySelectorAll('.g9-col-support')].filter(vis).filter(el=>getComputedStyle(el).position==='sticky').map(()=>1);clip=[...document.querySelectorAll('[data-g9-section-route] a')].filter(vis).filter(el=>el.scrollWidth>el.clientWidth+1&&getComputedStyle(el).overflow==='hidden').map(el=>(el.innerText||'').trim()).slice(0,8)}const remote=file.endsWith('motion-in-2d-master-suite.html')&&[...document.scripts].some(s=>/gstatic\.com\/antigravity/.test(s.src));return{meta,overflow,overflowers,under12,under14,touch,svg,sticky,clip,remote}}, {file,width});
+            const bad=[];if(!r.meta.includes('maximum-scale=5.0'))bad.push('viewport');if(r.overflow>1.5)bad.push('overflow='+r.overflow+' '+JSON.stringify(r.overflowers));if(r.under12.length)bad.push('under12='+JSON.stringify(r.under12));if(r.under14.length)bad.push('under14='+JSON.stringify(r.under14));if(r.touch.length)bad.push('touch='+JSON.stringify(r.touch));if(r.svg.length)bad.push('svg='+JSON.stringify(r.svg));if(r.sticky.length)bad.push('sticky');if(r.clip.length)bad.push('clip='+JSON.stringify(r.clip));if(r.remote)bad.push('remote-tailwind');if(errors.length)bad.push('pageerror='+errors.slice(0,2).join('|'));rows++;console.log(`${file} ${width}x${height} ${bad.length?'FAIL '+bad.join('; '):'PASS'}`);if(bad.length)fail.push(`${file} ${width}x${height}: ${bad.join('; ')}`);await page.close()}
+          await browser.close();console.log(`U1 matrix rows=${rows}, failures=${fail.length}`);if(fail.length){console.error(fail.join('\n'));process.exit(1)}})().catch(e=>{console.error(e);process.exit(1)});
+          JS
+          node /tmp/u1-audit.cjs
+
+      - name: Guard branch head
+        shell: bash
+        run: |
+          REMOTE_HEAD="$(git ls-remote origin refs/heads/feat/physics-tablet-standalone | cut -f1)"; echo "trigger=$GITHUB_SHA remote=$REMOTE_HEAD"; test "$REMOTE_HEAD" = "$GITHUB_SHA"
+
+      - name: Commit verified HTML remediation
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"; git config user.email "41898282+github-actions[bot]@users.noreply.github.com"; git add standalone; git diff --cached --check; git commit -m "fix(physics): remediate U1 tablet typography and layout"; git push origin HEAD:feat/physics-tablet-standalone
