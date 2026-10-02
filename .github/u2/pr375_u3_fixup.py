@@ -19,6 +19,7 @@ short={
 "each dF is normal":"each dF ⟂ surface",
 "N = mg - F⊥, only while contact remains":"N = mg − F⊥ (while in contact)",
 "If the algebra asks N<0, contact is lost.":"If N<0, contact is lost.",
+"If the algebra asks N&lt;0, contact is lost.":"If N&lt;0, contact is lost.",
 "same N + smaller actual contact area -> larger p":"same N, smaller A ⇒ larger p",
 "same N + smaller actual contact area → larger p":"same N, smaller A ⇒ larger p",
 "same N + smaller actual contact area → larger average pressure":"same N, smaller A ⇒ larger p",
