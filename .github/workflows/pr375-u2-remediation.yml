@@ -8,6 +8,7 @@ on:
       - .github/workflows/pr375-u2-remediation.yml
       - .github/u2/pr375_u2_remediate.py
       - .github/u2/pr375_u2_audit.js
+      - .github/u2/pr375_u2_testfix.py
 
 permissions:
   contents: write
@@ -30,7 +31,9 @@ jobs:
           python-version: "3.11"
 
       - name: Apply bounded U2 remediation
-        run: python3 .github/u2/pr375_u2_remediate.py
+        run: |
+          python3 .github/u2/pr375_u2_remediate.py
+          python3 .github/u2/pr375_u2_testfix.py
 
       - name: Static U2 regression
         run: |
