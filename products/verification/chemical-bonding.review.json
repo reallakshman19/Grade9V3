@@ -1,0 +1,89 @@
+{
+  "schema": "product-review/v2",
+  "product": "chemical-bonding",
+  "reviewer": "openai-independent-reviewer",
+  "reviewer_session": "pr376-independent-pages-review-2026-10-01",
+  "reviewed_at": "2026-10-01",
+  "render_digest": "cf79dd5d6ce99054",
+  "read_first": [
+    "docs/method/roles/REVIEWER.md",
+    "docs/method/FIRST-STAGE-REVIEW.md",
+    "evidence/reviews/pr376/INDEPENDENT-REVIEW-HANDOFF.md",
+    "artifact 11170849606 chemistry-governed-core1a-pages-review",
+    "Chemistry/library/chemical-bonding.v1.json",
+    "products/chemistry/chemical-bonding.manifest.json"
+  ],
+  "strengths": [
+    {
+      "record": "MIC-CHEM-BOND-LEWIS-VSEPR",
+      "technique": "bookkeeping-versus-physical-charge boundary",
+      "note": "Formal charge is repeatedly identified as Lewis bookkeeping rather than a measured atomic charge, while electron-domain geometry is kept distinct from molecular shape.",
+      "golden_candidate": true
+    },
+    {
+      "record": "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
+      "technique": "hybridisation-model caution",
+      "note": "The product explicitly warns that traditional sp3d language is course shorthand and not experimental proof of literal d-orbital participation.",
+      "golden_candidate": true
+    },
+    {
+      "record": "MIC-CHEM-BOND-MO-HBOND",
+      "technique": "separate readouts from common evidence",
+      "note": "Bond order and magnetic behaviour are correctly treated as separate consequences of the same MO occupancy, and hydrogen bonding requires explicit donor/acceptor structure.",
+      "golden_candidate": true
+    }
+  ],
+  "findings": [
+    {
+      "id": "PR376-BOND-PCL5-PHASE-001",
+      "severity": "S2",
+      "kind": "content",
+      "record": "MIC-CHEM-BOND-GEOMETRY-DIPOLE",
+      "page": "core1a.html",
+      "learner_impact": "The repeated unqualified phrase 'PCl5 geometry' can teach the learner that trigonal-bipyramidal molecular PCl5 is the structure of PCl5 in every physical state. Solid PCl5 has an ionic structure, so the missing phase/model boundary creates a real overgeneralisation.",
+      "detail": "The title, particle schematic, caption and worked anchor all present trigonal-bipyramidal PCl5 without saying gas-phase/isolated molecular PCl5. The page is already careful about sp3d as shorthand, so the phase-state qualification should be equally explicit.",
+      "suggested_fix": "Qualify the construction, figure accessibility/caption and worked anchor as gas-phase or isolated molecular PCl5. Add a short boundary note that solid PCl5 is not represented by this trigonal-bipyramidal molecule.",
+      "anti_pattern": "MOLECULAR_GEOMETRY_GENERALIZED_ACROSS_PHASES"
+    },
+    {
+      "id": "PR376-BOND-CONSTRUCTION-001",
+      "severity": "S2",
+      "kind": "content",
+      "record": "MIC-CHEM-BOND-LEWIS-VSEPR",
+      "page": "core1a.html",
+      "learner_impact": "The learner receives rules and diagnostic statements but never sees a complete Lewis-electron inventory/formal-charge construction on an actual species, weakening the Core1A promise to show why the difficult inference works.",
+      "detail": "The worked anchor asks for the distinction between tetrahedral electron-domain geometry and trigonal-pyramidal molecular shape. It does not carry out the preceding Lewis electron count, structure choice and formal-charge comparison. The MO section similarly discusses occupancy readouts without a concrete filled configuration.",
+      "suggested_fix": "Add at least one complete species-level worked construction: count valence electrons, build/compare a Lewis structure, compute formal charges, then derive VSEPR shape; and include a concrete MO occupancy example where bond order and pairing are both read from the filled ordering.",
+      "anti_pattern": "PROCEDURAL_CORE1A_REDUCED_TO_RULE_CHECKLIST"
+    },
+    {
+      "id": "PR376-BOND-FIGURE-TEXT-001",
+      "severity": "S3",
+      "kind": "figure",
+      "record": "REP-CHEM-BOND-GEOMETRY-DIPOLE",
+      "page": "core1a.html",
+      "learner_impact": "The most important model-limit sentence in the PCl5 schematic is smaller than the repository's 13px tablet learner-text floor, making the qualification easier to miss on the target device.",
+      "detail": "Publication-mode browser replay measures the SVG sentence 'Model limit: static geometry shorthand; not an orbital-composition measurement or mechanism.' at 12.5px.",
+      "suggested_fix": "Raise the SVG model-limit text to at least the declared learner text floor and recheck portrait/mobile scaling.",
+      "anti_pattern": null
+    },
+    {
+      "id": "PR376-BOND-SURFACE-001",
+      "severity": "S3",
+      "kind": "content",
+      "record": "BUCKET-CHEM-BOND",
+      "page": "core1a.html",
+      "learner_impact": "Internal duplicate/collision and promotion terminology is shown to learners instead of educational scope boundaries.",
+      "detail": "The learner page visibly includes 'converted from PR #376', 'BOND-Q01 canonical duplicate' and 'BOND-Q02..Q04 unresolved source collisions' under its learning promise/outside-this-book section.",
+      "suggested_fix": "Move PR, dedup and custody details to audit metadata. Present only learner-relevant scope and prerequisites in the rendered Concept Book.",
+      "anti_pattern": "AUDIT_METADATA_RENDERED_AS_LEARNER_SCOPE"
+    }
+  ],
+  "previous_findings": [],
+  "overall": {
+    "teaches_at_reference_depth": "partly",
+    "recommendation": "revise",
+    "summary": "The model-boundary language is unusually careful, but the exact render needs a phase-qualified PCl5 treatment and more concrete Lewis/MO construction before it meets Core1A reference depth. Minor learner-surface and figure-text issues should be repaired at the same time."
+  },
+  "anti_pattern_proposal": null
+}

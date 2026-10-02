@@ -1,0 +1,24 @@
+{
+  "schema": "product-manifest/v1",
+  "product_id": "PRODUCT-CHEM-REDOX-REACTIONS",
+  "subject": "Chemistry",
+  "home_href": "../../../index.html",
+  "question_bank_href": "../../../question-bank/index.html",
+  "package_refs": [
+    "Chemistry/library/redox-reactions.v1.json"
+  ],
+  "bank_refs": [],
+  "output_roles": [
+    "CORE1A"
+  ],
+  "selection": {
+    "microtopics": [
+      "MIC-CHEM-REDOX-OXIDATION-AGENTS",
+      "MIC-CHEM-REDOX-CLASSIFICATION",
+      "MIC-CHEM-REDOX-BALANCE-NFACTOR"
+    ],
+    "core2": [],
+    "core2a": [],
+    "core2b": []
+  }
+}

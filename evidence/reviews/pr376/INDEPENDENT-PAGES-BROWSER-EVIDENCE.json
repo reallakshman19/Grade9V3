@@ -1,0 +1,156 @@
+{
+  "schema": "pr376-independent-pages-browser-evidence/v1",
+  "reviewer": "openai-independent-reviewer",
+  "reviewer_session": "pr376-independent-pages-review-2026-10-01",
+  "reviewed_at": "2026-10-01",
+  "pages_artifact": {
+    "id": 11170849606,
+    "name": "chemistry-governed-core1a-pages-review",
+    "digest": "sha256:e5419ff9a4ef3800d44b8273c2e578f834b1940fdb356f494056a0b33cf3ff26"
+  },
+  "css_basis": {
+    "artifact_id": 11170649845,
+    "name": "chemistry-governed-integration-preview",
+    "path": "docs/css/tablet-12-7.css"
+  },
+  "replay_method": "Exact PAGES core1a.html bytes loaded into isolated Chromium; exact generated tablet CSS added from the same workflow integration preview. No candidate records were modified.",
+  "products": [
+    {
+      "product": "behaviour-of-gases",
+      "render_digest": "295758088e987780",
+      "viewports": [
+        {
+          "size": "1280x800",
+          "horizontal_overflow_px": 0,
+          "controls_below_48": 0,
+          "min_font_px": 13
+        },
+        {
+          "size": "800x1280",
+          "horizontal_overflow_px": 0,
+          "controls_below_48": 0,
+          "min_font_px": 13
+        },
+        {
+          "size": "390x844",
+          "horizontal_overflow_px": 0,
+          "controls_below_48": 0,
+          "min_font_px": 13
+        }
+      ],
+      "console_or_page_errors": 0,
+      "attempt_gate": {
+        "before_attempt_open": false,
+        "blank_attempt_open": false,
+        "valid_attempt_open": true,
+        "payload_materialized_after_valid_attempt": true
+      },
+      "keyboard_focus_visible": true,
+      "figures": 3,
+      "details": 3
+    },
+    {
+      "product": "chemical-bonding",
+      "render_digest": "cf79dd5d6ce99054",
+      "viewports": [
+        {
+          "size": "1280x800",
+          "horizontal_overflow_px": 0,
+          "controls_below_48": 0,
+          "min_font_px": 12.5
+        },
+        {
+          "size": "800x1280",
+          "horizontal_overflow_px": 0,
+          "controls_below_48": 0,
+          "min_font_px": 12.5
+        },
+        {
+          "size": "390x844",
+          "horizontal_overflow_px": 0,
+          "controls_below_48": 0,
+          "min_font_px": 12.5
+        }
+      ],
+      "console_or_page_errors": 0,
+      "attempt_gate": {
+        "before_attempt_open": false,
+        "blank_attempt_open": false,
+        "valid_attempt_open": true,
+        "payload_materialized_after_valid_attempt": true
+      },
+      "keyboard_focus_visible": true,
+      "figures": 3,
+      "details": 3,
+      "note": "12.5px minimum is the model-limit sentence inside REP-CHEM-BOND-GEOMETRY-DIPOLE and is filed as PR376-BOND-FIGURE-TEXT-001."
+    },
+    {
+      "product": "redox-reactions",
+      "render_digest": "8bd4a9a9de08d933",
+      "viewports": [
+        {
+          "size": "1280x800",
+          "horizontal_overflow_px": 0,
+          "controls_below_48": 0,
+          "min_font_px": 13
+        },
+        {
+          "size": "800x1280",
+          "horizontal_overflow_px": 0,
+          "controls_below_48": 0,
+          "min_font_px": 13
+        },
+        {
+          "size": "390x844",
+          "horizontal_overflow_px": 0,
+          "controls_below_48": 0,
+          "min_font_px": 13
+        }
+      ],
+      "console_or_page_errors": 0,
+      "attempt_gate": {
+        "before_attempt_open": false,
+        "blank_attempt_open": false,
+        "valid_attempt_open": true,
+        "payload_materialized_after_valid_attempt": true
+      },
+      "keyboard_focus_visible": true,
+      "figures": 3,
+      "details": 3
+    },
+    {
+      "product": "some-basic-concepts",
+      "render_digest": "0f7837c2399fb8f7",
+      "viewports": [
+        {
+          "size": "1280x800",
+          "horizontal_overflow_px": 0,
+          "controls_below_48": 0,
+          "min_font_px": 13
+        },
+        {
+          "size": "800x1280",
+          "horizontal_overflow_px": 0,
+          "controls_below_48": 0,
+          "min_font_px": 13
+        },
+        {
+          "size": "390x844",
+          "horizontal_overflow_px": 0,
+          "controls_below_48": 0,
+          "min_font_px": 13
+        }
+      ],
+      "console_or_page_errors": 0,
+      "attempt_gate": {
+        "before_attempt_open": false,
+        "blank_attempt_open": false,
+        "valid_attempt_open": true,
+        "payload_materialized_after_valid_attempt": true
+      },
+      "keyboard_focus_visible": true,
+      "figures": 3,
+      "details": 3
+    }
+  ]
+}

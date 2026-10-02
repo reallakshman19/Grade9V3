@@ -1,0 +1,61 @@
+{
+  "schema": "product-review/v2",
+  "product": "behaviour-of-gases",
+  "reviewer": "openai-independent-reviewer",
+  "reviewer_session": "pr376-independent-pages-review-2026-10-01",
+  "reviewed_at": "2026-10-01",
+  "render_digest": "295758088e987780",
+  "read_first": [
+    "docs/method/roles/REVIEWER.md",
+    "docs/method/FIRST-STAGE-REVIEW.md",
+    "evidence/reviews/pr376/INDEPENDENT-REVIEW-HANDOFF.md",
+    "artifact 11170849606 chemistry-governed-core1a-pages-review",
+    "Chemistry/library/behaviour-of-gases.v1.json",
+    "products/chemistry/behaviour-of-gases.manifest.json"
+  ],
+  "strengths": [
+    {
+      "record": "MIC-CHEM-GAS-IDEAL-LAWS",
+      "technique": "constraint-before-law selection",
+      "note": "The construction makes the fixed variables and observable explicit before choosing Boyle/Dalton/Graham relations, preventing formula-name matching.",
+      "golden_candidate": true
+    },
+    {
+      "record": "MIC-CHEM-GAS-REAL-CRITICAL",
+      "technique": "model-boundary discipline",
+      "note": "The text treats Z and van der Waals terms as thermodynamic model corrections rather than literal collision mechanisms and separates critical from ordinary boiling conditions.",
+      "golden_candidate": true
+    }
+  ],
+  "findings": [
+    {
+      "id": "PR376-GAS-REPRESENTATION-001",
+      "severity": "S2",
+      "kind": "figure",
+      "record": "MIC-CHEM-GAS-KINETIC-PHASE",
+      "page": "core1a.html",
+      "learner_impact": "The learner is told that a molecular speed distribution and surface-versus-bulk phase distinction are central, but the governed figure is only the symbolic line 'T ↑ ⇒ mean Eₖ ↑'. The picture-side model needed to make those distinctions inspectable is absent.",
+      "detail": "Core1A requires a representation bridge across picture, words and symbols. REP-CHEM-GAS-KINETIC-PHASE is a SYMBOLIC_EQUATION card; it does not depict a distribution, preferential surface escape, or the boiling surface/bulk distinction that the construction asks the learner to reason about.",
+      "suggested_fix": "Add a governed particle/distribution representation tied to this microtopic—e.g. a qualitative speed/energy distribution plus a surface-escape/boiling-condition schematic—and map its elements explicitly to the verbal and symbolic claims. Keep the current symbolic relation as one layer, not the whole bridge.",
+      "anti_pattern": "SYMBOLIC_CARD_SUBSTITUTES_FOR_REQUIRED_REPRESENTATION_BRIDGE"
+    },
+    {
+      "id": "PR376-GAS-SURFACE-001",
+      "severity": "S3",
+      "kind": "content",
+      "record": "BUCKET-CHEM-GAS",
+      "page": "core1a.html",
+      "learner_impact": "Internal promotion and source-custody language appears as learner-facing scope text, distracting from what the learner should study and making repository workflow terms look like curriculum content.",
+      "detail": "The page visibly says 'Governed Core1A declarative teaching converted from PR #376' and lists unresolved NCERT/ExamSIDE/JEE identities, Owner-extension authority and Core2 custody under 'Outside this book'. Those are audit facts, not learner-facing learning boundaries.",
+      "suggested_fix": "Move PR numbers, custody state and authority/dedup details to review/evidence metadata. Rewrite the learning promise and exclusions as plain educational scope statements, while retaining the governance facts outside the learner render.",
+      "anti_pattern": "AUDIT_METADATA_RENDERED_AS_LEARNER_SCOPE"
+    }
+  ],
+  "previous_findings": [],
+  "overall": {
+    "teaches_at_reference_depth": "partly",
+    "recommendation": "revise",
+    "summary": "The gas-law and model-boundary reasoning is strong and the exact PAGES render is mechanically sound, but the particle/phase microtopic does not yet provide the picture-side representation bridge Core1A promises. Remove learner-facing governance metadata and strengthen that representation before Owner review."
+  },
+  "anti_pattern_proposal": null
+}

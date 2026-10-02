@@ -1,0 +1,24 @@
+{
+  "schema": "product-manifest/v1",
+  "product_id": "PRODUCT-CHEM-SOME-BASIC-CONCEPTS",
+  "subject": "Chemistry",
+  "home_href": "../../../index.html",
+  "question_bank_href": "../../../question-bank/index.html",
+  "package_refs": [
+    "Chemistry/library/some-basic-concepts.v1.json"
+  ],
+  "bank_refs": [],
+  "output_roles": [
+    "CORE1A"
+  ],
+  "selection": {
+    "microtopics": [
+      "MIC-CHEM-MOLE-FOUNDATIONS-MOLE",
+      "MIC-CHEM-MOLE-FORMULA-STOICH",
+      "MIC-CHEM-MOLE-CONCENTRATION"
+    ],
+    "core2": [],
+    "core2a": [],
+    "core2b": []
+  }
+}

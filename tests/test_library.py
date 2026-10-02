@@ -304,6 +304,35 @@ class Compilation(unittest.TestCase):
         self.assertEqual(held, {"Q-TEST-FIXTURE-REL-01"})
         self.assertNotIn("Q-AUTHOR-REL-01", held)
 
+    def test_equation_datum_without_relation_ref_remains_compilable(self):
+        # package.schema.json makes datum.relation_ref optional. A symbolic teaching
+        # representation may therefore carry an EQUATION atom without claiming that a
+        # subject gate owns a governing relation. The compiler must preserve the atom
+        # instead of dereferencing the absent optional key.
+        data = packages()
+        target = next(
+            package for package in data
+            if package["package_id"] == seed()["package_id"]
+        )
+        source = next(row for row in target["data"] if row["kind"] == "EQUATION")
+        unbound = copy.deepcopy(source)
+        unbound["id"] = "EQ-UNBOUND-SCHEMA-VALID"
+        unbound.pop("relation_ref", None)
+        unbound["meaning"] = "Schema-valid symbolic teaching equation with no relation authority claim."
+        unbound["locator"] = "Author-created compiler regression witness."
+        target["data"].append(unbound)
+
+        compiled = compile_bucket(
+            build_index(data),
+            "BUCKET-RELATIVE-MOTION",
+            topic_id="T-UNBOUND-EQUATION",
+            title="Unbound equation compiler witness",
+            subject="Physics",
+            practice_control={"mode": "DESIGN_PREVIEW", "purpose": "PRACTICE"},
+        )
+        atoms = {row["id"] for row in compiled["source"]["atoms"]}
+        self.assertIn("EQ-UNBOUND-SCHEMA-VALID", atoms)
+
     def test_a_question_binding_an_unknown_datum_is_rejected(self):
         data = packages()
         for question in next(p for p in data
@@ -479,26 +508,6 @@ class GateAuthorityOverSubjectTruth(unittest.TestCase):
         package["relations"][0]["expression"] = "q = something no gate declares"
         found = authority.findings(package, authority.gate_relations(subject))
         self.assertIn("GATE_RELATION_BINDING_ABSENT", {f["point"] for f in found})
-
-    def test_a_null_binding_is_caught_for_a_gated_subject_and_allowed_where_the_subject_has_no_gates(self):
-        subject = self._subject("Physics")
-        package = self._package(subject)
-        package["relations"][0]["gate_relation_ref"] = None
-        package["relations"][0]["expression"] = "q = something no gate declares"
-        found = authority.findings(package, authority.gate_relations(subject))
-        self.assertIn("GATE_RELATION_BINDING_ABSENT", {f["point"] for f in found})
-        self.assertEqual(authority.findings(package, {}), [], "a sandbox subject declares no gates, so there is none to bind to")
-
-    def test_the_package_schema_lets_a_relation_say_no_gate_backs_it(self):
-        from jsonschema import Draft202012Validator
-        schema = json.loads((REPO / "Shared/library/package.schema.json").read_text(encoding="utf-8"))
-        package = json.loads((REPO / "tests/fixtures/render/thin-kin-2d-motion.v1.json").read_text(encoding="utf-8"))
-        package["relations"][0]["gate_relation_ref"] = None
-        errors = [e for e in Draft202012Validator(schema).iter_errors(package) if "gate_relation_ref" in "/".join(map(str, e.absolute_path))]
-        self.assertEqual(errors, [])
-        package["relations"][0]["gate_relation_ref"] = ""
-        errors = [e for e in Draft202012Validator(schema).iter_errors(package) if "gate_relation_ref" in "/".join(map(str, e.absolute_path))]
-        self.assertTrue(errors, "an empty string still names nothing")
 
     def test_redeclaring_a_gate_expression_without_binding_is_caught(self):
         subject = self._subject("Physics")

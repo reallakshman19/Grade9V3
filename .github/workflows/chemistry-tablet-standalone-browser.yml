@@ -1,0 +1,246 @@
+name: chemistry-blueprint-v2-browser
+
+on:
+  pull_request:
+    paths:
+      - "standalone/core1a-chemistry-*-tablet.html"
+      - "tests/test_chemistry_tablet_standalone.py"
+      - "tests/chemistry_tablet_standalone_browser.mjs"
+      - "Chemistry/library/behaviour-of-gases.v1.json"
+      - "Chemistry/library/chemical-bonding.v1.json"
+      - "Chemistry/library/redox-reactions.v1.json"
+      - "Chemistry/library/some-basic-concepts.v1.json"
+      - "Chemistry/adapter/**"
+      - "Chemistry/assets/representations/*.svg"
+      - "Chemistry/tools/sync_blueprint_pages.py"
+      - "products/chemistry/*.manifest.json"
+      - ".github/workflows/chemistry-tablet-standalone-browser.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Static standalone audit
+        run: python3 -m unittest tests.test_chemistry_tablet_standalone
+      - name: Install governed renderer dependencies
+        run: python3 -m pip install jsonschema
+      - name: Inspect governed Core1A render gaps
+        run: |
+          for slug in behaviour-of-gases chemical-bonding redox-reactions some-basic-concepts; do
+            echo "=== ${slug} ==="
+            python3 Shared/tools/render_core.py gaps \
+              --manifest "products/chemistry/${slug}.manifest.json" || true
+          done
+      - name: Verify committed blueprint-v2 standalone pages
+        run: python3 Chemistry/tools/sync_blueprint_pages.py --check
+      - name: Render governed Core1A review candidates
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/chemistry-governed-review
+          mkdir -p /tmp/chemistry-governed-review
+          for slug in behaviour-of-gases chemical-bonding redox-reactions some-basic-concepts; do
+            python3 Shared/tools/render_core.py build \
+              --manifest "products/chemistry/${slug}.manifest.json" \
+              --out "/tmp/chemistry-governed-review/${slug}" \
+              --mode SINGLE_FILE
+          done
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path("/tmp/chemistry-governed-review")
+          rows = []
+          for folder in sorted(p for p in root.iterdir() if p.is_dir()):
+              receipt = json.loads((folder / "render-receipt.json").read_text(encoding="utf-8"))
+              product = folder / "product.html"
+              rows.append({
+                  "product": folder.name,
+                  "manifest": receipt["manifest"],
+                  "mode": receipt["mode"],
+                  "draft": receipt["draft"],
+                  "gaps": receipt["gaps"],
+                  "render_digest": receipt["digest"],
+                  "semantic_digest": receipt["semantic_digest"],
+                  "product_sha256": hashlib.sha256(product.read_bytes()).hexdigest(),
+              })
+          if any(row["draft"] or row["gaps"] for row in rows):
+              raise SystemExit("governed Chemistry review candidates must render strictly with zero gaps")
+          (root / "digests.json").write_text(
+              json.dumps({"schema": "chemistry-governed-review-digests/v1", "products": rows}, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+      - name: Upload governed Core1A review candidates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chemistry-governed-core1a-review
+          path: /tmp/chemistry-governed-review
+          if-no-files-found: error
+      - name: Render governed Core1A publication-mode review candidates
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/chemistry-governed-pages-review
+          mkdir -p /tmp/chemistry-governed-pages-review
+          for slug in behaviour-of-gases chemical-bonding redox-reactions some-basic-concepts; do
+            python3 Shared/tools/render_core.py build \
+              --manifest "products/chemistry/${slug}.manifest.json" \
+              --out "/tmp/chemistry-governed-pages-review/${slug}" \
+              --mode PAGES
+          done
+          python3 - <<'PY'
+          import hashlib
+          import json
+          from pathlib import Path
+
+          root = Path("/tmp/chemistry-governed-pages-review")
+          rows = []
+          for folder in sorted(p for p in root.iterdir() if p.is_dir()):
+              receipt = json.loads((folder / "render-receipt.json").read_text(encoding="utf-8"))
+              page_hashes = {
+                  name: hashlib.sha256((folder / name).read_bytes()).hexdigest()
+                  for name in receipt["pages"]
+              }
+              rows.append({
+                  "product": folder.name,
+                  "manifest": receipt["manifest"],
+                  "mode": receipt["mode"],
+                  "draft": receipt["draft"],
+                  "gaps": receipt["gaps"],
+                  "render_digest": receipt["digest"],
+                  "semantic_digest": receipt["semantic_digest"],
+                  "page_sha256": page_hashes,
+              })
+          if any(row["mode"] != "PAGES" or row["draft"] or row["gaps"] for row in rows):
+              raise SystemExit("governed Chemistry publication review candidates must be strict PAGES renders")
+          (root / "digests.json").write_text(
+              json.dumps({"schema": "chemistry-governed-pages-review-digests/v1", "products": rows}, indent=2) + "\n",
+              encoding="utf-8",
+          )
+          PY
+      - name: Upload governed Core1A publication-mode review candidates
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chemistry-governed-core1a-pages-review
+          path: /tmp/chemistry-governed-pages-review
+          if-no-files-found: error
+      - name: Generate governed integration previews
+        run: |
+          rm -rf /tmp/chemistry-generated-preview
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          from Shared.tools import build_manifest, build_pages_site, build_question_bank_platform
+          from Shared.library import (
+              core1_orientation,
+              core1a_construction,
+              core1b_reconstruction,
+              core1_progression,
+              core1_delivery,
+          )
+
+          root = Path("/tmp/chemistry-generated-preview")
+          root.mkdir(parents=True, exist_ok=True)
+
+          generated = build_manifest.generated_files()
+          generated["docs/core1-orientation-report.json"] = (
+              json.dumps(core1_orientation.audit(Path(".")), indent=2) + "\n"
+          ).encode("utf-8")
+          generated["docs/core1a-construction-report.json"] = (
+              json.dumps(core1a_construction.audit(Path(".")), indent=2) + "\n"
+          ).encode("utf-8")
+          generated["docs/core1b-reconstruction-report.json"] = (
+              json.dumps(core1b_reconstruction.audit(Path(".")), indent=2) + "\n"
+          ).encode("utf-8")
+          generated["docs/core1-progression-report.json"] = (
+              json.dumps(core1_progression.audit(Path(".")), indent=2) + "\n"
+          ).encode("utf-8")
+          generated["docs/core1-delivery-report.json"] = (
+              json.dumps(core1_delivery.audit(Path(".")), indent=2) + "\n"
+          ).encode("utf-8")
+          generated["docs/architecture-manifest.json"] = (
+              json.dumps(build_manifest.collect(generated), indent=2, ensure_ascii=False) + "\n"
+          ).encode("utf-8")
+
+          platform = build_question_bank_platform.build()
+          for relative, content in build_question_bank_platform.artifact_payloads(platform).items():
+              generated[relative.as_posix()] = content
+
+          for relative, (_source, content) in build_pages_site.desired_files().items():
+              generated[f"docs/{relative}"] = content
+
+          for relative, content in generated.items():
+              target = root / relative
+              target.parent.mkdir(parents=True, exist_ok=True)
+              target.write_bytes(content)
+
+          manifest = {
+              "schema": "chemistry-generated-preview/v1",
+              "files": [
+                  {"path": path, "bytes": len(content)}
+                  for path, content in sorted(generated.items())
+              ],
+          }
+          (root / "PREVIEW-MANIFEST.json").write_text(
+              json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
+          )
+          PY
+      - name: Upload governed integration previews
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chemistry-governed-integration-preview
+          path: /tmp/chemistry-generated-preview
+          if-no-files-found: error
+      - name: Install isolated browser harness
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Serve repository locally
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 >/tmp/chemistry-http.log 2>&1 &
+          echo $! > /tmp/chemistry-http.pid
+      - name: Rendered three-viewport audit
+        run: node tests/chemistry_tablet_standalone_browser.mjs http://127.0.0.1:8765 /tmp/chemistry-tablet-browser.json
+      - name: Upload browser evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chemistry-tablet-browser-evidence
+          path: |
+            /tmp/chemistry-tablet-browser.json
+            /tmp/chemistry-http.log
+          if-no-files-found: error
+      - name: Question Bank legacy projection check
+        id: qb_legacy
+        if: always()
+        run: python3 Shared/tools/build_question_bank_web.py --check
+
+      - name: Question Bank platform projection check
+        id: qb_platform
+        if: always()
+        run: python3 Shared/tools/build_question_bank_platform.py --check
+
+      - name: Pages mirror projection check
+        id: pages
+        if: always()
+        run: python3 Shared/tools/build_pages_site.py --check
+
+      - name: Architecture manifest projection check
+        id: manifest
+        if: always()
+        run: python3 Shared/tools/build_manifest.py --check
+

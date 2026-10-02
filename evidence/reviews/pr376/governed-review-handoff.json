@@ -1,0 +1,198 @@
+{
+  "schema": "pr376-independent-review-handoff/v1",
+  "pr_number": 376,
+  "audit_basis_head": "35bc0d0f78ccd971028b646c96bf38c97e160616",
+  "conversion_basis_head": "35bc0d0f78ccd971028b646c96bf38c97e160616",
+  "standalone_lineage_basis_head": "ad3c58a50ccc76c65ad26d1fff963b1173027108",
+  "authority_main_head": "00ca6dc70c727e25de7e85becc49cda2ea293f47",
+  "engineering_delivery_common_main": "14d79b8f67bdf312f5ae9e4d05de8222c28fcb3e",
+  "two_pass_revision": "TPG-2P-2026-09-28-R3",
+  "reviewer_role": "docs/method/roles/REVIEWER.md",
+  "review_schema": "Shared/quality/product-review.schema.json",
+  "workflow_run": 36882101979,
+  "review_artifact": {
+    "id": 11170849606,
+    "name": "chemistry-governed-core1a-pages-review",
+    "digest": "sha256:e5419ff9a4ef3800d44b8273c2e578f834b1940fdb356f494056a0b33cf3ff26",
+    "mode": "PAGES",
+    "strict_render": true,
+    "all_draft_false": true,
+    "all_gaps_empty": true,
+    "purpose": "exact publication-mode bytes reviewed by product-review/v2"
+  },
+  "integration_preview_artifact": {
+    "id": 11170649845,
+    "name": "chemistry-governed-integration-preview",
+    "digest": "sha256:d16050b7a496bc320f70c9294c1c620574aa9d1ab5f9a089f1c21d02111b41ea"
+  },
+  "products": [
+    {
+      "promotion_id": "PR376-C1A-CHEM-GASES",
+      "product": "behaviour-of-gases",
+      "product_id": "PRODUCT-CHEM-BEHAVIOUR-OF-GASES",
+      "package_path": "Chemistry/library/behaviour-of-gases.v1.json",
+      "package_blob_sha": "fe498bcf11c6aa116bd18a5f50e7119fcf86eafb",
+      "manifest_path": "products/chemistry/behaviour-of-gases.manifest.json",
+      "manifest_blob_sha": "ad28f378a6a8fe06fb7fbe48852cd16184d65aab",
+      "render_digest": "295758088e987780",
+      "semantic_digest": "9b742da7cfea576f",
+      "product_sha256": "d3f8ca577e5def5a7f62c7a4f87766eab8bd4484c0d20af269770c1672750602",
+      "single_file_render_digest": "b1b5ca199632711f",
+      "publication_render_digest": "295758088e987780",
+      "publication_page_sha256": {
+        "core1a.html": "316b19b52243fc89d35c6d9cc8913a69f05574c9670afb8c3fa25399851f8560",
+        "index.html": "ef15c9b1fed8003d82be9b81e6bd3c05ba91a9fb932d5bfc7323bd11cfa639a9"
+      },
+      "product_review_v2": "products/verification/behaviour-of-gases.review.json"
+    },
+    {
+      "promotion_id": "PR376-C1A-CHEM-BONDING",
+      "product": "chemical-bonding",
+      "product_id": "PRODUCT-CHEM-CHEMICAL-BONDING",
+      "package_path": "Chemistry/library/chemical-bonding.v1.json",
+      "package_blob_sha": "20e0fc6e14423092448ff4a4a777e32ac5d284ac",
+      "manifest_path": "products/chemistry/chemical-bonding.manifest.json",
+      "manifest_blob_sha": "af73faa567fdb145b02268e593bdab23e06efa81",
+      "render_digest": "cf79dd5d6ce99054",
+      "semantic_digest": "4276eda90909714e",
+      "product_sha256": "20c740d83aced11a458a68100aedca21e3e049999da7ee52eb541589d4cb10d6",
+      "single_file_render_digest": "da7454dfd5439f6e",
+      "publication_render_digest": "cf79dd5d6ce99054",
+      "publication_page_sha256": {
+        "core1a.html": "dca047bec547c1afbedb87cf57efe757557b3ee345554c7586b93d1544b624ef",
+        "index.html": "8f9358330292248e79df541761fda8faa9878542ec7665c8a7a6a10285895a4f"
+      },
+      "product_review_v2": "products/verification/chemical-bonding.review.json"
+    },
+    {
+      "promotion_id": "PR376-C1A-CHEM-REDOX",
+      "product": "redox-reactions",
+      "product_id": "PRODUCT-CHEM-REDOX-REACTIONS",
+      "package_path": "Chemistry/library/redox-reactions.v1.json",
+      "package_blob_sha": "265749d6fd15239d59d3173c37091e951ecbc32b",
+      "manifest_path": "products/chemistry/redox-reactions.manifest.json",
+      "manifest_blob_sha": "0d87890f60a768f1bb28c7fc2dd1554d800c9326",
+      "render_digest": "8bd4a9a9de08d933",
+      "semantic_digest": "771f5f383daa8ca6",
+      "product_sha256": "38927d078871bfc0f02ed5319188e770677bbd0d9c8a23c6aa90f028e7c5cf05",
+      "single_file_render_digest": "2d3bc4ba8c63f322",
+      "publication_render_digest": "8bd4a9a9de08d933",
+      "publication_page_sha256": {
+        "core1a.html": "ada86a32d56d1dfec2a50d811e8b6be68c2af615d843dc12a243bb5891ff2a9f",
+        "index.html": "f116ab540f01b6a9f84d0308d6bb221517e67633b110e142425f4ec808910098"
+      },
+      "product_review_v2": "products/verification/redox-reactions.review.json"
+    },
+    {
+      "promotion_id": "PR376-C1A-CHEM-MOLE",
+      "product": "some-basic-concepts",
+      "product_id": "PRODUCT-CHEM-SOME-BASIC-CONCEPTS",
+      "package_path": "Chemistry/library/some-basic-concepts.v1.json",
+      "package_blob_sha": "5332a4ebe22dd0a43f377751f54b21c734de7c05",
+      "manifest_path": "products/chemistry/some-basic-concepts.manifest.json",
+      "manifest_blob_sha": "ca79a443081a61a94b37f42cac29b3471e00910f",
+      "render_digest": "0f7837c2399fb8f7",
+      "semantic_digest": "312bfca9aa38f836",
+      "product_sha256": "6ae51c7f77240d025a4d4c3662222ea17e0f8129648b3b0702517a273b24b509",
+      "single_file_render_digest": "9d808bfb3a17049e",
+      "publication_render_digest": "0f7837c2399fb8f7",
+      "publication_page_sha256": {
+        "core1a.html": "ebc37ae37463de1ea64bfe5a4442000ea27fd6366c2c2a84ad62d97df5ef294a",
+        "index.html": "c79fccde0ed7efb7076fb5898813683d2e64124bd65f058f0568c55517664cc1"
+      },
+      "product_review_v2": "products/verification/some-basic-concepts.review.json"
+    }
+  ],
+  "scope_posture": {
+    "mapping": "OWNER_EXTENSION",
+    "prescribed_grade9_claim": false,
+    "included_question_origin": "AUTHORED",
+    "source_labelled_question_bank_imported": false,
+    "source_bank_policy": "NCERT/ExamSIDE/JEE-labelled standalone practice is excluded from these governed Core1A products until exact custody is reconstructed."
+  },
+  "core2_conversion_holds": [
+    {
+      "promotion_id": "PR376-C2-CHEM-BONDING",
+      "reason": "Exact source custody/denominator and trustworthy solution reconstruction remain unresolved.",
+      "governed_render_present": false
+    },
+    {
+      "promotion_id": "PR376-C2-CHEM-REDOX",
+      "reason": "Exact source custody/denominator and trustworthy solution reconstruction remain unresolved.",
+      "governed_render_present": false
+    },
+    {
+      "promotion_id": "PR376-C2-CHEM-MOLE",
+      "reason": "Exact source custody/denominator and trustworthy solution reconstruction remain unresolved.",
+      "governed_render_present": false
+    }
+  ],
+  "independence": {
+    "status": "SUPERSEDED_BY_AUTHORED_REVISION",
+    "reviewer": "openai-independent-reviewer",
+    "reviewer_session": "pr376-independent-pages-review-2026-10-01",
+    "authored_candidate_records": false,
+    "authoritative_product_review_v2_present": false,
+    "review_files": [
+      "products/verification/behaviour-of-gases.review.json",
+      "products/verification/chemical-bonding.review.json",
+      "products/verification/redox-reactions.review.json",
+      "products/verification/some-basic-concepts.review.json"
+    ],
+    "recommendations": {
+      "behaviour-of-gases": "revise",
+      "chemical-bonding": "revise",
+      "redox-reactions": "revise",
+      "some-basic-concepts": "revise"
+    },
+    "note": "The product-review/v2 files remain historical exact-digest evidence for the pre-blueprint revision only. Fresh independent reviews are required for the current candidate."
+  },
+  "owner_stage": {
+    "status": "FRESH_INDEPENDENT_REVIEW_REQUIRED",
+    "disposition_allowed": [
+      "ACCEPTED",
+      "DEFERRED",
+      "REJECTED"
+    ],
+    "acceptance_tool": "Shared/tools/accept_product.py",
+    "acceptance_rule": "Do not accept the revised candidate using the historical product-review/v2 digests. Produce a fresh independent review against the current strict PAGES render first.",
+    "owner_disposition_recorded": false
+  },
+  "semantic_review_artifact": {
+    "id": 11171004553,
+    "name": "chemistry-governed-core1a-review",
+    "digest": "sha256:ec46bd7ebbe5db6092a8dbf9d0bfe06ac1e3e5d01ebc22d83cb6fd5b06f2f17b",
+    "mode": "SINGLE_FILE",
+    "purpose": "cross-mode semantic/standalone review companion; not the publication-bound product-review/v2 basis"
+  },
+  "independent_browser_evidence": "evidence/reviews/pr376/INDEPENDENT-PAGES-BROWSER-EVIDENCE.json",
+  "current_revision": {
+    "status": "REQUIRES_FRESH_INDEPENDENT_REVIEW",
+    "renderer_basis": "merged PR #372 / render_core/2 / BP-CORE1A-CONSTRUCTION@1.4.0",
+    "blueprint_merge_commit": "0021068976f1d0e00690d67d9471e600d0156973",
+    "governed_depth_commit": "96bf7e6a08bef14ebdf0e8bfdb660cd2468fc77e",
+    "visual_stage_commits": [
+      "e658cd55ac7dce056ad817515e21fa918e319e94",
+      "8d488737c2a035ee202a380c53e4060b1adb7b09"
+    ],
+    "generated_snapshot_commit": "f979de659a98089454015beae409d5fbdb992163",
+    "core1a": {
+      "products": 4,
+      "construction_units": 12,
+      "visual_stages_per_unit": 3,
+      "per_unit_equations": true,
+      "quick_check_roles": [
+        "CHECK",
+        "APPLY",
+        "CONNECT"
+      ],
+      "learner_html_authority": "renderer-generated from governed records"
+    },
+    "core2": {
+      "governed_render_present": false,
+      "standalone_learner_html_withdrawn": true,
+      "hold_reason": "Exact source-question custody, denominator and independently verified solution reconstruction remain unresolved."
+    },
+    "previous_review_basis": "SUPERSEDED_BY_AUTHORED_REVISION"
+  }
+}

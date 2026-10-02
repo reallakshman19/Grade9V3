@@ -381,6 +381,26 @@
       "target": "raw-intake/index.html"
     },
     {
+      "source": "public/standalone/practice/chemistry/behaviour-of-gases.html",
+      "target": "standalone/practice/chemistry/behaviour-of-gases.html"
+    },
+    {
+      "source": "public/standalone/practice/chemistry/chemical-bonding.html",
+      "target": "standalone/practice/chemistry/chemical-bonding.html"
+    },
+    {
+      "source": "public/standalone/practice/chemistry/index.html",
+      "target": "standalone/practice/chemistry/index.html"
+    },
+    {
+      "source": "public/standalone/practice/chemistry/redox-reactions.html",
+      "target": "standalone/practice/chemistry/redox-reactions.html"
+    },
+    {
+      "source": "public/standalone/practice/chemistry/some-basic-concepts.html",
+      "target": "standalone/practice/chemistry/some-basic-concepts.html"
+    },
+    {
       "source": "public/standalone/practice/core1a-physics-motion-2d-ncert-tablet.html",
       "target": "standalone/practice/core1a-physics-motion-2d-ncert-tablet.html"
     },
@@ -447,6 +467,18 @@
     {
       "source": "public/standalone/practice/index.html",
       "target": "standalone/practice/index.html"
+    },
+    {
+      "source": "public/standalone/practice/mathematics/euclids-geometry.html",
+      "target": "standalone/practice/mathematics/euclids-geometry.html"
+    },
+    {
+      "source": "public/standalone/practice/mathematics/index.html",
+      "target": "standalone/practice/mathematics/index.html"
+    },
+    {
+      "source": "public/standalone/practice/mathematics/theory-of-equations.html",
+      "target": "standalone/practice/mathematics/theory-of-equations.html"
     },
     {
       "source": "public/standalone/practice/motion-in-1d-master-suite.html",
