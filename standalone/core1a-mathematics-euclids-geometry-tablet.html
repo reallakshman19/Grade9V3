@@ -148,7 +148,7 @@ header.app-header {
 }
 
 .subject-badge {
-  font-size: 12px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   padding: 4px 10px;
@@ -292,7 +292,7 @@ main.layout-container {
   color: var(--purple);
   padding: 4px 10px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -300,7 +300,7 @@ main.layout-container {
   display: inline-block;
   padding: 3px 10px;
   border-radius: 999px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   background: var(--bg-surface);
   border: 1px solid var(--border);
@@ -960,7 +960,7 @@ details.solution-detail summary {
       <!-- Key Axioms Reference -->
       <div class="support-widget">
         <h3><span>⚡</span> Quick Axiom Reference</h3>
-        <div class="formula-box" style="font-size: 13px;">
+        <div class="formula-box" style="font-size: 14px;">
           Ax 1: Things equal to same are equal.<br>
           Ax 2: Equals added to equals are equal.<br>
           Ax 3: Equals subtracted from equals are equal.<br>
@@ -974,16 +974,16 @@ details.solution-detail summary {
       <!-- Interactive Line Segment Addition Explorer -->
       <div class="support-widget">
         <h3><span>📏</span> Segment Addition Explorer</h3>
-        <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 10px;">
+        <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 10px;">
           If C lies between A and B, verify AC + CB = AB (Axiom 4 &amp; 5):
         </p>
         <div style="display: flex; gap: 10px; margin-bottom: 10px;">
           <div>
-            <label style="font-size: 12px; color: var(--text-secondary);">AC (cm):</label>
+            <label style="font-size: 14px; color: var(--text-secondary);">AC (cm):</label>
             <input type="number" id="segAC" value="4.5" step="0.5" style="width: 100%; min-height: 40px; padding: 6px; background: var(--bg-surface); border: 1px solid var(--border); color: var(--text-primary); border-radius: 6px;" oninput="calcSegment()">
           </div>
           <div>
-            <label style="font-size: 12px; color: var(--text-secondary);">CB (cm):</label>
+            <label style="font-size: 14px; color: var(--text-secondary);">CB (cm):</label>
             <input type="number" id="segCB" value="3.5" step="0.5" style="width: 100%; min-height: 40px; padding: 6px; background: var(--bg-surface); border: 1px solid var(--border); color: var(--text-primary); border-radius: 6px;" oninput="calcSegment()">
           </div>
         </div>
@@ -995,13 +995,13 @@ details.solution-detail summary {
       <!-- Virtual Keyboard Safe Scratchpad -->
       <div class="support-widget">
         <h3><span>📝</span> Proof Scratchpad</h3>
-        <p style="font-size: 13.5px; color: var(--text-secondary); margin-bottom: 8px;">
+        <p style="font-size: 14px; color: var(--text-secondary); margin-bottom: 8px;">
           Virtual keyboard safe (min-height: 120px) with auto-saving:
         </p>
         <textarea id="scratchpadNotes" class="tablet-safe-input" placeholder="Draft theorem statements, state given / to-prove, and cite axiom numbers..."></textarea>
         <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
-          <span id="saveStatus" style="font-size: 12.5px; color: var(--success);">✓ Auto-saved</span>
-          <button class="btn" style="min-height: 40px; padding: 6px 14px; font-size: 13px; background: var(--bg-surface); border: 1px solid var(--border);" onclick="clearNotes()">Clear</button>
+          <span id="saveStatus" style="font-size: 14px; color: var(--success);">✓ Auto-saved</span>
+          <button class="btn" style="min-height: 40px; padding: 6px 14px; font-size: 14px; background: var(--bg-surface); border: 1px solid var(--border);" onclick="clearNotes()">Clear</button>
         </div>
       </div>
 
@@ -1022,27 +1022,38 @@ details.solution-detail summary {
 
     const themeBtn = document.getElementById('themeToggle');
     const htmlEl = document.documentElement;
-    const savedTheme = localStorage.getItem('tablet12_theme') || 'dark';
+    let savedTheme = 'dark';
+    try {
+      savedTheme = localStorage.getItem('tablet12_theme') || 'dark';
+    } catch (e) {}
     htmlEl.setAttribute('data-theme', savedTheme);
     themeBtn.addEventListener('click', () => {
       const current = htmlEl.getAttribute('data-theme');
       const next = current === 'dark' ? 'light' : 'dark';
       htmlEl.setAttribute('data-theme', next);
-      localStorage.setItem('tablet12_theme', next);
+      try {
+        localStorage.setItem('tablet12_theme', next);
+      } catch (e) {}
     });
 
     const pad = document.getElementById('scratchpadNotes');
     const status = document.getElementById('saveStatus');
-    pad.value = localStorage.getItem('euclid_tablet_notes') || '';
+    try {
+      pad.value = localStorage.getItem('euclid_tablet_notes') || '';
+    } catch (e) {}
     pad.addEventListener('input', () => {
-      localStorage.setItem('euclid_tablet_notes', pad.value);
+      try {
+        localStorage.setItem('euclid_tablet_notes', pad.value);
+      } catch (e) {}
       status.textContent = '✓ Saved ' + new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
     });
 
     function clearNotes() {
       if (confirm('Clear scratchpad notes?')) {
         pad.value = '';
-        localStorage.removeItem('euclid_tablet_notes');
+        try {
+          localStorage.removeItem('euclid_tablet_notes');
+        } catch (e) {}
         status.textContent = 'Notes cleared';
       }
     }
