@@ -527,6 +527,14 @@ def _render_core_unit(article: Node) -> dict:
         "prerequisites_bridged": [li.attrs["data-g9-prereq"] for li in prereqs if li.attrs.get("data-bridged") == "true"],
         "lineage_refs": [a.attrs.get("href") for a in article.find_all("a", attr="data-g9-lineage")],
         "metadata": metadata,
+        "components": [{"id": n.attrs["data-g9-component"],
+                        "items": int(n.attrs["data-g9-component-items"]) if n.attrs.get("data-g9-component-items", "").isdigit() else None,
+                        "unit": n.attrs.get("data-g9-component-unit")}
+                       for n in article.find_all(attr="data-g9-component")],
+        "construction_units": [n.attrs["data-g9-cu"] for n in article.find_all(attr="data-g9-cu")],
+        "waived": {(n.attrs["data-g9-component-waiver"] + (f"@{n.attrs['data-g9-component-unit']}" if n.attrs.get("data-g9-component-unit") else "")):
+                   n.attrs.get("data-g9-waiver-reason", "")
+                   for n in article.find_all(attr="data-g9-component-waiver")},
     }
 
 
@@ -572,6 +580,7 @@ def observe_render_core(folder: Path, product_id: str | None = None, subject: st
             "subject": subject or "Physics", "observed_by": "render-core-html",
             "provenance": {"render_stamp": None if draft else stamp, "hand_authored": False},
             "escape_states": sorted(escape), "roles_rendered": sorted(set(roles)),
+            **({"roles_expected": list(meta["output_roles"])} if isinstance(meta.get("output_roles"), list) else {}),
             "atlas": None, "print": print_obs, "pages": pages}
 
 

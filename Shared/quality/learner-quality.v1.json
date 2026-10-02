@@ -1,6 +1,6 @@
 {
   "schema": "learner-quality-contract/v1",
-  "version": "1.6.0",
+  "version": "1.8.0",
   "purpose": "Subject-neutral quality rules for the six Core learner products. Each rule judges a learner observation (Shared/quality/learner-observation.schema.json), i.e. what a learner can see and do, never what a record claims. Rules carry the audit findings they would have caught (audit_refs) and the owner-reference grammar step they encode (grammar). Calibration: every negative specimen in benchmarks/quality-calibration fails for its expected findings; the positive references pass the rules that encode their grammar.",
   "families": {
     "DEPTH": "Content a learner needs, at the depth the references show.",
@@ -290,6 +290,21 @@
       "text": "Declared independent-check types come from the subject's QualityVocabulary."
     },
     {
+      "id": "BP-COMPONENTS-REQUIRED", "family": "DEPTH", "measure": "STATIC", "roles": ["*"], "severity": "S2",
+      "check": {"op": "blueprint_components", "level": "REQUIRED"}, "audit_refs": [], "grammar": null,
+      "text": "Every component the page's blueprint marks REQUIRED is on the page, at least as deep as the blueprint's floor (min_items). The list, levels and depths come from Shared/web/interactive-page-blueprints.v1.json; nothing is restated here."
+    },
+    {
+      "id": "BP-COMPONENTS-EXPECTED", "family": "DEPTH", "measure": "STATIC", "roles": ["*"], "severity": "S3",
+      "check": {"op": "blueprint_components", "level": "EXPECTED"}, "audit_refs": [], "grammar": null,
+      "text": "Every component the page's blueprint marks EXPECTED is on the page, or the record's author waived it with a written reason. Absent without a waiver is advisory (S3): it names what the reference page has and this one lacks."
+    },
+    {
+      "id": "BP-COMPONENTS-DEPTH", "family": "DEPTH", "measure": "STATIC", "roles": ["*"], "severity": "S3",
+      "check": {"op": "blueprint_components", "level": "DEPTH"}, "audit_refs": [], "grammar": null,
+      "text": "Every component that has a reference depth reaches it, for the difficulty band the unit declares (a hint ladder of five rungs on a D3 or D4 question, three on a D1 or D2). Between the floor and the reference depth is advisory (S3)."
+    },
+    {
       "id": "PAGE-HOME-LINK", "family": "PAGE", "measure": "STATIC", "roles": ["*"], "severity": "S1",
       "check": {"op": "page_flag", "field": "home_link"}, "audit_refs": ["A3-001"], "grammar": null,
       "text": "Every Core page links to the app home."
@@ -352,7 +367,7 @@
     {
       "id": "PRODUCT-ALL-ROLES", "family": "INTEGRITY", "measure": "STATIC", "roles": ["*"], "severity": "S1",
       "check": {"op": "product_roles", "roles": ["CORE1", "CORE1A", "CORE1B", "CORE2", "CORE2A", "CORE2B"]},
-      "audit_refs": ["S5-NO-CORE2A-2B"], "grammar": null, "text": "A delivered product renders all six Core roles."
+      "audit_refs": ["S5-NO-CORE2A-2B"], "grammar": null, "text": "A delivered product renders every Core role declared by its manifest; legacy manifests with no output-role scope still render all six roles."
     },
     {
       "id": "PRODUCT-SHARED-ATLAS", "family": "INTEGRITY", "measure": "STATIC", "roles": ["*"], "severity": "S2",
