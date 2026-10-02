@@ -1,0 +1,35 @@
+name: sync-pages-411
+
+on:
+  push:
+    branches:
+      - audit/learner-resource-reconciliation-411
+    paths:
+      - ".github/workflows/_sync-pages-411.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audit/learner-resource-reconciliation-411
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Regenerate deterministic Pages mirror
+        run: python3 Shared/tools/build_pages_site.py
+      - name: Verify regenerated mirror
+        run: python3 Shared/tools/build_pages_site.py --check
+      - name: Remove one-shot workflow and commit generated drift
+        run: |
+          rm .github/workflows/_sync-pages-411.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore(#411): regenerate learner Pages mirror"
+          git push origin HEAD:audit/learner-resource-reconciliation-411
