@@ -1,0 +1,295 @@
+name: pr375-u4-remediation-r3
+
+on:
+  push:
+    branches:
+      - feat/physics-tablet-standalone
+    paths:
+      - .github/workflows/pr375-u4-remediation-r3.yml
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pr375-u4-remediation-r3
+  cancel-in-progress: false
+
+jobs:
+  remediate-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/physics-tablet-standalone
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Apply base U4 remediation recipe
+        shell: bash
+        run: |
+          pip install --quiet pyyaml
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess, yaml
+          data = yaml.safe_load(Path('.github/workflows/pr375-u4-remediation.yml').read_text(encoding='utf-8'))
+          step = next(s for s in data['jobs']['remediate-and-verify']['steps'] if s.get('name') == 'Apply bounded U4 accessibility remediation')
+          subprocess.run(['bash', '-e', '-o', 'pipefail', '-c', step['run']], check=True)
+          PY
+
+      - name: Apply residual phone reflow and dynamic-a11y fixes
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          pages = [
+              'standalone/core1a-motion-1d-straight-line-tablet.html',
+              'standalone/core1a-motion-in-a-plane-tablet.html',
+              'standalone/core1a-physics-nlm-tablet.html',
+              'standalone/core1a-vector-add-sub-tablet.html',
+              'standalone/core2-motion-in-a-plane-tablet.html',
+              'standalone/core2-physics-thrust-pressure-tablet.html',
+              'standalone/practice/core1a-physics-motion-2d-ncert-tablet.html',
+              'standalone/practice/core1a-physics-nlm-tablet.html',
+              'standalone/practice/core1a-physics-vectors-tablet.html',
+              'standalone/practice/core1a-sba-06-07-trajectory-and-height-tablet.html',
+              'standalone/practice/core1a-sba-motion-in-a-plane-master-tablet.html',
+              'standalone/practice/core2-motion-1d-straight-line-tablet.html',
+              'standalone/practice/core2-motion-consolidated-practice-tablet.html',
+              'standalone/practice/core2-motion-in-a-plane-tablet.html',
+              'standalone/practice/core2-physics-thrust-pressure-tablet.html',
+              'standalone/practice/core2a-projectile-study.html',
+              'standalone/practice/index.html',
+              'standalone/practice/motion-in-1d-master-suite.html',
+              'standalone/practice/motion-in-2d-master-suite.html',
+              'standalone/practice/physics-motion-in-a-plane-interactive-suite.html',
+          ]
+
+          css = r'''
+          <style id="pr375-u4-residual-remediation">
+          @media (max-width: 480px) {
+            /* Generated CORE1A section-route pills used 24rem + padding, producing ~467px boxes. */
+            [data-g9-section-route] a,
+            [data-g9-concept-route] a,
+            article[data-g9-role="CORE1A"] > .slot-identity [data-g9-section-route] a {
+              width: 100% !important;
+              max-width: 100% !important;
+              min-width: 0 !important;
+              box-sizing: border-box !important;
+              white-space: normal !important;
+              line-height: 1.4 !important;
+              overflow: visible !important;
+              text-overflow: clip !important;
+              overflow-wrap: anywhere !important;
+            }
+
+            /* Consolidated and interactive headers must reflow as complete units, not just their children. */
+            .header-inner,
+            header.g9-shell {
+              width: 100% !important;
+              max-width: 100% !important;
+              min-width: 0 !important;
+              height: auto !important;
+              flex-wrap: wrap !important;
+              justify-content: flex-start !important;
+              align-items: flex-start !important;
+            }
+            .header-inner > *,
+            header.g9-shell > .g9-nav-group {
+              flex: 1 1 100% !important;
+              width: 100% !important;
+              max-width: 100% !important;
+              min-width: 0 !important;
+            }
+            .header-brand,
+            .header-brand h1,
+            .header-actions,
+            header.g9-shell .g9-nav-group,
+            header.g9-shell .g9-breadcrumb {
+              max-width: 100% !important;
+              min-width: 0 !important;
+              flex-wrap: wrap !important;
+              white-space: normal !important;
+            }
+            .header-brand h1 { align-items: flex-start !important; }
+            .header-actions { width: 100% !important; justify-content: flex-start !important; }
+            header.g9-shell { padding-block: 8px !important; }
+            header.g9-shell .g9-breadcrumb { flex: 1 1 100% !important; overflow-wrap: anywhere !important; }
+          }
+          </style>
+          '''.strip()
+
+          js = r'''
+          <script id="pr375-u4-dynamic-remediation">
+          (() => {
+            const textName = (el, fallback) => {
+              const scope = el.closest('figure, section, article, .panel, .card, .simulator, .canvas-wrap, .canvas-container') || el.parentElement;
+              const title = scope?.querySelector('figcaption, h1, h2, h3, h4, .title, [class*="title"]');
+              const text = title?.textContent?.replace(/\s+/g, ' ').trim();
+              return text && text.length <= 140 ? text : fallback;
+            };
+
+            const nameFigures = (root = document) => {
+              const nodes = [];
+              if (root.nodeType === 1 && root.matches?.('svg, canvas')) nodes.push(root);
+              root.querySelectorAll?.('svg, canvas').forEach(el => nodes.push(el));
+              nodes.forEach(el => {
+                if (el.getAttribute('aria-label') || el.getAttribute('aria-labelledby') || el.getAttribute('aria-hidden') || el.querySelector?.('title')) return;
+                const control = el.closest('a, button');
+                if (control && control.textContent.trim()) {
+                  el.setAttribute('aria-hidden', 'true');
+                  el.setAttribute('focusable', 'false');
+                  return;
+                }
+                el.setAttribute('role', 'img');
+                el.setAttribute('aria-label', textName(el, el.tagName.toLowerCase() === 'canvas' ? 'Interactive physics simulation' : 'Physics diagram'));
+              });
+            };
+
+            const nameControls = (root = document) => {
+              const nodes = [];
+              if (root.nodeType === 1 && root.matches?.('input, select, textarea')) nodes.push(root);
+              root.querySelectorAll?.('input, select, textarea').forEach(el => nodes.push(el));
+              nodes.forEach((el, index) => {
+                const has = el.getAttribute('aria-label') || el.getAttribute('aria-labelledby') || el.title || el.closest('label') || (el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`));
+                if (has) return;
+                const nearby = el.closest('.control-row, .form-group, .field, .panel, .card')?.querySelector('.control-label, label, h3, h4');
+                const raw = el.getAttribute('placeholder') || el.getAttribute('name') || el.id || nearby?.textContent || `${el.tagName.toLowerCase()} ${index + 1}`;
+                el.setAttribute('aria-label', String(raw).replace(/[_-]+/g, ' ').replace(/\s+/g, ' ').trim());
+              });
+            };
+
+            const sync = root => { nameFigures(root); nameControls(root); };
+            sync(document);
+            new MutationObserver(records => {
+              for (const record of records) for (const node of record.addedNodes) if (node.nodeType === 1) sync(node);
+            }).observe(document.documentElement, { childList: true, subtree: true });
+          })();
+          </script>
+          '''.strip()
+
+          for rel in pages:
+              p = Path(rel)
+              text = p.read_text(encoding='utf-8')
+              if 'id="pr375-u4-residual-remediation"' not in text:
+                  text = text.replace('</head>', css + '\n</head>', 1)
+              if 'id="pr375-u4-dynamic-remediation"' not in text:
+                  text = text.replace('</body>', js + '\n</body>', 1)
+              p.write_text(text, encoding='utf-8')
+          PY
+
+      - name: Verify exact U4 static invariants
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          pages = [
+              'standalone/core1a-motion-1d-straight-line-tablet.html','standalone/core1a-motion-in-a-plane-tablet.html','standalone/core1a-physics-nlm-tablet.html','standalone/core1a-vector-add-sub-tablet.html','standalone/core2-motion-in-a-plane-tablet.html','standalone/core2-physics-thrust-pressure-tablet.html',
+              'standalone/practice/core1a-physics-motion-2d-ncert-tablet.html','standalone/practice/core1a-physics-nlm-tablet.html','standalone/practice/core1a-physics-vectors-tablet.html','standalone/practice/core1a-sba-06-07-trajectory-and-height-tablet.html','standalone/practice/core1a-sba-motion-in-a-plane-master-tablet.html','standalone/practice/core2-motion-1d-straight-line-tablet.html','standalone/practice/core2-motion-consolidated-practice-tablet.html','standalone/practice/core2-motion-in-a-plane-tablet.html','standalone/practice/core2-physics-thrust-pressure-tablet.html','standalone/practice/core2a-projectile-study.html','standalone/practice/index.html','standalone/practice/motion-in-1d-master-suite.html','standalone/practice/motion-in-2d-master-suite.html','standalone/practice/physics-motion-in-a-plane-interactive-suite.html'
+          ]
+          assert len(pages) == len(set(pages)) == 20
+          for rel in pages:
+              t = Path(rel).read_text(encoding='utf-8')
+              for marker in ('pr375-u4-remediation','pr375-u4-remediation-script','pr375-u4-residual-remediation','pr375-u4-dynamic-remediation'):
+                  assert f'id="{marker}"' in t, (rel, marker)
+          print('static U4 invariants: PASS (20/20)')
+          PY
+
+      - name: Install Chromium audit dependency
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+
+      - name: Run U4 browser regression audit
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess, yaml
+          data = yaml.safe_load(Path('.github/workflows/pr375-u4-remediation.yml').read_text(encoding='utf-8'))
+          step = next(s for s in data['jobs']['remediate-and-verify']['steps'] if s.get('name') == 'Browser U4 regression audit')
+          script = step['run'].replace('/tmp/pr375-u4-audit.mjs', '.tmp-pr375-u4-audit.mjs')
+          subprocess.run(['bash', '-e', '-o', 'pipefail', '-c', script], check=True)
+          PY
+          rm -f .tmp-pr375-u4-audit.mjs
+
+      - name: Additional keyboard and semantic smoke test
+        shell: bash
+        run: |
+          python3 -m http.server 8105 --directory . >/tmp/pr375-u4-http-2.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for i in $(seq 1 50); do curl -fsS http://127.0.0.1:8105/standalone/practice/index.html >/dev/null && break; sleep .2; done
+          cat >.tmp-pr375-u4-smoke.mjs <<'JS'
+          import { chromium } from 'playwright';
+          const pages = [
+            'standalone/core1a-motion-1d-straight-line-tablet.html','standalone/core1a-motion-in-a-plane-tablet.html','standalone/core1a-physics-nlm-tablet.html','standalone/core1a-vector-add-sub-tablet.html','standalone/core2-motion-in-a-plane-tablet.html','standalone/core2-physics-thrust-pressure-tablet.html',
+            'standalone/practice/core1a-physics-motion-2d-ncert-tablet.html','standalone/practice/core1a-physics-nlm-tablet.html','standalone/practice/core1a-physics-vectors-tablet.html','standalone/practice/core1a-sba-06-07-trajectory-and-height-tablet.html','standalone/practice/core1a-sba-motion-in-a-plane-master-tablet.html','standalone/practice/core2-motion-1d-straight-line-tablet.html','standalone/practice/core2-motion-consolidated-practice-tablet.html','standalone/practice/core2-motion-in-a-plane-tablet.html','standalone/practice/core2-physics-thrust-pressure-tablet.html','standalone/practice/core2a-projectile-study.html','standalone/practice/index.html','standalone/practice/motion-in-1d-master-suite.html','standalone/practice/motion-in-2d-master-suite.html','standalone/practice/physics-motion-in-a-plane-interactive-suite.html'
+          ];
+          const browser = await chromium.launch({headless:true});
+          const failures=[];
+          for (const rel of pages) {
+            const context = await browser.newContext({viewport:{width:390,height:844}});
+            const page = await context.newPage();
+            await page.goto(`http://127.0.0.1:8105/${rel}`, {waitUntil:'domcontentloaded'});
+            await page.waitForTimeout(250);
+            const sem = await page.evaluate(() => ({
+              lang: document.documentElement.lang,
+              h1: document.querySelectorAll('h1').length,
+              unnamed: [...document.querySelectorAll('input,select,textarea,svg,canvas')].filter(el => {
+                if (el.matches('svg,canvas')) return !el.getAttribute('aria-label') && !el.getAttribute('aria-labelledby') && !el.getAttribute('aria-hidden') && !el.querySelector?.('title');
+                return !el.getAttribute('aria-label') && !el.getAttribute('aria-labelledby') && !el.title && !el.closest('label') && !(el.id && document.querySelector(`label[for="${CSS.escape(el.id)}"]`));
+              }).length
+            }));
+            if (!sem.lang) failures.push(`${rel}: missing lang`);
+            if (sem.h1 !== 1) failures.push(`${rel}: ${sem.h1} h1 elements`);
+            if (sem.unnamed) failures.push(`${rel}: ${sem.unnamed} unnamed controls/figures after settle`);
+            const focusable = await page.locator('a[href],button,input,select,textarea,summary,[tabindex]:not([tabindex="-1"])').count();
+            const steps = Math.min(focusable, 40);
+            for (let i=0;i<steps;i++) {
+              await page.keyboard.press('Tab');
+              const state = await page.evaluate(() => {
+                const el = document.activeElement;
+                const cs = el ? getComputedStyle(el) : null;
+                return {tag:el?.tagName, visible:!!el && el !== document.body && !!(el.offsetWidth || el.offsetHeight || el.getClientRects().length), outline:cs?.outlineStyle || 'none'};
+              });
+              if (!state.visible) { failures.push(`${rel}: tab stop ${i+1} not visible`); break; }
+              if (state.outline === 'none') { failures.push(`${rel}: tab stop ${i+1} has no visible outline`); break; }
+            }
+            await context.close();
+          }
+          await browser.close();
+          if (failures.length) { console.error(failures.join('\n')); process.exit(1); }
+          console.log(`keyboard/semantic smoke: PASS (${pages.length}/20 pages)`);
+          JS
+          node .tmp-pr375-u4-smoke.mjs
+          rm -f .tmp-pr375-u4-smoke.mjs
+
+      - name: Ensure feature branch did not advance during audit
+        shell: bash
+        run: |
+          remote_sha=$(git ls-remote origin refs/heads/feat/physics-tablet-standalone | awk '{print $1}')
+          test "$remote_sha" = "$GITHUB_SHA" || { echo "branch advanced from $GITHUB_SHA to $remote_sha; refusing to overwrite"; exit 1; }
+
+      - name: Commit verified U4 remediation and remove one-shot workflows
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/pr375-u4-remediation.yml .github/workflows/pr375-u4-remediation-r2.yml .github/workflows/pr375-u4-remediation-r3.yml
+          git add standalone/core1a-motion-1d-straight-line-tablet.html \
+                  standalone/core1a-motion-in-a-plane-tablet.html \
+                  standalone/core1a-physics-nlm-tablet.html \
+                  standalone/core1a-vector-add-sub-tablet.html \
+                  standalone/core2-motion-in-a-plane-tablet.html \
+                  standalone/core2-physics-thrust-pressure-tablet.html \
+                  standalone/practice/*.html
+          git commit -m "fix(physics): remediate PR375 U4 accessibility findings"
+          git push origin HEAD:feat/physics-tablet-standalone
