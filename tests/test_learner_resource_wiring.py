@@ -38,7 +38,7 @@ class LearnerResourceWiringTests(unittest.TestCase):
         self.assertIn('matrix_id: "MATRIX-PHY-KIN-2D-MOTION"', public_session)
 
         source_session = (ROOT / "standalone/motion-session/index.html").read_text(encoding="utf-8")
-        self.assertIn('href="../../public/physics/index.html"', source_session)
+        self.assertNotIn('href="../../public/physics/index.html"', source_session)
 
         registry = json.loads((ROOT / "Shared/search/site-search-resources.v1.json").read_text(encoding="utf-8"))
         rows = [row for row in registry["resources"] if row["path"] == "motion-session/index.html"]
