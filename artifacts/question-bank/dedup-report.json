@@ -1,9 +1,9 @@
 {
   "authority": "EVIDENCE_ONLY_NO_SILENT_DELETION",
-  "build_id": "sha256:9238ef7eea3da346af50b1c72549ea7e5484be79e2973c72293acf7b636f8d5d",
-  "evidence_count": 7,
+  "build_id": "sha256:482f4297469e857fa9c4b6ea91929bbf3c64210ebce30ecf82dd500d8501ac4a",
+  "evidence_count": 11,
   "evidence_counts": {
-    "VARIANT": 7
+    "VARIANT": 11
   },
   "groups": [
     {
@@ -82,6 +82,52 @@
     },
     {
       "classification": "VARIANT",
+      "family_ref": "FAM-MAT-LEQ-01-SUBSTITUTION",
+      "member_ids": [
+        "Q-MAT-LEQ-01-EXEMPLAR8-Q17",
+        "Q-MAT-LEQ-01-EXEMPLAR8-Q20",
+        "Q-MAT-LEQ-01-EXEMPLAR8-Q6"
+      ],
+      "reason": "explicit_family_ref"
+    },
+    {
+      "classification": "VARIANT",
+      "family_ref": "FAM-MAT-LEQ-02-BOTH-SIDES",
+      "member_ids": [
+        "Q-MAT-LEQ-02-EXEMPLAR9-4-1-Q16",
+        "Q-MAT-LEQ-02-NCERT8-EX2-1-Q1",
+        "Q-MAT-LEQ-02-NCERT8-EX2-1-Q2",
+        "Q-MAT-LEQ-02-NCERT8-EX2-1-Q3",
+        "Q-MAT-LEQ-02-NCERT8-EX2-1-Q5"
+      ],
+      "reason": "explicit_family_ref"
+    },
+    {
+      "classification": "VARIANT",
+      "family_ref": "FAM-MAT-LEQ-03-REDUCTION",
+      "member_ids": [
+        "Q-MAT-LEQ-03-EXEMPLAR8-Q58",
+        "Q-MAT-LEQ-03-EXEMPLAR8-Q61",
+        "Q-MAT-LEQ-03-NCERT8-EX2-2-Q10",
+        "Q-MAT-LEQ-03-NCERT8-EX2-2-Q7",
+        "Q-MAT-LEQ-03-NCERT8-EX2-2-Q9"
+      ],
+      "reason": "explicit_family_ref"
+    },
+    {
+      "classification": "VARIANT",
+      "family_ref": "FAM-MAT-LEQ-04-TWO-VARIABLES",
+      "member_ids": [
+        "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q1",
+        "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q11",
+        "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q3",
+        "Q-MAT-LEQ-04-EXEMPLAR9-4-2-Q1",
+        "Q-MAT-LEQ-04-EXEMPLAR9-4-3-Q7"
+      ],
+      "reason": "explicit_family_ref"
+    },
+    {
+      "classification": "VARIANT",
       "family_ref": "FAM-PHY-KIN-2D-PRACTICE",
       "member_ids": [
         "PYQ-PHY-IITJEE-2011-P2-Q26",
@@ -139,14 +185,14 @@
   ],
   "near_duplicate_coverage": {
     "complete": true,
-    "records": 81,
+    "records": 99,
     "records_whose_shingles_were_all_skipped": 0,
-    "records_with_shingles": 81,
+    "records_with_shingles": 99,
     "records_with_truncated_candidates": 0,
-    "shingle_buckets": 100,
+    "shingle_buckets": 120,
     "shingle_buckets_skipped_as_too_common": 0
   },
-  "question_count": 81,
+  "question_count": 99,
   "relationships": [],
   "schema_version": "grade9v3-question-bank-dedup-v1",
   "strategy": {

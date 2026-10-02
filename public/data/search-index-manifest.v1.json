@@ -263,14 +263,14 @@
     "Q-VDU-2A-NOTATION-01",
     "Q-VDU-2B-DIRECTION-01"
   ],
-  "canonical_snapshot_digest": "sha256:7aa10f948aec9574ec1deee3f747fbe3318159f7e0a3abe6ab4b8ab0fe2d6df9",
+  "canonical_snapshot_digest": "sha256:63a8700662e039ed5630b64ca430dc08ef9457511c1835a46dd7bd0f0fd1c215",
   "excluded_ids": [],
-  "generated_at": "2026-10-02T06:54:32Z",
+  "generated_at": "2026-10-02T07:39:42Z",
   "generator": {
     "name": "build_search_index",
     "version": "1.1.0"
   },
-  "index_digest": "sha256:f13a372a7bfe3b0d42e9ef0d21745fff52cc921620d861a008a852cbae5d8a28",
+  "index_digest": "sha256:7520f6809263004c03e9d11a27fcc281943be78067286767b09d8134426ae2cf",
   "index_version": "1",
   "record_count": 262,
   "schema": "search-index-manifest/v1"

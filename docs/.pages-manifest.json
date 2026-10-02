@@ -93,6 +93,10 @@
       "target": "data/question-bank-details/subject-chemistry-97462a79cb.js"
     },
     {
+      "source": "public/data/question-bank-details/subject-mathematics-b22f2b3c40.js",
+      "target": "data/question-bank-details/subject-mathematics-b22f2b3c40.js"
+    },
+    {
       "source": "public/data/question-bank-details/subject-physics-fc07b0f63d.js",
       "target": "data/question-bank-details/subject-physics-fc07b0f63d.js"
     },
