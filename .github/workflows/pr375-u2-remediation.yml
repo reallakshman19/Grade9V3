@@ -9,6 +9,7 @@ on:
       - .github/u2/pr375_u2_remediate.py
       - .github/u2/pr375_u2_audit.js
       - .github/u2/pr375_u2_testfix.py
+      - .github/u2/pr375_u3_fixup.py
       - .github/u2/pr375_u3_remediate.py
       - .github/u2/pr375_u3_audit.js
 
@@ -36,6 +37,7 @@ jobs:
         run: |
           python3 .github/u2/pr375_u2_remediate.py
           python3 .github/u2/pr375_u2_testfix.py
+          python3 .github/u2/pr375_u3_fixup.py
           python3 .github/u2/pr375_u3_remediate.py
 
       - name: Static U2 and U3 regression
@@ -82,6 +84,7 @@ jobs:
           rm -f .github/u2/pr375_u2_remediate.py \
                 .github/u2/pr375_u2_audit.js \
                 .github/u2/pr375_u2_testfix.py \
+                .github/u2/pr375_u3_fixup.py \
                 .github/u2/pr375_u3_remediate.py \
                 .github/u2/pr375_u3_audit.js \
                 .github/workflows/pr375-u2-remediation.yml
