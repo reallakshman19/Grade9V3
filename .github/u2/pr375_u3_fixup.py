@@ -108,5 +108,13 @@ new_selector = "page.locator('#reconInput').locator('xpath=following-sibling::bu
 assert s.count(old_selector) == 2, s.count(old_selector)
 s = s.replace(old_selector, new_selector)
 
+# The reconstruction controls live on Unit 3 and are intentionally hidden until
+# that learner tab is selected. Reproduce the visible learner path before
+# exercising the empty-attempt and genuine-attempt gates.
+old_flow = "await goto(page,practice+'physics-motion-in-a-plane-interactive-suite.html'); await page.locator('#reconInput').locator('xpath=following-sibling::button[1]').click();"
+new_flow = "await goto(page,practice+'physics-motion-in-a-plane-interactive-suite.html'); await page.locator('.tab-btn[data-tab=\"tab-practice\"]').click(); await page.locator('#reconInput').locator('xpath=following-sibling::button[1]').click();"
+assert old_flow in s
+s = s.replace(old_flow, new_flow, 1)
+
 aud.write_text(s, encoding="utf-8")
-print("patched U3 SVG remediation/audit, 20-page favicon scope, and reconstruction-control locator")
+print("patched U3 SVG remediation/audit, 20-page favicon scope, and visible reconstruction flow")
