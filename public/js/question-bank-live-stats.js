@@ -16,28 +16,22 @@ function metric(label,value){
   return box;
 }
 
-function activeFilterCount(){
-  const params=new URLSearchParams(location.search);
-  const filterKeys=new Set(['view','q','subject','topic','subtopic','difficulty','exam','type']);
-  let count=0;
-  for(const key of params.keys())if(filterKeys.has(key))count+=1;
-  return count;
-}
-
 function update(){
   const api=window.Grade9QuestionBank;
+  const data=window.Grade9QuestionBankData;
   if(!api||typeof api.filtered!=='function')return;
   let questions;
   try{questions=api.filtered();}
   catch(_error){return;}
+  const all=data&&typeof data.summaries==='function'?data.summaries():questions;
   const subjects=new Set(questions.map(q=>q.subject_ref).filter(Boolean));
   const topics=new Set(questions.map(q=>q.topic_ref).filter(Boolean));
   stats.setAttribute('aria-label','Current Question Bank view');
   stats.replaceChildren(
+    metric('canonical questions',all.length),
     metric('matching questions',questions.length),
     metric('subjects in view',subjects.size),
-    metric('topics in view',topics.size),
-    metric('active filters',activeFilterCount())
+    metric('topics in view',topics.size)
   );
 }
 
