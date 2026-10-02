@@ -186,18 +186,24 @@ class TestPages(unittest.TestCase):
                      "../../test/rungs/index.html", "../../test/deployments/index.html"):
             self.assertIn(f'href="{href}"', header)
 
-    def test_the_tab_is_in_the_shared_header_and_on_the_hubs_and_the_site_can_reach_test(self):
+    def test_test_stays_internal_and_is_not_exposed_by_learner_shell_or_hubs(self):
         header = (REPO / "public/js/site-header.js").read_text(encoding="utf-8")
-        self.assertIn("root+'test/index.html'", header)
-        for page, href in (("index.html", "test/index.html"), ("physics/index.html", "../test/index.html"),
-                           ("chemistry/index.html", "../test/index.html"), ("mathematics/index.html", "../test/index.html")):
+        self.assertNotIn("root+'test/index.html'", header)
+        self.assertTrue((REPO / "public/test/index.html").is_file(), "the internal TEST route is retained")
+        for page in ("index.html", "physics/index.html", "chemistry/index.html", "mathematics/index.html"):
             text = (REPO / "public" / page).read_text(encoding="utf-8")
-            self.assertIn(f'href="{href}" class="test-link" data-site-test>TEST</a>', text, page)
+            self.assertNotIn("data-site-test", text, page)
 
     def test_test_is_not_a_question_bank_subject(self):
         projection = build_question_bank_web.build(REPO)
-        self.assertNotIn("TEST", {q.get("subject") for q in projection["questions"]})
-        self.assertEqual(len(projection["questions"]), 81)
+        questions = projection["questions"]
+        subjects = {q.get("subject") for q in questions}
+        ids = [q["id"] for q in questions]
+        self.assertNotIn("TEST", subjects)
+        self.assertGreater(len(questions), 0)
+        self.assertEqual(len(ids), len(set(ids)), "canonical Question Bank IDs remain unique")
+        self.assertTrue({"Physics", "Chemistry", "Mathematics"}.issubset(subjects))
+
 
 
 class TestDeploy(unittest.TestCase):

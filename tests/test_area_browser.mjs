@@ -142,24 +142,24 @@ for (const [width, height] of [[1366, 854], [854, 1366]]) {
   }
 }
 
-// The tab: from the portal and from each subject hub, one tap reaches the TEST hub, and the hub reaches the other pages.
+// TEST is an internal sandbox: learner Home and subject hubs must not expose a TEST tab.
 for (const from of ['index.html', 'physics/index.html', 'chemistry/index.html', 'mathematics/index.html']) {
   const { context, tab, problems } = await open(390, from);
-  const link = tab.locator('a[data-site-test]').first();
-  const count = await link.count();
+  const count = await tab.locator('a[data-site-test]').count();
   checked += 1;
-  if (!count) failures.push(`${from}: no TEST tab`);
-  else {
-    // On a phone the shared header folds its tabs behind the "more" button, like every other tab.
-    if (!(await link.isVisible())) await tab.locator('.site-more-btn').click();
-    await link.click({ timeout: 4000 }).catch((error) => failures.push(`${from}: the TEST tab cannot be tapped: ${error.message.split('\n')[0]}`));
-    await tab.waitForLoadState('networkidle');
-    if (!/\/test\/index\.html$/.test(tab.url())) failures.push(`${from}: the TEST tab led to ${tab.url().replace(base, '')}`);
-    for (const label of ['Atlas', 'Rungs', 'Deployments']) {
-      if (!(await tab.locator('nav[data-g9-breadcrumb] a', { hasText: label }).count())) failures.push(`${from}: the TEST hub has no ${label} link`);
-    }
-  }
+  if (count) failures.push(`${from}: learner navigation exposes ${count} TEST tab(s)`);
   for (const problem of problems) failures.push(`${from}: ${problem}`);
+  await context.close();
+}
+
+// The TEST sandbox itself remains directly addressable and keeps its internal navigation.
+{
+  const { context, tab, problems } = await open(390, 'test/index.html');
+  checked += 1;
+  for (const label of ['Atlas', 'Rungs', 'Deployments']) {
+    if (!(await tab.locator('nav[data-g9-breadcrumb] a', { hasText: label }).count())) failures.push(`test/index.html: TEST hub has no ${label} link`);
+  }
+  for (const problem of problems) failures.push(`test/index.html: ${problem}`);
   await context.close();
 }
 
@@ -171,4 +171,4 @@ if (failures.length) {
   console.log(`\nFAIL: ${failures.length} problem(s) in ${checked} checks`);
   process.exit(1);
 }
-console.log(`PASS: the TEST pages hold at ${WIDTHS.length} widths, the Atlas shows its empty state and renders a TEST matrix, and the tab is reachable (${checked} checks)`);
+console.log(`PASS: the TEST pages hold at ${WIDTHS.length} widths, the Atlas renders correctly, learner hubs hide TEST, and the internal TEST route remains reachable (${checked} checks)`);
