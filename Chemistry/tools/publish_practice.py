@@ -117,15 +117,14 @@ def publish_pages() -> None:
   <link rel="stylesheet" href="../../../css/tablet-12-7.css">
   <style>
     body{margin:0;background:var(--bg);color:var(--text)}
-    .practice-shell{max-width:1180px;margin:0 auto;padding:24px 18px 48px}
-    .practice-hero{padding:20px 0 12px}.practice-hero h1{font-size:32px;margin:0 0 8px}
-    .practice-hero p{font-size:16px;color:var(--text-muted);max-width:860px;line-height:1.6}
-    .practice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:20px}
-    .practice-card{border:1px solid var(--border);background:var(--bg-card);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:12px}
-    .practice-card h2{font-size:20px;margin:0}.practice-card p{font-size:15px;line-height:1.55;color:var(--text-muted);margin:0}
-    .practice-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:auto}.practice-actions a{min-height:48px;display:inline-flex;align-items:center}
-    .practice-meta{display:flex;gap:8px;flex-wrap:wrap}.practice-note{font-size:14px;color:var(--text-muted)}
-    @media(max-width:720px){.practice-hero h1{font-size:28px}}
+    .practice-shell{max-width:1120px;margin:0 auto;padding:20px 18px 40px}
+    .practice-hero{padding:16px 0 8px}.practice-hero h1{font-size:28px;line-height:1.18;margin:6px 0}.practice-hero p{font-size:14px;color:var(--text-muted);max-width:820px;line-height:1.55}
+    .practice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px;margin-top:16px}
+    .practice-card{border:1px solid var(--border);background:var(--bg-card);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:10px}
+    .practice-card h2{font-size:18px;line-height:1.3;margin:0}.practice-card p{font-size:14px;line-height:1.5;color:var(--text-muted);margin:0}
+    .practice-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;align-items:center}.practice-actions a{min-height:44px;display:inline-flex;align-items:center}
+    .practice-meta{display:flex;gap:6px;flex-wrap:wrap}.practice-note{font-size:14px;color:var(--text-muted)}
+    @media(max-width:720px){.practice-shell{padding:16px 14px 32px}.practice-hero h1{font-size:24px}.practice-grid{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -142,14 +141,14 @@ def publish_pages() -> None:
   <section class="practice-hero">
     <div class="practice-meta"><span class="badge chem">Chemistry Practice</span><span class="badge ok">Blueprint 1.9</span><span class="badge neutral">Tablet-ready</span></div>
     <h1>🧪 Chemistry Practice Library</h1>
-    <p>Four governed Core 1A concept books paired with the subject-filtered canonical Question Bank. Redox and Mole Concept link directly to admitted question collections; Bonding and Gases remain practice-only until canonical questions are admitted.</p>
-    <div class="practice-actions"><a class="btn outline" href="../../../question-bank/index.html?subject=Chemistry">Browse 46 canonical Chemistry questions →</a></div>
+    <p>Governed Core 1A concept books paired with the subject-filtered canonical Question Bank. Redox and Mole Concept link directly to admitted question collections; Bonding and Gases remain practice-only until canonical questions are admitted.</p>
+    <div class="practice-actions"><a class="btn outline" href="../../../question-bank/index.html?subject=Chemistry">Browse canonical Chemistry questions →</a></div>
   </section>
   <section class="practice-grid" aria-label="Chemistry practice modules">
     <article class="practice-card"><div class="practice-meta"><span class="badge chem">Core 1A</span><span class="badge ok">Gases</span></div><h2>Behaviour of Gases</h2><p>Gas-law models, molecular-speed reasoning, ideal/real-gas boundaries and validity conditions.</p><div class="practice-actions"><a class="btn primary-chem" href="behaviour-of-gases.html">Open Practice →</a></div><span class="practice-note">Canonical topic questions: not yet admitted.</span></article>
     <article class="practice-card"><div class="practice-meta"><span class="badge chem">Core 1A</span><span class="badge ok">Bonding</span></div><h2>Chemical Bonding &amp; Molecular Structure</h2><p>Lewis structures, VSEPR, formal charge, polarity, molecular orbital reasoning and hydrogen bonding.</p><div class="practice-actions"><a class="btn primary-chem" href="chemical-bonding.html">Open Practice →</a></div><span class="practice-note">Canonical topic questions: not yet admitted.</span></article>
-    <article class="practice-card"><div class="practice-meta"><span class="badge chem">Core 1A</span><span class="badge ok">Redox</span></div><h2>Redox Reactions</h2><p>Oxidation-state bookkeeping, agent roles, reaction classification and half-reaction balancing.</p><div class="practice-actions"><a class="btn primary-chem" href="redox-reactions.html">Open Practice →</a><a class="btn outline" href="../../../question-bank/index.html?subject=Chemistry&amp;topic=Redox%20Reactions">26 canonical questions</a></div></article>
-    <article class="practice-card"><div class="practice-meta"><span class="badge chem">Core 1A</span><span class="badge ok">Mole Concept</span></div><h2>Some Basic Concepts of Chemistry</h2><p>Mole scale, stoichiometry, concentration, limiting reagent and quantitative chemical reasoning.</p><div class="practice-actions"><a class="btn primary-chem" href="some-basic-concepts.html">Open Practice →</a><a class="btn outline" href="../../../question-bank/index.html?subject=Chemistry&amp;topic=Some%20Basic%20Concepts%20of%20Chemistry%20%2F%20Mole%20Concept%20%2F%20Stoichiometry">20 canonical questions</a></div></article>
+    <article class="practice-card"><div class="practice-meta"><span class="badge chem">Core 1A</span><span class="badge ok">Redox</span></div><h2>Redox Reactions</h2><p>Oxidation-state bookkeeping, agent roles, reaction classification and half-reaction balancing.</p><div class="practice-actions"><a class="btn primary-chem" href="redox-reactions.html">Open Practice →</a><a class="btn outline" href="../../../question-bank/index.html?subject=Chemistry&amp;topic=Redox%20Reactions">Canonical questions</a></div></article>
+    <article class="practice-card"><div class="practice-meta"><span class="badge chem">Core 1A</span><span class="badge ok">Mole Concept</span></div><h2>Some Basic Concepts of Chemistry</h2><p>Mole scale, stoichiometry, concentration, limiting reagent and quantitative chemical reasoning.</p><div class="practice-actions"><a class="btn primary-chem" href="some-basic-concepts.html">Open Practice →</a><a class="btn outline" href="../../../question-bank/index.html?subject=Chemistry&amp;topic=Some%20Basic%20Concepts%20of%20Chemistry%20%2F%20Mole%20Concept%20%2F%20Stoichiometry">Canonical questions</a></div></article>
   </section>
 </main>
 <script src="../../../js/site-header.js" data-site-root="../../../" data-site-parent="../../../chemistry/index.html"></script>
@@ -171,7 +170,7 @@ def update_portal() -> None:
     practice = """  <div class="chapter-card" style="margin-top: 18px; border-color: rgba(52, 211, 153, 0.45);">
     <div class="chapter-header">
       <div class="chapter-title"><span>🧪</span><span>Chemistry Practice Library</span></div>
-      <div style="display:flex;gap:8px;flex-wrap:wrap;"><span class="badge ok">Blueprint 1.9</span><span class="badge chem">4 Core 1A books</span></div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;"><span class="badge ok">Blueprint 1.9</span><span class="badge chem">Core 1A library</span></div>
     </div>
     <p style="color:var(--text-muted);font-size:14px;margin:0 0 14px;">Tablet-ready governed practice paired with the canonical Chemistry Question Bank. Redox and Mole Concept expose direct question hand-offs without duplicating question authority.</p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;"><a class="btn primary-chem" href="../standalone/practice/chemistry/index.html">Open Chemistry Practice →</a><a class="btn outline" href="../question-bank/index.html?subject=Chemistry">Chemistry Question Bank</a></div>
