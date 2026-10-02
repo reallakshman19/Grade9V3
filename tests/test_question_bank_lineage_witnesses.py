@@ -1,7 +1,6 @@
 """One visible question can be traced back to its canonical record and forward to its deployment (#359, STEP-QB-10)."""
 from __future__ import annotations
 
-import copy
 import json
 import subprocess
 import sys
@@ -10,25 +9,32 @@ import unittest
 from pathlib import Path
 
 from Shared.tools import build_question_bank_platform as bqp
-from Shared.tools import build_question_bank_web
 from Shared.tools import question_bank_platform as qbp
 
 ROOT = Path(__file__).resolve().parents[1]
 CHEMISTRY = "PYQ-CHEM-IITJEE-2008-P1-Q66"
 PHYSICS = "PYQ-PHY-IITJEE-2007-P1-Q03"
-
-
-def math_question_projection() -> tuple[dict, dict]:
-    """A real canonical Mathematics record, opted in in memory only: production content is untouched."""
-    package = json.loads((ROOT / "Mathematics/library/linear-equations.v1.json").read_text(encoding="utf-8"))
-    question = copy.deepcopy(package["questions"][0])
-    question.setdefault("extensions", {})["grade9v3:question_bank"] = {
-        "include": True,
-        "difficulty": question["difficulty"],
-        "question_type": question["learner_question_type"],
-        "expected_time_seconds": 120,
-    }
-    return package, question
+MATHEMATICS = "Q-MAT-LEQ-01-EXEMPLAR8-Q6"
+MATHEMATICS_ADMITTED = {
+    "Q-MAT-LEQ-01-EXEMPLAR8-Q6",
+    "Q-MAT-LEQ-01-EXEMPLAR8-Q17",
+    "Q-MAT-LEQ-01-EXEMPLAR8-Q20",
+    "Q-MAT-LEQ-02-NCERT8-EX2-1-Q1",
+    "Q-MAT-LEQ-02-NCERT8-EX2-1-Q2",
+    "Q-MAT-LEQ-02-NCERT8-EX2-1-Q3",
+    "Q-MAT-LEQ-02-NCERT8-EX2-1-Q5",
+    "Q-MAT-LEQ-02-EXEMPLAR9-4-1-Q16",
+    "Q-MAT-LEQ-03-NCERT8-EX2-2-Q7",
+    "Q-MAT-LEQ-03-NCERT8-EX2-2-Q9",
+    "Q-MAT-LEQ-03-NCERT8-EX2-2-Q10",
+    "Q-MAT-LEQ-03-EXEMPLAR8-Q58",
+    "Q-MAT-LEQ-03-EXEMPLAR8-Q61",
+    "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q1",
+    "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q3",
+    "Q-MAT-LEQ-04-EXEMPLAR9-4-1-Q11",
+    "Q-MAT-LEQ-04-EXEMPLAR9-4-2-Q1",
+    "Q-MAT-LEQ-04-EXEMPLAR9-4-3-Q7",
+}
 
 
 def biology_projection() -> tuple[dict, list[dict]]:
@@ -81,7 +87,7 @@ class LiveWitnesses(unittest.TestCase):
 
     def test_every_live_question_has_an_unbroken_chain(self):
         ids = [row["id"] for row in self.platform["lineage"]["questions"]]
-        self.assertEqual(len(ids), 81)
+        self.assertEqual(len(ids), 99)
         broken = {qid: bqp.trace(self.platform, qid)["broken_links"] for qid in ids}
         self.assertEqual({qid: links for qid, links in broken.items() if links}, {})
 
@@ -99,30 +105,45 @@ class LiveWitnesses(unittest.TestCase):
 
 
 class MathematicsWitness(unittest.TestCase):
-    def test_a_real_canonical_mathematics_record_enters_through_the_package_adapter(self):
-        package, question = math_question_projection()
-        projected = qbp.project_package_question(package, question, order=999)
-        browser = build_question_bank_web.build(ROOT)
-        live = len(browser["questions"])
-        browser = {**browser, "questions": [*browser["questions"], projected]}
-        platform = bqp.build_from_projection(browser)
+    @classmethod
+    def setUpClass(cls):
+        cls.package = json.loads((ROOT / "Mathematics/library/linear-equations.v1.json").read_text(encoding="utf-8"))
+        cls.platform = bqp.build(ROOT)
 
-        self.assertEqual(platform["catalog"]["counts"]["questions"], live + 1)
-        result = bqp.trace(platform, question["id"])
+    def test_production_mathematics_admits_exactly_the_reviewed_source_original_set(self):
+        opted_in = {
+            q["id"] for q in self.package["questions"]
+            if ((q.get("extensions") or {}).get("grade9v3:question_bank") or {}).get("include") is True
+        }
+        self.assertEqual(opted_in, MATHEMATICS_ADMITTED)
+        by_id = {q["id"]: q for q in self.package["questions"]}
+        for qid in MATHEMATICS_ADMITTED:
+            question = by_id[qid]
+            self.assertEqual(question["origin"], "ORIGINAL")
+            self.assertTrue(question["source_refs"])
+            self.assertTrue(question["evidence_refs"])
+            self.assertEqual(question["answer"]["verification_status"], "INDEPENDENTLY_CHECKED")
+
+    def test_a_production_mathematics_question_traces_through_the_generic_package_adapter(self):
+        result = bqp.trace(self.platform, MATHEMATICS, ROOT)
+        self.assertIsNotNone(result)
         self.assertEqual(result["broken_links"], [])
         chain = result["chain"]
         self.assertEqual(chain["canonical_record"]["adapter"], "shared_package_question_v1")
         self.assertEqual(chain["canonical_record"]["package_id"], "LIB-MATH-LINEAR-EQUATIONS")
         self.assertEqual(chain["taxonomy_membership"]["subject_ref"], "SUBJECT-MATHEMATICS")
         self.assertEqual(chain["generated_artifacts"]["detail_shard"]["id"], "details:SUBJECT-MATHEMATICS")
-        # It appears in search and lineage without any Mathematics branch in the platform code.
-        self.assertTrue(qbp.search(platform["search"], "linear"))
+        self.assertEqual(chain["browser_id"]["id"], MATHEMATICS)
+        self.assertTrue(result["deployment"]["deployed"], result["deployment"])
+        self.assertTrue(qbp.search(self.platform["search"], "linear"))
 
-    def test_production_content_is_not_changed_by_the_witness(self):
-        package = json.loads((ROOT / "Mathematics/library/linear-equations.v1.json").read_text(encoding="utf-8"))
-        opted_in = [q["id"] for q in package["questions"]
-                    if ((q.get("extensions") or {}).get("grade9v3:question_bank") or {}).get("include")]
-        self.assertEqual(opted_in, [], "the witness must not opt production Mathematics into the public bank")
+    def test_authored_mathematics_questions_remain_outside_public_qbank(self):
+        authored_opted_in = [
+            q["id"] for q in self.package["questions"]
+            if q.get("origin") == "AUTHORED"
+            and ((q.get("extensions") or {}).get("grade9v3:question_bank") or {}).get("include") is True
+        ]
+        self.assertEqual(authored_opted_in, [])
 
 
 class BiologyWitness(unittest.TestCase):
