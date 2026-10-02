@@ -1,0 +1,81 @@
+name: pr375-u3-retry-r2
+
+on:
+  push:
+    branches: [feat/physics-tablet-standalone]
+    paths: [.github/workflows/pr375-u3-retry-r2.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pr375-u3-retry-r2
+  cancel-in-progress: false
+
+jobs:
+  remediate-verify-commit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Reuse corrected bounded U3 remediation
+        shell: bash
+        run: |
+          pip install --quiet pyyaml
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess, yaml
+          wf = Path('.github/workflows/pr375-u3-remediation.yml')
+          data = yaml.safe_load(wf.read_text(encoding='utf-8'))
+          steps = data['jobs']['remediate-and-verify']['steps']
+          apply = next(s['run'] for s in steps if s.get('name') == 'Apply U3 fixes')
+          old = r'core2-motion-in-a-plane-tablet\.html#T0*([1-9]\d*)$'
+          new = r'core2-motion-in-a-plane-tablet\.html#q0*([1-9]\d*)$'
+          if old not in apply:
+              raise SystemExit('expected historical-anchor matcher not found')
+          apply = apply.replace(old, new, 1)
+          subprocess.run(['bash','-e','-o','pipefail','-c',apply], check=True)
+          PY
+      - name: Install Chromium verifier
+        shell: bash
+        run: |
+          npm install -g playwright@1.56.1
+          playwright install --with-deps chromium
+      - name: Reuse U3 browser verifier
+        shell: bash
+        run: |
+          pip install --quiet pyyaml
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess, yaml
+          data = yaml.safe_load(Path('.github/workflows/pr375-u3-remediation.yml').read_text(encoding='utf-8'))
+          steps = data['jobs']['remediate-and-verify']['steps']
+          verify = next(s['run'] for s in steps if s.get('name') == 'Verify U3 runtime')
+          subprocess.run(['bash','-e','-o','pipefail','-c',verify], check=True)
+          PY
+      - name: Guard live branch head
+        shell: bash
+        run: |
+          set -euo pipefail
+          remote="$(git ls-remote origin refs/heads/feat/physics-tablet-standalone | cut -f1)"
+          test "$remote" = "$GITHUB_SHA" || { echo "branch advanced to $remote; refusing overwrite"; exit 1; }
+      - name: Commit verified U3 remediation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/pr375-u3-remediation.yml .github/workflows/pr375-u3-retry-r2.yml
+          git add standalone
+          git diff --cached --check
+          git status --short
+          git commit -m "fix(physics): remediate U3 interaction rendering findings"
+          git push origin HEAD:feat/physics-tablet-standalone
