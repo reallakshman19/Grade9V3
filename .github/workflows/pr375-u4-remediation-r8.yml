@@ -1,0 +1,96 @@
+name: pr375-u4-remediation-r8
+
+on:
+  push:
+    branches:
+      - feat/physics-tablet-standalone
+    paths:
+      - .github/workflows/pr375-u4-remediation-r8.yml
+
+permissions:
+  contents: write
+
+jobs:
+  deliver-validated-u4:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: feat/physics-tablet-standalone
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Prove learner HTML still matches the fully green U4 audit input
+        shell: bash
+        run: |
+          git diff --quiet 9f9e28d5d3ed73ff8e329589ff913e2607f2673f..HEAD -- standalone/ || {
+            echo "Learner HTML changed after the fully green U4 audit; refusing to replay the validated patch."
+            git diff --name-only 9f9e28d5d3ed73ff8e329589ff913e2607f2673f..HEAD -- standalone/
+            exit 1
+          }
+
+      - name: Reconstruct the exact green U4 candidate
+        shell: bash
+        run: |
+          pip install --quiet pyyaml
+          python3 - <<'PY'
+          from pathlib import Path
+          import subprocess, yaml
+          data = yaml.safe_load(Path('.github/workflows/pr375-u4-remediation-r5.yml').read_text(encoding='utf-8'))
+          for step_name in [
+              'Reconstruct reviewed U4 candidate',
+              'Contain long phone formula without page clipping',
+              'Verify exact U4 static denominator',
+          ]:
+              step = next(s for s in data['jobs']['remediate-verify-commit']['steps'] if s.get('name') == step_name)
+              subprocess.run(['bash', '-e', '-o', 'pipefail', '-c', step['run']], check=True)
+          PY
+
+      - name: Create local U4 remediation commit
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/pr375-u4-remediation.yml \
+                 .github/workflows/pr375-u4-remediation-r2.yml \
+                 .github/workflows/pr375-u4-remediation-r3.yml \
+                 .github/workflows/pr375-u4-diagnostic-r4.yml \
+                 .github/workflows/pr375-u4-remediation-r5.yml \
+                 .github/workflows/pr375-u4-remediation-r6.yml \
+                 .github/workflows/pr375-u4-remediation-r7.yml \
+                 .github/workflows/pr375-u4-remediation-r8.yml
+          git add standalone/core1a-motion-1d-straight-line-tablet.html \
+                  standalone/core1a-motion-in-a-plane-tablet.html \
+                  standalone/core1a-physics-nlm-tablet.html \
+                  standalone/core1a-vector-add-sub-tablet.html \
+                  standalone/core2-motion-in-a-plane-tablet.html \
+                  standalone/core2-physics-thrust-pressure-tablet.html \
+                  standalone/practice/*.html
+          git commit -m "fix(physics): remediate PR375 U4 accessibility findings"
+
+      - name: Rebase safely over unrelated concurrent commits and push without force
+        shell: bash
+        run: |
+          set -euo pipefail
+          branch=feat/physics-tablet-standalone
+          validated=9f9e28d5d3ed73ff8e329589ff913e2607f2673f
+          for attempt in 1 2 3 4 5 6; do
+            git fetch origin "$branch"
+            remote=$(git rev-parse "origin/$branch")
+            if ! git diff --quiet "$validated..$remote" -- standalone/; then
+              echo "Concurrent learner HTML change detected at $remote; refusing to replay without revalidation."
+              git diff --name-only "$validated..$remote" -- standalone/
+              exit 1
+            fi
+            git rebase "origin/$branch"
+            if git push origin "HEAD:$branch"; then
+              echo "U4 remediation pushed on top of $remote without force."
+              exit 0
+            fi
+            echo "Concurrent commit arrived during push attempt $attempt; retrying safe rebase."
+          done
+          echo "Could not obtain a non-force push window after 6 safe rebase attempts."
+          exit 1
