@@ -4,14 +4,26 @@ ROOT = Path(__file__).resolve().parents[2]
 rem = ROOT / ".github/u2/pr375_u3_remediate.py"
 aud = ROOT / ".github/u2/pr375_u3_audit.js"
 
-# The issue comment names the concept, but the rendered representation ID for the
-# orientation unit is not the same string. Patch all six CORE1A concept figures
-# by DOM role/order instead of depending on representation-name spelling.
+# Patch all six CORE1A concept figures by DOM role/order instead of depending on
+# representation-name spelling. The compact final-stage labels preserve the
+# physics meaning while keeping all learner-visible text within the SVG viewBox.
 s = rem.read_text(encoding="utf-8")
 start = s.index("# U3-6/U3-12:")
 end = s.index("# U3-7:", start)
 replacement = r'''# U3-6/U3-12: fix the six rendered CORE1A concept SVGs and persist CORE1A attempts.
-short={"partner force on table":"partner force on table ↓","table acts on Q in two components":"table on Q: N and f","Rtable = vector sum of N and f":"Rtable = vector sum (N, f)","each dF is normal":"each dF ⟂ surface","N = mg - F⊥, only while contact remains":"N = mg − F⊥ (while in contact)","same N + smaller actual contact area -> larger p":"same N, smaller A ⇒ larger p","same N + smaller actual contact area → larger p":"same N, smaller A ⇒ larger p"}
+short={
+"partner force on table":"partner on table ↓",
+"partner force on table ↓":"partner on table ↓",
+"table acts on Q in two components":"table on Q: N and f",
+"Rtable = vector sum of N and f":"Rtable = vector sum (N, f)",
+"each dF is normal":"each dF ⟂ surface",
+"N = mg - F⊥, only while contact remains":"N = mg − F⊥ (while in contact)",
+"If the algebra asks N<0, contact is lost.":"If N<0, contact is lost.",
+"same N + smaller actual contact area -> larger p":"same N, smaller A ⇒ larger p",
+"same N + smaller actual contact area → larger p":"same N, smaller A ⇒ larger p",
+"same N + smaller actual contact area → larger average pressure":"same N, smaller A ⇒ larger p",
+"tilt rotates F; it does not shrink A":"tilt rotates F; A stays same"
+}
 for path in [ST/"core2-physics-thrust-pressure-tablet.html",PR/"core2-physics-thrust-pressure-tablet.html"]:
     text=path.read_text(encoding="utf-8")
     boundary=text.find('<section id="g9-role-CORE2"')
