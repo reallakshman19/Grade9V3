@@ -45,7 +45,8 @@ jobs:
             tests.test_chemistry_tablet_standalone \
             tests.test_chemistry_practice_integration \
             tests.test_qb_tablet_standalone \
-            tests.test_mathematics_tablet_standalone
+            tests.test_mathematics_tablet_standalone \
+            tests.test_global_site_search
       - name: Enforce Blueprint 1.9 across integrated standalone surfaces
         run: |
           python3 Shared/tools/standalone_conformance.py \
