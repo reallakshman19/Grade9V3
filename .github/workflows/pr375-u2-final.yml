@@ -48,6 +48,10 @@ jobs:
           assert n == 1, "expected one whitespace-only line after duplicate-id collapse"
           path.write_text(text, encoding="utf-8")
           PY
+          # U2 remediation does not require changing a repository workflow.
+          # Keep workflow bytes at the triggering head so the Actions token only
+          # needs ordinary contents:write for the verified product commit.
+          git checkout -- .github/workflows/learner-quality.yml
 
       - name: Static U2 regression
         run: python3 -m unittest tests.test_pr375_u2_standalone
@@ -81,11 +85,15 @@ jobs:
         run: |
           rm -f .github/u2/pr375_u2_remediate.py \
                 .github/u2/pr375_u2_audit.js \
-                .github/u2/pr375_u2_testfix.py \
-                .github/workflows/pr375-u2-final.yml
+                .github/u2/pr375_u2_testfix.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
+          if git diff --cached --name-only | grep -q '^\.github/workflows/'; then
+            echo "Refusing to include workflow changes in product commit."
+            git diff --cached --name-only
+            exit 1
+          fi
           git diff --cached --check
           git commit -m "fix(physics): remediate PR375 U2 navigation offline findings"
 
