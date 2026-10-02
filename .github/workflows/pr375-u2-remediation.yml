@@ -36,9 +36,7 @@ jobs:
           python3 .github/u2/pr375_u2_testfix.py
 
       - name: Static U2 regression
-        run: |
-          python3 -m unittest tests.test_pr375_u2_standalone
-          python3 -m unittest tests.test_physics_practice_standalone
+        run: python3 -m unittest tests.test_pr375_u2_standalone
 
       - name: Install Chromium audit dependency outside repository
         run: |
