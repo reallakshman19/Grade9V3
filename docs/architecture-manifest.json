@@ -6,20 +6,20 @@
     "adapter",
     "adapter"
   ],
-  "component_count": 457,
+  "component_count": 460,
   "relation_count": 509,
   "components_by_role": {
     "CONTRACT": 9,
     "ENGINE": 10,
     "GATES": 2,
     "LIBRARY": 56,
-    "TEST": 219,
-    "TOOLING": 131,
+    "TEST": 221,
+    "TOOLING": 132,
     "WEB": 13,
     "WEB_CONTRACT": 8,
     "WEB_RUNTIME": 9
   },
-  "digest": "sha256:f5a3844d367006e538f2843adaac04a421ad8100513f4211c7ea4a56f9a7a715",
+  "digest": "sha256:b1f13d803f053400dbf36070a4bd7038b8b0bbda7712c091ac276840588001fe",
   "components": [
     {
       "path": "Shared/gates/gate.schema.json",
@@ -720,6 +720,13 @@
       "role_description": "Guardrails and generators",
       "bytes": 5166,
       "sha256": "419a004a61aedcb8a0c5182fb5f3f18b08ab61e147be121f4b581bf4c5d118c1"
+    },
+    {
+      "path": "Shared/tools/build_qb_tablet_standalone.py",
+      "role": "TOOLING",
+      "role_description": "Guardrails and generators",
+      "bytes": 55635,
+      "sha256": "6a1b442318a3edcb2d757b10d9b31bc17f748256e017074c4d2283eb28499481"
     },
     {
       "path": "Shared/tools/build_question_bank_platform.py",
@@ -1933,6 +1940,13 @@
       "sha256": "af731cd13341c75bce69ed2ebd3b36ebe473cb3515b68d68faa561ed055ad85f"
     },
     {
+      "path": "tests/qb_tablet_standalone_browser.mjs",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 20492,
+      "sha256": "084e7f0de150190cafe65ea72f6908d6f1b6a6cf29d9eda28d345cdc8d0bcff1"
+    },
+    {
       "path": "tests/question_bank_bootstrap.test.mjs",
       "role": "TEST",
       "role_description": "Executable checks",
@@ -2813,6 +2827,13 @@
       "role_description": "Executable checks",
       "bytes": 24889,
       "sha256": "0cdddb6a3b20bfebbe316807a5a470c6b06a71349afa03795c7d81576c34e5b2"
+    },
+    {
+      "path": "tests/test_qb_tablet_standalone.py",
+      "role": "TEST",
+      "role_description": "Executable checks",
+      "bytes": 12532,
+      "sha256": "38eba34cb2a55412116d72ba677d80610fa11575ee88380a34a4737a11ccfcdd"
     },
     {
       "path": "tests/test_quality_contract.py",

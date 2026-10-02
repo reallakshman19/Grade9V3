@@ -298,6 +298,15 @@
       "location": "main",
       "reason": "Navigation and status for a sandbox subject, not learner teaching content: every learner page it links to is rendered by render_core.py, and a page it reports is labelled an unaccepted draft",
       "phase3_action": "Fold into a render_core site-page mode if Phase 3 makes one; until then it adds no learner-page generator"
+    },
+    {
+      "path": "Shared/tools/build_qb_tablet_standalone.py",
+      "kind": "PYTHON_HTML",
+      "classification": "MIGRATE",
+      "renders": "Deterministic single-file projection of the canonical Question Bank and governed Selected D3/D4 view for PR #377",
+      "location": "main",
+      "reason": "Projection only, not academic authority; canonical-parity tests bind it to current Question Bank records",
+      "phase3_action": "Fold this packaging into the shared Core2/question-study rendering path; do not treat it as a second Question Bank authority"
     }
   ]
 }

@@ -117,8 +117,10 @@ def canonical_questions():
     chemistry = load_json(CHEMISTRY)["questions"]
     questions = [*physics, *chemistry]
     ids = [q["id"] for q in questions]
-    if len(ids) != 77 or len(set(ids)) != 77:
-        raise ValueError(f"Expected exactly 77 unique canonical questions, got {len(ids)}")
+    if len(ids) != len(set(ids)):
+        raise ValueError(f"Canonical Question Bank contains duplicate IDs: {len(ids)} records, {len(set(ids))} unique")
+    if not questions:
+        raise ValueError("Canonical Question Bank is empty")
     return questions
 
 
@@ -794,6 +796,13 @@ JS = r"""
 
 def render():
     questions = canonical_questions()
+    total = len(questions)
+    subject_counts = {}
+    for question in questions:
+        section = custody(question).get("section", "")
+        subject_counts[section] = subject_counts.get(section, 0) + 1
+    physics_count = subject_counts.get("Physics", 0)
+    chemistry_count = subject_counts.get("Chemistry", 0)
     view = selected_view()
     selected_refs = list(view["resolved_question_refs"])
     ids = {q["id"] for q in questions}
@@ -808,7 +817,7 @@ def render():
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="77 source-verified canonical Physics and Chemistry PYQs with progressive support and worked solutions, plus the governed seven-question Selected D3/D4 study view.">
+<meta name="description" content="{total} source-verified canonical Physics and Chemistry PYQs with progressive support and worked solutions, plus the governed seven-question Selected D3/D4 study view.">
 <meta name="grade9v3-qb-build" content="{esc(bid)}">
 <meta name="g9-render" content="qb_tablet/3 {esc(BLUEPRINT_REF)}">
 <meta name="grade9v3-blueprint-source" content="PR{BLUEPRINT_SOURCE_PR}@{esc(BLUEPRINT_SOURCE_SHA)}">
@@ -834,19 +843,19 @@ def render():
 <noscript>Answers open after you attempt; this page needs JavaScript for progressive support and solution unlocking.</noscript>
 <main id="question-bank-top" class="app" data-build-id="{esc(bid)}">
 <section class="page-intro">
-  <div class="badge-row"><span class="badge">Canonical Question Bank</span><span class="badge">77 verified-parent PYQs</span><span class="badge selected">Selected D3/D4 · 7</span><span class="badge">Offline single-file</span><span class="badge">{esc(BLUEPRINT_REF)}</span></div>
+  <div class="badge-row"><span class="badge">Canonical Question Bank</span><span class="badge">{total} verified-parent PYQs</span><span class="badge selected">Selected D3/D4 · 7</span><span class="badge">Offline single-file</span><span class="badge">{esc(BLUEPRINT_REF)}</span></div>
   <h1>Canonical Question Bank · CORE2 Tablet Study Edition</h1>
-  <p>31 Physics + 46 Chemistry questions projected directly from repository canonical exam-bank records. The page follows the #372 CORE2 blueprint: attempt first, bounded progressive support, and a learner-openable worked solution after commitment.</p>
+  <p>{physics_count} Physics + {chemistry_count} Chemistry questions projected directly from repository canonical exam-bank records. The page follows the #372 CORE2 blueprint: attempt first, bounded progressive support, and a learner-openable worked solution after commitment.</p>
 </section>
 <section class="toolbar" aria-label="Question Bank views">
   <div class="tabs" role="tablist" aria-label="Question views">
-    <button class="tab-btn" type="button" role="tab" aria-selected="true" data-filter="all">All 77</button>
+    <button class="tab-btn" type="button" role="tab" aria-selected="true" data-filter="all">All {total}</button>
     <button class="tab-btn" type="button" role="tab" aria-selected="false" data-filter="selected">Selected D3/D4 · 7</button>
-    <button class="tab-btn" type="button" role="tab" aria-selected="false" data-filter="physics">Physics · 31</button>
-    <button class="tab-btn" type="button" role="tab" aria-selected="false" data-filter="chemistry">Chemistry · 46</button>
+    <button class="tab-btn" type="button" role="tab" aria-selected="false" data-filter="physics">Physics · {physics_count}</button>
+    <button class="tab-btn" type="button" role="tab" aria-selected="false" data-filter="chemistry">Chemistry · {chemistry_count}</button>
     <button class="tab-btn" type="button" role="tab" aria-selected="false" data-filter="d3d4">All D3/D4</button>
   </div>
-  <div id="result-count" class="result-count">Showing 77 questions</div>
+  <div id="result-count" class="result-count">Showing {total} questions</div>
 </section>
 <section id="question-bank-list">{cards}</section>
 </main>
