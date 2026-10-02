@@ -21,6 +21,11 @@ EXPECTED_RESOURCE_IDS = {
 }
 
 
+def load_js_assignment(path: Path) -> dict:
+    raw = path.read_text(encoding="utf-8").strip()
+    return json.loads(raw.split("=", 1)[1].rstrip(";"))
+
+
 class ChemistryPracticeIntegration(unittest.TestCase):
     def test_practice_projection_and_subject_question_bank_handoff(self) -> None:
         for name in EXPECTED_PAGES:
@@ -32,8 +37,7 @@ class ChemistryPracticeIntegration(unittest.TestCase):
         self.assertIn("Canonical topic questions: not yet admitted.", hub)
 
     def test_site_search_contains_every_chemistry_practice_route(self) -> None:
-        raw = (ROOT / "public/data/site-search-resources.js").read_text(encoding="utf-8").strip()
-        rows = json.loads(raw.split("=", 1)[1].rstrip(";"))
+        rows = load_js_assignment(ROOT / "public/data/site-search-resources.js")
         paths = {row["path"] for row in rows}
         expected = {f"standalone/practice/chemistry/{name}" for name in EXPECTED_PAGES}
         self.assertTrue(expected <= paths)
@@ -42,8 +46,10 @@ class ChemistryPracticeIntegration(unittest.TestCase):
         resources = json.loads((ROOT / "Chemistry/question-bank/resources.v1.json").read_text(encoding="utf-8"))
         ids = {row["id"] for row in resources["resources"]}
         self.assertTrue(EXPECTED_RESOURCE_IDS <= ids)
-        catalog = (ROOT / "public/data/question-bank-catalog.js").read_text(encoding="utf-8")
-        self.assertIn('"Chemistry":46', catalog)
+        catalog = load_js_assignment(ROOT / "public/data/question-bank-catalog.js")
+        chemistry = next(subject for subject in catalog["subjects"] if subject["label"] == "Chemistry")
+        self.assertEqual(chemistry["question_count"], 46)
+        self.assertEqual(catalog["counts"]["questions"], 81)
 
     def test_chemistry_portal_exposes_practice_and_subject_qb(self) -> None:
         portal = (ROOT / "public/chemistry/index.html").read_text(encoding="utf-8")
