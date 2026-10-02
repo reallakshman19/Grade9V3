@@ -105,6 +105,12 @@
       "keywords": ["physics", "friction", "nlm", "blueprint 1.9", "core1a", "core2", "practice"]
     },
     {
+      "title": "Motion in 2D — Shared-Clock Guided Session",
+      "path": "motion-session/index.html",
+      "kind": "guided_session",
+      "keywords": ["physics", "motion in 2d", "motion in a plane", "shared clock", "components", "guided session", "transfer", "projectile"]
+    },
+    {
       "title": "Chemistry Practice Library",
       "path": "standalone/practice/chemistry/index.html",
       "kind": "practice",

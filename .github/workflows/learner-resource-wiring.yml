@@ -1,0 +1,88 @@
+name: learner-resource-wiring
+
+# Durable regression signal for learner audience, discovery and rendered wiring.
+on:
+  push:
+    branches: ["**"]
+    paths:
+      - ".github/workflows/learner-resource-wiring.yml"
+      - "Shared/search/site-search-resources.v1.json"
+      - "public/index.html"
+      - "public/js/site-header.js"
+      - "public/data/site-search-resources.js"
+      - "public/physics/index.html"
+      - "public/chemistry/index.html"
+      - "public/mathematics/index.html"
+      - "public/motion-session/**"
+      - "standalone/motion-session/index.html"
+      - "docs/index.html"
+      - "docs/js/site-header.js"
+      - "docs/data/site-search-resources.js"
+      - "docs/physics/index.html"
+      - "docs/chemistry/index.html"
+      - "docs/mathematics/index.html"
+      - "docs/motion-session/**"
+      - "tests/test_global_site_search.py"
+      - "tests/test_learner_resource_wiring.py"
+      - "tests/test_learner_resource_wiring_browser.mjs"
+      - "tests/test_test_area.py"
+  pull_request:
+    paths:
+      - ".github/workflows/learner-resource-wiring.yml"
+      - "Shared/search/site-search-resources.v1.json"
+      - "public/index.html"
+      - "public/js/site-header.js"
+      - "public/data/site-search-resources.js"
+      - "public/physics/index.html"
+      - "public/chemistry/index.html"
+      - "public/mathematics/index.html"
+      - "public/motion-session/**"
+      - "standalone/motion-session/index.html"
+      - "docs/index.html"
+      - "docs/js/site-header.js"
+      - "docs/data/site-search-resources.js"
+      - "docs/physics/index.html"
+      - "docs/chemistry/index.html"
+      - "docs/mathematics/index.html"
+      - "docs/motion-session/**"
+      - "tests/test_global_site_search.py"
+      - "tests/test_learner_resource_wiring.py"
+      - "tests/test_learner_resource_wiring_browser.mjs"
+      - "tests/test_test_area.py"
+  workflow_dispatch:
+
+jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install focused test dependencies
+        run: pip install --quiet jsonschema pypdf
+      - name: Learner wiring and one-search contracts
+        run: >-
+          python3 -m unittest
+          tests.test_global_site_search
+          tests.test_learner_resource_wiring
+          tests.test_test_area.TestPages.test_test_stays_internal_and_is_not_exposed_by_learner_shell_or_hubs
+          tests.test_test_area.TestPages.test_test_is_not_a_question_bank_subject
+      - name: Global static-search projection is deterministic
+        run: python3 Shared/tools/build_site_search_resources.py --check
+      - name: Pages mirror is deterministic and internally linked
+        run: python3 Shared/tools/build_pages_site.py --check
+
+  rendered-learner-flow:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install Chromium audit dependency
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Rendered desktop and 12.7-inch learner audit
+        run: node tests/test_learner_resource_wiring_browser.mjs
