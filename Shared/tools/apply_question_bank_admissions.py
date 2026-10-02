@@ -39,20 +39,41 @@ def _answer_grounded(question: Mapping[str, object]) -> bool:
     return isinstance(answer, list) and bool(answer) and all(isinstance(ref, str) and ref for ref in answer)
 
 
-def _question_bank_config(manifest: Mapping[str, object], entry: Mapping[str, object], question: Mapping[str, object]) -> dict:
-    difficulty = question.get("difficulty")
-    question_type = question.get("learner_question_type")
+def _publication_question_type(entry: Mapping[str, object], question: Mapping[str, object]) -> str:
+    explicit = entry.get("question_type")
+    if isinstance(explicit, str) and explicit:
+        return explicit
+    canonical = question.get("learner_question_type")
+    if isinstance(canonical, str) and canonical:
+        return canonical
+    options = question.get("options") or []
+    return "mcq_single" if isinstance(options, list) and options else "constructed_response"
+
+
+def _publication_difficulty(
+    manifest: Mapping[str, object], entry: Mapping[str, object], question: Mapping[str, object]
+) -> dict:
+    explicit = entry.get("difficulty")
+    canonical = question.get("difficulty")
+    default = manifest.get("difficulty")
+    difficulty = explicit or canonical or default
     if not isinstance(difficulty, Mapping) or not difficulty.get("band"):
-        raise AdmissionError(f"{question.get('id')}: canonical difficulty metadata missing")
-    if not isinstance(question_type, str) or not question_type:
-        raise AdmissionError(f"{question.get('id')}: canonical learner_question_type missing")
+        raise AdmissionError(
+            f"{question.get('id')}: difficulty metadata missing from canonical record and admission evidence"
+        )
+    return dict(difficulty)
+
+
+def _question_bank_config(manifest: Mapping[str, object], entry: Mapping[str, object], question: Mapping[str, object]) -> dict:
+    difficulty = _publication_difficulty(manifest, entry, question)
+    question_type = _publication_question_type(entry, question)
     expected_time = entry.get("expected_time_seconds", manifest.get("expected_time_seconds"))
     if not isinstance(expected_time, int) or expected_time <= 0:
         raise AdmissionError(f"{question.get('id')}: positive expected_time_seconds required")
 
     config = {
         "include": True,
-        "difficulty": dict(difficulty),
+        "difficulty": difficulty,
         "question_type": question_type,
         "expected_time_seconds": expected_time,
         "topic_ref": manifest.get("topic_ref"),
