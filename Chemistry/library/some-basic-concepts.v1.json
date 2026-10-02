@@ -573,7 +573,7 @@
           "action": "For temperature-change reasoning, state whether the sample is closed and composition/amounts remain unchanged.",
           "why_valid": "Molarity can change if solution volume changes; molality and mole fraction do not change merely from temperature when solvent mass and mole amounts stay unchanged.",
           "inputs": [],
-          "output": "Closed unchanged sample: Vsolution ↑ with fixed nsolute ⇒ c ↓, while fixed msolvent and fixed mole amounts leave b and xi unchanged."
+          "output": "Closed unchanged sample: Vsolution ↑ with fixed nsolute ⇒ c = n/V ↓, while fixed msolvent and fixed mole amounts leave b and xi unchanged."
         },
         {
           "id": "MOLE-CONCENTRATION-T3",
