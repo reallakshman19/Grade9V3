@@ -1,0 +1,38 @@
+name: mathematics-practice
+
+on:
+  push:
+    branches: ["feat/mathematics-tablet-standalone"]
+  pull_request:
+    paths:
+      - "standalone/core1a-mathematics-*.html"
+      - "public/standalone/practice/mathematics/**"
+      - "public/mathematics/index.html"
+      - "public/data/site-search-resources.js"
+      - "docs/**"
+      - "tests/test_mathematics_tablet_standalone.py"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Mathematics standalone unit contracts
+        run: python3 -m unittest tests.test_mathematics_tablet_standalone -v
+      - name: Blueprint 1.9 standalone conformance
+        run: |
+          python3 Shared/tools/standalone_conformance.py \
+            standalone/core1a-mathematics-euclids-geometry-tablet.html \
+            standalone/core1a-mathematics-theory-of-equations-tablet.html \
+            public/standalone/practice/mathematics/euclids-geometry.html \
+            public/standalone/practice/mathematics/theory-of-equations.html \
+            public/standalone/practice/mathematics/index.html \
+            --enforce
+      - name: Pages mirror is deterministic
+        run: python3 Shared/tools/build_pages_site.py --check
