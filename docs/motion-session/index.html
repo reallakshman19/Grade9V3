@@ -21,6 +21,7 @@
     .progress{margin:0;font-weight:650}
     .stage-nav{display:grid;grid-template-columns:repeat(5,minmax(7.5rem,1fr));gap:.45rem}
     .stage-nav button,.actions button{min-height:2.75rem;padding:.55rem .75rem;border:1px solid currentColor;border-radius:.55rem;background:Canvas;cursor:pointer}
+    .session-return{display:inline-flex;align-items:center;min-height:2.75rem;padding:.5rem .75rem;border:1px solid currentColor;border-radius:.55rem;color:inherit;text-decoration:none;font-weight:700}
     .stage-nav button[aria-current="step"]{outline:3px solid Highlight;outline-offset:2px}
     button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid Highlight;outline-offset:3px}
     button:disabled{opacity:.45;cursor:not-allowed}
@@ -53,6 +54,7 @@
           <p id="session-progress" class="progress" role="status" aria-live="polite">Preparing session…</p>
         </div>
         <div class="session-tools" aria-label="Session tools">
+          <a class="session-return" href="../physics/index.html">← Physics</a>
           <button type="button" id="reset-session">Reset this run</button>
           <button type="button" id="export-trace">Export diagnostic trace</button>
         </div>
