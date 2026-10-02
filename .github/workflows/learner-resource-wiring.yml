@@ -1,5 +1,6 @@
 name: learner-resource-wiring
 
+# Durable regression signal for learner audience, discovery and rendered wiring.
 on:
   push:
     branches: ["**"]
