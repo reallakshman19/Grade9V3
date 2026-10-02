@@ -1,0 +1,222 @@
+name: pr375-u3-remediation
+
+on:
+  push:
+    branches: [feat/physics-tablet-standalone]
+    paths: [.github/workflows/pr375-u3-remediation.yml]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: pr375-u3-remediation
+  cancel-in-progress: false
+
+jobs:
+  remediate-and-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Apply U3 fixes
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import html, json, re, subprocess
+
+          old_head='46c667db4b23e3a5fb00c588825ea28bf60987c4'
+          changed=[]
+          def rd(p): return Path(p).read_text(encoding='utf-8')
+          def wr(p,s):
+              q=Path(p); old=q.read_text(encoding='utf-8')
+              if old!=s: q.write_text(s,encoding='utf-8'); changed.append(p)
+          def need(c,m):
+              if not c: raise RuntimeError(m)
+
+          base=subprocess.check_output(['git','merge-base','origin/main','HEAD'],text=True).strip()
+          pages=subprocess.check_output(['git','diff','--name-only',base,'HEAD','--','standalone'],text=True).splitlines()
+          pages=[p for p in pages if p.endswith('.html') and (p.count('/')==1 or p.startswith('standalone/practice/'))]
+          need(len(pages)==20,f'expected 20 standalone HTML pages, got {len(pages)}: {pages}')
+
+          safe='''<script data-u3-safe-storage>\nconst g9SafeStorage=window.g9SafeStorage=(()=>{const s=()=>{try{return window["localStorage"]}catch(_){return null}};return{getItem:k=>{try{const x=s();return x?x.getItem(k):null}catch(_){return null}},setItem:(k,v)=>{try{const x=s();if(x)x.setItem(k,v)}catch(_){}},removeItem:k=>{try{const x=s();if(x)x.removeItem(k)}catch(_){}},clear:()=>{try{const x=s();if(x)x.clear()}catch(_){}}}})();\n</script>'''
+          storage_pages=[
+            'standalone/practice/core1a-physics-motion-2d-ncert-tablet.html',
+            'standalone/practice/core1a-physics-nlm-tablet.html',
+            'standalone/practice/core1a-physics-vectors-tablet.html',
+            'standalone/practice/core1a-sba-06-07-trajectory-and-height-tablet.html',
+            'standalone/practice/core1a-sba-motion-in-a-plane-master-tablet.html',
+            'standalone/practice/core2-motion-1d-straight-line-tablet.html',
+            'standalone/practice/core2-motion-consolidated-practice-tablet.html',
+            'standalone/practice/core2-motion-in-a-plane-tablet.html']
+          for p in storage_pages:
+              s=rd(p)
+              s=re.sub(r'(?<![\w$])(?:window\.)?localStorage\b','g9SafeStorage',s)
+              if 'data-u3-safe-storage' not in s:
+                  m=re.search(r'<head\b[^>]*>',s,re.I); need(m,f'{p}: head missing')
+                  s=s[:m.end()]+safe+s[m.end():]
+              wr(p,s)
+
+          # U3-1: orphan Tailwind config is a load-time ReferenceError.
+          p='standalone/practice/motion-in-1d-master-suite.html'; s=rd(p)
+          s,n=re.subn(r'\n\s*<script>\s*tailwind\.config\s*=\s*\{.*?\}\s*</script>\s*','\n',s,count=1,flags=re.S)
+          need(n==1,f'{p}: tailwind config block not found'); wr(p,s)
+
+          # U3-2/U3-3: repair escaped-control corruption and ensure local KaTeX auto-render.
+          katex='''<link rel="stylesheet" href="../../public/vendor/katex/0.16.8/katex.min.css">\n<script defer src="../../public/vendor/katex/0.16.8/katex.min.js"></script>\n<script defer src="../../public/vendor/katex/0.16.8/contrib/auto-render.min.js"></script>\n<script data-u3-katex-runtime>window.renderAllMath=function(root){const t=root||document.body;if(!t||!window.renderMathInElement)return;window.renderMathInElement(t,{delimiters:[{left:"$$",right:"$$",display:true},{left:"\\\\[",right:"\\\\]",display:true},{left:"\\\\(",right:"\\\\)",display:false},{left:"$",right:"$",display:false}],throwOnError:false})};document.addEventListener("DOMContentLoaded",()=>window.renderAllMath(document.body));</script>'''
+          math_pages=['standalone/practice/core1a-physics-nlm-tablet.html','standalone/practice/core1a-physics-vectors-tablet.html','standalone/practice/core1a-sba-motion-in-a-plane-master-tablet.html','standalone/practice/motion-in-2d-master-suite.html']
+          for p in math_pages:
+              s=rd(p).replace('\x0bec',r'\vec').replace('\x0crac',r'\frac').replace('\t'+'heta',r'\theta')
+              need('\x0b' not in s and '\x0c' not in s,f'{p}: control character remains')
+              if 'data-u3-katex-runtime' not in s:
+                  s=re.sub(r'\s*<link\b[^>]*katex[^>]*>\s*','\n',s,flags=re.I)
+                  s=re.sub(r'\s*<script\b[^>]*src=["\'][^"\']*(?:katex\.min\.js|auto-render\.min\.js)["\'][^>]*></script>\s*','\n',s,flags=re.I)
+                  need('</head>' in s,f'{p}: head close missing'); s=s.replace('</head>',katex+'\n</head>',1)
+              wr(p,s)
+
+          # U3-4: recover the 59 candidate stems/options only into this review HTML; canonical libraries remain rolled back.
+          old=json.loads(subprocess.check_output(['git','show',f'{old_head}:Physics/library/phy-kin-2d-motion.v1.json'],text=True))
+          rec={}
+          def walk(v):
+              if isinstance(v,dict):
+                  yield v
+                  for x in v.values(): yield from walk(x)
+              elif isinstance(v,list):
+                  for x in v: yield from walk(x)
+          for row in walk(old):
+              ext=row.get('extensions') if isinstance(row,dict) else None
+              src=str(ext.get('grade9v3:source_html','')) if isinstance(ext,dict) else ''
+              m=re.search(r'core2-motion-in-a-plane-tablet\.html#T0*([1-9]\d*)$',src)
+              if m and 1<=int(m.group(1))<=59: rec[int(m.group(1))]=row
+          need(len(rec)==59,f'recovered {len(rec)} challenge records, expected 59')
+          p='standalone/practice/core2-motion-in-a-plane-tablet.html'; s=rd(p)
+          for n in range(59,0,-1):
+              q=f'q{n:02d}'; row=rec[n]; stem=str(row.get('stem') or '').strip(); opts=row.get('options') or []; cond=row.get('conditions') or []
+              need(stem and len(opts)==4,f'{q}: incomplete recovered content')
+              m=re.search(rf'(<article\b[^>]*\bid="{q}"[^>]*>)(.*?)(</article>)',s,re.S); need(m,f'{q}: article missing')
+              body=m.group(2); need('question-stem-card' not in body,f'{q}: already patched')
+              pos=body.find('</header>'); need(pos>=0,f'{q}: header missing'); pos+=9
+              conditions=''.join(f'<li>{html.escape(str(x))}</li>' for x in cond if str(x).strip())
+              block=f'<section class="question-stem-card" aria-label="Question stem"><div class="question-stem-label">Question</div><p class="question-stem-text">{html.escape(stem)}</p>'+(f'<ul class="question-condition-list">{conditions}</ul>' if conditions else '')+'</section>'
+              body=body[:pos]+block+body[pos:]
+              buttons=[]
+              for i,v in enumerate(opts):
+                  L=chr(65+i); txt=re.sub(rf'^\s*(?:\({L}\)|{L}[\.\):])\s*','',str(v).strip(),count=1,flags=re.I)
+                  need(txt,f'{q}: option {L} empty'); buttons.append(f'<button class="opt-btn" data-opt="{L}"><span class="opt-letter">{L}</span><span class="opt-text">{html.escape(txt)}</span></button>')
+              rowhtml='<div class="option-selector-row">'+''.join(buttons)+'</div>'
+              body,c=re.subn(r'<div class="option-selector-row">\s*<button class="opt-btn" data-opt="A">.*?</button>\s*<button class="opt-btn" data-opt="B">.*?</button>\s*<button class="opt-btn" data-opt="C">.*?</button>\s*<button class="opt-btn" data-opt="D">.*?</button>\s*</div>',rowhtml,body,count=1,flags=re.S)
+              need(c==1,f'{q}: option row not replaced')
+              s=s[:m.start()]+m.group(1)+body+m.group(3)+s[m.end():]
+          css='''<style data-u3-question-content>.question-stem-card{margin:14px 0;padding:16px 18px;border:1px solid var(--border);border-left:4px solid var(--accent);border-radius:12px;background:var(--bg-surface)}.question-stem-label{font-size:14px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:7px}.question-stem-text{margin:0;font-size:16px;line-height:1.58;color:var(--text-primary)}.question-condition-list{margin:10px 0 0;padding-left:1.25rem;color:var(--text-secondary);line-height:1.5}.option-selector-row{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px!important}.opt-btn{justify-content:flex-start!important;text-align:left!important;gap:10px!important;min-height:52px!important;height:auto!important;white-space:normal!important;padding:10px 12px!important}.opt-letter{display:inline-grid;place-items:center;flex:0 0 30px;width:30px;height:30px;border-radius:50%;border:1px solid currentColor;font-weight:850}.opt-text{display:block;line-height:1.4}@media(max-width:720px){.option-selector-row{grid-template-columns:1fr}}</style>'''
+          s=s.replace('</head>',css+'\n</head>',1)
+          a="""    const correctOpt = card.getAttribute('data-correct-opt');\n    const optBtns = card.querySelectorAll('.opt-btn');\n    const solDetails = card.querySelector('details.solution-reveal');\n\n    optBtns.forEach(btn => {\n"""
+          b="""    const correctOpt = card.getAttribute('data-correct-opt');\n    const optBtns = card.querySelectorAll('.opt-btn');\n    const solDetails = card.querySelector('details.solution-reveal');\n    const qNum = card.getAttribute('data-question');\n    const storedChoice = qNum ? g9SafeStorage.getItem(`g9_c2_q${qNum}_opt`) : null;\n    if (storedChoice) { const restored=[...optBtns].find(x=>x.getAttribute('data-opt')===storedChoice); if(restored) restored.classList.add(storedChoice===correctOpt?'selected-correct':'selected-incorrect'); }\n\n    optBtns.forEach(btn => {\n"""
+          need(a in s,'core2 option init anchor missing'); s=s.replace(a,b,1)
+          a="""        // Auto-expand solution\n        if (solDetails) {\n          solDetails.open = true;\n        }\n"""; need(a in s,'core2 auto-open anchor missing'); s=s.replace(a,"        if (qNum) g9SafeStorage.setItem(`g9_c2_q${qNum}_opt`, choice);\n",1)
+          a="""      submitBtn.addEventListener('click', () => {\n        const text = textarea.value.trim();\n        if (text) {\n"""; b="""      submitBtn.addEventListener('click', () => {\n        const text = textarea.value.trim();\n        const selected = card.querySelector('.opt-btn.selected-correct, .opt-btn.selected-incorrect');\n        if (!text && !selected) { textarea.focus(); return; }\n        if (text) {\n"""; need(a in s,'core2 submit anchor missing'); s=s.replace(a,b,1)
+          a="        g9SafeStorage.removeItem(`g9_c2_q${qNum}`);\n"; need(a in s,'core2 clear anchor missing'); s=s.replace(a,a+"        g9SafeStorage.removeItem(`g9_c2_q${qNum}_opt`);\n",1)
+          wr(p,s)
+
+          # U3-6/U3-12: fixed-size arrowheads, expanded canvas, readable/deconflicted labels, and concept state persistence.
+          for p in ['standalone/core2-physics-thrust-pressure-tablet.html','standalone/practice/core2-physics-thrust-pressure-tablet.html']:
+              s=rd(p); s,c=re.subn(r'<marker(?![^>]*\bmarkerUnits=)','<marker markerUnits="userSpaceOnUse"',s); need(c>0,f'{p}: markers missing')
+              need(s.count('viewBox="0 0 440 300"')>=6,f'{p}: concept viewboxes missing'); s=s.replace('viewBox="0 0 440 300"','viewBox="0 0 560 340"')
+              fix='''<style data-u3-svg-fix>figure[data-g9-figure] svg text{font-size:14px!important;paint-order:stroke;stroke:var(--card,#fff);stroke-width:3px;stroke-linejoin:round}figure[data-g9-figure] svg{overflow:visible}</style><script data-u3-svg-layout>(()=>{const ov=(a,b,p=4)=>!(a.x+a.width+p<=b.x||b.x+b.width+p<=a.x||a.y+a.height+p<=b.y||b.y+b.height+p<=a.y);function go(svg){if(!svg||svg.dataset.u3Busy==='1')return;svg.dataset.u3Busy='1';try{const v=svg.viewBox.baseVal;if(!v?.width)return;const ts=[...svg.querySelectorAll('text')].filter(t=>t.getClientRects().length);for(const t of ts){if(!t.dataset.u3x){t.dataset.u3x=t.getAttribute('x')||'0';t.dataset.u3y=t.getAttribute('y')||'0'}t.setAttribute('x',t.dataset.u3x);t.setAttribute('y',t.dataset.u3y);t.removeAttribute('transform')}const done=[];for(const t of ts){let b;try{b=t.getBBox()}catch(_){continue}let dx=0,dy=0;if(b.x<v.x+8)dx+=v.x+8-b.x;if(b.x+b.width>v.x+v.width-8)dx-=b.x+b.width-(v.x+v.width-8);if(b.y<v.y+8)dy+=v.y+8-b.y;if(b.y+b.height>v.y+v.height-8)dy-=b.y+b.height-(v.y+v.height-8);for(let k=0;k<12;k++){t.setAttribute('transform',`translate(${dx} ${dy})`);b=t.getBBox();const h=done.find(x=>ov(b,x));if(!h)break;const d=(h.y+h.height+7)-b.y,u=(h.y-7)-(b.y+b.height);dy+=(b.y+d+b.height<=v.y+v.height-8)?d:u}try{done.push(t.getBBox())}catch(_){}}}finally{svg.dataset.u3Busy='0'}}function install(){for(const svg of [...document.querySelectorAll('article[data-g9-role="CORE1A"] figure[data-g9-figure] svg')].slice(0,6)){go(svg);new MutationObserver(()=>requestAnimationFrame(()=>go(svg))).observe(svg,{subtree:true,childList:true,attributes:true,attributeFilter:['x','y','display','class']})}}document.addEventListener('DOMContentLoaded',()=>requestAnimationFrame(install))})();</script>'''
+              s=s.replace('</head>',fix+'\n</head>',1)
+              need("function saveCore2State(a){if(a.dataset.g9Role!=='CORE2')return;" in s,f'{p}: save guard missing'); s=s.replace("function saveCore2State(a){if(a.dataset.g9Role!=='CORE2')return;","function saveCore2State(a){if(!a?.dataset.g9Unit)return;",1)
+              need("function restoreCore2State(a,lock){if(a.dataset.g9Role!=='CORE2')return;" in s,f'{p}: restore guard missing'); s=s.replace("function restoreCore2State(a,lock){if(a.dataset.g9Role!=='CORE2')return;","function restoreCore2State(a,lock){if(!a?.dataset.g9Unit)return;",1)
+              wr(p,s)
+
+          # U3-8: do not reveal worked answers for empty attempts.
+          p='standalone/practice/core1a-sba-06-07-trajectory-and-height-tablet.html'; s=rd(p)
+          a="""    btn.addEventListener('click', () => {\n      const parent = btn.closest('.workspace-box');\n      const rev = parent?.querySelector('details.solution-reveal');\n      if (rev) rev.open = true;\n    });\n"""; b="""    btn.addEventListener('click', () => {\n      const parent = btn.closest('.workspace-box');\n      const ta = parent?.querySelector('.faded-textarea');\n      const rev = parent?.querySelector('details.solution-reveal');\n      if (!ta || !ta.value.trim()) { ta?.focus(); return; }\n      if (rev) rev.open = true;\n    });\n"""; need(a in s,f'{p}: check handler missing'); wr(p,s.replace(a,b,1))
+          p='standalone/practice/physics-motion-in-a-plane-interactive-suite.html'; s=rd(p)
+          a="onclick=\"document.getElementById('reconAnswer').style.display='block'; if(window.renderAllMath) window.renderAllMath();\">Check Understanding</button>"; b="onclick=\"const v=document.getElementById('reconInput'); if(!v.value.trim()){v.focus();return;} document.getElementById('reconAnswer').style.display='block'; if(window.renderAllMath) window.renderAllMath();\">Check Understanding</button>"; need(a in s,f'{p}: check-understanding anchor missing'); wr(p,s.replace(a,b,1))
+
+          # U3-9: numeric prediction fields must reject arbitrary text/units.
+          p='standalone/practice/core2a-projectile-study.html'; s=rd(p)
+          a='const round = (value, digits = 2) => Number(value.toFixed(digits));\n'; need(a in s,f'{p}: round anchor missing'); s=s.replace(a,a+'const isNumericPrediction = (value) => /^[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)(?:e[+-]?\\d+)?$/i.test(String(value ?? "").trim());\n',1)
+          a='''    if (action === "commit") {\n      try { this._dispatchStudy({ type: "COMMIT_ATTEMPT" }); }\n      catch (error) { this._announce(error.code === "GENUINE_ATTEMPT_REQUIRED" ? "Make a prediction before you commit." : error.message); }\n      return;\n    }\n'''; b='''    if (action === "commit") {\n      if ((this.state.owner === "Q21" || this.state.owner === "Q23") && !isNumericPrediction(this.state.attempt)) { this._announce("Enter a numerical prediction without units before you commit."); this.shadowRoot?.querySelector("[data-attempt-text]")?.focus(); return; }\n      try { this._dispatchStudy({ type: "COMMIT_ATTEMPT" }); }\n      catch (error) { this._announce(error.code === "GENUINE_ATTEMPT_REQUIRED" ? "Make a prediction before you commit." : error.message); }\n      return;\n    }\n'''; need(a in s,f'{p}: commit anchor missing'); wr(p,s.replace(a,b,1))
+
+          # U3-7/U3-10: print is content-only; provide an explicit favicon to stop fallback 404s.
+          print_css='''<style data-u3-print-fix>@media print{[data-g9-shell-header],[data-g9-breadcrumb],.practice-hub-link,.hub-return,#theme-toggle-btn,#themeToggle,.theme-toggle,.theme-toggle-btn,.search-bar,.search-box,.search-container,.search-controls,.filter-bar,.tab-nav,.tab-bar,.tabs,.topic-tabs,.filter-tabs,.jump-nav,.jump-controls,#jump-select,#search-input,#clear-search-btn,.g9-cu-nav,.g9-stage-controls,.workspace-actions,.attempt-actions,.controls,.angle-picker,.open-btn,[data-g9-action="search"],[data-g9-action="display"]{display:none!important}html,body{overflow:visible!important}main,.container,.main-container{max-width:none!important;width:auto!important}article,figure,.solution-card,.formula-card{break-inside:avoid}}</style>'''
+          icon='<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22%3E%3Ctext y=%2252%22 font-size=%2252%22%3E%E2%9A%A1%3C/text%3E%3C/svg%3E">'
+          for p in pages:
+              s=rd(p)
+              if 'data-u3-print-fix' not in s: s=s.replace('</head>',print_css+'\n</head>',1)
+              if not re.search(r'<link\b[^>]*\brel=["\'][^"\']*\bicon\b',s,re.I): s=s.replace('</head>',icon+'\n</head>',1)
+              wr(p,s)
+
+          # Static proof before browser work.
+          for p in storage_pages:
+              s=rd(p); need('data-u3-safe-storage' in s,f'{p}: safe storage missing'); need(re.search(r'(?<![\w$])(?:window\.)?localStorage\b',s) is None,f'{p}: unsafe localStorage remains')
+          s=rd('standalone/practice/core2-motion-in-a-plane-tablet.html'); need(s.count('class="question-stem-card"')==59,'59 stems not restored'); need(s.count('class="opt-text"')==236,'236 options not restored'); need('Auto-expand solution' not in s,'option still auto-reveals solution')
+          for p in math_pages: need('data-u3-katex-runtime' in rd(p),f'{p}: KaTeX runtime missing')
+          for p in pages: need('data-u3-print-fix' in rd(p),f'{p}: print fix missing')
+          print('U3 patched files:',len(set(changed)))
+          for p in sorted(set(changed)): print(p)
+          PY
+          git diff --check
+
+      - name: Install Chromium verifier
+        shell: bash
+        run: |
+          npm install -g playwright@1.56.1
+          playwright install chromium
+
+      - name: Verify U3 runtime
+        shell: bash
+        run: |
+          export NODE_PATH="$(npm root -g)"
+          python3 -m http.server 8103 -d . >/tmp/u3-http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 2
+          cat >/tmp/u3.cjs <<'JS'
+          const {chromium}=require('playwright');
+          const assert=(x,m)=>{if(!x)throw Error(m)};
+          const pages=['standalone/core1a-motion-1d-straight-line-tablet.html','standalone/core1a-motion-in-a-plane-tablet.html','standalone/core1a-physics-nlm-tablet.html','standalone/core1a-vector-add-sub-tablet.html','standalone/core2-motion-in-a-plane-tablet.html','standalone/core2-physics-thrust-pressure-tablet.html','standalone/practice/index.html','standalone/practice/core1a-physics-motion-2d-ncert-tablet.html','standalone/practice/core1a-physics-nlm-tablet.html','standalone/practice/core1a-physics-vectors-tablet.html','standalone/practice/core1a-sba-06-07-trajectory-and-height-tablet.html','standalone/practice/core1a-sba-motion-in-a-plane-master-tablet.html','standalone/practice/core2-motion-1d-straight-line-tablet.html','standalone/practice/core2-motion-consolidated-practice-tablet.html','standalone/practice/core2-motion-in-a-plane-tablet.html','standalone/practice/core2-physics-thrust-pressure-tablet.html','standalone/practice/core2a-projectile-study.html','standalone/practice/motion-in-1d-master-suite.html','standalone/practice/motion-in-2d-master-suite.html','standalone/practice/physics-motion-in-a-plane-interactive-suite.html'];
+          const storage=pages.filter(p=>/practice\/(?:core1a-physics-motion-2d-ncert|core1a-physics-nlm|core1a-physics-vectors|core1a-sba-06-07-trajectory-and-height|core1a-sba-motion-in-a-plane-master|core2-motion-1d-straight-line|core2-motion-consolidated-practice|core2-motion-in-a-plane)-tablet\.html$/.test(p));
+          (async()=>{const b=await chromium.launch({headless:true}),ctx=await b.newContext({viewport:{width:1366,height:854}}),base='http://127.0.0.1:8103/';try{
+            for(const rel of pages){const p=await ctx.newPage(),e=[],fav=[];p.on('pageerror',x=>e.push(x.message));p.on('console',m=>{if(m.type()==='error'&&!(rel.endsWith('motion-in-2d-master-suite.html')&&/Failed to load resource/.test(m.text())))e.push(m.text())});p.on('request',r=>{/\/favicon\.ico(?:$|\?)/.test(r.url())&&fav.push(r.url())});await p.goto(base+rel,{waitUntil:'load'});await p.waitForTimeout(100);assert(!e.length,rel+' runtime '+e.join(' | '));assert(!fav.length,rel+' favicon fallback');await p.close()}
+            for(const rel of ['standalone/practice/core1a-physics-nlm-tablet.html','standalone/practice/core1a-physics-vectors-tablet.html','standalone/practice/core1a-sba-motion-in-a-plane-master-tablet.html','standalone/practice/motion-in-2d-master-suite.html']){const p=await ctx.newPage();await p.goto(base+rel,{waitUntil:'load'});await p.locator('details').evaluateAll(ds=>ds.forEach(d=>d.open=true));await p.waitForTimeout(150);const d=await p.evaluate(()=>({t:document.body.innerText,k:document.querySelectorAll('.katex').length,h:document.documentElement.innerHTML}));assert(!/[\x0b\x0c]/.test(d.h),rel+' control chars');assert(!/\\\(|\\\)|\$[^\n$]+\$/.test(d.t),rel+' raw TeX');assert(d.k>0,rel+' no KaTeX');await p.close()}
+            {const p=await ctx.newPage();await p.goto(base+'standalone/practice/core2-motion-in-a-plane-tablet.html',{waitUntil:'load'});const d=await p.evaluate(()=>({c:document.querySelectorAll('article.challenge-card').length,s:[...document.querySelectorAll('.question-stem-text')].filter(x=>x.textContent.trim()).length,o:[...document.querySelectorAll('.opt-text')].filter(x=>x.textContent.trim()).length}));assert(d.c===59&&d.s===59&&d.o===236,'challenge content '+JSON.stringify(d));const card=p.locator('#q01'),correct=await card.getAttribute('data-correct-opt');await card.locator(`.opt-btn[data-opt="${correct}"]`).click();assert(!(await card.locator('details.solution-reveal').evaluate(x=>x.open)),'option auto-opened solution');await card.locator('.btn-submit-work').click();assert(await card.locator('details.solution-reveal').evaluate(x=>x.open),'committed option failed to reveal');await p.reload({waitUntil:'load'});assert(await p.locator(`#q01 .opt-btn[data-opt="${correct}"]`).evaluate(x=>x.classList.contains('selected-correct')),'option not restored');await p.close()}
+            for(const rel of storage){const c=await b.newContext({viewport:{width:1366,height:854}});await c.addInitScript(()=>Object.defineProperty(window,'localStorage',{configurable:true,get(){throw new DOMException('blocked','SecurityError')}}));const p=await c.newPage(),e=[];p.on('pageerror',x=>e.push(x.message));await p.goto(base+rel,{waitUntil:'load'});await p.waitForTimeout(80);assert(!e.length,rel+' blocked storage '+e.join('|'));if(rel.endsWith('core2-motion-in-a-plane-tablet.html')){const q=p.locator('#q05');await q.locator('.workspace-textarea').fill('attempt');await q.locator('.btn-submit-work').click();assert(await q.locator('details.solution-reveal').evaluate(x=>x.open),'blocked storage broke reveal')}await c.close()}
+            {const p=await ctx.newPage();await p.goto(base+'standalone/practice/core1a-sba-06-07-trajectory-and-height-tablet.html');const btn=p.locator('.btn-check-faded').first(),box=btn.locator('xpath=ancestor::*[contains(@class,"workspace-box")][1]');await btn.click();assert(!(await box.locator('details.solution-reveal').evaluate(x=>x.open)),'empty SBA revealed');await box.locator('.faded-textarea').fill('attempt');await btn.click();assert(await box.locator('details.solution-reveal').evaluate(x=>x.open),'SBA attempt did not reveal');await p.close()}
+            {const p=await ctx.newPage();await p.goto(base+'standalone/practice/physics-motion-in-a-plane-interactive-suite.html');const btn=p.getByRole('button',{name:'Check Understanding'});await btn.click();assert(await p.locator('#reconAnswer').evaluate(x=>getComputedStyle(x).display==='none'),'empty understanding revealed');await p.locator('#reconInput').fill('attempt');await btn.click();assert(await p.locator('#reconAnswer').evaluate(x=>getComputedStyle(x).display!=='none'),'understanding attempt failed');await p.close()}
+            {const p=await ctx.newPage();await p.goto(base+'standalone/practice/core2a-projectile-study.html?q=Q21');const host=p.locator('core2a-projectile-study'),input=host.locator('[data-attempt-text]'),commit=host.locator('[data-action="commit"]');await input.fill('abc');await commit.click();assert((await host.locator('[data-phase]').innerText()).trim()!=='COMMITTED','abc committed');await input.fill('9.8 m');await commit.click();assert((await host.locator('[data-phase]').innerText()).trim()!=='COMMITTED','unit committed');await input.fill(' 9.80 ');await commit.click();assert((await host.locator('[data-phase]').innerText()).trim()==='COMMITTED','numeric rejected');await p.close()}
+            for(const rel of ['standalone/core2-physics-thrust-pressure-tablet.html','standalone/practice/core2-physics-thrust-pressure-tablet.html']){const p=await ctx.newPage();await p.goto(base+rel);await p.evaluate(()=>window.g9MaterialiseAll?.());await p.waitForTimeout(200);const d=await p.evaluate(()=>{const fs=[...document.querySelectorAll('article[data-g9-role="CORE1A"] figure[data-g9-figure]')].slice(0,6),bad=[],ov=[];for(const [i,f] of fs.entries()){const s=f.querySelector('svg'),r=s?.getBoundingClientRect();if(!s||!r.width||!r.height){bad.push(i+':zero');continue}const bs=[...s.querySelectorAll('text')].filter(x=>x.getClientRects().length).map(x=>({x,b:x.getBoundingClientRect()}));for(const z of bs)if(z.b.left<r.left-2||z.b.right>r.right+2||z.b.top<r.top-2||z.b.bottom>r.bottom+2)bad.push(i+':'+z.x.textContent);for(let a=0;a<bs.length;a++)for(let b=a+1;b<bs.length;b++){const A=bs[a].b,B=bs[b].b,ix=Math.max(0,Math.min(A.right,B.right)-Math.max(A.left,B.left)),iy=Math.max(0,Math.min(A.bottom,B.bottom)-Math.max(A.top,B.top));if(ix*iy>20)ov.push(i+':'+bs[a].x.textContent+'<> '+bs[b].x.textContent)}}return{n:fs.length,bad,ov,m:[...document.querySelectorAll('article[data-g9-role="CORE1A"] marker')].filter(x=>x.getAttribute('markerUnits')!=='userSpaceOnUse').length}});assert(d.n===6&&!d.bad.length&&!d.ov.length&&!d.m,rel+' svg '+JSON.stringify(d));await p.close()}
+            for(const rel of ['standalone/core2-physics-thrust-pressure-tablet.html','standalone/practice/core2-motion-in-a-plane-tablet.html','standalone/practice/index.html','standalone/practice/core2-motion-1d-straight-line-tablet.html','standalone/practice/motion-in-2d-master-suite.html']){const p=await ctx.newPage();await p.goto(base+rel);await p.emulateMedia({media:'print'});const n=await p.locator('[data-g9-shell-header],[data-g9-breadcrumb],.g9-cu-nav,.g9-stage-controls,.workspace-actions,.attempt-actions,#theme-toggle-btn,#themeToggle,#jump-select,#search-input,#clear-search-btn').evaluateAll(ns=>ns.filter(x=>{const s=getComputedStyle(x),r=x.getBoundingClientRect();return s.display!=='none'&&s.visibility!=='hidden'&&r.width&&r.height}).length);assert(n===0,rel+' print chrome '+n);const pdf=await p.pdf({format:'A4'});assert(pdf.length>1000,rel+' empty pdf');await p.close()}
+            console.log('U3_VERIFY_PASS');
+          }finally{await ctx.close();await b.close()}})().catch(e=>{console.error(e);process.exit(1)});
+          JS
+          node /tmp/u3.cjs
+
+      - name: Guard live branch head
+        shell: bash
+        run: |
+          set -euo pipefail
+          remote="$(git ls-remote origin refs/heads/feat/physics-tablet-standalone | cut -f1)"
+          test "$remote" = "$GITHUB_SHA" || { echo "branch advanced to $remote; refusing overwrite"; exit 1; }
+
+      - name: Commit verified U3 remediation
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git rm .github/workflows/pr375-u3-remediation.yml
+          git add standalone
+          git diff --cached --check
+          git status --short
+          git commit -m "fix(physics): remediate U3 interaction rendering findings"
+          git push origin HEAD:feat/physics-tablet-standalone
