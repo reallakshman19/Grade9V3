@@ -1,4 +1,4 @@
-# Rerun after structural catalog assertion fix.
+# Build generated authority first; mirror Pages last so --check is stable.
 name: chemistry-publish-v2
 
 on:
@@ -33,8 +33,8 @@ jobs:
             --library-dirs Physics/library Chemistry/library Mathematics/library \
             --output-index public/data/search-index.v1.json \
             --output-manifest public/data/search-index-manifest.v1.json
-          python3 Shared/tools/build_pages_site.py
           python3 Shared/tools/build_manifest.py
+          python3 Shared/tools/build_pages_site.py
       - name: Verify deterministic source and integration tests
         run: |
           python3 Chemistry/tools/sync_blueprint_pages.py --check
