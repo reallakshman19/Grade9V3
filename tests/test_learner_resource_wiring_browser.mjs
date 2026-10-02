@@ -102,14 +102,16 @@ for (const viewport of [{ width: 1440, height: 900 }, { width: 1366, height: 854
   await context.close();
 }
 
-// Motion Session is a learner experience, loads locally, and has an explicit route back to Physics.
+// Motion Session is a learner experience, loads its canonical shared-clock concept,
+// and has an explicit route back to Physics. The runtime intentionally replaces the
+// static topic heading with the resolved canonical concept title.
 {
   const { context, page, problems } = await open('motion-session/index.html', { width: 1366, height: 854 }, true);
   checks += 1;
   const back = page.locator('a[href="../physics/index.html"]').first();
   if (!(await back.count()) || !(await back.isVisible())) failures.push('motion-session: Back to Physics link is missing or hidden');
-  const title = (await page.locator('#session-topic').textContent()) || '';
-  if (!/Motion in 2D/i.test(title)) failures.push(`motion-session: unexpected learner title "${title.trim()}"`);
+  const title = ((await page.locator('#session-topic').textContent()) || '').trim();
+  if (!/independent x\/y components with one clock/i.test(title)) failures.push(`motion-session: canonical shared-clock concept did not resolve ("${title}")`);
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   if (overflow > 1) failures.push(`motion-session: ${overflow}px horizontal overflow`);
   for (const problem of problems) failures.push(`motion-session: ${problem}`);
