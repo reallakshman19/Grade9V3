@@ -86,9 +86,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -181,9 +181,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -395,19 +395,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -427,8 +429,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -620,9 +633,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -836,19 +849,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -868,8 +883,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -1065,9 +1091,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -1323,19 +1349,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -1355,8 +1383,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -1579,9 +1618,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -1756,9 +1795,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -1951,9 +1990,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2B-TRANSFER@1.0.0",
+            "blueprint_ref": "BP-CORE2B-TRANSFER@1.1.0",
             "blueprint_id": "BP-CORE2B-TRANSFER",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "TRANSFER_ATTEMPT",
             "required_slots": [
@@ -2146,9 +2185,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -2325,9 +2364,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -2502,9 +2541,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -2688,9 +2727,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -2874,9 +2913,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -3069,9 +3108,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2B-TRANSFER@1.0.0",
+            "blueprint_ref": "BP-CORE2B-TRANSFER@1.1.0",
             "blueprint_id": "BP-CORE2B-TRANSFER",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "TRANSFER_ATTEMPT",
             "required_slots": [
@@ -3254,9 +3293,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -3439,9 +3478,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -3632,9 +3671,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2B-TRANSFER@1.0.0",
+            "blueprint_ref": "BP-CORE2B-TRANSFER@1.1.0",
             "blueprint_id": "BP-CORE2B-TRANSFER",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "TRANSFER_ATTEMPT",
             "required_slots": [
@@ -3817,9 +3856,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -4001,9 +4040,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -4180,9 +4219,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -4301,7 +4340,7 @@ window.GRADE9V3_CORE = {
               "output": "a linear equation in two variables"
             },
             {
-              "id": "Q1-DEC",
+              "id": "EX4-Q1-DEC",
               "kind": "DECIDE",
               "action": "Test whether solutions stop after one by generating two different pairs.",
               "why_valid": "If two different pairs work, 'unique' and 'no solution' are ruled out, and the free choice of x rules out 'two'.",
@@ -4309,7 +4348,7 @@ window.GRADE9V3_CORE = {
               "output": "(1, −1) and (6, 1)"
             },
             {
-              "id": "Q1-CHK",
+              "id": "EX4-Q1-CHK",
               "kind": "VERIFY",
               "action": "Substitute both pairs.",
               "why_valid": "Both must give 7.",
@@ -4317,7 +4356,7 @@ window.GRADE9V3_CORE = {
               "output": "7 and 7"
             }
           ],
-          "crux_move_ref": "Q1-DEC",
+          "crux_move_ref": "EX4-Q1-DEC",
           "hints": [],
           "scaffolds": [
             {
@@ -4330,13 +4369,13 @@ window.GRADE9V3_CORE = {
               "text": "Make a table: choose x = 1, then x = 6, and find y each time.",
               "support_kind": "REPRESENT",
               "reveals": "METHOD",
-              "supports_move_ref": "Q1-DEC"
+              "supports_move_ref": "EX4-Q1-DEC"
             },
             {
               "text": "Could you have chosen any other x? What does that say about the number of solutions?",
               "support_kind": "CONNECT",
               "reveals": "METHOD",
-              "supports_move_ref": "Q1-DEC"
+              "supports_move_ref": "EX4-Q1-DEC"
             }
           ],
           "transfer": null,
@@ -4360,9 +4399,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -4534,9 +4573,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -4729,9 +4768,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2B-TRANSFER@1.0.0",
+            "blueprint_ref": "BP-CORE2B-TRANSFER@1.1.0",
             "blueprint_id": "BP-CORE2B-TRANSFER",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "TRANSFER_ATTEMPT",
             "required_slots": [
@@ -4930,9 +4969,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -5137,9 +5176,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2B-TRANSFER@1.0.0",
+            "blueprint_ref": "BP-CORE2B-TRANSFER@1.1.0",
             "blueprint_id": "BP-CORE2B-TRANSFER",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "TRANSFER_ATTEMPT",
             "required_slots": [
@@ -5236,9 +5275,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -5331,9 +5370,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -5431,9 +5470,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -5536,9 +5575,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -5641,9 +5680,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -5736,9 +5775,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -5841,9 +5880,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -5946,9 +5985,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -6051,9 +6090,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -6156,9 +6195,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -6251,9 +6290,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -6346,9 +6385,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -6451,9 +6490,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -6556,9 +6595,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -6651,9 +6690,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -6756,9 +6795,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -6861,9 +6900,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -6966,9 +7005,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -7132,9 +7171,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -7314,9 +7353,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1-ORIENTATION@1.0.0",
+            "blueprint_ref": "BP-CORE1-ORIENTATION@1.1.0",
             "blueprint_id": "BP-CORE1-ORIENTATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_ORIENTATION",
             "required_slots": [
@@ -7517,19 +7556,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -7549,8 +7590,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -7759,9 +7811,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -7909,19 +7961,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -7941,8 +7995,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -8116,9 +8181,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -8267,19 +8332,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -8299,8 +8366,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -8480,9 +8558,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -8713,19 +8791,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -8745,8 +8825,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -8983,9 +9074,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -9212,19 +9303,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -9244,8 +9337,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -9451,9 +9555,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -9599,19 +9703,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -9631,8 +9737,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -9797,9 +9914,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -9945,19 +10062,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -9977,8 +10096,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -10143,9 +10273,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -10292,19 +10422,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -10324,8 +10456,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -10495,9 +10638,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -10643,19 +10786,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -10675,8 +10820,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -10845,9 +11001,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -10999,19 +11155,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -11031,8 +11189,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -11203,9 +11372,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -11357,19 +11526,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -11389,8 +11560,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -11561,9 +11743,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -11715,19 +11897,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -11747,8 +11931,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -11919,9 +12114,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -12067,19 +12262,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -12099,8 +12296,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -12265,9 +12473,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -12421,19 +12629,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -12453,8 +12663,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -12632,9 +12853,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -12788,19 +13009,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -12820,8 +13043,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -12994,9 +13228,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -13142,19 +13376,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -13174,8 +13410,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -13340,9 +13587,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -13488,19 +13735,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -13520,8 +13769,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -13686,9 +13946,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -13834,19 +14094,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -13866,8 +14128,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -14032,9 +14305,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -14190,19 +14463,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -14222,8 +14497,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -14398,9 +14684,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -14546,19 +14832,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -14578,8 +14866,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -14749,9 +15048,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -14899,19 +15198,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -14931,8 +15232,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -15104,9 +15416,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -15255,19 +15567,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -15287,8 +15601,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -15469,9 +15794,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -15619,19 +15944,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -15651,8 +15978,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -15831,9 +16169,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -15980,19 +16318,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -16012,8 +16352,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -16183,9 +16534,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -16332,19 +16683,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -16364,8 +16717,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -16535,9 +16899,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -16684,19 +17048,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -16716,8 +17082,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -16887,9 +17264,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -17059,19 +17436,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -17091,8 +17470,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -17286,9 +17676,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -17456,19 +17846,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -17488,8 +17880,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -17685,9 +18088,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -17841,19 +18244,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -17873,8 +18278,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -18046,9 +18462,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -18215,19 +18631,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -18247,8 +18665,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -18438,9 +18867,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -18587,19 +19016,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -18619,8 +19050,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -18790,9 +19232,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -18939,19 +19381,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -18971,8 +19415,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -19142,9 +19597,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -19433,19 +19888,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -19465,8 +19922,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -19711,9 +20179,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -20059,19 +20527,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -20091,8 +20561,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -20394,9 +20875,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -20559,19 +21040,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -20591,8 +21074,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -20778,9 +21272,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -21036,19 +21530,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -21068,8 +21564,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -21352,9 +21859,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -21668,19 +22175,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -21700,8 +22209,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -22043,9 +22563,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -22191,19 +22711,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -22223,8 +22745,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -22392,9 +22925,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -22698,19 +23231,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -22730,8 +23265,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -23058,9 +23604,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -23414,19 +23960,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -23446,8 +23994,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -23768,9 +24327,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -23936,19 +24495,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -23968,8 +24529,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -24157,9 +24729,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -24313,19 +24885,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -24345,8 +24919,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -24523,9 +25108,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -24677,19 +25262,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -24709,8 +25296,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -24885,9 +25483,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -25059,19 +25657,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -25091,8 +25691,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -25291,9 +25902,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -25445,19 +26056,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -25477,8 +26090,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -25653,9 +26277,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -26048,19 +26672,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -26080,8 +26706,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -26287,9 +26924,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -26461,19 +27098,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -26493,8 +27132,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -26704,9 +27354,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -26855,19 +27505,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -26887,8 +27539,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -27077,9 +27740,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -27260,19 +27923,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -27292,8 +27957,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -27513,9 +28189,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -27604,39 +28280,39 @@ window.GRADE9V3_CORE = {
             {
               "id": "NLM8-1",
               "role": "DECLARE",
-              "action": "Build the chosen-body FBD and determine the normal reaction N from the force balance or acceleration perpendicular to the contact; do not assume N = mg.",
-              "why_valid": "The normal reaction is the contact force needed by the actual perpendicular dynamics and can differ from mg when the surface is inclined or other forces have perpendicular components.",
+              "action": "Build the chosen-body free-body diagram and solve the perpendicular dynamics for N before using any friction law: do not assume N = mg; N=mg only in the special level case with no other perpendicular force or acceleration; a downward added component raises N, an upward component lowers it, and if the required contact force would be negative the contact is lost so N=0 and friction=0.",
+              "why_valid": "A unilateral contact can push but not pull. Its normal reaction is whatever the perpendicular Newton-II equation requires while contact persists; friction capacity is then tied to that actual N.",
               "inputs": [
                 "CAP-NLM-FBD-BODY-OWNERSHIP",
                 "CAP-NLM-SECOND-LAW"
               ],
-              "output": "perpendicular force equation -> actual N >= 0"
+              "output": "perpendicular equation -> actual N≥0; level examples N=mg+F_down or N=mg-F_up; contact lost -> N=0 and f=0."
             },
             {
               "id": "NLM8-2",
               "role": "TRANSFORM",
-              "action": "Assume no relative sliding provisionally and solve the tangential Newton-II equation for the static friction value f_required that would make that motion possible.",
-              "why_valid": "Static friction takes the value required by the no-slip state, provided the contact can supply it.",
+              "action": "Assume no relative sliding provisionally, choose a body or a whole connected system deliberately, and solve the tangential Newton-II equation for the friction demand at each rough contact.",
+              "why_valid": "Static friction responds to the no-slip dynamics. A system boundary can remove internal contact pairs, but it cannot create friction capacity at a smooth contact or move a rough contact from one body to another.",
               "inputs": [
                 "CAP-NLM-SECOND-LAW"
               ],
-              "output": "no-slip dynamics -> f_s = f_required"
+              "output": "chosen boundary + no-slip dynamics -> signed f_required at each actual rough contact."
             },
             {
               "id": "NLM8-3",
               "role": "VERIFY",
-              "action": "Compare |f_required| with mu_s N.",
+              "action": "Compare each |f_required| with μ_sN; on an incline this comparison can be turned into the angle condition for the onset of sliding rather than setting f=μ_sN from the start.",
               "why_valid": "The static-contact model permits any required value only up to the limiting magnitude.",
               "inputs": [],
-              "output": "|f_required| <= mu_s N -> static state feasible; |f_required| > mu_s N -> static state impossible"
+              "output": "|f_required| <= mu_s N -> static feasible; equality only at impending slip; after sliding use the kinetic model. Equivalent symbolic form: |f_required|≤μ_sN."
             },
             {
               "id": "NLM8-4",
               "role": "TRANSFORM",
-              "action": "Use |f_s| = mu_s N only at impending slip; if relative sliding is already established, use |f_k| = mu_k N with direction opposing the relative sliding.",
-              "why_valid": "The limiting equality and the sliding model describe different contact states and are not unconditional identities.",
+              "action": "At the threshold use |f_s|=μ_sN; once relative sliding is established use |f_k|=μ_kN opposite the sliding, and if several contacts change state, update N and the friction model at each contact before continuing.",
+              "why_valid": "Static-below-limit, impending-slip, kinetic-sliding and contact-lost are different contact states. A multi-contact process may switch which contact is static or sliding, so stale μN values cannot be carried across a transition.",
               "inputs": [],
-              "output": "impending slip -> |f_s| = mu_s N; sliding -> |f_k| = mu_k N"
+              "output": "state map: static below limit -> f_required; impending -> μ_sN; sliding -> μ_kN; contact lost -> N=f=0."
             }
           ],
           "elicitation": null,
@@ -27655,6 +28331,11 @@ window.GRADE9V3_CORE = {
               "wrong_idea": "If both mu_s and mu_k are given, the coefficients themselves tell you which friction model to use.",
               "diagnostic_prompt": "A problem gives both mu_s and mu_k but does not say whether the contact slips. Can you choose kinetic friction just because mu_k is supplied?",
               "repair": "No. Determine the contact state first: test whether the no-slip friction demand fits within mu_s N. Use the kinetic model only after sliding is established."
+            },
+            {
+              "wrong_idea": "Friction can keep acting after the surfaces lose contact, or a negative value of N can be used inside μN.",
+              "diagnostic_prompt": "An upward pull becomes large enough that the floor would need a downward normal force to keep touching the block. What are N and friction after separation?",
+              "repair": "A contact can push, not pull. Once the perpendicular equation would require N<0, contact is lost: set N=0 and therefore contact friction is zero."
             }
           ],
           "representation_refs": [
@@ -27925,19 +28606,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -27957,8 +28640,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -28016,39 +28710,39 @@ window.GRADE9V3_CORE = {
             {
               "id": "NLM8-1",
               "role": "DECLARE",
-              "action": "Build the chosen-body FBD and determine the normal reaction N from the force balance or acceleration perpendicular to the contact; do not assume N = mg.",
-              "why_valid": "The normal reaction is the contact force needed by the actual perpendicular dynamics and can differ from mg when the surface is inclined or other forces have perpendicular components.",
+              "action": "Build the chosen-body free-body diagram and solve the perpendicular dynamics for N before using any friction law: do not assume N = mg; N=mg only in the special level case with no other perpendicular force or acceleration; a downward added component raises N, an upward component lowers it, and if the required contact force would be negative the contact is lost so N=0 and friction=0.",
+              "why_valid": "A unilateral contact can push but not pull. Its normal reaction is whatever the perpendicular Newton-II equation requires while contact persists; friction capacity is then tied to that actual N.",
               "inputs": [
                 "CAP-NLM-FBD-BODY-OWNERSHIP",
                 "CAP-NLM-SECOND-LAW"
               ],
-              "output": "perpendicular force equation -> actual N >= 0"
+              "output": "perpendicular equation -> actual N≥0; level examples N=mg+F_down or N=mg-F_up; contact lost -> N=0 and f=0."
             },
             {
               "id": "NLM8-2",
               "role": "TRANSFORM",
-              "action": "Assume no relative sliding provisionally and solve the tangential Newton-II equation for the static friction value f_required that would make that motion possible.",
-              "why_valid": "Static friction takes the value required by the no-slip state, provided the contact can supply it.",
+              "action": "Assume no relative sliding provisionally, choose a body or a whole connected system deliberately, and solve the tangential Newton-II equation for the friction demand at each rough contact.",
+              "why_valid": "Static friction responds to the no-slip dynamics. A system boundary can remove internal contact pairs, but it cannot create friction capacity at a smooth contact or move a rough contact from one body to another.",
               "inputs": [
                 "CAP-NLM-SECOND-LAW"
               ],
-              "output": "no-slip dynamics -> f_s = f_required"
+              "output": "chosen boundary + no-slip dynamics -> signed f_required at each actual rough contact."
             },
             {
               "id": "NLM8-3",
               "role": "VERIFY",
-              "action": "Compare |f_required| with mu_s N.",
+              "action": "Compare each |f_required| with μ_sN; on an incline this comparison can be turned into the angle condition for the onset of sliding rather than setting f=μ_sN from the start.",
               "why_valid": "The static-contact model permits any required value only up to the limiting magnitude.",
               "inputs": [],
-              "output": "|f_required| <= mu_s N -> static state feasible; |f_required| > mu_s N -> static state impossible"
+              "output": "|f_required| <= mu_s N -> static feasible; equality only at impending slip; after sliding use the kinetic model. Equivalent symbolic form: |f_required|≤μ_sN."
             },
             {
               "id": "NLM8-4",
               "role": "TRANSFORM",
-              "action": "Use |f_s| = mu_s N only at impending slip; if relative sliding is already established, use |f_k| = mu_k N with direction opposing the relative sliding.",
-              "why_valid": "The limiting equality and the sliding model describe different contact states and are not unconditional identities.",
+              "action": "At the threshold use |f_s|=μ_sN; once relative sliding is established use |f_k|=μ_kN opposite the sliding, and if several contacts change state, update N and the friction model at each contact before continuing.",
+              "why_valid": "Static-below-limit, impending-slip, kinetic-sliding and contact-lost are different contact states. A multi-contact process may switch which contact is static or sliding, so stale μN values cannot be carried across a transition.",
               "inputs": [],
-              "output": "impending slip -> |f_s| = mu_s N; sliding -> |f_k| = mu_k N"
+              "output": "state map: static below limit -> f_required; impending -> μ_sN; sliding -> μ_kN; contact lost -> N=f=0."
             }
           ],
           "elicitation": {
@@ -28122,6 +28816,11 @@ window.GRADE9V3_CORE = {
               "wrong_idea": "If both mu_s and mu_k are given, the coefficients themselves tell you which friction model to use.",
               "diagnostic_prompt": "A problem gives both mu_s and mu_k but does not say whether the contact slips. Can you choose kinetic friction just because mu_k is supplied?",
               "repair": "No. Determine the contact state first: test whether the no-slip friction demand fits within mu_s N. Use the kinetic model only after sliding is established."
+            },
+            {
+              "wrong_idea": "Friction can keep acting after the surfaces lose contact, or a negative value of N can be used inside μN.",
+              "diagnostic_prompt": "An upward pull becomes large enough that the floor would need a downward normal force to keep touching the block. What are N and friction after separation?",
+              "repair": "A contact can push, not pull. Once the perpendicular equation would require N<0, contact is lost: set N=0 and therefore contact friction is zero."
             }
           ],
           "representation_refs": [
@@ -28181,9 +28880,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -28271,20 +28970,20 @@ window.GRADE9V3_CORE = {
             {
               "id": "NLM5-1",
               "role": "DECLARE",
-              "action": "Choose the body and mark the contact surface before deciding a friction direction.",
-              "why_valid": "Friction belongs to a specific contact interaction, so its direction must be read from relative motion at that contact.",
+              "action": "Choose the body or system and name the exact contact before deciding friction; for a contact between two bodies, keep the two friction forces as an equal-and-opposite third-law pair on different bodies.",
+              "why_valid": "Friction belongs to one contact interaction. The force on A by B and the force on B by A are a third-law pair, so neither may be moved onto the other body's free-body diagram.",
               "inputs": [
                 "CAP-NLM-FBD-BODY-OWNERSHIP"
               ],
-              "output": "chosen body; named contact; tangent direction available."
+              "output": "chosen body/system; named contact and partner; tangent direction; friction owner and receiver fixed."
             },
             {
               "id": "NLM5-2",
               "role": "TRANSFORM",
-              "action": "Imagine the relative sliding or tendency to slide if friction were absent, then point friction opposite that relative tendency.",
+              "action": "Imagine the relative sliding, or tendency to slide, at that named contact if tangential friction were absent; point friction on the chosen body opposite that relative tendency.",
               "why_valid": "Contact friction resists relative sliding between the surfaces.",
               "inputs": [],
-              "output": "belt at 2 m/s, box at 0.5 m/s -> box slips left relative to the belt -> friction on the box points right"
+              "output": "contact-specific slip tendency -> friction direction; direction need not oppose the body's velocity."
             },
             {
               "id": "NLM5-3",
@@ -28347,19 +29046,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -28379,8 +29080,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -28437,20 +29149,20 @@ window.GRADE9V3_CORE = {
             {
               "id": "NLM5-1",
               "role": "DECLARE",
-              "action": "Choose the body and mark the contact surface before deciding a friction direction.",
-              "why_valid": "Friction belongs to a specific contact interaction, so its direction must be read from relative motion at that contact.",
+              "action": "Choose the body or system and name the exact contact before deciding friction; for a contact between two bodies, keep the two friction forces as an equal-and-opposite third-law pair on different bodies.",
+              "why_valid": "Friction belongs to one contact interaction. The force on A by B and the force on B by A are a third-law pair, so neither may be moved onto the other body's free-body diagram.",
               "inputs": [
                 "CAP-NLM-FBD-BODY-OWNERSHIP"
               ],
-              "output": "chosen body; named contact; tangent direction available."
+              "output": "chosen body/system; named contact and partner; tangent direction; friction owner and receiver fixed."
             },
             {
               "id": "NLM5-2",
               "role": "TRANSFORM",
-              "action": "Imagine the relative sliding or tendency to slide if friction were absent, then point friction opposite that relative tendency.",
+              "action": "Imagine the relative sliding, or tendency to slide, at that named contact if tangential friction were absent; point friction on the chosen body opposite that relative tendency.",
               "why_valid": "Contact friction resists relative sliding between the surfaces.",
               "inputs": [],
-              "output": "belt at 2 m/s, box at 0.5 m/s -> box slips left relative to the belt -> friction on the box points right"
+              "output": "contact-specific slip tendency -> friction direction; direction need not oppose the body's velocity."
             },
             {
               "id": "NLM5-3",
@@ -28584,9 +29296,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -28977,19 +29689,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -29009,8 +29723,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -29214,9 +29939,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -29420,19 +30145,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -29452,8 +30179,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -29666,9 +30404,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -29817,19 +30555,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -29849,8 +30589,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -30039,9 +30790,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -30216,19 +30967,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -30248,8 +31001,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -30461,9 +31225,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -30852,19 +31616,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -30884,8 +31650,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -31087,9 +31864,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -31240,19 +32017,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -31272,8 +32051,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -31463,9 +32253,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -31611,19 +32401,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -31643,8 +32435,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -31813,9 +32616,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -31962,19 +32765,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -31994,8 +32799,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -32165,9 +32981,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -32314,19 +33130,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -32346,8 +33164,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -32517,9 +33346,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -32666,19 +33495,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -32698,8 +33529,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -32869,9 +33711,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -33033,19 +33875,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -33065,8 +33909,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -33247,9 +34102,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -33413,19 +34268,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -33445,8 +34302,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -33628,9 +34496,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -33804,19 +34672,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -33836,8 +34706,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -34034,9 +34915,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -34192,19 +35073,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -34224,8 +35107,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -34400,9 +35294,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -34759,19 +35653,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -34791,8 +35687,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -35172,9 +36079,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -35320,19 +36227,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -35352,8 +36261,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -35522,9 +36442,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -35671,19 +36591,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -35703,8 +36625,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -35874,9 +36807,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -36023,19 +36956,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -36055,8 +36990,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -36226,9 +37172,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -36375,19 +37321,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -36407,8 +37355,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -36578,9 +37537,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -36769,19 +37728,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -36801,8 +37762,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -37024,9 +37996,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -37180,19 +38152,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -37212,8 +38186,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -37386,9 +38371,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -37552,19 +38537,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -37584,8 +38571,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -37761,9 +38759,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -37924,19 +38922,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -37956,8 +38956,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -38137,9 +39148,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -38289,19 +39300,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -38321,8 +39334,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -38494,9 +39518,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -38655,19 +39679,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -38687,8 +39713,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -38858,9 +39895,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -39010,19 +40047,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -39042,8 +40081,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -39199,9 +40249,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -39391,19 +40441,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -39423,8 +40475,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -39639,9 +40702,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -39820,19 +40883,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -39852,8 +40917,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -40055,9 +41131,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -40222,19 +41298,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -40254,8 +41332,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -40443,9 +41532,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -40593,19 +41682,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -40625,8 +41716,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -40796,9 +41898,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -40944,19 +42046,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -40976,8 +42080,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -41146,9 +42261,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -41317,19 +42432,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -41349,8 +42466,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -41542,9 +42670,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -41690,19 +42818,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -41722,8 +42852,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -41892,9 +43033,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -42051,19 +43192,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -42083,8 +43226,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -42246,9 +43400,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -42441,19 +43595,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -42473,8 +43629,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -42662,9 +43829,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -42810,19 +43977,21 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.1.0",
+            "blueprint_ref": "BP-CORE1A-CONSTRUCTION@1.4.0",
             "blueprint_id": "BP-CORE1A-CONSTRUCTION",
-            "blueprint_version": "1.1.0",
+            "blueprint_version": "1.4.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "READING_CONSTRUCTION",
             "required_slots": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "slot_order": [
               "identity",
               "construction",
+              "representation",
               "repair_closure"
             ],
             "interaction_policy": {
@@ -42842,8 +44011,19 @@ window.GRADE9V3_CORE = {
               "compact": "SINGLE_PANE",
               "medium": "STACKED_SUPPORT",
               "expanded": "STAGE_SUPPORT",
-              "primary_fraction": 0.68,
-              "support_fraction": 0.32
+              "primary_fraction": 0.6,
+              "support_fraction": 0.4,
+              "expanded_min_px": 1100,
+              "support_sticky": true,
+              "tablet_12_7": {
+                "reference_viewport": {
+                  "width": 1366,
+                  "height": 854
+                },
+                "identity_max_px": 190,
+                "figure_min_text_css_px": 14,
+                "support_scrolls_inside": true
+              }
             },
             "touch_policy": {
               "minimum_target_css_px": 48,
@@ -43007,9 +44187,9 @@ window.GRADE9V3_CORE = {
         "application": null,
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.0.0",
+            "blueprint_ref": "BP-CORE1B-RECONSTRUCTION@1.1.0",
             "blueprint_id": "BP-CORE1B-RECONSTRUCTION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "GUIDED_RECONSTRUCTION",
             "required_slots": [
@@ -43209,9 +44389,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -43688,9 +44868,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -43890,9 +45070,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -44090,9 +45270,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -44290,9 +45470,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -44529,9 +45709,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2B-TRANSFER@1.0.0",
+            "blueprint_ref": "BP-CORE2B-TRANSFER@1.1.0",
             "blueprint_id": "BP-CORE2B-TRANSFER",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "TRANSFER_ATTEMPT",
             "required_slots": [
@@ -45054,9 +46234,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2B-TRANSFER@1.0.0",
+            "blueprint_ref": "BP-CORE2B-TRANSFER@1.1.0",
             "blueprint_id": "BP-CORE2B-TRANSFER",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "TRANSFER_ATTEMPT",
             "required_slots": [
@@ -45278,9 +46458,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2B-TRANSFER@1.0.0",
+            "blueprint_ref": "BP-CORE2B-TRANSFER@1.1.0",
             "blueprint_id": "BP-CORE2B-TRANSFER",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "TRANSFER_ATTEMPT",
             "required_slots": [
@@ -45516,9 +46696,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2B-TRANSFER@1.0.0",
+            "blueprint_ref": "BP-CORE2B-TRANSFER@1.1.0",
             "blueprint_id": "BP-CORE2B-TRANSFER",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "TRANSFER_ATTEMPT",
             "required_slots": [
@@ -45760,9 +46940,9 @@ window.GRADE9V3_CORE = {
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2B-TRANSFER@1.0.0",
+            "blueprint_ref": "BP-CORE2B-TRANSFER@1.1.0",
             "blueprint_id": "BP-CORE2B-TRANSFER",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "TRANSFER_ATTEMPT",
             "required_slots": [
@@ -45853,39 +47033,39 @@ window.GRADE9V3_CORE = {
             {
               "id": "NLM8-1",
               "role": "DECLARE",
-              "action": "Build the chosen-body FBD and determine the normal reaction N from the force balance or acceleration perpendicular to the contact; do not assume N = mg.",
-              "why_valid": "The normal reaction is the contact force needed by the actual perpendicular dynamics and can differ from mg when the surface is inclined or other forces have perpendicular components.",
+              "action": "Build the chosen-body free-body diagram and solve the perpendicular dynamics for N before using any friction law: do not assume N = mg; N=mg only in the special level case with no other perpendicular force or acceleration; a downward added component raises N, an upward component lowers it, and if the required contact force would be negative the contact is lost so N=0 and friction=0.",
+              "why_valid": "A unilateral contact can push but not pull. Its normal reaction is whatever the perpendicular Newton-II equation requires while contact persists; friction capacity is then tied to that actual N.",
               "inputs": [
                 "CAP-NLM-FBD-BODY-OWNERSHIP",
                 "CAP-NLM-SECOND-LAW"
               ],
-              "output": "perpendicular force equation -> actual N >= 0"
+              "output": "perpendicular equation -> actual N≥0; level examples N=mg+F_down or N=mg-F_up; contact lost -> N=0 and f=0."
             },
             {
               "id": "NLM8-2",
               "role": "TRANSFORM",
-              "action": "Assume no relative sliding provisionally and solve the tangential Newton-II equation for the static friction value f_required that would make that motion possible.",
-              "why_valid": "Static friction takes the value required by the no-slip state, provided the contact can supply it.",
+              "action": "Assume no relative sliding provisionally, choose a body or a whole connected system deliberately, and solve the tangential Newton-II equation for the friction demand at each rough contact.",
+              "why_valid": "Static friction responds to the no-slip dynamics. A system boundary can remove internal contact pairs, but it cannot create friction capacity at a smooth contact or move a rough contact from one body to another.",
               "inputs": [
                 "CAP-NLM-SECOND-LAW"
               ],
-              "output": "no-slip dynamics -> f_s = f_required"
+              "output": "chosen boundary + no-slip dynamics -> signed f_required at each actual rough contact."
             },
             {
               "id": "NLM8-3",
               "role": "VERIFY",
-              "action": "Compare |f_required| with mu_s N.",
+              "action": "Compare each |f_required| with μ_sN; on an incline this comparison can be turned into the angle condition for the onset of sliding rather than setting f=μ_sN from the start.",
               "why_valid": "The static-contact model permits any required value only up to the limiting magnitude.",
               "inputs": [],
-              "output": "|f_required| <= mu_s N -> static state feasible; |f_required| > mu_s N -> static state impossible"
+              "output": "|f_required| <= mu_s N -> static feasible; equality only at impending slip; after sliding use the kinetic model. Equivalent symbolic form: |f_required|≤μ_sN."
             },
             {
               "id": "NLM8-4",
               "role": "TRANSFORM",
-              "action": "Use |f_s| = mu_s N only at impending slip; if relative sliding is already established, use |f_k| = mu_k N with direction opposing the relative sliding.",
-              "why_valid": "The limiting equality and the sliding model describe different contact states and are not unconditional identities.",
+              "action": "At the threshold use |f_s|=μ_sN; once relative sliding is established use |f_k|=μ_kN opposite the sliding, and if several contacts change state, update N and the friction model at each contact before continuing.",
+              "why_valid": "Static-below-limit, impending-slip, kinetic-sliding and contact-lost are different contact states. A multi-contact process may switch which contact is static or sliding, so stale μN values cannot be carried across a transition.",
               "inputs": [],
-              "output": "impending slip -> |f_s| = mu_s N; sliding -> |f_k| = mu_k N"
+              "output": "state map: static below limit -> f_required; impending -> μ_sN; sliding -> μ_kN; contact lost -> N=f=0."
             }
           ],
           "elicitation": null,
@@ -45904,6 +47084,11 @@ window.GRADE9V3_CORE = {
               "wrong_idea": "If both mu_s and mu_k are given, the coefficients themselves tell you which friction model to use.",
               "diagnostic_prompt": "A problem gives both mu_s and mu_k but does not say whether the contact slips. Can you choose kinetic friction just because mu_k is supplied?",
               "repair": "No. Determine the contact state first: test whether the no-slip friction demand fits within mu_s N. Use the kinetic model only after sliding is established."
+            },
+            {
+              "wrong_idea": "Friction can keep acting after the surfaces lose contact, or a negative value of N can be used inside μN.",
+              "diagnostic_prompt": "An upward pull becomes large enough that the floor would need a downward normal force to keep touching the block. What are N and friction after separation?",
+              "repair": "A contact can push, not pull. Once the perpendicular equation would require N<0, contact is lost: set N=0 and therefore contact friction is zero."
             }
           ],
           "representation_refs": [
@@ -46322,16 +47507,16 @@ window.GRADE9V3_CORE = {
           "repair": {
             "step_ref": "NLM8-3",
             "microtopic_ref": "MIC-PHY-NLM-FRICTION-QUANT",
-            "action": "Compare |f_required| with mu_s N.",
+            "action": "Compare each |f_required| with μ_sN; on an incline this comparison can be turned into the angle condition for the onset of sliding rather than setting f=μ_sN from the start.",
             "why_valid": "The static-contact model permits any required value only up to the limiting magnitude.",
-            "output": "|f_required| <= mu_s N -> static state feasible; |f_required| > mu_s N -> static state impossible"
+            "output": "|f_required| <= mu_s N -> static feasible; equality only at impending slip; after sliding use the kinetic model. Equivalent symbolic form: |f_required|≤μ_sN."
           }
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.0.0",
+            "blueprint_ref": "BP-CORE2A-SUPPORTED-APPLICATION@1.1.0",
             "blueprint_id": "BP-CORE2A-SUPPORTED-APPLICATION",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "QUESTION_STUDY",
             "required_slots": [
@@ -46421,39 +47606,39 @@ window.GRADE9V3_CORE = {
             {
               "id": "NLM8-1",
               "role": "DECLARE",
-              "action": "Build the chosen-body FBD and determine the normal reaction N from the force balance or acceleration perpendicular to the contact; do not assume N = mg.",
-              "why_valid": "The normal reaction is the contact force needed by the actual perpendicular dynamics and can differ from mg when the surface is inclined or other forces have perpendicular components.",
+              "action": "Build the chosen-body free-body diagram and solve the perpendicular dynamics for N before using any friction law: do not assume N = mg; N=mg only in the special level case with no other perpendicular force or acceleration; a downward added component raises N, an upward component lowers it, and if the required contact force would be negative the contact is lost so N=0 and friction=0.",
+              "why_valid": "A unilateral contact can push but not pull. Its normal reaction is whatever the perpendicular Newton-II equation requires while contact persists; friction capacity is then tied to that actual N.",
               "inputs": [
                 "CAP-NLM-FBD-BODY-OWNERSHIP",
                 "CAP-NLM-SECOND-LAW"
               ],
-              "output": "perpendicular force equation -> actual N >= 0"
+              "output": "perpendicular equation -> actual N≥0; level examples N=mg+F_down or N=mg-F_up; contact lost -> N=0 and f=0."
             },
             {
               "id": "NLM8-2",
               "role": "TRANSFORM",
-              "action": "Assume no relative sliding provisionally and solve the tangential Newton-II equation for the static friction value f_required that would make that motion possible.",
-              "why_valid": "Static friction takes the value required by the no-slip state, provided the contact can supply it.",
+              "action": "Assume no relative sliding provisionally, choose a body or a whole connected system deliberately, and solve the tangential Newton-II equation for the friction demand at each rough contact.",
+              "why_valid": "Static friction responds to the no-slip dynamics. A system boundary can remove internal contact pairs, but it cannot create friction capacity at a smooth contact or move a rough contact from one body to another.",
               "inputs": [
                 "CAP-NLM-SECOND-LAW"
               ],
-              "output": "no-slip dynamics -> f_s = f_required"
+              "output": "chosen boundary + no-slip dynamics -> signed f_required at each actual rough contact."
             },
             {
               "id": "NLM8-3",
               "role": "VERIFY",
-              "action": "Compare |f_required| with mu_s N.",
+              "action": "Compare each |f_required| with μ_sN; on an incline this comparison can be turned into the angle condition for the onset of sliding rather than setting f=μ_sN from the start.",
               "why_valid": "The static-contact model permits any required value only up to the limiting magnitude.",
               "inputs": [],
-              "output": "|f_required| <= mu_s N -> static state feasible; |f_required| > mu_s N -> static state impossible"
+              "output": "|f_required| <= mu_s N -> static feasible; equality only at impending slip; after sliding use the kinetic model. Equivalent symbolic form: |f_required|≤μ_sN."
             },
             {
               "id": "NLM8-4",
               "role": "TRANSFORM",
-              "action": "Use |f_s| = mu_s N only at impending slip; if relative sliding is already established, use |f_k| = mu_k N with direction opposing the relative sliding.",
-              "why_valid": "The limiting equality and the sliding model describe different contact states and are not unconditional identities.",
+              "action": "At the threshold use |f_s|=μ_sN; once relative sliding is established use |f_k|=μ_kN opposite the sliding, and if several contacts change state, update N and the friction model at each contact before continuing.",
+              "why_valid": "Static-below-limit, impending-slip, kinetic-sliding and contact-lost are different contact states. A multi-contact process may switch which contact is static or sliding, so stale μN values cannot be carried across a transition.",
               "inputs": [],
-              "output": "impending slip -> |f_s| = mu_s N; sliding -> |f_k| = mu_k N"
+              "output": "state map: static below limit -> f_required; impending -> μ_sN; sliding -> μ_kN; contact lost -> N=f=0."
             }
           ],
           "elicitation": null,
@@ -46472,6 +47657,11 @@ window.GRADE9V3_CORE = {
               "wrong_idea": "If both mu_s and mu_k are given, the coefficients themselves tell you which friction model to use.",
               "diagnostic_prompt": "A problem gives both mu_s and mu_k but does not say whether the contact slips. Can you choose kinetic friction just because mu_k is supplied?",
               "repair": "No. Determine the contact state first: test whether the no-slip friction demand fits within mu_s N. Use the kinetic model only after sliding is established."
+            },
+            {
+              "wrong_idea": "Friction can keep acting after the surfaces lose contact, or a negative value of N can be used inside μN.",
+              "diagnostic_prompt": "An upward pull becomes large enough that the floor would need a downward normal force to keep touching the block. What are N and friction after separation?",
+              "repair": "A contact can push, not pull. Once the perpendicular equation would require N<0, contact is lost: set N=0 and therefore contact friction is zero."
             }
           ],
           "representation_refs": [
@@ -46867,16 +48057,16 @@ window.GRADE9V3_CORE = {
           "repair": {
             "step_ref": "NLM5-2",
             "microtopic_ref": "MIC-PHY-NLM-FRICTION",
-            "action": "Imagine the relative sliding or tendency to slide if friction were absent, then point friction opposite that relative tendency.",
+            "action": "Imagine the relative sliding, or tendency to slide, at that named contact if tangential friction were absent; point friction on the chosen body opposite that relative tendency.",
             "why_valid": "Contact friction resists relative sliding between the surfaces.",
-            "output": "belt at 2 m/s, box at 0.5 m/s -> box slips left relative to the belt -> friction on the box points right"
+            "output": "contact-specific slip tendency -> friction direction; direction need not oppose the body's velocity."
           }
         },
         "delivery": {
           "web": {
-            "blueprint_ref": "BP-CORE2B-TRANSFER@1.0.0",
+            "blueprint_ref": "BP-CORE2B-TRANSFER@1.1.0",
             "blueprint_id": "BP-CORE2B-TRANSFER",
-            "blueprint_version": "1.0.0",
+            "blueprint_version": "1.1.0",
             "shell_ref": "G9-TABLET-SHELL-V1",
             "layout_family": "TRANSFER_ATTEMPT",
             "required_slots": [
