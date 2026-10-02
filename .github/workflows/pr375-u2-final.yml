@@ -1,4 +1,4 @@
-# Replay U2 on the current post-U1 learner-page head.
+# Replay U2 on the current post-U1 + practice-content learner-page head.
 name: pr375-u2-final
 
 on:
@@ -49,9 +49,6 @@ jobs:
           assert n == 1, "expected one whitespace-only line after duplicate-id collapse"
           path.write_text(text, encoding="utf-8")
           PY
-          # U2 remediation does not require changing a repository workflow.
-          # Keep workflow bytes at the triggering head so the Actions token only
-          # needs ordinary contents:write for the verified product commit.
           git checkout -- .github/workflows/learner-quality.yml
 
       - name: Static U2 regression
