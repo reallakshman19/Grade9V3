@@ -1,0 +1,95 @@
+name: qb-ui-polish-once
+
+on:
+  push:
+    branches: [fix/practice-hub-ui-dynamic-counts]
+    paths:
+      - ".github/workflows/qb-ui-polish-once.yml"
+
+permissions:
+  contents: write
+
+jobs:
+  validate-and-sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/practice-hub-ui-dynamic-counts
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Focused static and integration tests
+        run: |
+          python3 -m unittest \
+            tests.test_question_bank_ui_compact \
+            tests.test_chemistry_practice_integration \
+            tests.test_mathematics_tablet_standalone
+          node --check public/js/question-bank-live-stats.js
+          node --check public/js/site-header.js
+      - name: Regenerate deterministic Pages publication
+        run: |
+          python3 Shared/tools/build_manifest.py
+          python3 Shared/tools/build_pages_site.py
+          python3 Shared/tools/build_pages_site.py --check
+      - name: Re-run mirror-sensitive tests
+        run: |
+          python3 -m unittest \
+            tests.test_question_bank_ui_compact \
+            tests.test_chemistry_practice_integration \
+            tests.test_mathematics_tablet_standalone
+      - name: Install Chromium browser audit dependency
+        run: |
+          npm install --no-save playwright@1.56.1
+          npx playwright install --with-deps chromium
+      - name: Exercise Question Bank runtime and live metrics
+        run: |
+          node tests/question_bank_runtime_browser.mjs /tmp/question-bank-runtime.json
+          python3 -m http.server 8765 --directory public >/tmp/qb-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          node - <<'JS'
+          const { chromium } = require('playwright');
+          const assert = (value, message) => { if (!value) throw new Error(message); };
+          (async () => {
+            const browser = await chromium.launch();
+            const page = await browser.newPage({ viewport: { width: 1366, height: 854 } });
+            await page.goto('http://127.0.0.1:8765/question-bank/index.html');
+            await page.evaluate(() => window.Grade9QuestionBank.ready);
+            await page.waitForFunction(() => [...document.querySelectorAll('#qbStats .qb-stat span')].some(n => n.textContent === 'matching questions'));
+            const initial = await page.evaluate(() => ({
+              total: window.Grade9QuestionBankData.summaries().length,
+              metrics: [...document.querySelectorAll('#qbStats .qb-stat')].map(n => ({ value: Number(n.querySelector('b').textContent), label: n.querySelector('span').textContent }))
+            }));
+            assert(initial.metrics[0].value === initial.total, 'canonical denominator is not derived from loaded summaries');
+            assert(initial.metrics[1].value === initial.total, 'initial matching count should equal canonical denominator');
+            const subjectButton = page.locator('#qbSubjectTabs [data-subject-ref]:not([data-subject-ref=""])').first();
+            await subjectButton.click();
+            await page.waitForTimeout(80);
+            const filtered = await page.evaluate(() => ({
+              matching: window.Grade9QuestionBank.filtered().length,
+              metrics: [...document.querySelectorAll('#qbStats .qb-stat b')].map(n => Number(n.textContent)),
+              labels: [...document.querySelectorAll('#qbStats .qb-stat span')].map(n => n.textContent)
+            }));
+            assert(filtered.metrics[0] === initial.total, 'canonical denominator changed after filtering');
+            assert(filtered.metrics[1] === filtered.matching, 'matching metric did not follow active subject');
+            assert(filtered.metrics[2] === 1, 'subjects-in-view metric did not narrow to one subject');
+            assert(filtered.labels.join('|') === 'canonical questions|matching questions|subjects in view|topics in view', 'unexpected metric labels');
+            await browser.close();
+          })().catch(error => { console.error(error); process.exit(1); });
+          JS
+      - name: Commit deterministic publication drift
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Publication already synchronized."
+            exit 0
+          fi
+          git commit -m "chore(qb): synchronize compact UI publication"
+          git push origin HEAD:fix/practice-hub-ui-dynamic-counts
